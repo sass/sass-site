@@ -1,0 +1,40 @@
+---
+title: Sass | Syntactically Awesome Style Sheets
+---
+
+
+
+:markdown
+  # Welcome to Sass
+
+  ## The best thing to happen to styling the web since CSS.
+
+  In fact, *Sass is an extension of CSS 3*. With nested rules, variables, mixins, selector inheritance, and a ton of other really awesome tools, writing CSS becomes fun again. Already thought CSS was fun? Wait until you add Sass to the mix!
+
+  ##  Sass is approachable for both designers and developers.
+
+  Designer with a need for a GUI app (or your favorite text editor)? We've got you covered. Developer who prefers the command line? You're all set, too. The community around Sass is amazing and productive; there are tools for just about anyone who works on the front end to get started. All you need is an understanding of CSS (duh), Ruby — if you have a Mac, *you're already good to go*; if you have Windows, *it's easy to get that set up* — and the burning desire to have well-formatted, efficient, and maintainable CSS. All set? Awesome.
+
+  ## Choose your own adventure.
+
+  Sass has 2 flavors of syntaxes to choose from. The original syntax, referred to as Sass (or the indented syntax), is great for people who prefer a concise, indented, white-space sensitive syntax. The newer syntax, SCSS, looks just like normal CSS but has cool features sprinkled in. While SCSS is considered the main syntax now, the original syntax will continue to be supported.
+
+
+
+%ul
+  %li= link_to 'Get Sass', '/get-sass/', :class => 'button'
+  %li= link_to 'Try Sass', '/try-sass/', :class => 'button'
+
+
+
+- content_for :sidebar do
+  %p
+    Latest Release:
+    = link_to "Media Mark 3.2.1", "#", :class => "button"
+
+  :markdown
+    This release includes the following updates:
+
+    * Fix a buggy interaction with Pow and Capybara that caused EOFErrors.
+
+  %p= link_to "View previous releases.", "#", :class => "button"
