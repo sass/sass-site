@@ -1,0 +1,24 @@
+= javascript_include_tag  "//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"
+
+:javascript
+  window.jQuery || document.write('<script src="/javascripts/vendor/jquery-1.8.1.min.js"><\/script>')
+
+
+
+/[if lt IE 7]
+  = javascript_include_tag "vendor/DD_belatedPNG_0.0.8a-min"
+
+  :javascript
+    DD_belatedPNG.fix("images, .png_bg");
+
+
+
+= javascript_include_tag  "sass"
+
+
+
+:javascript
+  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));

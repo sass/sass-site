@@ -1,0 +1,23 @@
+%header(role="banner")
+  %h1
+    - if data.page.section != "Home"
+      <a href="/">
+    Sass
+    - if data.page.section != "Home"
+      </a>
+  %ul
+    %li= link_to "Skip to Navigation", "#navigation"
+    %li= link_to "Skip to Content", "#content"
+
+  %nav#navigation(role="navigation")
+    %ul
+      %li
+        - if data.page.section == "Home"
+          <strong>
+        - if data.page.title != "Home"
+          <a href="/">
+        Home
+        - if data.page.title != "Home"
+          </a>
+        - if data.page.section == "Home"
+          </strong>
