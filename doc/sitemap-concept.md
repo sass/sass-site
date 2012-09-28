@@ -34,12 +34,12 @@
   
 ## Footer
 
-  * Email group for support 
-  * IRC
-  * Twitter acct
-  * github
+* Email group for support 
+* IRC
+* Twitter acct
+* github
   
-  
+---  
 
 # Sitemap (vSomeday)
 
