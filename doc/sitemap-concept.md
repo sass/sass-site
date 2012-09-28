@@ -1,4 +1,4 @@
-# Sitemap
+# Sitemap (v1)
 
 ## Home
 
@@ -6,13 +6,42 @@
 
 (information on getting set up with a designer focus and a developer focus — emphasis on how fast an easy it is. GUI clients, Repo link, etc.)
 
-## Documentation
+## Documentation (internal resources)
 
 * Reference — make this beautiful, legible, illustrative, helpful
 * Cheat Sheet (a pretty printable PDF to tape up by your desk) — or maybe a pocket guide?
-* Suggested best practices from experts
-* Resources (videos, articles, presentations, books, etc).
-* Next steps (link to Compass, Susy, etc)
+
+## Community (external resources, projects)
+
+* ### Blogs Writing about sass
+  * The Sass Way
+  * Unmatched Style
+  * Chris E.'s Blog
+  * CSS Tricks  
+* ### Classes & Tutorials
+  * CodeSchool
+  * CodeAcademy (bought by 37 signals)
+  * Hungry Machine
+* ### Projects 
+  * Susy
+  * Bourbon
+  * Compass
+  * Zurb Foundation
+  * 320 and Up
+* ### How to contribute
+  * Mailing list
+  * Github (create a CONTRIBUTE file to outline the contribution process)
+  
+## Footer
+
+  * Email group for support 
+  * IRC
+  * Twitter acct
+  * github
+  
+  
+
+# Sitemap (vSomeday)
 
 ## Tutorials
 
@@ -42,9 +71,3 @@ Updates on Sass, of course, but we should also consider interviews with people w
 * brand logo resources so people can use them in presentations
 * websites, and such
 
-## Footer
-
-* Email group for support 
-* IRC
-* Twitter acct
-* github
