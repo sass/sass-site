@@ -24,11 +24,6 @@
 
 * Awesome projects that use Sass — could be a gallery or maybe even a case study. Either way, show both big & small sites/apps and try to emphasis how Sass made it all possible/better.
 
-## Help
-
-* FAQ
-* Email group for support + IRC
-
 ## Blog 
 
 Updates on Sass, of course, but we should also consider interviews with people who are using Sass, useful articles and case studies — whether published at the blog or just linked from the blog to another great source.
@@ -47,4 +42,8 @@ Updates on Sass, of course, but we should also consider interviews with people w
 * brand logo resources so people can use them in presentations
 * websites, and such
 
+## Footer
 
+* Email group for support 
+* IRC
+* Twitter acct
