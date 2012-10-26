@@ -17,18 +17,10 @@
 
   %body{:class => page_classes}
 
-    = partial "/layouts/partials/compatibility"
     = partial "/layouts/partials/banner"
-    = partial "/layouts/partials/breadcrumb"
 
+    = yield
 
+    = partial "/layouts/partials/footer"
 
-    #content(role="main")
-      %h1= data.page.title
-      = yield
-
-
-
-    = partial "/layouts/partials/complementary"
-    = partial "/layouts/partials/contentinfo"
     = partial "/layouts/partials/foot_scripts"
