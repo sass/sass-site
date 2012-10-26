@@ -71,11 +71,9 @@ Updates on Sass, of course, but we should also consider interviews with people w
 * brand logo resources so people can use them in presentations
 * websites, and such
 
-<<<<<<< HEAD
-=======
 ## Footer
 
 * Email group for support 
 * IRC
 * Twitter acct
->>>>>>> 7b279441a9ed0fb400ef243f525f98e84f3fee5c
+
