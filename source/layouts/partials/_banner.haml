@@ -1,23 +1,15 @@
 %header(role="banner")
+  .ribbon
+    Current Release: Media Mark (3.2.1)
+    = link_to "Release Notes »", "#"
+    = link_to "fork me on github", "#"
+
   %h1
     - if data.page.section != "Home"
-      <a href="/">
-    Sass
-    - if data.page.section != "Home"
-      </a>
-  %ul
-    %li= link_to "Skip to Navigation", "#navigation"
-    %li= link_to "Skip to Content", "#content"
-
-  %nav#navigation(role="navigation")
+      = link_to "Sass", "#"
+  %nav
     %ul
-      %li
-        - if data.page.section == "Home"
-          <strong>
-        - if data.page.title != "Home"
-          <a href="/">
-        Home
-        - if data.page.title != "Home"
-          </a>
-        - if data.page.section == "Home"
-          </strong>
+      %li= link_to "Home", "/"
+      %li= link_to "Quickstart", "#"
+      %li= link_to "Documentation", "#"
+      %li= link_to "Community", "#"
