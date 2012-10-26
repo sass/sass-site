@@ -2,39 +2,126 @@
 title: Sass | Syntactically Awesome Style Sheets
 ---
 
+%h2 CSS with super powers
 
+%p 
+  Sass is an extension of CSS 3 with a bunch of added features. 
+  Already thought CSS was fun? Wait until you add Sass to the mix!
 
-:markdown
-  # Welcome to Sass
+%h3 Get up and running quickly with:
 
-  ## The best thing to happen to styling the web since CSS.
+.command-line
+  %h2 Command Line
+  %p Feel comfortable using a terminal, Ruby &amp; Gems?
+  = link_to "Command Line Quickstart", '#', :class => 'button'
+  %span gem install sass
 
-  In fact, *Sass is an extension of CSS 3*. With nested rules, variables, mixins, selector inheritance, and a ton of other really awesome tools, writing CSS becomes fun again. Already thought CSS was fun? Wait until you add Sass to the mix!
+.gui
+  %h2 GUI Application
+  %p Get started quickly by installing a Sass for Linux, Mac or Windows
+  = link_to "GUI Quickstart", '#', :class => 'button'
+  %span= link_to "Download Compass.app", '#'
 
-  ##  Sass is approachable for both designers and developers.
+%h2 Sass Features
 
-  Designer with a need for a GUI app (or your favorite text editor)? We've got you covered. Developer who prefers the command line? You're all set, too. The community around Sass is amazing and productive; there are tools for just about anyone who works on the front end to get started. All you need is an understanding of CSS (duh), Ruby — if you have a Mac, *you're already good to go*; if you have Windows, *it's easy to get that set up* — and the burning desire to have well-formatted, efficient, and maintainable CSS. All set? Awesome.
+.feature-slideshow
+  %nav
+    %ul
+      %li= link_to "Preprocessing", '#', :class => 'active'
+      %li= link_to "Variables", '#'
+      %li= link_to "Nesting", '#'
+      %li= link_to "Mixins", '#'
+      %li= link_to "Inheritance", '#'
+      %li= link_to "Import", '#'
+      %li= link_to "Extend", '#'
+      %li= link_to "Operators", '#'
 
-  ## Choose your own adventure.
+  %ul.content
+    %li#preprocessing
+      %h3 Preprocessing
 
-  Sass has 2 flavors of syntaxes to choose from. The original syntax, referred to as Sass (or the indented syntax), is great for people who prefer a concise, indented, white-space sensitive syntax. The newer syntax, SCSS, looks just like normal CSS but has cool features sprinkled in. While SCSS is considered the main syntax now, the original syntax will continue to be supported.
+      %p 
+        A prepressor lets you take a Sass file and use features that don't 
+        exist in CSS like variables, nesting, mixins, inheritance and other 
+        nifty goodies that make writing CSS fun again.
 
+      %pre
+        %code
+          example of preprocessing and css output
 
+      = link_to "Variables »", '#', :class => 'button'
 
-%ul
-  %li= link_to 'Get Sass', '/get-sass/', :class => 'button'
-  %li= link_to 'Try Sass', '/try-sass/', :class => 'button'
+    %li#variables
+      %h3 Variables
 
+      %p Variables definition
+      
+      %pre
+        %code
+          example of preprocessing and css output
 
+      = link_to "Nesting »", '#', :class => 'button'
 
-- content_for :complementary do
-  %p
-    Latest Release:
-    = link_to "Media Mark 3.2.1", "#", :class => "button"
+    %li#nesting
+      %h3 Nesting
 
-  :markdown
-    This release includes the following updates:
+      %p nesting definition
 
-    * Fix a buggy interaction with Pow and Capybara that caused EOFErrors.
+      %pre
+        %code
+          example of nesting and css output
 
-  %p= link_to "View previous releases.", "#", :class => "button"
+      = link_to "Mixins »", '#', :class => 'button'
+      
+    %li#mixins
+      %h3 Mixins
+
+      %p mixins definition
+
+      %pre
+        %code
+          example of mixins and css output
+
+      = link_to "Inheritance »", '#', :class => 'button'
+    
+    %li#inheritance
+      %h3 Inheritance
+
+      %p inheritance definition
+
+      %pre
+        %code
+          example of inheritance and css output
+
+      = link_to "Import »", '#', :class => 'button'
+
+    %li#import
+      %h3 Import
+
+      %p import definition
+
+      %pre
+        %code
+          example of import and css output
+
+      = link_to "Extend »", '#', :class => 'button'
+      
+    %li#extend
+      %h3 Extend
+
+      %p extend definition
+
+      %pre
+        %code
+          example of extend and css output
+
+      = link_to "Operators »", '#', :class => 'button'
+      
+    %li#operators
+      %h3 Operators
+
+      %p operators definition
+
+      %pre
+        %code
+          example of operators and css output
