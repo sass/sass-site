@@ -1,0 +1,155 @@
+// ----------------------------------------------------
+// Typography
+// TODO, clean up, merge like items in with normalize
+// ----------------------------------------------------
+
+// ----------------------------------------------------
+// headings
+// TODO, calculate the font-size or use REM's
+// What are the font sizes from h1-h6
+// ----------------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+  color: $color-text;
+  font-family: $font-family-headers;
+  font-weight: bold;
+  margin: 0;
+  text-rendering: optimizelegibility;
+  small {
+    font-weight: normal;
+    // color: $grayLight;
+  }
+}
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 18px;
+}
+h4 {
+  font-size: 14px;
+}
+h5 {
+  font-size: 12px;
+}
+h6 {
+}
+
+// ----------------------------------------------------
+// paragraphs
+// ----------------------------------------------------
+p{
+  margin-bottom: $baseline;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+// ----------------------------------------------------
+// lists
+// ----------------------------------------------------
+// ---------------------------------------------------- 
+// Lists
+// ----------------------------------------------------
+// unordered and ordered lists
+ul, ol {
+  margin: 0 0 $baseline / 2 25px;
+  padding: 0;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+li {
+  line-height: $baseline;
+}
+
+// definition lists
+dl {
+  margin-bottom: $baseline;
+}
+dt,
+dd {
+  line-height: $baseline;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: $baseline / 2;
+}
+
+// ----------------------------------------------------
+// misc
+// ----------------------------------------------------
+
+// horizontal rules
+hr {
+  margin: $baseline 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+// Emphasis
+strong, b {
+  font-weight: bold;
+}
+em, i {
+  font-style: italic;
+}
+.muted {
+  // color: $grayLight;
+}
+
+// blockquotes
+blockquote {
+  // border-left: 5px solid $grayLighter;
+  margin: 0 0 $baseline;
+  padding: 0 0 0 15px;
+  p {
+    margin-bottom: 0;
+  }
+  small {
+    display: block;
+    line-height: $baseline;
+    // color: $grayLight;
+    &:before {
+      content: '\2014 \00A0';
+    }
+  }
+}
+
+// quotes
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+
+// addresses
+address {
+  display: block;
+  margin-bottom: $baseline;
+  font-style: normal;
+  line-height: $baseline;
+}
+
+// Misc
+small {
+  font-size: 100%;
+}
+cite {
+  font-style: normal;
+}

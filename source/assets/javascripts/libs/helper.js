@@ -92,12 +92,12 @@ MBP.fastButton = function (element, handler) {
   this.element = element;
   this.handler = handler;
 
-	addEvt(element, "touchstart", this, false);
-	addEvt(element, "click", this, false);
+  addEvt(element, "touchstart", this, false);
+  addEvt(element, "click", this, false);
 };
 
 MBP.fastButton.prototype.handleEvent = function(event) {
-	event = event || window.event;
+  event = event || window.event;
   switch (event.type) {
     case 'touchstart': this.onTouchStart(event); break;
     case 'touchmove': this.onTouchMove(event); break;
@@ -123,7 +123,7 @@ MBP.fastButton.prototype.onTouchMove = function(event) {
 };
 
 MBP.fastButton.prototype.onClick = function(event) {
-	event = event || window.event;
+  event = event || window.event;
   if (event.stopPropagation) { event.stopPropagation(); }
   this.reset();
   this.handler(event);
@@ -134,8 +134,8 @@ MBP.fastButton.prototype.onClick = function(event) {
 };
 
 MBP.fastButton.prototype.reset = function() {
-	rmEvt(this.element, "touchend", this, false);
-	rmEvt(document.body, "touchmove", this, false);
+  rmEvt(this.element, "touchend", this, false);
+  rmEvt(document.body, "touchmove", this, false);
   this.element.style.backgroundColor = "";
 };
 

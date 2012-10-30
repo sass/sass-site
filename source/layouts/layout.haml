@@ -11,8 +11,11 @@
     = partial "/layouts/partials/head_meta_data"
     = partial "/layouts/partials/head_compatibility"
 
-    = stylesheet_link_tag "sass"
+    = stylesheet_link_tag "base"
+    = stylesheet_link_tag "theme/sass"
+
     = partial "/layouts/partials/head_scripts"
+
     = yield_content :head
 
   %body{:class => page_classes}

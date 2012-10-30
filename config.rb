@@ -1,29 +1,32 @@
-###
-# Markdown
-###
+# ----------------------------------------------
+# Page Processing
+# ----------------------------------------------
 set :markdown_engine, :redcarpet
-
-###
-# Livereload
-###
+set :markdown, :fenced_code_blocks => true,
+               :autolink => true, 
+               :smartypants => true
+# ----------------------------------------------
+# Livreload
+# ----------------------------------------------
 activate :livereload
 
-###
-# Compass
-###
+# ----------------------------------------------
+# CSS Processing
+# ----------------------------------------------
 
 # Susy grids in Compass
 # First: gem install susy --pre
-require "susy"
+require 'susy'
 
 # Change Compass configuration
 compass_config do |config|
-  config.output_style = :compact
+  config.output_style = :expanded
+  # config.sass_options = { :line_comments => true, :debug_info => true }
 end
 
-###
+# ----------------------------------------------
 # Page options, layouts, aliases and proxies
-###
+# ----------------------------------------------
 
 # Per-page layout changes:
 #
@@ -43,9 +46,20 @@ page "/responsive.html", :layout => false
 #   @which_fake_page = "Rendering a fake page with a variable"
 # end
 
-###
+# ----------------------------------------------
+# Styleguide
+# ----------------------------------------------
+
+# Use KSS for awesome styleguide support
+# require "kss"
+# 
+# page "/styleguide/*", :layout => "styleguide" do
+#   @styleguide = Kss::Parser.new('source/css')
+# end
+
+# ----------------------------------------------
 # Helpers
-###
+# ----------------------------------------------
 
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
@@ -59,13 +73,49 @@ activate :directory_indexes
 #   end
 # end
 
-set :css_dir, 'stylesheets'
+helpers do
+  # Generates a styleguide block.
+  # def styleguide_block(section, &block)
+  #   @section = @styleguide.section(section)
+  #   @example_html = kss_capture{ block.call }
+  #   @_out_buf << partial('styleguide/block')
+  # end
+# 
+  # # Captures the result of a block within an erb template without # spitting it
+  # # to the output buffer.
+  # def kss_capture(&block)
+  #   out, @_out_buf = @_out_buf, ""
+  #   yield
+  #   @_out_buf
+  # ensure
+  #   @_out_buf = out
+  # end
 
-set :js_dir, 'javascripts'
+  # Calculate the years for a copyright
+  def copyright_years(start_year)
+    end_year = Date.today.year
+    if start_year == end_year
+      start_year.to_s
+    else
+      start_year.to_s + '-' + end_year.to_s
+    end
+  end
+end
 
-set :images_dir, 'images'
+# ----------------------------------------------
+# Directories
+# ----------------------------------------------
 
+set :css_dir, 'assets/stylesheets'
+
+set :js_dir, 'assets/javascripts'
+
+set :images_dir, 'assets/images'
+
+# ----------------------------------------------
 # Build-specific configuration
+# ----------------------------------------------
+
 configure :build do
   # For example, change the Compass output style for deployment
   activate :minify_css

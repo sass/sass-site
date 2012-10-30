@@ -1,0 +1,78 @@
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+
+// --------------------------------------------------
+// CLEARFIX
+// --------------------------------------------------
+// For clearing floats like a boss h5bp.com/q
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// --------------------------------------------------
+// tab focus
+// mimics webkit
+// --------------------------------------------------
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// --------------------------------------------------
+// center align
+// --------------------------------------------------
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// --------------------------------------------------
+// inline block - IE7
+// --------------------------------------------------
+@mixin ie7-inline-block() {
+  *display: inline; // IE7 inline-block hack
+  *zoom: 1;
+}
+
+// --------------------------------------------------
+// whitespace fix for inline block elements - IE7
+// --------------------------------------------------
+@mixin ie7-restore-left-whitespace() {
+  *margin-left: .3em;
+
+  &:first-child {
+    *margin-left: 0;
+  }
+}
+
+@mixin ie7-restore-right-whitespace() {
+  *margin-right: .3em;
+
+  &:last-child {
+    *margin-left: 0;
+  }
+}
+
+// --------------------------------------------------
+// image replacement
+// --------------------------------------------------
+@mixin hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}

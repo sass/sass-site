@@ -1,0 +1,89 @@
+//------------------------------------
+// Container
+//------------------------------------
+#container {
+  @include container;
+  max-width: 100%;
+  width: 100%;
+  @include susy-grid-background;
+}
+//------------------------------------
+// Grid
+//------------------------------------
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6 {
+  background-color: rgba(#666, .5);
+}
+.xx {
+  > .col-1, 
+  > .col-2 {
+    @include span-columns(8);
+  }
+  > .col-2 {
+    @include omega;
+  }
+}
+.xxx {
+  > .col-1,
+  > .col-2,
+  > .col-3 {
+    @include span-columns(5.11);
+  }
+  > .col-3 {
+    @include omega;
+  }
+}
+.xxxx {
+  > .col-1,
+  > .col-2,
+  > .col-3,
+  > .col-4 {
+    @include span-columns(4);
+  }
+  > .col-4 {
+    @include omega;
+  }
+}
+.xxxxx {
+  > .col-1,
+  > .col-2,
+  > .col-3,
+  > .col-4,
+  > .col-5 {
+    @include span-columns(3); // Can't get this to calculate should be 18.8313%
+    width: 18.73%;
+  }
+  > .col-5 {
+    @include omega;
+  }
+}
+
+.xxxxxx {
+  > .col-1,
+  > .col-2,
+  > .col-3,
+  > .col-4,
+  > .col-5,
+  > .col-6 {
+    @include span-columns(2.55);
+  }
+  > .col-6 {
+    @include omega;
+  }
+}
+.xi {
+  > .col-1 {
+    @include span-columns(4);
+  }
+  > .col-2 {
+    @include span-columns(12 omega);
+  }
+}
+
+.ix {
+  > .col-1 {
+    @include span-columns(12);
+  }
+  > .col-2 {
+    @include span-columns(4 omega);
+  }
+}

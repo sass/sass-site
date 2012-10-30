@@ -1,7 +1,0 @@
-//= require plugins
-
-
-
-
-
-//= require helper
