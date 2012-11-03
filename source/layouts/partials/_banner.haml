@@ -5,8 +5,8 @@
     = link_to "fork me on github", "#"
 
   %h1
-    - if data.page.section != "Home"
-      = link_to "Sass", "#"
+    = link_to "/" do
+      = image_tag "logo.png", :width => "160", :height => "120", :alt => "Sass"
   %nav
     %ul
       %li= link_to "Home", "/"
