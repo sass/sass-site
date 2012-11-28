@@ -10,7 +10,7 @@ h3 { @extend %heading-text; }
 h1,
 h3 {
   @extend %chaparral-pro-regular;
-  @include font-size($font-size-larger);
+  @include font-size($font-size-larger, $line-height-heading);
   letter-spacing: -0.05em;
   color: $heading-1-text-color;
 }

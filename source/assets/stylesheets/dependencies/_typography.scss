@@ -12,11 +12,13 @@ $serif:      Georgia, "Times New Roman", Times, serif          !default;
 
 
 
+$source-code-pro-regular: "source-code-pro-n4", "source-code-pro", $monospace  !default;
+
 $source-sans-pro-regular: "source-sans-pro-n4", "source-sans-pro", $sans-serif !default;
 $source-sans-pro-bold:    "source-sans-pro-n7", "source-sans-pro", $sans-serif !default;
-                          
+
 $chaparral-pro-regular:   "chaparral-pro-n4", "chaparral-pro", $serif          !default;
-$chaparral-pro-bold:      "chaparral-pro-n7", "chaparral-pro", $serif          !default;
+$chaparral-pro-semibold:  "chaparral-pro-n6", "chaparral-pro", $serif          !default;
 
 
 
@@ -36,8 +38,10 @@ $chaparral-pro-bold:      "chaparral-pro-n7", "chaparral-pro", $serif          !
 // ---------------------------------------------------------------------------
 // FONT PLACEHOLDER SELECTORS FOR @EXTEND'ING
 
-%source-sans-pro-regular { @include font-face($source-sans-pro-regular);   }
-%source-sans-pro-bold    { @include font-face($source-sans-pro-bold, 700); }
-                                                                           
-%chaparral-pro-regular   { @include font-face($chaparral-pro-regular);     }
-%chaparral-pro-bold      { @include font-face($chaparral-pro-bold, 700);   }
+%source-code-pro-regular { @include font-face($source-code-pro-regular);     }
+
+%source-sans-pro-regular { @include font-face($source-sans-pro-regular);     }
+%source-sans-pro-bold    { @include font-face($source-sans-pro-bold, 600);   }
+
+%chaparral-pro-regular   { @include font-face($chaparral-pro-regular);       }
+%chaparral-pro-semibold  { @include font-face($chaparral-pro-semibold, 600); }

@@ -17,4 +17,7 @@
 
 
 
-ul { @extend %block-text; }
+ul {
+  @extend %block-text;
+  list-style-position: inside;
+}

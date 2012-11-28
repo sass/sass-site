@@ -8,7 +8,8 @@
   @extend %callout-theme;
   padding: .66666666666667em;
   @include font-size($font-size-large);
-  text-align: center;
+
+  .container { margin: 0; }
 
   p,
   ul {
@@ -19,5 +20,5 @@
   }
 
   a,
-  strong { @extend %chaparral-pro-bold; }
+  strong { @extend %chaparral-pro-semibold; }
 }

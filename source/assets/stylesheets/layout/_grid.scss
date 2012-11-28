@@ -3,8 +3,15 @@
 
 
 
+// Initial set up is just one column for small phones
+
+$total-columns: 1;
+$column-width:  2.75em;
+$gutter-width:  1em;
+$grid-padding:  $gutter-width;
+
+
+
 .container {
-  @extend %clearfix;
-  margin: 0 auto;
-  width: 62em;
+  margin: 0 1em;
 }

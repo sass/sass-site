@@ -3,14 +3,15 @@
 
 
 
-$base-unit:        4;
-                   
-$font-size:        16;
-$font-size-large:  $font-size * 1.5;
-$font-size-larger: $font-size * 3;
+$base-unit:           4;
 
-$line-height:     1.5;
-$line-height-alt: 1.25;
+$font-size:           16;
+$font-size-large:     $font-size * 1.5;
+$font-size-larger:    $font-size * 3;
+
+$line-height:         1.5;
+$line-height-alt:     1.25;
+$line-height-heading: 1;
 
 $baseline:        #{$font-size * $line-height}px;
 
@@ -31,13 +32,7 @@ $z-index-modal:            1050 !default;
     size: #{$size-setting}px;
     size: #{$size-setting / 10}rem;
   }
-
-  @if $size-setting == ($font-size-large or $font-size-larger) {
-    $lead-setting: $line-height-alt;
-    line-height: $lead-setting;
-  }
-
-  @else { line-height: $lead-setting; }
+  line-height: $lead-setting;
 }
 
 
@@ -49,5 +44,5 @@ $z-index-modal:            1050 !default;
 
 %heading-text {
   margin: 0;
-  padding: 1em 0 0;
+  padding: .75em 0 .25em;
 }

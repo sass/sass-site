@@ -4,18 +4,6 @@
 
 
 .release-information {
-  @include float-right;
-  margin-top: .875em;
-  width: 19.3333333333333em;
-  text-align: left;
-
-  p,
-  ul { padding: 0; }
-
-  ul { @extend %horizontal-list; }
-  
-  li:last-child {
-    float: right;
-    text-align: right;
-  }
+  padding: 1em;
+  @include font-size($font-size, $line-height-alt);
 }

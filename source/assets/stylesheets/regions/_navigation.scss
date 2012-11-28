@@ -5,11 +5,10 @@
 
 .navigation {
   @extend %navigation-theme;
+  padding: 1em 0;
   line-height: $line-height-alt;
   letter-spacing: .05em;
   text-transform: uppercase;
-  
-  a { @extend %source-sans-pro-bold; }
 
-  ul { @extend %horizontal-list; }
+  a { @extend %source-sans-pro-bold; }
 }
