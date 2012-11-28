@@ -21,12 +21,15 @@
     = yield_content :head
 
   %body{:class => page_classes}
-    = partial "layouts/shared/chrome_frame"
-    = partial "layouts/shared/banner"
+    .page
+      = partial "layouts/shared/chrome_frame"
+      = partial "layouts/shared/banner"
 
-    .container
-      = yield
-      = partial "layouts/shared/complementary"
+      .container
+        = yield
+        = partial "layouts/shared/complementary"
+
+      .footer-shim
 
     = partial "layouts/shared/contentinfo"
     = partial "layouts/shared/foot_scripts"

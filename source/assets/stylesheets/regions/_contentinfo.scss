@@ -1,0 +1,12 @@
+// ===========================================================================
+// CONTENTINFO
+
+
+
+.contentinfo {
+  border-top: .5em solid $contentinfo-border-color;
+  background: $contentinfo-background-color;
+  padding: 2em 0;
+
+  ul { @extend %horizontal-list; }
+}

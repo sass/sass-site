@@ -3,10 +3,27 @@
 
 
 
-h1 {
-  @extend %heading-text;
-  @extend %chaparral-pro-light;
+h1,
+h2,
+h3 { @extend %heading-text; }
+
+h1,
+h3 {
+  @extend %chaparral-pro-regular;
   @include font-size($font-size-larger);
   letter-spacing: -0.05em;
-  color: $heading-text-color;
+  color: $heading-1-text-color;
+}
+
+h2 {
+  @extend %source-sans-pro-bold;
+  @include font-size($font-size, $line-height-alt);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: $heading-2-text-color;
+}
+
+h3 {
+  @include font-size($font-size-large);
+  color: $heading-3-text-color;
 }

@@ -3,9 +3,6 @@
 
 
 
-html,
-body { height: 100%; }
-
 html {
   font-size: 62.5%;
   text-rendering: optimizelegibility;
@@ -14,7 +11,7 @@ html {
 }
 
 body {
-  @extend %source-sans-pro-extra-light;
+  @extend %source-sans-pro-regular;
   @include font-size;
   background-color: transparent;
 }

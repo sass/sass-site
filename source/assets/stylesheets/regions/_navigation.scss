@@ -5,6 +5,8 @@
 
 .navigation {
   @extend %navigation-theme;
+  @extend %source-sans-pro-bold;
+  line-height: $line-height-alt;
   letter-spacing: .05em;
   text-transform: uppercase;
 

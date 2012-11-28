@@ -1,0 +1,22 @@
+// ===========================================================================
+// STICKY FOOTER
+
+
+
+$footer-height: 15em;
+
+html,
+body { height: 100%; }
+
+.page {
+  margin-bottom: -$footer-height;
+  min-height: 100%;
+      height: auto !important;
+      height: 100%;
+}
+
+.footer-shim,
+.contentinfo {
+  clear: both;
+  height: $footer-height;
+}

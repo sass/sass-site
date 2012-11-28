@@ -19,7 +19,11 @@ $white:         lighten($black, 100%)  !default;
 $hopbush:       #c69                   !default;
 $venus:         #998099                !default;
 $pale-sky:      #6b717f                !default;
+$midnight-blue: #036                   !default;
+$regent-grey:   #808c99                !default;
 $iron:          #dadbdf                !default;
+$wafer:         #e1d7d2                !default;
+$dawn-pink:     #f2ece4                !default;
 $nebula:        #d2e1dd                !default;
 $patina:        #699                   !default;
 
@@ -28,21 +32,26 @@ $patina:        #699                   !default;
 // ---------------------------------------------------------------------------
 // SEMANTIC COLOR NAMES
 
-$background-color:            $white                   !default;
-$text-color:                  $grey-darker             !default;
-$heading-text-color:          $venus                   !default;
-$strong-text-color:           $grey-darkest            !default;
-$border-color:                $grey-lighter            !default;
+$background-color:             $white                   !default;
+$text-color:                   darken($pale-sky, 10%)   !default;
+$heading-1-text-color:         $venus                   !default;
+$heading-2-text-color:         $pale-sky                !default;
+$heading-3-text-color:         $regent-grey             !default;
+$strong-text-color:            $grey-darkest            !default;
+$border-color:                 $grey-lighter            !default;
 
-$link-color:                  $patina                  !default;
-$link-hover-color:            darken($link-color, 10%) !default;
-$link-active-color:           darken($link-color, 20%) !default;
+$link-color:                   $midnight-blue           !default;
+$link-hover-color:             darken($link-color, 10%) !default;
+$link-active-color:            darken($link-color, 20%) !default;
 
-$selection-text-color:        $white                   !default;
-$selection-background-color:  $hopbush                 !default;
+$selection-text-color:         $white                   !default;
+$selection-background-color:   $hopbush                 !default;
 
-$callout-background-color:    $nebula                  !default;
-$callout-text-color:          darken($patina, 25%)     !default;
+$callout-background-color:     $nebula                  !default;
+$callout-text-color:           darken($patina, 25%)     !default;
 
-$navigation-background-color: $pale-sky                !default;
-$navigation-text-color:       $iron                    !default;
+$navigation-background-color:  $pale-sky                !default;
+$navigation-text-color:        $iron                    !default;
+
+$contentinfo-background-color: $dawn-pink               !default;
+$contentinfo-border-color:     $wafer                   !default;

@@ -4,7 +4,7 @@
 
 
 .message {
-  @extend %chaparral-pro-light;
+  @extend %chaparral-pro-regular;
   @extend %callout-theme;
   padding: .66666666666667em;
   @include font-size($font-size-large);
@@ -19,5 +19,5 @@
   }
 
   a,
-  strong { @extend %chaparral-pro-regular; }
+  strong { @extend %chaparral-pro-bold; }
 }
