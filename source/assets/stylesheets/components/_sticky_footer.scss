@@ -3,22 +3,22 @@
 
 
 
-$footer-height: 10.5em;
-
-@include at-breakpoint(60em) {
-  html,
-  body { height: 100%; }
-
-  .page {
-    margin-bottom: -$footer-height;
-    min-height: 100%;
-        height: auto !important;
-        height: 100%;
-  }
-
-  .footer-shim,
-  .contentinfo {
-    clear: both;
-    height: $footer-height;
-  }
-}
+//$footer-height: 10.5em;
+//
+//@include at-breakpoint(60em) {
+//  html,
+//  body { height: 100%; }
+//
+//  .page {
+//    margin-bottom: -$footer-height;
+//    min-height: 100%;
+//        height: auto !important;
+//        height: 100%;
+//  }
+//
+//  .footer-shim,
+//  .contentinfo {
+//    clear: both;
+//    height: $footer-height;
+//  }
+//}

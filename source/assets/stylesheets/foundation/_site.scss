@@ -8,13 +8,12 @@ html {
   text-rendering: optimizelegibility;
   @include background($background-color image_url("textures/light.gif"));
   color: $text-color;
-  text-shadow: 0 1px 1px $background-color;
+  text-shadow: 0 1px 1px $highlight-color;
 }
 
 body {
   @extend %source-sans-pro-regular;
   @include font-size;
-  text-align: center;
   background-color: transparent;
 }
 

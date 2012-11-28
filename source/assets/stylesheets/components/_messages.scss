@@ -5,20 +5,22 @@
 
 .message {
   @extend %chaparral-pro-regular;
-  @extend %callout-theme;
+  clear: both;
   padding: .66666666666667em;
-  @include font-size($font-size-large);
+  background: $callout-background-color;
+  color:      $callout-text-color;
 
-  .container { margin: 0; }
+  a,
+  strong { @extend %chaparral-pro-semibold; }
+
+  a { @include link(darken($callout-text-color, 5%), darken($callout-text-color, 15%), darken($callout-text-color, 25%)); }
 
   p,
   ul {
     padding: .25em 0;
+    @include font-size($font-size-large);
 
     &:first-child { padding-top:    0; }
     &:last-child  { padding-bottom: 0; }
   }
-
-  a,
-  strong { @extend %chaparral-pro-semibold; }
 }

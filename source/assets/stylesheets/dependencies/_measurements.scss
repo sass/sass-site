@@ -6,8 +6,10 @@
 $base-unit:           4;
 
 $font-size:           16;
+$font-size-small:     $font-size * .75;
 $font-size-large:     $font-size * 1.5;
-$font-size-larger:    $font-size * 3;
+$font-size-larger:    $font-size * 2;
+$font-size-largest:   $font-size * 3;
 
 $line-height:         1.5;
 $line-height-alt:     1.25;
@@ -15,6 +17,18 @@ $line-height-heading: 1;
 
 $baseline:        #{$font-size * $line-height}px;
 
+
+
+$total-columns: 9;
+$column-width:  2.75em;
+$gutter-width:  1em;
+$grid-padding:  $gutter-width;
+
+
+
+$break-iPhone:      5;
+$break-iPhone-wide: 8;
+$break-iPad:        13;
 
 
 

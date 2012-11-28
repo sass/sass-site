@@ -4,11 +4,45 @@
 
 
 .navigation {
-  @extend %navigation-theme;
-  padding: 1em 0;
-  line-height: $line-height-alt;
-  letter-spacing: .05em;
-  text-transform: uppercase;
+  background: $navigation-background-color;
+  color: $navigation-text-color;
+  @include text-shadow;
 
-  a { @extend %source-sans-pro-bold; }
+  a { @include link(lighten($navigation-text-color, 5%), lighten($navigation-text-color, 15%), lighten($navigation-text-color, 25%)); }
+
+  @include at-breakpoint($break-iPhone) {
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      border-bottom: 1px solid $navigation-border-color;
+
+      &:last-child { border-bottom: 0; }
+    }
+
+    a {
+      @include tappable-link;
+      display: block;
+    }
+  }
+
+  @include at-breakpoint($break-iPhone-wide) {
+    ul {
+      @extend %horizontal-list-iPhone-wide;
+
+      li {
+        margin: 0;
+        width: 50%;
+      }
+    }
+  }
+
+  @include at-breakpoint($break-iPad) {
+    ul li {
+      border: 0;
+      width: 25%;
+    }
+  }
 }

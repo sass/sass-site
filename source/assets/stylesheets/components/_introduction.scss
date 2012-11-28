@@ -1,0 +1,11 @@
+// ===========================================================================
+// INTRODUCTION
+
+
+
+.introduction {
+  @include at-breakpoint($break-iPad) {
+    @include pad(2, 2, $break-iPad);
+    text-align: center;
+  }
+}

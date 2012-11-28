@@ -2,128 +2,109 @@
 title: Sass | Syntactically Awesome Style Sheets
 ---
 
-%h1 CSS with super powers
 
-%p
-  Sass is an extension of CSS 3 with a bunch of added features.
-  Already thought CSS was fun? Wait until you add Sass to the mix!
 
-%h2 Get up and running quickly with:
+.introduction
+  %h1 CSS with super powers
 
-%ul
+  %p Sass is an extension of CSS 3 with a bunch of added features. Already thought CSS was fun? Wait until you add Sass to the mix!
+
+  %h2 Get up and running quickly with:
+
+%ul.quick-starts
   %li
     %h3 Command Line
-    %p Feel comfortable using a terminal, Ruby &amp; Gems?
+    %p.description Feel comfortable using a terminal, Ruby &amp; Gems?
     %p= link_to "Command Line Quickstart", '#', :class => 'button'
     %p
       %code gem install sass
 
-.gui
-  %h3 GUI Application
-  %p Get started quickly by installing a Sass for Linux, Mac or Windows
-  = link_to "GUI Quickstart", '#', :class => 'button'
-  %span= link_to "Download Compass.app", '#'
+  %li
+    %h3 GUI Application
+    %p.description Get started quickly by installing a Sass for Linux, Mac or Windows.
+    %p= link_to "GUI Quickstart", '#', :class => 'button'
+    %p= link_to "Download Compass.app", '#', :class => 'button'
 
-%h2 Sass Features
 
-.feature-slideshow
-  %nav
-    %ul
-      %li= link_to "Preprocessing", '#', :class => 'active'
-      %li= link_to "Variables", '#'
-      %li= link_to "Nesting", '#'
-      %li= link_to "Mixins", '#'
-      %li= link_to "Inheritance", '#'
-      %li= link_to "Import", '#'
-      %li= link_to "Extend", '#'
-      %li= link_to "Operators", '#'
 
-  %ul.content
-    %li#preprocessing
-      %h3 Preprocessing
-
+- content_for :content_bottom do
+  .message.release-information
+    .container
       %p
-        A prepressor lets you take a Sass file and use features that don't
-        exist in CSS like variables, nesting, mixins, inheritance and other
-        nifty goodies that make writing CSS fun again.
+        Current Release:
+        %strong Media Mark (3.2.1)
+      %ul
+        %li= link_to "Release Notes",       "#"
+        %li= link_to "Fork Sass on Github", "#"
 
-      %pre
-        %code
-          example of preprocessing and css output
+  .container
+    .main
+      %h1 Sass Features
 
-      = link_to "Variables »", '#', :class => 'button'
+      %nav.jump-navigation
+        %ul
+          %li= link_to "Preprocessing", '#preprocessing'
+          %li= link_to "Variables",     '#variables'
+          %li= link_to "Nesting",       '#nesting'
+          %li= link_to "Mixins",        '#mixins'
+          %li= link_to "Inheritance",   '#inheritance'
+          %li= link_to "Import",        '#import'
+          %li= link_to "Extend",        '#extend'
+          %li= link_to "Operators",     '#operators'
 
-    %li#variables
-      %h3 Variables
+      %ul.jump-topics
+        %li#preprocessing
+          %h3 Preprocessing
+          %p A prepressor lets you take a Sass file and use features that don&rsquo;t exist in CSS like variables, nesting, mixins, inheritance and other nifty goodies that make writing CSS fun again.
+          %pre
+            %code
+              example of preprocessing and css output
 
-      %p Variables definition
+        %li#variables
+          %h3 Variables
+          %p Variables definition
+          %pre
+            %code
+              example of preprocessing and css output
 
-      %pre
-        %code
-          example of preprocessing and css output
+        %li#nesting
+          %h3 Nesting
+          %p nesting definition
+          %pre
+            %code
+              example of nesting and css output
 
-      = link_to "Nesting »", '#', :class => 'button'
+        %li#mixins
+          %h3 Mixins
+          %p mixins definition
+          %pre
+            %code
+              example of mixins and css output
 
-    %li#nesting
-      %h3 Nesting
+        %li#inheritance
+          %h3 Inheritance
+          %p inheritance definition
+          %pre
+            %code
+              example of inheritance and css output
 
-      %p nesting definition
+        %li#import
+          %h3 Import
+          %p import definition
+          %pre
+            %code
+              example of import and css output
 
-      %pre
-        %code
-          example of nesting and css output
+        %li#extend
+          %h3 Extend
+          %p extend definition
+          %pre
+            %code
+              example of extend and css output
 
-      = link_to "Mixins »", '#', :class => 'button'
-
-    %li#mixins
-      %h3 Mixins
-
-      %p mixins definition
-
-      %pre
-        %code
-          example of mixins and css output
-
-      = link_to "Inheritance »", '#', :class => 'button'
-
-    %li#inheritance
-      %h3 Inheritance
-
-      %p inheritance definition
-
-      %pre
-        %code
-          example of inheritance and css output
-
-      = link_to "Import »", '#', :class => 'button'
-
-    %li#import
-      %h3 Import
-
-      %p import definition
-
-      %pre
-        %code
-          example of import and css output
-
-      = link_to "Extend »", '#', :class => 'button'
-
-    %li#extend
-      %h3 Extend
-
-      %p extend definition
-
-      %pre
-        %code
-          example of extend and css output
-
-      = link_to "Operators »", '#', :class => 'button'
-
-    %li#operators
-      %h3 Operators
-
-      %p operators definition
-
-      %pre
-        %code
-          example of operators and css output
+        %li#operators
+          %h3 Operators
+          %p operators definition
+          %pre
+            %code
+              example of operators and css output

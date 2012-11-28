@@ -47,6 +47,26 @@
 
 
 // ---------------------------------------------------------------------------
+// COMPONENTS
+
+@import "components/buttons";
+@import "components/messages";
+@import "components/introduction";
+@import "components/quick_starts";
+@import "components/release_information";
+@import "components/jump_navigation";
+@import "components/sticky_footer";
+
+
+
+// ---------------------------------------------------------------------------
+// LAYOUT
+
+@import "layout/grid";
+
+
+
+// ---------------------------------------------------------------------------
 // REGIONS
 
 @import "regions/banner";
@@ -57,27 +77,13 @@
 
 
 // ---------------------------------------------------------------------------
-// COMPONENTS
+// HELPERS
 
-@import "components/messages";
-@import "components/release-information";
-@import "components/sticky_footer";
+@import "helpers";
 
 
 
 // ---------------------------------------------------------------------------
-// LAYOUT
+// PRINT
 
-@import "layout/grid";
-
-@media only screen and (min-width: 35em) {
-  @import "layout/ios";
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min-resolution: 144dpi) {
-  @import "layout/retina";
-}
-
-@import "layout/helpers";
-@import "layout/print";
+@import "print";

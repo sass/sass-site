@@ -1,0 +1,17 @@
+// ===========================================================================
+// BUTTONS
+
+
+
+.button {
+  @include tappable-link;
+  @include border-radius(.25em);
+  width: 100%;
+  background: $button-background-color;
+  @include box-shadow(0 -1px 1px $shadow-color inset, 0 1px 1px $highlight-color inset, 0 1px 1px $highlight-color);
+  @include link($button-text-color, $button-text-color, $button-text-color);
+  @include text-shadow;
+
+  #{$hover} { background: $button-background-hover-color;  }
+  &:active  { background: $button-background-active-color; }
+}

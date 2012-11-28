@@ -1,0 +1,29 @@
+// ===========================================================================
+// JUMP NAVIGATION
+
+
+
+
+@include at-breakpoint($break-iPhone) {
+  .jump-navigation {
+    @extend %horizontal-list-iPhone;
+
+    li {
+      margin: 0;
+      width: 50%;
+    }
+
+    a {
+      @include tappable-link;
+      display: block;
+      padding: {
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+.jump-topics {
+  list-style: none;
+}

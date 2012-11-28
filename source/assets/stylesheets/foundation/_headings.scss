@@ -13,17 +13,22 @@ h3 {
   @include font-size($font-size-larger, $line-height-heading);
   letter-spacing: -0.05em;
   color: $heading-1-text-color;
+
+  @include at-breakpoint($break-iPhone-wide) {
+    @include font-size($font-size-largest, $line-height-heading);
+  }
 }
 
 h2 {
-  @extend %source-sans-pro-bold;
-  @include font-size($font-size, $line-height-alt);
-  letter-spacing: .05em;
-  text-transform: uppercase;
+  @include caps;
   color: $heading-2-text-color;
 }
 
 h3 {
-  @include font-size($font-size-large);
+  @include font-size($font-size-large, $line-height-heading);
   color: $heading-3-text-color;
+
+  @include at-breakpoint($break-iPhone-wide) {
+    @include font-size($font-size-larger, $line-height-heading);
+  }
 }

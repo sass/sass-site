@@ -6,7 +6,14 @@
 .contentinfo {
   border-top: .5em solid $contentinfo-border-color;
   background: $contentinfo-background-color;
-  padding: 2em 0;
+  padding: 1em 0 2em;
 
-  ul { @extend %horizontal-list; }
+  @include at-breakpoint($break-iPhone) {
+    ul { @extend %horizontal-list-iPhone; }
+    li { width: 6.5em; }
+  }
+
+  @include at-breakpoint($break-iPhone-wide) {
+    li { width: 7.25em; }
+  }
 }

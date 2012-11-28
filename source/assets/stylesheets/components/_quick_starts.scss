@@ -1,0 +1,23 @@
+// ===========================================================================
+// QUICK STARTS
+
+
+
+
+.quick-starts {
+  list-style: none;
+}
+
+@include at-breakpoint($break-iPad) {
+  .quick-starts {
+    @extend %horizontal-list-iPad;
+    padding-bottom: 2em;
+
+    li {
+      margin: 0;
+      width: 50%;
+    }
+
+    .description { min-height: 4em; }
+  }
+}

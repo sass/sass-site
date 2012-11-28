@@ -3,4 +3,21 @@
 
 
 
-code { @extend %source-code-pro-regular; }
+pre,
+code {
+  @extend %source-code-pro-regular;
+  padding: .5em 1em;
+  @include font-size($font-size-small, $line-height-heading);
+  letter-spacing: -0.05em;
+  background: $code-background-color;
+  color: $code-text-color;
+}
+
+pre {
+  line-height: $line-height;
+  
+  code {
+    padding: 0;
+    background: none;
+  }
+}

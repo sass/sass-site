@@ -6,12 +6,13 @@
 // ---------------------------------------------------------------------------
 // EASY LINK COLORS
 
+$hover: "&:hover, &:focus";
+
 @mixin link($link-setting: $link-color, $hover-setting: $link-hover-color, $active-setting: $link-active-color) {
   &,
   &:visited { color: $link-setting; }
 
-  &:hover,
-  &:focus   { color: $hover-setting;  }
+  #{$hover} { color: $hover-setting;  }
 
   &:active  { color: $active-setting; }
 }
@@ -19,21 +20,30 @@
 
 
 // ---------------------------------------------------------------------------
-// REUSABLE THEMES
+// TEXT SHADOWS
 
-%navigation-theme {
-  background: $navigation-background-color;
-  color: $navigation-text-color;
-  text-shadow: 0 -1px 1px rgba($black, .5);
+@mixin text-shadow($color-setting: $shadow-color) { text-shadow: 0 -1px 1px $color-setting; }
 
-  a { @include link(lighten($navigation-text-color, 5%), lighten($navigation-text-color, 15%), lighten($navigation-text-color, 25%)); }
+
+
+// ---------------------------------------------------------------------------
+// ALL CAPS
+
+@mixin caps {
+  @extend %source-sans-pro-bold;
+  @include font-size($font-size, $line-height-alt);
+  letter-spacing: .05em;
+  text-transform: uppercase;
 }
 
 
 
-%callout-theme {
-  background: $callout-background-color;
-  color:      $callout-text-color;
+// ---------------------------------------------------------------------------
+// TAPPABLE LINKS
 
-  a { @include link(darken($callout-text-color, 5%), darken($callout-text-color, 15%), darken($callout-text-color, 25%)); }
+@mixin tappable-link {
+  display: inline-block;
+  padding: .875em 2em;
+  text-align: center;
+  @include caps;
 }

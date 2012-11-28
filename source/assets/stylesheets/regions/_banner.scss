@@ -4,8 +4,17 @@
 
 
 .banner {
-  position: relative;
   background: $background-color;
-  
-  h1 { padding: 1em 0; }
+
+  h1 {
+    padding: .5em 0;
+    text-align: center;
+  }
+
+  @include at-breakpoint($break-iPad) {
+    h1 img {
+       width: 3.33333333333333em;
+      height: 2.5em;
+    }
+  }
 }
