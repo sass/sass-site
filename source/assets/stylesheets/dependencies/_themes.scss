@@ -1,0 +1,37 @@
+// ===========================================================================
+// THEMES
+
+
+
+// ---------------------------------------------------------------------------
+// EASY LINK COLORS
+
+@mixin link($link-setting: $link-color, $hover-setting: $link-hover-color, $active-setting: $link-active-color) {
+  &,
+  &:visited { color: $link-setting; }
+
+  &:hover,
+  &:focus   { color: $hover-setting;  }
+
+  &:active  { color: $active-setting; }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// REUSABLE THEMES
+
+%navigation-theme {
+  background: $navigation-background-color;
+
+  a { @include link(lighten($navigation-text-color, 5%), lighten($navigation-text-color, 15%), lighten($navigation-text-color, 25%)); }
+}
+
+
+
+%callout-theme {
+  background: $callout-background-color;
+  color:      $callout-text-color;
+
+  a { @include link(darken($callout-text-color, 5%), darken($callout-text-color, 15%), darken($callout-text-color, 25%)); }
+}

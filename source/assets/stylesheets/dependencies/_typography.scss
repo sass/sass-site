@@ -1,0 +1,43 @@
+// ===========================================================================
+// TYPOGRAPHY
+
+
+
+// ---------------------------------------------------------------------------
+// FONT STACKS
+
+$sans-serif: Helvetica, Arial, sans-serif                      !default;
+$serif:      Georgia, "Times New Roman", Times, serif          !default;
+$monospace:  Menlo, Monaco, Consolas, "Courier New", monospace !default;
+
+$source-sans-pro-extra-light: "source-sans-pro-n2", "source-sans-pro", $sans-serif !default;
+$source-sans-pro-light:       "source-sans-pro-n3", "source-sans-pro", $sans-serif !default;
+$source-sans-pro-regular:     "source-sans-pro-n4", "source-sans-pro", $sans-serif !default;
+
+$chaparral-pro-light:         "chaparral-pro-n3", "chaparral-pro", $serif          !default;
+$chaparral-pro-regular:       "chaparral-pro-n4", "chaparral-pro", $serif          !default;
+
+
+
+// ---------------------------------------------------------------------------
+// FONT SETUP
+
+@mixin font-face($family-setting: $source-sans-pro-extra-light, $weight-setting: 200, $style-setting: normal) {
+  font: {
+    style:  $style-setting;
+    weight: $weight-setting;
+    family: $family-setting;
+  }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// FONT PLACEHOLDER SELECTORS FOR @EXTEND'ING
+
+%source-sans-pro-extra-light { @include font-face;                                }
+%source-sans-pro-light       { @include font-face($source-sans-pro-light, 300);   }
+%source-sans-pro-regular     { @include font-face($source-sans-pro-regular, 400); }
+
+%chaparral-pro-light         { @include font-face($chaparral-pro-light, 300);     }
+%chaparral-pro-regular       { @include font-face($chaparral-pro-regular, 400);   }

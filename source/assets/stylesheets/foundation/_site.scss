@@ -1,0 +1,30 @@
+// ===========================================================================
+// SITE
+
+
+
+html,
+body { height: 100%; }
+
+html {
+  font-size: 62.5%;
+  text-rendering: optimizelegibility;
+  @include background($background-color image_url("textures/light.gif"));
+  color: $text-color;
+}
+
+body {
+  @extend %source-sans-pro-extra-light;
+  @include font-size;
+  background-color: transparent;
+}
+
+// Selections have to be separate so this one is a mixin.
+@mixin selection {
+  background:  $selection-background-color;
+  color:       $selection-text-color;
+  text-shadow: none;
+}
+
+::-moz-selection { @include selection; }
+::selection      { @include selection; }

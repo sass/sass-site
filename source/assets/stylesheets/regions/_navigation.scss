@@ -1,0 +1,12 @@
+// ===========================================================================
+// NAVIGATION
+
+
+
+.navigation {
+  @extend %navigation-theme;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+
+  ul { @extend %horizontal-list; }
+}

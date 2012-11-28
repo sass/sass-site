@@ -1,0 +1,74 @@
+// ===========================================================================
+// HELPERS
+// Useful classes and placeholder selectors for @extend'ing.
+
+
+
+// ---------------------------------------------------------------------------
+// IMAGE REPLACEMENT
+
+.image-replacement {
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999em;
+  background-color: transparent;
+
+  &:before {
+    display: block;
+    width: 0;
+    height: 100%;
+    content: "";
+  }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// VISIBILITY
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.visually-hidden {
+  position: absolute;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+
+  &.focusable {
+    &:active,
+    &:focus {
+      position: static;
+      margin: 0;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip: auto;
+    }
+  }
+}
+
+.invisible { visibility: hidden; }
+
+
+
+// ---------------------------------------------------------------------------
+// CLEARFIX
+
+%clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+
+  &:after { clear: both; }
+
+  *zoom: 1;
+}

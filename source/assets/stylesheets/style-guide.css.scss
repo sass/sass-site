@@ -1,0 +1,47 @@
+// ===========================================================================
+// GUIDE.CSS
+// Styles for the Style Guide
+
+
+
+// ---------------------------------------------------------------------------
+// IMPORTS
+
+@import "compass";
+@import "susy";
+@import "dependencies/color";
+
+
+
+// ---------------------------------------------------------------------------
+// VARIABLES
+
+$contrasted-dark-default:        $text-color;
+$contrasted-light-default:       $background-color;
+$contrasted-lightness-threshold: 50%;
+
+
+
+// ---------------------------------------------------------------------------
+// STYLE GUIDE
+
+// SWATCHES
+.swatches {
+  @extend .clearfix;
+
+  li {
+    @include float-left;
+     width: 100px;
+    height: 100px;
+  }
+}
+
+.black         { @include contrasted($black);         }
+.grey-darkest  { @include contrasted($grey-darkest);  }
+.grey-darker   { @include contrasted($grey-darker);   }
+.grey-dark     { @include contrasted($grey-dark);     }
+.grey          { @include contrasted($grey);          }
+.grey-light    { @include contrasted($grey-light);    }
+.grey-lighter  { @include contrasted($grey-lighter);  }
+.grey-lightest { @include contrasted($grey-lightest); }
+.white         { @include contrasted($white);         }

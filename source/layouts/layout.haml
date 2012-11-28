@@ -1,29 +1,32 @@
 !!! 5
 
-<!--[if lt IE 7]><html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7">
-<!--[if IE 7]>   <html lang="en" class="no-js lt-ie9 lt-ie8">
-<!--[if IE 8]>   <html lang="en" class="no-js lt-ie9">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 %html.no-js(lang="en")
   <!--<![endif]-->
 
   %head
-    = partial "/layouts/partials/head_meta_data"
-    = partial "/layouts/partials/head_compatibility"
+    %meta(charset="utf-8")/
 
-    = stylesheet_link_tag "base"
-    = stylesheet_link_tag "theme/sass"
+    %title= data.page.title || "Sass"
+    %meta(name="description"){:content => data.page.description || "Syntactically Awesome Style Sheets"}/
 
-    = partial "/layouts/partials/head_scripts"
+    = partial "layouts/shared/head_compatibility"
+
+    = stylesheet_link_tag "sass"
+    = partial "layouts/shared/head_scripts"
 
     = yield_content :head
 
   %body{:class => page_classes}
+    = partial "layouts/shared/chrome_frame"
+    = partial "layouts/shared/banner"
 
-    = partial "/layouts/partials/banner"
+    .container
+      = yield
+      = partial "layouts/shared/complementary"
 
-    = yield
-
-    = partial "/layouts/partials/footer"
-
-    = partial "/layouts/partials/foot_scripts"
+    = partial "layouts/shared/contentinfo"
+    = partial "layouts/shared/foot_scripts"

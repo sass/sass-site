@@ -1,0 +1,53 @@
+// ===========================================================================
+// MEASUREMENTS
+
+
+
+$base-unit:        4;
+                   
+$font-size:        16;
+$font-size-large:  $font-size * 1.5;
+$font-size-larger: $font-size * 3;
+
+$line-height:     1.5;
+$line-height-alt: 1.25;
+
+$baseline:        #{$font-size * $line-height}px;
+
+
+
+
+$z-index-dropdown:         1000 !default;
+$z-index-popover:          1010 !default;
+$z-index-tooltip:          1020 !default;
+$z-index-fixed:            1030 !default;
+$z-index-modal-background: 1040 !default;
+$z-index-modal:            1050 !default;
+
+
+
+@mixin font-size($size-setting: $font-size, $lead-setting: $line-height) {
+  font: {
+    size: #{$size-setting}px;
+    size: #{$size-setting / 10}rem;
+  }
+
+  @if $size-setting == ($font-size-large or $font-size-larger) {
+    $lead-setting: $line-height-alt;
+    line-height: $lead-setting;
+  }
+
+  @else { line-height: $lead-setting; }
+}
+
+
+
+%block-text {
+  margin: 0;
+  padding: .5em 0;
+}
+
+%heading-text {
+  margin: 0;
+  padding: 1em 0 0;
+}

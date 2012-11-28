@@ -1,0 +1,48 @@
+// ===========================================================================
+// COLOR
+
+
+
+// ---------------------------------------------------------------------------
+// REFERENCE FOR CLARIFICATION ONLY. USE SEMANTIC NAMES BELOW
+
+$black:         #000                   !default;
+$grey-darkest:  lighten($black, 12.5%) !default;
+$grey-darker:   lighten($black, 25%)   !default;
+$grey-dark:     lighten($black, 37.5%) !default;
+$grey:          lighten($black, 50%)   !default;
+$grey-light:    lighten($black, 62.5%) !default;
+$grey-lighter:  lighten($black, 75%)   !default;
+$grey-lightest: lighten($black, 87.5%) !default;
+$white:         lighten($black, 100%)  !default;
+
+$hopbush:       #c69                   !default;
+$venus:         #998099                !default;
+$pale-sky:      #6b717f                !default;
+$iron:          #dadbdf                !default;
+$nebula:        #d2e1dd                !default;
+$patina:        #699                   !default;
+
+
+
+// ---------------------------------------------------------------------------
+// SEMANTIC COLOR NAMES
+
+$background-color:            $white                   !default;
+$text-color:                  $grey-darker             !default;
+$heading-text-color:          $venus                   !default;
+$strong-text-color:           $grey-darkest            !default;
+$border-color:                $grey-lighter            !default;
+
+$link-color:                  $patina                  !default;
+$link-hover-color:            darken($link-color, 10%) !default;
+$link-active-color:           darken($link-color, 20%) !default;
+
+$selection-text-color:        $white                   !default;
+$selection-background-color:  $hopbush                 !default;
+
+$callout-background-color:    $nebula                  !default;
+$callout-text-color:          darken($patina, 25%)     !default;
+
+$navigation-background-color: $pale-sky                !default;
+$navigation-text-color:       $iron                    !default;

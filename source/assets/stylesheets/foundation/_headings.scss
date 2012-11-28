@@ -1,0 +1,12 @@
+// ===========================================================================
+// HEADINGS
+
+
+
+h1 {
+  @extend %heading-text;
+  @extend %chaparral-pro-light;
+  @include font-size($font-size-larger);
+  letter-spacing: -0.05em;
+  color: $heading-text-color;
+}

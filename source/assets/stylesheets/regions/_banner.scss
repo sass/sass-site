@@ -1,0 +1,15 @@
+// ===========================================================================
+// BANNER
+
+
+
+.banner {
+  position: relative;
+  padding: {
+       top: 1em;
+    bottom: 1em;
+  }
+  background: $background-color;
+}
+
+.site-title { @include font-size; }

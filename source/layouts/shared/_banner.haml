@@ -1,0 +1,20 @@
+%header.banner(role="banner")
+  .container
+    .message.release-information
+      %p
+        Current Release:
+        %strong Media Mark (3.2.1)
+      %ul
+        %li= link_to "Release Notes",       "#"
+        %li= link_to "Fork Sass on Github", "#"
+    %h1.site-title= link_to image_tag("logo.png", :width => "160", :height => "120", :alt => "Sass"), "/"
+
+%nav.navigation(role="navigation")
+  .container
+    %ul
+      %li= link_to "Home",          "/"
+      %li= link_to "Quickstart",    "#"
+      %li= link_to "Documentation", "#"
+      %li= link_to "Community",     "#"
+
+%hr/

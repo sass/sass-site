@@ -20,7 +20,7 @@ require 'susy'
 
 # Change Compass configuration
 compass_config do |config|
-  config.output_style = :expanded
+  config.output_style = :compact
   # config.sass_options = { :line_comments => true, :debug_info => true }
 end
 
