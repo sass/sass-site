@@ -4,7 +4,7 @@
 
 
 a {
-  @extend %source-sans-pro-regular;
+  @extend %source-sans-pro-bold;
   text-decoration: none;
   @include link;
 }

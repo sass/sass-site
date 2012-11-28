@@ -5,13 +5,17 @@
 
 .release-information {
   @include float-right;
-  margin-top: 2em;
-  width: 21.5em;
-  @include font-size;
+  margin-top: .875em;
+  width: 19.3333333333333em;
   text-align: left;
 
   p,
   ul { padding: 0; }
 
   ul { @extend %horizontal-list; }
+  
+  li:last-child {
+    float: right;
+    text-align: right;
+  }
 }

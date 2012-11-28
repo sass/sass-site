@@ -23,6 +23,7 @@
 
 %navigation-theme {
   background: $navigation-background-color;
+  text-shadow: 0 -1px 1px rgba($black, .5);
 
   a { @include link(lighten($navigation-text-color, 5%), lighten($navigation-text-color, 15%), lighten($navigation-text-color, 25%)); }
 }
