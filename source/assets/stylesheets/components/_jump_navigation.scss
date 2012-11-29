@@ -4,13 +4,22 @@
 
 
 
+.jump-topics {
+  list-style: none;
+}
+
+
+
 @include at-breakpoint($break-iPhone) {
   .jump-navigation {
-    @extend %horizontal-list-iPhone;
+    ul {
+      @extend %clearfix-iPhone;
+      list-style: none;
+    }
 
     li {
-      margin: 0;
-      width: 50%;
+      @include span-columns(2.5, $break-iPhone); 
+      margin-right: 0;
     }
 
     a {
@@ -24,6 +33,18 @@
   }
 }
 
-.jump-topics {
-  list-style: none;
+@include at-breakpoint($break-iPad) {
+  .jump-navigation {
+    @include span-columns(3, $break-iPad);
+    padding-top: 1em;
+    
+    li {
+      float: none;
+      display: block;
+      width: auto;
+    }
+
+    a { text-align: left; }
+  }
+  .jump-topics { @include span-columns(9 omega, $break-iPad); }
 }

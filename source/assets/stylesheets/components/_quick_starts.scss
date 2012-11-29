@@ -10,12 +10,13 @@
 
 @include at-breakpoint($break-iPad) {
   .quick-starts {
-    @extend %horizontal-list-iPad;
+    @extend %clearfix-iPad;
+    list-style: none;
     padding-bottom: 2em;
 
     li {
-      margin: 0;
-      width: 50%;
+      &.command-line    { @include span-columns(6, $break-iPad);       }
+      &.gui-application { @include span-columns(6 omega, $break-iPad); }
     }
 
     .description { min-height: 4em; }
