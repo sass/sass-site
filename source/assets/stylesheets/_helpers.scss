@@ -79,6 +79,10 @@
   %clearfix-iPhone { @include clearfix; }
 }
 
+@include at-breakpoint($break-iPhone-wide) {
+  %clearfix-iPhone-wide { @include clearfix; }
+}
+
 @include at-breakpoint($break-iPad) {
   %clearfix-iPad { @include clearfix; }
 }

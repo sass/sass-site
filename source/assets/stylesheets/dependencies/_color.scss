@@ -37,6 +37,7 @@ $shadow-color:                   rgba($black, .5)        !default;
 $highlight-color:                rgba($white, .5)        !default;
 
 $background-color:               $white                   !default;
+$background-alt-color:           lighten($iron, 10%)      !default;
 $text-color:                     darken($pale-sky, 10%)   !default;
 $heading-1-text-color:           $venus                   !default;
 $heading-2-text-color:           $pale-sky                !default;

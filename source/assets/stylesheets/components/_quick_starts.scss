@@ -8,6 +8,41 @@
   list-style: none;
 }
 
+@include at-breakpoint($break-iPhone) {
+  .quick-starts {
+    .quick-start-content,
+    li { @extend %clearfix-iPhone; }
+    
+    .illustration {
+      @include span-columns(1.5, $break-iPhone);
+      margin-right: 0;
+      padding: {
+        top: 1em;
+        bottom: 0;
+      }
+    }
+    
+    h3,
+    .description  {
+      @include span-columns(3.5 omega, $break-iPhone);
+    }
+  }
+}
+
+@include at-breakpoint($break-iPhone-wide) {
+  .quick-starts {
+    .illustration {
+      @include span-columns(1.5, $break-iPhone-wide);
+      margin-right: 0;
+      padding-top: 1.5em;
+    }
+    
+    h3,
+    .description,
+    .call-to-action { @include span-columns(6.375 omega, $break-iPhone-wide); }
+  }
+}
+
 @include at-breakpoint($break-iPad) {
   .quick-starts {
     @extend %clearfix-iPad;
@@ -18,6 +53,15 @@
       &.command-line    { @include span-columns(6, $break-iPad);       }
       &.gui-application { @include span-columns(6 omega, $break-iPad); }
     }
+
+    .illustration {
+      @include span-columns(3, $break-iPad);
+      margin-right: 0;
+    }
+    
+    h3,
+    .description,
+    .call-to-action { @include span-columns(9.75 omega, $break-iPad); }
 
     .description { min-height: 4em; }
   }

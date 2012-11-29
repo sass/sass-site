@@ -25,10 +25,12 @@
       = partial "layouts/shared/chrome_frame"
       = partial "layouts/shared/banner"
 
-      .container.main(role="main")
-        = yield
-        = partial "layouts/shared/complementary"
-      = yield_content :content_bottom
+      .main(role="main")
+        .container
+          = yield
+          = partial "layouts/shared/complementary"
+
+        = yield_content :content_bottom
 
       .footer-shim
 

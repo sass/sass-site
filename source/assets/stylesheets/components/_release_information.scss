@@ -4,8 +4,14 @@
 
 
 .release-information {
-  margin-top: -2em;
   padding: .5em 0;
+  
+  .main & .container {
+    padding: {
+         top: 0;
+      bottom: 0;
+    }
+  }
 
   p,
   ul { @include font-size($font-size, $line-height-alt); }

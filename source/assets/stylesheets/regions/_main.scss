@@ -4,9 +4,10 @@
 
 
 .main {
-  @extend %clearfix;
-  padding: {
-    top: 1em;
-    bottom: 4em;
+  .container {
+    padding: {
+      top: 1em;
+      bottom: 2em;
+    }
   }
 }

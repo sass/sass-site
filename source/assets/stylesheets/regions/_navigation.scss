@@ -11,6 +11,8 @@
   a { @include link(lighten($navigation-text-color, 5%), lighten($navigation-text-color, 15%), lighten($navigation-text-color, 25%)); }
 
   @include at-breakpoint($break-iPhone) {
+    display: none;
+    
     ul {
       padding: 0;
       list-style: none;
@@ -48,18 +50,27 @@
   }
 
   @include at-breakpoint($break-iPad) {
-    ul li {
-      border: 0;
-      @include span-columns(3.25, $break-iPad); 
-      margin-right: 0;
+    position: relative;
+    top: -7em;
+    display: block;
+    margin-bottom: -3em;
+    background: none;
+    
+    a {
+      @include link;
+      text-shadow: 0 1px 1px $highlight-color;
     }
-  }
-
-  @include at-breakpoint($break-iPad-wide) {
-    ul li {
-      border: 0;
-      @include span-columns(4, $break-iPad-wide); 
-      margin-right: 0;
+    
+    ul {
+      float: right;
+      
+      li {
+        margin-right: 2em;
+        border: 0;
+        width: auto;
+      
+        &:last-child { margin-right: 0; }
+      }
     }
   }
 }
