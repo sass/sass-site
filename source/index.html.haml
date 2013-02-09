@@ -67,25 +67,123 @@ title: Sass | Syntactically Awesome Style Sheets
 
       %ul.slides
         %li
-          %h2 Preprocessing
-          %p A prepressor lets you take a Sass file and use features that don&rsquo;t exist in CSS like variables, nesting, mixins, inheritance and other nifty goodies that make writing CSS fun again.
-          %pre
-            %code
-              example of preprocessing and css output
+          %h2 Pre-processing
+          %p CSS on its own can be pretty darn nice, but stylesheets are getting larger, more complex, and harder to maintain. This is where a pre-processor can help. Sass lets you use features that don&rsquo;t exist in CSS yet like variables, nesting, mixins, inheritance and other nifty goodies that make writing CSS fun again.
+
+          %p Once you start tinkering with Sass, it will take your pre-processes Sass file and save it out as a normal CSS file that you can use in your web site. 
 
         %li
           %h2 Variables
-          %p Variables definition
-          %pre
+          %p Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses the <code>$</code> symbol to make something a variable. Here's an example: 
+          %pre.scss
             %code
-              example of preprocessing and css output
+              :preserve
+                $font-stack: Helvetica, sans-serif;
+                $primary-color: #333;
+
+                body {
+                  color: $primary-color;
+                  font: 100% $font-stack;
+                } 
+
+          %p When the Sass is processed, it takes the variables we defines for the <code>$font-stack</code> and <code>$primary-color</code> and outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when working with brand colors and keeping them consistent throughout the site. 
+
+          %pre.css
+            %code
+              :preserve
+                body {
+                  color: #ccc;
+                  font: 100% Helvetica, sans-serif
+                }
 
         %li
           %h2 Nesting
-          %p nesting definition
-          %pre
+          %p When you write HTML you've probably noticed that it has a fairly clear nested, visual hierarchy. CSS, on the other hand, isn't. Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Here's an example of some typical styles for a sites navigation:
+
+          %pre.scss
             %code
-              example of nesting and css output
+              :preserve
+                nav {
+                  ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                  }
+                  li {
+                    display: inline-block;
+                  }
+                  a {
+                    display: block;
+                    padding: 6px 12px;
+                    text-decoration: none;
+                  }
+                }
+
+          %p You'll notice that the <code>ul</code>, <code>li</code>, and <code>a</code> selectors are nested inside the <code>nav</code> selector. This is a great way to organize your CSS and make it more readable. When you generate the CSS you'll get something like this:
+
+          %pre.sass
+            %code
+              :preserve
+                nav ul {
+                  list-style: none;
+                  margin: 0;
+                  padding: 0;
+                }
+                nav li {
+                  display: inline-block;
+                }
+                nav a {
+                  display: block;
+                  padding: 6px 12px;
+                  text-decoration: none;
+                }
+
+        %li 
+          %h2 Partials
+          %p In Sass you can create partial Sass files that contain little snippets of CSS that you can include in other Sass files. This is a great way to modularize your CSS.
+
+        %li
+          %h2 Import
+          %p CSS has an import option that lets you split your CSS in to smaller, more maintainable chunks. The only drawback is that each time you use <code>@import</code> in CSS it creates another HTTP request. Sass builds on top of the current CSS <code>@import</code> but instead of requiring an HTTP request, Sass will take the file that you want to import and combine it with the file your importing into so you can server a single CSS file to the web browser.
+
+          %p Lets say you have a couple of Sass files, <code>_reset.scss</code> and <code>base.scss</code>. We want to import <code>_reset.scss</code> into <code>base.scss</code>.
+
+          %pre.scss
+            %code
+              :preserve
+                /* _reset.scss */
+
+                html, body, ul, ol {
+                  margin: 0;
+                  padding: 0;
+                }
+
+          %pre.scss
+            %code
+              :preserve
+                /* base.scss */
+
+                @import 'reset';
+
+                body {
+                  background-color: #efefef;
+                  font-size: 100% Helvetica, sans-serif;
+                }
+
+          %p Notice we're using <code>@import 'reset';</code> in the <code>base.scss</code> file. When you import a file you don't need to include the file extension <code>.scss</code> Sass is pretty smart and will figure it out for you. When you generate the CSS you'll get:
+
+          %pre.css
+            %code
+              :preserve
+                html, body, ul, ol {
+                  margin: 0;
+                  padding: 0;
+                }
+
+                body {
+                  background-color: #efefef;
+                  font-size: 100% Helvetica, sans-serif;
+                }
 
         %li
           %h2 Mixins
@@ -95,25 +193,18 @@ title: Sass | Syntactically Awesome Style Sheets
               example of mixins and css output
 
         %li
-          %h2 Inheritance
-          %p inheritance definition
-          %pre
-            %code
-              example of inheritance and css output
-
-        %li
-          %h2 Import
-          %p import definition
-          %pre
-            %code
-              example of import and css output
-
-        %li
           %h2 Extend
           %p extend definition
           %pre
             %code
               example of extend and css output
+
+        %li
+          %h2 Inheritance
+          %p inheritance definition
+          %pre
+            %code
+              example of inheritance and css output
 
         %li
           %h2 Operators
