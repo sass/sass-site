@@ -1,0 +1,74 @@
+// ===========================================================================
+// QUICK STARTS
+
+
+
+.quick-starts {
+  @extend %content-list;
+}
+
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin quick-starts-iPhone {
+  .quick-starts {
+    text-align: left;
+
+    li { @extend %clearfix-iPhone; }
+
+    h3,
+    .description { margin-left: $column-width + $gutter-width; }
+
+    .illustration {
+      @extend %float-left-iPhone;
+      position: relative;
+      top: -1.75em;
+      padding: {
+           top: 0;
+        bottom: 0;
+      }
+    }
+
+    .description { padding-top: 0; }
+
+    pre { text-align: center; }
+  }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// SMALL TABLET
+
+@mixin quick-starts-small-tablet {
+  .quick-starts {
+    @extend %clearfix-small-tablet;
+    margin: {
+      right: -#{$gutter-width / 2};
+       left: -#{$gutter-width / 2};
+    }
+    
+    li {
+       @include float-left;
+       padding: {
+         right: $gutter-width / 2;
+          left: $gutter-width / 2;
+       }
+       width: 50%;
+    }
+
+    h3 {
+      padding: {
+           top: 0;
+        bottom: .5em;
+      }
+      @include font-size($font-size-large);
+    }
+    
+    .illustration { top: -2.125em; }
+    
+    .description { min-height: 6.5em; }
+  }
+}

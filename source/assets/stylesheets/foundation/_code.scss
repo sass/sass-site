@@ -3,21 +3,28 @@
 
 
 
+$code-background-color: $iron          !default;
+$code-text-color:       $midnight-blue !default;
+
+
+
 pre,
 code {
   @extend %source-code-pro-regular;
-  padding: .5em 1em;
-  @include font-size($font-size-small, $line-height-heading);
-  letter-spacing: -0.05em;
+  @include font-size($font-size-small);
   background: $code-background-color;
   color: $code-text-color;
+  letter-spacing: -0.05em;
+}
+
+code {
+  padding: .125em .5em;
+  line-height: $line-height-reset;
 }
 
 pre {
-  line-height: $line-height;
-  
-  code {
-    padding: 0;
-    background: none;
-  }
+  margin: .625em 0;
+  padding: 1em;
+
+  code { padding: 0; }
 }

@@ -1,0 +1,16 @@
+// ===========================================================================
+// CURRENT RELEASE
+
+
+
+// ---------------------------------------------------------------------------
+// iPhone, wide
+
+@mixin current-release-iPhone {
+  .current-release {
+    @extend %horizontal-list-iPhone;
+    
+    dt,
+    dd { display: inline; }
+  }
+}

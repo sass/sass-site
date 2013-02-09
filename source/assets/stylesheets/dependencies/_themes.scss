@@ -4,46 +4,23 @@
 
 
 // ---------------------------------------------------------------------------
-// EASY LINK COLORS
-
-$hover: "&:hover, &:focus";
-
-@mixin link($link-setting: $link-color, $hover-setting: $link-hover-color, $active-setting: $link-active-color) {
-  &,
-  &:visited { color: $link-setting; }
-
-  #{$hover} { color: $hover-setting;  }
-
-  &:active  { color: $active-setting; }
-}
-
-
-
-// ---------------------------------------------------------------------------
 // TEXT SHADOWS
 
-@mixin text-shadow($color-setting: $shadow-color) { text-shadow: 0 -1px 1px $color-setting; }
+@mixin text-shadow-dark($color-setting: $shadow-color) {
+  @include text-shadow(0 -1px 1px $color-setting);
+}
 
-
-
-// ---------------------------------------------------------------------------
-// ALL CAPS
-
-@mixin caps {
-  @extend %source-sans-pro-bold;
-  @include font-size($font-size, $line-height-alt);
-  letter-spacing: .05em;
-  text-transform: uppercase;
+@mixin text-shadow-light($color-setting: $highlight-color) {
+  @include text-shadow(0 1px 1px $color-setting);
 }
 
 
 
 // ---------------------------------------------------------------------------
-// TAPPABLE LINKS
+// BOX SHADOWS
 
-@mixin tappable-link {
-  display: inline-block;
-  padding: .875em 2em;
-  text-align: center;
-  @include caps;
+@mixin box-shadow-both($dark-color-setting: $shadow-color,
+                       $light-color-setting: $highlight-color) {
+  @include box-shadow(0 1px 1px $light-color-setting inset,
+                      0 1px 1px $dark-color-setting);
 }

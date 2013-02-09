@@ -3,37 +3,42 @@
 
 
 
+$contentinfo-background-color: $dawn-pink !default;
+$contentinfo-border-color:     $wafer     !default;
+
+
+
 .contentinfo {
   border-top: .5em solid $contentinfo-border-color;
-  padding: .5em 0 1em;
-  @include caps;
+  @include font-size($font-size-small, $line-height-incremental);
   background: $contentinfo-background-color;
-  
-  p { padding-bottom: 0; }
-  
-  ul { padding-top: 0; }
-  
-  span,
-  a { @include font-size($font-size-small, $line-height-alt); }
 
-  @include at-breakpoint($break-iPhone) {
-    ul {
-      @extend %clearfix-iPhone;
-      list-style: none;
-    }
-
-    li {
-      @include span-columns(2.5, $break-iPhone); 
-      margin-right: 0;
+  &,
+  ul {
+    padding: {
+         top: 1em;
+      bottom: 1em;
     }
   }
 
-  @include at-breakpoint($break-iPad) {
-    li {
-      width: auto;
-      margin-right: 2em;
-      
-      &:last-child { margin-right: 0; }
+  a { border: 0; }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin contentinfo-iPhone {
+  .contentinfo {
+    @extend %horizontal-list-iPhone;
+    text-align: left;
+
+    ul {
+      padding: {
+           top: .5em;
+        bottom: .5em;
+      }
     }
   }
 }

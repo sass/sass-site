@@ -4,5 +4,28 @@
 
 
 .container {
-  @include container($total-columns, $break-iPad);
+  padding: {
+    right: $gutter-width * 2;
+     left: $gutter-width * 2;
+  }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin grid-iPhone {
+  .container { @extend %clearfix-iPhone; }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// SMALL TABLET
+
+@mixin grid-small-tablet {
+  .container {
+    @include susy-grid-background;
+  }
 }

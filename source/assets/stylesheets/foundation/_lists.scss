@@ -3,34 +3,12 @@
 
 
 
-@mixin horizontal-list($break-setting: false) {
-  @if $break-setting == $break-iPhone      { @extend %clearfix-iPhone;      }
-  @if $break-setting == $break-iPhone-wide { @extend %clearfix-iPhone-wide; }
-  @if $break-setting == $break-iPad        { @extend %clearfix-iPad;        }
-  @else                                    { @extend %clearfix;             }
-
+@mixin reset-list {
   list-style: none;
-
-  li {
-    @include float-left;
-    margin: 0 2em 0 0;
-
-    &:last-child { margin-right: 0; }
+  padding: {
+       top: 0;
+    bottom: 0;
   }
-}
-
-%horizontal-list { @include horizontal-list; }
-
-@include at-breakpoint($break-iPhone) {
-  %horizontal-list-iPhone { @include horizontal-list($break-iPhone); }
-}
-
-@include at-breakpoint($break-iPhone-wide) {
-  %horizontal-list-iPhone-wide { @include horizontal-list($break-iPhone-wide); }
-}
-
-@include at-breakpoint($break-iPad) {
-  %horizontal-list-iPad { @include horizontal-list($break-iPad); }
 }
 
 
@@ -38,4 +16,12 @@
 ul {
   @extend %block-text;
   list-style-position: inside;
+
+  nav & { @include reset-list; }
 }
+
+dl {
+  @extend %block-text;
+}
+
+dd { margin: 0; }

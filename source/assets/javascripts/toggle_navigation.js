@@ -1,8 +1,3 @@
-// ===========================================================================
-// NAVIGATION SLIDE TOGGLE
-
-
-
-$(".skip-navigation .icon-button").click(function () {
-  $(".navigation").slideToggle("slow");
+$('.skip-navigation .button').click(function() {
+  $('.navigation').toggle();
 });

@@ -4,6 +4,9 @@
 
 
 
+@charset "utf-8";
+
+
 // ---------------------------------------------------------------------------
 // VENDOR
 
@@ -13,51 +16,32 @@
 
 
 // ---------------------------------------------------------------------------
-// RESET
-
-// http://paulirish.com/2012/box-sizing-border-box-ftw/
-* { @include box-sizing(border-box); }
-
-@import "vendor/normalize";
-
-
-
-// ---------------------------------------------------------------------------
 // DEPENDENCIES
 
-@import "dependencies/measurements";
 @import "dependencies/typography";
-@import "dependencies/icons";
-@import "dependencies/color";
+@import "dependencies/layout";
+@import "dependencies/colors";
 @import "dependencies/themes";
+@import "dependencies/icons";
 
 
 
 // ---------------------------------------------------------------------------
 // FOUNDATION
 
+// http://paulirish.com/2012/box-sizing-border-box-ftw/
+@include border-box-sizing;
+
+@import "vendor/normalize";
+
 @import "foundation/site";
-@import "foundation/links";
 @import "foundation/headings";
 @import "foundation/text";
 @import "foundation/lists";
+@import "foundation/links";
 @import "foundation/media";
 @import "foundation/code";
 @import "foundation/forms";
-
-
-
-// ---------------------------------------------------------------------------
-// COMPONENTS
-
-@import "components/buttons";
-@import "components/messages";
-@import "components/introduction";
-@import "components/quick_starts";
-@import "components/illustrations";
-@import "components/release_information";
-@import "components/jump_navigation";
-@import "components/sticky_footer";
 
 
 
@@ -69,24 +53,47 @@
 
 
 // ---------------------------------------------------------------------------
+// COMPONENTS
+
+@import "components/messages";
+@import "components/buttons";
+@import "components/illustrations";
+@import "components/lists";
+@import "components/quick-starts";
+@import "components/current-release";
+@import "components/slides";
+@import "components/pagination";
+
+
+
+// ---------------------------------------------------------------------------
 // REGIONS
 
+@import "regions/chromeframe";
 @import "regions/banner";
 @import "regions/navigation";
-@import "regions/main";
-@import "regions/content_middle";
+@import "regions/content";
 @import "regions/contentinfo";
+
+
+
+// ---------------------------------------------------------------------------
+// PAGES
 
 
 
 // ---------------------------------------------------------------------------
 // HELPERS
 
-@import "helpers";
+@import "helpers/placeholder-selectors";
+@import "helpers/classes";
 
 
 
 // ---------------------------------------------------------------------------
-// PRINT
+// RESPONSIVE
 
-@import "print";
+@import "responsive/iPhone";
+@import "responsive/small-tablet";
+@import "responsive/high-resolution";
+@import "responsive/print";

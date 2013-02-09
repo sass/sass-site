@@ -1,0 +1,65 @@
+// ===========================================================================
+// LISTS
+
+
+
+%content-list {
+  @include reset-list;
+
+  li {
+    padding: {
+         top: 1em;
+      bottom: 1em;
+    }
+  }
+}
+
+
+
+@mixin horizontal-list($break-size: false, $container-selector: "ul", $list-selectors: "li", $last-list-selector: $list-selectors) {
+  @if $break-size == false {
+    #{$container-selector} { @extend %clearfix; }
+
+    #{$list-selectors} { @extend %float-left; }
+
+    #{$last-list-selector}:last-child { @extend %float-left-last-child; }
+  }
+
+  @else if $break-size == "iPhone" {
+    #{$container-selector} { @extend %clearfix-iPhone; }
+
+    #{$list-selectors} { @extend %float-left-iPhone; }
+
+    #{$last-list-selector}:last-child { @extend %float-left-last-child-iPhone; }
+  }
+
+  @else if $break-size == "small-tablet" {
+    #{$container-selector} { @extend %clearfix-small-tablet; }
+
+    #{$list-selectors} { @extend %float-left-small-tablet; }
+
+    #{$last-list-selector}:last-child { @extend %float-left-last-child-small-tablet; }
+  }
+}
+
+%horizontal-list { @include horizontal-list; }
+
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin components-lists-iPhone {
+  %horizontal-list-iPhone { @include horizontal-list(iPhone); }
+
+  %horizontal-description-list-iPhone { @include horizontal-list(iPhone, "dl", "dt, dd", "dd"); }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// SMALL TABLET
+
+@mixin components-lists-small-tablet {
+  %horizontal-list-small-tablet { @include horizontal-list(small-tablet); }
+}

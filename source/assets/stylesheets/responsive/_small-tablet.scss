@@ -1,0 +1,23 @@
+// ===========================================================================
+// SMALL TABLET AND UP
+
+
+
+@media only screen and (min-width: $small-tablet) {
+  // FOUNDATION
+
+  // LAYOUT
+  @include grid-small-tablet;
+
+  // COMPONENTS
+  @include components-lists-small-tablet;
+  @include quick-starts-small-tablet;
+
+  // REGIONS
+  @include navigation-small-tablet;
+
+  // PAGES
+
+  // HELPERS
+  @include placeholder-selectors-small-tablet;
+}

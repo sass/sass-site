@@ -3,48 +3,44 @@
 
 
 
+$banner-background-color: $background-alt-color !default;
+
+
+
 .banner {
-  background: $background-alt-color;
-  
-  h1 {
-    padding: .5em 0;
-    text-align: center;
+  background: $banner-background-color;
+
+  h1 a {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.skip-navigation { display: none; }
+
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin banner-iPhone {
+  .banner {
+    text-align: left;
+
+    h1 { @include span-columns(2); }
   }
 
-  @include at-breakpoint($break-iPad) {
-    h1 img {
-       width: 3.33333333333333em;
-      height: 2.5em;
+  .skip-navigation {
+    @include span-columns(1 omega);
+    padding: {
+         top: 1.375em;
+      bottom: 1.375em;
     }
-  }
-  
-  .skip-navigation { display: none; }
 
-  @include at-breakpoint($break-iPhone) {
-    .skip-navigation {
-      display: block;
-      margin-top: 1.125em;
-      @include span-columns(1 omega, $break-iPhone); 
+    .button {
+      @include float-right;
+      padding: 0;
+      width: auto;
     }
-    
-    h1 {
-      @include span-columns(3, $break-iPhone); 
-      text-align: left;
-    }
-  }
-
-  @include at-breakpoint($break-iPhone-wide) {
-    .skip-navigation {
-      @include span-columns(1 omega, $break-iPhone-wide);
-      margin-top: 1.5em;
-    }
-    
-    h1 { @include span-columns(6, $break-iPhone-wide); }
-  }
-
-  @include at-breakpoint($break-iPad) {
-    .skip-navigation { display: none; }
-    
-    h1 { @include span-columns(6, $break-iPhone-wide); }
   }
 }

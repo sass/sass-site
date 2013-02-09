@@ -1,10 +1,10 @@
 %header.banner(role="banner")
   .container
     %p.skip-navigation
-      = link_to "#navigation", :class => 'icon-button' do
+      = link_to "#navigation", :class => 'button' do
         %span(aria-hidden="true" data-icon="l")
-        %span.visually-hidden Skip to Navigation
-    %h1.site-title= link_to image_tag("logo.png", :width => "80", :height => "60", :alt => "Sass"), "/"
+        %span.visuallyhidden Skip to Navigation
+    %h1= link_to image_tag("logo.png", :width => "80", :height => "60", :alt => "Sass"), "/"
 
 
 
@@ -15,7 +15,3 @@
       %li= link_to "Quickstart",    "/quickstart"
       %li= link_to "Documentation", "/docs"
       %li= link_to "Community",     "/community"
-
-
-
-%hr/

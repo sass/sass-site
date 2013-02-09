@@ -4,6 +4,22 @@
 
 
 // ---------------------------------------------------------------------------
+// MEASUREMENTS
+
+$font-size:          16;
+
+$font-size-small:    $font-size         / 1.25;
+$font-size-large:    $font-size         * 1.25;
+$font-size-x-large:  $font-size-large   * 1.25;
+$font-size-xx-large: $font-size-x-large * 1.25;
+
+$line-height:             1.5;
+$line-height-incremental: 1.25;
+$line-height-reset:       1;
+
+
+
+// ---------------------------------------------------------------------------
 // FONT STACKS
 
 $monospace:  Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -25,10 +41,14 @@ $chaparral-pro-semibold:  "chaparral-pro-n6", "chaparral-pro", $serif          !
 // ---------------------------------------------------------------------------
 // FONT SETUP
 
-@mixin font-face($family-setting: $source-sans-pro-regular, $weight-setting: 400, $style-setting: normal) {
+@mixin font-face($family-setting: $source-sans-pro-regular, $weight-setting: false, $style-setting: false) {
   font: {
-    style:  $style-setting;
-    weight: $weight-setting;
+    @if $style-setting != false {
+      style: $style-setting;
+    }
+    @if $weight-setting != false {
+      weight: $weight-setting;
+    }
     family: $family-setting;
   }
 }
@@ -36,12 +56,14 @@ $chaparral-pro-semibold:  "chaparral-pro-n6", "chaparral-pro", $serif          !
 
 
 // ---------------------------------------------------------------------------
-// FONT PLACEHOLDER SELECTORS FOR @EXTEND'ING
+// FONT SIZES
 
-%source-code-pro-regular { @include font-face($source-code-pro-regular);     }
-
-%source-sans-pro-regular { @include font-face($source-sans-pro-regular);     }
-%source-sans-pro-bold    { @include font-face($source-sans-pro-bold, 600);   }
-
-%chaparral-pro-regular   { @include font-face($chaparral-pro-regular);       }
-%chaparral-pro-semibold  { @include font-face($chaparral-pro-semibold, 600); }
+@mixin font-size($size-setting: $font-size, $lead-setting: false) {
+  font: {
+    size: #{$size-setting}px;
+    size: #{$size-setting / 10}rem;
+  }
+  @if $lead-setting != false {
+    line-height: $lead-setting;
+  }
+}

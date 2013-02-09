@@ -1,0 +1,25 @@
+// ===========================================================================
+// MEASUREMENTS
+
+
+
+$total-columns: 4;
+$column-width:  48px;
+$gutter-width:  16px;
+$grid-padding:  $gutter-width;
+
+
+
+$iPhone:       #{320  / $font-size}em;
+$small-tablet: #{480  / $font-size}em;
+$iPad:         #{768  / $font-size}em;
+$iPad-wide:    #{1024 / $font-size}em;
+
+
+
+$z-index-dropdown:         1000 !default;
+$z-index-popover:          1010 !default;
+$z-index-tooltip:          1020 !default;
+$z-index-fixed:            1030 !default;
+$z-index-modal-background: 1040 !default;
+$z-index-modal:            1050 !default;

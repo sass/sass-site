@@ -15,19 +15,13 @@
 
 [data-icon] {
   &:before {
+    position: relative;
+    top: 2px;
     display: inline-block;
-    width: 1em;
-    height: 1em;
-    @include font-size($font-size-large);
+    @include font-size($font-size);
     font-family: "Pictos";
-    text: {
-      align: center;
-      transform: none;
-    }
+    text-transform: none;
+    vertical-align: middle;
     content: attr(data-icon);
   }
 }
-
-.icon-button { @extend .button; }
-
-a.icon-button { padding: .375em 0; }

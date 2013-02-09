@@ -22,15 +22,16 @@
 
   %body{:class => page_classes}
     .page
-      = partial "layouts/shared/chrome_frame"
+      = partial "layouts/shared/chromeframe"
       = partial "layouts/shared/banner"
 
-      .main(role="main")
+      %section.section-1.main(role="main")
         .container
-          = yield
+          .content= yield
           = partial "layouts/shared/complementary"
 
-        = yield_content :content_bottom
+      - if content_for?(:section_2)
+        %section.section-2= yield_content :section_2
 
       .footer-shim
 

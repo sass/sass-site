@@ -1,0 +1,32 @@
+// ===========================================================================
+// SLIDES
+
+
+
+.slide-navigation li { padding: .25em 0; }
+
+.slides { @extend %content-list; }
+
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin slides-iPhone {
+  .slide-navigation {
+    @extend %horizontal-list-iPhone;
+
+    li {
+      width: columns(2);
+
+      &:nth-child(even) { @extend %float-left-last-child-iPhone; }
+    }
+  }
+
+  .slides {
+    padding: {
+         top: 1em;
+      bottom: 1em;
+    }
+  }
+}

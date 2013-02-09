@@ -4,10 +4,11 @@
 
 
 // ---------------------------------------------------------------------------
-// Place any jQuery/helper plugins in here.
+// HTML5 BOILERPLATE
 
 //= require "vendor/avoid_console_errors"
-//= require "vendor/slides.jquery"
+
+// Place any jQuery/helper plugins in here.
 
 
 
@@ -15,4 +16,3 @@
 // Our Stuff
 
 //= require "toggle_navigation"
-//= require "feature_slideshow"

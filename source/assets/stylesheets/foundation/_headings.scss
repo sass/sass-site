@@ -3,32 +3,48 @@
 
 
 
-h1,
-h2,
-h3 { @extend %heading-text; }
+$heading-1-text-color: $venus       !default;
+$heading-2-text-color: $pale-sky    !default;
+$heading-3-text-color: $regent-grey !default;
+
+
+
+// ---------------------------------------------------------------------------
+// MOBILE
+
+#{headings(1, 3)} {
+  @extend %block-text;
+  line-height: $line-height-reset;
+}
 
 h1,
 h3 {
   @extend %chaparral-pro-regular;
-  @include font-size($font-size-larger, $line-height-heading);
   letter-spacing: -0.05em;
-  color: $heading-1-text-color;
+}
 
-  @include at-breakpoint($break-iPhone-wide) {
-    @include font-size($font-size-largest, $line-height-heading);
-  }
+h1 {
+  @include font-size($font-size-x-large);
+  color: $heading-1-text-color;
 }
 
 h2 {
-  @include caps;
+  @extend  %caps;
   color: $heading-2-text-color;
 }
 
 h3 {
-  @include font-size($font-size-large, $line-height-heading);
+  padding-bottom: 0;
+  @include font-size($font-size-large);
   color: $heading-3-text-color;
+}
 
-  @include at-breakpoint($break-iPhone-wide) {
-    @include font-size($font-size-larger, $line-height-heading);
-  }
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin headings-iPhone {
+  h1 { @include font-size($font-size-xx-large); }
+  h3 { @include font-size($font-size-x-large); }
 }

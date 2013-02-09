@@ -3,73 +3,78 @@
 
 
 
+$navigation-background-color: $pale-sky    !default;
+$navigation-text-color:       $iron        !default;
+$navigation-border-color:     $regent-grey !default;
+
+
+
 .navigation {
+  padding: {
+       top: 1em;
+    bottom: 1em;
+  }
   background: $navigation-background-color;
   color: $navigation-text-color;
-  @include text-shadow;
+  @include text-shadow-dark;
 
-  a { @include link(lighten($navigation-text-color, 5%), lighten($navigation-text-color, 15%), lighten($navigation-text-color, 25%)); }
+  a {
+    @extend %caps;
+    border: 0;
+    @include link(lighten($navigation-text-color, 5%),
+                  lighten($navigation-text-color, 15%),
+                  lighten($navigation-text-color, 25%));
+  }
+}
 
-  @include at-breakpoint($break-iPhone) {
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin navigation-iPhone {
+  .navigation {
     display: none;
-    
-    ul {
-      padding: 0;
-      list-style: none;
+    padding: {
+         top: 0;
+      bottom: 0;
     }
 
     li {
       border-bottom: 1px solid $navigation-border-color;
 
-      &:last-child { border-bottom: 0; }
+      &:last-child { border: 0; }
     }
 
     a {
-      @include tappable-link;
+      @include tappable;
       display: block;
     }
   }
+}
 
-  @include at-breakpoint($break-iPhone-wide) {
+
+
+// ---------------------------------------------------------------------------
+// SMALL TABLET
+
+@mixin navigation-small-tablet {
+  .navigation {
+    li { border-bottom: 0; }
+
     ul {
-      @extend %clearfix-iPhone-wide;
-      list-style: none;
+      margin: {
+        right: -$gutter-width;
+         left: -$gutter-width;
+      }
 
-      li {        
-        @include span-columns(2.5, $break-iPhone); 
-        margin-right: 0;
-      }
-      
-      a {
-        padding: {
-          right: 0;
-          left: 0;
-        }
-      }
+      li { display: inline-block; }
     }
-  }
 
-  @include at-breakpoint($break-iPad) {
-    position: relative;
-    top: -7em;
-    display: block;
-    margin-bottom: -3em;
-    background: none;
-    
     a {
-      @include link;
-      text-shadow: 0 1px 1px $highlight-color;
-    }
-    
-    ul {
-      float: right;
-      
-      li {
-        margin-right: 2em;
-        border: 0;
-        width: auto;
-      
-        &:last-child { margin-right: 0; }
+      padding: {
+        right: $gutter-width;
+         left: $gutter-width;
       }
     }
   }

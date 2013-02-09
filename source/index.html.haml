@@ -4,12 +4,11 @@ title: Sass | Syntactically Awesome Style Sheets
 
 
 
-.introduction
-  %h1 CSS with super powers
+%h1 CSS with super&nbsp;powers
 
-  %p Sass is an extension of CSS 3 with a bunch of added features. Already thought CSS was fun? Wait until you add Sass to the mix!
+%p Sass is an extension of CSS 3 with a bunch of added features. Already thought CSS was fun? Wait until you add Sass to the&nbsp;mix!
 
-  %h2 Get up and running quickly with:
+%h2 Get up and running quickly with:
 
 %ul.quick-starts
   %li.command-line
@@ -32,25 +31,25 @@ title: Sass | Syntactically Awesome Style Sheets
       %p.description Get started quickly by installing a Sass for Linux, Mac or Windows.
     .call-to-action
       %p= link_to "GUI Quickstart", '#', :class => 'button'
-      %p= link_to "Download Compass.app", '#', :class => 'button'
+      %p= link_to "Get Compass.app", '#', :class => 'button'
 
 
 
-- content_for :content_bottom do
-  .message.release-information
+- content_for :section_2 do
+  .message.current-release
     .container
-      %p
-        Current Release:
-        %strong Media Mark (3.2.1)
+      %dl
+        %dt Current Release:
+        %dd Media Mark (3.2.1)
       %ul
         %li= link_to "Release Notes",       "#"
         %li= link_to "Fork Sass on Github", "#"
 
   .container
-    %h1 Sass Features
+    .content
+      %h1 Sass Features
 
-    .slides
-      %nav.jump-navigation
+      %nav.slide-navigation
         %ul
           %li= link_to "Preprocessing", '#1'
           %li= link_to "Variables",     '#2'
@@ -61,112 +60,63 @@ title: Sass | Syntactically Awesome Style Sheets
           %li= link_to "Extend",        '#7'
           %li= link_to "Operators",     '#8'
 
-      .jump-topics
-        .slide
-          %h3 Preprocessing
+      %ul.slides
+        %li
+          %h2 Preprocessing
           %p A prepressor lets you take a Sass file and use features that don&rsquo;t exist in CSS like variables, nesting, mixins, inheritance and other nifty goodies that make writing CSS fun again.
           %pre
             %code
               example of preprocessing and css output
-          %p= link_to "Variables", "#2", :class => "link"
 
-        .slide
-          %h3 Variables
+        %li
+          %h2 Variables
           %p Variables definition
           %pre
             %code
               example of preprocessing and css output
-          %p= link_to "Nesting", "#3", :class => "link"
 
-        .slide
-          %h3 Nesting
+        %li
+          %h2 Nesting
           %p nesting definition
           %pre
             %code
               example of nesting and css output
-          %p= link_to "Mixins", "#4", :class => "link"
 
-        .slide
-          %h3 Mixins
+        %li
+          %h2 Mixins
           %p mixins definition
           %pre
             %code
               example of mixins and css output
-          %p= link_to "Inheritance", "#5", :class => "link"
 
-        .slide
-          %h3 Inheritance
+        %li
+          %h2 Inheritance
           %p inheritance definition
           %pre
             %code
               example of inheritance and css output
-          %p= link_to "Import", "#6", :class => "link"
 
-        .slide
-          %h3 Import
+        %li
+          %h2 Import
           %p import definition
           %pre
             %code
               example of import and css output
-          %p= link_to "Extend", "#7", :class => "link"
 
-        .slide
-          %h3 Extend
+        %li
+          %h2 Extend
           %p extend definition
           %pre
             %code
               example of extend and css output
-          %p= link_to "Operators", "#8", :class => "link"
 
-        .slide
-          %h3 Operators
+        %li
+          %h2 Operators
           %p operators definition
           %pre
             %code
               example of operators and css output
-          %p= link_to "Preprocessing", "#1", :class => "link"
 
-      %ul
+      %ul.pagination
         %li= link_to "Prev", "#", :class => "prev"
         %li= link_to "Next", "#", :class => "next"
-
-
-
-    #container
-      #example
-        #slides
-          .slides_container
-            .slide
-              %h3 First Slide
-              %p= lorem.paragraph
-              %p= link_to "Check out the fourth slide", "4", :class => "link button"
-            .slide
-              %h3 Second Slide
-              %p= lorem.paragraph
-              %p= link_to "Check out the fifth slide", "5", :class => "link button"
-            .slide
-              %h3 Third Slide
-              %p= lorem.paragraph
-              %p= link_to "Check out the first slide", "1", :class => "link button"
-            .slide
-              %h3 Fourth Slide
-              %p= lorem.paragraph
-              %p= link_to "Check out the sixth slide", "6", :class => "link button"
-            .slide
-              %h3 Fifth Slide
-              %p= lorem.paragraph
-              %p= link_to "Check out the seventh slide", "7", :class => "link button"
-            .slide
-              %h3 Sixth Slide
-              %p= lorem.paragraph
-              %p= link_to "Check out the first slide", "1", :class => "link button"
-            .slide
-              %h3 Seventh Slide
-              %p= lorem.paragraph
-              %p= link_to "Check out the third slide", "3", :class => "link button"
-          <a href="#" class="prev">
-          = image_tag "slides/arrow-prev.png", :width => "24", :height => "43", :alt => "Arrow Prev"
-          </a>
-          <a href="#" class="next">
-          = image_tag "slides/arrow-next.png", :width => "24", :height => "43", :alt => "Arrow Next"
-          </a>

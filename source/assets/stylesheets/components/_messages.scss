@@ -3,24 +3,21 @@
 
 
 
+$message-background-color: $callout-background-color !default;
+
+
+
 .message {
   @extend %chaparral-pro-regular;
-  clear: both;
-  padding: .66666666666667em;
-  background: $callout-background-color;
-  color:      $callout-text-color;
-
-  a,
-  strong { @extend %chaparral-pro-semibold; }
-
-  a { @include link(darken($callout-text-color, 5%), darken($callout-text-color, 15%), darken($callout-text-color, 25%)); }
-
-  p,
-  ul {
-    padding: .25em 0;
-    @include font-size($font-size-large);
-
-    &:first-child { padding-top:    0; }
-    &:last-child  { padding-bottom: 0; }
+  position: relative;
+  padding: {
+       top: .5em;
+    bottom: .5em;
   }
+  background: $message-background-color;
+  @include box-shadow-both;
+
+  ul { @include reset-list; }
+
+  strong { @extend %chaparral-pro-semibold; }
 }

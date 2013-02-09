@@ -5,19 +5,28 @@
 
 html {
   font-size: 62.5%;
-  text-rendering: optimizelegibility;
+  text: {
+    rendering: optimizelegibility;
+    align: center;
+  }
   @include background($background-color image_url("textures/light.gif"));
   color: $text-color;
-  text-shadow: 0 1px 1px $highlight-color;
+  @include text-shadow-light;
 }
 
 body {
-  @extend %source-sans-pro-regular;
-  @include font-size;
+  font: 400 #{$font-size}px/#{$line-height} $source-sans-pro-regular {
+    size: #{$font-size / 10}rem;
+  }
   background-color: transparent;
 }
 
-// Selections have to be separate so this one is a mixin.
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+
 @mixin selection {
   background:  $selection-background-color;
   color:       $selection-text-color;
@@ -26,3 +35,8 @@ body {
 
 ::-moz-selection { @include selection; }
 ::selection      { @include selection; }
+
+%block-text {
+  margin: 0;
+  padding: .5em 0;
+}
