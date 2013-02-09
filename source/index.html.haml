@@ -4,24 +4,29 @@ title: Sass | Syntactically Awesome Style Sheets
 
 
 
-%h1 CSS with super&nbsp;powers
+%h1 CSS with super powers
 
-%p Sass is an extension of CSS 3 with a bunch of added features. Already thought CSS was fun? Wait until you add Sass to the&nbsp;mix!
+%p Sass makes writing CSS fun again. Think of Sass as an extension of CSS3 that adds a bunch of missing features like nesting, variables, mixins & extend.
 
-%h2 Get up and running quickly with:
+%h2 There are a couple of ways to start using Sass:
 
-%ul.quick-starts
+%ol.quick-starts
   %li.command-line
     .quick-start-content
       %h3 Command Line
       %p.illustration
         %span.circle= image_tag "illustrations/command-line.png", :width => "48", :height => "48", :alt => "CLI Illustration"
-      %p.description Feel comfortable using a terminal, Ruby &amp; Gems?
+      / Description for Unix users
+      %p.description Using Sass on the command line is as simple as using a few commands. To install Sass just 
+      type the following into the command line:
     .call-to-action
-      %p= link_to "CLI Quickstart", '#', :class => 'button'
+      / We'll try and point the user to either 
+      %p= link_to "CLI Quickstart", '/quickstart/command-line#unix', :class => 'button'
       %pre
         %code
           gem install sass
+
+      %p For Windows users, go check out the <a href="/quickstart/command-line#windows">Windows quickstart guide</a>.
 
   %li.gui-application
     .quick-start-content
@@ -30,7 +35,7 @@ title: Sass | Syntactically Awesome Style Sheets
         %span.circle= image_tag "illustrations/gui.png", :width => "48", :height => "48", :alt => "GUI Quickstart"
       %p.description Get started quickly by installing a Sass for Linux, Mac or Windows.
     .call-to-action
-      %p= link_to "GUI Quickstart", '#', :class => 'button'
+      %p= link_to "GUI Quickstart", '/quickstart/gui', :class => 'button'
       %p= link_to "Get Compass.app", '#', :class => 'button'
 
 
