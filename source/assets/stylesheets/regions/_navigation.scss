@@ -62,14 +62,7 @@ $navigation-border-color:     $regent-grey !default;
   .navigation {
     li { border-bottom: 0; }
 
-    ul {
-      margin: {
-        right: -$gutter-width;
-         left: -$gutter-width;
-      }
-
-      li { display: inline-block; }
-    }
+    ul { @extend %horizontal-list-inline-small-tablet; }
 
     a {
       padding: {

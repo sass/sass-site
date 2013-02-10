@@ -6,12 +6,12 @@
 // ---------------------------------------------------------------------------
 // MEASUREMENTS
 
+$font-size-x-small:  12;
+$font-size-small:    14;
 $font-size:          16;
-
-$font-size-small:    $font-size         / 1.25;
-$font-size-large:    $font-size         * 1.25;
-$font-size-x-large:  $font-size-large   * 1.25;
-$font-size-xx-large: $font-size-x-large * 1.25;
+$font-size-large:    18;
+$font-size-x-large:  22;
+$font-size-xx-large: 44;
 
 $line-height:             1.5;
 $line-height-incremental: 1.25;

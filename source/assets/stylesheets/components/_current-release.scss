@@ -8,8 +8,8 @@
 
 @mixin current-release-iPhone {
   .current-release {
-    @extend %horizontal-list-iPhone;
-    
+    @extend %horizontal-list-inline-iPhone;
+
     dt,
     dd { display: inline; }
   }

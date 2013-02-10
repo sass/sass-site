@@ -17,9 +17,13 @@
     @extend %horizontal-list-iPhone;
 
     li {
-      width: columns(2);
+      @include span-columns(2);
+      padding: {
+        right: $gutter-width;
+        left: $gutter-width;
+      }
 
-      &:nth-child(even) { @extend %float-left-last-child-iPhone; }
+      &:nth-child(even) { @include omega; }
     }
   }
 
