@@ -6,7 +6,7 @@
 .container {
   padding-right: $gutter-width * 2;
   padding-left:  $gutter-width * 2;
-  @include susy-grid-background;
+  //@include susy-grid-background;
 }
 
 
@@ -28,7 +28,7 @@
 @mixin container-iPad {
   .container {
     @include container;
-    @include susy-grid-background;
+    //@include susy-grid-background;
   }
 }
 
@@ -40,6 +40,6 @@
 @mixin container-screen {
   .container {
     @include set-container-width;
-    @include susy-grid-background;
+    //@include susy-grid-background;
   }
 }
