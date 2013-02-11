@@ -46,13 +46,6 @@
 
 
 // ---------------------------------------------------------------------------
-// LAYOUT
-
-@import "layout/grid";
-
-
-
-// ---------------------------------------------------------------------------
 // COMPONENTS
 
 @import "components/messages";
@@ -69,7 +62,9 @@
 // ---------------------------------------------------------------------------
 // REGIONS
 
+@import "regions/container";
 @import "regions/chromeframe";
+@import "regions/accessibility";
 @import "regions/banner";
 @import "regions/navigation";
 @import "regions/content";

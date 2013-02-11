@@ -88,6 +88,22 @@
 
 
 // ---------------------------------------------------------------------------
+// VISIBILITY
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+@mixin hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+%hidden { @include hidden; }
+
+
+
+// ---------------------------------------------------------------------------
 // iPhone
 
 @mixin placeholder-selectors-iPhone {
@@ -98,6 +114,8 @@
 
   %float-left-last-child-iPhone  { @include float-last-child;  }
   %float-right-last-child-iPhone { @include float-last-child(right); }
+
+  %hidden-iPhone { @include hidden; }
 }
 
 
@@ -113,4 +131,6 @@
 
   %float-left-last-child-small-tablet  { @include float-last-child;  }
   %float-right-last-child-small-tablet { @include float-last-child(right); }
+
+  %hidden-small-tablet { @include hidden; }
 }

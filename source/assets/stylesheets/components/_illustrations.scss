@@ -9,21 +9,14 @@ $illustration-size: 4.5em !default;
 
 .illustration { text-align: center; }
 
-
-
-// ---------------------------------------------------------------------------
-// iPhone, wide
-
-//@mixin illustrations-iPhone-wide {
-//  .circle {
-//    display: inline-block;
-//    margin: 0 auto;
-//    @include border-radius($illustration-size);
-//    padding: 0;
-//     width: $illustration-size;
-//    height: $illustration-size;
-//    background: $callout-background-color;
-//    line-height: $illustration-size;
-//    text-align: center;
-//  }
-//}
+.circle {
+  display: inline-block;
+  margin: 0 auto;
+  @include border-radius($illustration-size);
+  padding: 0;
+   width: $illustration-size;
+  height: $illustration-size;
+  background: $callout-background-color;
+  line-height: $illustration-size;
+  text-align: center;
+}

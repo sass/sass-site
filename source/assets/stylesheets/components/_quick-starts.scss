@@ -19,19 +19,27 @@
     li { @extend %clearfix-iPhone; }
 
     h3,
-    .description { margin-left: $column-width + $gutter-width; }
+    .description {
+      margin-left: ($font-size * $illustration-size / 1em) + $gutter-width;
+    }
 
     .illustration {
-      @extend %float-left-iPhone;
       position: relative;
-      top: -1.75em;
+      margin-top: -2em;
+      @include float-left;
       padding: {
            top: 0;
         bottom: 0;
       }
     }
 
-    .description { padding-top: 0; }
+    .description {
+      position: relative;
+      top: -2em;
+      clear: both;
+      margin-bottom: -2em;
+      padding-top: 0;
+    }
 
     pre { text-align: center; }
   }
@@ -45,30 +53,15 @@
 @mixin quick-starts-small-tablet {
   .quick-starts {
     @extend %clearfix-small-tablet;
-    margin: {
-      right: -#{$gutter-width / 2};
-       left: -#{$gutter-width / 2};
-    }
-    
-    li {
-       @include float-left;
-       padding: {
-         right: $gutter-width / 2;
-          left: $gutter-width / 2;
-       }
-       width: 50%;
-    }
 
-    h3 {
-      padding: {
-           top: 0;
-        bottom: .5em;
+    @include layout(2) {
+      li {
+        @include span-columns(1);
+
+        &:last-child { @include omega; }
       }
-      @include font-size($font-size-large);
     }
-    
-    .illustration { top: -2.125em; }
-    
-    .description { min-height: 6.5em; }
   }
+
+  .description { min-height: 7em; }
 }

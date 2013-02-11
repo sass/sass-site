@@ -27,14 +27,14 @@ $banner-background-color: $background-alt-color !default;
   .banner {
     text-align: left;
 
-    h1 { @include span-columns(2); }
+    h1 { @include span-columns(3); }
   }
 
   .skip-navigation {
     @include span-columns(1 omega);
     padding: {
-         top: 1.375em;
-      bottom: 1.375em;
+         top: 1.75em;
+      bottom: 1.75em;
     }
 
     .button {

@@ -1,0 +1,19 @@
+// ===========================================================================
+// ACCESSIBILITY
+
+
+
+.accessibility {
+  @extend .message;
+}
+
+
+
+// ---------------------------------------------------------------------------
+// iPhone
+
+@mixin accessibility-iPhone {
+  .accessibility {
+    @extend %hidden-iPhone;
+  }
+}

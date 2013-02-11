@@ -42,9 +42,8 @@ h3 {
 
 
 // ---------------------------------------------------------------------------
-// iPhone
+// SMALL TABLET
 
-@mixin headings-iPhone {
+@mixin headings-small-tablet {
   h1 { @include font-size($font-size-xx-large); }
-  h3 { @include font-size($font-size-x-large); }
 }

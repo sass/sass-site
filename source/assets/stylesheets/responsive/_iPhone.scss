@@ -4,11 +4,6 @@
 
 
 @media only screen and (min-width: $iPhone) {
-  // FOUNDATION
-  @include headings-iPhone;
-
-  // LAYOUT
-  @include grid-iPhone;
 
   // COMPONENTS
   @include components-lists-iPhone;
@@ -17,6 +12,8 @@
   @include slides-iPhone;
 
   // REGIONS
+  @include container-iPhone;
+  @include accessibility-iPhone;
   @include banner-iPhone;
   @include navigation-iPhone;
   @include contentinfo-iPhone;

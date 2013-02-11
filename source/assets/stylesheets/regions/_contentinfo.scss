@@ -35,9 +35,20 @@ $contentinfo-border-color:     $wafer     !default;
     text-align: left;
 
     ul {
+      margin: {
+        right: -$gutter-width;
+        left:  -$gutter-width;
+      }
       padding: {
            top: .5em;
         bottom: .5em;
+      }
+    }
+
+    li {
+      padding: {
+        right: $gutter-width;
+        left:  $gutter-width;
       }
     }
   }
