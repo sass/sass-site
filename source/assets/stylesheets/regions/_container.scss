@@ -23,13 +23,23 @@
 
 
 // ---------------------------------------------------------------------------
-// SMALL TABLET
+// iPad
 
-@mixin container-small-tablet {
-  @include with-grid-settings(8) {
-    .container {
-      @include container;
-      @include susy-grid-background;
-    }
+@mixin container-iPad {
+  .container {
+    @include container;
+    @include susy-grid-background;
+  }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// SCREEN
+
+@mixin container-screen {
+  .container {
+    @include set-container-width;
+    @include susy-grid-background;
   }
 }

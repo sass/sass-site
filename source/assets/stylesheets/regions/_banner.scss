@@ -16,6 +16,14 @@ $banner-background-color: $background-alt-color !default;
   }
 }
 
+.accessibility {
+  @extend %content-list;
+
+  li:last-child {
+    padding-bottom: 0;
+  }
+}
+
 .skip-navigation { display: none; }
 
 
@@ -27,15 +35,15 @@ $banner-background-color: $background-alt-color !default;
   .banner {
     text-align: left;
 
-    h1 { @include span-columns(3); }
+    h1 {
+      @include span-columns(3);
+      @include font-size($font-size-large);
+    }
   }
 
   .skip-navigation {
     @include span-columns(1 omega);
-    padding: {
-         top: 1.75em;
-      bottom: 1.75em;
-    }
+    padding-top: 1em;
 
     .button {
       @include float-right;
@@ -43,4 +51,17 @@ $banner-background-color: $background-alt-color !default;
       width: auto;
     }
   }
+
+  .skip-content {
+    @extend %hidden-iPhone;
+  }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// iPad
+
+@mixin banner-iPad {
+  .skip-navigation { @extend %hidden-iPad; }
 }

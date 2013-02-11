@@ -7,14 +7,13 @@ $total-columns:   4;
 $column-width:    48px;
 $gutter-width:    12px;
 $grid-padding:    $gutter-width;
-$container-style: fluid;
 
 
 
 $iPhone:       #{320  / $font-size}em;
 $small-tablet: #{480  / $font-size}em;
 $iPad:         #{768  / $font-size}em;
-$iPad-wide:    #{1024 / $font-size}em;
+$screen:       #{1024 / $font-size}em;
 
 
 

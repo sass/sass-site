@@ -22,7 +22,6 @@
 @import "dependencies/layout";
 @import "dependencies/colors";
 @import "dependencies/themes";
-@import "dependencies/icons";
 
 
 
@@ -49,6 +48,7 @@
 // COMPONENTS
 
 @import "components/messages";
+@import "components/icons";
 @import "components/buttons";
 @import "components/illustrations";
 @import "components/lists";
@@ -64,7 +64,6 @@
 
 @import "regions/container";
 @import "regions/chromeframe";
-@import "regions/accessibility";
 @import "regions/banner";
 @import "regions/navigation";
 @import "regions/content";
@@ -90,5 +89,7 @@
 
 @import "responsive/iPhone";
 @import "responsive/small-tablet";
+@import "responsive/iPad";
+@import "responsive/screen";
 @import "responsive/high-resolution";
-@import "responsive/print";
+@import "responsive/print";//

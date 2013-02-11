@@ -62,7 +62,10 @@ $navigation-border-color:     $regent-grey !default;
   .navigation {
     li { border-bottom: 0; }
 
-    ul { @extend %horizontal-list-inline-small-tablet; }
+    ul {
+      @extend %horizontal-list-inline-small-tablet;
+      white-space: nowrap;
+    }
 
     a {
       padding: {
@@ -71,4 +74,13 @@ $navigation-border-color:     $regent-grey !default;
       }
     }
   }
+}
+
+
+
+// ---------------------------------------------------------------------------
+// iPad
+
+@mixin navigation-iPad {
+  .navigation { display: block; }
 }

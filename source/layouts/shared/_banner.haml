@@ -1,9 +1,12 @@
 %header.banner(role="banner")
   .container
-    %p.skip-navigation
-      = link_to "#navigation", :class => 'button' do
-        %span(aria-hidden="true" data-icon="l")
-        %span.visuallyhidden Skip to Navigation
+    %ul.accessibility
+      %li.skip-navigation
+        = link_to "#navigation", :class => 'button' do
+          %span(aria-hidden="true" data-icon="l")
+          %span.visuallyhidden Skip to Navigation
+      %li.skip-content= link_to "Skip to Content", "#content", :class => 'button'
+
     %h1= link_to image_tag("logo.png", :width => "80", :height => "60", :alt => "Sass"), "/"
 
 

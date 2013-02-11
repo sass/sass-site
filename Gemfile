@@ -13,5 +13,12 @@ gem "susy"
 gem "slim"
 gem "redcarpet"
 
+# Better Typography
+gem "typogruby"
+gem "nokogiri"
+
+# Syntax Highlighting
+gem "middleman-syntax"
+
 # Styleguide generator
 gem "kss"

@@ -3,10 +3,10 @@
 # ----------------------------------------------
 set :markdown_engine, :redcarpet
 set :markdown, :fenced_code_blocks => true,
-               :autolink => true, 
+               :autolink => true,
                :smartypants => true
 # ----------------------------------------------
-# Livreload
+# Livereload
 # ----------------------------------------------
 activate :livereload
 
@@ -23,6 +23,56 @@ compass_config do |config|
   config.output_style = :compact
   # config.sass_options = { :line_comments => true, :debug_info => true }
 end
+
+# ----------------------------------------------
+# Code Coloring
+# ----------------------------------------------
+
+activate :syntax
+
+# ----------------------------------------------
+# Better Typography
+# ----------------------------------------------
+
+# TODO: Make this work
+
+# require 'typogruby'
+# require 'nokogiri'
+
+#use Rack::typogruby
+
+#module Rack
+#  class Typo
+
+#    def initialize(app)
+#      @app = app
+#    end
+
+#    def call(env)
+#      status, headers, response = @app.call(env)
+#      if headers["Content-Type"].include? "text/html"
+#        s = ""
+#        response.body.each { |x| s << x}
+#        doc = Nokogiri::HTML(s)
+#        doc.encoding = 'UTF-8'
+
+#        doc.at_css("body").traverse do |node|
+#          if node.text?
+#            node.replace(Nokogiri::HTML.fragment(Typogruby.improve(node.content)))
+#          end
+#        end
+
+#        response.body = doc.to_html.lines.to_a
+#      end
+#      [status, headers, response]
+#    end
+
+#  end
+#end
+
+#activate :typogruby
+
+
 
 # ----------------------------------------------
 # Page options, layouts, aliases and proxies
@@ -52,7 +102,7 @@ page "/responsive.html", :layout => false
 
 # Use KSS for awesome styleguide support
 # require "kss"
-# 
+#
 # page "/styleguide/*", :layout => "styleguide" do
 #   @styleguide = Kss::Parser.new('source/css')
 # end
@@ -80,7 +130,7 @@ helpers do
   #   @example_html = kss_capture{ block.call }
   #   @_out_buf << partial('styleguide/block')
   # end
-# 
+#
   # # Captures the result of a block within an erb template without # spitting it
   # # to the output buffer.
   # def kss_capture(&block)

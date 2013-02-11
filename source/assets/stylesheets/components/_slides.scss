@@ -34,3 +34,12 @@
     }
   }
 }
+
+
+
+// ---------------------------------------------------------------------------
+// SMALL TABLET
+
+@mixin slides-small-tablet {
+  .slides p { text-align: left; }
+}
