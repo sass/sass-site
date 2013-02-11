@@ -15,3 +15,7 @@ gem "redcarpet"
 
 # Styleguide generator
 gem "kss"
+
+# Code Highlighting
+gem "rack-codehighlighter"
+gem "pygments.rb"

@@ -3,8 +3,20 @@
 # ----------------------------------------------
 set :markdown_engine, :redcarpet
 set :markdown, :fenced_code_blocks => true,
-               :autolink => true, 
+               :autolink => true,
                :smartypants => true
+
+# ----------------------------------------------
+# Syntax Highlighting
+# ----------------------------------------------
+require 'rack/codehighlighter'
+require "pygments"
+use Rack::Codehighlighter,
+  :pygments,
+  :element => "pre>code",
+  :pattern => /\A:::([-_+\w]+)\s*\n/,
+  :markdown => true
+
 # ----------------------------------------------
 # Livreload
 # ----------------------------------------------
@@ -52,7 +64,7 @@ page "/responsive.html", :layout => false
 
 # Use KSS for awesome styleguide support
 # require "kss"
-# 
+#
 # page "/styleguide/*", :layout => "styleguide" do
 #   @styleguide = Kss::Parser.new('source/css')
 # end
@@ -80,7 +92,7 @@ helpers do
   #   @example_html = kss_capture{ block.call }
   #   @_out_buf << partial('styleguide/block')
   # end
-# 
+#
   # # Captures the result of a block within an erb template without # spitting it
   # # to the output buffer.
   # def kss_capture(&block)

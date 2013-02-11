@@ -73,6 +73,16 @@ title: Sass | Syntactically Awesome Style Sheets
         %li
           %h2 Variables
           %p Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses the <code>$</code> symbol to make something a variable. Here's an example:
+          :markdown
+            :::scss
+              $font-stack: Helvetica, sans-serif;
+              $primary-color: #333;
+
+              body {
+                color: $primary-color;
+                font: 100% $font-stack;
+              }
+
           %pre.scss
             %code
               :preserve
