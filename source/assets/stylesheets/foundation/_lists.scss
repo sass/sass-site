@@ -13,7 +13,8 @@
 
 
 
-ul {
+ul,
+ol {
   @extend %block-text;
   list-style-position: inside;
 

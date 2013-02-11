@@ -134,3 +134,12 @@
 
   %hidden-small-tablet { @include hidden; }
 }
+
+
+
+// ---------------------------------------------------------------------------
+// iPad
+
+@mixin placeholder-selectors-iPad {
+  %hidden-iPad { @include hidden; }
+}

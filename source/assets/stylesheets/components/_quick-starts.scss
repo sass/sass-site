@@ -10,58 +10,24 @@
 
 
 // ---------------------------------------------------------------------------
-// iPhone
-
-@mixin quick-starts-iPhone {
-  .quick-starts {
-    text-align: left;
-
-    li { @extend %clearfix-iPhone; }
-
-    h3,
-    .description {
-      margin-left: ($font-size * $illustration-size / 1em) + $gutter-width;
-    }
-
-    .illustration {
-      position: relative;
-      margin-top: -2em;
-      @include float-left;
-      padding: {
-           top: 0;
-        bottom: 0;
-      }
-    }
-
-    .description {
-      position: relative;
-      top: -2em;
-      clear: both;
-      margin-bottom: -2em;
-      padding-top: 0;
-    }
-
-    pre { text-align: center; }
-  }
-}
-
-
-
-// ---------------------------------------------------------------------------
 // SMALL TABLET
 
 @mixin quick-starts-small-tablet {
   .quick-starts {
     @extend %clearfix-small-tablet;
 
-    @include layout(2) {
-      li {
-        @include span-columns(1);
+    li {
+      @include span-columns(2);
 
-        &:last-child { @include omega; }
-      }
+      &:last-child { @include omega; }
+    }
+
+    p {
+      text-align: left;
+
+      &.illustration { text-align: center; }
     }
   }
 
-  .description { min-height: 7em; }
+  .description { min-height: 8.5em; }
 }

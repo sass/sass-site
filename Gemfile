@@ -13,9 +13,14 @@ gem "susy"
 gem "slim"
 gem "redcarpet"
 
+# Better Typography
+gem "typogruby"
+gem "nokogiri"
+
 # Styleguide generator
 gem "kss"
 
-# Code Highlighting
-gem "rack-codehighlighter"
-gem "pygments.rb"
+# Syntax Highlighting
+gem "middleman-syntax"
+# gem "rack-codehighlighter"
+# gem "pygments.rb"

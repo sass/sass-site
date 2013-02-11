@@ -15,8 +15,8 @@ title: Sass | Syntactically Awesome Style Sheets
       %p.illustration
         %span.circle= image_tag "illustrations/command-line.png", :width => "48", :height => "48", :alt => "CLI Illustration"
       / Description for Unix users
-      %p.description Using Sass on the command line is as simple as using a few commands. To install Sass just
-      type the following into the command line:
+      %p.description
+        Using Sass on the command line is as simple as using a few commands. To install Sass just type the following into the command line:
     .call-to-action
       / We'll try and point the user to either
       %p= link_to "Command Line Quickstart", '/quickstart/command-line#unix', :class => 'button'
@@ -73,36 +73,12 @@ title: Sass | Syntactically Awesome Style Sheets
         %li
           %h2 Variables
           %p Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses the <code>$</code> symbol to make something a variable. Here's an example:
-          :markdown
-            :::scss
-              $font-stack: Helvetica, sans-serif;
-              $primary-color: #333;
 
-              body {
-                color: $primary-color;
-                font: 100% $font-stack;
-              }
-
-          %pre.scss
-            %code
-              :preserve
-                $font-stack: Helvetica, sans-serif;
-                $primary-color: #333;
-
-                body {
-                  color: $primary-color;
-                  font: 100% $font-stack;
-                }
+          = partial "code-snippets/homepage-variables-scss"
 
           %p When the Sass is processed, it takes the variables we defines for the <code>$font-stack</code> and <code>$primary-color</code> and outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when working with brand colors and keeping them consistent throughout the site.
 
-          %pre.css
-            %code
-              :preserve
-                body {
-                  color: #ccc;
-                  font: 100% Helvetica, sans-serif
-                }
+          = partial "code-snippets/homepage-variables-css"
 
         %li
           %h2 Nesting

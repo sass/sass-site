@@ -7,13 +7,11 @@
 
   // COMPONENTS
   @include components-lists-iPhone;
-  @include quick-starts-iPhone;
   @include current-release-iPhone;
   @include slides-iPhone;
 
   // REGIONS
   @include container-iPhone;
-  @include accessibility-iPhone;
   @include banner-iPhone;
   @include navigation-iPhone;
   @include contentinfo-iPhone;

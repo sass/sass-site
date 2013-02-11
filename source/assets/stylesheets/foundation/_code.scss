@@ -3,6 +3,10 @@
 
 
 
+@import "../vendor/solarized";
+
+
+
 $code-background-color: $iron          !default;
 $code-text-color:       $midnight-blue !default;
 
@@ -25,6 +29,7 @@ code {
 pre {
   margin: .625em 0;
   padding: 1em;
+  text-align: left;
 
   code { padding: 0; }
 }

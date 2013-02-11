@@ -9,7 +9,6 @@ $message-background-color: $callout-background-color !default;
 
 .message {
   @extend %chaparral-pro-regular;
-  position: relative;
   padding: {
        top: .5em;
     bottom: .5em;

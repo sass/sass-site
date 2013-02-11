@@ -9,16 +9,16 @@ set :markdown, :fenced_code_blocks => true,
 # ----------------------------------------------
 # Syntax Highlighting
 # ----------------------------------------------
-require 'rack/codehighlighter'
-require "pygments"
-use Rack::Codehighlighter,
-  :pygments,
-  :element => "pre>code",
-  :pattern => /\A:::([-_+\w]+)\s*\n/,
-  :markdown => true
+# require 'rack/codehighlighter'
+# require "pygments"
+# use Rack::Codehighlighter,
+#   :pygments,
+#   :element => "pre>code",
+#   :pattern => /\A:::([-_+\w]+)\s*\n/,
+#   :markdown => true
 
 # ----------------------------------------------
-# Livreload
+# Livereload
 # ----------------------------------------------
 activate :livereload
 
@@ -35,6 +35,58 @@ compass_config do |config|
   config.output_style = :compact
   # config.sass_options = { :line_comments => true, :debug_info => true }
 end
+
+# ----------------------------------------------
+# Code Coloring
+# http://pygments.org/docs/formatters/
+# ----------------------------------------------
+activate :syntax,
+         :linenos => 'table', # inline or table
+         :linenostart => 2
+
+# ----------------------------------------------
+# Better Typography
+# ----------------------------------------------
+
+# TODO: Make this work
+
+# require 'typogruby'
+# require 'nokogiri'
+
+#use Rack::typogruby
+
+#module Rack
+#  class Typo
+
+#    def initialize(app)
+#      @app = app
+#    end
+
+#    def call(env)
+#      status, headers, response = @app.call(env)
+#      if headers["Content-Type"].include? "text/html"
+#        s = ""
+#        response.body.each { |x| s << x}
+#        doc = Nokogiri::HTML(s)
+#        doc.encoding = 'UTF-8'
+
+#        doc.at_css("body").traverse do |node|
+#          if node.text?
+#            node.replace(Nokogiri::HTML.fragment(Typogruby.improve(node.content)))
+#          end
+#        end
+
+#        response.body = doc.to_html.lines.to_a
+#      end
+#      [status, headers, response]
+#    end
+
+#  end
+#end
+
+#activate :typogruby
+
+
 
 # ----------------------------------------------
 # Page options, layouts, aliases and proxies
