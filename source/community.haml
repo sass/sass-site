@@ -30,32 +30,58 @@
       %li= link_to "Viget Inspire", 'http://viget.com/inspire/search/YTo2OntzOjg6ImtleXdvcmRzIjtzOjQ6InNhc3MiO3M6MTE6InNlYXJjaF9tb2RlIjtzOjM6ImFsbCI7czoxMToicmVzdWx0X3BhZ2UiO3M6MTQ6Imluc3BpcmUvc2VhcmNoIjtzOjEwOiJjb2xsZWN0aW9uIjthOjE6e2k6MDtzOjE6IjEiO31zOjEwOiJsb29zZV9lbmRzIjtiOjE7czo4OiJjYXRlZ29yeSI7czozOiIxMjUiO30'
       %li= link_to "Unmatched Style", 'http://www.google.com/cse?cx=partner-pub-1988806651014029%3A4kuybaak597&ie=ISO-8859-1&q=sass#gsc.tab=0&gsc.q=sass&gsc.page=1'
 
-.tutorials
-  %h2 Classes & Tutorials
+.training
+  %h2 Tutorials
 
   %ul
-    %li= link_to "CodeSchool", ''
-    %li= link_to "", ''
-    %li= link_to "", ''
-    %li= link_to "", ''
-    %li= link_to "", ''
-    %li= link_to "", ''
+    %li= link_to "CodeSchool", 'http://www.codeschool.com/courses/assembling-sass'
+    %li= link_to "LevelUp Tuts", 'http://leveluptuts.com/tutorials/sass-tutorials'
+    %li= link_to "Lynda.com", 'http://www.lynda.com/CSS-tutorials/CSS-LESS-SASS/107921-2.html'
+
+.books
+  %h2 Books
+
+  %ul
+    %li= link_to "Sass for Web Designers", 'http://www.abookapart.com/products/sass-for-web-designers'
+    %li= link_to "Pragmatic Guide to Sass", 'http://pragprog.com/book/pg_sass/pragmatic-guide-to-sass'
+    %li= link_to "Sass and Compass in Action", 'http://manning.com/netherland/'
 
 .projects
-  %h2 Projects
+  %h2 Projects & Frameworks
 
   %ul
-    %li= link_to "Compass", ''
-    %li= link_to "Susy", ''
-    %li= link_to "Bourbon", ''
-    %li= link_to "Neat", ''
-    %li= link_to "Zurb Foundation", ''
-    %li= link_to "320 and Up", ''
-    %li= link_to "Twitter Bootstrap", ''
+    %li= link_to "Compass", 'http://compass-style.org/'
+    %li= link_to "Susy", 'http://susy.oddbird.net/'
+    %li= link_to "Bourbon", 'http://bourbon.io/'
+    %li= link_to "Neat", 'http://neat.bourbon.io/'
+    %li= link_to "Zurb Foundation", 'http://foundation.zurb.com/'
+    %li= link_to "320 and Up", 'https://github.com/malarkey/320andup/'
+    %li= link_to "Twitter Bootstrap", 'https://github.com/jlong/sass-twitter-bootstrap'
+    %li= link_to "Gravity", 'http://gravityframework.com/'
 
 .contribute
   %h2 Contribute
 
+  %p Sass is an open source projects and we encourage you to contribute. You can contribute with bug reports and feature requests or if you have code to contribute we will love you forever.
+
+  %p When adding bug reports, feature requests, or code there are a couple of primary branches we use.
+
+  %ol
+    %li
+      %h3= link_to "Stable", "https://github.com/nex3/sass"
+      %p The stable branch is where we do development on the released version. The majority of bug fixes should go here. If you're just reporting a bug <a href="https://github.com/nex3/sass/issues"add an issue</a> and note the version of Sass where you experienced the issue in your comment. If you have a some code to contribute, fork the stable branch and send us a pull request. We'll review your patch and either accept or decline with comments.
+
+    %li
+      %h3= link_to "Master", "https://github.com/nex3/sass/tree/master"
+      %p The master branch is where we keep track of the next version of Sass. New feature requests should be made here. Similar to submitting patches, for the project and send us a pull request. We'll review your pull request and either accept or decline. If we decline we'll make a few comments in the pull request for changes or a reason the pull request was declined.
+
+  %h3 Pull Requests & Patches
+
+  %p Here are a few simple things you'll need to do when submitting a patch via pull request:
+
   %ul
-    %li Mailing list
-    %li Github (create a CONTRIBUTE file to outline the contribution process)
+    %li Your commit message should be well written, descriptive and contain proper grammar and punctuation.
+    %li The first line of your commit message should be a short, full sentence.
+    %li Your commit should also contain any appropriate unit tests
+    %li Add your changes to the changelog for the correct branch. The changelog is in <code>doc-src/SASS_CHANGELOG.md</code>
+    %li If your change is user-facing, update the appropriate section in reference documentation.
