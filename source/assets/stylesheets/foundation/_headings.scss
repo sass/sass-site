@@ -14,13 +14,15 @@ $heading-3-text-color: $regent-grey !default;
 
 #{headings(1, 3)} {
   @extend %block-text;
+  text-align: center;
   line-height: $line-height-reset;
 }
 
 h1,
 h3 {
+  font-weight: 300;
   @extend %chaparral-pro-regular;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.025em;
 }
 
 h1 {

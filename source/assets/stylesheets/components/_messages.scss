@@ -17,6 +17,4 @@ $message-background-color: $callout-background-color !default;
   @include box-shadow-both;
 
   ul { @include reset-list; }
-
-  strong { @extend %chaparral-pro-semibold; }
 }

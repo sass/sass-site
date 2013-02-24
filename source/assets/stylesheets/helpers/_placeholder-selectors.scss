@@ -4,18 +4,19 @@
 
 
 
-%source-sans-pro-regular { @include font-face($source-sans-pro-regular);     }
-%source-sans-pro-bold    { @include font-face($source-sans-pro-bold, 600);   }
+%source-sans-pro      { @include font-face($source-sans-pro, 400); }
+%source-sans-pro-bold { @include font-face($source-sans-pro, 600); }
 
-%chaparral-pro-regular   { @include font-face($chaparral-pro-regular, 400);  }
-%chaparral-pro-semibold  { @include font-face($chaparral-pro-semibold, 600); }
+%chaparral-pro        { @include font-face($chaparral-pro, 400);   }
+%chaparral-pro-bold   { @include font-face($chaparral-pro, 600);   }
 
-%source-code-pro-regular { @include font-face($source-code-pro-regular);     }
+%source-code-pro      { @include font-face($source-code-pro, 400); }
+%source-code-pro-bold { @include font-face($source-code-pro, 700); }
 
 
 
 %caps {
-  @extend %source-sans-pro-bold;
+  font-weight: bold;
   @include font-size($font-size-small);
   letter-spacing: .0625em;
   text-transform: uppercase;

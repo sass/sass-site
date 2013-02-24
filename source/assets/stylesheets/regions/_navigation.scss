@@ -36,8 +36,8 @@ $navigation-border-color:     $regent-grey !default;
   .navigation {
     display: none;
     padding: {
-         top: 0;
-      bottom: 0;
+         top: .5em;
+      bottom: .5em;
     }
 
     li {
@@ -60,10 +60,19 @@ $navigation-border-color:     $regent-grey !default;
 
 @mixin navigation-small-tablet {
   .navigation {
+    padding: {
+      top:    0;
+      bottom: 0;
+    }
+
     li { border-bottom: 0; }
 
     ul {
       @extend %horizontal-list-inline-small-tablet;
+      margin: {
+        right: -$gutter-width;
+        left:  -$gutter-width;
+      }
       white-space: nowrap;
     }
 

@@ -5,16 +5,17 @@
 
 @import "../vendor/solarized";
 
-
-
-$code-background-color: $iron          !default;
+// Code colors copied from pygments so I can match non-pygmented code
+$code-background-color: #f4f4f4        !default;
+$code-border-color:     #eee           !default;
 $code-text-color:       $midnight-blue !default;
 
 
 
 pre,
 code {
-  @extend %source-code-pro-regular;
+  @extend %source-code-pro;
+  border: 1px solid #eee;
   @include font-size($font-size-small);
   background: $code-background-color;
   color: $code-text-color;
@@ -28,8 +29,29 @@ code {
 
 pre {
   margin: .625em 0;
-  padding: 1em;
+  padding: .75em 1em;
   text-align: left;
 
-  code { padding: 0; }
+  code {
+    border: 0;
+    padding: 0;
+    background: none;
+  }
+}
+
+.highlight {
+  margin: .625em 0;
+
+  code,
+  pre {
+    border: 0;
+    background: none;
+  }
+
+  pre {
+    margin: {
+      top:    0;
+      bottom: 0;
+    }
+  }
 }

@@ -14,14 +14,10 @@
 
 @mixin slides-iPhone {
   .slide-navigation {
-    @extend %horizontal-list-iPhone;
+    @extend %clearfix-iPhone;
 
     li {
       @include span-columns(2);
-      padding: {
-        right: $gutter-width;
-        left: $gutter-width;
-      }
 
       &:nth-child(even) { @include omega; }
     }

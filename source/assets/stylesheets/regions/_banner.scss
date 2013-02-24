@@ -32,18 +32,14 @@ $banner-background-color: $background-alt-color !default;
 // iPhone
 
 @mixin banner-iPhone {
-  .banner {
+  .banner h1 {
+    @include span-columns(3);
+    @include font-size($font-size-large);
     text-align: left;
-
-    h1 {
-      @include span-columns(3);
-      @include font-size($font-size-large);
-    }
   }
 
   .skip-navigation {
     @include span-columns(1 omega);
-    padding-top: 1em;
 
     .button {
       @include float-right;
@@ -52,9 +48,7 @@ $banner-background-color: $background-alt-color !default;
     }
   }
 
-  .skip-content {
-    @extend %hidden-iPhone;
-  }
+  .skip-content { @extend %hidden-iPhone; }
 }
 
 

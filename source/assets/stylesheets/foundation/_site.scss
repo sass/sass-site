@@ -5,17 +5,14 @@
 
 html {
   font-size: 62.5%;
-  text: {
-    rendering: optimizelegibility;
-    align: center;
-  }
+  text-rendering: optimizelegibility;
   @include background($background-color image_url("textures/light.gif"));
   color: $text-color;
   @include text-shadow-light;
 }
 
 body {
-  font: 400 #{$font-size}px/#{$line-height} $source-sans-pro-regular {
+  font: 400 #{$font-size}px/#{$line-height} $source-sans-pro {
     size: #{$font-size / 10}rem;
   }
   background-color: transparent;

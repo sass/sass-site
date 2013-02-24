@@ -12,7 +12,7 @@ $button-text-color:              $white   !default;
 
 .button {
   @extend  %caps;
-  padding: 0 1em;
+  padding: 0 .5em;
   @include tappable;
   border: 0;
   @include border-radius(.25em);
@@ -23,6 +23,16 @@ $button-text-color:              $white   !default;
   @include box-shadow-both;
   @include link($button-text-color, $button-text-color, $button-text-color);
   @include text-shadow-dark;
+
+  // hack to make sure buttons than have wrapped text don't look funky and
+  // text is vertically centered no matter if it's 1 line or 2.
+  display: table;
+
+  .wrapped {
+    display: table-cell;
+    line-height: $line-height-reset;
+    vertical-align: middle;
+  }
 
   #{$hover} { background: $button-background-hover-color;  }
   &:active  { background: $button-background-active-color; }

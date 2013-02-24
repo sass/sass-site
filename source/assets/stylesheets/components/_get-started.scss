@@ -1,19 +1,17 @@
 // ===========================================================================
-// QUICK STARTS
+// GET STARTED
 
 
 
-.quick-starts {
-  @extend %content-list;
-}
+.get-started { @extend %content-list; }
 
 
 
 // ---------------------------------------------------------------------------
 // SMALL TABLET
 
-@mixin quick-starts-small-tablet {
-  .quick-starts {
+@mixin get-started-small-tablet {
+  .get-started {
     @extend %clearfix-small-tablet;
 
     li {
