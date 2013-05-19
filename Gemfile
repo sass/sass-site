@@ -15,7 +15,6 @@ gem "redcarpet"
 
 # Better Typography
 gem "typogruby"
-gem "nokogiri"
 
 # Styleguide generator
 gem "kss"
