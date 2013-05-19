@@ -15,7 +15,7 @@
     @extend %clearfix-small-tablet;
 
     li {
-      @include span-columns(2);
+      @include span-columns(1);
 
       &:last-child { @include omega; }
     }
