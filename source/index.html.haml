@@ -2,9 +2,40 @@
 title: Sass | Syntactically Awesome Style Sheets
 ---
 
-%h1 CSS with superpowers
+.hero
+  .left-content
+    %h1 CSS with superpowers
 
-%p Sass is the most mature, stable CSS preprocessor in the world. It's been around for 7 years and is trusted by hundreds of development shops and companies around the world.
+    %p Sass is the most mature, stable, and powerful professional grade CSS extension language in the world. 
+  .right-content
+    %h2 Getting Started Is Easy
+    %ol
+      %li.button= link_to "Install Sass", "install"
+      %li.button= link_to "Learn Sass", "guide"
+      %li.button= link_to "Get Involved", "community"
+
+
+
+.features
+  %h2 Features
+  %ul
+    %li
+      %h3 CSS Compatible
+      %p 
+        Sass is completely compatible with all versions of CSS. We take this compability seriously, so that you can seemlessly use any available CSS libraries.
+    %li
+      %h3 Feature Rich
+      %p 
+        Sass boasts more features and abilities than any other CSS extension language out there. The Sass Core Team has worked endlessly to not only keep up, but stay ahead.
+    %li
+      %h3 Mature
+      %p 
+        Sass has been actively supported for 
+        = time_ago_in_words DateTime.parse("Tue Nov 28 19:43:58 2006 +0000")
+        by its loving Core Team.
+    %li
+      %h3 Large Community
+      %p Sass is actively supported and developed by a consortium of several  tech companies and hundreds of developers.
 
 
 - content_for :section_2 do
