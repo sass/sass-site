@@ -1,26 +1,22 @@
 %h1 Things happening in the community
+%p
+  Sass has an awesome community of designers and developers who love to spread the word. There are a number of 
+  =link_to "Sass blogs", "#Blogs"
+  (including 
+  =link_to "a few particular articles"
+  we recommend reading), and even a few
+  =link_to "books about Sass", "#Books"
+  out there.
+
+%p
+  Finally, as an open source project, we rely on everyone to keep Sass as stable as it is. Feel free to
+  =link_to "contribute", "#Contribute"
+  to Sass by submitting a patch via a pull request.
 
 .articles
-  %h2 Sass Articles on the Web
-  / Will clean up these articles later. It'll be a curated list of
-  / articles that we'll update from time to time.
-  / May be worthwhile to also list the source website, date and author
-  %ul
-    %li= link_to "Sass vs. Less", 'http://css-tricks.com/sass-vs-less/'
-    %li= link_to "Getting Started with Sass and Compass", 'http://thesassway.com/beginner/getting-started-with-sass-and-compass'
-    %li= link_to "Nested Selectors: The Inception Rule", 'http://thesassway.com/beginner/the-inception-rule'
-    %li= link_to "Using Compass and Sass for your Next CSS Project", 'http://net.tutsplus.com/tutorials/html-css-techniques/using-compass-and-sass-for-css-in-your-next-project/'
-    %li= link_to "Getting Sassy with CSS", 'http://www.sencha.com/blog/getting-sassy-with-css/'
-    %li= link_to "A Newb’s Guide to Syntactically Awesome Stylesheets (Sass) – part 1", 'http://unmatchedstyle.com/news/a-newbs-guide-to-syntactically-awesome-stylesheets-sass-part-1.php'
-    %li= link_to "Using Bower with Sass & Compass", 'http://anthonyshort.me/2012/10/using-bower-with-sass-and-compass'
-    %li= link_to "Preprocess THIS!", 'http://cognition.happycog.com/article/preprocess-this'
-    %li= link_to "Sass Sleuth: Debugging Sass in Webkit Browsers", 'hhttp://www.mobify.com/dev/sass-sleuth-debugging-sass-in-webkit-browsers/'
-    %li= link_to "Improve your Responsive Design Workflow with Sass", 'http://www.netmagazine.com/tutorials/improve-your-responsive-design-workflow-sass'
-    %li= link_to "Stop the Pain of Vanilla CSS and Get Relief by Adding Toppings with Sass", 'http://www.zurb.com/article/1031/stop-the-pain-of-vanilla-css-and-get-reli'
-    %li= link_to "Building a Nested Responsive Grid with Sass & Compass", 'http://viget.com/inspire/building-a-nested-responsive-grid-with-sass-compass'
-
   %nav#favorite-blogs
-    %h2 Sass Blogs
+    %a{:name=>"Blogs"} 
+      %h2 Sass Blogs
     / Need to research a couple more of these
     %ul
       %li= link_to "The Sass Way", 'http://thesassway.com/'
@@ -29,6 +25,48 @@
       %li= link_to "NetTuts", 'http://net.tutsplus.com/?s=sass'
       %li= link_to "Viget Inspire", 'http://viget.com/inspire/search/YTo2OntzOjg6ImtleXdvcmRzIjtzOjQ6InNhc3MiO3M6MTE6InNlYXJjaF9tb2RlIjtzOjM6ImFsbCI7czoxMToicmVzdWx0X3BhZ2UiO3M6MTQ6Imluc3BpcmUvc2VhcmNoIjtzOjEwOiJjb2xsZWN0aW9uIjthOjE6e2k6MDtzOjE6IjEiO31zOjEwOiJsb29zZV9lbmRzIjtiOjE7czo4OiJjYXRlZ29yeSI7czozOiIxMjUiO30'
       %li= link_to "Unmatched Style", 'http://www.google.com/cse?cx=partner-pub-1988806651014029%3A4kuybaak597&ie=ISO-8859-1&q=sass#gsc.tab=0&gsc.q=sass&gsc.page=1'
+  %a{:name=>"Articles"}
+    %h2 Sass Articles on the Web
+  / Will clean up these articles later. It'll be a curated list of
+  / articles that we'll update from time to time.
+  / May be worthwhile to also list the source website, date and author
+  %ul
+    %li
+      = link_to "Sass vs. Less", 'http://css-tricks.com/sass-vs-less/'
+      – by Chris Coyier, from CSS Tricks, May 2012
+    %li
+      = link_to "Getting Started with Sass and Compass", 'http://thesassway.com/beginner/getting-started-with-sass-and-compass'
+      – by Adam Stacoviak, from The Sass Way, June 2011
+    %li
+      = link_to "Nested Selectors: The Inception Rule", 'http://thesassway.com/beginner/the-inception-rule'
+      – by Mario "Kuroir" Ricalde, from The Sass Way, November 2011
+    %li
+      = link_to "Using Compass and Sass for your Next CSS Project", 'http://net.tutsplus.com/tutorials/html-css-techniques/using-compass-and-sass-for-css-in-your-next-project/'
+      – by Alex Coomans, from Net Tuts, August 2009
+    %li
+      = link_to "Getting Sassy with CSS", 'http://www.sencha.com/blog/getting-sassy-with-css/'
+      – by David Kaneda, from the Sencha blog, June 2010
+    %li
+      = link_to "A Newb’s Guide to Syntactically Awesome Stylesheets (Sass) – part 1", 'http://unmatchedstyle.com/news/a-newbs-guide-to-syntactically-awesome-stylesheets-sass-part-1.php'
+      – by Dale Sande, from Unmatched Style, September 2012
+    %li
+      = link_to "Using Bower with Sass & Compass", 'http://anthonyshort.me/2012/10/using-bower-with-sass-and-compass'
+      – by Anthony Short, October 2012
+    %li
+      = link_to "Preprocess THIS!", 'http://cognition.happycog.com/article/preprocess-this'
+      – by Allison Wagner, from Cognition, September 2012
+    %li
+      = link_to "Sass Sleuth: Debugging Sass in Webkit Browsers", 'http://www.mobify.com/dev/sass-sleuth-debugging-sass-in-webkit-browsers/'
+      – by Roman, from the Mobify blog, August 2012
+    %li
+      = link_to "Improve your Responsive Design Workflow with Sass", 'http://www.netmagazine.com/tutorials/improve-your-responsive-design-workflow-sass'
+      – by Ryan Taylor, from .net, October 2011
+    %li
+      = link_to "Stop the Pain of Vanilla CSS and Get Relief by Adding Toppings with Sass", 'http://www.zurb.com/article/1031/stop-the-pain-of-vanilla-css-and-get-reli'
+      – by Chris, from the Zurb blog, July 2012
+    %li
+      = link_to "Building a Nested Responsive Grid with Sass & Compass", 'http://viget.com/inspire/building-a-nested-responsive-grid-with-sass-compass'
+      – by Trevor Davis, from Viget, May 2012
 
 .training
   %h2 Tutorials
@@ -39,7 +77,8 @@
     %li= link_to "Lynda.com", 'http://www.lynda.com/CSS-tutorials/CSS-LESS-SASS/107921-2.html'
 
 .books
-  %h2 Books
+  %a{:name=>"Books"}
+    %h2 Sass Books
 
   %ul
     %li= link_to "Sass for Web Designers", 'http://www.abookapart.com/products/sass-for-web-designers'
@@ -50,17 +89,34 @@
   %h2 Projects & Frameworks
 
   %ul
-    %li= link_to "Compass", 'http://compass-style.org/'
-    %li= link_to "Susy", 'http://susy.oddbird.net/'
-    %li= link_to "Bourbon", 'http://bourbon.io/'
-    %li= link_to "Neat", 'http://neat.bourbon.io/'
-    %li= link_to "Zurb Foundation", 'http://foundation.zurb.com/'
-    %li= link_to "320 and Up", 'https://github.com/malarkey/320andup/'
-    %li= link_to "Twitter Bootstrap", 'https://github.com/jlong/sass-twitter-bootstrap'
-    %li= link_to "Gravity", 'http://gravityframework.com/'
+    %li
+      = link_to "Compass", 'http://compass-style.org/'
+      – a CSS (and Sass!) authoring framework
+    %li
+      = link_to "Susy", 'http://susy.oddbird.net/'
+      – a responsive grid layout built for Compass
+    %li
+      = link_to "Bourbon", 'http://bourbon.io/'
+      – a lightweight mixin library 
+    %li
+      = link_to "Neat", 'http://neat.bourbon.io/'
+      – a mixin-based grid layout system
+    %li
+      = link_to "Zurb Foundation", 'http://foundation.zurb.com/'
+      – a responsive front-end framework
+    %li
+      = link_to "Rock Hammer", 'https://github.com/malarkey/rock-hammer/'
+      – a starting framework with some basic styles for a project
+    %li
+      = link_to "Twitter Bootstrap", 'https://github.com/jlong/sass-twitter-bootstrap'
+      – the ubiquitous framework... this time written in Sass!
+    %li
+      = link_to "Gravity", 'http://gravityframework.com/'
+      – a framework for making HTML5 websites with Sass
 
 .contribute
-  %h2 Contribute
+  %a{:name=>"Contribute"}
+    %h2 Contribute
 
   %p Sass is an open source projects and we encourage you to contribute. You can contribute with bug reports and feature requests or if you have code to contribute we will love you forever.
 
@@ -80,8 +136,8 @@
   %p Here are a few simple things you'll need to do when submitting a patch via pull request:
 
   %ul
-    %li Your commit message should be well written, descriptive and contain proper grammar and punctuation.
-    %li The first line of your commit message should be a short, full sentence.
-    %li Your commit should also contain any appropriate unit tests
+    %li Write a commit message that is well-written, descriptive and contain proper grammar and punctuation.
+    %li Make sure the first line of your commit message is a short, full sentence.
+    %li Contain any appropriate unit tests in your commit
     %li Add your changes to the changelog for the correct branch. The changelog is in <code>doc-src/SASS_CHANGELOG.md</code>
     %li If your change is user-facing, update the appropriate section in reference documentation.
