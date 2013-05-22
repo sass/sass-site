@@ -83,7 +83,6 @@ GEM
     mini_magick (3.4)
       subexec (~> 0.2.1)
     multi_json (1.3.6)
-    nokogiri (1.5.6)
     padrino-core (0.10.7)
       activesupport (~> 3.2.0)
       http_router (~> 0.10.2)
@@ -158,7 +157,6 @@ DEPENDENCIES
   middleman-livereload
   middleman-smusher
   middleman-syntax
-  nokogiri
   redcarpet
   slim
   susy
