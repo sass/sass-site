@@ -42,7 +42,7 @@ end
 
 use Rack::Deflater
 use Rack::Auth::Basic, "Restricted Area" do |username, password|
-  [username, password] == ['pingpong', 'Y35_Ikn0w']
+  [username, password] == ['teamsassypants', 'super.sassy.pants']
 end
 
 use Rack::TryStatic, :root => "build", :urls => %w[/], :try => ['.html', 'index.html', '/index.html']
