@@ -13,6 +13,9 @@
 /.bundle
 .bundle
 
+# Ignore rbenv local .ruby-version file
+.ruby-version
+
 # Ignore the build directory
 /build
 build/
