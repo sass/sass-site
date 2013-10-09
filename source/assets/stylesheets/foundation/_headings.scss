@@ -39,7 +39,7 @@ h2,
 h3 { font-family: $font-family-display; }
 
 #{headings(3, 4)} {
-  @include padding-leader(2);
+  @include padding-leader;
   @include padding-trailer;
   @include font-size-regular;
   font-weight: $font-weight-bold;

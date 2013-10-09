@@ -3,10 +3,12 @@ title: Responsive Test
 layout: responsive_test
 ---
 
+
+
 .width-only.responsive-test
-  %ul{style: "width: 4000px"}
+  %ul{style: "width: 4202px"}
     - data.layout.resolutions.each_with_index do |resolution, index|
       %li.frame{id: "f" + "#{index + 1}"}
-        %h3= resolution.size
+        %h3= resolution.width
         = partial "layouts/components/progress"
-        %iframe(sandbox="allow-same-origin allow-forms allow-scripts" seamless=""){width: "#{resolution.size + 15}"}
+        %iframe(sandbox="allow-same-origin allow-forms allow-scripts" seamless=""){width: "#{resolution.width + 15}", height: "#{resolution.height}"}

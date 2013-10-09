@@ -5,14 +5,20 @@ susy:
 
 resolutions:
   - target: mobile-small
-    width: 240
+    width:  240
+    height: 320
   - target: mobile-large
-    width: 320
+    width:  320
+    height: 480
   - target: tablet-small
-    width: 480
+    width:  480
+    height: 768
   - target: tablet-large
-    width: 768
+    width:  768
+    height: 1024
   - target: screen-small
-    width: 1024
+    width:  1024
+    height: 1280
   - target: screen-large
-    width: 1280
+    width:  1280
+    height: 1024
