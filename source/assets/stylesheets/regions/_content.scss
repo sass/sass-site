@@ -1,11 +1,16 @@
-// ===========================================================================
-// CONTENT
-
-
-
 .content {
-  padding: {
-       top: 2em;
-    bottom: 2em;
+  @extend .row;
+  @include transition-property(padding, text-align);
+
+  @include at-breakpoint($tablet-large) {
+    @include padding-trailer;
+    text-align: left;
+
+    h2,
+    h3 {
+      text-align: center;
+
+      .do-columns & { text-align: left; }
+    }
   }
 }

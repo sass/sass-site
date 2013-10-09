@@ -1,0 +1,17 @@
+---
+title: Responsive Design
+---
+
+%h2 Tools & Resources
+%ul
+  %li
+    %strong.introduction= link_to "Responsive Test", "/styleguide/responsive-test"
+  %li= link_to "Susy", "http://susy.oddbird.net/"
+  %li= link_to "The EMs have it: Proportional Media Queries FTW!", "http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/"
+
+%h2 Resolutions
+- data.layout.resolutions.each do |resolution|
+  %dl.guide-description-list
+    %dt
+      %code= "$" + resolution.target
+    %dd= resolution.width

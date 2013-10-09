@@ -1,0 +1,10 @@
+.page-header
+  .container(xmlns:v="http://rdf.data-vocabulary.org/#")
+    %h1
+      - if current_page.data.h1?
+        = current_page.data.h1
+      - else
+        = current_page.data.title
+
+    - if current_page.data.description?
+      %p= current_page.data.description

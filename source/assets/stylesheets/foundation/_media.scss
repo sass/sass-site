@@ -1,24 +1,19 @@
-// ===========================================================================
-// MEDIA
-
-
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  margin: 1em 0;
-  border: 0 {
-    top: 1px solid $border-color;
-  }
-  padding: 0;
-  height: 1px;
+img {
+  display: inline-block;
+  border: 0;
+  vertical-align: middle;
 }
 
-/*
- * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
- */
-
-img { vertical-align: middle; }
+hr {
+  $new-spacing: ($base-line-height - 1) / $base-line-height;
+  @include leader($new-spacing);
+  @include trailer($new-spacing);
+  -moz-box-sizing: content-box;
+       box-sizing: content-box;
+  display: block;
+  padding: 0;
+  height: 1px;
+  border: 0 {
+    top: 1px solid $color-border;
+  }
+}

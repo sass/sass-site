@@ -1,25 +1,115 @@
-// ===========================================================================
-// FORMS
-
-
-
-button,
-input,
-select,
-textarea { color: $text-color; }
-
-/*
- * Remove default fieldset styles.
- */
-
+form,
 fieldset {
-   margin: 0;
-   border: 0;
-  padding: 0;
+  @extend %reset-margin;
+  @extend %reset-padding;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
+fieldset { @extend %reset-border; }
 
-textarea { resize: vertical; }
+label {
+  @extend %bold-elements;
+  @include padding-leader;
+  display: inline-block;
+}
+
+input,
+button {
+  @extend %reset-margin;
+  font: {
+     size: inherit;
+    family: inherit;
+  }
+  line-height: normal;
+  background-image: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+input[type="text"],
+button {
+  @include rhythm-borders(1px, .44);
+  display: block;
+  border: {
+    color: $color-border;
+    radius: $border-radius;
+  }
+  padding: {
+    right: $gutter-width;
+     left: $gutter-width;
+  }
+  width: 100%;
+  vertical-align: middle;
+
+  @include at-breakpoint($mobile-large) {
+    @include padding-leader(.15);
+    @include padding-trailer(.125);
+    display: inline-block;
+    width: auto;
+  }
+}
+
+
+input {
+  &[type="text"] {
+    @each $placeholder in "-moz", ":-moz", "-ms", ":-webkit" {
+      &:#{$placeholder}-placeholder { color: $color-text-weak; }
+    }
+    @include box-shadow(0 1px 1px $color-shadow inset);
+    @include transition(color-border ease-in-out 0.15s, box-shadow ease-in-out 0.15s);
+
+    &:focus {
+      @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(red($color-accent), green($color-accent), blue($color-accent), 0.6));
+      color-border: $color-accent;
+      outline: 0;
+      background: $color-background;
+    }
+  }
+
+  &[type="radio"],
+  &[type="checkbox"] {
+    @extend %tab-focus;
+    box-sizing: border-box;
+    margin: 4px 0 0 {
+      top: 1px \9;
+    }
+    line-height: normal;
+  }
+}
+
+button {
+  @extend %bold-elements;
+  @include box-shadow(0 2px 1px $color-shadow);
+  -webkit-appearance: button;
+  text-transform: none;
+  text-align: center;
+  white-space: nowrap;
+  background: $color-background-shade;
+  cursor: pointer;
+
+  &,
+  &:hover,
+  &:focus { color: $color-text-strong; }
+
+  &:hover,
+  &:focus {
+    background: lighten(mix($color-background-shade, $color-accent), 25);
+  }
+
+  &:focus { @extend %tab-focus; }
+
+  &:active,
+  &.active {
+    @include box-shadow(inset 0 3px 5px $color-shadow);
+    outline: 0;
+  }
+}
+
+%tab-focus {
+  outline: thin dotted $color-text;
+  outline: 5px auto -webkit-focus-ring-color {
+    offset: -2px;
+  }
+}

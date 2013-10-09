@@ -1,0 +1,12 @@
+---
+title: Responsive Test
+layout: responsive_test
+---
+
+.width-only.responsive-test
+  %ul{style: "width: 4000px"}
+    - data.layout.resolutions.each_with_index do |resolution, index|
+      %li.frame{id: "f" + "#{index + 1}"}
+        %h3= resolution.size
+        = partial "layouts/components/progress"
+        %iframe(sandbox="allow-same-origin allow-forms allow-scripts" seamless=""){width: "#{resolution.size + 15}"}

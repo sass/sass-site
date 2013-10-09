@@ -1,0 +1,11 @@
+.introduction {
+  @include font-size-large;
+  padding-bottom: 0;
+  max-width: 35em;
+  text-align: center;
+
+  .main & {
+    @include trailer(1, $font-size-large);
+    text-align: left;
+  }
+}

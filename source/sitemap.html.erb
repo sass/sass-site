@@ -1,0 +1,8 @@
+<% root_url = data.sitemap.url %>
+<ul>
+    <% sitemap.resources.each do |page| %>
+        <% if page.url =~ /\.html/ %>
+            <li><a href="<%= "#{root_url}#{page.url}" %>"><%= "#{root_url}#{page.url}" %></a></li>
+        <% end %>
+    <% end %>
+</ul>

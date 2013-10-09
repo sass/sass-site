@@ -1,20 +1,12 @@
-// ===========================================================================
-// SLIDES
-
-
-
 .slide-navigation li { padding: .25em 0; }
 
-.slides { @extend %content-list; }
+.slides { @extend %reset-list; }
 
 
 
-// ---------------------------------------------------------------------------
-// iPhone
-
-@mixin slides-iPhone {
+@include at-breakpoint($mobile-large) {
   .slide-navigation {
-    @extend %clearfix-iPhone;
+    @extend %clearfix-mobile-large;
 
     li {
       @include span-columns(2);
@@ -33,9 +25,6 @@
 
 
 
-// ---------------------------------------------------------------------------
-// SMALL TABLET
-
-@mixin slides-small-tablet {
+@include at-breakpoint($tablet-small) {
   .slides p { text-align: left; }
 }

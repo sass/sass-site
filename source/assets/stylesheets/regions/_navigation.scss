@@ -1,95 +1,85 @@
-// ===========================================================================
-// NAVIGATION
-
-
-
-$navigation-background-color: $pale-sky    !default;
-$navigation-text-color:       $iron        !default;
-$navigation-border-color:     $regent-grey !default;
-
-
-
 .navigation {
-  padding: {
-       top: 1em;
-    bottom: 1em;
+  margin: 0 #{-$gutter-width};
+  @include padding-leader;
+  background: $color-background;
+
+  li {
+    @include trailer(.5);
+
+    &:last-child { margin-bottom: 0; }
   }
-  background: $navigation-background-color;
-  color: $navigation-text-color;
-  @include text-shadow-dark;
 
   a {
-    @extend %caps;
-    border: 0;
-    @include link(lighten($navigation-text-color, 5%),
-                  lighten($navigation-text-color, 15%),
-                  lighten($navigation-text-color, 25%));
-  }
-}
-
-
-
-// ---------------------------------------------------------------------------
-// iPhone
-
-@mixin navigation-iPhone {
-  .navigation {
-    display: none;
+    @include padding-leader(.5);
+    @include padding-trailer(.5);
+    display: block;
     padding: {
-         top: .5em;
-      bottom: .5em;
+      right: $gutter-width;
+       left: $gutter-width;
+    }
+    background: mix($color-background, $color-background-shade);
+
+    &:hover,
+    &:focus { background: $color-background-shade; }
+  }
+
+  @include at-breakpoint($tablet-small) {
+    margin: {
+      right: 0;
+       left: 0;
+    }
+
+    ul { @extend %clear-fix-tablet-small; }
+
+    li {
+      float: left;
+      width: 50%;
+
+      &:nth-child(odd) {
+        clear: both;
+        padding-right: $gutter-width / 2;
+      }
+
+      &:nth-child(even) { padding-left: $gutter-width / 2; }
+    }
+  }
+
+  @include at-breakpoint($tablet-large) {
+    @extend %table-cell-tablet-large;
+     margin: 0;
+    padding: 0;
+    text-align: right;
+    background: none;
+
+    &.collapse { display: table-cell !important; }
+
+    ul {
+      display: inline-block;
+      margin: 0 #{-$gutter-width} 0 $gutter-width;
     }
 
     li {
-      border-bottom: 1px solid $navigation-border-color;
-
-      &:last-child { border: 0; }
-    }
-
-    a {
-      @include tappable;
-      display: block;
-    }
-  }
-}
-
-
-
-// ---------------------------------------------------------------------------
-// SMALL TABLET
-
-@mixin navigation-small-tablet {
-  .navigation {
-    padding: {
-      top:    0;
-      bottom: 0;
-    }
-
-    li { border-bottom: 0; }
-
-    ul {
-      @extend %horizontal-list-inline-small-tablet;
       margin: {
-        right: -$gutter-width;
-        left:  -$gutter-width;
+        right: $gutter-width;
+        bottom: 0;
       }
-      white-space: nowrap;
+      width: auto;
+
+      &:nth-child(odd) {
+        clear: none;
+        padding-right: 0;
+      }
+
+      &:nth-child(even) { padding-left: 0;  }
+
+      &:last-child { margin-right: 0; }
     }
 
     a {
-      padding: {
-        right: $gutter-width;
-         left: $gutter-width;
-      }
+      background: none;
+
+      &:hover,
+      &:focus { background: $color-background-shade; }
     }
   }
-}
-
-
-
-// ---------------------------------------------------------------------------
-// iPad
-
-@mixin navigation-iPad {
-  .navigation { display: block; }
 }

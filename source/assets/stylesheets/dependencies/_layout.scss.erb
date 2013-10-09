@@ -1,0 +1,15 @@
+// Susy Settings
+$total-columns: <%= data.layout.susy.total_columns %>;
+$column-width:  <%= data.layout.susy.column_width %>;
+$gutter-width:  <%= data.layout.susy.gutter_width %>;
+$grid-padding:  $gutter-width;
+
+$container-style: magic;
+
+$border-radius: .25em;
+
+<% data.layout.resolutions.each do |resolution| %>
+$<%= resolution.target %>: <%= resolution.width %>px;
+<% end %>
+
+$sticky-contentinfo-height: rhythm(6);

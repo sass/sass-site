@@ -1,0 +1,22 @@
+---
+title: Color & Theming
+---
+
+%h2 Brand Colors
+%ul.swatches
+  - for swatch in data.color.colors
+    %li{class: "swatch-" + swatch.name}
+      %pre
+        %code
+          = "$" + swatch.name
+          %br/
+          = "#" + swatch.hex
+
+%h2 Usage
+- for swatch in data.color.semantic_colors
+  %dl.guide-description-list.swatches
+    %dt
+      %code= "$color-" + swatch.name
+
+    %dd{class: "swatch-color-" + swatch.name}
+      %code= swatch.value

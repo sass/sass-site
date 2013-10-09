@@ -1,0 +1,23 @@
+- unless data.page.hide_contentinfo
+  %footer.contentinfo(role="contentinfo")
+    %nav.container
+      %ul
+        %li.contentinfo-legal
+          :markdown
+            Sass &copy; 2006&ndash;2013 [Hampton Catlin](#),
+            [Nathan Weizenbaum](#),
+            [Chris Eppstein](http://chriseppstein.github.io/),
+            and&nbsp;numerous&nbsp;contributors.
+
+            It is available for use and modification under the
+            [MIT&nbsp;License](http://sass-lang.com/docs/yardoc/file.MIT-LICENSE.html).
+
+        %li.contentinfo-tools
+          %ul
+            %li= link_to "Style Guide", "/styleguide"
+            %li= link_to "Site Repo", "https://github.com/sass/sass.github.com"
+
+        %li.contentinfo-social
+          %a.twitter-follow-button(href="https://twitter.com/SassCSS" data-show-count="false" data-size="large") Follow @SassCSS
+          :javascript
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

@@ -1,18 +1,5 @@
-// ===========================================================================
-// SASS JS
+//= require ./vendor/plugins
+//= require_tree ./vendor/bootstrap
 
-
-
-// ---------------------------------------------------------------------------
-// HTML5 BOILERPLATE
-
-//= require "vendor/avoid_console_errors"
-
-// Place any jQuery/helper plugins in here.
-
-
-
-// ---------------------------------------------------------------------------
-// Our Stuff
-
-//= require "toggle_navigation"
+//= require_tree ./components
+//= require_tree ./styleguide

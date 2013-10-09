@@ -1,0 +1,33 @@
+.alert {
+  @include padding-leader(.5);
+  @include padding-trailer(.5);
+  background: darken($color-background-invert, 5);
+  color: $color-text-invert;
+
+  ul,
+  p {
+    margin: {
+      right: 0;
+       left: 0;
+    }
+    padding-bottom: 0;
+    max-width: none;
+  }
+
+  a {
+    font-weight: $font-weight-bold;
+    color: darken($color-text-strong-invert, 10%);
+
+    &:hover,
+    &:focus { border-bottom: 1px solid $color-text-invert; }
+  }
+}
+
+.release ul {
+  @extend %horizontal-list;
+  margin: {
+    right: 0;
+     left: 0;
+  }
+  text-align: inherit;
+}

@@ -1,0 +1,21 @@
+---
+title: Layouts & Grid
+---
+
+%h2 Susy Magic Grid
+%p.introduction
+  See the
+  = link_to "Susy Documentation", "http://susy.oddbird.net/demos/grid-types/#demo-magic"
+  for more information.
+
+  - count = 0
+- data.layout.susy.total_columns.times do |num|
+  - count += 1
+  %dl.guide-description-list
+    %dt
+      %code @include span-columns(#{count})
+    %dd{class: "by-#{count}"}
+      .row
+        - count.times do |num|
+          .block
+

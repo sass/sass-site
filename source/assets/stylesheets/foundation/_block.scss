@@ -1,0 +1,16 @@
+footer,
+header,
+main,
+nav,
+section { display: block; }
+
+%block-text,
+p {
+  @extend %reset-margin;
+  @include padding-trailer;
+  margin: {
+    right: auto;
+    left:  auto;
+  }
+  max-width: 56em;
+}

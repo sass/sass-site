@@ -1,0 +1,65 @@
+$contrasted-dark-default:  $color-text-strong;
+$contrasted-light-default: $color-text-strong-invert;
+$contrasted-lightness-threshold: 75%;
+
+.swatches {
+  pre,
+  code {
+    background: none;
+    color: inherit;
+  }
+
+  pre { @include box-shadow(0 0 1px $color-shadow); }
+
+  dd {
+    @include padding-leader(.5);
+    @include padding-trailer(.5);
+    margin-left: 0;
+  }
+}
+
+ul.swatches { @extend .tiled-list; }
+
+<% data.color.colors.each do |color| %>
+  .swatch-<%= color.name %> pre { @include contrasted(#<%= color.hex %>); }
+<% end %>
+
+<% data.color.semantic_colors.each do |color| %>
+  .swatch-color-<%= color.name %> { @include contrasted($color-<%= color.name %>); }
+<% end %>
+
+@include at-breakpoint($mobile-large) {
+  ul.swatches pre {
+    margin: {
+      right: 0;
+       left: 0;
+    }
+  }
+}
+
+@include at-breakpoint($tablet-small) {
+  ul.swatches li {
+    width: 100 / 3 * 1%;
+
+    &:nth-child(2n+3) { clear: none; }
+    &:nth-child(3n+4) { clear: both; }
+  }
+}
+
+@include at-breakpoint($screen-small) {
+  ul.swatches li {
+    width: 25%;
+
+    &:nth-child(3n+4) { clear: none; }
+    &:nth-child(4n+5) { clear: both; }
+  }
+}
+
+@include at-breakpoint($screen-large) {
+  ul.swatches li {
+    width: 20%;
+
+    &:nth-child(4n+5) { clear: none; }
+    &:nth-child(5n+6) { clear: both; }
+  }
+}

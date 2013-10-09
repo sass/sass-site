@@ -1,0 +1,4 @@
+.section-bottom {
+  @include padding-trailer(2);
+  @include background(linear-gradient(mix($color-background-shade, $color-background), transparent));
+}

@@ -1,31 +1,5 @@
-// ===========================================================================
-// GET STARTED
-
-
-
-.get-started { @extend %content-list; }
-
-
-
-// ---------------------------------------------------------------------------
-// SMALL TABLET
-
-@mixin get-started-small-tablet {
-  .get-started {
-    @extend %clearfix-small-tablet;
-
-    li {
-      @include span-columns(1);
-
-      &:last-child { @include omega; }
-    }
-
-    p {
-      text-align: left;
-
-      &.illustration { text-align: center; }
-    }
-  }
-
-  .description { min-height: 8.5em; }
+.get-started ol {
+  @extend %reset-list;
+  @include font-size-x-large;
+  @include adjust-leading-to(2, $font-size-x-large)
 }

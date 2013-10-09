@@ -1,39 +1,45 @@
-// ===========================================================================
-// SITE
+@include border-box-sizing;
+@include establish-baseline;
 
+%reset-margin  { margin: 0; }
+%reset-border  { border: 0; }
+%reset-padding { padding: 0; }
 
+%text {
+  font-family: $font-family-text;
+  color: $color-text;
+}
 
 html {
-  font-size: 62.5%;
-  text-rendering: optimizelegibility;
-  @include background($background-color image_url("textures/light.gif"));
-  color: $text-color;
-  @include text-shadow-light;
+  @extend %text;
+  overflow-x: hidden;
+  -ms-text-size-adjust: 100%;
+  text: {
+    rendering: optimizeLegibility;
+    align: center;
+  }
+  -webkit-tap-highlight-color: rgba($black, 0);
+
+  &.toolkit-baseline { @include debug-vertical-alignment; }
 }
 
 body {
-  font: 400 #{$font-size}px/#{$line-height} $source-sans-pro {
-    size: #{$font-size / 10}rem;
-  }
-  background-color: transparent;
+  @extend %reset-margin;
+  background: none;
 }
 
-/*
- * Remove text-shadow in selection highlight: h5bp.com/i
- * These selection declarations have to be separate.
- * Customize the background color to match your design.
- */
-
-@mixin selection {
-  background:  $selection-background-color;
-  color:       $selection-text-color;
+@mixin theme-selection {
+  background: $color-background-shade;
   text-shadow: none;
 }
 
-::-moz-selection { @include selection; }
-::selection      { @include selection; }
+// These have to be separate.
+::-moz-selection { @include theme-selection; }
+::selection { @include theme-selection; }
 
-%block-text {
-  margin: 0;
-  padding: .5em 0;
+
+
+@include at-breakpoint($tablet-large) {
+  html,
+  body { height: 100%; }
 }

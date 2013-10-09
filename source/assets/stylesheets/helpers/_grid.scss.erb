@@ -1,0 +1,20 @@
+.container {
+  @include container;
+
+  &.toolkit-grid { @include susy-grid-background; }
+
+  <% data.layout.resolutions.each do |resolution| %>
+    @include at-breakpoint($<%= resolution.target %>) {
+      @include set-container-width;
+
+      &.toolkit-grid { @include susy-grid-background; }
+    }
+  <% end %>
+}
+
+
+
+.row {
+  @extend %clear-fix;
+  @include bleed($gutter-width);
+}

@@ -1,0 +1,21 @@
+$colors: <% data.color.colors.each do |swatch| %>$<%= swatch.name %> <% end %>;
+
+@function stripes($position, $colors) {
+  $colors: if(type-of($colors) != 'list', compact($colors), $colors);
+  $gradient: compact();
+  $width: 100% / length($colors);
+
+  @for $i from 1 through length($colors) {
+    $pop: nth($colors,$i);
+    $new: $pop ($width * ($i - 1)), $pop ($width * $i);
+    $gradient: join($gradient, $new, comma);
+  }
+
+  @return linear-gradient($position, $gradient);
+}
+
+.pop-stripe {
+  height: .5em;
+  @include background-image(stripes(left, ($colors)));
+  @include box-shadow(0 -1px 2px rgba(#000, .25) inset);
+}

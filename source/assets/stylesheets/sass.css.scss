@@ -1,95 +1,66 @@
-// ===========================================================================
-// SASS STYLES
-// by Team Sass Design (@teamsassdesign)
-
-
-
-@charset "utf-8";
-
-
-// ---------------------------------------------------------------------------
-// VENDOR
+/*! Sass
+ *  by Team Sass Design (@teamsassdesign)
+ */
 
 @import "compass";
+@import "compass/layout";
 @import "susy";
 
 
 
-// ---------------------------------------------------------------------------
-// DEPENDENCIES
-
-@import "dependencies/typography";
 @import "dependencies/layout";
-@import "dependencies/colors";
-@import "dependencies/themes";
+@import "dependencies/typography";
+@import "dependencies/color";
+@import "dependencies/animations";
 
 
-
-// ---------------------------------------------------------------------------
-// FOUNDATION
-
-// http://paulirish.com/2012/box-sizing-border-box-ftw/
-@include border-box-sizing;
-
-@import "vendor/normalize";
 
 @import "foundation/site";
+@import "foundation/block";
+@import "foundation/inline";
 @import "foundation/headings";
-@import "foundation/text";
 @import "foundation/lists";
-@import "foundation/links";
-@import "foundation/media";
-@import "foundation/code";
+@import "foundation/tables";
 @import "foundation/forms";
+@import "foundation/code";
+@import "foundation/media";
 
 
 
-// ---------------------------------------------------------------------------
-// COMPONENTS
-
-@import "components/messages";
-@import "components/icons";
-@import "components/buttons";
-@import "components/illustrations";
+@import "components/pop-stripe";
+@import "components/type";
+@import "components/page-header";
 @import "components/lists";
+@import "components/tables";
+@import "components/forms";
+@import "components/buttons";
+@import "components/code";
+@import "components/alerts";
+@import "components/progress";
+@import "components/features";
 @import "components/get-started";
-@import "components/current-release";
 @import "components/slides";
-@import "components/pagination";
 
 
 
-// ---------------------------------------------------------------------------
-// REGIONS
-
-@import "regions/container";
-@import "regions/chromeframe";
+@import "regions/page";
 @import "regions/banner";
 @import "regions/navigation";
 @import "regions/content";
+@import "regions/main";
+@import "regions/complementary";
+@import "regions/section-bottom";
 @import "regions/contentinfo";
 
 
 
-// ---------------------------------------------------------------------------
-// PAGES
+@import "helpers/grid";
+@import "helpers/helpers";
 
 
 
-// ---------------------------------------------------------------------------
-// HELPERS
-
-@import "helpers/placeholder-selectors";
-@import "helpers/classes";
+@import "styleguide/guide";
 
 
 
-// ---------------------------------------------------------------------------
-// RESPONSIVE
-
-@import "responsive/iPhone";
-@import "responsive/small-tablet";
-@import "responsive/iPad";
-@import "responsive/screen";
-@import "responsive/high-resolution";
-@import "responsive/print";
+@import "print";

@@ -1,57 +1,37 @@
-// ===========================================================================
-// CODE
-
-
-
-@import "../vendor/solarized";
-
-// Code colors copied from pygments so I can match non-pygmented code
-$code-background-color: #f4f4f4        !default;
-$code-border-color:     #eee           !default;
-$code-text-color:       $midnight-blue !default;
-
-
-
-pre,
-code {
-  @extend %source-code-pro;
-  border: 1px solid #eee;
-  @include font-size($font-size-small);
-  background: $code-background-color;
-  color: $code-text-color;
-  letter-spacing: -0.05em;
+code,
+pre {
+  @include font-size-small;
+  font: {
+    weight: $font-weight-regular;
+    family: $font-family-code;
+  }
+  white-space: pre-wrap;
+  background: rgba($color-background-shade, .5);
+  color: $color-text-strong;
 }
 
 code {
-  padding: .125em .5em;
-  line-height: $line-height-reset;
+  padding: .25em;
+  line-height: 0;
 }
 
 pre {
-  margin: .625em 0;
-  padding: .75em 1em;
-  text-align: left;
+  @include trailer;
+  @include rhythm(.5, .5, .5, .5);
+  @include bleed;
+  display: block;
+  max-height: 340px;
+  overflow-y: auto;
+  word: {
+    break: break-all;
+    wrap: break-word;
+  }
 
+  // Account for some code outputs that place code tags in pre tags
   code {
-    border: 0;
-    padding: 0;
+    @extend %reset-padding;
     background: none;
-  }
-}
-
-.highlight {
-  margin: .625em 0;
-
-  code,
-  pre {
-    border: 0;
-    background: none;
-  }
-
-  pre {
-    margin: {
-      top:    0;
-      bottom: 0;
-    }
+    font-size: inherit;
+    line-height: inherit;
   }
 }

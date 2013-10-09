@@ -1,53 +1,54 @@
 ---
-title: Sass | Syntactically Awesome Style Sheets
+title: Syntactically Awesome Style Sheets
+h1: CSS with superpowers
+layout: layout_1_column
 ---
 
-.hero
-  .left-content
-    %h1 CSS with superpowers
+- content_for :introduction do
+  Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
 
-    %p Sass is the most mature, stable, and powerful professional grade CSS extension language in the world. 
+- content_for :section_bottom do
+  .features
+    %ul.tiled-list
+      %li
+        %h3 CSS Compatible
+        %p
+          Sass is completely compatible with all versions of CSS. We take this compatibility seriously, so that you can seamlessly use any available CSS libraries.
+      %li
+        %h3 Feature Rich
+        %p
+          Sass boasts more features and abilities than any other CSS extension language out there. The Sass Core Team has worked endlessly to not only keep up, but stay ahead.
+      %li
+        %h3 Mature
+        %p
+          Sass has been actively supported for
+          = time_ago_in_words DateTime.parse("Tue Nov 28 19:43:58 2006 +0000")
+          by its loving Core Team.
+      %li
+        %h3 Industry Approved
+        %p
+          Over and over again, the industry is choosing Sass as the premier CSS extension languages. It's so true that we feel a little bad for the upstarts.
+      %li
+        %h3 Large Community
+        %p Sass is actively supported and developed by a consortium of several tech companies and hundreds of developers.
+      %li
+        %h3 Frameworks
+        %p
+          There are endless number of frameworks built with Sass.
+          = link_to "Compass", "http://compass-style.org/"
+          ,
+          = link_to "Bourbon", "http://bourbon.io/"
+          , and
+          = link_to "Susy", "http://susy.oddbird.net/"
+          just to name a few.
+      %li
+        %h3 Training
+        %p
+          There is a huge amount of training and support available for Sass. No HTML/CSS education is complete without learning Sass.
 
-    .features
-      %h2 Features
-      %ul
-        %li
-          %h3 CSS Compatible
-          %p 
-            Sass is completely compatible with all versions of CSS. We take this compability seriously, so that you can seemlessly use any available CSS libraries.
-        %li
-          %h3 Feature Rich
-          %p 
-            Sass boasts more features and abilities than any other CSS extension language out there. The Sass Core Team has worked endlessly to not only keep up, but stay ahead.
-        %li
-          %h3 Mature
-          %p 
-            Sass has been actively supported for 
-            = time_ago_in_words DateTime.parse("Tue Nov 28 19:43:58 2006 +0000")
-            by its loving Core Team.
-        %li
-          %h3 Industry Approved
-          %p
-            Over and over again, the industry is choosing Sass as the premier CSS extension languages. It's so true that we feel a little bad for the upstarts.
-        %li
-          %h3 Large Community
-          %p Sass is actively supported and developed by a consortium of several tech companies and hundreds of developers.
-        %li
-          %h3 Frameworks 
-          %p 
-            There are endless number of frameworks built with Sass. 
-            = link_to "Compass", "http://compass-style.org/"
-            ,
-            = link_to "Bourbon", "http://bourbon.io/"
-            , and 
-            = link_to "Susy", "http://susy.oddbird.net/"
-            just to name a few.
-        %li
-          %h3 Training
-          %p
-            There is a huge amount of training and support available for Sass. No HTML/CSS education is complete without learning Sass.
-  .right-content
-    %h2 Getting Started Is Easy
+- content_for :complementary do
+  .get-started
+    %h3 Getting Started Is Easy
     %ol
       %li= link_to "Install Sass", "install"
       %li= link_to "Learn Sass", "guide"
@@ -68,4 +69,14 @@ title: Sass | Syntactically Awesome Style Sheets
         * [Release Notes](#)
         * [Fork Sass on Github](#)
 
-  
+- content_for :section_2 do
+  .message.current-release
+    .container
+      %dl
+        %dt Current Release:
+        %dd Media Mark (3.2.1)
+      :markdown
+        * [Release Notes](#)
+        * [Fork Sass on Github](#)
+
+

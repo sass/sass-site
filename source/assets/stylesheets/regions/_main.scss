@@ -1,0 +1,12 @@
+.main {
+  @include padding-leader(2);
+  @include padding-trailer(2);
+
+  @include at-breakpoint($tablet-large) {
+    .do-columns & {
+      @include span-columns(8);
+
+      h2 { text-align: left; }
+    }
+  }
+}

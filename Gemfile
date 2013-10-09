@@ -1,25 +1,19 @@
-source "https://rubygems.org"
+source "http://rubygems.org"
 
-gem "middleman"
-gem "middleman-smusher"
+gem "builder"
+#gem "kss"
+
+gem "middleman", "~>3.1.5"
 gem "middleman-favicon-maker"
 gem "middleman-livereload"
-
-# CSS Preprocessing
-gem "compass"
-gem "susy"
-
-# HTML Preprocessing
-gem "slim"
-gem "redcarpet"
-
-# Better Typography
-gem "typogruby"
-
-# Styleguide generator
-gem "kss"
-
-# Syntax Highlighting
 gem "middleman-syntax"
+#gem "middleman-smusher"
+gem "redcarpet"
+gem "susy"
+#gem "typogruby"
+gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
+platforms :mri_18 do
+  gem "ruby18_source_location"
+end
 # gem "rack-codehighlighter"
 # gem "pygments.rb"

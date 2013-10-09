@@ -1,0 +1,9 @@
+.toolkit {
+  @extend .alert;
+  background: $color-accent;
+
+  ul {
+    @extend %horizontal-list;
+    text-align: center;
+  }
+}

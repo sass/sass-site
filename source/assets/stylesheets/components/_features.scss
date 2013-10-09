@@ -1,0 +1,16 @@
+.features {
+  clear: both;
+
+  ul,
+  ol {
+    @extend .tiled-list;
+    @include padding-trailer;
+
+    ul {
+      margin-left: $indent;
+      list-style: disc;
+    }
+  }
+
+  h2 { padding-bottom: 0; }
+}

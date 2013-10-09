@@ -1,28 +1,16 @@
-// ===========================================================================
-// LISTS
-
-
-
-@mixin reset-list {
-  list-style: none;
-  padding: {
-       top: 0;
-    bottom: 0;
-  }
-}
-
-
+ul,
+ol,
+dl { @extend %block-text; }
 
 ul,
 ol {
-  @extend %block-text;
-  list-style-position: inside;
+  text-align: left;
 
-  nav & { @include reset-list; }
+  & & { padding-bottom: 0; }
 }
 
-dl {
-  @extend %block-text;
-}
+nav ul { @extend %reset-list; }
 
-dd { margin: 0; }
+dt { @extend %bold-elements; }
+
+dd { margin-left: $indent; }

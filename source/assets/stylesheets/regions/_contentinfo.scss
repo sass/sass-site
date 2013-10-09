@@ -1,55 +1,73 @@
-// ===========================================================================
-// CONTENTINFO
-
-
-
-$contentinfo-background-color: $dawn-pink !default;
-$contentinfo-border-color:     $wafer     !default;
-
-
-
 .contentinfo {
-  border-top: .5em solid $contentinfo-border-color;
-  @include font-size($font-size-small, $line-height-incremental);
-  background: $contentinfo-background-color;
+  @include padding-leader(2);
+  @include padding-trailer(2);
+  color: $color-text-weak;
 
-  &,
-  ul {
-    padding: {
-         top: 1em;
-      bottom: 1em;
-    }
+  * { vertical-align: middle; }
+
+  .container {
+    @include leading-border;
+    @include padding-trailer;
+    border-color: $color-border;
   }
 
-  a { border: 0; }
+  ul { @include font-size-small;  }
+
+  p {
+    @include padding-trailer(.25);
+    margin: {
+      right: 0;
+      left:  0;
+    }
+
+    &:last-child { padding-bottom: 0; }
+  }
+
+  a {
+    color: $color-text;
+
+    &:hover,
+    &:focus { color: $color-text-strong; }
+  }
 }
 
+.contentinfo-tools,
+.contentinfo-social { @include padding-leader($font-size: $font-size-small); }
 
+.contentinfo-tools ul {
+  @extend %horizontal-list;
+  font-size: 1em;
+}
 
-// ---------------------------------------------------------------------------
-// iPhone
-
-@mixin contentinfo-iPhone {
+@include at-breakpoint($tablet-large) {
   .contentinfo {
-    @extend %horizontal-list-iPhone;
-    text-align: left;
+    padding: {
+         top: 0;
+      bottom: 0;
+    }
+    height: $sticky-contentinfo-height;
+
+    .container {
+      @extend %table-layout-tablet-large;
+      text-align: left;
+    }
 
     ul {
-      margin: {
-        right: -$gutter-width;
-        left:  -$gutter-width;
-      }
-      padding: {
-           top: .5em;
-        bottom: .5em;
-      }
-    }
-
-    li {
-      padding: {
-        right: $gutter-width;
-        left:  $gutter-width;
-      }
+      display: table-row;
+      height: 100%;
     }
   }
+
+  .contentinfo-legal,
+  .contentinfo-tools,
+  .contentinfo-social { @extend %table-layout-cell-tablet-large; }
+
+  .contentinfo-tools,
+  .contentinfo-social {
+    padding: 0 0 0 ($gutter-width * 2);
+    width: 1px;
+    white-space: nowrap;
+  }
+
+  .contentinfo-social { @include adjust-leading-to(1, $font-size-small); }
 }

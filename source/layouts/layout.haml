@@ -1,39 +1,33 @@
-!!! 5
-
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
+!!!
+= partial "layouts/head/ie"
 <!--[if gt IE 8]><!-->
-%html.no-js(lang="en")
+%html.no-js(lang="en"){:class => data.page.head_classes}
   <!--<![endif]-->
-
   %head
-    %meta(charset="utf-8")/
+    %title= page_title
+    = partial "layouts/head/meta"
+    = partial "layouts/head/stylesheets"
+    = partial "layouts/head/javascripts"
+    = partial "layouts/head/link"
 
-    %title= data.page.title || "Sass - CSS with super powers"
-    %meta(name="description"){:content => data.page.description || "Syntactically Awesome Style Sheets"}/
-
-    = partial "layouts/shared/head_compatibility"
-
-    = stylesheet_link_tag "sass"
-    = partial "layouts/shared/head_scripts"
-
-    = yield_content :head
-
-  %body{:class => page_classes}
+  %body{class: page_classes}
     .page
-      = partial "layouts/shared/chromeframe"
-      = partial "layouts/shared/banner"
+      = partial "layouts/regions/toolkit"
+      = partial "layouts/regions/browsehappy"
+      = partial "layouts/regions/alert"
+      .pop-stripe
+      = partial "layouts/regions/banner"
+      = partial "layouts/regions/page_header"
 
-      %section.section-1.main(role="main")
+      =yield
+
+      .alert.release
         .container
-          .content= yield
-          = partial "layouts/shared/complementary"
+          :markdown
+            * Current Release: Media Mark (3.2.1)
+            * [Release Notes](#)
+            * [Fork Sass on Github](#)
 
-      - if content_for?(:section_2)
-        %section.section-2= yield_content :section_2
-
-      .footer-shim
-
-    = partial "layouts/shared/contentinfo"
-    = partial "layouts/shared/foot_scripts"
+      = partial "layouts/regions/section_bottom"
+    = partial "layouts/regions/contentinfo"
+    = partial "layouts/foot/javascripts"

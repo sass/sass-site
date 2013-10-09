@@ -1,0 +1,31 @@
+sizes:
+  - name:  small
+    value: 12
+  - name:  regular
+    value: 16
+  - name:  large
+    value: 24
+  - name:  x-large
+    value: 32
+  - name:  xx-large
+    value: 48
+  - name:  xxx-large
+    value: 64
+  - name:  xxxx-large
+    value: 96
+
+weights:
+  - weight: light
+    value:  300
+  - weight: regular
+    value:  400
+  - weight: bold
+    value:  600
+
+families:
+  - style: text
+    value: sans-serif
+  - style: display
+    value: serif
+  - style: code
+    value: monospace

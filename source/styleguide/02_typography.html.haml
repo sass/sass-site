@@ -1,0 +1,37 @@
+---
+title: Typography
+---
+
+%h2 Sizes
+
+- for font_size in data.typography.sizes
+  %dl.guide-description-list
+    %dt
+      %code= "@include font-size-" + font_size.name
+
+    %dd{class: "font-size-" + font_size.name}= font_size.value
+
+%hr/
+
+
+
+%h2 Weights
+
+- for font_weight in data.typography.weights
+  %dl.guide-description-list
+    %dt
+      %code= "$font-weight-" + font_weight.weight
+
+    %dd{class: "font-weight-" + font_weight.weight}= font_weight.value
+
+%hr/
+
+
+
+%h2 Families
+- for font_family in data.typography.families
+  %dl.guide-description-list
+    %dt
+      %code= "$font-family-" + font_family.style
+
+    %dd{class: "font-family-" + font_family.style}= font_family.value

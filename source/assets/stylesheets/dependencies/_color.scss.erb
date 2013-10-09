@@ -1,0 +1,9 @@
+$black: #000;
+
+<% data.color.colors.each do |swatch| %>
+$<%= swatch.name %>: #<%= swatch.hex %>;
+<% end %>
+
+<% data.color.semantic_colors.each do |swatch| %>
+$color-<%= swatch.name %>: <%= swatch.value %>;
+<% end %>

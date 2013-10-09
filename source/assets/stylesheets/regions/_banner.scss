@@ -1,61 +1,57 @@
-// ===========================================================================
-// BANNER
-
-
-
-$banner-background-color: $background-alt-color !default;
-
-
-
 .banner {
-  background: $banner-background-color;
+  @include padding-leader;
+  @include padding-trailer;
 
-  h1 a {
-    border-bottom: 0;
-    padding-bottom: 0;
+  * { vertical-align: middle; }
+
+  .container { position: relative; }
+
+  @include at-breakpoint($tablet-large) {
+    .container { @extend %table-layout-tablet-large; }
   }
 }
 
-.accessibility {
-  @extend %content-list;
+.site-brand {
+  @include font-size-regular;
+  margin: 0;
+  line-height: 0;
 
-  li:last-child {
-    padding-bottom: 0;
+  img {
+    @include transition-property(height);
+    height: rhythm(2);
   }
-}
 
-.skip-navigation { display: none; }
-
-
-
-// ---------------------------------------------------------------------------
-// iPhone
-
-@mixin banner-iPhone {
-  .banner h1 {
-    @include span-columns(3);
-    @include font-size($font-size-large);
+  @include at-breakpoint($tablet-large) {
+    display: table-cell;
     text-align: left;
+    vertical-align: middle;
+
+    img { height: rhythm(4); }
   }
-
-  .skip-navigation {
-    @include span-columns(1 omega);
-
-    .button {
-      @include float-right;
-      padding: 0;
-      width: auto;
-    }
-  }
-
-  .skip-content { @extend %hidden-iPhone; }
 }
 
+.banner-toggle {
+  position: absolute;
+  top:   0;
+  right: $gutter-width;
 
+  button {
+    @extend %clear-button;
+    padding: 0;
+  }
 
-// ---------------------------------------------------------------------------
-// iPad
+  .icon-bar {
+    @include leader(.25);
+    @include trailer(.25);
+    display: block;
+    margin: {
+      right: auto;
+       left: auto;
+    }
+    width: 2em;
+    height: 0.125em;
+    background-color: $color-border;
+  }
 
-@mixin banner-iPad {
-  .skip-navigation { @extend %hidden-iPad; }
+  @include at-breakpoint($tablet-large) { display: none; }
 }

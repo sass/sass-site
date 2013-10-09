@@ -1,92 +1,70 @@
-// ===========================================================================
-// LISTS
-
-
-
-// ---------------------------------------------------------------------------
-// LIST STYLE MIXINS
-
-
-
-// FLOATED LIST ITEMS
-@mixin horizontal-list($break-size: false,
-                       $container-selector: "ul",
-                       $list-selectors:     "li",
-                       $last-list-selector: $list-selectors) {
-
-  @if $break-size != false {
-    #{$container-selector} { @extend %clearfix-#{$break-size}; }
-
-    #{$list-selectors} { @extend %float-left-#{$break-size}; }
-
-    #{$last-list-selector}:last-child {
-      @extend %float-left-last-child-#{$break-size};
-    }
-  }
-
-  @else {
-    #{$container-selector} { @extend %clearfix; }
-
-    #{$list-selectors} { @extend %float-left; }
-
-    #{$last-list-selector}:last-child { @extend %float-left-last-child; }
-  }
+%reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
+%horizontal-list {
+  @extend %reset-list;
 
-
-// DISPLAY: INLINE ON LIST ITEMS
-@mixin horizontal-list-inline {
   li {
     display: inline-block;
-    margin-right: $gutter-width;
+    margin: {
+      right: -2px;
+      left:  $gutter-width;
+    }
 
-    &:last-child { margin-right: 0; }
+    &:first-child { margin-left: 0; }
   }
 }
 
+.tiled-list {
+  @extend %reset-list;
+  margin: 0 auto;
 
+  @include at-breakpoint($screen-small) {
+    @extend %clear-fix-screen-small;
+    margin: 0 #{-$gutter-width / 2};
+    max-width: none;
 
-// ---------------------------------------------------------------------------
-// LIST SELECTORS
+    li {
+      float: left;
+      width: 100 / 3 * 1%;
+      padding: {
+        right: $gutter-width;
+         left: $gutter-width;
+      }
 
-%content-list {
-  @include reset-list;
+      &:nth-child(3n+4) { clear: both; }
 
-  li {
-    padding: {
-         top: 1em;
-      bottom: 1em;
+      li {
+        float: none;
+        width: auto;
+        padding: {
+          right: 0;
+           left: 0;
+        }
+      }
     }
   }
 }
 
-%horizontal-list { @include horizontal-list; }
+%description-list {
+  @include at-breakpoint($mobile-large) { dd { margin-left: 0; } }
 
-%horizontal-list-inline { @include horizontal-list-inline; }
+  @include at-breakpoint($tablet-small) {
+    @extend %table-layout-tablet-small;
+    table-layout: fixed;
+    text-align: left;
 
+    dt,
+    dd { @extend %table-layout-cell-baseline-tablet-small; }
 
-
-// ---------------------------------------------------------------------------
-// iPhone
-
-@mixin components-lists-iPhone {
-  %horizontal-list-iPhone { @include horizontal-list(iPhone); }
-
-  %horizontal-description-list-iPhone {
-    @include horizontal-list(iPhone, "dl", "dt, dd", "dd");
+    dt { padding-right: $gutter-width / 2; }
+    dd { padding-left:  $gutter-width / 2; }
   }
 
-  %horizontal-list-inline-iPhone { @include horizontal-list-inline; }
-}
-
-
-
-// ---------------------------------------------------------------------------
-// SMALL TABLET
-
-@mixin components-lists-small-tablet {
-  %horizontal-list-small-tablet { @include horizontal-list(small-tablet); }
-
-  %horizontal-list-inline-small-tablet { @include horizontal-list-inline; }
+  @include at-breakpoint($screen-small) {
+    dt { width: 100 / 3 * 1%; }
+  }
 }

@@ -1,39 +1,18 @@
-// ===========================================================================
-// BUTTONS
+$pseudos: "&:hover", "&:focus", "&:active", "&.active";
 
+.primary {
+  background-color: $color-primary;
+  color-border: darken($color-primary, 5);
 
+  &,
+  #{$pseudos} { color: $color-text-strong-invert; }
 
-$button-background-color:        $hopbush !default;
-$button-background-hover-color:  $bouquet !default;
-$button-background-active-color: $venus   !default;
-$button-text-color:              $white   !default;
+  #{$pseudos} { background-color: darken($color-primary, 8%); }
+}
 
-
-
-.button {
-  @extend  %caps;
-  padding: 0 .5em;
-  @include tappable;
-  border: 0;
-  @include border-radius(.25em);
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  background: $button-background-color;
-  @include box-shadow-both;
-  @include link($button-text-color, $button-text-color, $button-text-color);
-  @include text-shadow-dark;
-
-  // hack to make sure buttons than have wrapped text don't look funky and
-  // text is vertically centered no matter if it's 1 line or 2.
-  display: table;
-
-  .wrapped {
-    display: table-cell;
-    line-height: $line-height-reset;
-    vertical-align: middle;
-  }
-
-  #{$hover} { background: $button-background-hover-color;  }
-  &:active  { background: $button-background-active-color; }
+%clear-button {
+  @include box-shadow(none);
+  border-color: transparent;
+  background: none;
+  color: inherit;
 }

@@ -1,0 +1,9 @@
+.page-header {
+  @include trailer;
+  @include transition-property(padding);
+  background: $color-background;
+  border-color: $color-border;
+
+  &,
+  a { color: $color-accent; }
+}

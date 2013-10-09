@@ -1,51 +1,49 @@
-// ===========================================================================
-// HEADINGS
+#{headings(1, 4)} { @extend %reset-margin; }
 
+#{headings(1, 2)} {
+  @include font-size-large;
+  font-weight: $font-weight-light;
+  letter-spacing: -0.03125em;
+  color: $color-accent;
 
-
-$heading-1-text-color: $venus       !default;
-$heading-2-text-color: $pale-sky    !default;
-$heading-3-text-color: $regent-grey !default;
-
-
-
-// ---------------------------------------------------------------------------
-// MOBILE
-
-#{headings(1, 3)} {
-  @extend %block-text;
-  text-align: center;
-  line-height: $line-height-reset;
-}
-
-h1,
-h3 {
-  font-weight: 300;
-  @extend %chaparral-pro-regular;
-  letter-spacing: -0.025em;
+  @include at-breakpoint($tablet-small) { @include font-size-x-large; }
+  @include at-breakpoint($tablet-large) { @include font-size-xx-large; }
 }
 
 h1 {
-  @include font-size($font-size-x-large);
-  color: $heading-1-text-color;
+  font-weight: $font-weight-light;
+  color: $color-text-heading;
+
+  @include at-breakpoint($screen-small) { @include font-size-xxx-large; }
+  @include at-breakpoint($screen-large) { @include font-size-xxxx-large; }
 }
 
 h2 {
-  @extend  %caps;
-  color: $heading-2-text-color;
+  @include padding-leader(2, $font-size-large);
+  @include padding-trailer(1, $font-size-large);
+
+  .main &:first-child { padding-top: 0; }
+
+  @include at-breakpoint($tablet-small) {
+    @include padding-leader(2, $font-size-x-large);
+    @include padding-trailer(1, $font-size-x-large);
+  }
+
+  @include at-breakpoint($tablet-large) {
+    @include padding-leader(2, $font-size-xx-large);
+    @include padding-trailer(1, $font-size-xx-large);
+  }
 }
 
-h3 {
-  padding-bottom: 0;
-  @include font-size($font-size-large);
-  color: $heading-3-text-color;
-}
+h2,
+h3 { font-family: $font-family-display; }
 
-
-
-// ---------------------------------------------------------------------------
-// SMALL TABLET
-
-@mixin headings-small-tablet {
-  h1 { @include font-size($font-size-xx-large); }
+#{headings(3, 4)} {
+  @include padding-leader(2);
+  @include padding-trailer;
+  @include font-size-regular;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: .03125em;
+  color: $color-text-weak;
 }

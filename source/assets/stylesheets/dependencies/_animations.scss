@@ -1,0 +1,72 @@
+$default-transition-duration: 2s;
+
+@mixin animation-name($animation-name: animate) {
+  -webkit-animation-name: $animation-name;
+  -moz-animation-name: $animation-name;
+  -ms-animation-name: $animation-name;
+  -o-animation-name: $animation-name;
+  animation-name: $animation-name;
+}
+
+@mixin animation-duration($animation-duration) {
+  -webkit-animation-duration: $animation-duration;
+  -moz-animation-duration: $animation-duration;
+  -ms-animation-duration: $animation-duration;
+  -o-animation-duration: $animation-duration;
+  animation-duration: $animation-duration;
+}
+
+@mixin animation-iteration-count($animation-iteration-count: infinite) {
+  -webkit-animation-iteration-count: $animation-iteration-count;
+  -moz-animation-iteration-count: $animation-iteration-count;
+  -ms-animation-iteration-count: $animation-iteration-count;
+  -o-animation-iteration-count: $animation-iteration-count;
+  animation-iteration-count: $animation-iteration-count;
+}
+
+@mixin animation-direction($animation-direction: linear) {
+  -webkit-animation-direction: $animation-direction;
+  -moz-animation-direction: $animation-direction;
+  -ms-animation-direction: $animation-direction;
+  -o-animation-direction: $animation-direction;
+  animation-direction: $animation-direction;
+}
+
+@mixin animation-delay($animation-delay) {
+  -webkit-animation-delay: $animation-delay;
+  -moz-animation-delay: $animation-delay;
+  -ms-animation-delay: $animation-delay;
+  -o-animation-delay: $animation-delay;
+  animation-delay: $animation-delay;
+}
+
+@mixin keyframes-value-transition($property, $value-start, $value-end) {
+  0% {
+    #{$property}: $value-start;
+  }
+  100% {
+    #{$property}: $value-end;
+  }
+}
+
+@mixin keyframes($animation-name, $property, $value-start, $value-end) {
+  @-webkit-keyframes #{$animation-name} {
+    @include keyframes-value-transition($property, $value-start, $value-end);
+  }
+
+  @-moz-keyframes #{$animation-name} {
+    @include keyframes-value-transition($property, $value-start, $value-end);
+  }
+
+  @-ms-keyframes #{$animation-name} {
+    @include keyframes-value-transition($property, $value-start, $value-end);
+  }
+
+  @-o-keyframes #{$animation-name} {
+    @include keyframes-value-transition($property, $value-start, $value-end);
+  }
+
+  @keyframes #{$animation-name} {
+    @include keyframes-value-transition($property, $value-start, $value-end);
+  }
+}

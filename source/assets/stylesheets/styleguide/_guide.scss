@@ -1,0 +1,84 @@
+@import "typography";
+@import "color";
+
+.guide-description-list {
+  @extend %description-list;
+
+  %split-by { vertical-align: middle; }
+}
+
+.block {
+  float: left;
+  height: 1.5em;
+  border: 0 solid $color-background {
+    right-width: $gutter-width / 2;
+     left-width: $gutter-width / 2;
+  }
+  background: $color-background-shade;
+}
+
+@for $i from 1 through $total-columns {
+  .by-#{$i}  {
+    @extend %split-by;
+
+    .block { width: 100 / $i * 1%; }
+  }
+}
+
+@mixin styleguide-min-tablet-large {
+  .responsive-test-url {
+    @extend %table-layout-min-tablet-large;
+
+    fieldset {
+      display: table-row;
+      padding: 0;
+
+      p {
+        @extend %table-layout-cell-min-tablet-large;
+        padding: 0;
+        width: 100%;
+
+        &:last-child {
+          width: 1px;
+          padding-left: $padding;
+          text-align: right;
+          white-space: nowrap;
+
+          .checkbox {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .responsive-test {
+    width: 100%;
+    overflow: hidden {
+      x: scroll;
+    }
+
+    ul {
+      @extend %clear-fix-tablet-large;
+    }
+  }
+
+  .frame {
+    float: left;
+    margin: 0 $padding-small;
+  }
+}
+
+@mixin styleguide-min-screen-small {
+  .tiles {
+    @extend %horizontal-description-list-min-screen-small;
+  }
+}
+
+@import "toolkit";
+
+[href*="404"],
+[href*="htaccess"],
+[href*="humans"],
+[href*="robots"],
+[href*="sitemap"] { @extend %hidden; }

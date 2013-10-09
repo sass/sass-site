@@ -1,0 +1,14 @@
+@media (max-width: $tablet-large) {
+  .table-responsive {
+    @include trailer;
+    width: 100%;
+    overflow: {
+      x: auto;
+      y: hidden;
+    }
+
+    table { margin-bottom: 0; }
+
+    td { white-space: nowrap; }
+  }
+}
