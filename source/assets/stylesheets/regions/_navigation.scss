@@ -44,7 +44,7 @@
   }
 
   @include at-breakpoint($tablet-large) {
-    @extend %table-cell-tablet-large;
+    @extend %table-layout-cell-tablet-large;
      margin: 0;
     padding: 0;
     text-align: right;

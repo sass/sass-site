@@ -6,7 +6,7 @@
 
 @include at-breakpoint($mobile-large) {
   .slide-navigation {
-    @extend %clearfix-mobile-large;
+    @extend %clear-fix-mobile-large;
 
     li {
       @include span-columns(2);
