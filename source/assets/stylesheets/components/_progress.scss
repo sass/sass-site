@@ -10,8 +10,7 @@ $progress-block-delay-interval: 1 / $progress-block-count;
 
 .progress {
   @include stretch;
-  width: 100%;
-  height: 100%;
+  @include square(100%);
 }
 
 .progress-wrap { @extend %table-layout; }
@@ -34,10 +33,9 @@ $progress-block-delay-interval: 1 / $progress-block-count;
   @include animation-duration(#{$progress-block-animation-duration}s);
   @include animation-iteration-count;
   @include animation-direction;
+  @include square($progress-block-size);
   position: absolute;
   top: 0;
-  width:  $progress-block-size;
-  height: $progress-block-size;
   background: $color-primary;
 }
 

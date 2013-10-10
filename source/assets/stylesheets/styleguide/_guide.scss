@@ -27,8 +27,7 @@
 
 
 .responsive-test {
-  width: 100%;
-  height: 100%;
+  @include square(100%);
   overflow: hidden {
     x: scroll;
   }

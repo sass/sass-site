@@ -1,0 +1,8 @@
+@include at-breakpoint($tablet-large) {
+  .content-primary {
+    @include span-columns(8);
+
+    h2,
+    h3 { text-align: left; }
+  }
+}
