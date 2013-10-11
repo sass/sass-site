@@ -22,11 +22,11 @@
       =yield
 
       .alert.release
-        .container
-          :markdown
-            * Current Release: Media Mark (3.2.1)
-            * [Release Notes](#)
-            * [Fork Sass on Github](#)
+        .container 
+          %ul
+            %li Current Release: #{data.version.name} (#{data.version.number})
+            %li=link_to "Release Notes", "#"
+            %li=link_to "Fork on Github", "#"
 
       = partial "layouts/regions/section_bottom"
     = partial "layouts/regions/contentinfo"
