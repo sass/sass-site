@@ -20,7 +20,7 @@ pre {
   @include rhythm(.5, .5, .5, .5);
   @include bleed;
   display: block;
-  max-height: 340px;
+  // max-height: 340px;
   overflow-y: auto;
   word: {
     break: break-all;
