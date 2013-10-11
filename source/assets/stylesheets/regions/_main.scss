@@ -5,11 +5,5 @@
   @include at-breakpoint($tablet-large) {
     @include padding-leader(2);
     @include padding-trailer(2);
-
-    .do-columns & {
-      @include span-columns(8);
-
-      h2 { text-align: left; }
-    }
   }
 }

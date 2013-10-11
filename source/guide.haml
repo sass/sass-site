@@ -37,12 +37,12 @@ title: Sass Basics
 
       Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses the <code>$</code> symbol to make something a variable. Here's an example:
 
-    = partial "code-snippets/homepage-variables-scss"
+    ~ partial "code-snippets/homepage-variables-scss"
 
     :markdown
       When the Sass is processed, it takes the variables we define for the <code>$font-stack</code> and <code>$primary-color</code> and outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when working with brand colors and keeping them consistent throughout the&nbsp;site.
 
-    = partial "code-snippets/homepage-variables-css"
+    ~ partial "code-snippets/homepage-variables-css"
 
     %hr/
 
@@ -52,12 +52,12 @@ title: Sass Basics
 
       When you write HTML you've probably noticed that it has a fairly clear nested, visual hierarchy. CSS, on the other hand, isn't. Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Here's an example of some typical styles for a sites&nbsp;navigation:
 
-    = partial "code-snippets/homepage-nesting-scss"
+    ~ partial "code-snippets/homepage-nesting-scss"
 
     :markdown
       You'll notice that the <code>ul</code>, <code>li</code>, and <code>a</code> selectors are nested inside the <code>nav</code> selector. This is a great way to organize your CSS and make it more readable. When you generate the CSS you'll get something like&nbsp;this:
 
-    = partial "code-snippets/homepage-nesting-css"
+    ~ partial "code-snippets/homepage-nesting-css"
 
     %hr/
 
@@ -77,14 +77,14 @@ title: Sass Basics
 
       Let's say you have a couple of Sass files, <code>_reset.scss</code> and <code>base.scss</code>. We want to import <code>_reset.scss</code> into <code>base.scss</code>.
 
-    = partial "code-snippets/homepage-import-1-scss"
-    = partial "code-snippets/homepage-import-2-scss"
+    ~ partial "code-snippets/homepage-import-1-scss"
+    ~ partial "code-snippets/homepage-import-2-scss"
 
     :markdown
 
       Notice we're using <code>@import 'reset';</code> in the <code>base.scss</code> file. When you import a file you don't need to include the file extension <code>.scss</code> Sass is smart and will figure it out for you. When you generate the CSS you'll&nbsp;get:
 
-    = partial "code-snippets/homepage-import-css"
+    ~ partial "code-snippets/homepage-import-css"
 
     %hr/
 
@@ -94,12 +94,12 @@ title: Sass Basics
 
       Some things in CSS are a bit tedious to write, especially with CSS3 and the many vendor prefixes that exist. A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. A good use of a mixin is for vendor prefixes. Here's an example for <code>border-radius</code>.
 
-    = partial "code-snippets/homepage-mixins-scss"
+    ~ partial "code-snippets/homepage-mixins-scss"
 
     :markdown
       To create a mixin you use the <code>@mixin</code> directive and giving it a name. We've named our mixin <code>border-radius</code>. We're also using the variable <code>$radius</code> inside the parenthesis so we can pass in a radius of whatever we want. After you create your mixin, you can then use it as a CSS declaration starting with <code>@include</code> followed by the name of the mixin. When your CSS is generated it'll look like this:
 
-    = partial "code-snippets/homepage-mixins-css"
+    ~ partial "code-snippets/homepage-mixins-css"
 
     %hr/
 
@@ -109,12 +109,12 @@ title: Sass Basics
 
       This is one of the most useful features of Sass. Using <code>@extend</code> lets you share a set of CSS properties from one selector to another. It helps keep your Sass very DRY. In our example we're going to create a simple series of messaging for errors, warnings and successes.
 
-    = partial "code-snippets/homepage-extend-scss"
+    ~ partial "code-snippets/homepage-extend-scss"
 
     :markdown
       What the above code does is allow you to take the CSS properties in <code>.message</code> and apply them to <code>.success</code>, <code>.error</code>, & <code>.warning</code>. The magic happens with the generated CSS, and this helps you avoid having to write multiple class names on HTML elements. This is what it looks&nbsp;like:
 
-    = partial "code-snippets/homepage-extend-css"
+    ~ partial "code-snippets/homepage-extend-css"
 
     %hr/
 
@@ -124,9 +124,9 @@ title: Sass Basics
 
       Doing math in your CSS is very helpful. Sass has a handful of standard math operators like `+`, `-`, `*`, `/`, and `%`. In our example we're going to do some simple math to calculate widths for an `aside` & `article`.
 
-    = partial "code-snippets/homepage-operators-scss"
+    ~ partial "code-snippets/homepage-operators-scss"
 
     :markdown
       We've created a very simple fluid grid, based on 960px. Operations in Sass let us do something like take pixel values and convert them to percentages without much hassle. The generated CSS will look like:
 
-    = partial "code-snippets/homepage-operators-css"
+    ~ partial "code-snippets/homepage-operators-css"

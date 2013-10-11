@@ -2,6 +2,7 @@
   padding-bottom: 0;
   max-width: 35em;
   text-align: center;
+  color: $color-accent;
 
   @include at-breakpoint($tablet-large) {
     @include font-size-large;

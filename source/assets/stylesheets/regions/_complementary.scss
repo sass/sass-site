@@ -17,14 +17,7 @@
   }
 
   @include at-breakpoint($tablet-large) {
-    .do-columns & {
-      @include padding-leader(3);
-      @include padding-trailer(2);
-      @include span-columns(4 omega);
-    }
-  }
-
-  @include at-breakpoint($screen-small) {
-    .do-columns & { padding-left: $gutter-width * 4; }
+    @include padding-leader(3);
+    @include padding-trailer(2);
   }
 }

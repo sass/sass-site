@@ -13,3 +13,8 @@ $<%= resolution.target %>: <%= resolution.width %>px;
 <% end %>
 
 $sticky-contentinfo-height: rhythm(6);
+
+@mixin square($size: $column-width) {
+  width:  $size;
+  height: $size;
+}

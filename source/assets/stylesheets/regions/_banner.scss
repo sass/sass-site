@@ -15,6 +15,7 @@
   @include font-size-regular;
   margin: 0;
   line-height: 0;
+  text-align: left;
 
   img {
     @include transition-property(height);
@@ -33,10 +34,11 @@
 .banner-toggle {
   position: absolute;
   top:   0;
-  right: $gutter-width;
+  right:  $gutter-width;
 
   button {
     @extend %clear-button;
+    @include square($column-width);
     padding: 0;
   }
 

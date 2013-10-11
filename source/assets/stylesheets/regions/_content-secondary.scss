@@ -1,0 +1,10 @@
+.content-secondary {
+  @include at-breakpoint($tablet-large) {
+    @include span-columns(4 omega);
+
+    h2,
+    h3 { text-align: left; }
+  }
+
+  @include at-breakpoint($screen-small) { padding-left: $gutter-width * 4; }
+}
