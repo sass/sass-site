@@ -6,58 +6,103 @@ layout: layout_1_column
 .features
   %h2 There are a couple of ways to start using&nbsp;Sass:
   %ol
-    %li.frameworks
-      %h3 Frameworks
-      %p
-        If you or your team is using a dynamic web language or framework, then
-        chances are that Sass support is available. This is the most popular
-        way to use Sass, but sometimes it does require some changes to your
-        project. Here is just a partial list of the frameworks that have Sass
-        support:
-
-      %ul
-        %li
-          = link_to "Rails", 'http://guides.rubyonrails.org/asset_pipeline.html'
-        %li= link_to "Node.js", 'https://github.com/andrew/node-sass'
-        %li= link_to "Drupal", 'http://drupal.org/project/sass'
-        %li
-          = link_to "CodeIgniter", 'http://getsparks.org/packages/sass/versions/HEAD/show'
-        %li
-          = link_to "Yii", 'http://www.yiiframework.com/extension/haml-and-sass/'
-        %li= link_to ".net", 'http://libsassnet.codeplex.com/'
-        %li
-          = link_to "Joomla", 'http://www.joomlavision.com/started-sass/'
-
-      %p
-        This is a very partial list. Just search the web for the name of your
-        framework + Sass and it's likely to come up.
-
-    %li.command-line
-      %h3 Command Line
-      / Description for Unix users
-      %p
-        Using Sass on the command line is as simple as using a few commands.
-        To install Sass just type the following into the command line:
-
-      / We'll try and point the user to either
-      %pre
-        :preserve
-          gem install sass
-      %p
-        To learn how to compile your Sass files, please see our Command Line
-        Reference
-      %p= link_to "Command Line Guide", '/get-started/command-line#unix'
-
-      %p
-        For Windows users, go check out the
-        = succeed "." do
-          = link_to "Sass for Windows Guide", "/get-started/command-line#windows"
-
     %li.gui-application
-      %h3 GUI Application
-      %p There are many free and paid GUIs that natively support Sass in them. This is the ideal start for the very non-technical user.
+      %h3 Applications
+      %p There are a a good many applications that will get you up and running with Sass in a few minutes for Mac, Windows, and Linux. You can download most of the applications for free but a few of them are paid apps <small>(and totally worth it)</small>.
+
+      / The applications are listed in alphabetical order. As new applications are released they should be added to the list.
       %ul
-        %li= link_to "Scout (Mac, Free)", "http://mhs.github.io/scout-app/"
-        %li= link_to "Compass.app ($10)", "http://compass.handlino.com/"
-        %li= link_to "LiveReload ($9.95)", "http://livereload.com/"
-        %li= link_to "CodeKit ($25)", "http://incident57.com/codekit/"
+        %li
+          = link_to "CodeKit", "http://incident57.com/codekit/"
+          %span.paid-icon
+          %span.mac-icon
+        %li
+          = link_to "Compass", "http://compass.handlino.com/"
+          %span.paid-icon
+          %span.mac-icon
+          %span.windows-icon
+          %span.linux-icon
+        %li
+          = link_to "Koala", "http://koala-app.com/"
+          %span.mac-icon
+          %span.windows-icon
+          %span.linux-icon
+        %li
+          = link_to "LiveReload", "http://livereload.com/"
+          %span.mac-icon
+          %span.windows-icon
+        %li
+          = link_to "Prepros", "http://alphapixels.com/prepros/"
+          %span.mac-icon
+          %span.windows-icon
+        %li
+          = link_to "Scout", "http://mhs.github.io/scout-app/"
+          %span.mac-icon
+          %span.windows-icon
+
+    %li.command-line-unix
+      %h3 Command Line      
+
+      #install-ruby-linux
+        %strong 1. Linux
+        %p If you're using a distribution of Linux, you'll need to install Ruby first. You can use --something--, or --something--, or --something else--.
+
+      #install-ruby-windows
+        %strong 1. Windows
+        %p Before you start using Sass you will need to install Ruby. The fastest way to get Ruby on your Windows computer is to use <a href="http://www.rubyinstaller.org">Ruby Installer</a>. It's a single-click installer that will get everything set up for you super fast.
+
+        %p Along with Ruby the installer will also install a Ruby command line application that you will let you use the Ruby libraries. Open --application name--.
+
+      #install-ruby-mac
+        %strong 1. Mac
+        %p If you prefer the command line over an application then getting Sass set up is a fairly quick process. Sass has a Ruby dependency but if you're using a Mac, congratulations, Ruby comes pre-installed. 
+
+      %p Here's the quickest way we've found to start using Sass by using the command line:
+
+      %ol
+        %li 
+          %p <strong>2. Open your command line application.</strong> On the Mac the Terminal.app comes installed by default. It's located in your "Utilities" folder.
+        %li
+          %p <strong>3. Install Sass.</strong> Ruby uses Gems to manage it's various packages of code like Sass. In your open terminal window type:
+          %pre
+            :preserve
+              gem install sass
+          %p This will install Sass and any dependencies for you. It's pretty magical. 
+        %li
+          %p <strong>4. Double-check.</strong> You should now have Sass installed, but it never hurts to double-check. In your terminal application you can type:
+          %pre
+            :preserve
+              sass -v
+          %p It should return <code>Sass #{data.version.number} (#{data.version.name})</code>. Congratulations! You've successfully installed Sass.
+        %li
+          %p <strong>5. Go and play.</strong> If you're brand new to Sass we've set up some resources to help you learn pretty darn quick.
+
+      = link_to "Learn Sass", "/learn-sass", :class => "button primary"
+
+    
+
+.frameworks
+  %h3 Frameworks
+  %p
+    If you or your team is using a dynamic web language or framework, then
+    chances are that Sass support is available. This is the most popular
+    way to use Sass, but sometimes it does require some changes to your
+    project. Here is just a partial list of the frameworks that have Sass
+    support:
+
+  %ul
+    %li
+      = link_to "Rails", 'http://guides.rubyonrails.org/asset_pipeline.html'
+    %li= link_to "Node.js", 'https://github.com/andrew/node-sass'
+    %li= link_to "Drupal", 'http://drupal.org/project/sass'
+    %li
+      = link_to "CodeIgniter", 'http://getsparks.org/packages/sass/versions/HEAD/show'
+    %li
+      = link_to "Yii", 'http://www.yiiframework.com/extension/haml-and-sass/'
+    %li= link_to ".net", 'http://libsassnet.codeplex.com/'
+    %li
+      = link_to "Joomla", 'http://www.joomlavision.com/started-sass/'
+
+  %p
+    This is a very partial list. Just search the web for the name of your
+    framework + Sass and it's likely to come up.
