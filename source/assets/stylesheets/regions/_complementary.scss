@@ -16,7 +16,7 @@
     @include adjust-leading-to(1)
   }
 
-  @include at-breakpoint($tablet-large) {
+  @include breakpoint($tablet-large) {
     @include padding-leader(3);
     @include padding-trailer(2);
   }

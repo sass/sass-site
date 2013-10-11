@@ -13,7 +13,7 @@ label {
 }
 
 input,
-button {
+%button {
   @extend %reset-margin;
   font: {
      size: inherit;
@@ -29,7 +29,7 @@ button {
 }
 
 input[type="text"],
-button {
+%button {
   @include rhythm-borders(1px, .44);
   display: block;
   border: {
@@ -43,7 +43,7 @@ button {
   width: 100%;
   vertical-align: middle;
 
-  @include at-breakpoint($mobile-large) {
+  @include breakpoint($mobile-large) {
     @include padding-leader(.15);
     @include padding-trailer(.125);
     display: inline-block;
@@ -79,15 +79,13 @@ input {
   }
 }
 
-button {
+%button {
   @extend %bold-elements;
   @include box-shadow(0 2px 1px $color-shadow);
-  -webkit-appearance: button;
-  text-transform: none;
-  text-align: center;
   white-space: nowrap;
   background: $color-background-shade;
   cursor: pointer;
+  text-align: center;
 
   &,
   &:hover,
@@ -105,6 +103,12 @@ button {
     @include box-shadow(inset 0 3px 5px $color-shadow);
     outline: 0;
   }
+}
+
+button {
+  @extend %button;
+  -webkit-appearance: button;
+  text-transform: none;
 }
 
 %tab-focus {

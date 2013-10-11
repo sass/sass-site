@@ -3,15 +3,16 @@
   @include padding-trailer(2);
   color: $color-text-weak;
 
-  * { vertical-align: middle; }
-
   .container {
     @include leading-border;
     @include padding-trailer;
     border-color: $color-border;
   }
 
-  ul { @include font-size-small;  }
+  ul {
+    @include font-size-small;
+    @include adjust-leading-to(1);
+  }
 
   p {
     @include padding-trailer(.25);
@@ -39,7 +40,7 @@
   font-size: 1em;
 }
 
-@include at-breakpoint($tablet-large) {
+@include breakpoint($tablet-large) {
   .contentinfo {
     padding: {
          top: 0;

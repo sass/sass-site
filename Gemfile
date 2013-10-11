@@ -9,7 +9,8 @@ gem "middleman-livereload"
 gem "middleman-syntax"
 #gem "middleman-smusher"
 gem "redcarpet"
-gem "susy"
+gem "susy", "2.0.0.alpha.4"
+gem "breakpoint"
 #gem "typogruby"
 gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
 platforms :mri_18 do

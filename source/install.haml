@@ -3,61 +3,60 @@ title: Use Sass in your Project
 layout: layout_1_column
 ---
 
-.features
-  %h2 There are a couple of ways to start using&nbsp;Sass:
-  %ol
-    %li.frameworks
-      %h3 Frameworks
-      %p
-        If you or your team is using a dynamic web language or framework, then
-        chances are that Sass support is available. This is the most popular
-        way to use Sass, but sometimes it does require some changes to your
-        project. Here is just a partial list of the frameworks that have Sass
-        support:
+%h2 There are a couple of ways to start using&nbsp;Sass:
+%ol.tiled-list
+  %li.frameworks
+    %h3 Frameworks
+    %p
+      If you or your team is using a dynamic web language or framework, then
+      chances are that Sass support is available. This is the most popular
+      way to use Sass, but sometimes it does require some changes to your
+      project. Here is just a partial list of the frameworks that have Sass
+      support:
 
-      %ul
-        %li
-          = link_to "Rails", 'http://guides.rubyonrails.org/asset_pipeline.html'
-        %li= link_to "Node.js", 'https://github.com/andrew/node-sass'
-        %li= link_to "Drupal", 'http://drupal.org/project/sass'
-        %li
-          = link_to "CodeIgniter", 'http://getsparks.org/packages/sass/versions/HEAD/show'
-        %li
-          = link_to "Yii", 'http://www.yiiframework.com/extension/haml-and-sass/'
-        %li= link_to ".net", 'http://libsassnet.codeplex.com/'
-        %li
-          = link_to "Joomla", 'http://www.joomlavision.com/started-sass/'
+    %ul
+      %li
+        = link_to "Rails", 'http://guides.rubyonrails.org/asset_pipeline.html'
+      %li= link_to "Node.js", 'https://github.com/andrew/node-sass'
+      %li= link_to "Drupal", 'http://drupal.org/project/sass'
+      %li
+        = link_to "CodeIgniter", 'http://getsparks.org/packages/sass/versions/HEAD/show'
+      %li
+        = link_to "Yii", 'http://www.yiiframework.com/extension/haml-and-sass/'
+      %li= link_to ".net", 'http://libsassnet.codeplex.com/'
+      %li
+        = link_to "Joomla", 'http://www.joomlavision.com/started-sass/'
 
-      %p
-        This is a very partial list. Just search the web for the name of your
-        framework + Sass and it's likely to come up.
+    %p
+      This is a very partial list. Just search the web for the name of your
+      framework + Sass and it's likely to come up.
 
-    %li.command-line
-      %h3 Command Line
-      / Description for Unix users
-      %p
-        Using Sass on the command line is as simple as using a few commands.
-        To install Sass just type the following into the command line:
+  %li.command-line
+    %h3 Command Line
+    / Description for Unix users
+    %p
+      Using Sass on the command line is as simple as using a few commands.
+      To install Sass just type the following into the command line:
 
-      / We'll try and point the user to either
-      %pre
-        :preserve
-          gem install sass
-      %p
-        To learn how to compile your Sass files, please see our Command Line
-        Reference
-      %p= link_to "Command Line Guide", '/get-started/command-line#unix'
+    / We'll try and point the user to either
+    %pre
+      :preserve
+        gem install sass
+    %p
+      To learn how to compile your Sass files, please see our Command Line
+      Reference
+    %p= link_to "Command Line Guide", '/get-started/command-line#unix'
 
-      %p
-        For Windows users, go check out the
-        = succeed "." do
-          = link_to "Sass for Windows Guide", "/get-started/command-line#windows"
+    %p
+      For Windows users, go check out the
+      = succeed "." do
+        = link_to "Sass for Windows Guide", "/get-started/command-line#windows"
 
-    %li.gui-application
-      %h3 GUI Application
-      %p There are many free and paid GUIs that natively support Sass in them. This is the ideal start for the very non-technical user.
-      %ul
-        %li= link_to "Scout (Mac, Free)", "http://mhs.github.io/scout-app/"
-        %li= link_to "Compass.app ($10)", "http://compass.handlino.com/"
-        %li= link_to "LiveReload ($9.95)", "http://livereload.com/"
-        %li= link_to "CodeKit ($25)", "http://incident57.com/codekit/"
+  %li.gui-application
+    %h3 GUI Application
+    %p There are many free and paid GUIs that natively support Sass in them. This is the ideal start for the very non-technical user.
+    %ul
+      %li= link_to "Scout (Mac, Free)", "http://mhs.github.io/scout-app/"
+      %li= link_to "Compass.app ($10)", "http://compass.handlino.com/"
+      %li= link_to "LiveReload ($9.95)", "http://livereload.com/"
+      %li= link_to "CodeKit ($25)", "http://incident57.com/codekit/"

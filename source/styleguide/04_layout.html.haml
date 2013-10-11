@@ -13,7 +13,7 @@ title: Layouts & Grid
   - count += 1
   %dl.guide-description-list
     %dt
-      %code @include span-columns(#{count})
+      %code @include span(#{count})
     %dd{class: "by-#{count}"}
       .row
         - count.times do |num|

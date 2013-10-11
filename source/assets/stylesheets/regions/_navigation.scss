@@ -22,7 +22,7 @@
     &:focus { background: $color-background-shade; }
   }
 
-  @include at-breakpoint($tablet-small) {
+  @include breakpoint($tablet-small) {
     margin: {
       right: 0;
        left: 0;
@@ -43,7 +43,7 @@
     }
   }
 
-  @include at-breakpoint($tablet-large) {
+  @include breakpoint($tablet-large) {
     @extend %table-layout-cell-tablet-large;
      margin: 0;
     padding: 0;

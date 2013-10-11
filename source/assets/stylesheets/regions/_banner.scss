@@ -6,7 +6,7 @@
 
   .container { position: relative; }
 
-  @include at-breakpoint($tablet-large) {
+  @include breakpoint($tablet-large) {
     .container { @extend %table-layout-tablet-large; }
   }
 }
@@ -22,7 +22,7 @@
     height: rhythm(2);
   }
 
-  @include at-breakpoint($tablet-large) {
+  @include breakpoint($tablet-large) {
     display: table-cell;
     text-align: left;
     vertical-align: middle;
@@ -55,5 +55,5 @@
     background-color: $color-border;
   }
 
-  @include at-breakpoint($tablet-large) { display: none; }
+  @include breakpoint($tablet-large) { display: none; }
 }

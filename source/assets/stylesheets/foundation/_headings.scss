@@ -2,20 +2,21 @@
 
 #{headings(1, 2)} {
   @include font-size-large;
+  @include adjust-leading-to(1, $font-size-large);
   font-weight: $font-weight-light;
   letter-spacing: -0.03125em;
   color: $color-accent;
 
-  @include at-breakpoint($tablet-small) { @include font-size-x-large; }
-  @include at-breakpoint($tablet-large) { @include font-size-xx-large; }
+  @include breakpoint($tablet-small) { @include font-size-x-large; }
+  @include breakpoint($tablet-large) { @include font-size-xx-large; }
 }
 
 h1 {
   font-weight: $font-weight-light;
   color: $color-text-heading;
 
-  @include at-breakpoint($screen-small) { @include font-size-xxx-large; }
-  @include at-breakpoint($screen-large) { @include font-size-xxxx-large; }
+  @include breakpoint($screen-small) { @include font-size-xxx-large; }
+  @include breakpoint($screen-large) { @include font-size-xxxx-large; }
 }
 
 h2 {
@@ -24,12 +25,12 @@ h2 {
 
   .main &:first-child { padding-top: 0; }
 
-  @include at-breakpoint($tablet-small) {
+  @include breakpoint($tablet-small) {
     @include padding-leader(2, $font-size-x-large);
     @include padding-trailer(1, $font-size-x-large);
   }
 
-  @include at-breakpoint($tablet-large) {
+  @include breakpoint($tablet-large) {
     @include padding-leader(2, $font-size-xx-large);
     @include padding-trailer(1, $font-size-xx-large);
   }
@@ -39,8 +40,8 @@ h2,
 h3 { font-family: $font-family-display; }
 
 #{headings(3, 4)} {
-  @include padding-leader;
-  @include padding-trailer;
+  @include padding-leader(1.5);
+  @include padding-trailer(.5);
   @include font-size-regular;
   font-weight: $font-weight-bold;
   text-transform: uppercase;

@@ -4,12 +4,12 @@
 
 
 
-@include at-breakpoint($mobile-large) {
+@include breakpoint($mobile-large) {
   .slide-navigation {
     @extend %clear-fix-mobile-large;
 
     li {
-      @include span-columns(2);
+      @include span(2);
 
       &:nth-child(even) { @include omega; }
     }
@@ -25,6 +25,6 @@
 
 
 
-@include at-breakpoint($tablet-small) {
+@include breakpoint($tablet-small) {
   .slides p { text-align: left; }
 }

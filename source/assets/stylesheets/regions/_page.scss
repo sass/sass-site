@@ -1,7 +1,7 @@
 .page {
   @include transition-property(margin, padding, min-height, height);
 
-  @include at-breakpoint($tablet-large) {
+  @include breakpoint($tablet-large) {
     margin: 0 auto #{-$sticky-contentinfo-height};
     padding-bottom:  $sticky-contentinfo-height;
     min-height: 100%;

@@ -78,7 +78,7 @@
 %image-replacement { @include image-replacement; }
 
 <% data.layout.resolutions.each do |resolution| %>
-  @include at-breakpoint($<%= resolution.target %>) {
+  @include breakpoint($<%= resolution.target %>) {
     %clear-fix-<%= resolution.target %> { @include clear-fix; }
 
     %table-layout-<%= resolution.target %> { @include table-layout; }

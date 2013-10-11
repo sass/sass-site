@@ -1,13 +1,13 @@
 .container {
   @include container;
 
-  &.toolkit-grid { @include susy-grid-background; }
+  &.toolkit-grid { @include background-grid; }
 
   <% data.layout.resolutions.each do |resolution| %>
-    @include at-breakpoint($<%= resolution.target %>) {
-      @include set-container-width;
+    @include breakpoint($<%= resolution.target %>) {
+      @include container;
 
-      &.toolkit-grid { @include susy-grid-background; }
+      &.toolkit-grid { @include background-grid; }
     }
   <% end %>
 }

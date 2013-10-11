@@ -24,10 +24,10 @@
 }
 
 .release ul {
-  @extend %horizontal-list;
-  margin: {
-    right: 0;
-     left: 0;
-  }
+  @extend %reset-list;
   text-align: inherit;
+
+  @include breakpoint($mobile-small) { @extend %horizontal-list-mobile-small; }
 }
+
+.release-name { white-space: nowrap; }

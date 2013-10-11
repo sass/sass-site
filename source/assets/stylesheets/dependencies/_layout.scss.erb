@@ -1,17 +1,24 @@
 // Susy Settings
-$total-columns: <%= data.layout.susy.total_columns %>;
-$column-width:  <%= data.layout.susy.column_width %>;
-$gutter-width:  <%= data.layout.susy.gutter_width %>;
-$grid-padding:  $gutter-width;
+$container: 80%;
+$gutter-width: <%= data.layout.susy.gutter_width %>;
+$column-width: <%= data.layout.susy.column_width %>;
 
-$container-style: magic;
+$columns: <%= data.layout.susy.total_columns %>;
+$gutters: 1/3;
+$gutter-placement: inside;
 
-$border-radius: .25em;
 
+
+// Breakpoint Settings
+$breakpoint-to-ems: true;
 <% data.layout.resolutions.each do |resolution| %>
 $<%= resolution.target %>: <%= resolution.width %>px;
 <% end %>
 
+
+
+// Misc
+$border-radius: .25em;
 $sticky-contentinfo-height: rhythm(6);
 
 @mixin square($size: $column-width) {

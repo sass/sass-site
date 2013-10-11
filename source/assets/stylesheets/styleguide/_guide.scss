@@ -17,7 +17,7 @@
   background: $color-background-shade;
 }
 
-@for $i from 1 through $total-columns {
+@for $i from 1 through $columns {
   .by-#{$i}  {
     @extend %split-by;
 
@@ -48,7 +48,7 @@
   iframe { @include box-shadow(0 1px 1px $color-shadow)}
 }
 
-@include at-breakpoint($tablet-large) {
+@include breakpoint($tablet-large) {
   .responsive-test-url {
     @extend %table-layout-tablet-large;
     text-align: left;

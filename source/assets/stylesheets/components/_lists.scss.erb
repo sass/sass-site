@@ -1,11 +1,12 @@
-%reset-list {
+@mixin reset-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-%horizontal-list {
-  @extend %reset-list;
+@mixin horizontal-list($resolution: false) {
+  @if $resolution == false { @extend %reset-list; }
+  @else                    { @extend %reset-list-#{$resolution}; }
 
   li {
     display: inline-block;
@@ -18,11 +19,23 @@
   }
 }
 
+%reset-list      { @include reset-list; }
+%horizontal-list { @include horizontal-list; }
+
+<% data.layout.resolutions.each do |resolution| %>
+  @include breakpoint($<%= resolution.target %>) {
+    %reset-list-<%= resolution.target %> { @include reset-list; }
+    %horizontal-list-<%= resolution.target %> {
+      @include horizontal-list(<%= resolution.target %>);
+    }
+  }
+<% end %>
+
 .tiled-list {
   @extend %reset-list;
   margin: 0 auto;
 
-  @include at-breakpoint($screen-small) {
+  @include breakpoint($screen-small) {
     @extend %clear-fix-screen-small;
     margin: 0 #{-$gutter-width / 2};
     max-width: none;
@@ -50,9 +63,9 @@
 }
 
 %description-list {
-  @include at-breakpoint($mobile-large) { dd { margin-left: 0; } }
+  @include breakpoint($mobile-large) { dd { margin-left: 0; } }
 
-  @include at-breakpoint($tablet-small) {
+  @include breakpoint($tablet-small) {
     @extend %table-layout-tablet-small;
     table-layout: fixed;
     text-align: left;
@@ -64,7 +77,9 @@
     dd { padding-left:  $gutter-width / 2; }
   }
 
-  @include at-breakpoint($screen-small) {
+  @include breakpoint($screen-small) {
     dt { width: 100 / 3 * 1%; }
   }
 }
+
+@include breakpoint($mobile-small) {}

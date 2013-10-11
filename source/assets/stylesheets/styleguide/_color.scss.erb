@@ -30,7 +30,7 @@ ul.swatches { @extend .tiled-list; }
   .swatch-color-<%= color.name %> { @include contrasted($color-<%= color.name %>); }
 <% end %>
 
-@include at-breakpoint($mobile-large) {
+@include breakpoint($mobile-large) {
   ul.swatches pre {
     margin: {
       right: 0;
@@ -39,7 +39,7 @@ ul.swatches { @extend .tiled-list; }
   }
 }
 
-@include at-breakpoint($tablet-small) {
+@include breakpoint($tablet-small) {
   ul.swatches li {
     width: 100 / 3 * 1%;
 
@@ -48,7 +48,7 @@ ul.swatches { @extend .tiled-list; }
   }
 }
 
-@include at-breakpoint($screen-small) {
+@include breakpoint($screen-small) {
   ul.swatches li {
     width: 25%;
 
@@ -57,7 +57,7 @@ ul.swatches { @extend .tiled-list; }
   }
 }
 
-@include at-breakpoint($screen-large) {
+@include breakpoint($screen-large) {
   ul.swatches li {
     width: 20%;
 

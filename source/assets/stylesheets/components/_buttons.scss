@@ -1,13 +1,19 @@
-$pseudos: "&:hover", "&:focus", "&:active", "&.active";
+.button { @extend %button; }
 
 .primary {
   background-color: $color-primary;
-  color-border: darken($color-primary, 5);
+  border-color: darken($color-primary, 5);
 
   &,
-  #{$pseudos} { color: $color-text-strong-invert; }
+  &:hover,
+  &:focus,
+  &:active,
+  &.active { color: $color-text-strong-invert; }
 
-  #{$pseudos} { background-color: darken($color-primary, 8%); }
+  &:hover,
+  &:focus,
+  &:active
+  &.active { background-color: darken($color-primary, 8%); }
 }
 
 %clear-button {
