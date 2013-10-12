@@ -69,10 +69,9 @@
     }
 
     a {
-      background: none;
-
+      &,
       &:hover,
-      &:focus { background: $color-background-shade; }
+      &:focus { background: none; }
     }
   }
 }
