@@ -20,7 +20,10 @@
       = partial "layouts/regions/page_header"
 
       =yield
-      = partial "layouts/regions/section_bottom"
+
+      - if content_for?(:section_middle)
+        %section.section-middle
+          .container= yield_content :section_middle
 
       .alert.release
         .container
@@ -31,6 +34,10 @@
               %li Current Release: <span class="release-name">???</span>
             %li=link_to "Release Notes", "http://sass-lang.com/docs/yardoc/file.SASS_CHANGELOG.html"
             %li=link_to "Fork on Github", "https://github.com/nex3/sass"
+
+      - if content_for?(:section_bottom)
+        %section.section-bottom
+          .container= yield_content :section_bottom
 
     = partial "layouts/regions/contentinfo"
     = partial "layouts/foot/javascripts"

@@ -6,11 +6,21 @@ ul,
 ol {
   text-align: left;
 
-  & & { padding-bottom: 0; }
+  & & {
+    padding: {
+      bottom: 0;
+      left:   0;
+    }
+  }
 }
 
 nav ul { @extend %reset-list; }
 
+dl { padding-bottom: 0; }
+
 dt { @extend %bold-elements; }
 
-dd { margin-left: $indent; }
+dd {
+  @include padding-trailer;
+  margin-left: $indent;
+}

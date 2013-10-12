@@ -45,15 +45,6 @@
         right: $gutter-width;
          left: $gutter-width;
       }
-
-      li {
-        float: none;
-        width: auto;
-        padding: {
-          right: 0;
-           left: 0;
-        }
-      }
     }
   }
 }
@@ -62,7 +53,7 @@
   @extend %list-columns;
 
   @include breakpoint($tablet-large) {
-    li {
+    > li {
       width: 50%;
 
       &:nth-child(odd) { clear: both; }
@@ -74,12 +65,21 @@
   @extend %list-columns;
 
   @include breakpoint($tablet-large) {
-    li {
+    > li {
       width: 100 / 3 * 1%;
 
       &:nth-child(3n+4) { clear: both; }
     }
   }
+}
+
+ol.list-columns {
+  list-style: decimal {
+    position: inside;
+  }
+
+  ul,
+  ol { list-style-position: outside; }
 }
 
 %description-list {
@@ -102,4 +102,7 @@
   }
 }
 
-@include breakpoint($mobile-small) {}
+.list-feature {
+  @extend %reset-list;
+  @include font-size-large;
+}
