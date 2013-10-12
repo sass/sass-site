@@ -72,7 +72,10 @@ layout: layout_1_column
         %pre
           :preserve
             sass -v
-        %p It should return <code>Sass #{data.version.number} (#{data.version.name})</code>. Congratulations! You've successfully installed Sass.
+        - if data.respond_to?(:version)
+          %p It should return <code>Sass #{data.version.number} (#{data.version.name})</code>. Congratulations! You've successfully installed Sass.
+        - else
+          %p It should return <code>Sass ???</code>. Congratulations! You've successfully installed Sass.
       %li
         %p <strong>5. Go and play.</strong> If you're brand new to Sass we've set up some resources to help you learn pretty darn quick.
 
