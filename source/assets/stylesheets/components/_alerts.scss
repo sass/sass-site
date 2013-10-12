@@ -26,7 +26,7 @@
   @extend %reset-list;
   text-align: inherit;
 
-  @include breakpoint($mobile-small) { @extend %horizontal-list-mobile-small; }
+  @include breakpoint($tablet-small) { @extend %horizontal-list-tablet-small; }
 }
 
 .release-name { white-space: nowrap; }

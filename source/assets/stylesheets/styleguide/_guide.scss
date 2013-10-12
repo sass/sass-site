@@ -4,6 +4,8 @@
 .guide-description-list {
   @extend %description-list;
 
+  .content-primary & { max-width: none; }
+
   %split-by { vertical-align: middle; }
 }
 
@@ -77,7 +79,7 @@
 
   .frame {
     float: left;
-    margin: 0 ($gutter-width / 2);
+    margin: 0 .5em;
   }
 }
 

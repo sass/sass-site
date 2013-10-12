@@ -16,11 +16,11 @@ title: Code Style Guide
   If you need to use regular HTML anywhere, write HTML5, but favor a strict
   XHTML style:
 
-    - Use well-formed markup; elements are nested properly and do not overlap.
-    - Write elements and attributes in lowercase.
-    - Quote all attributes.
-    - Self-close empty elements with a space before the trailing slash:
-      (`<br />`)
+  - Use well-formed markup; elements are nested properly and do not overlap.
+  - Write elements and attributes in lowercase.
+  - Quote all attributes.
+  - Self-close empty elements with a space before the trailing slash:
+    (`<br />`)
 
   ## Style
   This website uses Sass (duh) in the newer SCSS syntax. We also use the
@@ -31,3 +31,12 @@ title: Code Style Guide
 
   Make sure you're using the mixins and such that they have to offer before
   rewriting something, unless you can justify otherwise.
+
+  - Use hyphenated class names (no camelCase or snake_case).
+  - For naming, use the broad-to-specific approach. See
+    [this article](http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-name-your-sass-variables-modularly/)
+    for more details.
+  - Avoid nesting too deep.
+  - Write comma-delimited selectors on separate lines.
+
+

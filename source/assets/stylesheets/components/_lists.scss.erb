@@ -73,17 +73,24 @@
   }
 }
 
-ol.list-columns {
-  list-style: decimal {
-    position: inside;
-  }
+ol {
+  &.list-columns,
+  &.list-feature {
+    list-style: decimal {
+      position: inside;
+    }
 
-  ul,
-  ol { list-style-position: outside; }
+    ul,
+    ol { list-style-position: outside; }
+  }
 }
 
 %description-list {
-  @include breakpoint($mobile-large) { dd { margin-left: 0; } }
+  max-width: none;
+
+  @include breakpoint($mobile-large) {
+    dd { margin-left: 0; }
+  }
 
   @include breakpoint($tablet-small) {
     @extend %table-layout-tablet-small;

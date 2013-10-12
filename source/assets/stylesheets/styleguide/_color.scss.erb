@@ -10,7 +10,10 @@ $contrasted-lightness-threshold: 75%;
     color: inherit;
   }
 
-  pre { @include box-shadow(0 0 1px $color-shadow); }
+  pre {
+    @include box-shadow(0 0 1px $color-shadow);
+    overflow: hidden;
+  }
 
   code { @include ellipsis; }
 
@@ -30,6 +33,11 @@ ul.swatches { @extend .list-tiled; }
 <% data.color.semantic_colors.each do |color| %>
   .swatch-color-<%= color.name %> { @include contrasted($color-<%= color.name %>); }
 <% end %>
+
+// Override Contrast
+.swatch-color-shadow { color: $contrasted-dark-default; }
+
+
 
 @include breakpoint($mobile-large) {
   ul.swatches pre {

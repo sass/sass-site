@@ -1,7 +1,6 @@
 .contentinfo {
   @include padding-leader;
   @include padding-trailer;
-  background: $color-background;
   color: $color-text-weak;
 
   .container {

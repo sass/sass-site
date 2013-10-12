@@ -16,15 +16,13 @@ pre {
 code {
   padding: .25em;
   line-height: 0;
-  white-space: nowrap;
 }
 
 pre {
   @include trailer;
   @include rhythm(.5, .5, .5, .5);
-  @include bleed;
+  @include bleed(1em);
   display: block;
-  // max-height: 340px;
   overflow-y: auto;
   margin: auto 0 25px;
   word: {
