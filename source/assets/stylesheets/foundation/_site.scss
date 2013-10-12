@@ -19,7 +19,7 @@ html {
     rendering: optimizeLegibility;
     align: center;
   }
-  background: image-url("textures/grey-prism.jpg") 50% 0;
+  background: image-url("textures/grey-prism.png") 50% 0;
   @include background-size(50%);
   -webkit-tap-highlight-color: rgba($black, 0);
 
