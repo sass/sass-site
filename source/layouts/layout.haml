@@ -19,11 +19,12 @@
       = partial "layouts/regions/banner"
       = partial "layouts/regions/page_header"
 
-      =yield
+      .body
+        =yield
 
-      - if content_for?(:section_middle)
-        %section.section-middle
-          .container= yield_content :section_middle
+        - if content_for?(:section_middle)
+          %section.section-middle
+            .container= yield_content :section_middle
 
       .alert.release
         .container
