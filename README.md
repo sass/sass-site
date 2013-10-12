@@ -1,18 +1,14 @@
-# Team Sass Design
+# Contributing
 
-## Todos
+If you would like to contribute to the Sass website, please do the following:
 
-* home page
-  * Flesh out feature slideshow content
-  * Clean up the intro text 
-  * Come up with concise calls to action
-* Quickstarts
-  * Outline the video tutorial
-  * Determine what needs to be in the playground files
-  * Guides
-    * Command Line
-      * Unix
-      * Windows
-    * GUI
+* check out the
+  [style guide](http://sass-lang.com/styleguide) for design & code standards.
+* write a detailed description of what you're adding in the pull request
+  (screenshots help).
+* add any new UI elements to the style guide.
+* submit the pull request.
+* drink whisky.
 
-    
+Thanks!
+- Team Sass Design
