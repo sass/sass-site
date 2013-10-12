@@ -35,9 +35,9 @@
   @extend %reset-list;
   margin: 0 auto;
 
-  @include breakpoint($screen-small) {
-    @extend %clear-fix-screen-small;
-    margin: 0 #{-$gutter-width / 2};
+  @include breakpoint($tablet-large) {
+    @extend %clear-fix-tablet-large;
+    margin: 0 #{-$gutter-width};
     max-width: none;
 
     li {

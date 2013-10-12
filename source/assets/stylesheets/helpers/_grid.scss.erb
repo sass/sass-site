@@ -5,14 +5,13 @@
 
   <% data.layout.resolutions.each do |resolution| %>
     @include breakpoint($<%= resolution.target %>) {
+      @include set-grid($<%= resolution.target %>-grid);
       @include container;
 
       &.toolkit-grid { @include background-grid; }
     }
   <% end %>
 }
-
-
 
 .row {
   @extend %clear-fix;

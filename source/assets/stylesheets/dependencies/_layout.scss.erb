@@ -1,5 +1,5 @@
 // Susy Settings
-$container: 80%;
+$container: 90%;
 $gutter-width: <%= data.layout.susy.gutter_width %>;
 $column-width: <%= data.layout.susy.column_width %>;
 
@@ -11,8 +11,9 @@ $gutter-placement: inside;
 
 // Breakpoint Settings
 $breakpoint-to-ems: true;
-<% data.layout.resolutions.each do |resolution| %>
+<% data.layout.resolutions.each_with_index do |resolution, index| %>
 $<%= resolution.target %>: <%= resolution.width %>px;
+$<%= resolution.target %>-grid: "(<%= index %> * 2) ($column-width $gutter-width) inside fluid";
 <% end %>
 
 

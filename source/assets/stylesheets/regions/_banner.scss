@@ -23,9 +23,7 @@
   }
 
   @include breakpoint($tablet-large) {
-    display: table-cell;
-    text-align: left;
-    vertical-align: middle;
+    @include span(3);
 
     img { height: rhythm(4); }
   }

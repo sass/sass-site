@@ -13,8 +13,8 @@
     @include padding-trailer(.5);
     display: block;
     padding: {
-      right: $gutter-width;
-       left: $gutter-width;
+      right: $gutter-width * 2;
+       left: $gutter-width * 2;
     }
     background: mix($color-background, $color-background-shade);
 
@@ -31,45 +31,39 @@
     ul { @extend %clear-fix-tablet-small; }
 
     li {
-      float: left;
-      width: 50%;
+      @include span(6);
 
-      &:nth-child(odd) {
-        clear: both;
-        padding-right: $gutter-width / 2;
-      }
-
-      &:nth-child(even) { padding-left: $gutter-width / 2; }
+      &:nth-child(odd) { @include omega; }
     }
   }
 
   @include breakpoint($tablet-large) {
-    @extend %table-layout-cell-tablet-large;
-     margin: 0;
-    padding: 0;
-    text-align: right;
+    @include span(9 omega);
     background: none;
 
-    &.collapse { display: table-cell !important; }
+    &.collapse { display: block !important; }
 
     ul {
-      display: inline-block;
-      margin: 0 #{-$gutter-width} 0 $gutter-width;
+      margin: 0;
+      max-width: none;
+      white-space: nowrap;
+      text-align: right;
     }
 
     li {
+      float: none;
+      display: inline-block;
       margin: {
-        right: $gutter-width;
+        right: 0;
+        left: $gutter-width * 2;
         bottom: 0;
       }
       width: auto;
 
       &:nth-child(odd) {
-        clear: none;
-        padding-right: 0;
+        float: none;
+        margin-right: 0;
       }
-
-      &:nth-child(even) { padding-left: 0;  }
 
       &:last-child { margin-right: 0; }
     }

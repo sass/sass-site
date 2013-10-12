@@ -30,7 +30,7 @@ input,
 
 input[type="text"],
 %button {
-  @include rhythm-borders(1px, .44);
+  @include rhythm-borders(1px, .5);
   display: block;
   border: {
     color: $color-border;
@@ -44,8 +44,6 @@ input[type="text"],
   vertical-align: middle;
 
   @include breakpoint($mobile-large) {
-    @include padding-leader(.15);
-    @include padding-trailer(.125);
     display: inline-block;
     width: auto;
   }
@@ -84,6 +82,7 @@ input {
   @include box-shadow(0 2px 1px $color-shadow);
   white-space: nowrap;
   background: $color-background-shade;
+  vertical-align: middle;
   cursor: pointer;
   text-align: center;
 

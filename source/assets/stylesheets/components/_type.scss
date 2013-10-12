@@ -6,6 +6,6 @@
   @include breakpoint($tablet-large) {
     @include font-size-large;
 
-    .main & { text-align: left; }
+    .content-primary & { text-align: left; }
   }
 }
