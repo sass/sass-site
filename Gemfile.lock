@@ -92,6 +92,7 @@ GEM
     rouge (0.3.10)
       thor
     ruby18_source_location (0.2)
+    rubypants (0.2.0)
     sass (3.2.12)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -109,6 +110,8 @@ GEM
       sass (>= 3.2.0)
     thor (0.18.1)
     tilt (1.3.7)
+    typogruby (1.0.16)
+      rubypants
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -126,4 +129,5 @@ DEPENDENCIES
   redcarpet
   ruby18_source_location
   susy (= 2.0.0.alpha.4)
+  typogruby
   wdm (~> 0.1.0)

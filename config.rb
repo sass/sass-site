@@ -1,5 +1,7 @@
 require "builder"
 require 'susy'
+require 'breakpoint'
+require 'middleman-syntax'
 # TODO: Make this work
 # require "kss"
 # require 'typogruby'
