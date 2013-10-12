@@ -38,10 +38,10 @@ end
 
 task :sass_docs => :sass do
   Dir.chdir(".sass") {bundle %{exec rake doc}}
-  sh %{rm -rf source/assets/doc}
-  sh %{cp -r .sass/doc source/assets/doc}
-  sh %{find source/assets/doc -name '*.html' } +
-    %{-exec sed 's/css\\/common\\.css/..\\/stylesheets\\/docs.css/g' -i {} \\;}
+  sh %{rm -rf source/documentation}
+  sh %{cp -r .sass/doc source/documentation}
+  sh %{find source/documentation -name '*.html' } +
+    %{-exec sed 's/css\\/common\\.css/..\\/assets\\/stylesheets\\/docs.css/g' -i {} \\;}
 end
 
 desc "Import information from Sass."
