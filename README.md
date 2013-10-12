@@ -11,4 +11,4 @@ If you would like to contribute to the Sass website, please do the following:
 * drink whisky.
 
 Thanks!
-- Team Sass Design
+&mdash; Team Sass Design
