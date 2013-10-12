@@ -6,8 +6,11 @@ pre {
     family: $font-family-code;
   }
   white-space: pre-wrap;
-  background: rgba($color-background-shade, .2);
+  background: rgba($color-background-shade, .175);
   color: $color-text-strong;
+  @include border-radius(4px);
+  border: 1px solid #ebebeb;
+  @include box-sizing(border-box);
 }
 
 code {
@@ -22,6 +25,7 @@ pre {
   display: block;
   // max-height: 340px;
   overflow-y: auto;
+  margin: auto 0 25px;
   word: {
     break: break-all;
     wrap: break-word;
@@ -33,5 +37,8 @@ pre {
     background: none;
     font-size: inherit;
     line-height: inherit;
+  }
+  &.highlight .err {
+    background: #fcc;
   }
 }
