@@ -8,9 +8,4 @@ section { display: block; }
 p {
   @extend %reset-margin;
   @include padding-trailer;
-  margin: {
-    right: auto;
-    left:  auto;
-  }
-  max-width: 56em;
 }

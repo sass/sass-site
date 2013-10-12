@@ -12,7 +12,7 @@
     display: inline-block;
     margin: {
       right: -2px;
-      left:  $gutter-width;
+      left:  2em;
     }
 
     &:first-child { margin-left: 0; }
@@ -31,24 +31,20 @@
   }
 <% end %>
 
-.tiled-list {
+%list-columns {
   @extend %reset-list;
   margin: 0 auto;
 
   @include breakpoint($tablet-large) {
     @extend %clear-fix-tablet-large;
     margin: 0 #{-$gutter-width};
-    max-width: none;
 
-    li {
+    > li {
       float: left;
-      width: 100 / 3 * 1%;
       padding: {
         right: $gutter-width;
          left: $gutter-width;
       }
-
-      &:nth-child(3n+4) { clear: both; }
 
       li {
         float: none;
@@ -58,6 +54,30 @@
            left: 0;
         }
       }
+    }
+  }
+}
+
+.list-columns {
+  @extend %list-columns;
+
+  @include breakpoint($tablet-large) {
+    li {
+      width: 50%;
+
+      &:nth-child(odd) { clear: both; }
+    }
+  }
+}
+
+.list-tiled {
+  @extend %list-columns;
+
+  @include breakpoint($tablet-large) {
+    li {
+      width: 100 / 3 * 1%;
+
+      &:nth-child(3n+4) { clear: both; }
     }
   }
 }

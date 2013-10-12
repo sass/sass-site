@@ -32,14 +32,7 @@
     x: scroll;
   }
 
-  ul {
-    @extend %reset-list;
-    margin: {
-      right: 0;
-       left: 0;
-    }
-    max-width: none;
-  }
+  ul { @extend %reset-list; }
 
   li { position: relative; }
 

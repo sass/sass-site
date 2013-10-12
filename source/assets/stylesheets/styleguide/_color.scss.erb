@@ -6,6 +6,7 @@ $contrasted-lightness-threshold: 75%;
   pre,
   code {
     background: none;
+    border: 0;
     color: inherit;
   }
 
@@ -20,7 +21,7 @@ $contrasted-lightness-threshold: 75%;
   }
 }
 
-ul.swatches { @extend .tiled-list; }
+ul.swatches { @extend .list-tiled; }
 
 <% data.color.colors.each do |color| %>
   .swatch-<%= color.name %> pre { @include contrasted(#<%= color.hex %>); }

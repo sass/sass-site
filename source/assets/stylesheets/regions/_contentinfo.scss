@@ -4,9 +4,8 @@
   color: $color-text-weak;
 
   .container {
-    @include leading-border;
+    @include padding-leader;
     @include padding-trailer;
-    border-color: $color-border;
   }
 
   ul {

@@ -1,8 +1,10 @@
 @include breakpoint($tablet-large) {
   .content-primary {
     @include span(8);
+    text-align: left;
 
-    h2,
-    h3 { text-align: left; }
+    ul,
+    dl,
+    p { max-width: 37.5em; }
   }
 }

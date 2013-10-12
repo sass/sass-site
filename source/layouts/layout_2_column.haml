@@ -7,4 +7,4 @@
       %main.main.content-primary(role="main")=yield
 
       - if content_for?(:complementary)
-        .complementary(role="complementary")= yield_content :complementary
+        .complementary.content-secondary(role="complementary")= yield_content :complementary
