@@ -60,6 +60,7 @@ with_layout :styleguide do
   #@styleguide = Kss::Parser.new('source/css')
 end
 
+page "/assets/doc/*", :directory_index => false
 
 
 

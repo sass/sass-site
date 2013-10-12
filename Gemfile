@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem "builder"
+gem "rake"
 #gem "kss"
 
 gem "middleman", "~>3.1.5"
