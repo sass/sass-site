@@ -1,5 +1,7 @@
 require "builder"
 require 'susy'
+require 'breakpoint'
+require 'middleman-syntax'
 # TODO: Make this work
 # require "kss"
 # require 'typogruby'
@@ -58,6 +60,7 @@ with_layout :styleguide do
   #@styleguide = Kss::Parser.new('source/css')
 end
 
+page "/documentation/*", :directory_index => false
 
 
 
