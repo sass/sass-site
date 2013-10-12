@@ -1,7 +1,7 @@
 .section-bottom {
   @include padding-leader;
   @include padding-trailer;
-  @include background(linear-gradient(mix($color-background-shade, $color-background), transparent));
+  background: $color-background;
 
   @include breakpoint($screen-small) {
 

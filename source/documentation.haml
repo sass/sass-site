@@ -2,6 +2,11 @@
 title: Documentation
 ---
 
-:markdown
-  This will be replaced with the current RDOC from the existing site. If we
-  can tweak the CSS a bit we may do that to it matches the theme.
+%p= link_to "Yardocs will go here.", "http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html"
+
+
+
+- content_for (:complementary) do
+  %h3 Elsewhere
+  %ul
+    %li= link_to "Better Sass Docs", "http://www.kaelig.fr/bettersassdocs/"
