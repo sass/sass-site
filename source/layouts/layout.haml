@@ -23,11 +23,10 @@
 
       .alert.release
         .container
-          :markdown
-            * Current Release:
-              <span class="release-name">Maptastic Maple (3.3.0)</span>
-            * [Release Notes](http://sass-lang.com/docs/yardoc/file.SASS_CHANGELOG.html)
-            * [Fork Sass on Github](https://github.com/nex3/sass)
+          %ul
+            %li Current Release: <span class="release-name">#{data.version.name} (#{data.version.number})</span>
+            %li=link_to "Release Notes", "http://sass-lang.com/docs/yardoc/file.SASS_CHANGELOG.html"
+            %li=link_to "Fork on Github", "https://github.com/nex3/sass"
 
       = partial "layouts/regions/section_bottom"
     = partial "layouts/regions/contentinfo"
