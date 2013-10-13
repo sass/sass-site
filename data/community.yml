@@ -1,5 +1,5 @@
 tutorials:
-  - name: "CodeSchool"
+  - name: "Code School"
     url: "http://www.codeschool.com/courses/assembling-sass"
   - name: "LevelUp Tuts"
     url: "http://leveluptuts.com/tutorials/sass-tutorials"
@@ -17,7 +17,7 @@ books:
 blogs:
   - name: "The Sass Way"
     url: "http://thesassway.com/"
-  - name: "CSS Tricks"
+  - name: "CSS-Tricks"
     url: "http://css-tricks.com/search-results/?q=sass"
   - name: "Zurb"
     url: "http://zurb.com/blog/sass"
@@ -41,7 +41,7 @@ projects:
   - name: "Neat"
     url: "http://neat.bourbon.io/"
     description: "a mixin-based grid layout system"
-  - name: "Sassmeister"
+  - name: "SassMeister"
     url: "http://sassmeister.com/"
     description: "a tool for trying Sass in the browser"
   - name: "Zurb Foundation"
@@ -58,7 +58,7 @@ projects:
     description: "a framework for making HTML5 websites with Sass"
 
 articles:
-  - name: "Sass vs. Less"
+  - name: "Sass vs. LESS"
     url: "http://css-tricks.com/sass-vs-less/"
     description: "by Chris Coyier, from CSS Tricks, May 2012"
   - name: "Redesigning with Sass"
