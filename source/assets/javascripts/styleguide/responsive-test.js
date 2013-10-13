@@ -1,4 +1,4 @@
-var defaultURL = 'localhost:4567'; //<---- CHANGE TO YOUR WEBSITE URL
+var defaultURL = 'sass-lang.com'; //<---- CHANGE TO YOUR WEBSITE URL
 
 //show loading graphic
 function showLoader(id) {
