@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<title>
+  File: FAQ
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: FAQ</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="frequently_asked_questions">Frequently Asked Questions</h1>
+<div class="maruku_toc"><ul><li><a href="#frequently_asked_questions">Frequently Asked Questions</a><ul><li><a href="#q-ruby-code">Can I use a variable from my controller in my Sass file?</a></li></ul></li><li><a href="#you_still_havent_answered_my_question">You still haven???t answered my question!</a></li></ul></div>
+<h2 id="q-ruby-code">Can I use a variable from my controller in my Sass file?</h2>
+
+<p>No. Sass files aren???t views. They???re compiled once into static CSS files, then left along until they???re changed and need to be compiled again. Not only don???t you want to be running a full request cycle every time someone requests a stylesheet, but it???s not a great idea to put much logic in there anyway due to how browsers handle them.</p>
+
+<p>If you really need some sort of dynamic CSS, you can define your own <span class='object_link'><a href="Sass/Script/Functions.html" title="Sass::Script::Functions (module)">Sass functions</a></span> using Ruby that can access the database or other configuration. <em>Be aware when doing this that Sass files are by default only compiled once and then served statically.</em></p>
+
+<p>If you really, really need to compile Sass on each request, first make sure you have adequate caching set up. Then you can use <span class='object_link'><a href="Sass/Engine.html" title="Sass::Engine (class)">Sass::Engine</a></span> to render the code, using the <a href="file.SASS_REFERENCE.html#custom-option" title="&lt;code&gt;:custom&lt;/code&gt; option"><code>:custom</code> option</a> to pass in data that <span class='object_link'><a href="Sass/Script/Functions/EvaluationContext.html#options-instance_method" title="Sass::Script::Functions::EvaluationContext#options (method)">can be accessed</a></span> from your Sass functions.</p>
+
+<h1 id="you_still_havent_answered_my_question">You still haven???t answered my question!</h1>
+
+<p>Sorry! Try looking at the <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html">Sass</a> reference, If you can???t find an answer there, feel free to ask in <code>#sass</code> on irc.freenode.net or send an email to the <a href="http://groups.google.com/group/sass-lang">mailing list</a>.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:10 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

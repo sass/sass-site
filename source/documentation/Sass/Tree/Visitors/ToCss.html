@@ -1,0 +1,1115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Tree::Visitors::ToCss
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (T)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Tree.html" title="Sass::Tree (module)">Tree</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Visitors.html" title="Sass::Tree::Visitors (module)">Visitors</a></span></span>
+     &raquo; 
+    <span class="title">ToCss</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Tree::Visitors::ToCss
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></li>
+          
+            <li class="next">Sass::Tree::Visitors::ToCss</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A visitor for converting a Sass tree into CSS.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (ToCss) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of ToCss.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit-instance_method" title="#visit (instance method)">- <strong>visit</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_charset-instance_method" title="#visit_charset (instance method)">- <strong>visit_charset</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_comment-instance_method" title="#visit_comment (instance method)">- <strong>visit_comment</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_cssimport-instance_method" title="#visit_cssimport (instance method)">- <strong>visit_cssimport</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_directive-instance_method" title="#visit_directive (instance method)">- <strong>visit_directive</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_media-instance_method" title="#visit_media (instance method)">- <strong>visit_media</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_prop-instance_method" title="#visit_prop (instance method)">- <strong>visit_prop</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_root-instance_method" title="#visit_root (instance method)">- <strong>visit_root</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_rule-instance_method" title="#visit_rule (instance method)">- <strong>visit_rule</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#visit_supports-instance_method" title="#visit_supports (instance method)">- <strong>visit_supports</strong>(node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#with_tabs-instance_method" title="#with_tabs (instance method)">- <strong>with_tabs</strong>(tabs) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#node_name-instance_method" title="Sass::Tree::Visitors::Base#node_name (method)">#node_name</a></span>, <span class='object_link'><a href="Base.html#visit-class_method" title="Sass::Tree::Visitors::Base.visit (method)">visit</a></span>, <span class='object_link'><a href="Base.html#visit_children-instance_method" title="Sass::Tree::Visitors::Base#visit_children (method)">#visit_children</a></span>, <span class='object_link'><a href="Base.html#visit_if-instance_method" title="Sass::Tree::Visitors::Base#visit_if (method)">#visit_if</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Sass::Tree::Visitors::ToCss (class)">ToCss</a></span></tt>) <strong>initialize</strong>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of ToCss</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 5</span>
+
+def initialize
+  @tabs = 0
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="visit-instance_method">
+  
+    - <strong>visit</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 9</span>
+
+def visit(node)
+  super
+rescue Sass::SyntaxError =&gt; e
+  e.modify_backtrace(:filename =&gt; node.filename, :line =&gt; node.line)
+  raise e
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_charset-instance_method">
+  
+    - <strong>visit_charset</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 54</span>
+
+def visit_charset(node)
+  &quot;@charset \&quot;#{node.name}\&quot;;&quot;
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_comment-instance_method">
+  
+    - <strong>visit_comment</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 58</span>
+
+def visit_comment(node)
+  return if node.invisible?
+  spaces = ('  ' * [@tabs - node.resolved_value[/^ */].size, 0].max)
+
+  content = node.resolved_value.gsub(/^/, spaces)
+  content.gsub!(%r{^(\s*)//(.*)$}) {|md| &quot;#{$1}/*#{$2} */&quot;} if node.type == :silent
+  content.gsub!(/\n +(\* *(?!\/))?/, ' ') if (node.style == :compact || node.style == :compressed) &amp;&amp; node.type != :loud
+  content
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_cssimport-instance_method">
+  
+    - <strong>visit_cssimport</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 120</span>
+
+def visit_cssimport(node)
+  visit_directive(node)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_directive-instance_method">
+  
+    - <strong>visit_directive</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 68</span>
+
+def visit_directive(node)
+  was_in_directive = @in_directive
+  tab_str = '  ' * @tabs
+  return tab_str + node.resolved_value + &quot;;&quot; unless node.has_children
+  return tab_str + node.resolved_value + &quot; {}&quot; if node.children.empty?
+  @in_directive = @in_directive || !node.is_a?(Sass::Tree::MediaNode)
+  result = if node.style == :compressed
+             &quot;#{node.resolved_value}{&quot;
+           else
+             &quot;#{tab_str}#{node.resolved_value} {&quot; + (node.style == :compact ? ' ' : &quot;\n&quot;)
+           end
+  was_prop = false
+  first = true
+  node.children.each do |child|
+    next if child.invisible?
+    if node.style == :compact
+      if child.is_a?(Sass::Tree::PropNode)
+        with_tabs(first || was_prop ? 0 : @tabs + 1) {result &lt;&lt; visit(child) &lt;&lt; ' '}
+      else
+        result[-1] = &quot;\n&quot; if was_prop
+        rendered = with_tabs(@tabs + 1) {visit(child).dup}
+        rendered = rendered.lstrip if first
+        result &lt;&lt; rendered.rstrip + &quot;\n&quot;
+      end
+      was_prop = child.is_a?(Sass::Tree::PropNode)
+      first = false
+    elsif node.style == :compressed
+      result &lt;&lt; (was_prop ? &quot;;&quot; : &quot;&quot;) &lt;&lt; with_tabs(0) {visit(child)}
+      was_prop = child.is_a?(Sass::Tree::PropNode)
+    else
+      result &lt;&lt; with_tabs(@tabs + 1) {visit(child)} + &quot;\n&quot;
+    end
+  end
+  result.rstrip + if node.style == :compressed
+                    &quot;}&quot;
+                  else
+                    (node.style == :expanded ? &quot;\n&quot; : &quot; &quot;) + &quot;}\n&quot;
+                  end
+ensure
+  @in_directive = was_in_directive
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_media-instance_method">
+  
+    - <strong>visit_media</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+110
+111
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 110</span>
+
+def visit_media(node)
+  str = with_tabs(@tabs + node.tabs) {visit_directive(node)}
+  str.gsub!(/\n\Z/, '') unless node.style == :compressed || node.group_end
+  str
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_prop-instance_method">
+  
+    - <strong>visit_prop</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126
+127
+128
+129
+130
+131
+132</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 124</span>
+
+def visit_prop(node)
+  return if node.resolved_value.empty?
+  tab_str = '  ' * (@tabs + node.tabs)
+  if node.style == :compressed
+    &quot;#{tab_str}#{node.resolved_name}:#{node.resolved_value}&quot;
+  else
+    &quot;#{tab_str}#{node.resolved_name}: #{node.resolved_value};&quot;
+  end
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_root-instance_method">
+  
+    - <strong>visit_root</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 23</span>
+
+def visit_root(node)
+  result = String.new
+  node.children.each do |child|
+    next if child.invisible?
+    child_str = visit(child)
+    result &lt;&lt; child_str + (node.style == :compressed ? '' : &quot;\n&quot;)
+  end
+  result.rstrip!
+  return &quot;&quot; if result.empty?
+  result &lt;&lt; &quot;\n&quot;
+  unless Sass::Util.ruby1_8? || result.ascii_only?
+    if node.children.first.is_a?(Sass::Tree::CharsetNode)
+      begin
+        encoding = node.children.first.name
+        # Default to big-endian encoding, because we have to decide somehow
+        encoding &lt;&lt; 'BE' if encoding =~ /\Autf-(16|32)\Z/i
+        result = result.encode(Encoding.find(encoding))
+      rescue EncodingError
+      end
+    end
+
+    result = &quot;@charset \&quot;#{result.encoding.name}\&quot;;#{
+      node.style == :compressed ? '' : &quot;\n&quot;
+    }&quot;.encode(result.encoding) + result
+  end
+  result
+rescue Sass::SyntaxError =&gt; e
+  e.sass_template ||= node.template
+  raise e
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_rule-instance_method">
+  
+    - <strong>visit_rule</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 134</span>
+
+def visit_rule(node)
+  with_tabs(@tabs + node.tabs) do
+    rule_separator = node.style == :compressed ? ',' : ', '
+    line_separator =
+      case node.style
+        when :nested, :expanded; &quot;\n&quot;
+        when :compressed; &quot;&quot;
+        else; &quot; &quot;
+      end
+    rule_indent = '  ' * @tabs
+    per_rule_indent, total_indent = [:nested, :expanded].include?(node.style) ? [rule_indent, ''] : ['', rule_indent]
+
+    joined_rules = node.resolved_rules.members.map do |seq|
+      next if seq.has_placeholder?
+      rule_part = seq.to_a.join
+      if node.style == :compressed
+        rule_part.gsub!(/([^,])\s*\n\s*/m, '\1 ')
+        rule_part.gsub!(/\s*([,+&gt;])\s*/m, '\1')
+        rule_part.strip!
+      end
+      rule_part
+    end.compact.join(rule_separator)
+
+    joined_rules.sub!(/\A\s*/, per_rule_indent)
+    joined_rules.gsub!(/\s*\n\s*/, &quot;#{line_separator}#{per_rule_indent}&quot;)
+    total_rule = total_indent &lt;&lt; joined_rules
+
+    to_return = ''
+    old_spaces = '  ' * @tabs
+    if node.style != :compressed
+      if node.options[:debug_info] &amp;&amp; !@in_directive
+        to_return &lt;&lt; visit(debug_info_rule(node.debug_info, node.options)) &lt;&lt; &quot;\n&quot;
+      elsif node.options[:trace_selectors]
+        to_return &lt;&lt; &quot;#{old_spaces}/* &quot;
+        to_return &lt;&lt; node.stack_trace.join(&quot;\n   #{old_spaces}&quot;)
+        to_return &lt;&lt; &quot; */\n&quot;
+      elsif node.options[:line_comments]
+        to_return &lt;&lt; &quot;#{old_spaces}/* line #{node.line}&quot;
+
+        if node.filename
+          relative_filename = if node.options[:css_filename]
+            begin
+              Pathname.new(node.filename).relative_path_from(
+                Pathname.new(File.dirname(node.options[:css_filename]))).to_s
+            rescue ArgumentError
+              nil
+            end
+          end
+          relative_filename ||= node.filename
+          to_return &lt;&lt; &quot;, #{relative_filename}&quot;
+        end
+
+        to_return &lt;&lt; &quot; */\n&quot;
+      end
+    end
+
+    if node.style == :compact
+      properties = with_tabs(0) {node.children.map {|a| visit(a)}.join(' ')}
+      to_return &lt;&lt; &quot;#{total_rule} { #{properties} }#{&quot;\n&quot; if node.group_end}&quot;
+    elsif node.style == :compressed
+      properties = with_tabs(0) {node.children.map {|a| visit(a)}.join(';')}
+      to_return &lt;&lt; &quot;#{total_rule}{#{properties}}&quot;
+    else
+      properties = with_tabs(@tabs + 1) {node.children.map {|a| visit(a)}.join(&quot;\n&quot;)}
+      end_props = (node.style == :expanded ? &quot;\n&quot; + old_spaces : ' ')
+      to_return &lt;&lt; &quot;#{total_rule} {\n#{properties}#{end_props}}#{&quot;\n&quot; if node.group_end}&quot;
+    end
+
+    to_return
+  end
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="visit_supports-instance_method">
+  
+    - <strong>visit_supports</strong>(node)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 116</span>
+
+def visit_supports(node)
+  visit_media(node)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="with_tabs-instance_method">
+  
+    - <strong>with_tabs</strong>(tabs)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/visitors/to_css.rb', line 16</span>
+
+def with_tabs(tabs)
+  old_tabs, @tabs = @tabs, tabs
+  yield
+ensure
+  @tabs = old_tabs
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:22 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

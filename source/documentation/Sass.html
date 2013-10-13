@@ -1,0 +1,773 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Sass
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (S)</a> &raquo;
+    
+    
+    <span class="title">Sass</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Sass
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1"><span class='object_link'><a href="Sass/Version.html" title="Sass::Version (module)">Version</a></span></dd>
+      
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass.rb<span class="defines">,<br />
+  /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/cache_stores.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/cache_stores/base.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/cache_stores/chain.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/cache_stores/filesystem.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/cache_stores/memory.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/cache_stores/null.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/callbacks.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/css.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/engine.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/environment.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/error.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/exec.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/importers.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/importers/base.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/importers/filesystem.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/logger.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/logger/log_level.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/rack.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/staleness_checker.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/repl.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/root.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/css_lexer.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/css_parser.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/lexer.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/parser.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/variable.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/scss.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/scss/css_parser.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/scss/parser.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/scss/rx.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/scss/script_lexer.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/scss/script_parser.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/scss/static_parser.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/abstract_sequence.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/comma_sequence.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/sequence.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/shared.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/content_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/debug_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/function_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/import_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/mixin_def_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/return_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/root_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/variable_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/warn_node.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/util.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/util/subset_map.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/util/test.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/version.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>We keep configuration in its own self-contained file so that we can load it independently in Rails 3, where the full plugin stuff is lazy-loaded.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Sass/CacheStores.html" title="Sass::CacheStores (module)">CacheStores</a></span>, <span class='object_link'><a href="Sass/Callbacks.html" title="Sass::Callbacks (module)">Callbacks</a></span>, <span class='object_link'><a href="Sass/Exec.html" title="Sass::Exec (module)">Exec</a></span>, <span class='object_link'><a href="Sass/Importers.html" title="Sass::Importers (module)">Importers</a></span>, <span class='object_link'><a href="Sass/Logger.html" title="Sass::Logger (module)">Logger</a></span>, <span class='object_link'><a href="Sass/Media.html" title="Sass::Media (module)">Media</a></span>, <span class='object_link'><a href="Sass/Plugin.html" title="Sass::Plugin (module)">Plugin</a></span>, <span class='object_link'><a href="Sass/SCSS.html" title="Sass::SCSS (module)">SCSS</a></span>, <span class='object_link'><a href="Sass/Script.html" title="Sass::Script (module)">Script</a></span>, <span class='object_link'><a href="Sass/Selector.html" title="Sass::Selector (module)">Selector</a></span>, <span class='object_link'><a href="Sass/Shared.html" title="Sass::Shared (module)">Shared</a></span>, <span class='object_link'><a href="Sass/Supports.html" title="Sass::Supports (module)">Supports</a></span>, <span class='object_link'><a href="Sass/Tree.html" title="Sass::Tree (module)">Tree</a></span>, <span class='object_link'><a href="Sass/Util.html" title="Sass::Util (module)">Util</a></span>, <span class='object_link'><a href="Sass/Version.html" title="Sass::Version (module)">Version</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Sass/CSS.html" title="Sass::CSS (class)">CSS</a></span>, <span class='object_link'><a href="Sass/Callable.html" title="Sass::Callable (class)">Callable</a></span>, <span class='object_link'><a href="Sass/Engine.html" title="Sass::Engine (class)">Engine</a></span>, <span class='object_link'><a href="Sass/Environment.html" title="Sass::Environment (class)">Environment</a></span>, <span class='object_link'><a href="Sass/Repl.html" title="Sass::Repl (class)">Repl</a></span>, <span class='object_link'><a href="Sass/SyntaxError.html" title="Sass::SyntaxError (class)">SyntaxError</a></span>, <span class='object_link'><a href="Sass/UnitConversionError.html" title="Sass::UnitConversionError (class)">UnitConversionError</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="ROOT_DIR-constant" class="">ROOT_DIR =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The root directory of the Sass source tree. This may be overridden by the package manager if the lib directory is separated from the main source tree.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code">File.expand_path(File.join(__FILE__, &quot;../../..&quot;))</pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Sass/Util.html" title="Sass::Util (module)">Util</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Sass/Util.html#RUBY_ENGINE-constant" title="Sass::Util::RUBY_ENGINE (constant)">Util::RUBY_ENGINE</a></span>, <span class='object_link'><a href="Sass/Util.html#RUBY_VERSION-constant" title="Sass::Util::RUBY_VERSION (constant)">Util::RUBY_VERSION</a></span></p>
+
+
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#logger-class_method" title="logger (class method)">+ <strong>logger</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute logger.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile-class_method" title="compile (class method)">+ <strong>compile</strong>(contents, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Compile a Sass or SCSS string to CSS.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile_file-class_method" title="compile_file (class method)">+ <strong>compile_file</strong>(filename, *args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Compile a file on disk to CSS.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load_paths-class_method" title="load_paths (class method)">+ (Array&lt;String, Pathname, Sass::Importers::Base&gt;) <strong>load_paths</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The global load paths for Sass files.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Sass/Version.html" title="Sass::Version (module)">Version</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Sass/Version.html#version-instance_method" title="Sass::Version#version (method)">version</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Sass/Util.html" title="Sass::Util (module)">Util</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Sass/Util.html#abstract-instance_method" title="Sass::Util#abstract (method)">#abstract</a></span>, <span class='object_link'><a href="Sass/Util.html#ap_geq%3F-instance_method" title="Sass::Util#ap_geq? (method)">#ap_geq?</a></span>, <span class='object_link'><a href="Sass/Util.html#ap_geq_3%3F-instance_method" title="Sass::Util#ap_geq_3? (method)">#ap_geq_3?</a></span>, <span class='object_link'><a href="Sass/Util.html#array_minus-instance_method" title="Sass::Util#array_minus (method)">#array_minus</a></span>, <span class='object_link'><a href="Sass/Util.html#atomic_create_and_write_file-instance_method" title="Sass::Util#atomic_create_and_write_file (method)">#atomic_create_and_write_file</a></span>, <span class='object_link'><a href="Sass/Util.html#av_template_class-instance_method" title="Sass::Util#av_template_class (method)">#av_template_class</a></span>, <span class='object_link'><a href="Sass/Util.html#caller_info-instance_method" title="Sass::Util#caller_info (method)">#caller_info</a></span>, <span class='object_link'><a href="Sass/Util.html#check_encoding-instance_method" title="Sass::Util#check_encoding (method)">#check_encoding</a></span>, <span class='object_link'><a href="Sass/Util.html#check_range-instance_method" title="Sass::Util#check_range (method)">#check_range</a></span>, <span class='object_link'><a href="Sass/Util.html#check_sass_encoding-instance_method" title="Sass::Util#check_sass_encoding (method)">#check_sass_encoding</a></span>, <span class='object_link'><a href="Sass/Util.html#destructure-instance_method" title="Sass::Util#destructure (method)">#destructure</a></span>, <span class='object_link'><a href="Sass/Util.html#enum_cons-instance_method" title="Sass::Util#enum_cons (method)">#enum_cons</a></span>, <span class='object_link'><a href="Sass/Util.html#enum_slice-instance_method" title="Sass::Util#enum_slice (method)">#enum_slice</a></span>, <span class='object_link'><a href="Sass/Util.html#enum_with_index-instance_method" title="Sass::Util#enum_with_index (method)">#enum_with_index</a></span>, <span class='object_link'><a href="Sass/Util.html#extract%21-instance_method" title="Sass::Util#extract! (method)">#extract!</a></span>, <span class='object_link'><a href="Sass/Util.html#extract_values-instance_method" title="Sass::Util#extract_values (method)">#extract_values</a></span>, <span class='object_link'><a href="Sass/Util.html#flatten-instance_method" title="Sass::Util#flatten (method)">#flatten</a></span>, <span class='object_link'><a href="Sass/Util.html#glob-instance_method" title="Sass::Util#glob (method)">#glob</a></span>, <span class='object_link'><a href="Sass/Util.html#group_by_to_a-instance_method" title="Sass::Util#group_by_to_a (method)">#group_by_to_a</a></span>, <span class='object_link'><a href="Sass/Util.html#has%3F-instance_method" title="Sass::Util#has? (method)">#has?</a></span>, <span class='object_link'><a href="Sass/Util.html#hash_to_a-instance_method" title="Sass::Util#hash_to_a (method)">#hash_to_a</a></span>, <span class='object_link'><a href="Sass/Util.html#inject_values-instance_method" title="Sass::Util#inject_values (method)">#inject_values</a></span>, <span class='object_link'><a href="Sass/Util.html#inspect_obj-instance_method" title="Sass::Util#inspect_obj (method)">#inspect_obj</a></span>, <span class='object_link'><a href="Sass/Util.html#intersperse-instance_method" title="Sass::Util#intersperse (method)">#intersperse</a></span>, <span class='object_link'><a href="Sass/Util.html#ironruby%3F-instance_method" title="Sass::Util#ironruby? (method)">#ironruby?</a></span>, <span class='object_link'><a href="Sass/Util.html#jruby1_6%3F-instance_method" title="Sass::Util#jruby1_6? (method)">#jruby1_6?</a></span>, <span class='object_link'><a href="Sass/Util.html#jruby%3F-instance_method" title="Sass::Util#jruby? (method)">#jruby?</a></span>, <span class='object_link'><a href="Sass/Util.html#jruby_version-instance_method" title="Sass::Util#jruby_version (method)">#jruby_version</a></span>, <span class='object_link'><a href="Sass/Util.html#lcs-instance_method" title="Sass::Util#lcs (method)">#lcs</a></span>, <span class='object_link'><a href="Sass/Util.html#macruby%3F-instance_method" title="Sass::Util#macruby? (method)">#macruby?</a></span>, <span class='object_link'><a href="Sass/Util.html#map_hash-instance_method" title="Sass::Util#map_hash (method)">#map_hash</a></span>, <span class='object_link'><a href="Sass/Util.html#map_keys-instance_method" title="Sass::Util#map_keys (method)">#map_keys</a></span>, <span class='object_link'><a href="Sass/Util.html#map_vals-instance_method" title="Sass::Util#map_vals (method)">#map_vals</a></span>, <span class='object_link'><a href="Sass/Util.html#merge_adjacent_strings-instance_method" title="Sass::Util#merge_adjacent_strings (method)">#merge_adjacent_strings</a></span>, <span class='object_link'><a href="Sass/Util.html#ord-instance_method" title="Sass::Util#ord (method)">#ord</a></span>, <span class='object_link'><a href="Sass/Util.html#paths-instance_method" title="Sass::Util#paths (method)">#paths</a></span>, <span class='object_link'><a href="Sass/Util.html#powerset-instance_method" title="Sass::Util#powerset (method)">#powerset</a></span>, <span class='object_link'><a href="Sass/Util.html#rails_env-instance_method" title="Sass::Util#rails_env (method)">#rails_env</a></span>, <span class='object_link'><a href="Sass/Util.html#rails_root-instance_method" title="Sass::Util#rails_root (method)">#rails_root</a></span>, <span class='object_link'><a href="Sass/Util.html#rbx%3F-instance_method" title="Sass::Util#rbx? (method)">#rbx?</a></span>, <span class='object_link'><a href="Sass/Util.html#restrict-instance_method" title="Sass::Util#restrict (method)">#restrict</a></span>, <span class='object_link'><a href="Sass/Util.html#ruby1%3F-instance_method" title="Sass::Util#ruby1? (method)">#ruby1?</a></span>, <span class='object_link'><a href="Sass/Util.html#ruby1_8%3F-instance_method" title="Sass::Util#ruby1_8? (method)">#ruby1_8?</a></span>, <span class='object_link'><a href="Sass/Util.html#ruby1_8_6%3F-instance_method" title="Sass::Util#ruby1_8_6? (method)">#ruby1_8_6?</a></span>, <span class='object_link'><a href="Sass/Util.html#sass_warn-instance_method" title="Sass::Util#sass_warn (method)">#sass_warn</a></span>, <span class='object_link'><a href="Sass/Util.html#scope-instance_method" title="Sass::Util#scope (method)">#scope</a></span>, <span class='object_link'><a href="Sass/Util.html#set_eql%3F-instance_method" title="Sass::Util#set_eql? (method)">#set_eql?</a></span>, <span class='object_link'><a href="Sass/Util.html#set_hash-instance_method" title="Sass::Util#set_hash (method)">#set_hash</a></span>, <span class='object_link'><a href="Sass/Util.html#silence_sass_warnings-instance_method" title="Sass::Util#silence_sass_warnings (method)">#silence_sass_warnings</a></span>, <span class='object_link'><a href="Sass/Util.html#silence_warnings-instance_method" title="Sass::Util#silence_warnings (method)">#silence_warnings</a></span>, <span class='object_link'><a href="Sass/Util.html#strip_string_array-instance_method" title="Sass::Util#strip_string_array (method)">#strip_string_array</a></span>, <span class='object_link'><a href="Sass/Util.html#subsequence%3F-instance_method" title="Sass::Util#subsequence? (method)">#subsequence?</a></span>, <span class='object_link'><a href="Sass/Util.html#substitute-instance_method" title="Sass::Util#substitute (method)">#substitute</a></span>, <span class='object_link'><a href="Sass/Util.html#to_hash-instance_method" title="Sass::Util#to_hash (method)">#to_hash</a></span>, <span class='object_link'><a href="Sass/Util.html#undefined_conversion_error_char-instance_method" title="Sass::Util#undefined_conversion_error_char (method)">#undefined_conversion_error_char</a></span>, <span class='object_link'><a href="Sass/Util.html#version_geq-instance_method" title="Sass::Util#version_geq (method)">#version_geq</a></span>, <span class='object_link'><a href="Sass/Util.html#version_gt-instance_method" title="Sass::Util#version_gt (method)">#version_gt</a></span>, <span class='object_link'><a href="Sass/Util.html#windows%3F-instance_method" title="Sass::Util#windows? (method)">#windows?</a></span>, <span class='object_link'><a href="Sass/Util.html#with_extracted_values-instance_method" title="Sass::Util#with_extracted_values (method)">#with_extracted_values</a></span></p>
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="logger=-class_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="logger-class_method">
+  
+    + <strong>logger</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute logger</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/logger.rb', line 11</span>
+
+def logger
+  @logger
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="compile-class_method">
+  
+    + <strong>compile</strong>(contents, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Compile a Sass or SCSS string to CSS. Defaults to SCSS.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>contents</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The contents of the Sass file.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An options hash; see <a href="file.SASS_REFERENCE.html#sass_options" title="the Sass options documentation">the Sass options documentation</a></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Sass/SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if there’s an error in the document</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Encoding::UndefinedConversionError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if the source encoding cannot be converted to UTF-8</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if the document uses an unknown encoding with <code>@charset</code></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass.rb', line 52</span>
+
+def self.compile(contents, options = {})
+  options[:syntax] ||= :scss
+  Engine.new(contents, options).to_css
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compile_file-class_method">
+  
+    
+      <span class="overload">+ (<tt>String</tt>) <strong>compile_file</strong>(filename, options = {}) </span>
+    
+      <span class="overload">+ <strong>compile_file</strong>(filename, css_filename, options = {}) </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Compile a file on disk to CSS.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">+ (<tt>String</tt>) <strong>compile_file</strong>(filename, options = {}) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Return the compiled CSS rather than writing it to a file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The compiled CSS.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">+ <strong>compile_file</strong>(filename, css_filename, options = {}) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Write the compiled CSS to a file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>css_filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The location to which to write the compiled CSS.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+  </ul>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The path to the Sass, SCSS, or CSS file on disk.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An options hash; see <a href="file.SASS_REFERENCE.html#sass_options" title="the Sass options documentation">the Sass options documentation</a></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Sass/SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if there’s an error in the document</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Encoding::UndefinedConversionError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if the source encoding cannot be converted to UTF-8</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if the document uses an unknown encoding with <code>@charset</code></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass.rb', line 76</span>
+
+def self.compile_file(filename, *args)
+  options = args.last.is_a?(Hash) ? args.pop : {}
+  css_filename = args.shift
+  result = Sass::Engine.for_file(filename, options).render
+  if css_filename
+    options[:css_filename] ||= css_filename
+    open(css_filename,&quot;w&quot;) {|css_file| css_file.write(result)}
+    nil
+  else
+    result
+  end
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load_paths-class_method">
+  
+    + (<tt>Array&lt;String, Pathname, <span class='object_link'><a href="Sass/Importers/Base.html" title="Sass::Importers::Base (class)">Sass::Importers::Base</a></span>&gt;</tt>) <strong>load_paths</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The global load paths for Sass files. This is meant for plugins and libraries to register the paths to their Sass stylesheets to that they may be <code>@imported</code>. This load path is used by every instance of [Sass::Engine]. They are lower-precedence than any load paths passed in via the <a href="file.SASS_REFERENCE.html#load_paths-option" title="&lt;code&gt;:load_paths&lt;/code&gt; option"><code>:load_paths</code> option</a>.</p>
+
+<p>If the <code>SASS_PATH</code> environment variable is set, the initial value of <code>load_paths</code> will be initialized based on that. The variable should be a colon-separated list of path names (semicolon-separated on Windows).</p>
+
+<p>Note that files on the global load path are never compiled to CSS themselves, even if they aren???t partials. They exist only to be imported.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>Sass.load_paths &lt;&lt; File.dirname(__FILE__ + '/sass')</code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, Pathname, <span class='object_link'><a href="Sass/Importers/Base.html" title="Sass::Importers::Base (class)">Sass::Importers::Base</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass.rb', line 37</span>
+
+def self.load_paths
+  @load_paths ||= ENV['SASS_PATH'] ?
+    ENV['SASS_PATH'].split(Sass::Util.windows? ? ';' : ':') : []
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:14 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

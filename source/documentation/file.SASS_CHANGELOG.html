@@ -1,0 +1,2827 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: SASS_CHANGELOG
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: SASS_CHANGELOG</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="sass_changelog">Sass Changelog</h1>
+<div class="maruku_toc"><ul><li><a href="#3212">3.2.12</a></li><li><a href="#3211">3.2.11</a></li><li><a href="#3210">3.2.10</a></li><li><a href="#329">3.2.9</a></li><li><a href="#328">3.2.8</a></li><li><a href="#327">3.2.7</a></li><li><a href="#326">3.2.6</a></li><li><a href="#325">3.2.5</a></li><li><a href="#324">3.2.4</a></li><li><a href="#323">3.2.3</a></li><li><a href="#322">3.2.2</a><ul><li><a href="#deprecations__must_read">Deprecations – Must Read!</a></li></ul></li><li><a href="#321_15_august_2012">3.2.1 (15 August 2012)</a></li><li><a href="#320_10_august_2012">3.2.0 (10 August 2012)</a><ul><li><a href="#"><code>@content</code></a></li><li><a href="#placeholder_selectors_">Placeholder Selectors: <code>%foo</code></a></li><li><a href="#variable_arguments">Variable Arguments</a></li><li><a href="#directive_interpolation">Directive Interpolation</a></li><li><a href="#smaller_improvements">Smaller Improvements</a></li><li><a href="#backwards_incompatibilities__must_read">Backwards Incompatibilities – Must Read!</a><ul><li><a href="#_warnings"><code>@extend</code> Warnings</a></li><li><a href="#smaller_incompatibilities">Smaller Incompatibilities</a></li></ul></li></ul></li><li><a href="#3121_10_august_2012">3.1.21 (10 August 2012)</a></li><li><a href="#3120">3.1.20</a></li><li><a href="#3119">3.1.19</a></li><li><a href="#3118">3.1.18</a><ul><li><a href="#deprecations__must_read_2">Deprecations – Must Read!</a></li></ul></li><li><a href="#3117">3.1.17</a></li><li><a href="#3116">3.1.16</a></li><li><a href="#3115">3.1.15</a></li><li><a href="#3114">3.1.14</a></li><li><a href="#3113">3.1.13</a></li><li><a href="#3112">3.1.12</a></li><li><a href="#3111">3.1.11</a><ul><li><a href="#deprecations__must_read_3">Deprecations – Must Read!</a></li></ul></li><li><a href="#3110">3.1.10</a></li><li><a href="#319">3.1.9</a></li><li><a href="#318">3.1.8</a></li><li><a href="#317">3.1.7</a></li><li><a href="#316">3.1.6</a></li><li><a href="#315">3.1.5</a></li><li><a href="#314">3.1.4</a></li><li><a href="#313">3.1.3</a></li><li><a href="#312">3.1.2</a></li><li><a href="#311">3.1.1</a></li><li><a href="#310">3.1.0</a><ul><li><a href="#sassbased_functions">Sass-based Functions</a></li><li><a href="#keyword_arguments">Keyword Arguments</a><ul><li><a href="#new_keyword_functions">New Keyword Functions</a></li></ul></li><li><a href="#lists">Lists</a><ul><li><a href="#_2"><code>@each</code></a></li></ul></li><li><a href="#_bubbling"><code>@media</code> Bubbling</a></li><li><a href="#nested_">Nested <code>@import</code></a></li><li><a href="#backwards_incompatibilities__must_read_2">Backwards Incompatibilities – Must Read!</a></li><li><a href="#sass_internals">Sass Internals</a></li></ul></li><li><a href="#3026_unreleased">3.0.26 (Unreleased)</a></li><li><a href="#3025">3.0.25</a></li><li><a href="#3024">3.0.24</a></li><li><a href="#3023">3.0.23</a><ul><li><a href="#_change"><code>@charset</code> Change</a><ul><li><a href="#ruby_19">Ruby 1.9</a></li><li><a href="#ruby_18">Ruby 1.8</a></li></ul></li></ul></li><li><a href="#3022">3.0.22</a></li><li><a href="#3021">3.0.21</a></li><li><a href="#3020">3.0.20</a></li><li><a href="#3019">3.0.19</a></li><li><a href="#3018">3.0.18</a></li><li><a href="#3017">3.0.17</a></li><li><a href="#3016">3.0.16</a></li><li><a href="#3015">3.0.15</a></li><li><a href="#3014">3.0.14</a></li><li><a href="#3013">3.0.13</a></li><li><a href="#css__directives">CSS <code>@import</code> Directives</a></li><li><a href="#_support"><code>-moz-calc</code> Support</a></li><li><a href="#_support_2"><code>:-moz-any</code> Support</a></li><li><a href="#_flag"><code>--require</code> Flag</a></li><li><a href="#rails_support">Rails Support</a><ul><li><a href="#rails_3_support">Rails 3 Support</a></li></ul></li><li><a href="#3012">3.0.12</a></li><li><a href="#rails_3_support_2">Rails 3 Support</a><ul><li><a href="#deprecated_rails_3_beta_3">Deprecated: Rails 3 Beta 3</a></li></ul></li><li><a href="#3011">3.0.11</a></li><li><a href="#rails_3_support_3">Rails 3 Support</a></li><li><a href="#bug_fixes">Bug Fixes</a></li><li><a href="#3010">3.0.10</a><ul><li><a href="#appenginejruby_support">Appengine-JRuby Support</a></li><li><a href="#rails_3_support_4">Rails 3 Support</a></li><li><a href="#other_improvements">Other Improvements</a></li></ul></li><li><a href="#309">3.0.9</a></li><li><a href="#308">3.0.8</a></li><li><a href="#307">3.0.7</a><ul><li><a href="#encoding_support">Encoding Support</a></li><li><a href="#bug_fixes_2">Bug Fixes</a></li></ul></li><li><a href="#306">3.0.6</a></li><li><a href="#305">3.0.5</a><ul><li><a href="#_interpolation_in_properties"><code>#{}</code> Interpolation in Properties</a></li><li><a href="#recursive_mixins">Recursive Mixins</a></li><li><a href="#rails_3_support_5">Rails 3 Support</a></li><li><a href="#_3"><code>sass --no-cache</code></a></li></ul></li><li><a href="#304">3.0.4</a></li><li><a href="#303">3.0.3</a><ul><li><a href="#rails_3_support_6">Rails 3 Support</a></li><li><a href="#merb_support">Merb Support</a></li><li><a href="#bug_fixes_3">Bug Fixes</a></li></ul></li><li><a href="#302">3.0.2</a><ul><li><a href="#merb_110_support">Merb 1.1.0 Support</a></li><li><a href="#bug_fixes_4">Bug Fixes</a></li></ul></li><li><a href="#301">3.0.1</a><ul><li><a href="#installation_in_rails">Installation in Rails</a></li><li><a href="#rails_3_beta_integration">Rails 3 Beta Integration</a></li><li><a href="#_methods"><code>:template_location</code> Methods</a></li></ul></li><li><a href="#3-0-0">3.0.0</a><ul><li><a href="#3-0-0-deprecations">Deprecations – Must Read!</a></li><li><a href="#scss_sassy_css">SCSS (Sassy CSS)</a></li><li><a href="#3-0-0-syntax-changes">Syntax Changes</a><ul><li><a href="#3-0-0-sass-script-context">SassScript Context</a><ul><li><a href="#quoted_strings">Quoted Strings</a></li><li><a href="#division_and_">Division and <code>/</code></a></li><li><a href="#variable_defaults">Variable Defaults</a></li></ul></li><li><a href="#3-0-0-dollar-prefix">Variable Prefix Character</a></li><li><a href="#variable_and_mixin_names">Variable and Mixin Names</a></li><li><a href="#singlequoted_strings">Single-Quoted Strings</a></li><li><a href="#mixin_definition_and_inclusion">Mixin Definition and Inclusion</a></li><li><a href="#sass_properties">Sass Properties</a></li><li><a href="#sass_">Sass <code>@import</code></a></li></ul></li><li><a href="#3-0-0-extend"><code>@extend</code></a><ul><li><a href="#how_it_works">How it Works</a></li></ul></li><li><a href="#colors">Colors</a><ul><li><a href="#alpha_channels">Alpha Channels</a></li><li><a href="#hsl_colors">HSL Colors</a></li></ul></li><li><a href="#other_new_functions">Other New Functions</a></li><li><a href="#3-0-0-watch">Watching for Updates</a><ul><li><a href="#bulk_updating">Bulk Updating</a></li></ul></li><li><a href="#3-0-0-sass-convert"><code>sass-convert</code> (née <code>css2sass</code>)</a><ul><li><a href="#_5"><code>--recursive</code></a></li><li><a href="#_6"><code>--dasherize</code></a></li><li><a href="#convert_less_to_scss">Convert Less to SCSS</a><ul><li><a href="#incompatibilities">Incompatibilities</a></li></ul></li></ul></li><li><a href="#_directive"><code>@warn</code> Directive</a></li><li><a href="#sassplugin_api">Sass::Plugin API</a></li><li><a href="#output_formatting">Output Formatting</a><ul><li><a href="#_style"><code>:compressed</code> Style</a></li></ul></li><li><a href="#stylesheet_updating_speed">Stylesheet Updating Speed</a></li><li><a href="#error_backtraces">Error Backtraces</a></li><li><a href="#ruby_19_support">Ruby 1.9 Support</a></li><li><a href="#firebug_support">Firebug Support</a></li><li><a href="#minor_improvements">Minor Improvements</a></li></ul></li><li><a href="#2224">2.2.24</a></li><li><a href="#2223">2.2.23</a></li><li><a href="#2222">2.2.22</a></li><li><a href="#2221">2.2.21</a></li><li><a href="#2220">2.2.20</a></li><li><a href="#2219">2.2.19</a></li><li><a href="#2218">2.2.18</a></li><li><a href="#2217">2.2.17</a><ul><li><a href="#must_read">Must Read!</a></li></ul></li><li><a href="#2216">2.2.16</a></li><li><a href="#2215">2.2.15</a></li><li><a href="#2214">2.2.14</a><ul><li><a href="#sassscript_ruby_api">SassScript Ruby API</a></li><li><a href="#rack_support">Rack Support</a></li></ul></li><li><a href="#2213">2.2.13</a></li><li><a href="#2212">2.2.12</a></li><li><a href="#2211">2.2.11</a></li><li><a href="#2210">2.2.10</a></li><li><a href="#229">2.2.9</a></li><li><a href="#228">2.2.8</a></li><li><a href="#227">2.2.7</a></li><li><a href="#226">2.2.6</a></li><li><a href="#225">2.2.5</a></li><li><a href="#224">2.2.4</a></li><li><a href="#223">2.2.3</a></li><li><a href="#222">2.2.2</a></li><li><a href="#221">2.2.1</a><ul><li><a href="#must_read_2">Must Read!</a></li></ul></li><li><a href="#220">2.2.0</a><ul><li><a href="#must_read_3">Must Read!</a></li><li><a href="#sass_syntax_changes">Sass Syntax Changes</a><ul><li><a href="#flexible_indentation">Flexible Indentation</a></li><li><a href="#multiline_sass_comments">Multiline Sass Comments</a></li><li><a href="#mixin_arguments">Mixin Arguments</a></li></ul></li><li><a href="#sass_interactive">Sass, Interactive</a></li><li><a href="#sassscript">SassScript</a><ul><li><a href="#new_data_types">New Data Types</a></li><li><a href="#more_flexible_numbers">More Flexible Numbers</a></li><li><a href="#improved_handling_of_units">Improved Handling of Units</a></li><li><a href="#colors_2">Colors</a></li><li><a href="#booleans">Booleans</a></li><li><a href="#strings">Strings</a></li></ul></li><li><a href="#control_directives">Control Directives</a><ul><li><a href="#for">@for</a></li><li><a href="#if__else_if__else">@if / @else if / @else</a></li><li><a href="#while">@while</a></li></ul></li><li><a href="#variable_scoping">Variable Scoping</a></li><li><a href="#interpolation">Interpolation</a></li><li><a href="#sass_functions">Sass Functions</a></li><li><a href="#new_options">New Options</a><ul><li><a href="#_7"><code>:line_comments</code></a></li><li><a href="#_8"><code>:template_location</code></a></li></ul></li><li><a href="#miscellaneous_features">Miscellaneous Features</a><ul><li><a href="#_directive_2"><code>@debug</code> Directive</a></li><li><a href="#ruby_19_support_2">Ruby 1.9 Support</a></li><li><a href="#sass_cache">Sass Cache</a></li></ul></li></ul></li></ul></div>
+<h2 id="3212">3.2.12</h2>
+
+<ul>
+<li>
+<p>Add a couple missing <code>require</code>s, fixing some load errors, especially when using the command-line interface.</p>
+</li>
+
+<li>
+<p>Tune up some heuristics for eliminating redundant generated selectors. This will prevent some selector elimination in cases where multi-layered <code>@extend</code> is being used and where it seems intuitively like selectors shouldn’t be eliminated.</p>
+</li>
+</ul>
+
+<h2 id="3211">3.2.11</h2>
+
+<ul>
+<li>
+<p>Fix <code>@extend</code>’s semantics with respect to pseudo-elements. They are no longer treated identically to pseudo-classes.</p>
+</li>
+
+<li>
+<p>A more understandable error is now provided when the <code>-E</code> option is passed to the Sass command line in ruby 1.8</p>
+</li>
+
+<li>
+<p>Fixed a bug in the output of lists containing unary plus or minus operations during sass &lt;=&gt; scss conversion.</p>
+</li>
+
+<li>
+<p>Avoid the <a href="http://jes.st/2013/ie7s-css-breaking-content-counter-bug/">IE7 <code>content: counter</code> bug</a> with <code>content: counters</code> as well.</p>
+</li>
+
+<li>
+<p>Fix some thread-safety issues.</p>
+</li>
+</ul>
+
+<h2 id="3210">3.2.10</h2>
+
+<ul>
+<li>
+<p>Use the Sass logger infrastructure for <code>@debug</code> directives.</p>
+</li>
+
+<li>
+<p>When printing a Sass error into a CSS comment, escape <code>*/</code> so the comment doesn’t end prematurely.</p>
+</li>
+
+<li>
+<p>Preserve the <code>!</code> in <code>/*! ... */</code>-style comments.</p>
+</li>
+
+<li>
+<p>Fix a bug where selectors were being incorrectly trimmed when using <code>@extend</code>.</p>
+</li>
+
+<li>
+<p>Fix a bug where <code>sass --unix-newlines</code> and <code>sass-convert --in-place</code> are not working on Windows (thanks <a href="http://www.ranvis.com">SATO Kentaro</a>).</p>
+</li>
+</ul>
+
+<h2 id="329">3.2.9</h2>
+
+<ul>
+<li>
+<p>Fix a bug where <code>@extend</code>s would occasionally cause a selector to be generated with the incorrect specificity.</p>
+</li>
+
+<li>
+<p>Avoid loading <a href="http://github.com/guard/listen">listen</a> v1.0, even if it’s installed as a Gem (see <a href="https://github.com/nex3/sass/issues/719">issue 719</a>).</p>
+</li>
+
+<li>
+<p>Update the bundled version of <a href="http://github.com/guard/listen">listen</a> to 0.7.3.</p>
+</li>
+
+<li>
+<p>Automatically avoid the <a href="http://jes.st/2013/ie7s-css-breaking-content-counter-bug/">IE7 <code>content: counter</code> bug</a>.</p>
+</li>
+</ul>
+
+<h2 id="328">3.2.8</h2>
+
+<ul>
+<li>
+<p>Fix some edge cases where redundant selectors were emitted when using <code>@extend</code>.</p>
+</li>
+
+<li>
+<p>Fix a bug where comma-separated lists with interpolation could lose elements.</p>
+</li>
+
+<li>
+<p>Fix a bug in <code>sass-convert</code> where lists being passed as arguments to functions or mixins would lose their surrounding parentheses.</p>
+</li>
+
+<li>
+<p>Fix a bug in <code>sass-convert</code> where <code>null</code> wasn’t being converted correctly.</p>
+</li>
+
+<li>
+<p>Fix a bug where multiple spaces in a string literal would sometimes be folded together.</p>
+</li>
+
+<li>
+<p><code>sass</code> and <code>sass-convert</code> won’t create an empty file before writing to it. This fixes a flash of unstyled content when using LiveReload and similar tools.</p>
+</li>
+
+<li>
+<p>Fix a case where a corrupted cache could produce fatal errors on some versions of Ruby.</p>
+</li>
+
+<li>
+<p>Fix a case where a mixin loop error would be incorrectly reported when using <code>@content</code>.</p>
+</li>
+</ul>
+
+<h2 id="327">3.2.7</h2>
+
+<ul>
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#index-instance_method" title="Sass::Script::Functions#index (method)"><code>index</code></a></span> and <span class='object_link'><a href="Sass/Script/Functions.html#zip-instance_method" title="Sass::Script::Functions#zip (method)"><code>zip</code></a></span> functions now work like all other list functions and treat individual values as single-element lists.</p>
+</li>
+
+<li>
+<p>Avoid stack overflow errors caused by very long function or mixin argument lists.</p>
+</li>
+
+<li>
+<p>Emit relative paths when using the <code>--line-comments</code> flag of the <code>sass</code> executable.</p>
+</li>
+
+<li>
+<p>Fix a case where very long numbers would cause the SCSS parser to take exponential time.</p>
+</li>
+</ul>
+
+<h2 id="326">3.2.6</h2>
+
+<ul>
+<li>
+<p>Support for Rubinius 2.0.0.rc1. All tests pass in 1.8 mode. 1.9 mode has some tests blocked on <a href="https://github.com/rubinius/rubinius/issues/2139">Rubinius issue 2139</a>.</p>
+</li>
+
+<li>
+<p>Support for JRuby 1.7.2.</p>
+</li>
+
+<li>
+<p>Support for symlinked executables. Thanks to <a href="http://yinsochen.com/">Yin-So Chen</a>.</p>
+</li>
+
+<li>
+<p>Support for bubbling <code>@supports</code> queries in the indented syntax.</p>
+</li>
+
+<li>
+<p>Fix an incorrect warning when using <code>@extend</code> from within nested <code>@media</code> queries.</p>
+</li>
+
+<li>
+<p>Update the bundled version of <a href="http://github.com/guard/listen">listen</a> to 0.7.2.</p>
+</li>
+</ul>
+
+<h2 id="325">3.2.5</h2>
+
+<ul>
+<li>
+<p>Fix a bug where bogus <code>@extend</code> warnings were being generated.</p>
+</li>
+
+<li>
+<p>Fix an <code>@import</code> bug on Windows. Thanks to <a href="https://github.com/dlmiles">Darryl Miles</a>.</p>
+</li>
+
+<li>
+<p>Ruby 2.0.0-preview compatibility. Thanks to <a href="http://www.livinginthepast.org/">Eric Saxby</a>.</p>
+</li>
+
+<li>
+<p>Fix incorrect line numbering when using DOS line endings with the indented syntax.</p>
+</li>
+</ul>
+
+<h2 id="324">3.2.4</h2>
+
+<ul>
+<li>
+<p>Fix imports from <code>.jar</code> files in JRuby. Thanks to <a href="https://github.com/argv-minus-one">Alex Hvostov</a>.</p>
+</li>
+
+<li>
+<p>Allow comments within <code>@import</code> statements in SCSS.</p>
+</li>
+
+<li>
+<p>Fix a parsing performance bug where long decimals would occasionally take many minutes to parse.</p>
+</li>
+</ul>
+
+<h2 id="323">3.2.3</h2>
+
+<ul>
+<li>
+<p><code>sass --watch</code> no longer crashs when a file in a watched directory is deleted.</p>
+</li>
+
+<li>
+<p>Allow <code>@extend</code> within bubbling nodes such as <code>@media</code>.</p>
+</li>
+
+<li>
+<p>Fix various JRuby incompatibilities and test failures.</p>
+</li>
+
+<li>
+<p>Work around a performance bug that arises from using <code>@extend</code> with deeply-nested selectors.</p>
+</li>
+</ul>
+
+<h2 id="322">3.2.2</h2>
+
+<ul>
+<li>
+<p>Add a <code>--poll</code> option to force <code>sass --watch</code> to use the polling backend to <a href="https://github.com/guard/listen">Listen</a>.</p>
+</li>
+
+<li>
+<p>Fix some error reporting bugs related to <code>@import</code>.</p>
+</li>
+
+<li>
+<p>Treat <a href="http://paulirish.com/2010/the-protocol-relative-url/">protocol-relative URLs</a> in <code>@import</code>s as static URLs, just like <code>http</code> and <code>https</code> URLs.</p>
+</li>
+
+<li>
+<p>Improve the error message for misplaced simple selectors.</p>
+</li>
+
+<li>
+<p>Fix an option-handling bug that was causing errors with the Compass URL helpers.</p>
+</li>
+
+<li>
+<p>Fix a performance issue with <code>@import</code> that only appears when ActiveSupport is loaded.</p>
+</li>
+
+<li>
+<p>Fix flushing of actions to stdout. Thanks to [Russell Davis] (http://github.com/russelldavis).</p>
+</li>
+
+<li>
+<p>Fix the documentation for the <code>max()</code> function.</p>
+</li>
+
+<li>
+<p>Fix a <code>@media</code> parsing bug.</p>
+</li>
+</ul>
+
+<h3 id="deprecations__must_read">Deprecations – Must Read!</h3>
+
+<ul>
+<li>Sass will now print a warning when it encounters a single <code>@import</code> statement that tries to import more than one file. For example, if you have <code>@import
+&quot;screen&quot;</code> and both <code>screen.scss</code> and <code>_screen.scss</code> exist, a warning will be printed. This will become an error in future versions of Sass.</li>
+</ul>
+
+<h2 id="321_15_august_2012">3.2.1 (15 August 2012)</h2>
+
+<ul>
+<li>Fix a buggy interaction with Pow and Capybara that caused <code>EOFError</code>s.</li>
+</ul>
+
+<h2 id="320_10_august_2012">3.2.0 (10 August 2012)</h2>
+
+<h3 id=""><code>@content</code></h3>
+
+<p>A mixin include can now accept a block of content (<a href="file.SASS_REFERENCE.html#mixin-content" title="Reference Documentation">Reference Documentation</a>). The style block will be passed to the mixin and can be placed at the point @content is used. E.g.:</p>
+
+<pre class="code ruby"><code class="ruby">@mixin iphone {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@include iphone {
+  body { color: red }
+}</code></pre>
+
+<p>Or in <code>.sass</code> syntax:</p>
+
+<pre class="code ruby"><code class="ruby">=iphone
+  @media only screen and (max-width: 480px)
+    @content
+
++iphone
+  body
+    color: red</code></pre>
+
+<p>Produces:</p>
+
+<pre class="code ruby"><code class="ruby">@media only screen and (max-width: 480px) {
+  body { color: red }
+}</code></pre>
+
+<p>Note that the contents passed to the mixin are evaluated in the scope they are used, not the scope of the mixin. <a href="file.SASS_REFERENCE.html#variable_scope_and_content_blocks" title="More on variable scoping.">More on variable scoping.</a></p>
+
+<h3 id="placeholder_selectors_">Placeholder Selectors: <code>%foo</code></h3>
+
+<p>Sass supports a new, special type of selector called a “placeholder selector”. These look like class and id selectors, except the <code>#</code> or <code>.</code> is replaced by <code>%</code>. They’re meant to be used with the <a href="file.SASS_REFERENCE.html#extend" title="&lt;code&gt;@extend&lt;/code&gt; directive"><code>@extend</code> directive</a>, when you want to write styles to be extended but you don’t want the base styles to appear in the CSS.</p>
+
+<p>On its own, a placeholder selector just causes a ruleset not to be rendered. For example:</p>
+
+<pre class="code ruby"><code class="ruby">// This ruleset won't be rendered on its own.
+#context a%extreme {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}</code></pre>
+
+<p>However, placeholder selectors can be extended, just like classes and ids. The extended selectors will be generated, but the base placeholder selector will not. For example:</p>
+
+<pre class="code ruby"><code class="ruby">.notice { @extend %extreme; }</code></pre>
+
+<p>Is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">#context a.notice {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}</code></pre>
+
+<h3 id="variable_arguments">Variable Arguments</h3>
+
+<p>Mixins and functions now both support variable arguments. When defining a mixin or function, you can add <code>...</code> after the final argument to have it accept an unbounded number of arguments and package them into a list. When calling a mixin or function, you can add <code>...</code> to expand the final argument (if it’s a list) so that each value is passed as a separate argument. For example:</p>
+
+<pre class="code ruby"><code class="ruby">@mixin box-shadow($shadows...) {
+  // $shadows is a list of all arguments passed to box-shadow
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;      
+}
+
+// This is the same as &quot;@include spacing(1, 2, 3);&quot;
+$values: 1, 2, 3;
+@include spacing($values...);</code></pre>
+
+<p>Finally, if a variable argument list is passed directly on to another mixin or function, it will also pass along any keyword arguments. This means that you can wrap a pre-existing mixin or function and add new functionality without changing the call signature.</p>
+
+<h3 id="directive_interpolation">Directive Interpolation</h3>
+
+<p><code>#{}</code> interpolation is now allowed in all plain CSS directives (such as <code>@font-face</code>, <code>@keyframes</code>, and of course <code>@media</code>).</p>
+
+<p>In addition, <code>@media</code> gets some special treatment. In addition to allowing <code>#{}</code> interpolation, expressions may be used directly in media feature queries. This means that you can write e.g.:</p>
+
+<pre class="code ruby"><code class="ruby">$media: screen;
+$feature: -webkit-min-device-pixel-ratio;
+$value: 1.5;
+
+@media #{$media} and ($feature: $value) {
+  ...
+}</code></pre>
+
+<p>This is intended to allow authors to easily write mixins that make use of <code>@media</code> and other directives dynamically.</p>
+
+<h3 id="smaller_improvements">Smaller Improvements</h3>
+
+<ul>
+<li>
+<p>Mixins and functions may now be defined in a nested context, for example within <code>@media</code> rules. This also allows files containing them to be imported in such contexts.</p>
+</li>
+
+<li>
+<p>Previously, only the <code>:-moz-any</code> selector was supported; this has been expanded to support any vendor prefix, as well as the plain <code>:any</code> selector.</p>
+</li>
+
+<li>
+<p>All proposed <a href="http://dev.w3.org/csswg/selectors4/">CSS4 selectors</a> are now supported, including reference selectors (e.g. <code>.foo /attr/ .bar</code>) and subject selectors (e.g. <code>.foo!</code>).</p>
+</li>
+
+<li>
+<p>Sass now supports a global list of load paths, accessible via <span class='object_link'><a href="Sass.html#load_paths-class_method" title="Sass.load_paths (method)">Sass.load_paths</a></span>. This allows plugins and libraries to easily register their Sass files such that they’re accessible to all <span class='object_link'><a href="Sass/Engine.html" title="Sass::Engine (class)">Sass::Engine</a></span> instances.</p>
+</li>
+
+<li>
+<p><code>Sass.load_paths</code> is initialized to the value of the <code>SASS_PATH</code> environment variable. This variable should contain a colon-separated list of load paths (semicolon-separated on Windows).</p>
+</li>
+
+<li>
+<p>In certain cases, redundant selectors used to be created as a result of a single rule having multiple <code>@extend</code>s. That redundancy has been eliminated.</p>
+</li>
+
+<li>
+<p>Redundant selectors were also sometimes created by nested selectors using <code>@extend</code>. That redundancy has been eliminated as well.</p>
+</li>
+
+<li>
+<p>There is now much more comprehensive support for using <code>@extend</code> alongside CSS3 selector combinators (<code>+</code>, <code>~</code>, and <code>&gt;</code>). These combinators will now be merged as much as possible.</p>
+</li>
+
+<li>
+<p>The full set of <a href="http://www.w3.org/TR/css3-color/#svg-color">extended color keywords</a> are now supported by Sass. They may be used to refer to color objects, and colors will render using those color names when appropriate.</p>
+</li>
+
+<li>
+<p>Sass 3.2 adds the <span class='object_link'><a href="Sass/Script/Functions.html#ie_hex_str-instance_method" title="Sass::Script::Functions#ie_hex_str (method)"><code>ie-hex-str</code></a></span> function which returns a hex string for a color suitable for use with IE filters.</p>
+</li>
+
+<li>
+<p>Sass 3.2 adds the <span class='object_link'><a href="Sass/Script/Functions.html#min-instance_method" title="Sass::Script::Functions#min (method)"><code>min</code></a></span> and <span class='object_link'><a href="Sass/Script/Functions.html#max-instance_method" title="Sass::Script::Functions#max (method)"><code>max</code></a></span> functions, which return the minimum and maximum of several values.</p>
+</li>
+
+<li>
+<p>Sass functions are now more strict about how keyword arguments can be passed.</p>
+</li>
+
+<li>
+<p>Decimal numbers now default to five digits of precision after the decimal point.</p>
+</li>
+
+<li>
+<p>The options hash available to Sass functions now contains the filename of the file that the function was executed in, rather than the top-level file.</p>
+</li>
+</ul>
+
+<h3 id="backwards_incompatibilities__must_read">Backwards Incompatibilities – Must Read!</h3>
+
+<h4 id="_warnings"><code>@extend</code> Warnings</h4>
+
+<p>Any <code>@extend</code> that doesn’t match any selectors in the document will now print a warning. These warnings will become errors in future versions of Sass. This will help protect against typos and make it clearer why broken styles aren’t working. For example:</p>
+
+<pre class="code ruby"><code class="ruby">h1.notice {color: red}
+a.important {@extend .notice}</code></pre>
+
+<p>This will print a warning, since the only use of <code>.notice</code> can’t be merged with <code>a</code>.</p>
+
+<p>You can declare that you don’t want warnings for a specific <code>@extend</code> by using the <code>!optional</code> flag. For example:</p>
+
+<pre class="code ruby"><code class="ruby">h1.notice {color: red}
+a.important {@extend .notice !optional}</code></pre>
+
+<p>This will not print a warning.</p>
+
+<h4 id="smaller_incompatibilities">Smaller Incompatibilities</h4>
+
+<ul>
+<li>
+<p>Parent selectors followed immediately by identifiers (e.g. <code>&amp;foo</code>) are fully disallowed. They were deprecated in 3.1.8.</p>
+</li>
+
+<li>
+<p><code>#{}</code> interpolation is now allowed in all comments.</p>
+</li>
+
+<li>
+<p>The <code>!</code> flag may not be used with <code>//</code> comments (e.g. <code>//!</code>).</p>
+</li>
+
+<li>
+<p><code>#{}</code> interpolation is now disallowed in all <code>@import</code> statements except for those using <code>url()</code>.</p>
+</li>
+
+<li>
+<p><code>sass-convert</code> no longer supports converting files from LessCSS.</p>
+</li>
+</ul>
+
+<h2 id="3121_10_august_2012">3.1.21 (10 August 2012)</h2>
+
+<ul>
+<li>Preserve single-line comments that are embedded within multi-line comments.</li>
+
+<li>Preserve newlines in nested selectors when those selectors are used multiple times in the same document.</li>
+
+<li>Allow tests to be run without the <code>LANG</code> environment variable set.</li>
+
+<li>Update the bundled version of <a href="https://github.com/guard/listen">Listen</a> to 0.4.7.</li>
+
+<li>Sass will now convert <code>px</code> to other absolute units using the conversion ratio of <code>96px == 1in</code> as dictated by the <a href="http://www.w3.org/TR/CSS21/syndata.html#length-units">CSS Spec</a></li>
+</ul>
+
+<h2 id="3120">3.1.20</h2>
+
+<ul>
+<li>Don’t crash if a UTF encoding isn’t found. Thanks to <a href="http://github.com/techsplicer">Andrew Garbutt</a>.</li>
+
+<li>Properly watch files recursively with <code>sass --watch</code>. Thanks to <a href="https://github.com/sebweaver">Sébastien Tisserant</a>.</li>
+
+<li>Fix the documentation for the <span class='object_link'><a href="Sass/Script/Functions.html#append-instance_method" title="Sass::Script::Functions#append (method)">append()</a></span> function.</li>
+
+<li>Support the <code>saturate()</code>, <code>opacity()</code>, and <code>invert()</code> functions when used as in the <a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html">Filter Effects</a> spec.</li>
+
+<li>Support MacRuby. Thanks to <a href="http://github.com/delta407">Will Glynn</a>.</li>
+</ul>
+
+<h2 id="3119">3.1.19</h2>
+
+<ul>
+<li>Fix an <code>uninitialized constant Sass::Exec::Sass::Util</code> error when using the command-line tool.</li>
+
+<li>Allow <code>@extend</code> within directives such as <code>@media</code> as long as it only extends selectors that are within the same directive.</li>
+</ul>
+
+<h2 id="3118">3.1.18</h2>
+
+<ul>
+<li>Ruby 2.0 compatibility. Thanks to <a href="https://github.com/jeremy">Jeremy Kemper</a>.</li>
+</ul>
+
+<h3 id="deprecations__must_read_2">Deprecations – Must Read!</h3>
+
+<ul>
+<li>Deprecate the use of <code>@extend</code> within directives such as <code>@media</code>. This has never worked correctly, and now it’s officially deprecated. It will be an error in 3.2.</li>
+</ul>
+
+<h2 id="3117">3.1.17</h2>
+
+<ul>
+<li>Don’t crash when calling <code>#inspect</code> on an internal Sass tree object in Ruby 1.9.</li>
+
+<li>Fix some bugs in <code>sass --watch</code> introduced in 3.1.16. Thanks to <a href="https://github.com/Maher4Ever">Maher Sallam</a>.</li>
+
+<li>Support bare interpolation in the value portion of attribute selectors (e.g. <code>[name=#{$value}]</code>).</li>
+
+<li>Support keyword arguments for the <code>invert()</code> function.</li>
+
+<li>Handle backslash-separated paths better on Windows.</li>
+
+<li>Fix <code>rake install</code> on Ruby 1.9.</li>
+
+<li>Properly convert nested <code>@if</code> statements with <code>sass-convert</code>.</li>
+</ul>
+
+<h2 id="3116">3.1.16</h2>
+
+<ul>
+<li>Fix some bugs in <code>sass-convert</code> selector parsing when converting from CSS.</li>
+
+<li>Substantially improve compilation performance on Ruby 1.8.</li>
+
+<li>Support the <code>@-moz-document</code> directive’s non-standard <code>url-prefix</code> and <code>domain</code> function syntax.</li>
+
+<li>Support the <a href="http://www.w3.org/TR/css3-conditional/#at-supports"><code>@supports</code> directive</a>.</li>
+
+<li>Fix a performance issue when using <code>/*! */</code> comments with the Rails asset pipeline.</li>
+
+<li>Support <code>-moz-element</code>.</li>
+
+<li>Properly handle empty lists in <code>sass-convert</code>.</li>
+
+<li>Move from <a href="https://github.com/ttilley/fssm">FSSM</a> to <a href="https://github.com/guard/listen">Listen</a> for file-system monitoring.</li>
+</ul>
+
+<h2 id="3115">3.1.15</h2>
+
+<ul>
+<li>Support extending multiple comma-separated selectors (e.g. <code>@extend .foo, .bar</code>). This is just a terser way to write multiple <code>@extend</code>s (e.g. <code>@extend .foo; @extend .bar</code>). This wasn’t previously intended to work, but it did in the indented syntax only.</li>
+
+<li>Avoid more stack overflows when there are import loops in files.</li>
+
+<li>Update the bundled <a href="https://github.com/ttilley/fssm">FSSM</a> to version 0.2.8.1.</li>
+
+<li>Make the <code>grayscale</code> function work with <code>-webkit-filter</code>.</li>
+
+<li>Provide a better error message for selectors beginning with <code>/</code> in the indented syntax.</li>
+
+<li>Flush standard output after printing notifications in <code>sass --watch</code>.</li>
+
+<li>Fix variable definitions in the REPL.</li>
+</ul>
+
+<h2 id="3114">3.1.14</h2>
+
+<ul>
+<li>Fix a typo that was causing crashes on Ruby 1.9.</li>
+</ul>
+
+<h2 id="3113">3.1.13</h2>
+
+<ul>
+<li>Fix a smattering of subtle bugs that would crop up when using multibyte character sets.</li>
+
+<li>Fix a bug when using <code>@extend</code> with selectors containing newlines.</li>
+
+<li>Make boolean operators short-circuit.</li>
+
+<li>Remove unnecessary whitespace in selectors in <code>:compressed</code> mode.</li>
+
+<li>Don’t output debug info within non-<code>@media</code> directives.</li>
+
+<li>Make sure <code>:after</code> and <code>:before</code> selectors end up on the end of selectors resulting from <code>@extend</code>.</li>
+
+<li>Fix a bug when using imports containing invalid path characters on Windows.</li>
+
+<li>Bubble CSS <code>@import</code> statements to the top of stylesheets.</li>
+</ul>
+
+<h2 id="3112">3.1.12</h2>
+
+<ul>
+<li>Compatibility with the <code>mathn</code> library (thanks to <a href="https://github.com/twalpole">Thomas Walpole</a>).</li>
+
+<li>Fix some infinite loops with mixins that were previously uncaught.</li>
+
+<li>Catch infinite <code>@import</code> loops.</li>
+
+<li>Fix a deprecation warning in <code>sass --update</code> and <code>--watch</code> (thanks to <a href="https://github.com/Marzelpan">Marcel Köppen</a>).</li>
+
+<li>Don’t make <code>$important</code> a special pre-initialized variable.</li>
+
+<li>Fix exponential parsing time of certain complex property values and selectors.</li>
+
+<li>Properly merge <code>@media</code> directives with comma-separated queries. E.g. <code>@media foo, bar { @media baz { ... } }</code> now becomes <code>@media foo and baz, bar and baz { ... }</code>.</li>
+</ul>
+
+<h2 id="3111">3.1.11</h2>
+
+<ul>
+<li>Allow control directives (such as <code>@if</code>) to be nested beneath properties.</li>
+
+<li>Allow property names to begin with a hyphen followed by interpolation (e.g. <code>-#{...}</code>).</li>
+
+<li>Fix a parsing error with interpolation in comma-separated lists.</li>
+
+<li>Make <code>--cache-store</code> with with <code>--update</code>.</li>
+
+<li>Properly report <code>ArgumentError</code>s that occur within user-defined functions.</li>
+
+<li>Don’t crash on JRuby if the underlying Java doesn’t support every Unicode encoding.</li>
+
+<li>Add new <code>updated_stylesheet</code> callback, which is run after each stylesheet has been successfully compiled. Thanks to <a href="https://github.com/ChristianPeters">Christian Peters</a>.</li>
+
+<li>Allow absolute paths to be used in an importer with a different root.</li>
+
+<li>Don’t destructively modify the options when running <code>Sass::Plugin.force_update</code>.</li>
+
+<li>Prevent Regexp buffer overflows when parsing long strings (thanks to <a href="https://github.com/Agworld">Agworld</a>.</li>
+</ul>
+
+<h3 id="deprecations__must_read_3">Deprecations – Must Read!</h3>
+
+<ul>
+<li>The <code>updating_stylesheet</code> is deprecated and will be removed in a future release. Use the new <code>updated_stylesheet</code> callback instead.</li>
+</ul>
+
+<h2 id="3110">3.1.10</h2>
+
+<ul>
+<li>Fix another aspect of the 3.1.8 regression relating to <code>+</code>.</li>
+</ul>
+
+<h2 id="319">3.1.9</h2>
+
+<ul>
+<li>
+<p>Fix a regression in 3.1.8 that broke the <code>+</code> combinator in selectors.</p>
+</li>
+
+<li>
+<p>Deprecate the loud-comment flag when used with silent comments (e.g. <code>//!</code>). Using it with multi-line comments (e.g. <code>/*!</code>) still works.</p>
+</li>
+</ul>
+
+<h2 id="318">3.1.8</h2>
+
+<ul>
+<li>
+<p>Deprecate parent selectors followed immediately by identifiers (e.g. <code>&amp;foo</code>). This should never have worked, since it violates the rule of <code>&amp;</code> only being usable where an element selector would.</p>
+</li>
+
+<li>
+<p>Add a <code>--force</code> option to the <code>sass</code> executable which makes <code>--update</code> always compile all stylesheets, even if the CSS is newer.</p>
+</li>
+
+<li>
+<p>Disallow semicolons at the end of <code>@import</code> directives in the indented syntax.</p>
+</li>
+
+<li>
+<p>Don’t error out when being used as a library without requiring <code>fileutil</code>.</p>
+</li>
+
+<li>
+<p>Don’t crash when Compass-style sprite imports are used with <code>StalenessChecker</code> (thanks to <a href="https://github.com/moeffju">Matthias Bauer</a>).</p>
+</li>
+
+<li>
+<p>The numeric precision of numbers in Sass can now be set using the <code>--precision</code> option to the command line. Additionally, the default number of digits of precision in Sass output can now be changed by setting <code>Sass::Script::Number.precision</code> to an integer (defaults to 3). Since this value can now be changed, the <code>PRECISION</code> constant in <code>Sass::Script::Number</code> has been deprecated. In the unlikely event that you were using it in your code, you should now use <code>Sass::Script::Number.precision_factor</code> instead.</p>
+</li>
+
+<li>
+<p>Don’t crash when running <code>sass-convert</code> with selectors with two commas in a row.</p>
+</li>
+
+<li>
+<p>Explicitly require Ruby &gt;= 1.8.7 (thanks <a href="https://github.com/ericmason">Eric Mason</a>).</p>
+</li>
+
+<li>
+<p>Properly validate the nesting of elements in imported stylesheets.</p>
+</li>
+
+<li>
+<p>Properly compile files in parent directories with <code>--watch</code> and <code>--update</code>.</p>
+</li>
+
+<li>
+<p>Properly null out options in mixin definitions before caching them. This fixes a caching bug that has been plaguing some Rails 3.1 users.</p>
+</li>
+</ul>
+
+<h2 id="317">3.1.7</h2>
+
+<ul>
+<li>Don’t crash when doing certain operations with <code>@function</code>s.</li>
+</ul>
+
+<h2 id="316">3.1.6</h2>
+
+<ul>
+<li>
+<p>The option <code>:trace_selectors</code> can now be used to emit a full trace before each selector. This can be helpful for in-browser debugging of stylesheet imports and mixin includes. This option supersedes the <code>:line_comments</code> option and is superseded by the <code>:debug_info</code> option.</p>
+</li>
+
+<li>
+<p>Fix a bug where long <code>@if</code>/<code>@else</code> chains would cause exponential slowdown under some circumstances.</p>
+</li>
+</ul>
+
+<h2 id="315">3.1.5</h2>
+
+<ul>
+<li>Updated the vendored FSSM version, which will avoid segfaults on OS X Lion when using <code>--watch</code>.</li>
+</ul>
+
+<h2 id="314">3.1.4</h2>
+
+<ul>
+<li>Sass no longer unnecessarily caches the sass options hash. This allows objects that cannot be marshaled to be placed into the options hash.</li>
+</ul>
+
+<h2 id="313">3.1.3</h2>
+
+<ul>
+<li>Sass now logs message thru a logger object which can be changed to provide integration with other frameworks’ logging infrastructure.</li>
+</ul>
+
+<h2 id="312">3.1.2</h2>
+
+<ul>
+<li>Fix some issues that were breaking Sass when running within Rubinius.</li>
+
+<li>Fix some issues that were affecting Rails 3.1 integration.</li>
+
+<li>New function <code>zip</code> allows several lists to be combined into one list of lists. For example: <code>zip(1px 1px 3px, solid dashed solid, red green blue)</code> becomes <code>1px solid red, 1px dashed green, 3px solid blue</code></li>
+
+<li>New function <code>index</code> returns the list index of a value within a list. For example: <code>index(1px solid red, solid)</code> returns <code>2</code>. When the value is not found <code>false</code> is returned.</li>
+</ul>
+
+<h2 id="311">3.1.1</h2>
+
+<ul>
+<li>Make sure <code>Sass::Plugin</code> is loaded at the correct time in Rails 3.</li>
+</ul>
+
+<h2 id="310">3.1.0</h2>
+
+<ul>
+<li>
+<p>Add an <span class='object_link'><a href="Sass/Script/Functions.html#invert-instance_method" title="Sass::Script::Functions#invert (method)"><code>invert</code> function</a></span> that takes the inverse of colors.</p>
+</li>
+
+<li>
+<p>A new sass function called <code>if</code> can be used to emit one of two values based on the truth value of the first argument. For example, <code>if(true, 1px, 2px)</code> returns <code>1px</code> and <code>if(false, 1px, 2px)</code> returns <code>2px</code>.</p>
+</li>
+
+<li>
+<p>Compass users can now use the <code>--compass</code> flag to make the Compass libraries available for import. This will also load the Compass project configuration if run from the project root.</p>
+</li>
+
+<li>
+<p>Many performance optimizations have been made by <a href="http://github.com/thedarkone">thedarkone</a>.</p>
+</li>
+
+<li>
+<p>Allow selectors to contain extra commas to make them easier to modify. Extra commas will be removed when the selectors are converted to CSS.</p>
+</li>
+
+<li>
+<p><code>@import</code> may now be used within CSS or <code>@media</code> rules. The imported file will be treated as though it were nested within the rule. Files with mixins may not be imported in nested contexts.</p>
+</li>
+
+<li>
+<p>If a comment starts with <code>!</code>, that comment will now be interpolated (<code>#{...}</code> will be replaced with the resulting value of the expression inside) and the comment will always be printed out in the generated CSS file – even with compressed output. This is useful for adding copyright notices to your stylesheets.</p>
+</li>
+
+<li>
+<p>A new executable named <code>scss</code> is now available. It is exactly like the <code>sass</code> executable except it defaults to assuming input is in the SCSS syntax. Both programs will use the source file’s extension to determine the syntax where possible.</p>
+</li>
+</ul>
+
+<h3 id="sassbased_functions">Sass-based Functions</h3>
+
+<p>While it has always been possible to add functions to Sass with Ruby, this release adds the ability to define new functions within Sass files directly. For example:</p>
+
+<pre class="code ruby"><code class="ruby">$grid-width: 40px;
+$gutter-width: 10px;
+
+@function grid-width($n) {
+  @return $n * $grid-width + ($n - 1) * $gutter-width;
+}
+
+#sidebar { width: grid-width(5); }</code></pre>
+
+<p>Becomes:</p>
+
+<pre class="code ruby"><code class="ruby">#sidebar {
+  width: 240px; }</code></pre>
+
+<h3 id="keyword_arguments">Keyword Arguments</h3>
+
+<p>Both mixins and Sass functions now support the ability to pass in keyword arguments. For example, with mixins:</p>
+
+<pre class="code ruby"><code class="ruby">@mixin border-radius($value, $moz: true, $webkit: true, $css3: true) {
+  @if $moz { -moz-border-radius: $value }
+  @if $webkit { -webkit-border-radius: $value }
+  @if $css3 { border-radius: $value }
+}
+
+@include border-radius(10px, $webkit: false);</code></pre>
+
+<p>And with functions:</p>
+
+<pre class="code ruby"><code class="ruby">p {
+  color: hsl($hue: 180, $saturation: 78%, $lightness: 57%);
+}</code></pre>
+
+<p>Keyword arguments are of the form <code>$name: value</code> and come after normal arguments. They can be used for either optional or required arguments. For mixins, the names are the same as the argument names for the mixins. For functions, the names are defined along with the functions. The argument names for the built-in functions are listed <span class='object_link'><a href="Sass/Script/Functions.html" title="Sass::Script::Functions (module)">in the function documentation</a></span>.</p>
+
+<p>Sass functions defined in Ruby can use the <span class='object_link'><a href="Sass/Script/Functions.html#declare-class_method" title="Sass::Script::Functions.declare (method)">Sass::Script::Functions.declare</a></span> method to declare the names of the arguments they take.</p>
+
+<h4 id="new_keyword_functions">New Keyword Functions</h4>
+
+<p>The new keyword argument functionality enables new Sass color functions that use keywords to encompass a large amount of functionality in one function.</p>
+
+<ul>
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#adjust_color-instance_method" title="Sass::Script::Functions#adjust_color (method)">adjust-color</a></span> function works like the old <code>lighten</code>, <code>saturate</code>, and <code>adjust-hue</code> methods. It increases and/or decreases the values of a color’s properties by fixed amounts. For example, <code>adjust-color($color, $lightness: 10%)</code> is the same as <code>lighten($color, 10%)</code>: it returns <code>$color</code> with its lightness increased by 10%.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#scale_color-instance_method" title="Sass::Script::Functions#scale_color (method)">scale_color</a></span> function is similar to adjust, but instead of increasing and/or decreasing a color’s properties by fixed amounts, it scales them fluidly by percentages. The closer the percentage is to 100% (or -100%), the closer the new property value will be to its maximum (or minimum). For example, <code>scale-color(hsl(120, 70, 80), $lightness: 50%)</code> will change the lightness from 80% to 90%, because 90% is halfway between 80% and 100%. Similarly, <code>scale-color(hsl(120, 70, 50), $lightness: 50%)</code> will change the lightness from 50% to 75%.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#change_color-instance_method" title="Sass::Script::Functions#change_color (method)">change-color</a></span> function simply changes a color’s properties regardless of their old values. For example <code>change-color($color, $lightness: 10%)</code> returns <code>$color</code> with 10% lightness, and <code>change-color($color, $alpha: 0.7)</code> returns color with opacity 0.7.</p>
+</li>
+</ul>
+
+<p>Each keyword function accepts <code>$hue</code>, <code>$saturation</code>, <code>$value</code>, <code>$red</code>, <code>$green</code>, <code>$blue</code>, and <code>$alpha</code> keywords, with the exception of <code>scale-color()</code> which doesn’t accept <code>$hue</code>. These keywords modify the respective properties of the given color.</p>
+
+<p>Each keyword function can modify multiple properties at once. For example, <code>adjust-color($color, $lightness: 15%, $saturation: -10%)</code> both lightens and desaturates <code>$color</code>. HSL properties cannot be modified at the same time as RGB properties, though.</p>
+
+<h3 id="lists">Lists</h3>
+
+<p>Lists are now a first-class data type in Sass, alongside strings, numbers, colors, and booleans. They can be assigned to variables, passed to mixins, and used in CSS declarations. Just like the other data types (except booleans), Sass lists look just like their CSS counterparts. They can be separated either by spaces (e.g. <code>1px 2px 0 10px</code>) or by commas (e.g. <code>Helvetica, Arial, sans-serif</code>). In addition, individual values count as single-item lists.</p>
+
+<p>Lists won’t behave any differently in Sass 3.1 than they did in 3.0. However, you can now do more with them using the new <a href="Sass/Script/Functions.html#list-functions">list functions</a>:</p>
+
+<ul>
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#nth-instance_method" title="Sass::Script::Functions#nth (method)"><code>nth($list, $n)</code> function</a></span> returns the nth item in a list. For example, <code>nth(1px 2px 10px, 2)</code> returns the second item, <code>2px</code>. Note that lists in Sass start at 1, not at 0 like they do in some other languages.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#join-instance_method" title="Sass::Script::Functions#join (method)"><code>join($list1, $list2)</code> function</a></span> joins together two lists into one. For example, <code>join(1px 2px, 10px 5px)</code> returns <code>1px 2px 10px 5px</code>.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#append-instance_method" title="Sass::Script::Functions#append (method)"><code>append($list, $val)</code> function</a></span> appends values to the end of a list. For example, <code>append(1px 2px, 10px)</code> returns <code>1px 2px 10px</code>.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#join-instance_method" title="Sass::Script::Functions#join (method)"><code>length($list)</code> function</a></span> returns the length of a list. For example, <code>length(1px 2px 10px 5px)</code> returns <code>4</code>.</p>
+</li>
+</ul>
+
+<p>For more details about lists see <a href="file.SASS_REFERENCE.html#lists" title="the reference">the reference</a>.</p>
+
+<h4 id="_2"><code>@each</code></h4>
+
+<p>There’s also a new directive that makes use of lists. The <a href="file.SASS_REFERENCE.html#each-directive" title="&lt;code&gt;@each&lt;/code&gt; directive"><code>@each</code> directive</a> assigns a variable to each item in a list in turn, like <code>@for</code> does for numbers. This is useful for writing a bunch of similar styles without having to go to the trouble of creating a mixin. For example:</p>
+
+<pre class="code ruby"><code class="ruby">@each $animal in puma, sea-slug, egret, salamander {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+  }
+}</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">.puma-icon {
+  background-image: url('/images/puma.png'); }
+.sea-slug-icon {
+  background-image: url('/images/sea-slug.png'); }
+.egret-icon {
+  background-image: url('/images/egret.png'); }
+.salamander-icon {
+  background-image: url('/images/salamander.png'); }</code></pre>
+
+<h3 id="_bubbling"><code>@media</code> Bubbling</h3>
+
+<p>Modern stylesheets often use <code>@media</code> rules to target styles at certain sorts of devices, screen resolutions, or even orientations. They’re also useful for print and aural styling. Unfortunately, it’s annoying and repetitive to break the flow of a stylesheet and add a <code>@media</code> rule containing selectors you’ve already written just to tweak the style a little.</p>
+
+<p>Thus, Sass 3.1 now allows you to nest <code>@media</code> rules within selectors. It will automatically bubble them up to the top level, putting all the selectors on the way inside the rule. For example:</p>
+
+<pre class="code ruby"><code class="ruby">.sidebar {
+  width: 300px;
+  @media screen and (orientation: landscape) {
+    width: 500px;
+  }
+}</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">.sidebar {
+  width: 300px;
+}
+@media screen and (orientation: landscape) {
+  .sidebar {
+    width: 500px;
+  }
+}</code></pre>
+
+<p>You can also nest <code>@media</code> directives within one another. The queries will then be combined using the <code>and</code> operator. For example:</p>
+
+<pre class="code ruby"><code class="ruby">@media screen {
+  .sidebar {
+    @media (orientation: landscape) {
+      width: 500px;
+    }
+  }
+}</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">@media screen and (orientation: landscape) {
+  .sidebar {
+    width: 500px;
+  }
+}</code></pre>
+
+<h3 id="nested_">Nested <code>@import</code></h3>
+
+<p>The <code>@import</code> statement can now be nested within other structures such as CSS rules and <code>@media</code> rules. For example:</p>
+
+<pre class="code ruby"><code class="ruby">@media print {
+  @import &quot;print&quot;;
+}</code></pre>
+
+<p>This imports <code>print.scss</code> and places all rules so imported within the <code>@media print</code> block. This makes it easier to create stylesheets for specific media or sections of the document and distributing those stylesheets across multiple files.</p>
+
+<h3 id="backwards_incompatibilities__must_read_2">Backwards Incompatibilities – Must Read!</h3>
+
+<ul>
+<li>
+<p>When <code>@import</code> is given a path without <code>.sass</code>, <code>.scss</code>, or <code>.css</code> extension, and no file exists at that path, it will now throw an error. The old behavior of becoming a plain-CSS <code>@import</code> was deprecated and has now been removed.</p>
+</li>
+
+<li>
+<p>Get rid of the <code>--rails</code> flag for the <code>sass</code> executable. This flag hasn’t been necessary since Rails 2.0. Existing Rails 2.0 installations will continue to work.</p>
+</li>
+
+<li>
+<p>Removed deprecated support for ! prefixed variables. Use $ to prefix variables now.</p>
+</li>
+
+<li>
+<p>Removed the deprecated css2sass executable. Use sass-convert now.</p>
+</li>
+
+<li>
+<p>Removed support for the equals operator in variable assignment. Use : now.</p>
+</li>
+
+<li>
+<p>Removed the sass2 mode from sass-convert. Users who have to migrate from sass2 should install Sass 3.0 and quiet all deprecation warnings before installing Sass 3.1.</p>
+</li>
+</ul>
+
+<h3 id="sass_internals">Sass Internals</h3>
+
+<ul>
+<li>
+<p>It is now possible to define a custom importer that can be used to find imports using different import semantics than the default filesystem importer that Sass provides. For instance, you can use this to generate imports on the fly, look them up from a database, or implement different file naming conventions. See the <span class='object_link'><a href="Sass/Importers/Base.html" title="Sass::Importers::Base (class)">Importer Base class</a></span> for more information.</p>
+</li>
+
+<li>
+<p>It is now possible to define a custom cache store to allow for efficient caching of Sass files using alternative cache stores like memcached in environments where a writable filesystem is not available or where the cache need to be shared across many servers for dynamically generated stylesheet environments. See the <span class='object_link'><a href="Sass/CacheStores/Base.html" title="Sass::CacheStores::Base (class)">CacheStore Base class</a></span> for more information.</p>
+</li>
+</ul>
+
+<h2 id="3026_unreleased">3.0.26 (Unreleased)</h2>
+
+<ul>
+<li>
+<p>Fix a performance bug in large SCSS stylesheets with many nested selectors. This should dramatically decrease compilation time of such stylesheets.</p>
+</li>
+
+<li>
+<p>Upgrade the bundled FSSM to version 0.2.3. This means <code>sass --watch</code> will work out of the box with Rubinius.</p>
+</li>
+</ul>
+
+<h2 id="3025">3.0.25</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.25">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>When displaying a Sass error in an imported stylesheet, use the imported stylesheet’s contents rather than the top-level stylesheet.</p>
+</li>
+
+<li>
+<p>Fix a bug that caused some lines with non-ASCII characters to be ignored in Ruby 1.8.</p>
+</li>
+
+<li>
+<p>Fix a bug where boolean operators (<code>and</code>, <code>or</code>, and <code>not</code>) wouldn’t work at the end of a line in a multiline SassScript expression.</p>
+</li>
+
+<li>
+<p>When using <code>sass --update</code>, only update individual files when they’ve changed.</p>
+</li>
+</ul>
+
+<h2 id="3024">3.0.24</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.24">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Raise an error when <code>@else</code> appears without an <code>@if</code> in SCSS.</p>
+</li>
+
+<li>
+<p>Fix some cases where <code>@if</code> rules were causing the line numbers in error reports to become incorrect.</p>
+</li>
+</ul>
+
+<h2 id="3023">3.0.23</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.23">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>Fix the error message for unloadable modules when running the executables under Ruby 1.9.2.</li>
+</ul>
+
+<h3 id="_change"><code>@charset</code> Change</h3>
+
+<p>The behavior of <code>@charset</code> has changed in version 3.0.23 in order to work around a bug in Safari, where <code>@charset</code> declarations placed anywhere other than the beginning of the document cause some CSS rules to be ignored. This change also makes <code>@charset</code>s in imported files behave in a more useful way.</p>
+
+<h4 id="ruby_19">Ruby 1.9</h4>
+
+<p>When using Ruby 1.9, which keeps track of the character encoding of the Sass document internally, <code>@charset</code> directive in the Sass stylesheet and any stylesheets it imports are no longer directly output to the generated CSS. They’re still used for determining the encoding of the input and output stylesheets, but they aren’t rendered in the same way other directives are.</p>
+
+<p>Instead, Sass adds a single <code>@charset</code> directive at the beginning of the output stylesheet if necessary, whether or not the input stylesheet had a <code>@charset</code> directive. It will add this directive if and only if the output stylesheet contains non-ASCII characters. By default, the declared charset will be UTF-8, but if the Sass stylesheet declares a different charset then that will be used instead if possible.</p>
+
+<p>One important consequence of this scheme is that it’s possible for a Sass file to import partials with different encodings (e.g. one encoded as UTF-8 and one as IBM866). The output will then be UTF-8, unless the importing stylesheet declares a different charset.</p>
+
+<h4 id="ruby_18">Ruby 1.8</h4>
+
+<p>Ruby 1.8 doesn’t have good support for encodings, so it uses a simpler but less accurate scheme for figuring out what <code>@charset</code> declaration to use for the output stylesheet. It just takes the first <code>@charset</code> declaration to appear in the stylesheet or any of its imports and moves it to the beginning of the document. This means that under Ruby 1.8 it’s <em>not</em> safe to import files with different encodings.</p>
+
+<h2 id="3022">3.0.22</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.22">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Remove <code>vendor/sass</code>, which snuck into the gem by mistake and was causing trouble for Heroku users (thanks to <a href="http://railsjedi.com/">Jacques Crocker</a>).</p>
+</li>
+
+<li>
+<p><code>sass-convert</code> now understands better when it’s acceptable to remove parentheses from expressions.</p>
+</li>
+</ul>
+
+<h2 id="3021">3.0.21</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.21">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Fix the permissions errors for good.</p>
+</li>
+
+<li>
+<p>Fix more <code>#options</code> attribute errors.</p>
+</li>
+</ul>
+
+<h2 id="3020">3.0.20</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.20">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Fix some permissions errors.</p>
+</li>
+
+<li>
+<p>Fix <code>#options</code> attribute errors when CSS functions were used with commas.</p>
+</li>
+</ul>
+
+<h2 id="3019">3.0.19</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.19">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Make the alpha value for <code>rgba</code> colors respect Sass::Script::Number::PRECISION.</p>
+</li>
+
+<li>
+<p>Remove all newlines in selectors in <code>:compressed</code> mode.</p>
+</li>
+
+<li>
+<p>Make color names case-insensitive.</p>
+</li>
+
+<li>
+<p>Properly detect SCSS files when using <code>sass -c</code>.</p>
+</li>
+
+<li>
+<p>Remove spaces after commas in <code>:compressed</code> mode.</p>
+</li>
+
+<li>
+<p>Allow the <code>--unix-newlines</code> flag to work on Unix, where it’s a no-op.</p>
+</li>
+</ul>
+
+<h2 id="3018">3.0.18</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.18">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Don’t require <code>rake</code> in the gemspec, for bundler compatibility under JRuby. Thanks to <a href="http://www.gmccreight.com/blog">Gordon McCreight</a>.</p>
+</li>
+
+<li>
+<p>Add a command-line option <code>--stop-on-error</code> that causes Sass to exit when a file fails to compile using <code>--watch</code> or <code>--update</code>.</p>
+</li>
+
+<li>
+<p>Fix a bug in <code>haml_tag</code> that would allow duplicate attributes to be added and make <code>data-</code> attributes not work.</p>
+</li>
+
+<li>
+<p>Get rid of the annoying RDoc errors on install.</p>
+</li>
+
+<li>
+<p>Disambiguate references to the <code>Rails</code> module when <code>haml-rails</code> is installed.</p>
+</li>
+
+<li>
+<p>Allow <code>@import</code> in SCSS to import multiple files in the same <code>@import</code> rule.</p>
+</li>
+</ul>
+
+<h2 id="3017">3.0.17</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.17">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Disallow <code>#{}</code> interpolation in <code>@media</code> queries or unrecognized directives. This was never allowed, but now it explicitly throws an error rather than just producing invalid CSS.</p>
+</li>
+
+<li>
+<p>Make <code>sass --watch</code> not throw an error when passed a single file or directory.</p>
+</li>
+
+<li>
+<p>Understand that mingw counts as Windows.</p>
+</li>
+
+<li>
+<p>Make <code>sass --update</code> return a non-0 exit code if one or more files being updated contained an error.</p>
+</li>
+</ul>
+
+<h2 id="3016">3.0.16</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.16">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Fix a bug where certain sorts of comments would get improperly rendered in the <code>:compact</code> style.</p>
+</li>
+
+<li>
+<p>Always allow a trailing <code>*/</code> in loud comments in the indented syntax.</p>
+</li>
+
+<li>
+<p>Fix a performance issue with SCSS parsing in rare cases. Thanks to <a href="http://chriseppstein.github.com">Chris Eppstein</a>.</p>
+</li>
+
+<li>
+<p>Use better heuristics for figuring out when someone might be using the wrong syntax with <code>sass --watch</code>.</p>
+</li>
+</ul>
+
+<h2 id="3015">3.0.15</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.15">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Fix a bug where <code>sass --watch</code> and <code>sass --update</code> were completely broken.</p>
+</li>
+
+<li>
+<p>Allow <code>@import</code>ed values to contain commas.</p>
+</li>
+</ul>
+
+<h2 id="3014">3.0.14</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.14">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Properly parse paths with drive letters on Windows (e.g. <code>C:\Foo\Bar.sass</code>) in the Sass executable.</p>
+</li>
+
+<li>
+<p>Compile Sass files in a deterministic order.</p>
+</li>
+
+<li>
+<p>Fix a bug where comments after <code>@if</code> statements in SCSS weren’t getting passed through to the output document.</p>
+</li>
+</ul>
+
+<h2 id="3013">3.0.13</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.13">Tagged on GitHub</a>.</p>
+
+<h2 id="css__directives">CSS <code>@import</code> Directives</h2>
+
+<p>Sass is now more intelligent about when to compile <code>@import</code> directives to plain CSS. Any of the following conditions will cause a literal CSS <code>@import</code>:</p>
+
+<ul>
+<li>Importing a path with a <code>.css</code> extension (e.g. <code>@import &quot;foo.css&quot;</code>).</li>
+
+<li>Importing a path with a media type (e.g. <code>@import &quot;foo&quot; screen;</code>).</li>
+
+<li>Importing an HTTP path (e.g. <code>@import &quot;http://foo.com/style.css&quot;</code>).</li>
+
+<li>Importing any URL (e.g. <code>@import url(foo)</code>).</li>
+</ul>
+
+<p>The former two conditions always worked, but the latter two are new.</p>
+
+<h2 id="_support"><code>-moz-calc</code> Support</h2>
+
+<p>The new <a href="http://hacks.mozilla.org/2010/06/css3-calc/"><code>-moz-calc()</code> function</a> in Firefox 4 will now be properly parsed by Sass. <code>calc()</code> was already supported, but because the parsing rules are different than for normal CSS functions, this had to be expanded to include <code>-moz-calc</code>.</p>
+
+<p>In anticipation of wider browser support, in fact, <em>any</em> function named <code>-*-calc</code> (such as <code>-webkit-calc</code> or <code>-ms-calc</code>) will be parsed the same as the <code>calc</code> function.</p>
+
+<h2 id="_support_2"><code>:-moz-any</code> Support</h2>
+
+<p>The <a href="http://hacks.mozilla.org/2010/05/moz-any-selector-grouping/"><code>:-moz-any</code> pseudoclass selector</a> is now parsed by Sass.</p>
+
+<h2 id="_flag"><code>--require</code> Flag</h2>
+
+<p>The Sass command-line executable can now require Ruby files using the <code>--require</code> flag (or <code>-r</code> for short).</p>
+
+<h2 id="rails_support">Rails Support</h2>
+
+<p>Make sure the default Rails options take precedence over the default non-Rails options. This makes <code>./script/server --daemon</code> work again.</p>
+
+<h3 id="rails_3_support">Rails 3 Support</h3>
+
+<p>Support for Rails 3 versions prior to beta 4 has been removed. Upgrade to Rails 3.0.0.beta4 if you haven’t already.</p>
+
+<h2 id="3012">3.0.12</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.12">Tagged on GitHub</a>.</p>
+
+<h2 id="rails_3_support_2">Rails 3 Support</h2>
+
+<p>Apparently the last version broke in new and exciting ways under Rails 3, due to the inconsistent load order caused by certain combinations of gems. 3.0.12 hacks around that inconsistency, and <em>should</em> be fully Rails 3-compatible.</p>
+
+<h3 id="deprecated_rails_3_beta_3">Deprecated: Rails 3 Beta 3</h3>
+
+<p>Haml’s support for Rails 3.0.0.beta.3 has been deprecated. Haml 3.0.13 will only support 3.0.0.beta.4.</p>
+
+<h2 id="3011">3.0.11</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.11">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Haml between versions 3.0.10 and 3.0.11.</p>
+
+<h2 id="rails_3_support_3">Rails 3 Support</h2>
+
+<p>Make sure Sass <em>actually</em> regenerates stylesheets under Rails 3. The fix in 3.0.10 didn’t work because the Rack stack we were modifying wasn’t reloaded at the proper time.</p>
+
+<h2 id="bug_fixes">Bug Fixes</h2>
+
+<ul>
+<li>Give a decent error message when <code>--recursive</code> is used in <code>sass-convert</code> without a directory.</li>
+</ul>
+
+<h2 id="3010">3.0.10</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.10">Tagged on GitHub</a>.</p>
+
+<h3 id="appenginejruby_support">Appengine-JRuby Support</h3>
+
+<p>The way we determine the location of the Haml installation no longer breaks the version of JRuby used by <a href="http://code.google.com/p/appengine-jruby/"><code>appengine-jruby</code></a>.</p>
+
+<h3 id="rails_3_support_4">Rails 3 Support</h3>
+
+<p>Sass will regenerate stylesheets under Rails 3 even when no controllers are being accessed.</p>
+
+<h3 id="other_improvements">Other Improvements</h3>
+
+<ul>
+<li>When using <code>sass-convert --from sass2 --to sass --recursive</code>, suggest the use of <code>--in-place</code> as well.</li>
+</ul>
+
+<h2 id="309">3.0.9</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.9">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Sass between versions 3.0.8 and 3.0.9. A bug in Gemcutter caused the gem to be uploaded improperly.</p>
+
+<h2 id="308">3.0.8</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.8">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>Fix a bug with Rails versions prior to Rails 3.</li>
+</ul>
+
+<h2 id="307">3.0.7</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.7">Tagged on GitHub</a>.</p>
+
+<h3 id="encoding_support">Encoding Support</h3>
+
+<p>Sass 3.0.7 adds support for <code>@charset</code> for declaring the encoding of a stylesheet. For details see <a href="file.SASS_REFERENCE.html#encodings" title="the reference">the reference</a>.</p>
+
+<p>The <code>sass</code> and <code>sass-convert</code> executables also now take an <code>-E</code> option for specifying the encoding of Sass/SCSS/CSS files.</p>
+
+<h3 id="bug_fixes_2">Bug Fixes</h3>
+
+<ul>
+<li>
+<p>When compiling a file named <code>.sass</code> but with SCSS syntax specified, use the latter (and vice versa).</p>
+</li>
+
+<li>
+<p>Fix a bug where interpolation would cause some selectors to render improperly.</p>
+</li>
+
+<li>
+<p>If a line in a Sass comment starts with <code>*foo</code>, render it as <code>*foo</code> rather than <code>* *foo</code>.</p>
+</li>
+</ul>
+
+<h2 id="306">3.0.6</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.6">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Sass between versions 3.0.5 and 3.0.6.</p>
+
+<h2 id="305">3.0.5</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.5">Tagged on GitHub</a>.</p>
+
+<h3 id="_interpolation_in_properties"><code>#{}</code> Interpolation in Properties</h3>
+
+<p>Previously, using <code>#{}</code> in some places in properties would cause a syntax error. Now it can be used just about anywhere.</p>
+
+<p>Note that when <code>#{}</code> is used near operators like <code>/</code>, those operators are treated as plain CSS rather than math operators. For example:</p>
+
+<pre class="code ruby"><code class="ruby">p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">p {
+  font: 12px/30px;
+}</code></pre>
+
+<p>This is useful, since normally <a href="file.SASS_REFERENCE.html#division-and-slash" title="a slash with variables is treated as division">a slash with variables is treated as division</a>.</p>
+
+<h3 id="recursive_mixins">Recursive Mixins</h3>
+
+<p>Mixins that include themselves will now print much more informative error messages. For example:</p>
+
+<pre class="code ruby"><code class="ruby">@mixin foo {@include bar}
+@mixin bar {@include foo}
+@include foo</code></pre>
+
+<p>will print:</p>
+
+<pre class="code ruby"><code class="ruby">An @include loop has been found:
+    foo includes bar
+    bar includes foo</code></pre>
+
+<p>Although it was previously possible to use recursive mixins without causing infinite looping, this is now disallowed, since there’s no good reason to do it.</p>
+
+<h3 id="rails_3_support_5">Rails 3 Support</h3>
+
+<p>Fix Sass configuration under Rails 3. Thanks <a href="http://github.com/codeape">Dan Cheail</a>.</p>
+
+<h3 id="_3"><code>sass --no-cache</code></h3>
+
+<p>Make the <code>--no-cache</code> flag properly forbid Sass from writing <code>.sass-cache</code> files.</p>
+
+<h2 id="304">3.0.4</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.4">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Raise an informative error when function arguments have a mispaced comma, as in <code>foo(bar, )</code>.</p>
+</li>
+
+<li>
+<p>Fix a performance problem when using long function names such as <code>-moz-linear-gradient</code>.</p>
+</li>
+</ul>
+
+<h2 id="303">3.0.3</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.3">Tagged on GitHub</a>.</p>
+
+<h3 id="rails_3_support_6">Rails 3 Support</h3>
+
+<p>Make sure Sass is loaded properly when using Rails 3 along with non-Rails-3-compatible plugins like some versions of <code>will_paginate</code>.</p>
+
+<p>Also, In order to make some Rails loading errors like the above easier to debug, Sass will now raise an error if <code>Rails.root</code> is <code>nil</code> when Sass is loading. Previously, this would just cause the paths to be mis-set.</p>
+
+<h3 id="merb_support">Merb Support</h3>
+
+<p>Merb, including 1.1.0 as well as earlier versions, should <em>really</em> work with this release.</p>
+
+<h3 id="bug_fixes_3">Bug Fixes</h3>
+
+<ul>
+<li>
+<p>Raise an informative error when mixin arguments have a mispaced comma, as in <code>@include foo(bar, )</code>.</p>
+</li>
+
+<li>
+<p>Make sure SassScript subtraction happens even when nothing else dynamic is going on.</p>
+</li>
+
+<li>
+<p>Raise an error when colors are used with the wrong number of digits.</p>
+</li>
+</ul>
+
+<h2 id="302">3.0.2</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.2">Tagged on GitHub</a>.</p>
+
+<h3 id="merb_110_support">Merb 1.1.0 Support</h3>
+
+<p>Fixed a bug inserting the Sass plugin into the Merb 1.1.0 Rack application.</p>
+
+<h3 id="bug_fixes_4">Bug Fixes</h3>
+
+<ul>
+<li>
+<p>Allow identifiers to begin with multiple underscores.</p>
+</li>
+
+<li>
+<p>Don’t raise an error when using <code>haml --rails</code> with older Rails versions.</p>
+</li>
+</ul>
+
+<h2 id="301">3.0.1</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.1">Tagged on GitHub</a>.</p>
+
+<h3 id="installation_in_rails">Installation in Rails</h3>
+
+<p><code>haml --rails</code> is no longer necessary for installing Sass in Rails. Now all you need to do is add <code>gem &quot;haml&quot;</code> to the Gemfile for Rails 3, or add <code>config.gem &quot;haml&quot;</code> to <code>config/environment.rb</code> for previous versions.</p>
+
+<p><code>haml --rails</code> will still work, but it has been deprecated and will print an error message. It will not work in the next version of Sass.</p>
+
+<h3 id="rails_3_beta_integration">Rails 3 Beta Integration</h3>
+
+<ul>
+<li>
+<p>Make sure manually importing the Sass Rack plugin still works with Rails, even though it’s not necessary now.</p>
+</li>
+
+<li>
+<p>Allow Sass to be configured in Rails even when it’s being lazy-loaded.</p>
+</li>
+</ul>
+
+<h3 id="_methods"><code>:template_location</code> Methods</h3>
+
+<p>The <a href="file.SASS_REFERENCE.html#template_location-option" title="&lt;code&gt;:template_location&lt;/code&gt; option"><code>:template_location</code> option</a> can be either a String, a Hash, or an Array. This makes it difficult to modify or use with confidence. Thus, three new methods have been added for handling it:</p>
+
+<ul>
+<li>
+<p><span class='object_link'><a href="Sass/Plugin/Configuration.html#template_location_array-instance_method" title="Sass::Plugin::Configuration#template_location_array (method)">Sass::Plugin#template_location_array</a></span> – Returns the template locations and CSS locations formatted as an array.</p>
+</li>
+
+<li>
+<p><span class='object_link'><a href="Sass/Plugin/Configuration.html#add_template_location-instance_method" title="Sass::Plugin::Configuration#add_template_location (method)">Sass::Plugin#add_template_location</a></span> – Converts the template location option to an array and adds a new location.</p>
+</li>
+
+<li>
+<p><span class='object_link'><a href="Sass/Plugin/Configuration.html#remove_template_location-instance_method" title="Sass::Plugin::Configuration#remove_template_location (method)">Sass::Plugin#remove_template_location</a></span> – Converts the template location option to an array and removes an existing location.</p>
+</li>
+</ul>
+
+<h2 id="3-0-0">3.0.0</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/3.0.0">Tagged on GitHub</a>.</p>
+
+<h3 id="3-0-0-deprecations">Deprecations – Must Read!</h3>
+
+<ul>
+<li>
+<p>Using <code>=</code> for SassScript properties and variables is deprecated, and will be removed in Sass 3.2. Use <code>:</code> instead. See also <a href="#3-0-0-sass-script-context">this changelog entry</a></p>
+</li>
+
+<li>
+<p>Because of the above, property values using <code>:</code> will be parsed more thoroughly than they were before. Although all valid CSS3 properties as well as most hacks and proprietary syntax should be supported, it’s possible that some properties will break. If this happens, please report it to <a href="http://groups.google.com/group/haml">the Sass mailing list</a>.</p>
+</li>
+
+<li>
+<p>In addition, setting the default value of variables with <code>||=</code> is now deprecated and will be removed in Sass 3.2. Instead, add <code>!default</code> to the end of the value. See also <a href="#3-0-0-default-flag">this changelog entry</a></p>
+</li>
+
+<li>
+<p>The <code>!</code> prefix for variables is deprecated, and will be removed in Sass 3.2. Use <code>$</code> as a prefix instead. See also <a href="#3-0-0-dollar-prefix">this changelog entry</a>.</p>
+</li>
+
+<li>
+<p>The <code>css2sass</code> command-line tool has been deprecated, and will be removed in Sass 3.2. Use the new <code>sass-convert</code> tool instead. See also <a href="#3-0-0-sass-convert">this changelog entry</a>.</p>
+</li>
+
+<li>
+<p>Selector parent references using <code>&amp;</code> can now only be used where element names are valid. This is because Sass 3 fully parses selectors to support the new <a href="#3-0-0-extend"><code>@extend</code> directive</a>, and it’s possible that the <code>&amp;</code> could be replaced by an element name.</p>
+</li>
+</ul>
+
+<h3 id="scss_sassy_css">SCSS (Sassy CSS)</h3>
+
+<p>Sass 3 introduces a new syntax known as SCSS which is fully compatible with the syntax of CSS3, while still supporting the full power of Sass. This means that every valid CSS3 stylesheet is a valid SCSS file with the same meaning. In addition, SCSS understands most CSS hacks and vendor-specific syntax, such as <a href="http://msdn.microsoft.com/en-us/library/ms533754%28VS.85%29.aspx">IE’s old <code>filter</code> syntax</a>.</p>
+
+<p>SCSS files use the <code>.scss</code> extension. They can import <code>.sass</code> files, and vice-versa. Their syntax is fully described in the <a href="file.SASS_REFERENCE.html" title="Sass reference">Sass reference</a>; if you’re already familiar with Sass, though, you may prefer the <a href="file.SCSS_FOR_SASS_USERS.html" title="intro to SCSS for Sass users">intro to SCSS for Sass users</a>.</p>
+
+<p>Since SCSS is a much more approachable syntax for those new to Sass, it will be used as the default syntax for the reference, as well as for most other Sass documentation. The indented syntax will continue to be fully supported, however.</p>
+
+<p>Sass files can be converted to SCSS using the new <code>sass-convert</code> command-line tool. For example:</p>
+
+<pre class="code ruby"><code class="ruby"># Convert a Sass file to SCSS
+$ sass-convert style.sass style.scss</code></pre>
+
+<p><strong>Note that if you’re converting a Sass file written for Sass 2</strong>, you should use the <code>--from sass2</code> flag. For example:</p>
+
+<pre class="code ruby"><code class="ruby"># Convert a Sass file to SCSS
+$ sass-convert --from sass2 style.sass style.scss
+
+# Convert all Sass files to SCSS
+$ sass-convert --recursive --in-place --from sass2 --to scss stylesheets/</code></pre>
+
+<h3 id="3-0-0-syntax-changes">Syntax Changes</h3>
+
+<h4 id="3-0-0-sass-script-context">SassScript Context</h4>
+
+<p>The <code>=</code> character is no longer required for properties that use SassScript (that is, variables and operations). All properties now use SassScript automatically; this means that <code>:</code> should be used instead. Variables should also be set with <code>:</code>. For example, what used to be</p>
+
+<pre class="code ruby"><code class="ruby">// Indented syntax
+.page
+  color = 5px + 9px</code></pre>
+
+<p>should now be</p>
+
+<pre class="code ruby"><code class="ruby">// Indented syntax
+.page
+  color: 5px + 9px</code></pre>
+
+<p>This means that SassScript is now an extension of the CSS3 property syntax. All valid CSS3 properties are valid SassScript, and will compile without modification (some invalid properties work as well, such as Microsoft’s proprietary <code>filter</code> syntax). This entails a few changes to SassScript to make it fully CSS3-compatible, which are detailed below.</p>
+
+<p>This also means that Sass will now be fully parsing all property values, rather than passing them through unchanged to the CSS. Although care has been taken to support all valid CSS3, as well as hacks and proprietary syntax, it’s possible that a property that worked in Sass 2 won’t work in Sass 3. If this happens, please report it to <a href="http://groups.google.com/group/haml">the Sass mailing list</a>.</p>
+
+<p>Note that if <code>=</code> is used, SassScript will be interpreted as backwards-compatibly as posssible. In particular, the changes listed below don’t apply in an <code>=</code> context.</p>
+
+<p>The <code>sass-convert</code> command-line tool can be used to upgrade Sass files to the new syntax using the <code>--in-place</code> flag. For example:</p>
+
+<pre class="code ruby"><code class="ruby"># Upgrade style.sass:
+$ sass-convert --in-place style.sass
+
+# Upgrade all Sass files:
+$ sass-convert --recursive --in-place --from sass2 --to sass stylesheets/</code></pre>
+
+<h5 id="quoted_strings">Quoted Strings</h5>
+
+<p>Quoted strings (e.g. <code>&quot;foo&quot;</code>) in SassScript now render with quotes. In addition, unquoted strings are no longer deprecated, and render without quotes. This means that almost all strings that had quotes in Sass 2 should not have quotes in Sass 3.</p>
+
+<p>Although quoted strings render with quotes when used with <code>:</code>, they do not render with quotes when used with <code>#{}</code>. This allows quoted strings to be used for e.g. selectors that are passed to mixins.</p>
+
+<p>Strings can be forced to be quoted and unquoted using the new <span class='object_link'><a href="Sass/Script/Functions.html#unquote-instance_method" title="Sass::Script::Functions#unquote (method)">unquote</a></span> and <span class='object_link'><a href="Sass/Script/Functions.html#quote-instance_method" title="Sass::Script::Functions#quote (method)">quote</a></span> functions.</p>
+
+<h5 id="division_and_">Division and <code>/</code></h5>
+
+<p>Two numbers separated by a <code>/</code> character are allowed as property syntax in CSS, e.g. for the <code>font</code> property. SassScript also uses <code>/</code> for division, however, which means it must decide what to do when it encounters numbers separated by <code>/</code>.</p>
+
+<p>For CSS compatibility, SassScript does not perform division by default. However, division will be done in almost all cases where division is intended. In particular, SassScript will perform division in the following three situations:</p>
+
+<ol>
+<li>If the value, or any part of it, is stored in a variable.</li>
+
+<li>If the value is surrounded by parentheses.</li>
+
+<li>If the value is used as part of another arithmetic expression.</li>
+</ol>
+
+<p>For example:</p>
+
+<pre class="code ruby"><code class="ruby">p
+  font: 10px/8px
+  $width: 1000px
+  width: $width/2
+  height: (500px/2)
+  margin-left: 5px + 8px/2px</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">p {
+  font: 10px/8px;
+  width: 500px;
+  height: 250px;
+  margin-left: 9px; }</code></pre>
+
+<h5 id="variable_defaults">Variable Defaults</h5>
+
+<p>Since <code>=</code> is no longer used for variable assignment, assigning defaults to variables with <code>||=</code> no longer makes sense. Instead, the <code>!default</code> flag should be added to the end of the variable value. This syntax is meant to be similar to CSS’s <code>!important</code> flag. For example:</p>
+
+<pre class="code ruby"><code class="ruby">$var: 12px !default;</code></pre>
+
+<h4 id="3-0-0-dollar-prefix">Variable Prefix Character</h4>
+
+<p>The Sass variable character has been changed from <code>!</code> to the more aesthetically-appealing <code>$</code>. For example, what used to be</p>
+
+<pre class="code ruby"><code class="ruby">!width = 13px
+.icon
+  width = !width</code></pre>
+
+<p>should now be</p>
+
+<pre class="code ruby"><code class="ruby">$width: 13px
+.icon
+  width: $width</code></pre>
+
+<p>The <code>sass-convert</code> command-line tool can be used to upgrade Sass files to the new syntax using the <code>--in-place</code> flag. For example:</p>
+
+<pre class="code ruby"><code class="ruby"># Upgrade style.sass:
+$ sass-convert --in-place style.sass
+
+# Upgrade all Sass files:
+$ sass-convert --recursive --in-place --from sass2 --to sass stylesheets/</code></pre>
+
+<p><code>!</code> may still be used, but it’s deprecated and will print a warning. It will be removed in the next version of Sass, 3.2.</p>
+
+<h4 id="variable_and_mixin_names">Variable and Mixin Names</h4>
+
+<p>SassScript variable and mixin names may now contain hyphens. In fact, they may be any valid CSS3 identifier. For example:</p>
+
+<pre class="code ruby"><code class="ruby">$prettiest-color: #542FA9
+=pretty-text
+  color: $prettiest-color</code></pre>
+
+<p>In order to allow frameworks like <a href="http://compass-style.org">Compass</a> to use hyphens in variable names while maintaining backwards-compatibility, variables and mixins using hyphens may be referred to with underscores, and vice versa. For example:</p>
+
+<pre class="code ruby"><code class="ruby">$prettiest-color: #542FA9
+.pretty
+  // Using an underscore instead of a hyphen works
+  color: $prettiest_color</code></pre>
+
+<h4 id="singlequoted_strings">Single-Quoted Strings</h4>
+
+<p>SassScript now supports single-quoted strings. They behave identically to double-quoted strings, except that single quotes need to be backslash-escaped and double quotes do not.</p>
+
+<h4 id="mixin_definition_and_inclusion">Mixin Definition and Inclusion</h4>
+
+<p>Sass now supports the <code>@mixin</code> directive as a way of defining mixins (like <code>=</code>), as well as the <code>@include</code> directive as a way of including them (like <code>+</code>). The old syntax is <em>not</em> deprecated, and the two are fully compatible. For example:</p>
+
+<pre class="code ruby"><code class="ruby">@mixin pretty-text
+  color: $prettiest-color
+
+a
+  @include pretty-text</code></pre>
+
+<p>is the same as:</p>
+
+<pre class="code ruby"><code class="ruby">=pretty-text
+  color: $prettiest-color
+
+a
+  +pretty-text</code></pre>
+
+<h4 id="sass_properties">Sass Properties</h4>
+
+<p>New-style properties (with the colon after the name) in indented syntax now allow whitespace before the colon. For example:</p>
+
+<pre class="code ruby"><code class="ruby">foo
+  color : blue</code></pre>
+
+<h4 id="sass_">Sass <code>@import</code></h4>
+
+<p>The Sass <code>@import</code> statement now allows non-CSS files to be specified with quotes, for similarity with the SCSS syntax. For example, <code>@import &quot;foo.sass&quot;</code> will now import the <code>foo.sass</code> file, rather than compiling to <code>@import &quot;foo.sass&quot;;</code>.</p>
+
+<h3 id="3-0-0-extend"><code>@extend</code></h3>
+
+<p>There are often cases when designing a page when one class should have all the styles of another class, as well as its own specific styles. The most common way of handling this is to use both the more general class and the more specific class in the HTML. For example, suppose we have a design for a normal error and also for a serious error. We might write our markup like so:</p>
+
+<pre class="code ruby"><code class="ruby">&lt;div class=&quot;error seriousError&quot;&gt;
+  Oh no! You've been hacked!
+&lt;/div&gt;</code></pre>
+
+<p>And our styles like so:</p>
+
+<pre class="code ruby"><code class="ruby">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  border-width: 3px;
+}</code></pre>
+
+<p>Unfortunately, this means that we have to always remember to use <code>.error</code> with <code>.seriousError</code>. This is a maintenance burden, leads to tricky bugs, and can bring non-semantic style concerns into the markup.</p>
+
+<p>The <code>@extend</code> directive avoids these problems by telling Sass that one selector should inherit the styles of another selector. For example:</p>
+
+<pre class="code ruby"><code class="ruby">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}</code></pre>
+
+<p>This means that all styles defined for <code>.error</code> are also applied to <code>.seriousError</code>, in addition to the styles specific to <code>.seriousError</code>. In effect, everything with class <code>.seriousError</code> also has class <code>.error</code>.</p>
+
+<p>Other rules that use <code>.error</code> will work for <code>.seriousError</code> as well. For example, if we have special styles for errors caused by hackers:</p>
+
+<pre class="code ruby"><code class="ruby">.error.intrusion {
+  background-image: url(&quot;/image/hacked.png&quot;);
+}</code></pre>
+
+<p>Then <code>&lt;div class=&quot;seriousError intrusion&quot;&gt;</code> will have the <code>hacked.png</code> background image as well.</p>
+
+<h4 id="how_it_works">How it Works</h4>
+
+<p><code>@extend</code> works by inserting the extending selector (e.g. <code>.seriousError</code>) anywhere in the stylesheet that the extended selector (.e.g <code>.error</code>) appears. Thus the example above:</p>
+
+<pre class="code ruby"><code class="ruby">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.error.intrusion {
+  background-image: url(&quot;/image/hacked.png&quot;);
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd; }
+
+.error.intrusion, .seriousError.intrusion {
+  background-image: url(&quot;/image/hacked.png&quot;); }
+
+.seriousError {
+  border-width: 3px; }</code></pre>
+
+<p>When merging selectors, <code>@extend</code> is smart enough to avoid unnecessary duplication, so something like <code>.seriousError.seriousError</code> gets translated to <code>.seriousError</code>. In addition, it won’t produce selectors that can’t match anything, like <code>#main#footer</code>.</p>
+
+<p>See also <a href="file.SASS_REFERENCE.html#extend" title="the &lt;code&gt;@extend&lt;/code&gt; reference documentation">the <code>@extend</code> reference documentation</a>.</p>
+
+<h3 id="colors">Colors</h3>
+
+<p>SassScript color values are much more powerful than they were before. Support was added for alpha channels, and most of Chris Eppstein’s <a href="http://chriseppstein.github.com/compass-colors">compass-colors</a> plugin was merged in, providing color-theoretic functions for modifying colors.</p>
+
+<p>One of the most interesting of these functions is <span class='object_link'><a href="Sass/Script/Functions.html#mix-instance_method" title="Sass::Script::Functions#mix (method)">mix</a></span>, which mixes two colors together. This provides a much better way of combining colors and creating themes than standard color arithmetic.</p>
+
+<h4 id="alpha_channels">Alpha Channels</h4>
+
+<p>Sass now supports colors with alpha channels, constructed via the <span class='object_link'><a href="Sass/Script/Functions.html#rgba-instance_method" title="Sass::Script::Functions#rgba (method)">rgba</a></span> and <span class='object_link'><a href="Sass/Script/Functions.html#hsla-instance_method" title="Sass::Script::Functions#hsla (method)">hsla</a></span> functions. Alpha channels are unaffected by color arithmetic. However, the <span class='object_link'><a href="Sass/Script/Functions.html#opacify-instance_method" title="Sass::Script::Functions#opacify (method)">opacify</a></span> and <span class='object_link'><a href="Sass/Script/Functions.html#transparentize-instance_method" title="Sass::Script::Functions#transparentize (method)">transparentize</a></span> functions allow colors to be made more and less opaque, respectively.</p>
+
+<p>Sass now also supports functions that return the values of the <span class='object_link'><a href="Sass/Script/Functions.html#red-instance_method" title="Sass::Script::Functions#red (method)">red</a></span>, <span class='object_link'><a href="Sass/Script/Functions.html#blue-instance_method" title="Sass::Script::Functions#blue (method)">blue</a></span>, <span class='object_link'><a href="Sass/Script/Functions.html#green-instance_method" title="Sass::Script::Functions#green (method)">green</a></span>, and <span class='object_link'><a href="Sass/Script/Functions.html#alpha-instance_method" title="Sass::Script::Functions#alpha (method)">alpha</a></span> components of colors.</p>
+
+<h4 id="hsl_colors">HSL Colors</h4>
+
+<p>Sass has many new functions for using the HSL values of colors. For an overview of HSL colors, check out <a href="http://www.w3.org/TR/css3-color/#hsl-color">the CSS3 Spec</a>. All these functions work just as well on RGB colors as on colors constructed with the <span class='object_link'><a href="Sass/Script/Functions.html#hsl-instance_method" title="Sass::Script::Functions#hsl (method)">hsl</a></span> function.</p>
+
+<ul>
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#lighten-instance_method" title="Sass::Script::Functions#lighten (method)">lighten</a></span> and <span class='object_link'><a href="Sass/Script/Functions.html#darken-instance_method" title="Sass::Script::Functions#darken (method)">darken</a></span> functions adjust the lightness of a color.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#saturate-instance_method" title="Sass::Script::Functions#saturate (method)">saturate</a></span> and <span class='object_link'><a href="Sass/Script/Functions.html#desaturate-instance_method" title="Sass::Script::Functions#desaturate (method)">desaturate</a></span> functions adjust the saturation of a color.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#adjust_hue-instance_method" title="Sass::Script::Functions#adjust_hue (method)">adjust-hue</a></span> function adjusts the hue of a color.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#hue-instance_method" title="Sass::Script::Functions#hue (method)">hue</a></span>, <span class='object_link'><a href="Sass/Script/Functions.html#saturation-instance_method" title="Sass::Script::Functions#saturation (method)">saturation</a></span>, and <span class='object_link'><a href="Sass/Script/Functions.html#lightness-instance_method" title="Sass::Script::Functions#lightness (method)">lightness</a></span> functions return the corresponding HSL values of the color.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#grayscale-instance_method" title="Sass::Script::Functions#grayscale (method)">grayscale</a></span> function converts a color to grayscale.</p>
+</li>
+
+<li>
+<p>The <span class='object_link'><a href="Sass/Script/Functions.html#complement-instance_method" title="Sass::Script::Functions#complement (method)">complement</a></span> function returns the complement of a color.</p>
+</li>
+</ul>
+
+<h3 id="other_new_functions">Other New Functions</h3>
+
+<p>Several other new functions were added to make it easier to have more flexible arguments to mixins and to enable deprecation of obsolete APIs.</p>
+
+<ul>
+<li><span class='object_link'><a href="Sass/Script/Functions.html#type_of-instance_method" title="Sass::Script::Functions#type_of (method)"><code>type-of</code></a></span> – Returns the type of a value.</li>
+
+<li><span class='object_link'><a href="Sass/Script/Functions.html#unit-instance_method" title="Sass::Script::Functions#unit (method)"><code>unit</code></a></span> – Returns the units associated with a number.</li>
+
+<li><span class='object_link'><a href="Sass/Script/Functions.html#unitless-instance_method" title="Sass::Script::Functions#unitless (method)"><code>unitless</code></a></span> – Returns whether a number has units or not.</li>
+
+<li><span class='object_link'><a href="Sass/Script/Functions.html#comparable-instance_method" title="Sass::Script::Functions#comparable (method)"><code>comparable</code></a></span> – Returns whether two numbers can be added or compared.</li>
+</ul>
+
+<h3 id="3-0-0-watch">Watching for Updates</h3>
+
+<p>The <code>sass</code> command-line utility has a new flag: <code>--watch</code>. <code>sass --watch</code> monitors files or directories for updated Sass files and compiles those files to CSS automatically. This will allow people not using Ruby or <a href="http://compass-style.org">Compass</a> to use Sass without having to manually recompile all the time.</p>
+
+<p>Here’s the syntax for watching a directory full of Sass files:</p>
+
+<pre class="code ruby"><code class="ruby">sass --watch app/stylesheets:public/stylesheets</code></pre>
+
+<p>This will watch every Sass file in <code>app/stylesheets</code>. Whenever one of them changes, the corresponding CSS file in <code>public/stylesheets</code> will be regenerated. Any files that import that file will be regenerated, too.</p>
+
+<p>The syntax for watching individual files is the same:</p>
+
+<pre class="code ruby"><code class="ruby">sass --watch style.sass:out.css</code></pre>
+
+<p>You can also omit the output filename if you just want it to compile to name.css. For example:</p>
+
+<pre class="code ruby"><code class="ruby">sass --watch style.sass</code></pre>
+
+<p>This will update <code>style.css</code> whenever <code>style.sass</code> changes.</p>
+
+<p>You can list more than one file and/or directory, and all of them will be watched:</p>
+
+<pre class="code ruby"><code class="ruby">sass --watch foo/style:public/foo bar/style:public/bar
+sass --watch screen.sass print.sass awful-hacks.sass:ie.css
+sass --watch app/stylesheets:public/stylesheets public/stylesheets/test.sass</code></pre>
+
+<p>File and directory watching is accessible from Ruby, using the <span class='object_link'><a href="Sass/Plugin/Compiler.html#watch-instance_method" title="Sass::Plugin::Compiler#watch (method)">Sass::Plugin#watch</a></span> function.</p>
+
+<h4 id="bulk_updating">Bulk Updating</h4>
+
+<p>Another new flag for the <code>sass</code> command-line utility is <code>--update</code>. It checks a group of Sass files to see if their CSS needs to be updated, and updates if so.</p>
+
+<p>The syntax for <code>--update</code> is just like watch:</p>
+
+<pre class="code ruby"><code class="ruby">sass --update app/stylesheets:public/stylesheets
+sass --update style.sass:out.css
+sass --watch screen.sass print.sass awful-hacks.sass:ie.css</code></pre>
+
+<p>In fact, <code>--update</code> work exactly the same as <code>--watch</code>, except that it doesn’t continue watching the files after the first check.</p>
+
+<h3 id="3-0-0-sass-convert"><code>sass-convert</code> (née <code>css2sass</code>)</h3>
+
+<p>The <code>sass-convert</code> tool, which used to be known as <code>css2sass</code>, has been greatly improved in various ways. It now uses a full-fledged CSS3 parser, so it should be able to handle any valid CSS3, as well as most hacks and proprietary syntax.</p>
+
+<p><code>sass-convert</code> can now convert between Sass and SCSS. This is normally inferred from the filename, but it can also be specified using the <code>--from</code> and <code>--to</code> flags. For example:</p>
+
+<pre class="code ruby"><code class="ruby">$ generate-sass | sass-convert --from sass --to scss | consume-scss</code></pre>
+
+<p>It’s also now possible to convert a file in-place – that is, overwrite the old file with the new file. This is useful for converting files in the <a href="#3-0-0-deprecations">Sass 2 syntax</a> to the new Sass 3 syntax, e.g. by doing <code>sass-convert --in-place --from sass2 style.sass</code>.</p>
+
+<h4 id="_5"><code>--recursive</code></h4>
+
+<p>The <code>--recursive</code> option allows <code>sass-convert</code> to convert an entire directory of files. <code>--recursive</code> requires both the <code>--from</code> and <code>--to</code> flags to be specified. For example:</p>
+
+<pre class="code ruby"><code class="ruby"># Convert all .sass files in stylesheets/ to SCSS.
+# &quot;sass2&quot; means that these files are assumed to use the Sass 2 syntax.
+$ sass-convert --recursive --from sass2 --to scss stylesheets/</code></pre>
+
+<h4 id="_6"><code>--dasherize</code></h4>
+
+<p>The <code>--dasherize</code> options converts all underscores to hyphens, which are now allowed as part of identifiers in Sass. Note that since underscores may still be used in place of hyphens when referring to mixins and variables, this won’t cause any backwards-incompatibilities.</p>
+
+<h4 id="convert_less_to_scss">Convert Less to SCSS</h4>
+
+<p><code>sass-convert</code> can also convert <a href="http://lesscss.org">Less</a> files to SCSS (or the indented syntax, although I anticipate less interest in that). For example:</p>
+
+<pre class="code ruby"><code class="ruby"># Convert all .less files in the current directory into .scss files
+sass-convert --from less --to scss --recursive .</code></pre>
+
+<p>This is done using the Less parser, so it requires that the <code>less</code> RubyGem be installed.</p>
+
+<h5 id="incompatibilities">Incompatibilities</h5>
+
+<p>Because of the reasonably substantial differences between Sass and Less, there are some things that can’t be directly translated, and one feature that can’t be translated at all. In the tests I’ve run on open-source Less stylesheets, none of these have presented issues, but it’s good to be aware of them.</p>
+
+<p>First, Less doesn’t distinguish fully between mixins and selector inheritance. In Less, all classes and some other selectors may be used as mixins, alongside more Sass-like mixins. If a class is being used as a mixin, it may also be used directly in the HTML, so it’s not safe to translate it into a Sass mixin. What <code>sass-convert</code> does instead is leave the class in the stylesheet as a class, and use <a href="file.SASS_REFERENCE.html#extend" title="&lt;code&gt;@extend&lt;/code&gt;"><code>@extend</code></a> rather than <a href="file.SASS_REFERENCE.html#including_a_mixin" title="&lt;code&gt;@include&lt;/code&gt;"><code>@include</code></a> to take on the styles of that class. Although <code>@extend</code> and mixins work quite differently, using <code>@extend</code> here doesn’t actually seem to make a difference in practice.</p>
+
+<p>Another issue with Less mixins is that Less allows nested selectors (such as <code>.body .button</code> or <code>.colors &gt; .teal</code>) to be used as a means of “namespacing” mixins. Sass’s <code>@extend</code> doesn’t work that way, so it does away with the namespacing and just extends the base class (so <code>.colors &gt; .teal</code> becomes simply <code>@extend .teal</code>). In practice, this feature doesn’t seem to be widely-used, but <code>sass-convert</code> will print a warning and leave a comment when it encounters it just in case.</p>
+
+<p>Finally, Less has the ability to directly access variables and property values defined in other selectors, which Sass does not support. Whenever such an accessor is used, <code>sass-convert</code> will print a warning and comment it out in the SCSS output. Like namespaced mixins, though, this does not seem to be a widely-used feature.</p>
+
+<h3 id="_directive"><code>@warn</code> Directive</h3>
+
+<p>A new directive <code>@warn</code> has been added that allows Sass libraries to emit warnings. This can be used to issue deprecation warnings, discourage sloppy use of mixins, etc. <code>@warn</code> takes a single argument: a SassScript expression that will be displayed on the console along with a stylesheet trace for locating the warning. For example:</p>
+
+<pre class="code ruby"><code class="ruby">@mixin blue-text {
+  @warn &quot;The blue-text mixin is deprecated. Use new-blue-text instead.&quot;;
+  color: #00f;
+}</code></pre>
+
+<p>Warnings may be silenced with the new <code>--quiet</code> command line option, or the corresponding <a href="file.SASS_REFERENCE.html#quiet-option" title="&lt;code&gt;:quiey&lt;/code&gt; Sass option"><code>:quiey</code> Sass option</a>. This option will also affect warnings printed by Sass itself. Warnings are off by default in the Rails, Rack, and Merb production environments.</p>
+
+<h3 id="sassplugin_api">Sass::Plugin API</h3>
+
+<p><span class='object_link'><a href="Sass/Plugin.html" title="Sass::Plugin (module)">Sass::Plugin</a></span> now has a large collection of callbacks that allow users to run code when various actions are performed. For example:</p>
+
+<pre class="code ruby"><code class="ruby">Sass::Plugin.on_updating_stylesheet do |template, css|
+  puts &quot;#{template} has been compiled to #{css}!&quot;
+end</code></pre>
+
+<p>For a full list of callbacks and usage notes, see the <span class='object_link'><a href="Sass/Plugin.html" title="Sass::Plugin (module)">Sass::Plugin</a></span> documentation.</p>
+
+<p><span class='object_link'><a href="Sass/Plugin.html" title="Sass::Plugin (module)">Sass::Plugin</a></span> also has a new method, <span class='object_link'><a href="Sass/Plugin.html#force_update_stylesheets-instance_method" title="Sass::Plugin#force_update_stylesheets (method)">force_update_stylesheets</a></span>. This works just like <span class='object_link'><a href="Sass/Plugin.html#update_stylesheets-instance_method" title="Sass::Plugin#update_stylesheets (method)">Sass::Plugin#update_stylesheets</a></span>, except that it doesn’t check modification times and doesn’t use the cache; all stylesheets are always compiled anew.</p>
+
+<h3 id="output_formatting">Output Formatting</h3>
+
+<p>Properties with a value and <em>also</em> nested properties are now rendered with the nested properties indented. For example:</p>
+
+<pre class="code ruby"><code class="ruby">margin: auto
+  top: 10px
+  bottom: 20px</code></pre>
+
+<p>is now compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;</code></pre>
+
+<h4 id="_style"><code>:compressed</code> Style</h4>
+
+<p>When the <code>:compressed</code> style is used, colors will be output as the minimal possible representation. This means whichever is smallest of the HTML4 color name and the hex representation (shortened to the three-letter version if possible).</p>
+
+<h3 id="stylesheet_updating_speed">Stylesheet Updating Speed</h3>
+
+<p>Several caching layers were added to Sass’s stylesheet updater. This means that it should run significantly faster. This benefit will be seen by people using Sass in development mode with Rails, Rack, and Merb, as well as people using <code>sass --watch</code> from the command line, and to a lesser (but still significant) extent <code>sass --update</code>. Thanks to <a href="http://github.com/thedarkone">thedarkone</a>.</p>
+
+<h3 id="error_backtraces">Error Backtraces</h3>
+
+<p>Numerous bugs were fixed with the backtraces given for Sass errors, especially when importing files and using mixins. All imports and mixins will now show up in the Ruby backtrace, with the proper filename and line number.</p>
+
+<p>In addition, when the <code>sass</code> executable encounters an error, it now prints the filename where the error occurs, as well as a backtrace of Sass imports and mixins.</p>
+
+<h3 id="ruby_19_support">Ruby 1.9 Support</h3>
+
+<ul>
+<li>
+<p>Sass and <code>css2sass</code> now produce more descriptive errors when given a template with invalid byte sequences for that template’s encoding, including the line number and the offending character.</p>
+</li>
+
+<li>
+<p>Sass and <code>css2sass</code> now accept Unicode documents with a <a href="http://en.wikipedia.org/wiki/Byte_order_mark">byte-order-mark</a>.</p>
+</li>
+</ul>
+
+<h3 id="firebug_support">Firebug Support</h3>
+
+<p>A new <a href="file.SASS_REFERENCE.html#debug_info-option" title="&lt;code&gt;:debug_info&lt;/code&gt; option"><code>:debug_info</code> option</a> has been added that emits line-number and filename information to the CSS file in a browser-readable format. This can be used with the new <a href="https://addons.mozilla.org/en-US/firefox/addon/103988">FireSass Firebug extension</a> to report the Sass filename and line number for generated CSS files.</p>
+
+<p>This is also available via the <code>--debug-info</code> command-line flag.</p>
+
+<h3 id="minor_improvements">Minor Improvements</h3>
+
+<ul>
+<li>
+<p>If a CSS or Sass function is used that has the name of a color, it will now be parsed as a function rather than as a color. For example, <code>fuchsia(12)</code> now renders as <code>fuchsia(12)</code> rather than <code>fuchsia 12</code>, and <code>tealbang(12)</code> now renders as <code>tealbang(12)</code> rather than <code>teal bang(12)</code>.</p>
+</li>
+
+<li>
+<p>The Sass Rails and Merb plugins now use Rack middleware by default.</p>
+</li>
+
+<li>
+<p>Haml is now compatible with the <a href="http://hellorip.com/">Rip</a> package management system. Thanks to <a href="http://joshpeek.com/">Josh Peek</a>.</p>
+</li>
+
+<li>
+<p>Indented-syntax <code>/*</code> comments may now include <code>*</code> on lines beyond the first.</p>
+</li>
+
+<li>
+<p>A <a href="file.SASS_REFERENCE.html#read_cache-option" title="&lt;code&gt;:read_cache&lt;/code&gt;"><code>:read_cache</code></a> option has been added to allow the Sass cache to be read from but not written to.</p>
+</li>
+
+<li>
+<p>Stylesheets are no longer checked during each request when running tests in Rails. This should speed up some tests significantly.</p>
+</li>
+</ul>
+
+<h2 id="2224">2.2.24</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.24">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>Parent references – the <code>&amp;</code> character – may only be placed at the beginning of simple selector sequences in Sass 3. Placing them elsewhere is deprecated in 2.2.24 and will print a warning. For example, <code>foo &amp;.bar</code> is allowed, but <code>foo .bar&amp;</code> is not.</li>
+</ul>
+
+<h2 id="2223">2.2.23</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.23">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Don’t crash when <code>rake gems</code> is run in Rails with Sass installed. Thanks to <a href="http://github.com/flori">Florian Frank</a>.</p>
+</li>
+
+<li>
+<p>When raising a file-not-found error, add a list of load paths that were checked.</p>
+</li>
+
+<li>
+<p>If an import isn’t found for a cached Sass file and the <a href="file.SASS_REFERENCE.html#full_exception" title="&lt;code&gt;:full_exception option&lt;/code&gt;"><code>:full_exception option</code></a> is enabled, print the full exception rather than raising it.</p>
+</li>
+
+<li>
+<p>Fix a bug with a weird interaction with Haml, DataMapper, and Rails 3 that caused some tag helpers to go into infinite recursion.</p>
+</li>
+</ul>
+
+<h2 id="2222">2.2.22</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.22">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Add a railtie so Haml and Sass will be automatically loaded in Rails 3. Thanks to <a href="http://pancakestacks.wordpress.com/">Daniel Neighman</a>.</p>
+</li>
+
+<li>
+<p>Make loading the gemspec not crash on read-only filesystems like Heroku’s.</p>
+</li>
+</ul>
+
+<h2 id="2221">2.2.21</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.21">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Fix a few bugs in the git-revision-reporting in <span class='object_link'><a href="Sass/Version.html#version-instance_method" title="Sass::Version#version (method)">Sass::Version#version</a></span>. In particular, it will still work if <code>git gc</code> has been called recently, or if various files are missing.</p>
+</li>
+
+<li>
+<p>Always use <code>__FILE__</code> when reading files within the Haml repo in the <code>Rakefile</code>. According to <a href="http://github.com/carlhuda/bundler/issues/issue/44">this bug report</a>, this should make Sass work better with Bundler.</p>
+</li>
+</ul>
+
+<h2 id="2220">2.2.20</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.20">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>If the cache file for a given Sass file is corrupt because it doesn’t have enough content, produce a warning and read the Sass file rather than letting the exception bubble up. This is consistent with other sorts of sassc corruption handling.</p>
+</li>
+
+<li>
+<p>Calls to <code>defined?</code> shouldn’t interfere with Rails’ autoloading in very old versions (1.2.x).</p>
+</li>
+</ul>
+
+<h2 id="2219">2.2.19</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.18">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Sass between versions 2.2.18 and 2.2.19.</p>
+
+<h2 id="2218">2.2.18</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.18">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Use <code>Rails.env</code> rather than <code>RAILS_ENV</code> when running under Rails 3.0. Thanks to <a href="http://duncangrazier.com/">Duncan Grazier</a>.</p>
+</li>
+
+<li>
+<p>Support <code>:line_numbers</code> as an alias for <a href="file.SASS_REFERENCE.html#line_numbers-option" title="&lt;code&gt;:line_comments&lt;/code&gt;"><code>:line_comments</code></a>, since that’s what the docs have said forever. Similarly, support <code>--line-numbers</code> as a command-line option.</p>
+</li>
+
+<li>
+<p>Add a <code>--unix-newlines</code> flag to all executables for outputting Unix-style newlines on Windows.</p>
+</li>
+
+<li>
+<p>Add a <a href="file.SASS_REFERENCE.html#unix_newlines-option" title="&lt;code&gt;:unix_newlines&lt;/code&gt; option"><code>:unix_newlines</code> option</a> for <span class='object_link'><a href="Sass/Plugin.html" title="Sass::Plugin (module)">Sass::Plugin</a></span> for outputting Unix-style newlines on Windows.</p>
+</li>
+
+<li>
+<p>Fix the <code>--cache-location</code> flag, which was previously throwing errors. Thanks to <a href="http://tav.espians.com/">tav</a>.</p>
+</li>
+
+<li>
+<p>Allow comments at the beginning of the document to have arbitrary indentation, just like comments elsewhere. Similarly, comment parsing is a little nicer than before.</p>
+</li>
+</ul>
+
+<h2 id="2217">2.2.17</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.16">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>When the <a href="file.SASS_REFERENCE.html#full_exception-option" title="&lt;code&gt;:full_exception&lt;/code&gt; option"><code>:full_exception</code> option</a> is false, raise the error in Ruby code rather than swallowing it and printing something uninformative.</p>
+</li>
+
+<li>
+<p>Fixed error-reporting when something goes wrong when loading Sass using the <code>sass</code> executable. This used to raise a NameError because <code>Sass::SyntaxError</code> wasn’t defined. Now it’ll raise the correct exception instead.</p>
+</li>
+
+<li>
+<p>Report the filename in warnings about selectors without properties.</p>
+</li>
+
+<li>
+<p><code>nil</code> values for Sass options are now ignored, rather than raising errors.</p>
+</li>
+
+<li>
+<p>Fix a bug that appears when Plugin template locations have multiple trailing slashes. Thanks to <a href="http://jaredgrippe.com/">Jared Grippe</a>.</p>
+</li>
+</ul>
+
+<h3 id="must_read">Must Read!</h3>
+
+<ul>
+<li>When <code>@import</code> is given a filename without an extension, the behavior of rendering a CSS <code>@import</code> if no Sass file is found is deprecated. In future versions, <code>@import foo</code> will either import the template or raise an error.</li>
+</ul>
+
+<h2 id="2216">2.2.16</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.16">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>Fixed a bug where modules containing user-defined Sass functions weren’t made available when simply included in <span class='object_link'><a href="Sass/Script/Functions.html" title="Sass::Script::Functions (module)">Sass::Script::Functions</a></span> (<span class='object_link'><a href="Sass/Script/Functions.html" title="Sass::Script::Functions (module)">Functions</a></span> needed to be re-included in <span class='object_link'><a href="Sass/Script/Functions/EvaluationContext.html" title="Sass::Script::Functions::EvaluationContext (class)">Functions::EvaluationContext</a></span>). Now the module simply needs to be included in <span class='object_link'><a href="Sass/Script/Functions.html" title="Sass::Script::Functions (module)">Sass::Script::Functions</a></span>.</li>
+</ul>
+
+<h2 id="2215">2.2.15</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.15">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Added <span class='object_link'><a href="Sass/Script/Color.html#with-instance_method" title="Sass::Script::Color#with (method)">Sass::Script::Color#with</a></span> for a way of setting color channels that’s easier than manually constructing a new color and is forwards-compatible with alpha-channel colors (to be introduced in Sass 2.4).</p>
+</li>
+
+<li>
+<p>Added a missing require in Sass that caused crashes when it was being run standalone.</p>
+</li>
+</ul>
+
+<h2 id="2214">2.2.14</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.14">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>All Sass functions now raise explicit errors if their inputs are of the incorrect type.</p>
+</li>
+
+<li>
+<p>Allow the SassScript <code>rgb()</code> function to take percentages in addition to numerical values.</p>
+</li>
+
+<li>
+<p>Fixed a bug where SassScript strings with <code>#</code> followed by <code>#{}</code> interpolation didn’t evaluate the interpolation.</p>
+</li>
+</ul>
+
+<h3 id="sassscript_ruby_api">SassScript Ruby API</h3>
+
+<p>These changes only affect people defining their own Sass functions using <span class='object_link'><a href="Sass/Script/Functions.html" title="Sass::Script::Functions (module)">Sass::Script::Functions</a></span>.</p>
+
+<ul>
+<li>
+<p>Sass::Script::Color#value attribute is deprecated. Use <span class='object_link'><a href="Sass/Script/Color.html#rgb-instance_method" title="Sass::Script::Color#rgb (method)">Sass::Script::Color#rgb</a></span> instead. The returned array is now frozen as well.</p>
+</li>
+
+<li>
+<p>Add an <code>assert_type</code> function that’s available to <span class='object_link'><a href="Sass/Script/Functions.html" title="Sass::Script::Functions (module)">Sass::Script::Functions</a></span>. This is useful for typechecking the inputs to functions.</p>
+</li>
+</ul>
+
+<h3 id="rack_support">Rack Support</h3>
+
+<p>Sass 2.2.14 includes Rack middleware for running Sass, meaning that all Rack-enabled frameworks can now use Sass. To activate this, just add</p>
+
+<pre class="code ruby"><code class="ruby">require 'sass/plugin/rack'
+use Sass::Plugin::Rack</code></pre>
+
+<p>to your <code>config.ru</code>. See the <span class='object_link'><a href="Sass/Plugin/Rack.html" title="Sass::Plugin::Rack (class)">Sass::Plugin::Rack</a></span> documentation for more details.</p>
+
+<h2 id="2213">2.2.13</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.13">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Sass between versions 2.2.12 and 2.2.13.</p>
+
+<h2 id="2212">2.2.12</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.12">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>Fix a stupid bug introduced in 2.2.11 that broke the Sass Rails plugin.</li>
+</ul>
+
+<h2 id="2211">2.2.11</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.11">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Added a note to errors on properties that could be pseudo-classes (e.g. <code>:focus</code>) indicating that they should be backslash-escaped.</p>
+</li>
+
+<li>
+<p>Automatically interpret properties that could be pseudo-classes as such if <a href="file.SASS_REFERENCE.md.html#property_syntax-option" title="&lt;code&gt;:property_syntax&lt;/code&gt;"><code>:property_syntax</code></a> is set to <code>:new</code>.</p>
+</li>
+
+<li>
+<p>Fixed <code>css2sass</code>’s generation of pseudo-classes so that they’re backslash-escaped.</p>
+</li>
+
+<li>
+<p>Don’t crash if the Haml plugin skeleton is installed and <code>rake gems:install</code> is run.</p>
+</li>
+
+<li>
+<p>Don’t use <code>RAILS_ROOT</code> directly. This no longer exists in Rails 3.0. Instead abstract this out as <code>Haml::Util.rails_root</code>. This changes makes Haml fully compatible with edge Rails as of this writing.</p>
+</li>
+
+<li>
+<p>Make use of a Rails callback rather than a monkeypatch to check for stylesheet updates in Rails 3.0+.</p>
+</li>
+</ul>
+
+<h2 id="2210">2.2.10</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.10">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Add support for attribute selectors with spaces around the <code>=</code>. For example:</p>
+
+<pre class="code ruby"><code class="ruby">a[href = http://google.com]
+  color: blue</code></pre>
+</li>
+</ul>
+
+<h2 id="229">2.2.9</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.9">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Sass between versions 2.2.8 and 2.2.9.</p>
+
+<h2 id="228">2.2.8</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.8">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Sass between versions 2.2.7 and 2.2.8.</p>
+
+<h2 id="227">2.2.7</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.7">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Sass between versions 2.2.6 and 2.2.7.</p>
+
+<h2 id="226">2.2.6</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.6">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Don’t crash when the <code>__FILE__</code> constant of a Ruby file is a relative path, as apparently happens sometimes in TextMate (thanks to <a href="http://github.com/kjvarga">Karl Varga</a>).</p>
+</li>
+
+<li>
+<p>Add “Sass” to the <code>--version</code> string for the executables.</p>
+</li>
+</ul>
+
+<h2 id="225">2.2.5</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.5">Tagged on GitHub</a>.</p>
+
+<p>There were no changes made to Sass between versions 2.2.4 and 2.2.5.</p>
+
+<h2 id="224">2.2.4</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.4">Tagged on GitHub</a>.</p>
+
+<ul>
+<li>
+<p>Don’t add <code>require 'rubygems'</code> to the top of init.rb when installed via <code>sass --rails</code>. This isn’t necessary, and actually gets clobbered as soon as haml/template is loaded.</p>
+</li>
+
+<li>
+<p>Document the previously-undocumented <a href="file.SASS_REFERENCE.html#line-option" title="&lt;code&gt;:line&lt;/code&gt; option"><code>:line</code> option</a>, which allows the number of the first line of a Sass file to be set for error reporting.</p>
+</li>
+</ul>
+
+<h2 id="223">2.2.3</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.3">Tagged on GitHub</a>.</p>
+
+<p>Sass 2.2.3 prints line numbers for warnings about selectors with no properties.</p>
+
+<h2 id="222">2.2.2</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.2">Tagged on GitHub</a>.</p>
+
+<p>Sass 2.2.2 is a minor bug-fix release. Notable changes include better parsing of mixin definitions and inclusions and better support for Ruby 1.9.</p>
+
+<h2 id="221">2.2.1</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.1">Tagged on GitHub</a>.</p>
+
+<p>Sass 2.2.1 is a minor bug-fix release.</p>
+
+<h3 id="must_read_2">Must Read!</h3>
+
+<ul>
+<li>It used to be acceptable to use <code>-</code> immediately following variable names, without any whitespace in between (for example, <code>!foo-!bar</code>). This is now deprecated, so that in the future variables with hyphens can be supported. Surround <code>-</code> with spaces.</li>
+</ul>
+
+<h2 id="220">2.2.0</h2>
+
+<p><a href="http://github.com/nex3/sass/commit/2.2.0">Tagged on GitHub</a>.</p>
+
+<p>The 2.2 release marks a significant step in the evolution of the Sass language. The focus has been to increase the power of Sass to keep your stylesheets maintainable by allowing new forms of abstraction to be created within your stylesheets and the stylesheets provided by others that you can download and import into your own. The fundamental units of abstraction in Sass are variables and mixins. Please read below for a list of changes:</p>
+
+<h3 id="must_read_3">Must Read!</h3>
+
+<ul>
+<li>
+<p>Sass Comments (//) used to only comment out a single line. This was deprecated in 2.0.10 and starting in 2.2, Sass comments will comment out any lines indented under them. Upgrade to 2.0.10 in order to see deprecation warnings where this change affects you.</p>
+</li>
+
+<li>
+<p>Implicit Strings within SassScript are now deprecated and will be removed in 2.4. For example: <code>border= !width solid #00F</code> should now be written as <code>border: #{!width} solid #00F</code> or as <code>border= !width &quot;solid&quot; #00F</code>. After upgrading to 2.2, you will see deprecation warnings if you have sass files that use implicit strings.</p>
+</li>
+</ul>
+
+<h3 id="sass_syntax_changes">Sass Syntax Changes</h3>
+
+<h4 id="flexible_indentation">Flexible Indentation</h4>
+
+<p>The indentation of Sass documents is now flexible. The first indent that is detected will determine the indentation style for that document. Tabs and spaces may never be mixed, but within a document, you may choose to use tabs or a flexible number of spaces.</p>
+
+<h4 id="multiline_sass_comments">Multiline Sass Comments</h4>
+
+<p>Sass Comments (//) will now comment out whatever is indented beneath them. Previously they were single line when used at the top level of a document. Upgrading to the latest stable version will give you deprecation warnings if you have silent comments with indentation underneath them.</p>
+
+<h4 id="mixin_arguments">Mixin Arguments</h4>
+
+<p>Sass Mixins now accept any number of arguments. To define a mixin with arguments, specify the arguments as a comma-delimited list of variables like so:</p>
+
+<pre class="code ruby"><code class="ruby">=my-mixin(!arg1, !arg2, !arg3)</code></pre>
+
+<p>As before, the definition of the mixin is indented below the mixin declaration. The variables declared in the argument list may be used and will be bound to the values passed to the mixin when it is invoked. Trailing arguments may have default values as part of the declaration:</p>
+
+<pre class="code ruby"><code class="ruby">=my-mixin(!arg1, !arg2 = 1px, !arg3 = blue)</code></pre>
+
+<p>In the example above, the mixin may be invoked by passing 1, 2 or 3 arguments to it. A similar syntax is used to invoke a mixin that accepts arguments:</p>
+
+<pre class="code ruby"><code class="ruby">div.foo
+  +my-mixin(1em, 3px)</code></pre>
+
+<p>When a mixin has no required arguments, the parenthesis are optional.</p>
+
+<p>The default values for mixin arguments are evaluated in the global context at the time when the mixin is invoked, they may also reference the previous arguments in the declaration. For example:</p>
+
+<pre class="code ruby"><code class="ruby">!default_width = 30px
+=my-fancy-mixin(!width = !default_width, !height = !width)
+  width= !width
+  height= !height
+
+.default-box
+  +my-fancy-mixin
+
+.square-box
+  +my-fancy-mixin(50px)
+
+.rectangle-box
+  +my-fancy-mixin(25px, 75px)
+
+!default_width = 10px
+.small-default-box
+  +my-fancy-mixin</code></pre>
+
+<p>compiles to:</p>
+
+<pre class="code ruby"><code class="ruby">.default-box {
+  width: 30px;
+  height: 30px; }
+
+.square-box {
+  width: 50px;
+  height: 50px; }
+
+.rectangle-box {
+  width: 25px;
+  height: 75px; }
+
+.small-default-box {
+  width: 10px;
+  height: 10px; }</code></pre>
+
+<h3 id="sass_interactive">Sass, Interactive</h3>
+
+<p>The sass command line option -i now allows you to quickly and interactively experiment with SassScript expressions. The value of the expression you enter will be printed out after each line. Example:</p>
+
+<pre class="code ruby"><code class="ruby">$ sass -i
+&gt;&gt; 5px
+5px
+&gt;&gt; 5px + 10px
+15px
+&gt;&gt; !five_pixels = 5px
+5px
+&gt;&gt; !five_pixels + 10px
+15px</code></pre>
+
+<h3 id="sassscript">SassScript</h3>
+
+<p>The features of SassScript have been greatly enhanced with new control directives, new fundamental data types, and variable scoping.</p>
+
+<h4 id="new_data_types">New Data Types</h4>
+
+<p>SassScript now has four fundamental data types:</p>
+
+<ol>
+<li>Number</li>
+
+<li>String</li>
+
+<li>Boolean (New in 2.2)</li>
+
+<li>Colors</li>
+</ol>
+
+<h4 id="more_flexible_numbers">More Flexible Numbers</h4>
+
+<p>Like JavaScript, SassScript numbers can now change between floating point and integers. No explicit casting or decimal syntax is required. When a number is emitted into a CSS file it will be rounded to the nearest thousandth, however the internal representation maintains much higher precision.</p>
+
+<h4 id="improved_handling_of_units">Improved Handling of Units</h4>
+
+<p>While Sass has long supported numbers with units, it now has a much deeper understanding of them. The following are examples of legal numbers in SassScript:</p>
+
+<pre class="code ruby"><code class="ruby">0, 1000, 6%, -2px, 5pc, 20em, or 2foo.</code></pre>
+
+<p>Numbers of the same unit may always be added and subtracted. Numbers that have units that Sass understands and finds comparable, can be combined, taking the unit of the first number. Numbers that have non-comparable units may not be added nor subtracted – any attempt to do so will cause an error. However, a unitless number takes on the unit of the other number during a mathematical operation. For example:</p>
+
+<pre class="code ruby"><code class="ruby">&gt;&gt; 3mm + 4cm
+43mm
+&gt;&gt; 4cm + 3mm
+4.3cm
+&gt;&gt; 3cm + 2in
+8.08cm
+&gt;&gt; 5foo + 6foo
+11foo
+&gt;&gt; 4% + 5px
+SyntaxError: Incompatible units: 'px' and '%'.
+&gt;&gt; 5 + 10px
+15px</code></pre>
+
+<p>Sass allows compound units to be stored in any intermediate form, but will raise an error if you try to emit a compound unit into your css file.</p>
+
+<pre class="code ruby"><code class="ruby">&gt;&gt; !em_ratio = 1em / 16px
+0.063em/px
+&gt;&gt; !em_ratio * 32px
+2em
+&gt;&gt; !em_ratio * 40px
+2.5em</code></pre>
+
+<h4 id="colors_2">Colors</h4>
+
+<p>A color value can be declared using a color name, hexadecimal, shorthand hexadecimal, the rgb function, or the hsl function. When outputting a color into css, the color name is used, if any, otherwise it is emitted as hexadecimal value. Examples:</p>
+
+<pre class="code ruby"><code class="ruby">&gt; #fff
+white
+&gt;&gt; white
+white
+&gt;&gt; #FFFFFF
+white
+&gt;&gt; hsl(180, 100, 100)
+white
+&gt;&gt; rgb(255, 255, 255)
+white
+&gt;&gt; #AAA
+#aaaaaa</code></pre>
+
+<p>Math on color objects is performed piecewise on the rgb components. However, these operations rarely have meaning in the design domain (mostly they make sense for gray-scale colors).</p>
+
+<pre class="code ruby"><code class="ruby">&gt;&gt; #aaa + #123
+#bbccdd
+&gt;&gt; #333 * 2
+#666666</code></pre>
+
+<h4 id="booleans">Booleans</h4>
+
+<p>Boolean objects can be created by comparison operators or via the <code>true</code> and <code>false</code> keywords. Booleans can be combined using the <code>and</code>, <code>or</code>, and <code>not</code> keywords.</p>
+
+<pre class="code ruby"><code class="ruby">&gt;&gt; true
+true
+&gt;&gt; true and false
+false
+&gt;&gt; 5 &lt; 10
+true
+&gt;&gt; not (5 &lt; 10)
+false
+&gt;&gt; not (5 &lt; 10) or not (10 &lt; 5)
+true
+&gt;&gt; 30mm == 3cm
+true
+&gt;&gt; 1px == 1em
+false</code></pre>
+
+<h4 id="strings">Strings</h4>
+
+<p>Unicode escapes are now allowed within SassScript strings.</p>
+
+<h3 id="control_directives">Control Directives</h3>
+
+<p>New directives provide branching and looping within a sass stylesheet based on SassScript expressions. See the <a href="SASS_REFERENCE.md.html#control_directives">Sass Reference</a> for complete details.</p>
+
+<h4 id="for">@for</h4>
+
+<p>The <code>@for</code> directive loops over a set of numbers in sequence, defining the current number into the variable specified for each loop. The <code>through</code> keyword means that the last iteration will include the number, the <code>to</code> keyword means that it will stop just before that number.</p>
+
+<pre class="code ruby"><code class="ruby">@for !x from 1px through 5px
+  .border-#{!x}
+    border-width= !x</code></pre>
+
+<p>compiles to:</p>
+
+<pre class="code ruby"><code class="ruby">.border-1px {
+  border-width: 1px; }
+
+.border-2px {
+  border-width: 2px; }
+
+.border-3px {
+  border-width: 3px; }
+
+.border-4px {
+  border-width: 4px; }
+
+.border-5px {
+  border-width: 5px; }</code></pre>
+
+<h4 id="if__else_if__else">@if / @else if / @else</h4>
+
+<p>The branching directives <code>@if</code>, <code>@else if</code>, and <code>@else</code> let you select between several branches of sass to be emitted, based on the result of a SassScript expression. Example:</p>
+
+<pre class="code ruby"><code class="ruby">!type = &quot;monster&quot;
+p
+  @if !type == &quot;ocean&quot;
+    color: blue
+  @else if !type == &quot;matador&quot;
+    color: red
+  @else if !type == &quot;monster&quot;
+    color: green
+  @else
+    color: black</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">p {
+  color: green; }</code></pre>
+
+<h4 id="while">@while</h4>
+
+<p>The <code>@while</code> directive lets you iterate until a condition is met. Example:</p>
+
+<pre class="code ruby"><code class="ruby">!i = 6
+@while !i &gt; 0
+  .item-#{!i}
+    width = 2em * !i
+  !i = !i - 2</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">.item-6 {
+  width: 12em; }
+
+.item-4 {
+  width: 8em; }
+
+.item-2 {
+  width: 4em; }</code></pre>
+
+<h3 id="variable_scoping">Variable Scoping</h3>
+
+<p>The term “constant” has been renamed to “variable.” Variables can be declared at any scope (a.k.a. nesting level) and they will only be visible to the code until the next outdent. However, if a variable is already defined in a higher level scope, setting it will overwrite the value stored previously.</p>
+
+<p>In this code, the <code>!local_var</code> variable is scoped and hidden from other higher level scopes or sibling scopes:</p>
+
+<pre class="code ruby"><code class="ruby">.foo
+  .bar
+    !local_var = 1px
+    width= !local_var
+  .baz
+    // this will raise an undefined variable error.
+    width= !local_var
+  // as will this
+  width= !local_var</code></pre>
+
+<p>In this example, since the <code>!global_var</code> variable is first declared at a higher scope, it is shared among all lower scopes:</p>
+
+<pre class="code ruby"><code class="ruby">!global_var = 1px
+.foo
+  .bar
+    !global_var = 2px
+    width= !global_var
+  .baz
+    width= !global_var
+  width= !global_var</code></pre>
+
+<p>compiles to:</p>
+
+<pre class="code ruby"><code class="ruby">.foo {
+  width: 2px; }
+  .foo .bar {
+    width: 2px; }
+  .foo .baz {
+    width: 2px; }</code></pre>
+
+<h3 id="interpolation">Interpolation</h3>
+
+<p>Interpolation has been added. This allows SassScript to be used to create dynamic properties and selectors. It also cleans up some uses of dynamic values when dealing with compound properties. Using interpolation, the result of a SassScript expression can be placed anywhere:</p>
+
+<pre class="code ruby"><code class="ruby">!x = 1
+!d = 3
+!property = &quot;border&quot;
+div.#{!property}
+  #{!property}: #{!x + !d}px solid
+  #{!property}-color: blue</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">div.border {
+  border: 4px solid;
+  border-color: blue; }</code></pre>
+
+<h3 id="sass_functions">Sass Functions</h3>
+
+<p>SassScript defines some useful functions that are called using the normal CSS function syntax:</p>
+
+<pre class="code ruby"><code class="ruby">p
+  color = hsl(0, 100%, 50%)</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">#main {
+  color: #ff0000; }</code></pre>
+
+<p>The following functions are provided: <code>hsl</code>, <code>percentage</code>, <code>round</code>, <code>ceil</code>, <code>floor</code>, and <code>abs</code>. You can define additional functions in ruby.</p>
+
+<p>See <span class='object_link'><a href="Sass/Script/Functions.html" title="Sass::Script::Functions (module)">Sass::Script::Functions</a></span> for more information.</p>
+
+<h3 id="new_options">New Options</h3>
+
+<h4 id="_7"><code>:line_comments</code></h4>
+
+<p>To aid in debugging, You may set the <code>:line_comments</code> option to <code>true</code>. This will cause the sass engine to insert a comment before each selector saying where that selector was defined in your sass code.</p>
+
+<h4 id="_8"><code>:template_location</code></h4>
+
+<p>The <span class='object_link'><a href="Sass/Plugin.html" title="Sass::Plugin (module)">Sass::Plugin</a></span> <code>:template_location</code> option now accepts a hash of sass paths to corresponding css paths. Please be aware that it is possible to import sass files between these separate locations – they are not isolated from each other.</p>
+
+<h3 id="miscellaneous_features">Miscellaneous Features</h3>
+
+<h4 id="_directive_2"><code>@debug</code> Directive</h4>
+
+<p>The <code>@debug</code> directive accepts a SassScript expression and emits the value of that expression to the terminal (stderr).</p>
+
+<p>Example:</p>
+
+<pre class="code ruby"><code class="ruby">@debug 1px + 2px</code></pre>
+
+<p>During compilation the following will be printed:</p>
+
+<pre class="code ruby"><code class="ruby">Line 1 DEBUG: 3px</code></pre>
+
+<h4 id="ruby_19_support_2">Ruby 1.9 Support</h4>
+
+<p>Sass now fully supports Ruby 1.9.1.</p>
+
+<h4 id="sass_cache">Sass Cache</h4>
+
+<p>By default, Sass caches compiled templates and <a href="SASS_REFERENCE.md.html#partials">partials</a>. This dramatically speeds up re-compilation of large collections of Sass files, and works best if the Sass templates are split up into separate files that are all <a href="SASS_REFERENCE.md.html#import"><code>@import</code></a>ed into one large file.</p>
+
+<p>Without a framework, Sass puts the cached templates in the <code>.sass-cache</code> directory. In Rails and Merb, they go in <code>tmp/sass-cache</code>. The directory can be customized with the <a href="#cache_location-option"><code>:cache_location</code></a> option. If you don’t want Sass to use caching at all, set the <a href="#cache-option"><code>:cache</code></a> option to <code>false</code>.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:14 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>
