@@ -11,6 +11,7 @@ else
     r301 '/tutorial.html', '/guide'
     r301 '/download.html', '/install'
     r301 '/documentation', '/documentation/'
+    r301 '/documentation/_index.html', '/documentation/'
 
     rewrite(%r{^(.*)/([^/.]+)$}, lambda do |match, rack_env|
         path = "#{File.dirname(__FILE__)}/build#{match[0]}"
