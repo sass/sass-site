@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "rake"
+gem "rack"
 
 group :development do
   gem "middleman", "~>3.1.5"

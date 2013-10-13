@@ -126,6 +126,7 @@ DEPENDENCIES
   middleman-favicon-maker
   middleman-livereload
   middleman-syntax
+  rack
   rack-rewrite
   rake
   redcarpet
