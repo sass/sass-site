@@ -1,0 +1,1329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Script::Funcall
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (F)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Script.html" title="Sass::Script (module)">Script</a></span></span>
+     &raquo; 
+    <span class="title">Funcall</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Script::Funcall
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Node</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Node</a></span></li>
+          
+            <li class="next">Sass::Script::Funcall</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A SassScript parse node representing a function call.</p>
+
+<p>A function call either calls one of the functions in <span class='object_link'><a href="Functions.html" title="Sass::Script::Functions (module)">Functions</a></span>, or if no function with the given name exists it returns a string representation of the function call.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#args-instance_method" title="#args (instance method)">- (Array&lt;Script::Node&gt;) <strong>args</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The arguments to the function.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keywords-instance_method" title="#keywords (instance method)">- ({String =&gt; Script::Node}) <strong>keywords</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The keyword arguments to the function.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (String) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The name of the function.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#splat-instance_method" title="#splat (instance method)">- (Script::Node?) <strong>splat</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The splat argument for this function, if one exists.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Node</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Node.html#line-instance_method" title="Sass::Script::Node#line (method)">#line</a></span>, <span class='object_link'><a href="Node.html#options-instance_method" title="Sass::Script::Node#options (method)">#options</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#_perform-instance_method" title="#_perform (instance method)">- (Literal) <strong>_perform</strong>(environment) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Evaluates the function call.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#children-instance_method" title="#children (instance method)">- (Array&lt;Node&gt;) <strong>children</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the arguments to the function.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#deep_copy-instance_method" title="#deep_copy (instance method)">- <strong>deep_copy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Funcall) <strong>initialize</strong>(name, args, keywords, splat) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Funcall.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">- (String) <strong>inspect</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A string representation of the function call.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#to_literal-instance_method" title="#to_literal (instance method)">- <strong>to_literal</strong>(args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This method is factored out from <code>_perform</code> so that compass can override it with a cross-browser implementation for functions that require vendor prefixes in the generated css.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_sass-instance_method" title="#to_sass (instance method)">- <strong>to_sass</strong>(opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Node</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Node.html#dasherize-instance_method" title="Sass::Script::Node#dasherize (method)">#dasherize</a></span>, <span class='object_link'><a href="Node.html#opts-instance_method" title="Sass::Script::Node#opts (method)">#opts</a></span>, <span class='object_link'><a href="Node.html#perform-instance_method" title="Sass::Script::Node#perform (method)">#perform</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Sass::Script::Funcall (class)">Funcall</a></span></tt>) <strong>initialize</strong>(name, args, keywords, splat) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Funcall</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="Sass::Script::String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#name-instance_method" title="Sass::Script::Funcall#name (method)">#name</a></span></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#args-instance_method" title="Sass::Script::Funcall#args (method)">#args</a></span></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>splat</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#splat-instance_method" title="Sass::Script::Funcall#splat (method)">#splat</a></span></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>keywords</span>
+      
+      
+        <span class='type'>(<tt>{<span class='object_link'><a href="String.html" title="Sass::Script::String (class)">String</a></span> =&gt; <span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span>}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#keywords-instance_method" title="Sass::Script::Funcall#keywords (method)">#keywords</a></span></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 35</span>
+
+def initialize(name, args, keywords, splat)
+  @name = name
+  @args = args
+  @keywords = keywords
+  @splat = splat
+  super()
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="args-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span>&gt;</tt>) <strong>args</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The arguments to the function.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 19</span>
+
+def args
+  @args
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="keywords-instance_method">
+  
+    - (<tt>{<span class='object_link'><a href="String.html" title="Sass::Script::String (class)">String</a></span> =&gt; <span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span>}</tt>) <strong>keywords</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The keyword arguments to the function.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>{<span class='object_link'><a href="String.html" title="Sass::Script::String (class)">String</a></span> =&gt; <span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span>}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 24</span>
+
+def keywords
+  @keywords
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="name-instance_method">
+  
+    - (<tt><span class='object_link'><a href="String.html" title="Sass::Script::String (class)">String</a></span></tt>) <strong>name</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The name of the function.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="Sass::Script::String (class)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 14</span>
+
+def name
+  @name
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="splat=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="splat-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span>?</tt>) <strong>splat</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The splat argument for this function, if one exists.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Script::Node</a></span>?</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 29</span>
+
+def splat
+  @splat
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="_perform-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Literal.html" title="Sass::Script::Literal (class)">Literal</a></span></tt>) <strong>_perform</strong>(environment)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Evaluates the function call.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>environment</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Environment.html" title="Sass::Environment (class)">Sass::Environment</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The environment in which to evaluate the SassScript</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Literal.html" title="Sass::Script::Literal (class)">Literal</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The SassScript object that is the value of the function call</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if the function call raises an ArgumentError</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 98</span>
+
+def _perform(environment)
+  args = @args.map {|a| a.perform(environment)}
+  splat = @splat.perform(environment) if @splat
+  if fn = environment.function(@name)
+    keywords = Sass::Util.map_hash(@keywords) {|k, v| [k, v.perform(environment)]}
+    return perform_sass_fn(fn, args, keywords, splat)
+  end
+
+  ruby_name = @name.tr('-', '_')
+  args = construct_ruby_args(ruby_name, args, splat, environment)
+
+  unless Functions.callable?(ruby_name)
+    opts(to_literal(args))
+  else
+    opts(Functions::EvaluationContext.new(environment.options).send(ruby_name, *args))
+  end
+rescue ArgumentError =&gt; e
+  message = e.message
+
+  # If this is a legitimate Ruby-raised argument error, re-raise it.
+  # Otherwise, it's an error in the user's stylesheet, so wrap it.
+  if Sass::Util.rbx?
+    # Rubinius has a different error report string than vanilla Ruby. It
+    # also doesn't put the actual method for which the argument error was
+    # thrown in the backtrace, nor does it include `send`, so we look for
+    # `_perform`.
+    if e.message =~ /^method '([^']+)': given (\d+), expected (\d+)/
+      error_name, given, expected = $1, $2, $3
+      raise e if error_name != ruby_name || e.backtrace[0] !~ /:in `_perform'$/
+      message = &quot;wrong number of arguments (#{given} for #{expected})&quot;
+    end
+  elsif Sass::Util.jruby?
+    if Sass::Util.jruby1_6?
+      should_maybe_raise = e.message =~ /^wrong number of arguments \((\d+) for (\d+)\)/ &amp;&amp;
+        # The one case where JRuby does include the Ruby name of the function
+        # is manually-thrown ArgumentErrors, which are indistinguishable from
+        # legitimate ArgumentErrors. We treat both of these as
+        # Sass::SyntaxErrors even though it can hide Ruby errors.
+        e.backtrace[0] !~ /:in `(block in )?#{ruby_name}'$/
+    else
+      should_maybe_raise = e.message =~ /^wrong number of arguments calling `[^`]+` \((\d+) for (\d+)\)/
+      given, expected = $1, $2
+    end
+
+    if should_maybe_raise
+      # JRuby 1.7 includes __send__ before send and _perform.
+      trace = e.backtrace.dup
+      raise e if !Sass::Util.jruby1_6? &amp;&amp; trace.shift !~ /:in `__send__'$/
+
+      # JRuby (as of 1.7.2) doesn't put the actual method
+      # for which the argument error was thrown in the backtrace, so we
+      # detect whether our send threw an argument error.
+      if !(trace[0] =~ /:in `send'$/ &amp;&amp; trace[1] =~ /:in `_perform'$/)
+        raise e
+      elsif !Sass::Util.jruby1_6?
+        # JRuby 1.7 doesn't use standard formatting for its ArgumentErrors.
+        message = &quot;wrong number of arguments (#{given} for #{expected})&quot;
+      end
+    end
+  elsif e.message =~ /^wrong number of arguments \(\d+ for \d+\)/ &amp;&amp;
+      e.backtrace[0] !~ /:in `(block in )?#{ruby_name}'$/
+    raise e
+  end
+  raise Sass::SyntaxError.new(&quot;#{message} for `#{name}'&quot;)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="children-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Node</a></span>&gt;</tt>) <strong>children</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the arguments to the function.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Node.html" title="Sass::Script::Node (class)">Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Node.html#children-instance_method" title="Sass::Script::Node#children (method)">Node#children</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 77</span>
+
+def children
+  res = @args + @keywords.values
+  res &lt;&lt; @splat if @splat
+  res
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="deep_copy-instance_method">
+  
+    - <strong>deep_copy</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Node.html#deep_copy-instance_method" title="Sass::Script::Node#deep_copy (method)">Node#deep_copy</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 84</span>
+
+def deep_copy
+  node = dup
+  node.instance_variable_set('@args', args.map {|a| a.deep_copy})
+  node.instance_variable_set('@keywords', Hash[keywords.map {|k, v| [k, v.deep_copy]}])
+  node
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inspect-instance_method">
+  
+    - (<tt><span class='object_link'><a href="String.html" title="Sass::Script::String (class)">String</a></span></tt>) <strong>inspect</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns A string representation of the function call</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="Sass::Script::String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string representation of the function call</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 44</span>
+
+def inspect
+  args = @args.map {|a| a.inspect}.join(', ')
+  keywords = Sass::Util.hash_to_a(@keywords).
+      map {|k, v| &quot;$#{k}: #{v.inspect}&quot;}.join(', ')
+  if self.splat
+    splat = (args.empty? &amp;&amp; keywords.empty?) ? &quot;&quot; : &quot;, &quot;
+    splat = &quot;#{splat}#{self.splat.inspect}...&quot;
+  end
+  &quot;#{name}(#{args}#{', ' unless args.empty? || keywords.empty?}#{keywords}#{splat})&quot;
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_literal-instance_method">
+  
+    - <strong>to_literal</strong>(args)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>This method is factored out from <code>_perform</code> so that compass can override it with a cross-browser implementation for functions that require vendor prefixes in the generated css.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 167</span>
+
+def to_literal(args)
+  Script::String.new(&quot;#{name}(#{args.join(', ')})&quot;)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_sass-instance_method">
+  
+    - <strong>to_sass</strong>(opts = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Node.html#to_sass-instance_method" title="Sass::Script::Node#to_sass (method)">Node#to_sass</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/script/funcall.rb', line 56</span>
+
+def to_sass(opts = {})
+  arg_to_sass = lambda do |arg|
+    sass = arg.to_sass(opts)
+    sass = &quot;(#{sass})&quot; if arg.is_a?(Sass::Script::List) &amp;&amp; arg.separator == :comma
+    sass
+  end
+
+  args = @args.map(&amp;arg_to_sass).join(', ')
+  keywords = Sass::Util.hash_to_a(@keywords).
+    map {|k, v| &quot;$#{dasherize(k, opts)}: #{arg_to_sass[v]}&quot;}.join(', ')
+  if self.splat
+    splat = (args.empty? &amp;&amp; keywords.empty?) ? &quot;&quot; : &quot;, &quot;
+    splat = &quot;#{splat}#{arg_to_sass[self.splat]}...&quot;
+  end
+  &quot;#{dasherize(name, opts)}(#{args}#{', ' unless args.empty? || keywords.empty?}#{keywords}#{splat})&quot;
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:17 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

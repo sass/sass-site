@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Tree::DirectiveNode
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Tree.html" title="Sass::Tree (module)">Tree</a></span></span>
+     &raquo; 
+    <span class="title">DirectiveNode</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Tree::DirectiveNode
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></li>
+          
+            <li class="next">Sass::Tree::DirectiveNode</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/directive_node.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A static node representing an unproccessed Sass <code>@</code>-directive. Directives known to Sass, like <code>@for</code> and <code>@debug</code>, are handled by their own nodes; only CSS directives like <code>@media</code> and <code>@font-face</code> become <span class='object_link'><a href="" title="Sass::Tree::DirectiveNode (class)">DirectiveNode</a></span>s.</p>
+
+<p><code>@import</code> and <code>@charset</code> are special cases; they become <span class='object_link'><a href="ImportNode.html" title="Sass::Tree::ImportNode (class)">ImportNode</a></span>s and <span class='object_link'><a href="CharsetNode.html" title="Sass::Tree::CharsetNode (class)">CharsetNode</a></span>s, respectively.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Tree.html" title="Sass::Tree (module)">Sass::Tree</a></span></li>
+    
+  </ul>
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="CssImportNode.html" title="Sass::Tree::CssImportNode (class)">CssImportNode</a></span>, <span class='object_link'><a href="MediaNode.html" title="Sass::Tree::MediaNode (class)">MediaNode</a></span>, <span class='object_link'><a href="SupportsNode.html" title="Sass::Tree::SupportsNode (class)">SupportsNode</a></span></p>
+</div>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resolved_value-instance_method" title="#resolved_value (instance method)">- (String) <strong>resolved_value</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The text of the directive after any interpolated SassScript has been resolved.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#value-instance_method" title="#value (instance method)">- (Array&lt;String, Sass::Script::Node&gt;) <strong>value</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The text of the directive, <code>@</code> and all, with interpolation included.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Node.html#children-instance_method" title="Sass::Tree::Node#children (method)">#children</a></span>, <span class='object_link'><a href="Node.html#filename-instance_method" title="Sass::Tree::Node#filename (method)">#filename</a></span>, <span class='object_link'><a href="Node.html#has_children-instance_method" title="Sass::Tree::Node#has_children (method)">#has_children</a></span>, <span class='object_link'><a href="Node.html#line-instance_method" title="Sass::Tree::Node#line (method)">#line</a></span>, <span class='object_link'><a href="Node.html#options-instance_method" title="Sass::Tree::Node#options (method)">#options</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resolved-class_method" title="resolved (class method)">+ (DirectiveNode) <strong>resolved</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (DirectiveNode) <strong>initialize</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of DirectiveNode.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (String) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The name of the directive, including <code>@</code>.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Node.html#%3C%3C-instance_method" title="Sass::Tree::Node#&lt;&lt; (method)">#<<</a></span>, <span class='object_link'><a href="Node.html#%3D%3D-instance_method" title="Sass::Tree::Node#== (method)">#==</a></span>, <span class='object_link'><a href="Node.html#balance-instance_method" title="Sass::Tree::Node#balance (method)">#balance</a></span>, <span class='object_link'><a href="Node.html#bubbles%3F-instance_method" title="Sass::Tree::Node#bubbles? (method)">#bubbles?</a></span>, <span class='object_link'><a href="Node.html#deep_copy-instance_method" title="Sass::Tree::Node#deep_copy (method)">#deep_copy</a></span>, <span class='object_link'><a href="Node.html#each-instance_method" title="Sass::Tree::Node#each (method)">#each</a></span>, <span class='object_link'><a href="Node.html#inspect-instance_method" title="Sass::Tree::Node#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Node.html#invisible%3F-instance_method" title="Sass::Tree::Node#invisible? (method)">#invisible?</a></span>, <span class='object_link'><a href="Node.html#style-instance_method" title="Sass::Tree::Node#style (method)">#style</a></span>, <span class='object_link'><a href="Node.html#to_s-instance_method" title="Sass::Tree::Node#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="Node.html#to_sass-instance_method" title="Sass::Tree::Node#to_sass (method)">#to_sass</a></span>, <span class='object_link'><a href="Node.html#to_scss-instance_method" title="Sass::Tree::Node#to_scss (method)">#to_scss</a></span></p>
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Sass::Tree::DirectiveNode (class)">DirectiveNode</a></span></tt>) <strong>initialize</strong>(value) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of DirectiveNode</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#value-instance_method" title="Sass::Tree::DirectiveNode#value (method)">#value</a></span></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/directive_node.rb', line 24</span>
+
+def initialize(value)
+  @value = value
+  super()
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="resolved_value=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="resolved_value-instance_method">
+  
+    - (<tt>String</tt>) <strong>resolved_value</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The text of the directive after any interpolated SassScript has been resolved. Only set once <span class='object_link'><a href="Visitors/Perform.html" title="Sass::Tree::Visitors::Perform (class)">Visitors::Perform</a></span> has been run.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/directive_node.rb', line 21</span>
+
+def resolved_value
+  @resolved_value
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="value=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="value-instance_method">
+  
+    - (<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>) <strong>value</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The text of the directive, <code>@</code> and all, with interpolation included.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/directive_node.rb', line 15</span>
+
+def value
+  @value
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="resolved-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Sass::Tree::DirectiveNode (class)">DirectiveNode</a></span></tt>) <strong>resolved</strong>(value) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#resolved_value-instance_method" title="Sass::Tree::DirectiveNode#resolved_value (method)">#resolved_value</a></span></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Sass::Tree::DirectiveNode (class)">DirectiveNode</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/directive_node.rb', line 31</span>
+
+def self.resolved(value)
+  node = new([value])
+  node.resolved_value = value
+  node
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="name-instance_method">
+  
+    - (<tt>String</tt>) <strong>name</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The name of the directive, including <code>@</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the directive, including <code>@</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/tree/directive_node.rb', line 38</span>
+
+def name
+  value.first.gsub(/ .*$/, '')
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:20 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

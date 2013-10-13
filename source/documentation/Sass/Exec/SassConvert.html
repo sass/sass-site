@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Exec::SassConvert
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Exec.html" title="Sass::Exec (module)">Exec</a></span></span>
+     &raquo; 
+    <span class="title">SassConvert</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Exec::SassConvert
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Generic.html" title="Sass::Exec::Generic (class)">Generic</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Generic.html" title="Sass::Exec::Generic (class)">Generic</a></span></li>
+          
+            <li class="next">Sass::Exec::SassConvert</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/exec.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The <code>sass-convert</code> executable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (SassConvert) <strong>initialize</strong>(args) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of SassConvert.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_result-instance_method" title="#process_result (instance method)">- <strong>process_result</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Processes the options set by the command-line arguments, and runs the CSS compiler appropriately.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_opts-instance_method" title="#set_opts (instance method)">- <strong>set_opts</strong>(opts) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Tells optparse how to parse the arguments.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Generic.html" title="Sass::Exec::Generic (class)">Generic</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Generic.html#color-instance_method" title="Sass::Exec::Generic#color (method)">#color</a></span>, <span class='object_link'><a href="Generic.html#get_line-instance_method" title="Sass::Exec::Generic#get_line (method)">#get_line</a></span>, <span class='object_link'><a href="Generic.html#parse-instance_method" title="Sass::Exec::Generic#parse (method)">#parse</a></span>, <span class='object_link'><a href="Generic.html#parse%21-instance_method" title="Sass::Exec::Generic#parse! (method)">#parse!</a></span>, <span class='object_link'><a href="Generic.html#puts-instance_method" title="Sass::Exec::Generic#puts (method)">#puts</a></span>, <span class='object_link'><a href="Generic.html#puts_action-instance_method" title="Sass::Exec::Generic#puts_action (method)">#puts_action</a></span>, <span class='object_link'><a href="Generic.html#to_s-instance_method" title="Sass::Exec::Generic#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="Generic.html#write_output-instance_method" title="Sass::Exec::Generic#write_output (method)">#write_output</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Sass::Exec::SassConvert (class)">SassConvert</a></span></tt>) <strong>initialize</strong>(args) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of SassConvert</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The command-line arguments</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+502
+503
+504
+505
+506
+507</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/exec.rb', line 502</span>
+
+def initialize(args)
+  super
+  require 'sass'
+  @options[:for_tree] = {}
+  @options[:for_engine] = {:cache =&gt; false, :read_cache =&gt; true}
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="process_result-instance_method">
+  
+    - <strong>process_result</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Processes the options set by the command-line arguments, and runs the CSS compiler appropriately.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/exec.rb', line 591</span>
+
+def process_result
+  require 'sass'
+
+  if @options[:recursive]
+    process_directory
+    return
+  end
+
+  super
+  input = @options[:input]
+  raise &quot;Error: '#{input.path}' is a directory (did you mean to use --recursive?)&quot; if File.directory?(input)
+  output = @options[:output]
+  output = input if @options[:in_place]
+  process_file(input, output)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_opts-instance_method">
+  
+    - <strong>set_opts</strong>(opts) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Tells optparse how to parse the arguments.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>opts</span>
+      
+      
+        <span class='type'>(<tt>OptionParser</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/exec.rb', line 512</span>
+
+def set_opts(opts)
+  opts.banner = &lt;&lt;END
+Usage: sass-convert [options] [INPUT] [OUTPUT]
+
+Description:
+  Converts between CSS, Sass, and SCSS files.
+  E.g. converts from SCSS to Sass,
+  or converts from CSS to SCSS (adding appropriate nesting).
+
+Options:
+END
+
+  opts.on('-F', '--from FORMAT',
+    'The format to convert from. Can be css, scss, sass.',
+    'By default, this is inferred from the input filename.',
+    'If there is none, defaults to css.') do |name|
+    @options[:from] = name.downcase.to_sym
+    raise &quot;sass-convert no longer supports LessCSS.&quot; if @options[:from] == :less
+    unless [:css, :scss, :sass].include?(@options[:from])
+      raise &quot;Unknown format for sass-convert --from: #{name}&quot;
+    end
+  end
+
+  opts.on('-T', '--to FORMAT',
+    'The format to convert to. Can be scss or sass.',
+    'By default, this is inferred from the output filename.',
+    'If there is none, defaults to sass.') do |name|
+    @options[:to] = name.downcase.to_sym
+    unless [:scss, :sass].include?(@options[:to])
+      raise &quot;Unknown format for sass-convert --to: #{name}&quot;
+    end
+  end
+
+  opts.on('-R', '--recursive',
+    'Convert all the files in a directory. Requires --from and --to.') do
+    @options[:recursive] = true
+  end
+
+  opts.on('-i', '--in-place',
+    'Convert a file to its own syntax.',
+    'This can be used to update some deprecated syntax.') do
+    @options[:in_place] = true
+  end
+
+  opts.on('--dasherize', 'Convert underscores to dashes') do
+    @options[:for_tree][:dasherize] = true
+  end
+
+  opts.on('--indent NUM',
+    'How many spaces to use for each level of indentation. Defaults to 2.',
+    '&quot;t&quot; means use hard tabs.') do |indent|
+
+    if indent == 't'
+      @options[:for_tree][:indent] = &quot;\t&quot;
+    else
+      @options[:for_tree][:indent] = &quot; &quot; * indent.to_i
+    end
+  end
+
+  opts.on('--old', 'Output the old-style &quot;:prop val&quot; property syntax.',
+                   'Only meaningful when generating Sass.') do
+    @options[:for_tree][:old] = true
+  end
+
+  opts.on('-C', '--no-cache', &quot;Don't cache to sassc files.&quot;) do
+    @options[:for_engine][:read_cache] = false
+  end
+
+  unless ::Sass::Util.ruby1_8?
+    opts.on('-E encoding', 'Specify the default encoding for Sass and CSS files.') do |encoding|
+      Encoding.default_external = encoding
+    end
+  end
+
+  super
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:16 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

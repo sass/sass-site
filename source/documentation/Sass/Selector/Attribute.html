@@ -1,0 +1,912 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Selector::Attribute
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Selector.html" title="Sass::Selector (module)">Selector</a></span></span>
+     &raquo; 
+    <span class="title">Attribute</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Selector::Attribute
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span></li>
+          
+            <li class="next">Sass::Selector::Attribute</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>An attribute selector (e.g. <code>[href^=&quot;http://&quot;]</code>).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#flags-instance_method" title="#flags (instance method)">- (Array&lt;String, Sass::Script::Node&gt;) <strong>flags</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Flags for the attribute selector (e.g. <code>i</code>).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Array&lt;String, Sass::Script::Node&gt;) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The attribute name.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#namespace-instance_method" title="#namespace (instance method)">- (Array&lt;String, Sass::Script::Node&gt;<sup>?</sup>) <strong>namespace</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The attribute namespace.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#operator-instance_method" title="#operator (instance method)">- (String) <strong>operator</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The matching operator, e.g.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#value-instance_method" title="#value (instance method)">- (Array&lt;String, Sass::Script::Node&gt;) <strong>value</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The right-hand side of the operator.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Simple.html#filename-instance_method" title="Sass::Selector::Simple#filename (method)">#filename</a></span>, <span class='object_link'><a href="Simple.html#line-instance_method" title="Sass::Selector::Simple#line (method)">#line</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Attribute) <strong>initialize</strong>(name, namespace, operator, value, flags) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Attribute.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#specificity-instance_method" title="#specificity (instance method)">- <strong>specificity</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_a-instance_method" title="#to_a (instance method)">- <strong>to_a</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Simple.html#eql%3F-instance_method" title="Sass::Selector::Simple#eql? (method)">#eql?</a></span>, <span class='object_link'><a href="Simple.html#hash-instance_method" title="Sass::Selector::Simple#hash (method)">#hash</a></span>, <span class='object_link'><a href="Simple.html#inspect-instance_method" title="Sass::Selector::Simple#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Simple.html#to_s-instance_method" title="Sass::Selector::Simple#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="Simple.html#unify-instance_method" title="Sass::Selector::Simple#unify (method)">#unify</a></span>, <span class='object_link'><a href="Simple.html#unify_namespaces-instance_method" title="Sass::Selector::Simple#unify_namespaces (method)">#unify_namespaces</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Sass::Selector::Attribute (class)">Attribute</a></span></tt>) <strong>initialize</strong>(name, namespace, operator, value, flags) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Attribute</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The attribute name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>namespace</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#namespace-instance_method" title="Sass::Selector::Attribute#namespace (method)">#namespace</a></span></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>operator</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The matching operator, e.g. <code>&quot;=&quot;</code> or <code>&quot;^=&quot;</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#value-instance_method" title="Sass::Selector::Attribute#value (method)">#value</a></span></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#flags-instance_method" title="Sass::Selector::Attribute#flags (method)">#flags</a></span></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+322
+323
+324
+325
+326
+327
+328</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb', line 322</span>
+
+def initialize(name, namespace, operator, value, flags)
+  @name = name
+  @namespace = namespace
+  @operator = operator
+  @value = value
+  @flags = flags
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="flags-instance_method">
+  
+    - (<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>) <strong>flags</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Flags for the attribute selector (e.g. <code>i</code>).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+315
+316
+317</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb', line 315</span>
+
+def flags
+  @flags
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="name-instance_method">
+  
+    - (<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>) <strong>name</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The attribute name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+292
+293
+294</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb', line 292</span>
+
+def name
+  @name
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="namespace-instance_method">
+  
+    - (<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt><sup>?</sup>) <strong>namespace</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The attribute namespace. <code>nil</code> means the default namespace, <code>[&quot;&quot;]</code> means no namespace, <code>[&quot;*&quot;]</code> means any namespace.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+300
+301
+302</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb', line 300</span>
+
+def namespace
+  @namespace
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="operator-instance_method">
+  
+    - (<tt>String</tt>) <strong>operator</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The matching operator, e.g. <code>&quot;=&quot;</code> or <code>&quot;^=&quot;</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+305
+306
+307</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb', line 305</span>
+
+def operator
+  @operator
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="value-instance_method">
+  
+    - (<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>) <strong>value</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The right-hand side of the operator.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Node.html" title="Sass::Script::Node (class)">Sass::Script::Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+310
+311
+312</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb', line 310</span>
+
+def value
+  @value
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="specificity-instance_method">
+  
+    - <strong>specificity</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="AbstractSequence.html#specificity-instance_method" title="Sass::Selector::AbstractSequence#specificity (method)">Sass::Selector::AbstractSequence#specificity</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+341
+342
+343</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb', line 341</span>
+
+def specificity
+  SPECIFICITY_BASE
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_a-instance_method">
+  
+    - <strong>to_a</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>Selector#to_a</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+331
+332
+333
+334
+335
+336
+337
+338</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector.rb', line 331</span>
+
+def to_a
+  res = [&quot;[&quot;]
+  res.concat(@namespace) &lt;&lt; &quot;|&quot; if @namespace
+  res.concat @name
+  (res &lt;&lt; @operator).concat @value if @value
+  (res &lt;&lt; &quot; &quot;).concat @flags if @flags
+  res &lt;&lt; &quot;]&quot;
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:19 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

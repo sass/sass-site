@@ -1,0 +1,1634 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Selector::SimpleSequence
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Selector.html" title="Sass::Selector (module)">Selector</a></span></span>
+     &raquo; 
+    <span class="title">SimpleSequence</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Selector::SimpleSequence
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="AbstractSequence.html" title="Sass::Selector::AbstractSequence (class)">AbstractSequence</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="AbstractSequence.html" title="Sass::Selector::AbstractSequence (class)">AbstractSequence</a></span></li>
+          
+            <li class="next">Sass::Selector::SimpleSequence</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A unseparated sequence of selectors that all apply to a single element. For example, <code>.foo#bar[attr=baz]</code> is a simple sequence of the selectors <code>.foo</code>, <code>#bar</code>, and <code>[attr=baz]</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#members-instance_method" title="#members (instance method)">- (Array&lt;Simple&gt;) <strong>members</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The array of individual selectors.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sources-instance_method" title="#sources (instance method)">- (Set&lt;Sequence&gt;) <strong>sources</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The extending selectors that caused this selector sequence to be generated.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subject%3D-instance_method" title="#subject= (instance method)">- <strong>subject</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+      <span class="note title writeonly">writeonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="AbstractSequence.html" title="Sass::Selector::AbstractSequence (class)">AbstractSequence</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="AbstractSequence.html#filename-instance_method" title="Sass::Selector::AbstractSequence#filename (method)">#filename</a></span>, <span class='object_link'><a href="AbstractSequence.html#line-instance_method" title="Sass::Selector::AbstractSequence#line (method)">#line</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base-instance_method" title="#base (instance method)">- (Element, ...) <strong>base</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the element or universal selector in this sequence, if it exists.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#do_extend-instance_method" title="#do_extend (instance method)">- (Array&lt;Sequence&gt;) <strong>do_extend</strong>(extends, parent_directives) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Non-destrucively extends this selector with the extensions specified in a hash (which should come from <span class='object_link'><a href="../Tree/Visitors/Cssize.html" title="Sass::Tree::Visitors::Cssize (class)">Tree::Visitors::Cssize</a></span>).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (SimpleSequence) <strong>initialize</strong>(selectors, subject, sources = Set.new) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of SimpleSequence.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">- (String) <strong>inspect</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns a string representation of the sequence.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pseudo_elements-instance_method" title="#pseudo_elements (instance method)">- <strong>pseudo_elements</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resolve_parent_refs-instance_method" title="#resolve_parent_refs (instance method)">- (Array&lt;SimpleSequence&gt;) <strong>resolve_parent_refs</strong>(super_seq) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Resolves the <span class='object_link'><a href="Parent.html" title="Sass::Selector::Parent (class)">Parent</a></span> selectors within this selector by replacing them with the given parent selector, handling commas appropriately.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rest-instance_method" title="#rest (instance method)">- (Set&lt;Simple&gt;) <strong>rest</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the non-base, non-pseudo-class selectors in this sequence.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subject%3F-instance_method" title="#subject? (instance method)">- (Boolean) <strong>subject?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether or not this compound selector is the subject of the parent selector; that is, whether it is prepended with <code>$</code> and represents the actual element that will be selected.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#superselector%3F-instance_method" title="#superselector? (instance method)">- (Boolean) <strong>superselector?</strong>(sseq) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns whether or not this selector matches all elements that the given selector matches (as well as possibly more).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_a-instance_method" title="#to_a (instance method)">- <strong>to_a</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unify-instance_method" title="#unify (instance method)">- (SimpleSequence<sup>?</sup>) <strong>unify</strong>(sels, other_subject) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Unifies this selector with another <span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span>???s <span class='object_link'><a href="#members-instance_method" title="Sass::Selector::SimpleSequence#members (method)">members array</a></span>, returning another <code>SimpleSequence</code> that matches both this selector and the input selector.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#with_more_sources-instance_method" title="#with_more_sources (instance method)">- (SimpleSequence) <strong>with_more_sources</strong>(sources) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return a copy of this simple sequence with <code>sources</code> merged into the  set.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="AbstractSequence.html" title="Sass::Selector::AbstractSequence (class)">AbstractSequence</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="AbstractSequence.html#_specificity-instance_method" title="Sass::Selector::AbstractSequence#_specificity (method)">#_specificity</a></span>, <span class='object_link'><a href="AbstractSequence.html#eql%3F-instance_method" title="Sass::Selector::AbstractSequence#eql? (method)">#eql?</a></span>, <span class='object_link'><a href="AbstractSequence.html#has_placeholder%3F-instance_method" title="Sass::Selector::AbstractSequence#has_placeholder? (method)">#has_placeholder?</a></span>, <span class='object_link'><a href="AbstractSequence.html#hash-instance_method" title="Sass::Selector::AbstractSequence#hash (method)">#hash</a></span>, <span class='object_link'><a href="AbstractSequence.html#specificity-instance_method" title="Sass::Selector::AbstractSequence#specificity (method)">#specificity</a></span>, <span class='object_link'><a href="AbstractSequence.html#to_s-instance_method" title="Sass::Selector::AbstractSequence#to_s (method)">#to_s</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span></tt>) <strong>initialize</strong>(selectors, subject, sources = Set.new) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of SimpleSequence</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>selectors</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#members-instance_method" title="Sass::Selector::SimpleSequence#members (method)">#members</a></span></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>subject</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>See <span class='object_link'><a href="#subject%3F-instance_method" title="Sass::Selector::SimpleSequence#subject? (method)">#subject?</a></span></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>sources</span>
+      
+      
+        <span class='type'>(<tt>Set&lt;<span class='object_link'><a href="Sequence.html" title="Sass::Selector::Sequence (class)">Sequence</a></span>&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Set.new</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 64</span>
+
+def initialize(selectors, subject, sources = Set.new)
+  @members = selectors
+  @subject = subject
+  @sources = sources
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="members=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="members-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span>&gt;</tt>) <strong>members</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The array of individual selectors.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 11</span>
+
+def members
+  @members
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="sources=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="sources-instance_method">
+  
+    - (<tt>Set&lt;<span class='object_link'><a href="Sequence.html" title="Sass::Selector::Sequence (class)">Sequence</a></span>&gt;</tt>) <strong>sources</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The extending selectors that caused this selector sequence to be generated. For example:</p>
+
+<pre class="code ruby"><code class="ruby">a.foo { ... }
+b.bar {@extend a}
+c.baz {@extend b}</code></pre>
+
+<p>The generated selector <code>b.foo.bar</code> has <code>{b.bar}</code> as its <code>sources</code> set, and the generated selector <code>c.foo.bar.baz</code> has <code>{b.bar, c.baz}</code> as its <code>sources</code> set.</p>
+
+<p>This is populated during the  process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Set&lt;<span class='object_link'><a href="Sequence.html" title="Sass::Selector::Sequence (class)">Sequence</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 27</span>
+
+def sources
+  @sources
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="subject=-instance_method">
+  
+    - <strong>subject=</strong>(value)  <span class="extras">(writeonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>Sass::Selector::SimpleSequence.\{\{#subject?}</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 30</span>
+
+def subject=(value)
+  @subject = value
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="base-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Element.html" title="Sass::Selector::Element (class)">Element</a></span></tt>, ...) <strong>base</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the element or universal selector in this sequence, if it exists.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Element.html" title="Sass::Selector::Element (class)">Element</a></span></tt>, <tt><span class='object_link'><a href="Universal.html" title="Sass::Selector::Universal (class)">Universal</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 36</span>
+
+def base
+  @base ||= (members.first if members.first.is_a?(Element) || members.first.is_a?(Universal))
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="do_extend-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="Sequence.html" title="Sass::Selector::Sequence (class)">Sequence</a></span>&gt;</tt>) <strong>do_extend</strong>(extends, parent_directives) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Non-destrucively extends this selector with the extensions specified in a hash (which should come from <span class='object_link'><a href="../Tree/Visitors/Cssize.html" title="Sass::Tree::Visitors::Cssize (class)">Tree::Visitors::Cssize</a></span>).</p>
+
+<p>The extensions to perform on this selector</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>extends</span>
+      
+      
+        <span class='type'>(<tt>{<span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Selector::Simple</a></span> =&gt;
+<span class='object_link'><a href="../Tree/Visitors/Cssize/Extend.html" title="Sass::Tree::Visitors::Cssize::Extend (class)">Sass::Tree::Visitors::Cssize::Extend</a></span>}</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>parent_directives</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../Tree/DirectiveNode.html" title="Sass::Tree::DirectiveNode (class)">Sass::Tree::DirectiveNode</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The directives containing this selector.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Sequence.html" title="Sass::Selector::Sequence (class)">Sequence</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A list of selectors generated by extending this selector with <code>extends</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="CommaSequence.html#do_extend-instance_method" title="Sass::Selector::CommaSequence#do_extend (method)">CommaSequence#do_extend</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 103</span>
+
+def do_extend(extends, parent_directives, seen = Set.new)
+  Sass::Util.group_by_to_a(extends.get(members.to_set)) {|ex, _| ex.extender}.map do |seq, group|
+    sels = group.map {|_, s| s}.flatten
+    # If A {@extend B} and C {...},
+    # seq is A, sels is B, and self is C
+
+    self_without_sel = Sass::Util.array_minus(self.members, sels)
+    group.each {|e, _| e.result = :failed_to_unify unless e.result == :succeeded}
+    next unless unified = seq.members.last.unify(self_without_sel, subject?)
+    group.each {|e, _| e.result = :succeeded}
+    next if group.map {|e, _| check_directives_match!(e, parent_directives)}.none?
+    new_seq = Sequence.new(seq.members[0...-1] + [unified])
+    new_seq.add_sources!(sources + [seq])
+    [sels, new_seq]
+  end.compact.map do |sels, seq|
+    seen.include?(sels) ? [] : seq.do_extend(extends, parent_directives, seen + [sels])
+  end.flatten.uniq
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inspect-instance_method">
+  
+    - (<tt>String</tt>) <strong>inspect</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a string representation of the sequence. This is basically the selector string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+169
+170
+171</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 169</span>
+
+def inspect
+  members.map {|m| m.inspect}.join
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pseudo_elements-instance_method">
+  
+    - <strong>pseudo_elements</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 40</span>
+
+def pseudo_elements
+  @pseudo_elements ||= (members - [base]).
+    select {|sel| sel.is_a?(Pseudo) &amp;&amp; sel.type == :element}
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="resolve_parent_refs-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span>&gt;</tt>) <strong>resolve_parent_refs</strong>(super_seq) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Resolves the <span class='object_link'><a href="Parent.html" title="Sass::Selector::Parent (class)">Parent</a></span> selectors within this selector by replacing them with the given parent selector, handling commas appropriately.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>super_seq</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Sequence.html" title="Sass::Selector::Sequence (class)">Sequence</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The parent selector sequence</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>This selector, with parent references resolved. This is an array because the parent selector is itself a <span class='object_link'><a href="Sequence.html" title="Sass::Selector::Sequence (class)">Sass::Selector::Sequence</a></span></p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If a parent selector is invalid</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 78</span>
+
+def resolve_parent_refs(super_seq)
+  # Parent selector only appears as the first selector in the sequence
+  return [self] unless @members.first.is_a?(Parent)
+
+  return super_seq.members if @members.size == 1
+  unless super_seq.members.last.is_a?(SimpleSequence)
+    raise Sass::SyntaxError.new(&quot;Invalid parent selector: &quot; + super_seq.to_a.join)
+  end
+
+  super_seq.members[0...-1] +
+    [SimpleSequence.new(super_seq.members.last.members + @members[1..-1], subject?)]
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rest-instance_method">
+  
+    - (<tt>Set&lt;<span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span>&gt;</tt>) <strong>rest</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the non-base, non-pseudo-class selectors in this sequence.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Set&lt;<span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 48</span>
+
+def rest
+  @rest ||= Set.new(members - [base] - pseudo_elements)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="subject?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>subject?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Whether or not this compound selector is the subject of the parent selector; that is, whether it is prepended with <code>$</code> and represents the actual element that will be selected.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 57</span>
+
+def subject?
+  @subject
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="superselector?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>superselector?</strong>(sseq) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns whether or not this selector matches all elements that the given selector matches (as well as possibly more).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>(.foo).superselector?(.foo.bar) #=&gt; true
+(.foo).superselector?(.bar) #=&gt; false</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>sseq</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+152
+153
+154
+155
+156</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 152</span>
+
+def superselector?(sseq)
+  (base.nil? || base.eql?(sseq.base)) &amp;&amp;
+    pseudo_elements.eql?(sseq.pseudo_elements) &amp;&amp;
+    rest.subset?(sseq.rest)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_a-instance_method">
+  
+    - <strong>to_a</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Simple.html#to_a-instance_method" title="Sass::Selector::Simple#to_a (method)">Sass::Selector::Simple#to_a</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+159
+160
+161
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 159</span>
+
+def to_a
+  res = @members.map {|sel| sel.to_a}.flatten
+  res &lt;&lt; '!' if subject?
+  res
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unify-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span></tt><sup>?</sup>) <strong>unify</strong>(sels, other_subject) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Unifies this selector with another <span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">Sass::Selector::SimpleSequence</a></span>???s <span class='object_link'><a href="#members-instance_method" title="Sass::Selector::SimpleSequence#members (method)">members array</a></span>, returning another <code>SimpleSequence</code> that matches both this selector and the input selector.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>sels</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A <span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">Sass::Selector::SimpleSequence</a></span>’s <span class='object_link'><a href="#members-instance_method" title="Sass::Selector::SimpleSequence#members (method)">members array</a></span></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>subject</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the <span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">Sass::Selector::SimpleSequence</a></span> being merged is a subject.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A <span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">Sass::Selector::SimpleSequence</a></span> matching both <code>sels</code> and this selector, or <code>nil</code> if this is impossible (e.g. unifying <code>#foo</code> and <code>#bar</code>)</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If this selector cannot be unified. This will only ever occur when a dynamic selector, such as <span class='object_link'><a href="Parent.html" title="Sass::Selector::Parent (class)">Parent</a></span> or <span class='object_link'><a href="Interpolation.html" title="Sass::Selector::Interpolation (class)">Interpolation</a></span>, is used in unification. Since these selectors should be resolved by the time extension and unification happen, this exception will only ever be raised as a result of programmer error</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+136
+137
+138
+139
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 136</span>
+
+def unify(sels, other_subject)
+  return unless sseq = members.inject(sels) do |member, sel|
+    return unless member
+    sel.unify(member)
+  end
+  SimpleSequence.new(sseq, other_subject || subject?)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="with_more_sources-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span></tt>) <strong>with_more_sources</strong>(sources) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return a copy of this simple sequence with <code>sources</code> merged into the  set.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>sources</span>
+      
+      
+        <span class='type'>(<tt>Set&lt;<span class='object_link'><a href="Sequence.html" title="Sass::Selector::Sequence (class)">Sequence</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180
+181
+182
+183</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/selector/simple_sequence.rb', line 178</span>
+
+def with_more_sources(sources)
+  sseq = dup
+  sseq.members = members.dup
+  sseq.sources = self.sources | sources
+  sseq
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:20 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

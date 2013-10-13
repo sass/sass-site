@@ -1,0 +1,771 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Sass::Plugin::Configuration
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Plugin.html" title="Sass::Plugin (module)">Plugin</a></span></span>
+     &raquo; 
+    <span class="title">Configuration</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Sass::Plugin::Configuration
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Compiler.html" title="Sass::Plugin::Compiler (class)">Compiler</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb<span class="defines">,<br />
+  /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/merb.rb,<br /> /Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/rails.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_template_location-instance_method" title="#add_template_location (instance method)">- <strong>add_template_location</strong>(template_location, css_location = options[:css_location]) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Adds a new template-location/css-location mapping.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_options-instance_method" title="#default_options (instance method)">- <strong>default_options</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Different default options in a rails envirionment.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#options-instance_method" title="#options (instance method)">- ({Symbol =&gt; Object}) <strong>options</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>An options hash.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#options%3D-instance_method" title="#options= (instance method)">- <strong>options=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'>
+<p>Instead, modify the options hash in-place.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_template_location-instance_method" title="#remove_template_location (instance method)">- (Boolean) <strong>remove_template_location</strong>(template_location, css_location = options[:css_location]) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Removes a template-location/css-location mapping.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset%21-instance_method" title="#reset! (instance method)">- <strong>reset!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Resets the options and <span class='object_link'><a href="../Callbacks/InstanceMethods.html#clear_callbacks%21-instance_method" title="Sass::Callbacks::InstanceMethods#clear_callbacks! (method)">clears all callbacks</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#template_location_array-instance_method" title="#template_location_array (instance method)">- (Array&lt;(String, String)&gt;) <strong>template_location_array</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the template locations configured for Sass as an array of <code>[template_location, css_location]</code> pairs.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add_template_location-instance_method">
+  
+    - <strong>add_template_location</strong>(template_location, css_location = options[:css_location]) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Adds a new template-location/css-location mapping. This means that Sass/SCSS files in <code>template_location</code> will be compiled to CSS files in <code>css_location</code>.</p>
+
+<p>This is preferred over manually manipulating the <a href="../../file.SASS_REFERENCE.html#template_location-option" title="&lt;code&gt;:template_location&lt;/code&gt; option"><code>:template_location</code> option</a> since the option can be in multiple formats.</p>
+
+<p>Note that this method will change <code>options[:template_location]</code> to be in the Array format. This means that even if <code>options[:template_location]</code> had previously been a Hash or a String, it will now be an Array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>template_location</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The location where Sass/SCSS files will be.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>css_location</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>options[:css_location]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The location where compiled CSS files will go.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb', line 62</span>
+
+def add_template_location(template_location, css_location = options[:css_location])
+  normalize_template_location!
+  template_location_array &lt;&lt; [template_location, css_location]
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="default_options-instance_method">
+  
+    - <strong>default_options</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Different default options in a rails envirionment.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb', line 12</span>
+
+def default_options
+  @default_options ||= {
+    :css_location       =&gt; './public/stylesheets',
+    :always_update      =&gt; false,
+    :always_check       =&gt; true,
+    :full_exception     =&gt; true,
+    :cache_location     =&gt; &quot;.sass-cache&quot;
+  }.freeze
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="options-instance_method">
+  
+    - (<tt>{Symbol =&gt; Object}</tt>) <strong>options</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>An options hash. See <a href="../../file.SASS_REFERENCE.html#sass_options" title="the Sass options documentation">the Sass options documentation</a>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb', line 32</span>
+
+def options
+  @options ||= default_options.dup
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="options=-instance_method">
+  
+    - <strong>options=</strong>(value) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>Instead, modify the options hash in-place.</p>
+</div></div>
+
+<p>Sets the options hash. See <a href="../../file.SASS_REFERENCE.html#sass_options" title="the Sass options documentation">the Sass options documentation</a>. See <span class='object_link'><a href="#reset%21-instance_method" title="Sass::Plugin::Configuration#reset! (method)">#reset!</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The options hash</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb', line 41</span>
+
+def options=(value)
+  Sass::Util.sass_warn(&quot;Setting Sass::Plugin.options is deprecated &quot; +
+                       &quot;and will be removed in a future release.&quot;)
+  options.merge!(value)
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_template_location-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>remove_template_location</strong>(template_location, css_location = options[:css_location]) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Removes a template-location/css-location mapping. This means that Sass/SCSS files in <code>template_location</code> will no longer be compiled to CSS files in <code>css_location</code>.</p>
+
+<p>This is preferred over manually manipulating the <a href="../../file.SASS_REFERENCE.html#template_location-option" title="&lt;code&gt;:template_location&lt;/code&gt; option"><code>:template_location</code> option</a> since the option can be in multiple formats.</p>
+
+<p>Note that this method will change <code>options[:template_location]</code> to be in the Array format. This means that even if <code>options[:template_location]</code> had previously been a Hash or a String, it will now be an Array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>template_location</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The location where Sass/SCSS files were, which is now going to be ignored.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>css_location</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>options[:css_location]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The location where compiled CSS files went, but will no longer go.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Non-<code>nil</code> if the given mapping already existed and was removed, or <code>nil</code> if nothing was changed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb', line 88</span>
+
+def remove_template_location(template_location, css_location = options[:css_location])
+  normalize_template_location!
+  template_location_array.delete([template_location, css_location])
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset!-instance_method">
+  
+    - <strong>reset!</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Resets the options and <span class='object_link'><a href="../Callbacks/InstanceMethods.html#clear_callbacks%21-instance_method" title="Sass::Callbacks::InstanceMethods#clear_callbacks! (method)">clears all callbacks</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb', line 23</span>
+
+def reset!
+  @options = nil
+  clear_callbacks!
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="template_location_array-instance_method">
+  
+    - (<tt>Array&lt;(String, String)&gt;</tt>) <strong>template_location_array</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the template locations configured for Sass as an array of <code>[template_location, css_location]</code> pairs. See the <a href="../../file.SASS_REFERENCE.html#template_location-option" title="&lt;code&gt;:template_location&lt;/code&gt; option"><code>:template_location</code> option</a> for details.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;(String, String)&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An array of <code>[template_location, css_location]</code> pairs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102
+103
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/jlong/Workspaces/sass-lang.org/.sass/lib/sass/plugin/configuration.rb', line 100</span>
+
+def template_location_array
+  old_template_location = options[:template_location]
+  normalize_template_location!
+  options[:template_location]
+ensure
+  options[:template_location] = old_template_location
+end</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:14 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>

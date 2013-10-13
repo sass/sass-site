@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<title>
+  File: SCSS_FOR_SASS_USERS
+  
+    &mdash; Sass Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: SCSS_FOR_SASS_USERS</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="intro_to_scss_for_sass_users">Intro to SCSS for Sass Users</h1>
+
+<p>Sass 3 introduces a new syntax known as SCSS which is fully compatible with the syntax of CSS3, while still supporting the full power of Sass. This means that every valid CSS3 stylesheet is a valid SCSS file with the same meaning. In addition, SCSS understands most CSS hacks and vendor-specific syntax, such as <a href="http://msdn.microsoft.com/en-us/library/ms533754%28VS.85%29.aspx">IE???s old <code>filter</code> syntax</a>.</p>
+
+<p>Since SCSS is a CSS extension, everything that works in CSS works in SCSS. This means that for a Sass user to understand it, they need only understand how the Sass extensions work. Most of these, such as variables, parent references, and directives work the same; the only difference is that SCSS requires semicolons and brackets instead of newlines and indentation. For example, a simple rule in Sass:</p>
+
+<pre class="code ruby"><code class="ruby">#sidebar
+  width: 30%
+  background-color: #faa</code></pre>
+
+<p>could be converted to SCSS just by adding brackets and semicolons:</p>
+
+<pre class="code ruby"><code class="ruby">#sidebar {
+  width: 30%;
+  background-color: #faa;
+}</code></pre>
+
+<p>In addition, SCSS is completely whitespace-insensitive. That means the above could also be written as:</p>
+
+<pre class="code ruby"><code class="ruby">#sidebar {width: 30%; background-color: #faa}</code></pre>
+
+<p>There are some differences that are slightly more complicated. These are detailed below. Note, though, that SCSS uses all the <a href="file.SASS_CHANGELOG.html#3-0-0-syntax-changes" title="syntax changes in Sass 3">syntax changes in Sass 3</a>, so make sure you understand those before going forward.</p>
+
+<h2 id="nested_selectors">Nested Selectors</h2>
+
+<p>To nest selectors, simply define a new ruleset inside an existing ruleset:</p>
+
+<pre class="code ruby"><code class="ruby">#sidebar {
+  a { text-decoration: none; }
+}</code></pre>
+
+<p>Of course, white space is insignificant and the last trailing semicolon is optional so you can also do it like this:</p>
+
+<pre class="code ruby"><code class="ruby">#sidebar { a { text-decoration: none } }</code></pre>
+
+<h2 id="nested_properties">Nested Properties</h2>
+
+<p>To nest properties, simply create a new property set after an existing property???s colon:</p>
+
+<pre class="code ruby"><code class="ruby">#footer {
+  border: {
+    width: 1px;
+    color: #ccc;
+    style: solid;
+  }
+}</code></pre>
+
+<p>This compiles to:</p>
+
+<pre class="code ruby"><code class="ruby">#footer {
+  border-width: 1px;
+  border-color: #cccccc;
+  border-style: solid; }</code></pre>
+
+<h2 id="mixins">Mixins</h2>
+
+<p>A mixin is declared with the <code>@mixin</code> directive:</p>
+
+<pre class="code ruby"><code class="ruby">@mixin rounded($amount) {
+  -moz-border-radius: $amount;
+  -webkit-border-radius: $amount;
+  border-radius: $amount;
+}</code></pre>
+
+<p>A mixin is used with the <code>@include</code> directive:</p>
+
+<pre class="code ruby"><code class="ruby">.box {
+  border: 3px solid #777;
+  @include rounded(0.5em);
+}</code></pre>
+
+<p>This syntax is also available in the indented syntax, although the old <code>=</code> and <code>+</code> syntax still works.</p>
+
+<p>This is rather verbose compared to the <code>=</code> and <code>+</code> characters used in Sass syntax. This is because the SCSS format is designed for CSS compatibility rather than conciseness, and creating new syntax when the CSS directive syntax already exists adds new syntax needlessly and could create incompatibilities with future versions of CSS.</p>
+
+<h2 id="comments">Comments</h2>
+
+<p>Like Sass, SCSS supports both comments that are preserved in the CSS output and comments that aren???t. However, SCSS???s comments are significantly more flexible. It supports standard multiline CSS comments with <code>/* */</code>, which are preserved where possible in the output. These comments can have whatever formatting you like; Sass will do its best to format them nicely.</p>
+
+<p>SCSS also uses <code>//</code> for comments that are thrown away, like Sass. Unlike Sass, though, <code>//</code> comments in SCSS may appear anywhere and last only until the end of the line.</p>
+
+<p>For example:</p>
+
+<pre class="code ruby"><code class="ruby">/* This comment is
+ * several lines long.
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output. */
+body { color: black; }
+
+// These comments are only one line long each.
+// They won't appear in the CSS output,
+// since they use the single-line comment syntax.
+a { color: green; }</code></pre>
+
+<p>is compiled to:</p>
+
+<pre class="code ruby"><code class="ruby">/* This comment is
+ * several lines long.
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output. */
+body {
+  color: black; }
+
+a {
+  color: green; }</code></pre>
+
+<h2 id=""><code>@import</code></h2>
+
+<p>The <code>@import</code> directive in SCSS functions just like that in Sass, except that it takes a quoted string to import. For example, this Sass:</p>
+
+<pre class="code ruby"><code class="ruby">@import themes/dark
+@import font.sass</code></pre>
+
+<p>would be this SCSS:</p>
+
+<pre class="code ruby"><code class="ruby">@import &quot;themes/dark&quot;;
+@import &quot;font.sass&quot;;</code></pre>
+</div></div>
+
+    <div id="footer">
+  Generated on Sun Oct 13 12:06:14 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+
+
+  </body>
+</html>
