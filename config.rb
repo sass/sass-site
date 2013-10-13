@@ -2,7 +2,6 @@ require "builder"
 require 'susy'
 require 'breakpoint'
 require 'middleman-syntax'
-require 'rack/rewrite'
 
 # TODO: Make this work
 # require "kss"
@@ -63,12 +62,6 @@ with_layout :styleguide do
 end
 
 page "/documentation/*", :directory_index => false
-
-use Rack::Rewrite do
-  r301 %r{/docs/yardoc/(.*)}, '/documentation/$1'
-  r301 %r{/tutorial\.html}, '/guide'
-  r301 %r{/download\.html}, '/install'
-end
 
 
 configure :build do
