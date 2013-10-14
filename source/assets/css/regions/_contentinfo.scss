@@ -47,10 +47,7 @@
     }
     height: $sticky-contentinfo-height;
 
-    .container {
-      @extend %table-layout-tablet-large;
-      text-align: left;
-    }
+    .container { text-align: left; }
 
     ul {
       display: table-row;

@@ -5,10 +5,6 @@
   * { vertical-align: middle; }
 
   .container { position: relative; }
-
-  @include breakpoint($tablet-large) {
-    .container { @extend %table-layout-tablet-large; }
-  }
 }
 
 .site-brand {
