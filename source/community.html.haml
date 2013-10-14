@@ -1,5 +1,6 @@
 ---
 title: "#teamSass"
+layout: layout_1_column
 ---
 
 - content_for :introduction do
@@ -12,57 +13,59 @@ title: "#teamSass"
 %ul.list-tiled
   %li
     :markdown
-      Still __getting started__? There are some great  [tutorials](#Tutorials) 
+      Still __getting started__? There are some great  [tutorials](#Tutorials)
       out there to get you on your feet.
 
   %li
     :markdown
-      Want to __learn more__? There's some great [Sass blogs](#Blogs") 
-      (including [a few particular articles](#Articles) we recommend reading), 
-      and even a few [books about Sass](#Books) to help you learn some new 
-      tips and tricks. There are also a number of [frameworks](#Frameworks) 
+      Want to __learn more__? There's some great [Sass blogs](#Blogs")
+      (including [a few particular articles](#Articles) we recommend reading),
+      and even a few [books about Sass](#Books) to help you learn some new
+      tips and tricks. There are also a number of [frameworks](#Frameworks)
       that make using Sass simple.
-  
+
   %li
     :markdown
-      Thinking of __contributing__  to Sass itself? We rely on everyone to 
-      keep Sass as stable as it is. Feel free to 
+      Thinking of __contributing__  to Sass itself? We rely on everyone to
+      keep Sass as stable as it is. Feel free to
       [submit a patch via pull request](#Contribute) to the Sass project.
 
 
+%hr/
 
-%h2#Articles Sass Articles on the Web
-%ul.articles
-  - for article in data.community.articles
-    %li
-      %h3= link_to article.name, article.url
-      %p= article.description
+.content-primary
+  %h2#Articles Sass Articles on the Web
+  %ul.articles
+    - for article in data.community.articles
+      %li
+        %h3= link_to article.name, article.url
+        %p= article.description
 
-%h2#Contribute Contribute
-%p Sass is an open source project and we encourage you to contribute. You can contribute with bug reports and feature requests or if you have code to contribute we will love you forever.
+  %h2#Contribute Contribute
+  %p Sass is an open source project and we encourage you to contribute. You can contribute with bug reports and feature requests or if you have code to contribute we will love you forever.
 
-%p When adding bug reports, feature requests, or code there are a couple of primary branches we use.
+  %p When adding bug reports, feature requests, or code there are a couple of primary branches we use.
 
-%dl
-  %dt= link_to "Stable", "https://github.com/nex3/sass"
-  %dd The stable branch is where we do development on the released version. The majority of bug fixes should go here. If you're just reporting a bug <a href="https://github.com/nex3/sass/issues"add an issue</a> and note the version of Sass where you experienced the issue in your comment. If you have a some code to contribute, fork the stable branch and send us a pull request. We'll review your patch and either accept or decline with comments.
+  %dl
+    %dt= link_to "Stable", "https://github.com/nex3/sass"
+    %dd The stable branch is where we do development on the released version. The majority of bug fixes should go here. If you're just reporting a bug <a href="https://github.com/nex3/sass/issues"add an issue</a> and note the version of Sass where you experienced the issue in your comment. If you have a some code to contribute, fork the stable branch and send us a pull request. We'll review your patch and either accept or decline with comments.
 
-%dl
-  %dt= link_to "Master", "https://github.com/nex3/sass/tree/master"
-  %dd The master branch is where we keep track of the next version of Sass. New feature requests should be made here. Similar to submitting patches, for the project and send us a pull request. We'll review your pull request and either accept or decline. If we decline we'll make a few comments in the pull request for changes or a reason the pull request was declined.
+  %dl
+    %dt= link_to "Master", "https://github.com/nex3/sass/tree/master"
+    %dd The master branch is where we keep track of the next version of Sass. New feature requests should be made here. Similar to submitting patches, for the project and send us a pull request. We'll review your pull request and either accept or decline. If we decline we'll make a few comments in the pull request for changes or a reason the pull request was declined.
 
-%h2#PullRequests Pull Requests & Patches
-%p Here are a few simple things you'll need to do when submitting a patch via pull request:
-%ul
-  %li Write a commit message that is well-written, descriptive and contain proper grammar and punctuation.
-  %li Make sure the first line of your commit message is a short, full sentence.
-  %li Contain any appropriate unit tests in your commit
-  %li Add your changes to the changelog for the correct branch. The changelog is in <code>doc-src/SASS_CHANGELOG.md</code>
-  %li If your change is user-facing, update the appropriate section in reference documentation.
+  %h2#PullRequests Pull Requests & Patches
+  %p Here are a few simple things you'll need to do when submitting a patch via pull request:
+  %ul
+    %li Write a commit message that is well-written, descriptive and contain proper grammar and punctuation.
+    %li Make sure the first line of your commit message is a short, full sentence.
+    %li Contain any appropriate unit tests in your commit
+    %li Add your changes to the changelog for the correct branch. The changelog is in <code>doc-src/SASS_CHANGELOG.md</code>
+    %li If your change is user-facing, update the appropriate section in reference documentation.
 
 
 
-- content_for (:complementary) do
+.content-secondary
   %h3#Tutorials Tutorials
   %ul
     - for tutorial in data.community.tutorials
