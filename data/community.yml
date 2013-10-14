@@ -56,6 +56,9 @@ projects:
   - name: "Gravity"
     url: "http://gravityframework.com/"
     description: "a framework for making HTML5 websites with Sass"
+  - name: "Inuit.css"
+    url: "http://inuitcss.com/"
+    description: "a powerful, scalable, Sass-based, BEM, OOCSS framework"
 
 articles:
   - name: "Sass vs. LESS"
