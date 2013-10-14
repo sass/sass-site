@@ -1,0 +1,35 @@
+---
+title: Layouts & Grid
+---
+
+%h2 Susy Magic Grid
+%p.introduction
+  See the
+  = link_to "Susy Documentation", "http://susy.oddbird.net/demos/grid-types/#demo-magic"
+  for more information.
+
+%h2 Other Tools & Resources
+%ul.list-feature
+  %li
+    %strong= link_to "Responsive Test", "/styleguide/responsive-test"
+  %li= link_to "Breakpoint", "http://breakpoint-sass.com/"
+  %li= link_to "The EMs have it: Proportional Media Queries FTW!", "http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/"
+
+%h2 Resolutions
+- data.layout.resolutions.each do |resolution|
+  %dl.guide-description-list
+    %dt
+      %code= "$" + resolution.target
+    %dd= resolution.width
+
+%dl.guide-description-list
+  %dt
+    %code layout: layout_1_column
+  %dd
+    Add this to the yml data at the top of your pages to switch to a fuller
+    1-column layout (no sidebar).
+  %dt
+    %code layout: layout_2_column
+  %dd
+    Use sidebar layout (this is the default setting, so you normally wouldn't
+    need to set this).

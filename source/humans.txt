@@ -3,13 +3,23 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Jina Bolton -- design lead, code, content -- @jina
+    Bermon Painter -- design, code, content -- @bermonpainter
+    Michael Parenteau -- design, code, content -- @parenteau
+    Chris Eppstein -- code, content -- @chriseppstein
+    Nathan Weizenbaum -- code, content -- @nex3
+    Hampton Catlin -- code, content -- @hcatlin
+    Michael Catlin -- content -- @malrase
 
 # THANKS
 
-    <name>
+    All the people at SassConf that came to help with DNS and server-related issues.
+    To everyone who has contributed through pull requests.
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    Normalize.css, jQuery, Modernizr
+    Haml, Markdown
+    Sass, Compass, Susy, Breakpoint
+    jQuery, Modernizr
+    Middleman

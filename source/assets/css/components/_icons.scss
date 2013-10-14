@@ -1,11 +1,11 @@
-$os-icons: "/assets/images/icons/os-icons.png";
+$os-icons: "icons/os-icons.png";
 
+// TODO: Make these use a 16-base instead of 15.
 %os-icons {
-  background: url($os-icons) 0 0 no-repeat;
+  @include square(15px);
+  background: image-url($os-icons) 0 0 no-repeat;
   @include background-size(auto 15px);
   display: inline-block;
-  height: 15px;
-  width: 15px;
 }
 .mac-icon {
   @extend %os-icons;

@@ -45,7 +45,7 @@ task :sass_docs => :sass do
   sh %{rm -rf source/documentation}
   sh %{cp -r .sass/doc source/documentation}
   sh %{find source/documentation -name '*.html' } +
-    %{-exec sed 's/css\\/common\\.css/..\\/assets\\/stylesheets\\/docs.css/g' -i {} \\;}
+    %{-exec sed 's/css\\/common\\.css/..\\/assets\\/css\\/docs.css/g' -i {} \\;}
 end
 
 desc "Import information from Sass."

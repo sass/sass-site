@@ -7,8 +7,8 @@
     %meta(charset="utf-8")/
     %title= page_title
     = partial "layouts/head/meta"
-    = partial "layouts/head/stylesheets"
-    = partial "layouts/head/javascripts"
+    = partial "layouts/head/css"
+    = partial "layouts/head/js"
     = partial "layouts/head/link"
 
   %body{class: page_classes}
@@ -42,4 +42,4 @@
           .container= yield_content :section_bottom
 
     = partial "layouts/regions/contentinfo"
-    = partial "layouts/foot/javascripts"
+    = partial "layouts/foot/js"

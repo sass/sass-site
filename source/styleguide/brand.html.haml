@@ -13,7 +13,9 @@ title: Brand Guidelines
     If you have to put the logo on a busy/colorful background, please use one
     of the reversed (on white) logos.
 
-%p= link_to "Download vector logos", "/assets/images/styleguide/sass-logo.zip", class: "button primary"
+-# TODO: Figure out why this isn't working.
+-#%p
+-#  = link_to "Download vector logos", "/assets/img/styleguide/sass-logo.zip", class: "button primary"
 
 .logos
   %h3 Standard
@@ -22,8 +24,9 @@ title: Brand Guidelines
     %li= image_tag "styleguide/seal-color.png", height: "80"
 
   %h3 White
-  %ul.list-columns
+  %ul.list-tiled
     %li.swatch-color-background-shade= image_tag "styleguide/white.png", height: "80"
+    %li.swatch-color-background-shade= image_tag "styleguide/seal-color-reversed.png", height: "80"
     %li.swatch-color-background-shade= image_tag "styleguide/seal-black-reversed.png", height: "80"
 
   %h3 Black

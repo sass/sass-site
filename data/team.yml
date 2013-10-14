@@ -11,6 +11,9 @@ crew:
   - name: Chris Eppstein
     link: http://chriseppstein.github.io/
     role: code, content
+  - name: Nathan Weizenbaum
+    link: http://nex-3.com/
+    role: code, content
   - name: Hampton Catlin
     link: http://www.hamptoncatlin.com/
     role: code, content
@@ -23,7 +26,5 @@ feedback:
     link: http://brandonmathis.com/
   - name: Josh Puckett
     link: http://dribbble.com/joshpuckett
-  - name: Nathan Weizenbaum
-    link: http://nex-3.com/
   - name: Max Schoening
     link: http://maximilian.io/
