@@ -11,6 +11,13 @@
   }
 }
 
+footer, .banner {
+  @include breakpoint($tablet-large) {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
 .site-brand {
   @include font-size-regular;
   margin: 0;
