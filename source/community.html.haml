@@ -9,6 +9,28 @@ title: "#teamSass"
 
 
 
+%ul.list-tiled
+  %li
+    :markdown
+      Still __getting started__? There are some great  [tutorials](#Tutorials) 
+      out there to get you on your feet.
+
+  %li
+    :markdown
+      Want to __learn more__? There's some great [Sass blogs](#Blogs") 
+      (including [a few particular articles](#Articles) we recommend reading), 
+      and even a few [books about Sass](#Books) to help you learn some new 
+      tips and tricks. There are also a number of [frameworks](#Frameworks) 
+      that make using Sass simple.
+  
+  %li
+    :markdown
+      Thinking of __contributing__  to Sass itself? We rely on everyone to 
+      keep Sass as stable as it is. Feel free to 
+      [submit a patch via pull request](#Contribute) to the Sass project.
+
+
+
 %h2#Articles Sass Articles on the Web
 %ul.articles
   - for article in data.community.articles
@@ -63,25 +85,3 @@ title: "#teamSass"
         = link_to project.name, project.url
         &mdash;
         = project.description
-
-
-
-- content_for (:section_middle) do
-  %ul.list-tiled
-    %li
-      :markdown
-        Still __getting started__? There are some great
-        [tutorials](#Tutorials) out there to get you on your feet.
-
-    %li
-      :markdown
-        Want to __learn more__? There's some great [Sass blogs](#Blogs")
-        (including [a few particular articles](#Articles) we recommend
-        reading), and even a few [books about Sass](#Books) to help you learn
-        some new tips and tricks. There are also a number of
-        [frameworks](#Frameworks) that make using Sass simple.
-    %li
-      :markdown
-        Thinking of __contributing__  to Sass itself? We rely on everyone to
-        keep Sass as stable as it is. Feel free to
-        [submit a patch via pull request](#Contribute) to the Sass project.
