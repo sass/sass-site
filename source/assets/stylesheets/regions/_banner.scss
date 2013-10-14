@@ -50,7 +50,7 @@
     }
     width: 2em;
     height: 0.125em;
-    background-color: $color-border;
+    background-color: $color-primary;
   }
 
   @include breakpoint($tablet-large) { display: none; }
