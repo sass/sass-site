@@ -1,5 +1,6 @@
 # sass-lang.com
-The official website!
+
+<img src="http://sass-lang.com/assets/images/illustrations/glasses-46692be4.svg" height="88" alt="Sass" />
 
 ## Contributing
 
