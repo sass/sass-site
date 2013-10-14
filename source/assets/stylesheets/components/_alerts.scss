@@ -25,6 +25,7 @@
 .release ul {
   @extend %reset-list;
   text-align: inherit;
+  margin-bottom: -0.16em;
 
   @include breakpoint($tablet-small) { @extend %horizontal-list-tablet-small; }
 }
