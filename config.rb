@@ -69,9 +69,9 @@ configure :build do
   activate :gzip
   activate :cache_buster
   activate :asset_hash
-  activate :favicon_maker,
-    :favicon_maker_input_dir   => "source/assets/images/ico",
-    :favicon_maker_output_dir  => "build/assets/images/ico"
+  # activate :favicon_maker,
+  #   :favicon_maker_input_dir   => "source/assets/images/ico",
+  #   :favicon_maker_output_dir  => "build/assets/images/ico"
 
   # First: gem install middleman-smusher
   # require "middleman-smusher"
