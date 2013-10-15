@@ -8,8 +8,7 @@ use Rack::Rewrite do
   r301 '/download.html', '/install'
   r301 '/documentation', '/documentation/'
   r301 '/documentation/_index.html', '/documentation/'
-
-  moved_permanently '/try.html', 'http://www.sassmeister.com'
+  r301 '/try.html', 'http://sassmeister.com'
 
   rewrite(%r{^(.*)/([^/.]+)$}, lambda do |match, rack_env|
       path = "#{File.dirname(__FILE__)}/build#{match[0]}"
