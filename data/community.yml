@@ -7,6 +7,8 @@ tutorials:
     url: "http://www.lynda.com/CSS-tutorials/CSS-LESS-SASS/107921-2.html"
 
 books:
+  - name: "Sass and Compass for Web Designers"
+    url: "http://www.packtpub.com/sass-and-compass-for-designers/book"
   - name: "Sass for Web Designers"
     url: "http://www.abookapart.com/products/sass-for-web-designers"
   - name: "Pragmatic Guide to Sass"
