@@ -1,6 +1,5 @@
 .navigation {
   @include padding-leader;
-  background: $color-background;
 
   li {
     @include trailer(.5);
