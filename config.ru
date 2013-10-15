@@ -13,6 +13,8 @@ else
     r301 '/documentation', '/documentation/'
     r301 '/documentation/_index.html', '/documentation/'
 
+    moved_permanently   '/try.html', 'http://www.sassmeister.com'
+
     rewrite(%r{^(.*)/([^/.]+)$}, lambda do |match, rack_env|
         path = "#{File.dirname(__FILE__)}/build#{match[0]}"
         next "#{match[1]}/#{match[2]}/index.html" if Dir.exists?(path)
