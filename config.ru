@@ -8,6 +8,7 @@ use Rack::Rewrite do
   r301 '/download.html', '/install'
   r301 '/documentation', '/documentation/'
   r301 '/documentation/_index.html', '/documentation/'
+  r301 '/try', 'http://sassmeister.com'
   r301 '/try.html', 'http://sassmeister.com'
 
   rewrite(%r{^(.*)/([^/.]+)$}, lambda do |match, rack_env|
