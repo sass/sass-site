@@ -108,3 +108,6 @@ articles:
   - name: "Structuring My Sass 101"
     url: "http://alwaystwisted.com/post.php?s=2013-01-07-structuring-my-sass-101-part-1"
     description: "by Stuart Robson, January 2013"
+  - name: "Sass doesn't create bad code. Bad coders do."
+    url: "http://www.thesassway.com/articles/sass-doesnt-create-bad-code-bad-coders-do"
+    description: "by Roy Tomeij, from The Sass Way, February 2012"
