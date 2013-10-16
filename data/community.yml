@@ -15,6 +15,8 @@ books:
     url: "http://pragprog.com/book/pg_sass/pragmatic-guide-to-sass"
   - name: "Sass and Compass in Action"
     url: "http://manning.com/netherland/"
+  - name: "Sass in Depth"
+    url: "http://manning.com/dsande/"
 
 blogs:
   - name: "The Sass Way"
