@@ -25,10 +25,6 @@ pre {
   display: block;
   overflow-y: auto;
   margin: auto 0 25px;
-  word: {
-    break: break-all;
-    wrap: break-word;
-  }
 
   // Account for some code outputs that place code tags in pre tags
   code {
