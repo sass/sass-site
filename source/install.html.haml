@@ -68,8 +68,7 @@ layout: layout_1_column
       %dt Linux
       %dd
         If you're using a distribution of Linux, you'll need to install Ruby
-        first. You can use --something--, or --something--,
-        or --something else--.
+        first. You can install Ruby through the apt package manager, rbenv, or rvm.
 
     %dl#install-ruby-windows
       %dt Windows
@@ -81,9 +80,8 @@ layout: layout_1_column
         fast.
 
       %dd
-        Along with Ruby the installer will also install a Ruby command line
-        application that will let you use the Ruby libraries.
-        Open --application name--.
+        The installer will also install a Ruby command line
+        powershell application that will let you use the Ruby libraries. 
 
       %dl#install-ruby-mac
         %dt Mac
@@ -92,6 +90,8 @@ layout: layout_1_column
           set up is a fairly quick process. Sass has a Ruby dependency but if
           you're using a Mac, congratulations, Ruby comes pre-installed.
 
+      %dl
+        %dt Install Sass
         %dd
           %p
             Here's the quickest way we've found to start using Sass by using
@@ -114,7 +114,10 @@ layout: layout_1_column
                   gem install sass
               %p
                 This will install Sass and any dependencies for you. It's pretty
-                magical.
+                magical. If you get an error message then it's likely you will need to use the <code>sudo</code> command to install the Sass gem. It would look like:
+              %pre
+                :preserve
+                  sudo gem install sass
 
             %li
               %p
@@ -135,4 +138,4 @@ layout: layout_1_column
                 we've set up some resources to help you learn pretty darn
                 quick.
 
-              %p= link_to "Learn Sass", "/guide", :class => "button primary"
+              %p= link_to "Learn More About Sass", "/guide", :class => "button primary"
