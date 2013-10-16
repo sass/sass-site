@@ -44,8 +44,10 @@ task :sass_docs => :sass do
   Dir.chdir(".sass") {bundle %{exec rake doc}}
   sh %{rm -rf source/documentation}
   sh %{cp -r .sass/doc source/documentation}
-  sh %{find source/documentation -name '*.html' } +
-    %{-exec sed 's/css\\/common\\.css/..\\/assets\\/css\\/docs.css/g' -i {} \\;}
+  Dir['source/documentation/**/*.html'].each do |path|
+    contents = File.read(path)
+    File.open(path, 'w') {|file| file.write(contents.gsub(%r{css/common\.css}, '../assets/css/docs.css'))}
+  end
 end
 
 desc "Import information from Sass."
