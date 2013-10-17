@@ -17,3 +17,5 @@ hr {
     top: 1px solid $color-border;
   }
 }
+
+svg:not(:root) { overflow: hidden; }

@@ -5,18 +5,23 @@
 
 @include breakpoint($tablet-large) {
   .hero-lockup {
-    @extend %clear-fix-tablet-large;
-    margin-top: -4em;
+    @extend %table-layout-tablet-large;
+    margin: {
+      top: -4em;
+      bottom: -4em;
+    }
 
     .hero-image {
-      @include span(6);
-      @include padding-leader;
-      padding-right: 1em;
+      @extend %table-layout-cell-tablet-large;
+      padding: {
+        right: 2em;
+        bottom: 0;
+      }
     }
 
     .introduction {
-      @include span(6 omega);
-      @include padding-leader;
+      @extend %table-layout-cell-tablet-large;
+      padding: 0;
       text-align: left;
     }
   }
