@@ -19,6 +19,8 @@ use Rack::Rewrite do
   end)
 end
 
+use Rack::Deflater
+
 if ENV["HEROKU"].nil? || ENV["HEROKU"] == 'false'
   require "middleman"
   run Middleman.server
