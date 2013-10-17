@@ -14,5 +14,6 @@ a {
   &:focus { @extend %tab-focus; }
 }
 
-%bold-elements,
-strong { font-weight: $font-weight-bold; }
+%bold-elements { font-weight: $font-weight-bold; }
+
+strong { @extend %bold-elements; }

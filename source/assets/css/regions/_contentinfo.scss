@@ -6,6 +6,7 @@
   .container {
     @include padding-leader;
     @include padding-trailer;
+    height: 100%;
   }
 
   ul {
@@ -49,22 +50,26 @@
 
     .container { text-align: left; }
 
-    ul {
-      display: table-row;
-      height: 100%;
-    }
-  }
+    ul { @extend %table-layout-tablet-large; }
 
-  .contentinfo-legal,
-  .contentinfo-tools,
-  .contentinfo-social { @extend %table-layout-cell-tablet-large; }
+    li { @extend %table-layout-cell-tablet-large; }
+  }
 
   .contentinfo-tools,
   .contentinfo-social {
-    padding: 0 0 0 ($gutter-width * 2);
+    padding: 0;
     width: 1px;
     white-space: nowrap;
   }
 
-  .contentinfo-social { @include adjust-leading-to(1, $font-size-small); }
+  .contentinfo-tools ul li {
+    display: table-cell;
+    margin: 0;
+    padding-left: 2em;
+  }
+
+  .contentinfo-social {
+    padding-left: 4em;
+    line-height: 0;
+  }
 }

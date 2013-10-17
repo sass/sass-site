@@ -1,1 +1,4 @@
-.content { @extend .row; }
+.content {
+  @extend .row;
+  @include padding-trailer(2);
+}
