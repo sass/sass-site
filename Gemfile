@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "rake"
 gem "rack"
+gem "rack-rewrite"
 
 group :development do
   gem "middleman", "~>3.1.5"
@@ -16,8 +17,4 @@ group :development do
   platforms :mri_18 do
     gem "ruby18_source_location"
   end
-end
-
-group :deploy do
-  gem 'rack-rewrite'
 end
