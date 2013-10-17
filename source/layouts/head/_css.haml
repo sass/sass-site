@@ -1,1 +1,3 @@
 = stylesheet_link_tag "sass"
+- if content_for?(:css)
+  = yield_content :css

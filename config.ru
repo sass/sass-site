@@ -1,6 +1,8 @@
 require "rubygems"
 
 require "rack/rewrite"
+require "rack/contrib/not_found"
+require "rack/contrib/try_static"
 
 use Rack::Rewrite do
   r301 %r{/docs/yardoc/(.*)}, '/documentation/$1'
@@ -10,22 +12,22 @@ use Rack::Rewrite do
   r301 '/documentation/_index.html', '/documentation/'
   r301 '/try', 'http://sassmeister.com'
   r301 '/try.html', 'http://sassmeister.com'
-
-  rewrite(%r{^(.*)/([^/.]+)$}, lambda do |match, rack_env|
-      path = "#{File.dirname(__FILE__)}/build#{match[0]}"
-      next "#{match[1]}/#{match[2]}/index.html" if Dir.exists?(path)
-      next match[0] if File.exists?(path)
-      "#{match[0]}.html"
-  end)
 end
 
 use Rack::Deflater
 
 if ENV["HEROKU"].nil? || ENV["HEROKU"] == 'false'
   require "middleman"
-  run Middleman.server
-else
-  use Rack::Static, :urls => [""], :root => 'build', :index => 'index.html'
 
-  run lambda {}
+  server = Middleman.server
+  run Rack::Cascade.new([
+    server,
+    lambda {|env| server.call(env.merge!('PATH_INFO' => '/404'))}
+  ])
+else
+  use Rack::TryStatic,
+    :urls => ["/"], :root => 'build', :index => 'index.html',
+    :try => ['.html', '/index.html']
+
+  run Rack::NotFound.new("build/404/index.html")
 end
