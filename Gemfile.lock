@@ -71,6 +71,8 @@ GEM
       rouge (~> 0.3.0)
     multi_json (1.8.1)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-livereload (0.3.15)
       rack
     rack-rewrite (1.4.01)
@@ -118,6 +120,7 @@ DEPENDENCIES
   middleman-livereload
   middleman-syntax
   rack
+  rack-contrib
   rack-rewrite
   rake
   redcarpet

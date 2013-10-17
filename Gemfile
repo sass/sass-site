@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "rake"
 gem "rack"
 gem "rack-rewrite"
+gem "rack-contrib"
 
 group :development do
   gem "middleman", "~>3.1.5"
