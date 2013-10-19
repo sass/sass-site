@@ -1,6 +1,6 @@
 ```scss
 .message {
-  border-color: 1px solid #ccc;
+  border: 1px solid #ccc;
   padding: 10px;
   color: #333;
 }
