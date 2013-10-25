@@ -12,6 +12,8 @@ use Rack::Rewrite do
   r301 '/documentation/_index.html', '/documentation/'
   r301 '/try', 'http://sassmeister.com'
   r301 '/try.html', 'http://sassmeister.com'
+  r301 '/about', '/'
+  r301 '/about.html', '/'
 end
 
 use Rack::Deflater
