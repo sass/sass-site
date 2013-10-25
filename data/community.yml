@@ -7,16 +7,16 @@ tutorials:
     url: "http://www.lynda.com/CSS-tutorials/CSS-LESS-SASS/107921-2.html"
 
 books:
-  - name: "Sass and Compass for Web Designers"
-    url: "http://www.packtpub.com/sass-and-compass-for-designers/book"
   - name: "Sass for Web Designers"
     url: "http://www.abookapart.com/products/sass-for-web-designers"
-  - name: "Pragmatic Guide to Sass"
-    url: "http://pragprog.com/book/pg_sass/pragmatic-guide-to-sass"
-  - name: "Sass and Compass in Action"
-    url: "http://manning.com/netherland/"
+  - name: "Sass and Compass for Web Designers"
+    url: "http://www.packtpub.com/sass-and-compass-for-designers/book"
   - name: "Sass in Depth"
     url: "http://manning.com/dsande/"
+  - name: "Sass and Compass in Action"
+    url: "http://manning.com/netherland/"
+  - name: "Pragmatic Guide to Sass"
+    url: "http://pragprog.com/book/pg_sass/pragmatic-guide-to-sass"
 
 blogs:
   - name: "The Sass Way"
