@@ -9,12 +9,12 @@ tutorials:
 books:
   - name: "Sass for Web Designers"
     url: "http://www.abookapart.com/products/sass-for-web-designers"
-  - name: "Sass and Compass for Web Designers"
-    url: "http://www.packtpub.com/sass-and-compass-for-designers/book"
   - name: "Sass in Depth"
     url: "http://manning.com/dsande/"
   - name: "Sass and Compass in Action"
     url: "http://manning.com/netherland/"
+  - name: "Sass and Compass for Web Designers"
+    url: "http://www.packtpub.com/sass-and-compass-for-designers/book"
   - name: "Pragmatic Guide to Sass"
     url: "http://pragprog.com/book/pg_sass/pragmatic-guide-to-sass"
 
