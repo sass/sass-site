@@ -1,6 +1,6 @@
 ```css
 .message, .success, .error, .warning {
-  border-color: 1px solid #cccccc;
+  border: 1px solid #cccccc;
   padding: 10px;
   color: #333;
 }
