@@ -1,7 +1,5 @@
 # sass-lang.com
 
-<img src="http://sass-lang.com/assets/images/illustrations/glasses-46692be4.svg" height="88" alt="Sass" />
-
 ## Contributing
 
 If you would like to contribute to the Sass website, please do the following:
