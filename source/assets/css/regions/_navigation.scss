@@ -1,5 +1,7 @@
 .navigation {
-  @include padding-leader;
+  ul {
+    @include padding-leader;
+  }
 
   li {
     @include trailer(.5);
