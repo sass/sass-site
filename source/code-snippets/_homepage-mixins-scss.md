@@ -3,7 +3,6 @@
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
       -ms-border-radius: $radius;
-       -o-border-radius: $radius;
           border-radius: $radius;
 }
 
