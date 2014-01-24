@@ -7,15 +7,15 @@ tutorials:
     url: "http://www.lynda.com/CSS-tutorials/CSS-LESS-SASS/107921-2.html"
 
 books:
-  - name: "Sass for Web Designers"
-    url: "http://www.abookapart.com/products/sass-for-web-designers"
-  - name: "Sass in Depth"
+  - name: "Sass in Depth (unpublished, est. Spring 2014)"
     url: "http://manning.com/dsande/"
-  - name: "Sass and Compass in Action"
+  - name: "Sass for Web Designers (Nov 2013)"
+    url: "http://www.abookapart.com/products/sass-for-web-designers"
+  - name: "Sass and Compass in Action (Aug 2013)"
     url: "http://manning.com/netherland/"
-  - name: "Sass and Compass for Web Designers"
+  - name: "Sass and Compass for Designers (April 2013)"
     url: "http://www.packtpub.com/sass-and-compass-for-designers/book"
-  - name: "Pragmatic Guide to Sass"
+  - name: "Pragmatic Guide to Sass (Dec 2011)" 
     url: "http://pragprog.com/book/pg_sass/pragmatic-guide-to-sass"
 
 blogs:
