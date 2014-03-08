@@ -45,6 +45,7 @@ task :sass_version => :sass do
 end
 
 task :sass_docs => :sass do
+  ENV["RUBOCOP"] = "false"
   Dir.chdir(".sass") {bundle %{exec rake doc}}
   sh %{rm -rf source/documentation}
   sh %{cp -r .sass/doc source/documentation}
