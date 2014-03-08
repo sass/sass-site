@@ -14,9 +14,13 @@ task :sass do
   Dir.chdir(".sass") do
     sh %{rm -f Gemfile}
     sh %{git fetch}
-    sh %{git checkout origin/stable}
-    # Check out the most recent released stable version
-    sh %{git checkout #{File.read("VERSION").strip}}
+    if ENV["SASS_REVISION"]
+      sh %{git checkout #{ENV["SASS_REVISION"]}}
+    else
+      sh %{git checkout origin/stable}
+      # Check out the most recent released stable version
+      sh %{git checkout #{File.read("VERSION").strip}}
+    end
 
     # Stable doesn't have a Gemfile, but it needs one to avoid using
     # this package's Gemfile. This should be removed when 3.3 is
