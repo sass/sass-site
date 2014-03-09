@@ -15,7 +15,7 @@ books:
     url: "http://manning.com/netherland/"
   - name: "Sass and Compass for Designers (April 2013)"
     url: "http://www.packtpub.com/sass-and-compass-for-designers/book"
-  - name: "Pragmatic Guide to Sass (Dec 2011)" 
+  - name: "Pragmatic Guide to Sass (Dec 2011)"
     url: "http://pragprog.com/book/pg_sass/pragmatic-guide-to-sass"
 
 blogs:
@@ -47,6 +47,9 @@ projects:
   - name: "Neat"
     url: "http://neat.bourbon.io/"
     description: "a mixin-based grid layout system"
+  - name: "Sache"
+    url: "http://www.sache.in/"
+    description: "a place to find Sass and Compass extensions"
   - name: "SassMeister"
     url: "http://sassmeister.com/"
     description: "a tool for trying Sass in the browser"
