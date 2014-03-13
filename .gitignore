@@ -31,7 +31,6 @@ build
 *.rej
 *.swo
 *.swp
-*.zip
 *.vi
 *~
 *.sass-cache
