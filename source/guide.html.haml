@@ -10,18 +10,18 @@ title: Sass Basics
 
 - content_for :complementary do
   %h3 Topics
-  :markdown
-    * [Preprocessing](#1)
-    * [Variables](#2)
-    * [Nesting](#3)
-    * [Partials](#4)
-    * [Import](#5)
-    * [Mixins](#6)
-    * [Inheritance](#7)
-    * [Operators](#8)
+  %ul.anchors
+    %li= link_to "Preprocessing", "#topic-1"
+    %li= link_to "Variables",     "#topic-2"
+    %li= link_to "Nesting",       "#topic-3"
+    %li= link_to "Partials",      "#topic-4"
+    %li= link_to "Import",        "#topic-5"
+    %li= link_to "Mixins",        "#topic-6"
+    %li= link_to "Inheritance",   "#topic-7"
+    %li= link_to "Operators",     "#topic-8"
 
 %ul.slides
-  %li#1
+  %li#topic-1
     :markdown
       ## Pre-processing
 
@@ -31,13 +31,23 @@ title: Sass Basics
 
       * * *
 
-  %li#2
+  %li#topic-2
     :markdown
       ## Variables
 
       Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses the <code>$</code> symbol to make something a variable. Here's an example:
 
-    ~ partial "code-snippets/homepage-variables-scss"
+    %ul
+      %li= link_to "SCSS", "#topic-2-SCSS"
+      %li= link_to "Sass", "#topic-2-Sass"
+
+    #topic-2-SCSS
+      %h3 SCSS Syntax
+      ~ partial "code-snippets/homepage-variables-scss"
+
+    #topic-2-Sass
+      %h3 Sass Syntax
+      ~ partial "code-snippets/homepage-variables-sass"
 
     :markdown
       When the Sass is processed, it takes the variables we define for the <code>$font-stack</code> and <code>$primary-color</code> and outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when working with brand colors and keeping them consistent throughout the&nbsp;site.
@@ -46,13 +56,23 @@ title: Sass Basics
 
     %hr/
 
-  %li#3
+  %li#topic-3
     :markdown
       ## Nesting
 
       When you write HTML you've probably noticed that it has a fairly clear nested, visual hierarchy. CSS, on the other hand, isn't. Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Here's an example of some typical styles for a site's&nbsp;navigation:
 
-    ~ partial "code-snippets/homepage-nesting-scss"
+    %ul
+      %li= link_to "SCSS", "#topic-3-SCSS"
+      %li= link_to "Sass", "#topic-3-Sass"
+
+    #topic-3-SCSS
+      %h3 SCSS Syntax
+      ~ partial "code-snippets/homepage-nesting-scss"
+
+    #topic-3-Sass
+      %h3 Sass Syntax
+      ~ partial "code-snippets/homepage-nesting-sass"
 
     :markdown
       You'll notice that the <code>ul</code>, <code>li</code>, and <code>a</code> selectors are nested inside the <code>nav</code> selector. This is a great way to organize your CSS and make it more readable. When you generate the CSS you'll get something like&nbsp;this:
@@ -61,7 +81,7 @@ title: Sass Basics
 
     %hr/
 
-  %li#4
+  %li#topic-4
     :markdown
       ## Partials
 
@@ -69,7 +89,7 @@ title: Sass Basics
 
       ***
 
-  %li#5
+  %li#topic-5
     :markdown
       ## Import
 
@@ -77,8 +97,19 @@ title: Sass Basics
 
       Let's say you have a couple of Sass files, <code>\_reset.scss</code> and <code>base.scss</code>. We want to import <code>\_reset.scss</code> into <code>base.scss</code>.
 
-    ~ partial "code-snippets/homepage-import-1-scss"
-    ~ partial "code-snippets/homepage-import-2-scss"
+    %ul
+      %li= link_to "SCSS", "#topic-5-SCSS"
+      %li= link_to "Sass", "#topic-5-Sass"
+
+    #topic-5-SCSS
+      %h3 SCSS Syntax
+      ~ partial "code-snippets/homepage-import-1-scss"
+      ~ partial "code-snippets/homepage-import-2-scss"
+
+    #topic-5-Sass
+      %h3 Sass Syntax
+      ~ partial "code-snippets/homepage-import-1-sass"
+      ~ partial "code-snippets/homepage-import-2-sass"
 
     :markdown
 
@@ -88,13 +119,23 @@ title: Sass Basics
 
     %hr/
 
-  %li#6
+  %li#topic-6
     :markdown
       ## Mixins
 
       Some things in CSS are a bit tedious to write, especially with CSS3 and the many vendor prefixes that exist. A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. A good use of a mixin is for vendor prefixes. Here's an example for <code>border-radius</code>.
 
-    ~ partial "code-snippets/homepage-mixins-scss"
+    %ul
+      %li= link_to "SCSS", "#topic-6-SCSS"
+      %li= link_to "Sass", "#topic-6-Sass"
+
+    #topic-6-SCSS
+      %h3 SCSS Syntax
+      ~ partial "code-snippets/homepage-mixins-scss"
+
+    #topic-6-Sass
+      %h3 Sass Syntax
+      ~ partial "code-snippets/homepage-mixins-sass"
 
     :markdown
       To create a mixin you use the <code>@mixin</code> directive and give it a name. We've named our mixin <code>border-radius</code>. We're also using the variable <code>$radius</code> inside the parentheses so we can pass in a radius of whatever we want. After you create your mixin, you can then use it as a CSS declaration starting with <code>@include</code> followed by the name of the mixin. When your CSS is generated it'll look like this:
@@ -103,13 +144,23 @@ title: Sass Basics
 
     %hr/
 
-  %li#7
+  %li#topic-7
     :markdown
       ## Extend/Inheritance
 
       This is one of the most useful features of Sass. Using <code>@extend</code> lets you share a set of CSS properties from one selector to another. It helps keep your Sass very DRY. In our example we're going to create a simple series of messaging for errors, warnings and successes.
 
-    ~ partial "code-snippets/homepage-extend-scss"
+    %ul
+      %li= link_to "SCSS", "#topic-7-SCSS"
+      %li= link_to "Sass", "#topic-7-Sass"
+
+    #topic-7-SCSS
+      %h3 SCSS Syntax
+      ~ partial "code-snippets/homepage-extend-scss"
+
+    #topic-7-Sass
+      %h3 Sass Syntax
+      ~ partial "code-snippets/homepage-extend-sass"
 
     :markdown
       What the above code does is allow you to take the CSS properties in <code>.message</code> and apply them to <code>.success</code>, <code>.error</code>, & <code>.warning</code>. The magic happens with the generated CSS, and this helps you avoid having to write multiple class names on HTML elements. This is what it looks&nbsp;like:
@@ -118,13 +169,23 @@ title: Sass Basics
 
     %hr/
 
-  %li#8
+  %li#topic-8
     :markdown
       ## Operators
 
       Doing math in your CSS is very helpful. Sass has a handful of standard math operators like `+`, `-`, `*`, `/`, and `%`. In our example we're going to do some simple math to calculate widths for an `aside` & `article`.
 
-    ~ partial "code-snippets/homepage-operators-scss"
+    %ul
+      %li= link_to "SCSS", "#topic-8-SCSS"
+      %li= link_to "Sass", "#topic-8-Sass"
+
+    #topic-8-SCSS
+      %h3 SCSS Syntax
+      ~ partial "code-snippets/homepage-operators-scss"
+
+    #topic-8-Sass
+      %h3 Sass Syntax
+      ~ partial "code-snippets/homepage-operators-sass"
 
     :markdown
       We've created a very simple fluid grid, based on 960px. Operations in Sass let us do something like take pixel values and convert them to percentages without much hassle. The generated CSS will look like:

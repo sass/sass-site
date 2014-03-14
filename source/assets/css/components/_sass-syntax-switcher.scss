@@ -1,0 +1,33 @@
+.slides {
+  .ui-helper-reset { line-height: inherit; }
+
+  .ui-tabs {
+    &,
+    .ui-tabs-nav,
+    .ui-tabs-nav li.ui-tabs-active,
+    .ui-tabs-panel { padding: 0; }
+
+    .ui-tabs-nav {
+      @include trailer(-3);
+      margin-right: -1em;
+
+      li {
+        float: right;
+
+        &,
+        &.ui-tabs-active { margin: 0; }
+      }
+
+      .ui-tabs-active a { color: $color-text-weak; }
+
+      .ui-tabs-anchor {
+        @include padding-leader(.5);
+        @include padding-trailer(.5);
+        padding: {
+          right: 1em;
+           left: 1em;
+        }
+      }
+    }
+  }
+}
