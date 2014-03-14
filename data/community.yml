@@ -69,6 +69,20 @@ projects:
     url: "http://inuitcss.com/"
     description: "a powerful, scalable, Sass-based, BEM, OOCSS framework"
 
+libsass:
+  - name: "libSass"
+    url: "http://libsass.org/"
+    description: "a C/C++ port of the Sass engine, that can be simple, fast, and easy to integrate."
+  - name: "Node-sass"
+    url: "https://www.npmjs.org/package/node-sass"
+    description: "libSass for Node.js"
+  - name: "Lightning fast Sass compiling with libsass, Node-sass and Grunt-sass"
+    url: "http://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/"
+    description: "by Ben Frain, August 2013"
+  - name: "libSass Python"
+    url: "http://dahlia.kr/libsass-python/"
+    description: "libSass for Python"
+
 articles:
   - name: "Sass vs. LESS"
     url: "http://css-tricks.com/sass-vs-less/"
@@ -82,9 +96,6 @@ articles:
   - name: "Preprocess THIS!"
     url: "http://cognition.happycog.com/article/preprocess-this"
     description: "by Allison Wagner, from Cognition, September 2012"
-  - name: "Lightning fast Sass compiling with libsass, Node-sass and Grunt-sass"
-    url: "http://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/"
-    description: "by Ben Frain, August 2013"
   - name: "A Newb&rsquo;s Guide to Syntactically Awesome Stylesheets (Sass) – part 1"
     url: "http://unmatchedstyle.com/news/a-newbs-guide-to-syntactically-awesome-stylesheets-sass-part-1.php"
     description: "by Dale Sande, from Unmatched Style, September 2012"

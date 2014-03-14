@@ -14,15 +14,18 @@ layout: layout_1_column
   %li
     :markdown
       Still __getting started__? There are some great  [tutorials](#Tutorials)
-      out there to get you on your feet.
+      out there to get you on your feet. Want to __learn more__? There's some
+      great [Sass blogs](#Blogs) (including
+      [a few particular articles](#Articles) we recommend reading), and even a
+      few [books about Sass](#Books) to help you learn some new tips and
+      tricks.
 
   %li
     :markdown
-      Want to __learn more__? There's some great [Sass blogs](#Blogs)
-      (including [a few particular articles](#Articles) we recommend reading),
-      and even a few [books about Sass](#Books) to help you learn some new
-      tips and tricks. There are also a number of [frameworks](#Frameworks)
-      that make using Sass simple.
+      The Sass community is amazing. There are a number of
+      [frameworks](#Frameworks) that make using Sass simple. Want try Sass in
+      Node, Python, or another framework? Check out the
+      [libSass resources](#libSass).
 
   %li
     :markdown
@@ -56,7 +59,7 @@ layout: layout_1_column
       If you have a some code to contribute, fork the stable branch and send us a pull request.
       We'll review your patch and either accept or decline with comments.
       All bug fixes must be thoroughly tested and the tests must pass
-      the <a href="https://travis-ci.org/nex3/sass/builds">build</a> on all supported versions of ruby. 
+      the <a href="https://travis-ci.org/nex3/sass/builds">build</a> on all supported versions of ruby.
 
   %dl
     %dt= link_to "Master", "https://github.com/nex3/sass/tree/master"
@@ -79,7 +82,7 @@ layout: layout_1_column
     %li If your change is user-facing, update the appropriate section in reference documentation.
     %li Don't combine several features or bug fixes into the same pull request.
     %li All code is given a thorough review and will likely require several iterations before being accepted.
-    %li All code changes must be thoroughly tested and the tests must pass the <a href="https://travis-ci.org/nex3/sass/builds">build</a> on all supported versions of ruby. 
+    %li All code changes must be thoroughly tested and the tests must pass the <a href="https://travis-ci.org/nex3/sass/builds">build</a> on all supported versions of ruby.
 
 
 
@@ -102,6 +105,14 @@ layout: layout_1_column
   %h3#Projects Projects & Frameworks
   %ul
     - for project in data.community.projects
+      %li
+        = link_to project.name, project.url
+        &mdash;
+        = project.description
+
+  %h3#libSass libSass Resources
+  %ul
+    - for project in data.community.libsass
       %li
         = link_to project.name, project.url
         &mdash;
