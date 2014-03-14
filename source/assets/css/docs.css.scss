@@ -35,3 +35,5 @@ body {
 }
 
 .maruku_toc { display: none; }
+
+.box * { @include box-sizing(content-box); }
