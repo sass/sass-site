@@ -31,3 +31,15 @@
 }
 
 .release-name { white-space: nowrap; }
+
+// CAMP SASS //
+
+.alert.campsass {
+  background: $iron;
+  color: $color-text-heading;
+  a {
+    color: $color-text-link;
+  }
+}
+
+// END CAMP SASS //
