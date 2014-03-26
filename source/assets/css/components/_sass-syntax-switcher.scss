@@ -10,7 +10,35 @@
     .ui-tabs-nav {
       @include trailer(-3);
       margin-right: -1em;
-
+      a:focus {
+        outline: 0px !important;
+        border:none !important;
+        box-shadow:none !important;
+      }
+      .ui-tabs-active { 
+          &:after, &:before {
+            bottom: -1px;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+          }
+          &:after {
+            border-color: transparent;
+            border-bottom-color: #f8f8f8;
+            border-width: 10px;
+            margin-left: -10px;
+          }
+          &:before {
+            border-color: transparent;
+            border-bottom-color: #ebebeb;
+            border-width: 11px;
+            margin-left: -11px;
+          }
+      }
       li {
         float: right;
 
