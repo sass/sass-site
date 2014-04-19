@@ -13,6 +13,7 @@
 
 # Ignore bundler config
 /.bundle
+bundle/
 .bundle
 
 # Ignore rbenv local .ruby-version file
