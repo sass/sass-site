@@ -1,30 +1,15 @@
 crew:
-  - name: Jina Bolton
-    link: http://jina.me
-    role: design, code, content
   - name: Bermon Painter
     link: http://bermonpainter.com/
-    role: design, code, content
   - name: Michael Parenteau
     link: http://michaelparenteau.com/
-    role: design, code, content
-  - name: Chris Eppstein
-    link: http://chriseppstein.github.io/
-    role: code, content
+
+core:
   - name: Nathan Weizenbaum
     link: http://nex-3.com/
-    role: code, content
+  - name: Chris Eppstein
+    link: http://chriseppstein.github.io/
   - name: Hampton Catlin
     link: http://www.hamptoncatlin.com/
-    role: code, content
   - name: Michael Catlin
     link: http://www.mjlcatlin.com/
-    role: content
-
-feedback:
-  - name: Brandon Mathis
-    link: http://brandonmathis.com/
-  - name: Josh Puckett
-    link: http://dribbble.com/joshpuckett
-  - name: Max Schoening
-    link: http://maximilian.io/

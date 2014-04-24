@@ -51,8 +51,12 @@
 
 .list-columns {
   @extend %list-columns;
+  text-align: center;
 
-  h3 { text-align: center; }
+  h3 { display: inline-block; }
+
+  p,
+  dl { text-align: left; }
 
   @include breakpoint($tablet-large) {
     > li {

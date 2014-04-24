@@ -4,21 +4,30 @@ title: Team Sass Design
 
 %p.introduction
   %strong Team Sass Design
-  is a task force who redesigned the brand and website for Sass.
+  is a design task force who redesigned the brand and website for Sass. You
+  can
+  = link_to "follow us on Twitter", "http://twitter.com/teamsassdesign"
+  for site and design announcements.
 
-%ul
-  - data.team.crew.each do |member|
-    %li
-      = succeed "," do
-        = link_to member.name, member.link
-      = member.role
+%dl
+  %dt Team Sass Design:
+  %dd
+    %ul
+      %li
+        = succeed "," do
+          = link_to "Jina", "http://jina.me"
+        team lead
+      - data.team.crew.each do |member|
+        %li= link_to member.name, member.link
 
-%p And these amazing people provided initial discussion and feedback:
-
-%ul
-  - data.team.feedback.each do |member|
-    %li= link_to member.name, member.link
+%dl
+  %dt Major website contributors
+  %dd
+    %ul
+      - data.team.core.each do |member|
+        %li= link_to member.name, member.link
 
 %p
-  Additionally, many people attending <a href="http://sassconf.com">SassConf 2013</a> jumped
-  in and helped get the site deployed. Many thanks for that.
+  Additionally, many people attending
+  <a href="http://sassconf.com">SassConf 2013</a> jumped in and helped get the
+  site deployed. Many thanks for that.
