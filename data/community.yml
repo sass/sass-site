@@ -63,7 +63,7 @@ projects:
     url: "https://github.com/jlong/sass-twitter-bootstrap"
     description: "the ubiquitous framework&hellip; this time written in Sass!"
   - name: "Gravity"
-    url: "http://gravityframework.com/"
+    url: "https://github.com/owainlewis/gravity"
     description: "a framework for making HTML5 websites with Sass"
   - name: "Inuit.css"
     url: "http://inuitcss.com/"
