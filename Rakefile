@@ -8,7 +8,7 @@ end
 
 task :sass do
   unless Dir.exists?(".sass")
-    sh %{git clone git://github.com/nex3/sass .sass}
+    sh %{git clone git://github.com/sass/sass .sass}
   end
 
   Dir.chdir(".sass") do
