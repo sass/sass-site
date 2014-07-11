@@ -19,5 +19,7 @@
   @include breakpoint($tablet-large) {
     @include padding-leader(3);
     @include padding-trailer(2);
+
+    p { text-align: left; }
   }
 }

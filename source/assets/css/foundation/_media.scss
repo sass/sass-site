@@ -1,5 +1,7 @@
 img {
   display: inline-block;
+  max-width: 100%;
+  height: auto;
   border: 0;
   vertical-align: middle;
 }
@@ -19,3 +21,8 @@ hr {
 }
 
 svg:not(:root) { overflow: hidden; }
+
+figure {
+  @extend %block-text;
+  @include breakpoint($tablet-large) { max-width: 50%; }
+}

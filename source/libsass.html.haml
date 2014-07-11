@@ -1,0 +1,48 @@
+---
+title: libSass
+---
+
+%p.introduction
+  We want everyone to enjoy Sass, no matter what language they use. Sass was
+  originally written in Ruby.
+  = link_to "libSass", "http://libsass.org/"
+  is a C/C++ port of the Sass engine. The point is to be simple, faster, and
+  easy to integrate. Find out more about the project over at
+  = succeed "." do
+    = link_to "GitHub", "http://github.com/hcatlin/libsass"
+
+:markdown
+  ## SassC
+
+  LibSass is just a library. To run the code locally (i.e. to compile your stylesheets), you need an implementer. SassC (get it?) is an implementer written in C. There are a number of other implementations of LibSass - for example Node. We encourage you to write your own port - the whole point of Libsass is that we want to bring Sass to many other languages, not just Ruby!
+
+  To run the compiler on your local machine, you need to build SassC. To build SassC, you must have either a local copy of the libsass source or it must be installed into your system. For development, please use the source version. You must then setup an environment variable pointing to the LibSass folder, for example:
+
+~ partial "code-snippets/libsass-setup"
+
+%p
+  The executable will be in the bin folder. To run it, simply try something like:
+
+~ partial "code-snippets/libsass-execute"
+
+%h2 About libSass
+
+:markdown
+  This project is the brainchild of
+  [Hampton Catlin](http://twitter.com/hcatlin), the original creator of Sass,
+  and is sponsored by [Moovweb](http://moovweb.com/).
+  [Aaron Leung](http://github.com/akhleung) from Moovweb is the primary
+  developer.
+
+%figure
+  = image_tag "logos/libsass.png", alt: "libSass logo"
+
+- content_for :complementary do
+  %h3 Resources
+
+  %ul
+    - for project in data.libsass.resources
+      %li
+        = link_to project.name, project.url
+        &mdash;
+        = project.description

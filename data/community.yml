@@ -35,6 +35,9 @@ blogs:
     url: "http://www.google.com/cse?cx=partner-pub-1988806651014029%3A4kuybaak597&ie=ISO-8859-1&q=sass#gsc.tab=0&gsc.q=sass&gsc.page=1"
 
 projects:
+  - name: "libSass"
+    url: "/libSass"
+    description: "a CSS (and Sass!) authoring framework"
   - name: "Compass"
     url: "http://compass-style.org/"
     description: "a CSS (and Sass!) authoring framework"
@@ -68,20 +71,6 @@ projects:
   - name: "Inuit.css"
     url: "http://inuitcss.com/"
     description: "a powerful, scalable, Sass-based, BEM, OOCSS framework"
-
-libsass:
-  - name: "libSass"
-    url: "http://libsass.org/"
-    description: "a C/C++ port of the Sass engine, that can be simple, fast, and easy to integrate."
-  - name: "Node-sass"
-    url: "https://www.npmjs.org/package/node-sass"
-    description: "libSass for Node.js"
-  - name: "Lightning fast Sass compiling with libsass, Node-sass and Grunt-sass"
-    url: "http://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/"
-    description: "by Ben Frain, August 2013"
-  - name: "libSass Python"
-    url: "http://dahlia.kr/libsass-python/"
-    description: "libSass for Python"
 
 articles:
   - name: "Sass vs. LESS"

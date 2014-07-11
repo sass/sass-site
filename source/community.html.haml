@@ -25,7 +25,7 @@ layout: layout_1_column
       The Sass community is amazing. There are a number of
       [frameworks](#Frameworks) that make using Sass simple. Want try Sass in
       Node, Python, or another framework? Check out the
-      [libSass resources](#libSass).
+      [libSass resources](/libsass).
 
   %li
     :markdown
@@ -105,14 +105,6 @@ layout: layout_1_column
   %h3#Projects Projects & Frameworks
   %ul
     - for project in data.community.projects
-      %li
-        = link_to project.name, project.url
-        &mdash;
-        = project.description
-
-  %h3#libSass libSass Resources
-  %ul
-    - for project in data.community.libsass
       %li
         = link_to project.name, project.url
         &mdash;
