@@ -7,8 +7,8 @@ tutorials:
     url: "http://www.lynda.com/CSS-tutorials/CSS-LESS-SASS/107921-2.html"
 
 books:
-  - name: "Sass in Depth (unpublished, est. Spring 2014)"
-    url: "http://manning.com/dsande/"
+  - name: "Sass in the Real World: book 1 of 4"
+    url: "https://www.gitbook.io/book/anotheruiguy/sassintherealworld_book-i"
   - name: "Sass for Web Designers (Nov 2013)"
     url: "http://www.abookapart.com/products/sass-for-web-designers"
   - name: "Sass and Compass in Action (Aug 2013)"
