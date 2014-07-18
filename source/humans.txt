@@ -7,7 +7,7 @@
     Bermon Painter -- design, code, content -- @bermonpainter
     Michael Parenteau -- design, code, content -- @parenteau
     Chris Eppstein -- code, content -- @chriseppstein
-    Nathan Weizenbaum -- code, content -- @nex3
+    Natalie Weizenbaum -- code, content -- @nex3
     Hampton Catlin -- code, content -- @hcatlin
     Michael Catlin -- content -- @malrase
 
