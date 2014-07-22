@@ -16,6 +16,12 @@
       = partial "layouts/regions/toolkit"
       = partial "layouts/regions/browsehappy"
       = partial "layouts/regions/alert"
+      .alert.stickers
+        .container
+          %p
+            %strong Your laptop needs more Sass.
+            = succeed "." do
+              = link_to "Grab a set of Sass stickers now", "http://devswag.com/products/sass-stickers-4"
       .pop-stripe
       = partial "layouts/regions/banner"
       = partial "layouts/regions/page_header"
@@ -26,6 +32,7 @@
         - if content_for?(:section_middle)
           %section.section-middle
             .container= yield_content :section_middle
+
       .alert.release
         .container
           %ul
