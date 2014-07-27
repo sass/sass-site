@@ -1,4 +1,6 @@
-source "https://rubygems.org"
+# If you have OpenSSL installed, we recommend updating
+# the following line to use "https"
+source 'http://rubygems.org'
 
 gem "rake"
 gem "rack"
@@ -10,6 +12,7 @@ group :development do
   # gem "middleman-favicon-maker"
   gem "middleman-livereload"
   gem "middleman-syntax"
+  gem "normalize-rails", :require => false
   gem "redcarpet"
   gem "susy", "2.0.0.alpha.4"
   gem "breakpoint"

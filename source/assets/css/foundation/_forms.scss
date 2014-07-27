@@ -13,20 +13,7 @@ label {
 }
 
 input,
-%button {
-  @extend %reset-margin;
-  font: {
-     size: inherit;
-    family: inherit;
-  }
-  line-height: normal;
-  background-image: none;
-
-  &::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-  }
-}
+%button { background-image: none; }
 
 input[type="text"],
 %button {
@@ -69,7 +56,6 @@ input {
   &[type="radio"],
   &[type="checkbox"] {
     @extend %tab-focus;
-    box-sizing: border-box;
     margin: 4px 0 0 {
       top: 1px \9;
     }
@@ -104,11 +90,7 @@ input {
   }
 }
 
-button {
-  @extend %button;
-  -webkit-appearance: button;
-  text-transform: none;
-}
+button { @extend %button; }
 
 %tab-focus {
   outline: thin dotted $color-text;

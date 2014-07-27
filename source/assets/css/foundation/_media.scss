@@ -2,7 +2,6 @@ img {
   display: inline-block;
   max-width: 100%;
   height: auto;
-  border: 0;
   vertical-align: middle;
 }
 
@@ -10,8 +9,6 @@ hr {
   $new-spacing: ($base-line-height - 1) / $base-line-height;
   @include leader($new-spacing);
   @include trailer($new-spacing);
-  -moz-box-sizing: content-box;
-       box-sizing: content-box;
   display: block;
   padding: 0;
   height: 1px;
@@ -19,8 +16,6 @@ hr {
     top: 1px solid $color-border;
   }
 }
-
-svg:not(:root) { overflow: hidden; }
 
 figure {
   @extend %block-text;

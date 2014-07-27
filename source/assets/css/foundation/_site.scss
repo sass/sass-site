@@ -14,7 +14,6 @@
 html {
   @extend %text;
   overflow-x: hidden;
-  -ms-text-size-adjust: 100%;
   text: {
     rendering: optimizeLegibility;
     align: center;
@@ -26,10 +25,7 @@ html {
   &.toolkit-baseline { @include debug-vertical-alignment; }
 }
 
-body {
-  @extend %reset-margin;
-  background: none;
-}
+body { background: none; }
 
 @mixin theme-selection {
   background: $color-background-shade;

@@ -7,10 +7,6 @@ table {
     right: -$table-cell-padding;
     left:  -$table-cell-padding;
   }
-  border: {
-    collapse: collapse;
-    spacing: 0;
-  }
       width: 100%;
   max-width: 100%;
 }

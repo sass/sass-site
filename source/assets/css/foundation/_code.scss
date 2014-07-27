@@ -36,7 +36,6 @@ pre {
   @include trailer;
   @include rhythm(.5, .5, .5, .5);
   @include bleed(1em);
-  overflow-y: auto;
   margin: auto 0 25px;
 
   // Account for some code outputs that place code tags in pre tags

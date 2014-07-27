@@ -1,4 +1,7 @@
-.button { @extend %button; }
+.button {
+  @extend %reset-margin;
+  @extend %button;
+}
 
 .primary {
   background-color: $color-primary;
