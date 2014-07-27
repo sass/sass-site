@@ -1,10 +1,7 @@
-form,
-fieldset {
+form {
   @extend %reset-margin;
   @extend %reset-padding;
 }
-
-fieldset { @extend %reset-border; }
 
 label {
   @extend %bold-elements;

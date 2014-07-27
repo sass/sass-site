@@ -27,14 +27,10 @@ html {
 
 body { background: none; }
 
-@mixin theme-selection {
-  background: $color-background-shade;
-  text-shadow: none;
-}
+@mixin theme-selection { background: $color-background-shade; }
 
-// These have to be separate.
 ::-moz-selection { @include theme-selection; }
-::selection { @include theme-selection; }
+::selection      { @include theme-selection; }
 
 
 

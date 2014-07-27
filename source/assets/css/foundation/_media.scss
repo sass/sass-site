@@ -2,19 +2,13 @@ img {
   display: inline-block;
   max-width: 100%;
   height: auto;
-  vertical-align: middle;
 }
 
 hr {
   $new-spacing: ($base-line-height - 1) / $base-line-height;
   @include leader($new-spacing);
   @include trailer($new-spacing);
-  display: block;
-  padding: 0;
-  height: 1px;
-  border: 0 {
-    top: 1px solid $color-border;
-  }
+  border-top-color: $color-border;
 }
 
 figure {

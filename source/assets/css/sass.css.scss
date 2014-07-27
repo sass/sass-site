@@ -2,75 +2,116 @@
  *  by Team Sass Design (@teamsassdesign)
  */
 
-@import "compass";
-@import "compass/layout";
-@import "susy";
-@import "breakpoint";
-@import "normalize-rails";
+
+
+// ---------------------------------------------------------------------------
+// VENDOR LIBRARIES
+
+@import
+  "compass"
+, "compass/layout"
+, "susy"
+, "breakpoint"
+;
 
 
 
-@import "dependencies/layout";
-@import "dependencies/typography";
-@import "dependencies/color";
-@import "dependencies/animations";
+// ---------------------------------------------------------------------------
+// DEPENDENCIES
+
+@import
+  "dependencies/layout"
+, "dependencies/typography"
+, "dependencies/color"
+, "dependencies/animations"
+;
 
 
 
-@import "foundation/site";
-@import "foundation/block";
-@import "foundation/inline";
-@import "foundation/headings";
-@import "foundation/lists";
-@import "foundation/tables";
-@import "foundation/forms";
-@import "foundation/code";
-@import "foundation/media";
+// ---------------------------------------------------------------------------
+// FOUNDATION
+
+@import
+  "normalize-rails"
+, "vendor/html5boilerplate/base"
+, "foundation/site"
+, "foundation/block"
+, "foundation/inline"
+, "foundation/headings"
+, "foundation/lists"
+, "foundation/tables"
+, "foundation/forms"
+, "foundation/code"
+, "foundation/media"
+;
 
 
 
-@import "vendor/jquery-ui-1.10.4.custom";
-@import "components/pop-stripe";
-@import "components/type";
-@import "components/page-header";
-@import "components/lists";
-@import "components/tables";
-@import "components/forms";
-@import "components/buttons";
-@import "components/code";
-@import "components/alerts";
-@import "components/progress";
-@import "components/articles";
-@import "components/hero-image";
-@import "components/header-image";
-@import "components/get-started";
-@import "components/slides";
-@import "components/icons";
-@import "components/logos";
-@import "components/sass-syntax-switcher";
+// ---------------------------------------------------------------------------
+// COMPONENTS
+
+@import
+  "vendor/html5boilerplate/browsehappy"
+, "vendor/jquery-ui-1.10.4.custom"
+, "components/pop-stripe"
+, "components/type"
+, "components/page-header"
+, "components/lists"
+, "components/tables"
+, "components/forms"
+, "components/buttons"
+, "components/code"
+, "components/alerts"
+, "components/progress"
+, "components/articles"
+, "components/hero-image"
+, "components/header-image"
+, "components/get-started"
+, "components/slides"
+, "components/icons"
+, "components/logos"
+, "components/sass-syntax-switcher"
+;
 
 
 
-@import "regions/page";
-@import "regions/banner";
-@import "regions/navigation";
-@import "regions/content";
-@import "regions/content-primary";
-@import "regions/content-secondary";
-@import "regions/main";
-@import "regions/complementary";
-@import "regions/section-bottom";
-@import "regions/contentinfo";
+// ---------------------------------------------------------------------------
+// REGIONS
+
+@import
+  "regions/page"
+, "regions/banner"
+, "regions/navigation"
+, "regions/content"
+, "regions/content-primary"
+, "regions/content-secondary"
+, "regions/main"
+, "regions/complementary"
+, "regions/section-bottom"
+, "regions/contentinfo"
+;
 
 
 
-@import "helpers/grid";
-@import "helpers/helpers";
+// ---------------------------------------------------------------------------
+// HELPERS
+
+@import
+  "vendor/html5boilerplate/helpers"
+, "helpers/grid"
+, "helpers/helpers"
+;
 
 
+
+// ---------------------------------------------------------------------------
+// PAGES
 
 @import "styleguide/guide";
 
 
 
-@import "print";
+// ---------------------------------------------------------------------------
+// RESPONSIVE
+
+@import "vendor/html5boilerplate/print";
