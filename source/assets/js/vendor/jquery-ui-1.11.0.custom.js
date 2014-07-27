@@ -1,18 +1,36 @@
-/*! jQuery UI - v1.10.4 - 2014-03-13
+/*! jQuery UI - v1.11.0 - 2014-07-27
 * http://jqueryui.com
-* Includes: jquery.ui.core.js, jquery.ui.widget.js, jquery.ui.tabs.js
+* Includes: core.js, widget.js, tabs.js
 * Copyright 2014 jQuery Foundation and other contributors; Licensed MIT */
 
-(function( $, undefined ) {
+(function( factory ) {
+  if ( typeof define === "function" && define.amd ) {
 
-var uuid = 0,
-  runiqueId = /^ui-id-\d+$/;
+    // AMD. Register as an anonymous module.
+    define([ "jquery" ], factory );
+  } else {
+
+    // Browser globals
+    factory( jQuery );
+  }
+}(function( $ ) {
+/*!
+ * jQuery UI Core 1.11.0
+ * http://jqueryui.com
+ *
+ * Copyright 2014 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/ui-core/
+ */
+
 
 // $.ui might exist from components with no dependencies, e.g., $.ui.position
 $.ui = $.ui || {};
 
 $.extend( $.ui, {
-  version: "1.10.4",
+  version: "1.11.0",
 
   keyCode: {
     BACKSPACE: 8,
@@ -24,12 +42,6 @@ $.extend( $.ui, {
     ESCAPE: 27,
     HOME: 36,
     LEFT: 37,
-    NUMPAD_ADD: 107,
-    NUMPAD_DECIMAL: 110,
-    NUMPAD_DIVIDE: 111,
-    NUMPAD_ENTER: 108,
-    NUMPAD_MULTIPLY: 106,
-    NUMPAD_SUBTRACT: 109,
     PAGE_DOWN: 34,
     PAGE_UP: 33,
     PERIOD: 190,
@@ -42,77 +54,35 @@ $.extend( $.ui, {
 
 // plugins
 $.fn.extend({
-  focus: (function( orig ) {
-    return function( delay, fn ) {
-      return typeof delay === "number" ?
-        this.each(function() {
-          var elem = this;
-          setTimeout(function() {
-            $( elem ).focus();
-            if ( fn ) {
-              fn.call( elem );
-            }
-          }, delay );
-        }) :
-        orig.apply( this, arguments );
-    };
-  })( $.fn.focus ),
-
   scrollParent: function() {
-    var scrollParent;
-    if (($.ui.ie && (/(static|relative)/).test(this.css("position"))) || (/absolute/).test(this.css("position"))) {
-      scrollParent = this.parents().filter(function() {
-        return (/(relative|absolute|fixed)/).test($.css(this,"position")) && (/(auto|scroll)/).test($.css(this,"overflow")+$.css(this,"overflow-y")+$.css(this,"overflow-x"));
-      }).eq(0);
-    } else {
-      scrollParent = this.parents().filter(function() {
-        return (/(auto|scroll)/).test($.css(this,"overflow")+$.css(this,"overflow-y")+$.css(this,"overflow-x"));
-      }).eq(0);
-    }
-
-    return (/fixed/).test(this.css("position")) || !scrollParent.length ? $(document) : scrollParent;
-  },
-
-  zIndex: function( zIndex ) {
-    if ( zIndex !== undefined ) {
-      return this.css( "zIndex", zIndex );
-    }
-
-    if ( this.length ) {
-      var elem = $( this[ 0 ] ), position, value;
-      while ( elem.length && elem[ 0 ] !== document ) {
-        // Ignore z-index if position is set to a value where z-index is ignored by the browser
-        // This makes behavior of this function consistent across browsers
-        // WebKit always returns auto if the element is positioned
-        position = elem.css( "position" );
-        if ( position === "absolute" || position === "relative" || position === "fixed" ) {
-          // IE returns 0 when zIndex is not specified
-          // other browsers return a string
-          // we ignore the case of nested elements with an explicit value of 0
-          // <div style="z-index: -10;"><div style="z-index: 0;"></div></div>
-          value = parseInt( elem.css( "zIndex" ), 10 );
-          if ( !isNaN( value ) && value !== 0 ) {
-            return value;
-          }
+    var position = this.css( "position" ),
+      excludeStaticParent = position === "absolute",
+      scrollParent = this.parents().filter( function() {
+        var parent = $( this );
+        if ( excludeStaticParent && parent.css( "position" ) === "static" ) {
+          return false;
         }
-        elem = elem.parent();
-      }
-    }
+        return (/(auto|scroll)/).test( parent.css( "overflow" ) + parent.css( "overflow-y" ) + parent.css( "overflow-x" ) );
+      }).eq( 0 );
 
-    return 0;
+    return position === "fixed" || !scrollParent.length ? $( this[ 0 ].ownerDocument || document ) : scrollParent;
   },
 
-  uniqueId: function() {
-    return this.each(function() {
-      if ( !this.id ) {
-        this.id = "ui-id-" + (++uuid);
-      }
-    });
-  },
+  uniqueId: (function() {
+    var uuid = 0;
+
+    return function() {
+      return this.each(function() {
+        if ( !this.id ) {
+          this.id = "ui-id-" + ( ++uuid );
+        }
+      });
+    };
+  })(),
 
   removeUniqueId: function() {
     return this.each(function() {
-      if ( runiqueId.test( this.id ) ) {
+      if ( /^ui-id-\d+$/.test( this.id ) ) {
         $( this ).removeAttr( "id" );
       }
     });
@@ -240,93 +210,129 @@ if ( $( "<a>" ).data( "a-b", "a" ).removeData( "a-b" ).data( "a-b" ) ) {
   })( $.fn.removeData );
 }
 
-
-
-
-
 // deprecated
 $.ui.ie = !!/msie [\w.]+/.exec( navigator.userAgent.toLowerCase() );
 
-$.support.selectstart = "onselectstart" in document.createElement( "div" );
 $.fn.extend({
-  disableSelection: function() {
-    return this.bind( ( $.support.selectstart ? "selectstart" : "mousedown" ) +
-      ".ui-disableSelection", function( event ) {
+  focus: (function( orig ) {
+    return function( delay, fn ) {
+      return typeof delay === "number" ?
+        this.each(function() {
+          var elem = this;
+          setTimeout(function() {
+            $( elem ).focus();
+            if ( fn ) {
+              fn.call( elem );
+            }
+          }, delay );
+        }) :
+        orig.apply( this, arguments );
+    };
+  })( $.fn.focus ),
+
+  disableSelection: (function() {
+    var eventType = "onselectstart" in document.createElement( "div" ) ?
+      "selectstart" :
+      "mousedown";
+
+    return function() {
+      return this.bind( eventType + ".ui-disableSelection", function( event ) {
         event.preventDefault();
       });
-  },
+    };
+  })(),
 
   enableSelection: function() {
     return this.unbind( ".ui-disableSelection" );
-  }
-});
-
-$.extend( $.ui, {
-  // $.ui.plugin is deprecated. Use $.widget() extensions instead.
-  plugin: {
-    add: function( module, option, set ) {
-      var i,
-        proto = $.ui[ module ].prototype;
-      for ( i in set ) {
-        proto.plugins[ i ] = proto.plugins[ i ] || [];
-        proto.plugins[ i ].push( [ option, set[ i ] ] );
-      }
-    },
-    call: function( instance, name, args ) {
-      var i,
-        set = instance.plugins[ name ];
-      if ( !set || !instance.element[ 0 ].parentNode || instance.element[ 0 ].parentNode.nodeType === 11 ) {
-        return;
-      }
-
-      for ( i = 0; i < set.length; i++ ) {
-        if ( instance.options[ set[ i ][ 0 ] ] ) {
-          set[ i ][ 1 ].apply( instance.element, args );
-        }
-      }
-    }
   },
 
-  // only used by resizable
-  hasScroll: function( el, a ) {
-
-    //If overflow is hidden, the element might have extra content, but the user wants to hide it
-    if ( $( el ).css( "overflow" ) === "hidden") {
-      return false;
+  zIndex: function( zIndex ) {
+    if ( zIndex !== undefined ) {
+      return this.css( "zIndex", zIndex );
     }
 
-    var scroll = ( a && a === "left" ) ? "scrollLeft" : "scrollTop",
-      has = false;
-
-    if ( el[ scroll ] > 0 ) {
-      return true;
+    if ( this.length ) {
+      var elem = $( this[ 0 ] ), position, value;
+      while ( elem.length && elem[ 0 ] !== document ) {
+        // Ignore z-index if position is set to a value where z-index is ignored by the browser
+        // This makes behavior of this function consistent across browsers
+        // WebKit always returns auto if the element is positioned
+        position = elem.css( "position" );
+        if ( position === "absolute" || position === "relative" || position === "fixed" ) {
+          // IE returns 0 when zIndex is not specified
+          // other browsers return a string
+          // we ignore the case of nested elements with an explicit value of 0
+          // <div style="z-index: -10;"><div style="z-index: 0;"></div></div>
+          value = parseInt( elem.css( "zIndex" ), 10 );
+          if ( !isNaN( value ) && value !== 0 ) {
+            return value;
+          }
+        }
+        elem = elem.parent();
+      }
     }
 
-    // TODO: determine which cases actually cause this to happen
-    // if the element doesn't have the scroll set, see if it's possible to
-    // set the scroll
-    el[ scroll ] = 1;
-    has = ( el[ scroll ] > 0 );
-    el[ scroll ] = 0;
-    return has;
+    return 0;
   }
 });
 
-})( jQuery );
-(function( $, undefined ) {
+// $.ui.plugin is deprecated. Use $.widget() extensions instead.
+$.ui.plugin = {
+  add: function( module, option, set ) {
+    var i,
+      proto = $.ui[ module ].prototype;
+    for ( i in set ) {
+      proto.plugins[ i ] = proto.plugins[ i ] || [];
+      proto.plugins[ i ].push( [ option, set[ i ] ] );
+    }
+  },
+  call: function( instance, name, args, allowDisconnected ) {
+    var i,
+      set = instance.plugins[ name ];
 
-var uuid = 0,
-  slice = Array.prototype.slice,
-  _cleanData = $.cleanData;
-$.cleanData = function( elems ) {
-  for ( var i = 0, elem; (elem = elems[i]) != null; i++ ) {
-    try {
-      $( elem ).triggerHandler( "remove" );
-    // http://bugs.jquery.com/ticket/8235
-    } catch( e ) {}
+    if ( !set ) {
+      return;
+    }
+
+    if ( !allowDisconnected && ( !instance.element[ 0 ].parentNode || instance.element[ 0 ].parentNode.nodeType === 11 ) ) {
+      return;
+    }
+
+    for ( i = 0; i < set.length; i++ ) {
+      if ( instance.options[ set[ i ][ 0 ] ] ) {
+        set[ i ][ 1 ].apply( instance.element, args );
+      }
+    }
   }
-  _cleanData( elems );
 };
+
+
+/*!
+ * jQuery UI Widget 1.11.0
+ * http://jqueryui.com
+ *
+ * Copyright 2014 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/jQuery.widget/
+ */
+
+
+var widget_uuid = 0,
+  widget_slice = Array.prototype.slice;
+
+$.cleanData = (function( orig ) {
+  return function( elems ) {
+    for ( var i = 0, elem; (elem = elems[i]) != null; i++ ) {
+      try {
+        $( elem ).triggerHandler( "remove" );
+      // http://bugs.jquery.com/ticket/8235
+      } catch( e ) {}
+    }
+    orig( elems );
+  };
+})( $.cleanData );
 
 $.widget = function( name, base, prototype ) {
   var fullName, existingConstructor, constructor, basePrototype,
@@ -439,10 +445,12 @@ $.widget = function( name, base, prototype ) {
   }
 
   $.widget.bridge( name, constructor );
+
+  return constructor;
 };
 
 $.widget.extend = function( target ) {
-  var input = slice.call( arguments, 1 ),
+  var input = widget_slice.call( arguments, 1 ),
     inputIndex = 0,
     inputLength = input.length,
     key,
@@ -471,7 +479,7 @@ $.widget.bridge = function( name, object ) {
   var fullName = object.prototype.widgetFullName || name;
   $.fn[ name ] = function( options ) {
     var isMethodCall = typeof options === "string",
-      args = slice.call( arguments, 1 ),
+      args = widget_slice.call( arguments, 1 ),
       returnValue = this;
 
     // allow multiple hashes to be passed on init
@@ -483,6 +491,10 @@ $.widget.bridge = function( name, object ) {
       this.each(function() {
         var methodValue,
           instance = $.data( this, fullName );
+        if ( options === "instance" ) {
+          returnValue = instance;
+          return false;
+        }
         if ( !instance ) {
           return $.error( "cannot call methods on " + name + " prior to initialization; " +
             "attempted to call method '" + options + "'" );
@@ -502,7 +514,10 @@ $.widget.bridge = function( name, object ) {
       this.each(function() {
         var instance = $.data( this, fullName );
         if ( instance ) {
-          instance.option( options || {} )._init();
+          instance.option( options || {} );
+          if ( instance._init ) {
+            instance._init();
+          }
         } else {
           $.data( this, fullName, new object( options, this ) );
         }
@@ -529,7 +544,7 @@ $.Widget.prototype = {
   _createWidget: function( options, element ) {
     element = $( element || this.defaultElement || this )[ 0 ];
     this.element = $( element );
-    this.uuid = uuid++;
+    this.uuid = widget_uuid++;
     this.eventNamespace = "." + this.widgetName + this.uuid;
     this.options = $.widget.extend( {},
       this.options,
@@ -572,9 +587,6 @@ $.Widget.prototype = {
     // all event bindings should go through this._on()
     this.element
       .unbind( this.eventNamespace )
-      // 1.9 BC for #7810
-      // TODO remove dual storage
-      .removeData( this.widgetName )
       .removeData( this.widgetFullName )
       // support: jquery <1.6.3
       // http://bugs.jquery.com/ticket/9413
@@ -650,20 +662,23 @@ $.Widget.prototype = {
 
     if ( key === "disabled" ) {
       this.widget()
-        .toggleClass( this.widgetFullName + "-disabled ui-state-disabled", !!value )
-        .attr( "aria-disabled", value );
-      this.hoverable.removeClass( "ui-state-hover" );
-      this.focusable.removeClass( "ui-state-focus" );
+        .toggleClass( this.widgetFullName + "-disabled", !!value );
+
+      // If the widget is becoming disabled, then nothing is interactive
+      if ( value ) {
+        this.hoverable.removeClass( "ui-state-hover" );
+        this.focusable.removeClass( "ui-state-focus" );
+      }
     }
 
     return this;
   },
 
   enable: function() {
-    return this._setOption( "disabled", false );
+    return this._setOptions({ disabled: false });
   },
   disable: function() {
-    return this._setOption( "disabled", true );
+    return this._setOptions({ disabled: true });
   },
 
   _on: function( suppressDisabledCheck, element, handlers ) {
@@ -683,7 +698,6 @@ $.Widget.prototype = {
       element = this.element;
       delegateElement = this.widget();
     } else {
-      // accept selectors, DOM elements
       element = delegateElement = $( element );
       this.bindings = this.bindings.add( element );
     }
@@ -708,7 +722,7 @@ $.Widget.prototype = {
           handler.guid || handlerProxy.guid || $.guid++;
       }
 
-      var match = event.match( /^(\w+)\s*(.*)$/ ),
+      var match = event.match( /^([\w:-]*)\s*(.*)$/ ),
         eventName = match[1] + instance.eventNamespace,
         selector = match[2];
       if ( selector ) {
@@ -823,28 +837,23 @@ $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
   };
 });
 
-})( jQuery );
-(function( $, undefined ) {
+var widget = $.widget;
 
-var tabId = 0,
-  rhash = /#.*$/;
 
-function getNextTabId() {
-  return ++tabId;
-}
+/*!
+ * jQuery UI Tabs 1.11.0
+ * http://jqueryui.com
+ *
+ * Copyright 2014 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/tabs/
+ */
 
-function isLocal( anchor ) {
-  // support: IE7
-  // IE7 doesn't normalize the href property when set via script (#9317)
-  anchor = anchor.cloneNode( false );
 
-  return anchor.hash.length > 1 &&
-    decodeURIComponent( anchor.href.replace( rhash, "" ) ) ===
-      decodeURIComponent( location.href.replace( rhash, "" ) );
-}
-
-$.widget( "ui.tabs", {
-  version: "1.10.4",
+var tabs = $.widget( "ui.tabs", {
+  version: "1.11.0",
   delay: 300,
   options: {
     active: null,
@@ -860,6 +869,31 @@ $.widget( "ui.tabs", {
     beforeLoad: null,
     load: null
   },
+
+  _isLocal: (function() {
+    var rhash = /#.*$/;
+
+    return function( anchor ) {
+      var anchorUrl, locationUrl;
+
+      // support: IE7
+      // IE7 doesn't normalize the href property when set via script (#9317)
+      anchor = anchor.cloneNode( false );
+
+      anchorUrl = anchor.href.replace( rhash, "" );
+      locationUrl = location.href.replace( rhash, "" );
+
+      // decoding may throw an error if the URL isn't UTF-8 (#9518)
+      try {
+        anchorUrl = decodeURIComponent( anchorUrl );
+      } catch ( error ) {}
+      try {
+        locationUrl = decodeURIComponent( locationUrl );
+      } catch ( error ) {}
+
+      return anchor.hash.length > 1 && anchorUrl === locationUrl;
+    };
+  })(),
 
   _create: function() {
     var that = this,
@@ -1108,10 +1142,6 @@ $.widget( "ui.tabs", {
     }
   },
 
-  _tabId: function( tab ) {
-    return tab.attr( "aria-controls" ) || "ui-tabs-" + getNextTabId();
-  },
-
   _sanitizeSelector: function( hash ) {
     return hash ? hash.replace( /[!"$%&'()*+,.\/:;<=>?@\[\]\^`{|}~]/g, "\\$&" ) : "";
   },
@@ -1158,12 +1188,12 @@ $.widget( "ui.tabs", {
 
     this.tabs.not( this.active ).attr({
       "aria-selected": "false",
+      "aria-expanded": "false",
       tabIndex: -1
     });
     this.panels.not( this._getPanelForTab( this.active ) )
       .hide()
       .attr({
-        "aria-expanded": "false",
         "aria-hidden": "true"
       });
 
@@ -1175,12 +1205,12 @@ $.widget( "ui.tabs", {
         .addClass( "ui-tabs-active ui-state-active" )
         .attr({
           "aria-selected": "true",
+          "aria-expanded": "true",
           tabIndex: 0
         });
       this._getPanelForTab( this.active )
         .show()
         .attr({
-          "aria-expanded": "true",
           "aria-hidden": "false"
         });
     }
@@ -1218,12 +1248,15 @@ $.widget( "ui.tabs", {
         originalAriaControls = tab.attr( "aria-controls" );
 
       // inline tab
-      if ( isLocal( anchor ) ) {
+      if ( that._isLocal( anchor ) ) {
         selector = anchor.hash;
+        panelId = selector.substring( 1 );
         panel = that.element.find( that._sanitizeSelector( selector ) );
       // remote tab
       } else {
-        panelId = that._tabId( tab );
+        // If the tab doesn't already have aria-controls,
+        // generate an id by using a throw-away element
+        panelId = tab.attr( "aria-controls" ) || $( {} ).uniqueId()[ 0 ].id;
         selector = "#" + panelId;
         panel = that.element.find( selector );
         if ( !panel.length ) {
@@ -1240,7 +1273,7 @@ $.widget( "ui.tabs", {
         tab.data( "ui-tabs-aria-controls", originalAriaControls );
       }
       tab.attr({
-        "aria-controls": selector.substring( 1 ),
+        "aria-controls": panelId,
         "aria-labelledby": anchorId
       });
       panel.attr( "aria-labelledby", anchorId );
@@ -1289,11 +1322,7 @@ $.widget( "ui.tabs", {
   },
 
   _setupEvents: function( event ) {
-    var events = {
-      click: function( event ) {
-        event.preventDefault();
-      }
-    };
+    var events = {};
     if ( event ) {
       $.each( event.split(" "), function( index, eventName ) {
         events[ eventName ] = "_eventHandler";
@@ -1301,6 +1330,12 @@ $.widget( "ui.tabs", {
     }
 
     this._off( this.anchors.add( this.tabs ).add( this.panels ) );
+    // Always prevent the default action, even when disabled
+    this._on( true, this.anchors, {
+      click: function( event ) {
+        event.preventDefault();
+      }
+    });
     this._on( this.anchors, events );
     this._on( this.tabs, { keydown: "_tabKeydown" } );
     this._on( this.panels, { keydown: "_panelKeydown" } );
@@ -1427,11 +1462,11 @@ $.widget( "ui.tabs", {
       show();
     }
 
-    toHide.attr({
-      "aria-expanded": "false",
-      "aria-hidden": "true"
+    toHide.attr( "aria-hidden", "true" );
+    eventData.oldTab.attr({
+      "aria-selected": "false",
+      "aria-expanded": "false"
     });
-    eventData.oldTab.attr( "aria-selected", "false" );
     // If we're switching tabs, remove the old tab from the tab order.
     // If we're opening from collapsed state, remove the previous tab from the tab order.
     // If we're collapsing, then keep the collapsing tab in the tab order.
@@ -1444,12 +1479,10 @@ $.widget( "ui.tabs", {
       .attr( "tabIndex", -1 );
     }
 
-    toShow.attr({
-      "aria-expanded": "true",
-      "aria-hidden": "false"
-    });
+    toShow.attr( "aria-hidden", "false" );
     eventData.newTab.attr({
       "aria-selected": "true",
+      "aria-expanded": "true",
       tabIndex: 0
     });
   },
@@ -1600,7 +1633,7 @@ $.widget( "ui.tabs", {
       };
 
     // not remote
-    if ( isLocal( anchor[ 0 ] ) ) {
+    if ( this._isLocal( anchor[ 0 ] ) ) {
       return;
     }
 
@@ -1647,7 +1680,7 @@ $.widget( "ui.tabs", {
       url: anchor.attr( "href" ),
       beforeSend: function( jqXHR, settings ) {
         return that._trigger( "beforeLoad", event,
-          $.extend( { jqXHR : jqXHR, ajaxSettings: settings }, eventData ) );
+          $.extend( { jqXHR: jqXHR, ajaxSettings: settings }, eventData ) );
       }
     };
   },
@@ -1658,4 +1691,6 @@ $.widget( "ui.tabs", {
   }
 });
 
-})( jQuery );
+
+
+}));
