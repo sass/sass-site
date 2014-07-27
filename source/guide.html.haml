@@ -60,7 +60,12 @@ title: Sass Basics
     :markdown
       ## Nesting
 
-      When writing HTML you've probably noticed that it has a clear nested and visual hierarchy. CSS, on the other hand, doesn't. Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Here's an example of some typical styles for a site's&nbsp;navigation:
+      When writing HTML you've probably noticed that it has a clear nested and visual hierarchy. CSS, on the other hand, doesn't.
+
+      Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Be aware that overly nested rules will result in
+      over-qualified CSS that could prove hard to maintain and is generally considered bad practice.
+
+      With that in mind, here's an example of some typical styles for a site's&nbsp;navigation:
 
     %ul
       %li= link_to "SCSS", "#topic-3-SCSS"
