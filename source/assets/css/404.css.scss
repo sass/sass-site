@@ -2,8 +2,11 @@
 @import "breakpoint";
 
 @import "dependencies/layout";
+@import "dependencies/typography";
 @import "dependencies/color";
 
+@import "foundation/site";
+@import "foundation/inline";
 @import "foundation/forms";
 
 @import "components/forms";
