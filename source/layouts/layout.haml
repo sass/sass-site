@@ -1,10 +1,8 @@
-!!!
-= partial "layouts/head/ie"
-<!--[if gt IE 8]><!-->
+!!!5
 %html.no-js(lang="en"){:class => data.page.head_classes}
-  <!--<![endif]-->
   %head
     %meta(charset="utf-8")/
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")/
     %title= page_title
     = partial "layouts/head/meta"
     = partial "layouts/head/css"
