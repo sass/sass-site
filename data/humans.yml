@@ -1,0 +1,56 @@
+team:
+  - name: Jina
+    role: design lead, code, content
+    twitter: jina
+  - name: Bermon Painter
+    role: design, code, content
+    twitter: bermonpainter
+  - name: Michael Parenteau
+    role: design, code, content
+    twitter: parenteau
+
+contributors:
+  - name: Natalie Weizenbaum
+    role: code, content
+    twitter: nex3
+  - name: Chris Eppstein
+    role: code, content
+    twitter: chriseppstein
+  - name: Hampton Catlin
+    role: code, content
+    twitter: hcatlin
+  - name: Michael Catlin
+    role: content
+    twitter: malrase
+
+thanks:
+  - name: All the people at SassConf that came to help with DNS and server-related issues.
+  - name: To everyone who has contributed through pull requests.
+
+markup:
+  - name: HTML5
+  - name: Haml
+  - name: Markdown
+
+style:
+  - name: CSS3
+  - name: Sass
+  - name: Compass
+  - name: Susy
+  - name: Breakpoint
+  - name: Normalize
+
+behavior:
+  - name: Modernizr
+  - name: jQuery
+  - name: jQuery UI
+  - name: Bootstrap.js
+  - name: Responsive Design Testing
+  - name: balance-text
+
+misc:
+  - name: Middleman
+  - name: HTML5 Boilerplate
+  - name: GitHub
+  - name: Heroku
+  - name: Sublime Text

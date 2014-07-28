@@ -29,6 +29,7 @@ with_layout :styleguide do
   page "/styleguide/*"
 end
 
+page "/humans.txt", :layout => false
 page "/documentation/*", :directory_index => false
 
 
