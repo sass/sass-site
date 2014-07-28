@@ -1,7 +1,8 @@
 .navigation {
-  ul {
-    @include padding-leader;
-  }
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+
+  ul { @include padding-leader; }
 
   li {
     @include trailer(.5);
@@ -14,8 +15,8 @@
     @include padding-trailer(.5);
     display: block;
     padding: {
-      right: $gutter-width * 2;
-       left: $gutter-width * 2;
+      right: $gutter-width;
+       left: $gutter-width;
     }
     background: mix($color-background, $color-background-shade);
 
@@ -24,11 +25,6 @@
   }
 
   @include breakpoint($tablet-small) {
-    margin: {
-      right: 0;
-       left: 0;
-    }
-
     ul { @extend %clear-fix-tablet-small; }
 
     li {
@@ -40,13 +36,14 @@
 
   @include breakpoint($tablet-large) {
     @include span(9 omega);
+    @include font-size-small;
     background: none;
 
     &.collapse { display: block !important; }
 
     ul {
-      white-space: nowrap;
       text-align: right;
+      white-space: nowrap;
     }
 
     li {
@@ -54,7 +51,6 @@
       display: inline-block;
       margin: {
         right: 0;
-        left: $gutter-width * 2;
         bottom: 0;
       }
       width: auto;
@@ -72,5 +68,11 @@
       &:hover,
       &:focus { background: none; }
     }
+  }
+
+  @include breakpoint($screen-small) {
+    @include font-size-regular;
+
+    li { margin-left: $gutter-width; }
   }
 }

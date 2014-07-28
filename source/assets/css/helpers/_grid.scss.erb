@@ -1,12 +1,11 @@
 .container {
-  @include container(hide);
+  @include container;
 
   &.toolkit-grid { @include background-grid; }
 
   <% data.layout.resolutions.each do |resolution| %>
     @include breakpoint($<%= resolution.target %>) {
-      @include set-grid($<%= resolution.target %>-grid);
-      @include container(hide);
+      @include layout($<%= resolution.target %>-grid);
 
       &.toolkit-grid { @include background-grid; }
     }
@@ -15,5 +14,5 @@
 
 .row {
   @extend %clear-fix;
-  @include bleed($gutter-width);
+  @include bleed-x($gutter-width);
 }

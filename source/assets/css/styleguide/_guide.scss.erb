@@ -19,7 +19,7 @@
   background: $color-background-shade;
 }
 
-@for $i from 1 through $columns {
+@for $i from 1 through susy-get(columns, <%= data.layout.susy.total_columns %>) {
   .by-#{$i}  {
     @extend %split-by;
 

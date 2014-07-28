@@ -8,15 +8,17 @@ gem "rack-rewrite"
 gem "rack-contrib"
 
 group :development do
-  gem "middleman", "~>3.1.5"
+  gem "breakpoint",            "2.4.2", :require => false
+  gem "compass",               "1.0.0.alpha.21"
+  gem "middleman",             "~>3.1.5"
   gem "middleman-livereload"
   gem "middleman-syntax"
-  gem "normalize-rails", :require => false
+  gem "normalize-rails",       :require => false
   gem "redcarpet"
-  gem "susy", "2.0.0.alpha.4"
-  gem "breakpoint"
+  gem "sass",                  "~> 3.3.11"
+  gem "susy",                  "~> 2.1.3"
   gem "typogruby"
-  gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
+  gem "wdm",                   "~> 0.1.0", :platforms => [:mswin, :mingw]
   platforms :mri_18 do
     gem "ruby18_source_location"
   end

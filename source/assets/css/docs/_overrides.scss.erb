@@ -19,15 +19,15 @@ body {
 }
 
 #menu {
-  @include container(hide);
+  @include container;
   position: static;
   font-size: inherit;
   color: inherit;
 
   <% data.layout.resolutions.each do |resolution| %>
     @include breakpoint($<%= resolution.target %>) {
-      @include set-grid($<%= resolution.target %>-grid);
-      @include container(hide);
+      @include layout($<%= resolution.target %>-grid);
+      @include container;
     }
   <% end %>
 }
