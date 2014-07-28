@@ -1,10 +1,9 @@
 = javascript_include_tag "vendor/modernizr-2.8.3.custom"
-
 = javascript_include_tag  "//use.typekit.net/pya1hgl.js"
 :javascript
   try{Typekit.load();}catch(e){}
 
-= yield_content :scripts_header
+= yield_content :js_head
 
 -# Old version of analytics (https://developers.google.com/analytics/devguides/collection/gajs/).
 :javascript

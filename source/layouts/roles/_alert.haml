@@ -1,0 +1,33 @@
+/[if lt IE 8]
+  .alert(role="alert")
+    .container
+      %p.browsehappy
+        You are using an
+        %strong outdated
+        browser. Please
+        = link_to "upgrade your browser", "http://browsehappy.com/"
+        to improve your experience.
+
+- if content_for?(:alert)
+  .alert
+    .container= yield_content :alert
+
+-#- if current_page.url =~ /styleguide/
+-#  .toolkit
+-#    .container
+-#      %ul
+-#        %li
+-#          %button.toggle-baseline(type="button") Baseline
+-#        %li
+-#          %button.toggle-grid(type="button") Grid
+-#        %li.separator
+-#        %li
+-#          %button.url-responsive(type="button") Responsive Test
+-#
+
+.alert.stickers
+  .container
+    %p
+      %strong Your laptop needs more Sass.
+      = succeed "." do
+        = link_to "Grab a set of Sass stickers now", "http://devswag.com/products/sass-stickers-4"
