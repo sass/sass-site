@@ -1,5 +1,6 @@
 require 'susy'
 require 'breakpoint'
+require 'builder'
 require 'middleman-syntax'
 
 activate :livereload
@@ -30,6 +31,7 @@ with_layout :styleguide do
 end
 
 page "/humans.txt", :layout => false
+page "/sitemap.xml", :layout => false
 page "/documentation/*", :directory_index => false
 
 

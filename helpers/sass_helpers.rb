@@ -6,7 +6,7 @@ module SassHelpers
     if data.page.title
       title << data.page.title
     else
-      title << t("index.sub_title")
+      title << "Syntactically Awesome Style Sheets"
     end
     title
   end

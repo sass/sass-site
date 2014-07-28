@@ -9,6 +9,7 @@ gem "rack-contrib"
 
 group :development do
   gem "breakpoint",            "2.4.2", :require => false
+  gem "builder",               "~> 3.2.2"
   gem "compass",               "1.0.0.alpha.21"
   gem "middleman",             "~>3.1.5"
   gem "middleman-livereload"
