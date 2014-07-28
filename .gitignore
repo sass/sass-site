@@ -6,7 +6,6 @@ bundle
 /data/version.yml
 .DS_Store
 .DS_Store?
-Gemfile.lock
 /Icon
 "Icon\r"
 .ruby-version
