@@ -9,7 +9,6 @@ gem "rack-contrib"
 
 group :development do
   gem "middleman", "~>3.1.5"
-  # gem "middleman-favicon-maker"
   gem "middleman-livereload"
   gem "middleman-syntax"
   gem "normalize-rails", :require => false
