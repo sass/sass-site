@@ -18,7 +18,7 @@ group :development do
   gem "redcarpet"
   gem "sass",                  "~> 3.3.11"
   gem "susy",                  "~> 2.1.3"
-  gem "typogruby"
+  gem "typogruby",             "~> 1.0.16"
   gem "wdm",                   "~> 0.1.0", :platforms => [:mswin, :mingw]
   platforms :mri_18 do
     gem "ruby18_source_location"

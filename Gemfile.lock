@@ -140,5 +140,5 @@ DEPENDENCIES
   ruby18_source_location
   sass (~> 3.3.11)
   susy (~> 2.1.3)
-  typogruby
+  typogruby (~> 1.0.16)
   wdm (~> 0.1.0)
