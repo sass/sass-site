@@ -1,6 +1,0 @@
-- wrap_layout :layout do
-  .container
-    .content
-      - if content_for?(:introduction)
-        %p.introduction= yield_content :introduction
-      %main.main(role="main")=yield

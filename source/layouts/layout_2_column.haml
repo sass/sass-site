@@ -1,10 +1,50 @@
-- wrap_layout :layout do
-  .container
-    .content
-      - if content_for?(:introduction)
-        %p.introduction= yield_content :introduction
+!!!5
+%html.no-js(lang="en"){:class => data.page.head_classes}
+  %head
+    %meta(charset="utf-8")/
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")/
+    %title= page_title
+    = partial "layouts/head/meta"
+    = partial "layouts/head/link"
+    = partial "layouts/head/css"
+    = partial "layouts/head/js"
 
-      %main.main.content-primary(role="main")=yield
+  %body{class: page_classes}
+    .page
+      = partial "layouts/roles/alert"
+      .pop-stripe
+      = partial "layouts/regions/banner"
+      = partial "layouts/regions/page_header"
 
-      - if content_for?(:complementary)
-        .complementary.content-secondary(role="complementary")= yield_content :complementary
+      .body
+        .container
+          .content
+            - if content_for?(:introduction)
+              %p.introduction= yield_content :introduction
+
+            %main.main.content-primary(role="main")=yield
+
+            - if content_for?(:complementary)
+              .complementary.content-secondary(role="complementary")= yield_content :complementary
+
+
+        - if content_for?(:section_middle)
+          %section.section-middle
+            .container= yield_content :section_middle
+
+      .alert.release
+        .container
+          %ul
+            - if data.respond_to?(:version)
+              %li Current Release: <span class="release-name">#{data.version.name} (#{data.version.number})</span>
+            - else
+              %li Current Release: <span class="release-name">???</span>
+            %li=link_to "Release Notes", "/documentation/file.SASS_CHANGELOG.html"
+            %li=link_to "Fork on Github", "https://github.com/sass/sass"
+
+      - if content_for?(:section_bottom)
+        %section.section-bottom
+          .container= yield_content :section_bottom
+
+    = partial "layouts/regions/contentinfo"
+    = partial "layouts/foot/js"

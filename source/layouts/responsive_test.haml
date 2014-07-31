@@ -1,28 +1,68 @@
-- wrap_layout :layout do
-  =yield
+!!!5
+%html.no-js(lang="en"){:class => data.page.head_classes}
+  %head
+    %meta(charset="utf-8")/
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")/
+    %title= page_title
+    = partial "layouts/head/meta"
+    = partial "layouts/head/link"
+    = partial "layouts/head/css"
+    = partial "layouts/head/js"
 
-  - content_for :alert do
-    %form.responsive-test-url(role="form" method="post")
-      %fieldset
-        %p
-          %label.visually-hidden(for="test-url") Test URL
-          %input#test-url(type="text" placeholder="Enter a site URL")/
+  %body{class: page_classes}
+    .page
+      = partial "layouts/roles/alert"
+      .pop-stripe
+      = partial "layouts/regions/banner"
+      = partial "layouts/regions/page_header"
 
-        %p
-          %label.radio(for="normal")
-            %input#normal(type="radio" name="option" value="1" checked="checked")/
-            Width only
+      .body
+        =yield
 
-          %label.radio(for="accurate")
-            %input#accurate(type="radio" name="option" value="2")/
-            Device sizes
+        - content_for :alert do
+          %form.responsive-test-url(role="form" method="post")
+            %fieldset
+              %p
+                %label.visually-hidden(for="test-url") Test URL
+                %input#test-url(type="text" placeholder="Enter a site URL")/
 
-          %label.checkbox(for="scrollbar")
-            %input#scrollbar(type="checkbox" name="scrollbar" value="1" checked="checked")/
-            Add Scrollbar Width
+              %p
+                %label.radio(for="normal")
+                  %input#normal(type="radio" name="option" value="1" checked="checked")/
+                  Width only
 
-      %p.visually-hidden
-        %button.primary(type="submit") Submit
+                %label.radio(for="accurate")
+                  %input#accurate(type="radio" name="option" value="2")/
+                  Device sizes
 
-  - content_for :js_foot do
-    = javascript_include_tag "tools/styleguide/responsive/test"
+                %label.checkbox(for="scrollbar")
+                  %input#scrollbar(type="checkbox" name="scrollbar" value="1" checked="checked")/
+                  Add Scrollbar Width
+
+            %p.visually-hidden
+              %button.primary(type="submit") Submit
+
+        - content_for :js_foot do
+          = javascript_include_tag "tools/styleguide/responsive/test"
+
+
+        - if content_for?(:section_middle)
+          %section.section-middle
+            .container= yield_content :section_middle
+
+      .alert.release
+        .container
+          %ul
+            - if data.respond_to?(:version)
+              %li Current Release: <span class="release-name">#{data.version.name} (#{data.version.number})</span>
+            - else
+              %li Current Release: <span class="release-name">???</span>
+            %li=link_to "Release Notes", "/documentation/file.SASS_CHANGELOG.html"
+            %li=link_to "Fork on Github", "https://github.com/sass/sass"
+
+      - if content_for?(:section_bottom)
+        %section.section-bottom
+          .container= yield_content :section_bottom
+
+    = partial "layouts/regions/contentinfo"
+    = partial "layouts/foot/js"

@@ -1,32 +1,82 @@
-- wrap_layout :layout_2_column do
-  = yield
-  - if current_page.data.previous_page_url or current_page.data.next_page_url
-    %footer
-      %ul.pager
-        - if current_page.data.previous_page_url
-          %li.previous
-            - if current_page.data.previous_page_url == "index"
-              - previous = ""
+!!!5
+%html.no-js(lang="en"){:class => data.page.head_classes}
+  %head
+    %meta(charset="utf-8")/
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")/
+    %title= page_title
+    = partial "layouts/head/meta"
+    = partial "layouts/head/link"
+    = partial "layouts/head/css"
+    = partial "layouts/head/js"
+
+  %body{class: page_classes}
+    .page
+      = partial "layouts/roles/alert"
+      .pop-stripe
+      = partial "layouts/regions/banner"
+      = partial "layouts/regions/page_header"
+
+      .body
+        .container
+          .content
+            - if content_for?(:introduction)
+              %p.introduction= yield_content :introduction
+
+            %main.main.content-primary(role="main")
+              = yield
+              - if current_page.data.previous_page_url or current_page.data.next_page_url
+                %footer
+                  %ul.pager
+                    - if current_page.data.previous_page_url
+                      %li.previous
+                        - if current_page.data.previous_page_url == "index"
+                          - previous = ""
+                        - else
+                          - previous = current_page.data.previous_page_url
+                        = link_to "/styleguide/" + previous do
+                          &larr;
+                          = current_page.data.previous_page_name
+                    - if current_page.data.next_page_url
+                      %li.next
+                        = link_to "/styleguide/" + current_page.data.next_page_url do
+                          = current_page.data.next_page_name
+                          &rarr;
+
+
+
+              - content_for :complementary do
+                - root_url = data.sitemap.url
+                %h3= link_to "Style Guide", "/styleguide"
+                %ul
+                  - sitemap.resources.each do |page|
+                    - if page.url =~ /styleguide/
+                      - unless page.url =~ /assets/
+                        - unless page.data.title == "Style Guide"
+                          - unless page.data.title == "Responsive Test"
+                            %li= link_to "#{page.data.title}", "#{root_url}#{page.url}"
+
+
+            - if content_for?(:complementary)
+              .complementary.content-secondary(role="complementary")= yield_content :complementary
+
+
+        - if content_for?(:section_middle)
+          %section.section-middle
+            .container= yield_content :section_middle
+
+      .alert.release
+        .container
+          %ul
+            - if data.respond_to?(:version)
+              %li Current Release: <span class="release-name">#{data.version.name} (#{data.version.number})</span>
             - else
-              - previous = current_page.data.previous_page_url
-            = link_to "/styleguide/" + previous do
-              &larr;
-              = current_page.data.previous_page_name
-        - if current_page.data.next_page_url
-          %li.next
-            = link_to "/styleguide/" + current_page.data.next_page_url do
-              = current_page.data.next_page_name
-              &rarr;
+              %li Current Release: <span class="release-name">???</span>
+            %li=link_to "Release Notes", "/documentation/file.SASS_CHANGELOG.html"
+            %li=link_to "Fork on Github", "https://github.com/sass/sass"
 
+      - if content_for?(:section_bottom)
+        %section.section-bottom
+          .container= yield_content :section_bottom
 
-
-  - content_for :complementary do
-    - root_url = data.sitemap.url
-    %h3= link_to "Style Guide", "/styleguide"
-    %ul
-      - sitemap.resources.each do |page|
-        - if page.url =~ /styleguide/
-          - unless page.url =~ /assets/
-            - unless page.data.title == "Style Guide"
-              - unless page.data.title == "Responsive Test"
-                %li= link_to "#{page.data.title}", "#{root_url}#{page.url}"
+    = partial "layouts/regions/contentinfo"
+    = partial "layouts/foot/js"
