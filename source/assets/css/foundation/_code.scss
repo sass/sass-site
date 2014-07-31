@@ -41,6 +41,7 @@ pre {
   // Account for some code outputs that place code tags in pre tags
   code {
     @extend %reset-padding;
+    border: 0;
     background: none;
     font-size: inherit;
     line-height: inherit;
