@@ -11,3 +11,8 @@ resources:
   - name: "libSass Python"
     url: "http://dahlia.kr/libsass-python/"
     description: "libSass for Python"
+  - name: "Node, Express and libSass"
+    url: "https://www.gitbook.io/book/anotheruiguy/nodeexpreslibsass_from-scratch"
+    description: "Node, Express and libSass: a project from scratch workshop"
+    
+    
