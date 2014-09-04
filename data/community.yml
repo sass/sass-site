@@ -33,6 +33,10 @@ blogs:
     url: "http://viget.com/inspire/search/YTo2OntzOjg6ImtleXdvcmRzIjtzOjQ6InNhc3MiO3M6MTE6InNlYXJjaF9tb2RlIjtzOjM6ImFsbCI7czoxMToicmVzdWx0X3BhZ2UiO3M6MTQ6Imluc3BpcmUvc2VhcmNoIjtzOjEwOiJjb2xsZWN0aW9uIjthOjE6e2k6MDtzOjE6IjEiO31zOjEwOiJsb29zZV9lbmRzIjtiOjE7czo4OiJjYXRlZ29yeSI7czozOiIxMjUiO30"
   - name: "Unmatched Style"
     url: "http://www.google.com/cse?cx=partner-pub-1988806651014029%3A4kuybaak597&ie=ISO-8859-1&q=sass#gsc.tab=0&gsc.q=sass&gsc.page=1"
+  - name: "Sass Bites"
+    url: "http://www.youtube.com/sassbites"    
+  - name: "Sass News Weekly"
+    url: "http://www.sassnews.com"
 
 projects:
   - name: "libSass"
