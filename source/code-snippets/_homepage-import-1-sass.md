@@ -1,5 +1,5 @@
 ```sass
-// _reset.scss
+// _reset.sass
 
 html,
 body,
