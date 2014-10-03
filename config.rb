@@ -30,6 +30,19 @@ with_layout :styleguide do
 end
 
 
+@documentation         = {}
+documentation_uri      = 'http://sass-lang.com/documentation/file.SASS_REFERENCE.html'
+documentation_raw      = open(documentation_uri).read
+documentation_sections = documentation_raw.split(/(<h2.+<\/p>)/)
+documentation_sections.each do |section|
+  if section =~ /<h2 id=(\w+)>/
+    id = $1
+    @documentation[id] = section
+    proxy "/documentation/#{id}", 'documentation.html'
+  end
+end
+ignore 'documentation.html'
+
 
 configure :development do
   activate :livereload

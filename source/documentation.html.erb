@@ -1,0 +1,7 @@
+<% current = File.basename(current_page.path, '.html') %>
+<ul>
+  <% @documentation.keys.each do |key| %>
+    <li><a href="/documentation/<%= key %>"<%= ' class="active"' if current == key %>><%= key.titlecase %></a></li>
+  <% end %>
+</ul>
+<%= @documentation[current] %>
