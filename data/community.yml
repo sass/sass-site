@@ -8,7 +8,9 @@ tutorials:
 
 books:
   - name: "Sass in the Real World: book 1 of 4"
-    url: "https://www.gitbook.io/book/anotheruiguy/sassintherealworld_book-i"
+    url: "http://anotheruiguy.gitbooks.io/sassintherealworld_book-i/"
+  - name: "Sass in the Real World: book 2 of 4"
+    url: "http://anotheruiguy.gitbooks.io/sass-in-the-real-world-book-2-of-4/"
   - name: "Sass for Web Designers (Nov 2013)"
     url: "http://www.abookapart.com/products/sass-for-web-designers"
   - name: "Sass and Compass in Action (Aug 2013)"
