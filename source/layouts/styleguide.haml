@@ -53,7 +53,7 @@
                       - unless page.url =~ /assets/
                         - unless page.data.title == "Style Guide"
                           - unless page.data.title == "Responsive Test"
-                            %li= link_to "#{page.data.title}", "#{root_url}#{page.url}"
+                            %li= link_to "#{page.data.title}", "#{root_url}#{page.url.gsub!(/(\/)+$/,'')}"
 
 
             - if content_for?(:complementary)
