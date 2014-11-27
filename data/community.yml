@@ -42,7 +42,7 @@ blogs:
 
 projects:
   - name: "libSass"
-    url: "/libSass"
+    url: "/libsass"
     description: "a CSS (and Sass!) authoring framework"
   - name: "Compass"
     url: "http://compass-style.org/"
