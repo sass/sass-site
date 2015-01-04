@@ -36,7 +36,7 @@ blogs:
   - name: "Unmatched Style"
     url: "http://www.google.com/cse?cx=partner-pub-1988806651014029%3A4kuybaak597&ie=ISO-8859-1&q=sass#gsc.tab=0&gsc.q=sass&gsc.page=1"
   - name: "Sass Bites"
-    url: "http://www.youtube.com/sassbites"    
+    url: "http://www.youtube.com/sassbites"
   - name: "Sass News Weekly"
     url: "http://www.sassnews.com"
 
@@ -77,6 +77,9 @@ projects:
   - name: "Inuit.css"
     url: "http://inuitcss.com/"
     description: "a powerful, scalable, Sass-based, BEM, OOCSS framework"
+  - name: "Flexible Grid System"
+    url: "http://flexible.gs/"
+    description: "power of limitless"
 
 articles:
   - name: "Sass vs. LESS"
