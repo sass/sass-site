@@ -80,6 +80,9 @@ projects:
   - name: "Flexible Grid System"
     url: "http://flexible.gs/"
     description: "power of limitless"
+  - name: "SassDoc"
+    url: "http://sassdoc.com/"
+    description: "A documentation tool for Sass"
 
 articles:
   - name: "Sass vs. LESS"
