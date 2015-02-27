@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Tree::PropNode &mdash; Sass Documentation </title> <link rel=stylesheet href="../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Tree/PropNode.html";
+</script> <script charset=utf-8 src="../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../_index.html">Index (P)</a> &raquo; <span class=title><span class=object_link><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Tree.html" title="Sass::Tree (module)">Tree</a></span></span> &raquo; <span class=title>PropNode</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Tree::PropNode </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName><span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></span> <ul class=fullTree> <li>Object</li> <li class=next><span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></li> <li class=next>Sass::Tree::PropNode</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A static node representing a CSS property.</p> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="../Tree.html" title="Sass::Tree (module)">Sass::Tree</a></span></li> </ul> </div> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#name-instance_method" title="#name (instance method)">- (Array&lt;String, Sass::Script::Tree::Node&gt;) <strong>name</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The name of the property, interspersed with <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Script::Tree::Node</a></span>s representing <code>#{}</code>-interpolation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#name_source_range-instance_method" title="#name_source_range (instance method)">- (Sass::Source::Range) <strong>name_source_range</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The source range in which the property name appears.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#resolved_name-instance_method" title="#resolved_name (instance method)">- (String) <strong>resolved_name</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The name of the property after any interpolated SassScript has been resolved.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#resolved_value-instance_method" title="#resolved_value (instance method)">- (String) <strong>resolved_value</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The value of the property after any interpolated SassScript has been resolved.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#tabs-instance_method" title="#tabs (instance method)">- (Fixnum) <strong>tabs</strong> </a> </span> <span class=summary_desc><div class=inline> <p>How deep this property is indented relative to a normal property.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#value-instance_method" title="#value (instance method)">- (Sass::Script::Tree::Node) <strong>value</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The value of the property.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#value_source_range-instance_method" title="#value_source_range (instance method)">- (Sass::Source::Range) <strong>value_source_range</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The source range in which the property value appears.</p> </div></span> </li> </ul> <h3 class=inherited>Attributes inherited from <span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></h3> <p class=inherited><span class=object_link><a href="Node.html#children-instance_method" title="Sass::Tree::Node#children (method)">#children</a></span>, <span class=object_link><a href="Node.html#filename-instance_method" title="Sass::Tree::Node#filename (method)">#filename</a></span>, <span class=object_link><a href="Node.html#has_children-instance_method" title="Sass::Tree::Node#has_children (method)">#has_children</a></span>, <span class=object_link><a href="Node.html#line-instance_method" title="Sass::Tree::Node#line (method)">#line</a></span>, <span class=object_link><a href="Node.html#options-instance_method" title="Sass::Tree::Node#options (method)">#options</a></span>, <span class=object_link><a href="Node.html#source_range-instance_method" title="Sass::Tree::Node#source_range (method)">#source_range</a></span></p> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#%3D%3D-instance_method" title="#== (instance method)">- (Boolean) <strong>==</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>Compares the names and values of two properties.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#declaration-instance_method" title="#declaration (instance method)">- <strong>declaration</strong>(opts = {:old =&gt; @prop_syntax == :old}, fmt = :sass) </a> </span> <span class=summary_desc><div class=inline> <p>Computes the Sass or SCSS code for the variable declaration.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (PropNode) <strong>initialize</strong>(name, value, prop_syntax) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>A new instance of PropNode.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#invisible%3F-instance_method" title="#invisible? (instance method)">- (Boolean) <strong>invisible?</strong> </a> </span> <span class=summary_desc><div class=inline> <p>A property node is invisible if its value is empty.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#pseudo_class_selector_message-instance_method" title="#pseudo_class_selector_message (instance method)">- (String) <strong>pseudo_class_selector_message</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns a appropriate message indicating how to escape pseudo-class selectors.</p> </div></span> </li> </ul> <h3 class=inherited>Methods inherited from <span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></h3> <p class=inherited><span class=object_link><a href="Node.html#%3C%3C-instance_method" title="Sass::Tree::Node#&lt;&lt; (method)">#<<</a></span>, <span class=object_link><a href="Node.html#balance-instance_method" title="Sass::Tree::Node#balance (method)">#balance</a></span>, <span class=object_link><a href="Node.html#bubbles%3F-instance_method" title="Sass::Tree::Node#bubbles? (method)">#bubbles?</a></span>, <span class=object_link><a href="Node.html#css-instance_method" title="Sass::Tree::Node#css (method)">#css</a></span>, <span class=object_link><a href="Node.html#css_with_sourcemap-instance_method" title="Sass::Tree::Node#css_with_sourcemap (method)">#css_with_sourcemap</a></span>, <span class=object_link><a href="Node.html#deep_copy-instance_method" title="Sass::Tree::Node#deep_copy (method)">#deep_copy</a></span>, <span class=object_link><a href="Node.html#each-instance_method" title="Sass::Tree::Node#each (method)">#each</a></span>, <span class=object_link><a href="Node.html#inspect-instance_method" title="Sass::Tree::Node#inspect (method)">#inspect</a></span>, <span class=object_link><a href="Node.html#style-instance_method" title="Sass::Tree::Node#style (method)">#style</a></span>, <span class=object_link><a href="Node.html#to_sass-instance_method" title="Sass::Tree::Node#to_sass (method)">#to_sass</a></span>, <span class=object_link><a href="Node.html#to_scss-instance_method" title="Sass::Tree::Node#to_scss (method)">#to_scss</a></span></p> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Tree::PropNode (class)">PropNode</a></span></tt>) <strong>initialize</strong>(name, value, prop_syntax) </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of PropNode</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>name</span> <span class=type>(<tt>Array&lt;String, <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span>&gt;</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="#name-instance_method" title="Sass::Tree::PropNode#name (method)">#name</a></span></p> </div> </li> <li> <span class=name>value</span> <span class=type>(<tt><span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span></tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="#value-instance_method" title="Sass::Tree::PropNode#value (method)">#value</a></span></p> </div> </li> <li> <span class=name>prop_syntax</span> <span class=type>(<tt>Symbol</tt>)</span> &mdash; <div class=inline> <p><code>:new</code> if this property uses <code>a: b</code>-style syntax, <code>:old</code> if it uses <code>:a b</code>-style syntax</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+59
+60
+61
+62
+63
+64
+65
+66</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 59</span>
+
+def initialize(name, value, prop_syntax)
+  @name = Sass::Util.strip_string_array(
+    Sass::Util.merge_adjacent_strings(name))
+  @value = value
+  @tabs = 0
+  @prop_syntax = prop_syntax
+  super()
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id="name=-instance_method"></span> <div class="method_details first"> <h3 class="signature first" id=name-instance_method> - (<tt>Array&lt;String, <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span>&gt;</tt>) <strong>name</strong> </h3><div class=docstring> <div class=discussion> <p>The name of the property, interspersed with <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Script::Tree::Node</a></span>s representing <code>#{}</code>-interpolation. Any adjacent strings will be merged together.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;String, <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span>&gt;</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+12
+13
+14</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 12</span>
+
+def name
+  @name
+end</pre> </td> </tr> </table> </div> <span id="name_source_range=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=name_source_range-instance_method> - (<tt><span class=object_link><a href="../Source/Range.html" title="Sass::Source::Range (class)">Sass::Source::Range</a></span></tt>) <strong>name_source_range</strong> </h3><div class=docstring> <div class=discussion> <p>The source range in which the property name appears.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../Source/Range.html" title="Sass::Source::Range (class)">Sass::Source::Range</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+48
+49
+50</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 48</span>
+
+def name_source_range
+  @name_source_range
+end</pre> </td> </tr> </table> </div> <span id="resolved_name=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=resolved_name-instance_method> - (<tt>String</tt>) <strong>resolved_name</strong> </h3><div class=docstring> <div class=discussion> <p>The name of the property after any interpolated SassScript has been resolved. Only set once <span class=object_link><a href="Visitors/Perform.html" title="Sass::Tree::Visitors::Perform (class)">Visitors::Perform</a></span> has been run.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>String</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+19
+20
+21</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 19</span>
+
+def resolved_name
+  @resolved_name
+end</pre> </td> </tr> </table> </div> <span id="resolved_value=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=resolved_value-instance_method> - (<tt>String</tt>) <strong>resolved_value</strong> </h3><div class=docstring> <div class=discussion> <p>The value of the property after any interpolated SassScript has been resolved. Only set once <span class=object_link><a href="Visitors/Perform.html" title="Sass::Tree::Visitors::Perform (class)">Visitors::Perform</a></span> has been run.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>String</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+31
+32
+33</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 31</span>
+
+def resolved_value
+  @resolved_value
+end</pre> </td> </tr> </table> </div> <span id="tabs=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=tabs-instance_method> - (<tt>Fixnum</tt>) <strong>tabs</strong> </h3><div class=docstring> <div class=discussion> <p>How deep this property is indented relative to a normal property. This is only greater than 0 in the case that:</p> <ul> <li>This node is in a CSS tree</li> <li>The style is :nested</li> <li>This is a child property of another property</li> <li>The parent property has a value, and thus will be rendered</li> </ul> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Fixnum</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+43
+44
+45</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 43</span>
+
+def tabs
+  @tabs
+end</pre> </td> </tr> </table> </div> <span id="value=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=value-instance_method> - (<tt><span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span></tt>) <strong>value</strong> </h3><div class=docstring> <div class=discussion> <p>The value of the property.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+24
+25
+26</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 24</span>
+
+def value
+  @value
+end</pre> </td> </tr> </table> </div> <span id="value_source_range=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=value_source_range-instance_method> - (<tt><span class=object_link><a href="../Source/Range.html" title="Sass::Source::Range (class)">Sass::Source::Range</a></span></tt>) <strong>value_source_range</strong> </h3><div class=docstring> <div class=discussion> <p>The source range in which the property value appears.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../Source/Range.html" title="Sass::Source::Range (class)">Sass::Source::Range</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+53
+54
+55</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 53</span>
+
+def value_source_range
+  @value_source_range
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id="==-instance_method"> - (<tt>Boolean</tt>) <strong>==</strong>(other) </h3><div class=docstring> <div class=discussion> <p>Compares the names and values of two properties.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt>Object</tt>)</span> &mdash; <div class=inline> <p>The object to compare with</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether or not this node and the other object are the same</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+73
+74
+75</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 73</span>
+
+def ==(other)
+  self.class == other.class &amp;&amp; name == other.name &amp;&amp; value == other.value &amp;&amp; super
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=declaration-instance_method> - <strong>declaration</strong>(opts = {:old =&gt; @prop_syntax == :old}, fmt = :sass) </h3><div class=docstring> <div class=discussion> <p>Computes the Sass or SCSS code for the variable declaration. This is like <span class=object_link><a href="Node.html#to_scss-instance_method" title="Sass::Tree::Node#to_scss (method)">Node#to_scss</a></span> or <span class=object_link><a href="Node.html#to_sass-instance_method" title="Sass::Tree::Node#to_sass (method)">Node#to_sass</a></span>, except it doesn’t print any child properties or a trailing semicolon.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>opts</span> <span class=type>(<tt>{Symbol =&gt; Object}</tt>)</span> <em class=default>(defaults to: <tt>{:old =&gt; @prop_syntax == :old}</tt>)</em> &mdash; <div class=inline> <p>The options hash for the tree.</p> </div> </li> <li> <span class=name>fmt</span> <span class=type>(<tt>Symbol</tt>)</span> <em class=default>(defaults to: <tt>:sass</tt>)</em> &mdash; <div class=inline> <p><code>:scss</code> or <code>:sass</code>.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 99</span>
+
+def declaration(opts = {:old =&gt; @prop_syntax == :old}, fmt = :sass)
+  name = self.name.map {|n| n.is_a?(String) ? n : n.to_sass(opts)}.join
+  if name[0] == ?:
+    raise Sass::SyntaxError.new(&quot;The \&quot;#{name}: #{self.class.val_to_sass(value, opts)}\&quot;&quot; +
+                                &quot; hack is not allowed in the Sass indented syntax&quot;)
+  end
+
+  old = opts[:old] &amp;&amp; fmt == :sass
+  initial = old ? &#39;:&#39; : &#39;&#39;
+  mid = old ? &#39;&#39; : &#39;:&#39;
+  &quot;#{initial}#{name}#{mid} #{self.class.val_to_sass(value, opts)}&quot;.rstrip
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="invisible?-instance_method"> - (<tt>Boolean</tt>) <strong>invisible?</strong> </h3><div class=docstring> <div class=discussion> <p>A property node is invisible if its value is empty.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+115
+116
+117</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 115</span>
+
+def invisible?
+  resolved_value.empty?
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=pseudo_class_selector_message-instance_method> - (<tt>String</tt>) <strong>pseudo_class_selector_message</strong> </h3><div class=docstring> <div class=discussion> <p>Returns a appropriate message indicating how to escape pseudo-class selectors. This only applies for old-style properties with no value, so returns the empty string if this is new-style.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>The message</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/prop_node.rb', line 82</span>
+
+def pseudo_class_selector_message
+  if @prop_syntax == :new ||
+      !value.is_a?(Sass::Script::Tree::Literal) ||
+      !value.value.is_a?(Sass::Script::Value::String) ||
+      !value.value.value.empty?
+    return &quot;&quot;
+  end
+
+  &quot;\nIf #{declaration.dump} should be a selector, use \&quot;\\#{declaration}\&quot; instead.&quot;
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:43 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

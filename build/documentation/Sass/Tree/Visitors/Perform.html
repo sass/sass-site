@@ -1,0 +1,982 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Tree::Visitors::Perform &mdash; Sass Documentation </title> <link rel=stylesheet href="../../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Sass/Tree/Visitors/Perform.html";
+</script> <script charset=utf-8 src="../../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../../_index.html">Index (P)</a> &raquo; <span class=title><span class=object_link><a href="../../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../../Tree.html" title="Sass::Tree (module)">Tree</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Visitors.html" title="Sass::Tree::Visitors (module)">Visitors</a></span></span> &raquo; <span class=title>Perform</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Tree::Visitors::Perform </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName><span class=object_link><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></span> <ul class=fullTree> <li>Object</li> <li class=next><span class=object_link><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></li> <li class=next>Sass::Tree::Visitors::Perform</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A visitor for converting a dynamic Sass tree into a static Sass tree.</p> </div> </div> <div class=tags> </div> <h2> Class Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#perform_arguments-class_method" title="perform_arguments (class method)">+ <strong>perform_arguments</strong>(callable, args, splat, environment) </a> </span> <span class="private note title">private</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#perform_splat-class_method" title="perform_splat (class method)">+ (Sass::Script::Value::ArgList) <strong>perform_splat</strong>(splat, performed_keywords, kwarg_splat, environment) </a> </span> <span class="private note title">private</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#visit-class_method" title="visit (class method)">+ (Tree::Node) <strong>visit</strong>(root, environment = nil) </a> </span> <span class=summary_desc><div class=inline> <p>The resulting tree of static nodes.</p> </div></span> </li> </ul> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="protected "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (Perform) <strong>initialize</strong>(env) </a> </span> <span class="note title constructor">constructor</span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>A new instance of Perform.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit-instance_method" title="#visit (instance method)">- <strong>visit</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>If an exception is raised, this adds proper metadata to the backtrace.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_atroot-instance_method" title="#visit_atroot (instance method)">- <strong>visit_atroot</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Sets a variable that indicates that the first level of rule nodes shouldn’t include the parent selector by default.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_children-instance_method" title="#visit_children (instance method)">- <strong>visit_children</strong>(parent) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Keeps track of the current environment.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_comment-instance_method" title="#visit_comment (instance method)">- <strong>visit_comment</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Removes this node from the tree if it’s a silent comment.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_content-instance_method" title="#visit_content (instance method)">- <strong>visit_content</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_cssimport-instance_method" title="#visit_cssimport (instance method)">- <strong>visit_cssimport</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_debug-instance_method" title="#visit_debug (instance method)">- <strong>visit_debug</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Prints the expression to STDERR.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_directive-instance_method" title="#visit_directive (instance method)">- <strong>visit_directive</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_each-instance_method" title="#visit_each (instance method)">- <strong>visit_each</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs the child nodes once for each value in the list.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_error-instance_method" title="#visit_error (instance method)">- <strong>visit_error</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Throws the expression as an error.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_extend-instance_method" title="#visit_extend (instance method)">- <strong>visit_extend</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs SassScript interpolation in the selector, and then parses the result into a <span class=object_link><a href="../../Selector/CommaSequence.html" title="Sass::Selector::CommaSequence (class)">Selector::CommaSequence</a></span>.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_for-instance_method" title="#visit_for (instance method)">- <strong>visit_for</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs the child nodes once for each time through the loop, varying the variable each time.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_function-instance_method" title="#visit_function (instance method)">- <strong>visit_function</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Loads the function into the environment.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_if-instance_method" title="#visit_if (instance method)">- <strong>visit_if</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs the child nodes if the conditional expression is true; otherwise, tries the else nodes.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_import-instance_method" title="#visit_import (instance method)">- <strong>visit_import</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Returns a static DirectiveNode if this is importing a CSS file, or parses and includes the imported Sass file.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_media-instance_method" title="#visit_media (instance method)">- <strong>visit_media</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_mixin-instance_method" title="#visit_mixin (instance method)">- <strong>visit_mixin</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs a mixin.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_mixindef-instance_method" title="#visit_mixindef (instance method)">- <strong>visit_mixindef</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Loads a mixin into the environment.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_prop-instance_method" title="#visit_prop (instance method)">- <strong>visit_prop</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs any SassScript that may be embedded in a property.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_return-instance_method" title="#visit_return (instance method)">- <strong>visit_return</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Returns the value of the expression.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_root-instance_method" title="#visit_root (instance method)">- <strong>visit_root</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Sets the options on the environment if this is the top-level root.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_rule-instance_method" title="#visit_rule (instance method)">- <strong>visit_rule</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs SassScript interpolation in the selector, and then parses the result into a <span class=object_link><a href="../../Selector/CommaSequence.html" title="Sass::Selector::CommaSequence (class)">Selector::CommaSequence</a></span>.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_supports-instance_method" title="#visit_supports (instance method)">- <strong>visit_supports</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_variable-instance_method" title="#visit_variable (instance method)">- <strong>visit_variable</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Loads the new variable value into the environment.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_warn-instance_method" title="#visit_warn (instance method)">- <strong>visit_warn</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Prints the expression to STDERR with a stylesheet trace.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_while-instance_method" title="#visit_while (instance method)">- <strong>visit_while</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs the child nodes until the continuation expression becomes false.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#with_environment-instance_method" title="#with_environment (instance method)">- (Object) <strong>with_environment</strong>(env) { ... }</a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Runs a block of code with the current environment replaced with the given one.</p> </div></span> </li> </ul> <h3 class=inherited>Methods inherited from <span class=object_link><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></h3> <p class=inherited><span class=object_link><a href="Base.html#node_name-class_method" title="Sass::Tree::Visitors::Base.node_name (method)">node_name</a></span></p> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Tree::Visitors::Perform (class)">Perform</a></span></tt>) <strong>initialize</strong>(env) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of Perform</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+151
+152
+153</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 151</span>
+
+def initialize(env)
+  @environment = env
+end</pre> </td> </tr> </table> </div> </div> <div id=class_method_details class=method_details_list> <h2>Class Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=perform_arguments-class_method> + <strong>perform_arguments</strong>(callable, args, splat, environment) </h3><div class=docstring> <div class=discussion> <p class="note private"> <strong>This method is part of a private API.</strong> You should avoid using this method if possible, as it may be removed or be changed in the future. </p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 14</span>
+
+def perform_arguments(callable, args, splat, environment)
+  desc = &quot;#{callable.type.capitalize} #{callable.name}&quot;
+  downcase_desc = &quot;#{callable.type} #{callable.name}&quot;
+
+  # All keywords are contained in splat.keywords for consistency,
+  # even if there were no splats passed in.
+  old_keywords_accessed = splat.keywords_accessed
+  keywords = splat.keywords
+  splat.keywords_accessed = old_keywords_accessed
+
+  begin
+    unless keywords.empty?
+      unknown_args = Sass::Util.array_minus(keywords.keys,
+        callable.args.map {|var| var.first.underscored_name})
+      if callable.splat &amp;&amp; unknown_args.include?(callable.splat.underscored_name)
+        raise Sass::SyntaxError.new(&quot;Argument $#{callable.splat.name} of #{downcase_desc} &quot; +
+                                    &quot;cannot be used as a named argument.&quot;)
+      elsif unknown_args.any?
+        description = unknown_args.length &gt; 1 ? &#39;the following arguments:&#39; : &#39;an argument named&#39;
+        raise Sass::SyntaxError.new(&quot;#{desc} doesn&#39;t have #{description} &quot; +
+                                    &quot;#{unknown_args.map {|name| &quot;$#{name}&quot;}.join &#39;, &#39;}.&quot;)
+      end
+    end
+  rescue Sass::SyntaxError =&gt; keyword_exception
+  end
+
+  # If there&#39;s no splat, raise the keyword exception immediately. The actual
+  # raising happens in the ensure clause at the end of this function.
+  return if keyword_exception &amp;&amp; !callable.splat
+
+  splat_sep = :comma
+  if splat
+    args += splat.to_a
+    splat_sep = splat.separator
+  end
+
+  if args.size &gt; callable.args.size &amp;&amp; !callable.splat
+    extra_args_because_of_splat = splat &amp;&amp; args.size - splat.to_a.size &lt;= callable.args.size
+
+    takes = callable.args.size
+    passed = args.size
+    message = &quot;#{desc} takes #{takes} argument#{&#39;s&#39; unless takes == 1} &quot; +
+      &quot;but #{passed} #{passed == 1 ? &#39;was&#39; : &#39;were&#39;} passed.&quot;
+    raise Sass::SyntaxError.new(message) unless extra_args_because_of_splat
+    # TODO: when the deprecation period is over, make this an error.
+    Sass::Util.sass_warn(&quot;WARNING: #{message}\n&quot; +
+      environment.stack.to_s.gsub(/^/m, &quot; &quot; * 8) + &quot;\n&quot; +
+      &quot;This will be an error in future versions of Sass.&quot;)
+  end
+
+  env = Sass::Environment.new(callable.environment)
+  callable.args.zip(args[0...callable.args.length]) do |(var, default), value|
+    if value &amp;&amp; keywords.has_key?(var.name)
+      raise Sass::SyntaxError.new(&quot;#{desc} was passed argument $#{var.name} &quot; +
+                                  &quot;both by position and by name.&quot;)
+    end
+
+    value ||= keywords.delete(var.name)
+    value ||= default &amp;&amp; default.perform(env)
+    raise Sass::SyntaxError.new(&quot;#{desc} is missing argument #{var.inspect}.&quot;) unless value
+    env.set_local_var(var.name, value)
+  end
+
+  if callable.splat
+    rest = args[callable.args.length..-1] || []
+    arg_list = Sass::Script::Value::ArgList.new(rest, keywords, splat_sep)
+    arg_list.options = env.options
+    env.set_local_var(callable.splat.name, arg_list)
+  end
+
+  yield env
+rescue StandardError =&gt; e
+ensure
+  # If there&#39;s a keyword exception, we don&#39;t want to throw it immediately,
+  # because the invalid keywords may be part of a glob argument that should be
+  # passed on to another function. So we only raise it if we reach the end of
+  # this function *and* the keywords attached to the argument list glob object
+  # haven&#39;t been accessed.
+  #
+  # The keyword exception takes precedence over any Sass errors, but not over
+  # non-Sass exceptions.
+  if keyword_exception &amp;&amp;
+      !(arg_list &amp;&amp; arg_list.keywords_accessed) &amp;&amp;
+      (e.nil? || e.is_a?(Sass::SyntaxError))
+    raise keyword_exception
+  elsif e
+    raise e
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=perform_splat-class_method> + (<tt><span class=object_link><a href="../../Script/Value/ArgList.html" title="Sass::Script::Value::ArgList (class)">Sass::Script::Value::ArgList</a></span></tt>) <strong>perform_splat</strong>(splat, performed_keywords, kwarg_splat, environment) </h3><div class=docstring> <div class=discussion> <p class="note private"> <strong>This method is part of a private API.</strong> You should avoid using this method if possible, as it may be removed or be changed in the future. </p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../../Script/Value/ArgList.html" title="Sass::Script::Value::ArgList (class)">Sass::Script::Value::ArgList</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 106</span>
+
+def perform_splat(splat, performed_keywords, kwarg_splat, environment)
+  args, kwargs, separator = [], nil, :comma
+
+  if splat
+    splat = splat.perform(environment)
+    separator = splat.separator || separator
+    if splat.is_a?(Sass::Script::Value::ArgList)
+      args = splat.to_a
+      kwargs = splat.keywords
+    elsif splat.is_a?(Sass::Script::Value::Map)
+      kwargs = arg_hash(splat)
+    else
+      args = splat.to_a
+    end
+  end
+  kwargs ||= Sass::Util::NormalizedMap.new
+  kwargs.update(performed_keywords)
+
+  if kwarg_splat
+    kwarg_splat = kwarg_splat.perform(environment)
+    unless kwarg_splat.is_a?(Sass::Script::Value::Map)
+      raise Sass::SyntaxError.new(&quot;Variable keyword arguments must be a map &quot; +
+                                  &quot;(was #{kwarg_splat.inspect}).&quot;)
+    end
+    kwargs.update(arg_hash(kwarg_splat))
+  end
+
+  Sass::Script::Value::ArgList.new(args, kwargs, separator)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit-class_method> + (<tt><span class=object_link><a href="../Node.html" title="Sass::Tree::Node (class)">Tree::Node</a></span></tt>) <strong>visit</strong>(root, environment = nil) </h3><div class=docstring> <div class=discussion> <p>Returns The resulting tree of static nodes.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>root</span> <span class=type>(<tt><span class=object_link><a href="../Node.html" title="Sass::Tree::Node (class)">Tree::Node</a></span></tt>)</span> &mdash; <div class=inline> <p>The root node of the tree to visit.</p> </div> </li> <li> <span class=name>environment</span> <span class=type>(<tt><span class=object_link><a href="../../Environment.html" title="Sass::Environment (class)">Sass::Environment</a></span></tt>)</span> <em class=default>(defaults to: <tt>nil</tt>)</em> &mdash; <div class=inline> <p>The lexical environment.</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../Node.html" title="Sass::Tree::Node (class)">Tree::Node</a></span></tt>)</span> &mdash; <div class=inline> <p>The resulting tree of static nodes.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+7
+8
+9</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 7</span>
+
+def visit(root, environment = nil)
+  new(environment).send(:visit, root)
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=visit-instance_method> - <strong>visit</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>If an exception is raised, this adds proper metadata to the backtrace.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+156
+157
+158
+159
+160
+161
+162</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 156</span>
+
+def visit(node)
+  return super(node.dup) unless @environment
+  @environment.stack.with_base(node.filename, node.line) {super(node.dup)}
+rescue Sass::SyntaxError =&gt; e
+  e.modify_backtrace(:filename =&gt; node.filename, :line =&gt; node.line)
+  raise e
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_atroot-instance_method> - <strong>visit_atroot</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Sets a variable that indicates that the first level of rule nodes shouldn’t include the parent selector by default.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 440</span>
+
+def visit_atroot(node)
+  if node.query
+    parser = Sass::SCSS::StaticParser.new(run_interp(node.query),
+      node.filename, node.options[:importer], node.line)
+    node.resolved_type, node.resolved_value = parser.parse_static_at_root_query
+  else
+    node.resolved_type, node.resolved_value = :without, [&#39;rule&#39;]
+  end
+
+  old_at_root_without_rule = @at_root_without_rule
+  old_in_keyframes = @in_keyframes
+  @at_root_without_rule = true if node.exclude?(&#39;rule&#39;)
+  @in_keyframes = false if node.exclude?(&#39;keyframes&#39;)
+  yield
+ensure
+  @in_keyframes = old_in_keyframes
+  @at_root_without_rule = old_at_root_without_rule
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_children-instance_method> - <strong>visit_children</strong>(parent) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Keeps track of the current environment.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+165
+166
+167
+168
+169
+170</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 165</span>
+
+def visit_children(parent)
+  with_environment Sass::Environment.new(@environment, parent.options) do
+    parent.children = super.flatten
+    parent
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_comment-instance_method> - <strong>visit_comment</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Removes this node from the tree if it’s a silent comment.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+193
+194
+195
+196
+197
+198</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 193</span>
+
+def visit_comment(node)
+  return [] if node.invisible?
+  node.resolved_value = run_interp_no_strip(node.value)
+  node.resolved_value.gsub!(/\\([\\#])/, &#39;\1&#39;)
+  node
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_content-instance_method> - <strong>visit_content</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 373</span>
+
+def visit_content(node)
+  content, content_env = @environment.content
+  return [] unless content
+  @environment.stack.with_mixin(node.filename, node.line, &#39;@content&#39;) do
+    trace_node = Sass::Tree::TraceNode.from_node(&#39;@content&#39;, node)
+    content_env = Sass::Environment.new(content_env)
+    content_env.caller = Sass::Environment.new(@environment)
+    with_environment(content_env) do
+      trace_node.children = content.map {|c| visit(c.dup)}.flatten
+    end
+    trace_node
+  end
+rescue Sass::SyntaxError =&gt; e
+  e.modify_backtrace(:mixin =&gt; &#39;@content&#39;, :line =&gt; node.line)
+  e.add_backtrace(:line =&gt; node.line)
+  raise e
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_cssimport-instance_method> - <strong>visit_cssimport</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+521
+522
+523
+524
+525
+526
+527
+528
+529</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 521</span>
+
+def visit_cssimport(node)
+  node.resolved_uri = run_interp([node.uri])
+  if node.query &amp;&amp; !node.query.empty?
+    parser = Sass::SCSS::StaticParser.new(run_interp(node.query),
+      node.filename, node.options[:importer], node.line)
+    node.resolved_query ||= parser.parse_media_query_list
+  end
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_debug-instance_method> - <strong>visit_debug</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Prints the expression to STDERR.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 201</span>
+
+def visit_debug(node)
+  res = node.expr.perform(@environment)
+  if res.is_a?(Sass::Script::Value::String)
+    res = res.value
+  else
+    res = res.to_sass
+  end
+  if node.filename
+    Sass::Util.sass_warn &quot;#{node.filename}:#{node.line} DEBUG: #{res}&quot;
+  else
+    Sass::Util.sass_warn &quot;Line #{node.line} DEBUG: #{res}&quot;
+  end
+  []
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_directive-instance_method> - <strong>visit_directive</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 497</span>
+
+def visit_directive(node)
+  node.resolved_value = run_interp(node.value)
+  old_in_keyframes, @in_keyframes = @in_keyframes, node.normalized_name == &quot;@keyframes&quot;
+  with_environment Sass::Environment.new(@environment) do
+    node.children = node.children.map {|c| visit(c)}.flatten
+    node
+  end
+ensure
+  @in_keyframes = old_in_keyframes
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_each-instance_method> - <strong>visit_each</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs the child nodes once for each value in the list.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 228</span>
+
+def visit_each(node)
+  list = node.list.perform(@environment)
+
+  with_environment Sass::SemiGlobalEnvironment.new(@environment) do
+    list.to_a.map do |value|
+      if node.vars.length == 1
+        @environment.set_local_var(node.vars.first, value)
+      else
+        node.vars.zip(value.to_a) do |(var, sub_value)|
+          @environment.set_local_var(var, sub_value || Sass::Script::Value::Null.new)
+        end
+      end
+      node.children.map {|c| visit(c)}
+    end.flatten
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_error-instance_method> - <strong>visit_error</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Throws the expression as an error.</p> </div> </div> <div class=tags> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+217
+218
+219
+220
+221
+222
+223
+224
+225</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 217</span>
+
+def visit_error(node)
+  res = node.expr.perform(@environment)
+  if res.is_a?(Sass::Script::Value::String)
+    res = res.value
+  else
+    res = res.to_sass
+  end
+  raise Sass::SyntaxError.new(res)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_extend-instance_method> - <strong>visit_extend</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs SassScript interpolation in the selector, and then parses the result into a <span class=object_link><a href="../../Selector/CommaSequence.html" title="Sass::Selector::CommaSequence (class)">Selector::CommaSequence</a></span>.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+247
+248
+249
+250
+251
+252</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 247</span>
+
+def visit_extend(node)
+  parser = Sass::SCSS::StaticParser.new(run_interp(node.selector),
+    node.filename, node.options[:importer], node.line)
+  node.resolved_selector = parser.parse_selector
+  node
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_for-instance_method> - <strong>visit_for</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs the child nodes once for each time through the loop, varying the variable each time.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 255</span>
+
+def visit_for(node)
+  from = node.from.perform(@environment)
+  to = node.to.perform(@environment)
+  from.assert_int!
+  to.assert_int!
+
+  to = to.coerce(from.numerator_units, from.denominator_units)
+  direction = from.to_i &gt; to.to_i ? -1 : 1
+  range = Range.new(direction * from.to_i, direction * to.to_i, node.exclusive)
+
+  with_environment Sass::SemiGlobalEnvironment.new(@environment) do
+    range.map do |i|
+      @environment.set_local_var(node.var,
+        Sass::Script::Value::Number.new(direction * i,
+          from.numerator_units, from.denominator_units))
+      node.children.map {|c| visit(c)}
+    end.flatten
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_function-instance_method> - <strong>visit_function</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Loads the function into the environment.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 276</span>
+
+def visit_function(node)
+  env = Sass::Environment.new(@environment, node.options)
+
+  if node.normalized_name == &#39;calc&#39; || node.normalized_name == &#39;element&#39; ||
+      node.name == &#39;expression&#39; || node.name == &#39;url&#39;
+    Sass::Util.sass_warn &lt;&lt;WARNING
+DEPRECATION WARNING on line #{node.line}#{&quot; of #{node.filename}&quot; if node.filename}:
+Naming a function &quot;#{node.name}&quot; is disallowed and will be an error in future versions of Sass.
+This name conflicts with an existing CSS function with special parse rules.
+WARNING
+  end
+
+  @environment.set_local_function(node.name,
+    Sass::Callable.new(node.name, node.args, node.splat, env,
+                       node.children, !:has_content, &quot;function&quot;))
+  []
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_if-instance_method> - <strong>visit_if</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs the child nodes if the conditional expression is true; otherwise, tries the else nodes.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 296</span>
+
+def visit_if(node)
+  if node.expr.nil? || node.expr.perform(@environment).to_bool
+    with_environment Sass::SemiGlobalEnvironment.new(@environment) do
+      node.children.map {|c| visit(c)}
+    end.flatten
+  elsif node.else
+    visit(node.else)
+  else
+    []
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_import-instance_method> - <strong>visit_import</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Returns a static DirectiveNode if this is importing a CSS file, or parses and includes the imported Sass file.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 310</span>
+
+def visit_import(node)
+  if (path = node.css_import?)
+    resolved_node = Sass::Tree::CssImportNode.resolved(&quot;url(#{path})&quot;)
+    resolved_node.source_range = node.source_range
+    return resolved_node
+  end
+  file = node.imported_file
+  if @environment.stack.frames.any? {|f| f.is_import? &amp;&amp; f.filename == file.options[:filename]}
+    handle_import_loop!(node)
+  end
+
+  begin
+    @environment.stack.with_import(node.filename, node.line) do
+      root = file.to_tree
+      Sass::Tree::Visitors::CheckNesting.visit(root)
+      node.children = root.children.map {|c| visit(c)}.flatten
+      node
+    end
+  rescue Sass::SyntaxError =&gt; e
+    e.modify_backtrace(:filename =&gt; node.imported_file.options[:filename])
+    e.add_backtrace(:filename =&gt; node.filename, :line =&gt; node.line)
+    raise e
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_media-instance_method> - <strong>visit_media</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+508
+509
+510
+511
+512
+513</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 508</span>
+
+def visit_media(node)
+  parser = Sass::SCSS::StaticParser.new(run_interp(node.query),
+    node.filename, node.options[:importer], node.line)
+  node.resolved_query ||= parser.parse_media_query_list
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_mixin-instance_method> - <strong>visit_mixin</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs a mixin.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 345</span>
+
+def visit_mixin(node)
+  @environment.stack.with_mixin(node.filename, node.line, node.name) do
+    mixin = @environment.mixin(node.name)
+    raise Sass::SyntaxError.new(&quot;Undefined mixin &#39;#{node.name}&#39;.&quot;) unless mixin
+
+    if node.children.any? &amp;&amp; !mixin.has_content
+      raise Sass::SyntaxError.new(%Q{Mixin &quot;#{node.name}&quot; does not accept a content block.})
+    end
+
+    args = node.args.map {|a| a.perform(@environment)}
+    keywords = Sass::Util.map_vals(node.keywords) {|v| v.perform(@environment)}
+    splat = self.class.perform_splat(node.splat, keywords, node.kwarg_splat, @environment)
+
+    self.class.perform_arguments(mixin, args, splat, @environment) do |env|
+      env.caller = Sass::Environment.new(@environment)
+      env.content = [node.children, @environment] if node.has_children
+
+      trace_node = Sass::Tree::TraceNode.from_node(node.name, node)
+      with_environment(env) {trace_node.children = mixin.tree.map {|c| visit(c)}.flatten}
+      trace_node
+    end
+  end
+rescue Sass::SyntaxError =&gt; e
+  e.modify_backtrace(:mixin =&gt; node.name, :line =&gt; node.line)
+  e.add_backtrace(:line =&gt; node.line)
+  raise e
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_mixindef-instance_method> - <strong>visit_mixindef</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Loads a mixin into the environment.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+336
+337
+338
+339
+340
+341
+342</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 336</span>
+
+def visit_mixindef(node)
+  env = Sass::Environment.new(@environment, node.options)
+  @environment.set_local_mixin(node.name,
+    Sass::Callable.new(node.name, node.args, node.splat, env,
+                       node.children, node.has_content, &quot;mixin&quot;))
+  []
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_prop-instance_method> - <strong>visit_prop</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs any SassScript that may be embedded in a property.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+392
+393
+394
+395
+396
+397
+398</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 392</span>
+
+def visit_prop(node)
+  node.resolved_name = run_interp(node.name)
+  val = node.value.perform(@environment)
+  node.resolved_value = val.to_s
+  node.value_source_range = val.source_range if val.source_range
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_return-instance_method> - <strong>visit_return</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Returns the value of the expression.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+401
+402
+403</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 401</span>
+
+def visit_return(node)
+  throw :_sass_return, node.expr.perform(@environment)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_root-instance_method> - <strong>visit_root</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Sets the options on the environment if this is the top-level root.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+185
+186
+187
+188
+189
+190</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 185</span>
+
+def visit_root(node)
+  yield
+rescue Sass::SyntaxError =&gt; e
+  e.sass_template ||= node.template
+  raise e
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_rule-instance_method> - <strong>visit_rule</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs SassScript interpolation in the selector, and then parses the result into a <span class=object_link><a href="../../Selector/CommaSequence.html" title="Sass::Selector::CommaSequence (class)">Selector::CommaSequence</a></span>.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 407</span>
+
+def visit_rule(node)
+  old_at_root_without_rule = @at_root_without_rule
+  parser = Sass::SCSS::StaticParser.new(run_interp(node.rule),
+    node.filename, node.options[:importer], node.line)
+  if @in_keyframes
+    keyframe_rule_node = Sass::Tree::KeyframeRuleNode.new(parser.parse_keyframes_selector)
+    keyframe_rule_node.options = node.options
+    keyframe_rule_node.line = node.line
+    keyframe_rule_node.filename = node.filename
+    keyframe_rule_node.source_range = node.source_range
+    keyframe_rule_node.has_children = node.has_children
+    with_environment Sass::Environment.new(@environment, node.options) do
+      keyframe_rule_node.children = node.children.map {|c| visit(c)}.flatten
+    end
+    keyframe_rule_node
+  else
+    @at_root_without_rule = false
+    node.parsed_rules ||= parser.parse_selector
+    node.resolved_rules = node.parsed_rules.resolve_parent_refs(
+      @environment.selector, !old_at_root_without_rule)
+    node.stack_trace = @environment.stack.to_s if node.options[:trace_selectors]
+    with_environment Sass::Environment.new(@environment, node.options) do
+      @environment.selector = node.resolved_rules
+      node.children = node.children.map {|c| visit(c)}.flatten
+    end
+    node
+  end
+ensure
+  @at_root_without_rule = old_at_root_without_rule
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_supports-instance_method> - <strong>visit_supports</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+515
+516
+517
+518
+519</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 515</span>
+
+def visit_supports(node)
+  node.condition = node.condition.deep_copy
+  node.condition.perform(@environment)
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_variable-instance_method> - <strong>visit_variable</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Loads the new variable value into the environment.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 460</span>
+
+def visit_variable(node)
+  env = @environment
+  env = env.global_env if node.global
+  if node.guarded
+    var = env.var(node.name)
+    return [] if var &amp;&amp; !var.null?
+  end
+
+  val = node.expr.perform(@environment)
+  if node.expr.source_range
+    val.source_range = node.expr.source_range
+  else
+    val.source_range = node.source_range
+  end
+  env.set_var(node.name, val)
+  []
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_warn-instance_method> - <strong>visit_warn</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Prints the expression to STDERR with a stylesheet trace.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+479
+480
+481
+482
+483
+484
+485
+486</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 479</span>
+
+def visit_warn(node)
+  res = node.expr.perform(@environment)
+  res = res.value if res.is_a?(Sass::Script::Value::String)
+  msg = &quot;WARNING: #{res}\n         &quot;
+  msg &lt;&lt; @environment.stack.to_s.gsub(&quot;\n&quot;, &quot;\n         &quot;) &lt;&lt; &quot;\n&quot;
+  Sass::Util.sass_warn msg
+  []
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_while-instance_method> - <strong>visit_while</strong>(node) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs the child nodes until the continuation expression becomes false.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+489
+490
+491
+492
+493
+494
+495</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 489</span>
+
+def visit_while(node)
+  children = []
+  with_environment Sass::SemiGlobalEnvironment.new(@environment) do
+    children += node.children.map {|c| visit(c)} while node.expr.perform(@environment).to_bool
+  end
+  children.flatten
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=with_environment-instance_method> - (<tt>Object</tt>) <strong>with_environment</strong>(env) { ... } <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Runs a block of code with the current environment replaced with the given one.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>env</span> <span class=type>(<tt><span class=object_link><a href="../../Environment.html" title="Sass::Environment (class)">Sass::Environment</a></span></tt>)</span> &mdash; <div class=inline> <p>The new environment for the duration of the block.</p> </div> </li> </ul> <p class=tag_title>Yields:</p> <ul class=yield> <li> <span class=type></span> <div class=inline> <p>A block in which the environment is set to <code>env</code>.</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Object</tt>)</span> &mdash; <div class=inline> <p>The return value of the block.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+177
+178
+179
+180
+181
+182</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/perform.rb', line 177</span>
+
+def with_environment(env)
+  old_env, @environment = @environment, env
+  yield
+ensure
+  @environment = old_env
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:48 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

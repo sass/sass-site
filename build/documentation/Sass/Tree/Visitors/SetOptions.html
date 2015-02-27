@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Tree::Visitors::SetOptions &mdash; Sass Documentation </title> <link rel=stylesheet href="../../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Sass/Tree/Visitors/SetOptions.html";
+</script> <script charset=utf-8 src="../../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../../_index.html">Index (S)</a> &raquo; <span class=title><span class=object_link><a href="../../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../../Tree.html" title="Sass::Tree (module)">Tree</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Visitors.html" title="Sass::Tree::Visitors (module)">Visitors</a></span></span> &raquo; <span class=title>SetOptions</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Tree::Visitors::SetOptions </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName><span class=object_link><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></span> <ul class=fullTree> <li>Object</li> <li class=next><span class=object_link><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></li> <li class=next>Sass::Tree::Visitors::SetOptions</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A visitor for setting options on the Sass tree</p> </div> </div> <div class=tags> </div> <h2> Class Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#visit-class_method" title="visit (class method)">+ <strong>visit</strong>(root, options) </a> </span> <span class=summary_desc><div class=inline></div></span> </li> </ul> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="protected "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (SetOptions) <strong>initialize</strong>(options) </a> </span> <span class="note title constructor">constructor</span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>A new instance of SetOptions.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit-instance_method" title="#visit (instance method)">- <strong>visit</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_comment-instance_method" title="#visit_comment (instance method)">- <strong>visit_comment</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_cssimport-instance_method" title="#visit_cssimport (instance method)">- <strong>visit_cssimport</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_debug-instance_method" title="#visit_debug (instance method)">- <strong>visit_debug</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_directive-instance_method" title="#visit_directive (instance method)">- <strong>visit_directive</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_each-instance_method" title="#visit_each (instance method)">- <strong>visit_each</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_error-instance_method" title="#visit_error (instance method)">- <strong>visit_error</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_extend-instance_method" title="#visit_extend (instance method)">- <strong>visit_extend</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_for-instance_method" title="#visit_for (instance method)">- <strong>visit_for</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_function-instance_method" title="#visit_function (instance method)">- <strong>visit_function</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_if-instance_method" title="#visit_if (instance method)">- <strong>visit_if</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_import-instance_method" title="#visit_import (instance method)">- <strong>visit_import</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_media-instance_method" title="#visit_media (instance method)">- <strong>visit_media</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_mixin-instance_method" title="#visit_mixin (instance method)">- <strong>visit_mixin</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_mixindef-instance_method" title="#visit_mixindef (instance method)">- <strong>visit_mixindef</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_prop-instance_method" title="#visit_prop (instance method)">- <strong>visit_prop</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_return-instance_method" title="#visit_return (instance method)">- <strong>visit_return</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_rule-instance_method" title="#visit_rule (instance method)">- <strong>visit_rule</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_supports-instance_method" title="#visit_supports (instance method)">- <strong>visit_supports</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_variable-instance_method" title="#visit_variable (instance method)">- <strong>visit_variable</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_warn-instance_method" title="#visit_warn (instance method)">- <strong>visit_warn</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#visit_while-instance_method" title="#visit_while (instance method)">- <strong>visit_while</strong>(node) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> </ul> <h3 class=inherited>Methods inherited from <span class=object_link><a href="Base.html" title="Sass::Tree::Visitors::Base (class)">Base</a></span></h3> <p class=inherited><span class=object_link><a href="Base.html#node_name-class_method" title="Sass::Tree::Visitors::Base.node_name (method)">node_name</a></span>, <span class=object_link><a href="Base.html#visit_children-instance_method" title="Sass::Tree::Visitors::Base#visit_children (method)">#visit_children</a></span></p> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Tree::Visitors::SetOptions (class)">SetOptions</a></span></tt>) <strong>initialize</strong>(options) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of SetOptions</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+9
+10
+11</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 9</span>
+
+def initialize(options)
+  @options = options
+end</pre> </td> </tr> </table> </div> </div> <div id=class_method_details class=method_details_list> <h2>Class Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=visit-class_method> + <strong>visit</strong>(root, options) </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>root</span> <span class=type>(<tt><span class=object_link><a href="../Node.html" title="Sass::Tree::Node (class)">Tree::Node</a></span></tt>)</span> &mdash; <div class=inline> <p>The root node of the tree to visit.</p> </div> </li> <li> <span class=name>options</span> <span class=type>(<tt>{Symbol =&gt; Object}</tt>)</span> &mdash; <div class=inline> <p>The options has to set.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+5</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 5</span>
+
+def self.visit(root, options); new(options).send(:visit, root); end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=visit-instance_method> - <strong>visit</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+13
+14
+15
+16</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 13</span>
+
+def visit(node)
+  node.instance_variable_set(&#39;@options&#39;, @options)
+  super
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_comment-instance_method> - <strong>visit_comment</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+18
+19
+20
+21</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 18</span>
+
+def visit_comment(node)
+  node.value.each {|c| c.options = @options if c.is_a?(Sass::Script::Tree::Node)}
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_cssimport-instance_method> - <strong>visit_cssimport</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+130
+131
+132
+133</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 130</span>
+
+def visit_cssimport(node)
+  node.query.each {|c| c.options = @options if c.is_a?(Sass::Script::Tree::Node)} if node.query
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_debug-instance_method> - <strong>visit_debug</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+23
+24
+25
+26</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 23</span>
+
+def visit_debug(node)
+  node.expr.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_directive-instance_method> - <strong>visit_directive</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+120
+121
+122
+123</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 120</span>
+
+def visit_directive(node)
+  node.value.each {|c| c.options = @options if c.is_a?(Sass::Script::Tree::Node)}
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_each-instance_method> - <strong>visit_each</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+33
+34
+35
+36</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 33</span>
+
+def visit_each(node)
+  node.list.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_error-instance_method> - <strong>visit_error</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+28
+29
+30
+31</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 28</span>
+
+def visit_error(node)
+  node.expr.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_extend-instance_method> - <strong>visit_extend</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+38
+39
+40
+41</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 38</span>
+
+def visit_extend(node)
+  node.selector.each {|c| c.options = @options if c.is_a?(Sass::Script::Tree::Node)}
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_for-instance_method> - <strong>visit_for</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+43
+44
+45
+46
+47</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 43</span>
+
+def visit_for(node)
+  node.from.options = @options
+  node.to.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_function-instance_method> - <strong>visit_function</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+49
+50
+51
+52
+53
+54
+55
+56</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 49</span>
+
+def visit_function(node)
+  node.args.each do |k, v|
+    k.options = @options
+    v.options = @options if v
+  end
+  node.splat.options = @options if node.splat
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_if-instance_method> - <strong>visit_if</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+58
+59
+60
+61
+62</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 58</span>
+
+def visit_if(node)
+  node.expr.options = @options if node.expr
+  visit(node.else) if node.else
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_import-instance_method> - <strong>visit_import</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+64
+65
+66
+67
+68
+69
+70</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 64</span>
+
+def visit_import(node)
+  # We have no good way of propagating the new options through an Engine
+  # instance, so we just null it out. This also lets us avoid caching an
+  # imported Engine along with the importing source tree.
+  node.imported_file = nil
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_media-instance_method> - <strong>visit_media</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+125
+126
+127
+128</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 125</span>
+
+def visit_media(node)
+  node.query.each {|c| c.options = @options if c.is_a?(Sass::Script::Tree::Node)}
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_mixin-instance_method> - <strong>visit_mixin</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+81
+82
+83
+84
+85
+86
+87</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 81</span>
+
+def visit_mixin(node)
+  node.args.each {|a| a.options = @options}
+  node.keywords.each {|k, v| v.options = @options}
+  node.splat.options = @options if node.splat
+  node.kwarg_splat.options = @options if node.kwarg_splat
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_mixindef-instance_method> - <strong>visit_mixindef</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+72
+73
+74
+75
+76
+77
+78
+79</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 72</span>
+
+def visit_mixindef(node)
+  node.args.each do |k, v|
+    k.options = @options
+    v.options = @options if v
+  end
+  node.splat.options = @options if node.splat
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_prop-instance_method> - <strong>visit_prop</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+89
+90
+91
+92
+93</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 89</span>
+
+def visit_prop(node)
+  node.name.each {|c| c.options = @options if c.is_a?(Sass::Script::Tree::Node)}
+  node.value.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_return-instance_method> - <strong>visit_return</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+95
+96
+97
+98</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 95</span>
+
+def visit_return(node)
+  node.expr.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_rule-instance_method> - <strong>visit_rule</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+100
+101
+102
+103</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 100</span>
+
+def visit_rule(node)
+  node.rule.each {|c| c.options = @options if c.is_a?(Sass::Script::Tree::Node)}
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_supports-instance_method> - <strong>visit_supports</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+135
+136
+137
+138</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 135</span>
+
+def visit_supports(node)
+  node.condition.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_variable-instance_method> - <strong>visit_variable</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+105
+106
+107
+108</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 105</span>
+
+def visit_variable(node)
+  node.expr.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_warn-instance_method> - <strong>visit_warn</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+110
+111
+112
+113</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 110</span>
+
+def visit_warn(node)
+  node.expr.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=visit_while-instance_method> - <strong>visit_while</strong>(node) <span class=extras>(protected)</span> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+115
+116
+117
+118</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/visitors/set_options.rb', line 115</span>
+
+def visit_while(node)
+  node.expr.options = @options
+  yield
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:49 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

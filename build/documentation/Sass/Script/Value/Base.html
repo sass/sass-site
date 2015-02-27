@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Script::Value::Base &mdash; Sass Documentation </title> <link rel=stylesheet href="../../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Sass/Script/Value/Base.html";
+</script> <script charset=utf-8 src="../../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../../_index.html">Index (B)</a> &raquo; <span class=title><span class=object_link><a href="../../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../../Script.html" title="Sass::Script (module)">Script</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></span> &raquo; <span class=title>Base</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Script::Value::Base </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName>Object</span> <ul class=fullTree> <li>Object</li> <li class=next>Sass::Script::Value::Base</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>The abstract superclass for SassScript objects.</p> <p>Many of these methods, especially the ones that correspond to SassScript operations, are designed to be overridden by subclasses which may change the semantics somewhat. The operations listed here are just the defaults.</p> </div> </div> <div class=tags> </div><div id=subclasses> <h2>Direct Known Subclasses</h2> <p class=children><span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Bool</a></span>, <span class=object_link><a href="Color.html" title="Sass::Script::Value::Color (class)">Color</a></span>, <span class=object_link><a href="List.html" title="Sass::Script::Value::List (class)">List</a></span>, <span class=object_link><a href="Map.html" title="Sass::Script::Value::Map (class)">Map</a></span>, <span class=object_link><a href="Null.html" title="Sass::Script::Value::Null (class)">Null</a></span>, <span class=object_link><a href="Number.html" title="Sass::Script::Value::Number (class)">Number</a></span>, <span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></p> </div> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#options-instance_method" title="#options (instance method)">- ({Symbol =&gt; Object}) <strong>options</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns the options hash for this node.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#source_range-instance_method" title="#source_range (instance method)">- (Sass::Source::Range) <strong>source_range</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The source range in the document on which this node appeared.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#value-instance_method" title="#value (instance method)">- (Object) <strong>value</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>Returns the Ruby value of the value.</p> </div></span> </li> </ul> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#%3D%3D-instance_method" title="#== (instance method)">- (Boolean) <strong>==</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>Compares this object with another.</p> </div></span> </li> <li class="protected "> <span class=summary_signature> <a href="#_perform-instance_method" title="#_perform (instance method)">- (Value) <strong>_perform</strong>(environment) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline> <p>Evaluates the value.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#assert_int%21-instance_method" title="#assert_int! (instance method)">- <strong>assert_int!</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#div-instance_method" title="#div (instance method)">- (Script::Value::String) <strong>div</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>/</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#eq-instance_method" title="#eq (instance method)">- (Sass::Script::Value::Bool) <strong>eq</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>==</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#eql%3F-instance_method" title="#eql? (instance method)">- (Boolean) <strong>eql?</strong>(other) </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#hash-instance_method" title="#hash (instance method)">- (Fixnum) <strong>hash</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns the hash code of this value.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (Base) <strong>initialize</strong>(value = nil) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>Creates a new value.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#inspect-instance_method" title="#inspect (instance method)">- (String) <strong>inspect</strong> </a> </span> <span class=summary_desc><div class=inline> <p>A readable representation of the value.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#minus-instance_method" title="#minus (instance method)">- (Script::Value::String) <strong>minus</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>-</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#neq-instance_method" title="#neq (instance method)">- (Sass::Script::Value::Bool) <strong>neq</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>!=</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#null%3F-instance_method" title="#null? (instance method)">- (Boolean) <strong>null?</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns whether or not this object is null.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#plus-instance_method" title="#plus (instance method)">- (Script::Value::String) <strong>plus</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>+</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#separator-instance_method" title="#separator (instance method)">- (Symbol) <strong>separator</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns the separator for this value.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#single_eq-instance_method" title="#single_eq (instance method)">- (Script::Value::String) <strong>single_eq</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>=</code> operation (used for proprietary MS syntax like <code>alpha(opacity=20)</code>).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_a-instance_method" title="#to_a (instance method)">- (Array&lt;Value&gt;) <strong>to_a</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns the value of this value as a list.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_bool-instance_method" title="#to_bool (instance method)">- (Boolean) <strong>to_bool</strong> </a> </span> <span class=summary_desc><div class=inline> <p><code>true</code> (the Ruby boolean value).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_h-instance_method" title="#to_h (instance method)">- (Hash&lt;Value, Value&gt;) <strong>to_h</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns the value of this value as a hash.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_i-instance_method" title="#to_i (instance method)">- (Fixnum) <strong>to_i</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The integer value of this value.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_s-instance_method" title="#to_s (instance method)">- (String) <strong>to_s</strong>(opts = {}) </a> (also: #to_sass) </span> <span class=summary_desc><div class=inline> <p>Returns the string representation of this value as it would be output to the CSS document.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unary_div-instance_method" title="#unary_div (instance method)">- (Script::Value::String) <strong>unary_div</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript unary <code>/</code> operation (e.g. <code>/$a</code>).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unary_minus-instance_method" title="#unary_minus (instance method)">- (Script::Value::String) <strong>unary_minus</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript unary <code>-</code> operation (e.g. <code>-$a</code>).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unary_not-instance_method" title="#unary_not (instance method)">- (Sass::Script::Value::Bool) <strong>unary_not</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>==</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unary_plus-instance_method" title="#unary_plus (instance method)">- (Script::Value::String) <strong>unary_plus</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript unary <code>+</code> operation (e.g. <code>+$a</code>).</p> </div></span> </li> </ul> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Script::Value::Base (class)">Base</a></span></tt>) <strong>initialize</strong>(value = nil) </h3><div class=docstring> <div class=discussion> <p>Creates a new value.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>value</span> <span class=type>(<tt>Object</tt>)</span> <em class=default>(defaults to: <tt>nil</tt>)</em> &mdash; <div class=inline> <p>The object for <span class=object_link><a href="#value-instance_method" title="Sass::Script::Value::Base#value (method)">#value</a></span></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+22
+23
+24
+25</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 22</span>
+
+def initialize(value = nil)
+  value.freeze unless value.nil? || value == true || value == false
+  @value = value
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id="options=-instance_method"></span> <div class="method_details first"> <h3 class="signature first" id=options-instance_method> - (<tt>{Symbol =&gt; Object}</tt>) <strong>options</strong> </h3><div class=docstring> <div class=discussion> <p>Returns the options hash for this node.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>{Symbol =&gt; Object}</tt>)</span> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span> &mdash; <div class=inline> <p>if the options hash hasn’t been set. This should only happen when the value was created outside of the parser and <span class=object_link><a href="#to_s-instance_method" title="Sass::Script::Value::Base#to_s (method)">#to_s</a></span> was called on it</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+40
+41
+42
+43
+44
+45
+46
+47
+48</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 40</span>
+
+def options
+  return @options if @options
+  raise Sass::SyntaxError.new(&lt;&lt;MSG)
+The #options attribute is not set on this #{self.class}.
+  This error is probably occurring because #to_s was called
+  on this value within a custom Sass function without first
+  setting the #options attribute.
+MSG
+end</pre> </td> </tr> </table> </div> <span id="source_range=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=source_range-instance_method> - (<tt><span class=object_link><a href="../../Source/Range.html" title="Sass::Source::Range (class)">Sass::Source::Range</a></span></tt>) <strong>source_range</strong> </h3><div class=docstring> <div class=discussion> <p>The source range in the document on which this node appeared.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../../Source/Range.html" title="Sass::Source::Range (class)">Sass::Source::Range</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+17
+18
+19</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 17</span>
+
+def source_range
+  @source_range
+end</pre> </td> </tr> </table> </div> <span id=""></span> <div class="method_details "> <h3 class="signature " id=value-instance_method> - (<tt>Object</tt>) <strong>value</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>Returns the Ruby value of the value. The type of this value varies based on the subclass.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Object</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+12
+13
+14</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 12</span>
+
+def value
+  @value
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id="==-instance_method"> - (<tt>Boolean</tt>) <strong>==</strong>(other) </h3><div class=docstring> <div class=discussion> <p>Compares this object with another.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt>Object</tt>)</span> &mdash; <div class=inline> <p>The object to compare with</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether or not this value is equivalent to <code>other</code></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+174
+175
+176</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 174</span>
+
+def ==(other)
+  eq(other).to_bool
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=_perform-instance_method> - (<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>) <strong>_perform</strong>(environment) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> <p>Evaluates the value.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>environment</span> <span class=type>(<tt><span class=object_link><a href="../../Environment.html" title="Sass::Environment (class)">Sass::Environment</a></span></tt>)</span> &mdash; <div class=inline> <p>The environment in which to evaluate the SassScript</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>This value</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+236
+237
+238</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 236</span>
+
+def _perform(environment)
+  self
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="assert_int!-instance_method"> - <strong>assert_int!</strong> </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span> &mdash; <div class=inline> <p>if this value isn’t an integer</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+185</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 185</span>
+
+def assert_int!; to_i; end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=div-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>) <strong>div</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>/</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>)</span> &mdash; <div class=inline> <p>A string containing both values separated by <code>&quot;/&quot;</code></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+117
+118
+119</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 117</span>
+
+def div(other)
+  Sass::Script::Value::String.new(&quot;#{to_s}/#{other.to_s}&quot;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=eq-instance_method> - (<tt><span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span></tt>) <strong>eq</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>==</code> operation. <strong>Note that this returns a <span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span> object, not a Ruby boolean</strong>.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span></tt>)</span> &mdash; <div class=inline> <p>True if this value is the same as the other, false otherwise</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+57
+58
+59</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 57</span>
+
+def eq(other)
+  Sass::Script::Value::Bool.new(self.class == other.class &amp;&amp; value == other.value)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="eql?-instance_method"> - (<tt>Boolean</tt>) <strong>eql?</strong>(other) </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+156
+157
+158</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 156</span>
+
+def eql?(other)
+  self == other
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=hash-instance_method> - (<tt>Fixnum</tt>) <strong>hash</strong> </h3><div class=docstring> <div class=discussion> <p>Returns the hash code of this value. Two objects’ hash codes should be equal if the objects are equal.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Fixnum</tt>)</span> &mdash; <div class=inline> <p>The hash code.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+152
+153
+154</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 152</span>
+
+def hash
+  value.hash
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=inspect-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>) <strong>inspect</strong> </h3><div class=docstring> <div class=discussion> <p>Returns A readable representation of the value</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>)</span> &mdash; <div class=inline> <p>A readable representation of the value</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+161
+162
+163</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 161</span>
+
+def inspect
+  value.inspect
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=minus-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>) <strong>minus</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>-</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>)</span> &mdash; <div class=inline> <p>A string containing both values separated by <code>&quot;-&quot;</code></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+108
+109
+110</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 108</span>
+
+def minus(other)
+  Sass::Script::Value::String.new(&quot;#{to_s}-#{other.to_s}&quot;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=neq-instance_method> - (<tt><span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span></tt>) <strong>neq</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>!=</code> operation. <strong>Note that this returns a <span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span> object, not a Ruby boolean</strong>.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span></tt>)</span> &mdash; <div class=inline> <p>False if this value is the same as the other, true otherwise</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+68
+69
+70</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 68</span>
+
+def neq(other)
+  Sass::Script::Value::Bool.new(!eq(other).to_bool)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="null?-instance_method"> - (<tt>Boolean</tt>) <strong>null?</strong> </h3><div class=docstring> <div class=discussion> <p>Returns whether or not this object is null.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p><code>false</code></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+226
+227
+228</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 226</span>
+
+def null?
+  false
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=plus-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>) <strong>plus</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>+</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>)</span> &mdash; <div class=inline> <p>A string containing both values without any separation</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+98
+99
+100
+101</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 98</span>
+
+def plus(other)
+  type = other.is_a?(Sass::Script::Value::String) ? other.type : :identifier
+  Sass::Script::Value::String.new(to_s(:quote =&gt; :none) + other.to_s(:quote =&gt; :none), type)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=separator-instance_method> - (<tt>Symbol</tt>) <strong>separator</strong> </h3><div class=docstring> <div class=discussion> <p>Returns the separator for this value. For non-list-like values or the empty list, this will be <code>nil</code>. For lists or maps, it will be <code>:space</code> or <code>:comma</code>.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Symbol</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+192</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 192</span>
+
+def separator; nil; end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=single_eq-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>) <strong>single_eq</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>=</code> operation (used for proprietary MS syntax like <code>alpha(opacity=20)</code>).</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>)</span> &mdash; <div class=inline> <p>A string containing both values separated by <code>&quot;=&quot;</code></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+89
+90
+91</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 89</span>
+
+def single_eq(other)
+  Sass::Script::Value::String.new(&quot;#{to_s}=#{other.to_s}&quot;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_a-instance_method> - (<tt>Array&lt;<span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span>&gt;</tt>) <strong>to_a</strong> </h3><div class=docstring> <div class=discussion> <p>Returns the value of this value as a list. Single values are considered the same as single-element lists.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;<span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span>&gt;</tt>)</span> &mdash; <div class=inline> <p>This value as a list</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+198
+199
+200</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 198</span>
+
+def to_a
+  [self]
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_bool-instance_method> - (<tt>Boolean</tt>) <strong>to_bool</strong> </h3><div class=docstring> <div class=discussion> <p>Returns <code>true</code> (the Ruby boolean value)</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p><code>true</code> (the Ruby boolean value)</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+166
+167
+168</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 166</span>
+
+def to_bool
+  true
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_h-instance_method> - (<tt>Hash&lt;<span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span>, <span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span>&gt;</tt>) <strong>to_h</strong> </h3><div class=docstring> <div class=discussion> <p>Returns the value of this value as a hash. Most values don’t have hash representations, but [Map]s and empty [List]s do.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Hash&lt;<span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span>, <span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span>&gt;</tt>)</span> &mdash; <div class=inline> <p>This value as a hash</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span> &mdash; <div class=inline> <p>if this value doesn’t have a hash representation</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+207
+208
+209</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 207</span>
+
+def to_h
+  raise Sass::SyntaxError.new(&quot;#{inspect} is not a map.&quot;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_i-instance_method> - (<tt>Fixnum</tt>) <strong>to_i</strong> </h3><div class=docstring> <div class=discussion> <p>Returns The integer value of this value</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Fixnum</tt>)</span> &mdash; <div class=inline> <p>The integer value of this value</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span> &mdash; <div class=inline> <p>if this value isn’t an integer</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+180
+181
+182</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 180</span>
+
+def to_i
+  raise Sass::SyntaxError.new(&quot;#{inspect} is not an integer.&quot;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_s-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>) <strong>to_s</strong>(opts = {}) <span class=aliases>Also known as: <span class=names><span id=to_sass-instance_method>to_sass</span></span> </span> </h3><div class=docstring> <div class=discussion> <p>Returns the string representation of this value as it would be output to the CSS document.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+218
+219
+220</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 218</span>
+
+def to_s(opts = {})
+  Sass::Util.abstract(self)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=unary_div-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>) <strong>unary_div</strong> </h3><div class=docstring> <div class=discussion> <p>The SassScript unary <code>/</code> operation (e.g. <code>/$a</code>).</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>)</span> &mdash; <div class=inline> <p>A string containing the value preceded by <code>&quot;/&quot;</code></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+144
+145
+146</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 144</span>
+
+def unary_div
+  Sass::Script::Value::String.new(&quot;/#{to_s}&quot;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=unary_minus-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>) <strong>unary_minus</strong> </h3><div class=docstring> <div class=discussion> <p>The SassScript unary <code>-</code> operation (e.g. <code>-$a</code>).</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>)</span> &mdash; <div class=inline> <p>A string containing the value preceded by <code>&quot;-&quot;</code></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+135
+136
+137</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 135</span>
+
+def unary_minus
+  Sass::Script::Value::String.new(&quot;-#{to_s}&quot;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=unary_not-instance_method> - (<tt><span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span></tt>) <strong>unary_not</strong> </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>==</code> operation. <strong>Note that this returns a <span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span> object, not a Ruby boolean</strong>.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="Bool.html" title="Sass::Script::Value::Bool (class)">Sass::Script::Value::Bool</a></span></tt>)</span> &mdash; <div class=inline> <p>True if this value is the same as the other, false otherwise</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+79
+80
+81</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 79</span>
+
+def unary_not
+  Sass::Script::Value::Bool.new(!to_bool)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=unary_plus-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>) <strong>unary_plus</strong> </h3><div class=docstring> <div class=discussion> <p>The SassScript unary <code>+</code> operation (e.g. <code>+$a</code>).</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">Script::Value::String</a></span></tt>)</span> &mdash; <div class=inline> <p>A string containing the value preceded by <code>&quot;+&quot;</code></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+126
+127
+128</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/base.rb', line 126</span>
+
+def unary_plus
+  Sass::Script::Value::String.new(&quot;+#{to_s}&quot;)
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:16 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

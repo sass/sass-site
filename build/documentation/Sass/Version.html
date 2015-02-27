@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Module: Sass::Version &mdash; Sass Documentation </title> <link rel=stylesheet href="../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Sass/Version.html";
+</script> <script charset=utf-8 src="../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../_index.html">Index (V)</a> &raquo; <span class=title><span class=object_link><a href="../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title>Version</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Module: Sass::Version </h1> <dl class=box> <dt class=r1>Included in:</dt> <dd class=r1><span class=object_link><a href="../Sass.html" title="Sass (module)">Sass</a></span></dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/version.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>Handles Sass version-reporting. Sass not only reports the standard three version numbers, but its Git revision hash as well, if it was installed from Git.</p> </div> </div> <div class=tags> </div> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#version-instance_method" title="#version (instance method)">- ({Symbol =&gt; String/Fixnum}) <strong>version</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns a hash representing the version of Sass.</p> </div></span> </li> </ul> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=version-instance_method> - (<tt>{Symbol =&gt; String/Fixnum}</tt>) <strong>version</strong> </h3><div class=docstring> <div class=discussion> <p>Returns a hash representing the version of Sass. The <code>:major</code>, <code>:minor</code>, and <code>:teeny</code> keys have their respective numbers as Fixnums. The <code>:name</code> key has the name of the version. The <code>:string</code> key contains a human-readable string representation of the version. The <code>:number</code> key is the major, minor, and teeny keys separated by periods. The <code>:date</code> key, which is not guaranteed to be defined, is the <code>DateTime</code> at which this release was cut. If Sass is checked out from Git, the <code>:rev</code> key will have the revision hash. For example:</p> <pre class="code ruby"><code class="ruby">{
+  :string =&gt; &quot;2.1.0.9616393&quot;,
+  :rev    =&gt; &quot;9616393b8924ef36639c7e82aa88a51a24d16949&quot;,
+  :number =&gt; &quot;2.1.0&quot;,
+  :date   =&gt; DateTime.parse(&quot;Apr 30 13:52:01 2009 -0700&quot;),
+  :major  =&gt; 2, :minor =&gt; 1, :teeny =&gt; 0
+}</code></pre> <p>If a prerelease version of Sass is being used, the <code>:string</code> and <code>:number</code> fields will reflect the full version (e.g. <code>&quot;2.2.beta.1&quot;</code>), and the <code>:teeny</code> field will be <code>-1</code>. A <code>:prerelease</code> key will contain the name of the prerelease (e.g. <code>&quot;beta&quot;</code>), and a <code>:prerelease_number</code> key will contain the rerelease number. For example:</p> <pre class="code ruby"><code class="ruby">{
+  :string =&gt; &quot;3.0.beta.1&quot;,
+  :number =&gt; &quot;3.0.beta.1&quot;,
+  :date   =&gt; DateTime.parse(&quot;Mar 31 00:38:04 2010 -0700&quot;),
+  :major =&gt; 3, :minor =&gt; 0, :teeny =&gt; -1,
+  :prerelease =&gt; &quot;beta&quot;,
+  :prerelease_number =&gt; 1
+}</code></pre> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>{Symbol =&gt; String/Fixnum}</tt>)</span> &mdash; <div class=inline> <p>The version hash</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/version.rb', line 47</span>
+
+def version
+  return @@version if defined?(@@version)
+
+  numbers = File.read(Sass::Util.scope(&#39;VERSION&#39;)).strip.split(&#39;.&#39;).
+    map {|n| n =~ /^[0-9]+$/ ? n.to_i : n}
+  name = File.read(Sass::Util.scope(&#39;VERSION_NAME&#39;)).strip
+  @@version = {
+    :major =&gt; numbers[0],
+    :minor =&gt; numbers[1],
+    :teeny =&gt; numbers[2],
+    :name =&gt; name
+  }
+
+  if (date = version_date)
+    @@version[:date] = date
+  end
+
+  if numbers[3].is_a?(String)
+    @@version[:teeny] = -1
+    @@version[:prerelease] = numbers[3]
+    @@version[:prerelease_number] = numbers[4]
+  end
+
+  @@version[:number] = numbers.join(&#39;.&#39;)
+  @@version[:string] = @@version[:number].dup
+
+  if (rev = revision_number)
+    @@version[:rev] = rev
+    unless rev[0] == ?(
+      @@version[:string] &lt;&lt; &quot;.&quot; &lt;&lt; rev[0...7]
+    end
+  end
+
+  @@version[:string] &lt;&lt; &quot; (#{name})&quot;
+  @@version
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:02 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

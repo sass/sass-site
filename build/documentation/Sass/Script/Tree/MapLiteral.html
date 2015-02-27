@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Script::Tree::MapLiteral &mdash; Sass Documentation </title> <link rel=stylesheet href="../../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Sass/Script/Tree/MapLiteral.html";
+</script> <script charset=utf-8 src="../../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../../_index.html">Index (M)</a> &raquo; <span class=title><span class=object_link><a href="../../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../../Script.html" title="Sass::Script (module)">Script</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Tree.html" title="Sass::Script::Tree (module)">Tree</a></span></span> &raquo; <span class=title>MapLiteral</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Script::Tree::MapLiteral </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName><span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span></span> <ul class=fullTree> <li>Object</li> <li class=next><span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span></li> <li class=next>Sass::Script::Tree::MapLiteral</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/script/tree/map_literal.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A class representing a map literal. When resolved, this returns a Node::Map.</p> </div> </div> <div class=tags> </div> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#pairs-instance_method" title="#pairs (instance method)">- (Array&lt;(Node, Node)&gt;) <strong>pairs</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>The key/value pairs that make up this map node.</p> </div></span> </li> </ul> <h3 class=inherited>Attributes inherited from <span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span></h3> <p class=inherited><span class=object_link><a href="Node.html#filename-instance_method" title="Sass::Script::Tree::Node#filename (method)">#filename</a></span>, <span class=object_link><a href="Node.html#line-instance_method" title="Sass::Script::Tree::Node#line (method)">#line</a></span>, <span class=object_link><a href="Node.html#options-instance_method" title="Sass::Script::Tree::Node#options (method)">#options</a></span>, <span class=object_link><a href="Node.html#source_range-instance_method" title="Sass::Script::Tree::Node#source_range (method)">#source_range</a></span></p> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="protected "> <span class=summary_signature> <a href="#_perform-instance_method" title="#_perform (instance method)">- <strong>_perform</strong>(environment) </a> </span> <span class="note title protected">protected</span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#children-instance_method" title="#children (instance method)">- <strong>children</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#deep_copy-instance_method" title="#deep_copy (instance method)">- <strong>deep_copy</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (MapLiteral) <strong>initialize</strong>(pairs) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>Creates a new map literal.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_sass-instance_method" title="#to_sass (instance method)">- <strong>to_sass</strong>(opts = {}) </a> (also: #inspect) </span> <span class=summary_desc><div class=inline></div></span> </li> </ul> <h3 class=inherited>Methods inherited from <span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span></h3> <p class=inherited><span class=object_link><a href="Node.html#dasherize-instance_method" title="Sass::Script::Tree::Node#dasherize (method)">#dasherize</a></span>, <span class=object_link><a href="Node.html#opts-instance_method" title="Sass::Script::Tree::Node#opts (method)">#opts</a></span>, <span class=object_link><a href="Node.html#perform-instance_method" title="Sass::Script::Tree::Node#perform (method)">#perform</a></span></p> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Script::Tree::MapLiteral (class)">MapLiteral</a></span></tt>) <strong>initialize</strong>(pairs) </h3><div class=docstring> <div class=discussion> <p>Creates a new map literal.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>pairs</span> <span class=type>(<tt>Array&lt;(<span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span>, <span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span>)&gt;</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="#pairs-instance_method" title="Sass::Script::Tree::MapLiteral#pairs (method)">#pairs</a></span></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+14
+15
+16</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/tree/map_literal.rb', line 14</span>
+
+def initialize(pairs)
+  @pairs = pairs
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id=""></span> <div class="method_details first"> <h3 class="signature first" id=pairs-instance_method> - (<tt>Array&lt;(<span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span>, <span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span>)&gt;</tt>) <strong>pairs</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>The key/value pairs that make up this map node. This isn’t a Hash so that we can detect key collisions once all the keys have been performed.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;(<span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span>, <span class=object_link><a href="Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span>)&gt;</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+9
+10
+11</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/tree/map_literal.rb', line 9</span>
+
+def pairs
+  @pairs
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=_perform-instance_method> - <strong>_perform</strong>(environment) <span class=extras>(protected)</span> </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="Node.html#_perform-instance_method" title="Sass::Script::Tree::Node#_perform (method)">Node#_perform</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/tree/map_literal.rb', line 50</span>
+
+def _perform(environment)
+  keys = Set.new
+  map = Sass::Script::Value::Map.new(Sass::Util.to_hash(pairs.map do |(k, v)|
+    k, v = k.perform(environment), v.perform(environment)
+    if keys.include?(k)
+      raise Sass::SyntaxError.new(&quot;Duplicate key #{k.inspect} in map #{to_sass}.&quot;)
+    end
+    keys &lt;&lt; k
+    [k, v]
+  end))
+  map.options = options
+  map
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=children-instance_method> - <strong>children</strong> </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="Node.html#children-instance_method" title="Sass::Script::Tree::Node#children (method)">Node#children</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+19
+20
+21</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/tree/map_literal.rb', line 19</span>
+
+def children
+  @pairs.flatten
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=deep_copy-instance_method> - <strong>deep_copy</strong> </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="Node.html#deep_copy-instance_method" title="Sass::Script::Tree::Node#deep_copy (method)">Node#deep_copy</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+40
+41
+42
+43
+44
+45</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/tree/map_literal.rb', line 40</span>
+
+def deep_copy
+  node = dup
+  node.instance_variable_set(&#39;@pairs&#39;,
+    pairs.map {|(k, v)| [k.deep_copy, v.deep_copy]})
+  node
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_sass-instance_method> - <strong>to_sass</strong>(opts = {}) <span class=aliases>Also known as: <span class=names><span id=inspect-instance_method>inspect</span></span> </span> </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="Node.html#to_sass-instance_method" title="Sass::Script::Tree::Node#to_sass (method)">Node#to_sass</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/tree/map_literal.rb', line 24</span>
+
+def to_sass(opts = {})
+  return &quot;()&quot; if pairs.empty?
+
+  to_sass = lambda do |value|
+    if value.is_a?(ListLiteral) &amp;&amp; value.separator == :comma
+      &quot;(#{value.to_sass(opts)})&quot;
+    else
+      value.to_sass(opts)
+    end
+  end
+
+  &quot;(&quot; + pairs.map {|(k, v)| &quot;#{to_sass[k]}: #{to_sass[v]}&quot;}.join(&#39;, &#39;) + &quot;)&quot;
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:12 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

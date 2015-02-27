@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Util::SubsetMap &mdash; Sass Documentation </title> <link rel=stylesheet href="../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Util/SubsetMap.html";
+</script> <script charset=utf-8 src="../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../_index.html">Index (S)</a> &raquo; <span class=title><span class=object_link><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span> &raquo; <span class=title>SubsetMap</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Util::SubsetMap </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName>Object</span> <ul class=fullTree> <li>Object</li> <li class=next>Sass::Util::SubsetMap</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/util/subset_map.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A map from sets to values. A value is <span class=object_link><a href="#%5B%5D%3D-instance_method" title="Sass::Util::SubsetMap#[]= (method)">set</a></span> by providing a set (the “set-set”) and a value, which is then recorded as corresponding to that set. Values are <span class=object_link><a href="#%5B%5D-instance_method" title="Sass::Util::SubsetMap#[] (method)">accessed</a></span> by providing a set (the “get-set”) and returning all values that correspond to set-sets that are subsets of the get-set.</p> <p>SubsetMap preserves the order of values as they’re inserted.</p> </div> </div> <div class=tags> <div class=examples> <p class=tag_title>Examples:</p> <pre class="example code"><code>ssm = SubsetMap.new
+ssm[Set[1, 2]] = &quot;Foo&quot;
+ssm[Set[2, 3]] = &quot;Bar&quot;
+ssm[Set[1, 2, 3]] = &quot;Baz&quot;
+
+ssm[Set[1, 2, 3]] #=&gt; [&quot;Foo&quot;, &quot;Bar&quot;, &quot;Baz&quot;]</code></pre> </div> </div> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#%5B%5D-instance_method" title="#[] (instance method)">- (Array) <strong>[]</strong>(set) </a> </span> <span class=summary_desc><div class=inline> <p>Same as <span class=object_link><a href="#get-instance_method" title="Sass::Util::SubsetMap#get (method)">#get</a></span>, but doesn’t return the subsets of the argument for which values were found.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#%5B%5D%3D-instance_method" title="#[]= (instance method)">- <strong>[]=</strong>(set, value) </a> </span> <span class=summary_desc><div class=inline> <p>Associates a value with a set.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#each_value-instance_method" title="#each_value (instance method)">- <strong>each_value</strong> {|Object| ... }</a> </span> <span class=summary_desc><div class=inline> <p>Iterates over each value in the subset map.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#empty%3F-instance_method" title="#empty? (instance method)">- (Boolean) <strong>empty?</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Whether or not this SubsetMap has any key-value pairs.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#get-instance_method" title="#get (instance method)">- (Array&lt;(Object, #to_set)&gt;) <strong>get</strong>(set) </a> </span> <span class=summary_desc><div class=inline> <p>Returns all values associated with subsets of <code>set</code>.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (SubsetMap) <strong>initialize</strong> </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>Creates a new, empty SubsetMap.</p> </div></span> </li> </ul> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Util::SubsetMap (class)">SubsetMap</a></span></tt>) <strong>initialize</strong> </h3><div class=docstring> <div class=discussion> <p>Creates a new, empty SubsetMap.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+23
+24
+25
+26</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/util/subset_map.rb', line 23</span>
+
+def initialize
+  @hash = {}
+  @vals = []
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id="[]-instance_method"> - (<tt>Array</tt>) <strong>[]</strong>(set) </h3><div class=docstring> <div class=discussion> <p>Same as <span class=object_link><a href="#get-instance_method" title="Sass::Util::SubsetMap#get (method)">#get</a></span>, but doesn’t return the subsets of the argument for which values were found.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>set</span> <span class=type>(<tt>Set</tt>)</span> &mdash; <div class=inline> <p>The set to use as the map key.</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array</tt>)</span> &mdash; <div class=inline> <p>The array of all values associated with subsets of <code>set</code>, in insertion order.</p> </div> </li> </ul> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="#get-instance_method" title="Sass::Util::SubsetMap#get (method)">#get</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+97
+98
+99</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/util/subset_map.rb', line 97</span>
+
+def [](set)
+  get(set).map {|v, _| v}
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="[]=-instance_method"> - <strong>[]=</strong>(set, value) </h3><div class=docstring> <div class=discussion> <p>Associates a value with a set. When <code>set</code> or any of its supersets is accessed, <code>value</code> will be among the values returned.</p> <p>Note that if the same <code>set</code> is passed to this method multiple times, all given <code>value</code>s will be associated with that <code>set</code>.</p> <p>This runs in <code>O(n)</code> time, where <code>n</code> is the size of <code>set</code>.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>set</span> <span class=type>(<tt>#to_set</tt>)</span> &mdash; <div class=inline> <p>The set to use as the map key. May not be empty.</p> </div> </li> <li> <span class=name>value</span> <span class=type>(<tt>Object</tt>)</span> &mdash; <div class=inline> <p>The value to associate with <code>set</code>.</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt>ArgumentError</tt>)</span> &mdash; <div class=inline> <p>If <code>set</code> is empty.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/util/subset_map.rb', line 47</span>
+
+def []=(set, value)
+  raise ArgumentError.new(&quot;SubsetMap keys may not be empty.&quot;) if set.empty?
+
+  index = @vals.size
+  @vals &lt;&lt; value
+  set.each do |k|
+    @hash[k] ||= []
+    @hash[k] &lt;&lt; [set, set.to_set, index]
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=each_value-instance_method> - <strong>each_value</strong> {|Object| ... } </h3><div class=docstring> <div class=discussion> <p>Iterates over each value in the subset map. Ignores keys completely. If multiple keys have the same value, this will return them multiple times.</p> </div> </div> <div class=tags> <p class=tag_title>Yields:</p> <ul class=yield> <li> <span class=type>(<tt>Object</tt>)</span> &mdash; <div class=inline> <p>Each value in the map.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+105
+106
+107</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/util/subset_map.rb', line 105</span>
+
+def each_value
+  @vals.each {|v| yield v}
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="empty?-instance_method"> - (<tt>Boolean</tt>) <strong>empty?</strong> </h3><div class=docstring> <div class=discussion> <p>Whether or not this SubsetMap has any key-value pairs.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+31
+32
+33</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/util/subset_map.rb', line 31</span>
+
+def empty?
+  @hash.empty?
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=get-instance_method> - (<tt>Array&lt;(Object, #to_set)&gt;</tt>) <strong>get</strong>(set) </h3><div class=docstring> <div class=discussion> <p>Returns all values associated with subsets of <code>set</code>.</p> <p>In the worst case, this runs in <code>O(m*max(n, log m))</code> time, where <code>n</code> is the size of <code>set</code> and <code>m</code> is the number of associations in the map. However, unless many keys in the map overlap with <code>set</code>, <code>m</code> will typically be much smaller.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>set</span> <span class=type>(<tt>Set</tt>)</span> &mdash; <div class=inline> <p>The set to use as the map key.</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;(Object, #to_set)&gt;</tt>)</span> &mdash; <div class=inline> <p>An array of pairs, where the first value is the value associated with a subset of <code>set</code>, and the second value is that subset of <code>set</code> (or whatever <code>#to_set</code> object was used to set the value) This array is in insertion order.</p> </div> </li> </ul> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="#%5B%5D-instance_method" title="Sass::Util::SubsetMap#[] (method)">#[]</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/util/subset_map.rb', line 73</span>
+
+def get(set)
+  res = set.map do |k|
+    subsets = @hash[k]
+    next unless subsets
+    subsets.map do |subenum, subset, index|
+      next unless subset.subset?(set)
+      [index, subenum]
+    end
+  end
+  res = Sass::Util.flatten(res, 1)
+  res.compact!
+  res.uniq!
+  res.sort!
+  res.map! {|i, s| [@vals[i], s]}
+  res
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:50 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>
