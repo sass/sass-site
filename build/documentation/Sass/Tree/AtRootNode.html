@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Tree::AtRootNode &mdash; Sass Documentation </title> <link rel=stylesheet href="../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Tree/AtRootNode.html";
+</script> <script charset=utf-8 src="../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../_index.html">Index (A)</a> &raquo; <span class=title><span class=object_link><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Tree.html" title="Sass::Tree (module)">Tree</a></span></span> &raquo; <span class=title>AtRootNode</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Tree::AtRootNode </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName><span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></span> <ul class=fullTree> <li>Object</li> <li class=next><span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></li> <li class=next>Sass::Tree::AtRootNode</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A dynamic node representing an <code>@at-root</code> directive.</p> <p>An <code>@at-root</code> directive with a selector is converted to an <span class=object_link><a href="" title="Sass::Tree::AtRootNode (class)">AtRootNode</a></span> containing a <span class=object_link><a href="RuleNode.html" title="Sass::Tree::RuleNode (class)">RuleNode</a></span> at parse time.</p> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="../Tree.html" title="Sass::Tree (module)">Sass::Tree</a></span></li> </ul> </div> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#group_end-instance_method" title="#group_end (instance method)">- (Boolean) <strong>group_end</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Whether the last child of this node should be considered the end of a group.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#query-instance_method" title="#query (instance method)">- (Array&lt;String, Sass::Script::Tree::Node&gt;) <strong>query</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The query for this node (e.g. <code>(without: media)</code>), interspersed with <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Script::Tree::Node</a></span>s representing <code>#{}</code>-interpolation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#resolved_type-instance_method" title="#resolved_type (instance method)">- (Symbol) <strong>resolved_type</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The resolved type of this directive.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#resolved_value-instance_method" title="#resolved_value (instance method)">- (Array&lt;String&gt;) <strong>resolved_value</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The resolved value of this directive – a list of directives to either include or exclude.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#tabs-instance_method" title="#tabs (instance method)">- (Number) <strong>tabs</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The number of additional tabs that the contents of this node should be indented.</p> </div></span> </li> </ul> <h3 class=inherited>Attributes inherited from <span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></h3> <p class=inherited><span class=object_link><a href="Node.html#children-instance_method" title="Sass::Tree::Node#children (method)">#children</a></span>, <span class=object_link><a href="Node.html#filename-instance_method" title="Sass::Tree::Node#filename (method)">#filename</a></span>, <span class=object_link><a href="Node.html#has_children-instance_method" title="Sass::Tree::Node#has_children (method)">#has_children</a></span>, <span class=object_link><a href="Node.html#line-instance_method" title="Sass::Tree::Node#line (method)">#line</a></span>, <span class=object_link><a href="Node.html#options-instance_method" title="Sass::Tree::Node#options (method)">#options</a></span>, <span class=object_link><a href="Node.html#source_range-instance_method" title="Sass::Tree::Node#source_range (method)">#source_range</a></span></p> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#bubbles%3F-instance_method" title="#bubbles? (instance method)">- (Boolean) <strong>bubbles?</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#exclude%3F-instance_method" title="#exclude? (instance method)">- (Boolean) <strong>exclude?</strong>(directive) </a> </span> <span class=summary_desc><div class=inline> <p>Returns whether or not the given directive is excluded by this node.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#exclude_node%3F-instance_method" title="#exclude_node? (instance method)">- (Boolean) <strong>exclude_node?</strong>(node) </a> </span> <span class=summary_desc><div class=inline> <p>Returns whether the given node is excluded by this node.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (AtRootNode) <strong>initialize</strong>(query = nil) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>A new instance of AtRootNode.</p> </div></span> </li> </ul> <h3 class=inherited>Methods inherited from <span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></h3> <p class=inherited><span class=object_link><a href="Node.html#%3C%3C-instance_method" title="Sass::Tree::Node#&lt;&lt; (method)">#<<</a></span>, <span class=object_link><a href="Node.html#%3D%3D-instance_method" title="Sass::Tree::Node#== (method)">#==</a></span>, <span class=object_link><a href="Node.html#balance-instance_method" title="Sass::Tree::Node#balance (method)">#balance</a></span>, <span class=object_link><a href="Node.html#css-instance_method" title="Sass::Tree::Node#css (method)">#css</a></span>, <span class=object_link><a href="Node.html#css_with_sourcemap-instance_method" title="Sass::Tree::Node#css_with_sourcemap (method)">#css_with_sourcemap</a></span>, <span class=object_link><a href="Node.html#deep_copy-instance_method" title="Sass::Tree::Node#deep_copy (method)">#deep_copy</a></span>, <span class=object_link><a href="Node.html#each-instance_method" title="Sass::Tree::Node#each (method)">#each</a></span>, <span class=object_link><a href="Node.html#inspect-instance_method" title="Sass::Tree::Node#inspect (method)">#inspect</a></span>, <span class=object_link><a href="Node.html#invisible%3F-instance_method" title="Sass::Tree::Node#invisible? (method)">#invisible?</a></span>, <span class=object_link><a href="Node.html#style-instance_method" title="Sass::Tree::Node#style (method)">#style</a></span>, <span class=object_link><a href="Node.html#to_sass-instance_method" title="Sass::Tree::Node#to_sass (method)">#to_sass</a></span>, <span class=object_link><a href="Node.html#to_scss-instance_method" title="Sass::Tree::Node#to_scss (method)">#to_scss</a></span></p> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Tree::AtRootNode (class)">AtRootNode</a></span></tt>) <strong>initialize</strong>(query = nil) </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of AtRootNode</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+45
+46
+47
+48
+49</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 45</span>
+
+def initialize(query = nil)
+  super()
+  @query = Sass::Util.strip_string_array(Sass::Util.merge_adjacent_strings(query)) if query
+  @tabs = 0
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id="group_end=-instance_method"></span> <div class="method_details first"> <h3 class="signature first" id=group_end-instance_method> - (<tt>Boolean</tt>) <strong>group_end</strong> </h3><div class=docstring> <div class=discussion> <p>Whether the last child of this node should be considered the end of a group.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+43
+44
+45</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 43</span>
+
+def group_end
+  @group_end
+end</pre> </td> </tr> </table> </div> <span id="query=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=query-instance_method> - (<tt>Array&lt;String, <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span>&gt;</tt>) <strong>query</strong> </h3><div class=docstring> <div class=discussion> <p>The query for this node (e.g. <code>(without: media)</code>), interspersed with <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Script::Tree::Node</a></span>s representing <code>#{}</code>-interpolation. Any adjacent strings will be merged together.</p> <p>This will be nil if the directive didn’t have a query. In this case, will automatically be set to <code>:without</code> and will automatically be set to <code>[&quot;rule&quot;]</code>.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;String, <span class=object_link><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span>&gt;</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+20
+21
+22</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 20</span>
+
+def query
+  @query
+end</pre> </td> </tr> </table> </div> <span id="resolved_type=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=resolved_type-instance_method> - (<tt>Symbol</tt>) <strong>resolved_type</strong> </h3><div class=docstring> <div class=discussion> <p>The resolved type of this directive. <code>:with</code> or <code>:without</code>.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Symbol</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+25
+26
+27</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 25</span>
+
+def resolved_type
+  @resolved_type
+end</pre> </td> </tr> </table> </div> <span id="resolved_value=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=resolved_value-instance_method> - (<tt>Array&lt;String&gt;</tt>) <strong>resolved_value</strong> </h3><div class=docstring> <div class=discussion> <p>The resolved value of this directive – a list of directives to either include or exclude.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;String&gt;</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+31
+32
+33</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 31</span>
+
+def resolved_value
+  @resolved_value
+end</pre> </td> </tr> </table> </div> <span id="tabs=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=tabs-instance_method> - (<tt>Number</tt>) <strong>tabs</strong> </h3><div class=docstring> <div class=discussion> <p>The number of additional tabs that the contents of this node should be indented.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Number</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+37
+38
+39</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 37</span>
+
+def tabs
+  @tabs
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id="bubbles?-instance_method"> - (<tt>Boolean</tt>) <strong>bubbles?</strong> </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="Node.html#bubbles%3F-instance_method" title="Sass::Tree::Node#bubbles? (method)">Node#bubbles?</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+78
+79
+80</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 78</span>
+
+def bubbles?
+  true
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="exclude?-instance_method"> - (<tt>Boolean</tt>) <strong>exclude?</strong>(directive) </h3><div class=docstring> <div class=discussion> <p>Returns whether or not the given directive is excluded by this node. <code>directive</code> may be “rule”, which indicates whether normal CSS rules should be excluded.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>directive</span> <span class=type>(<tt>String</tt>)</span> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 57</span>
+
+def exclude?(directive)
+  if resolved_type == :with
+    return false if resolved_value.include?(&#39;all&#39;)
+    !resolved_value.include?(directive)
+  else # resolved_type == :without
+    return true if resolved_value.include?(&#39;all&#39;)
+    resolved_value.include?(directive)
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="exclude_node?-instance_method"> - (<tt>Boolean</tt>) <strong>exclude_node?</strong>(node) </h3><div class=docstring> <div class=discussion> <p>Returns whether the given node is excluded by this node.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>node</span> <span class=type>(<tt><span class=object_link><a href="Node.html" title="Sass::Tree::Node (class)">Sass::Tree::Node</a></span></tt>)</span> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+71
+72
+73
+74
+75</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/tree/at_root_node.rb', line 71</span>
+
+def exclude_node?(node)
+  return exclude?(node.name.gsub(/^@/, &#39;&#39;)) if node.is_a?(Sass::Tree::DirectiveNode)
+  return exclude?(&#39;keyframes&#39;) if node.is_a?(Sass::Tree::KeyframeRuleNode)
+  exclude?(&#39;rule&#39;) &amp;&amp; node.is_a?(Sass::Tree::RuleNode)
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:34 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

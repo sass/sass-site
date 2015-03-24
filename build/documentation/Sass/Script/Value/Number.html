@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Script::Value::Number &mdash; Sass Documentation </title> <link rel=stylesheet href="../../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Sass/Script/Value/Number.html";
+</script> <script charset=utf-8 src="../../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../../_index.html">Index (N)</a> &raquo; <span class=title><span class=object_link><a href="../../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../../Script.html" title="Sass::Script (module)">Script</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></span> &raquo; <span class=title>Number</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Script::Value::Number </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName><span class=object_link><a href="Base.html" title="Sass::Script::Value::Base (class)">Base</a></span></span> <ul class=fullTree> <li>Object</li> <li class=next><span class=object_link><a href="Base.html" title="Sass::Script::Value::Base (class)">Base</a></span></li> <li class=next>Sass::Script::Value::Number</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A SassScript object representing a number. SassScript numbers can have decimal values, and can also have units. For example, <code>12</code>, <code>1px</code>, and <code>10.45em</code> are all valid values.</p> <p>Numbers can also have more complex units, such as <code>1px*em/in</code>. These cannot be inputted directly in Sass code at the moment.</p> </div> </div> <div class=tags> </div> <h2>Constant Summary</h2> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#denominator_units-instance_method" title="#denominator_units (instance method)">- (Array&lt;String&gt;) <strong>denominator_units</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>A list of units in the denominator of the number.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#numerator_units-instance_method" title="#numerator_units (instance method)">- (Array&lt;String&gt;) <strong>numerator_units</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>A list of units in the numerator of the number.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#original-instance_method" title="#original (instance method)">- (Boolean<sup>?</sup>) <strong>original</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The original representation of this number.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#value-instance_method" title="#value (instance method)">- (Numeric) <strong>value</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>The Ruby value of the number.</p> </div></span> </li> </ul> <h3 class=inherited>Attributes inherited from <span class=object_link><a href="Base.html" title="Sass::Script::Value::Base (class)">Base</a></span></h3> <p class=inherited><span class=object_link><a href="Base.html#options-instance_method" title="Sass::Script::Value::Base#options (method)">#options</a></span>, <span class=object_link><a href="Base.html#source_range-instance_method" title="Sass::Script::Value::Base#source_range (method)">#source_range</a></span></p> <h2> Class Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#precision-class_method" title="precision (class method)">+ <strong>precision</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#precision%3D-class_method" title="precision= (class method)">+ <strong>precision=</strong>(digits) </a> </span> <span class=summary_desc><div class=inline> <p>Sets the number of digits of precision For example, if this is <code>3</code>, <code>3.1415926</code> will be printed as <code>3.142</code>.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#precision_factor-class_method" title="precision_factor (class method)">+ <strong>precision_factor</strong> </a> </span> <span class=summary_desc><div class=inline> <p>the precision factor used in numeric output it is derived from the <code>precision</code> method.</p> </div></span> </li> </ul> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#coerce-instance_method" title="#coerce (instance method)">- (Number) <strong>coerce</strong>(num_units, den_units) </a> </span> <span class=summary_desc><div class=inline> <p>Returns this number converted to other units.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#comparable_to%3F-instance_method" title="#comparable_to? (instance method)">- (Boolean) <strong>comparable_to?</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>Whether or not this number can be compared with the other.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#div-instance_method" title="#div (instance method)">- (Value) <strong>div</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>/</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#eq-instance_method" title="#eq (instance method)">- (Boolean) <strong>eq</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>==</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#eql%3F-instance_method" title="#eql? (instance method)">- (Boolean) <strong>eql?</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>Hash-equality works differently than <code>==</code> equality for numbers.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#gt-instance_method" title="#gt (instance method)">- (Boolean) <strong>gt</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>&gt;</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#gte-instance_method" title="#gte (instance method)">- (Boolean) <strong>gte</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>&gt;=</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#hash-instance_method" title="#hash (instance method)">- <strong>hash</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (Number) <strong>initialize</strong>(value, numerator_units = NO_UNITS, denominator_units = NO_UNITS) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>A new instance of Number.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#inspect-instance_method" title="#inspect (instance method)">- (String) <strong>inspect</strong>(opts = {}) </a> (also: #to_sass) </span> <span class=summary_desc><div class=inline> <p>Returns a readable representation of this number.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#int%3F-instance_method" title="#int? (instance method)">- (Boolean) <strong>int?</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Whether or not this number is an integer.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#is_unit%3F-instance_method" title="#is_unit? (instance method)">- (Boolean) <strong>is_unit?</strong>(unit) </a> </span> <span class=summary_desc><div class=inline> <p>Checks whether the number has the numerator unit specified.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#legal_units%3F-instance_method" title="#legal_units? (instance method)">- (Boolean) <strong>legal_units?</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Whether or not this number has units that can be represented in CSS (that is, zero or one <span class=object_link><a href="#numerator_units-instance_method" title="Sass::Script::Value::Number#numerator_units (method)">#numerator_units</a></span>).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#lt-instance_method" title="#lt (instance method)">- (Boolean) <strong>lt</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>&lt;</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#lte-instance_method" title="#lte (instance method)">- (Boolean) <strong>lte</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>&lt;=</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#minus-instance_method" title="#minus (instance method)">- (Value) <strong>minus</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript binary <code>-</code> operation (e.g. <code>$a - $b</code>).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#mod-instance_method" title="#mod (instance method)">- (Number) <strong>mod</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>%</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#plus-instance_method" title="#plus (instance method)">- (Value) <strong>plus</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>+</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#times-instance_method" title="#times (instance method)">- (Number, Color) <strong>times</strong>(other) </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript <code>*</code> operation.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_i-instance_method" title="#to_i (instance method)">- (Fixnum) <strong>to_i</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The integer value of the number.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_s-instance_method" title="#to_s (instance method)">- (String) <strong>to_s</strong>(opts = {}) </a> </span> <span class=summary_desc><div class=inline> <p>The CSS representation of this number.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unary_minus-instance_method" title="#unary_minus (instance method)">- (Number) <strong>unary_minus</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript unary <code>-</code> operation (e.g. <code>-$a</code>).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unary_plus-instance_method" title="#unary_plus (instance method)">- (Number) <strong>unary_plus</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The SassScript unary <code>+</code> operation (e.g. <code>+$a</code>).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unit_str-instance_method" title="#unit_str (instance method)">- (String) <strong>unit_str</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns a human readable representation of the units in this number.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unitless%3F-instance_method" title="#unitless? (instance method)">- (Boolean) <strong>unitless?</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Whether or not this number has no units.</p> </div></span> </li> </ul> <h3 class=inherited>Methods inherited from <span class=object_link><a href="Base.html" title="Sass::Script::Value::Base (class)">Base</a></span></h3> <p class=inherited><span class=object_link><a href="Base.html#%3D%3D-instance_method" title="Sass::Script::Value::Base#== (method)">#==</a></span>, <span class=object_link><a href="Base.html#_perform-instance_method" title="Sass::Script::Value::Base#_perform (method)">#_perform</a></span>, <span class=object_link><a href="Base.html#assert_int%21-instance_method" title="Sass::Script::Value::Base#assert_int! (method)">#assert_int!</a></span>, <span class=object_link><a href="Base.html#neq-instance_method" title="Sass::Script::Value::Base#neq (method)">#neq</a></span>, <span class=object_link><a href="Base.html#null%3F-instance_method" title="Sass::Script::Value::Base#null? (method)">#null?</a></span>, <span class=object_link><a href="Base.html#separator-instance_method" title="Sass::Script::Value::Base#separator (method)">#separator</a></span>, <span class=object_link><a href="Base.html#single_eq-instance_method" title="Sass::Script::Value::Base#single_eq (method)">#single_eq</a></span>, <span class=object_link><a href="Base.html#to_a-instance_method" title="Sass::Script::Value::Base#to_a (method)">#to_a</a></span>, <span class=object_link><a href="Base.html#to_bool-instance_method" title="Sass::Script::Value::Base#to_bool (method)">#to_bool</a></span>, <span class=object_link><a href="Base.html#to_h-instance_method" title="Sass::Script::Value::Base#to_h (method)">#to_h</a></span>, <span class=object_link><a href="Base.html#unary_div-instance_method" title="Sass::Script::Value::Base#unary_div (method)">#unary_div</a></span>, <span class=object_link><a href="Base.html#unary_not-instance_method" title="Sass::Script::Value::Base#unary_not (method)">#unary_not</a></span></p> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>) <strong>initialize</strong>(value, numerator_units = NO_UNITS, denominator_units = NO_UNITS) </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of Number</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>value</span> <span class=type>(<tt>Numeric</tt>)</span> &mdash; <div class=inline> <p>The value of the number</p> </div> </li> <li> <span class=name>numerator_units</span> <span class=type>(<tt>::String</tt>, <tt>Array&lt;::String&gt;</tt>)</span> <em class=default>(defaults to: <tt>NO_UNITS</tt>)</em> &mdash; <div class=inline> <p>See <span class=object_link><a href="#numerator_units-instance_method" title="Sass::Script::Value::Number#numerator_units (method)">#numerator_units</a></span></p> </div> </li> <li> <span class=name>denominator_units</span> <span class=type>(<tt>::String</tt>, <tt>Array&lt;::String&gt;</tt>)</span> <em class=default>(defaults to: <tt>NO_UNITS</tt>)</em> &mdash; <div class=inline> <p>See <span class=object_link><a href="#denominator_units-instance_method" title="Sass::Script::Value::Number#denominator_units (method)">#denominator_units</a></span></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+60
+61
+62
+63
+64
+65
+66
+67</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 60</span>
+
+def initialize(value, numerator_units = NO_UNITS, denominator_units = NO_UNITS)
+  numerator_units = [numerator_units] if numerator_units.is_a?(::String)
+  denominator_units = [denominator_units] if denominator_units.is_a?(::String)
+  super(value)
+  @numerator_units = numerator_units
+  @denominator_units = denominator_units
+  normalize!
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id=""></span> <div class="method_details first"> <h3 class="signature first" id=denominator_units-instance_method> - (<tt>Array&lt;<span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span>&gt;</tt>) <strong>denominator_units</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>A list of units in the denominator of the number. For example, <code>1px*em/in*cm</code> would return <code>[&quot;in&quot;, &quot;cm&quot;]</code></p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;<span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span>&gt;</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+24
+25
+26</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 24</span>
+
+def denominator_units
+  @denominator_units
+end</pre> </td> </tr> </table> </div> <span id=""></span> <div class="method_details "> <h3 class="signature " id=numerator_units-instance_method> - (<tt>Array&lt;<span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span>&gt;</tt>) <strong>numerator_units</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>A list of units in the numerator of the number. For example, <code>1px*em/in*cm</code> would return <code>[&quot;px&quot;, &quot;em&quot;]</code></p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;<span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span>&gt;</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+19
+20
+21</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 19</span>
+
+def numerator_units
+  @numerator_units
+end</pre> </td> </tr> </table> </div> <span id="original=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=original-instance_method> - (<tt>Boolean</tt><sup>?</sup>) <strong>original</strong> </h3><div class=docstring> <div class=discussion> <p>The original representation of this number. For example, although the result of <code>1px/2px</code> is <code>0.5</code>, the value of <code>#original</code> is <code>&quot;1px/2px&quot;</code>.</p> <p>This is only non-nil when the original value should be used as the CSS value, as in <code>font: 1px/2px</code>.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>, <tt>nil</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+34
+35
+36</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 34</span>
+
+def original
+  @original
+end</pre> </td> </tr> </table> </div> <span id=""></span> <div class="method_details "> <h3 class="signature " id=value-instance_method> - (<tt>Numeric</tt>) <strong>value</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>The Ruby value of the number.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Numeric</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+14
+15
+16</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 14</span>
+
+def value
+  @value
+end</pre> </td> </tr> </table> </div> </div> <div id=class_method_details class=method_details_list> <h2>Class Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=precision-class_method> + <strong>precision</strong> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+36
+37
+38</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 36</span>
+
+def self.precision
+  @precision ||= 5
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="precision=-class_method"> + <strong>precision=</strong>(digits) </h3><div class=docstring> <div class=discussion> <p>Sets the number of digits of precision For example, if this is <code>3</code>, <code>3.1415926</code> will be printed as <code>3.142</code>.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+43
+44
+45
+46</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 43</span>
+
+def self.precision=(digits)
+  @precision = digits.round
+  @precision_factor = 10.0**@precision
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=precision_factor-class_method> + <strong>precision_factor</strong> </h3><div class=docstring> <div class=discussion> <p>the precision factor used in numeric output it is derived from the <code>precision</code> method.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+50
+51
+52</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 50</span>
+
+def self.precision_factor
+  @precision_factor ||= 10.0**precision
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=coerce-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>) <strong>coerce</strong>(num_units, den_units) </h3><div class=docstring> <div class=discussion> <p>Returns this number converted to other units. The conversion takes into account the relationship between e.g. mm and cm, as well as between e.g. in and cm.</p> <p>If this number has no units, it will simply return itself with the given units.</p> <p>An incompatible coercion, e.g. between px and cm, will raise an error.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>num_units</span> <span class=type>(<tt>Array&lt;<span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span>&gt;</tt>)</span> &mdash; <div class=inline> <p>The numerator units to coerce this number into. See <span class=object_link><a href="#numerator_units-instance_method" title="Sass::Script::Value::Number#numerator_units (method)">#numerator_units</a></span></p> </div> </li> <li> <span class=name>den_units</span> <span class=type>(<tt>Array&lt;<span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span>&gt;</tt>)</span> &mdash; <div class=inline> <p>The denominator units to coerce this number into. See <span class=object_link><a href="#denominator_units-instance_method" title="Sass::Script::Value::Number#denominator_units (method)">#denominator_units</a></span></p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>The number with the new units</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../UnitConversionError.html" title="Sass::UnitConversionError (class)">Sass::UnitConversionError</a></span></tt>)</span> &mdash; <div class=inline> <p>if the given units are incompatible with the number’s current units</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+345
+346
+347
+348
+349
+350
+351
+352</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 345</span>
+
+def coerce(num_units, den_units)
+  Number.new(if unitless?
+               value
+             else
+               value * coercion_factor(@numerator_units, num_units) /
+                 coercion_factor(@denominator_units, den_units)
+             end, num_units, den_units)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="comparable_to?-instance_method"> - (<tt>Boolean</tt>) <strong>comparable_to?</strong>(other) </h3><div class=docstring> <div class=discussion> <p>Returns Whether or not this number can be compared with the other.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>A number to decide if it can be compared with this number.</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether or not this number can be compared with the other.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+356
+357
+358
+359
+360
+361</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 356</span>
+
+def comparable_to?(other)
+  operate(other, :+)
+  true
+rescue Sass::UnitConversionError
+  false
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=div-instance_method> - (<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>) <strong>div</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>/</code> operation. Its functionality depends on the type of its argument:</p> <dl> <dt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Sass::Script::Value::Number</a></span></dt> <dd>Divides this number by the other, converting units appropriately.</dd> <dt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Sass::Script::Value</a></span></dt> <dd>See <span class=object_link><a href="Base.html#div-instance_method" title="Sass::Script::Value::Base#div (method)">Base#div</a></span>.</dd> </dl> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The result of the operation</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 161</span>
+
+def div(other)
+  if other.is_a? Number
+    res = operate(other, :/)
+    if original &amp;&amp; other.original
+      res.original = &quot;#{original}/#{other.original}&quot;
+    end
+    res
+  else
+    super
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=eq-instance_method> - (<tt>Boolean</tt>) <strong>eq</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>==</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether this number is equal to the other object</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 191</span>
+
+def eq(other)
+  return Bool::FALSE unless other.is_a?(Sass::Script::Value::Number)
+  this = self
+  begin
+    if unitless?
+      this = this.coerce(other.numerator_units, other.denominator_units)
+    else
+      other = other.coerce(@numerator_units, @denominator_units)
+    end
+  rescue Sass::UnitConversionError
+    return Bool::FALSE
+  end
+  Bool.new(this.value == other.value)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="eql?-instance_method"> - (<tt>Boolean</tt>) <strong>eql?</strong>(other) </h3><div class=docstring> <div class=discussion> <p>Hash-equality works differently than <code>==</code> equality for numbers. Hash-equality must be transitive, so it just compares the exact value, numerator units, and denominator units.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+213
+214
+215
+216</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 213</span>
+
+def eql?(other)
+  value == other.value &amp;&amp; numerator_units == other.numerator_units &amp;&amp;
+    denominator_units == other.denominator_units
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=gt-instance_method> - (<tt>Boolean</tt>) <strong>gt</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>&gt;</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether this number is greater than the other</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt>NoMethodError</tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> is an invalid type</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+223
+224
+225
+226</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 223</span>
+
+def gt(other)
+  raise NoMethodError.new(nil, :gt) unless other.is_a?(Number)
+  operate(other, :&gt;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=gte-instance_method> - (<tt>Boolean</tt>) <strong>gte</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>&gt;=</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether this number is greater than or equal to the other</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt>NoMethodError</tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> is an invalid type</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+233
+234
+235
+236</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 233</span>
+
+def gte(other)
+  raise NoMethodError.new(nil, :gte) unless other.is_a?(Number)
+  operate(other, :&gt;=)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=hash-instance_method> - <strong>hash</strong> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+206
+207
+208</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 206</span>
+
+def hash
+  [value, numerator_units, denominator_units].hash
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=inspect-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>) <strong>inspect</strong>(opts = {}) <span class=aliases>Also known as: <span class=names><span id=to_sass-instance_method>to_sass</span></span> </span> </h3><div class=docstring> <div class=discussion> <p>Returns a readable representation of this number.</p> <p>This representation is valid CSS (and valid SassScript) as long as there is only one unit.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>)</span> &mdash; <div class=inline> <p>The representation</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 273</span>
+
+def inspect(opts = {})
+  return original if original
+
+  value = self.class.round(self.value)
+  str = value.to_s
+
+  # Ruby will occasionally print in scientific notation if the number is
+  # small enough. That&#39;s technically valid CSS, but it&#39;s not well-supported
+  # and confusing.
+  str = (&quot;%0.#{self.class.precision}f&quot; % value).gsub(/0*$/, &#39;&#39;) if str.include?(&#39;e&#39;)
+
+  unitless? ? str : &quot;#{str}#{unit_str}&quot;
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="int?-instance_method"> - (<tt>Boolean</tt>) <strong>int?</strong> </h3><div class=docstring> <div class=discussion> <p>Returns Whether or not this number is an integer.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether or not this number is an integer.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+296
+297
+298</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 296</span>
+
+def int?
+  value % 1 == 0.0
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="is_unit?-instance_method"> - (<tt>Boolean</tt>) <strong>is_unit?</strong>(unit) </h3><div class=docstring> <div class=discussion> <p>Checks whether the number has the numerator unit specified.</p> </div> </div> <div class=tags> <div class=examples> <p class=tag_title>Examples:</p> <pre class="example code"><code>number = Sass::Script::Value::Number.new(10, &quot;px&quot;)
+number.is_unit?(&quot;px&quot;) =&gt; true
+number.is_unit?(nil) =&gt; false</code></pre> </div> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>unit</span> <span class=type>(<tt>::String</tt>, <tt>nil</tt>)</span> &mdash; <div class=inline> <p>The unit the number should have or nil if the number should be unitless.</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="#unitless%3F-instance_method" title="Sass::Script::Value::Number#unitless? (method)">The unitless? method may be more readable.</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+315
+316
+317
+318
+319
+320
+321</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 315</span>
+
+def is_unit?(unit)
+  if unit
+    denominator_units.size == 0 &amp;&amp; numerator_units.size == 1 &amp;&amp; numerator_units.first == unit
+  else
+    unitless?
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="legal_units?-instance_method"> - (<tt>Boolean</tt>) <strong>legal_units?</strong> </h3><div class=docstring> <div class=discussion> <p>Returns Whether or not this number has units that can be represented in CSS (that is, zero or one <span class=object_link><a href="#numerator_units-instance_method" title="Sass::Script::Value::Number#numerator_units (method)">#numerator_units</a></span>).</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether or not this number has units that can be represented in CSS (that is, zero or one <span class=object_link><a href="#numerator_units-instance_method" title="Sass::Script::Value::Number#numerator_units (method)">#numerator_units</a></span>).</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+325
+326
+327</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 325</span>
+
+def legal_units?
+  (@numerator_units.empty? || @numerator_units.size == 1) &amp;&amp; @denominator_units.empty?
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=lt-instance_method> - (<tt>Boolean</tt>) <strong>lt</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>&lt;</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether this number is less than the other</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt>NoMethodError</tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> is an invalid type</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+243
+244
+245
+246</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 243</span>
+
+def lt(other)
+  raise NoMethodError.new(nil, :lt) unless other.is_a?(Number)
+  operate(other, :&lt;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=lte-instance_method> - (<tt>Boolean</tt>) <strong>lte</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>&lt;=</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether this number is less than or equal to the other</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt>NoMethodError</tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> is an invalid type</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+253
+254
+255
+256</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 253</span>
+
+def lte(other)
+  raise NoMethodError.new(nil, :lte) unless other.is_a?(Number)
+  operate(other, :&lt;=)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=minus-instance_method> - (<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>) <strong>minus</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript binary <code>-</code> operation (e.g. <code>$a - $b</code>). Its functionality depends on the type of its argument:</p> <dl> <dt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Sass::Script::Value::Number</a></span></dt> <dd>Subtracts this number from the other, converting units if possible.</dd> <dt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Sass::Script::Value</a></span></dt> <dd>See <span class=object_link><a href="Base.html#minus-instance_method" title="Sass::Script::Value::Base#minus (method)">Base#minus</a></span>.</dd> </dl> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The result of the operation</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../UnitConversionError.html" title="Sass::UnitConversionError (class)">Sass::UnitConversionError</a></span></tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> is a number with incompatible units</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+106
+107
+108
+109
+110
+111
+112</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 106</span>
+
+def minus(other)
+  if other.is_a? Number
+    operate(other, :-)
+  else
+    super
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=mod-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>) <strong>mod</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>%</code> operation.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>This number modulo the other</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt>NoMethodError</tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> is an invalid type</p> </div> </li> <li> <span class=type>(<tt><span class=object_link><a href="../../UnitConversionError.html" title="Sass::UnitConversionError (class)">Sass::UnitConversionError</a></span></tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> has incompatible units</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+179
+180
+181
+182
+183
+184
+185</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 179</span>
+
+def mod(other)
+  if other.is_a?(Number)
+    operate(other, :%)
+  else
+    raise NoMethodError.new(nil, :mod)
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=plus-instance_method> - (<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>) <strong>plus</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>+</code> operation. Its functionality depends on the type of its argument:</p> <dl> <dt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Sass::Script::Value::Number</a></span></dt> <dd>Adds the two numbers together, converting units if possible.</dd> <dt><span class=object_link><a href="Color.html" title="Sass::Script::Value::Color (class)">Color</a></span></dt> <dd>Adds this number to each of the RGB color channels.</dd> <dt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Sass::Script::Value</a></span></dt> <dd>See <span class=object_link><a href="Base.html#plus-instance_method" title="Sass::Script::Value::Base#plus (method)">Base#plus</a></span>.</dd> </dl> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="../Value.html" title="Sass::Script::Value (module)">Value</a></span></tt>)</span> &mdash; <div class=inline> <p>The result of the operation</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../UnitConversionError.html" title="Sass::UnitConversionError (class)">Sass::UnitConversionError</a></span></tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> is a number with incompatible units</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 84</span>
+
+def plus(other)
+  if other.is_a? Number
+    operate(other, :+)
+  elsif other.is_a?(Color)
+    other.plus(self)
+  else
+    super
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=times-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>, <tt><span class=object_link><a href="Color.html" title="Sass::Script::Value::Color (class)">Color</a></span></tt>) <strong>times</strong>(other) </h3><div class=docstring> <div class=discussion> <p>The SassScript <code>*</code> operation. Its functionality depends on the type of its argument:</p> <dl> <dt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Sass::Script::Value::Number</a></span></dt> <dd>Multiplies the two numbers together, converting units appropriately.</dd> <dt><span class=object_link><a href="Color.html" title="Sass::Script::Value::Color (class)">Color</a></span></dt> <dd>Multiplies each of the RGB color channels by this number.</dd> </dl> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>other</span> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>, <tt><span class=object_link><a href="Color.html" title="Sass::Script::Value::Color (class)">Color</a></span></tt>)</span> &mdash; <div class=inline> <p>The right-hand side of the operator</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>, <tt><span class=object_link><a href="Color.html" title="Sass::Script::Value::Color (class)">Color</a></span></tt>)</span> &mdash; <div class=inline> <p>The result of the operation</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt>NoMethodError</tt>)</span> &mdash; <div class=inline> <p>if <code>other</code> is an invalid type</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 140</span>
+
+def times(other)
+  if other.is_a? Number
+    operate(other, :*)
+  elsif other.is_a? Color
+    other.times(self)
+  else
+    raise NoMethodError.new(nil, :times)
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_i-instance_method> - (<tt>Fixnum</tt>) <strong>to_i</strong> </h3><div class=docstring> <div class=discussion> <p>Returns The integer value of the number</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Fixnum</tt>)</span> &mdash; <div class=inline> <p>The integer value of the number</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span> &mdash; <div class=inline> <p>if the number isn’t an integer</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+290
+291
+292
+293</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 290</span>
+
+def to_i
+  super unless int?
+  value.to_i
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_s-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>) <strong>to_s</strong>(opts = {}) </h3><div class=docstring> <div class=discussion> <p>Returns The CSS representation of this number</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>)</span> &mdash; <div class=inline> <p>The CSS representation of this number</p> </div> </li> </ul> <p class=tag_title>Raises:</p> <ul class=raise> <li> <span class=type>(<tt><span class=object_link><a href="../../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span> &mdash; <div class=inline> <p>if this number has units that can’t be used in CSS (e.g. <code>px*in</code>)</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+261
+262
+263
+264
+265</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 261</span>
+
+def to_s(opts = {})
+  return original if original
+  raise Sass::SyntaxError.new(&quot;#{inspect} isn&#39;t a valid CSS value.&quot;) unless legal_units?
+  inspect
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=unary_minus-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>) <strong>unary_minus</strong> </h3><div class=docstring> <div class=discussion> <p>The SassScript unary <code>-</code> operation (e.g. <code>-$a</code>).</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>The negative value of this number</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+124
+125
+126</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 124</span>
+
+def unary_minus
+  Number.new(-value, @numerator_units, @denominator_units)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=unary_plus-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>) <strong>unary_plus</strong> </h3><div class=docstring> <div class=discussion> <p>The SassScript unary <code>+</code> operation (e.g. <code>+$a</code>).</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Script::Value::Number (class)">Number</a></span></tt>)</span> &mdash; <div class=inline> <p>The value of this number</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+117
+118
+119</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 117</span>
+
+def unary_plus
+  self
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=unit_str-instance_method> - (<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>) <strong>unit_str</strong> </h3><div class=docstring> <div class=discussion> <p>Returns a human readable representation of the units in this number. For complex units this takes the form of: numerator_unit1 * numerator_unit2 / denominator_unit1 * denominator_unit2</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="String.html" title="Sass::Script::Value::String (class)">String</a></span></tt>)</span> &mdash; <div class=inline> <p>a string that represents the units in this number</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+367
+368
+369
+370
+371
+372
+373
+374</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 367</span>
+
+def unit_str
+  rv = @numerator_units.sort.join(&quot;*&quot;)
+  if @denominator_units.any?
+    rv &lt;&lt; &quot;/&quot;
+    rv &lt;&lt; @denominator_units.sort.join(&quot;*&quot;)
+  end
+  rv
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="unitless?-instance_method"> - (<tt>Boolean</tt>) <strong>unitless?</strong> </h3><div class=docstring> <div class=discussion> <p>Returns Whether or not this number has no units.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> &mdash; <div class=inline> <p>Whether or not this number has no units.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+301
+302
+303</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/script/value/number.rb', line 301</span>
+
+def unitless?
+  @numerator_units.empty? &amp;&amp; @denominator_units.empty?
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:21 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

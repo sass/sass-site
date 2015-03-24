@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=UTF-8"/> <title> File: INDENTED_SYNTAX &mdash; Sass Documentation </title> <link rel=stylesheet href="css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.INDENTED_SYNTAX.html";
+</script> <script charset=utf-8 src="js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="_index.html">Index</a> &raquo; <span class=title>File: INDENTED_SYNTAX</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><div id=filecontents> <h1 id=sass_indented_syntax>Sass Indented Syntax</h1> <div class=maruku_toc><ul><li><a href="#sass_syntax_differences">Sass Syntax Differences</a></li><li><a href="#property_syntax">Property Syntax</a><ul><li><a href="#multiline_selectors">Multiline Selectors</a></li><li><a href="#comments">Comments</a></li><li><a href="#"><code>@import</code></a></li><li><a href="#mixin_directives">Mixin Directives</a></li></ul></li><li><a href="#deprecated_syntax">Deprecated Syntax</a><ul><li><a href="#_for_properties_and_variables"><code>=</code> for Properties and Variables</a></li><li><a href="#_for_default_variables"><code>||=</code> for Default Variables</a></li><li><a href="#_prefix_for_variables"><code>!</code> Prefix for Variables</a></li></ul></li></ul></div> <p>Sass’s indented syntax (also known simply as “Sass”) is designed to provide a more concise and, for some, more aesthetically appealing alternative to the CSS-based SCSS syntax. It’s not compatible with CSS; instead of using <code>{</code> and <code>}</code> to delimit blocks of styles, it uses indentation, and instead of using semicolons to separate statements it uses newlines. This usually leads to substantially less text when saying the same thing.</p> <p>Each statement in Sass, such as property declarations and selectors, must be placed on its own line. In addition, everything that would be within <code>{</code> and <code>}</code> after a statement must be on a new line and indented one level deeper than that statement. For example, this CSS:</p> <pre class="code ruby"><code class="ruby">#main {
+  color: blue;
+  font-size: 0.3em;
+}</code></pre> <p>would be this Sass:</p> <pre class="code ruby"><code class="ruby">#main
+  color: blue
+  font-size: 0.3em</code></pre> <p>Similarly, this SCSS:</p> <pre class="code ruby"><code class="ruby">#main {
+  color: blue;
+  font-size: 0.3em;
+
+  a {
+    font: {
+      weight: bold;
+      family: serif;
+    }
+    &amp;:hover {
+      background-color: #eee;
+    }
+  }
+}</code></pre> <p>would be this Sass:</p> <pre class="code ruby"><code class="ruby">#main
+  color: blue
+  font-size: 0.3em
+
+  a
+    font:
+      weight: bold
+      family: serif
+    &amp;:hover
+      background-color: #eee</code></pre> <h2 id=sass_syntax_differences>Sass Syntax Differences</h2> <p>In general, most CSS and SCSS syntax works straightforwardly in Sass by using newlines instead of semicolons and indentation instead of braces. However, there are some cases where there are differences or subtleties, which are detailed below.</p> <h2 id=property_syntax>Property Syntax</h2> <p>The indented syntax supports two ways of declaring CSS properties. The first is just like CSS, except without the semicolon. The second, however, places the colon <em>before</em> the property name. For example:</p> <pre class="code ruby"><code class="ruby">#main
+  :color blue
+  :font-size 0.3em</code></pre> <p>By default, both ways may be used. However, the <a href="file.SASS_REFERENCE.html#property_syntax-option" title="&lt;code&gt;:property_syntax&lt;/code&gt; option"><code>:property_syntax</code> option</a> may be used to specify that only one property syntax is allowed.</p> <h3 id=multiline_selectors>Multiline Selectors</h3> <p>Normally in the indented syntax, a single selector must take up a single line. There is one exception, however: selectors can contain newlines as long as they only appear after commas. For example:</p> <pre class="code ruby"><code class="ruby">.users #userTab,
+.posts #postTab
+  width: 100px
+  height: 30px</code></pre> <h3 id=comments>Comments</h3> <p>Like everything else in the indented syntax, comments are line-based. This means that they don’t work the same way as in SCSS. They must take up an entire line, and they also encompass all text nested beneath them.</p> <p>Like SCSS, the indented syntax supports two kinds of comments. Comments beginning with <code>/*</code> are preserved in the CSS output, although unlike SCSS they don’t require a closing <code>*/</code>. Comments beginning with <code>//</code> are removed entirely. For example:</p> <pre class="code ruby"><code class="ruby">/* This comment will appear in the CSS output.
+  This is nested beneath the comment,
+  so it&#39;s part of it
+body
+  color: black
+
+// This comment will not appear in the CSS output.
+  This is nested beneath the comment as well,
+  so it also won&#39;t appear
+a
+  color: green</code></pre> <p>is compiled to:</p> <pre class="code ruby"><code class="ruby">/* This comment will appear in the CSS output.
+ * This is nested beneath the comment,
+ * so it&#39;s part of it */
+body {
+  color: black; }
+
+a {
+  color: green; }</code></pre> <h3 id=""><code>@import</code></h3> <p>The <code>@import</code> directive in Sass does not require quotes, although they may be used. For example, this SCSS:</p> <pre class="code ruby"><code class="ruby">@import &quot;themes/dark&quot;;
+@import &quot;font.sass&quot;;</code></pre> <p>would be this Sass:</p> <pre class="code ruby"><code class="ruby">@import themes/dark
+@import font.sass</code></pre> <h3 id=mixin_directives>Mixin Directives</h3> <p>Sass supports shorthands for the <code>@mixin</code> and <code>@include</code> directives. Instead of writing <code>@mixin</code>, you can use the character <code>=</code>; instead of writing <code>@include</code>, you can use the character <code>+</code>. For example:</p> <pre class="code ruby"><code class="ruby">=large-text
+  font:
+    family: Arial
+    size: 20px
+    weight: bold
+  color: #ff0000
+
+h1
+  +large-text</code></pre> <p>is the same as:</p> <pre class="code ruby"><code class="ruby">@mixin large-text
+  font:
+    family: Arial
+    size: 20px
+    weight: bold
+  color: #ff0000
+
+h1
+  @include large-text</code></pre> <h2 id=deprecated_syntax>Deprecated Syntax</h2> <p>Since the indented syntax has been around for a while, previous versions have made some syntactic decisions that have since been changed. Some of the old syntax still works, though, so it’s documented here.</p> <p><strong>Note that this syntax is not recommended for use in new Sass files</strong>. It will print a warning if it’s used, and it will be removed in a future version.</p> <h3 id=_for_properties_and_variables><code>=</code> for Properties and Variables</h3> <p><code>=</code> used to be used instead of <code>:</code> when setting variables and when setting properties to SassScript values. It has slightly different semantics than <code>:</code>; see <a href="file.SASS_CHANGELOG.html#3-0-0-sass-script-context" title="this changelog entry">this changelog entry</a> for details.</p> <h3 id=_for_default_variables><code>||=</code> for Default Variables</h3> <p><code>||=</code> used to be used instead of <code>:</code> when setting the default value of a variable. The <code>!default</code> flag was not used. The variable value has the same semantics as <code>=</code>; see <a href="file.SASS_CHANGELOG.html#3-0-0-sass-script-context" title="this changelog entry">this changelog entry</a> for details.</p> <h3 id=_prefix_for_variables><code>!</code> Prefix for Variables</h3> <p><code>!</code> used to be used as the variable prefix instead of <code>$</code>. This had no difference in functionality; it was a purely aesthetic change.</p> </div></div> <div id=footer> Generated on Thu Feb 26 18:30:54 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

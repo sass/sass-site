@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Selector::Pseudo &mdash; Sass Documentation </title> <link rel=stylesheet href="../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Selector/Pseudo.html";
+</script> <script charset=utf-8 src="../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../_index.html">Index (P)</a> &raquo; <span class=title><span class=object_link><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Selector.html" title="Sass::Selector (module)">Selector</a></span></span> &raquo; <span class=title>Pseudo</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Selector::Pseudo </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName><span class=object_link><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span></span> <ul class=fullTree> <li>Object</li> <li class=next><span class=object_link><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span></li> <li class=next>Sass::Selector::Pseudo</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A pseudoclass (e.g. <code>:visited</code>) or pseudoelement (e.g. <code>::first-line</code>) selector. It can have arguments (e.g. <code>:nth-child(2n+1)</code>) which can contain selectors (e.g. <code>:nth-child(2n+1 of .foo)</code>).</p> </div> </div> <div class=tags> </div> <h2>Constant Summary</h2> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#arg-instance_method" title="#arg (instance method)">- (String<sup>?</sup>) <strong>arg</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>The argument to the selector, or <code>nil</code> if no argument was given.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#name-instance_method" title="#name (instance method)">- (String) <strong>name</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>The name of the selector.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#selector-instance_method" title="#selector (instance method)">- (CommaSequence) <strong>selector</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>The selector argument, or <code>nil</code> if no selector exists.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#syntactic_type-instance_method" title="#syntactic_type (instance method)">- (Symbol) <strong>syntactic_type</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>Like <span class=object_link><a href="#type-instance_method" title="Sass::Selector::Pseudo#type (method)">#type</a></span>, but returns the type of selector this looks like, rather than the type it is semantically.</p> </div></span> </li> </ul> <h3 class=inherited>Attributes inherited from <span class=object_link><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span></h3> <p class=inherited><span class=object_link><a href="Simple.html#filename-instance_method" title="Sass::Selector::Simple#filename (method)">#filename</a></span>, <span class=object_link><a href="Simple.html#line-instance_method" title="Sass::Selector::Simple#line (method)">#line</a></span></p> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (Pseudo) <strong>initialize</strong>(syntactic_type, name, arg, selector) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>A new instance of Pseudo.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#normalized_name-instance_method" title="#normalized_name (instance method)">- (String) <strong>normalized_name</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Like <span class=object_link><a href="#name-instance_method" title="Sass::Selector::Pseudo#name (method)">#name</a></span>, but without any vendor prefix.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#specificity-instance_method" title="#specificity (instance method)">- <strong>specificity</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#superselector%3F-instance_method" title="#superselector? (instance method)">- (Boolean) <strong>superselector?</strong>(their_sseq, parents = []) </a> </span> <span class=summary_desc><div class=inline> <p>Returns whether or not this selector matches all elements that the given selector matches (as well as possibly more).</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_s-instance_method" title="#to_s (instance method)">- <strong>to_s</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#type-instance_method" title="#type (instance method)">- (Symbol) <strong>type</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The type of the selector.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#unify-instance_method" title="#unify (instance method)">- <strong>unify</strong>(sels) </a> </span> <span class=summary_desc><div class=inline> <p>Returns <code>nil</code> if this is a pseudoelement selector and <code>sels</code> contains a pseudoelement selector different than this one.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#with_selector-instance_method" title="#with_selector (instance method)">- (Array&lt;Simple&gt;) <strong>with_selector</strong>(new_selector) </a> </span> <span class=summary_desc><div class=inline> <p>Returns a copy of this with <span class=object_link><a href="#selector-instance_method" title="Sass::Selector::Pseudo#selector (method)">#selector</a></span> set to #new_selector.</p> </div></span> </li> </ul> <h3 class=inherited>Methods inherited from <span class=object_link><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span></h3> <p class=inherited><span class=object_link><a href="Simple.html#eql%3F-instance_method" title="Sass::Selector::Simple#eql? (method)">#eql?</a></span>, <span class=object_link><a href="Simple.html#equality_key-instance_method" title="Sass::Selector::Simple#equality_key (method)">#equality_key</a></span>, <span class=object_link><a href="Simple.html#hash-instance_method" title="Sass::Selector::Simple#hash (method)">#hash</a></span>, <span class=object_link><a href="Simple.html#inspect-instance_method" title="Sass::Selector::Simple#inspect (method)">#inspect</a></span>, <span class=object_link><a href="Simple.html#unify_namespaces-instance_method" title="Sass::Selector::Simple#unify_namespaces (method)">#unify_namespaces</a></span></p> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Selector::Pseudo (class)">Pseudo</a></span></tt>) <strong>initialize</strong>(syntactic_type, name, arg, selector) </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of Pseudo</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>syntactic_type</span> <span class=type>(<tt>Symbol</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="#syntactic_type-instance_method" title="Sass::Selector::Pseudo#syntactic_type (method)">#syntactic_type</a></span></p> </div> </li> <li> <span class=name>name</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="#name-instance_method" title="Sass::Selector::Pseudo#name (method)">#name</a></span></p> </div> </li> <li> <span class=name>arg</span> <span class=type>(<tt>nil</tt>, <tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="#arg-instance_method" title="Sass::Selector::Pseudo#arg (method)">#arg</a></span></p> </div> </li> <li> <span class=name>selector</span> <span class=type>(<tt>nil</tt>, <tt><span class=object_link><a href="CommaSequence.html" title="Sass::Selector::CommaSequence (class)">CommaSequence</a></span></tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="#selector-instance_method" title="Sass::Selector::Pseudo#selector (method)">#selector</a></span></p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+44
+45
+46
+47
+48
+49</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 44</span>
+
+def initialize(syntactic_type, name, arg, selector)
+  @syntactic_type = syntactic_type
+  @name = name
+  @arg = arg
+  @selector = selector
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id=""></span> <div class="method_details first"> <h3 class="signature first" id=arg-instance_method> - (<tt>String</tt><sup>?</sup>) <strong>arg</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>The argument to the selector, or <code>nil</code> if no argument was given.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>String</tt>, <tt>nil</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+30
+31
+32</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 30</span>
+
+def arg
+  @arg
+end</pre> </td> </tr> </table> </div> <span id=""></span> <div class="method_details "> <h3 class="signature " id=name-instance_method> - (<tt>String</tt>) <strong>name</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>The name of the selector.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>String</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+24
+25
+26</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 24</span>
+
+def name
+  @name
+end</pre> </td> </tr> </table> </div> <span id=""></span> <div class="method_details "> <h3 class="signature " id=selector-instance_method> - (<tt><span class=object_link><a href="CommaSequence.html" title="Sass::Selector::CommaSequence (class)">CommaSequence</a></span></tt>) <strong>selector</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>The selector argument, or <code>nil</code> if no selector exists.</p> <p>If this and <span class=object_link><a href="#arg-instance_method" title="Sass::Selector::Pseudo#arg (method)">#arg</a></span> are both set, <span class=object_link><a href="#arg-instance_method" title="Sass::Selector::Pseudo#arg (method)">#arg</a></span> is considered a non-selector prefix.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="CommaSequence.html" title="Sass::Selector::CommaSequence (class)">CommaSequence</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+38
+39
+40</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 38</span>
+
+def selector
+  @selector
+end</pre> </td> </tr> </table> </div> <span id=""></span> <div class="method_details "> <h3 class="signature " id=syntactic_type-instance_method> - (<tt>Symbol</tt>) <strong>syntactic_type</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>Like <span class=object_link><a href="#type-instance_method" title="Sass::Selector::Pseudo#type (method)">#type</a></span>, but returns the type of selector this looks like, rather than the type it is semantically. This only differs from type for selectors in <span class=object_link>ACTUALLY_ELEMENTS</span>.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Symbol</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+19
+20
+21</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 19</span>
+
+def syntactic_type
+  @syntactic_type
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=normalized_name-instance_method> - (<tt>String</tt>) <strong>normalized_name</strong> </h3><div class=docstring> <div class=discussion> <p>Like <span class=object_link><a href="#name-instance_method" title="Sass::Selector::Pseudo#name (method)">#name</a></span>, but without any vendor prefix.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>String</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+111
+112
+113</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 111</span>
+
+def normalized_name
+  @normalized_name ||= name.gsub(/^-[a-zA-Z0-9]+-/, &#39;&#39;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=specificity-instance_method> - <strong>specificity</strong> </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="AbstractSequence.html#specificity-instance_method" title="Sass::Selector::AbstractSequence#specificity (method)">AbstractSequence#specificity</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 230</span>
+
+def specificity
+  return 1 if type == :element
+  return SPECIFICITY_BASE unless selector
+  @specificity ||=
+    if normalized_name == &#39;not&#39;
+      min = 0
+      max = 0
+      selector.members.each do |seq|
+        spec = seq.specificity
+        if spec.is_a?(Range)
+          min = Sass::Util.max(spec.begin, min)
+          max = Sass::Util.max(spec.end, max)
+        else
+          min = Sass::Util.max(spec, min)
+          max = Sass::Util.max(spec, max)
+        end
+      end
+      min == max ? max : (min..max)
+    else
+      min = 0
+      max = 0
+      selector.members.each do |seq|
+        spec = seq.specificity
+        if spec.is_a?(Range)
+          min = Sass::Util.min(spec.begin, min)
+          max = Sass::Util.max(spec.end, max)
+        else
+          min = Sass::Util.min(spec, min)
+          max = Sass::Util.max(spec, max)
+        end
+      end
+      min == max ? max : (min..max)
+    end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id="superselector?-instance_method"> - (<tt>Boolean</tt>) <strong>superselector?</strong>(their_sseq, parents = []) </h3><div class=docstring> <div class=discussion> <p>Returns whether or not this selector matches all elements that the given selector matches (as well as possibly more).</p> </div> </div> <div class=tags> <div class=examples> <p class=tag_title>Examples:</p> <pre class="example code"><code>(.foo).superselector?(.foo.bar) #=&gt; true
+(.foo).superselector?(.bar) #=&gt; false</code></pre> </div> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>their_sseq</span> <span class=type>(<tt><span class=object_link><a href="SimpleSequence.html" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span></tt>)</span> </li> <li> <span class=name>parents</span> <span class=type>(<tt>Array&lt;<span class=object_link><a href="SimpleSequence.html" title="Sass::Selector::SimpleSequence (class)">SimpleSequence</a></span>, String&gt;</tt>)</span> <em class=default>(defaults to: <tt>[]</tt>)</em> &mdash; <div class=inline> <p>The parent selectors of <code>their_sseq</code>, if any.</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 149</span>
+
+def superselector?(their_sseq, parents = [])
+  case normalized_name
+  when &#39;matches&#39;, &#39;any&#39;
+    # :matches can be a superselector of another selector in one of two
+    # ways. Either its constituent selectors can be a superset of those of
+    # another :matches in the other selector, or any of its constituent
+    # selectors can individually be a superselector of the other selector.
+    (their_sseq.selector_pseudo_classes[normalized_name] || []).any? do |their_sel|
+      next false unless their_sel.is_a?(Pseudo)
+      next false unless their_sel.name == name
+      selector.superselector?(their_sel.selector)
+    end || selector.members.any? do |our_seq|
+      their_seq = Sequence.new(parents + [their_sseq])
+      our_seq.superselector?(their_seq)
+    end
+  when &#39;has&#39;, &#39;host&#39;, &#39;host-context&#39;
+    # Like :matches, :has (et al) can be a superselector of another
+    # selector if its constituent selectors are a superset of those of
+    # another :has in the other selector. However, the :matches other case
+    # doesn&#39;t work, because :has refers to nested elements.
+    (their_sseq.selector_pseudo_classes[normalized_name] || []).any? do |their_sel|
+      next false unless their_sel.is_a?(Pseudo)
+      next false unless their_sel.name == name
+      selector.superselector?(their_sel.selector)
+    end
+  when &#39;not&#39;
+    selector.members.all? do |our_seq|
+      their_sseq.members.any? do |their_sel|
+        if their_sel.is_a?(Element) || their_sel.is_a?(Id)
+          # `:not(a)` is a superselector of `h1` and `:not(#foo)` is a
+          # superselector of `#bar`.
+          our_sseq = our_seq.members.last
+          next false unless our_sseq.is_a?(SimpleSequence)
+          our_sseq.members.any? do |our_sel|
+            our_sel.class == their_sel.class &amp;&amp; our_sel != their_sel
+          end
+        else
+          next false unless their_sel.is_a?(Pseudo)
+          next false unless their_sel.name == name
+          # :not(X) is a superselector of :not(Y) exactly when Y is a
+          # superselector of X.
+          their_sel.selector.superselector?(CommaSequence.new([our_seq]))
+        end
+      end
+    end
+  when &#39;current&#39;
+    (their_sseq.selector_pseudo_classes[&#39;current&#39;] || []).any? do |their_current|
+      next false if their_current.name != name
+      # Explicitly don&#39;t check for nested superselector relationships
+      # here. :current(.foo) isn&#39;t always a superselector of
+      # :current(.foo.bar), since it matches the *innermost* ancestor of
+      # the current element that matches the selector. For example:
+      #
+      #     &lt;div class=&quot;foo bar&quot;&gt;
+      #       &lt;p class=&quot;foo&quot;&gt;
+      #         &lt;span&gt;current element&lt;/span&gt;
+      #       &lt;/p&gt;
+      #     &lt;/div&gt;
+      #
+      # Here :current(.foo) would match the p element and *not* the div
+      # element, whereas :current(.foo.bar) would match the div and not
+      # the p.
+      selector == their_current.selector
+    end
+  when &#39;nth-child&#39;, &#39;nth-last-child&#39;
+    their_sseq.members.any? do |their_sel|
+      # This misses a few edge cases. For example, `:nth-child(n of X)`
+      # is a superselector of `X`, and `:nth-child(2n of X)` is a
+      # superselector of `:nth-child(4n of X)`. These seem rare enough
+      # not to be worth worrying about, though.
+      next false unless their_sel.is_a?(Pseudo)
+      next false unless their_sel.name == name
+      next false unless their_sel.arg == arg
+      selector.superselector?(their_sel.selector)
+    end
+  else
+    throw &quot;[BUG] Unknown selector pseudo class #{name}&quot;
+  end
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=to_s-instance_method> - <strong>to_s</strong> </h3><div class=docstring> <div class=discussion> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li>Selector#to_s</li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 116</span>
+
+def to_s
+  res = (syntactic_type == :class ? &quot;:&quot; : &quot;::&quot;) + @name
+  if @arg || @selector
+    res &lt;&lt; &quot;(&quot;
+    res &lt;&lt; @arg.strip if @arg
+    res &lt;&lt; &quot; &quot; if @arg &amp;&amp; @selector
+    res &lt;&lt; @selector.to_s if @selector
+    res &lt;&lt; &quot;)&quot;
+  end
+  res
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=type-instance_method> - (<tt>Symbol</tt>) <strong>type</strong> </h3><div class=docstring> <div class=discussion> <p>The type of the selector. <code>:class</code> if this is a pseudoclass selector, <code>:element</code> if it’s a pseudoelement.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Symbol</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+104
+105
+106</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 104</span>
+
+def type
+  ACTUALLY_ELEMENTS.include?(normalized_name) ? :element : syntactic_type
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=unify-instance_method> - <strong>unify</strong>(sels) </h3><div class=docstring> <div class=discussion> <p>Returns <code>nil</code> if this is a pseudoelement selector and <code>sels</code> contains a pseudoelement selector different than this one.</p> </div> </div> <div class=tags> <p class=tag_title>See Also:</p> <ul class=see> <li><span class=object_link><a href="SimpleSequence.html#unify-instance_method" title="Sass::Selector::SimpleSequence#unify (method)">SimpleSequence#unify</a></span></li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+132
+133
+134
+135
+136
+137
+138</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 132</span>
+
+def unify(sels)
+  return if type == :element &amp;&amp; sels.any? do |sel|
+    sel.is_a?(Pseudo) &amp;&amp; sel.type == :element &amp;&amp;
+      (sel.name != name || sel.arg != arg || sel.selector != selector)
+  end
+  super
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=with_selector-instance_method> - (<tt>Array&lt;<span class=object_link><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span>&gt;</tt>) <strong>with_selector</strong>(new_selector) </h3><div class=docstring> <div class=discussion> <p>Returns a copy of this with <span class=object_link><a href="#selector-instance_method" title="Sass::Selector::Pseudo#selector (method)">#selector</a></span> set to #new_selector.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>new_selector</span> <span class=type>(<tt><span class=object_link><a href="CommaSequence.html" title="Sass::Selector::CommaSequence (class)">CommaSequence</a></span></tt>)</span> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;<span class=object_link><a href="Simple.html" title="Sass::Selector::Simple (class)">Simple</a></span>&gt;</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/selector/pseudo.rb', line 55</span>
+
+def with_selector(new_selector)
+  result = Pseudo.new(syntactic_type, name, arg,
+    CommaSequence.new(new_selector.members.map do |seq|
+      next seq unless seq.members.length == 1
+      sseq = seq.members.first
+      next seq unless sseq.is_a?(SimpleSequence) &amp;&amp; sseq.members.length == 1
+      sel = sseq.members.first
+      next seq unless sel.is_a?(Pseudo) &amp;&amp; sel.selector
+
+      case normalized_name
+      when &#39;not&#39;
+        # In theory, if there&#39;s a nested :not its contents should be
+        # unified with the return value. For example, if :not(.foo)
+        # extends .bar, :not(.bar) should become .foo:not(.bar). However,
+        # this is a narrow edge case and supporting it properly would make
+        # this code and the code calling it a lot more complicated, so
+        # it&#39;s not supported for now.
+        next [] unless sel.normalized_name == &#39;matches&#39;
+        sel.selector.members
+      when &#39;matches&#39;, &#39;any&#39;, &#39;current&#39;, &#39;nth-child&#39;, &#39;nth-last-child&#39;
+        # As above, we could theoretically support :not within :matches, but
+        # doing so would require this method and its callers to handle much
+        # more complex cases that likely aren&#39;t worth the pain.
+        next [] unless sel.name == name &amp;&amp; sel.arg == arg
+        sel.selector.members
+      when &#39;has&#39;, &#39;host&#39;, &#39;host-context&#39;
+        # We can&#39;t expand nested selectors here, because each layer adds an
+        # additional layer of semantics. For example, `:has(:has(img))`
+        # doesn&#39;t match `&lt;div&gt;&lt;img&gt;&lt;/div&gt;` but `:has(img)` does.
+        sel
+      else
+        []
+      end
+    end.flatten))
+
+  # Older browsers support :not but only with a single complex selector.
+  # In order to support those browsers, we break up the contents of a :not
+  # unless it originally contained a selector list.
+  return [result] unless normalized_name == &#39;not&#39;
+  return [result] if selector.members.length &gt; 1
+  result.selector.members.map do |seq|
+    Pseudo.new(syntactic_type, name, arg, CommaSequence.new([seq]))
+  end
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:27 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

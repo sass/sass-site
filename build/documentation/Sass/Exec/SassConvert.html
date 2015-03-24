@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Exec::SassConvert &mdash; Sass Documentation </title> <link rel=stylesheet href="../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Exec/SassConvert.html";
+</script> <script charset=utf-8 src="../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../_index.html">Index (S)</a> &raquo; <span class=title><span class=object_link><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Exec.html" title="Sass::Exec (module)">Exec</a></span></span> &raquo; <span class=title>SassConvert</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Exec::SassConvert </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName><span class=object_link><a href="Base.html" title="Sass::Exec::Base (class)">Base</a></span></span> <ul class=fullTree> <li>Object</li> <li class=next><span class=object_link><a href="Base.html" title="Sass::Exec::Base (class)">Base</a></span></li> <li class=next>Sass::Exec::SassConvert</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/exec/sass_convert.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>The <code>sass-convert</code> executable.</p> </div> </div> <div class=tags> </div> <h2>Constant Summary</h2> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (SassConvert) <strong>initialize</strong>(args) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>A new instance of SassConvert.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#process_result-instance_method" title="#process_result (instance method)">- <strong>process_result</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Processes the options set by the command-line arguments, and runs the CSS compiler appropriately.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#set_opts-instance_method" title="#set_opts (instance method)">- <strong>set_opts</strong>(opts) </a> </span> <span class=summary_desc><div class=inline> <p>Tells optparse how to parse the arguments.</p> </div></span> </li> </ul> <h3 class=inherited>Methods inherited from <span class=object_link><a href="Base.html" title="Sass::Exec::Base (class)">Base</a></span></h3> <p class=inherited><span class=object_link><a href="Base.html#color-instance_method" title="Sass::Exec::Base#color (method)">#color</a></span>, <span class=object_link><a href="Base.html#encoding_option-instance_method" title="Sass::Exec::Base#encoding_option (method)">#encoding_option</a></span>, <span class=object_link><a href="Base.html#get_line-instance_method" title="Sass::Exec::Base#get_line (method)">#get_line</a></span>, <span class=object_link><a href="Base.html#parse-instance_method" title="Sass::Exec::Base#parse (method)">#parse</a></span>, <span class=object_link><a href="Base.html#parse%21-instance_method" title="Sass::Exec::Base#parse! (method)">#parse!</a></span>, <span class=object_link><a href="Base.html#puts-instance_method" title="Sass::Exec::Base#puts (method)">#puts</a></span>, <span class=object_link><a href="Base.html#puts_action-instance_method" title="Sass::Exec::Base#puts_action (method)">#puts_action</a></span>, <span class=object_link><a href="Base.html#to_s-instance_method" title="Sass::Exec::Base#to_s (method)">#to_s</a></span>, <span class=object_link><a href="Base.html#write_output-instance_method" title="Sass::Exec::Base#write_output (method)">#write_output</a></span></p> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Exec::SassConvert (class)">SassConvert</a></span></tt>) <strong>initialize</strong>(args) </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of SassConvert</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>args</span> <span class=type>(<tt>Array&lt;String&gt;</tt>)</span> &mdash; <div class=inline> <p>The command-line arguments</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+8
+9
+10
+11
+12
+13</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/exec/sass_convert.rb', line 8</span>
+
+def initialize(args)
+  super
+  require &#39;sass&#39;
+  @options[:for_tree] = {}
+  @options[:for_engine] = {:cache =&gt; false, :read_cache =&gt; true}
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=process_result-instance_method> - <strong>process_result</strong> </h3><div class=docstring> <div class=discussion> <p>Processes the options set by the command-line arguments, and runs the CSS compiler appropriately.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/exec/sass_convert.rb', line 36</span>
+
+def process_result
+  require &#39;sass&#39;
+
+  if @options[:recursive]
+    process_directory
+    return
+  end
+
+  super
+  input = @options[:input]
+  if File.directory?(input)
+    raise &quot;Error: &#39;#{input.path}&#39; is a directory (did you mean to use --recursive?)&quot;
+  end
+  output = @options[:output]
+  output = input if @options[:in_place]
+  process_file(input, output)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=set_opts-instance_method> - <strong>set_opts</strong>(opts) </h3><div class=docstring> <div class=discussion> <p>Tells optparse how to parse the arguments.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>opts</span> <span class=type>(<tt>OptionParser</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/exec/sass_convert.rb', line 18</span>
+
+def set_opts(opts)
+  opts.banner = &lt;&lt;END
+Usage: sass-convert [options] [INPUT] [OUTPUT]
+
+Description:
+  Converts between CSS, indented syntax, and SCSS files. For example,
+  this can convert from the indented syntax to SCSS, or from CSS to
+  SCSS (adding appropriate nesting).
+END
+
+  common_options(opts)
+  style(opts)
+  input_and_output(opts)
+  miscellaneous(opts)
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:05 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

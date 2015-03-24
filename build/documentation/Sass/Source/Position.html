@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Source::Position &mdash; Sass Documentation </title> <link rel=stylesheet href="../../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Source/Position.html";
+</script> <script charset=utf-8 src="../../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../../_index.html">Index (P)</a> &raquo; <span class=title><span class=object_link><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title><span class=object_link><a href="../Source.html" title="Sass::Source (module)">Source</a></span></span> &raquo; <span class=title>Position</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Source::Position </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName>Object</span> <ul class=fullTree> <li>Object</li> <li class=next>Sass::Source::Position</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/source/position.rb</dd> </dl> <div class=clear></div> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#line-instance_method" title="#line (instance method)">- (Fixnum) <strong>line</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The one-based line of the document associated with the position.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#offset-instance_method" title="#offset (instance method)">- (Fixnum) <strong>offset</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The one-based offset in the line of the document associated with the position.</p> </div></span> </li> </ul> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#after-instance_method" title="#after (instance method)">- (Position) <strong>after</strong>(str) </a> </span> <span class=summary_desc><div class=inline> <p>The source position after proceeding forward through <code>str</code>.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (Position) <strong>initialize</strong>(line, offset) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>A new instance of Position.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#inspect-instance_method" title="#inspect (instance method)">- (String) <strong>inspect</strong> </a> </span> <span class=summary_desc><div class=inline> <p>A string representation of the source position.</p> </div></span> </li> </ul> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Source::Position (class)">Position</a></span></tt>) <strong>initialize</strong>(line, offset) </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of Position</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>line</span> <span class=type>(<tt>Fixnum</tt>)</span> &mdash; <div class=inline> <p>The source line</p> </div> </li> <li> <span class=name>offset</span> <span class=type>(<tt>Fixnum</tt>)</span> &mdash; <div class=inline> <p>The source offset</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+16
+17
+18
+19</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/source/position.rb', line 16</span>
+
+def initialize(line, offset)
+  @line = line
+  @offset = offset
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id="line=-instance_method"></span> <div class="method_details first"> <h3 class="signature first" id=line-instance_method> - (<tt>Fixnum</tt>) <strong>line</strong> </h3><div class=docstring> <div class=discussion> <p>The one-based line of the document associated with the position.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Fixnum</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+6
+7
+8</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/source/position.rb', line 6</span>
+
+def line
+  @line
+end</pre> </td> </tr> </table> </div> <span id="offset=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=offset-instance_method> - (<tt>Fixnum</tt>) <strong>offset</strong> </h3><div class=docstring> <div class=discussion> <p>The one-based offset in the line of the document associated with the position.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Fixnum</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+12
+13
+14</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/source/position.rb', line 12</span>
+
+def offset
+  @offset
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=after-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Source::Position (class)">Position</a></span></tt>) <strong>after</strong>(str) </h3><div class=docstring> <div class=discussion> <p>Returns The source position after proceeding forward through <code>str</code>.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>str</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>The string to move through.</p> </div> </li> </ul> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="" title="Sass::Source::Position (class)">Position</a></span></tt>)</span> &mdash; <div class=inline> <p>The source position after proceeding forward through <code>str</code>.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/source/position.rb', line 29</span>
+
+def after(str)
+  newlines = str.count(&quot;\n&quot;)
+  Position.new(line + newlines,
+    if newlines == 0
+      offset + str.length
+    else
+      str.length - str.rindex(&quot;\n&quot;) - 1
+    end)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=inspect-instance_method> - (<tt>String</tt>) <strong>inspect</strong> </h3><div class=docstring> <div class=discussion> <p>Returns A string representation of the source position.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>A string representation of the source position.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+22
+23
+24</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/source/position.rb', line 22</span>
+
+def inspect
+  &quot;#{line.inspect}:#{offset.inspect}&quot;
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:30 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

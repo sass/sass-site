@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::Stack &mdash; Sass Documentation </title> <link rel=stylesheet href="../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Sass/Stack.html";
+</script> <script charset=utf-8 src="../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../_index.html">Index (S)</a> &raquo; <span class=title><span class=object_link><a href="../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title>Stack</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::Stack </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName>Object</span> <ul class=fullTree> <li>Object</li> <li class=next>Sass::Stack</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/stack.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>A class representing the stack when compiling a Sass file.</p> </div> </div> <div class=tags> </div><h2>Defined Under Namespace</h2> <p class=children> <strong class=classes>Classes:</strong> <span class=object_link><a href="Stack/Frame.html" title="Sass::Stack::Frame (class)">Frame</a></span> </p> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#frames-instance_method" title="#frames (instance method)">- (Array&lt;Frame&gt;) <strong>frames</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>The stack frames.</p> </div></span> </li> </ul> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (Stack) <strong>initialize</strong> </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>A new instance of Stack.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#to_s-instance_method" title="#to_s (instance method)">- <strong>to_s</strong> </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#with_base-instance_method" title="#with_base (instance method)">- <strong>with_base</strong>(filename, line) { ... }</a> </span> <span class=summary_desc><div class=inline> <p>Pushes a base frame onto the stack.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#with_import-instance_method" title="#with_import (instance method)">- <strong>with_import</strong>(filename, line) { ... }</a> </span> <span class=summary_desc><div class=inline> <p>Pushes an import frame onto the stack.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#with_mixin-instance_method" title="#with_mixin (instance method)">- <strong>with_mixin</strong>(filename, line, name) { ... }</a> </span> <span class=summary_desc><div class=inline> <p>Pushes a mixin frame onto the stack.</p> </div></span> </li> </ul> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::Stack (class)">Stack</a></span></tt>) <strong>initialize</strong> </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of Stack</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+69
+70
+71</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/stack.rb', line 69</span>
+
+def initialize
+  @frames = []
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id=""></span> <div class="method_details first"> <h3 class="signature first" id=frames-instance_method> - (<tt>Array&lt;<span class=object_link><a href="Stack/Frame.html" title="Sass::Stack::Frame (class)">Frame</a></span>&gt;</tt>) <strong>frames</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>The stack frames. The last frame is the most deeply-nested.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Array&lt;<span class=object_link><a href="Stack/Frame.html" title="Sass::Stack::Frame (class)">Frame</a></span>&gt;</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+67
+68
+69</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/stack.rb', line 67</span>
+
+def frames
+  @frames
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=to_s-instance_method> - <strong>to_s</strong> </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+101
+102
+103
+104
+105
+106
+107
+108</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/stack.rb', line 101</span>
+
+def to_s
+  Sass::Util.enum_with_index(Sass::Util.enum_cons(frames.reverse + [nil], 2)).
+      map do |(frame, caller), i|
+    &quot;#{i == 0 ? &quot;on&quot; : &quot;from&quot;} line #{frame.line}&quot; +
+      &quot; of #{frame.filename || &quot;an unknown file&quot;}&quot; +
+      (caller &amp;&amp; caller.name ? &quot;, in `#{caller.name}&#39;&quot; : &quot;&quot;)
+  end.join(&quot;\n&quot;)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=with_base-instance_method> - <strong>with_base</strong>(filename, line) { ... } </h3><div class=docstring> <div class=discussion> <p>Pushes a base frame onto the stack.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>filename</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="Stack/Frame.html#filename-instance_method" title="Sass::Stack::Frame#filename (method)">Sass::Stack::Frame#filename</a></span>.</p> </div> </li> <li> <span class=name>line</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="Stack/Frame.html#line-instance_method" title="Sass::Stack::Frame#line (method)">Sass::Stack::Frame#line</a></span>.</p> </div> </li> </ul> <p class=tag_title>Yields:</p> <ul class=yield> <li> <span class=type></span> <div class=inline> <p>[] A block in which the new frame is on the stack.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+78
+79
+80</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/stack.rb', line 78</span>
+
+def with_base(filename, line)
+  with_frame(filename, line, :base) {yield}
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=with_import-instance_method> - <strong>with_import</strong>(filename, line) { ... } </h3><div class=docstring> <div class=discussion> <p>Pushes an import frame onto the stack.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>filename</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="Stack/Frame.html#filename-instance_method" title="Sass::Stack::Frame#filename (method)">Sass::Stack::Frame#filename</a></span>.</p> </div> </li> <li> <span class=name>line</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="Stack/Frame.html#line-instance_method" title="Sass::Stack::Frame#line (method)">Sass::Stack::Frame#line</a></span>.</p> </div> </li> </ul> <p class=tag_title>Yields:</p> <ul class=yield> <li> <span class=type></span> <div class=inline> <p>[] A block in which the new frame is on the stack.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+87
+88
+89</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/stack.rb', line 87</span>
+
+def with_import(filename, line)
+  with_frame(filename, line, :import) {yield}
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=with_mixin-instance_method> - <strong>with_mixin</strong>(filename, line, name) { ... } </h3><div class=docstring> <div class=discussion> <p>Pushes a mixin frame onto the stack.</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>filename</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="Stack/Frame.html#filename-instance_method" title="Sass::Stack::Frame#filename (method)">Sass::Stack::Frame#filename</a></span>.</p> </div> </li> <li> <span class=name>line</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="Stack/Frame.html#line-instance_method" title="Sass::Stack::Frame#line (method)">Sass::Stack::Frame#line</a></span>.</p> </div> </li> <li> <span class=name>name</span> <span class=type>(<tt>String</tt>)</span> &mdash; <div class=inline> <p>See <span class=object_link><a href="Stack/Frame.html#name-instance_method" title="Sass::Stack::Frame#name (method)">Sass::Stack::Frame#name</a></span>.</p> </div> </li> </ul> <p class=tag_title>Yields:</p> <ul class=yield> <li> <span class=type></span> <div class=inline> <p>[] A block in which the new frame is on the stack.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+97
+98
+99</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/stack.rb', line 97</span>
+
+def with_mixin(filename, line, name)
+  with_frame(filename, line, :mixin, name) {yield}
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:31 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>

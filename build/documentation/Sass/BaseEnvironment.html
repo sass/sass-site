@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang=en lang=en> <head> <meta http-equiv=Content-Type content="text/html; charset=utf-8"/> <title> Class: Sass::BaseEnvironment &mdash; Sass Documentation </title> <link rel=stylesheet href="../css/style-03d6d7d0.css" charset=utf-8 /> <link rel=stylesheet href="../../assets/css/docs-eb9372d5.css" charset=utf-8 /> <script charset=utf-8>
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Sass/BaseEnvironment.html";
+</script> <script charset=utf-8 src="../js/jquery-89b1e99e.js"></script> <script charset=utf-8 src="../js/app-760e64ba.js"></script> </head> <body> <div id=header> <div id=menu> <a href="../_index.html">Index (B)</a> &raquo; <span class=title><span class=object_link><a href="../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class=title>BaseEnvironment</span> <div class=noframes><span class=title>(</span><a href="." target=_top>no frames</a><span class=title>)</span></div> </div> <div id=search> <a class=full_list_link id=class_list_link href="../class_list.html"> Class List </a> <a class=full_list_link id=method_list_link href="../method_list.html"> Method List </a> <a class=full_list_link id=file_list_link href="../file_list.html"> File List </a> </div> <div class=clear></div> </div> <iframe id=search_frame></iframe> <div id=content><h1>Class: Sass::BaseEnvironment </h1> <dl class=box> <dt class=r1>Inherits:</dt> <dd class=r1> <span class=inheritName>Object</span> <ul class=fullTree> <li>Object</li> <li class=next>Sass::BaseEnvironment</li> </ul> <a href="#" class=inheritanceTree>show all</a> </dd> <dt class="r2 last">Defined in:</dt> <dd class="r2 last">/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb</dd> </dl> <div class=clear></div> <h2>Overview</h2><div class=docstring> <div class=discussion> <p>The abstract base class for lexical environments for SassScript.</p> </div> </div> <div class=tags> </div><div id=subclasses> <h2>Direct Known Subclasses</h2> <p class=children><span class=object_link><a href="Environment.html" title="Sass::Environment (class)">Environment</a></span>, <span class=object_link><a href="ReadOnlyEnvironment.html" title="Sass::ReadOnlyEnvironment (class)">ReadOnlyEnvironment</a></span></p> </div> <h2>Instance Attribute Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small></h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#caller-instance_method" title="#caller (instance method)">- (Environment?) <strong>caller</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The environment of the caller of this environment’s mixin or function.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#content-instance_method" title="#content (instance method)">- ([Array&lt;Sass::Tree::Node&gt;, Environment]?) <strong>content</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The content passed to this environment.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#options-instance_method" title="#options (instance method)">- <strong>options</strong> </a> </span> <span class="note title readonly">readonly</span> <span class=summary_desc><div class=inline> <p>The options passed to the Sass Engine.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#selector-instance_method" title="#selector (instance method)">- (Selector::CommaSequence?) <strong>selector</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The selector for the current CSS rule, or nil if there is no current CSS rule.</p> </div></span> </li> </ul> <h2> Class Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#inherited_hash_accessor-class_method" title="inherited_hash_accessor (class method)">+ <strong>inherited_hash_accessor</strong>(name) </a> </span> <span class=summary_desc><div class=inline> <p>Note: when updating this, update sass/yard/inherited_hash.rb as well.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#inherited_hash_reader-class_method" title="inherited_hash_reader (class method)">+ <strong>inherited_hash_reader</strong>(name) </a> </span> <span class=summary_desc><div class=inline></div></span> </li> <li class="public "> <span class=summary_signature> <a href="#inherited_hash_writer-class_method" title="inherited_hash_writer (class method)">+ <strong>inherited_hash_writer</strong>(name) </a> </span> <span class=summary_desc><div class=inline></div></span> </li> </ul> <h2> Instance Method Summary <small>(<a href="#" class=summary_toggle>collapse</a>)</small> </h2> <ul class=summary> <li class="public "> <span class=summary_signature> <a href="#global%3F-instance_method" title="#global? (instance method)">- (Boolean) <strong>global?</strong> </a> </span> <span class=summary_desc><div class=inline> <p>Returns whether this is the global environment.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#global_env-instance_method" title="#global_env (instance method)">- (Environment) <strong>global_env</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The top-level Environment object.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#initialize-instance_method" title="#initialize (instance method)">- (BaseEnvironment) <strong>initialize</strong>(parent = nil, options = nil) </a> </span> <span class="note title constructor">constructor</span> <span class=summary_desc><div class=inline> <p>A new instance of BaseEnvironment.</p> </div></span> </li> <li class="public "> <span class=summary_signature> <a href="#stack-instance_method" title="#stack (instance method)">- (Sass::Stack) <strong>stack</strong> </a> </span> <span class=summary_desc><div class=inline> <p>The import/mixin stack.</p> </div></span> </li> </ul> <div id=constructor_details class=method_details_list> <h2>Constructor Details</h2> <div class="method_details first"> <h3 class="signature first" id=initialize-instance_method> - (<tt><span class=object_link><a href="" title="Sass::BaseEnvironment (class)">BaseEnvironment</a></span></tt>) <strong>initialize</strong>(parent = nil, options = nil) </h3><div class=docstring> <div class=discussion> <p>Returns a new instance of BaseEnvironment</p> </div> </div> <div class=tags> <p class=tag_title>Parameters:</p> <ul class=param> <li> <span class=name>options</span> <span class=type>(<tt>{Symbol =&gt; Object}</tt>)</span> <em class=default>(defaults to: <tt>nil</tt>)</em> &mdash; <div class=inline> <p>The options hash. See <a href="../file.SASS_REFERENCE.html#sass_options" title="the Sass options documentation">the Sass options documentation</a>.</p> </div> </li> <li> <span class=name>parent</span> <span class=type>(<tt><span class=object_link><a href="Environment.html" title="Sass::Environment (class)">Environment</a></span></tt>)</span> <em class=default>(defaults to: <tt>nil</tt>)</em> &mdash; <div class=inline> <p>See #parent</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+86
+87
+88
+89
+90</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 86</span>
+
+def initialize(parent = nil, options = nil)
+  @parent = parent
+  @options = options || (parent &amp;&amp; parent.options) || {}
+  @stack = Sass::Stack.new if @parent.nil?
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_attr_details class=attr_details> <h2>Instance Attribute Details</h2> <span id="caller=-instance_method"></span> <div class="method_details first"> <h3 class="signature first" id=caller-instance_method> - (<tt><span class=object_link><a href="Environment.html" title="Sass::Environment (class)">Environment</a></span>?</tt>) <strong>caller</strong> </h3><div class=docstring> <div class=discussion> <p>The environment of the caller of this environment’s mixin or function.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="Environment.html" title="Sass::Environment (class)">Environment</a></span>?</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+101
+102
+103</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 101</span>
+
+def caller
+  @caller || (@parent &amp;&amp; @parent.caller)
+end</pre> </td> </tr> </table> </div> <span id="content=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=content-instance_method> - (<tt>[Array&lt;<span class=object_link><a href="Tree/Node.html" title="Sass::Tree::Node (class)">Sass::Tree::Node</a></span>&gt;, <span class=object_link><a href="Environment.html" title="Sass::Environment (class)">Environment</a></span>]?</tt>) <strong>content</strong> </h3><div class=docstring> <div class=discussion> <p>The content passed to this environment. This is naturally only set for mixin body environments with content passed in.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>[Array&lt;<span class=object_link><a href="Tree/Node.html" title="Sass::Tree::Node (class)">Sass::Tree::Node</a></span>&gt;, <span class=object_link><a href="Environment.html" title="Sass::Environment (class)">Environment</a></span>]?</tt>)</span> &mdash; <div class=inline> <p>The content nodes and the lexical environment of the content block.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+110
+111
+112</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 110</span>
+
+def content
+  @content || (@parent &amp;&amp; @parent.content)
+end</pre> </td> </tr> </table> </div> <span id=""></span> <div class="method_details "> <h3 class="signature " id=options-instance_method> - <strong>options</strong> <span class=extras>(readonly)</span> </h3><div class=docstring> <div class=discussion> <p>The options passed to the Sass Engine.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+65
+66
+67</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 65</span>
+
+def options
+  @options
+end</pre> </td> </tr> </table> </div> <span id="selector=-instance_method"></span> <div class="method_details "> <h3 class="signature " id=selector-instance_method> - (<tt><span class=object_link><a href="Selector/CommaSequence.html" title="Sass::Selector::CommaSequence (class)">Selector::CommaSequence</a></span>?</tt>) <strong>selector</strong> </h3><div class=docstring> <div class=discussion> <p>The selector for the current CSS rule, or nil if there is no current CSS rule.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="Selector/CommaSequence.html" title="Sass::Selector::CommaSequence (class)">Selector::CommaSequence</a></span>?</tt>)</span> &mdash; <div class=inline> <p>The current selector, with any nesting fully resolved.</p> </div> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+119
+120
+121</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 119</span>
+
+def selector
+  @selector || (@caller &amp;&amp; @caller.selector) || (@parent &amp;&amp; @parent.selector)
+end</pre> </td> </tr> </table> </div> </div> <div id=class_method_details class=method_details_list> <h2>Class Method Details</h2> <div class="method_details first"> <h3 class="signature first" id=inherited_hash_accessor-class_method> + <strong>inherited_hash_accessor</strong>(name) </h3><div class=docstring> <div class=discussion> <p>update sass/yard/inherited_hash.rb as well.</p> </div> </div> <div class=tags> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+9
+10
+11
+12</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 9</span>
+
+def inherited_hash_accessor(name)
+  inherited_hash_reader(name)
+  inherited_hash_writer(name)
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=inherited_hash_reader-class_method> + <strong>inherited_hash_reader</strong>(name) </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 14</span>
+
+def inherited_hash_reader(name)
+  class_eval &lt;&lt;-RUBY, __FILE__, __LINE__ + 1
+    def #{name}(name)
+      _#{name}(name.tr(&#39;_&#39;, &#39;-&#39;))
+    end
+
+    def _#{name}(name)
+      (@#{name}s &amp;&amp; @#{name}s[name]) || @parent &amp;&amp; @parent._#{name}(name)
+    end
+    protected :_#{name}
+
+    def is_#{name}_global?(name)
+      return !@parent if @#{name}s &amp;&amp; @#{name}s.has_key?(name)
+      @parent &amp;&amp; @parent.is_#{name}_global?(name)
+    end
+  RUBY
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=inherited_hash_writer-class_method> + <strong>inherited_hash_writer</strong>(name) </h3><table class=source_code> <tr> <td> <pre class=lines>
+
+
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 32</span>
+
+def inherited_hash_writer(name)
+  class_eval &lt;&lt;-RUBY, __FILE__, __LINE__ + 1
+    def set_#{name}(name, value)
+      name = name.tr(&#39;_&#39;, &#39;-&#39;)
+      @#{name}s[name] = value unless try_set_#{name}(name, value)
+    end
+
+    def try_set_#{name}(name, value)
+      @#{name}s ||= {}
+      if @#{name}s.include?(name)
+        @#{name}s[name] = value
+        true
+      elsif @parent &amp;&amp; !@parent.global?
+        @parent.try_set_#{name}(name, value)
+      else
+        false
+      end
+    end
+    protected :try_set_#{name}
+
+    def set_local_#{name}(name, value)
+      @#{name}s ||= {}
+      @#{name}s[name.tr(&#39;_&#39;, &#39;-&#39;)] = value
+    end
+
+    def set_global_#{name}(name, value)
+      global_env.set_#{name}(name, value)
+    end
+  RUBY
+end</pre> </td> </tr> </table> </div> </div> <div id=instance_method_details class=method_details_list> <h2>Instance Method Details</h2> <div class="method_details first"> <h3 class="signature first" id="global?-instance_method"> - (<tt>Boolean</tt>) <strong>global?</strong> </h3><div class=docstring> <div class=discussion> <p>Returns whether this is the global environment.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt>Boolean</tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+95
+96
+97</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 95</span>
+
+def global?
+  @parent.nil?
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=global_env-instance_method> - (<tt><span class=object_link><a href="Environment.html" title="Sass::Environment (class)">Environment</a></span></tt>) <strong>global_env</strong> </h3><div class=docstring> <div class=discussion> <p>The top-level Environment object.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="Environment.html" title="Sass::Environment (class)">Environment</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+126
+127
+128</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 126</span>
+
+def global_env
+  @global_env ||= global? ? self : @parent.global_env
+end</pre> </td> </tr> </table> </div> <div class="method_details "> <h3 class="signature " id=stack-instance_method> - (<tt><span class=object_link><a href="Stack.html" title="Sass::Stack (class)">Sass::Stack</a></span></tt>) <strong>stack</strong> </h3><div class=docstring> <div class=discussion> <p>The import/mixin stack.</p> </div> </div> <div class=tags> <p class=tag_title>Returns:</p> <ul class=return> <li> <span class=type>(<tt><span class=object_link><a href="Stack.html" title="Sass::Stack (class)">Sass::Stack</a></span></tt>)</span> </li> </ul> </div><table class=source_code> <tr> <td> <pre class=lines>
+
+
+133
+134
+135</pre> </td> <td> <pre class=code><span class="info file"># File '/home/nweiz/code/sass-site/.sass/lib/sass/environment.rb', line 133</span>
+
+def stack
+  @stack || global_env.stack
+end</pre> </td> </tr> </table> </div> </div> </div> <div id=footer> Generated on Thu Feb 26 18:31:04 2015 by <a href="//yardoc.org" title="Yay! A Ruby Documentation Tool" target=_parent>yard</a> 0.8.7.4 (ruby-2.0.0). </div> </body> </html>
