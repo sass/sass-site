@@ -1,9 +1,9 @@
 ---
-title: "#teamSass"
+title: "#teamSASS"
 ---
 
 - content_for :introduction do
-  Sass has an awesome community of designers and developers who love to spread
+  SASS has an awesome community of designers and developers who love to spread
   the word and help people out. Here we&rsquo;ve collected some resources.
   Happy&nbsp;Styling!
 
@@ -14,25 +14,25 @@ title: "#teamSass"
     :markdown
       Still __getting started__? There are some great  [tutorials](#Tutorials)
       out there to get you on your feet. Want to __learn more__? There's some
-      great [Sass blogs](#Blogs) (including
+      great [SASS blogs](#Blogs) (including
       [a few particular articles](#Articles) we recommend reading), and even a
-      few [books about Sass](#Books) to help you learn some new tips and
+      few [books about SASS](#Books) to help you learn some new tips and
       tricks.
 
   %li
     :markdown
-      The Sass community is amazing. There are a number of
-      [frameworks](#Frameworks) that make using Sass simple. Want try Sass in
+      The SASS community is amazing. There are a number of
+      [frameworks](#Frameworks) that make using SASS simple. Want try SASS in
       Node, Python, or another framework? Check out the
-      [libSass&nbsp;resources](/libsass).
+      [libSASS&nbsp;resources](/libsass).
 
-      Thinking of __contributing__  to Sass itself? We rely on everyone to
-      keep Sass as stable as it is. Feel free to
-      [submit a patch via pull request](#Contribute) to the Sass project.
+      Thinking of __contributing__  to SASS itself? We rely on everyone to
+      keep SASS as stable as it is. Feel free to
+      [submit a patch via pull request](#Contribute) to the SASS project.
 
   %li
     :markdown
-      __Everyone is welcome in the Sass community, except those who are
+      __Everyone is welcome in the SASS community, except those who are
       unwelcoming__. Please read and follow our
       [community&nbsp;guidelines](/community-guidelines).
 
@@ -40,7 +40,7 @@ title: "#teamSass"
 %hr/
 
 .content-primary
-  %h2#Articles Sass Articles on the Web
+  %h2#Articles SASS Articles on the Web
   %ul.articles
     - for article in data.community.articles
       %li
@@ -48,7 +48,7 @@ title: "#teamSass"
         %p= article.description
 
   %h2#Contribute Contribute
-  %p Sass is an open source project and we encourage you to contribute. You can contribute with bug reports and feature requests or if you have code to contribute we will love you forever.
+  %p SASS is an open source project and we encourage you to contribute. You can contribute with bug reports and feature requests or if you have code to contribute we will love you forever.
 
   %p When adding bug reports, feature requests, or code there are a couple of primary branches we use.
 
@@ -58,7 +58,7 @@ title: "#teamSass"
       The stable branch is where we do development on the released version.
       The majority of bug fixes should go here.
       If you're just reporting a bug <a href="https://github.com/sass/sass/issues">add an issue</a> and
-      note the version of Sass where you experienced the issue in your comment.
+      note the version of SASS where you experienced the issue in your comment.
       If you have some code to contribute, fork the stable branch and send us a pull request.
       We'll review your patch and either accept or decline with comments.
       All bug fixes must be thoroughly tested and the tests must pass
@@ -67,7 +67,7 @@ title: "#teamSass"
   %dl
     %dt= link_to "Master", "https://github.com/sass/sass/tree/master"
     %dd
-      The master branch is where we keep track of the next version of Sass.
+      The master branch is where we keep track of the next version of SASS.
       New feature requests should be made on the <a href="https://github.com/sass/sass/issues">issue tracker</a>
       and discussed with the <a href="http://github.com/nex3">core</a> <a href="http://github.com/chriseppstein">team</a>
       before implementation begins to avoid wasted effort.
@@ -95,12 +95,12 @@ title: "#teamSass"
     - for tutorial in data.community.tutorials
       %li= link_to tutorial.name, tutorial.url
 
-  %h3#Blogs Sass Blogs
+  %h3#Blogs SASS Blogs
   %ul
     - for blog in data.community.blogs
       %li= link_to blog.name, blog.url
 
-  %h3#Books Sass Books
+  %h3#Books SASS Books
   %ul
     - for book in data.community.books
       %li= link_to book.name, book.url

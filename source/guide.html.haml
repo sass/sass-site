@@ -1,10 +1,10 @@
 ---
-title: Sass Basics
+title: SASS Basics
 ---
 
 %p.introduction
-  Before you can use Sass, you need to set it up on your project. If you want
-  to just browse here, go ahead, but we recommend you go install Sass first.
+  Before you can use SASS, you need to set it up on your project. If you want
+  to just browse here, go ahead, but we recommend you go install SASS first.
   = link_to "Go here", "/install"
   if you want to learn how to get everything setup.
 
@@ -25,9 +25,9 @@ title: Sass Basics
     :markdown
       ## Preprocessing
 
-      CSS on its own can be fun, but stylesheets are getting larger, more complex, and harder to maintain. This is where a preprocessor can help. Sass lets you use features that don't exist in CSS yet like variables, nesting, mixins, inheritance and other nifty goodies that make writing CSS fun again.
+      CSS on its own can be fun, but stylesheets are getting larger, more complex, and harder to maintain. This is where a preprocessor can help. SASS lets you use features that don't exist in CSS yet like variables, nesting, mixins, inheritance and other nifty goodies that make writing CSS fun again.
 
-      Once you start tinkering with Sass, it will take your preprocessed Sass file and save it out as a normal CSS file that you can use in your web&nbsp;site.
+      Once you start tinkering with SASS, it will take your preprocessed SASS file and save it out as a normal CSS file that you can use in your web&nbsp;site.
 
       * * *
 
@@ -35,22 +35,22 @@ title: Sass Basics
     :markdown
       ## Variables
 
-      Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses the <code>$</code> symbol to make something a variable. Here's an example:
+      Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. SASS uses the <code>$</code> symbol to make something a variable. Here's an example:
 
     %ul
       %li= link_to "SCSS", "#topic-2-SCSS"
-      %li= link_to "Sass", "#topic-2-Sass"
+      %li= link_to "SASS", "#topic-2-SASS"
 
     #topic-2-SCSS
       %h3 SCSS Syntax
       ~ partial "code-snippets/homepage-variables-scss"
 
-    #topic-2-Sass
-      %h3 Sass Syntax
+    #topic-2-SASS
+      %h3 SASS Syntax
       ~ partial "code-snippets/homepage-variables-sass"
 
     :markdown
-      When the Sass is processed, it takes the variables we define for the <code>$font-stack</code> and <code>$primary-color</code> and outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when working with brand colors and keeping them consistent throughout the&nbsp;site.
+      When the SASS is processed, it takes the variables we define for the <code>$font-stack</code> and <code>$primary-color</code> and outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when working with brand colors and keeping them consistent throughout the&nbsp;site.
 
     ~ partial "code-snippets/homepage-variables-css"
 
@@ -62,21 +62,21 @@ title: Sass Basics
 
       When writing HTML you've probably noticed that it has a clear nested and visual hierarchy. CSS, on the other hand, doesn't.
 
-      Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Be aware that overly nested rules will result in
+      SASS will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Be aware that overly nested rules will result in
       over-qualified CSS that could prove hard to maintain and is generally considered bad practice.
 
       With that in mind, here's an example of some typical styles for a site's&nbsp;navigation:
 
     %ul
       %li= link_to "SCSS", "#topic-3-SCSS"
-      %li= link_to "Sass", "#topic-3-Sass"
+      %li= link_to "SASS", "#topic-3-SASS"
 
     #topic-3-SCSS
       %h3 SCSS Syntax
       ~ partial "code-snippets/homepage-nesting-scss"
 
-    #topic-3-Sass
-      %h3 Sass Syntax
+    #topic-3-SASS
+      %h3 SASS Syntax
       ~ partial "code-snippets/homepage-nesting-sass"
 
     :markdown
@@ -90,7 +90,7 @@ title: Sass Basics
     :markdown
       ## Partials
 
-      You can create partial Sass files that contain little snippets of CSS that you can include in other Sass files. This is a great way to modularize your CSS and help keep things easier to maintain. A partial is simply a Sass file named with a leading underscore. You might name it something like <code>_partial.scss</code>. The underscore lets Sass know that the file is only a partial file and that it should not be generated into a CSS file. Sass partials are used with the <code>@import</code> directive.
+      You can create partial SASS files that contain little snippets of CSS that you can include in other SASS files. This is a great way to modularize your CSS and help keep things easier to maintain. A partial is simply a SASS file named with a leading underscore. You might name it something like <code>_partial.scss</code>. The underscore lets SASS know that the file is only a partial file and that it should not be generated into a CSS file. SASS partials are used with the <code>@import</code> directive.
 
       ***
 
@@ -98,27 +98,27 @@ title: Sass Basics
     :markdown
       ## Import
 
-      CSS has an import option that lets you split your CSS into smaller, more maintainable portions. The only drawback is that each time you use <code>@import</code> in CSS it creates another HTTP request. Sass builds on top of the current CSS <code>@import</code> but instead of requiring an HTTP request, Sass will take the file that you want to import and combine it with the file you're importing into so you can serve a single CSS file to the web browser.
+      CSS has an import option that lets you split your CSS into smaller, more maintainable portions. The only drawback is that each time you use <code>@import</code> in CSS it creates another HTTP request. SASS builds on top of the current CSS <code>@import</code> but instead of requiring an HTTP request, SASS will take the file that you want to import and combine it with the file you're importing into so you can serve a single CSS file to the web browser.
 
-      Let's say you have a couple of Sass files, <code>\_reset.scss</code> and <code>base.scss</code>. We want to import <code>\_reset.scss</code> into <code>base.scss</code>.
+      Let's say you have a couple of SASS files, <code>\_reset.scss</code> and <code>base.scss</code>. We want to import <code>\_reset.scss</code> into <code>base.scss</code>.
 
     %ul
       %li= link_to "SCSS", "#topic-5-SCSS"
-      %li= link_to "Sass", "#topic-5-Sass"
+      %li= link_to "SASS", "#topic-5-SASS"
 
     #topic-5-SCSS
       %h3 SCSS Syntax
       ~ partial "code-snippets/homepage-import-1-scss"
       ~ partial "code-snippets/homepage-import-2-scss"
 
-    #topic-5-Sass
-      %h3 Sass Syntax
+    #topic-5-SASS
+      %h3 SASS Syntax
       ~ partial "code-snippets/homepage-import-1-sass"
       ~ partial "code-snippets/homepage-import-2-sass"
 
     :markdown
 
-      Notice we're using <code>@import 'reset';</code> in the <code>base.scss</code> file. When you import a file you don't need to include the file extension <code>.scss</code>. Sass is smart and will figure it out for you. When you generate the CSS you'll&nbsp;get:
+      Notice we're using <code>@import 'reset';</code> in the <code>base.scss</code> file. When you import a file you don't need to include the file extension <code>.scss</code>. SASS is smart and will figure it out for you. When you generate the CSS you'll&nbsp;get:
 
     ~ partial "code-snippets/homepage-import-css"
 
@@ -132,14 +132,14 @@ title: Sass Basics
 
     %ul
       %li= link_to "SCSS", "#topic-6-SCSS"
-      %li= link_to "Sass", "#topic-6-Sass"
+      %li= link_to "SASS", "#topic-6-SASS"
 
     #topic-6-SCSS
       %h3 SCSS Syntax
       ~ partial "code-snippets/homepage-mixins-scss"
 
-    #topic-6-Sass
-      %h3 Sass Syntax
+    #topic-6-SASS
+      %h3 SASS Syntax
       ~ partial "code-snippets/homepage-mixins-sass"
 
     :markdown
@@ -153,18 +153,18 @@ title: Sass Basics
     :markdown
       ## Extend/Inheritance
 
-      This is one of the most useful features of Sass. Using <code>@extend</code> lets you share a set of CSS properties from one selector to another. It helps keep your Sass very DRY. In our example we're going to create a simple series of messaging for errors, warnings and successes.
+      This is one of the most useful features of SASS. Using <code>@extend</code> lets you share a set of CSS properties from one selector to another. It helps keep your SASS very DRY. In our example we're going to create a simple series of messaging for errors, warnings and successes.
 
     %ul
       %li= link_to "SCSS", "#topic-7-SCSS"
-      %li= link_to "Sass", "#topic-7-Sass"
+      %li= link_to "SASS", "#topic-7-SASS"
 
     #topic-7-SCSS
       %h3 SCSS Syntax
       ~ partial "code-snippets/homepage-extend-scss"
 
-    #topic-7-Sass
-      %h3 Sass Syntax
+    #topic-7-SASS
+      %h3 SASS Syntax
       ~ partial "code-snippets/homepage-extend-sass"
 
     :markdown
@@ -178,21 +178,21 @@ title: Sass Basics
     :markdown
       ## Operators
 
-      Doing math in your CSS is very helpful. Sass has a handful of standard math operators like `+`, `-`, `*`, `/`, and `%`. In our example we're going to do some simple math to calculate widths for an `aside` & `article`.
+      Doing math in your CSS is very helpful. SASS has a handful of standard math operators like `+`, `-`, `*`, `/`, and `%`. In our example we're going to do some simple math to calculate widths for an `aside` & `article`.
 
     %ul
       %li= link_to "SCSS", "#topic-8-SCSS"
-      %li= link_to "Sass", "#topic-8-Sass"
+      %li= link_to "SASS", "#topic-8-SASS"
 
     #topic-8-SCSS
       %h3 SCSS Syntax
       ~ partial "code-snippets/homepage-operators-scss"
 
-    #topic-8-Sass
-      %h3 Sass Syntax
+    #topic-8-SASS
+      %h3 SASS Syntax
       ~ partial "code-snippets/homepage-operators-sass"
 
     :markdown
-      We've created a very simple fluid grid, based on 960px. Operations in Sass let us do something like take pixel values and convert them to percentages without much hassle. The generated CSS will look like:
+      We've created a very simple fluid grid, based on 960px. Operations in SASS let us do something like take pixel values and convert them to percentages without much hassle. The generated CSS will look like:
 
     ~ partial "code-snippets/homepage-operators-css"

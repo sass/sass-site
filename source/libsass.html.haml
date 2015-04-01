@@ -1,12 +1,12 @@
 ---
-title: libSass
+title: libSASS
 ---
 
 %p.introduction
-  We want everyone to enjoy Sass, no matter what language they use. Sass was
+  We want everyone to enjoy SASS, no matter what language they use. SASS was
   originally written in Ruby.
-  = link_to "libSass", "http://libsass.org/"
-  is a C/C++ port of the Sass engine. The point is to be simple, faster, and
+  = link_to "libSASS", "http://libsass.org/"
+  is a C/C++ port of the SASS engine. The point is to be simple, faster, and
   easy to integrate. Find out more about the project over at
   = succeed "." do
     = link_to "GitHub", "http://github.com/hcatlin/libsass"
@@ -14,17 +14,17 @@ title: libSass
 :markdown
   ## Wrappers
 
-  LibSass is just a library. To run the code locally (i.e. to compile your stylesheets), you need an implementer, or "wrapper". There are a number of other wrappers for LibSass. We encourage you to write your own wrapper - the whole point of Libsass is that we want to bring Sass to many other languages, not just Ruby!
+  LibSASS is just a library. To run the code locally (i.e. to compile your stylesheets), you need an implementer, or "wrapper". There are a number of other wrappers for LibSASS. We encourage you to write your own wrapper - the whole point of Libsass is that we want to bring SASS to many other languages, not just Ruby!
 
-  Below are the libSass wrappers that we're currently aware of. Sometimes there are multiple wrappers per language – in those cases, we put the most recently-updated wrapper first.
+  Below are the libSASS wrappers that we're currently aware of. Sometimes there are multiple wrappers per language – in those cases, we put the most recently-updated wrapper first.
 
 %ul.slides
   %li#sassc
     :markdown
-      ### Sass C
-      SassC (get it?) is an wrapper written in C.   
+      ### SASS C
+      SASSC (get it?) is an wrapper written in C.
 
-      To run the compiler on your local machine, you need to build SassC. To build SassC, you must have either a local copy of the libsass source or it must be installed into your system. For development, please use the source version. You must then setup an environment variable pointing to the LibSass folder, for example:
+      To run the compiler on your local machine, you need to build SASSC. To build SASSC, you must have either a local copy of the libsass source or it must be installed into your system. For development, please use the source version. You must then setup an environment variable pointing to the LibSASS folder, for example:
 
     ~ partial "code-snippets/libsass-setup"
 
@@ -41,7 +41,7 @@ title: libSass
   %li#java
     :markdown
       ### Java
-      There is one Java wrapper – the [libSass Maven plugin](https://github.com/warmuuh/libsass-maven-plugin).
+      There is one Java wrapper – the [libSASS Maven plugin](https://github.com/warmuuh/libsass-maven-plugin).
 
   %li#javascript
     :markdown
@@ -56,57 +56,57 @@ title: libSass
   %li#net
     :markdown
       ### .NET
-      [libsass-net](https://github.com/darrenkopp/libsass-net) is updated regularly, and is probably the best bet. There's also [NSass](https://github.com/TBAPI-0KA/NSass), although it hasn't been updated in a while.
+      [libsass-net](https://github.com/darrenkopp/libsass-net) is updated regularly, and is probably the best bet. There's also [NSASS](https://github.com/TBAPI-0KA/NSass), although it hasn't been updated in a while.
 
   %li#node
     :markdown
       ### Node
-      The [node-sass](https://github.com/sass/node-sass) project has proven to be popular, and we've taken it into the main Sass GitHub repo. Check out its package page [here](https://www.npmjs.org/package/node-sass), and [there's a dedicated twitter account](https://twitter.com/nodesass) for updates.
+      The [node-sass](https://github.com/sass/node-sass) project has proven to be popular, and we've taken it into the main SASS GitHub repo. Check out its package page [here](https://www.npmjs.org/package/node-sass), and [there's a dedicated twitter account](https://twitter.com/nodesass) for updates.
 
   %li#perl
     :markdown
       ### Perl
-      The [CSS::Sass](https://github.com/sass/perl-libsass) project is updated regularly. There's the [Text-Sass-XS](https://github.com/ysasaki/Text-Sass-XS) project, too, although it hasn't been updated in a while.
+      The [CSS::SASS](https://github.com/sass/perl-libsass) project is updated regularly. There's the [Text-SASS-XS](https://github.com/ysasaki/Text-Sass-XS) project, too, although it hasn't been updated in a while.
 
   %li#php
     :markdown
       ### PHP
-      The [SassPHP](https://github.com/sensational/sassphp) project is an updated fork of an [older PHP version](https://github.com/jamierumbelow/sassphp).
+      The [SASSPHP](https://github.com/sensational/sassphp) project is an updated fork of an [older PHP version](https://github.com/jamierumbelow/sassphp).
 
   %li#python
     :markdown
       ### Python
       There are two python projects that are updated regularly. The [libsass-python](https://github.com/dahlia/libsass-python) project (there are more details on [its own website](http://hongminhee.org/libsass-python/)) and the [python-scss](https://github.com/pistolero/python-scss) project.
-      
-      Two other python projects, [pylibsass](https://github.com/rsenk330/pylibsass) and [SassPython](https://github.com/marianoguerra/SassPython), haven't been updated in a while.
+
+      Two other python projects, [pylibsass](https://github.com/rsenk330/pylibsass) and [SASSPython](https://github.com/marianoguerra/SassPython), haven't been updated in a while.
 
 
   %li#ruby
     :markdown
       ### Ruby
-      libSass has also been ported back into ruby, for the [ruby-libsass](https://github.com/sass/ruby-libsass) project.
+      libSASS has also been ported back into ruby, for the [ruby-libsass](https://github.com/sass/ruby-libsass) project.
 
   %li#scala
     :markdown
       ### Scala
-      The only scala project, [Sass-Scala](https://github.com/kkung/Sass-Scala), hasn't been updated in a couple of years.
+      The only scala project, [SASS-Scala](https://github.com/kkung/Sass-Scala), hasn't been updated in a couple of years.
 
-%h2 About libSass
+%h2 About libSASS
 
 :markdown
   This project is the brainchild of
-  [Hampton Catlin](http://twitter.com/hcatlin), the original creator of Sass,
+  [Hampton Catlin](http://twitter.com/hcatlin), the original creator of SASS,
   and is sponsored by [Moovweb](http://moovweb.com/).
   [Aaron Leung](http://github.com/akhleung) from Moovweb is the primary
   developer.
 
 %figure
-  = image_tag "logos/libsass.png", alt: "libSass logo"
+  = image_tag "logos/libsass.png", alt: "SASS logo"
 
 - content_for :complementary do
   %h3 Wrappers
   %ul.anchors
-    %li= link_to "SassC",      "#sassc"
+    %li= link_to "SASSC",      "#sassc"
     %li= link_to "Go",         "#go"
     %li= link_to "Java",       "#java"
     %li= link_to "JavaScript", "#javascript"
