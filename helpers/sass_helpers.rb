@@ -2,7 +2,7 @@ require "pathname"
 
 module SassHelpers
   def page_title
-    title = "SASS: "
+    title = "Sass: "
     if data.page.title
       title << data.page.title
     else

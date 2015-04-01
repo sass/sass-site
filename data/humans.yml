@@ -24,7 +24,7 @@ contributors:
     twitter: malrase
 
 thanks:
-  - name: All the people at SASSConf that came to help with DNS and server-related issues.
+  - name: All the people at SassConf that came to help with DNS and server-related issues.
   - name: To everyone who has contributed through pull requests.
 
 markup:
@@ -34,7 +34,7 @@ markup:
 
 style:
   - name: CSS3
-  - name: SASS
+  - name: Sass
   - name: Compass
   - name: Susy
   - name: Breakpoint

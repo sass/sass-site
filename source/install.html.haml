@@ -1,15 +1,15 @@
 ---
-title: Install SASS
+title: Install Sass
 ---
 
-%h2 There are a couple of ways to start using&nbsp;SASS:
+%h2 There are a couple of ways to start using&nbsp;Sass:
 %ol.list-columns
   %li.gui-application
     %h3 Applications
     %p= image_tag "illustrations/mouse.svg", class: "header-image", height: "160", alt: "Mouse"
     %p
       There are a good many applications that will get you up and running
-      with SASS in a few minutes for Mac, Windows, and Linux. You can download
+      with Sass in a few minutes for Mac, Windows, and Linux. You can download
       most of the applications for free but a few of them are paid apps
       <small>(and totally worth it)</small>.
 
@@ -71,7 +71,7 @@ title: Install SASS
     %dl#install-ruby-windows
       %dt Windows
       %dd
-        Before you start using SASS you will need to install Ruby. The fastest
+        Before you start using Sass you will need to install Ruby. The fastest
         way to get Ruby on your Windows computer is to use
         <a href="http://rubyinstaller.org">Ruby Installer</a>. It's a
         single-click installer that will get everything set up for you super
@@ -84,15 +84,15 @@ title: Install SASS
       %dl#install-ruby-mac
         %dt Mac
         %dd
-          If you prefer the command line over an application then getting SASS
-          set up is a fairly quick process. SASS has a Ruby dependency but if
+          If you prefer the command line over an application then getting Sass
+          set up is a fairly quick process. Sass has a Ruby dependency but if
           you're using a Mac, congratulations, Ruby comes pre-installed.
 
       %dl
-        %dt Install SASS
+        %dt Install Sass
         %dd
           %p
-            Here's the quickest way we've found to start using SASS by using
+            Here's the quickest way we've found to start using Sass by using
             the command line:
 
           %ol
@@ -104,36 +104,36 @@ title: Install SASS
 
             %li
               %p
-                <strong>Install SASS.</strong> Ruby uses Gems to manage its
-                various packages of code like SASS. In your open terminal
+                <strong>Install Sass.</strong> Ruby uses Gems to manage its
+                various packages of code like Sass. In your open terminal
                 window type:
               %pre
                 :preserve
                   gem install sass
               %p
-                This will install SASS and any dependencies for you. It's pretty
-                magical. If you get an error message then it's likely you will need to use the <code>sudo</code> command to install the SASS gem. It would look like:
+                This will install Sass and any dependencies for you. It's pretty
+                magical. If you get an error message then it's likely you will need to use the <code>sudo</code> command to install the Sass gem. It would look like:
               %pre
                 :preserve
                   sudo gem install sass
 
             %li
               %p
-                <strong>Double-check.</strong> You should now have SASS
+                <strong>Double-check.</strong> You should now have Sass
                 installed, but it never hurts to double-check. In your
                 terminal application you can type:
               %pre
                 :preserve
                   sass -v
               - if data.respond_to?(:version)
-                %p It should return <code>SASS #{data.version.number} (#{data.version.name})</code>. Congratulations! You've successfully installed SASS.
+                %p It should return <code>Sass #{data.version.number} (#{data.version.name})</code>. Congratulations! You've successfully installed Sass.
               - else
-                %p It should return <code>SASS ???</code>. Congratulations! You've successfully installed SASS.
+                %p It should return <code>Sass ???</code>. Congratulations! You've successfully installed Sass.
 
             %li
               %p
-                <strong>Go and play.</strong> If you're brand new to SASS
+                <strong>Go and play.</strong> If you're brand new to Sass
                 we've set up some resources to help you learn pretty darn
                 quick.
 
-              %p= link_to "Learn More About SASS", "/guide", :class => "button primary"
+              %p= link_to "Learn More About Sass", "/guide", :class => "button primary"

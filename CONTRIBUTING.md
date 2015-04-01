@@ -1,7 +1,7 @@
-Contributing to the SASS website
+Contributing to the Sass website
 ================================
 
-The SASS website is open source. See a bug or typo? Have an idea? Just do the
+The Sass website is open source. See a bug or typo? Have an idea? Just do the
 following:
 
 * Check out the style guide for design & code standards.
@@ -31,4 +31,4 @@ middleman
 
 Thanks!
 
-&mdash; [Team SASS Design](http://twitter.com/teamsassdesign)
+&mdash; [Team Sass Design](http://twitter.com/teamsassdesign)
