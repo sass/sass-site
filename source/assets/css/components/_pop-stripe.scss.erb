@@ -1,4 +1,5 @@
-$colors: <% data.color.colors.each do |swatch| %>$<%= swatch.name %> <% end %>;
+$colors: red orange yellow green blue indigo violet;
+//$colors: <% data.color.colors.each do |swatch| %>$<%= swatch.name %> <% end %>;
 
 @function stripes($position, $colors) {
   $colors: if(type-of($colors) != 'list', compact($colors), $colors);

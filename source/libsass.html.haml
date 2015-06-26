@@ -22,9 +22,10 @@ title: libSass
   %li#sassc
     :markdown
       ### Sass C
-      SassC (get it?) is an wrapper written in C.   
 
-      To run the compiler on your local machine, you need to build SassC. To build SassC, you must have either a local copy of the libsass source or it must be installed into your system. For development, please use the source version. You must then setup an environment variable pointing to the LibSass folder, for example:
+      SassC (get it?) is an wrapper written in C.
+
+      To run the compiler on your local machine, you need to build SassC. To build SassC, you must have either a local copy of the libSass source or it must be installed into your system. For development, please use the source version. You must then setup an environment variable pointing to the LibSass folder, for example:
 
     ~ partial "code-snippets/libsass-setup"
 
@@ -36,7 +37,11 @@ title: libSass
   %li#go
     :markdown
       ### Go
-      The [gosass](https://github.com/moovweb/gosass) project is updated fairly regularly. There are also two other projects: [go-sass](https://github.com/SamWhited/go-sass) and [go_sass](https://github.com/suapapa/go_sass) which have not been updated in a while.
+      [Wellington](https://github.com/wellington/wellington) is an extension to libsass that adds spriting and is available on brew:
+
+      `brew install wellington`
+
+      There are also three other libsass wrappers in go: [gosass](https://github.com/moovweb/gosass), [go-sass](https://github.com/SamWhited/go-sass) and [go_sass](https://github.com/suapapa/go_sass) which have not been updated in a while.
 
   %li#java
     :markdown
@@ -77,7 +82,7 @@ title: libSass
     :markdown
       ### Python
       There are two python projects that are updated regularly. The [libsass-python](https://github.com/dahlia/libsass-python) project (there are more details on [its own website](http://hongminhee.org/libsass-python/)) and the [python-scss](https://github.com/pistolero/python-scss) project.
-      
+
       Two other python projects, [pylibsass](https://github.com/rsenk330/pylibsass) and [SassPython](https://github.com/marianoguerra/SassPython), haven't been updated in a while.
 
 
@@ -101,7 +106,7 @@ title: libSass
   developer.
 
 %figure
-  = image_tag "logos/libsass.png", alt: "libSass logo"
+  = image_tag "logos/libsass.png", alt: "LibSass logo"
 
 - content_for :complementary do
   %h3 Wrappers
