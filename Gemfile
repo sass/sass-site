@@ -8,6 +8,7 @@ gem "rack-rewrite"
 gem "rack-contrib"
 
 group :development do
+  gem "activesupport"
   gem "breakpoint",            "~> 2.5.0"
   gem "builder",               "~> 3.2.2"
   gem "middleman",             "~> 3.3.8"

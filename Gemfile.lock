@@ -152,6 +152,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   breakpoint (~> 2.5.0)
   builder (~> 3.2.2)
   middleman (~> 3.3.8)
