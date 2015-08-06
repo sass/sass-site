@@ -1,5 +1,5 @@
 ```scss
-/* base.scss */
+// base.scss
 
 @import 'reset';
 
