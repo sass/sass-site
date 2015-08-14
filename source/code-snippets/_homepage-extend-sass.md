@@ -4,15 +4,19 @@
   padding: 10px
   color: #333
 
+
 .success
   @extend .message
   border-color: green
+
 
 .error
   @extend .message
   border-color: red
 
+
 .warning
   @extend .message
   border-color: yellow
+
 ```
