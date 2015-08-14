@@ -1,10 +1,6 @@
 $(function() {
-  $( "#topic-2" ).tabs();
-  $( "#topic-3" ).tabs();
-  $( "#topic-5" ).tabs();
-  $( "#topic-6" ).tabs();
-  $( "#topic-7" ).tabs();
-  $( "#topic-8" ).tabs();
+  // Initialize the tabs (Sass/SCSS) with jQuery-ui
+  $( ".slides ul" ).parent().tabs();
 
   // Hover states on the static widgets
   $( "#dialog-link, #icons li" ).hover(
