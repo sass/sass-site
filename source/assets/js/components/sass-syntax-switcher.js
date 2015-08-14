@@ -2,16 +2,6 @@ $(function() {
   // Initialize the tabs (Sass/SCSS) with jQuery-ui
   $( ".slides ul" ).parent().tabs();
 
-  // Hover states on the static widgets
-  $( "#dialog-link, #icons li" ).hover(
-    function() {
-      $( this ).addClass( "ui-state-hover" );
-    },
-    function() {
-      $( this ).removeClass( "ui-state-hover" );
-    }
-  );
-
   // Switch ALL the tabs (Sass/SCSS) together
   var
     noRecursion = false,
