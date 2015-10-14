@@ -5,4 +5,5 @@ $primary-color: #333
 body
   font: 100% $font-stack
   color: $primary-color
+
 ```
