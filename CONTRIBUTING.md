@@ -26,7 +26,7 @@ navigate to the project repo and run:
 
 ```
 bundle install
-middleman
+bundle exec middleman
 ```
 
 
