@@ -1,10 +1,3 @@
-def bundle(cmd)
-  old_bundle_gemfile = ENV["BUNDLE_GEMFILE"]
-  ENV.delete("BUNDLE_GEMFILE")
-  sh %{bundle #{cmd}}
-ensure
-  ENV["BUNDLE_GEMFILE"]
-end
 
 task :sass do
   unless Dir.exists?(".sass")
@@ -21,7 +14,7 @@ task :sass do
       sh %{git checkout #{File.read("VERSION").strip}}
     end
 
-    bundle 'install'
+    sh %{bundle #{install}}
   end
 end
 
