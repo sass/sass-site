@@ -1,4 +1,15 @@
 
+# This is a helper function that properly sets up
+# the environment in the .sass folder for bundle commands to work
+def bundle(cmd)
+  old_bundle_gemfile = ENV["BUNDLE_GEMFILE"]
+  ENV.delete("BUNDLE_GEMFILE")
+  sh %{bundle #{cmd}}
+ensure
+  ENV["BUNDLE_GEMFILE"]
+end
+
+
 task :sass do
   unless Dir.exists?(".sass")
     sh %{git clone git://github.com/sass/sass .sass}
@@ -14,7 +25,7 @@ task :sass do
       sh %{git checkout #{File.read("VERSION").strip}}
     end
 
-    sh %{bundle install}
+    bundle %{install}
   end
 end
 
@@ -27,7 +38,7 @@ end
 
 task :sass_docs => :sass do
   ENV["RUBOCOP"] = "false"
-  Dir.chdir(".sass") { sh %{bundle exec rake doc}}
+  Dir.chdir(".sass") { bundle %{exec rake doc}}
   sh %{rm -rf source/documentation}
   sh %{cp -r .sass/doc source/documentation}
   Dir['source/documentation/**/*.html'].each do |path|
