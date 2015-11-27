@@ -12,7 +12,6 @@ task :sass do
   end
 
   Dir.chdir(".sass") do
-    sh %{rm -f Gemfile}
     sh %{git fetch}
     if ENV["SASS_REVISION"]
       sh %{git checkout #{ENV["SASS_REVISION"]}}
@@ -20,17 +19,6 @@ task :sass do
       sh %{git checkout origin/stable}
       # Check out the most recent released stable version
       sh %{git checkout #{File.read("VERSION").strip}}
-    end
-
-    # Stable doesn't have a Gemfile, but it needs one to avoid using
-    # this package's Gemfile. This should be removed when 3.3 is
-    # released.
-    File.open('Gemfile', 'w') do |f|
-      f.puts <<GEMFILE
-source "https://rubygems.org"
-gemspec
-gem 'rake'
-GEMFILE
     end
 
     bundle 'install'
