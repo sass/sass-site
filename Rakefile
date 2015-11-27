@@ -75,5 +75,10 @@ task :upload do
   sh %{git checkout master}
 end
 
+task :clean do
+  sh %{rm -rf .sass build}
+end
+
 desc "Deploy the site to heroku."
 task :deploy => [:build, :upload]
+task :deploy_clean => [:clean, :build, :upload]

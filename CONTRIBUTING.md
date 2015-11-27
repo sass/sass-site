@@ -29,6 +29,18 @@ bundle install
 bundle exec middleman
 ```
 
+## Deploying
+
+If you're lucky enough to be one of our deployers, then just run the following
+command from master branch... and MAKE SURE YOUR WORKING COPY IS CLEAN!
+
+```
+rake deploy
+```
+
+It's that easy.
+
+If something goes wrong, make sure to run `rake clean`
 
 Thanks!
 
