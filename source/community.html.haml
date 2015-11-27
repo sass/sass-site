@@ -49,45 +49,98 @@ title: "#teamSass"
         %p= article.description
 
   %h2#Contribute Contribute
-  %p Sass is an open source project and we encourage you to contribute. You can contribute with bug reports and feature requests or if you have code to contribute we will love you forever.
 
-  %p When adding bug reports, feature requests, or code there are a couple of primary branches we use.
+  :markdown
+    Sass is an [open source project][github] and we encourage you to
+    contribute. You can contribute with
+    [bug reports and feature requests][issues], and if you contribute code,
+    we'll love you forever. If you just want to help out but you're not sure
+    what to do, the [Help Wanted label][help] on the issue tracker is a good
+    place to start. It has a mix of feature requests, bugs, and tasks that
+    aren't coding-intensive that the developers think are a good place for
+    someone new to the codebase to jump in.
 
-  %dl
-    %dt= link_to "Stable", "https://github.com/sass/sass"
-    %dd
-      The stable branch is where we do development on the released version.
-      The majority of bug fixes should go here.
-      If you're just reporting a bug <a href="https://github.com/sass/sass/issues">add an issue</a> and
-      note the version of Sass where you experienced the issue in your comment.
-      If you have some code to contribute, fork the stable branch and send us a pull request.
-      We'll review your patch and either accept or decline with comments.
-      All bug fixes must be thoroughly tested and the tests must pass
-      the <a href="https://travis-ci.org/sass/sass/builds">build</a> on all supported versions of ruby.
+    [github]: https://github.com/sass/sass
+    [issues]: https://github.com/sass/sass/issues
+    [help]: https://github.com/sass/sass/labels/Help%20Wanted
 
-  %dl
-    %dt= link_to "Master", "https://github.com/sass/sass/tree/master"
-    %dd
-      The master branch is where we keep track of the next version of Sass.
-      New feature requests should be made on the <a href="https://github.com/sass/sass/issues">issue tracker</a>
-      and discussed with the <a href="http://github.com/nex3">core</a> <a href="http://github.com/chriseppstein">team</a>
-      before implementation begins to avoid wasted effort.
-      Pull requests for new features should be made against the master branch.
-      No change is allowed to break a stylesheet across sequential releases;
-      every breaking change to the language must first be deprecated.
+    When writing code, there are two primary branches we use. The [stable
+    branch][github] is the default; is where we do development on the released
+    version of Sass. Bug fixes for released functionality, documentation
+    improvements, and and general infrastructure stuff should all go on
+    stable. The [master branch][master] is where we work on the next version
+    of Sass. Once you've followed the steps below, new features should be submitted to master.
 
-  %h2#PullRequests Pull Requests & Patches
-  %p Here are a few simple things you'll need to do when submitting a patch via pull request:
-  %ul
-    %li Write a commit message that is well-written, descriptive and contain proper grammar and punctuation.
-    %li Make sure the first line of your commit message is a short, full sentence.
-    %li Contain any appropriate unit tests in your commit
-    %li Add your changes to the changelog for the correct branch. The changelog is in <code>doc-src/SASS_CHANGELOG.md</code>
-    %li If your change is user-facing, update the appropriate section in reference documentation.
-    %li Don't combine several features or bug fixes into the same pull request.
-    %li All code is given a thorough review and will likely require several iterations before being accepted.
-    %li All code changes must be thoroughly tested and the tests must pass the <a href="https://travis-ci.org/sass/sass/builds">build</a> on all supported versions of ruby.
+    [master]: https://github.com/sass/sass/tree/master
+    [planned]: https://github.com/sass/sass/labels/Planned
 
+    The Sass codebase is pretty big, and it can be intimidating to navigate it
+    and understand the best way to make a change. If you need help, make a
+    post on [the Sass mailing list][list]; the Sass developers are happy to
+    assist, even if you don't have much experience with Ruby or programming as
+    a whole. They can answer questions about how the system works, suggest
+    avenues for solving problems, and review your code once it's written.
+
+    [list]: https://groups.google.com/forum/#!forum/sass-lang
+
+    Whether you're adding a feature or fixing a bug, if it changes publicly
+    visible behavior, it's important to write automated tests for it. All the
+    tests live in the `test/sass` directory; find the test file that's most
+    closely related to your change, and add a test or tests there. For a
+    feature, make sure your tests fully cover all the ways that feature could
+    be used, including ways it could be invalid.
+
+    Once you've written a patch with tests, send it to us as a
+    [pull request][]. A developer will look it over, and will probably make
+    some suggestions and requests. Once you address those, it'll get merged
+    in!
+
+    [pull request]: https://help.github.com/articles/creating-a-pull-request/
+
+  %h2#AddingSyntax Adding Syntax
+
+  :markdown
+    The biggest and most impressive features of Sass usually involve adding
+    new syntax of some sort. This can be pretty fun—something that used to be
+    an error starts working because you made it—but syntax changes are also a
+    lot of work. For statement-level syntax like a new `@`-rule, you have to:
+
+    * Add a node for the syntax to the abstract syntax tree in
+      [`lib/sass/tree`][tree].
+
+    * Parse the syntax in SCSS to the node. The SCSS parser is in
+      [`lib/sass/scss/parser.rb`][scss parser].
+
+    * Parse the syntax in the indented syntax to the node. The indented
+      syntax parser is in [`lib/sass/engine.rb`][sass parser].
+
+    * Add support for setting the compilation options on the node in
+      [`lib/sass/tree/visitors/set_options.rb`][set options].
+
+    * Add support for cloning the node in
+      [`lib/sass/tree/visitors/deep_copy.rb`][deep copy].
+
+    * If the syntax is just something new from pure CSS, add support for
+      compiling it to CSS in [`lib/sass/tree/visitors/to_css.rb`][to css]. If
+      it's for a Sass feature that's not part of CSS, add runtime behavior in
+      [`lib/sass/tree/visitors/perform.rb`][perform] or
+      [`lib/sass/tree/visitors/cssize.rb`][cssize].
+
+    * Add support for converting the syntax back to SCSS and the indented
+      syntax with `sass-convert` in
+      [`lib/sass/tree/visitors/convert.rb`][convert].
+      Don't forget to test this conversion, too!
+
+    [tree]: https://github.com/sass/sass/tree/stable/lib/sass/tree
+    [script tree]: https://github.com/sass/sass/tree/stable/lib/sass/script/tree
+    [scss parser]: https://github.com/sass/sass/tree/stable/lib/sass/scss/parser.rb
+    [sass parser]: https://github.com/sass/sass/tree/stable/lib/sass/engine.rb
+    [set options]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/set_options.rb
+    [deep copy]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/deep_copy.rb
+    [to css]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/to_css.rb
+    [perform]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/perform.rb
+    [cssize]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/cssize.rb
+    [convert]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/convert.rb
 
 
 .content-secondary

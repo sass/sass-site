@@ -1,6 +1,7 @@
 Contributing to the Sass website
 ================================
 
+**Please read the [Implementation Guide](http://sass-lang.com/implementation)**
 The Sass website is open source. See a bug or typo? Have an idea? Just do the
 following:
 
@@ -25,7 +26,7 @@ navigate to the project repo and run:
 
 ```
 bundle install
-middleman
+bundle exec middleman
 ```
 
 

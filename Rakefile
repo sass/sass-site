@@ -64,13 +64,19 @@ task :middleman do
 end
 
 desc "Build the site."
-task :build => [:import_sass, :middleman]
+task :build => [:check_ruby_version, :import_sass, :middleman]
 
 task :check_ready_to_deploy do
   if `git config remote.heroku.url`.strip != "git@heroku.com:sass-lang.git"
     fail "You don't have a heroku remote, or it has the wrong URL."
   elsif !`git status --porcelain`.strip.empty?
     fail "You have uncommitted changes, not deploying."
+  end
+end
+
+task :check_ruby_version do
+  if RUBY_VERSION[0].to_i < 2
+    fail "Ruby 2 is required"
   end
 end
 
