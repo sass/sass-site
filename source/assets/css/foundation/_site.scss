@@ -30,7 +30,7 @@ html {
     align: center;
   }
 
-  background: image-url('textures/grey-prism.svg');
+  background: image-url("textures/grey-prism.svg");
   -webkit-tap-highlight-color: rgba($black, 0);
 
   &.toolkit-baseline {
@@ -57,13 +57,14 @@ body {
 
 @include breakpoint($tablet-large) {
 
-  html, body {
+  html,
+  body {
     height: 100%;
   }
 
   html {
-    background-repeat: repeat-x;
     background-position: left top;
+    background-repeat: repeat-x;
   }
 
 }
