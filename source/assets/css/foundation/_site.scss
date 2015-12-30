@@ -1,10 +1,20 @@
-* { @include box-sizing(border-box); }
+* {
+  @include box-sizing(border-box);
+}
 
 @include establish-baseline;
 
-%reset-margin  { margin: 0; }
-%reset-border  { border: 0; }
-%reset-padding { padding: 0; }
+%reset-margin {
+  margin: 0;
+}
+
+%reset-border {
+  border: 0;
+}
+
+%reset-padding {
+  padding: 0;
+}
 
 %text {
   font-family: $font-family-text;
@@ -14,26 +24,46 @@
 html {
   @extend %text;
   overflow-x: hidden;
+
   text: {
     rendering: optimizeLegibility;
     align: center;
   }
-  background: image-url("textures/grey-prism.svg") center;
+
+  background: image-url('textures/grey-prism.svg');
   -webkit-tap-highlight-color: rgba($black, 0);
 
-  &.toolkit-baseline { @include debug-vertical-alignment; }
+  &.toolkit-baseline {
+    @include debug-vertical-alignment;
+  }
+
 }
 
-body { background: none; }
+body {
+  background: none;
+}
 
-@mixin theme-selection { background: $color-background-shade; }
+@mixin theme-selection {
+  background: $color-background-shade;
+}
 
-::-moz-selection { @include theme-selection; }
-::selection      { @include theme-selection; }
+::-moz-selection {
+  @include theme-selection;
+}
 
-
+::selection {
+  @include theme-selection;
+}
 
 @include breakpoint($tablet-large) {
-  html,
-  body { height: 100%; }
+
+  html, body {
+    height: 100%;
+  }
+
+  html {
+    background-repeat: repeat-x;
+    background-position: left top;
+  }
+
 }

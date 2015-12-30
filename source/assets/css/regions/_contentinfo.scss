@@ -2,6 +2,7 @@
   @include padding-leader;
   @include padding-trailer;
   color: $color-text-weak;
+  background: image-url('textures/grey-prism.svg') left top repeat-x;
 
   .container {
     @include padding-leader;
@@ -30,6 +31,7 @@
     &:hover,
     &:focus { color: $color-text-strong; }
   }
+  
 }
 
 .contentinfo-tools,
