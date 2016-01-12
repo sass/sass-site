@@ -52,7 +52,7 @@ task :import_sass => [:sass_version, :sass_docs]
 
 desc "Build the middleman-controlled portion of the site."
 task :middleman do
-  sh %{middleman build --verbose}
+  sh %{bundle exec middleman build --verbose}
 end
 
 desc "Build the site."
