@@ -7,7 +7,7 @@ article[role="main"]
   width: 600px / 960px * 100%
 
 
-aside[role="complimentary"]
+aside[role="complementary"]
   float: right
   width: 300px / 960px * 100%
 
