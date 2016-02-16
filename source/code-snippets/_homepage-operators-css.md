@@ -8,7 +8,7 @@ article[role="main"] {
   width: 62.5%;
 }
 
-aside[role="complimentary"] {
+aside[role="complementary"] {
   float: right;
   width: 31.25%;
 }
