@@ -68,7 +68,7 @@ end
 
 task :upload do
   sh %{git branch -D built-for-heroku} rescue nil
-  sh %{git checkout -b built-for-heroku}
+  sh %{git checkout -b built-for-heroku} rescue nil
   sh %{git add --force build}
   sh %{git commit --message="Build."}
   sh %{git push --force heroku built-for-heroku:master}
