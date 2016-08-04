@@ -3,13 +3,13 @@
     %h1.site-brand= link_to (image_tag "logos/logo.svg", height: "48", alt: "Sass"), "/"
 
     %nav.navigation.collapse(role="navigation")
-      :markdown
-        * [Install](/install)
-        * [Learn Sass](/guide)
-        * [Blog](http://blog.sass-lang.com/)
-        * [Documentation](/documentation/file.SASS_REFERENCE.html)
-        * [Get Involved](/community)
-        * [libSass](/libsass)
+      %ul
+        %li= link_to "Install",       "/install"
+        %li= link_to "Learn Sass",    "/guide"
+        %li= link_to "Blog",          "http://blog.sass-lang.com/"
+        %li= link_to "Documentation", "https://www.omniref.com/ruby/gems/sass", data: {'omniref-gem' => 'sass'}
+        %li= link_to "Get Involved",  "/community"
+        %li= link_to "libSass",       "/libsass"
 
     .banner-toggle
       %button(type="button" data-toggle="collapse" data-target=".navigation")
