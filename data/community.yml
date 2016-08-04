@@ -85,6 +85,15 @@ projects:
     description: "A documentation tool for Sass"
 
 articles:
+  - name: "The things I want from Sass aren’t the things I thought I wanted"
+    url: "http://benfrain.com/things-want-sass-arent-things-thought-wanted/"
+    description: "by Ben Frain, from benfrain.com, November 2013"
+  - name: "Using lists with Maps in Sass 3.3"
+    url: "http://benfrain.com/using-lists-with-maps-in-sass-3-3/"
+    description: "by Ben Frain, from benfrain.com, November 2013"
+  - name: "Faster Sass debugging and style iteration with source maps, Chrome Web Developer Tools and Grunt"
+    url: "http://benfrain.com/add-sass-compass-debug-info-for-chrome-web-developer-tools/"
+    description: "by Ben Frain, from benfrain.com, July 2013"
   - name: "Sass vs. LESS"
     url: "http://css-tricks.com/sass-vs-less/"
     description: "by Chris Coyier, from CSS Tricks, May 2012"
