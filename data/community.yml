@@ -85,6 +85,18 @@ projects:
     description: "A documentation tool for Sass"
 
 articles:
+  - name: "My Media Query Mixin"
+    url: "http://alwaystwisted.com/post.php?s=2013-04-01-my-media-query-mixin"
+    description: "by Stuart Robson, April 2013"
+  - name: "Structuring My Sass 101, part 1"
+    url: "http://alwaystwisted.com/post.php?s=2013-01-07-structuring-my-sass-101-part-1"
+    description: "by Stuart Robson, January 2013"
+  - name: "Structuring My Sass 101, part 2"
+    url: "http://alwaystwisted.com/post.php?s=2013-01-07-structuring-my-sass-101-part-2"
+    description: "by Stuart Robson, January 2013"
+  - name: "Structuring My Sass 101, part 3"
+    url: "http://alwaystwisted.com/post.php?s=2013-01-08-structuring-my-sass-101-part-3"
+    description: "by Stuart Robson, January 2013"
   - name: "Sass vs. LESS"
     url: "http://css-tricks.com/sass-vs-less/"
     description: "by Chris Coyier, from CSS Tricks, May 2012"
