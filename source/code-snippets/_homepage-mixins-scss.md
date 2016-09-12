@@ -5,5 +5,5 @@
           transform: $property;
 }
 
-.box { @include transform(rotate(30deg); }
+.box { @include transform(rotate(30deg)); }
 ```
