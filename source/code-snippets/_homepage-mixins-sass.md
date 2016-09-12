@@ -1,9 +1,8 @@
 ```sass
-=transform($method)
-  -webkit-transform: $method
-  -moz-transform:    $method
-  -ms-transform:     $method
-  transform:         $method
+=transform($property)
+  -webkit-transform: $property
+  -ms-transform:     $property
+  transform:         $property
 
 .box
   +transform(rotate(30deg))
