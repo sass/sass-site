@@ -1,8 +1,8 @@
 ```scss
-@mixin transform($method) {
-  -webkit-transform: $method;
-      -ms-transform: $method;
-          transform: $method;
+@mixin transform($property) {
+  -webkit-transform: $property;
+      -ms-transform: $property;
+          transform: $property;
 }
 
 .box { @include transform(rotate(30deg); }
