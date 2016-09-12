@@ -1,10 +1,9 @@
 ```scss
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+@mixin transform($method) {
+  -webkit-transform: $method;
+      -ms-transform: $method;
+          transform: $method;
 }
 
-.box { @include border-radius(10px); }
+.box { @include transform(rotate(30deg); }
 ```
