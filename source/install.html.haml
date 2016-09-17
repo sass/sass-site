@@ -64,7 +64,8 @@ title: Install Sass
       %dt Linux
       %dd
         If you're using a distribution of Linux, you'll need to install Ruby
-        first. You can install Ruby through the apt package manager, rbenv, or rvm.
+        first. You can install Ruby through the apt package manager, rbenv, or
+        rvm.
         %pre
           :preserve
             sudo gem install sass --no-user-install
@@ -113,7 +114,9 @@ title: Install Sass
                   gem install sass
               %p
                 This will install Sass and any dependencies for you. It's pretty
-                magical. If you get an error message then it's likely you will need to use the <code>sudo</code> command to install the Sass gem. It would look like:
+                magical. If you get an error message then it's likely you will
+                need to use the <code>sudo</code> command to install the Sass
+                gem. It would look like:
               %pre
                 :preserve
                   sudo gem install sass
@@ -127,9 +130,12 @@ title: Install Sass
                 :preserve
                   sass -v
               - if data.respond_to?(:version)
-                %p It should return <code>Sass #{data.version.number} (#{data.version.name})</code>. Congratulations! You've successfully installed Sass.
+                %p It should return <code>Sass #{data.version.number}
+                (#{data.version.name})</code>. Congratulations! You've
+                successfully installed Sass.
               - else
-                %p It should return <code>Sass ???</code>. Congratulations! You've successfully installed Sass.
+                %p It should return <code>Sass ???</code>. Congratulations!
+                You've successfully installed Sass.
 
             %li
               %p
