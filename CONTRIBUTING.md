@@ -17,7 +17,7 @@ following:
 This site is built with [middleman](http://middlemanapp.com), a Ruby framework
 for building static sites.
 
-You will need [Ruby](https://www.ruby-lang.org/en/downloads/),
+You will need [Ruby 2](https://www.ruby-lang.org/en/downloads/),
 [rubygems](http://rubygems.org/) and [bundler](http://bundler.io/) installed
 before you can run the site locally.
 
