@@ -83,6 +83,9 @@ projects:
   - name: "SassDoc"
     url: "http://sassdoc.com/"
     description: "A documentation tool for Sass"
+  - name: "SassMe"
+    url: "http://jim-nielsen.com/sassme/"
+    description: "Visualize Sass color function output in real-time — no compiling!"
 
 articles:
   - name: "Sass vs. LESS"
