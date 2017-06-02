@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.2.7'
 
 gem 'rake'
 gem 'rack'
@@ -23,6 +23,7 @@ group :development do
   gem 'typogruby',              '~> 1.0.18'
   gem 'tzinfo-data',            '~> 1.2015.7', platforms: [:mswin, :mingw, :jruby]
   gem 'wdm',                    '~> 0.1.1',    platforms: [:mswin, :mingw]
+  gem 'therubyracer',           '~> 0.12.3'
 end
 
 gem 'middleman-minify-html',    '~> 3.4.1'
