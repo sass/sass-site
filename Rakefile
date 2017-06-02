@@ -2,11 +2,9 @@
 # This is a helper function that properly sets up
 # the environment in the .sass folder for bundle commands to work
 def bundle(cmd)
-  old_bundle_gemfile = ENV["BUNDLE_GEMFILE"]
-  ENV.delete("BUNDLE_GEMFILE")
-  sh %{bundle #{cmd}}
-ensure
-  ENV["BUNDLE_GEMFILE"]
+  Bundler.with_clean_env do
+    sh %{bundle #{cmd}}
+  end
 end
 
 

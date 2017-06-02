@@ -26,6 +26,7 @@ navigate to the project repo and run:
 
 ```
 bundle install
+bundle exec rake import_sass
 bundle exec middleman
 ```
 
