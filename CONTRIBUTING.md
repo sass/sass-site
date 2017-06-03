@@ -10,7 +10,7 @@ following:
   (screenshots help).
 * Add any new UI elements to the style guide.
 * Submit the pull request to the `master` branch.
-* Drink whisky.
+* Drink whiskey.
 
 ## Running Locally
 
