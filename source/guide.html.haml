@@ -231,12 +231,13 @@ title: Sass Basics
     :markdown
       What the above code does is tells <code>.message</code>,
       <code>.success</code>, <code>.error</code>, & <code>.warning</code>
-      to use the same CSS properties in the same place as
-      <code>%message-shared</code> is written. That means anywhere that
-      <code>%message-shared</code> shows up, <code>.message</code>,
+      to behave just like <code>%message-shared</code>. That means anywhere
+      that <code>%message-shared</code> shows up, <code>.message</code>,
       <code>.success</code>, <code>.error</code>, & <code>.warning</code>
-      will too. The magic happens with the generated CSS, and this helps you
-      avoid having to write multiple class names on HTML elements.
+      will too. The magic happens in the generated CSS, where each of these
+      classes will get the same CSS properties as <code>%message-shared</code>.
+      This helps you avoid having to write multiple class names on HTML
+      elements.
 
       You can extend most simple CSS selectors in addition to placeholder
       classes in Sass, but using placeholders is the easiest way to make
