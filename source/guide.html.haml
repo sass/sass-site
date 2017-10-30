@@ -227,7 +227,10 @@ title: Sass Basics
       <code>@extend</code> lets you share a set of CSS properties from one
       selector to another. It helps keep your Sass very DRY. In our example
       we're going to create a simple series of messaging for errors, warnings
-      and successes.
+      and successes using another feature which goes hand in hand with extend,
+      placeholder classes. A placeholder class is a special type of class
+      that only prints when it is extended, and can help keep your compiled
+      CSS neat and clean.
 
     %ul
       %li= link_to "SCSS", "#topic-7-SCSS"
@@ -242,11 +245,23 @@ title: Sass Basics
       ~ partial "code-snippets/homepage-extend-sass"
 
     :markdown
-      What the above code does is allow you to take the CSS properties in
-      <code>.message</code> and apply them to <code>.success</code>,
-      <code>.error</code>, & <code>.warning</code>. The magic happens with the
-      generated CSS, and this helps you avoid having to write multiple class
-      names on HTML elements. This is what it looks&nbsp;like:
+      What the above code does is tells <code>.message</code>,
+      <code>.success</code>, <code>.error</code>, & <code>.warning</code>
+      to behave just like <code>%message-shared</code>. That means anywhere
+      that <code>%message-shared</code> shows up, <code>.message</code>,
+      <code>.success</code>, <code>.error</code>, & <code>.warning</code>
+      will too. The magic happens in the generated CSS, where each of these
+      classes will get the same CSS properties as <code>%message-shared</code>.
+      This helps you avoid having to write multiple class names on HTML
+      elements.
+
+      You can extend most simple CSS selectors in addition to placeholder
+      classes in Sass, but using placeholders is the easiest way to make
+      sure you aren't extending a class that's nested elsewhere in your
+      styles, which can result in unintended selectors in your CSS.
+
+      When you generate your CSS it will look like this. Note that the CSS
+      in <code>%equal-heights</code> doesn't print because it is never used.
 
     ~ partial "code-snippets/homepage-extend-css"
 
