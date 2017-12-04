@@ -86,6 +86,9 @@ projects:
   - name: "SassMe"
     url: "http://jim-nielsen.com/sassme/"
     description: "Visualize Sass color function output in real-time — no compiling!"
+  - name: "sass-extract"
+    url: "https://github.com/jgranstrom/sass-extract"
+    description: "Extract Sass variables for use in JavaScript"
 
 articles:
   - name: "Sass vs. LESS"
