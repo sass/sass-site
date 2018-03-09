@@ -96,4 +96,11 @@ task :middleman do
 end
 
 desc "Build the site."
-task :build => ["sass:import", :middleman]
+task "build" => ["sass:import", :middleman]
+
+# Build the site on Heroku, then clean up unnecessary intermediate files.
+task "assets:precompile" => :build do
+  # Clean up unneccessary files to reduce slug size.
+  sh %{rm -rf .sass .yardoc}
+  sh %{bundle install --without=development}
+end
