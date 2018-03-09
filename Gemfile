@@ -24,6 +24,7 @@ group :development do
   gem 'tzinfo-data',            '~> 1.2015.7', platforms: [:mswin, :mingw, :jruby]
   gem 'wdm',                    '~> 0.1.1',    platforms: [:mswin, :mingw]
   gem 'therubyracer',           '~> 0.12.3'
+  gem 'yard',                   '~> 0.9'
 end
 
 gem 'middleman-minify-html',    '~> 3.4.1'

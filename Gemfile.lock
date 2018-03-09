@@ -200,6 +200,7 @@ GEM
       json (>= 1.8.0)
     xpath (2.1.0)
       nokogiri (~> 1.3)
+    yard (0.9.12)
 
 PLATFORMS
   ruby
@@ -227,6 +228,7 @@ DEPENDENCIES
   typogruby (~> 1.0.18)
   tzinfo-data (~> 1.2015.7)
   wdm (~> 0.1.1)
+  yard (~> 0.9)
 
 RUBY VERSION
    ruby 2.4.1p111
