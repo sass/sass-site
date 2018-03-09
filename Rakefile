@@ -97,28 +97,3 @@ end
 
 desc "Build the site."
 task :build => ["sass:import", :middleman]
-
-task :check_ready_to_deploy do
-  if `git config remote.heroku.url`.strip != "git@heroku.com:sass-lang.git"
-    fail "You don't have a heroku remote, or it has the wrong URL."
-  elsif !`git status --porcelain`.strip.empty?
-    fail "You have uncommitted changes, not deploying."
-  end
-end
-
-task :upload do
-  sh %{git branch -D built-for-heroku} rescue nil
-  sh %{git checkout -b built-for-heroku} rescue nil
-  sh %{git add --force build}
-  sh %{git commit --message="Build."}
-  sh %{git push --force heroku built-for-heroku:master}
-  sh %{git checkout master}
-end
-
-task :clean do
-  sh %{rm -rf .sass build}
-end
-
-desc "Deploy the site to heroku."
-task :deploy => [:build, :upload]
-task :deploy_clean => [:clean, :build, :upload]
