@@ -36,6 +36,7 @@ namespace :sass do
       files = FileList.new('.sass/doc-src/*').to_a.sort_by {|s| s.size} + %w[.sass/MIT-LICENSE .sass/VERSION]
       t.options << '--files' << files.join(',')
       t.options << '--main' << '.sass/README.md'
+      t.options << '--template-path' << 'yard'
     end
 
     t.after = lambda do
