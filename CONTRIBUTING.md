@@ -32,9 +32,8 @@ bundle exec middleman
 
 ## Deploying
 
-If you're lucky enough to be one of our deployers, you can just push to the
-`master` branch of `https://heroku.com/staging-sass-lang.git` and the website
-will be deployed automatically.
+Every time a new commit is pushed to master, it will automatically be deployed
+to sass-lang.com. Easy as that!
 
 Thanks!
 
