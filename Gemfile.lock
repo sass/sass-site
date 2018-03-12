@@ -6,14 +6,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
     autoprefixer-rails (6.2.3)
       execjs
       json
-    backports (3.11.1)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     breakpoint (2.5.0)
       sass (~> 3.3)
       sassy-maps (< 1.0.0)
@@ -25,8 +20,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     chunky_png (1.3.10)
-    coffee-react (4.0.1)
-      execjs
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -79,16 +72,6 @@ GEM
     middleman-autoprefixer (2.6.3)
       autoprefixer-rails (~> 6.2.1)
       middleman-core (>= 3.3.3)
-    middleman-blog (3.5.3)
-      addressable (~> 2.3.5)
-      middleman-core (~> 3.2)
-      tzinfo (>= 0.3.0)
-    middleman-blog-ui (0.1.0)
-      bootstrap-sass
-      react-source
-      sinatra
-      sinatra-contrib
-      sprockets-coffee-react
     middleman-core (3.4.1)
       activesupport (~> 4.1)
       bundler (~> 1.1)
@@ -119,13 +102,13 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.0.0)
+    mini_portile2 (2.3.0)
     minitest (5.11.3)
     modular-scale (2.1.1)
       compass (>= 0.12.0)
     multi_json (1.13.1)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     normalize-rails (3.0.3)
     padrino-helpers (0.12.9)
       i18n (~> 0.6, >= 0.6.7)
@@ -139,8 +122,6 @@ GEM
       rack (~> 1.4)
     rack-livereload (0.3.16)
       rack
-    rack-protection (1.5.5)
-      rack
     rack-rewrite (1.5.1)
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
@@ -148,7 +129,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    react-source (0.13.3)
     redcarpet (3.3.4)
     ref (2.0.0)
     rouge (1.11.1)
@@ -156,27 +136,11 @@ GEM
     sass (3.4.25)
     sassy-maps (0.4.0)
       sass (~> 3.3)
-    sinatra (1.4.8)
-      rack (~> 1.5)
-      rack-protection (~> 1.4)
-      tilt (>= 1.3, < 3)
-    sinatra-contrib (1.4.7)
-      backports (>= 2.0)
-      multi_json
-      rack-protection
-      rack-test
-      sinatra (~> 1.4.0)
-      tilt (>= 1.3, < 3)
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-coffee-react (4.0.1)
-      coffee-react (>= 3.4.0)
-      coffee-script
-      sprockets
-      tilt
     sprockets-helpers (1.1.0)
       sprockets (~> 2.0)
     sprockets-sass (1.3.1)
@@ -211,13 +175,11 @@ DEPENDENCIES
   builder (~> 3.2.2)
   middleman (~> 3.4.1)
   middleman-autoprefixer (~> 2.6.2)
-  middleman-blog (~> 3.5.3)
-  middleman-blog-ui (~> 0.1.0)
   middleman-livereload (~> 3.4.5)
   middleman-minify-html (~> 3.4.1)
   middleman-syntax (~> 2.0.0)
   modular-scale (~> 2.1.1)
-  nokogiri (~> 1.6.7.1)
+  nokogiri (~> 1.6)
   normalize-rails (~> 3.0.3)
   puma
   rack
