@@ -11,7 +11,7 @@ gem 'middleman-livereload',   '~> 3.4.5'
 gem 'middleman-minify-html',  '~> 3.4.1'
 gem 'middleman-syntax',       '~> 2.0.0'
 gem 'modular-scale',          '~> 2.1.1'
-gem 'nokogiri',               '~> 1.6.7.1'
+gem 'nokogiri',               '~> 1.6'
 gem 'normalize-rails',        '~> 3.0.3', :require => false
 gem 'puma'
 gem 'rack'
