@@ -131,7 +131,7 @@ title: Install Sass
                 :preserve
                   sass -v
               - if data.respond_to?(:version)
-                %p It should return <code>Sass #{data.version.number}</code>.
+                %p It should return <code>Sass #{impl_version :ruby}</code>.
                 Congratulations! You've successfully installed Sass.
               - else
                 %p It should return <code>Sass ???</code>. Congratulations!
