@@ -48,7 +48,7 @@ module SassHelpers
   # Returns the version for the given implementation (`:dart`, `:ruby`, or
   # `:libsass`), or `nil` if it hasn't been made available yet.
   def impl_version(impl)
-    nil
+    data.version && data.version[impl]
   end
 
   # Returns the URL tag for the latest release of the given implementation.
