@@ -44,4 +44,27 @@ module SassHelpers
 
     pages.flatten
   end
+
+  # Returns the version for the given implementation (`:dart`, `:ruby`, or
+  # `:libsass`), or `nil` if it hasn't been made available yet.
+  def impl_version(impl)
+    data.version && data.version[impl]
+  end
+
+  # Returns the URL tag for the latest release of the given implementation.
+  def release_url(impl)
+    version = impl_version(impl)
+    repo =
+      case impl
+      when :dart; "dart-sass"
+      when :libsass; "libsass"
+      when :ruby; "sass"
+      end
+
+    if version
+      "https://github.com/sass/#{repo}/releases/tag/#{version}"
+    else
+      "https://github.com/sass/#{repo}/releases"
+    end
+  end
 end

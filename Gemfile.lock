@@ -136,6 +136,7 @@ GEM
     sass (3.4.25)
     sassy-maps (0.4.0)
       sass (~> 3.3)
+    semantic (1.6.1)
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -187,6 +188,7 @@ DEPENDENCIES
   rack-rewrite
   rake
   redcarpet (~> 3.3.3)
+  semantic (~> 1.6)
   susy (~> 2.2.9)
   therubyracer (~> 0.12.3)
   typogruby (~> 1.0.18)
@@ -198,4 +200,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.2
+   1.16.1

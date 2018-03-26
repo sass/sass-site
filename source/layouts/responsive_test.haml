@@ -50,16 +50,7 @@
           %section.section-middle
             .container= yield_content :section_middle
 
-      .alert.release
-        .container
-          %ul
-            - if data.respond_to?(:version)
-              %li Current Release: <span class="release-name">#{data.version.number}</span>
-            - else
-              %li Current Release: <span class="release-name">???</span>
-            %li= link_to "Release Notes", "/documentation/file.SASS_CHANGELOG.html"
-            %li= link_to "Fork on GitHub", "https://github.com/sass/sass"
-            %li= link_to "Implementation Guide", "implementation"
+      = partial "layouts/regions/release"
 
       - if content_for?(:section_bottom)
         %section.section-bottom
