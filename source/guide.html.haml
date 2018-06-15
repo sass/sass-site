@@ -42,6 +42,23 @@ title: Sass Basics
       terminal would take a single Sass file, `input.scss`, and compile that
       file to `output.css`.
 
+      You can also watch individual files or directories with the `--watch`
+      flag. The watch flag tells Sass to watch your source files for
+      changes, and re-compile CSS each time you save your Sass. If you wanted
+      to watch (instead of manually build) your `input.scss` file, you'd just
+      add the watch flag to your command, like so:
+
+      `sass --watch input.scss output.css`
+
+      You can watch and output to directories by using folder paths as your
+      input and output, and separating them with a colon. In this example:
+
+    ~ partial "code-snippets/homepage-sass-watch"
+
+    :markdown
+      Sass would watch all files in the `app/sass` folder for changes, and
+      compile CSS to the `public/stylesheets` folder.
+
     %hr/
 
   %li#topic-2
