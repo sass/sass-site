@@ -1,10 +1,9 @@
 ```sass
-=border-radius($radius)
-  -webkit-border-radius: $radius
-  -moz-border-radius:    $radius
-  -ms-border-radius:     $radius
-  border-radius:         $radius
+=transform($property)
+  -webkit-transform: $property
+  -ms-transform:     $property
+  transform:         $property
 
 .box
-  +border-radius(10px)
+  +transform(rotate(30deg))
 ```
