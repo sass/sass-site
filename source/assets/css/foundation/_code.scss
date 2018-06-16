@@ -14,7 +14,11 @@ pre {
     family: $font-family-code;
   }
   white-space: pre-wrap;
+  text-align: left;
   @include box-sizing(border-box);
+  strong & {
+    font-weight: $font-weight-bold;
+  }
 }
 
 code {

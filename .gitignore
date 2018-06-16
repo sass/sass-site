@@ -9,7 +9,9 @@ bundle
 /Icon
 "Icon\r"
 .ruby-version
-/.sass
+/.dart-sass
+/.libsass
+/.ruby-sass
 /.sass-cache
 *.scssc
 /source/assets/css/vendor
@@ -17,3 +19,4 @@ bundle
 /source/documentation
 Thumbs.db
 .Trashes
+/.yardoc
