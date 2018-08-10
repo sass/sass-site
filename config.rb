@@ -19,7 +19,8 @@ end
 
 set :markdown, :fenced_code_blocks => true,
                :autolink => true,
-               :smartypants => true
+               :smartypants => true,
+               :with_toc_data => true
 set :markdown_engine, :redcarpet
 set :css_dir,    'assets/css'
 set :js_dir,     'assets/js'
@@ -33,10 +34,13 @@ page "/guide.html",                :layout => :layout_2_column
 page "/libsass.html",              :layout => :layout_2_column
 page "/sitemap.html",              :layout => :layout_2_column
 page "/community-guidelines.html", :layout => :layout_2_column
-page "/documentation/*",           :directory_index => false
 
 with_layout :styleguide do
   page "/styleguide/*"
+end
+
+with_layout :reference do
+  page "/documentation/*"
 end
 
 configure :development do
