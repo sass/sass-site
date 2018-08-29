@@ -1,6 +1,15 @@
 $(function() {
-  // Initialize the tabs (Sass/SCSS) with jQuery-ui
-  $( ".slides ul" ).parent().tabs();
+  $(".code-example").each(function() {
+    var figure = $(this);
+    var id = figure.attr("data-unique-id");
+
+    figure
+      .prepend(
+        $("<ul></ul>")
+          .prepend("<li><a href='#example-" + id + "-sass'>Sass</a></li>")
+          .prepend("<li><a href='#example-" + id + "-scss'>SCSS</a></li>"))
+      .tabs({active: 2});
+  });
 
   // Switch ALL the tabs (Sass/SCSS) together
   var
