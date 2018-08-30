@@ -3,9 +3,15 @@ $(function() {
     var figure = $(this);
     var id = figure.attr("data-unique-id");
 
-    var ul = $("<ul></ul>")
-        .prepend("<li><a href='#example-" + id + "-sass'>Sass</a></li>")
-        .prepend("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
+    var ul = $("<ul></ul>");
+
+    if (figure.find(".sass").length) {
+      ul.prepend("<li><a href='#example-" + id + "-sass'>Sass</a></li>");
+    }
+
+    if (figure.find(".scss").length) {
+      ul.prepend("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
+    }
 
     var hasCssTab = figure.find(".css").length;
     if (hasCssTab) {
