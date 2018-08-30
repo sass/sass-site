@@ -8,7 +8,9 @@ $(function() {
         .prepend("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
 
     if (figure.find(".css").length) {
-        ul.prepend("<li class='css-tab'><a href='#example-" + id + "-css'>CSS</a></li>")
+        ul.prepend(
+            $("<li class='css-tab'></li>")
+                .prepend("<a href='#example-" + id + "-css'>CSS</a>"));
     }
 
     figure.prepend(ul).tabs({active: 2});
