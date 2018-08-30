@@ -94,8 +94,6 @@ title: Sass Basics
       extremely powerful when working with brand colors and keeping them
       consistent throughout the&nbsp;site.
 
-    ~ partial "code-snippets/homepage-variables-css"
-
     %hr/
 
   %li#topic-3
@@ -148,10 +146,7 @@ title: Sass Basics
     :markdown
       You'll notice that the <code>ul</code>, <code>li</code>, and
       <code>a</code> selectors are nested inside the <code>nav</code> selector.
-      This is a great way to organize your CSS and make it more readable. When
-      you generate the CSS you'll get something like&nbsp;this:
-
-    ~ partial "code-snippets/homepage-nesting-css"
+      This is a great way to organize your CSS and make it more readable.
 
     %hr/
 
@@ -259,16 +254,16 @@ title: Sass Basics
       :plain
         @mixin transform($property) {
           -webkit-transform: $property;
-              -ms-transform: $property;
-                  transform: $property;
+          -ms-transform: $property;
+          transform: $property;
         }
 
         .box { @include transform(rotate(30deg)); }
         ===
         =transform($property)
           -webkit-transform: $property
-          -ms-transform:     $property
-          transform:         $property
+          -ms-transform: $property
+          transform: $property
 
         .box
           +transform(rotate(30deg))
@@ -279,9 +274,7 @@ title: Sass Basics
       the variable <code>$property</code> inside the parentheses so we can pass in
       a transform of whatever we want. After you create your mixin, you can then
       use it as a CSS declaration starting with <code>@include</code> followed
-      by the name of the mixin. When your CSS is generated it'll look like this:
-
-    ~ partial "code-snippets/homepage-mixins-css"
+      by the name of the mixin.
 
     %hr/
 
@@ -300,17 +293,17 @@ title: Sass Basics
 
     - example do
       :plain
-        // This CSS won't print because %equal-heights is never extended.
-        %equal-heights {
-          display: flex;
-          flex-wrap: wrap;
-        }
-
-        // This CSS will print because %message-shared is extended.
+        /* This CSS will print because %message-shared is extended. */
         %message-shared {
           border: 1px solid #ccc;
           padding: 10px;
           color: #333;
+        }
+
+        // This CSS won't print because %equal-heights is never extended.
+        %equal-heights {
+          display: flex;
+          flex-wrap: wrap;
         }
 
         .message {
@@ -332,19 +325,22 @@ title: Sass Basics
           border-color: yellow;
         }
         ===
-        // This CSS won't print because %equal-heights is never extended.
-        %equal-heights
-          display: flex
-          flex-wrap: wrap
-
-        // This CSS will print because %message-shared is extended.
+        /* This CSS will print because %message-shared is extended. */
         %message-shared
           border: 1px solid #ccc
           padding: 10px
           color: #333
 
+
+        // This CSS won't print because %equal-heights is never extended.
+        %equal-heights
+          display: flex
+          flex-wrap: wrap
+
+
         .message
           @extend %message-shared
+
 
         .success
           @extend %message-shared
@@ -376,10 +372,8 @@ title: Sass Basics
       sure you aren't extending a class that's nested elsewhere in your
       styles, which can result in unintended selectors in your CSS.
 
-      When you generate your CSS it will look like this. Note that the CSS
-      in <code>%equal-heights</code> doesn't print because it is never used.
-
-    ~ partial "code-snippets/homepage-extend-css"
+      Note that the CSS in <code>%equal-heights</code> isn't generated, because
+      <code>%equal-heights</code> is never extended.
 
     %hr/
 
@@ -394,8 +388,9 @@ title: Sass Basics
 
     - example do
       :plain
-        .container { width: 100%; }
-
+        .container {
+          width: 100%;
+        }
 
         article[role="main"] {
           float: left;
@@ -410,6 +405,7 @@ title: Sass Basics
         .container
           width: 100%
 
+
         article[role="main"]
           float: left
           width: 600px / 960px * 100%
@@ -422,6 +418,4 @@ title: Sass Basics
     :markdown
       We've created a very simple fluid grid, based on 960px. Operations in Sass
       let us do something like take pixel values and convert them to percentages
-      without much hassle. The generated CSS will look like:
-
-    ~ partial "code-snippets/homepage-operators-css"
+      without much hassle.

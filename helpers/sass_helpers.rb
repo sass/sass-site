@@ -87,14 +87,25 @@ module SassHelpers
   # Padding is added to the bottom of each section to make it the same length as
   # the section in the other language.
   #
-  # A third section may optionally be provided to represent compiled CSS.
-  def example
+  # A third section may optionally be provided to represent compiled CSS. If
+  # it's not passed and `autogen_css` is `true`, it's generated from the SCSS
+  # source.
+  def example(autogen_css: true)
     contents = capture_haml {yield}
     scss, sass, css = contents.split("\n===\n")
     throw ArgumentError.new("Couldn't find === in:\n#{contents}") if sass.nil?
 
     scss_sections = scss.split("\n---\n").map(&:strip)
     sass_sections = sass.split("\n---\n").map(&:strip)
+
+
+    if css.nil? && autogen_css
+      if scss_sections.length != 1
+        throw ArgumentError.new("Can't auto-generate CSS from more than one SCSS file.")
+      end
+
+      css = Sass::Engine.new(scss, syntax: :scss, style: :expanded).render
+    end
     css_sections = css ? css.split("\n---\n").map(&:strip) : []
 
     # Calculate the lines of padding to add to the bottom of each section so
