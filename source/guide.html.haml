@@ -70,17 +70,22 @@ title: Sass Basics
       or any CSS value you think you'll want to reuse. Sass uses the
       <code>$</code> symbol to make something a variable. Here's an example:
 
-    %ul
-      %li= link_to "SCSS", "#topic-2-SCSS"
-      %li= link_to "Sass", "#topic-2-Sass"
+    - example do
+      :plain
+        $font-stack:    Helvetica, sans-serif;
+        $primary-color: #333;
 
-    #topic-2-SCSS
-      %h3 SCSS Syntax
-      ~ partial "code-snippets/homepage-variables-scss"
+        body {
+          font: 100% $font-stack;
+          color: $primary-color;
+        }
+        ===
+        $font-stack:    Helvetica, sans-serif
+        $primary-color: #333
 
-    #topic-2-Sass
-      %h3 Sass Syntax
-      ~ partial "code-snippets/homepage-variables-sass"
+        body
+          font: 100% $font-stack
+          color: $primary-color
 
     :markdown
       When the Sass is processed, it takes the variables we define for the
@@ -88,8 +93,6 @@ title: Sass Basics
       normal CSS with our variable values placed in the CSS. This can be
       extremely powerful when working with brand colors and keeping them
       consistent throughout the&nbsp;site.
-
-    ~ partial "code-snippets/homepage-variables-css"
 
     %hr/
 
@@ -108,25 +111,42 @@ title: Sass Basics
       With that in mind, here's an example of some typical styles for a
       site's&nbsp;navigation:
 
-    %ul
-      %li= link_to "SCSS", "#topic-3-SCSS"
-      %li= link_to "Sass", "#topic-3-Sass"
+    - example do
+      :plain
+        nav {
+          ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+          }
 
-    #topic-3-SCSS
-      %h3 SCSS Syntax
-      ~ partial "code-snippets/homepage-nesting-scss"
+          li { display: inline-block; }
 
-    #topic-3-Sass
-      %h3 Sass Syntax
-      ~ partial "code-snippets/homepage-nesting-sass"
+          a {
+            display: block;
+            padding: 6px 12px;
+            text-decoration: none;
+          }
+        }
+        ===
+        nav
+          ul
+            margin: 0
+            padding: 0
+            list-style: none
+
+          li
+            display: inline-block
+
+          a
+            display: block
+            padding: 6px 12px
+            text-decoration: none
 
     :markdown
       You'll notice that the <code>ul</code>, <code>li</code>, and
       <code>a</code> selectors are nested inside the <code>nav</code> selector.
-      This is a great way to organize your CSS and make it more readable. When
-      you generate the CSS you'll get something like&nbsp;this:
-
-    ~ partial "code-snippets/homepage-nesting-css"
+      This is a great way to organize your CSS and make it more readable.
 
     %hr/
 
@@ -160,28 +180,63 @@ title: Sass Basics
       <code>base.scss</code>. We want to import <code>\_reset.scss</code> into
       <code>base.scss</code>.
 
-    %ul
-      %li= link_to "SCSS", "#topic-5-SCSS"
-      %li= link_to "Sass", "#topic-5-Sass"
+    - example do
+      :plain
+        // _reset.scss
 
-    #topic-5-SCSS
-      %h3 SCSS Syntax
-      ~ partial "code-snippets/homepage-import-1-scss"
-      ~ partial "code-snippets/homepage-import-2-scss"
+        html,
+        body,
+        ul,
+        ol {
+          margin:  0;
+          padding: 0;
+        }
+        ---
+        // base.scss
 
-    #topic-5-Sass
-      %h3 Sass Syntax
-      ~ partial "code-snippets/homepage-import-1-sass"
-      ~ partial "code-snippets/homepage-import-2-sass"
+        @import 'reset';
+
+        body {
+          font: 100% Helvetica, sans-serif;
+          background-color: #efefef;
+        }
+        ===
+        // _reset.sass
+
+        html,
+        body,
+        ul,
+        ol
+          margin:  0
+          padding: 0
+        ---
+        // base.sass
+
+        @import reset
+
+        body
+          font: 100% Helvetica, sans-serif
+          background-color: #efefef
+        ===
+        html,
+        body,
+        ul,
+        ol {
+          margin:  0;
+          padding: 0;
+        }
+
+        body {
+          font: 100% Helvetica, sans-serif;
+          background-color: #efefef;
+        }
 
     :markdown
 
       Notice we're using <code>@import 'reset';</code> in the
       <code>base.scss</code> file. When you import a file you don't need to
       include the file extension <code>.scss</code>. Sass is smart and will
-      figure it out for you. When you generate the CSS you'll&nbsp;get:
-
-    ~ partial "code-snippets/homepage-import-css"
+      figure it out for you.
 
     %hr/
 
@@ -195,17 +250,23 @@ title: Sass Basics
       pass in values to make your mixin more flexible. A good use of a mixin is
       for vendor prefixes. Here's an example for <code>transform</code>.
 
-    %ul
-      %li= link_to "SCSS", "#topic-6-SCSS"
-      %li= link_to "Sass", "#topic-6-Sass"
+    - example do
+      :plain
+        @mixin transform($property) {
+          -webkit-transform: $property;
+          -ms-transform: $property;
+          transform: $property;
+        }
 
-    #topic-6-SCSS
-      %h3 SCSS Syntax
-      ~ partial "code-snippets/homepage-mixins-scss"
+        .box { @include transform(rotate(30deg)); }
+        ===
+        =transform($property)
+          -webkit-transform: $property
+          -ms-transform: $property
+          transform: $property
 
-    #topic-6-Sass
-      %h3 Sass Syntax
-      ~ partial "code-snippets/homepage-mixins-sass"
+        .box
+          +transform(rotate(30deg))
 
     :markdown
       To create a mixin you use the <code>@mixin</code> directive and give it a
@@ -213,9 +274,7 @@ title: Sass Basics
       the variable <code>$property</code> inside the parentheses so we can pass in
       a transform of whatever we want. After you create your mixin, you can then
       use it as a CSS declaration starting with <code>@include</code> followed
-      by the name of the mixin. When your CSS is generated it'll look like this:
-
-    ~ partial "code-snippets/homepage-mixins-css"
+      by the name of the mixin.
 
     %hr/
 
@@ -232,17 +291,70 @@ title: Sass Basics
       that only prints when it is extended, and can help keep your compiled
       CSS neat and clean.
 
-    %ul
-      %li= link_to "SCSS", "#topic-7-SCSS"
-      %li= link_to "Sass", "#topic-7-Sass"
+    - example do
+      :plain
+        /* This CSS will print because %message-shared is extended. */
+        %message-shared {
+          border: 1px solid #ccc;
+          padding: 10px;
+          color: #333;
+        }
 
-    #topic-7-SCSS
-      %h3 SCSS Syntax
-      ~ partial "code-snippets/homepage-extend-scss"
+        // This CSS won't print because %equal-heights is never extended.
+        %equal-heights {
+          display: flex;
+          flex-wrap: wrap;
+        }
 
-    #topic-7-Sass
-      %h3 Sass Syntax
-      ~ partial "code-snippets/homepage-extend-sass"
+        .message {
+          @extend %message-shared;
+        }
+
+        .success {
+          @extend %message-shared;
+          border-color: green;
+        }
+
+        .error {
+          @extend %message-shared;
+          border-color: red;
+        }
+
+        .warning {
+          @extend %message-shared;
+          border-color: yellow;
+        }
+        ===
+        /* This CSS will print because %message-shared is extended. */
+        %message-shared
+          border: 1px solid #ccc
+          padding: 10px
+          color: #333
+
+
+        // This CSS won't print because %equal-heights is never extended.
+        %equal-heights
+          display: flex
+          flex-wrap: wrap
+
+
+        .message
+          @extend %message-shared
+
+
+        .success
+          @extend %message-shared
+          border-color: green
+
+
+        .error
+          @extend %message-shared
+          border-color: red
+
+
+        .warning
+          @extend %message-shared
+          border-color: yellow
 
     :markdown
       What the above code does is tells <code>.message</code>,
@@ -260,10 +372,8 @@ title: Sass Basics
       sure you aren't extending a class that's nested elsewhere in your
       styles, which can result in unintended selectors in your CSS.
 
-      When you generate your CSS it will look like this. Note that the CSS
-      in <code>%equal-heights</code> doesn't print because it is never used.
-
-    ~ partial "code-snippets/homepage-extend-css"
+      Note that the CSS in <code>%equal-heights</code> isn't generated, because
+      <code>%equal-heights</code> is never extended.
 
     %hr/
 
@@ -276,21 +386,36 @@ title: Sass Basics
       going to do some simple math to calculate widths for an `aside` &
       `article`.
 
-    %ul
-      %li= link_to "SCSS", "#topic-8-SCSS"
-      %li= link_to "Sass", "#topic-8-Sass"
+    - example do
+      :plain
+        .container {
+          width: 100%;
+        }
 
-    #topic-8-SCSS
-      %h3 SCSS Syntax
-      ~ partial "code-snippets/homepage-operators-scss"
+        article[role="main"] {
+          float: left;
+          width: 600px / 960px * 100%;
+        }
 
-    #topic-8-Sass
-      %h3 Sass Syntax
-      ~ partial "code-snippets/homepage-operators-sass"
+        aside[role="complementary"] {
+          float: right;
+          width: 300px / 960px * 100%;
+        }
+        ===
+        .container
+          width: 100%
+
+
+        article[role="main"]
+          float: left
+          width: 600px / 960px * 100%
+
+
+        aside[role="complementary"]
+          float: right
+          width: 300px / 960px * 100%
 
     :markdown
       We've created a very simple fluid grid, based on 960px. Operations in Sass
       let us do something like take pixel values and convert them to percentages
-      without much hassle. The generated CSS will look like:
-
-    ~ partial "code-snippets/homepage-operators-css"
+      without much hassle.

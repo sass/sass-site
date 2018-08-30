@@ -40,7 +40,12 @@ pre {
   @include trailer;
   @include rhythm(.5, .5, .5, .5);
   @include bleed(1em);
-  margin: auto 0 25px;
+
+  // It's important that this be 22px so that we can easily compute the extra
+  // padding necessary to align sections in code examples. 22px is the line
+  // height (24px) minus the borders (2px) of a section, which means we can just
+  // add an extra line to sections to make them align.
+  margin: auto 0 22px;
 
   // Account for some code outputs that place code tags in pre tags
   code {
