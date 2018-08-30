@@ -7,13 +7,14 @@ $(function() {
         .prepend("<li><a href='#example-" + id + "-sass'>Sass</a></li>")
         .prepend("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
 
-    if (figure.find(".css").length) {
+    var hasCssTab = figure.find(".css").length;
+    if (hasCssTab) {
         ul.prepend(
             $("<li class='css-tab'></li>")
                 .prepend("<a href='#example-" + id + "-css'>CSS</a>"));
     }
 
-    figure.prepend(ul).tabs({active: 2});
+    figure.prepend(ul).tabs({active: hasCssTab ? 1 : 0});
   });
 
   // Switch ALL the tabs (Sass/SCSS) together
