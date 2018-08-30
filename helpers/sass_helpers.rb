@@ -88,8 +88,8 @@ module SassHelpers
   # A third section may optionally be provided to represent compiled CSS. If
   # it's not passed and `autogen_css` is `true`, it's generated from the SCSS
   # source.
-  def example(autogen_css: true)
-    contents = capture_haml {yield}
+  def example(autogen_css: true, &block)
+    contents = _capture(&block)
     scss, sass, css = contents.split("\n===\n")
     throw ArgumentError.new("Couldn't find === in:\n#{contents}") if sass.nil?
 
@@ -170,9 +170,14 @@ module SassHelpers
         _syntax_div("CSS Output", "css", css_sections, css_paddings, id)
     end
 
-    haml_concat content_tag(:div, contents,
+    text = content_tag(:div, contents,
       class: "code-example",
       "data-unique-id": @unique_id)
+    if block_is_haml?(block)
+      haml_concat text
+    else
+      concat text
+    end
   end
 
   # Returns the number of lines of padding that's needed to match the height of
@@ -236,5 +241,10 @@ module SassHelpers
       markdown
     )
     find_and_preserve(@redcarpet.render(content))
+  end
+
+  # Captures the contents of `block` from ERB or Haml.
+  def _capture(&block)
+    block_is_haml?(block) ? capture_haml(&block) : capture(&block)
   end
 end
