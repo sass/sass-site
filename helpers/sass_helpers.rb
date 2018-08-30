@@ -96,10 +96,10 @@ module SassHelpers
     scss_sections = scss.split("\n---\n").map(&:strip)
     sass_sections = sass.split("\n---\n").map(&:strip)
 
-
     if css.nil? && autogen_css
       if scss_sections.length != 1
-        throw ArgumentError.new("Can't auto-generate CSS from more than one SCSS file.")
+        throw ArgumentError.new(
+                "Can't auto-generate CSS from more than one SCSS file.")
       end
 
       css = Sass::Engine.new(scss, syntax: :scss, style: :expanded).render
@@ -111,7 +111,8 @@ module SassHelpers
     scss_paddings = []
     sass_paddings = []
     css_paddings = []
-    max_num_sections = [scss_sections, sass_sections, css_sections].map(&:length).max
+    max_num_sections =
+      [scss_sections, sass_sections, css_sections].map(&:length).max
     max_num_sections.times do |i|
       scss_section = scss_sections[i]
       sass_section = sass_sections[i]
