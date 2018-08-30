@@ -3,12 +3,15 @@ $(function() {
     var figure = $(this);
     var id = figure.attr("data-unique-id");
 
-    figure
-      .prepend(
-        $("<ul></ul>")
-          .prepend("<li><a href='#example-" + id + "-sass'>Sass</a></li>")
-          .prepend("<li><a href='#example-" + id + "-scss'>SCSS</a></li>"))
-      .tabs({active: 2});
+    var ul = $("<ul></ul>")
+        .prepend("<li><a href='#example-" + id + "-sass'>Sass</a></li>")
+        .prepend("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
+
+    if (figure.find(".css").length) {
+        ul.prepend("<li class='css-tab'><a href='#example-" + id + "-css'>CSS</a></li>")
+    }
+
+    figure.prepend(ul).tabs({active: 2});
   });
 
   // Switch ALL the tabs (Sass/SCSS) together

@@ -222,15 +222,26 @@ title: Sass Basics
         body
           font: 100% Helvetica, sans-serif
           background-color: #efefef
+        ===
+        html,
+        body,
+        ul,
+        ol {
+          margin:  0;
+          padding: 0;
+        }
+
+        body {
+          font: 100% Helvetica, sans-serif;
+          background-color: #efefef;
+        }
 
     :markdown
 
       Notice we're using <code>@import 'reset';</code> in the
       <code>base.scss</code> file. When you import a file you don't need to
       include the file extension <code>.scss</code>. Sass is smart and will
-      figure it out for you. When you generate the CSS you'll&nbsp;get:
-
-    ~ partial "code-snippets/homepage-import-css"
+      figure it out for you.
 
     %hr/
 
