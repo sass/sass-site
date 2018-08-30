@@ -89,13 +89,24 @@ module SassHelpers
   # A third section may optionally be provided to represent compiled CSS. If
   # it's not passed and `autogen_css` is `true`, it's generated from the SCSS
   # source.
-  def example(autogen_css: true)
-    contents = capture_haml {yield}
-    scss, sass, css = contents.split("\n===\n")
-    throw ArgumentError.new("Couldn't find === in:\n#{contents}") if sass.nil?
+  #
+  # If `syntax` is either `:sass` or `:scss`, the first section will be
+  # interpreted as that syntax and the second will be interpreted (or
+  # auto-generated) as the CSS output.
+  def example(autogen_css: true, syntax: nil, &block)
+    contents = _capture(&block)
 
-    scss_sections = scss.split("\n---\n").map(&:strip)
-    sass_sections = sass.split("\n---\n").map(&:strip)
+    if syntax == :scss
+      scss, css = contents.split("\n===\n")
+    elsif syntax == :sass
+      sass, css = contents.split("\n===\n")
+    else
+      scss, sass, css = contents.split("\n===\n")
+      throw ArgumentError.new("Couldn't find === in:\n#{contents}") if sass.nil?
+    end
+
+    scss_sections = scss ? scss.split("\n---\n").map(&:strip) : []
+    sass_sections = sass ? sass.split("\n---\n").map(&:strip) : []
 
     if css.nil? && autogen_css
       if scss_sections.length != 1
@@ -162,18 +173,30 @@ module SassHelpers
     @unique_id ||= 0
     @unique_id += 1
     id = @unique_id
-    contents = [
-      _syntax_div("SCSS Syntax", "scss", scss_sections, scss_paddings, id),
-      _syntax_div("Sass Syntax", "sass", sass_sections, sass_paddings, id)
-    ]
+    contents = []
+    if scss
+      contents << 
+        _syntax_div("SCSS Syntax", "scss", scss_sections, scss_paddings, id)
+    end
+
+    if sass
+      contents <<
+        _syntax_div("Sass Syntax", "sass", sass_sections, sass_paddings, id)
+    end
+
     if css
       contents <<
         _syntax_div("CSS Output", "css", css_sections, css_paddings, id)
     end
 
-    haml_concat content_tag(:div, contents,
+    text = content_tag(:div, contents,
       class: "code-example",
       "data-unique-id": @unique_id)
+    if block_is_haml?(block)
+      haml_concat text
+    else
+      concat text
+    end
   end
 
   # Returns the number of lines of padding that's needed to match the height of
@@ -285,5 +308,10 @@ module SassHelpers
       markdown
     )
     find_and_preserve(@redcarpet.render(content))
+  end
+
+  # Captures the contents of `block` from ERB or Haml.
+  def _capture(&block)
+    block_is_haml?(block) ? capture_haml(&block) : capture(&block)
   end
 end
