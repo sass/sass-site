@@ -23,7 +23,7 @@ newlines.
 These types of statements can be used anywhere in a Sass stylesheet:
 
 * [Variable declarations](../variables), like `$var: value`.
-* [Control at-rules](../at-rules/control), like `@if` and `@each`.
+* [Flow control at-rules](../at-rules/control), like `@if` and `@each`.
 * The [`@error`](../at-rules/error), [`@warn`](../at-rules/warn), and
   [`@debug`](../at-rules/debug) rules.
 
@@ -35,7 +35,7 @@ These statements produce CSS. They can be used anywhere except within a
 * [Style rules](../style-rules), like `h1 { /* ... */ }`.
 * [CSS at-rules](../at-rules/css), like `@media` and `@font-face`.
 * [Mixin uses](../at-rules/mixin) using `@include`.
-* The [`@at-root`](../at-rules/at-root) rule.
+* The [`@at-root` rule](../at-rules/at-root).
 
 ### Top-Level Statements
 
@@ -48,9 +48,9 @@ within a CSS statement at the top level:
 
 ### Other Statements
 
-* [Property declarations](../declarations) like `width: 100px` may only be used
-  within style rules and some CSS at-rules.
-* The [`@extend`](../at-rules/extend) rule may only be used within style rules.
+* [Property declarations](../style-rules/declarations) like `width: 100px` may
+  only be used within style rules and some CSS at-rules.
+* The [`@extend` rule](../at-rules/extend) may only be used within style rules.
 
 ## Expressions
 
@@ -58,13 +58,13 @@ An *expression* is anything that goes on the right-hand side of a property or
 variable declaration. Each expression produces a *[value][]*. Any valid CSS property
 value is also a Sass expression, but Sass expressions are much more powerful
 than plain CSS values. They're passed as arguments to [mixins][] and
-[functions][], used for control flow with [`@if`][], and manipulated using
+[functions][], used for control flow with the [`@if` rule][], and manipulated using
 [arithmetic][]. We call Sass's expression syntax *SassScript*.
 
 [value]: ../values
 [mixins]: ../at-rules/mixin
 [functions]: ../at-rules/function
-[`@if`]: ../at-rules/if
+[`@if` rule]: ../at-rules/if
 [arithmetic]: ../operators/numeric
 
 ### Literals
@@ -81,7 +81,7 @@ The simplest expressions just represent static values:
 * The singleton [`null`](../values/null).
 * [Lists of values](../values/lists), which may be separated by spaces or commas
   and which may be enclosed in square brackets or no brackets at all, like
-  `1.5em 1em 0 2em` or `Helvetica, Arial, sans-serif`.
+  `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`, or `[col1-start]`.
 * [Maps](../values/maps) that associate values with keys, like
   `("background": red, "foreground": pink)`.
 
@@ -89,18 +89,7 @@ The simplest expressions just represent static values:
 
 Sass defines syntax for a number of operations:
 
-* [`==` and `!=`](../operators/equality) are used to check if two values are the
-  same.
-* [`+`, `-`, `*`, `/`, and `%`](../operators/numeric) have their usual
-  mathematical meaning for numbers, with special behaviors for units that
-  matches the use of units in scientific math.
-* [`<`, `<=`, `>`, and `>=`](../operators/relational) check whether two numbers
-  are greater or less than one another.
-* [`and`, `or`, and `not`](../operators/boolean) have the usual boolean
-  behavior. Sass considers every value "true" except for `false` and `null`.
-* [`+`, `-`, and `/`](../operators/string) can be used to concatenate strings.
-* [`(` and `)`](../operators#parentheses) can be used to explicitly control the
-  precedence order of operations.
+<%= partial 'documentation/snippets/operator-list', locals: {parens: true} %>
 
 ### Other Expressions
 
@@ -111,5 +100,5 @@ Sass defines syntax for a number of operations:
 * [Special functions](special-functions), like `calc(1px + 100%)` or
   `url(http://myapp.com/assets/logo.png)`, that have their own unique parsing
   rules.
-* [The parent selector](../parent-selector), `&`.
+* [The parent selector](../style-rules/parent-selector), `&`.
 * The value `!important`, which is parsed as an unquoted string.

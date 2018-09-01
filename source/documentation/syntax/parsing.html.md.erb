@@ -7,7 +7,10 @@ directly, without first being converted to a token stream.
 
 ## Input Encoding
 
-<%= impl_status(dart: false, libsass: true, ruby: true) %>
+<% impl_status(dart: false, libsass: true, ruby: true) do %>
+Dart Sass currently *only* supports the UTF-8 encoding. As such, it's safest to
+encode all Sass stylesheets as UTF-8.
+<% end %>
 
 It's often the case that a document is initially available only as a sequence of
 bytes, which must be decoded into Unicode. Sass performs this decoding as
@@ -24,11 +27,6 @@ follows:
 
 * Otherwise, UTF-8 is used.
 
-<% impl_note do %>
-Dart Sass currently *only* supports the UTF-8 encoding. As such, it's safest to
-encode all Sass stylesheets as UTF-8.
-<% end %>
-
 ## Parse Errors
 
 When Sass encounters invalid syntax in a stylesheet, parsing will fail and an
@@ -43,8 +41,8 @@ output.
 
 The location of parse errors can be accessed through implementation-specific
 APIs. For example, in Dart Sass you can access [`SassException.span`][], and in
-Node Sass's and Dart Sass's JS API you can access
-[the `file`, `line`, and `column`][js error] properties.
+Node Sass's and Dart Sass's JS API you can access the [`file`, `line`, and
+`column`][js error] properties.
 
 [`SassException.span`]: https://pub.dartlang.org/documentation/sass/latest/sass/SassException/span.html
 [js error]: https://github.com/sass/node-sass#error-object

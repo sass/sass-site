@@ -1,0 +1,75 @@
+---
+title: Booleans
+---
+
+Booleans are the logical values `true` and `false`. In addition their literal
+forms, booleans are returned by [equality][] and [relational][] operators, as
+well as many built-in functions like [`comparable()`][] and [`map-has-key()`][].
+
+[equality]: ../operators/equality
+[relational]: ../operators/relational
+[`map-has-key()`]: ../functions/maps#map-has-key
+[`comparable()`]: ../functions/math#comparable
+
+<% example(autogen_css: false) do %>
+@debug 1px == 2px; // false
+@debug 1px == 1px; // true
+@debug 10px < 3px; // false
+@debug comparable(100px, 3in); // true
+===
+@debug 1px == 2px  // false
+@debug 1px == 1px  // true
+@debug 10px < 3px  // false
+@debug comparable(100px, 3in)  // true
+<% end %>
+
+You can work with booleans using [boolean operators][]. The `and` operator
+returns `true` if *both* sides are `true`, and the `or` operator returns `true`
+if *either* side is `true`. The `not` operator returns the opposite of a single
+boolean value.
+
+[boolean operators]: ../operators/boolean
+
+<% example do %>
+@debug true and true; // true
+@debug true and false; // false
+
+@debug true or false; // true
+@debug false or false; // false
+
+@debug not true; // false
+@debug not false; // true
+===
+@debug true and true  // true
+@debug true and false  // false
+
+@debug true or false  // true
+@debug false or false  // false
+
+@debug not true  // false
+@debug not false  // true
+<% end %>
+
+## Using Booleans
+
+You can use booleans to choose whether or not to do various things in Sass. The
+[`@if` rule][] evaluates a block of styles if its argument is `true`:
+
+[`@if` rule]: ../at-rules/control/if
+
+<%= partial 'code-snippets/example-if' %>
+
+The [`if()` function][] chooses returns one value if its argument is `true` and
+another if its argument is `false`:
+
+[`if()` function]: ../functions#if
+
+<% example(autogen_css: false) do %>
+@debug if(true, 10px, 30px); // 10px
+@debug if(false, 10px, 30px); // 30px
+===
+@debug if(true, 10px, 30px)  // 10px
+@debug if(false, 10px, 30px)  // 30px
+<% end %>
+
+<%= partial 'documentation/snippets/truthiness-and-falsiness' %>

@@ -19,7 +19,8 @@ and makes it easy to share design within and across projects.
 
 * Or the [Dart API documentation][] if you're calling it from Dart.
 
-* Otherwise, look to the left for the table of contents for the language reference!
+* Otherwise, **look to the left** for the table of contents for the language
+  reference!
 
 [JS API documentation]: https://github.com/sass/node-sass#usage
 [Dart API documentation]: https://pub.dartlang.org/documentation/sass/latest/sass/sass-library.html
