@@ -174,7 +174,7 @@ module SassHelpers
     id = @unique_id
     contents = []
     if scss
-      contents << 
+      contents <<
         _syntax_div("SCSS Syntax", "scss", scss_sections, scss_paddings, id)
     end
 
