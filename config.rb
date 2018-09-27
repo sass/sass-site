@@ -17,6 +17,10 @@ compass_config do |config|
   config.output_style = :expanded
 end
 
+activate :sprockets do |c|
+  c.expose_middleman_helpers = true
+end
+
 set :markdown, :fenced_code_blocks => true,
                :autolink => true,
                :smartypants => true
@@ -34,12 +38,9 @@ page "/libsass.html",              :layout => :layout_2_column
 page "/sitemap.html",              :layout => :layout_2_column
 page "/community-guidelines.html", :layout => :layout_2_column
 page "/documentation/*",           :directory_index => false
+page "/styleguide/*",              :layout => :styleguide
 
-with_layout :styleguide do
-  page "/styleguide/*"
-end
-
-configure :development do
+configure :server do
   activate :livereload
 end
 
