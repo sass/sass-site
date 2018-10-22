@@ -51,98 +51,31 @@ title: "#teamSass"
   %h2#Contribute Contribute
 
   :markdown
-    Sass is an [open source project][github] and we encourage you to
-    contribute. You can contribute with
-    [bug reports and feature requests][issues], and if you contribute code,
-    we'll love you forever. If you just want to help out but you're not sure
-    what to do, the [Help Wanted label][help] on the issue tracker is a good
-    place to start. It has a mix of feature requests, bugs, and tasks that
-    aren't coding-intensive that the developers think are a good place for
-    someone new to the codebase to jump in.
+
+    Sass is an [open source project][github] and we encourage you to contribute.
+    You can contribute with [bug reports and feature requests][issues], and if
+    you contribute code, we'll love you forever. If you just want to help out
+    but you're not sure what to do, check out the "Help Wanted" label for [the
+    Sass language][lang help] or for [Dart Sass][dart help]. These issues
+    are a mix of feature requests, bugs, and tasks that aren't coding-intensive
+    that the developers think are a good place for someone new to the codebase
+    to jump in.
 
     [github]: https://github.com/sass/sass
     [issues]: https://github.com/sass/sass/issues
-    [help]: https://github.com/sass/sass/labels/Help%20Wanted
+    [lang help]: https://github.com/sass/sass/labels/Help%20Wanted
+    [dart help]: https://github.com/sass/dart-sass/labels/help%20wanted
 
-    When writing code, there are two primary branches we use. The [stable
-    branch][github] is the default; it is where we do development on the released
-    version of Sass. Bug fixes for released functionality, documentation
-    improvements, and and general infrastructure stuff should all go in the
-    stable branch. The [master branch][master] is where we work on the next version
-    of Sass. Once you've followed the steps below, new features should be
-    submitted to master.
+    [Dart Sass][] is the reference implementation of Sass, and the easiest
+    implementation to start hacking on. If you don't know Dart, don't worry!
+    It's very easy to pick up. Check out the [contributing info][] for more
+    information on helping out. Or, if you're interested in helping add new
+    features to the Sass language, look at [the language contribution
+    process][].
 
-    [master]: https://github.com/sass/sass/tree/master
-    [planned]: https://github.com/sass/sass/labels/Planned
-
-    The Sass codebase is pretty big, and it can be intimidating to navigate it
-    and understand the best way to make a change. If you need help, make a
-    post on [the Sass mailing list][list]; the Sass developers are happy to
-    assist, even if you don't have much experience with Ruby or programming as
-    a whole. They can answer questions about how the system works, suggest
-    avenues for solving problems, and review your code once it's written.
-
-    [list]: https://groups.google.com/forum/#!forum/sass-lang
-
-    Whether you're adding a feature or fixing a bug, if it changes publicly
-    visible behavior, it's important to write automated tests for it. All the
-    tests live in the `test/sass` directory; find the test file that's most
-    closely related to your change, and add a test or tests there. For a
-    feature, make sure your tests fully cover all the ways that feature could
-    be used, including ways it could be invalid.
-
-    Once you've written a patch with tests, send it to us as a
-    [pull request][]. A developer will look it over, and will probably make
-    some suggestions and requests. Once you address those, it'll get merged
-    in!
-
-    [pull request]: https://help.github.com/articles/creating-a-pull-request/
-
-  %h2#AddingSyntax Adding Syntax
-
-  :markdown
-    The biggest and most impressive features of Sass usually involve adding
-    new syntax of some sort. This can be pretty fun—something that used to be
-    an error starts working because you made it—but syntax changes are also a
-    lot of work. For statement-level syntax like a new `@`-rule, you have to:
-
-    * Add a node for the syntax to the abstract syntax tree in
-      [`lib/sass/tree`][tree].
-
-    * Parse the syntax in SCSS to the node. The SCSS parser is in
-      [`lib/sass/scss/parser.rb`][scss parser].
-
-    * Parse the syntax in the indented syntax to the node. The indented
-      syntax parser is in [`lib/sass/engine.rb`][sass parser].
-
-    * Add support for setting the compilation options on the node in
-      [`lib/sass/tree/visitors/set_options.rb`][set options].
-
-    * Add support for cloning the node in
-      [`lib/sass/tree/visitors/deep_copy.rb`][deep copy].
-
-    * If the syntax is just something new from pure CSS, add support for
-      compiling it to CSS in [`lib/sass/tree/visitors/to_css.rb`][to css]. If
-      it's for a Sass feature that's not part of CSS, add runtime behavior in
-      [`lib/sass/tree/visitors/perform.rb`][perform] or
-      [`lib/sass/tree/visitors/cssize.rb`][cssize].
-
-    * Add support for converting the syntax back to SCSS and the indented
-      syntax with `sass-convert` in
-      [`lib/sass/tree/visitors/convert.rb`][convert].
-      Don't forget to test this conversion, too!
-
-    [tree]: https://github.com/sass/sass/tree/stable/lib/sass/tree
-    [script tree]: https://github.com/sass/sass/tree/stable/lib/sass/script/tree
-    [scss parser]: https://github.com/sass/sass/tree/stable/lib/sass/scss/parser.rb
-    [sass parser]: https://github.com/sass/sass/tree/stable/lib/sass/engine.rb
-    [set options]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/set_options.rb
-    [deep copy]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/deep_copy.rb
-    [to css]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/to_css.rb
-    [perform]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/perform.rb
-    [cssize]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/cssize.rb
-    [convert]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/convert.rb
-
+    [Dart Sass]: /dart-sass
+    [contributing info]: https://github.com/sass/dart-sass/blob/master/CONTRIBUTING.md
+    [the language contribution process]: https://github.com/sass/language/blob/master/CONTRIBUTING.md
 
 .content-secondary
   %h3#Tutorials Tutorials
