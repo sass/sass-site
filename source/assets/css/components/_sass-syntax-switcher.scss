@@ -44,6 +44,21 @@
 
         &,
         &.ui-tabs-active { margin: 0; }
+
+
+        &.css-tab {
+          &,
+          &.ui-tabs-active { margin-left: 2em; }
+
+          a::before {
+            color: $color-text-weak;
+            content: "🢩";
+            font-size: 1.3em;
+            font-weight: bold;
+            left: -1.2em;
+            position: absolute;
+          }
+        }
       }
 
       .ui-tabs-active a { color: $color-text-weak; }
