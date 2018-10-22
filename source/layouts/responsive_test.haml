@@ -1,60 +1,28 @@
-!!!5
-%html.no-js(lang="en"){:class => data.page.head_classes}
-  %head
-    %meta(charset="utf-8")/
-    %meta(http-equiv="X-UA-Compatible" content="IE=edge")/
-    %title= page_title
-    = partial "layouts/head/meta"
-    = partial "layouts/head/link"
-    = partial "layouts/head/css"
-    = partial "layouts/head/js"
+= wrap_layout :layout do
+  =yield
 
-  %body{class: page_classes}
-    .page
-      = partial "layouts/roles/alert"
-      .pop-stripe
-      = partial "layouts/regions/banner"
-      = partial "layouts/regions/page_header"
+  - content_for :alert do
+    %form.responsive-test-url(role="form" method="post")
+      %fieldset
+        %p
+          %label.visually-hidden(for="test-url") Test URL
+          %input#test-url(type="text" placeholder="Enter a site URL")/
 
-      .body
-        =yield
+        %p
+          %label.radio(for="normal")
+            %input#normal(type="radio" name="option" value="1" checked="checked")/
+            Width only
 
-        - content_for :alert do
-          %form.responsive-test-url(role="form" method="post")
-            %fieldset
-              %p
-                %label.visually-hidden(for="test-url") Test URL
-                %input#test-url(type="text" placeholder="Enter a site URL")/
+          %label.radio(for="accurate")
+            %input#accurate(type="radio" name="option" value="2")/
+            Device sizes
 
-              %p
-                %label.radio(for="normal")
-                  %input#normal(type="radio" name="option" value="1" checked="checked")/
-                  Width only
+          %label.checkbox(for="scrollbar")
+            %input#scrollbar(type="checkbox" name="scrollbar" value="1" checked="checked")/
+            Add Scrollbar Width
 
-                %label.radio(for="accurate")
-                  %input#accurate(type="radio" name="option" value="2")/
-                  Device sizes
+      %p.visually-hidden
+        %button.primary(type="submit") Submit
 
-                %label.checkbox(for="scrollbar")
-                  %input#scrollbar(type="checkbox" name="scrollbar" value="1" checked="checked")/
-                  Add Scrollbar Width
-
-            %p.visually-hidden
-              %button.primary(type="submit") Submit
-
-        - content_for :js_foot do
-          = javascript_include_tag "tools/styleguide/responsive/test"
-
-
-        - if content_for?(:section_middle)
-          %section.section-middle
-            .container= yield_content :section_middle
-
-      = partial "layouts/regions/release"
-
-      - if content_for?(:section_bottom)
-        %section.section-bottom
-          .container= yield_content :section_bottom
-
-    = partial "layouts/regions/contentinfo"
-    = partial "layouts/foot/js"
+  - content_for :js_foot do
+    = javascript_include_tag "tools/styleguide/responsive/test"

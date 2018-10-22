@@ -1,29 +1,5 @@
-!!!5
-%html.no-js(lang="en"){:class => data.page.head_classes}
-  %head
-    %meta(charset="utf-8")/
-    %meta(http-equiv="X-UA-Compatible" content="IE=edge")/
-    %title= page_title
-    = partial "layouts/head/meta"
-    = partial "layouts/head/link"
-    = partial "layouts/head/css"
-    = partial "layouts/head/js"
+= wrap_layout :layout do
+  =yield
 
-  %body{class: page_classes}
-    .page
-      = partial "layouts/roles/alert"
-      .pop-stripe
-      = partial "layouts/regions/banner"
-      = partial "layouts/regions/page_header"
-
-      .body
-        .container
-          .content
-            = partial "layouts/components/reference_table_of_contents"
-
-            %main.main(role="main")=yield
-
-      = partial "layouts/regions/release"
-
-    = partial "layouts/regions/contentinfo"
-    = partial "layouts/foot/js"
+  - content_for :complementary do
+    = partial "layouts/components/reference_table_of_contents"

@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Sass::Script
+  
+    &mdash; Documentation by YARD 0.9.12
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../assets/css/docs.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Sass/Script.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span>
+     &raquo; 
+    <span class="title">Script</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Sass::Script
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">.ruby-sass/lib/sass/script.rb<span class="defines">,<br />
+  .ruby-sass/lib/sass/script/css_lexer.rb,<br /> .ruby-sass/lib/sass/script/css_parser.rb,<br /> .ruby-sass/lib/sass/script/functions.rb,<br /> .ruby-sass/lib/sass/script/lexer.rb,<br /> .ruby-sass/lib/sass/script/parser.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>SassScript is code that&#39;s embedded in Sass documents to allow for
+property values to be computed from variables.</p>
+
+<p>This module contains code that handles the parsing and evaluation of
+SassScript.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Script/Functions.html" title="Sass::Script::Functions (module)">Functions</a></span>, <span class='object_link'><a href="Script/Tree.html" title="Sass::Script::Tree (module)">Tree</a></span>, <span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Script/CssLexer.html" title="Sass::Script::CssLexer (class)">CssLexer</a></span>, <span class='object_link'><a href="Script/CssParser.html" title="Sass::Script::CssParser (class)">CssParser</a></span>, <span class='object_link'><a href="Script/Lexer.html" title="Sass::Script::Lexer (class)">Lexer</a></span>, <span class='object_link'><a href="Script/Parser.html" title="Sass::Script::Parser (class)">Parser</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="MATCH-constant" class="">MATCH =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The regular expression used to parse variables.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\$(</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS.html" title="Sass::SCSS (module)">SCSS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS/RX.html" title="Sass::SCSS::RX (module)">RX</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS/RX.html#IDENT-constant" title="Sass::SCSS::RX::IDENT (constant)">IDENT</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>)\s*:\s*(.+?)
+(!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS.html" title="Sass::SCSS (module)">SCSS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS/RX.html" title="Sass::SCSS::RX (module)">RX</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS/RX.html#IDENT-constant" title="Sass::SCSS::RX::IDENT (constant)">IDENT</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>(?:\s+!</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS.html" title="Sass::SCSS (module)">SCSS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS/RX.html" title="Sass::SCSS::RX (module)">RX</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS/RX.html#IDENT-constant" title="Sass::SCSS::RX::IDENT (constant)">IDENT</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>)*)?$</span><span class='regexp_end'>/x</span></span></pre></dd>
+      
+        <dt id="VALIDATE-constant" class="">VALIDATE =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>The regular expression used to validate variables without matching.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\$</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS.html" title="Sass::SCSS (module)">SCSS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS/RX.html" title="Sass::SCSS::RX (module)">RX</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SCSS/RX.html#IDENT-constant" title="Sass::SCSS::RX::IDENT (constant)">IDENT</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>$</span><span class='regexp_end'>/</span></span></pre></dd>
+      
+        <dt id="CONST_RENAMES-constant" class="">CONST_RENAMES =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:Literal</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value/Base.html" title="Sass::Script::Value::Base (class)">Base</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:ArgList</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value/ArgList.html" title="Sass::Script::Value::ArgList (class)">ArgList</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Bool</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value/Bool.html" title="Sass::Script::Value::Bool (class)">Bool</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Color</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value/Color.html" title="Sass::Script::Value::Color (class)">Color</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:List</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value/List.html" title="Sass::Script::Value::List (class)">List</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Null</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value/Null.html" title="Sass::Script::Value::Null (class)">Null</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Number</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value/Number.html" title="Sass::Script::Value::Number (class)">Number</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:String</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value.html" title="Sass::Script::Value (module)">Value</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Value/String.html" title="Sass::Script::Value::String (class)">String</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Node</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree.html" title="Sass::Script::Tree (module)">Tree</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Node</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Funcall</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree.html" title="Sass::Script::Tree (module)">Tree</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree/Funcall.html" title="Sass::Script::Tree::Funcall (class)">Funcall</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Interpolation</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree.html" title="Sass::Script::Tree (module)">Tree</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree/Interpolation.html" title="Sass::Script::Tree::Interpolation (class)">Interpolation</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Operation</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree.html" title="Sass::Script::Tree (module)">Tree</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree/Operation.html" title="Sass::Script::Tree::Operation (class)">Operation</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:StringInterpolation</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree.html" title="Sass::Script::Tree (module)">Tree</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree/StringInterpolation.html" title="Sass::Script::Tree::StringInterpolation (class)">StringInterpolation</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:UnaryOperation</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree.html" title="Sass::Script::Tree (module)">Tree</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree/UnaryOperation.html" title="Sass::Script::Tree::UnaryOperation (class)">UnaryOperation</a></span></span><span class='comma'>,</span>
+  <span class='symbol'>:Variable</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree.html" title="Sass::Script::Tree (module)">Tree</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Script/Tree/Variable.html" title="Sass::Script::Tree::Variable (class)">Variable</a></span></span><span class='comma'>,</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#const_missing-class_method" title="const_missing (class method)">.<strong>const_missing</strong>(name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-class_method" title="parse (class method)">.<strong>parse</strong>(value, line, offset, options = {})  &#x21d2; Script::Tree::Node </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses a string of SassScript.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="const_missing-class_method">
+  
+    .<strong>const_missing</strong>(name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/script.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_missing'>const_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_klass'>klass</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#CONST_RENAMES-constant" title="Sass::Script::CONST_RENAMES (constant)">CONST_RENAMES</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+  <span class='kw'>super</span> <span class='kw'>unless</span> <span class='id identifier rubyid_klass'>klass</span>
+  <span class='const'><span class='object_link'><a href="#CONST_RENAMES-constant" title="Sass::Script::CONST_RENAMES (constant)">CONST_RENAMES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='comma'>,</span> <span class='id identifier rubyid_k'>k</span><span class='op'>|</span> <span class='id identifier rubyid_const_set'>const_set</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='comma'>,</span> <span class='id identifier rubyid_k'>k</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_klass'>klass</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse-class_method">
+  
+    .<strong>parse</strong>(value, line, offset, options = {})  &#x21d2; <tt><span class='object_link'><a href="Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Script::Tree::Node</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses a string of SassScript</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The SassScript</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>line</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number of the line on which the SassScript appeared. Used for error
+reporting</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>offset</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number of characters in on `line` that the SassScript started. Used for
+error reporting</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An options hash; see <a href="../file.SASS_REFERENCE.html#Options" title="the Sass options documentation">the Sass options documentation</a></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Script::Tree::Node</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The root node of the parse tree</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/script.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="Script/Parser.html" title="Sass::Script::Parser (class)">Parser</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="Script/Parser.html#parse-class_method" title="Sass::Script::Parser.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="SyntaxError.html" title="Sass::SyntaxError (class)">SyntaxError</a></span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SassScript error</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_modify_backtrace'>modify_backtrace</span><span class='lparen'>(</span><span class='symbol'>:line</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='symbol'>:filename</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:filename</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_e'>e</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon Oct 22 13:20:49 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.5.3).
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-535380-14', 'sass-lang.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

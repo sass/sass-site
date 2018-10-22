@@ -1,0 +1,1070 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Source::Map
+  
+    &mdash; Documentation by YARD 0.9.12
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../assets/css/docs.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Source/Map.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (M)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Source.html" title="Sass::Source (module)">Source</a></span></span>
+     &raquo; 
+    <span class="title">Map</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Source::Map
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Sass::Source::Map</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">.ruby-sass/lib/sass/source/map.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Map/Mapping.html" title="Sass::Source::Map::Mapping (class)">Mapping</a></span>
+    
+  
+</p>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#data-instance_method" title="#data (instance method)">#<strong>data</strong>  &#x21d2; Array&lt;Mapping&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The mapping data ordered by the location in the target.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add-instance_method" title="#add (instance method)">#<strong>add</strong>(input, output)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Adds a new mapping from one source range to another.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>  &#x21d2; Map </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Map.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shift_output_lines-instance_method" title="#shift_output_lines (instance method)">#<strong>shift_output_lines</strong>(delta)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Shifts all output source ranges forward one or more lines.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shift_output_offsets-instance_method" title="#shift_output_offsets (instance method)">#<strong>shift_output_offsets</strong>(delta)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Shifts any output source ranges that lie on the first line forward one or
+more characters on that line.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_json-instance_method" title="#to_json (instance method)">#<strong>to_json</strong>(options)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the standard JSON representation of the source map.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Sass::Source::Map (class)">Map</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Map</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/source/map.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='ivar'>@data</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Sass::Source::Map (class)">Map</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Map</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/source/map.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='ivar'>@data</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="data-instance_method">
+  
+    #<strong>data</strong>  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Map/Mapping.html" title="Sass::Source::Map::Mapping (class)">Mapping</a></span>&gt;</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The mapping data ordered by the location in the target.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Map/Mapping.html" title="Sass::Source::Map::Mapping (class)">Mapping</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/source/map.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='ivar'>@data</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add-instance_method">
+  
+    #<strong>add</strong>(input, output)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Adds a new mapping from one source range to another. Multiple invocations
+of this method should have each `output` range come after all previous
+ranges.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>input</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Range.html" title="Sass::Source::Range (class)">Sass::Source::Range</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The source range in the input document.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>output</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Range.html" title="Sass::Source::Range (class)">Sass::Source::Range</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The source range in the output document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/source/map.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span><span class='rparen'>)</span>
+  <span class='ivar'>@data</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Map/Mapping.html" title="Sass::Source::Map::Mapping (class)">Mapping</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Sass::Source::Map#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='comma'>,</span> <span class='id identifier rubyid_output'>output</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shift_output_lines-instance_method">
+  
+    #<strong>shift_output_lines</strong>(delta)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Shifts all output source ranges forward one or more lines.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>delta</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number of lines to shift the ranges forward.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/source/map.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shift_output_lines'>shift_output_lines</span><span class='lparen'>(</span><span class='id identifier rubyid_delta'>delta</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_delta'>delta</span> <span class='op'>==</span> <span class='int'>0</span>
+  <span class='ivar'>@data</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_start_pos'>start_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span> <span class='op'>+=</span> <span class='id identifier rubyid_delta'>delta</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_end_pos'>end_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span> <span class='op'>+=</span> <span class='id identifier rubyid_delta'>delta</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shift_output_offsets-instance_method">
+  
+    #<strong>shift_output_offsets</strong>(delta)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Shifts any output source ranges that lie on the first line forward one or
+more characters on that line.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>delta</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number of characters to shift the ranges forward.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/source/map.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shift_output_offsets'>shift_output_offsets</span><span class='lparen'>(</span><span class='id identifier rubyid_delta'>delta</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_delta'>delta</span> <span class='op'>==</span> <span class='int'>0</span>
+  <span class='ivar'>@data</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span>
+    <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_start_pos'>start_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span> <span class='op'>&gt;</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_start_pos'>start_pos</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span> <span class='op'>+=</span> <span class='id identifier rubyid_delta'>delta</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_end_pos'>end_pos</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span> <span class='op'>+=</span> <span class='id identifier rubyid_delta'>delta</span> <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_end_pos'>end_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span> <span class='op'>&gt;</span> <span class='int'>1</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_json-instance_method">
+  
+    #<strong>to_json</strong>(options)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the standard JSON representation of the source map.</p>
+
+<p>If the `:css_uri` option isn&#39;t specified, the `:css_path` and
+`:sourcemap_path` options must both be specified. Any options may also be
+specified alongside the `:css_uri` option. If `:css_uri` isn&#39;t
+specified, it will be inferred from `:css_path` and `:sourcemap_path` using
+the assumption that the local file system has the same layout as the
+server.</p>
+
+<p>Regardless of which options are passed to this method, source stylesheets
+that are imported using a non-default importer will only be linked to in
+the source map if their importers implement
+<span class='object_link'><a href="../Importers/Base.html#public_url-instance_method" title="Sass::Importers::Base#public_url (method)">Importers::Base#public_url</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:css_uri</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The publicly-visible URI of the CSS output file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:css_path</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The local path of the CSS output file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sourcemap_path</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The (eventual) local path of the sourcemap file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:type</span>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>`:auto` (default),  `:file`, or `:inline`.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The JSON string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If neither `:css_uri` nor `:css_path` and `:sourcemap_path` are specified.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/source/map.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_css_uri'>css_uri</span><span class='comma'>,</span> <span class='id identifier rubyid_css_path'>css_path</span><span class='comma'>,</span> <span class='id identifier rubyid_sourcemap_path'>sourcemap_path</span> <span class='op'>=</span>
+    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:css_uri</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:css_path</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:sourcemap_path</span><span class='rbracket'>]</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_css_uri'>css_uri</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_css_path'>css_path</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_sourcemap_path'>sourcemap_path</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sass::Source::Map#to_json requires either </span><span class='tstring_end'>&quot;</span></span> \
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>the :css_uri option or both the :css_path and :soucemap_path options.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_css_path'>css_path</span> <span class='op'>&amp;&amp;=</span> <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_pathname'><span class='object_link'><a href="../Util.html#pathname-instance_method" title="Sass::Util#pathname (method)">pathname</a></span></span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_absolute_path'>absolute_path</span><span class='lparen'>(</span><span class='id identifier rubyid_css_path'>css_path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sourcemap_path'>sourcemap_path</span> <span class='op'>&amp;&amp;=</span> <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_pathname'><span class='object_link'><a href="../Util.html#pathname-instance_method" title="Sass::Util#pathname (method)">pathname</a></span></span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_absolute_path'>absolute_path</span><span class='lparen'>(</span><span class='id identifier rubyid_sourcemap_path'>sourcemap_path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_css_uri'>css_uri</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_file_uri_from_path'><span class='object_link'><a href="../Util.html#file_uri_from_path-instance_method" title="Sass::Util#file_uri_from_path (method)">file_uri_from_path</a></span></span><span class='lparen'>(</span>
+    <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_relative_path_from'><span class='object_link'><a href="../Util.html#relative_path_from-instance_method" title="Sass::Util#relative_path_from (method)">relative_path_from</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_css_path'>css_path</span><span class='comma'>,</span> <span class='id identifier rubyid_sourcemap_path'>sourcemap_path</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>{\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_write_json_field'>write_json_field</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>version</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>3</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_source_uri_to_id'>source_uri_to_id</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_id_to_source_uri'>id_to_source_uri</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_id_to_contents'>id_to_contents</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:inline</span>
+  <span class='id identifier rubyid_next_source_id'>next_source_id</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_line_data'>line_data</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_segment_data_for_line'>segment_data_for_line</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='comment'># These track data necessary for the delta coding.
+</span>  <span class='id identifier rubyid_previous_target_line'>previous_target_line</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_previous_target_offset'>previous_target_offset</span> <span class='op'>=</span> <span class='int'>1</span>
+  <span class='id identifier rubyid_previous_source_line'>previous_source_line</span> <span class='op'>=</span> <span class='int'>1</span>
+  <span class='id identifier rubyid_previous_source_offset'>previous_source_offset</span> <span class='op'>=</span> <span class='int'>1</span>
+  <span class='id identifier rubyid_previous_source_id'>previous_source_id</span> <span class='op'>=</span> <span class='int'>0</span>
+
+  <span class='ivar'>@data</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span>
+    <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_importer'>importer</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_importer'>importer</span>
+
+    <span class='kw'>next</span> <span class='kw'>unless</span> <span class='id identifier rubyid_importer'>importer</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:inline</span>
+      <span class='id identifier rubyid_source_uri'>source_uri</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_sourcemap_dir'>sourcemap_dir</span> <span class='op'>=</span> <span class='id identifier rubyid_sourcemap_path'>sourcemap_path</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_sourcemap_path'>sourcemap_path</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+      <span class='id identifier rubyid_sourcemap_dir'>sourcemap_dir</span> <span class='op'>=</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:file</span>
+      <span class='id identifier rubyid_source_uri'>source_uri</span> <span class='op'>=</span> <span class='id identifier rubyid_importer'>importer</span><span class='period'>.</span><span class='id identifier rubyid_public_url'>public_url</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='id identifier rubyid_sourcemap_dir'>sourcemap_dir</span><span class='rparen'>)</span>
+      <span class='kw'>next</span> <span class='kw'>unless</span> <span class='id identifier rubyid_source_uri'>source_uri</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_current_source_id'>current_source_id</span> <span class='op'>=</span> <span class='id identifier rubyid_source_uri_to_id'>source_uri_to_id</span><span class='lbracket'>[</span><span class='id identifier rubyid_source_uri'>source_uri</span><span class='rbracket'>]</span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_current_source_id'>current_source_id</span>
+      <span class='id identifier rubyid_current_source_id'>current_source_id</span> <span class='op'>=</span> <span class='id identifier rubyid_next_source_id'>next_source_id</span>
+      <span class='id identifier rubyid_next_source_id'>next_source_id</span> <span class='op'>+=</span> <span class='int'>1</span>
+
+      <span class='id identifier rubyid_source_uri_to_id'>source_uri_to_id</span><span class='lbracket'>[</span><span class='id identifier rubyid_source_uri'>source_uri</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_current_source_id'>current_source_id</span>
+      <span class='id identifier rubyid_id_to_source_uri'>id_to_source_uri</span><span class='lbracket'>[</span><span class='id identifier rubyid_current_source_id'>current_source_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_source_uri'>source_uri</span>
+
+      <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:inline</span>
+        <span class='id identifier rubyid_id_to_contents'>id_to_contents</span><span class='lbracket'>[</span><span class='id identifier rubyid_current_source_id'>current_source_id</span><span class='rbracket'>]</span> <span class='op'>=</span>
+          <span class='id identifier rubyid_importer'>importer</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>@template</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='lbracket'>[</span>
+      <span class='lbracket'>[</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_start_pos'>start_pos</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_start_pos'>start_pos</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='lbracket'>[</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_end_pos'>end_pos</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_end_pos'>end_pos</span><span class='rbracket'>]</span>
+    <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_source_pos'>source_pos</span><span class='comma'>,</span> <span class='id identifier rubyid_target_pos'>target_pos</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_previous_target_line'>previous_target_line</span> <span class='op'>!=</span> <span class='id identifier rubyid_target_pos'>target_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span>
+        <span class='id identifier rubyid_line_data'>line_data</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_segment_data_for_line'>segment_data_for_line</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_segment_data_for_line'>segment_data_for_line</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+        <span class='lparen'>(</span><span class='id identifier rubyid_target_pos'>target_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span> <span class='op'>-</span> <span class='int'>1</span> <span class='op'>-</span> <span class='lparen'>(</span><span class='id identifier rubyid_previous_target_line'>previous_target_line</span> <span class='op'>||</span> <span class='int'>0</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='lbrace'>{</span><span class='id identifier rubyid_line_data'>line_data</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbrace'>}</span>
+        <span class='id identifier rubyid_previous_target_line'>previous_target_line</span> <span class='op'>=</span> <span class='id identifier rubyid_target_pos'>target_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span>
+        <span class='id identifier rubyid_previous_target_offset'>previous_target_offset</span> <span class='op'>=</span> <span class='int'>1</span>
+        <span class='id identifier rubyid_segment_data_for_line'>segment_data_for_line</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+      <span class='kw'>end</span>
+
+      <span class='comment'># `segment` is a data chunk for a single position mapping.
+</span>      <span class='id identifier rubyid_segment'>segment</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+
+      <span class='comment'># Field 1: zero-based starting offset.
+</span>      <span class='id identifier rubyid_segment'>segment</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_encode_vlq'><span class='object_link'><a href="../Util.html#encode_vlq-instance_method" title="Sass::Util#encode_vlq (method)">encode_vlq</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_target_pos'>target_pos</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span> <span class='op'>-</span> <span class='id identifier rubyid_previous_target_offset'>previous_target_offset</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_previous_target_offset'>previous_target_offset</span> <span class='op'>=</span> <span class='id identifier rubyid_target_pos'>target_pos</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span>
+
+      <span class='comment'># Field 2: zero-based index into the &quot;sources&quot; list.
+</span>      <span class='id identifier rubyid_segment'>segment</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_encode_vlq'><span class='object_link'><a href="../Util.html#encode_vlq-instance_method" title="Sass::Util#encode_vlq (method)">encode_vlq</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_current_source_id'>current_source_id</span> <span class='op'>-</span> <span class='id identifier rubyid_previous_source_id'>previous_source_id</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_previous_source_id'>previous_source_id</span> <span class='op'>=</span> <span class='id identifier rubyid_current_source_id'>current_source_id</span>
+
+      <span class='comment'># Field 3: zero-based starting line in the original source.
+</span>      <span class='id identifier rubyid_segment'>segment</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_encode_vlq'><span class='object_link'><a href="../Util.html#encode_vlq-instance_method" title="Sass::Util#encode_vlq (method)">encode_vlq</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_source_pos'>source_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span> <span class='op'>-</span> <span class='id identifier rubyid_previous_source_line'>previous_source_line</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_previous_source_line'>previous_source_line</span> <span class='op'>=</span> <span class='id identifier rubyid_source_pos'>source_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span>
+
+      <span class='comment'># Field 4: zero-based starting offset in the original source.
+</span>      <span class='id identifier rubyid_segment'>segment</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_encode_vlq'><span class='object_link'><a href="../Util.html#encode_vlq-instance_method" title="Sass::Util#encode_vlq (method)">encode_vlq</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_source_pos'>source_pos</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span> <span class='op'>-</span> <span class='id identifier rubyid_previous_source_offset'>previous_source_offset</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_previous_source_offset'>previous_source_offset</span> <span class='op'>=</span> <span class='id identifier rubyid_source_pos'>source_pos</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span>
+
+      <span class='id identifier rubyid_segment_data_for_line'>segment_data_for_line</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_segment'>segment</span><span class='rparen'>)</span>
+
+      <span class='id identifier rubyid_previous_target_line'>previous_target_line</span> <span class='op'>=</span> <span class='id identifier rubyid_target_pos'>target_pos</span><span class='period'>.</span><span class='id identifier rubyid_line'>line</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_line_data'>line_data</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_segment_data_for_line'>segment_data_for_line</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_write_json_field'>write_json_field</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>mappings</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_line_data'>line_data</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_source_names'>source_names</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='lparen'>(</span><span class='int'>0</span><span class='op'>...</span><span class='id identifier rubyid_next_source_id'>next_source_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_id'>id</span><span class='op'>|</span> <span class='id identifier rubyid_source_names'>source_names</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_id_to_source_uri'>id_to_source_uri</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_write_json_field'>write_json_field</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sources</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_source_names'>source_names</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:inline</span>
+    <span class='id identifier rubyid_write_json_field'>write_json_field</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sourcesContent</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='lparen'>(</span><span class='int'>0</span><span class='op'>...</span><span class='id identifier rubyid_next_source_id'>next_source_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_id'>id</span><span class='op'>|</span> <span class='id identifier rubyid_id_to_contents'>id_to_contents</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_write_json_field'>write_json_field</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>names</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_write_json_field'>write_json_field</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_css_uri'>css_uri</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon Oct 22 13:20:57 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.5.3).
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-535380-14', 'sass-lang.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
