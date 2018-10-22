@@ -15,7 +15,7 @@
         border:none !important;
         box-shadow:none !important;
       }
-      .ui-tabs-active { 
+      .ui-tabs-active {
           &:after, &:before {
             bottom: -1px;
             left: 50%;
@@ -52,7 +52,7 @@
 
           a::before {
             color: $color-text-weak;
-            content: "🢩";
+            content: "\2192";
             font-size: 1.3em;
             font-weight: bold;
             left: -1.2em;
