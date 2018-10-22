@@ -8,11 +8,15 @@
 
   h2:first-child { margin-top: -0.5em; }
 
-  ul { @extend %reset-list; }
+  ul {
+    @extend %reset-list;
+
+    ul { margin-left: 1rem; }
+  }
 
   li {
-    @include padding-leader(.25);
-    @include padding-trailer(.25);
+    @include padding-leader(.0625);
+    @include padding-trailer(.0625);
     @include adjust-leading-to(1)
   }
 

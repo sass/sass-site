@@ -41,8 +41,12 @@ GEM
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
     eventmachine (1.2.5)
+    eventmachine (1.2.5-java)
+    eventmachine (1.2.5-x86-mingw32)
     execjs (2.7.0)
     ffi (1.9.23)
+    ffi (1.9.23-java)
+    ffi (1.9.23-x86-mingw32)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -51,8 +55,10 @@ GEM
       uber (~> 0.0.14)
     htmlcompressor (0.2.0)
     http_parser.rb (0.6.0)
+    http_parser.rb (0.6.0-java)
     i18n (0.7.0)
     json (2.1.0)
+    json (2.1.0-java)
     kramdown (1.16.2)
     libv8 (3.16.14.19)
     listen (3.0.8)
@@ -109,6 +115,9 @@ GEM
     multi_json (1.13.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.2-java)
+    nokogiri (1.8.2-x86-mingw32)
+      mini_portile2 (~> 2.3.0)
     normalize-rails (3.0.3)
     padrino-helpers (0.12.9)
       i18n (~> 0.6, >= 0.6.7)
@@ -117,6 +126,7 @@ GEM
     padrino-support (0.12.9)
       activesupport (>= 3.1)
     puma (3.11.3)
+    puma (3.11.3-java)
     rack (1.6.9)
     rack-contrib (1.8.0)
       rack (~> 1.4)
@@ -155,21 +165,28 @@ GEM
       ref
     thor (0.20.0)
     thread_safe (0.3.6)
+    thread_safe (0.3.6-java)
     tilt (1.4.1)
     typogruby (1.0.18)
       rubypants
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2015.7)
+      tzinfo (>= 1.0.0)
     uber (0.0.15)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    wdm (0.1.1)
     xpath (2.1.0)
       nokogiri (~> 1.3)
     yard (0.9.12)
 
 PLATFORMS
+  java
   ruby
+  x86-mingw32
+  x86-mswin32
 
 DEPENDENCIES
   breakpoint (~> 2.5.0)
@@ -197,7 +214,7 @@ DEPENDENCIES
   yard (~> 0.9)
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.1
+   1.16.6

@@ -1,0 +1,1364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::SCSS::Parser
+  
+    &mdash; Documentation by YARD 0.9.12
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../assets/css/docs.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/SCSS/Parser.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../SCSS.html" title="Sass::SCSS (module)">SCSS</a></span></span>
+     &raquo; 
+    <span class="title">Parser</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::SCSS::Parser
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Sass::SCSS::Parser</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="RX.html" title="Sass::SCSS::RX (module)">RX</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">.ruby-sass/lib/sass/scss/parser.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The parser for SCSS. It parses a string of code into a tree of
+<span class='object_link'><a href="../Tree/Node.html" title="Sass::Tree::Node (class)">Tree::Node</a></span>s.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="StaticParser.html" title="Sass::SCSS::StaticParser (class)">StaticParser</a></span></p>
+</div>
+<div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="StaticParser.html" title="Sass::SCSS::StaticParser (class)">StaticParser</a></span></p>
+</div>
+
+  <h2>Constant Summary</h2>
+  
+
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="RX.html" title="Sass::SCSS::RX (module)">RX</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="RX.html#ANY-constant" title="Sass::SCSS::RX::ANY (constant)">RX::ANY</a></span>, <span class='object_link'><a href="RX.html#CDC-constant" title="Sass::SCSS::RX::CDC (constant)">RX::CDC</a></span>, <span class='object_link'><a href="RX.html#CDO-constant" title="Sass::SCSS::RX::CDO (constant)">RX::CDO</a></span>, <span class='object_link'><a href="RX.html#COMMENT-constant" title="Sass::SCSS::RX::COMMENT (constant)">RX::COMMENT</a></span>, <span class='object_link'><a href="RX.html#DASHMATCH-constant" title="Sass::SCSS::RX::DASHMATCH (constant)">RX::DASHMATCH</a></span>, <span class='object_link'><a href="RX.html#DOMAIN-constant" title="Sass::SCSS::RX::DOMAIN (constant)">RX::DOMAIN</a></span>, <span class='object_link'><a href="RX.html#ESCAPE-constant" title="Sass::SCSS::RX::ESCAPE (constant)">RX::ESCAPE</a></span>, <span class='object_link'><a href="RX.html#FUNCTION-constant" title="Sass::SCSS::RX::FUNCTION (constant)">RX::FUNCTION</a></span>, <span class='object_link'><a href="RX.html#GREATER-constant" title="Sass::SCSS::RX::GREATER (constant)">RX::GREATER</a></span>, <span class='object_link'><a href="RX.html#H-constant" title="Sass::SCSS::RX::H (constant)">RX::H</a></span>, <span class='object_link'><a href="RX.html#HASH-constant" title="Sass::SCSS::RX::HASH (constant)">RX::HASH</a></span>, <span class='object_link'><a href="RX.html#HEXCOLOR-constant" title="Sass::SCSS::RX::HEXCOLOR (constant)">RX::HEXCOLOR</a></span>, <span class='object_link'><a href="RX.html#IDENT-constant" title="Sass::SCSS::RX::IDENT (constant)">RX::IDENT</a></span>, <span class='object_link'><a href="RX.html#IDENT_HYPHEN_INTERP-constant" title="Sass::SCSS::RX::IDENT_HYPHEN_INTERP (constant)">RX::IDENT_HYPHEN_INTERP</a></span>, <span class='object_link'><a href="RX.html#IDENT_START-constant" title="Sass::SCSS::RX::IDENT_START (constant)">RX::IDENT_START</a></span>, <span class='object_link'><a href="RX.html#IMPORTANT-constant" title="Sass::SCSS::RX::IMPORTANT (constant)">RX::IMPORTANT</a></span>, <span class='object_link'><a href="RX.html#INCLUDES-constant" title="Sass::SCSS::RX::INCLUDES (constant)">RX::INCLUDES</a></span>, <span class='object_link'><a href="RX.html#INTERP_START-constant" title="Sass::SCSS::RX::INTERP_START (constant)">RX::INTERP_START</a></span>, <span class='object_link'><a href="RX.html#NAME-constant" title="Sass::SCSS::RX::NAME (constant)">RX::NAME</a></span>, <span class='object_link'><a href="RX.html#NL-constant" title="Sass::SCSS::RX::NL (constant)">RX::NL</a></span>, <span class='object_link'><a href="RX.html#NMCHAR-constant" title="Sass::SCSS::RX::NMCHAR (constant)">RX::NMCHAR</a></span>, <span class='object_link'><a href="RX.html#NMSTART-constant" title="Sass::SCSS::RX::NMSTART (constant)">RX::NMSTART</a></span>, <span class='object_link'><a href="RX.html#NONASCII-constant" title="Sass::SCSS::RX::NONASCII (constant)">RX::NONASCII</a></span>, <span class='object_link'><a href="RX.html#NOT-constant" title="Sass::SCSS::RX::NOT (constant)">RX::NOT</a></span>, <span class='object_link'><a href="RX.html#NUMBER-constant" title="Sass::SCSS::RX::NUMBER (constant)">RX::NUMBER</a></span>, <span class='object_link'><a href="RX.html#OPTIONAL-constant" title="Sass::SCSS::RX::OPTIONAL (constant)">RX::OPTIONAL</a></span>, <span class='object_link'><a href="RX.html#PERCENTAGE-constant" title="Sass::SCSS::RX::PERCENTAGE (constant)">RX::PERCENTAGE</a></span>, <span class='object_link'><a href="RX.html#PLUS-constant" title="Sass::SCSS::RX::PLUS (constant)">RX::PLUS</a></span>, <span class='object_link'><a href="RX.html#PREFIXMATCH-constant" title="Sass::SCSS::RX::PREFIXMATCH (constant)">RX::PREFIXMATCH</a></span>, <span class='object_link'><a href="RX.html#RANGE-constant" title="Sass::SCSS::RX::RANGE (constant)">RX::RANGE</a></span>, <span class='object_link'><a href="RX.html#S-constant" title="Sass::SCSS::RX::S (constant)">RX::S</a></span>, <span class='object_link'><a href="RX.html#SINGLE_LINE_COMMENT-constant" title="Sass::SCSS::RX::SINGLE_LINE_COMMENT (constant)">RX::SINGLE_LINE_COMMENT</a></span>, <span class='object_link'><a href="RX.html#STATIC_COMPONENT-constant" title="Sass::SCSS::RX::STATIC_COMPONENT (constant)">RX::STATIC_COMPONENT</a></span>, <span class='object_link'><a href="RX.html#STATIC_SELECTOR-constant" title="Sass::SCSS::RX::STATIC_SELECTOR (constant)">RX::STATIC_SELECTOR</a></span>, <span class='object_link'><a href="RX.html#STATIC_VALUE-constant" title="Sass::SCSS::RX::STATIC_VALUE (constant)">RX::STATIC_VALUE</a></span>, <span class='object_link'><a href="RX.html#STRING-constant" title="Sass::SCSS::RX::STRING (constant)">RX::STRING</a></span>, <span class='object_link'><a href="RX.html#STRING1-constant" title="Sass::SCSS::RX::STRING1 (constant)">RX::STRING1</a></span>, <span class='object_link'><a href="RX.html#STRING1_NOINTERP-constant" title="Sass::SCSS::RX::STRING1_NOINTERP (constant)">RX::STRING1_NOINTERP</a></span>, <span class='object_link'><a href="RX.html#STRING2-constant" title="Sass::SCSS::RX::STRING2 (constant)">RX::STRING2</a></span>, <span class='object_link'><a href="RX.html#STRING2_NOINTERP-constant" title="Sass::SCSS::RX::STRING2_NOINTERP (constant)">RX::STRING2_NOINTERP</a></span>, <span class='object_link'><a href="RX.html#STRING_NOINTERP-constant" title="Sass::SCSS::RX::STRING_NOINTERP (constant)">RX::STRING_NOINTERP</a></span>, <span class='object_link'><a href="RX.html#SUBSTRINGMATCH-constant" title="Sass::SCSS::RX::SUBSTRINGMATCH (constant)">RX::SUBSTRINGMATCH</a></span>, <span class='object_link'><a href="RX.html#SUFFIXMATCH-constant" title="Sass::SCSS::RX::SUFFIXMATCH (constant)">RX::SUFFIXMATCH</a></span>, <span class='object_link'><a href="RX.html#TILDE-constant" title="Sass::SCSS::RX::TILDE (constant)">RX::TILDE</a></span>, <span class='object_link'><a href="RX.html#UNICODE-constant" title="Sass::SCSS::RX::UNICODE (constant)">RX::UNICODE</a></span>, <span class='object_link'><a href="RX.html#UNICODERANGE-constant" title="Sass::SCSS::RX::UNICODERANGE (constant)">RX::UNICODERANGE</a></span>, <span class='object_link'><a href="RX.html#UNIT-constant" title="Sass::SCSS::RX::UNIT (constant)">RX::UNIT</a></span>, <span class='object_link'><a href="RX.html#UNITLESS_NUMBER-constant" title="Sass::SCSS::RX::UNITLESS_NUMBER (constant)">RX::UNITLESS_NUMBER</a></span>, <span class='object_link'><a href="RX.html#URI-constant" title="Sass::SCSS::RX::URI (constant)">RX::URI</a></span>, <span class='object_link'><a href="RX.html#URL-constant" title="Sass::SCSS::RX::URL (constant)">RX::URL</a></span>, <span class='object_link'><a href="RX.html#URLCHAR-constant" title="Sass::SCSS::RX::URLCHAR (constant)">RX::URLCHAR</a></span>, <span class='object_link'><a href="RX.html#URL_PREFIX-constant" title="Sass::SCSS::RX::URL_PREFIX (constant)">RX::URL_PREFIX</a></span>, <span class='object_link'><a href="RX.html#VARIABLE-constant" title="Sass::SCSS::RX::VARIABLE (constant)">RX::VARIABLE</a></span>, <span class='object_link'><a href="RX.html#W-constant" title="Sass::SCSS::RX::W (constant)">RX::W</a></span></p>
+
+
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sass_script_parser-class_method" title="sass_script_parser (class method)">.<strong>sass_script_parser</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#offset-instance_method" title="#offset (instance method)">#<strong>offset</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Expose for the SASS parser.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(str, filename, importer, line = 1, offset = 1)  &#x21d2; Parser </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Parser.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-instance_method" title="#parse (instance method)">#<strong>parse</strong>  &#x21d2; Sass::Tree::RootNode </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses an SCSS document.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_at_root_query-instance_method" title="#parse_at_root_query (instance method)">#<strong>parse_at_root_query</strong>  &#x21d2; Array&lt;String, Sass::Script;:Tree::Node&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses an at-root query.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_declaration_value-instance_method" title="#parse_declaration_value (instance method)">#<strong>parse_declaration_value</strong>  &#x21d2; Array&lt;String, Sass::Script;:Tree::Node&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses a custom property value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_interp_ident-instance_method" title="#parse_interp_ident (instance method)">#<strong>parse_interp_ident</strong>  &#x21d2; Array&lt;String, Sass::Script::Tree::Node&gt;<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses an identifier with interpolation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_media_query_list-instance_method" title="#parse_media_query_list (instance method)">#<strong>parse_media_query_list</strong>  &#x21d2; Sass::Media::QueryList </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses a media query list.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_supports_clause-instance_method" title="#parse_supports_clause (instance method)">#<strong>parse_supports_clause</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses a supports clause for an @import directive.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_supports_condition-instance_method" title="#parse_supports_condition (instance method)">#<strong>parse_supports_condition</strong>  &#x21d2; Sass::Supports::Condition </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses a supports query condition.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="RX.html" title="Sass::SCSS::RX (module)">RX</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="RX.html#escape_char-class_method" title="Sass::SCSS::RX.escape_char (method)">escape_char</a></span>, <span class='object_link'><a href="RX.html#escape_ident-class_method" title="Sass::SCSS::RX.escape_ident (method)">escape_ident</a></span>, <span class='object_link'><a href="RX.html#quote-class_method" title="Sass::SCSS::RX.quote (method)">quote</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(str, filename, importer, line = 1, offset = 1)  &#x21d2; <tt><span class='object_link'><a href="" title="Sass::SCSS::Parser (class)">Parser</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Parser</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>str</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>StringScanner</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The source document to parse. Note that `Parser` *won&#39;t* raise a nice
+error message if this isn&#39;t properly parsed; for that, you should use
+the higher-level <span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Engine</a></span> or <span class='object_link'><a href="../CSS.html" title="Sass::CSS (class)">CSS</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the file being parsed. Used for warnings and source maps.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>importer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Importers/Base.html" title="Sass::Importers::Base (class)">Sass::Importers::Base</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The importer used to import the file being parsed. Used for source maps.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>line</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The 1-based line on which the source string appeared, if it&#39;s part of
+another document.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>offset</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The 1-based character (not byte) offset in the line on which the source
+string starts. Used for error reporting and sourcemap building.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_importer'>importer</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_offset'>offset</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='ivar'>@template</span> <span class='op'>=</span> <span class='id identifier rubyid_str'>str</span>
+  <span class='ivar'>@filename</span> <span class='op'>=</span> <span class='id identifier rubyid_filename'>filename</span>
+  <span class='ivar'>@importer</span> <span class='op'>=</span> <span class='id identifier rubyid_importer'>importer</span>
+  <span class='ivar'>@line</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span>
+  <span class='ivar'>@offset</span> <span class='op'>=</span> <span class='id identifier rubyid_offset'>offset</span>
+  <span class='ivar'>@strs</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@expected</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@throw_error</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(str, filename, importer, line = 1, offset = 1)  &#x21d2; <tt><span class='object_link'><a href="" title="Sass::SCSS::Parser (class)">Parser</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Parser</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>str</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>StringScanner</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The source document to parse. Note that `Parser` *won&#39;t* raise a nice
+error message if this isn&#39;t properly parsed; for that, you should use
+the higher-level <span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Engine</a></span> or <span class='object_link'><a href="../CSS.html" title="Sass::CSS (class)">CSS</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the file being parsed. Used for warnings and source maps.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>importer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Importers/Base.html" title="Sass::Importers::Base (class)">Sass::Importers::Base</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The importer used to import the file being parsed. Used for source maps.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>line</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The 1-based line on which the source string appeared, if it&#39;s part of
+another document.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>offset</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The 1-based character (not byte) offset in the line on which the source
+string starts. Used for error reporting and sourcemap building.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='id identifier rubyid_importer'>importer</span><span class='comma'>,</span> <span class='id identifier rubyid_line'>line</span> <span class='op'>=</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_offset'>offset</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='ivar'>@template</span> <span class='op'>=</span> <span class='id identifier rubyid_str'>str</span>
+  <span class='ivar'>@filename</span> <span class='op'>=</span> <span class='id identifier rubyid_filename'>filename</span>
+  <span class='ivar'>@importer</span> <span class='op'>=</span> <span class='id identifier rubyid_importer'>importer</span>
+  <span class='ivar'>@line</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span>
+  <span class='ivar'>@offset</span> <span class='op'>=</span> <span class='id identifier rubyid_offset'>offset</span>
+  <span class='ivar'>@strs</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@expected</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@throw_error</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="sass_script_parser=-class_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="sass_script_parser-class_method">
+  
+    .<strong>sass_script_parser</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1128
+1129
+1130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 1128</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sass_script_parser'>sass_script_parser</span>
+  <span class='ivar'>@sass_script_parser</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="offset=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="offset-instance_method">
+  
+    #<strong>offset</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Expose for the SASS parser.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_offset'>offset</span>
+  <span class='ivar'>@offset</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="parse-instance_method">
+  
+    #<strong>parse</strong>  &#x21d2; <tt><span class='object_link'><a href="../Tree/RootNode.html" title="Sass::Tree::RootNode (class)">Sass::Tree::RootNode</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses an SCSS document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Tree/RootNode.html" title="Sass::Tree::RootNode (class)">Sass::Tree::RootNode</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The root node of the document tree</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if there&#39;s a syntax error in the document</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span>
+  <span class='id identifier rubyid_init_scanner!'>init_scanner!</span>
+  <span class='id identifier rubyid_root'><span class='object_link'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_stylesheet'>stylesheet</span>
+  <span class='id identifier rubyid_expected'>expected</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>selector or at-rule</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_root'><span class='object_link'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span></span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@scanner</span><span class='period'>.</span><span class='id identifier rubyid_eos?'>eos?</span>
+  <span class='id identifier rubyid_root'><span class='object_link'><a href="../../top-level-namespace.html" title="Top Level Namespace (root)">root</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_at_root_query-instance_method">
+  
+    #<strong>parse_at_root_query</strong>  &#x21d2; <tt>Array&lt;String, <span class='object_link'><a href="../Script.html" title="Sass::Script (module)">Sass::Script</a></span>;:Tree::Node&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses an at-root query.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script.html" title="Sass::Script (module)">Sass::Script</a></span>;:Tree::Node&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The interpolated query.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if there&#39;s a syntax error in the query, or if it doesn&#39;t take up
+the entire input string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_at_root_query'>parse_at_root_query</span>
+  <span class='id identifier rubyid_init_scanner!'>init_scanner!</span>
+  <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_at_root_query'>at_root_query</span>
+  <span class='id identifier rubyid_expected'>expected</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@at-root query list</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_query'>query</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@scanner</span><span class='period'>.</span><span class='id identifier rubyid_eos?'>eos?</span>
+  <span class='id identifier rubyid_query'>query</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_declaration_value-instance_method">
+  
+    #<strong>parse_declaration_value</strong>  &#x21d2; <tt>Array&lt;String, <span class='object_link'><a href="../Script.html" title="Sass::Script (module)">Sass::Script</a></span>;:Tree::Node&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses a custom property value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script.html" title="Sass::Script (module)">Sass::Script</a></span>;:Tree::Node&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The interpolated value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if there&#39;s a syntax error in the value, or if it doesn&#39;t take up
+the entire input string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_declaration_value'>parse_declaration_value</span>
+  <span class='id identifier rubyid_init_scanner!'>init_scanner!</span>
+  <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_declaration_value'>declaration_value</span>
+  <span class='id identifier rubyid_expected'>expected</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&quot;}&quot;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@scanner</span><span class='period'>.</span><span class='id identifier rubyid_eos?'>eos?</span>
+  <span class='id identifier rubyid_value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_interp_ident-instance_method">
+  
+    #<strong>parse_interp_ident</strong>  &#x21d2; <tt>Array&lt;String, <span class='object_link'><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span>&gt;</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses an identifier with interpolation. Note that this won&#39;t assert
+that the identifier takes up the entire input string; it&#39;s meant to be
+used with `StringScanner`s as part of other parsers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, <span class='object_link'><a href="../Script/Tree/Node.html" title="Sass::Script::Tree::Node (class)">Sass::Script::Tree::Node</a></span>&gt;</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The interpolated identifier, or nil if none could be parsed</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_interp_ident'>parse_interp_ident</span>
+  <span class='id identifier rubyid_init_scanner!'>init_scanner!</span>
+  <span class='id identifier rubyid_interp_ident'>interp_ident</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_media_query_list-instance_method">
+  
+    #<strong>parse_media_query_list</strong>  &#x21d2; <tt><span class='object_link'><a href="../Media/QueryList.html" title="Sass::Media::QueryList (class)">Sass::Media::QueryList</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses a media query list.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Media/QueryList.html" title="Sass::Media::QueryList (class)">Sass::Media::QueryList</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The parsed query list</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if there&#39;s a syntax error in the query list, or if it doesn&#39;t take
+up the entire input string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_media_query_list'>parse_media_query_list</span>
+  <span class='id identifier rubyid_init_scanner!'>init_scanner!</span>
+  <span class='id identifier rubyid_ql'>ql</span> <span class='op'>=</span> <span class='id identifier rubyid_media_query_list'>media_query_list</span>
+  <span class='id identifier rubyid_expected'>expected</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>media query list</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_ql'>ql</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@scanner</span><span class='period'>.</span><span class='id identifier rubyid_eos?'>eos?</span>
+  <span class='id identifier rubyid_ql'>ql</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_supports_clause-instance_method">
+  
+    #<strong>parse_supports_clause</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses a supports clause for an @import directive</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_supports_clause'>parse_supports_clause</span>
+  <span class='id identifier rubyid_init_scanner!'>init_scanner!</span>
+  <span class='id identifier rubyid_ss'>ss</span>
+  <span class='id identifier rubyid_clause'>clause</span> <span class='op'>=</span> <span class='id identifier rubyid_supports_clause'>supports_clause</span>
+  <span class='id identifier rubyid_ss'>ss</span>
+  <span class='id identifier rubyid_clause'>clause</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_supports_condition-instance_method">
+  
+    #<strong>parse_supports_condition</strong>  &#x21d2; <tt><span class='object_link'><a href="../Supports/Condition.html" title="Sass::Supports::Condition (class)">Sass::Supports::Condition</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses a supports query condition.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Supports/Condition.html" title="Sass::Supports::Condition (class)">Sass::Supports::Condition</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The parsed condition</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if there&#39;s a syntax error in the condition, or if it doesn&#39;t take
+up the entire input string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/scss/parser.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_supports_condition'>parse_supports_condition</span>
+  <span class='id identifier rubyid_init_scanner!'>init_scanner!</span>
+  <span class='id identifier rubyid_condition'>condition</span> <span class='op'>=</span> <span class='id identifier rubyid_supports_condition'>supports_condition</span>
+  <span class='id identifier rubyid_expected'>expected</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>supports condition</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_condition'>condition</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@scanner</span><span class='period'>.</span><span class='id identifier rubyid_eos?'>eos?</span>
+  <span class='id identifier rubyid_condition'>condition</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon Oct 22 13:20:55 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.5.3).
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-535380-14', 'sass-lang.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Tree::ImportNode
+  
+    &mdash; Documentation by YARD 0.9.12
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../assets/css/docs.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Tree/ImportNode.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (I)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Tree.html" title="Sass::Tree (module)">Tree</a></span></span>
+     &raquo; 
+    <span class="title">ImportNode</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Tree::ImportNode
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="RootNode.html" title="Sass::Tree::RootNode (class)">RootNode</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="RootNode.html" title="Sass::Tree::RootNode (class)">RootNode</a></span></li>
+          
+            <li class="next">Sass::Tree::ImportNode</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">.ruby-sass/lib/sass/tree/import_node.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A static node that wraps the <span class='object_link'><a href="../Tree.html" title="Sass::Tree (module)">Sass::Tree</a></span> for an `@import`ed file. It
+doesn&#39;t have a functional purpose other than to add the `@import`ed
+file to the backtrace if an error occurs.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#imported_file-instance_method" title="#imported_file (instance method)">#<strong>imported_file</strong>  &#x21d2; Sass::Engine </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the imported file.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#imported_filename-instance_method" title="#imported_filename (instance method)">#<strong>imported_filename</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The name of the imported file as it appears in the Sass document.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="RootNode.html" title="Sass::Tree::RootNode (class)">RootNode</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="RootNode.html#template-instance_method" title="Sass::Tree::RootNode#template (method)">#template</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Node.html#children-instance_method" title="Sass::Tree::Node#children (method)">#children</a></span>, <span class='object_link'><a href="Node.html#filename-instance_method" title="Sass::Tree::Node#filename (method)">#filename</a></span>, <span class='object_link'><a href="Node.html#has_children-instance_method" title="Sass::Tree::Node#has_children (method)">#has_children</a></span>, <span class='object_link'><a href="Node.html#line-instance_method" title="Sass::Tree::Node#line (method)">#line</a></span>, <span class='object_link'><a href="Node.html#options-instance_method" title="Sass::Tree::Node#options (method)">#options</a></span>, <span class='object_link'><a href="Node.html#source_range-instance_method" title="Sass::Tree::Node#source_range (method)">#source_range</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#css_import%3F-instance_method" title="#css_import? (instance method)">#<strong>css_import?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns whether or not this import should emit a CSS @import declaration.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(imported_filename)  &#x21d2; ImportNode </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of ImportNode.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#invisible%3F-instance_method" title="#invisible? (instance method)">#<strong>invisible?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="RootNode.html" title="Sass::Tree::RootNode (class)">RootNode</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="RootNode.html#render-instance_method" title="Sass::Tree::RootNode#render (method)">#render</a></span>, <span class='object_link'><a href="RootNode.html#render_with_sourcemap-instance_method" title="Sass::Tree::RootNode#render_with_sourcemap (method)">#render_with_sourcemap</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Node.html" title="Sass::Tree::Node (class)">Node</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Node.html#<<-instance_method" title="Sass::Tree::Node#&lt;&lt; (method)">#<<</a></span>, <span class='object_link'><a href="Node.html#==-instance_method" title="Sass::Tree::Node#== (method)">#==</a></span>, <span class='object_link'><a href="Node.html#bubbles%3F-instance_method" title="Sass::Tree::Node#bubbles? (method)">#bubbles?</a></span>, <span class='object_link'><a href="Node.html#css-instance_method" title="Sass::Tree::Node#css (method)">#css</a></span>, <span class='object_link'><a href="Node.html#css_with_sourcemap-instance_method" title="Sass::Tree::Node#css_with_sourcemap (method)">#css_with_sourcemap</a></span>, <span class='object_link'><a href="Node.html#deep_copy-instance_method" title="Sass::Tree::Node#deep_copy (method)">#deep_copy</a></span>, <span class='object_link'><a href="Node.html#each-instance_method" title="Sass::Tree::Node#each (method)">#each</a></span>, <span class='object_link'><a href="Node.html#inherited-class_method" title="Sass::Tree::Node.inherited (method)">inherited</a></span>, <span class='object_link'><a href="Node.html#inspect-instance_method" title="Sass::Tree::Node#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Node.html#style-instance_method" title="Sass::Tree::Node#style (method)">#style</a></span>, <span class='object_link'><a href="Node.html#to_sass-instance_method" title="Sass::Tree::Node#to_sass (method)">#to_sass</a></span>, <span class='object_link'><a href="Node.html#to_scss-instance_method" title="Sass::Tree::Node#to_scss (method)">#to_scss</a></span></p>
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(imported_filename)  &#x21d2; <tt><span class='object_link'><a href="" title="Sass::Tree::ImportNode (class)">ImportNode</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of ImportNode</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>imported_filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the imported file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/tree/import_node.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_imported_filename'>imported_filename</span><span class='rparen'>)</span>
+  <span class='ivar'>@imported_filename</span> <span class='op'>=</span> <span class='id identifier rubyid_imported_filename'>imported_filename</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(imported_filename)  &#x21d2; <tt><span class='object_link'><a href="" title="Sass::Tree::ImportNode (class)">ImportNode</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of ImportNode</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>imported_filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the imported file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/tree/import_node.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_imported_filename'>imported_filename</span><span class='rparen'>)</span>
+  <span class='ivar'>@imported_filename</span> <span class='op'>=</span> <span class='id identifier rubyid_imported_filename'>imported_filename</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="imported_file=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="imported_file-instance_method">
+  
+    #<strong>imported_file</strong>  &#x21d2; <tt><span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Sass::Engine</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the imported file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Sass::Engine</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../SyntaxError.html" title="Sass::SyntaxError (class)">Sass::SyntaxError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If no file could be found to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/tree/import_node.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_imported_file'>imported_file</span>
+  <span class='ivar'>@imported_file</span> <span class='op'>||=</span> <span class='id identifier rubyid_import'>import</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="imported_filename-instance_method">
+  
+    #<strong>imported_filename</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The name of the imported file as it appears in the Sass document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/tree/import_node.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_imported_filename'>imported_filename</span>
+  <span class='ivar'>@imported_filename</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="css_import?-instance_method">
+  
+    #<strong>css_import?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns whether or not this import should emit a CSS @import declaration</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether or not this is a simple CSS @import declaration.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/tree/import_node.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_css_import?'>css_import?</span>
+  <span class='kw'>if</span> <span class='ivar'>@imported_filename</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.css$</span><span class='regexp_end'>/</span></span>
+    <span class='ivar'>@imported_filename</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_imported_file'>imported_file</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_imported_file'>imported_file</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.css$</span><span class='regexp_end'>/</span></span>
+    <span class='id identifier rubyid_imported_file'>imported_file</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="invisible?-instance_method">
+  
+    #<strong>invisible?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/tree/import_node.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_invisible?'>invisible?</span><span class='semicolon'>;</span> <span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon Oct 22 13:20:58 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.5.3).
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-535380-14', 'sass-lang.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

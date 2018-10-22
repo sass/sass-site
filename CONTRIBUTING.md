@@ -37,4 +37,4 @@ to sass-lang.com. Easy as that!
 
 Thanks!
 
-&mdash; [Team Sass Design](http://twitter.com/teamsassdesign)
+&mdash; Sass Core Team

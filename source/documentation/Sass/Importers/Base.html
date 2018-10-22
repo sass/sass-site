@@ -1,0 +1,1141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Sass::Importers::Base
+  
+    &mdash; Documentation by YARD 0.9.12
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../assets/css/docs.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Sass/Importers/Base.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (B)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Importers.html" title="Sass::Importers (module)">Importers</a></span></span>
+     &raquo; 
+    <span class="title">Base</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Sass::Importers::Base
+  <span class="abstract note title">Abstract</span>
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Sass::Importers::Base</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">.ruby-sass/lib/sass/importers/base.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This class is abstract.</strong>
+  <div class='inline'></div>
+</div>
+
+<p>The abstract base class for Sass importers. All importers should inherit
+from this.</p>
+
+<p>At the most basic level, an importer is given a string and must return a
+<span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Engine</a></span> containing some Sass code. This string can be interpreted
+however the importer wants; however, subclasses are encouraged to use the
+URI format for pathnames.</p>
+
+<p>Importers that have some notion of “relative imports” should take a single
+load path in their constructor, and interpret paths as relative to that.
+They should also implement the <span class='object_link'><a href="#find_relative-instance_method" title="Sass::Importers::Base#find_relative (method)">#find_relative</a></span> method.</p>
+
+<p>Importers should be serializable via `Marshal.dump`.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Filesystem.html" title="Sass::Importers::Filesystem (class)">Filesystem</a></span></p>
+</div>
+<div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Filesystem.html" title="Sass::Importers::Filesystem (class)">Filesystem</a></span></p>
+</div>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#directories_to_watch-instance_method" title="#directories_to_watch (instance method)">#<strong>directories_to_watch</strong>  &#x21d2; Array&lt;String&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>If the importer is based on files on the local filesystem this method
+should return folders which should be watched for changes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find-instance_method" title="#find (instance method)">#<strong>find</strong>(uri, options)  &#x21d2; Sass::Engine<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Find a Sass file, if it exists.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find_relative-instance_method" title="#find_relative (instance method)">#<strong>find_relative</strong>(uri, base, options)  &#x21d2; Sass::Engine<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Find a Sass file relative to another file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#key-instance_method" title="#key (instance method)">#<strong>key</strong>(uri, options)  &#x21d2; (String, String) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the cache key pair for the given Sass URI.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mtime-instance_method" title="#mtime (instance method)">#<strong>mtime</strong>(uri, options)  &#x21d2; Time<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the time the given Sass file was last modified.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#public_url-instance_method" title="#public_url (instance method)">#<strong>public_url</strong>(uri, sourcemap_directory)  &#x21d2; String? </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the publicly-visible URL for an imported file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A string representation of the importer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#watched_file%3F-instance_method" title="#watched_file? (instance method)">#<strong>watched_file?</strong>(filename)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>If this importer is based on files on the local filesystem This method
+should return true if the file, when changed, should trigger a recompile.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="directories_to_watch-instance_method">
+  
+    #<strong>directories_to_watch</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>If the importer is based on files on the local filesystem this method
+should return folders which should be watched for changes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>List of absolute paths of directories to watch</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/importers/base.rb', line 165</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_directories_to_watch'>directories_to_watch</span>
+  <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="find-instance_method">
+  
+    #<strong>find</strong>(uri, options)  &#x21d2; <tt><span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Sass::Engine</a></span></tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Find a Sass file, if it exists.</p>
+
+<p>This is the primary entry point of the Importer. It corresponds directly to
+an `@import` statement in Sass. It should do three basic things:</p>
+<ul><li>
+<p>Determine if the URI is in this importer&#39;s format. If not, return nil.</p>
+</li><li>
+<p>Determine if the file indicated by the URI actually exists and is readable.
+If not, return nil.</p>
+</li><li>
+<p>Read the file and place the contents in a <span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Engine</a></span>. Return that
+engine.</p>
+</li></ul>
+
+<p>If this importer&#39;s format allows for file extensions, it should treat
+them the same way as the default <span class='object_link'><a href="Filesystem.html" title="Sass::Importers::Filesystem (class)">Filesystem</a></span> importer. If the URI
+explicitly has a `.sass` or `.scss` filename, the importer should look for
+that exact file and import it as the syntax indicated. If it doesn&#39;t
+exist, the importer should return nil.</p>
+
+<p>If the URI doesn&#39;t have either of these extensions, the importer should
+look for files with the extensions. If no such files exist, it should
+return nil.</p>
+
+<p>The <span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Engine</a></span> to be returned should be passed `options`, with a few
+modifications. `:syntax` should be set appropriately, `:filename` should be
+set to `uri`, and `:importer` should be set to this importer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The URI to import.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options for the Sass file containing the `@import` that&#39;s currently
+being resolved. This is safe for subclasses to modify destructively.
+Callers should only pass in a value they don&#39;t mind being destructively
+modified.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Sass::Engine</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An Engine containing the imported file, or nil if it couldn&#39;t be found
+or was in the wrong format.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/importers/base.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_abstract'><span class='object_link'><a href="../Util.html#abstract-instance_method" title="Sass::Util#abstract (method)">abstract</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="find_relative-instance_method">
+  
+    #<strong>find_relative</strong>(uri, base, options)  &#x21d2; <tt><span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Sass::Engine</a></span></tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Find a Sass file relative to another file. Importers without a notion of
+“relative paths” should just return nil here.</p>
+
+<p>If the importer does have a notion of “relative paths”, it should ignore
+its load path during this method.</p>
+
+<p>See <span class='object_link'><a href="#find-instance_method" title="Sass::Importers::Base#find (method)">#find</a></span> for important information on how this method should behave.</p>
+
+<p>The `:filename` option passed to the returned <span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Engine</a></span> should be of a
+format that could be passed to <span class='object_link'><a href="#find-instance_method" title="Sass::Importers::Base#find (method)">#find</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The URI to import. This is not necessarily relative, but this method should
+only return true if it is.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>base</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The base filename. If `uri` is relative, it should be interpreted as
+relative to `base`. `base` is guaranteed to be in a format importable by
+this importer.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options for the Sass file containing the `@import` that&#39;s currently
+being resolved.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Engine.html" title="Sass::Engine (class)">Sass::Engine</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An Engine containing the imported file, or nil if it couldn&#39;t be found
+or was in the wrong format.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/importers/base.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_find_relative'>find_relative</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='comma'>,</span> <span class='id identifier rubyid_base'>base</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_abstract'><span class='object_link'><a href="../Util.html#abstract-instance_method" title="Sass::Util#abstract (method)">abstract</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="key-instance_method">
+  
+    #<strong>key</strong>(uri, options)  &#x21d2; <tt>(String, String)</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the cache key pair for the given Sass URI. The URI need not be checked
+for validity.</p>
+
+<p>The only strict requirement is that the returned pair of strings uniquely
+identify the file at the given URI. However, the first component generally
+corresponds roughly to the directory, and the second to the basename, of
+the URI.</p>
+
+<p>Note that keys must be unique *across importers*. Thus it&#39;s probably a
+good idea to include the importer name at the beginning of the first
+component.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A URI known to be valid for this importer.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options for the Sass file containing the `@import` currently being checked.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>(String, String)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The key pair which uniquely identifies the file at the given URI.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/importers/base.rb', line 117</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_key'>key</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_abstract'><span class='object_link'><a href="../Util.html#abstract-instance_method" title="Sass::Util#abstract (method)">abstract</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="mtime-instance_method">
+  
+    #<strong>mtime</strong>(uri, options)  &#x21d2; <tt>Time</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the time the given Sass file was last modified.</p>
+
+<p>If the given file has been deleted or the time can&#39;t be accessed for
+some other reason, this should return nil.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The URI of the file to check. Comes from a `:filename` option set on an
+engine returned by this importer.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options for the Sass file containing the `@import` currently being checked.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Time</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/importers/base.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mtime'>mtime</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_abstract'><span class='object_link'><a href="../Util.html#abstract-instance_method" title="Sass::Util#abstract (method)">abstract</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="public_url-instance_method">
+  
+    #<strong>public_url</strong>(uri, sourcemap_directory)  &#x21d2; <tt>String?</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the publicly-visible URL for an imported file. This URL is used by
+source maps to link to the source stylesheet. This may return `nil` to
+indicate that no public URL is available; however, this will cause
+sourcemap generation to fail if any CSS is generated from files imported
+from this importer.</p>
+
+<p>If an absolute “file:” URI can be produced for an imported file, that
+should be preferred to returning `nil`. However, a URL relative to
+`sourcemap_directory` should be preferred over an absolute “file:” URI.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A URI known to be valid for this importer.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>sourcemap_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>NilClass</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The absolute path to a directory on disk where the sourcemap will be saved.
+If uri refers to a file on disk that&#39;s accessible relative to
+sourcemap_directory, this may return a relative URL. This may be `nil` if
+the sourcemap&#39;s eventual location is unknown.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String?</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The publicly-visible URL for this file, or `nil` indicating that no
+publicly-visible URL exists. This should be appropriately URL-escaped.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+140
+141
+142
+143
+144
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/importers/base.rb', line 140</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_public_url'>public_url</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='comma'>,</span> <span class='id identifier rubyid_sourcemap_directory'>sourcemap_directory</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='ivar'>@public_url_warning_issued</span>
+  <span class='ivar'>@public_url_warning_issued</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sass_warn'><span class='object_link'><a href="../Util.html#sass_warn-instance_method" title="Sass::Util#sass_warn (method)">sass_warn</a></span></span> <span class='heredoc_beg'>&lt;&lt;WARNING</span>
+<span class='tstring_content'>WARNING: </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'> should define the #public_url method.
+</span><span class='heredoc_end'>WARNING
+</span>  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    #<strong>to_s</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>A string representation of the importer. Should be overridden by
+subclasses.</p>
+
+<p>This is used to help debugging, and should usually just show the load path
+encapsulated by this importer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/importers/base.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='const'><span class='object_link'><a href="../../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Util.html" title="Sass::Util (module)">Util</a></span></span><span class='period'>.</span><span class='id identifier rubyid_abstract'><span class='object_link'><a href="../Util.html#abstract-instance_method" title="Sass::Util#abstract (method)">abstract</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="watched_file?-instance_method">
+  
+    #<strong>watched_file?</strong>(filename)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>If this importer is based on files on the local filesystem This method
+should return true if the file, when changed, should trigger a recompile.</p>
+
+<p>It is acceptable for non-sass files to be watched and trigger a recompile.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The absolute filename for a file that has changed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>When the file changed should cause a recompile.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+177
+178
+179</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/importers/base.rb', line 177</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_watched_file?'>watched_file?</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+  <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon Oct 22 13:20:51 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.5.3).
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-535380-14', 'sass-lang.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

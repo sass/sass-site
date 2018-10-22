@@ -21,7 +21,13 @@
           .content
             - if content_for?(:introduction)
               %p.introduction= yield_content :introduction
-            %main.main(role="main")=yield
+
+            - add_class = content_for?(:complementary) ? ' content-primary': ''
+            %main.main(role="main"){class: add_class}=yield
+
+            - if content_for?(:complementary)
+              .complementary.content-secondary(role="complementary")
+                = yield_content :complementary
 
         - if content_for?(:section_middle)
           %section.section-middle

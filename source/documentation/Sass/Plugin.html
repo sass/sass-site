@@ -1,0 +1,898 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Sass::Plugin
+  
+    &mdash; Documentation by YARD 0.9.12
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../assets/css/docs.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Sass/Plugin.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span>
+     &raquo; 
+    <span class="title">Plugin</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Sass::Plugin
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1"><span class='object_link'><a href="" title="Sass::Plugin (module)">Plugin</a></span></dd>
+      
+    
+  
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="" title="Sass::Plugin (module)">Plugin</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">.ruby-sass/lib/sass/plugin.rb<span class="defines">,<br />
+  .ruby-sass/lib/sass/plugin/compiler.rb,<br /> .ruby-sass/lib/sass/plugin/configuration.rb,<br /> .ruby-sass/lib/sass/plugin/rack.rb,<br /> .ruby-sass/lib/sass/plugin/staleness_checker.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>This module provides a single interface to the compilation of Sass/SCSS
+files for an application. It provides global options and checks whether CSS
+files need to be updated.</p>
+
+<p>This module is used as the primary interface with Sass when it&#39;s used
+as a plugin for various frameworks. All Rack-enabled frameworks are
+supported out of the box. The plugin is
+<a href="../file.SASS_REFERENCE.html#Rack_Rails_Merb_Plugin" title="automatically activated for Rails and Merb">automatically activated for Rails and Merb</a>. Other frameworks must enable it explicitly; see
+<span class='object_link'><a href="Plugin/Rack.html" title="Sass::Plugin::Rack (class)">Rack</a></span>.</p>
+
+<p>This module has a large set of callbacks available to allow users to run
+code (such as logging) when certain things happen. All callback methods are
+of the form `on_#name`, and they all take a block that&#39;s called when
+the given action occurs.</p>
+
+<p>Note that this class proxies almost all methods to its
+<span class='object_link'><a href="Plugin/Compiler.html" title="Sass::Plugin::Compiler (class)">Compiler</a></span> instance. See <span class='object_link'><a href="#compiler-instance_method" title="Sass::Plugin#compiler (method)">#compiler</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Using a callback</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Plugin</span><span class='period'>.</span><span class='id identifier rubyid_on_updating_stylesheet'>on_updating_stylesheet</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_template'>template</span><span class='comma'>,</span> <span class='id identifier rubyid_css'>css</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Compiling </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_template'>template</span><span class='embexpr_end'>}</span><span class='tstring_content'> to </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_css'>css</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+<span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'>Plugin</span><span class='period'>.</span><span class='id identifier rubyid_update_stylesheets'><span class='object_link'><a href="#update_stylesheets-instance_method" title="Sass::Plugin#update_stylesheets (method)">update_stylesheets</a></span></span>
+  <span class='comment'>#=&gt; Compiling app/sass/screen.scss to public/stylesheets/screen.css
+</span>  <span class='comment'>#=&gt; Compiling app/sass/print.scss to public/stylesheets/print.css
+</span>  <span class='comment'>#=&gt; Compiling app/sass/ie.scss to public/stylesheets/ie.css</span></code></pre>
+    
+  </div>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Plugin/Compiler.html" title="Sass::Plugin::Compiler (class)">Compiler</a></span></li>
+    
+  </ul>
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Plugin/Configuration.html" title="Sass::Plugin::Configuration (module)">Configuration</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Plugin/Compiler.html" title="Sass::Plugin::Compiler (class)">Compiler</a></span>, <span class='object_link'><a href="Plugin/Rack.html" title="Sass::Plugin::Rack (class)">Rack</a></span>, <span class='object_link'><a href="Plugin/StalenessChecker.html" title="Sass::Plugin::StalenessChecker (class)">StalenessChecker</a></span>
+    
+  
+</p>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#checked_for_updates-instance_method" title="#checked_for_updates (instance method)">#<strong>checked_for_updates</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Whether or not Sass has *<strong>ever</strong>* checked if the stylesheets
+need to be updated (in this Ruby instance).</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#check_for_updates-instance_method" title="#check_for_updates (instance method)">#<strong>check_for_updates</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Same as <span class='object_link'><a href="#update_stylesheets-instance_method" title="Sass::Plugin#update_stylesheets (method)">#update_stylesheets</a></span>, but respects <span class='object_link'><a href="#checked_for_updates-instance_method" title="Sass::Plugin#checked_for_updates (method)">#checked_for_updates</a></span> and the
+<a href="../file.SASS_REFERENCE.html#always_update-option" title="`:always_update`">`:always_update`</a> and
+<a href="../file.SASS_REFERENCE.html#always_check-option" title="`:always_check`">`:always_check`</a> options.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compiler-instance_method" title="#compiler (instance method)">#<strong>compiler</strong>  &#x21d2; Sass::Plugin::Compiler </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the singleton compiler instance.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#force_update_stylesheets-instance_method" title="#force_update_stylesheets (instance method)">#<strong>force_update_stylesheets</strong>(individual_files = [])  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Updates all stylesheets, even those that aren&#39;t out-of-date.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#method_missing-instance_method" title="#method_missing (instance method)">#<strong>method_missing</strong>(method, *args, &amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>All other method invocations are proxied to the <span class='object_link'><a href="#compiler-instance_method" title="Sass::Plugin#compiler (method)">#compiler</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#options-instance_method" title="#options (instance method)">#<strong>options</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>There&#39;s a small speedup by not using method missing for frequently
+delegated methods.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#respond_to%3F-instance_method" title="#respond_to? (instance method)">#<strong>respond_to?</strong>(method)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>For parity with method_missing.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_stylesheets-instance_method" title="#update_stylesheets (instance method)">#<strong>update_stylesheets</strong>(individual_files = [])  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Updates out-of-date stylesheets.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="method_missing_details" class="method_details_list">
+  <h2>Dynamic Method Handling</h2>
+  <p class="notice this">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+  </p>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="method_missing-instance_method">
+  
+    #<strong>method_missing</strong>(method, *args, &amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>All other method invocations are proxied to the <span class='object_link'><a href="#compiler-instance_method" title="Sass::Plugin#compiler (method)">#compiler</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#compiler-instance_method" title="Sass::Plugin#compiler (method)">#compiler</a></span></li>
+    
+      <li><span class='object_link'><a href="Plugin/Compiler.html" title="Sass::Plugin::Compiler (class)">Compiler</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109
+110
+111
+112
+113</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/plugin.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>super</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="checked_for_updates=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="checked_for_updates-instance_method">
+  
+    #<strong>checked_for_updates</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Whether or not Sass has *<strong>ever</strong>* checked if the stylesheets
+need to be updated (in this Ruby instance).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/plugin.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_checked_for_updates'>checked_for_updates</span>
+  <span class='ivar'>@checked_for_updates</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="check_for_updates-instance_method">
+  
+    #<strong>check_for_updates</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Same as <span class='object_link'><a href="#update_stylesheets-instance_method" title="Sass::Plugin#update_stylesheets (method)">#update_stylesheets</a></span>, but respects <span class='object_link'><a href="#checked_for_updates-instance_method" title="Sass::Plugin#checked_for_updates (method)">#checked_for_updates</a></span> and the
+<a href="../file.SASS_REFERENCE.html#always_update-option" title="`:always_update`">`:always_update`</a> and
+<a href="../file.SASS_REFERENCE.html#always_check-option" title="`:always_check`">`:always_check`</a> options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#update_stylesheets-instance_method" title="Sass::Plugin#update_stylesheets (method)">#update_stylesheets</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/plugin.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_check_for_updates'>check_for_updates</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='op'>!</span><span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Sass::Plugin (module)">Plugin</a></span></span><span class='period'>.</span><span class='id identifier rubyid_checked_for_updates'><span class='object_link'><a href="#checked_for_updates-instance_method" title="Sass::Plugin#checked_for_updates (method)">checked_for_updates</a></span></span> <span class='op'>||</span>
+      <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Sass::Plugin (module)">Plugin</a></span></span><span class='period'>.</span><span class='id identifier rubyid_options'><span class='object_link'><a href="#options-instance_method" title="Sass::Plugin#options (method)">options</a></span></span><span class='lbracket'>[</span><span class='symbol'>:always_update</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Sass::Plugin (module)">Plugin</a></span></span><span class='period'>.</span><span class='id identifier rubyid_options'><span class='object_link'><a href="#options-instance_method" title="Sass::Plugin#options (method)">options</a></span></span><span class='lbracket'>[</span><span class='symbol'>:always_check</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_update_stylesheets'>update_stylesheets</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compiler-instance_method">
+  
+    #<strong>compiler</strong>  &#x21d2; <tt><span class='object_link'><a href="Plugin/Compiler.html" title="Sass::Plugin::Compiler (class)">Sass::Plugin::Compiler</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the singleton compiler instance. This compiler has been
+pre-configured according to the plugin configuration.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Plugin/Compiler.html" title="Sass::Plugin::Compiler (class)">Sass::Plugin::Compiler</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/plugin.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compiler'>compiler</span>
+  <span class='ivar'>@compiler</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Plugin/Compiler.html" title="Sass::Plugin::Compiler (class)">Compiler</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Plugin/Compiler.html#initialize-instance_method" title="Sass::Plugin::Compiler#initialize (method)">new</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="force_update_stylesheets-instance_method">
+  
+    #<strong>force_update_stylesheets</strong>(individual_files = [])  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Updates all stylesheets, even those that aren&#39;t out-of-date. Ignores
+the cache.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>individual_files</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;(String, String)&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>[]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A list of files to check for updates **in addition to those specified by
+the <a href="../file.SASS_REFERENCE.html#template_location-option" title="`:template_location` option">`:template_location` option</a>.** The first string in each pair is the location of the Sass/SCSS
+file, the second is the location of the CSS file that it should be compiled
+to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#update_stylesheets-instance_method" title="Sass::Plugin#update_stylesheets (method)">#update_stylesheets</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/plugin.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_force_update_stylesheets'>force_update_stylesheets</span><span class='lparen'>(</span><span class='id identifier rubyid_individual_files'>individual_files</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="Plugin/Compiler.html" title="Sass::Plugin::Compiler (class)">Compiler</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Plugin/Compiler.html#initialize-instance_method" title="Sass::Plugin::Compiler#initialize (method)">new</a></span></span><span class='lparen'>(</span>
+    <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span>
+      <span class='symbol'>:never_update</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span>
+      <span class='symbol'>:always_update</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
+      <span class='symbol'>:cache</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update_stylesheets'><span class='object_link'><a href="Plugin/Compiler.html#update_stylesheets-instance_method" title="Sass::Plugin::Compiler#update_stylesheets (method)">update_stylesheets</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_individual_files'>individual_files</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="options-instance_method">
+  
+    #<strong>options</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>There&#39;s a small speedup by not using method missing for frequently
+delegated methods.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/plugin.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="respond_to?-instance_method">
+  
+    #<strong>respond_to?</strong>(method)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>For parity with method_missing</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/plugin.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
+  <span class='kw'>super</span> <span class='op'>||</span> <span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_stylesheets-instance_method">
+  
+    #<strong>update_stylesheets</strong>(individual_files = [])  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Updates out-of-date stylesheets.</p>
+
+<p>Checks each Sass/SCSS file in
+<a href="../file.SASS_REFERENCE.html#template_location-option" title="`:template_location`">`:template_location`</a> to
+see if it&#39;s been modified more recently than the corresponding CSS file
+in <a href="../file.SASS_REFERENCE.html#css_location-option" title="`:css_location`">`:css_location`</a>. If it has,
+it updates the CSS file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>individual_files</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;(String, String)&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>[]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A list of files to check for updates **in addition to those specified by
+the <a href="../file.SASS_REFERENCE.html#template_location-option" title="`:template_location` option">`:template_location` option</a>.** The first string in each pair is the location of the Sass/SCSS
+file, the second is the location of the CSS file that it should be compiled
+to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/plugin.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_stylesheets'>update_stylesheets</span><span class='lparen'>(</span><span class='id identifier rubyid_individual_files'>individual_files</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:never_update</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_compiler'>compiler</span><span class='period'>.</span><span class='id identifier rubyid_update_stylesheets'>update_stylesheets</span><span class='lparen'>(</span><span class='id identifier rubyid_individual_files'>individual_files</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon Oct 22 13:20:49 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.5.3).
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-535380-14', 'sass-lang.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

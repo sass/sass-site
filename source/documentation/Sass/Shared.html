@@ -1,0 +1,594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Sass::Shared
+  
+    &mdash; Documentation by YARD 0.9.12
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../assets/css/docs.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Sass/Shared.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span>
+     &raquo; 
+    <span class="title">Shared</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Sass::Shared
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1"><span class='object_link'><a href="" title="Sass::Shared (module)">Shared</a></span></dd>
+      
+    
+  
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="" title="Sass::Shared (module)">Shared</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">.ruby-sass/lib/sass/shared.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>This module contains functionality that&#39;s shared between Haml and Sass.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#balance-instance_method" title="#balance (instance method)">#<strong>balance</strong>(scanner, start, finish, count = 0)  &#x21d2; (String, String) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Moves a scanner through a balanced pair of characters.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handle_interpolation-instance_method" title="#handle_interpolation (instance method)">#<strong>handle_interpolation</strong>(str) {|scan| ... } &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Scans through a string looking for the interoplation-opening `#{` and, when
+it&#39;s found, yields the scanner to the calling code so it can handle it
+properly.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#human_indentation-instance_method" title="#human_indentation (instance method)">#<strong>human_indentation</strong>(indentation, was = false)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Formats a string for use in error messages about indentation.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="balance-instance_method">
+  
+    #<strong>balance</strong>(scanner, start, finish, count = 0)  &#x21d2; <tt>(String, String)</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Moves a scanner through a balanced pair of characters. For example:</p>
+
+<pre class="code ruby"><code class="ruby">Foo (Bar (Baz bang) bop) (Bang (bop bip))
+^                       ^
+from                    to
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>scanner</span>
+      
+      
+        <span class='type'>(<tt>StringScanner</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The string scanner to move</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>start</span>
+      
+      
+        <span class='type'>(<tt>Character</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The character opening the balanced pair. A `Fixnum` in 1.8, a `String` in
+1.9</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>finish</span>
+      
+      
+        <span class='type'>(<tt>Character</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The character closing the balanced pair. A `Fixnum` in 1.8, a `String` in
+1.9</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>count</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>0</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number of opening characters matched before calling this method</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>(String, String)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The string matched within the balanced pair and the rest of the string.
+`[“Foo (Bar (Baz bang) bop)”, “ (Bang (bop bip))”]` in the example above.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/shared.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_balance'>balance</span><span class='lparen'>(</span><span class='id identifier rubyid_scanner'>scanner</span><span class='comma'>,</span> <span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='id identifier rubyid_finish'>finish</span><span class='comma'>,</span> <span class='id identifier rubyid_count'>count</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_str'>str</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_scanner'>scanner</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Util.html" title="Sass::Util (module)">Util</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Util/MultibyteStringScanner.html" title="Sass::Util::MultibyteStringScanner (class)">MultibyteStringScanner</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Util/MultibyteStringScanner.html#new-class_method" title="Sass::Util::MultibyteStringScanner.new (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_scanner'>scanner</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>StringScanner</span>
+  <span class='id identifier rubyid_regexp'>regexp</span> <span class='op'>=</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(.*?)[\\</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_start'>start</span><span class='period'>.</span><span class='id identifier rubyid_chr'>chr</span><span class='embexpr_end'>}</span><span class='tstring_content'>\\</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_finish'>finish</span><span class='period'>.</span><span class='id identifier rubyid_chr'>chr</span><span class='embexpr_end'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>Regexp</span><span class='op'>::</span><span class='const'>MULTILINE</span><span class='rparen'>)</span>
+  <span class='kw'>while</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_regexp'>regexp</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_str'>str</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_matched'>matched</span>
+    <span class='id identifier rubyid_count'>count</span> <span class='op'>+=</span> <span class='int'>1</span> <span class='kw'>if</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_matched'>matched</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_start'>start</span>
+    <span class='id identifier rubyid_count'>count</span> <span class='op'>-=</span> <span class='int'>1</span> <span class='kw'>if</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_matched'>matched</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_finish'>finish</span>
+    <span class='kw'>return</span> <span class='lbracket'>[</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_rest'>rest</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>0</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="handle_interpolation-instance_method">
+  
+    #<strong>handle_interpolation</strong>(str) {|scan| ... } &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Scans through a string looking for the interoplation-opening `#{` and, when
+it&#39;s found, yields the scanner to the calling code so it can handle it
+properly.</p>
+
+<p>The scanner will have any backslashes immediately in front of the `#{` as
+the second capture group (`<a href="2">scan</a>`), and the text prior to
+that as the first (`<a href="1">scan</a>`).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>scan</span>
+      
+      
+        <span class='type'>(<tt>StringScanner</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The scanner scanning through the string</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The text remaining in the scanner after all `#{`s have been processed</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/shared.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_handle_interpolation'>handle_interpolation</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_scan'>scan</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Sass.html" title="Sass (module)">Sass</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Util.html" title="Sass::Util (module)">Util</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Util/MultibyteStringScanner.html" title="Sass::Util::MultibyteStringScanner (class)">MultibyteStringScanner</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Util/MultibyteStringScanner.html#new-class_method" title="Sass::Util::MultibyteStringScanner.new (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
+  <span class='kw'>yield</span> <span class='id identifier rubyid_scan'>scan</span> <span class='kw'>while</span> <span class='id identifier rubyid_scan'>scan</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(.*?)(\\*)\#\{</span><span class='regexp_end'>/m</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_scan'>scan</span><span class='period'>.</span><span class='id identifier rubyid_rest'>rest</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="human_indentation-instance_method">
+  
+    #<strong>human_indentation</strong>(indentation, was = false)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Formats a string for use in error messages about indentation.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>indentation</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The string used for indentation</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>was</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether or not to add `“was”` or `“were”` (depending on how many characters
+were in `indentation`)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the indentation (e.g. `“12 spaces”`, `“1 tab”`)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '.ruby-sass/lib/sass/shared.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_human_indentation'>human_indentation</span><span class='lparen'>(</span><span class='id identifier rubyid_indentation'>indentation</span><span class='comma'>,</span> <span class='id identifier rubyid_was'>was</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_indentation'>indentation</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='CHAR'>?\t</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_noun'>noun</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>space</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>elsif</span> <span class='op'>!</span><span class='id identifier rubyid_indentation'>indentation</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='CHAR'>?\s</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_noun'>noun</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tab</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_indentation'>indentation</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_was'>was</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> was</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_singular'>singular</span> <span class='op'>=</span> <span class='id identifier rubyid_indentation'>indentation</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>1</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_was'>was</span>
+    <span class='id identifier rubyid_was'>was</span> <span class='op'>=</span> <span class='id identifier rubyid_singular'>singular</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> was</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> were</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_was'>was</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_indentation'>indentation</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_noun'>noun</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>s</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_singular'>singular</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_was'>was</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon Oct 22 13:20:50 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.5.3).
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-535380-14', 'sass-lang.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

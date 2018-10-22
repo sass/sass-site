@@ -28,12 +28,6 @@ set :images_dir, 'assets/img'
 
 page "/humans.txt",                :layout => false
 page "/sitemap.xml",               :layout => false
-page "/404.html",                  :layout => :layout_2_column
-page "/about.html",                :layout => :layout_2_column
-page "/guide.html",                :layout => :layout_2_column
-page "/libsass.html",              :layout => :layout_2_column
-page "/sitemap.html",              :layout => :layout_2_column
-page "/community-guidelines.html", :layout => :layout_2_column
 
 with_layout :styleguide do
   page "/styleguide/*"
@@ -44,10 +38,12 @@ with_layout :reference do
 end
 
 configure :development do
+  config[:host] = 'http://localhost:4567'
   activate :livereload
 end
 
 configure :build do
+  config[:host] = data.sitemap.url
   activate :asset_hash
   activate :gzip
   activate :minify_css
