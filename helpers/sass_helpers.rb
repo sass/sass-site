@@ -336,29 +336,37 @@ module SassHelpers
   # Renders API docs for a Sass function.
   #
   # The function's name is parsed from the signature. The API description is
-  # passed as a Markdown block. If `returns` is passed, it's included as the function's return type.
-  def function(signature, returns: nil)
-    name = signature.split("(").first
-    html = Nokogiri::HTML(_render_markdown(<<MARKDOWN))
+  # passed as a Markdown block. If `returns` is passed, it's included as the
+  # function's return type.
+  #
+  # Multiple signatures may be passed, in which case they're all included in
+  # sequence.
+  def function(*signatures, returns: nil)
+    names = []
+    highlighted_signatures = signatures.map do |signature|
+      name = signature.split("(").first
+      names << name
+      html = Nokogiri::HTML(_render_markdown(<<MARKDOWN))
 ```scss
 @function #{signature}
 {}
 ```
 MARKDOWN
-    highlighted_signature = html.css("pre code").children.
-      drop_while {|el| el.text != "@function"}.
-      take_while {|el| el.text != "{}"}[1...-1].
-      map(&:to_html).join.strip
+      highlighted_signature = html.css("pre code").children.
+        drop_while {|el| el.text != "@function"}.
+        take_while {|el| el.text != "{}"}[1...-1].
+        map(&:to_html).join.strip
+    end
 
-    concat(content_tag :div, [
+    html = content_tag :div, [
       content_tag(:pre, [
-        content_tag(:code, highlighted_signature)
+        content_tag(:code, highlighted_signatures.join("\n"))
       ], class: 'signature highlight scss'),
-
       returns ? content_tag(:div, returns, class: 'return-type') : '',
-
       _render_markdown(capture {yield})
-    ], class: 'function', id: name)
+    ], class: 'function', id: names.first
+
+    concat(names[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
   end
 
   # A helper method that renders a chunk of Markdown text.

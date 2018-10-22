@@ -1,0 +1,207 @@
+---
+title: Color Functions
+---
+
+<% function <<SIGNATURE, returns: 'color' do 
+adjust-color($color,
+  $red: null, $green: null, $blue: null,
+  $hue: null, $saturation: null, $lightness: null,
+  $alpha: null)
+SIGNATURE
+%>
+Increases or decreases one or more properties of `$color` by fixed amounts.
+
+The value passed for each keyword is added to the corresponding property of the
+color, and the adjusted color is returned. It's an error to specify an RGB
+property (`$red`, `$green`, and/or `$blue`) at the same time as an HSL property
+(`$hue`, `$saturation`, and/or `$alpha`).
+
+All optional arguments must be numbers. The `$red`, `$green`, and `$blue`
+arguments must be [unitless][] and between -255 and 255 (inclusive). The `$hue`
+argument must have either the unit `deg` or no unit. The `$saturation` and
+`$lightness` arguments must be between `-100%` and `100%` (inclusive), and may
+be unitless. The `$alpha` argument must be unitless and between -1 and 1
+(inclusive).
+
+[unitless]: ../values/numbers#units
+
+See also:
+
+* [`scale-color()`](#scale-color) for fluidly scaling a color's properties.
+* [`change-color()`](#change-color) for setting a color's properties.
+
+<% example(autogen_css: false) do %>
+@debug adjust-color(#6b717f, $red: 15); // #7a717f
+@debug adjust-color(#d2e1dd, $red: -10, $blue: 10); // #c8e1e7
+@debug adjust-color(#998099, $lightness: -30%, $alpha: -0.4); // rgba(71, 57, 71, 0.6)
+===
+@debug adjust-color(#6b717f, $red: 15)  // #7a717f
+@debug adjust-color(#d2e1dd, $red: -10, $blue: 10)  // #c8e1e7
+@debug adjust-color(#998099, $lightness: -30%, $alpha: -0.4)  // rgba(71, 57, 71, 0.6)
+<% end %>
+<% end %>
+
+<% function 'adjust-hue($color, $degrees)', returns: 'color' do %>
+Increases or decreases `$color`'s hue.
+
+The `$hue` must be a number between `-360deg` and `360deg` (inclusive) to add to
+`$color`'s hue. It may be [unitless][].
+
+[unitless]: ../values/numbers#units
+
+See also [`adjust-color()`](#adjust-color), which can adjust any property of a
+color.
+
+<% example(autogen_css: false) do %>
+// This will produce a color with hue 180deg.
+@debug adjust-hue(hsl(120deg, 30%, 90%), 60deg); // #deeded
+
+// This will produce a color with hue 60deg.
+@debug adjust-hue(hsl(120deg, 30%, 90%), -60deg); // #ededde
+
+// #036 has hue 210deg, so the result has hue 255deg.
+@debug adjust-hue(#036, 45); // #1a0066
+===
+// This will produce a color with hue 180deg.
+@debug adjust-hue(hsl(120deg, 30%, 90%), 60deg)  // #deeded
+
+// This will produce a color with hue 60deg.
+@debug adjust-hue(hsl(120deg, 30%, 90%), -60deg)  // #ededde
+
+// #036 has hue 210deg, so the result has hue 255deg.
+@debug adjust-hue(#036, 45)  // #1a0066
+<% end %>
+<% end %>
+
+<% function 'alpha($color)', 'opacity($color)', returns: 'color' do %>
+Returns the alpha channel of `$color` as a number between 0 and 1.
+
+As a special case, this supports the Internet Explorer syntax
+`alpha(opacity=20)`, for which it returns an [unquoted string][].
+
+[unquoted string]: ../documentation/values/strings#unquoted
+
+<% example(autogen_css) do %>
+@debug alpha(#e1d7d2); // 1
+@debug alpha(rgb(210, 225, 221, 0.4)); // 0.4
+@debug alpha(opacity=20); // alpha(opacity=20)
+===
+@debug alpha(#e1d7d2)  // 1
+@debug alpha(rgb(210, 225, 221, 0.4))  // 0.4
+@debug alpha(opacity=20)  // alpha(opacity=20)
+<% end %>
+<% end %>
+
+alpha($color) / opacity($color) : Gets the alpha component (opacity) of a color.
+blue($color) : Gets the blue component of a color.
+change-color($color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha]) : Changes one or more properties of a color.
+complement($color) : Returns the complement of a color.
+darken($color, $amount) : Makes a color darker.
+desaturate($color, $amount) : Makes a color less saturated.
+grayscale($color) : Converts a color to grayscale.
+green($color) : Gets the green component of a color.
+
+<% function 'hsl($hue, $saturation, $lightness)', returns: 'color' do %>
+Returns a color with the given [hue, saturation, and lightness][] and the given
+alpha channel.
+
+[hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
+
+The hue is a number between `0deg` and `360deg` (inclusive). The saturation and
+lightness are numbers between `0%` and `100%` (inclusive). All these numbers may
+be [unitless][].
+
+[unitless]: ../values/numbers#units
+
+<% example(autogen_css: false) do %>
+@debug hsl(210deg, 100%, 20%); // #036
+@debug hsl(34, 35%, 92%); // #f2ece4
+===
+@debug hsl(210deg, 100%, 20%) // #036
+@debug hsl(34, 35%, 92%) // #f2ece4
+<% end %>
+<% end %>
+
+<% function 'hsla($hue, $saturation, $lightness, $alpha)', returns: 'color' do %>
+<% impl_status dart: true, libsass: false, ruby: '3.7.0' do %>
+LibSass and older versions of Ruby Sass don't support alpha values specified as
+percentages.
+<% end %>
+
+Returns a color with the given [hue, saturation, and lightness][].
+
+[hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
+
+The hue is a number between `0deg` and `360deg` (inclusive). The saturation and
+lightness are numbers between `0%` and `100%` (inclusive). All these numbers may
+be [unitless][]. The alpha channel can be specified as either a unitless number
+between 0 and 1 (inclusive), or a percentage between `0%` and `100%`
+(inclusive).
+
+[unitless]: ../values/numbers#units
+
+<% example(autogen_css: false) do %>
+@debug hsl(210deg, 100%, 20%, 50%); // rgba(0, 51, 102, 0.5)
+@debug hsl(34, 35%, 92%, 0.5); // rgba(242, 236, 228, 0.2)
+===
+@debug hsl(210deg, 100%, 20%, 50%)  // rgba(0, 51, 102, 0.5)
+@debug hsl(34, 35%, 92%, 0.5)  // rgba(242, 236, 228, 0.2)
+<% end %>
+<% end %>
+
+hue($color) : Gets the hue component of a color.
+ie-hex-str($color) : Converts a color into the format understood by IE filters.
+invert($color, [$weight]) : Returns the inverse of a color.
+lighten($color, $amount) : Makes a color lighter.
+lightness($color) : Gets the lightness component of a color.
+mix($color1, $color2, [$weight]) : Mixes two colors together.
+opacify($color, $amount) / fade-in($color, $amount) : Makes a color more opaque.
+red($color) : Gets the red component of a color.
+
+<% function 'rgb($red, $green, $blue)', returns: 'color' do %>
+Returns a color with the given red, green, and blue channels.
+
+Each channel can be specified as either a [unitless][] number between 0 and 255
+(inclusive), or a percentage between `0%` and `100%` (inclusive).
+
+[unitless]: ../values/numbers#units
+
+<% example(autogen_css: false) do %>
+@debug rgb(0, 51, 102); // #036
+@debug rgb(95%, 92.5%, 89.5%); // #f2ece4
+===
+@debug rgb(0, 51, 102)  // #036
+@debug rgb(95%, 92.5%, 89.5%)  // #f2ece4
+<% end %>
+<% end %>
+
+<% function 'rgba($red, $green, $blue, $alpha)', returns: 'color' do %>
+<% impl_status dart: true, libsass: false, ruby: '3.7.0' do %>
+LibSass and older versions of Ruby Sass don't support alpha values specified as
+percentages.
+<% end %>
+
+Returns a color with the given red, green, blue, and alpha channels.
+
+The red, green, and blue channels can be specified as either a [unitless][]
+number between 0 and 255 (inclusive), or a percentage between `0%` and `100%`
+(inclusive). The alpha channel can be specified as either a unitless number
+between 0 and 1 (inclusive), or a percentage between `0%` and `100%`
+(inclusive).
+
+[unitless]: ../values/numbers#units
+
+<% example(autogen_css: false) do %>
+@debug rgba(0, 51, 102, 0.5); // rgba(0, 51, 102, 0.5)
+@debug rgba(95%, 92.5%, 89.5%, 20%); // rgba(242, 236, 228, 0.2)
+===
+@debug rgba(0, 51, 102, 0.5) // rgba(0, 51, 102, 0.5)
+@debug rgba(95%, 92.5%, 89.5%, 20%) // rgba(242, 236, 228, 0.2)
+<% end %>
+<% end %>
+
+
+saturate($color, $amount) : Makes a color more saturated.
+saturation($color) : Gets the saturation component of a color.
+scale-color($color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha]) : Fluidly scales one or more properties of a color.
+transparentize($color, $amount) / fade-out($color, $amount) : Makes a color more transparent.
