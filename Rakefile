@@ -73,7 +73,7 @@ namespace :sass do
     # Check out the latest stable version of Ruby Sass into the .ruby-sass directory.
     task :checkout do
       unless Dir.exists?(".ruby-sass")
-        sh %{git clone git://github.com/sass/sass .ruby-sass}
+        sh %{git clone git://github.com/sass/ruby-sass .ruby-sass}
       end
 
       Dir.chdir(".ruby-sass") do
