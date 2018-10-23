@@ -530,7 +530,7 @@ each color is in the result. The `$weight` must be a number between `0%` and
 `100%` (inclusive). A larger weight indicates that more of `$color1` should be
 used, and a smaller weight indicates that more of `$color2` should be used.
 
-<% example do %>
+<% example(autogen_css: false) do %>
 @debug mix(#036, #d2e1dd); // #698aa2
 @debug mix(#036, #d2e1dd, 75%); // #355f84
 @debug mix(#036, #d2e1dd, 25%); // #9eb6bf
