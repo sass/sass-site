@@ -52,17 +52,9 @@ If `$value` doesn't appear in `$list`, this returns [`null`][]. If `$value`
 appears multiple times in `$list`, this returns the index of its first
 appearance.
 
-[index]: ../values/null
+[`null`]: ../values/null
 
-<% example(autogen_css: false) do %>
-@debug index(1px solid red, 1px); // 1
-@debug index(1px solid red, solid); // 2
-@debug index(1px solid red, dashed); // null
-===
-@debug index(1px solid red, 1px)  // 1
-@debug index(1px solid red, solid)  // 2
-@debug index(1px solid red, dashed)  // null
-<% end %>
+<%= partial 'code-snippets/example-list-index' %>
 <% end %>
 
 
@@ -167,15 +159,7 @@ Returns the element of `$list` at [index][] `$n`.
 If `$n` is negative, it counts from the end of `$list`. Throws an error if there
 is no element at index `$n`.
 
-<% example(autogen_css: false) do %>
-@debug nth(10px 20px 30px, 1); // 10px
-@debug nth(10px 20px 30px, -1); // 30px
-@debug nth((Helvetica, Arial, sans-serif), 3); // sans-serif
-===
-@debug nth(10px 20px 30px, 1)  // 10px
-@debug nth(10px 20px 30px, -1)  // 30px
-@debug nth((Helvetica, Arial, sans-serif), 3)  // sans-serif
-<% end %>
+<%= partial 'code-snippets/example-list-nth' %>
 <% end %>
 
 
