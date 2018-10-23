@@ -224,7 +224,7 @@ arguments to that mixin are passed to that argument as a [list][]. This argument
 is known as an [argument list][].
 
 [list]: ../values/lists
-[variable argument list]: ../values/lists#argument-lists
+[argument list]: ../values/lists#argument-lists
 
 <% example do %>
 @mixin order($height, $selectors...) {
@@ -264,43 +264,7 @@ that were passed to the mixin as a [map][] from argument names (not including
 
 <%# TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass %>
 
-<% example do %>
-@mixin syntax-colors($args...) {
-  @each $name, $color in keywords($args) {
-    pre span.stx-#{$name} {
-      color: $color;
-    }
-  }
-}
-
-@include syntax-colors(
-  $string: #080,
-  $comment: #800,
-  $variable: #60b,
-)
-===
-@mixin syntax-colors($args...)
-  @each $name, $color in keywords($args)
-    pre span.stx-#{$name}
-      color: $color
-
-
-
-
-@include syntax-colors($string: #080, $comment: #800, $variable: #60b);
-===
-pre span.stx-string {
-  color: #080;
-}
-
-pre span.stx-comment {
-  color: #800;
-}
-
-pre span.stx-variable {
-  color: #60b;
-}
-<% end %>
+<%= partial 'code-snippets/example-mixin-arbitrary-keyword-arguments' %>
 
 <% fun_fact do %>
 If you don't ever pass an argument list to the [`keywords()` function][], that

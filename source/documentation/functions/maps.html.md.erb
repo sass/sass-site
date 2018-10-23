@@ -1,0 +1,152 @@
+---
+title: Map Functions
+---
+
+
+<% function 'keywords($args)', returns: 'map' do %>
+Returns the keywords passed to a mixin or function that takes [arbitrary
+arguments][]. The `$args` argument must be an [argument list][].
+
+[arbitrary arguments]: ../at-rules/mixin#taking-arbitrary-arguments
+[argument list]: ../values/lists#argument-lists
+
+The keywords are returned as a map from argument names as unquoted strings (not
+including `$`) to the values of those arguments.
+
+<%= partial 'code-snippets/example-mixin-arbitrary-keyword-arguments' %>
+<% end %>
+
+
+<% function 'map-get($map, $key)' do %>
+
+Returns the value in `$map` associated with `$key`.
+
+If `$map` doesn't have a value associated with `$key`, returns [`null`][].
+
+[`null`]: ../values/null
+
+<%= partial 'code-snippets/example-map-get' %>
+<% end %>
+
+
+<% function 'map-has-key($map, $key)', returns: 'boolean' do %>
+Returns whether `$map` contains a value associated with `$key`.
+
+<% example(autogen_css: false) do %>
+$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+@debug map-has-key($font-weights, "regular"); // true
+@debug map-has-key($font-weights, "bolder"); // false
+===
+$font-weights: ("regular": 400, "medium": 500, "bold": 700)
+
+@debug map-has-key($font-weights, "regular")  // true
+@debug map-has-key($font-weights, "bolder")  // false
+<% end %>
+<% end %>
+
+
+<% function 'map-keys($map)', returns: 'list' do %>
+Returns a comma-separated list of all the keys in `$map`.
+
+<% example(autogen_css: false) do %>
+$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+@debug map-keys($font-weights); // "regular", "medium", "bold"
+===
+$font-weights: ("regular": 400, "medium": 500, "bold": 700)
+
+@debug map-keys($font-weights)  // "regular", "medium", "bold"
+<% end %>
+<% end %>
+
+
+<% function 'map-merge($map1, $map2)', returns: 'map' do %>
+Returns a new map with all the keys and values from both `$map1` and `$map2`.
+
+This can also be used to add a new value or overrwrite a value in `$map1`, by
+passing a single key/value pair as `$map2`.
+
+If both `$map1` and `$map2` have the same key, `$map2`'s value takes precedence.
+
+All keys in the returned map that also appear in `$map1` have the same order as
+in `$map1`. New keys from `$map2` appear at the end of the map.
+
+<% example(autogen_css: false) do %>
+$light-weights: ("lightest": 100, "light": 300);
+$heavy-weights: ("medium": 500, "bold": 700);
+
+@debug map-merge($light-weights, $heavy-weights);
+// (
+//   "lightest": 100,
+//   "light": 300,
+//   "medium": 500,
+//   "bold": 700
+// )
+
+// map-merge() can be used to add a single key/value pair to a map.
+@debug map-merge($light-weights, ("lighter": 200));
+// ("lightest": 100, "light": 300, "lighter": 200)
+
+// It can also be used to overwrite a value in a map.
+@debug map-merge($light-weights, ("light": 200));
+// ("lightest": 100, "light": 200)
+===
+$light-weights: ("lightest": 100, "light": 300)
+$heavy-weights: ("medium": 500, "bold": 700)
+
+@debug map-merge($light-weights, $heavy-weights)
+// (
+//   "lightest": 100,
+//   "light": 300,
+//   "medium": 500,
+//   "bold": 700
+// )
+
+// map-merge() can be used to add a single key/value pair to a map.
+@debug map-merge($light-weights, ("lighter": 200))
+// ("lightest": 100, "light": 300, "lighter": 200)
+
+// It can also be used to overwrite a value in a map.
+@debug map-merge($light-weights, ("light": 200))
+// ("lightest": 100, "light": 200)
+<% end %>
+<% end %>
+
+
+<% function 'map-remove($map, $keys...)', returns: 'map' do %>
+Returns a copy of `$map` without any values associated with `$keys`.
+
+If a key in `$keys` doesn't have an associated value in `$map`, it's ignored.
+
+<% example(autogen_css: false) do %>
+$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+@debug map-remove($font-weights, "regular"); // ("medium": 500, "bold": 700)
+@debug map-remove($font-weights, "regular", "bold"); // ("medium": 500)
+@debug map-remove($font-weights, "bolder");
+// ("regular": 400, "medium": 500, "bold": 700)
+===
+$font-weights: ("regular": 400, "medium": 500, "bold": 700)
+
+@debug map-remove($font-weights, "regular")  // ("medium": 500, "bold": 700)
+@debug map-remove($font-weights, "regular", "bold")  // ("medium": 500)
+@debug map-remove($font-weights, "bolder")
+// ("regular": 400, "medium": 500, "bold": 700)
+<% end %>
+<% end %>
+
+
+<% function 'map-values($map)', returns: 'list' do %>
+Returns a comma-separated list of all the values in `$map`.
+
+<% example(autogen_css: false) do %>
+$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+@debug map-values($font-weights); // 400, 500, 700
+===
+$font-weights: ("regular": 400, "medium": 500, "bold": 700)
+
+@debug map-values($font-weights)  // 400, 500, 700
+<% end %>
+<% end %>

@@ -53,17 +53,7 @@ returns [`null`][] if the map doesn't contain the key.
 the [`map-get($map, $key)` function]: ../functions/maps#map-get
 [`null`]: null
 
-<% example(autogen_css: false) do %>
-$font-weights: ("regular": 400, "medium": 500, "bold": 700);
-
-@debug map-get($font-weights, "medium"); // 500
-@debug map-get($font-weights, "extra-bold"); // null
-===
-$font-weights: ("regular": 400, "medium": 500, "bold": 700)
-
-@debug map-get($font-weights, "medium")  // 500
-@debug map-get($font-weights, "extra-bold")  // null
-<% end %>
+<%= partial 'code-snippets/example-map-get' %>
 
 ### Do Something for Every Pair
 
@@ -76,7 +66,7 @@ The [`@each` rule]: ../at-rules/control/each
 
 <%= partial 'code-snippets/example-each-map' %>
 
-### Adding to a Map
+### Add to a Map
 
 It's also useful to add new pairs to a map, or to replace the value for an
 existing key. The [`map-merge($map1, $map2)` function][] does this: it returns a
@@ -93,7 +83,7 @@ $heavy-weights: ("medium": 500, "bold": 700);
 //   "lightest": 100,
 //   "light": 300,
 //   "medium": 500,
-//   "bold": 700,
+//   "bold": 700
 // )
 ===
 $light-weights: ("lightest": 100, "light": 300)
@@ -104,7 +94,7 @@ $heavy-weights: ("medium": 500, "bold": 700)
 //   "lightest": 100,
 //   "light": 300,
 //   "medium": 500,
-//   "bold": 700,
+//   "bold": 700
 // )
 <% end %>
 

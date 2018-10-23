@@ -68,7 +68,7 @@ in a list, and assigns that element to a variable.
 
 <%= partial 'code-snippets/example-each-list' %>
 
-### Adding to a List
+### Add to a List
 
 It's also useful to add elements to a list. The [`append($list, $val)`
 function][] takes a list and a value, and returns a copy of the list with the value
@@ -86,7 +86,7 @@ modify the original list.
 @debug append([col1-line1], col1-line2)  // [col1-line1, col1-line2]
 <% end %>
 
-### Finding Elements in a List
+### Find an Element in a List
 
 If you need to check if an element is in a list or figure out what index it's
 at, use the [`index($list, $value)` function][]. This takes a list and a value
@@ -162,3 +162,16 @@ $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms)
 
 @debug prefixes-for-browsers("firefox" "ie")  // moz ms
 <% end %>
+
+## Argument Lists
+
+When you declare a mixin or function that takes [arbitrary arguments][], the
+value you get is a special list known as an *argument list*. It acts just like a
+list that contains all the arguments passed to the mixin or function, with one
+extra feature: if the user passed keyword arguments, they can be accessed as a
+map by passing the argument list to the [`keywords()` function][].
+
+<%= partial 'code-snippets/example-mixin-arbitrary-keyword-arguments' %>
+
+[arbitrary arguments]: ../at-rules/mixin#taking-arbitrary-arguments
+[`keywords()` function]: ../functions/maps#keywords
