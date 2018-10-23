@@ -2,117 +2,65 @@
  *  by Team Sass Design (@teamsassdesign)
  */
 
-
-
-// ---------------------------------------------------------------------------
-// VENDOR LIBRARIES
-
 @import
-  "compass"
-, "compass/layout"
-, "susy"
-, "breakpoint"
-;
+  // VENDOR LIBRARIES
+  'dependencies/temporary-compass-references-to-refactor',
+  'susy',
+  'breakpoint',
 
+  'dependencies/functions',
+  'dependencies/layout',
+  'dependencies/typography',
+  'dependencies/color',
+  'dependencies/animations',
 
+  'normalize-rails',
+  'vendor/html5boilerplate/base',
+  'foundation/site',
+  'foundation/block',
+  'foundation/inline',
+  'foundation/headings',
+  'foundation/lists',
+  'foundation/tables',
+  'foundation/forms',
+  'foundation/code',
+  'foundation/media',
 
-// ---------------------------------------------------------------------------
-// DEPENDENCIES
+  'layout/holy-grail',
+  'layout/containers',
 
-@import
-  "dependencies/layout"
-, "dependencies/typography"
-, "dependencies/color"
-, "dependencies/animations"
-;
+  'vendor/html5boilerplate/browsehappy',
+  'vendor/jquery-ui/jquery-ui-1.11.0.custom',
+  'components/pop-stripe',
+  'components/type',
+  'components/page-header',
+  'components/lists',
+  'components/tables',
+  'components/forms',
+  'components/buttons',
+  'components/code',
+  'components/alerts',
+  'components/callouts',
+  'components/progress',
+  'components/articles',
+  'components/hero-image',
+  'components/header-image',
+  'components/get-started',
+  'components/slides',
+  'components/icons',
+  'components/logos',
+  'components/sass-syntax-switcher',
+  'components/railroad',
 
+  'regions/page',
+  'regions/banner',
+  'regions/navigation',
+  'regions/section-bottom',
+  'regions/contentinfo',
 
+  'vendor/html5boilerplate/helpers',
+  'helpers/helpers',
 
-// ---------------------------------------------------------------------------
-// FOUNDATION
+  'styleguide/guide',
 
-@import
-  "normalize-rails"
-, "vendor/html5boilerplate/base"
-, "foundation/site"
-, "foundation/block"
-, "foundation/inline"
-, "foundation/headings"
-, "foundation/lists"
-, "foundation/tables"
-, "foundation/forms"
-, "foundation/code"
-, "foundation/media"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// COMPONENTS
-
-@import
-  "vendor/html5boilerplate/browsehappy"
-, "vendor/jquery-ui/jquery-ui-1.11.0.custom"
-, "components/pop-stripe"
-, "components/type"
-, "components/page-header"
-, "components/lists"
-, "components/tables"
-, "components/forms"
-, "components/buttons"
-, "components/code"
-, "components/alerts"
-, "components/progress"
-, "components/articles"
-, "components/hero-image"
-, "components/header-image"
-, "components/get-started"
-, "components/slides"
-, "components/icons"
-, "components/logos"
-, "components/sass-syntax-switcher"
-, "components/railroad"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// REGIONS
-
-@import
-  "regions/page"
-, "regions/banner"
-, "regions/navigation"
-, "regions/content"
-, "regions/content-primary"
-, "regions/content-secondary"
-, "regions/main"
-, "regions/complementary"
-, "regions/section-bottom"
-, "regions/contentinfo"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// HELPERS
-
-@import
-  "vendor/html5boilerplate/helpers"
-, "helpers/grid"
-, "helpers/helpers"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// PAGES
-
-@import "styleguide/guide";
-
-
-
-// ---------------------------------------------------------------------------
-// RESPONSIVE
-
-@import "vendor/html5boilerplate/print";
+  'vendor/html5boilerplate/print';

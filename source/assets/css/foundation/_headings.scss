@@ -13,6 +13,7 @@
 
 h1 {
   font-weight: $font-weight-light;
+  text-align: center;
   color: $color-text-heading;
 
   @include breakpoint($screen-small) { @include font-size-xxx-large; }
@@ -22,8 +23,6 @@ h1 {
 h2 {
   @include padding-leader(2, $font-size-large);
   @include padding-trailer(1, $font-size-large);
-
-  .main &:first-child { padding-top: 0; }
 
   @include breakpoint($tablet-small) {
     @include padding-leader(2, $font-size-x-large);
@@ -39,12 +38,16 @@ h2 {
 h2,
 h3 { font-family: $font-family-display; }
 
-#{headings(3, 4)} {
+h3,
+h4 {
   @include padding-leader(1.5);
   @include padding-trailer(.5);
   @include font-size-regular;
   font-weight: $font-weight-bold;
   text-transform: uppercase;
   letter-spacing: .03125em;
-  color: $color-text-weak;
 }
+
+h3 { color: darken($color-text-weak, 10%); }
+
+h4 { color: $color-text-weak; }

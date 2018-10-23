@@ -181,7 +181,7 @@ module SassHelpers
     id = @unique_id
     contents = []
     if scss
-      contents << 
+      contents <<
         _syntax_div("SCSS Syntax", "scss", scss_sections, scss_paddings, id)
     end
 
@@ -270,10 +270,9 @@ module SassHelpers
   # The contents should be supplied as a block.
   def heads_up
     concat(content_tag :aside, [
-      content_tag(:i, 'TODO(jina): style this div'),
-      content_tag(:strong, 'Heads up!'),
+      content_tag(:h3, 'Heads up!'),
       _render_markdown(capture {yield})
-    ], class: 'warning')
+    ], class: 'sl-c-callout sl-c-callout--warning')
   end
 
   # Returns HTML for a fun fact that's not directly relevant to the main
@@ -282,10 +281,13 @@ module SassHelpers
   # The contents should be supplied as a block.
   def fun_fact
     concat(content_tag :aside, [
-      content_tag(:i, 'TODO(jina): style this div'),
-      content_tag(:strong, 'Fun fact:'),
+      content_tag(:h3, 'Fun fact:'),
       _render_markdown(capture {yield})
-    ], class: 'fun-fact')
+    ], class: 'sl-c-callout sl-c-callout--fun-fact')
+  end
+
+  def markdown_wrap(content)
+    Tilt['markdown'].new { content }.render
   end
 
   # Renders a status dashboard for each implementation's support for a feature.

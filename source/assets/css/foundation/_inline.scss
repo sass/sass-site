@@ -1,8 +1,6 @@
 a {
   text-decoration: none;
-  color: $color-text-link;
-
-  &:visited { color: $color-text-link-visited; }
+  color: darken($color-text-link, 10%);
 
   &:hover,
   &:focus { color: $color-text-link-hover; }

@@ -4,7 +4,7 @@
 
   * { vertical-align: middle; }
 
-  .container { position: relative; }
+  .sl-l-container { position: relative; }
 }
 
 .site-brand {
@@ -14,7 +14,7 @@
   text-align: left;
 
   img {
-    @include transition-property(height);
+    transition-property: height;
     height: rhythm(2);
   }
 

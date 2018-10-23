@@ -5,57 +5,67 @@ h1: CSS with superpowers
 
 
 .hero-lockup
-  %p.hero-image= image_tag "illustrations/glasses.svg", height: "160", alt: "Glasses"
-  %p.introduction
-    Sass is the most mature, stable, and powerful professional grade CSS
-    extension language in the&nbsp;world.
+  .sl-c-introduction
+    :markdown
+      Sass is the most mature, stable, and powerful professional grade CSS
+      extension language in the&nbsp;world.
+
+  %p.hero-image
+    = image_tag 'illustrations/glasses.svg', height: '160', alt: 'Glasses'
 
 - content_for :section_bottom do
   %ul.list-tiled
     %li
-      %h3 CSS Compatible
-      %p
+      :markdown
+        ### CSS Compatible
+
         Sass is completely compatible with all versions of CSS. We take this
         compatibility seriously, so that you can seamlessly use any available
         CSS libraries.
+
     %li
-      %h3 Feature Rich
-      %p
+      :markdown
+        ### Feature Rich
+
         Sass boasts more features and abilities than any other CSS extension
-        language out there. The Sass Core Team has worked endlessly to not
-        only keep up, but stay&nbsp;ahead.
+        language out there. The Sass Core Team has worked endlessly to not only
+        keep up, but stay ahead.
+
     %li
       %h3 Mature
+
       %p
         Sass has been actively supported for
-        = time_ago_in_words DateTime.parse("Tue Nov 28 19:43:58 2006 +0000")
-        by its loving Core&nbsp;Team.
+        = time_ago_in_words DateTime.parse('Tue Nov 28 19:43:58 2006 +0000')
+        by its loving Core Team.
+
     %li
-      %h3 Industry Approved
-      %p
+      :markdown
+        ### Industry Approved
+
         Over and over again, the industry is choosing Sass as the premier CSS
         extension language.
-    %li
-      %h3 Large Community
-      %p
-        Sass is actively supported and developed by a consortium of several
-        tech companies and hundreds of developers.
-    %li
-      %h3 Frameworks
-      %p
-        There are an endless number of frameworks built with Sass.
-        = succeed "," do
-          = link_to "Compass", "http://compass-style.org/"
-        = succeed "," do
-          = link_to "Bourbon", "http://bourbon.io/"
-        and
-        = link_to "Susy", "http://susy.oddbird.net/"
-        just to name a&nbsp;few.
 
-- content_for :complementary do
+    %li
+      :markdown
+        ### Large Community
+
+        Sass is actively supported and developed by a consortium of several tech
+        companies and hundreds of developers.
+
+    %li
+      :markdown
+        ### Frameworks
+
+        There are an endless number of frameworks built with Sass.
+        [Compass](http://compass-style.org/), [Bourbon](http://bourbon.io/), and
+        [Susy](http://susy.oddbird.net/) just to name a few.
+
+- content_for :navigation do
   .get-started
     %h3 Getting Started Is Easy
-    %ol
-      %li= link_to "Install Sass", "install"
-      %li= link_to "Learn Sass", "guide"
-      %li= link_to "Get Involved", "community"
+
+    %ol.sl-c-list.sl-c-list--navigation
+      %li.sl-c-list--navigation__item= link_to 'Install Sass', 'install'
+      %li.sl-c-list--navigation__item= link_to 'Learn Sass',   'guide'
+      %li.sl-c-list--navigation__item= link_to 'Get Involved', 'community'

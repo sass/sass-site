@@ -1,17 +1,16 @@
 ---
 title: Ruby Sass
----
-
-%p.introduction
+introduction: >
   Ruby Sass was the original implementation of Sass, but it's since been
   deprecated. It's currently in a sunset maintenance period, and it will be
   officially unmaintained one year after the release of Dart Sass 1.0.0. Ruby
   Sass users should migrate to another implementation.
+---
 
 %ul.list-columns
   %li
     :markdown
-      ### Maintenance Policy
+      ## Maintenance Policy
 
       Ruby Sass will continue to be maintained for one year after the release of
       Dart Sass 1.0.0. During this maintenance period, bugs will be fixed as
@@ -19,20 +18,20 @@ title: Ruby Sass
       for features that are necessary to support new CSS syntax, which will
       continue to be added.
 
-      [Dart Sass][], the new primary implementation,
-      doesn't always behave 100% the same as Ruby Sass—it implements a number of
-      behavioral changes that were planned for Ruby Sass, but were never
-      implemented in a stable version. To make migration easier, recent versions
-      of Ruby Sass emit warnings for any code that won't be compatible with Dart
-      Sass. Ongoing maintenance includes adding any warnings for new behavioral
-      differences, if they come up.
+      [Dart Sass][], the new primary implementation, doesn't always behave 100%
+      the same as Ruby Sass—it implements a number of behavioral changes that
+      were planned for Ruby Sass, but were never implemented in a stable
+      version. To make migration easier, recent versions of Ruby Sass emit
+      warnings for any code that won't be compatible with Dart Sass. Ongoing
+      maintenance includes adding any warnings for new behavioral differences,
+      if they come up.
 
       [Dart Sass]: #{url_for "dart-sass"}
 
       Once the maintenance period ends, Ruby Sass's repository will be archived,
       no more changes of any kind will be made, and no new releases will be cut.
 
-      ### Adopt Ruby Sass
+      ## Adopt Ruby Sass
 
       Support for Ruby Sass is being turned down because the Sass core team no
       longer has time to maintain it as well as [Dart Sass][] and [LibSass][].
@@ -51,7 +50,7 @@ title: Ruby Sass
 
   %li
     :markdown
-      ### Migrating Away
+      ## Migrating Away
 
       If you run Ruby Sass using the command-line `sass` executable, all you
       need to do is install Dart Sass's [command-line executable][install]
@@ -67,9 +66,9 @@ title: Ruby Sass
       it [doesn't yet][sassc#72] support the same `Importer` API. You can also
       use the [`sassc-rails`][] gem to plug smoothly into Ruby on Rails.
 
-      [`sassc`]: http://rubygems.org/gems/sassc
-      [LibSass]: #{url_for "libsass"}
-      [sassc#72]: https://github.com/sass/sassc-ruby/issues/72
+      [`sassc`]:       http://rubygems.org/gems/sassc
+      [LibSass]:       #{url_for "libsass"}
+      [sassc#72]:      https://github.com/sass/sassc-ruby/issues/72
       [`sassc-rails`]: https://rubygems.org/gems/sassc-rails
 
       Alternately, if you're using a JS build system, you can integrate that
@@ -77,7 +76,7 @@ title: Ruby Sass
 
       [Dart Sass]: #{url_for "dart-sass"}
 
-      ### Installing
+      ## Installing
 
       If you need to install Ruby Sass for a legacy app, run
 

@@ -1,6 +1,6 @@
 /[if lt IE 8]
   .alert(role="alert")
-    .container
+    .sl-l-container
       %p.browsehappy
         You are using an
         %strong outdated
@@ -10,23 +10,10 @@
 
 - if content_for?(:alert)
   .alert
-    .container= yield_content :alert
-
--#- if current_page.url =~ /styleguide/
--#  .toolkit
--#    .container
--#      %ul
--#        %li
--#          %button.toggle-baseline(type="button") Baseline
--#        %li
--#          %button.toggle-grid(type="button") Grid
--#        %li.separator
--#        %li
--#          %button.url-responsive(type="button") Responsive Test
--#
+    .sl-l-container= yield_content :alert
 
 .alert.stickers
-  .container
+  .sl-l-container
     %p
       %strong Your laptop needs more Sass.
       = succeed "." do

@@ -4,7 +4,7 @@ $os-icons: "icons/os-icons.png";
 %os-icons {
   @include square(15px);
   background: image-url($os-icons) 0 0 no-repeat;
-  @include background-size(auto 15px);
+  background-size: auto 15px;
   display: inline-block;
 }
 .mac-icon {

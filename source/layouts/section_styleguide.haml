@@ -1,4 +1,4 @@
-= wrap_layout :layout do
+= wrap_layout :has_navigation do
   = yield
 
   - if current_page.data.previous_page_url or current_page.data.next_page_url
@@ -19,14 +19,17 @@
               = current_page.data.next_page_name
               &rarr;
 
-  - content_for :complementary do
+  - content_for :navigation do
     - root_url = config[:host]
+
     %h3= link_to "Style Guide", "/styleguide"
 
-    %ul
+    %ul.sl-c-list.sl-c-list--navigation
       - sitemap.resources.each do |page|
         - if page.url =~ /styleguide/
           - unless page.url =~ /assets/
             - unless page.data.title == "Style Guide"
               - unless page.data.title == "Responsive Test"
-                %li= link_to "#{page.data.title}", "#{root_url}#{page.url.gsub!(/(\/)+$/,'')}"
+                %li.sl-c-list--navigation__item
+                  = link_to "#{root_url}#{page.url.gsub!(/(\/)+$/,'')}" do
+                    = page.data.title

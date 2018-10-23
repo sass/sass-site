@@ -1,10 +1,10 @@
 .contentinfo {
   @include padding-leader;
   @include padding-trailer;
-  color: $color-text-weak;
   background: image-url("textures/grey-prism.svg") left top repeat-x;
+  color: $color-text-weak;
 
-  .container {
+  .sl-l-container {
     @include padding-leader;
     @include padding-trailer;
     height: 100%;
@@ -49,8 +49,6 @@
       bottom: 0;
     }
     height: $sticky-contentinfo-height;
-
-    .container { text-align: left; }
 
     ul { @extend %table-layout-tablet-large; }
 

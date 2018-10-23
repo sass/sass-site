@@ -23,7 +23,8 @@ th {
   vertical-align: top;
 }
 
-th {
+th,
+caption {
   @extend %bold-elements;
   text-align: left;
 }

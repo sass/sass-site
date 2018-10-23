@@ -4,11 +4,10 @@
 }
 
 .primary {
-  background-color: $color-primary;
+  background-color: darken($color-primary, 10%);
   border-color: darken($color-primary, 5);
 
   &,
-  &:visited,
   &:hover,
   &:focus,
   &:active,
@@ -21,7 +20,7 @@
 }
 
 %clear-button {
-  @include box-shadow(none);
+  box-shadow: none;
   border-color: transparent;
   background: none;
   color: inherit;

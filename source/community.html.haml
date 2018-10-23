@@ -1,168 +1,165 @@
 ---
-title: "#teamSass"
----
-
-- content_for :introduction do
+title: '#teamSass'
+introduction: >
   Sass has an awesome community of designers and developers who love to spread
-  the word and help people out. Here we&rsquo;ve collected some resources.
-  Happy&nbsp;Styling!
-
-
+  the word and help people out. Here we&rsquo;ve collected some resources. Happy
+  Styling!
+---
 
 %ul.list-columns.anchors
   %li
     :markdown
       __Everyone is welcome in the Sass community, except those who are
-      unwelcoming__. Please read and follow our
-      [community&nbsp;guidelines](/community-guidelines).
+      unwelcoming__. Please read and follow our [community
+      guidelines](/community-guidelines).
 
-      Still __getting started__? There are some great  [tutorials](#Tutorials)
+      Still __getting started__? There are some great [tutorials](#Tutorials)
       out there to get you on your feet. Want to __learn more__? There's some
-      great [Sass blogs](#Blogs) (including
-      [a few particular articles](#Articles) we recommend reading), and even a
-      few [books about Sass](#Books) to help you learn some new tips and
-      tricks.
+      great [Sass blogs](#Blogs) (including [a few particular
+      articles](#Articles) we recommend reading), and even a few [books about
+      Sass](#Books) to help you learn some new tips and tricks.
 
   %li
     :markdown
       The Sass community is amazing. There are a number of
       [frameworks](#Frameworks) that make using Sass simple. Want try Sass in
-      Node, Python, or another framework? Check out the
-      [libSass&nbsp;resources](/libsass).
+      Node, Python, or another framework? Check out the [libSass
+      resources](/libsass).
 
-      Thinking of __contributing__  to Sass itself? We rely on everyone to
-      keep Sass as stable as it is. Feel free to
-      [submit a patch via pull request](#Contribute) to the Sass project.
+      Thinking of __contributing__  to Sass itself? We rely on everyone to keep
+      Sass as stable as it is. Feel free to [submit a patch via pull
+      request](#Contribute) to the Sass project.
 
-      Want to create your own Sass implementation? Check out our
-      [implementation guidelines](/implementation).
-
-
-%hr/
-
-.content-primary
-  %h2#Articles Sass Articles on the Web
-  %ul.articles
-    - for article in data.community.articles
-      %li
-        %h3= link_to article.name, article.url
-        %p= article.description
-
-  %h2#Contribute Contribute
-
-  :markdown
-    Sass is an [open source project][github] and we encourage you to
-    contribute. You can contribute with
-    [bug reports and feature requests][issues], and if you contribute code,
-    we'll love you forever. If you just want to help out but you're not sure
-    what to do, the [Help Wanted label][help] on the issue tracker is a good
-    place to start. It has a mix of feature requests, bugs, and tasks that
-    aren't coding-intensive that the developers think are a good place for
-    someone new to the codebase to jump in.
-
-    [github]: https://github.com/sass/sass
-    [issues]: https://github.com/sass/sass/issues
-    [help]: https://github.com/sass/sass/labels/Help%20Wanted
-
-    When writing code, there are two primary branches we use. The [stable
-    branch][github] is the default; is where we do development on the released
-    version of Sass. Bug fixes for released functionality, documentation
-    improvements, and and general infrastructure stuff should all go on
-    stable. The [master branch][master] is where we work on the next version
-    of Sass. Once you've followed the steps below, new features should be
-    submitted to master.
-
-    [master]: https://github.com/sass/sass/tree/master
-    [planned]: https://github.com/sass/sass/labels/Planned
-
-    The Sass codebase is pretty big, and it can be intimidating to navigate it
-    and understand the best way to make a change. If you need help, make a
-    post on [the Sass mailing list][list]; the Sass developers are happy to
-    assist, even if you don't have much experience with Ruby or programming as
-    a whole. They can answer questions about how the system works, suggest
-    avenues for solving problems, and review your code once it's written.
-
-    [list]: https://groups.google.com/forum/#!forum/sass-lang
-
-    Whether you're adding a feature or fixing a bug, if it changes publicly
-    visible behavior, it's important to write automated tests for it. All the
-    tests live in the `test/sass` directory; find the test file that's most
-    closely related to your change, and add a test or tests there. For a
-    feature, make sure your tests fully cover all the ways that feature could
-    be used, including ways it could be invalid.
-
-    Once you've written a patch with tests, send it to us as a
-    [pull request][]. A developer will look it over, and will probably make
-    some suggestions and requests. Once you address those, it'll get merged
-    in!
-
-    [pull request]: https://help.github.com/articles/creating-a-pull-request/
-
-  %h2#AddingSyntax Adding Syntax
-
-  :markdown
-    The biggest and most impressive features of Sass usually involve adding
-    new syntax of some sort. This can be pretty fun—something that used to be
-    an error starts working because you made it—but syntax changes are also a
-    lot of work. For statement-level syntax like a new `@`-rule, you have to:
-
-    * Add a node for the syntax to the abstract syntax tree in
-      [`lib/sass/tree`][tree].
-
-    * Parse the syntax in SCSS to the node. The SCSS parser is in
-      [`lib/sass/scss/parser.rb`][scss parser].
-
-    * Parse the syntax in the indented syntax to the node. The indented
-      syntax parser is in [`lib/sass/engine.rb`][sass parser].
-
-    * Add support for setting the compilation options on the node in
-      [`lib/sass/tree/visitors/set_options.rb`][set options].
-
-    * Add support for cloning the node in
-      [`lib/sass/tree/visitors/deep_copy.rb`][deep copy].
-
-    * If the syntax is just something new from pure CSS, add support for
-      compiling it to CSS in [`lib/sass/tree/visitors/to_css.rb`][to css]. If
-      it's for a Sass feature that's not part of CSS, add runtime behavior in
-      [`lib/sass/tree/visitors/perform.rb`][perform] or
-      [`lib/sass/tree/visitors/cssize.rb`][cssize].
-
-    * Add support for converting the syntax back to SCSS and the indented
-      syntax with `sass-convert` in
-      [`lib/sass/tree/visitors/convert.rb`][convert].
-      Don't forget to test this conversion, too!
-
-    [tree]: https://github.com/sass/sass/tree/stable/lib/sass/tree
-    [script tree]: https://github.com/sass/sass/tree/stable/lib/sass/script/tree
-    [scss parser]: https://github.com/sass/sass/tree/stable/lib/sass/scss/parser.rb
-    [sass parser]: https://github.com/sass/sass/tree/stable/lib/sass/engine.rb
-    [set options]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/set_options.rb
-    [deep copy]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/deep_copy.rb
-    [to css]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/to_css.rb
-    [perform]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/perform.rb
-    [cssize]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/cssize.rb
-    [convert]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/convert.rb
+      Want to create your own Sass implementation? Check out our [implementation
+      guidelines](/implementation).
 
 
-.content-secondary
+%hr
+
+%h2#Articles Sass Articles on the Web
+
+%ul.articles
+  - data.community.articles.each do |article|
+    %li
+      %h3= link_to article.name, article.url
+
+      %p= article.description
+
+%h2#Contribute Contribute
+
+:markdown
+  Sass is an [open source project][github] and we encourage you to contribute.
+  You can contribute with [bug reports and feature requests][issues], and if you
+  contribute code, we'll love you forever. If you just want to help out but
+  you're not sure what to do, the [Help Wanted label][help] on the issue tracker
+  is a good place to start. It has a mix of feature requests, bugs, and tasks
+  that aren't coding-intensive that the developers think are a good place for
+  someone new to the codebase to jump in.
+
+  [github]: https://github.com/sass/sass
+  [issues]: https://github.com/sass/sass/issues
+  [help]:   https://github.com/sass/sass/labels/Help%20Wanted
+
+  When writing code, there are two primary branches we use. The [stable
+  branch][github] is the default; is where we do development on the released
+  version of Sass. Bug fixes for released functionality, documentation
+  improvements, and and general infrastructure stuff should all go on stable.
+  The [master branch][master] is where we work on the next version of Sass. Once
+  you've followed the steps below, new features should be submitted to master.
+
+  [master]:  https://github.com/sass/sass/tree/master
+  [planned]: https://github.com/sass/sass/labels/Planned
+
+  The Sass codebase is pretty big, and it can be intimidating to navigate it and
+  understand the best way to make a change. If you need help, make a post on
+  [the Sass mailing list][list]; the Sass developers are happy to assist, even
+  if you don't have much experience with Ruby or programming as a whole. They
+  can answer questions about how the system works, suggest avenues for solving
+  problems, and review your code once it's written.
+
+  [list]: https://groups.google.com/forum/#!forum/sass-lang
+
+  Whether you're adding a feature or fixing a bug, if it changes publicly
+  visible behavior, it's important to write automated tests for it. All the
+  tests live in the `test/sass` directory; find the test file that's most
+  closely related to your change, and add a test or tests there. For a feature,
+  make sure your tests fully cover all the ways that feature could be used,
+  including ways it could be invalid.
+
+  Once you've written a patch with tests, send it to us as a [pull request][]. A
+  developer will look it over, and will probably make some suggestions and
+  requests. Once you address those, it'll get merged in!
+
+  [pull request]: https://help.github.com/articles/creating-a-pull-request/
+
+%h2#AddingSyntax Adding Syntax
+
+:markdown
+  The biggest and most impressive features of Sass usually involve adding new
+  syntax of some sort. This can be pretty fun—something that used to be an error
+  starts working because you made it—but syntax changes are also a lot of work.
+  For statement-level syntax like a new `@`-rule, you have to:
+
+  * Add a node for the syntax to the abstract syntax tree in
+  [`lib/sass/tree`][tree].
+
+  * Parse the syntax in SCSS to the node. The SCSS parser is in
+  [`lib/sass/scss/parser.rb`][scss parser].
+
+  * Parse the syntax in the indented syntax to the node. The indented syntax
+  parser is in [`lib/sass/engine.rb`][sass parser].
+
+  * Add support for setting the compilation options on the node in
+  [`lib/sass/tree/visitors/set_options.rb`][set options].
+
+  * Add support for cloning the node in
+  [`lib/sass/tree/visitors/deep_copy.rb`][deep copy].
+
+  * If the syntax is just something new from pure CSS, add support for compiling
+    it to CSS in [`lib/sass/tree/visitors/to_css.rb`][to css]. If it's for a
+    Sass feature that's not part of CSS, add runtime behavior in
+    [`lib/sass/tree/visitors/perform.rb`][perform] or
+    [`lib/sass/tree/visitors/cssize.rb`][cssize].
+
+  * Add support for converting the syntax back to SCSS and the indented syntax
+    with `sass-convert` in [`lib/sass/tree/visitors/convert.rb`][convert]. Don't
+    forget to test this conversion, too!
+
+  [tree]:        https://github.com/sass/sass/tree/stable/lib/sass/tree
+  [script tree]: https://github.com/sass/sass/tree/stable/lib/sass/script/tree
+  [scss parser]: https://github.com/sass/sass/tree/stable/lib/sass/scss/parser.rb
+  [sass parser]: https://github.com/sass/sass/tree/stable/lib/sass/engine.rb
+  [set options]: https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/set_options.rb
+  [deep copy]:   https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/deep_copy.rb
+  [to css]:      https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/to_css.rb
+  [perform]:     https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/perform.rb
+  [cssize]:      https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/cssize.rb
+  [convert]:     https://github.com/sass/sass/tree/stable/lib/sass/tree/visitors/convert.rb
+
+
+- content_for :complementary do
   %h3#Tutorials Tutorials
+
   %ul
-    - for tutorial in data.community.tutorials
+    - data.community.tutorials.each do |tutorial|
       %li= link_to tutorial.name, tutorial.url
 
   %h3#Blogs Sass Blogs
+
   %ul
-    - for blog in data.community.blogs
+    - data.community.blogs.each do |blog|
       %li= link_to blog.name, blog.url
 
   %h3#Books Sass Books
+
   %ul
-    - for book in data.community.books
+    - data.community.books.each do |book|
       %li= link_to book.name, book.url
 
   %h3#Projects Projects & Frameworks
+
   %ul
-    - for project in data.community.projects
+    - data.community.projects.each do |project|
       %li
         = link_to project.name, project.url
         &mdash;

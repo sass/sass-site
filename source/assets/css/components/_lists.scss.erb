@@ -37,13 +37,13 @@
 
   @include breakpoint($tablet-large) {
     @extend %clear-fix-tablet-large;
-    margin: 0 #{-$gutter-width};
+    margin: 0 #{-$gutter-width * 2};
 
     > li {
       float: left;
       padding: {
-        right: $gutter-width;
-         left: $gutter-width;
+        right: $gutter-width * 2;
+         left: $gutter-width * 2;
       }
     }
   }
@@ -51,12 +51,11 @@
 
 .list-columns {
   @extend %list-columns;
-  text-align: center;
 
-  h3 { display: inline-block; white-space: nowrap; }
-
-  p,
-  dl { text-align: left; }
+  h2 {
+    display: inline-block;
+    white-space: nowrap;
+  }
 
   @include breakpoint($tablet-large) {
     > li {
@@ -105,7 +104,6 @@ ol {
   @include breakpoint($tablet-small) {
     @extend %table-layout-tablet-small;
     table-layout: fixed;
-    text-align: left;
 
     dt,
     dd { @extend %table-layout-cell-baseline-tablet-small; }
@@ -122,4 +120,20 @@ ol {
 .list-feature {
   @extend %reset-list;
   @include font-size-large;
+}
+
+.sl-c-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sl-c-list--navigation__item,
+.sl-c-list--navigation-wrap li { // account for when markdown is used.
+  margin: .125rem 0;
+}
+
+.sl-c-list--navigation .sl-c-list--navigation,
+.sl-c-list--navigation-wrap ul ul {
+  margin-left: 1rem;
 }

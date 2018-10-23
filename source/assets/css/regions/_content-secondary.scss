@@ -1,8 +1,0 @@
-.content-secondary {
-  @include breakpoint($tablet-large) {
-    @include span(4 omega);
-
-    h2,
-    h3 { text-align: left; }
-  }
-}
