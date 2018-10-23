@@ -366,11 +366,30 @@ MARKDOWN
       content_tag(:pre, [
         content_tag(:code, highlighted_signatures.join("\n"))
       ], class: 'signature highlight scss'),
-      returns ? content_tag(:div, returns, class: 'return-type') : '',
+      returns ? content_tag(:div, return_type_link(returns), class: 'return-type') : '',
       _render_markdown(capture {yield})
     ], class: 'function', id: names.first
 
     concat(names[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
+  end
+
+  def return_type_link(return_type)
+    return_type.split("|").map do |type|
+      type = type.strip
+      case type.strip
+      when 'number'; link_to type, '/documentation/values/numbers'
+      when 'string'; link_to type, '/documentation/values/strings'
+      when 'quoted string'; link_to type, '/documentation/values/strings#quoted'
+      when 'unquoted string'; link_to type, '/documentation/values/strings#unquoted'
+      when 'color'; link_to type, '/documentation/values/colors'
+      when 'list'; link_to type, '/documentation/values/lists'
+      when 'map'; link_to type, '/documentation/values/maps'
+      when 'boolean'; link_to type, '/documentation/values/booleans'
+      when 'null'; link_to '<code>null</code>', '/documentation/values/null'
+      when 'function'; link_to type, '/documentation/values/functions'
+      else raise "Unknown type #{type}"
+      end
+    end.join(" | ")
   end
 
   # A helper method that renders a chunk of Markdown text.
