@@ -199,9 +199,8 @@ module SassHelpers
       class: "code-example",
       "data-unique-id": @unique_id)
 
-    # An extra newline before a closing tag causes Markdown to interpret it as a
-    # new paragraph.
-    text = text.gsub(%r{\n</div>}, '</div>')
+    # Newlines between tags cause Markdown to parse these blocks incorrectly.
+    text = text.gsub(%r{\n+<(/?[a-z0-9]+)}, '<\1')
     if block_is_haml?(block)
       haml_concat text
     else
