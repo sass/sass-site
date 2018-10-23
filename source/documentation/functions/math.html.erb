@@ -3,148 +3,147 @@ title: Number Functions
 ---
 
 <% function 'abs($number)', returns: 'number' do %>
-Returns the [absolute value][] of `$number`. If `$number` is negative, this
-returns `-$number`, and if `$number` is positive, it returns `$number` as-is.
+  Returns the [absolute value][] of `$number`. If `$number` is negative, this
+  returns `-$number`, and if `$number` is positive, it returns `$number` as-is.
 
-[absolute value]: https://en.wikipedia.org/wiki/Absolute_value
+  [absolute value]: https://en.wikipedia.org/wiki/Absolute_value
 
-<% example(autogen_css: false) do %>
-@debug abs(10px); // 10px
-@debug abs(-10px); // 10px
-===
-@debug abs(10px) // 10px
-@debug abs(-10px) // 10px
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug abs(10px); // 10px
+    @debug abs(-10px); // 10px
+    ===
+    @debug abs(10px) // 10px
+    @debug abs(-10px) // 10px
+  <% end %>
 <% end %>
 
 
 <% function 'ceil($number)', returns: 'number' do %>
-Rounds `$number` up to the next highest whole number.
+  Rounds `$number` up to the next highest whole number.
 
-<% example(autogen_css: false) do %>
-@debug ceil(4); // 4
-@debug ceil(4.2); // 5
-@debug ceil(4.9); // 5
-===
-@debug ceil(4)  // 4
-@debug ceil(4.2)  // 5
-@debug ceil(4.9)  // 5
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug ceil(4); // 4
+    @debug ceil(4.2); // 5
+    @debug ceil(4.9); // 5
+    ===
+    @debug ceil(4)  // 4
+    @debug ceil(4.2)  // 5
+    @debug ceil(4.9)  // 5
+  <% end %>
 <% end %>
 
 
 <% function 'floor($number)', returns: 'number' do %>
-Rounds `$number` down to the next lowest whole number.
+  Rounds `$number` down to the next lowest whole number.
 
-<% example(autogen_css: false) do %>
-@debug floor(4); // 4
-@debug floor(4.2); // 4
-@debug floor(4.9); // 4
-===
-@debug floor(4)  // 4
-@debug floor(4.2)  // 4
-@debug floor(4.9)  // 4
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug floor(4); // 4
+    @debug floor(4.2); // 4
+    @debug floor(4.9); // 4
+    ===
+    @debug floor(4)  // 4
+    @debug floor(4.2)  // 4
+    @debug floor(4.9)  // 4
+  <% end %>
 <% end %>
 
 
 <% function 'max($number...)', returns: 'number' do %>
-Returns the highest of one or more numbers. A list of numbers can be passed
-[using `...`][].
+  Returns the highest of one or more numbers. A list of numbers can be passed
+  [using `...`][].
 
-[using `...`]: ../at-rules/function#passing-arbitrary-arguments
+  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
 
-<% example(autogen_css: false) do %>
-@debug max(1px, 4px); // 4px
+  <% example(autogen_css: false) do %>
+    @debug max(1px, 4px); // 4px
 
-$widths: 50px, 30px, 100px;
-@debug max($widths...); // 100px
-===
-@debug max(1px, 4px)  // 4px
+    $widths: 50px, 30px, 100px;
+    @debug max($widths...); // 100px
+    ===
+    @debug max(1px, 4px)  // 4px
 
-$widths: 50px, 30px, 100px 
-@debug max($widths...)  // 100px
-<% end %>
+    $widths: 50px, 30px, 100px 
+    @debug max($widths...)  // 100px
+  <% end %>
 <% end %>
 
 
 <% function 'min($number...)', returns: 'number' do %>
-Returns the lowest of one or more numbers. A list of numbers can be passed
-[using `...`][].
+  Returns the lowest of one or more numbers. A list of numbers can be passed
+  [using `...`][].
 
-[using `...`]: ../at-rules/function#passing-arbitrary-arguments
+  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
 
-<% example(autogen_css: false) do %>
-@debug min(1px, 4px); // 1px
+  <% example(autogen_css: false) do %>
+    @debug min(1px, 4px); // 1px
 
-$widths: 50px, 30px, 100px;
-@debug min($widths...); // 30px
-===
-@debug min(1px, 4px)  // 1px
+    $widths: 50px, 30px, 100px;
+    @debug min($widths...); // 30px
+    ===
+    @debug min(1px, 4px)  // 1px
 
-$widths: 50px, 30px, 100px 
-@debug min($widths...)  // 30px
+    $widths: 50px, 30px, 100px 
+    @debug min($widths...)  // 30px
+  <% end %>
 <% end %>
-<% end %>
-
 
 
 <% function 'percentage($number)', returns: 'number' do %>
-Converts a unitless `$number` (usually a decimal between 0 and 1) to a
-percentage.
+  Converts a unitless `$number` (usually a decimal between 0 and 1) to a
+  percentage.
 
-<% fun_fact do %>
-This function is identical to `$number * 100%`.
-<% end %>
+  <% fun_fact do %>
+    This function is identical to `$number * 100%`.
+  <% end %>
 
-<% example(autogen_css: false) do %>
-@debug percentage(0.2); // 20%
-@debug percentage(100px / 50px); // 200%
-===
-@debug percentage(0.2)  // 20%
-@debug percentage(100px / 50px)  // 200%
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug percentage(0.2); // 20%
+    @debug percentage(100px / 50px); // 200%
+    ===
+    @debug percentage(0.2)  // 20%
+    @debug percentage(100px / 50px)  // 200%
+  <% end %>
 <% end %>
 
 
 <% function 'random($limit: null)', returns: 'number' do %>
-If `$limit` is [`null`][], returns a random decimal number between 0 and 1.
+  If `$limit` is [`null`][], returns a random decimal number between 0 and 1.
 
-[`null`]: ../values/null
+  [`null`]: ../values/null
 
-<% example(autogen_css: false) do %>
-@debug random(); // 0.2821251858
-@debug random(); // 0.6221325814
-===
-@debug random()  // 0.2821251858
-@debug random()  // 0.6221325814
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug random(); // 0.2821251858
+    @debug random(); // 0.6221325814
+    ===
+    @debug random()  // 0.2821251858
+    @debug random()  // 0.6221325814
+  <% end %>
 
-* * *
+  * * *
 
-If `$limit` is a number greater than or equal to 1, returns a random whole
-number between 1 and `$limit`.
+  If `$limit` is a number greater than or equal to 1, returns a random whole
+  number between 1 and `$limit`.
 
-<% example(autogen_css: false) do %>
-@debug random(10); // 4
-@debug random(10000); // 5373
-===
-@debug random(10)  // 4
-@debug random(10000)  // 5373
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug random(10); // 4
+    @debug random(10000); // 5373
+    ===
+    @debug random(10)  // 4
+    @debug random(10000)  // 5373
+  <% end %>
 <% end %>
 
 
 <% function 'round($number)', returns: 'number' do %>
-Rounds `$number` to the nearest whole number.
+  Rounds `$number` to the nearest whole number.
 
-<% example(autogen_css: false) do %>
-@debug round(4); // 4
-@debug round(4.2); // 4
-@debug round(4.9); // 5
-===
-@debug round(4)  // 4
-@debug round(4.2)  // 4
-@debug round(4.9)  // 5
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug round(4); // 4
+    @debug round(4.2); // 4
+    @debug round(4.9); // 5
+    ===
+    @debug round(4)  // 4
+    @debug round(4.2)  // 4
+    @debug round(4.9)  // 5
+  <% end %>
 <% end %>

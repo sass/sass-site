@@ -42,21 +42,21 @@ Sass's built-in functions are divided into a few categories:
 
 
 <% function "if($condition, $if-true, $if-false)" do %>
-Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
+  Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
 
-This function is special in that it doesn't even evaluate the argument that
-isn't returned, so it's safe to call even if the unused argument would throw an
-error.
+  This function is special in that it doesn't even evaluate the argument that
+  isn't returned, so it's safe to call even if the unused argument would throw an
+  error.
 
-[truthy]: ../at-rules/control/if#truthiness-and-falsiness
+  [truthy]: ../at-rules/control/if#truthiness-and-falsiness
 
-<% example(autogen_css: false) do %>
-@debug if(true, 10px, 15px); // 10px
-@debug if(false, 10px, 15px); // 15px
-@debug if(variable-defined($var), $var, null); // null
-===
-@debug if(true, 10px, 15px)  // 10px
-@debug if(false, 10px, 15px)  // 15px
-@debug if(variable-defined($var), $var, null)  // null
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug if(true, 10px, 15px); // 10px
+    @debug if(false, 10px, 15px); // 15px
+    @debug if(variable-defined($var), $var, null); // null
+    ===
+    @debug if(true, 10px, 15px)  // 10px
+    @debug if(false, 10px, 15px)  // 15px
+    @debug if(variable-defined($var), $var, null)  // null
+  <% end %>
 <% end %>

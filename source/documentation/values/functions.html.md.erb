@@ -3,12 +3,12 @@ title: Functions
 ---
 
 <% impl_status dart: true, libsass: '3.5.0', ruby: '3.5.0' do %>
-In older versions of LibSass and Ruby Sass, the [`call()` function][] took a
-string representing a function's name. This was changed to take a function value
-instead in preparation for a new module system where functions are no longer
-global and so a given name may not always refer to the same function.
+  In older versions of LibSass and Ruby Sass, the [`call()` function][] took a
+  string representing a function's name. This was changed to take a function
+  value instead in preparation for a new module system where functions are no
+  longer global and so a given name may not always refer to the same function.
 
-[`call()` function]: ../functions/meta#call
+  [`call()` function]: ../functions/meta#call
 <% end %>
 
 [Functions][] can be values too! You can't directly write a function as a value,
@@ -24,50 +24,50 @@ call other functions.
 <%# TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass %>
 
 <% example do %>
-/// Return a copy of $list with all elements for which $condition returns `true`
-/// removed.
-@function remove-where($list, $condition) {
-  $new-list: ();
-  $separator: list-separator($list);
-  @each $element in $list {
-    @if not call($condition, $element) {
-      $new-list: append($new-list, $element, $separator: $separator);
+  /// Return a copy of $list with all elements for which $condition returns `true`
+  /// removed.
+  @function remove-where($list, $condition) {
+    $new-list: ();
+    $separator: list-separator($list);
+    @each $element in $list {
+      @if not call($condition, $element) {
+        $new-list: append($new-list, $element, $separator: $separator);
+      }
     }
+    @return $new-list;
   }
-  @return $new-list;
-}
 
-$fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  $fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-content {
-  @function contains-helvetica($string) {
-    @return str-index($string, "Helvetica");
+  content {
+    @function contains-helvetica($string) {
+      @return str-index($string, "Helvetica");
+    }
+    font-family: remove-where($fonts, get-function("contains-helvetica"));
   }
-  font-family: remove-where($fonts, get-function("contains-helvetica"));
-}
-===
-/// Return a copy of $list with all elements for which $condition returns `true`
-/// removed.
-@function remove-where($list, $condition)
-  $new-list: ()
-  $separator: list-separator($list)
-  @each $element in $list
-    @if not call($condition, $element)
-      $new-list: append($new-list, $element, $separator: $separator)
+  ===
+  /// Return a copy of $list with all elements for which $condition returns `true`
+  /// removed.
+  @function remove-where($list, $condition)
+    $new-list: ()
+    $separator: list-separator($list)
+    @each $element in $list
+      @if not call($condition, $element)
+        $new-list: append($new-list, $element, $separator: $separator)
 
 
-  @return $new-list
+    @return $new-list
 
 
-$fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif
+  $fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif
 
-content
-  @function contains-helvetica($string)
-    @return str-index($string, "Helvetica")
+  content
+    @function contains-helvetica($string)
+      @return str-index($string, "Helvetica")
 
-  font-family: remove-where($fonts, get-function("contains-helvetica"))
-===
-content {
-  font-family: Tahoma, Geneva, Arial, sans-serif;
-}
+    font-family: remove-where($fonts, get-function("contains-helvetica"))
+  ===
+  content {
+    font-family: Tahoma, Geneva, Arial, sans-serif;
+  }
 <% end %>

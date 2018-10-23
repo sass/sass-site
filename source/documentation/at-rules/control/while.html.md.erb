@@ -10,39 +10,39 @@ returns `false`.
 [expression]: ../syntax/structure#expressions
 
 <% example do %>
-/// Divides `$value` by `$ratio` until it's below `$base`.
-@function scale-below($value, $base, $ratio: 1.618) {
-  @while $value > $base {
-    $value: $value / $ratio;
+  /// Divides `$value` by `$ratio` until it's below `$base`.
+  @function scale-below($value, $base, $ratio: 1.618) {
+    @while $value > $base {
+      $value: $value / $ratio;
+    }
+    @return $value;
   }
-  @return $value;
-}
 
-$normal-font-size: 16px;
-sup {
-  font-size: scale-below(20px, 16px);
-}
-===
-/// Divides `$value` by `$ratio` until it's below `$base`.
-@function scale-below($value, $base, $ratio: 1.618)
-  @while $value > $base
-    $value: $value / $ratio
-  @return $value;
+  $normal-font-size: 16px;
+  sup {
+    font-size: scale-below(20px, 16px);
+  }
+  ===
+  /// Divides `$value` by `$ratio` until it's below `$base`.
+  @function scale-below($value, $base, $ratio: 1.618)
+    @while $value > $base
+      $value: $value / $ratio
+    @return $value;
 
 
 
-$normal-font-size: 16px
-sup
-  font-size: scale-below(20px, 16px)
+  $normal-font-size: 16px
+  sup
+    font-size: scale-below(20px, 16px)
 <% end %>
 
 <% heads_up do %>
-Although `@while` is necessary for a few particularly complex stylesheets, you're
-usually better of using either [`@each`][] or [`@for`][] if either of them will
-work. They're clearer for the reader, and often faster to compile as well.
+  Although `@while` is necessary for a few particularly complex stylesheets, you're
+  usually better of using either [`@each`][] or [`@for`][] if either of them will
+  work. They're clearer for the reader, and often faster to compile as well.
 
-[`@each`]: each
-[`@for`]: for
+  [`@each`]: each
+  [`@for`]: for
 <% end %>
 
 <%= partial 'documentation/snippets/truthiness-and-falsiness' %>

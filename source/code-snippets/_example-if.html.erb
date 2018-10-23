@@ -1,25 +1,25 @@
 <% example do %>
-@mixin avatar($size, $circle: false) {
-  width: $size;
-  height: $size;
+  @mixin avatar($size, $circle: false) {
+    width: $size;
+    height: $size;
 
-  @if $circle {
-    border-radius: $size / 2;
+    @if $circle {
+      border-radius: $size / 2;
+    }
   }
-}
 
-.square-av { @include avatar(100px, $circle: false); }
-.circle-av { @include avatar(100px, $circle: true); }
-===
-@mixin avatar($size, $circle: false)
-  width: $size
-  height: $size
+  .square-av { @include avatar(100px, $circle: false); }
+  .circle-av { @include avatar(100px, $circle: true); }
+  ===
+  @mixin avatar($size, $circle: false)
+    width: $size
+    height: $size
 
-  @if $circle
-    border-radius: $size / 2
+    @if $circle
+      border-radius: $size / 2
 
-.square-av
-  @include avatar(100px, $circle: false)
-.circle-av
-  @include avatar(100px, $circle: true)
+  .square-av
+    @include avatar(100px, $circle: false)
+  .circle-av
+    @include avatar(100px, $circle: true)
 <% end %>

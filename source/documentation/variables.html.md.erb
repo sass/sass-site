@@ -16,66 +16,66 @@ variable, just include it in a value.
 [property declaration]: ../style-rules/declarations
 
 <% example do %>
-$base-color: #c6538c;
-$border-dark: rgba($base-color, 0.88);
+  $base-color: #c6538c;
+  $border-dark: rgba($base-color, 0.88);
 
-.alert {
-  border: 1px solid $border-dark;
-}
-===
-$base-color: #c6538c
-$border-dark: rgba($base-color, 0.88)
+  .alert {
+    border: 1px solid $border-dark;
+  }
+  ===
+  $base-color: #c6538c
+  $border-dark: rgba($base-color, 0.88)
 
-.alert
-  border: 1px solid $border-dark
+  .alert
+    border: 1px solid $border-dark
 <% end %>
 
 <% heads_up do %>
-CSS has [variables of its own][], which are totally different than Sass
-Lvariables. Know the differences!
+  CSS has [variables of its own][], which are totally different than Sass
+  Lvariables. Know the differences!
 
-[variables of its own]: ../style-rules/declarations#custom-properties
+  [variables of its own]: ../style-rules/declarations#custom-properties
 
-* Sass variables are all compiled away by Sass. CSS variables are included in
-  the CSS output.
+  * Sass variables are all compiled away by Sass. CSS variables are included in
+    the CSS output.
 
-* CSS variables can have different values for different elements, but Sass
-  variables only have one value at a time.
+  * CSS variables can have different values for different elements, but Sass
+    variables only have one value at a time.
 
-* Sass variables are *imperative*, which means if you use a variable and then
-  change its value, the earlier use will stay the same. CSS variables are
-  *declarative*, which means if you change the value, it'll affect both earlier
-  uses and later uses.
+  * Sass variables are *imperative*, which means if you use a variable and then
+    change its value, the earlier use will stay the same. CSS variables are
+    *declarative*, which means if you change the value, it'll affect both
+    earlier uses and later uses.
 
-<% example do %>
-$variable: value 1;
-.rule-1 {
-  value: $variable;
-}
+  <% example do %>
+    $variable: value 1;
+    .rule-1 {
+      value: $variable;
+    }
 
-$variable: value 2;
-.rule-2 {
-  value: $variable;
-}
-===
-$variable: value 1
-.rule-1
-  value: $variable
+    $variable: value 2;
+    .rule-2 {
+      value: $variable;
+    }
+    ===
+    $variable: value 1
+    .rule-1
+      value: $variable
 
 
-$variable: value 2
-.rule-2
-  value: $variable
-<% end %>
+    $variable: value 2
+    .rule-2
+      value: $variable
+  <% end %>
 <% end %>
 
 <% fun_fact do %>
-Sass variables, like all Sass identifiers, treat hyphens and underscores as
-identical. This means that `$font-size` and `$font_size` both refer to the same
-variable. This is a historical holdover from the very early days of Sass, when
-it *only* allowed underscores in identifier names. Once Sass added support for
-hyphens to match CSS's syntax, the two were made equivalent to make migration
-easier.
+  Sass variables, like all Sass identifiers, treat hyphens and underscores as
+  identical. This means that `$font-size` and `$font_size` both refer to the
+  same variable. This is a historical holdover from the very early days of Sass,
+  when it *only* allowed underscores in identifier names. Once Sass added
+  support for hyphens to match CSS's syntax, the two were made equivalent to
+  make migration easier.
 <% end %>
 
 ## Default Values
@@ -93,41 +93,41 @@ before they import your library to customize its behavior.
 [`null`]: ../values/null
 
 <% example do %>
-// _library.scss
-$black: #000 !default;
-$border-radius: 0.25rem !default;
-$box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
+  // _library.scss
+  $black: #000 !default;
+  $border-radius: 0.25rem !default;
+  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
 
-code {
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-}
----
-// style.scss
-$black: #222;
-$border-radius: 0.1rem;
+  code {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+  ---
+  // style.scss
+  $black: #222;
+  $border-radius: 0.1rem;
 
-@import 'library';
-===
-// _library.sass
-$black: #000 !default
-$border-radius: 0.25rem !default
-$box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default
+  @import 'library';
+  ===
+  // _library.sass
+  $black: #000 !default
+  $border-radius: 0.25rem !default
+  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default
 
-code
-  border-radius: $border-radius
-  box-shadow: $box-shadow
----
-// style.sass
-$black: #222
-$border-radius: 0.1rem
+  code
+    border-radius: $border-radius
+    box-shadow: $box-shadow
+  ---
+  // style.sass
+  $black: #222
+  $border-radius: 0.1rem
 
-@import 'library'
-===
-code {
-  border-radius: 0.1rem;
-  box-shadow: 0 0.5rem 1rem rgba(#222, 0.15);
-}
+  @import 'library'
+  ===
+  code {
+    border-radius: 0.1rem;
+    box-shadow: 0 0.5rem 1rem rgba(#222, 0.15);
+  }
 <% end %>
 
 ## Scope
@@ -139,34 +139,34 @@ stylesheet! But that's not true for all variables. Those declared in blocks
 only be accessed within the block they were declared.
 
 <% example do %>
-$global-variable: global value;
+  $global-variable: global value;
 
-.content {
-  $local-variable: local value;
-  global: $global-variable;
-  local: $local-variable;
-}
+  .content {
+    $local-variable: local value;
+    global: $global-variable;
+    local: $local-variable;
+  }
 
-.sidebar {
-  global: $global-variable;
+  .sidebar {
+    global: $global-variable;
 
-  // This would fail, because $local-variable isn't in scope:
-  // local: $local-variable;
-}
-===
-$global-variable: global value
+    // This would fail, because $local-variable isn't in scope:
+    // local: $local-variable;
+  }
+  ===
+  $global-variable: global value
 
-.content
-  $local-variable: local value
-  global: $global-variable
-  local: $local-variable
+  .content
+    $local-variable: local value
+    global: $global-variable
+    local: $local-variable
 
 
-.sidebar
-  global: $global-variable
+  .sidebar
+    global: $global-variable
 
-  // This would fail, because $local-variable isn't in scope:
-  // local: $local-variable
+    // This would fail, because $local-variable isn't in scope:
+    // local: $local-variable
 <% end %>
 
 ### Shadowing
@@ -178,26 +178,26 @@ doesn't accidentally change the value of a global variable they aren't even
 aware of.
 
 <% example do %>
-$variable: global value;
+  $variable: global value;
 
-.content {
-  $variable: local value;
-  value: $variable;
-}
+  .content {
+    $variable: local value;
+    value: $variable;
+  }
 
-.sidebar {
-  value: $variable;
-}
-===
-$variable: global value
+  .sidebar {
+    value: $variable;
+  }
+  ===
+  $variable: global value
 
-.content
-  $variable: local value
-  value: $variable
+  .content
+    $variable: local value
+    value: $variable
 
 
-.sidebar
-  value: $variable
+  .sidebar
+    value: $variable
 <% end %>
 
 If you need to set a global variable's value from within a local scope (such as
@@ -205,26 +205,26 @@ in a mixin), you can use the `!global` flag. A variable declaration flagged as
 `!global` will *always* assign to the global scope.
 
 <% example do %>
-$variable: first global value;
+  $variable: first global value;
 
-.content {
-  $variable: second global value !global;
-  value: $variable;
-}
+  .content {
+    $variable: second global value !global;
+    value: $variable;
+  }
 
-.sidebar {
-  value: $variable;
-}
-===
-$variable: first global value
+  .sidebar {
+    value: $variable;
+  }
+  ===
+  $variable: first global value
 
-.content
-  $variable: second global value !global
-  value: $variable
+  .content
+    $variable: second global value !global
+    value: $variable
 
 
-.sidebar
-  value: $variable
+  .sidebar
+    value: $variable
 <% end %>
 
 ### Flow Control Scope
@@ -237,41 +237,41 @@ assign a value to a variable, or build up a value as part of a loop.
 [flow control rules]: ../at-rules/control
 
 <% example do %>
-$dark-theme: true !default;
-$primary-color: #f8bbd0 !default;
-$accent-color: #6a1b9a !default;
+  $dark-theme: true !default;
+  $primary-color: #f8bbd0 !default;
+  $accent-color: #6a1b9a !default;
 
-@if $dark-theme {
-  $primary-color: darken($primary-color, 60%);
-  $accent-color: lighten($accent-color, 60%);
-}
+  @if $dark-theme {
+    $primary-color: darken($primary-color, 60%);
+    $accent-color: lighten($accent-color, 60%);
+  }
 
-.button {
-  background-color: $primary-color;
-  border: 1px solid $accent-color;
-  border-radius: 3px;
-}
-===
-$dark-theme: true !default
-$primary-color: #f8bbd0 !default
-$accent-color: #6a1b9a !default
+  .button {
+    background-color: $primary-color;
+    border: 1px solid $accent-color;
+    border-radius: 3px;
+  }
+  ===
+  $dark-theme: true !default
+  $primary-color: #f8bbd0 !default
+  $accent-color: #6a1b9a !default
 
-@if $dark-theme
-  $primary-color: darken($primary-color, 60%)
-  $accent-color: lighten($accent-color, 60%)
+  @if $dark-theme
+    $primary-color: darken($primary-color, 60%)
+    $accent-color: lighten($accent-color, 60%)
 
 
-.button
-  background-color: $primary-color
-  border: 1px solid $accent-color
-  border-radius: 3px
+  .button
+    background-color: $primary-color
+    border: 1px solid $accent-color
+    border-radius: 3px
 <% end %>
 
 <% heads_up do %>
-Variables in flow control scope can assign to existing variables in the outer
-scope, but they can't declare new variables there. Make sure the variable is
-already declared before you assign to it, even if you need to declare it as
-`null`.
+  Variables in flow control scope can assign to existing variables in the outer
+  scope, but they can't declare new variables there. Make sure the variable is
+  already declared before you assign to it, even if you need to declare it as
+  `null`.
 <% end %>
 
 ## Advanced Variable Functions
@@ -285,30 +285,30 @@ function][] does the same but only for the global scope.
 [`global-variable-exists()` function]: ../functions/meta#global-variable-exists
 
 <% heads_up do %>
-Users occasionally want to use interpolation to define a variable name based on
-another variable. Sass doesn't allow this, because it makes it much harder to
-tell at a glance which variables are defined where. What you *can* do, though,
-is define a [map][] from names to values that you can then access using
-variables.
+  Users occasionally want to use interpolation to define a variable name based
+  on another variable. Sass doesn't allow this, because it makes it much harder
+  to tell at a glance which variables are defined where. What you *can* do,
+  though, is define a [map][] from names to values that you can then access
+  using variables.
 
-[map]: ../values/maps
+  [map]: ../values/maps
 
-<% example do %>
-$theme-colors: (
-  "success": #28a745,
-  "info": #17a2b8,
-  "warning": #ffc107,
-);
+  <% example do %>
+    $theme-colors: (
+      "success": #28a745,
+      "info": #17a2b8,
+      "warning": #ffc107,
+    );
 
-.alert {
-  // Instead of $theme-color-#{warning}
-  background-color: map-get($theme-colors, "warning");
-}
-===
-$theme-colors: ("success": #28a745, "info": #17a2b8, "warning": #ffc107)
+    .alert {
+      // Instead of $theme-color-#{warning}
+      background-color: map-get($theme-colors, "warning");
+    }
+    ===
+    $theme-colors: ("success": #28a745, "info": #17a2b8, "warning": #ffc107)
 
-.alert
-  // Instead of $theme-color-#{warning}
-  background-color: map-get($theme-colors, "warning")
-<% end %>
+    .alert
+      // Instead of $theme-color-#{warning}
+      background-color: map-get($theme-colors, "warning")
+  <% end %>
 <% end %>

@@ -11,20 +11,20 @@ with the filename and line number.
 [expression]: ../syntax/structure#expressions
 
 <% example(autogen_css: false) do %>
-@mixin inset-divider-offset($offset, $padding) {
-  $divider-offset: (2 * $padding) + $offset;
-  @debug "divider offset: #{$divider-offset}";
+  @mixin inset-divider-offset($offset, $padding) {
+    $divider-offset: (2 * $padding) + $offset;
+    @debug "divider offset: #{$divider-offset}";
 
-  margin-left: $divider-offset;
-  width: calc(100% - #{$divider-offset});
-}
-===
-@mixin inset-divider-offset($offset, $padding)
-  $divider-offset: (2 * $padding) + $offset
-  @debug "divider offset: #{$divider-offset}"
+    margin-left: $divider-offset;
+    width: calc(100% - #{$divider-offset});
+  }
+  ===
+  @mixin inset-divider-offset($offset, $padding)
+    $divider-offset: (2 * $padding) + $offset
+    @debug "divider offset: #{$divider-offset}"
 
-  margin-left: $divider-offset
-  width: calc(100% - #{$divider-offset})
+    margin-left: $divider-offset
+    width: calc(100% - #{$divider-offset})
 <% end %>
 
 The exact format of the debug message varies from implementation to
@@ -35,8 +35,8 @@ test.scss:3 Debug: divider offset: 132px
 ```
 
 <% fun_fact do %>
-You can pass any value to `@debug`, not just a string! It prints the same
-representation of that value as the [`inspect()` function][].
+  You can pass any value to `@debug`, not just a string! It prints the same
+  representation of that value as the [`inspect()` function][].
 
-[`inspect()` function]: ../functions/meta#inspect
+  [`inspect()` function]: ../functions/meta#inspect
 <% end %>

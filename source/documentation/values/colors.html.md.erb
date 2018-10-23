@@ -3,10 +3,10 @@ title: Colors
 ---
 
 <% impl_status dart: '1.14.0', libsass: '3.6.0', ruby: '3.6.0' do %>
-Support for [hex colors with an alpha channel][] is not supported by LibSass or
-older versions of Dart or Ruby Sass.
+  Support for [hex colors with an alpha channel][] is not supported by LibSass
+  or older versions of Dart or Ruby Sass.
 
-[hex colors with an alpha channel]: https://drafts.csswg.org/css-color/#hex-notation
+  [hex colors with an alpha channel]: https://drafts.csswg.org/css-color/#hex-notation
 <% end %>
 
 Sass has built-in support for color values. Just like CSS colors, they represent
@@ -26,26 +26,26 @@ codes (`#f2ece4` or `#b37399aa`), [CSS color names][] (`midnightblue`,
 [`hsla()`]: ../functions/colors#hsla
 
 <% example(autogen_css: false) do %>
-@debug #f2ece4; // #f2ece4
-@debug #b37399aa; // rgba(179, 115, 153, 67%)
-@debug midnightblue; // #191970
-@debug rgb(204, 102, 153); // #c69
-@debug rgba(107, 113, 127, 0.8); // rgba(107, 113, 127, 0.8)
-@debug hsl(228, 7%, 86%); // #dadbdf
-@debug hsla(20, 20%, 85%, 0.7); // rgb(225, 215, 210, 0.7)
-===
-@debug #f2ece4  // #f2ece4
-@debug #b37399aa  // rgba(179, 115, 153, 67%)
-@debug midnightblue  // #191970
-@debug rgb(204, 102, 153)  // #c69
-@debug rgba(107, 113, 127, 0.8)  // rgba(107, 113, 127, 0.8)
-@debug hsl(228, 7%, 86%)  // #dadbdf
-@debug hsla(20, 20%, 85%, 0.7)  // rgb(225, 215, 210, 0.7)
+  @debug #f2ece4; // #f2ece4
+  @debug #b37399aa; // rgba(179, 115, 153, 67%)
+  @debug midnightblue; // #191970
+  @debug rgb(204, 102, 153); // #c69
+  @debug rgba(107, 113, 127, 0.8); // rgba(107, 113, 127, 0.8)
+  @debug hsl(228, 7%, 86%); // #dadbdf
+  @debug hsla(20, 20%, 85%, 0.7); // rgb(225, 215, 210, 0.7)
+  ===
+  @debug #f2ece4  // #f2ece4
+  @debug #b37399aa  // rgba(179, 115, 153, 67%)
+  @debug midnightblue  // #191970
+  @debug rgb(204, 102, 153)  // #c69
+  @debug rgba(107, 113, 127, 0.8)  // rgba(107, 113, 127, 0.8)
+  @debug hsl(228, 7%, 86%)  // #dadbdf
+  @debug hsla(20, 20%, 85%, 0.7)  // rgb(225, 215, 210, 0.7)
 <% end %>
 
 <% fun_fact do %>
-No matter how a Sass color is originally written, it can be used with both
-HSL-based and RGB-based functions!
+  No matter how a Sass color is originally written, it can be used with both
+  HSL-based and RGB-based functions!
 <% end %>
 
 CSS supports many different formats that can all represent the same color: its
@@ -65,13 +65,13 @@ hue, saturation, or lightness][].
 [scaling their hue, saturation, or lightness]: ../functions/colors#scale-color
 
 <% example(autogen_css: false) do %>
-$venus: #998099;
+  $venus: #998099;
 
-@debug scale-color($venus, $lightness: +15%); // #a893a8
-@debug mix($venus, midnightblue); // #594d85
-===
-$venus: #998099
+  @debug scale-color($venus, $lightness: +15%); // #a893a8
+  @debug mix($venus, midnightblue); // #594d85
+  ===
+  $venus: #998099
 
-@debug scale-color($venus, $lightness: +15%)  // #a893a8
-@debug mix($venus, midnightblue)  // #594d85
+  @debug scale-color($venus, $lightness: +15%)  // #a893a8
+  @debug mix($venus, midnightblue)  // #594d85
 <% end %>

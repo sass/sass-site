@@ -8,13 +8,13 @@ value, and is often returned by [functions][] to indicate the lack of a result.
 [functions]: ../at-rules/function
 
 <% example(autogen_css: false) do %>
-@debug str-index("Helvetica Neue", "Roboto"); // null
-@debug map-get(("large": 20px), "small"); // null
-@debug &; // null
-===
-@debug str-index("Helvetica Neue", "Roboto")  // null
-@debug map-get(("large": 20px), "small")  // null
-@debug &  // null
+  @debug str-index("Helvetica Neue", "Roboto"); // null
+  @debug map-get(("large": 20px), "small"); // null
+  @debug &; // null
+  ===
+  @debug str-index("Helvetica Neue", "Roboto")  // null
+  @debug map-get(("large": 20px), "small")  // null
+  @debug &  // null
 <% end %>
 
 If a [list][] contains a `null`, that `null` is omitted from the generated CSS.
@@ -22,38 +22,38 @@ If a [list][] contains a `null`, that `null` is omitted from the generated CSS.
 [list]: lists
 
 <% example do %>
-$fonts: ("serif": "Helvetica Neue", "monospace": "Consolas");
+  $fonts: ("serif": "Helvetica Neue", "monospace": "Consolas");
 
-h3 {
-  font: 18px bold map-get($fonts, "sans");
-}
-===
-$fonts: ("serif": "Helvetica Neue", "monospace": "Consolas")
+  h3 {
+    font: 18px bold map-get($fonts, "sans");
+  }
+  ===
+  $fonts: ("serif": "Helvetica Neue", "monospace": "Consolas")
 
-h3
-  font: 18px bold map-get($fonts, "sans")
+  h3
+    font: 18px bold map-get($fonts, "sans")
 <% end %>
 
 If a property value is `null`, that property is omitted entirely.
 
 <% example do %>
-$fonts: ("serif": "Helvetica Neue", "monospace": "Consolas");
+  $fonts: ("serif": "Helvetica Neue", "monospace": "Consolas");
 
-h3 {
-  font: {
-    size: 18px;
-    weight: bold;
-    family: map-get($fonts, "sans");
+  h3 {
+    font: {
+      size: 18px;
+      weight: bold;
+      family: map-get($fonts, "sans");
+    }
   }
-}
-===
-$fonts: ("serif": "Helvetica Neue", "monospace": "Consolas")
+  ===
+  $fonts: ("serif": "Helvetica Neue", "monospace": "Consolas")
 
-h3
-  font:
-    size: 18px
-    weight: bold
-    family: map-get($fonts, "sans")
+  h3
+    font:
+      size: 18px
+      weight: bold
+      family: map-get($fonts, "sans")
 <% end %>
 
 `null` is also [*falsey*][], which means it counts as `false` for any rules or

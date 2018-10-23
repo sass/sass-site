@@ -20,38 +20,38 @@ expression in `#{}` in any of the following places:
 * [Loud comments](../syntax/comments)
 
 <% example do %>
-@mixin corner-icon($name, $top-or-bottom, $left-or-right) {
-  .icon-#{$name} {
-    background-image: url("/icons/#{$name}.svg");
-    position: absolute;
-    #{$top-or-bottom}: 0;
-    #{$left-or-right}: 0;
+  @mixin corner-icon($name, $top-or-bottom, $left-or-right) {
+    .icon-#{$name} {
+      background-image: url("/icons/#{$name}.svg");
+      position: absolute;
+      #{$top-or-bottom}: 0;
+      #{$left-or-right}: 0;
+    }
   }
-}
 
-@include corner-icon("mail", top, left);
-===
-@mixin corner-icon($name, $top-or-bottom, $left-or-right)
-  .icon-#{$name}
-    background-image: url("/icons/#{$name}.svg")
-    position: absolute
-    #{$top-or-bottom}: 0
-    #{$left-or-right}: 0
-
+  @include corner-icon("mail", top, left);
+  ===
+  @mixin corner-icon($name, $top-or-bottom, $left-or-right)
+    .icon-#{$name}
+      background-image: url("/icons/#{$name}.svg")
+      position: absolute
+      #{$top-or-bottom}: 0
+      #{$left-or-right}: 0
 
 
-@include corner-icon("mail", top, right)
+
+  @include corner-icon("mail", top, right)
 <% end %>
 
 ## In SassScript
 
 <% impl_status dart: true, libsass: false, ruby: '4.0.0 (unreleased)' do %>
-LibSass and Ruby Sass currently use an older syntax for parsing interpolation in
-SassScript. For most practical purposes it works the same, but it can behave
-strangely around [operators][]. See [this document][] for details.
+  LibSass and Ruby Sass currently use an older syntax for parsing interpolation
+  in SassScript. For most practical purposes it works the same, but it can
+  behave strangely around [operators][]. See [this document][] for details.
 
-[operators]: operators
-[this document]: https://github.com/sass/language/blob/master/accepted/free-interpolation.md#old-interpolation-rules
+  [operators]: operators
+  [this document]:   https://github.com/sass/language/blob/master/accepted/free-interpolation.md#old-interpolation-rules
 <% end %>
 
 Interpolation can be used in SassScript to inject SassScript into [unquoted
@@ -63,64 +63,64 @@ interpolation in SassScript always returns an unquoted string.
 [slash-separated values]: ../operators/numeric#slash-separated-values
 
 <% example do %>
-@mixin inline-animation($duration) {
-  $name: inline-#{unique-id()};
+  @mixin inline-animation($duration) {
+    $name: inline-#{unique-id()};
 
-  @keyframes #{$name} {
-    @content;
+    @keyframes #{$name} {
+      @content;
+    }
+
+    animation-name: $name;
+    animation-duration: $duration;
+    animation-iteration-count: infinite;
   }
 
-  animation-name: $name;
-  animation-duration: $duration;
-  animation-iteration-count: infinite;
-}
-
-.pulse {
-  @include inline-animation(2s) {
-    from { background-color: yellow }
-    to { background-color: red }
+  .pulse {
+    @include inline-animation(2s) {
+      from { background-color: yellow }
+      to { background-color: red }
+    }
   }
-}
-===
-@mixin inline-animation($duration)
-  $name: inline-#{unique-id()}
+  ===
+  @mixin inline-animation($duration)
+    $name: inline-#{unique-id()}
 
-  @keyframes #{$name}
-    @content
-
-
-  animation-name: $name
-  animation-duration: $duration
-  animation-iteration-count: infinite
+    @keyframes #{$name}
+      @content
 
 
-.pulse
-  @include inline-animation(2s)
-    from
-      background-color: yellow
-    to
-      background-color: red
+    animation-name: $name
+    animation-duration: $duration
+    animation-iteration-count: infinite
+
+
+  .pulse
+    @include inline-animation(2s)
+      from
+        background-color: yellow
+      to
+        background-color: red
 <% end %>
 
 <% fun_fact do %>
-Interpolation is useful for injecting values into strings, but other than that
-it's rarely necessary in SassScript expressions. You definitely *don't* need it
-to just use a variable in a property value. Instead of writing
-`color: #{$accent}`, you can just write `color: $accent`!
+  Interpolation is useful for injecting values into strings, but other than that
+  it's rarely necessary in SassScript expressions. You definitely *don't* need
+  it to just use a variable in a property value. Instead of writing `color:
+  #{$accent}`, you can just write `color: $accent`!
 <% end %>
 
 <% heads_up do %>
-It's almost always a bad idea to use interpolation with numbers. Interpolation
-returns unquoted strings that can't be used for any further math, and it avoids
-Sass's built-in safeguards to ensure that units are used correctly.
+  It's almost always a bad idea to use interpolation with numbers. Interpolation
+  returns unquoted strings that can't be used for any further math, and it
+  avoids Sass's built-in safeguards to ensure that units are used correctly.
 
-Sass has powerful [unit arithmetic][] that you can use instead. For example,
-instead of writing `#{$width}px`, write `$width * 1px`—or better yet, declare
-the `$width` variable in terms of `px` to begin with. That way if `$width`
-already has units, you'll get a nice error message instead of compiling bogus
-CSS.
+  Sass has powerful [unit arithmetic][] that you can use instead. For example,
+  instead of writing `#{$width}px`, write `$width * 1px`—or better yet, declare
+  the `$width` variable in terms of `px` to begin with. That way if `$width`
+  already has units, you'll get a nice error message instead of compiling bogus
+  CSS.
 
-[unit arithmetic]: ../values/numbers#units
+  [unit arithmetic]: ../values/numbers#units
 <% end %>
 
 ## Quoted Strings
@@ -135,18 +135,18 @@ them into style rules.
 [property value]: ../style-rules/declarations
 
 <% example do %>
-.example {
-  unquoted: #{"string"};
-}
-===
-.example
-  unquoted: #{"string"}
+  .example {
+    unquoted: #{"string"};
+  }
+  ===
+  .example
+    unquoted: #{"string"}
 <% end %>
 
 <% heads_up do %>
-While it's tempting to use this feature to convert quoted strings to unquoted
-strings, it's a lot clearer to use the [`unquote()` function][]. Instead of
-`#{$string}`, write `unquote($string)`!
+  While it's tempting to use this feature to convert quoted strings to unquoted
+  strings, it's a lot clearer to use the [`unquote()` function][]. Instead of
+  `#{$string}`, write `unquote($string)`!
 
-[`unquote()` function]: ../functions/strings#unquote
+  [`unquote()` function]: ../functions/strings#unquote
 <% end %>

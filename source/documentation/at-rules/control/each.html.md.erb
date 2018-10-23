@@ -35,37 +35,37 @@ is assigned to the value at the corresponding position in the list, or
 [`null`]: ../../values/null
 
 <% example do %>
-$icons:
-  "eye" "\f112" 12px,
-  "start" "\f12e" 16px,
-  "stop" "\f12f" 10px;
+  $icons:
+    "eye" "\f112" 12px,
+    "start" "\f12e" 16px,
+    "stop" "\f12f" 10px;
 
-@each $name, $glyph, $size in $icons {
-  .icon-#{$name}:before {
-    display: inline-block;
-    font-family: "Icon Font";
-    content: $glyph;
-    font-size: $size;
+  @each $name, $glyph, $size in $icons {
+    .icon-#{$name}:before {
+      display: inline-block;
+      font-family: "Icon Font";
+      content: $glyph;
+      font-size: $size;
+    }
   }
-}
-===
-$icons: "eye" "\f112" 12px, "start" "\f12e" 16px, "stop" "\f12f" 10px;
+  ===
+  $icons: "eye" "\f112" 12px, "start" "\f12e" 16px, "stop" "\f12f" 10px;
 
 
 
 
-@each $name, $glyph, $size in $icons
-  .icon-#{$name}:before
-    display: inline-block
-    font-family: "Icon Font"
-    content: $glyph
-    font-size: $size
+  @each $name, $glyph, $size in $icons
+    .icon-#{$name}:before
+      display: inline-block
+      font-family: "Icon Font"
+      content: $glyph
+      font-size: $size
 <% end %>
 
 <% fun_fact do %>
-Because `@each` supports destructuring and [maps count as lists of lists][],
-`@each`'s map support works without needing special support for maps in
-particular.
+  Because `@each` supports destructuring and [maps count as lists of lists][],
+  `@each`'s map support works without needing special support for maps in
+  particular.
 
-[maps count as lists of lists]: ../../values/maps
+  [maps count as lists of lists]: ../../values/maps
 <% end %>

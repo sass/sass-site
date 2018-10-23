@@ -18,42 +18,42 @@ for their HTML.
 [extended]: ../at-rules/extend
 
 <% example do %>
-%toolbelt {
-  box-sizing: border-box;
-  border-top: 1px rgba(#000, .12) solid;
-  padding: 16px 0;
-  width: 100%;
+  %toolbelt {
+    box-sizing: border-box;
+    border-top: 1px rgba(#000, .12) solid;
+    padding: 16px 0;
+    width: 100%;
 
-  &:hover { border: 2px rgba(#000, .5) solid; }
-}
+    &:hover { border: 2px rgba(#000, .5) solid; }
+  }
 
-.action-buttons {
-  @extend %toolbelt;
-  color: #4285f4;
-}
+  .action-buttons {
+    @extend %toolbelt;
+    color: #4285f4;
+  }
 
-.reset-buttons {
-  @extend %toolbelt;
-  color: #cddc39;
-}
-===
-%toolbelt
-  box-sizing: border-box
-  border-top: 1px rgba(#000, .12) solid
-  padding: 16px 0
-  width: 100%
+  .reset-buttons {
+    @extend %toolbelt;
+    color: #cddc39;
+  }
+  ===
+  %toolbelt
+    box-sizing: border-box
+    border-top: 1px rgba(#000, .12) solid
+    padding: 16px 0
+    width: 100%
 
-  &:hover
-    border: 2px rgba(#000, .5) solid
+    &:hover
+      border: 2px rgba(#000, .5) solid
 
-.action-buttons
-  @extend %toolbelt
-  color: #4285f4
+  .action-buttons
+    @extend %toolbelt
+    color: #4285f4
 
 
-.reset-buttons
-  @extend %toolbelt
-  color: #cddc39
+  .reset-buttons
+    @extend %toolbelt
+    color: #cddc39
 <% end %>
 
 Placeholder selectors are useful when writing a Sass library where each style

@@ -7,18 +7,18 @@ work the same way: you choose which elements to style with a selector, and
 [declare properties][declarations] that affect how those elements look.
 
 <% example do %>
-.button {
-  padding: 3px 10px;
-  font-size: 12px;
-  border-radius: 3px;
-  border: 1px solid #e1e4e8;
-}
-===
-.button
-  padding: 3px 10px
-  font-size: 12px
-  border-radius: 3px
-  border: 1px solid #e1e4e8
+  .button {
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+  }
+  ===
+  .button
+    padding: 3px 10px
+    font-size: 12px
+    border-radius: 3px
+    border: 1px solid #e1e4e8
 <% end %>
 
 [declarations]: style-rules/declarations
@@ -32,10 +32,10 @@ Sass will automatically combine the outer rule's selector with the inner rule's.
 <%= partial "code-snippets/example-nesting.html.erb" %>
 
 <% heads_up do %>
-Nested rules are super helpful, but they can also make it hard to visualize how
-much CSS you're actually generating. The deeper you nest, the more bandwidth it
-takes to serve your CSS and the more work it takes the browser to render it.
-Keep those selectors shallow!
+  Nested rules are super helpful, but they can also make it hard to visualize
+  how much CSS you're actually generating. The deeper you nest, the more
+  bandwidth it takes to serve your CSS and the more work it takes the browser to
+  render it. Keep those selectors shallow!
 <% end %>
 
 ### Selector Lists
@@ -45,19 +45,19 @@ selectors). Each complex selector (the ones between the commas) is nested
 separately, and then they're combined back into a selector list.
 
 <% example do %>
-.alert, .warning {
-  ul, p {
-    margin-right: 0;
-    margin-left: 0;
-    padding-bottom: 0;
+  .alert, .warning {
+    ul, p {
+      margin-right: 0;
+      margin-left: 0;
+      padding-bottom: 0;
+    }
   }
-}
-===
-.alert, .warning
-  ul, p
-    margin-right: 0
-    margin-left: 0
-    padding-bottom: 0
+  ===
+  .alert, .warning
+    ul, p
+      margin-right: 0
+      margin-left: 0
+      padding-bottom: 0
 <% end %>
 
 ### Selector Combinators
@@ -69,42 +69,42 @@ selector, or even all on its own in between the two.
 [combinators]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#Combinators#Combinators
 
 <% example do %>
-ul > {
-  li {
-    list-style-type: none;
-  }
-}
-
-h2 {
-  + p {
-    border-top: 1px solid gray;
-  }
-}
-
-p {
-  ~ {
-    span {
-      opacity: 0.8;
+  ul > {
+    li {
+      list-style-type: none;
     }
   }
-}
-===
-ul >
-  li
-    list-style-type: none
+
+  h2 {
+    + p {
+      border-top: 1px solid gray;
+    }
+  }
+
+  p {
+    ~ {
+      span {
+        opacity: 0.8;
+      }
+    }
+  }
+  ===
+  ul >
+    li
+      list-style-type: none
 
 
 
-h2
-  + p
-    border-top: 1px solid gray
+  h2
+    + p
+      border-top: 1px solid gray
 
 
 
-p
-  ~
-    span
-      opacity: 0.8
+  p
+    ~
+      span
+        opacity: 0.8
 <% end %>
 
 ### Advanced Nesting
@@ -127,33 +127,33 @@ parameters your users pass in.
 [mixins]: at-rules/mixin
 
 <% example do %>
-@mixin define-emoji($name, $glyph) {
-  span.emoji-#{$name} {
-    font-family: IconFont;
-    font-variant: normal;
-    font-weight: normal;
-    content: $glyph;
+  @mixin define-emoji($name, $glyph) {
+    span.emoji-#{$name} {
+      font-family: IconFont;
+      font-variant: normal;
+      font-weight: normal;
+      content: $glyph;
+    }
   }
-}
 
-@include define-emoji("women-holding-hands", "👭");
-===
-@mixin define-emoji($name, $glyph)
-  span.emoji-#{$name}
-    font-family: IconFont
-    font-variant: normal
-    font-weight: normal
-    content: $glyph
-
+  @include define-emoji("women-holding-hands", "👭");
+  ===
+  @mixin define-emoji($name, $glyph)
+    span.emoji-#{$name}
+      font-family: IconFont
+      font-variant: normal
+      font-weight: normal
+      content: $glyph
 
 
-@include define-emoji("women-holding-hands", "👭")
+
+  @include define-emoji("women-holding-hands", "👭")
 <% end %>
 
 <% fun_fact do %>
-Sass only parses selectors *after* interpolation is resolved. This means you can
-safely use interpolation to generate any part of the selector without worrying
-that it won't parse.
+  Sass only parses selectors *after* interpolation is resolved. This means you
+  can safely use interpolation to generate any part of the selector without
+  worrying that it won't parse.
 <% end %>
 
 You can combine interpolation with the parent selector `&`, the [`@at-root`

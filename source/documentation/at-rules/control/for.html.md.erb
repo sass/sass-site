@@ -13,17 +13,17 @@ the final number is excluded; if `through` is used, it's included.
 [expression]: ../syntax/structure#expressions
 
 <% example do %>
-$base-color: #036;
+  $base-color: #036;
 
-@for $i from 1 through 3 {
-  ul:nth-child(3n + #{$i}) {
-    background-color: lighten($base-color, $i * 5%);
+  @for $i from 1 through 3 {
+    ul:nth-child(3n + #{$i}) {
+      background-color: lighten($base-color, $i * 5%);
+    }
   }
-}
-===
-$base-color: #036
+  ===
+  $base-color: #036
 
-@for $i from 1 through 3
-  ul:nth-child(3n + #{$i})
-    background-color: lighten($base-color, $i * 5%)
+  @for $i from 1 through 3
+    ul:nth-child(3n + #{$i})
+      background-color: lighten($base-color, $i * 5%)
 <% end %>

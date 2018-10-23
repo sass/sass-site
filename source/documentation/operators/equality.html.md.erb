@@ -3,11 +3,11 @@ title: Equality Operators
 ---
 
 <% impl_status dart: true, libsass: false, ruby: '4.0.0 (unreleased)' do %>
-LibSass and older versions of Ruby Sass consider numbers without units to be
-equal to the same numbers with any units. This behavior was deprecated and has
-been removed from more recently releases because it violates [transitivity][].
+  LibSass and older versions of Ruby Sass consider numbers without units to be
+  equal to the same numbers with any units. This behavior was deprecated and has
+  been removed from more recently releases because it violates [transitivity][].
 
-[transitivity]: https://en.wikipedia.org/wiki/Transitive_relation
+  [transitivity]: https://en.wikipedia.org/wiki/Transitive_relation
 <% end %>
 
 The equality operators return whether or not two values are the same. They're
@@ -45,57 +45,57 @@ different types:
 [Functions]: ../values/functions
 
 <% example(autogen_css: false) do %>
-@debug 1px == 1px; // true
-@debug 1px != 1em; // true
-@debug 1 != 1px; // true
-@debug 96px == 1in; // true
+  @debug 1px == 1px; // true
+  @debug 1px != 1em; // true
+  @debug 1 != 1px; // true
+  @debug 96px == 1in; // true
 
-@debug "Helvetica" == Helvetica; // true
-@debug "Helvetica" != "Arial"; // true
+  @debug "Helvetica" == Helvetica; // true
+  @debug "Helvetica" != "Arial"; // true
 
-@debug hsl(34, 35%, 92.1%) == #f2ece4; // true
-@debug rgba(179, 115, 153, 0.5) != rgba(179, 115, 153, 0.8); // true
+  @debug hsl(34, 35%, 92.1%) == #f2ece4; // true
+  @debug rgba(179, 115, 153, 0.5) != rgba(179, 115, 153, 0.8); // true
 
-@debug (5px 7px 10px) == (5px 7px 10px); // true
-@debug (5px 7px 10px) != (10px 14px 20px); // true
-@debug (5px 7px 10px) != (5px, 7px, 10px); // true
-@debug (5px 7px 10px) != [5px 7px 10px]; // true
+  @debug (5px 7px 10px) == (5px 7px 10px); // true
+  @debug (5px 7px 10px) != (10px 14px 20px); // true
+  @debug (5px 7px 10px) != (5px, 7px, 10px); // true
+  @debug (5px 7px 10px) != [5px 7px 10px]; // true
 
-$theme: ("venus": #998099, "nebula": #d2e1dd);
-@debug $theme == ("venus": #998099, "nebula": #d2e1dd); // true
-@debug $theme != ("venus": #998099, "iron": #dadbdf); // true
+  $theme: ("venus": #998099, "nebula": #d2e1dd);
+  @debug $theme == ("venus": #998099, "nebula": #d2e1dd); // true
+  @debug $theme != ("venus": #998099, "iron": #dadbdf); // true
 
-@debug true == true; // true
-@debug true != false; // true
-@debug null != false; // true
+  @debug true == true; // true
+  @debug true != false; // true
+  @debug null != false; // true
 
-@debug get-function("rgba") == get-function("rgba"); // true
-@debug get-function("rgba") != get-function("hsla"); // true
-===
-@debug 1px == 1px  // true
-@debug 1px != 1em  // true
-@debug 1 != 1px  // true
-@debug 96px == 1in  // true
+  @debug get-function("rgba") == get-function("rgba"); // true
+  @debug get-function("rgba") != get-function("hsla"); // true
+  ===
+  @debug 1px == 1px  // true
+  @debug 1px != 1em  // true
+  @debug 1 != 1px  // true
+  @debug 96px == 1in  // true
 
-@debug "Helvetica" == Helvetica  // true
-@debug "Helvetica" != "Arial"  // true
+  @debug "Helvetica" == Helvetica  // true
+  @debug "Helvetica" != "Arial"  // true
 
-@debug hsl(34, 35%, 92.1%) == #f2ece4  // true
-@debug rgba(179, 115, 153, 0.5) != rgba(179, 115, 153, 0.8)  // true
+  @debug hsl(34, 35%, 92.1%) == #f2ece4  // true
+  @debug rgba(179, 115, 153, 0.5) != rgba(179, 115, 153, 0.8)  // true
 
-@debug (5px 7px 10px) == (5px 7px 10px)  // true
-@debug (5px 7px 10px) != (10px 14px 20px)  // true
-@debug (5px 7px 10px) != (5px, 7px, 10px)  // true
-@debug (5px 7px 10px) != [5px 7px 10px]  // true
+  @debug (5px 7px 10px) == (5px 7px 10px)  // true
+  @debug (5px 7px 10px) != (10px 14px 20px)  // true
+  @debug (5px 7px 10px) != (5px, 7px, 10px)  // true
+  @debug (5px 7px 10px) != [5px 7px 10px]  // true
 
-$theme: ("venus": #998099, "nebula": #d2e1dd) 
-@debug $theme == ("venus": #998099, "nebula": #d2e1dd)  // true
-@debug $theme != ("venus": #998099, "iron": #dadbdf)  // true
+  $theme: ("venus": #998099, "nebula": #d2e1dd) 
+  @debug $theme == ("venus": #998099, "nebula": #d2e1dd)  // true
+  @debug $theme != ("venus": #998099, "iron": #dadbdf)  // true
 
-@debug true == true  // true
-@debug true != false  // true
-@debug null != false  // true
+  @debug true == true  // true
+  @debug true != false  // true
+  @debug null != false  // true
 
-@debug get-function("rgba") == get-function("rgba")  // true
-@debug get-function("rgba") != get-function("hsla")  // true
+  @debug get-function("rgba") == get-function("rgba")  // true
+  @debug get-function("rgba") != get-function("hsla")  // true
 <% end %>

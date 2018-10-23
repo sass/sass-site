@@ -11,27 +11,27 @@ covers almost all at-rules by default. A CSS at-rule is written
 [interpolation]: ../interpolation
 
 <% example do %>
-@namespace svg url(http://www.w3.org/2000/svg);
+  @namespace svg url(http://www.w3.org/2000/svg);
 
-@font-face {
-  font-family: "Open Sans";
-  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2");
-}
+  @font-face {
+    font-family: "Open Sans";
+    src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
 
-@counter-style thumbs {
-  system: cyclic;
-  symbols: "\1F44D";
-}
-===
-@namespace svg url(http://www.w3.org/2000/svg)
+  @counter-style thumbs {
+    system: cyclic;
+    symbols: "\1F44D";
+  }
+  ===
+  @namespace svg url(http://www.w3.org/2000/svg)
 
-@font-face
-  font-family: "Open Sans"
-  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2")
+  @font-face
+    font-family: "Open Sans"
+    src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2")
 
-@counter-style thumbs
-  system: cyclic
-  symbols: "\1F44D"
+  @counter-style thumbs
+    system: cyclic
+    symbols: "\1F44D"
 <% end %>
 
 If a CSS at-rule is nested within a style rule, the two automatically swap
@@ -40,17 +40,17 @@ style rule is within it. This makes it easy to add conditional styling without
 having to rewrite the style rule's selector.
 
 <% example do %>
-.print-only {
-  display: none;
+  .print-only {
+    display: none;
 
-  @media print { display: block; }
-}
-===
-.print-only
-  display: none
+    @media print { display: block; }
+  }
+  ===
+  .print-only
+    display: none
 
-  @media print
-    display: block
+    @media print
+      display: block
 <% end %>
 
 ## `@media`
@@ -64,19 +64,19 @@ interpolation, it allows [SassScript expressions][] to be used directly in the
 [feature queries]: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Targeting_media_features
 
 <% example do %>
-$layout-breakpoint-small: 960px;
+  $layout-breakpoint-small: 960px;
 
-@media (min-width: $layout-breakpoint-small) {
-  .hide-extra-small {
-    display: none;
+  @media (min-width: $layout-breakpoint-small) {
+    .hide-extra-small {
+      display: none;
+    }
   }
-}
-===
-$layout-breakpoint-small: 960px
+  ===
+  $layout-breakpoint-small: 960px
 
-@media (min-width: $layout-breakpoint-small)
-  .hide-extra-small
-    display: none
+  @media (min-width: $layout-breakpoint-small)
+    .hide-extra-small
+      display: none
 <% end %>
 
 When possible, Sass will also merge media queries that are nested within one
@@ -84,22 +84,22 @@ another to make it easier to support browsers that don't yet natively support
 nested `@media` rules.
 
 <% example do %>
-@media (hover: hover) {
-  .button:hover {
-    border: 2px solid black;
+  @media (hover: hover) {
+    .button:hover {
+      border: 2px solid black;
 
-    @media (color) {
-      border-color: #036;
+      @media (color) {
+        border-color: #036;
+      }
     }
   }
-}
-===
-@media (hover: hover)
-  .button:hover
-    border: 2px solid black
+  ===
+  @media (hover: hover)
+    .button:hover
+      border: 2px solid black
 
-    @media (color)
-      border-color: #036
+      @media (color)
+        border-color: #036
 <% end %>
 
 ## `@supports`
@@ -110,24 +110,24 @@ the declaration queries.
 [`@supports` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
 
 <% example do %>
-@mixin sticky-position {
-  position: fixed;
-  @supports (position: sticky) {
-    position: sticky;
+  @mixin sticky-position {
+    position: fixed;
+    @supports (position: sticky) {
+      position: sticky;
+    }
   }
-}
 
-.banner {
-  @include sticky-position;
-}
-===
-@mixin sticky-position
-  position: fixed
-  @supports (position: sticky)
-    position: sticky
-
+  .banner {
+    @include sticky-position;
+  }
+  ===
+  @mixin sticky-position
+    position: fixed
+    @supports (position: sticky)
+      position: sticky
 
 
-.banner
-  @include sticky-position
+
+  .banner
+    @include sticky-position
 <% end %>

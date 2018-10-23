@@ -23,57 +23,57 @@ is written `@include <name>` or `@include <name>(<arguments...>)`, with the name
 of the mixin being included.
 
 <% example do %>
-@mixin reset-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+  @mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-@mixin horizontal-list {
-  @include reset-list;
+  @mixin horizontal-list {
+    @include reset-list;
 
-  li {
-    display: inline-block;
-    margin: {
-      left: -2px;
-      right: 2em;
+    li {
+      display: inline-block;
+      margin: {
+        left: -2px;
+        right: 2em;
+      }
     }
   }
-}
 
-nav ul {
-  @include horizontal-list;
-}
-===
-@mixin reset-list
-  margin: 0
-  padding: 0
-  list-style: none
+  nav ul {
+    @include horizontal-list;
+  }
+  ===
+  @mixin reset-list
+    margin: 0
+    padding: 0
+    list-style: none
 
 
-@mixin horizontal-list
-  @include reset-list
+  @mixin horizontal-list
+    @include reset-list
 
-  li
-    display: inline-block
-    margin:
-      left: -2px
-      right: 2em
-
+    li
+      display: inline-block
+      margin:
+        left: -2px
+        right: 2em
 
 
 
-nav ul
-  @include horizontal-list
+
+  nav ul
+    @include horizontal-list
 <% end %>
 
 <% fun_fact do %>
-Mixin names, like all Sass identifiers, treat hyphens and underscores as
-identical. This means that `reset-list` and `reset_list` both refer to the same
-mixin. This is a historical holdover from the very early days of Sass, when it
-*only* allowed underscores in identifier names. Once Sass added support for
-hyphens to match CSS's syntax, the two were made equivalent to make migration
-easier.
+  Mixin names, like all Sass identifiers, treat hyphens and underscores as
+  identical. This means that `reset-list` and `reset_list` both refer to the
+  same mixin. This is a historical holdover from the very early days of Sass,
+  when it *only* allowed underscores in identifier names. Once Sass added
+  support for hyphens to match CSS's syntax, the two were made equivalent to
+  make migration easier.
 <% end %>
 
 ## Arguments
@@ -91,33 +91,33 @@ the mixin's body as the corresponding variables.
 [SassScript expressions]: ../syntax/structure#expressions
 
 <% example do %>
-@mixin rtl($property, $ltr-value, $rtl-value) {
-  #{$property}: $ltr-value;
+  @mixin rtl($property, $ltr-value, $rtl-value) {
+    #{$property}: $ltr-value;
 
-  [dir=rtl] & {
-    #{$property}: $rtl-value;
+    [dir=rtl] & {
+      #{$property}: $rtl-value;
+    }
   }
-}
 
-.sidebar {
-  @include rtl(float, left, right);
-}
-===
-@mixin rtl($property, $ltr-value, $rtl-value)
-  #{$property}: $ltr-value
+  .sidebar {
+    @include rtl(float, left, right);
+  }
+  ===
+  @mixin rtl($property, $ltr-value, $rtl-value)
+    #{$property}: $ltr-value
 
-  [dir=rtl] &
-    #{$property}: $rtl-value
-
+    [dir=rtl] &
+      #{$property}: $rtl-value
 
 
-.sidebar
-  @include rtl(float, left, right)
+
+  .sidebar
+    @include rtl(float, left, right)
 <% end %>
 
 <% fun_fact do %>
-Argument lists can also have trailing commas! This can makes it easier to avoid
-syntax errors when refactoring your stylesheets.
+  Argument lists can also have trailing commas! This can makes it easier to
+  avoid syntax errors when refactoring your stylesheets.
 <% end %>
 
 ### Optional Arguments
@@ -133,39 +133,39 @@ APIs that can be used in simple or complex ways.
 [SassScript expression]: ../syntax/structure#expressions
 
 <% example do %>
-@mixin replace-text($image, $x: 50%, $y: 50%) {
-  text-indent: -99999em;
-  overflow: hidden;
-  text-align: left;
+  @mixin replace-text($image, $x: 50%, $y: 50%) {
+    text-indent: -99999em;
+    overflow: hidden;
+    text-align: left;
 
-  background: {
-    image: $image;
-    repeat: no-repeat;
-    position: $x $y;
+    background: {
+      image: $image;
+      repeat: no-repeat;
+      position: $x $y;
+    }
   }
-}
 
-.mail-icon {
-  @include replace-text(url("/images/mail.svg"), 0);
-}
-===
-@mixin replace-text($image, $x: 50%, $y: 50%)
-  text-indent: -99999em
-  overflow: hidden
-  text-align: left
+  .mail-icon {
+    @include replace-text(url("/images/mail.svg"), 0);
+  }
+  ===
+  @mixin replace-text($image, $x: 50%, $y: 50%)
+    text-indent: -99999em
+    overflow: hidden
+    text-align: left
 
-  background:
-    image: $image
-    repeat: no-repeat
-    position: $x $y
+    background:
+      image: $image
+      repeat: no-repeat
+      position: $x $y
 
-.mail-icon
-  @include replace-text(url("/images/mail.svg"), 0)
+  .mail-icon
+    @include replace-text(url("/images/mail.svg"), 0)
 <% end %>
 
 <% fun_fact do %>
-Default values can be any SassScript expression, and they can even refer to
-earlier arguments!
+  Default values can be any SassScript expression, and they can even refer to
+  earlier arguments!
 <% end %>
 
 ### Keyword Arguments
@@ -180,40 +180,40 @@ the same syntax as [variable declarations][] and [optional arguments][].
 [optional arguments]: #optional-arguments
 
 <% example do %>
-@mixin square($size, $radius: 0) {
-  width: $size;
-  height: $size;
+  @mixin square($size, $radius: 0) {
+    width: $size;
+    height: $size;
 
-  @if $radius != 0 {
-    border-radius: $radius;
+    @if $radius != 0 {
+      border-radius: $radius;
+    }
   }
-}
 
-.avatar {
-  @include square(100px, $radius: 4px);
-}
-===
-@mixin square($size, $radius: 0)
-  width: $size
-  height: $size
+  .avatar {
+    @include square(100px, $radius: 4px);
+  }
+  ===
+  @mixin square($size, $radius: 0)
+    width: $size
+    height: $size
 
-  @if $radius != 0
-    border-radius: $radius
-
+    @if $radius != 0
+      border-radius: $radius
 
 
-.avatar
-  @include square(100px, $radius: 4px)
+
+  .avatar
+    @include square(100px, $radius: 4px)
 <% end %>
 
 <% heads_up do %>
-Because *any* argument can be passed by name, be careful when renaming a mixin's
-arguments... it might break your users! It can be helpful to keep the old name
-around as an [optional argument][] for a while and printing a [warning][] if
-anyone passes it, so they know to migrate to the new argument.
+  Because *any* argument can be passed by name, be careful when renaming a
+  mixin's arguments... it might break your users! It can be helpful to keep the
+  old name around as an [optional argument][] for a while and printing a
+  [warning][] if anyone passes it, so they know to migrate to the new argument.
 
-[optional argument]: #optional-arguments
-[warning]: warn
+  [optional argument]: #optional-arguments
+  [warning]: warn
 <% end %>
 
 ### Taking Arbitrary Arguments
@@ -227,29 +227,29 @@ is known as an [argument list][].
 [argument list]: ../values/lists#argument-lists
 
 <% example do %>
-@mixin order($height, $selectors...) {
-  @for $i from 0 to length($selectors) {
-    #{nth($selectors, $i + 1)} {
-      position: absolute;
-      height: $height;
-      margin-top: $i * $height;
+  @mixin order($height, $selectors...) {
+    @for $i from 0 to length($selectors) {
+      #{nth($selectors, $i + 1)} {
+        position: absolute;
+        height: $height;
+        margin-top: $i * $height;
+      }
     }
   }
-}
 
-@include order(150px, "input.name", "input.address", "input.zip");
-===
-@mixin order($height, $selectors...)
-  @for $i from 0 to length($selectors)
-    #{nth($selectors, $i + 1)}
-      position: absolute
-      height: $height
-      margin-top: $i * $height
-
+  @include order(150px, "input.name", "input.address", "input.zip");
+  ===
+  @mixin order($height, $selectors...)
+    @for $i from 0 to length($selectors)
+      #{nth($selectors, $i + 1)}
+        position: absolute
+        height: $height
+        margin-top: $i * $height
 
 
 
-@include order(150px, "input.name", "input.address", "input.zip")
+
+  @include order(150px, "input.name", "input.address", "input.zip")
 <% end %>
 
 #### Taking Arbitrary Keyword Arguments
@@ -267,12 +267,12 @@ that were passed to the mixin as a [map][] from argument names (not including
 <%= partial 'code-snippets/example-mixin-arbitrary-keyword-arguments' %>
 
 <% fun_fact do %>
-If you don't ever pass an argument list to the [`keywords()` function][], that
-argument list won't allow extra keyword arguments. This helps callers of your
-mixin make sure they haven't accidentally written any typos in their argument
-names.
+  If you don't ever pass an argument list to the [`keywords()` function][], that
+  argument list won't allow extra keyword arguments. This helps callers of your
+  mixin make sure they haven't accidentally written any typos in their argument
+  names.
 
-[`keywords()` function]: ../functions/meta#keywords
+  [`keywords()` function]: ../functions/meta#keywords
 <% end %>
 
 #### Passing Arbitrary Arguments
@@ -285,32 +285,32 @@ Similarly, a map followed by `...` will be treated as additional keyword
 arguments. You can even pass both at once!
 
 <% example(autogen_css: false) do %>
-$form-selectors: "input.name", "input.address", "input.zip" !default;
+  $form-selectors: "input.name", "input.address", "input.zip" !default;
 
-@include order(150px, $form-selectors...);
-===
-$form-selectors: "input.name", "input.address", "input.zip" !default
+  @include order(150px, $form-selectors...);
+  ===
+  $form-selectors: "input.name", "input.address", "input.zip" !default
 
-@include order(150px, $form-selectors...)
+  @include order(150px, $form-selectors...)
 <% end %>
 
 <% fun_fact do %>
-Because an [argument list][] keeps track of both positional and keyword
-arguments, you use it to pass both at once to another mixin. That makes it super
-easy to define an alias for a mixin!
+  Because an [argument list][] keeps track of both positional and keyword
+  arguments, you use it to pass both at once to another mixin. That makes it
+  super easy to define an alias for a mixin!
 
-[argument list]: ../values/lists#argument-lists
+  [argument list]: ../values/lists#argument-lists
 
-<% example do %>
-@mixin btn($args...) {
-  @warn "The btn() mixin is deprecated. Include button() instead.";
-  @include button($args...);
-}
-===
-@mixin btn($args...)
-  @warn "The btn() mixin is deprecated. Include button() instead."
-  @include button($args...)
-<% end %>
+  <% example do %>
+    @mixin btn($args...) {
+      @warn "The btn() mixin is deprecated. Include button() instead.";
+      @include button($args...);
+    }
+    ===
+    @mixin btn($args...)
+      @warn "The btn() mixin is deprecated. Include button() instead."
+      @include button($args...)
+  <% end %>
 <% end %>
 
 ## Content Blocks
@@ -322,41 +322,41 @@ using curly braces like any other block in Sass, and it's injected in place of
 the `@content` rule.
 
 <% example do %>
-@mixin hover {
-  &:not([disabled]):hover {
-    @content;
+  @mixin hover {
+    &:not([disabled]):hover {
+      @content;
+    }
   }
-}
 
-.button {
-  border: 1px solid black;
-  @include hover {
-    border-width: 2px;
+  .button {
+    border: 1px solid black;
+    @include hover {
+      border-width: 2px;
+    }
   }
-}
-===
-@mixin hover
-  &:not([disabled]):hover
-    @content
+  ===
+  @mixin hover
+    &:not([disabled]):hover
+      @content
 
 
 
-.button
-  border: 1px solid black
-  @include hover
-    border-width: 2px
+  .button
+    border: 1px solid black
+    @include hover
+      border-width: 2px
 <% end %>
 
 <% fun_fact do %>
-A mixin can include multiple `@content` at-rules. If it does, the content block
-will be included separately for each `@content`.
+  A mixin can include multiple `@content` at-rules. If it does, the content
+  block will be included separately for each `@content`.
 <% end %>
 
 <% heads_up do %>
-A content block is *lexically scoped*, which means it can only see [local
-variables][] in the scope where the mixin is included. It can't see any
-variables that are defined in the mixin it's passed to, even if they're defined
-before the content block is invoked.
+  A content block is *lexically scoped*, which means it can only see [local
+  variables][] in the scope where the mixin is included. It can't see any
+  variables that are defined in the mixin it's passed to, even if they're
+  defined before the content block is invoked.
 <% end %>
 
 [local variables]: ../variables#scope
@@ -371,20 +371,20 @@ it's also harder to understand at a glance and users are encouraged to avoid it.
 [indented syntax]: ../syntax#the-indented-syntax
 
 <% example(syntax: :sass) do %>
-=reset-list
-  margin: 0
-  padding: 0
-  list-style: none
+  =reset-list
+    margin: 0
+    padding: 0
+    list-style: none
 
-=horizontal-list
-  +reset-list
+  =horizontal-list
+    +reset-list
 
-  li
-    display: inline-block
-    margin:
-      left: -2px
-      right: 2em
+    li
+      display: inline-block
+      margin:
+        left: -2px
+        right: 2em
 
-nav ul
-  +horizontal-list
+  nav ul
+    +horizontal-list
 <% end %>

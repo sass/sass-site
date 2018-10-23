@@ -41,30 +41,30 @@ which rules should be excluded; the `(with: ...)` query excludes all rules
 [media query features]: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Targeting_media_features
 
 <% example do %>
-@media print {
-  .page {
-    width: 8in;
+  @media print {
+    .page {
+      width: 8in;
 
-    @at-root (without: media) {
-      color: #111;
-    }
+      @at-root (without: media) {
+        color: #111;
+      }
 
-    @at-root (with: rule) {
-      font-size: 1.2em;
+      @at-root (with: rule) {
+        font-size: 1.2em;
+      }
     }
   }
-}
-===
-@media print
-  .page
-    width: 8in
+  ===
+  @media print
+    .page
+      width: 8in
 
-    @at-root (without: media)
-      color: #111
+      @at-root (without: media)
+        color: #111
 
 
-    @at-root (with: rule)
-      font-size: 1.2em
+      @at-root (with: rule)
+        font-size: 1.2em
 <% end %>
 
 In addition to the names of at-rules, there are two special values that can be

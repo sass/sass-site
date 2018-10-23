@@ -15,23 +15,23 @@ Unlike languages like JavaScript, Sass uses words rather than symbols for its
   is `true`, and `false` if both are `false`.
 
 <% example(autogen_css: false) do %>
-@debug not true; // false
-@debug not false; // true
+  @debug not true; // false
+  @debug not false; // true
 
-@debug true and true; // true
-@debug true and false; // false
+  @debug true and true; // true
+  @debug true and false; // false
 
-@debug true or false; // true
-@debug false or false; // false
-===
-@debug not true  // false
-@debug not false  // true
+  @debug true or false; // true
+  @debug false or false; // false
+  ===
+  @debug not true  // false
+  @debug not false  // true
 
-@debug true and true  // true
-@debug true and false  // false
+  @debug true and true  // true
+  @debug true and false  // false
 
-@debug true or false  // true
-@debug false or false  // false
+  @debug true or false  // true
+  @debug false or false  // false
 <% end %>
 
 <%= partial 'documentation/snippets/truthiness-and-falsiness' %>

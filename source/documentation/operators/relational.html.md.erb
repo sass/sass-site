@@ -19,36 +19,36 @@ another. They automatically convert between compatible units.
 [expression]: ../syntax/structure#expressions
 
 <% example(autogen_css: false) do %>
-@debug 100 > 50; // true
-@debug 10px < 17px; // true
-@debug 96px >= 1in; // true
-@debug 1000ms <= 1s; // true
-===
-@debug 100 > 50  // true
-@debug 10px < 17px  // true
-@debug 96px >= 1in  // true
-@debug 1000ms <= 1s  // true
+  @debug 100 > 50; // true
+  @debug 10px < 17px; // true
+  @debug 96px >= 1in; // true
+  @debug 1000ms <= 1s; // true
+  ===
+  @debug 100 > 50  // true
+  @debug 10px < 17px  // true
+  @debug 96px >= 1in  // true
+  @debug 1000ms <= 1s  // true
 <% end %>
 
 Unitless numbers can be compared with any number. They're automatically
 converted to that number's unit.
 
 <% example(autogen_css: false) do %>
-@debug 100 > 50px; // true
-@debug 10px < 17; // true
-===
-@debug 100 > 50px  // true
-@debug 10px < 17  // true
+  @debug 100 > 50px; // true
+  @debug 10px < 17; // true
+  ===
+  @debug 100 > 50px  // true
+  @debug 10px < 17  // true
 <% end %>
 
 Numbers with incompatible units can't be compared.
 
 <% example(autogen_css: false) do %>
-@debug 100px > 10s;
-//     ^^^^^^^^^^^
-// Error: Incompatible units px and s.
-===
-@debug 100px > 10s
-//     ^^^^^^^^^^^
-// Error: Incompatible units px and s.
+  @debug 100px > 10s;
+  //     ^^^^^^^^^^^
+  // Error: Incompatible units px and s.
+  ===
+  @debug 100px > 10s
+  //     ^^^^^^^^^^^
+  // Error: Incompatible units px and s.
 <% end %>

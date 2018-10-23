@@ -9,20 +9,20 @@ operators for various other types:
 <%= partial 'documentation/snippets/operator-list', locals: {parens: false} %>
 
 <% heads_up do %>
-Early on in Sass's history, it added support for mathematical operations on
-[colors][]. These operations operated on each of the colors' RGB channels
-separately, so adding two colors would produce a color with the sum of their red
-channels as its red channel and so on.
+  Early on in Sass's history, it added support for mathematical operations on
+  [colors][]. These operations operated on each of the colors' RGB channels
+  separately, so adding two colors would produce a color with the sum of their
+  red channels as its red channel and so on.
 
-[colors]: values/colors
+  [colors]: values/colors
 
-This behavior wasn't very useful, since it channel-by-channel RGB arithmetic
-didn't correspond well to how humans perceive color. [Color functions][] were
-added which are much more useful, and color operations were deprecated. They're
-still supported in LibSass and Ruby Sass, but they'll produce warnings and users
-are strongly encouraged to avoid them.
+  This behavior wasn't very useful, since it channel-by-channel RGB arithmetic
+  didn't correspond well to how humans perceive color. [Color functions][] were
+  added which are much more useful, and color operations were deprecated.
+  They're still supported in LibSass and Ruby Sass, but they'll produce warnings
+  and users are strongly encouraged to avoid them.
 
-[Color functions]: functions/colors
+  [Color functions]: functions/colors
 <% end %>
 
 ## Order of Operations
@@ -52,11 +52,11 @@ Sass has a pretty standard [order of operations][], from tightest to loosest:
 [`=` operator]: #single-equals
 
 <% example(autogen_css: false) do %>
-@debug 1 + 2 * 3 == 1 + (2 * 3); // true
-@debug true or false and false == true or (false and false); // true
-===
-@debug 1 + 2 * 3 == 1 + (2 * 3)  // true
-@debug true or false and false == true or (false and false)  // true
+  @debug 1 + 2 * 3 == 1 + (2 * 3); // true
+  @debug true or false and false == true or (false and false); // true
+  ===
+  @debug 1 + 2 * 3 == 1 + (2 * 3)  // true
+  @debug true or false and false == true or (false and false)  // true
 <% end %>
 
 ### Parentheses
@@ -67,11 +67,11 @@ of them. Parentheses can even be nested, in which case the innermost parentheses
 will be evaluated first.
 
 <% example(autogen_css: false) do %>
-@debug (1 + 2) * 3; // 6
-@debug ((1 + 2) * 3 + 4) * 5; // 65
-===
-@debug (1 + 2) * 3  // 6
-@debug ((1 + 2) * 3 + 4) * 5  // 65
+  @debug (1 + 2) * 3; // 6
+  @debug ((1 + 2) * 3 + 4) * 5; // 65
+  ===
+  @debug (1 + 2) * 3  // 6
+  @debug ((1 + 2) * 3 + 4) * 5  // 65
 <% end %>
 
 ## Single Equals
@@ -83,10 +83,10 @@ which just creates an [unquoted string][] with its two operands separated by
 [unquoted string]: values/strings#unquoted
 
 <% example do %>
-.transparent-blue {
-  filter: chroma(color=#0000ff);
-}
-===
-.transparent-blue
-  filter: chroma(color=#0000ff)
+  .transparent-blue {
+    filter: chroma(color=#0000ff);
+  }
+  ===
+  .transparent-blue
+    filter: chroma(color=#0000ff)
 <% end %>

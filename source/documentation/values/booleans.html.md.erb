@@ -12,15 +12,15 @@ well as many built-in functions like [`comparable()`][] and [`map-has-key()`][].
 [`comparable()`]: ../functions/math#comparable
 
 <% example(autogen_css: false) do %>
-@debug 1px == 2px; // false
-@debug 1px == 1px; // true
-@debug 10px < 3px; // false
-@debug comparable(100px, 3in); // true
-===
-@debug 1px == 2px  // false
-@debug 1px == 1px  // true
-@debug 10px < 3px  // false
-@debug comparable(100px, 3in)  // true
+  @debug 1px == 2px; // false
+  @debug 1px == 1px; // true
+  @debug 10px < 3px; // false
+  @debug comparable(100px, 3in); // true
+  ===
+  @debug 1px == 2px  // false
+  @debug 1px == 1px  // true
+  @debug 10px < 3px  // false
+  @debug comparable(100px, 3in)  // true
 <% end %>
 
 You can work with booleans using [boolean operators][]. The `and` operator
@@ -31,23 +31,23 @@ boolean value.
 [boolean operators]: ../operators/boolean
 
 <% example do %>
-@debug true and true; // true
-@debug true and false; // false
+  @debug true and true; // true
+  @debug true and false; // false
 
-@debug true or false; // true
-@debug false or false; // false
+  @debug true or false; // true
+  @debug false or false; // false
 
-@debug not true; // false
-@debug not false; // true
-===
-@debug true and true  // true
-@debug true and false  // false
+  @debug not true; // false
+  @debug not false; // true
+  ===
+  @debug true and true  // true
+  @debug true and false  // false
 
-@debug true or false  // true
-@debug false or false  // false
+  @debug true or false  // true
+  @debug false or false  // false
 
-@debug not true  // false
-@debug not false  // true
+  @debug not true  // false
+  @debug not false  // true
 <% end %>
 
 ## Using Booleans
@@ -65,11 +65,11 @@ another if its argument is `false`:
 [`if()` function]: ../functions#if
 
 <% example(autogen_css: false) do %>
-@debug if(true, 10px, 30px); // 10px
-@debug if(false, 10px, 30px); // 30px
-===
-@debug if(true, 10px, 30px)  // 10px
-@debug if(false, 10px, 30px)  // 30px
+  @debug if(true, 10px, 30px); // 10px
+  @debug if(false, 10px, 30px); // 30px
+  ===
+  @debug if(true, 10px, 30px)  // 10px
+  @debug if(false, 10px, 30px)  // 30px
 <% end %>
 
 <%= partial 'documentation/snippets/truthiness-and-falsiness' %>

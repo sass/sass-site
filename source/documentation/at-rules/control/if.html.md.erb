@@ -20,47 +20,47 @@ An `@if` rule can optionally be followed by an `@else` rule, written
 `false`.
 
 <% example do %>
-$light-background: #f2ece4;
-$light-text: #036;
-$dark-background: #6b717f;
-$dark-text: #d2e1dd;
+  $light-background: #f2ece4;
+  $light-text: #036;
+  $dark-background: #6b717f;
+  $dark-text: #d2e1dd;
 
-@mixin theme-colors($light-theme: true) {
-  @if $light-theme {
-    background-color: $light-background;
-    color: $light-text;
-  } @else {
-    background-color: $dark-background;
-    color: $dark-text;
+  @mixin theme-colors($light-theme: true) {
+    @if $light-theme {
+      background-color: $light-background;
+      color: $light-text;
+    } @else {
+      background-color: $dark-background;
+      color: $dark-text;
+    }
   }
-}
 
-.banner {
-  @include theme-colors($light-theme: true);
-  body.dark & {
-    @include theme-colors($light-theme: false);
+  .banner {
+    @include theme-colors($light-theme: true);
+    body.dark & {
+      @include theme-colors($light-theme: false);
+    }
   }
-}
-===
-$light-background: #f2ece4
-$light-text: #036
-$dark-background: #6b717f
-$dark-text: #d2e1dd
+  ===
+  $light-background: #f2ece4
+  $light-text: #036
+  $dark-background: #6b717f
+  $dark-text: #d2e1dd
 
-@mixin theme-colors($light-theme: true)
-  @if $light-theme
-    background-color: $light-background
-    color: $light-text
-  @else
-    background-color: $dark-background
-    color: $dark-text
-
+  @mixin theme-colors($light-theme: true)
+    @if $light-theme
+      background-color: $light-background
+      color: $light-text
+    @else
+      background-color: $dark-background
+      color: $dark-text
 
 
-.banner
-  @include theme-colors($light-theme: true)
-  body.dark &
-    @include theme-colors($light-theme: false)
+
+  .banner
+    @include theme-colors($light-theme: true)
+    body.dark &
+      @include theme-colors($light-theme: false)
 <% end %>
 
 ### `@else if`
@@ -76,54 +76,54 @@ no others. If there's a plain `@else` at the end of the chain, its block will be
 evaluated if every other block fails.
 
 <% example do %>
-@mixin triangle($size, $color, $direction) {
-  height: 0;
-  width: 0;
+  @mixin triangle($size, $color, $direction) {
+    height: 0;
+    width: 0;
 
-  border-color: transparent;
-  border-style: solid;
-  border-width: $size / 2;
+    border-color: transparent;
+    border-style: solid;
+    border-width: $size / 2;
 
-  @if $direction == up {
-    border-bottom-color: $color;
-  } @else if $direction == right {
-    border-left-color: $color;
-  } @else if $direction == down {
-    border-top-color: $color;
-  } @else if $direction == left {
-    border-right-color: $color;
-  } @else {
-    @error "Unknown direction #{$direction}.";
+    @if $direction == up {
+      border-bottom-color: $color;
+    } @else if $direction == right {
+      border-left-color: $color;
+    } @else if $direction == down {
+      border-top-color: $color;
+    } @else if $direction == left {
+      border-right-color: $color;
+    } @else {
+      @error "Unknown direction #{$direction}.";
+    }
   }
-}
 
-.next {
-  @include triangle(5px, black, right);
-}
-===
-@mixin triangle($size, $color, $direction)
-  height: 0
-  width: 0
+  .next {
+    @include triangle(5px, black, right);
+  }
+  ===
+  @mixin triangle($size, $color, $direction)
+    height: 0
+    width: 0
 
-  border-color: transparent
-  border-style: solid
-  border-width: $size / 2
+    border-color: transparent
+    border-style: solid
+    border-width: $size / 2
 
-  @if $direction == up
-    border-bottom-color: $color
-  @else if $direction == right
-    border-left-color: $color
-  @else if $direction == down
-    border-top-color: $color
-  @else if $direction == left
-    border-right-color: $color
-  @else
-    @error "Unknown direction #{$direction}."
-
+    @if $direction == up
+      border-bottom-color: $color
+    @else if $direction == right
+      border-left-color: $color
+    @else if $direction == down
+      border-top-color: $color
+    @else if $direction == left
+      border-right-color: $color
+    @else
+      @error "Unknown direction #{$direction}."
 
 
-.next
-  @include triangle(5px, black, right)
+
+  .next
+    @include triangle(5px, black, right)
 <% end %>
 
 <%= partial 'documentation/snippets/truthiness-and-falsiness' %>

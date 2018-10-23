@@ -30,20 +30,20 @@ the CSS output.
 [compressed mode]: ../output-styles
 
 <% example(syntax: :scss) do %>
-// This comment won't be included in the CSS.
+  // This comment won't be included in the CSS.
 
-/* But this comment will, except in compressed mode. */
+  /* But this comment will, except in compressed mode. */
 
-/* It can also contain interpolation:
- * 1 + 1 = #{1 + 1} */
+  /* It can also contain interpolation:
+   * 1 + 1 = #{1 + 1} */
 
-/*! This comment will be included even in compressed mode. */
+  /*! This comment will be included even in compressed mode. */
 
-p /* Multi-line comments can be written anywhere
-   * whitespace is allowed. */ .sans {
-  font: Helvetica, // So can single-line commments.
-        sans-serif;
-}
+  p /* Multi-line comments can be written anywhere
+     * whitespace is allowed. */ .sans {
+    font: Helvetica, // So can single-line commments.
+          sans-serif;
+  }
 <% end %>
 
 ## In Sass
@@ -63,18 +63,18 @@ Comments can also be used within [expressions][] in the indented syntax. In this
 case, they have exactly the same syntax as they do in SCSS.
 
 <% example(syntax: :sass) do %>
-// This comment won't be included in the CSS.
-   This is also commented out.
+  // This comment won't be included in the CSS.
+     This is also commented out.
 
-/* But this comment will, except in compressed mode.
+  /* But this comment will, except in compressed mode.
 
-/* It can also contain interpolation:
-   1 + 1 = #{1 + 1}
+  /* It can also contain interpolation:
+     1 + 1 = #{1 + 1}
 
-/*! This comment will be included even in compressed mode.
+  /*! This comment will be included even in compressed mode.
 
-p .sans
-  font: Helvetica, /* Inline comments must be closed. */ sans-serif
+  p .sans
+    font: Helvetica, /* Inline comments must be closed. */ sans-serif
 <% end %>
 
 ## Documentation Comments
@@ -102,32 +102,32 @@ detail.
 [annotations]: http://sassdoc.com/annotations/
 
 <% example do %>
-/// Computes an exponent.
-///
-/// @param {number} $base
-///   The number to multiply by itself.
-/// @param {integer (unitless)} $exponent
-///   The number of `$base`s to multiply together.
-/// @return {number} `$base` to the power of `$exponent`.
-@function pow($base, $exponent) {
-  $result: 1;
-  @for $_ from 1 through $exponent {
-    $result: $result * $base;
+  /// Computes an exponent.
+  ///
+  /// @param {number} $base
+  ///   The number to multiply by itself.
+  /// @param {integer (unitless)} $exponent
+  ///   The number of `$base`s to multiply together.
+  /// @return {number} `$base` to the power of `$exponent`.
+  @function pow($base, $exponent) {
+    $result: 1;
+    @for $_ from 1 through $exponent {
+      $result: $result * $base;
+    }
+    @return $result;
   }
-  @return $result;
-}
-===
-/// Computes an exponent.
-///
-/// @param {number} $base
-///   The number to multiply by itself.
-/// @param {integer (unitless)} $exponent
-///   The number of `$base`s to multiply together.
-/// @return {number} `$base` to the power of `$exponent`.
-@function pow($base, $exponent)
-  $result: 1
-  @for $_ from 1 through $exponent
-    $result: $result * $base
+  ===
+  /// Computes an exponent.
+  ///
+  /// @param {number} $base
+  ///   The number to multiply by itself.
+  /// @param {integer (unitless)} $exponent
+  ///   The number of `$base`s to multiply together.
+  /// @return {number} `$base` to the power of `$exponent`.
+  @function pow($base, $exponent)
+    $result: 1
+    @for $_ from 1 through $exponent
+      $result: $result * $base
 
-  @return $result
+    @return $result
 <% end %>

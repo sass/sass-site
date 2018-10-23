@@ -3,147 +3,147 @@ title: String Functions
 ---
 
 <% function 'quote($string)', returns: 'string' do %>
-Returns `$string` as a quoted string.
+  Returns `$string` as a quoted string.
 
-<% example(autogen_css: false) do %>
-@debug quote(Helvetica); // "Helvetica"
-@debug quote("Helvetica"); // "Helvetica"
-===
-@debug quote(Helvetica)  // "Helvetica"
-@debug quote("Helvetica")  // "Helvetica"
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug quote(Helvetica); // "Helvetica"
+    @debug quote("Helvetica"); // "Helvetica"
+    ===
+    @debug quote(Helvetica)  // "Helvetica"
+    @debug quote("Helvetica")  // "Helvetica"
+  <% end %>
 <% end %>
 
 
 <% function 'str-index($string, $substring)', returns: 'number' do %>
-Returns the first [index][] of `$substring` in `$string`, or `null` if `$string`
-doesn't contain `$substring`.
+  Returns the first [index][] of `$substring` in `$string`, or `null` if
+  `$string` doesn't contain `$substring`.
 
-[index]: ../values/strings#string-indexes
+  [index]: ../values/strings#string-indexes
 
-<% example(autogen_css: false) do %>
-@debug str-index("Helvetica Neue", "Helvetica"); // 1
-@debug str-index("Helvetica Neue", "Neue"); // 11
-===
-@debug str-index("Helvetica Neue", "Helvetica")  // 1
-@debug str-index("Helvetica Neue", "Neue")  // 11
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug str-index("Helvetica Neue", "Helvetica"); // 1
+    @debug str-index("Helvetica Neue", "Neue"); // 11
+    ===
+    @debug str-index("Helvetica Neue", "Helvetica")  // 1
+    @debug str-index("Helvetica Neue", "Neue")  // 11
+  <% end %>
 <% end %>
 
 
 <% function 'str-insert($string, $insert, $index)', returns: 'string' do %>
-Returns a copy of `$string` with `$insert` inserted at [`$index`][].
+  Returns a copy of `$string` with `$insert` inserted at [`$index`][].
 
-[`$index`]: ../values/strings#string-indexes
+  [`$index`]: ../values/strings#string-indexes
 
-<% example(autogen_css: false) do %>
-@debug str-insert("Roboto Bold", " Mono", 7); // "Roboto Mono Bold"
-@debug str-insert("Roboto Bold", " Mono", -6); // "Roboto Mono Bold"
-===
-@debug str-insert("Roboto Bold", " Mono", 7)  // "Roboto Mono Bold"
-@debug str-insert("Roboto Bold", " Mono", -6)  // "Roboto Mono Bold"
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug str-insert("Roboto Bold", " Mono", 7); // "Roboto Mono Bold"
+    @debug str-insert("Roboto Bold", " Mono", -6); // "Roboto Mono Bold"
+    ===
+    @debug str-insert("Roboto Bold", " Mono", 7)  // "Roboto Mono Bold"
+    @debug str-insert("Roboto Bold", " Mono", -6)  // "Roboto Mono Bold"
+  <% end %>
 
-If of `$index` is higher than the length of `$string`, `$insert` is added to the
-end. If `$index` is smaller than the negative length of the string, `$insert` is
-added to the beginning.
+  If of `$index` is higher than the length of `$string`, `$insert` is added to
+  the end. If `$index` is smaller than the negative length of the string,
+  `$insert` is added to the beginning.
 
-<% example(autogen_css: false) do %>
-@debug str-insert("Roboto", " Bold", 100); // "Roboto Bold"
-@debug str-insert("Bold", "Roboto ", -100); // "Roboto Bold"
-===
-@debug str-insert("Roboto", " Bold", 100)  // "Roboto Bold"
-@debug str-insert("Bold", "Roboto ", -100)  // "Roboto Bold"
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug str-insert("Roboto", " Bold", 100); // "Roboto Bold"
+    @debug str-insert("Bold", "Roboto ", -100); // "Roboto Bold"
+    ===
+    @debug str-insert("Roboto", " Bold", 100)  // "Roboto Bold"
+    @debug str-insert("Bold", "Roboto ", -100)  // "Roboto Bold"
+  <% end %>
 <% end %>
 
 
 <% function 'str-length($string)', returns: 'number' do %>
-Returns the number of characters in `$string`.
+  Returns the number of characters in `$string`.
 
-<% example(autogen_css: false) do %>
-@debug str-length("Helvetica Neue"); // 14
-@debug str-length(bold); // 4
-@debug str-index(""); // 0
-===
-@debug str-length("Helvetica Neue")  // 14
-@debug str-length(bold)  // 4
-@debug str-index("")  // 0
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug str-length("Helvetica Neue"); // 14
+    @debug str-length(bold); // 4
+    @debug str-index(""); // 0
+    ===
+    @debug str-length("Helvetica Neue")  // 14
+    @debug str-length(bold)  // 4
+    @debug str-index("")  // 0
+  <% end %>
 <% end %>
 
 
 <% function 'str-slice($string, $start-at, $end-at: -1)', returns: 'string' do %>
-Returns the slice of `$string` starting at [index][] `$start-at` and ending at
-index `$end-at` (both inclusive).
+  Returns the slice of `$string` starting at [index][] `$start-at` and ending at
+  index `$end-at` (both inclusive).
 
-[index]: ../values/strings#string-indexes
+  [index]: ../values/strings#string-indexes
 
-<% example(autogen_css: false) do %>
-@debug str-slice("Helvetica Neue", 11); // "Neue"
-@debug str-slice("Helvetica Neue", 1, 3); // "Hel"
-@debug str-slice("Helvetica Neue", 1, -6); // "Helvetica"
-===
-@debug str-slice("Helvetica Neue", 11)  // "Neue"
-@debug str-slice("Helvetica Neue", 1, 3)  // "Hel"
-@debug str-slice("Helvetica Neue", 1, -6)  // "Helvetica"
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug str-slice("Helvetica Neue", 11); // "Neue"
+    @debug str-slice("Helvetica Neue", 1, 3); // "Hel"
+    @debug str-slice("Helvetica Neue", 1, -6); // "Helvetica"
+    ===
+    @debug str-slice("Helvetica Neue", 11)  // "Neue"
+    @debug str-slice("Helvetica Neue", 1, 3)  // "Hel"
+    @debug str-slice("Helvetica Neue", 1, -6)  // "Helvetica"
+  <% end %>
 <% end %>
 
 
 <% function 'to-upper-case($string)', returns: 'string' do %>
-Returns a copy of `$string` with the [ASCII][] letters converted to upper case.
+  Returns a copy of `$string` with the [ASCII][] letters converted to upper case.
 
-[ASCII]: https://en.wikipedia.org/wiki/ASCII
+  [ASCII]: https://en.wikipedia.org/wiki/ASCII
 
-<% example(autogen_css: false) do %>
-@debug to-upper-case("Bold"); // "BOLD"
-@debug to-upper-case(sans-serif); // SANS-SERIF
-===
-@debug to-upper-case("Bold")  // "BOLD"
-@debug to-upper-case(sans-serif)  // SANS-SERIF
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug to-upper-case("Bold"); // "BOLD"
+    @debug to-upper-case(sans-serif); // SANS-SERIF
+    ===
+    @debug to-upper-case("Bold")  // "BOLD"
+    @debug to-upper-case(sans-serif)  // SANS-SERIF
+  <% end %>
 <% end %>
 
 
 <% function 'to-lower-case($string)', returns: 'string' do %>
-Returns a copy of `$string` with the [ASCII][] letters converted to lower case.
+  Returns a copy of `$string` with the [ASCII][] letters converted to lower case.
 
-[ASCII]: https://en.wikipedia.org/wiki/ASCII
+  [ASCII]: https://en.wikipedia.org/wiki/ASCII
 
-<% example(autogen_css: false) do %>
-@debug to-upper-case("Bold"); // "bold"
-@debug to-upper-case(SANS-SERIF); // sans-serif
-===
-@debug to-upper-case("Bold")  // "bold"
-@debug to-upper-case(SANS-SERIF)  // sans-serif
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug to-upper-case("Bold"); // "bold"
+    @debug to-upper-case(SANS-SERIF); // sans-serif
+    ===
+    @debug to-upper-case("Bold")  // "bold"
+    @debug to-upper-case(SANS-SERIF)  // sans-serif
+  <% end %>
 <% end %>
 
 
 <% function 'unique-id()', returns: 'string' do %>
-Returns a randomly-generated unquoted string that's guaranteed to be a valid CSS
-identifier and to be unique within the current Sass compilation.
+  Returns a randomly-generated unquoted string that's guaranteed to be a valid
+  CSS identifier and to be unique within the current Sass compilation.
 
-<% example(autogen_css: false) do %>
-@debug unique-id(); // uabtrnzug
-@debug unique-id(); // u6w1b1def
-===
-@debug unique-id(); // uabtrnzug
-@debug unique-id(); // u6w1b1def
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug unique-id(); // uabtrnzug
+    @debug unique-id(); // u6w1b1def
+    ===
+    @debug unique-id(); // uabtrnzug
+    @debug unique-id(); // u6w1b1def
+  <% end %>
 <% end %>
 
 
 <% function 'unquote()', returns: 'string' do %>
-Returns `$string` as an unquoted string. This can produce strings that aren't
-valid CSS, so use with caution.
+  Returns `$string` as an unquoted string. This can produce strings that aren't
+  valid CSS, so use with caution.
 
-<% example(autogen_css: false) do %>
-@debug unquote("Helvetica"); // Helvetica
-@debug unquote(".widget:hover"); // .widget:hover
-===
-@debug unquote("Helvetica")  // Helvetica
-@debug unquote(".widget:hover")  // .widget:hover
-<% end %>
+  <% example(autogen_css: false) do %>
+    @debug unquote("Helvetica"); // Helvetica
+    @debug unquote(".widget:hover"); // .widget:hover
+    ===
+    @debug unquote("Helvetica")  // Helvetica
+    @debug unquote(".widget:hover")  // .widget:hover
+  <% end %>
 <% end %>

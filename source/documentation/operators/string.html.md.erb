@@ -21,15 +21,15 @@ Sass supports a few operators that generate [strings][]:
 [interpolation]: ../interpolation
 
 <% example(autogen_css: false) do %>
-@debug "Helvetica" + " Neue"; // "Helvetica Neue"
-@debug sans- + serif; // sans-serif
-@debug #{10px + 5px} / 30px; // 15px/30px
-@debug sans - serif; // sans-serif
-===
-@debug "Helvetica" + " Neue"  // "Helvetica Neue"
-@debug sans- + serif  // sans-serif
-@debug #{10px + 5px} / 30px  // 15px/30px
-@debug sans - serif  // sans-serif
+  @debug "Helvetica" + " Neue"; // "Helvetica Neue"
+  @debug sans- + serif; // sans-serif
+  @debug #{10px + 5px} / 30px; // 15px/30px
+  @debug sans - serif; // sans-serif
+  ===
+  @debug "Helvetica" + " Neue"  // "Helvetica Neue"
+  @debug sans- + serif  // sans-serif
+  @debug #{10px + 5px} / 30px  // 15px/30px
+  @debug sans - serif  // sans-serif
 <% end %>
 
 These operators don't just work for strings! They can be used with any values
@@ -44,15 +44,15 @@ that can be written to CSS, with a few exceptions:
 [color]: ../operators
 
 <% example(autogen_css: false) do %>
-@debug "Elapsed time: " + 10s; // "Elapsed time: 10s";
-@debug true + " is a boolean value"; // "true is a boolean value";
+  @debug "Elapsed time: " + 10s; // "Elapsed time: 10s";
+  @debug true + " is a boolean value"; // "true is a boolean value";
 <% end %>
 
 <% heads_up do %>
-It's often cleaner and clearer to use [interpolation][] to create strings,
-rather than relying on this operators.
+  It's often cleaner and clearer to use [interpolation][] to create strings,
+  rather than relying on this operators.
 
-[interpolation]: ../interpolation
+  [interpolation]: ../interpolation
 <% end %>
 
 ## Unary Operators
@@ -66,9 +66,9 @@ which take only one value:
   the expression's value.
 
 <% example(autogen_css: false) do %>
-@debug / 15px; // /15px
-@debug - moz; // -moz
-===
-@debug / 15px  // /15px
-@debug - moz  // -moz
+  @debug / 15px; // /15px
+  @debug - moz; // -moz
+  ===
+  @debug / 15px  // /15px
+  @debug - moz  // -moz
 <% end %>

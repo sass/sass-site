@@ -21,56 +21,56 @@ required to have quotes.
 [indented syntax]: ../syntax#the-indented-syntax
 
 <% example do %>
-// foundation/_code.scss
-code {
-  padding: .25em;
-  line-height: 0;
-}
----
-// foundation/_lists.scss
-ul, ol {
-  text-align: left;
+  // foundation/_code.scss
+  code {
+    padding: .25em;
+    line-height: 0;
+  }
+  ---
+  // foundation/_lists.scss
+  ul, ol {
+    text-align: left;
 
-  & & {
-    padding: {
-      bottom: 0;
-      left: 0;
+    & & {
+      padding: {
+        bottom: 0;
+        left: 0;
+      }
     }
   }
-}
----
-// style.scss
-@import 'foundation/code', 'foundation/lists';
-===
-// foundation/_code.sass
-code
-  padding: .25em
-  line-height: 0
----
-// foundation/_lists.sass
-ul, ol
-  text-align: left
+  ---
+  // style.scss
+  @import 'foundation/code', 'foundation/lists';
+  ===
+  // foundation/_code.sass
+  code
+    padding: .25em
+    line-height: 0
+  ---
+  // foundation/_lists.sass
+  ul, ol
+    text-align: left
 
-  & &
-    padding:
-      bottom: 0
-      left: 0
----
-// style.sass
-@import foundation/code, foundation/lists
-===
-code {
-  padding: .25em;
-  line-height: 0;
-}
+    & &
+      padding:
+        bottom: 0
+        left: 0
+  ---
+  // style.sass
+  @import foundation/code, foundation/lists
+  ===
+  code {
+    padding: .25em;
+    line-height: 0;
+  }
 
-ul, ol {
-  text-align: left;
-}
-ul ul, ol ol {
-  padding-bottom: 0;
-  padding-left: 0;
-}
+  ul, ol {
+    text-align: left;
+  }
+  ul ul, ol ol {
+    padding-bottom: 0;
+    padding-left: 0;
+  }
 <% end %>
 
 When Sass imports a file, that file is evaluated as though its contents appeared
@@ -81,9 +81,10 @@ mixins, functions, or variables that were defined before the `@import`
 (including from other `@import`s) are available in the imported stylesheet.
 
 <% heads_up do %>
-If the same stylesheet is imported more than once, it will be evaluated again
-each time. If it just defines functions and mixins, this usually isn't a big
-deal, but if it contains style rules they'll be compiled to CSS more than once.
+  If the same stylesheet is imported more than once, it will be evaluated again
+  each time. If it just defines functions and mixins, this usually isn't a big
+  deal, but if it contains style rules they'll be compiled to CSS more than
+  once.
 <% end %>
 
 ## Finding the File
@@ -95,9 +96,9 @@ the file you want to import; `@import "variables"` will automatically load
 `variables.scss`, `variables.sass`, or `variables.css`.
 
 <% heads_up do %>
-To ensure that stylesheets work on every operating system, Sass imports files by
-*URL*, not by *file path*. This means you need to use forward slashes, not
-backslashes, even when you're on Windows.
+  To ensure that stylesheets work on every operating system, Sass imports files
+  by *URL*, not by *file path*. This means you need to use forward slashes, not
+  backslashes, even when you're on Windows.
 <% end %>
 
 ### Load Paths
@@ -113,8 +114,8 @@ ensures that you can't accidentally mess up your relative imports when you add a
 new library.
 
 <% fun_fact do %>
-Unlike some other languages, Sass doesn't require that you use `./` for relative
-imports. Relative imports are always available.
+  Unlike some other languages, Sass doesn't require that you use `./` for
+  relative imports. Relative imports are always available.
 <% end %>
 
 ### Partials
@@ -132,62 +133,62 @@ If you write an `_index.scss` or `_index.sass` in a folder, when the folder
 itself is imported that file will be loaded in its place.
 
 <% example do %>
-// foundation/_code.scss
-code {
-  padding: .25em;
-  line-height: 0;
-}
----
-// foundation/_lists.scss
-ul, ol {
-  text-align: left;
+  // foundation/_code.scss
+  code {
+    padding: .25em;
+    line-height: 0;
+  }
+  ---
+  // foundation/_lists.scss
+  ul, ol {
+    text-align: left;
 
-  & & {
-    padding: {
-      bottom: 0;
-      left: 0;
+    & & {
+      padding: {
+        bottom: 0;
+        left: 0;
+      }
     }
   }
-}
----
-// foundation/_index.scss
-@import 'code', 'lists';
----
-// style.scss
-@import 'foundation';
-===
-// foundation/_code.sass
-code
-  padding: .25em
-  line-height: 0
----
-// foundation/_lists.sass
-ul, ol
-  text-align: left
+  ---
+  // foundation/_index.scss
+  @import 'code', 'lists';
+  ---
+  // style.scss
+  @import 'foundation';
+  ===
+  // foundation/_code.sass
+  code
+    padding: .25em
+    line-height: 0
+  ---
+  // foundation/_lists.sass
+  ul, ol
+    text-align: left
 
-  & &
-    padding:
-      bottom: 0
-      left: 0
----
-// foundation/_index.sass
-@import code, lists
----
-// style.sass
-@import foundation
-===
-code {
-  padding: .25em;
-  line-height: 0;
-}
+    & &
+      padding:
+        bottom: 0
+        left: 0
+  ---
+  // foundation/_index.sass
+  @import code, lists
+  ---
+  // style.sass
+  @import foundation
+  ===
+  code {
+    padding: .25em;
+    line-height: 0;
+  }
 
-ul, ol {
-  text-align: left;
-}
-ul ul, ol ol {
-  padding-bottom: 0;
-  padding-left: 0;
-}
+  ul, ol {
+    text-align: left;
+  }
+  ul ul, ol ol {
+    padding-bottom: 0;
+    padding-left: 0;
+  }
 <% end %>
 
 ### Custom Importers
@@ -225,97 +226,97 @@ nested import are still defined globally, though.
 [plain CSS at-rules]: css
 
 <% example do %>
-// _theme.scss
-pre, code {
-  font-family: 'Source Code Pro', Helvetica, Arial;
-  border-radius: 4px;
-}
----
-// style.scss
-.theme-sample {
-  @import "theme";
-}
-===
-// _theme.sass
-pre, code
-  font-family: 'Source Code Pro', Helvetica, Arial
-  border-radius: 4px
----
-// style.sas
-.theme-sample
-  @import theme
-===
-.theme-sample pre, .theme-sample code {
-  font-family: 'Source Code Pro', Helvetica, Arial;
-  border-radius: 4px;
-}
+  // _theme.scss
+  pre, code {
+    font-family: 'Source Code Pro', Helvetica, Arial;
+    border-radius: 4px;
+  }
+  ---
+  // style.scss
+  .theme-sample {
+    @import "theme";
+  }
+  ===
+  // _theme.sass
+  pre, code
+    font-family: 'Source Code Pro', Helvetica, Arial
+    border-radius: 4px
+  ---
+  // style.sas
+  .theme-sample
+    @import theme
+  ===
+  .theme-sample pre, .theme-sample code {
+    font-family: 'Source Code Pro', Helvetica, Arial;
+    border-radius: 4px;
+  }
 <% end %>
 
 <% fun_fact do %>
-Nested imports are very useful for scoping third-party stylesheets, but if
-you're the author of the stylesheet you're importing, it's usually a better idea
-to write your styles in a [mixin][] and include that mixin in the nested
-context. A mixin can be used in more flexible ways, and it's clearer when
-looking at the imported stylesheet how it's intended to be used.
+  Nested imports are very useful for scoping third-party stylesheets, but if
+  you're the author of the stylesheet you're importing, it's usually a better
+  idea to write your styles in a [mixin][] and include that mixin in the nested
+  context. A mixin can be used in more flexible ways, and it's clearer when
+  looking at the imported stylesheet how it's intended to be used.
 
-[mixin]: mixins
+  [mixin]: mixins
 <% end %>
 
 <% heads_up do %>
-The CSS in nested imports is evaluated like a mixin, which means that any
-[parent selectors][] will refer to the selector in which the stylesheet is
-nested.
+  The CSS in nested imports is evaluated like a mixin, which means that any
+  [parent selectors][] will refer to the selector in which the stylesheet is
+  nested.
 
-[parent selectors]: ../style-rules/parent-selector
+  [parent selectors]: ../style-rules/parent-selector
 
-<% example do %>
-// _theme.scss
-ul li {
-  $padding: 16px;
-  padding-left: $padding;
-  [dir=rtl] & {
-    padding: {
-      left: 0;
-      right: $padding;
+  <% example do %>
+    // _theme.scss
+    ul li {
+      $padding: 16px;
+      padding-left: $padding;
+      [dir=rtl] & {
+        padding: {
+          left: 0;
+          right: $padding;
+        }
+      }
     }
-  }
-}
----
-// style.scss
-.theme-sample {
-  @import "theme";
-}
-===
-// _theme.sass
-ul li
-  $padding: 16px
-  padding-left: $padding
-  [dir=rtl] &
-    padding:
-      left: 0
-      right: $padding
----
-// style.sass
-.theme-sample
-  @import theme
-===
-.theme-sample ul li {
-  padding-left: 16px;
-}
-[dir=rtl] .theme-sample ul li {
-  padding-left: 0;
-  padding-right: 16px;
-}
-<% end %>
+    ---
+    // style.scss
+    .theme-sample {
+      @import "theme";
+    }
+    ===
+    // _theme.sass
+    ul li
+      $padding: 16px
+      padding-left: $padding
+      [dir=rtl] &
+        padding:
+          left: 0
+          right: $padding
+    ---
+    // style.sass
+    .theme-sample
+      @import theme
+    ===
+    .theme-sample ul li {
+      padding-left: 16px;
+    }
+    [dir=rtl] .theme-sample ul li {
+      padding-left: 0;
+      padding-right: 16px;
+    }
+  <% end %>
 <% end %>
 
 ## Importing CSS
 
 <% impl_status dart: '1.11.0', libsass: false, ruby: false do %>
-LibSass supports importing files with the extension `.css`, but contrary to the
-specification they're treated as SCSS files rather than being parsed as CSS.
-This behavior has been deprecated, and an update is in the works to support the
-behavior described below.
+  LibSass supports importing files with the extension `.css`, but contrary to
+  the specification they're treated as SCSS files rather than being parsed as
+  CSS. This behavior has been deprecated, and an update is in the works to
+  support the behavior described below.
 <% end %>
 
 In addition to importing `.sass` and `.scss` files, Sass can import plain old
@@ -325,28 +326,28 @@ In addition to importing `.sass` and `.scss` files, Sass can import plain old
 [plain CSS `@import`]: #plain-css-imports
 
 <% example do %>
-// code.css
-code {
-  padding: .25em;
-  line-height: 0;
-}
----
-// style.scss
-@import 'code';
-===
-// code.css
-code {
-  padding: .25em;
-  line-height: 0;
-}
----
-// style.sass
-@import code
-===
-code {
-  padding: .25em;
-  line-height: 0;
-}
+  // code.css
+  code {
+    padding: .25em;
+    line-height: 0;
+  }
+  ---
+  // style.scss
+  @import 'code';
+  ===
+  // code.css
+  code {
+    padding: .25em;
+    line-height: 0;
+  }
+  ---
+  // style.sass
+  @import code
+  ===
+  code {
+    padding: .25em;
+    line-height: 0;
+  }
 <% end %>
 
 CSS files imported by Sass don't allow any special Sass features. In order to
@@ -369,15 +370,15 @@ compile any `@import`s with the following characteristics to plain CSS imports:
 * Imports that have media queries.
 
 <% example do %>
-@import "theme.css";
-@import "http://fonts.googleapis.com/css?family=Droid+Sans";
-@import url(theme);
-@import "landscape" screen and (orientation: landscape);
-===
-@import "theme.css"
-@import "http://fonts.googleapis.com/css?family=Droid+Sans"
-@import url(theme)
-@import "landscape" screen and (orientation: landscape)
+  @import "theme.css";
+  @import "http://fonts.googleapis.com/css?family=Droid+Sans";
+  @import url(theme);
+  @import "landscape" screen and (orientation: landscape);
+  ===
+  @import "theme.css"
+  @import "http://fonts.googleapis.com/css?family=Droid+Sans"
+  @import url(theme)
+  @import "landscape" screen and (orientation: landscape)
 <% end %>
 
 ### Interpolation
@@ -390,15 +391,15 @@ for example based on mixin parameters.
 [interpolation]: ../interpolation
 
 <% example do %>
-@mixin google-font($family) {
-  @import url("http://fonts.googleapis.com/css?family=#{$family}");
-}
+  @mixin google-font($family) {
+    @import url("http://fonts.googleapis.com/css?family=#{$family}");
+  }
 
-@include google-font("Droid Sans");
-===
-@mixin google-font($family)
-  @import url("http://fonts.googleapis.com/css?family=#{$family}")
+  @include google-font("Droid Sans");
+  ===
+  @mixin google-font($family)
+    @import url("http://fonts.googleapis.com/css?family=#{$family}")
 
 
-@include google-font("Droid Sans")
+  @include google-font("Droid Sans")
 <% end %>

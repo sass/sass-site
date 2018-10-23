@@ -34,23 +34,23 @@ Sass's `@extend` rule solves this. It's written `@extend <selector>`, and it
 tells Sass that one selector should inherit the styles of another.
 
 <% example do %>
-.error {
-  border: 1px #f00;
-  background-color: #fdd;
+  .error {
+    border: 1px #f00;
+    background-color: #fdd;
 
-  &--serious {
-    @extend .error;
-    border-width: 3px;
+    &--serious {
+      @extend .error;
+      border-width: 3px;
+    }
   }
-}
-===
-.error
-  border: 1px #f00
-  background-color: #fdd
+  ===
+  .error
+    border: 1px #f00
+    background-color: #fdd
 
-  &--serious
-    @extend .error
-    border-width: 3px
+    &--serious
+      @extend .error
+      border-width: 3px
 <% end %>
 
 When one class extends another, Sass styles all elements that match the extender
@@ -65,33 +65,33 @@ extend *everywhere* the selector is used. This ensures that your elements are
 styled exactly as if they matched the extended selector.
 
 <% example do %>
-.error:hover {
-  background-color: #fee;
-}
+  .error:hover {
+    background-color: #fee;
+  }
 
-.error--serious {
-  @extend .error;
-  border-width: 3px;
-}
-===
-.error:hover
-  background-color: #fee
+  .error--serious {
+    @extend .error;
+    border-width: 3px;
+  }
+  ===
+  .error:hover
+    background-color: #fee
 
 
-.error--serious
-  @extend .error
-  border-width: 3px
+  .error--serious
+    @extend .error
+    border-width: 3px
 <% end %>
 
 <% heads_up do %>
-Extends are resolved after the rest of your stylesheet is compiled. In
-particular, it happens after [parent selectors][] are resolved. This means that
-if you `@extend .error`, it won't affect the inner selector in
-`.error { &__icon { ... } }`. It also means that [parent selectors in
-SassScript][] can't see the results of extend.
+  Extends are resolved after the rest of your stylesheet is compiled. In
+  particular, it happens after [parent selectors][] are resolved. This means that
+  if you `@extend .error`, it won't affect the inner selector in
+  `.error { &__icon { ... } }`. It also means that [parent selectors in
+  SassScript][] can't see the results of extend.
 
-[parent selectors]: ../style-rules/parent-selector
-[parent selectors in SassScript]: ../style-rules/parent-selector#in-sassscript
+  [parent selectors]: ../style-rules/parent-selector
+  [parent selectors in SassScript]: ../style-rules/parent-selector#in-sassscript
 <% end %>
 
 ## How It Works
@@ -123,69 +123,69 @@ unification*:
 [universal selectors]: https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors
 
 <% example do %>
-.content nav.sidebar {
-  @extend .info;
-}
+  .content nav.sidebar {
+    @extend .info;
+  }
 
-// This won't be extended, because `p` is incompatible with `nav`.
-p.info {
-  background-color: #dee9fc;
-}
+  // This won't be extended, because `p` is incompatible with `nav`.
+  p.info {
+    background-color: #dee9fc;
+  }
 
-// There's no way to know whether `<div class="guide">` will be inside or
-// outside `<div class="content">`, so Sass generates both to be safe.
-.guide .info {
-  border: 1px solid rgba(#000, 0.8);
-  border-radius: 2px;
-}
+  // There's no way to know whether `<div class="guide">` will be inside or
+  // outside `<div class="content">`, so Sass generates both to be safe.
+  .guide .info {
+    border: 1px solid rgba(#000, 0.8);
+    border-radius: 2px;
+  }
 
-// Sass knows that every element matching "main.content" also matches ".content"
-// and avoids generating unnecessary interleaved selectors.
-main.content .info {
-  font-size: 0.8em;
-}
-===
-.content nav.sidebar
-  @extend .info
-
-
-// This won't be extended, because `p` is incompatible with `nav`.
-p.info
-  background-color: #dee9fc
+  // Sass knows that every element matching "main.content" also matches ".content"
+  // and avoids generating unnecessary interleaved selectors.
+  main.content .info {
+    font-size: 0.8em;
+  }
+  ===
+  .content nav.sidebar
+    @extend .info
 
 
-// There's no way to know whether `<div class="guide">` will be inside or
-// outside `<div class="content">`, so Sass generates both to be safe.
-.guide .info
-  border: 1px solid rgba(#000, 0.8)
-  border-radius: 2px
+  // This won't be extended, because `p` is incompatible with `nav`.
+  p.info
+    background-color: #dee9fc
 
 
-// Sass knows that every element matching "main.content" also matches ".content"
-// and avoids generating unnecessary interleaved selectors.
-main.content .info
-  font-size: 0.8em
+  // There's no way to know whether `<div class="guide">` will be inside or
+  // outside `<div class="content">`, so Sass generates both to be safe.
+  .guide .info
+    border: 1px solid rgba(#000, 0.8)
+    border-radius: 2px
+
+
+  // Sass knows that every element matching "main.content" also matches ".content"
+  // and avoids generating unnecessary interleaved selectors.
+  main.content .info
+    font-size: 0.8em
 <% end %>
 
 <% fun_fact do %>
-You can directly access Sass's intelligent unification using [selector
-functions][]! The [`selector-unify()` function][] returns a selector that
-matches the intersection of two selectors, while the [`selector-extend()`
-function][] works just like `@extend`, but on a single selector.
+  You can directly access Sass's intelligent unification using [selector
+  functions][]! The [`selector-unify()` function][] returns a selector that
+  matches the intersection of two selectors, while the [`selector-extend()`
+  function][] works just like `@extend`, but on a single selector.
 
-[selector functions]: ../functions/selectors
-[`selector-unify()` function]: ../functions/selectors#selector-unify
-[`selector-extend()` function]: ../functions/selectors#selector-extend
+  [selector functions]: ../functions/selectors
+  [`selector-unify()` function]: ../functions/selectors#selector-unify
+  [`selector-extend()` function]: ../functions/selectors#selector-extend
 <% end %>
 
 <% heads_up do %>
-Because `@extend` updates style rules that contain the extended selector, their
-styles have precedence in [the cascade][] based on where the extended selector's
-style rules appear, *not* based on where the `@extend` appears. This can be
-confusing, but just remember: this is the same precedence those rules would have
-if you added the extended class to your HTML!
+  Because `@extend` updates style rules that contain the extended selector, their
+  styles have precedence in [the cascade][] based on where the extended selector's
+  style rules appear, *not* based on where the `@extend` appears. This can be
+  confusing, but just remember: this is the same precedence those rules would have
+  if you added the extended class to your HTML!
 
-[the cascade]: https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade
+  [the cascade]: https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade
 <% end %>
 
 ## Placeholder Selectors
@@ -226,28 +226,28 @@ extend `.error`. But for non-semantic collections of styles, writing a mixin can
 avoid cascade headaches and make it easier to configure down the line.
 
 <% fun_fact do %>
-Most web servers compress the CSS they serve using an algorithm that's very good
-at handling repeated chunks of identical text. This means that, although mixins
-may produce more CSS than extends, they probably won't substantially increase
-the amount your users need to download. So choose the feature that makes the
-most sense for your use-case, not the one that generates the least CSS!
+  Most web servers compress the CSS they serve using an algorithm that's very good
+  at handling repeated chunks of identical text. This means that, although mixins
+  may produce more CSS than extends, they probably won't substantially increase
+  the amount your users need to download. So choose the feature that makes the
+  most sense for your use-case, not the one that generates the least CSS!
 
-[gzip]: https://en.wikipedia.org/wiki/Gzip
+  [gzip]: https://en.wikipedia.org/wiki/Gzip
 <% end %>
 
 ## Limitations
 
 <% impl_status dart: true, libsass: false, ruby: false do %>
-LibSass and Ruby Sass currently allow complex selectors like `.message.info` to
-be extended. However, this behavior didn't match the definition of `@extend`:
-instead of styling elements that matched the extending selector as though it had
-`class="message info"`, which would be affected by style rules that included
-either `.message` *or* `.info`, it only styled them with rules that included
-both `.message` *and* `info`.
+  LibSass and Ruby Sass currently allow complex selectors like `.message.info` to
+  be extended. However, this behavior didn't match the definition of `@extend`:
+  instead of styling elements that matched the extending selector as though it had
+  `class="message info"`, which would be affected by style rules that included
+  either `.message` *or* `.info`, it only styled them with rules that included
+  both `.message` *and* `info`.
 
-In order to keep the definition of `@extend` straightforward and understandable,
-and to keep the implementation clean and efficient, that behavior is now
-deprecated and will be removed from future versions.
+  In order to keep the definition of `@extend` straightforward and understandable,
+  and to keep the implementation clean and efficient, that behavior is now
+  deprecated and will be removed from future versions.
 <% end %>
 
 Only *simple selectors*—individual selectors like `.info` or `a`—can be
@@ -263,24 +263,24 @@ confusion of looking like it's doing something substantially different, so this
 isn't allowed either.
 
 <% example(autogen_css: false) do %>
-.alert {
-  @extend .message.info;
-  //      ^^^^^^^^^^^^^
-  // Error: Write @extend .message, .info instead.
+  .alert {
+    @extend .message.info;
+    //      ^^^^^^^^^^^^^
+    // Error: Write @extend .message, .info instead.
 
-  @extend .main .info;
-  //      ^^^^^^^^^^^
-  // Error: write @extend .info instead.
-}
-===
-.alert
-  @extend .message.info
-  //      ^^^^^^^^^^^^^
-  // Error: Write @extend .message, .info instead.
+    @extend .main .info;
+    //      ^^^^^^^^^^^
+    // Error: write @extend .info instead.
+  }
+  ===
+  .alert
+    @extend .message.info
+    //      ^^^^^^^^^^^^^
+    // Error: Write @extend .message, .info instead.
 
-  @extend .main .info
-  //      ^^^^^^^^^^^
-  // Error: write @extend .info instead.
+    @extend .main .info
+    //      ^^^^^^^^^^^
+    // Error: write @extend .info instead.
 <% end %>
 
 ### Extend in `@media`
@@ -294,28 +294,28 @@ duplicating the entire style rule.
 [`@media` and other CSS at-rules]: css
 
 <% example(autogen_css: false) do %>
-@media screen and (max-width: 600px) {
-  .error--serious {
-    @extend .error;
-    //      ^^^^^^
-    // Error: ".error" was extended in @media, but used outside it.
+  @media screen and (max-width: 600px) {
+    .error--serious {
+      @extend .error;
+      //      ^^^^^^
+      // Error: ".error" was extended in @media, but used outside it.
+    }
   }
-}
 
-.error {
-  border: 1px #f00;
-  background-color: #fdd;
-}
-===
-@media screen and (max-width: 600px)
-  .error--serious
-    @extend .error
-    //      ^^^^^^
-    // Error: ".error" was extended in @media, but used outside it.
-
+  .error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  ===
+  @media screen and (max-width: 600px)
+    .error--serious
+      @extend .error
+      //      ^^^^^^
+      // Error: ".error" was extended in @media, but used outside it.
 
 
-.error
-  border: 1px #f00
-  background-color: #fdd
+
+  .error
+    border: 1px #f00
+    background-color: #fdd
 <% end %>

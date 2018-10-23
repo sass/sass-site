@@ -391,6 +391,12 @@ MARKDOWN
     end.join(" | ")
   end
 
+  # Removes leading spaces from every non-empty line in `text` while preserving
+  # relative indentation.
+  def remove_leading_indentation(text)
+    text.gsub(/^#{text.scan(/^ *(?=\S)/).min}/, "")
+  end
+
   # A helper method that renders a chunk of Markdown text.
   def _render_markdown(content)
     @redcarpet ||= Redcarpet::Markdown.new(
@@ -401,7 +407,10 @@ MARKDOWN
   end
 
   # Captures the contents of `block` from ERB or Haml.
+  #
+  # Strips all leading indentation from the block.
   def _capture(&block)
-    block_is_haml?(block) ? capture_haml(&block) : capture(&block)
+    remove_leading_indentation(
+      block_is_haml?(block) ? capture_haml(&block) : capture(&block))
   end
 end

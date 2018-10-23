@@ -3,8 +3,8 @@ title: Lists
 ---
 
 <% impl_status dart: true, libsass: '3.5.0', ruby: '3.5.0' do %>
-Older implementations of LibSass and Ruby Sass didn't support lists with square
-brackets.
+  Older implementations of LibSass and Ruby Sass didn't support lists with
+  square brackets.
 <% end %>
 
 Lists contain a sequence of other values. In Sass, elements in lists can be
@@ -27,8 +27,8 @@ value, which means you rarely need to explicitly create single-element lists.
 [list functions]: ../functions/lists
 
 <% heads_up do %>
-Empty lists without brackets aren't valid CSS, so Sass won't let you use one in
-a property value.
+  Empty lists without brackets aren't valid CSS, so Sass won't let you use one
+  in a property value.
 <% end %>
 
 ## Using Lists
@@ -79,11 +79,11 @@ modify the original list.
 [immutable]: #immutability
 
 <% example(autogen_css: false) do %>
-@debug append(10px 12px 16px, 25px); // 10px 12px 16px 25px
-@debug append([col1-line1], col1-line2); // [col1-line1, col1-line2]
-===
-@debug append(10px 12px 16px, 25px)  // 10px 12px 16px 25px
-@debug append([col1-line1], col1-line2)  // [col1-line1, col1-line2]
+  @debug append(10px 12px 16px, 25px); // 10px 12px 16px 25px
+  @debug append([col1-line1], col1-line2); // [col1-line1, col1-line2]
+  ===
+  @debug append(10px 12px 16px, 25px)  // 10px 12px 16px 25px
+  @debug append([col1-line1], col1-line2)  // [col1-line1, col1-line2]
 <% end %>
 
 ### Find an Element in a List
@@ -106,24 +106,24 @@ check whether a list does or doesn't contain a given value.
 [`if()`]: ../functions#if
 
 <% example do %>
-$valid-sides: top, bottom, left, right;
+  $valid-sides: top, bottom, left, right;
 
-@mixin attach($side) {
-  @if not index($valid-sides, $side) {
-    @error "#{$side} is not a valid side. Expected one of #{$sides}.";
+  @mixin attach($side) {
+    @if not index($valid-sides, $side) {
+      @error "#{$side} is not a valid side. Expected one of #{$sides}.";
+    }
+
+    // ...
   }
+  ===
+  $valid-sides: top, bottom, left, right
 
-  // ...
-}
-===
-$valid-sides: top, bottom, left, right
-
-@mixin attach($side)
-  @if not index($valid-sides, $side)
-    @error "#{$side} is not a valid side. Expected one of #{$sides}."
+  @mixin attach($side)
+    @if not index($valid-sides, $side)
+      @error "#{$side} is not a valid side. Expected one of #{$sides}."
 
 
-  // ...
+    // ...
 <% end %>
 
 ## Immutability
@@ -138,29 +138,29 @@ variable, though. This is often used in functions and mixins to collect a bunch
 of values into one list.
 
 <% example do %>
-$prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms);
+  $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms);
 
-@function prefixes-for-browsers($browsers) {
-  $prefixes: ();
-  @each $browser in $browsers {
-    $prefixes: append($prefixes, map-get($prefixes-by-browser, $browser));
+  @function prefixes-for-browsers($browsers) {
+    $prefixes: ();
+    @each $browser in $browsers {
+      $prefixes: append($prefixes, map-get($prefixes-by-browser, $browser));
+    }
+    @return $prefixes;
   }
-  @return $prefixes;
-}
 
-@debug prefixes-for-browsers("firefox" "ie"); // moz ms
-===
-$prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms)
+  @debug prefixes-for-browsers("firefox" "ie"); // moz ms
+  ===
+  $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms)
 
-@function prefixes-for-browsers($browsers)
-  $prefixes: ()
-  @each $browser in $browsers
-    $prefixes: append($prefixes, map-get($prefixes-by-browser, $browser))
+  @function prefixes-for-browsers($browsers)
+    $prefixes: ()
+    @each $browser in $browsers
+      $prefixes: append($prefixes, map-get($prefixes-by-browser, $browser))
 
-  @return $prefixes
+    @return $prefixes
 
 
-@debug prefixes-for-browsers("firefox" "ie")  // moz ms
+  @debug prefixes-for-browsers("firefox" "ie")  // moz ms
 <% end %>
 
 ## Argument Lists

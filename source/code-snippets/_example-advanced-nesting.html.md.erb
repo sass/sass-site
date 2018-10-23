@@ -5,31 +5,31 @@ uses the [`selector-unify()` function][] to combine `&` with a user's selector.
 [`selector-unify()` function]: ../functions/selectors#selector-unify
 
 <% example do %>
-@mixin unify-parent($child) {
-  @at-root #{selector-unify(&, $child)} {
-    @content;
+  @mixin unify-parent($child) {
+    @at-root #{selector-unify(&, $child)} {
+      @content;
+    }
   }
-}
 
-.wrapper .field {
-  @include unify-parent("input") {
-    /* ... */
+  .wrapper .field {
+    @include unify-parent("input") {
+      /* ... */
+    }
+    @include unify-parent("select") {
+      /* ... */
+    }
   }
-  @include unify-parent("select") {
-    /* ... */
-  }
-}
-===
-@mixin unify-parent($child)
-  @at-root #{selector-unify(&, $child)}
-    @content
+  ===
+  @mixin unify-parent($child)
+    @at-root #{selector-unify(&, $child)}
+      @content
 
 
 
-.wrapper .field
-  @include unify-parent("input")
-    /* ...
+  .wrapper .field
+    @include unify-parent("input")
+      /* ...
 
-  @include unify-parent("select")
-    /* ...
+    @include unify-parent("select")
+      /* ...
 <% end %>

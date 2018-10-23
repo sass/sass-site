@@ -16,40 +16,40 @@ called. Unlike the [`@error` rule][], though, it doesn't stop Sass entirely.
 [`@error` rule]: error
 
 <% example do %>
-$known-prefixes: webkit, moz, ms, o;
+  $known-prefixes: webkit, moz, ms, o;
 
-@mixin prefix($property, $value, $prefixes) {
-  @each $prefix in $prefixes {
-    @if not index($known-prefixes, $prefix) {
-      @warn "Unknown prefix #{$prefix}.";
+  @mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+      @if not index($known-prefixes, $prefix) {
+        @warn "Unknown prefix #{$prefix}.";
+      }
+
+      -#{$prefix}-#{$property}: $value;
     }
-
-    -#{$prefix}-#{$property}: $value;
+    #{$property}: $value;
   }
-  #{$property}: $value;
-}
 
-.tilt {
-  // Oops, we typo'd "webkit" as "wekbit"!
-  @include prefix(transform, rotate(15deg), wekbit ms);
-}
-===
-$known-prefixes: webkit, moz, ms, o
+  .tilt {
+    // Oops, we typo'd "webkit" as "wekbit"!
+    @include prefix(transform, rotate(15deg), wekbit ms);
+  }
+  ===
+  $known-prefixes: webkit, moz, ms, o
 
-@mixin prefix($property, $value, $prefixes)
-  @each $prefix in $prefixes
-    @if not index($known-prefixes, $prefix)
-      @warn "Unknown prefix #{$prefix}."
+  @mixin prefix($property, $value, $prefixes)
+    @each $prefix in $prefixes
+      @if not index($known-prefixes, $prefix)
+        @warn "Unknown prefix #{$prefix}."
 
 
-    -#{$prefix}-#{$property}: $value
+      -#{$prefix}-#{$property}: $value
 
-  #{$property}: $value
+    #{$property}: $value
 
 
-.tilt
-  // Oops, we typo'd "webkit" as "wekbit"!
-  @include prefix(transform, rotate(15deg), wekbit ms)
+  .tilt
+    // Oops, we typo'd "webkit" as "wekbit"!
+    @include prefix(transform, rotate(15deg), wekbit ms)
 <% end %>
 
 The exact format of the warning and stack trace varies from implementation to
