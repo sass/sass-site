@@ -198,6 +198,10 @@ module SassHelpers
     text = content_tag(:div, contents,
       class: "code-example",
       "data-unique-id": @unique_id)
+
+    # An extra newline before a closing tag causes Markdown to interpret it as a
+    # new paragraph.
+    text = text.gsub(%r{\n</div>}, '</div>')
     if block_is_haml?(block)
       haml_concat text
     else
