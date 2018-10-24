@@ -1,0 +1,275 @@
+---
+title: Introspection Functions
+---
+
+<% function 'call($function, $args...)' do %>
+  <%= partial 'documentation/snippets/call-impl-status' %>
+
+  Invokes `$function` with `$args` and returns the result.
+
+  The `$function` should be a [function][] returned by [`get-function()`][].
+
+  [function]: ../values/functions
+  [`get-function()`]: #get-function
+
+  <%= partial 'code-snippets/example-first-class-function' %>
+<% end %>
+
+
+<% function 'content-exists()', returns: 'boolean' do %>
+  Returns whether the current mixin was passed a [`@content` block][].
+
+  [`@content` block]: ../at-rules/mixin#content-blocks
+
+  Throws an error if called outside of a mixin.
+
+  <% example(autogen_css: false) do %>
+    @mixin debug-content-exists {
+      @debug content-exists();
+      @content;
+    }
+
+    @include debug-content-exists; // false
+    @include debug-content-exists { // true
+      // Content!
+    }
+    ===
+    @mixin debug-content-exists
+      @debug content-exists()
+      @content
+
+
+    @include debug-content-exists  // false
+    @include debug-content-exists   // true
+      // Content!
+  <% end %>
+<% end %>
+
+
+<% function 'feature-exists($feature)', returns: 'boolean' do %>
+  Returns whether the current Sass implementation supports `$feature`.
+
+  The `$feature` must be a string. The currently recognized features are:
+
+  * `global-variable-shadowing`, which means that a local variable will
+    [shadow][] a global variable unless it has the `!global` flag.
+  * `extend-selector-pseudoclass`, which means that the [`@extend` rule][] will
+    affect selectors nested in pseudo-classes like `:not()`.
+  * `units-level3`, which means that [unit arithmetic][] supports units defined
+    in [CSS Values and Units Level 3][].
+  * `at-error`, which means that the [`@error` rule][] is supported.
+  * `custom-property`, which means that [custom property declaration][] values
+    don't support any [expressions][] other than [interpolation][].
+
+  [shadow]: ../variables#shadowing
+  [`@extend` rule]: ../at-rules/extend
+  [unit arithmetic]: ../values/numbers#units
+  [CSS Values and Units Level 3]: http://www.w3.org/TR/css3-values
+  [`@error` rule]: ../at-rules/error
+  [custom property declaration]: ../style-rules/declarations#custom-properties
+  [expressions]: ../syntax/structure#expressions
+  [interpolation]: ../interpolation
+
+  Returns `false` for any unrecognized `$feature`.
+
+  <% example(autogen_css: false) do %>
+    @debug feature-exists("at-error"); // true
+    @debug feature-exists("unrecognized"); // false
+    ===
+    @debug feature-exists("at-error")  // true
+    @debug feature-exists("unrecognized")  // false
+  <% end %>
+<% end %>
+
+
+<% function 'function-exists($name)', returns: 'boolean' do %>
+  Returns whether a function named `$name` is defined, either as a built-in
+  function or a user-defined function.
+
+  <% example(autogen_css: false) do %>
+    @debug function-exists("scale-color"); // true
+    @debug function-exists("add"); // false
+
+    @function add($num1, $num2) {
+      @return $num1 + $num2;
+    }
+    @debug function-exists("add"); // true
+    ===
+    @debug function-exists("scale-color")  // true
+    @debug function-exists("add")  // false
+
+    @function add($num1, $num2)
+      @return $num1 + $num2
+
+    @debug function-exists("add")  // true
+  <% end %>
+<% end %>
+
+
+<% function 'get-function($name, $css: false)', returns: 'function' do %>
+  Returns the [function][] named `$name`.
+
+  [function]: ../values/functions
+
+  This can access both built-in and [user-defined][] functions. By default, it
+  throws an error if `$name` doesn't refer to either a built-in or user-defined
+  function. However, if `$css` is `true`, it instead returns a
+  [plain CSS function][].
+
+  [user-defined]: ../at-rules/function
+  [plain CSS function]: css
+
+  The returned function can be called using [`call()`](#call).
+
+  <%= partial 'code-snippets/example-first-class-function' %>
+<% end %>
+
+
+<% function 'global-variable-exists($name)', returns: 'boolean' do %>
+  Returns whether a [global variable][] named `$name` (without the `$`) exists.
+
+  [global variable]: ../variables#scope
+
+  See also [`variable-exists()`](#variable-exists).
+
+  <% example(autogen_css: false) do %>
+    @debug global-variable-exists("var1"); // false
+
+    $var1: value;
+    @debug global-variable-exists("var1"); // true
+
+    h1 {
+      // $var2 is local.
+      $var2: value;
+      @debug global-variable-exists("var2"); // false
+    }
+    ===
+    @debug global-variable-exists("var1")  // false
+
+    $var1: value 
+    @debug global-variable-exists("var1")  // true
+
+    h1
+      // $var2 is local.
+      $var2: value
+      @debug global-variable-exists("var2")  // false
+  <% end %>
+<% end %>
+
+
+<% function 'inspect($value)', returns: 'unquoted string' do %>
+
+  Returns a string representation of `$value`.
+  
+  Returns a representation of *any* Sass value, not just those that can be
+  represented in CSS. As such, its return value is not guaranteed to be valid
+  CSS.
+
+  <% heads_up do %>
+    This function is intended for debugging; its output format is not guaranteed
+    to be consistent across Sass versions or implementations.
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug inspect(10px 20px 30px); // unquote("10px 20px 30px")
+    @debug inspect(("width": 200px)); // unquote('("width": 200px)')
+    @debug inspect(null); // unquote("null")
+    @debug inspect("Helvetica"); // unquote('"Helvetica"')
+    ===
+    @debug inspect(10px 20px 30px)  // unquote("10px 20px 30px")
+    @debug inspect(("width": 200px))  // unquote('("width": 200px)')
+    @debug inspect(null)  // unquote("null")
+    @debug inspect("Helvetica")  // unquote('"Helvetica"')
+  <% end %>
+<% end %>
+
+
+<% function 'mixin-exists($name)', returns: 'boolean' do %>
+  Returns whether a [mixin][] named `$name` exists.
+
+  [mixin]: ../at-rules/mixin
+
+  <% example(autogen_css: false) do %>
+    @debug mixin-exists("shadow-none"); // false
+
+    @mixin shadow-none {
+      box-shadow: none;
+    }
+
+    @debug mixin-exists("shadow-none"); // true
+    ===
+    @debug mixin-exists("shadow-none")  // false
+
+    @mixin shadow-none
+      box-shadow: none
+
+
+    @debug mixin-exists("shadow-none")  // true
+  <% end %>
+<% end %>
+
+
+<% function 'type-of($value)', returns: 'unquoted string' do %>
+  Returns the type of `$value`.
+
+  This can return the following values:
+
+  * [`number`](../values/numbers)
+  * [`string`](../values/strings)
+  * [`color`](../values/colors)
+  * [`list`](../values/lists)
+  * [`map`](../values/maps)
+  * [`bool`](../values/booleans)
+  * [`null`](../values/null)
+  * [`function`](../values/functions)
+  * [`arglist`](../values/lists#argument-lists)
+
+  New possible values may be added in the future. It may return either `list` or
+  `map` for `()`, depending on whether or not it was returned by a
+  [map function][].
+
+  [map function]: map
+
+  <% example(autogen_css: false) do %> 
+    @debug type-of(10px); // number
+    @debug type-of(10px 20px 30px); // list
+    @debug type-of(()); // list
+    ===
+    @debug type-of(10px)  // number
+    @debug type-of(10px 20px 30px)  // list
+    @debug type-of(())  // list
+  <% end %>
+<% end %>
+
+
+<% function 'variable-exists($name)', returns: 'boolean' do %>
+  Returns whether a variable named `$name` (without the `$`) exists in the
+  current [scope][].
+
+  [scope]: ../variables#scope
+
+  See also [`global-variable-exists()`](#global-variable-exists).
+
+  <% example(autogen_css: false) do %>
+    @debug variable-exists("var1"); // false
+
+    $var1: value;
+    @debug variable-exists("var1"); // true
+
+    h1 {
+      // $var2 is local.
+      $var2: value;
+      @debug variable-exists("var2"); // true
+    }
+    ===
+    @debug variable-exists("var1")  // false
+
+    $var1: value 
+    @debug variable-exists("var1")  // true
+
+    h1
+      // $var2 is local.
+      $var2: value
+      @debug variable-exists("var2")  // true
+  <% end %>
+<% end %>

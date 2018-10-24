@@ -1,0 +1,50 @@
+<%# TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass %>
+
+<% example do %>
+  /// Return a copy of $list with all elements for which $condition returns `true`
+  /// removed.
+  @function remove-where($list, $condition) {
+    $new-list: ();
+    $separator: list-separator($list);
+    @each $element in $list {
+      @if not call($condition, $element) {
+        $new-list: append($new-list, $element, $separator: $separator);
+      }
+    }
+    @return $new-list;
+  }
+
+  $fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  content {
+    @function contains-helvetica($string) {
+      @return str-index($string, "Helvetica");
+    }
+    font-family: remove-where($fonts, get-function("contains-helvetica"));
+  }
+  ===
+  /// Return a copy of $list with all elements for which $condition returns `true`
+  /// removed.
+  @function remove-where($list, $condition)
+    $new-list: ()
+    $separator: list-separator($list)
+    @each $element in $list
+      @if not call($condition, $element)
+        $new-list: append($new-list, $element, $separator: $separator)
+
+
+    @return $new-list
+
+
+  $fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif
+
+  content
+    @function contains-helvetica($string)
+      @return str-index($string, "Helvetica")
+
+    font-family: remove-where($fonts, get-function("contains-helvetica"))
+  ===
+  content {
+    font-family: Tahoma, Geneva, Arial, sans-serif;
+  }
+<% end %>

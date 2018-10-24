@@ -33,6 +33,28 @@ title: Number Functions
 <% end %>
 
 
+<% function 'comparable($number1, $number2)', returns: 'boolean' do %>
+  Returns whether `$number1` and `$number2` have compatible units.
+
+  If this returns `true`, `$number1` and `$number2` can safely be [added][],
+  [subtracted][], and [compared][]. Otherwise, doing so will produce errors.
+
+  [added]: ../operators/numeric
+  [subtracted]: ../operators/numeric
+  [compared]: ../operators/relational
+
+  <% example(autogen_css: false) do %>
+    @debug comparable(2px, 1px); // true
+    @debug comparable(100px, 3em); // false
+    @debug comparable(10cm, 3mm); // true
+    ===
+    @debug comparable(2px, 1px)  // true
+    @debug comparable(100px, 3em)  // false
+    @debug comparable(10cm, 3mm)  // true
+  <% end %>
+<% done %>
+
+
 <% function 'floor($number)', returns: 'number' do %>
   Rounds `$number` down to the next lowest whole number.
 
@@ -146,4 +168,38 @@ title: Number Functions
     @debug round(4.2)  // 4
     @debug round(4.9)  // 5
   <% end %>
+<% end %>
+
+
+<% function 'unit($number)', returns: 'quoted string' do %>
+  Returns a string representation of `$number`'s units.
+
+  <% heads_up do %>
+    This function is intended for debugging; its output format is not guaranteed
+    to be consistent across Sass versions or implementations.
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug unit(100); // ""
+    @debug unit(100px); // "px"
+    @debug unit(5px * 10px); // "px*px"
+    @debug unit(5px / 1s); // "px/s"
+    ===
+    @debug unit(100)  // ""
+    @debug unit(100px)  // "px"
+    @debug unit(5px * 10px)  // "px*px"
+    @debug unit(5px / 1s)  // "px/s"
+  <% end %>
+<% end %>
+
+<% function 'unitless($number)', returns: 'boolean' do %>
+  Returns whether `$number` has no units.
+
+  <% example(autogen_css: false) do %>
+    @debug unitless(100); // true
+    @debug unitless(100px); // false
+    ===
+    @debug unitless(100)  // true
+    @debug unitless(100px)  // false
+  <% end %>  
 <% end %>
