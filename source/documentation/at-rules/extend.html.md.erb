@@ -237,6 +237,8 @@ avoid cascade headaches and make it easier to configure down the line.
 
 ## Limitations
 
+### Disallowed Selectors
+
 <% impl_status dart: true, libsass: false, ruby: false do %>
   LibSass and Ruby Sass currently allow complex selectors like `.message.info` to
   be extended. However, this behavior didn't match the definition of `@extend`:
@@ -281,6 +283,63 @@ isn't allowed either.
     @extend .main .info
     //      ^^^^^^^^^^^
     // Error: write @extend .info instead.
+<% end %>
+
+### HTML Heuristics
+
+When `@extend` [interleaves complex selectors][], it doesn't generate all
+possible combinations of ancestor selectors. Many of the selectors it could
+generate are unlikely to actually match real HTML, and generating them all would
+make stylesheets way too big for very little real value. Instead, it uses
+a [heuristic][]: it assumes that each selector's ancestors will be
+self-contained, without being interleaved with any other selector's ancestors.
+
+[interleaves complex selectors]: #how-it-works
+[heuristic]: https://en.wikipedia.org/wiki/Heuristic
+
+<% example do %>
+  header .warning li {
+    font-weight: bold;
+  }
+
+  aside .notice dd {
+    // Sass doesn't generate CSS to match the <dd> in
+    //
+    // <header>
+    //   <aside>
+    //     <div class="warning">
+    //       <div class="notice">
+    //         <dd>...</dd>
+    //       </div>
+    //     </div>
+    //   </aside>
+    // </header>
+    //
+    // because matching all elements like that would require us to generate nine
+    // new selectors instead of just two.
+    @extend li;
+  }
+  ===
+  header .warning li
+    font-weight: bold
+
+
+  aside .notice dd
+    // Sass doesn't generate CSS to match the <dd> in
+    //
+    // <header>
+    //   <aside>
+    //     <div class="warning">
+    //       <div class="notice">
+    //         <dd>...</dd>
+    //       </div>
+    //     </div>
+    //   </aside>
+    // </header>
+    //
+    // because matching all elements like that would require us to generate nine
+    // new selectors instead of just two.
+    @extend li
 <% end %>
 
 ### Extend in `@media`

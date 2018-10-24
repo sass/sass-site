@@ -386,6 +386,7 @@ MARKDOWN
       when 'boolean'; link_to type, '/documentation/values/booleans'
       when 'null'; link_to '<code>null</code>', '/documentation/values/null'
       when 'function'; link_to type, '/documentation/values/functions'
+      when 'selector'; link_to type, '/documentation/functions/selector#selector-values'
       else raise "Unknown type #{type}"
       end
     end.join(" | ")

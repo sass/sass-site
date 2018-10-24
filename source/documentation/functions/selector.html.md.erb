@@ -1,0 +1,236 @@
+---
+title: Selector Functions
+---
+
+## Selector Values
+
+These functions inspect and manipulate selectors. Whenever they return a
+selector, it's always a comma-separated [list][] (the selector list) that
+contains space-separated lists (the complex selectors) that contain [unquoted
+strings][] (the compound selectors). For example, the selector `.main
+aside:hover, .sidebar p` would be returned as:
+
+[list]: ../values/lists
+[unquoted strings]: ../values/strings#unquoted
+
+```scss
+@debug ((unquote(".main") unquote("aside:hover")),
+        (unquote(".sidebar") unquote("p")));
+// .main aside:hover, .sidebar p
+```
+
+Selector arguments to these functions may be in the same format, but they can
+also just be normal strings (quoted or unquoted), or a combination. For example,
+`".main aside:hover, .sidebar p"` is a valid selector argument.
+
+
+<% function 'is-superselector($super, $sub)', returns: 'boolean' do %>
+
+  Returns whether the selector `$super` matches all the elements that the
+  selector `$sub` matches.
+
+  Still returns true even if `$super` matches *more* elements than `$sub`.
+
+  The `$super` and `$sub` selectors may contain [placeholder selectors][], but
+  not [parent selectors][].
+
+  [placeholder selectors]: ../style-rules/placeholder-selectors
+  [parent selectors]: ../style-rules/parent-selector
+
+  <% example(autogen_css: false) do %>
+    @debug is-superselector("a", "a.disabled"); // true
+    @debug is-superselector("a.disabled", "a"); // false
+    @debug is-superselector("a", "sidebar a"); // true
+    @debug is-superselector("sidebar a", "a"); // false
+    @debug is-superselector("a", "a"); // true
+    ===
+    @debug is-superselector("a", "a.disabled")  // true
+    @debug is-superselector("a.disabled", "a")  // false
+    @debug is-superselector("a", "sidebar a")  // true
+    @debug is-superselector("sidebar a", "a")  // false
+    @debug is-superselector("a", "a")  // true
+  <% end %>
+<% end %>
+
+
+<% function 'selector-append($selectors...)', returns: 'selector' do %>
+  Combines `$selectors` without [descendant combinators][]—that is, without
+  whitespace between them.
+  
+  [descendant combinators]: https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_selectors
+
+  If any selector in `$selectors` is a selector list, each complex selector is
+  combined separately.
+
+  The `$selectors` may contain [placeholder selectors][], but not [parent
+  selectors][].
+
+  [placeholder selectors]: ../style-rules/placeholder-selectors
+  [parent selectors]: ../style-rules/parent-selector
+
+  See also [`selector-nest()`](#selector-nest).
+
+  <% example(autogen_css: false) do %>
+    @debug selector-append("a", ".disabled"); // a.disabled
+    @debug selector-append(".accordion", "__copy"); // .accordion__copy
+    @debug selector-append(".accordion", "__copy, __image");
+    // .accordion__copy, .accordion__image
+    ===
+    @debug selector-append("a", ".disabled")  // a.disabled
+    @debug selector-append(".accordion", "__copy")  // .accordion__copy
+    @debug selector-append(".accordion", "__copy, __image")
+    // .accordion__copy, .accordion__image
+  <% end %>
+<% end %>
+
+
+<% function 'selector-extend($selector, $extendee, $extender)', returns: 'selector' do %>
+  Extends `$selector` as with the [`@extend` rule][].
+
+  [`@extend` rule]: ../at-rules/extend
+
+  Returns a copy of `$selector` modified with the following `@extend` rule:
+
+  ```scss
+  #{$extender} {
+    @extend #{$extendee};
+  }
+  ```
+
+  In other words, replaces all instances of `$extendee` in `$selector` with
+  `$extendee, $extender`. If `$selector` doesn't contain `$extendee`, returns it
+  as-is.
+
+  The `$selector`, `$extendee`, and `$extender` selectors may contain
+  [placeholder selectors][], but not [parent selectors][].
+
+  See also [`selector-replace()`](#selector-replace).
+
+  <% example(autogen_css: false) do %>
+    @debug selector-extend("a.disabled", "a", ".link"); // a.disabled, .link.disabled
+    @debug selector-extend("a.disabled", "h1", "h2"); // a.disabled
+    @debug selector-extend(".guide .info", ".info", ".content nav.sidebar");
+    // .guide .info, .guide .content nav.sidebar, .content .guide nav.sidebar
+    ===
+    @debug selector-extend("a.disabled", "a", ".link")  // a.disabled, .link.disabled
+    @debug selector-extend("a.disabled", "h1", "h2")  // a.disabled
+    @debug selector-extend(".guide .info", ".info", ".content nav.sidebar")
+    // .guide .info, .guide .content nav.sidebar, .content .guide nav.sidebar
+  <% end %>
+<% end %>
+
+
+<% function 'selector-nest($selectors...)', returns: 'selector' do %>
+  Combines `$selectors` as though they were nested within one another in the
+  stylesheet.
+
+  The `$selectors` may contain [placeholder selectors][]. Unlike other selector
+  functions, all of them except the first may also contain [parent selectors][].
+
+  [placeholder selectors]: ../style-rules/placeholder-selectors
+  [parent selectors]: ../style-rules/parent-selector
+
+  See also [`selector-append()`][].
+
+  <% example(autogen_css: false) do %>
+    @debug selector-nest("ul", "li"); // ul li
+    @debug selector-nest(".alert, .warning", "p"); // .alert p, .warning p
+    @debug selector-nest(".alert", "&:hover"); // .alert:hover
+    @debug selector-nest(".accordion", "&__copy"); // .accordion__copy
+    ===
+    @debug selector-nest("ul", "li")  // ul li
+    @debug selector-nest(".alert, .warning", "p")  // .alert p, .warning p
+    @debug selector-nest(".alert", "&:hover")  // .alert:hover
+    @debug selector-nest(".accordion", "&__copy")  // .accordion__copy
+  <% end %>
+<% end %>
+
+
+<% function 'selector-parse($selector)', returns: 'selector' do %>
+  Returns `$selector` in the [selector value](#selector-values) format.
+
+  <% example(autogen_css: false) do %>
+    @debug selector-parse(".main aside:hover, .sidebar p");
+    // ((unquote(".main") unquote("aside:hover")),
+    //  (unquote(".sidebar") unquote("p")))
+    ===
+    @debug selector-parse(".main aside:hover, .sidebar p")
+    // ((unquote(".main") unquote("aside:hover")),
+    //  (unquote(".sidebar") unquote("p")))
+  <% end %>
+<% end %>
+
+
+<% function 'selector-replace($selector, $original, $replacement)', returns: 'selector' do %>
+  Returns a copy of `$selector` with all instances of `$original` replaced by
+  `$replacement`.
+
+  This uses the [`@extend` rule][]'s [intelligent unification][] to make sure
+  `$replacement` is seamlessly integrated into `$selector`. If `$selector`
+  doesn't contain `$original`, returns it as-is.
+
+  [`@extend` rule]: ../at-rules/extend
+  [intelligent unification]: ../at-rules/extend#how-it-works
+
+  The `$selector`, `$original`, and `$replacement` selectors may contain
+  [placeholder selectors][], but not [parent selectors][].
+
+  See also [`selector-extend()`](#selector-extend).
+
+  <% example(autogen_css: false) do %>
+    @debug selector-replace("a.disabled", "a", ".link"); // .link.disabled
+    @debug selector-replace("a.disabled", "h1", "h2"); // a.disabled
+    @debug selector-replace(".guide .info", ".info", ".content nav.sidebar");
+    // .guide .content nav.sidebar, .content .guide nav.sidebar
+    ===
+    @debug selector-replace("a.disabled", "a", ".link")  // .link.disabled
+    @debug selector-replace("a.disabled", "h1", "h2")  // a.disabled
+    @debug selector-replace(".guide .info", ".info", ".content nav.sidebar")
+    // .guide .content nav.sidebar, .content .guide nav.sidebar
+  <% end %>
+<% end %>
+
+
+<% function 'selector-unify($selector1, $selector2)', returns: 'selector | null' do %>
+
+  Returns a selector that matches only elements matched by *both* `$selector1`
+  and `$selector2`.
+
+  Returns `null` if `$selector1` and `$selector2` don't match any of the same
+  elements, or if there's no selector that can express their overlap.
+
+  Like selectors generated by the [`@extend` rule][], the returned selector
+  isn't guaranteed to match *all* the elements matched by both `$selector1` and
+  `$selector2` if they're both complex selectors.
+
+  [`@extend` rule]: ../at-rules/extend#html-heuristics
+
+  <% example(autogen_css: false) do %>
+    @debug selector-unify("a", ".disabled"); // a.disabled
+    @debug selector-unify("a.disabled", "a.outgoing"); // a.disabled.outgoing
+    @debug selector-unify("a", "h1"); // null
+    @debug selector-unify(".warning a", "main a"); // .warning main a, main .warning a
+    ===
+    @debug selector-unify("a", ".disabled")  // a.disabled
+    @debug selector-unify("a.disabled", "a.outgoing")  // a.disabled.outgoing
+    @debug selector-unify("a", "h1")  // null
+    @debug selector-unify(".warning a", "main a")  // .warning main a, main .warning a
+  <% end %>
+<% end %>
+
+
+<% function 'simple-selectors($selector)', returns: 'list' do %>
+
+  Returns a list of simple selectors in `$selector`.
+
+  The `$selector` must be a single string that contains a compound selector.
+  This means it may not contains combinators (including spaces) or commas.
+
+  The returned list is comma-separated, and the simple selectors are unquoted
+  strings.
+
+  <% example(autogen_css: false) do %>
+    @debug compound-selectors("a.disabled"); // a, .disabled
+    @debug compound-selectors("main.blog:after"); // main, .blog, :after
+  <% end %>
+<% end %>
