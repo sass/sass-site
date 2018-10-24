@@ -1,5 +1,5 @@
-= wrap_layout :layout do
+= wrap_layout :has_navigation do
   =yield
 
-  - content_for :complementary do
+  - content_for :navigation do
     = partial "layouts/components/reference_table_of_contents"

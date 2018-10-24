@@ -1,30 +1,32 @@
 .alert {
   @include padding-leader(.5);
   @include padding-trailer(.5);
-  background: darken($color-background-invert, 5);
-  color: $color-text-invert;
+  text-align: center;
+  background: darken($color-background-invert, 10%);
+
+  &,
+  a { color: $color-text-invert; }
 
   ul,
   p {
     margin: {
-      right: 0;
-       left: 0;
+      right: auto;
+       left: auto;
     }
     padding-bottom: 0;
   }
 
   a {
+    border-bottom: 1px solid rgba($color-text-invert, .5);
     font-weight: $font-weight-bold;
-    color: darken($color-text-strong-invert, 10%);
 
     &:hover,
-    &:focus { border-bottom: 1px solid $color-text-invert; }
+    &:focus { border-bottom-color: rgba($color-text-invert, .75); }
   }
 }
 
 .release ul {
   @extend %reset-list;
-  text-align: inherit;
   margin-bottom: -0.16em;
 
   @include breakpoint($tablet-small) { @extend %horizontal-list-tablet-small; }

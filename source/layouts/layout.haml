@@ -17,27 +17,17 @@
       = partial "layouts/regions/page_header"
 
       .body
-        .container
-          .content
-            - if content_for?(:introduction)
-              %p.introduction= yield_content :introduction
-
-            - add_class = content_for?(:complementary) ? ' content-primary': ''
-            %main.main(role="main"){class: add_class}=yield
-
-            - if content_for?(:complementary)
-              .complementary.content-secondary(role="complementary")
-                = yield_content :complementary
+        .sl-l-container=yield
 
         - if content_for?(:section_middle)
           %section.section-middle
-            .container= yield_content :section_middle
+            .sl-l-container= yield_content :section_middle
 
       = partial "layouts/regions/release"
 
       - if content_for?(:section_bottom)
         %section.section-bottom
-          .container= yield_content :section_bottom
+          .sl-l-container= yield_content :section_bottom
 
     = partial "layouts/regions/contentinfo"
     = partial "layouts/foot/js"

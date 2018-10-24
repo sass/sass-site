@@ -1,20 +1,17 @@
 ---
 title: Dart Sass
----
-
-%p.introduction
+introduction: >
   Dart Sass is the primary implementation of Sass, which means it gets new
   features before any other implementation. It's fast, easy to install, and it
   compiles to pure JavaScript which makes it easy to integrate into modern web
   development workflows. Find out more or help out with its development on
-  #{link_to "GitHub", "https://github.com/sass/dart-sass"}.
-
-%h2 There are two ways to use Dart Sass:
+  [GitHub](https://github.com/sass/dart-sass).
+---
 
 %ol.list-columns
   %li
     :markdown
-      ### Command Line
+      ## Command Line
 
       Dart Sass's stand-alone command-line executable uses the blazing-fast Dart
       VM to compile your stylesheets. To install Dart Sass on the command line,
@@ -39,18 +36,26 @@ title: Dart Sass
           your `PATH`][path].
 
           [install]: https://www.dartlang.org/install#automated-installation-and-updates
-          [path]: https://katiek2.github.io/path-doc/
+          [path]:    https://katiek2.github.io/path-doc/
+
       %li
-        %p Create a <code>pubspec.yaml</code> file like this:
+        :markdown
+          Create a `pubspec.yaml` file like this:
+
         :code
           # lang: yaml
           name: my-project
           dev_dependencies:
             sass: ^#{impl_version(:dart)}
+
       %li
-        %p Run <code>pub get</code>.
+        :markdown
+          Run `pub get`.
+
       %li
-        %p Create a <code>compile-sass.dart</code> file like this:
+        :markdown
+          Create a `compile-sass.dart` file like this:
+
         :code
           # lang: dart
           import 'dart:io';
@@ -60,9 +65,13 @@ title: Dart Sass
             var result = sass.compile(arguments[0]);
             new File(arguments[1]).writeAsStringSync(result);
           }
+
       %li
-        %p You can now use this to compile files:
-        %pre dart compile-sass.dart styles.scss styles.css
+        :markdown
+          You can now use this to compile files:
+
+              dart compile-sass.dart styles.scss styles.css
+
       %li
         :markdown
           Learn more about [writing Dart code][dart] (it's easy!) and about
@@ -73,7 +82,7 @@ title: Dart Sass
 
   %li
     :markdown
-      ### JavaScript Library
+      ## JavaScript Library
 
       Dart Sass is also distributed as the pure JavaScript [`sass`
       package](https://npmjs.com/package/sass) on npm. The pure JS version is
@@ -91,6 +100,7 @@ title: Dart Sass
       // OR
 
       var result = sass.renderSync({file: scss_filename});
+
     :markdown
       When installed via npm, Dart Sass supports a JavaScript API that aims to
       be compatible with [Node Sass](https://github.com/sass/node-sass#usage).
@@ -119,6 +129,7 @@ title: Dart Sass
       }, function(err, result) {
         // ...
       });
+
     :markdown
       See [Dart Sass's documentation][js api] for more information about its
       JavaScript API.

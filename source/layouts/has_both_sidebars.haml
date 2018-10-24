@@ -1,0 +1,13 @@
+= wrap_layout :layout do
+  .sl-l-holy-grail.sl-l-holy-grail--has-both-sidebars
+    %nav.sl-l-holy-grail__navigation(role='navigation')
+      = yield_content :navigation
+
+    %main.sl-l-holy-grail__main(role='main')
+      - if current_page.data.introduction
+        .sl-c-introduction= markdown_wrap current_page.data.introduction
+
+      =yield
+
+    %aside.sl-l-holy-grail__complementary(role='complementary')
+      = yield_content :complementary

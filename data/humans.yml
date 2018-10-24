@@ -2,12 +2,6 @@ team:
   - name: Jina
     role: design lead, code, content
     twitter: jina
-  - name: Bermon Painter
-    role: design, code, content
-    twitter: bermonpainter
-  - name: Michael Parenteau
-    role: design, code, content
-    twitter: parenteau
 
 contributors:
   - name: Natalie Weizenbaum
@@ -24,6 +18,8 @@ contributors:
     twitter: malrase
 
 thanks:
+  - name: Bermon Painter for the logo and previous contributions to design, code, and content.
+  - name: Michael Parenteau for previous contributions to design, code, and content.
   - name: All the people at SassConf that came to help with DNS and server-related issues.
   - name: To everyone who has contributed through pull requests.
 
@@ -35,7 +31,6 @@ markup:
 style:
   - name: CSS3
   - name: Sass
-  - name: Compass
   - name: Susy
   - name: Breakpoint
   - name: Normalize

@@ -4,27 +4,18 @@
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
+@import
+  'breakpoint',
 
+  'dependencies/layout',
+  'dependencies/typography',
+  'dependencies/color',
 
-@import "compass";
-@import "breakpoint";
-
-
-
-@import "dependencies/layout";
-@import "dependencies/typography";
-@import "dependencies/color";
-
-
-
-@import "foundation/site";
+  'foundation/site';
 
 
 
-html {
-  text-align: left;
-  background: $color-background;
-}
+html { background: $color-background; }
 
 body {
   padding: 2em;
@@ -36,4 +27,4 @@ body {
 
 .maruku_toc { display: none; }
 
-.box * { @include box-sizing(content-box); }
+.box * { box-sizing: content-box; }

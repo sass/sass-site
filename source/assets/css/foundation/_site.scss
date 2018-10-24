@@ -1,6 +1,10 @@
 * {
-  @include box-sizing(border-box);
+  &,
+  &:before,
+  &:after { box-sizing: border-box; }
 }
+
+
 
 @include establish-baseline;
 
@@ -24,19 +28,10 @@
 html {
   @extend %text;
   overflow-x: hidden;
-
-  text: {
-    rendering: optimizeLegibility;
-    align: center;
-  }
+  text-rendering: optimizeLegibility;
 
   background: image-url("textures/grey-prism.svg");
   -webkit-tap-highlight-color: rgba($black, 0);
-
-  &.toolkit-baseline {
-    @include debug-vertical-alignment;
-  }
-
 }
 
 body {

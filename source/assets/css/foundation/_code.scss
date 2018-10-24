@@ -1,29 +1,27 @@
 %code-theme {
-  @include border-radius(4px);
-  border: 1px solid #ebebeb;
-  background: #f8f8f8;
+  border-radius: 4px;
+  background: rgba($black, .0625);
   color: $color-text-strong;
+
+  a & { color: darken($color-primary, 10%); }
 }
 
 code,
 pre {
   @extend %code-theme;
-  @include font-size-small;
   font: {
+    size: 87.50%;
     weight: $font-weight-regular;
     family: $font-family-code;
   }
   white-space: pre-wrap;
-  text-align: left;
-  @include box-sizing(border-box);
-  strong & {
-    font-weight: $font-weight-bold;
-  }
+
+  strong & { font-weight: $font-weight-bold; }
 }
 
 code {
-  padding: .25em;
-  line-height: 0;
+  display: inline-block;
+  padding: 0 .5em;
 }
 
 %pre-block {

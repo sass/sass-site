@@ -1,5 +1,5 @@
 .page {
-  @include transition-property(margin, padding, min-height, height);
+  transition-property: margin, padding, min-height, height;
 
   @include breakpoint($tablet-large) {
     margin: 0 auto #{-$sticky-contentinfo-height};
@@ -11,6 +11,9 @@
 }
 
 .body {
-  @include padding-leader(2);
+  padding: {
+    top:    3rem;
+    bottom: 6rem;
+  };
   background: $color-background;
 }

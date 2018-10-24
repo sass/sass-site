@@ -4,8 +4,6 @@
 .guide-description-list {
   @extend %description-list;
 
-  .content-primary & { max-width: none; }
-
   %split-by { vertical-align: middle; }
 }
 
@@ -40,13 +38,12 @@
 
   h3 { padding: 0; }
 
-  iframe { @include box-shadow(0 1px 1px $color-shadow)}
+  iframe { box-shadow: 0 1px 1px $color-shadow; }
 }
 
 .width-only iframe { height: 640px; }
 
 .styleguide_responsive-test {
-  .toolkit,
   .pop-stripe,
   .banner,
   .page-header,
@@ -59,8 +56,6 @@
   }
 }
 
-@import "toolkit";
-
 [href*="404"],
 [href*="htaccess"],
 [href*="humans"],
@@ -70,11 +65,9 @@
 
 
 @include breakpoint($tablet-large) {
-  .content-primary .swatches { max-width: none; }
 
   .responsive-test-url {
     @extend %table-layout-tablet-large;
-    text-align: left;
 
     fieldset {
       display: table-row;

@@ -1,6 +1,6 @@
 .page-header {
   @include trailer;
-  @include transition-property(padding);
+  transition-property: padding;
   border-color: $color-border;
 
   &,

@@ -22,9 +22,3 @@
     }
   }
 }
-
-
-
-@include breakpoint($tablet-small) {
-  .slides p { text-align: left; }
-}
