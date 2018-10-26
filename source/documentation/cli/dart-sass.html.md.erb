@@ -18,8 +18,9 @@ printed to the terminal.
 
 The input file is parsed as [SCSS][] if its extension is `.scss`, as the
 [indented syntax][] if its extension is `.sass`, or as [plain CSS][] if its
-extension is `.css`. If it has no extension, it's parsed as SCSS by default.
-This can be controlled with the [`--indented` flag][].
+extension is `.css`. If it doesn't have one of these three extensions, or if it
+comes from standard input, it's parsed as SCSS by default. This can be
+controlled with the [`--indented` flag][].
 
 [SCSS]: ../syntax#scss
 [indented syntax]: ../syntax#the-indented-syntax
@@ -28,14 +29,14 @@ This can be controlled with the [`--indented` flag][].
 
 The special string `-` can be passed in place of the input file to tell Sass to
 read the input file from [standard input][]. Sass will default to parsing it as
-SCSSS unless the [`--indented` flag][] is passed.
+SCSS unless the [`--indented` flag][] is passed.
 
 [standard input]: https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)
 
 ### Many-to-many Mode
 
 ```
-sass <input.css>:<output.css> <input/>:<output/>...
+sass [<input.css>:<output.css>] [<input/>:<output/>]...
 ```
 
 Many-to-many mode compiles one or more input files to one or more output files.
@@ -112,9 +113,6 @@ Earlier load paths will take precedence over later ones.
 [load path]: ../at-rules/import#load-paths
 
 ```shellsession
-$ cat style.scss
-sass 
-
 $ sass --load-path=node_modules/bootstrap/dist/css style.scss style.css
 ```
 
@@ -338,7 +336,7 @@ package:sass/src/executable.dart 62:15                               main
 
 #### `--help`
 
-This flag prints a summary of this documentation.
+This flag (abbreviated `-h`) prints a summary of this documentation.
 
 ```shellsession
 $ sass --help
@@ -358,4 +356,3 @@ This flag prints the current version of Sass.
 $ sass --version
 <%= impl_version(:dart) %>
 ```
-
