@@ -13,5 +13,5 @@ hr {
 
 figure {
   @extend %block-text;
-  @include breakpoint($tablet-large) { max-width: 50%; }
+  @include sl-breakpoint--medium { max-width: 50%; }
 }

@@ -4,9 +4,9 @@
 
 
 
-@include breakpoint($mobile-large) {
+@include sl-breakpoint--small {
   .slide-navigation {
-    @extend %clear-fix-mobile-large;
+    @extend %small-clear-fix;
 
     li {
       @include span(2);

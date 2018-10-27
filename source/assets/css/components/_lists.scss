@@ -6,7 +6,7 @@
 
 @mixin horizontal-list($resolution: false) {
   @if $resolution == false { @extend %reset-list; }
-  @else                    { @extend %reset-list-#{$resolution}; }
+  @else                    { @extend %#{$resolution}-reset-list; }
 
   li {
     display: inline-block;
@@ -22,21 +22,27 @@
 %reset-list      { @include reset-list; }
 %horizontal-list { @include horizontal-list; }
 
-<% data.layout.resolutions.each do |resolution| %>
-  @include breakpoint($<%= resolution.target %>) {
-    %reset-list-<%= resolution.target %> { @include reset-list; }
-    %horizontal-list-<%= resolution.target %> {
-      @include horizontal-list(<%= resolution.target %>);
+@each $breakpoint,
+      $size in $sl-breakpoints {
+
+  @include sl-breakpoint($size) {
+
+    %#{$breakpoint}-reset-list {
+      @include reset-list;
+    }
+
+    %#{$breakpoint}-horizontal-list {
+      @include horizontal-list($breakpoint);
     }
   }
-<% end %>
+}
 
 %list-columns {
   @extend %reset-list;
   margin: 0 auto;
 
-  @include breakpoint($tablet-large) {
-    @extend %clear-fix-tablet-large;
+  @include sl-breakpoint--medium {
+    @extend %medium-clear-fix;
     margin: 0 #{-$gutter-width * 2};
 
     > li {
@@ -57,7 +63,7 @@
     white-space: nowrap;
   }
 
-  @include breakpoint($tablet-large) {
+  @include sl-breakpoint--medium {
     > li {
       width: 50%;
 
@@ -69,7 +75,7 @@
 .list-tiled {
   @extend %list-columns;
 
-  @include breakpoint($tablet-large) {
+  @include sl-breakpoint--medium {
     > li {
       width: 100 / 3 * 1%;
 
@@ -88,31 +94,29 @@ ol {
     ul,
     ol { list-style-position: outside; }
 
-    span.info {
-      @include font-size-small;
-    }
+    span.info { @include font-size-small; }
   }
 }
 
 %description-list {
   max-width: none;
 
-  @include breakpoint($mobile-large) {
+  @include sl-breakpoint--small {
     dd { margin-left: 0; }
   }
 
-  @include breakpoint($tablet-small) {
-    @extend %table-layout-tablet-small;
+  @include sl-breakpoint--medium {
+    @extend %medium-table-layout;
     table-layout: fixed;
 
     dt,
-    dd { @extend %table-layout-cell-baseline-tablet-small; }
+    dd { @extend %medium-table-layout-cell-baseline; }
 
     dt { padding-right: $gutter-width / 2; }
     dd { padding-left:  $gutter-width / 2; }
   }
 
-  @include breakpoint($screen-small) {
+  @include sl-breakpoint--large {
     dt { width: 100 / 3 * 1%; }
   }
 }

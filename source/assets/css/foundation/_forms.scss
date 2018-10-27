@@ -27,7 +27,7 @@ input[type="text"],
   width: 100%;
   vertical-align: middle;
 
-  @include breakpoint($mobile-large) {
+  @include sl-breakpoint--small {
     display: inline-block;
     width: auto;
   }

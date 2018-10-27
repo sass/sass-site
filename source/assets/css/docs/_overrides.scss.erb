@@ -25,7 +25,7 @@ body {
   color: inherit;
 
   <% data.layout.resolutions.each do |resolution| %>
-    @include breakpoint($<%= resolution.target %>) {
+    @include sl-breakpoint--<%= resolution.target %> {
       @include layout($<%= resolution.target %>-grid);
       @include container;
     }

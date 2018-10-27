@@ -77,21 +77,24 @@
 
 %image-replacement { @include image-replacement; }
 
-<% data.layout.resolutions.each do |resolution| %>
-  @include breakpoint($<%= resolution.target %>) {
-    %clear-fix-<%= resolution.target %> { @include clear-fix; }
+@each $breakpoint,
+      $size in $sl-breakpoints {
 
-    %table-layout-<%= resolution.target %> { @include table-layout; }
-    %table-layout-cell-<%= resolution.target %> { @include table-layout-cell; }
-    %table-layout-cell-baseline-<%= resolution.target %> { @include table-layout-cell(baseline); }
+  @include sl-breakpoint($size) {
+    %#{$breakpoint}-clear-fix         { @include clear-fix;         }
+    %#{$breakpoint}-table-layout      { @include table-layout;      }
+    %#{$breakpoint}-table-layout-cell { @include table-layout-cell; }
 
-    %hidden-<%= resolution.target %> { @include hidden; }
-    .visually-hidden-<%= resolution.target %> { @include visually-hidden; }
-    %invisible-<%= resolution.target %> { @include invisible; }
+    %#{$breakpoint}-table-layout-cell-baseline {
+      @include table-layout-cell(baseline);
+    }
 
-    %image-replacement-<%= resolution.target %> { @include image-replacement; }
+    %#{$breakpoint}-hidden            { @include hidden;            }
+    .#{$breakpoint}-visually-hidden   { @include visually-hidden;   }
+    %#{$breakpoint}-invisible         { @include invisible;         }
+    %#{$breakpoint}-image-replacement { @include image-replacement; }
   }
-<% end %>
+}
 
 
 

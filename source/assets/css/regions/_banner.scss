@@ -18,7 +18,7 @@
     height: rhythm(2);
   }
 
-  @include breakpoint($tablet-large) {
+  @include sl-breakpoint--medium {
     @include span(3);
 
     img { height: rhythm(4); }
@@ -49,5 +49,5 @@
     background-color: $color-primary;
   }
 
-  @include breakpoint($tablet-large) { display: none; }
+  @include sl-breakpoint--medium { display: none; }
 }

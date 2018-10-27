@@ -50,7 +50,7 @@ body {
   @include theme-selection;
 }
 
-@include breakpoint($tablet-large) {
+@include sl-breakpoint--medium {
 
   html,
   body {
@@ -61,5 +61,4 @@ body {
     background-position: left top;
     background-repeat: repeat-x;
   }
-
 }

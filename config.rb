@@ -1,4 +1,3 @@
-require 'breakpoint'
 require 'middleman-syntax'
 require 'susy'
 

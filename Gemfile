@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.5.3'
 
-gem 'breakpoint',             '~> 2.5.0'
 gem 'builder',                '~> 3.2.2'
 gem 'middleman',              '~> 3.4.1'
 gem 'middleman-autoprefixer', '~> 2.6.2'

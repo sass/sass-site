@@ -42,7 +42,7 @@
   font-size: sl-px-to-rem(16px);
 }
 
-@include breakpoint($tablet-large) {
+@include sl-breakpoint--medium {
   .contentinfo {
     padding: {
          top: 0;
@@ -50,9 +50,9 @@
     }
     height: $sticky-contentinfo-height;
 
-    ul { @extend %table-layout-tablet-large; }
+    ul { @extend %medium-table-layout; }
 
-    li { @extend %table-layout-cell-tablet-large; }
+    li { @extend %medium-table-layout-cell; }
   }
 
   .contentinfo-tools,

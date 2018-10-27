@@ -4,20 +4,27 @@ introduction: >
   We use Susy. See the [Susy
   Documentation](http://susy.oddbird.net/demos/grid-types/#demo-magic) for more
   information.
+breakpoints:
+  - name: small
+    size: 30em (480px)
+  - name: medium
+    size: 40em (640px)
+  - name: large
+    size: 60em (960px)
+  - name: x-large
+    size: 80em (1280px)
 ---
 
 %h2 Other Tools & Resources
 
 %ul.list-feature
-  %li= link_to 'Breakpoint', 'http://breakpoint-sass.com/'
-
   %li= link_to 'The EMs have it: Proportional Media Queries FTW!', 'http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/'
 
-%h2 Resolutions
+%h2 Breakpoints
 
-- data.layout.resolutions.each do |resolution|
+- current_page.data.breakpoints.each do |breakpoint|
   %dl.guide-description-list
     %dt
-      %code= '$' + resolution.target
+      %code= '@include sl-breakpoint--' + breakpoint.name
 
-    %dd= resolution.width
+    %dd= breakpoint.size
