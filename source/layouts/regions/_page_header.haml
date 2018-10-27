@@ -2,9 +2,9 @@
   .sl-l-container
     %h1
       - if current_page.data.h1?
-        = current_page.data.h1
+        = Typogruby.improve(current_page.data.h1)
       - else
-        = current_page.data.title
+        = Typogruby.improve(current_page.data.title)
 
     - if current_page.data.description?
-      %p= current_page.data.description
+      %p= Typogruby.improve(current_page.data.description)

@@ -1,82 +1,40 @@
 .sl-l-holy-grail {
-  margin: {
-    right: -sl-px-to-rem(32px);
-    left:  -sl-px-to-rem(32px);
-  };
-  display: grid;
-  grid-template-rows: auto
-                      1fr
-                      auto;
-  //min-height: 100vh;
 
-  &--has {
-    &-navigation {
-      grid-template: {
-        areas: 'header header'
-               'navigation main'
-               'footer footer';
-        columns: sl-px-to-rem(320px) 1fr;
-      };
-    }
-
-    &-complementary {
-      grid-template: {
-        areas: 'header header'
-               'main complementary'
-               'footer footer';
-        columns: 1fr sl-px-to-rem(480px);
-      };
-    }
-
-    &-both-sidebars {
-      grid-template: {
-        areas: 'header header header'
-               'navigation main complementary'
-               'footer footer footer';
-        columns: sl-px-to-rem(320px) 1fr sl-px-to-rem(480px);
-      };
-    }
-
-    &-no-sidebars {
-      grid-template: {
-        areas: 'header'
-               'main'
-               'footer';
-        columns: 1fr;
-      };
-    }
+  &,
+  &__body {
+    display: flex;
+    flex-direction: column;
   }
+
+  height: 100%;
 
   &__header,
-  &__main,
-  &__navigation,
-  &__complementary,
-  &__footer {
-    padding: {
-      right: sl-px-to-rem(32px);
-      left:  sl-px-to-rem(32px);
-    };
-  }
+  &__footer { flex: none;     }
+  &__body   { flex: 1 0 auto; }
 
-  &__header        { grid-area: header;        }
-  &__main          { grid-area: main;          }
-  &__navigation    { grid-area: navigation;    }
-  &__complementary { grid-area: complementary; }
-  &__footer        { grid-area: footer;        }
+  &__navigation { order: -1; }
 
-  @media screen and (max-width: #{sl-px-to-em(640px)}) {
-    grid-template: {
-      areas: 'header'
-             'navigation'
-             'main'
-             'complementary'
-             'footer';
-      columns: 100%;
-      rows: auto
-            auto
-            auto
-            auto
-            auto;
-    };
+  @include sl-breakpoint--medium {
+
+    &__body {
+      flex-direction: row;
+      margin: {
+        right: -2rem;
+        left:  -2rem;
+      };
+    }
+
+    &__main,
+    &__navigation,
+    &__complementary {
+      padding: {
+        right: 2rem;
+        left:  2rem;
+      };
+    }
+
+    &__main          { flex: 1;         }
+    &__navigation    { flex: 0 0 20rem; }
+    &__complementary { flex: 0 0 30rem; }
   }
 }

@@ -1,20 +1,7 @@
-/[if lt IE 8]
-  .alert(role="alert")
-    .sl-l-container
-      %p.browsehappy
-        You are using an
-        %strong outdated
-        browser. Please
-        = link_to "upgrade your browser", "http://browsehappy.com/"
-        to improve your experience.
-
-- if content_for?(:alert)
-  .alert
-    .sl-l-container= yield_content :alert
-
 .alert.stickers
   .sl-l-container
     %p
       %strong Your laptop needs more Sass.
-      = succeed "." do
-        = link_to "Grab a set of Sass stickers now", "http://devswag.com/products/sass-stickers-4"
+      = succeed '.' do
+        = link_to 'http://devswag.com/products/sass-stickers-4' do
+          Grab a set of Sass stickers now

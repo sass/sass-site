@@ -1,11 +1,14 @@
-@function sl-px-to-rem($pixels) {
-  @return ($pixels / 16px * 1rem);
+@function sl-px-to-rem($pixels,
+                       $font-size: 16px) {
+  @return ($pixels / $font-size * 1rem);
 }
 
-@function sl-px-to-em($pixels) {
-  @return ($pixels / 16px * 1em);
+@function sl-px-to-em($pixels,
+                      $font-size: 16px) {
+  @return ($pixels / $font-size * 1em);
 }
 
-@function sl-px-to-unitless($pixels) {
-  @return ($pixels / 16px);
+@function sl-px-to-unitless($pixels,
+                            $font-size: 16px) {
+  @return ($pixels / $font-size);
 }

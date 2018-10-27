@@ -1,15 +1,3 @@
-.page {
-  transition-property: margin, padding, min-height, height;
-
-  @include sl-breakpoint--medium {
-    margin: 0 auto #{-$sticky-contentinfo-height};
-    padding-bottom:  $sticky-contentinfo-height;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-  }
-}
-
 .body {
   padding: {
     top:    sl-px-to-rem(48px);

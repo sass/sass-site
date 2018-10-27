@@ -4,30 +4,37 @@
     %meta(charset="utf-8")/
     %meta(http-equiv="X-UA-Compatible" content="IE=edge")/
     %title= page_title
-    = partial "layouts/head/meta"
-    = partial "layouts/head/link"
-    = partial "layouts/head/css"
-    = partial "layouts/head/js"
+    = partial 'layouts/head/meta'
+    = partial 'layouts/head/link'
+    = partial 'layouts/head/css'
+    = partial 'layouts/head/js'
 
   %body{class: page_classes}
-    .page
-      = partial "layouts/roles/alert"
-      .pop-stripe
-      = partial "layouts/regions/banner"
-      = partial "layouts/regions/page_header"
+    /[if lt IE 9]
+      %p.browserupgrade
+        You are using an
+        %strong outdated
+        browser. Please
+        = link_to 'upgrade your browser', 'https://browsehappy.com/'
+        to improve your experience and security.
+
+    = partial 'layouts/roles/alert'
+
+    .pop-stripe
+
+    = partial 'layouts/regions/banner'
+
+    %main(role='main')
+      = partial 'layouts/regions/page_header'
 
       .body
-        .sl-l-container=yield
+        .sl-l-container= Typogruby.improve(yield)
 
-        - if content_for?(:section_middle)
-          %section.section-middle
-            .sl-l-container= yield_content :section_middle
+    = partial 'layouts/regions/release'
 
-      = partial "layouts/regions/release"
+    - if content_for?(:section_bottom)
+      %section.section-bottom
+        .sl-l-container= Typogruby.improve(yield_content :section_bottom)
 
-      - if content_for?(:section_bottom)
-        %section.section-bottom
-          .sl-l-container= yield_content :section_bottom
-
-    = partial "layouts/regions/contentinfo"
-    = partial "layouts/foot/js"
+    = partial 'layouts/regions/contentinfo'
+    = partial 'layouts/foot/js'
