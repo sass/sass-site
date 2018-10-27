@@ -21,14 +21,14 @@ pre {
 
 code {
   display: inline-block;
-  padding: 0 .5em;
+  padding: 0 sl-px-to-em(8px);
 }
 
 %pre-block {
   @include rhythm(0, .5, .5, 0);
   padding: {
-    right: 1em;
-     left: 1em;
+    right: sl-px-to-rem(16px);
+     left: sl-px-to-rem(16px);
   }
   display: block;
 }
@@ -37,7 +37,7 @@ pre {
   @extend %pre-block;
   @include trailer;
   @include rhythm(.5, .5, .5, .5);
-  @include bleed(1em);
+  @include bleed(sl-px-to-rem(16px));
 
   // It's important that this be 22px so that we can easily compute the extra
   // padding necessary to align sections in code examples. 22px is the line

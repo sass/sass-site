@@ -4,10 +4,7 @@ require 'susy'
 
 activate :automatic_image_sizes
 activate :autoprefixer do |config|
-  config.browsers = ['last 2 versions', 'Explorer >= 9']
-  config.remove   = false
-  config.cascade  = false
-  config.inline   = true
+  config.browsers = ['last 2 versions']
   # config.ignore   = ['hacks.css']
 end
 activate :directory_indexes
@@ -23,35 +20,20 @@ set :css_dir,    'assets/css'
 set :js_dir,     'assets/js'
 set :images_dir, 'assets/img'
 
-page '/humans.txt',                :layout => false
-page '/sitemap.xml',               :layout => false
-
-page '/*.html', :layout => :has_navigation
-
-with_layout :has_complementary do
-  page '/community.html'
-  page '/community-guidelines.html'
-end
-
-with_layout :has_both_sidebars do
-  page '/libsass.html'
-end
-
-with_layout :has_no_sidebars do
-  page '/404.html'
-  page '/install.html'
-  page '/dart-sass.html'
-  page '/ruby-sass.html'
-  page '/implementation.html'
-end
-
-with_layout :section_styleguide do
-  page '/styleguide/*'
-end
-
-with_layout :section_reference do
-  page '/documentation/*'
-end
+page '/*.xml',                     :layout => false
+page '/*.json',                    :layout => false
+page '/*.txt',                     :layout => false
+page '/*.html',                    :layout => :has_navigation
+page '/community.html',            :layout => :has_complementary
+page '/community-guidelines.html', :layout => :has_complementary
+page '/libsass.html',              :layout => :has_both_sidebars
+page '/404.html',                  :layout => :has_no_sidebars
+page '/install.html',              :layout => :has_no_sidebars
+page '/dart-sass.html',            :layout => :has_no_sidebars
+page '/ruby-sass.html',            :layout => :has_no_sidebars
+page '/implementation.html',       :layout => :has_no_sidebars
+page '/styleguide/*',              :layout => :section_styleguide
+page '/documentation/*',           :layout => :section_reference
 
 configure :development do
   config[:host] = 'http://localhost:4567'

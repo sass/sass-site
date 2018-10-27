@@ -1,6 +1,6 @@
 .sl-c-callout {
-  margin: 1.5rem 0;
-  padding: .75rem 1rem;
+  margin: sl-px-to-rem(24px) 0;
+  padding: sl-px-to-rem(12px) sl-px-to-rem(16px);
   background: $nebula;
 
   &--warning,
@@ -17,7 +17,7 @@
 
   &--fun-fact { background: darken($patina, 10%); }
 
-  h3 { padding-top: .75rem; }
+  h3 { padding-top: sl-px-to-rem(12px); }
 
   .highlight {
     box-sizing: border-box;
@@ -27,7 +27,5 @@
   h3,
   .highlight code,
   .ui-tabs .ui-tabs-nav .ui-tabs-active a,
-  .ui-tabs .ui-tabs-nav li.css-tab a::before {
-    color: inherit;
-  }
+  .ui-tabs .ui-tabs-nav li.css-tab a::before { color: inherit; }
 }

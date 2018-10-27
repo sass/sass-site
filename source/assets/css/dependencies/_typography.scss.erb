@@ -9,7 +9,7 @@ $round-to-nearest-half-line: true;
 
 $min-line-padding: 2px;
 
-$font-unit: 1em;
+$font-unit: 1rem;
 
 <% data.typography.weights.each do |font_weight| %>
   $font-weight-<%= font_weight.weight %>: <%= font_weight.value %>;
@@ -32,4 +32,4 @@ $monospace:  "source-code-pro", Consolas, "Andale Mono WT", "Andale Mono", "Luci
   $font-family-<%= font_family.style %>: $<%= font_family.value %>;
 <% end %>
 
-$indent: 2em;
+$indent: sl-px-to-rem(32px);

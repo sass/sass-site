@@ -27,7 +27,6 @@
 
 .release ul {
   @extend %reset-list;
-  margin-bottom: -0.16em;
 
   @include breakpoint($tablet-small) { @extend %horizontal-list-tablet-small; }
 }

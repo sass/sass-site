@@ -1,30 +1,32 @@
-/*! Sass
- *  by Team Sass Design (@teamsassdesign)
- */
-
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
-
-@import
-  'breakpoint',
-
-  'dependencies/layout',
-  'dependencies/typography',
-  'dependencies/color',
-
-  'foundation/site';
-
-
-
-html { background: $color-background; }
-
-body {
-  padding: 2em;
-  font: {
-    size: inherit;
-    family: 'Source Sans Pro', sans-serif;
-  }
-}
-
-.maruku_toc { display: none; }
-
-.box * { box-sizing: content-box; }
+///*! Sass
+// *  by Team Sass Design (@teamsassdesign)
+// */
+//
+//@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+//
+//@import
+//  'functions',
+//  'breakpoint',
+//
+//  'dependencies/layout',
+//  'dependencies/typography',
+//  'dependencies/color',
+//
+//  'foundation/site';
+//
+//
+//
+//html { background: $color-background; }
+//
+//body {
+//  padding: sl-px-to-rem(32px);
+//  font: {
+//    size: inherit;
+//    family: 'Source Sans Pro', sans-serif;
+//  }
+//}
+//
+//.maruku_toc { display: none; }
+//
+//.box * { box-sizing: content-box; }
+//

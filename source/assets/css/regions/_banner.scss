@@ -44,8 +44,8 @@
       right: auto;
        left: auto;
     }
-    width: 2em;
-    height: 0.125em;
+    width: sl-px-to-rem(32px);
+    height: sl-px-to-rem(2px);
     background-color: $color-primary;
   }
 

@@ -1,7 +1,7 @@
 .sl-l-holy-grail {
   margin: {
-    right: -2rem;
-    left:  -2rem;
+    right: -sl-px-to-rem(32px);
+    left:  -sl-px-to-rem(32px);
   };
   display: grid;
   grid-template-rows: auto
@@ -15,7 +15,7 @@
         areas: 'header header'
                'navigation main'
                'footer footer';
-        columns: 20rem 1fr;
+        columns: sl-px-to-rem(320px) 1fr;
       };
     }
 
@@ -24,7 +24,7 @@
         areas: 'header header'
                'main complementary'
                'footer footer';
-        columns: 1fr 30rem;
+        columns: 1fr sl-px-to-rem(480px);
       };
     }
 
@@ -33,7 +33,7 @@
         areas: 'header header header'
                'navigation main complementary'
                'footer footer footer';
-        columns: 20rem 1fr 30rem;
+        columns: sl-px-to-rem(320px) 1fr sl-px-to-rem(480px);
       };
     }
 
@@ -53,8 +53,8 @@
   &__complementary,
   &__footer {
     padding: {
-      right: 2rem;
-      left:  2rem;
+      right: sl-px-to-rem(32px);
+      left:  sl-px-to-rem(32px);
     };
   }
 
@@ -64,7 +64,7 @@
   &__complementary { grid-area: complementary; }
   &__footer        { grid-area: footer;        }
 
-  @media screen and (max-width: 40em) {
+  @media screen and (max-width: #{sl-px-to-em(640px)}) {
     grid-template: {
       areas: 'header'
              'navigation'

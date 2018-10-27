@@ -7,8 +7,8 @@ require "rouge/plugins/redcarpet"
 module SassHelpers
   def page_title
     title = "Sass: "
-    if data.page.title
-      title << data.page.title
+    if current_page.data.title
+      title << current_page.data.title
     else
       title << "Syntactically Awesome Style Sheets"
     end

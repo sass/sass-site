@@ -1,4 +1,4 @@
-.slide-navigation li { padding: .25em 0; }
+.slide-navigation li { padding: sl-px-to-rem(4px) 0; }
 
 .slides { @extend %reset-list; }
 
@@ -17,8 +17,8 @@
 
   .slides {
     padding: {
-         top: 1em;
-      bottom: 1em;
+         top: sl-px-to-rem(16px);
+      bottom: sl-px-to-rem(16px);
     }
   }
 }

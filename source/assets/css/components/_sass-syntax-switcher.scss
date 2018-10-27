@@ -8,13 +8,13 @@
 
   .ui-tabs-nav {
     @include trailer(-3);
-    margin-right: -1em;
+    margin-right: -(sl-px-to-rem(16px));
     a:focus {
       outline: 0px !important;
       border:none !important;
       box-shadow:none !important;
     }
-    .ui-tabs-active { 
+    .ui-tabs-active {
         &:after, &:before {
           bottom: -1px;
           left: 50%;
@@ -47,14 +47,14 @@
 
       &.css-tab {
         &,
-        &.ui-tabs-active { margin-left: 2em; }
+        &.ui-tabs-active { margin-left: sl-px-to-rem(32px); }
 
         a::before {
           color: $color-text-weak;
           content: "🢩";
-          font-size: 1.3em;
+          font-size: sl-px-to-rem(24px);
           font-weight: bold;
-          left: -1.2em;
+          left: -(sl-px-to-rem(18px));
           position: absolute;
         }
       }
@@ -66,8 +66,8 @@
       @include padding-leader(.5);
       @include padding-trailer(.5);
       padding: {
-        right: 1em;
-         left: 1em;
+        right: sl-px-to-rem(16px);
+         left: sl-px-to-rem(16px);
       }
     }
   }

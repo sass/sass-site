@@ -14,8 +14,7 @@ bundle
 /.ruby-sass
 /.sass-cache
 *.scssc
-/source/assets/css/vendor
-/source/assets/js/vendor
 Thumbs.db
 .Trashes
 /.yardoc
+/vendor/bundle/

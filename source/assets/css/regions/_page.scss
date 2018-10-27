@@ -12,8 +12,8 @@
 
 .body {
   padding: {
-    top:    3rem;
-    bottom: 6rem;
+    top:    sl-px-to-rem(48px);
+    bottom: sl-px-to-rem(96px);
   };
   background: $color-background;
 }

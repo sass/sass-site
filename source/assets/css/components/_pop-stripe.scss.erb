@@ -15,6 +15,6 @@ $colors: <% data.color.colors.each do |swatch| %>$<%= swatch.name %> <% end %>;
 }
 
 .pop-stripe {
-  height: .25em;
+  height: sl-px-to-rem(4px);
   background-image: stripes(left, ($colors));
 }

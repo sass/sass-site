@@ -1,14 +1,15 @@
-/*! Sass
- *  by Team Sass Design (@teamsassdesign)
- */
+/*! Sass */
+
+@charset 'utf-8';
 
 @import
+  'functions',
+
   // VENDOR LIBRARIES
   'dependencies/temporary-compass-references-to-refactor',
   'susy',
   'breakpoint',
 
-  'dependencies/functions',
   'dependencies/layout',
   'dependencies/typography',
   'dependencies/color',
