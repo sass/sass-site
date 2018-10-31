@@ -4,8 +4,8 @@
     left:  auto;
   };
   padding: {
-    right: 2rem;
-    left:  2rem;
+    right: sl-px-to-rem(32px);
+    left:  sl-px-to-rem(32px);
   };
-  max-width: 120rem;
+  max-width: sl-px-to-rem(1920px);
 }

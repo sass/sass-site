@@ -1,7 +1,7 @@
 .sl-c-introduction {
   color: $color-accent;
 
-  @include breakpoint($tablet-large) {
+  @include sl-breakpoint--medium {
     @include font-size-large;
   }
 }

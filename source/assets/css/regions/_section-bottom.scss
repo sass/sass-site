@@ -3,8 +3,4 @@
   @include padding-leader;
   @include padding-trailer;
   background: $color-background;
-
-  @include breakpoint($screen-small) {
-
-  }
 }

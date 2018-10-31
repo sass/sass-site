@@ -1,19 +1,7 @@
-.page {
-  transition-property: margin, padding, min-height, height;
-
-  @include breakpoint($tablet-large) {
-    margin: 0 auto #{-$sticky-contentinfo-height};
-    padding-bottom:  $sticky-contentinfo-height;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-  }
-}
-
 .body {
   padding: {
-    top:    3rem;
-    bottom: 6rem;
+    top:    sl-px-to-rem(48px);
+    bottom: sl-px-to-rem(96px);
   };
   background: $color-background;
 }

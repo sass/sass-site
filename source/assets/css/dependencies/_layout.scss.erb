@@ -31,8 +31,6 @@ $column-width: <%= data.layout.susy.column_width %>;
 
 
 
-// Breakpoint Settings
-$breakpoint-to-ems: true;
 <% data.layout.resolutions.each_with_index do |resolution, index| %>
 $<%= resolution.target %>: <%= resolution.width %>px;
 $<%= resolution.target %>-grid: "(<%= index %> * 2) ($column-width $gutter-width) inside fluid";
@@ -41,7 +39,7 @@ $<%= resolution.target %>-grid: "(<%= index %> * 2) ($column-width $gutter-width
 
 
 // Misc
-$border-radius: .25em;
+$border-radius: sl-px-to-rem(4px);
 $sticky-contentinfo-height: rhythm(6);
 
 @mixin square($size: $column-width) {

@@ -333,7 +333,7 @@ ul.swatches { @extend .list-tiled; }
 
 
 
-@include breakpoint($mobile-large) {
+@include sl-breakpoint--small {
   ul.swatches pre {
     margin: {
       right: 0;
@@ -342,7 +342,7 @@ ul.swatches { @extend .list-tiled; }
   }
 }
 
-@include breakpoint($tablet-small) {
+@include sl-breakpoint--medium {
   ul.swatches li {
     width: 100 / 3 * 1%;
 
@@ -351,20 +351,11 @@ ul.swatches { @extend .list-tiled; }
   }
 }
 
-@include breakpoint($screen-small) {
+@include sl-breakpoint--large {
   ul.swatches li {
     width: 25%;
 
     &:nth-child(3n+4) { clear: none; }
     &:nth-child(4n+5) { clear: both; }
-  }
-}
-
-@include breakpoint($screen-large) {
-  ul.swatches li {
-    width: 20%;
-
-    &:nth-child(4n+5) { clear: none; }
-    &:nth-child(5n+6) { clear: both; }
   }
 }

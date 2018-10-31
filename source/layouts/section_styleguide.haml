@@ -29,7 +29,6 @@
         - if page.url =~ /styleguide/
           - unless page.url =~ /assets/
             - unless page.data.title == "Style Guide"
-              - unless page.data.title == "Responsive Test"
-                %li.sl-c-list--navigation__item
-                  = link_to "#{root_url}#{page.url.gsub!(/(\/)+$/,'')}" do
-                    = page.data.title
+              %li.sl-c-list--navigation__item
+                = link_to "#{root_url}#{page.url.gsub!(/(\/)+$/,'')}" do
+                  = page.data.title

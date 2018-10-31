@@ -39,10 +39,10 @@
 
 .contentinfo-tools ul {
   @extend %horizontal-list;
-  font-size: 1em;
+  font-size: sl-px-to-rem(16px);
 }
 
-@include breakpoint($tablet-large) {
+@include sl-breakpoint--medium {
   .contentinfo {
     padding: {
          top: 0;
@@ -50,9 +50,9 @@
     }
     height: $sticky-contentinfo-height;
 
-    ul { @extend %table-layout-tablet-large; }
+    ul { @extend %medium-table-layout; }
 
-    li { @extend %table-layout-cell-tablet-large; }
+    li { @extend %medium-table-layout-cell; }
   }
 
   .contentinfo-tools,
@@ -65,11 +65,11 @@
   .contentinfo-tools ul li {
     display: table-cell;
     margin: 0;
-    padding-right: 2em;
+    padding-right: sl-px-to-rem(32px);
   }
 
   .contentinfo-social {
-    padding-left: 4em;
+    padding-left: sl-px-to-rem(64px);
     line-height: 0;
   }
 }

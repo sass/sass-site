@@ -1,8 +1,8 @@
 .hero-lockup {
-  padding: 3rem 0;
+  padding: sl-px-to-rem(48px) 0;
   margin: {
-    right: -2rem;
-    left:  -2rem;
+    right: -sl-px-to-rem(32px);
+    left:  -sl-px-to-rem(32px);
   };
   display: grid;
   grid-template-areas: 'introduction image';
@@ -11,15 +11,15 @@
   .hero-image,
   .sl-c-introduction {
     padding: {
-      right: 2rem;
-      left:  2rem;
+      right: sl-px-to-rem(32px);
+      left:  sl-px-to-rem(32px);
     };
   }
 
   .hero-image        { grid-area: image;        }
   .sl-c-introduction { grid-area: introduction; }
 
-  @media screen and (max-width: 40em) {
+  @media screen and (max-width: #{sl-px-to-em(640px)}) {
     grid-template: {
       areas: "introduction"
              "image";

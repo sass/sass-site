@@ -1,6 +1,5 @@
 = wrap_layout :layout do
-  %main(role='main')
-    - if current_page.data.introduction
-      .sl-c-introduction= markdown_wrap current_page.data.introduction
+  - if current_page.data.introduction
+    .sl-c-introduction= markdown_wrap current_page.data.introduction
 
-    =yield
+  =yield

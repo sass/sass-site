@@ -1,12 +1,12 @@
-.slide-navigation li { padding: .25em 0; }
+.slide-navigation li { padding: sl-px-to-rem(4px) 0; }
 
 .slides { @extend %reset-list; }
 
 
 
-@include breakpoint($mobile-large) {
+@include sl-breakpoint--small {
   .slide-navigation {
-    @extend %clear-fix-mobile-large;
+    @extend %small-clear-fix;
 
     li {
       @include span(2);
@@ -17,8 +17,8 @@
 
   .slides {
     padding: {
-         top: 1em;
-      bottom: 1em;
+         top: sl-px-to-rem(16px);
+      bottom: sl-px-to-rem(16px);
     }
   }
 }

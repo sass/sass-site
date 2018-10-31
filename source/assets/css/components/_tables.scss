@@ -1,4 +1,4 @@
-@media (max-width: $tablet-large) {
+@include sl-breakpoint--medium-max {
   .table-responsive {
     @include trailer;
     width: 100%;

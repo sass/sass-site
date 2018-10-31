@@ -27,16 +27,13 @@
 
 .release ul {
   @extend %reset-list;
-  margin-bottom: -0.16em;
 
-  @include breakpoint($tablet-small) { @extend %horizontal-list-tablet-small; }
+  @include sl-breakpoint--medium { @extend %medium-horizontal-list; }
 }
 
 .release-name { white-space: nowrap; }
 
-.alert.stickers {
-  background: $midnight-blue;
-}
+.alert.stickers { background: $midnight-blue; }
 
 .browsehappy {
   margin: 0;

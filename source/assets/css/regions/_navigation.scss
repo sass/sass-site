@@ -24,17 +24,7 @@
     &:focus { background: $color-background-shade; }
   }
 
-  @include breakpoint($tablet-small) {
-    ul { @extend %clear-fix-tablet-small; }
-
-    li {
-      @include span(6);
-
-      &:nth-child(odd) { @include omega; }
-    }
-  }
-
-  @include breakpoint($tablet-large) {
+  @include sl-breakpoint--medium {
     @include span(9 omega);
     @include font-size-small;
     background: none;
@@ -42,11 +32,14 @@
     &.collapse { display: block !important; }
 
     ul {
+      @extend %medium-clear-fix;
       text-align: right;
       white-space: nowrap;
     }
 
     li {
+      @include span(6);
+
       float: none;
       display: inline-block;
       margin: {
@@ -56,21 +49,22 @@
       width: auto;
 
       &:nth-child(odd) {
+        @include omega;
         float: none;
         margin-right: 0;
       }
 
       &:last-child { margin-right: 0; }
-    }
 
-    a {
-      &,
-      &:hover,
-      &:focus { background: none; }
+      a {
+        &,
+        &:hover,
+        &:focus { background: none; }
+      }
     }
   }
 
-  @include breakpoint($screen-small) {
+  @include sl-breakpoint--large {
     @include font-size-regular;
 
     li { margin-left: $gutter-width; }

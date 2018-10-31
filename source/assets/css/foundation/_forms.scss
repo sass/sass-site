@@ -27,7 +27,7 @@ input[type="text"],
   width: 100%;
   vertical-align: middle;
 
-  @include breakpoint($mobile-large) {
+  @include sl-breakpoint--small {
     display: inline-block;
     width: auto;
   }
@@ -96,6 +96,6 @@ button { @extend %button; }
 %tab-focus {
   outline: thin dotted $color-text;
   outline: 5px auto -webkit-focus-ring-color {
-    offset: -2px;
+    offset: -(sl-px-to-rem(2px));
   }
 }
