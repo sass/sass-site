@@ -1,0 +1,1226 @@
+---
+title: JavaScript API
+---
+
+Both major Sass implementations support the same JavaScript API. [Dart Sass][]
+is distributed as the pure-Javascript [`sass` package][], and [LibSass][] is
+distributed as a native extension in the [`node-sass` package][].
+
+[Dart Sass]: /dart-sass
+[`sass` package]: https://www.npmjs.com/package/sass
+[LibSass]: /libsass
+[`node-sass` package]: https://www.npmjs.com/package/node-sass
+
+## Usage
+
+The Sass module provides two functions with similar APIs.
+
+### `renderSync()`
+
+This function synchronously compiles a Sass file to CSS. If it succeeds, it
+returns the [result][], and if it fails it throws an [error][]. It takes an
+[options object][], which must have either the [`file` option][] or the
+[`data` option][] set.
+
+[result]: #result-object
+[error]: #error-object
+[options object]: #options
+[`file` option]: #file
+[`data` option]: #data
+
+```js
+var sass = require('sass'); // or require('node-sass');
+
+var result = sass.renderSync({file: "style.scss"});
+// ...
+```
+
+### `render()`
+
+<% impl_status dart: true, node: '3.0.0' %>
+
+This function asynchronously compiles a Sass file to CSS, and calls a standard
+Node callback with the [result][] or an [error][] when the rendering is
+complete. It takes an [options object][], which must have either the
+[`file` option][] or the [`data` option][] set.
+
+<% heads_up do %>
+When using Dart Sass, **[`renderSync()`][] is almost twice as fast as
+`render()`** by default, due to the overhead of making the entire evaluation
+process asynchronous. To avoid this performance hit, you can pass the
+[`fiber` option][] to `render()`.
+
+[`renderSync()`]: #rendersync
+[`fiber` option]: #fiber
+<% end %>
+
+```js
+var sass = require('sass'); // or require('node-sass');
+
+sass.render({
+  file: "style.scss"
+}, function(err, result) {
+  // ...
+});
+```
+
+### `info`
+
+<% impl_status dart: true, node: '2.0.0' %>
+
+The `info` property contains a string that includes tab-separated information
+about the Sass implementation. For Dart Sass, this is the version of Dart Sass
+and the version of the [dart2js][] compiler used to compile it to JavaScript;
+for LibSass, it's the version of LibSass and the version of [Node Sass][] that
+wraps it.
+
+[dart2js]: https://webdev.dartlang.org/tools/dart2js
+[Node Sass]: https://www.npmjs.com/package/node-sass
+
+```js
+console.log(sass.info);
+// dart-sass	<%= impl_version(:dart) %>	(Sass Compiler)	[Dart]
+// dart2js	2.0.0	(Dart Compiler)	[Dart]
+```
+
+### Result Object
+
+When [`renderSync()`][] or [`render()`][] succeed, they provide a result object
+that contains information about the compilation. This object has the following
+properties:
+
+[`renderSync()`]: #rendersync
+[`render()`]: #render
+
+#### `result.css`
+
+The compiled CSS, as a [Buffer][]. This can be converted to a string by calling
+[`Buffer.toString()`][].
+
+[Buffer]: https://nodejs.org/api/buffer.html
+[`Buffer.toString()`]: https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end
+
+```js
+var result = sass.renderSync({file: "style.scss"});
+
+console.log(result.css.toString());
+```
+
+#### `result.map`
+
+The source map that maps the compiled CSS to the source files from which it was
+generated, as a [Buffer][]. This can be converted to a string by calling
+[`Buffer.toString()`][].
+
+This is `null` or `undefined` unless either
+
+* the [`sourceMap` option][] is a string; or
+* the `sourceMap` option is `true` *and* the [`outFile` option][] is set.
+
+The source map uses absolute [`file:` URLs][] to link to the Sass source files,
+except if the source file comes from the [`data` option][] in which case it
+lists its URL as `stdin`.
+
+[`sourceMap` option]: #sourcemap
+[`outFile` option]: #outfile
+[`file:` URLs]: https://en.wikipedia.org/wiki/File_URI_scheme
+
+```js
+var result = sass.renderSync({
+  file: "style.scss",
+  sourceMap: true,
+  outFile: "style.css"
+})
+
+console.log(result.map.toString());
+```
+
+#### `result.stats.includedFiles`
+
+An array of the absolute paths of all Sass files loaded during compilation. If a
+stylesheet was loaded from an [importer][] that returned the stylesheet's
+contents, the raw strings of that stylesheet's `@import` is included in this
+array.
+
+[importer]: #importer
+
+#### `result.stats.entry`
+
+The absolute path of the input file passed as the [`file` option], or `"data"`
+if the [`data` option] was passed instead.
+
+#### `result.stats.start`
+
+The number of milliseconds between 1 January 1970 at 00:00:00 UTC and the time
+at which Sass compilation began.
+
+#### `result.stats.end`
+
+The number of milliseconds between 1 January 1970 at 00:00:00 UTC and the time
+at which Sass compilation ended.
+
+#### `result.stats.duration`
+
+The number of milliseconds it took to compile the Sass file. This is always
+equal to [`result.stats.start`][] minus [`result.stats.end`][].
+
+[`result.stats.start`]: #result-stats-start
+[`result.stats.end`]: #result-stats-end
+
+### Error Object
+
+When [`renderSync()`][] or [`render()`][] fail, they provide an
+[`Error` object][] that contains information about the compilation. This object
+has the following properties, in addition to the standard `Error` properties:
+
+[`Error` object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+
+#### `error.formatted`
+
+A string representation of the error. In [Node Sass][], this is more detailed
+than [`error.toString()`][] or [`error.message`][]. In [Dart Sass][], it
+provides the same information.
+
+[`error.toString()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/toString
+[`error.message`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/message
+
+#### `error.file`
+
+The stylesheet where the error occurred. If the error occurred in a stylesheet
+loaded from disk, this is the absolute path of that stylesheet. If the error
+occurred in a stylesheet that was loaded from an [importer][] which returned the
+stylesheet's contents, this is the raw string of that stylesheet's `@import`. If
+it occurred in the contents of the [`data` option][], this is the string
+`"stdin"`.
+
+#### `error.line`
+
+The line in [`error.file`][] on which the error occurred.
+
+[`error.file`]: #error-file
+
+#### `error.column`
+
+The column of [`error.line`][] in [`error.file`][] on which the error occurred.
+
+[`error.line`]: #error-line
+
+#### `error.status`
+
+The [exit status][] that should be used if this error causes the enclosing
+program to exit.
+
+[status]: https://en.wikipedia.org/wiki/Exit_status
+
+## Options
+
+### Input
+
+These options control how Sass loads it input files.
+
+#### `file`
+
+<% impl_status dart: '1.11.0', node: false do %>
+  Node Sass and older versions of Dart Sass support loading files with the
+  extension `.css`, but contrary to the specification they're treated as SCSS
+  files rather than being parsed as CSS. This behavior has been deprecated in
+  Node Sass, and an update is in the works to load them as plain CSS instead.
+
+  All versions of Node Sass and Dart Sass otherwise support the `file` option as
+  described below.
+<% end %>
+
+This string option is the path to the file for Sass to load and compile. If the
+file's extension is `.scss`, it will be parsed as [SCSS][]; if it's `.sass`, it
+will be parsed as the [indented syntax][]; and if it's `.css`, it will be parsed
+as [plain CSS][]. If it has no extension, it will be parsed as SCSS.
+
+[SCSS]: syntax#scss
+[indented syntax]: syntax#the-indented-syntax
+[plain CSS]: at-rules/import#importing-css
+
+If the `file` option and the [`data` option][] are both passed, the `file`
+option is used as the path of the stylesheet for error reporting, but the `data`
+option is used as the contents of the stylesheet. In this case, the `file`
+option's extension is *not* used to determine the syntax of the stylesheet.
+
+```js
+sass.renderSync({file: "style.scss"});
+```
+
+#### `data`
+
+This string option provides the contents of the stylesheet to compile. Unless
+the [`file` option][] is passed as well, the stylesheet's URL is set to
+`"stdin"`.
+
+By default, this stylesheet is parsed as [SCSS][]. This can be controlled using
+the [`indentedSyntax` option][].
+
+[`indentedSyntax` option]: #indentedsyntax
+
+```js
+sass.renderSync({
+  data: `
+h1 {
+  font-size: 40px;
+}`
+});
+```
+
+### `indentedSyntax`
+
+This flag controls whether the [`data` option][] is parsed as the [indented
+syntax][] or not. It defaults to `false`. It has no effect on stylesheets loaded
+using the [`file` option][].
+
+```js
+sass.renderSync({
+  data: `
+h1
+  font-size: 40px`,
+  indentedSyntax: true
+});
+```
+
+### `includePaths`
+
+This array of strings option provides [load paths][] for Sass to look for
+imports. Earlier load paths will take precedence over later ones.
+
+[load paths]: at-rules/import#load-paths
+
+```js
+sass.renderSync({
+  file: "style.scss",
+  includePaths: ["node_modules/bootstrap/dist/css"]
+});
+```
+
+### Output
+
+These options control how Sass produces output files.
+
+#### `outputStyle`
+
+This string option controls the output style of the resulting CSS. There are
+four possible output styles:
+
+* `"expanded"` (the default for Dart Sass) writes each selector and declaration
+  on its own line.
+* `"compressed"` removes as many extra characters as possible, and writes the
+  entire stylesheet on a single line.
+* `"nested"` (the default for Node Sass, not supported by Dart Sass) indents CSS
+  rules to match the nesting of the Sass source.
+* `compact` (not supported by Dart Sass) puts each CSS rule on its own single
+  line.
+
+```js
+var source = `
+h1 {
+  font-size: 40px;
+  code {
+    font-face: Roboto Mono;
+  }
+}`;
+
+var result = sass.renderSync({
+  data: source,
+  outputStyle: "expanded"
+});
+console.log(result.css.toString());
+// h1 {
+//   font-size: 40px;
+// }
+// h1 code {
+//   font-face: Roboto Mono;
+// }
+
+result = sass.renderSync({
+  data: source,
+  outputStyle: "compressed"
+});
+console.log(result.css.toString());
+// h1{font-size:40px}h1 code{font-face:Roboto Mono}
+
+result = sass.renderSync({
+  data: source,
+  outputStyle: "nested"
+});
+console.log(result.css.toString());
+// h1 {
+//   font-size: 40px; }
+//   h1 code {
+//     font-face: Roboto Mono; }
+
+result = sass.renderSync({
+  data: source,
+  outputStyle: "compact"
+});
+console.log(result.css.toString());
+// h1 { font-size: 40px; }
+// h1 code { font-face: Roboto Mono; }
+```
+
+#### `precision`
+
+<% impl_status dart: false, node: true do %>
+  For performance reasons, Dart Sass doesn't allow its precision to be
+  customized. It always supports 10 digits of numeric precision.
+<% end %>
+
+This integer option determines the [precision][] that will be used when
+generating CSS that includes numbers. It defaults to 5 for Node Sass.
+
+[precision]: values/numbers#precision
+
+```js
+var result = sass.renderSync({
+  data: `
+h1 {
+  font-size: (100px / 3);
+}`,
+  precision: 20
+});
+
+console.log(result.css.toString());
+// h1 {
+//  font-size: 33.333333333333336px; }
+```
+
+#### `indentType`
+
+<% impl_status dart: true, node: '3.0.0' %>
+
+This string option determines whether the generated CSS should use spaces (with
+the value `"space"`) or tabs (with the value `"tab"`) for indentation. It
+defaults to `"space"`.
+
+```js
+var result = sass.renderSync({
+  file: "style.scss",
+  indentType: "tab",
+  indentWidth: 1
+});
+
+result.css.toString();
+// "h1 {\n\tfont-size: 40px;\n}\n"
+```
+
+#### `indentWidth`
+
+<% impl_status dart: true, node: '3.0.0' %>
+
+This integer option controls how many spaces or tabs (depending on the
+[`indentType` option][]) should be used per indentation level in the generated
+CSS. It defaults to 2, and must be between 0 and 10 (inclusive).
+
+[`indentType` option]: #indenttype
+
+```js
+var result = sass.renderSync({
+  file: "style.scss",
+  indentWidth: 4
+});
+
+console.log(result.css.toString());
+// h1 {
+//    font-size: 40px;
+// }
+```
+
+#### `linefeed`
+
+<% impl_status dart: true, node: '3.0.0' %>
+
+This string option controls what character sequence is used at the end of each
+line in the generated CSS. It can have the following values:
+
+* `lf` (the default) uses U+000A LINE FEED.
+* `lfcr` uses U+000A LINE FEED followed by U+000D CARRIAGE RETURN.
+* `cr` (the default) uses U+000D CARRIAGE RETURN.
+* `crlf` uses U+000D CARRIAGE RETURN followed by U+000A LINE FEED.
+
+```js
+var result = sass.renderSync({
+  file: "style.scss",
+  linefeed: "crlf"
+});
+
+console.log(result.css.toString());
+// "h1 {\r\n  font-size: 40px;\r\n}\r\n"
+```
+
+#### `sourceComments`
+
+<% impl_status dart: false, node: true do %>
+  This option isn't supported by Dart Sass, because [source maps][] are
+  recommended as the best way of determining where a style rule is defined.
+<% end %>
+
+This flag causes Sass to emit comments for every style rule that indicate where
+each style rule was defined in the source stylesheet. It defaults to `false`.
+
+```js
+var result = sass.renderSync({
+  file: "style.scss",
+  sourceComments: true
+});
+
+console.log(result.css.toString());
+// /* line 1, style.scss */
+// h1 {
+//   font-size: 40px;
+// }
+```
+
+### Source Maps
+
+<%= partial 'documentation/snippets/source-maps' %>
+
+The Sass JS API makes source maps available using the [`result.map` field][].
+
+[`result.map` field]: #result-map
+
+#### `sourceMap`
+
+This flag controls whether source maps are generated.
+
+If this option is a string, it's the path that the source map is expected to be
+written to, which is used to link to the source map from the generated CSS and
+to link *from* the source map to the Sass source files. Note that if the
+`sourceMap` option is a string and the [`outFile` option][] isn't passed, Sass
+assumes that the CSS will be written to the same directory as the [`file`
+option][] if it's passed.
+
+If this option is `true`, the path is assumed to be the `outFile` option with
+`.map` added to the end. If it's `true` and the `outFile` option isn't passed,
+it has no effect.
+
+```js
+var result = sass.renderSync({
+  file: "style.scss",
+  sourceMap: "out.map"
+})
+console.log(result.css.toString());
+// h1 {
+//   font-size: 40px;
+// }
+// /*# sourceMappingURL=out.map */
+
+result = sass.renderSync({
+  file: "style.scss",
+  sourceMap: true,
+  outFile: "out.css"
+})
+console.log(result.css.toString());
+// h1 {
+//   font-size: 40px;
+// }
+// /*# sourceMappingURL=out.css.map */
+```
+
+#### `outFile`
+
+This string option is the location that Sass expects the generated CSS to be
+saved to. It's used to determine the URL used to link from the generated CSS to
+the source map, and *from* the source map to the Sass source files.
+
+<% heads_up do %>
+  Despite the name, Sass does *not* write the CSS output to this file. The
+  caller must do that themselves.
+<% end %>
+
+```js
+result = sass.renderSync({
+  file: "style.scss",
+  sourceMap: true,
+  outFile: "out.css"
+})
+console.log(result.css.toString());
+// h1 {
+//   font-size: 40px;
+// }
+// /*# sourceMappingURL=out.css.map */
+```
+
+#### `omitSourceMapUrl`
+
+This flag causes Sass not to link from the generated CSS to the source map.
+
+```js
+var result = sass.renderSync({
+  file: "style.scss",
+  sourceMap: "out.map",
+  omitSourceMapUrl: true
+})
+console.log(result.css.toString());
+// h1 {
+//   font-size: 40px;
+// }
+```
+
+#### `sourceMapContents`
+
+This flag tells Sass to embed the entire contents of the Sass files that
+contributed to the generated CSS in the source map. This may produce very large
+source maps, but it guarantees that the source will be available on any computer
+no matter how the CSS is served.
+
+```js
+sass.renderSync({
+  file: "style.scss",
+  sourceMap: "out.map",
+  sourceMapContents: true
+})
+```
+
+#### `sourceMapEmbed`
+
+This flag tells Sass to embed the contents of the source map file in the
+generated CSS, rather than creating a separate file and linking to it from the
+CSS.
+
+```js
+sass.renderSync({
+  file: "style.scss",
+  sourceMap: "out.map",
+  embedSourceMap: true
+})
+```
+
+#### `sourceMapRoot`
+
+This string option is prepended to all the links from the source map to the Sass
+source files.
+
+### Plugins
+
+These options use JavaScript callbacks to expand the functionality of Sass
+compilation.
+
+#### `functions`
+
+This option defines additional built-in Sass functions that are available in all
+stylesheets. It's an object whose keys are Sass function signatures and whose
+values are JavaScript functions. Each function should take the same arguments as
+its signature. If the signature takes [arbitrary arguments][], the JavaScript
+function should take a single argument.
+
+[arbitrary arguments]: at-rules/function#taking-arbitrary-arguments
+
+Functions are passed JavaScript representations of [Sass value types][], and
+must return the same. All functions can return synchronously, but functions
+passed to the asynchronous [`render()` function][] can also take an additional
+callback to which they can asynchronously pass the result of the function when
+it's complete.
+
+[Sass value types]: #value-types
+[`render()` function]: #render
+
+If a function synchronously throws an error, that error is reported to the
+caller of the function and stylesheet compilation fails. There's currently no
+way to asynchronously report an error.
+
+<% heads_up do %>
+  When writing custom functions, it's important to ensure that all the arguments
+  are the types you expect. Otherwise, users' stylesheets could crash in
+  hard-to-debug ways or, worse, compile to meaningless CSS.
+<% end %>
+
+```js
+sass.render({
+  data: `
+h1 {
+  font-size: pow(2, 5) * 1px;
+}`,
+  functions: {
+    // This function uses the synchronous API, and can be passed to either
+    // renderSync() or render().
+    'pow($base, $exponent)': function(base, exponent) {
+      if (!(base instanceof sass.types.Number)) {
+        throw "$base: Expected a number.";
+      } else if (base.getUnit()) {
+        throw "$base: Expected a unitless number.";
+      }
+
+      if (!(exponent instanceof sass.types.Number)) {
+        throw "$exponent: Expected a number.";
+      } else if (exponent.getUnit()) {
+        throw "$exponent: Expected a unitless number.";
+      }
+
+      return new sass.types.Number(
+          Math.pow(base.getValue(), exponent.getValue()));
+    },
+
+    // This function uses the asynchronous API, and can only be passed to
+    // render().
+    'sqrt($number)': function(number, done) {
+      if (!(number instanceof sass.types.Number)) {
+        throw "$number: Expected a number.";
+      } else if (number.getUnit()) {
+        throw "$number: Expected a unitless number.";
+      }
+
+      done(new sass.types.Number(Math.sqrt(number.getValue())));
+    }
+  }
+}, function(err, result) {
+  console.log(result.css.toString());
+  // h1 {
+  //   font-size: 32px;
+  // }
+});
+```
+
+#### `importer`
+
+<% impl_status dart: false, node: '3.0.0' do %>
+  Versions of Node Sass before 3.0.0 don't support arrays of importers,
+  nor do they support importers that return `Error` objects.
+
+  Versions of Node Sass before 2.0.0 don't support the `importer` option at all.
+<% end %>
+
+This option defines one or more additional handlers for loading files when an
+[`@import` rule][] is encountered. It can either be a single JavaScript
+function, or an array of functions. These functions are always passed two
+arguments:
+
+[`@import` rule]: at-rules/import
+
+1. The `@import` rule's URL as a string, exactly as it appears in the
+   stylesheet.
+2. A string identifying for the stylesheet that contained the `@import`. This
+   identifier's format depends on how that stylesheet was loaded:
+   * If the stylesheet was loaded from the filesystem, it's the absolute path of
+     its file.
+   * If the stylesheet was loaded from an importer that returned its contents,
+     it's the URL of the `@import` rule that loaded it.
+   * If the stylesheet came from the [`data` option][], it's the string
+     `"stdin"`.
+
+Importers must return one of the following types:
+
+* An object with the key `contents` whose value is the contents of a stylesheet
+  (in SCSS syntax). This causes Sass to load that stylesheet's contents.
+* An object with the key `file` whose value is a path on disk. This causes Sass
+  to load that file as though it had been imported directly.
+* `null`, which indicates that it doesn't recognize the URL and another importer
+  should be tried instead.
+* An [`Error` object][], indicating that importing failed.
+
+All importers can return synchronously, but importers passed to the asynchronous
+[`render()` function][] can also take an additional callback to which they can
+asynchronously pass the result of the import once it's complete.
+
+```js
+sass.render({
+  file: "style.scss",
+  importer: [
+    // This importer uses the synchronous API, and can be passed to either
+    // renderSync() or render().
+    function(url, prev) {
+      // This generates a stylesheet from scratch for `@import "big-headers"`.
+      if (url != "big-headers") return null;
+
+      return {
+        contents: `
+h1 {
+  font-size: 40px;
+}`
+      };
+    },
+
+    // This importer uses the asynchronous API, and can only be passed to
+    // render().
+    function(url, prev, done) {
+      // Convert `@import "foo/bar"` to "node_modules/foo/sass/bar".
+      var components = url.split('/');
+      var innerPath = components.slice(1).join('/');
+      done({
+        file: `node_modules/${components.first}/sass/${innerPath}`
+      });
+    }
+  ]
+}, function(err, result) {
+  // ...
+});
+```
+
+## Value Types
+
+In order to support [custom functions][], Sass provides access to JavaScript
+wrappers for its various [value types][]. These are all provided under the
+`types` namespace in the main Sass module.
+
+[custom functions]: #functions
+[value types]: values
+
+<% heads_up do %>
+  All value types support methods that modify the value objects. Users are
+  strongly discouraged from using these methods (except for the [`Map` type][]
+  and [`List` type][] where they're necessary to create new values), because
+  they don't match the general principle that Sass values are immutable. Users
+  should construct new objects rather than modifying existing ones.
+
+  
+  [`Map` type]: #types-map
+  [`List` type]: #types-list
+<% end %>
+
+### `types.Number`
+
+This class represents a [Sass number][].
+
+[Sass number]: values/numbers
+
+#### `new types.Number(value[, unit = ''])`
+
+Creates a new Sass number with the given numeric value and string unit.
+[Complex units][] are parsed from the unit string: numerator units are separated
+from denominators by a `/`. Multiple numerator and/or denominator units may be
+separated by `*`.
+
+[Complex units]: values/numbers#units
+
+```js
+new sass.types.Number(0.5); // == 0.5
+new sass.types.Number(10, "px"); // == 10px
+new sass.types.Number(10, "px*px"); // == 10px * 1px
+new sass.types.Number(10, "px/s"); // == 10px / 1s
+new sass.types.Number(10, "px*px/s*s"); // == 10px * 1px / 1s / 1s
+```
+
+#### `number.getValue()`
+
+Returns the value of the number, ignoring units.
+
+<% heads_up do %>
+  This means that `96px` and `1in` will return different values, even though
+  they represent the same length.
+<% end %>
+
+```js
+var number = new sass.types.Number(10, "px");
+console.log(number.getValue()); // 10
+```
+
+#### `number.getUnit()`
+
+Returns the units of the number as a string. Complex units are returned in the
+same format that [the constructor][new Number] accepts them.
+
+[new Number]: #new-types-number-value-unit-39-39
+
+```js
+// number is `10px`.
+console.log(number.getUnit()); // "px"
+
+// number is `10px / 1s`.
+console.log(number.getUnit()); // "px/s"
+```
+
+#### `number.setValue(value)`
+
+Sets the value of the number, independent of its units.
+
+#### `number.setUnit(unit)`
+
+Sets the units of the number, independent of its numeric value. Complex units
+are specified in the same format as for [the constructor][new Number].
+
+### `types.String`
+
+This class represents a [Sass string][].
+
+[Sass string]: values/strings
+
+<% heads_up do %>
+  This API currently provides no way of distinguishing between a [quoted][] and
+  [unquoted][] string.
+
+  [quoted]: values/strings#quoted
+  [unquoted]: values/strings#unquoted
+<% end %>
+
+#### `new types.String(value)`
+
+Creates a new unquoted Sass string with the given value.
+
+<% heads_up do %>
+  This API currently provides no way of creating a [quoted][] string.
+
+  [quoted]: values/strings#quoted
+<% end %>
+
+```js
+new sass.types.String("Arial"); // == Arial
+```
+
+#### `string.getValue()`
+
+Returns the contents of the string. If the string contains escapes, those
+escapes are included literally if it's [unquoted][], while the values of the
+escapes are included if it's [quoted][].
+
+[unquoted]: values/strings#unquoted
+[quoted]: values/strings#quoted
+
+```js
+// string is `Arial`.
+string.getValue(); // "Arial"
+
+// string is `"Helvetica Neue"`.
+string.getValue(); // "Helvetica Neue"
+
+// string is `\1F46D`.
+string.getValue(); // "\\1F46D"
+
+// string is `"\1F46D"`.
+string.getValue(); // "👭"
+```
+
+#### `string.setValue(value)`
+
+Sets the contents of the string.
+
+<% heads_up do %>
+  Even if the string was originally quoted, this will cause it to become
+  unquoted.
+<% end %>
+
+### `types.Color`
+
+This class represents a [Sass color][].
+
+[Sass color]: values/colors
+
+#### `new types.Color(red, green, blue[, alpha = 1])`
+
+Creates a new Sass color with the given red, green, blue, and alpha channels.
+The red, green, and blue channels must be integers between 0 and 255
+(inclusive), and alpha must be between 0 and 1 (inclusive).
+
+```js
+new sass.types.Color(107, 113, 127); // #6b717f
+new sass.types.Color(0, 0, 0, 0); // rgba(0, 0, 0, 0)
+```
+
+#### `new types.Color(argb)`
+
+Creates a new Sass color with alpha, red, green, and blue channels taken from
+respective two-byte chunks of a hexidecimal number.
+
+```js
+new sass.types.Color(0xff6b717f); // #6b717f
+new sass.types.Color(0x00000000); // rgba(0, 0, 0, 0)
+```
+
+#### `color.getR()`
+
+Returns the red channel of the color as an integer from 0 to 255.
+
+```js
+// color is `#6b717f`.
+color.getR(); // 107
+
+// color is `#b37399`.
+color.getR(); // 179
+```
+
+#### `color.getG()`
+
+Returns the green channel of the color as an integer from 0 to 255.
+
+```js
+// color is `#6b717f`.
+color.getG(); // 113
+
+// color is `#b37399`.
+color.getG(); // 115
+```
+
+#### `color.getB()`
+
+Returns the blue channel of the color as an integer from 0 to 255.
+
+```js
+// color is `#6b717f`.
+color.getG(); // 127
+
+// color is `#b37399`.
+color.getG(); // 153
+```
+
+#### `color.getA()`
+
+Returns the alpha channel of the color as a number from 0 to 1.
+
+```js
+// color is `#6b717f`.
+color.getA(); // 1
+
+// color is `transparent`.
+color.getA(); // 0
+```
+
+#### `string.setR(red)`
+
+Sets the red channel of the color. The value must be an integer between 0 and
+255 (inclusive).
+
+#### `string.setG(green)`
+
+Sets the green channel of the color. The value must be an integer between 0 and
+255 (inclusive).
+
+#### `string.setB(blue)`
+
+Sets the blue channel of the color. The value must be an integer between 0 and
+255 (inclusive).
+
+#### `string.setA(alpha)`
+
+Sets the alpha channel of the color. The value must be a number between 0 and 1
+(inclusive).
+
+### `types.Boolean`
+
+This class represents a [Sass boolean][].
+
+[Sass boolean]: values/booleans
+
+Custom functions should respect Sass's notion of [truthiness][] by treating
+`false` and `null` as falsey and everything else as truthy.
+
+[truthiness]: values/booleans#truthiness-and-falsinesss
+
+<% heads_up do %>
+  Calling `new sass.types.Boolean()` is forbidden.
+<% end %>
+
+#### `types.Boolean.TRUE`
+
+The Sass value `true`.
+
+#### `types.Boolean.FALSE`
+
+The Sass value `false`.
+
+#### `boolean.getValue()`
+
+Returns `true` if the boolean is the Sass value `true`, and false if it's the
+Sass value `false`.
+
+```js
+// boolean is `true`.
+boolean.getValue(); // true
+boolean === sass.types.Boolean.TRUE; // true
+
+// boolean is `false`.
+boolean.getValue(); // false
+boolean === sass.types.Boolean.FALSE; // true
+```
+
+### `types.List`
+
+This class represents a [Sass list][].
+
+[Sass list]: values/lists
+
+<% heads_up do %>
+  This list type's methods use 0-based indexing, even though within Sass lists
+  use 1-based indexing. These methods also don't support using negative numbers
+  to index backwards from the end of the list.
+<% end %>
+
+#### `new types.List(length[, comma = true])`
+
+Creates a new Sass list with the given number of elements. If `comma` is true,
+the list is comma-separated; otherwise, it's space-separated.
+
+<% heads_up do %>
+  The initial values of the list elements are undefined. These elements must be
+  set using the [`setValue()` method][] before accessing them or passing the
+  list back to Sass.
+
+  [`setValue()` method]: #list-setvalue-value
+<% end %>
+
+```js
+var list = new sass.types.List(3);
+list.setValue(0, new sass.types.Number(10, "px"));
+list.setValue(1, new sass.types.Number(15, "px"));
+list.setValue(2, new sass.types.Number(32, "px"));
+list; // 10px, 15px, 32px
+```
+
+#### `list.getValue(index)`
+
+Returns the element at the given (0-based) index in the list.
+
+```js
+// list is `10px, 15px, 32px`
+list.getValue(0); // 10px
+list.getValue(2); // 32px
+```
+
+#### `list.getSeparator()`
+
+Returns `true` if the list is comma-separated, and `false` otherwise.
+
+```js
+// list is `10px, 15px, 32px`
+list.getSeparator(); // true
+
+// list is `1px solid`
+list.getSeparator(); // false
+```
+
+#### `list.getLength()`
+
+Returns the number of elements in the list.
+
+```js
+// list is `10px, 15px, 32px`
+list.getLength(); // 3
+
+// list is `1px solid`
+list.getLength(); // 2
+```
+
+#### `list.setValue(index, value)`
+
+Sets the element at the given (0-based) index in the list to the given value.
+
+```js
+// list is `10px, 15px, 32px`
+list.setValue(1, new sass.types.Number(18, "px"));
+list; // 10px, 18px, 32px
+```
+
+#### `list.setSeparator(comma)`
+
+Sets whether the list is comma-separated.
+
+### `types.Map`
+
+This class represents a [Sass map][]. 
+
+[Sass list]: values/maps
+
+<% heads_up do %>
+  This map type is represented as a list of key-value pairs rather than a
+  mapping from keys to values. The only way to find the value associated with a
+  given key is to iterate through the map checking for that key.
+
+  Maps created through this API are still forbidden from having duplicate keys.
+<% end %>
+
+#### `new types.Map(length)`
+
+Creates a new Sass map with the given number of key/value pairs.
+
+<% heads_up do %>
+  The initial keys and values of the map are undefined. They must be set using
+  the [`setKey()` method][] and the [`setValue()` method][] before accessing
+  them or passing the map back to Sass.
+
+  [`setKey()` method]: #map-setkey-key
+  [`setValue()` method]: #map-setvalue-value
+<% end %>
+
+```js
+var map = new sass.types.Map(2);
+map.setKey(0, new sass.types.String("width"));
+map.setValue(0, new sass.types.Number(300, "px"));
+map.setKey(1, new sass.types.String("height"));
+map.setValue(1, new sass.types.Number(100, "px"));
+map; // (width: 300px, height: 100px)
+```
+
+#### `map.getKey(index)`
+
+Returns the key in the key/value pair at the given (0-based) index in the map.
+
+```js
+// map is `(width: 300px, height: 100px)`
+map.getKey(0); // width
+map.getKey(1); // height
+```
+
+#### `map.getValue(index)`
+
+Returns the value in the key/value pair at the given (0-based) index in the map.
+
+```js
+// map is `(width: 300px, height: 100px)`
+map.getValue(0); // 300px
+map.getValue(1); // 100px
+```
+
+#### `map.getLength()`
+
+Returns the number of key/value pairs in the map.
+
+```js
+// map is `("light": 200, "medium": 400, "bold": 600)`
+map.getLength(); // 3
+
+// map is `(width: 300px, height: 100px)`
+map.getLength(); // 2
+```
+
+#### `map.setKey(index, key)`
+
+Sets the key of the key/value pair at the given (0-based) index in the map to
+the given value.
+
+```js
+// map is `("light": 200, "medium": 400, "bold": 600)`
+map.setKey(0, new sass.types.String("lighter"));
+map; // (lighter: 200, "medium": 400, "bold": 600)
+```
+
+#### `map.setValue(index, value)`
+
+Sets the value of the key/value pair at the given (0-based) index in the map to
+the given value.
+
+```js
+// map is `("light": 200, "medium": 400, "bold": 600)`
+map.setKey(1, new sass.types.Number(300));
+map; // ("light": 200, "medium": 300, "bold": 600)
+```
+
+### `types.Null`
+
+This class represents the [Sass `null` value][].
+
+[Sass `null` value]: values/null
+
+<% heads_up do %>
+  Calling `new sass.types.Null()` is forbidden.
+<% end %>
+
+#### `types.Null.NULL`
+
+The Sass value `null`.
+
+## Integrations
+
+Most popular Node.js build systems have integrations available for the JS API:
+
+* Webpack uses the [`sass-loader` package][].
+* Gulp uses the [`gulp-sass` package][].
+* Broccoli uses the [`broccoli-sass-source-maps` package][].
+* Ember uses the [`ember-cli-sass` package][].
+* Grunt uses the [`grunt-sass` package][].
+
+[`sass-loader` package]: https://www.npmjs.com/package/sass-loader
+[`gulp-sass` package]: https://www.npmjs.com/package/gulp-sass
+[`broccoli-sass-source-maps` package]: https://www.npmjs.com/package/broccoli-sass-source-maps
+[`ember-cli-sass` package]: https://www.npmjs.com/package/ember-cli-sass
+[`grunt-sass` package]: https://www.npmjs.com/package/grunt-sass

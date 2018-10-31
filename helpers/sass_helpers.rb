@@ -301,16 +301,12 @@ module SassHelpers
   #
   # This takes a Markdown block that should provide more information about the
   # implementation differences or the old behavior.
-  def impl_status(dart: nil, libsass: nil, ruby: nil)
-    raise ArgumentError.new("Missing argument dart.") if dart.nil?
-    raise ArgumentError.new("Missing argument libsass.") if libsass.nil?
-    raise ArgumentError.new("Missing argument ruby.") if ruby.nil?
-
-    contents = [
-      _impl_status_row('Dart Sass', dart),
-      _impl_status_row('LibSass', libsass),
-      _impl_status_row('Ruby Sass', ruby),
-    ]
+  def impl_status(dart: nil, libsass: nil, ruby: nil, node: nil)
+    contents = []
+    contents << _impl_status_row('Dart Sass', dart) if dart
+    contents << _impl_status_row('LibSass', libsass) if libsass
+    contents << _impl_status_row('Node Sass', node) if node
+    contents << _impl_status_row('Ruby Sass', ruby) if ruby
 
     if block_given?
       contents.unshift(content_tag(:caption, [
