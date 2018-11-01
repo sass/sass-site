@@ -285,6 +285,11 @@ h1
 
 ### `includePaths`
 
+<% impl_status dart: '1.15.0', node: '3.9.0' %>
+  Earlier versions of Dart Sass and Node Sass didn't support the `SASS_PATH`
+  environment variable.
+<% end %>
+
 This array of strings option provides [load paths][] for Sass to look for
 imports. Earlier load paths will take precedence over later ones.
 
@@ -295,6 +300,17 @@ sass.renderSync({
   file: "style.scss",
   includePaths: ["node_modules/bootstrap/dist/css"]
 });
+```
+
+Load paths are also loaded from the `SASS_PATH` [environment variable][], if
+it's set. This variable should be a list of paths separated by `;` (on Windows)
+or `:` (on other operating systems). Load paths from the `includePaths` option
+take precedence over load paths from `SASS_PATH`.
+
+[environment variable]: https://en.wikipedia.org/wiki/Environment_variable
+
+```shellsession
+$ SASS_PATH=node_modules/bootstrap/dist/css sass style.scss style.css
 ```
 
 ### Output

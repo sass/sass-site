@@ -98,6 +98,17 @@ Earlier load paths will take precedence over later ones.
 $ sass --load-path=node_modules/bootstrap/dist/css style.scss style.css
 ```
 
+Load paths are also loaded from the `SASS_PATH` [environment variable][], if
+it's set. This variable should be a list of paths separated by `;` (on Windows)
+or `:` (on other operating systems). Load paths on `SASS_PATH` take precedence
+over load paths passed on the command line.
+
+[environment variable]: https://en.wikipedia.org/wiki/Environment_variable
+
+```shellsession
+$ SASS_PATH=node_modules/bootstrap/dist/css sass style.scss style.css
+```
+
 #### `--require`
 
 This option (abbreviated `-r`) loads a [Ruby gem][] before running Sass. It can
