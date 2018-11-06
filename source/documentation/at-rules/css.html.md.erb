@@ -2,11 +2,19 @@
 title: CSS At-Rules
 ---
 
+<% impl_status dart: '1.15.0', libsass: false, ruby: false do %>
+  LibSass, Ruby Sass, and older versions of Dart Sass don't support
+  [interpolation][] in at-rule names. They do support interpolation in values.
+
+  [interpolation]: ../interpolation
+<% end %>
+
 Sass supports all the at-rules that are part of CSS proper. To stay flexible and
 forwards-compatible with future versions of CSS, Sass has general support that
 covers almost all at-rules by default. A CSS at-rule is written
-`@<name> <value>`, `@<name> { ... }`, or `@<name> <value> { ... }`. The value
-(if one exists) can be pretty much anything, and can contain [interpolation][].
+`@<name> <value>`, `@<name> { ... }`, or `@<name> <value> { ... }`. The name
+must be an identifier, and the value (if one exists) can be pretty much
+anything. Both the name and the value can contain [interpolation][].
 
 [interpolation]: ../interpolation
 
