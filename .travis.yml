@@ -1,0 +1,9 @@
+language: ruby
+
+before_script:
+- bundle exec rake middleman
+
+script: >
+  bundle exec htmlproofer \
+    --url-ignore '/file\.SASS/,https://www.drupal.org/dcoc' \
+    --assume-extension

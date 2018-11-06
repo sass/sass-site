@@ -42,10 +42,6 @@
             %p.visually-hidden
               %button.primary(type="submit") Submit
 
-        - content_for :js_foot do
-          = javascript_include_tag "tools/styleguide/responsive/test"
-
-
         - if content_for?(:section_middle)
           %section.section-middle
             .container= yield_content :section_middle
