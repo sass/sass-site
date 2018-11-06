@@ -10,6 +10,7 @@ task :test => ["sass:dart:version", "sass:libsass:version", "sass:ruby:version",
     url_ignore: [
       /file\.SASS/, # We don't want to verify reference links.
       "https://www.drupal.org/dcoc", # This doesn't allow automated requests.
+      "https://dnomak.com/flexiblegs/", # This fails on Travis only.
     ],
     file_ignore: [%r{^\./build/documentation}],
     assume_extension: true
