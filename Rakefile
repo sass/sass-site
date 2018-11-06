@@ -1,6 +1,17 @@
+require 'html-proofer'
 require 'semantic'
 require 'yaml'
 require 'yard'
+
+task :test => :build do
+  HTMLProofer.check_directory("./build",
+    url_ignore: [
+      /file\.SASS/, # We don't want to verify reference links.
+      "https://www.drupal.org/dcoc", # This doesn't allow automated requests.
+    ],
+    assume_extension: true
+  ).run
+end
 
 namespace :sass do
   # Adds an implementation's version number to data/version.yml.
