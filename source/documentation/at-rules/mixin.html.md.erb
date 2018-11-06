@@ -361,6 +361,79 @@ the `@content` rule.
 
 [local variables]: ../variables#scope
 
+### Passing Arguments to Content Blocks
+
+<% impl_status dart: '1.15.0', libsass: false, ruby: false do %>
+  LibSass, Ruby Sass, and older versions of Dart Sass don't support passing
+  arguments to content blocks.
+<% end %>
+
+A mixin can pass arguments to its content block the same way it would pass
+arguments to another mixin by writing `@content(<arguments...>)`. The user
+writing the content block can accept arguments by writing
+`@include <name> using (<arguments...>)`. The argument list for a content block
+works just like a mixin's argument list, and the arguments passed to it by
+`@content` work just like passing arguments to a mixin.
+
+<% heads_up do %>
+  If a mixin passes arguments to its content block, that content block *must*
+  declare that it accepts those arguments. This means that it's a good idea to
+  only pass arguments by position (rather than by name), and it means that
+  passing more arguments is a breaking change.
+
+  If you want to be flexible in what information you pass to a content block,
+  consider passing it a [map][] that contains information it may need!
+
+  [map]: ../values/maps
+<% end %>
+
+<%# TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass %>
+
+<% example(autogen_css: false) do %>
+  @mixin media($types...) {
+    @each $type in $types {
+      @media #{$type} {
+        @content($type);
+      }
+    }
+  }
+
+  @include media(screen, print) using ($type) {
+    h1 {
+      font-size: 40px;
+      @if $type == print {
+        font-family: Calluna;
+      }
+    }
+  }
+  ===
+  @mixin media($types...)
+    @each $type in $types
+      @media #{$type}
+        @content($type)
+
+
+
+
+  @include media(screen, print) using ($type)
+    h1
+      font-size: 40px
+      @if $type == print
+        font-family: Calluna
+  ===
+  @media screen {
+    h1 {
+      font-size: 40px;
+    }
+  }
+  @media print {
+    h1 {
+      font-size: 40px;
+      font-family: Calluna;
+    }
+  }
+<% end %>
+
 ## Indented Mixin Syntax
 
 The [indented syntax][] has a special syntax for defining and using mixins, in
