@@ -1,3 +1,9 @@
 language: ruby
 
 script: bundle exec rake test
+
+branches:
+  only:
+  - master
+  # Feature branches beginning with "feature."
+  - "/^feature\\..*/"
