@@ -5,7 +5,7 @@ require 'yard'
 
 require File.dirname(__FILE__) + '/lib/raw_markdown_link'
 
-task :test => :build do
+task :test => ["sass:dart:version", "sass:libsass:version", "sass:ruby:version", :middleman] do
   HTMLProofer.check_directory("./build",
     url_ignore: [
       /file\.SASS/, # We don't want to verify reference links.
