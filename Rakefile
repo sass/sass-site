@@ -3,6 +3,8 @@ require 'semantic'
 require 'yaml'
 require 'yard'
 
+require File.dirname(__FILE__) + '/lib/raw_markdown_link'
+
 task :test => :build do
   HTMLProofer.check_directory("./build",
     url_ignore: [
