@@ -286,6 +286,13 @@ module SassHelpers
     ], class: 'sl-c-callout sl-c-callout--fun-fact')
   end
 
+  def table_of_contents(resource)
+    content = File.read(resource.source_file)
+    toc_renderer = Redcarpet::Render::HTML_TOC.new
+    markdown = Redcarpet::Markdown.new(toc_renderer)
+    markdown.render(content)
+  end
+
   def markdown_wrap(content)
     Tilt['markdown'].new { content }.render
   end
