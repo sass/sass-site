@@ -46,6 +46,9 @@ that can be written to CSS, with a few exceptions:
 <% example(autogen_css: false) do %>
   @debug "Elapsed time: " + 10s; // "Elapsed time: 10s";
   @debug true + " is a boolean value"; // "true is a boolean value";
+  ===
+  @debug "Elapsed time: " + 10s  // "Elapsed time: 10s";
+  @debug true + " is a boolean value"  // "true is a boolean value";
 <% end %>
 
 <% heads_up do %>

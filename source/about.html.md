@@ -1,4 +1,6 @@
-# About Sass
+---
+title: About Sass
+---
 
 Sass was originally developed as a feature of the Haml markup language. Since
 then, Sass has outgrown its original home as part of Haml and is now a thriving
