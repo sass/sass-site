@@ -649,6 +649,15 @@ SIGNATURE
 
   [unitless]: ../values/numbers#units
 
+  <% heads_up do %>
+    Sass's [special parsing rules][] for slash-separated values make it
+    difficult to pass variables for `$blue` or `$alpha` when using the
+    `rgb($red $green $blue / $alpha)` signature. Consider using
+    `hsl($red, $green, $blue, $alpha)` instead.
+
+    [special parsing rules]: ../operators/numeric#slash-separated-values
+  <% end %>
+
   <% example(autogen_css: false) do %>
     @debug rgb(0 51 102); // #036
     @debug rgb(95%, 92.5%, 89.5%); // #f2ece4
