@@ -271,7 +271,7 @@ module SassHelpers
   def heads_up
     concat(content_tag :aside, [
       content_tag(:h3, 'Heads up!'),
-      _render_markdown(capture {yield})
+      _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--warning')
   end
 
@@ -282,7 +282,7 @@ module SassHelpers
   def fun_fact
     concat(content_tag :aside, [
       content_tag(:h3, 'Fun fact:'),
-      _render_markdown(capture {yield})
+      _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--fun-fact')
   end
 
@@ -317,7 +317,7 @@ module SassHelpers
 
     if block_given?
       contents.unshift(content_tag(:caption, [
-        _render_markdown(capture {yield})
+        _render_markdown(_capture {yield})
       ]))
     end
 
@@ -371,10 +371,10 @@ MARKDOWN
         content_tag(:code, highlighted_signatures.join("\n"))
       ], class: 'signature highlight scss'),
       returns ? content_tag(:div, return_type_link(returns), class: 'return-type') : '',
-      _render_markdown(capture {yield})
+      _render_markdown(_capture {yield})
     ], class: 'function', id: names.first
 
-    concat(names[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
+    concat(names.uniq[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
   end
 
   def return_type_link(return_type)

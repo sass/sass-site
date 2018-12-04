@@ -337,35 +337,31 @@ SIGNATURE
 <% end %>
 
 
-<% function 'hsl($hue, $saturation, $lightness)', returns: 'color' do %>
-  Returns a color with the given [hue, saturation, and lightness][] and the given
-  alpha channel.
+<% function 'hsl($hue $saturation $lightness)',
+            'hsl($hue $saturation $lightness / $alpha)',
+            'hsl($hue, $saturation, $lightness, $alpha: 1)',
+            'hsla($hue $saturation $lightness)',
+            'hsla($hue $saturation $lightness / $alpha)',
+            'hsla($hue, $saturation, $lightness, $alpha: 1)',
+            returns: 'color' do %>
+  <% impl_status dart: '1.15.0', libsass: false, ruby: false do %>
+    LibSass and Ruby Sass only support the following signatures:
 
-  [hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
+    * `hsl($hue, $saturation, $lightness)`
+    * `hsla($hue, $saturation, $lightness, $alpha)`
 
-  The hue is a number between `0deg` and `360deg` (inclusive). The saturation and
-  lightness are numbers between `0%` and `100%` (inclusive). All these numbers may
-  be [unitless][].
-
-  [unitless]: ../values/numbers#units
-
-  <% example(autogen_css: false) do %>
-    @debug hsl(210deg, 100%, 20%); // #036
-    @debug hsl(34, 35%, 92%); // #f2ece4
-    ===
-    @debug hsl(210deg, 100%, 20%) // #036
-    @debug hsl(34, 35%, 92%) // #f2ece4
+    Note that for these implementations, the `$alpha` argument is *required* if
+    the function name `hsla()` is used, and *forbidden* if the function name
+    `hsl()` is used.
   <% end %>
-<% end %>
 
-
-<% function 'hsla($hue, $saturation, $lightness, $alpha)', returns: 'color' do %>
   <% impl_status dart: true, libsass: false, ruby: '3.7.0' do %>
     LibSass and older versions of Ruby Sass don't support alpha values specified as
     percentages.
   <% end %>
 
-  Returns a color with the given [hue, saturation, and lightness][].
+  Returns a color with the given [hue, saturation, and lightness][] and the given
+  alpha channel.
 
   [hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
 
@@ -376,13 +372,26 @@ SIGNATURE
   `100%` (inclusive).
 
   [unitless]: ../values/numbers#units
+  
+  <% heads_up do %>
+    Sass's [special parsing rules][] for slash-separated values make it
+    difficult to pass variables for `$lightness` or `$alpha` when using the
+    `hsl($hue $saturation $lightness / $alpha)` signature. Consider using
+    `hsl($hue, $saturation, $lightness, $alpha)` instead.
+
+    [special parsing rules]: ../operators/numeric#slash-separated-values
+  <% end %>
 
   <% example(autogen_css: false) do %>
-    @debug hsl(210deg, 100%, 20%, 50%); // rgba(0, 51, 102, 0.5)
-    @debug hsl(34, 35%, 92%, 0.5); // rgba(242, 236, 228, 0.2)
+    @debug hsl(210deg 100% 20%); // #036
+    @debug hsl(34, 35%, 92%); // #f2ece4
+    @debug hsl(210deg 100% 20% / 50%); // rgba(0, 51, 102, 0.5)
+    @debug hsla(34, 35%, 92%, 0.2); // rgba(242, 236, 228, 0.2)
     ===
-    @debug hsl(210deg, 100%, 20%, 50%)  // rgba(0, 51, 102, 0.5)
-    @debug hsl(34, 35%, 92%, 0.5)  // rgba(242, 236, 228, 0.2)
+    @debug hsl(210deg 100% 20%) // #036
+    @debug hsl(34, 35%, 92%) // #f2ece4
+    @debug hsl(210deg 100% 20% / 50%)  // rgba(0, 51, 102, 0.5)
+    @debug hsla(34, 35%, 92%, 0.2)  // rgba(242, 236, 228, 0.2)
   <% end %>
 <% end %>
 
@@ -608,25 +617,24 @@ SIGNATURE
 <% end %>
 
 
-<% function 'rgb($red, $green, $blue)', returns: 'color' do %>
-  Returns a color with the given red, green, and blue channels.
+<% function 'rgb($red $green $blue)',
+            'rgb($red $green $blue / $alpha)',
+            'rgb($red, $green, $blue, $alpha: 1)',
+            'rgba($red $green $blue)',
+            'rgba($red $green $blue / $alpha)',
+            'rgba($red, $green, $blue, $alpha: 1)',
+            returns: 'color' do %>
+  <% impl_status dart: '1.15.0', libsass: false, ruby: false do %>
+    LibSass and Ruby Sass only support the following signatures:
 
-  Each channel can be specified as either a [unitless][] number between 0 and 255
-  (inclusive), or a percentage between `0%` and `100%` (inclusive).
+    * `rgb($red, $green, $blue)`
+    * `rgba($red, $green, $blue, $alpha)`
 
-  [unitless]: ../values/numbers#units
-
-  <% example(autogen_css: false) do %>
-    @debug rgb(0, 51, 102); // #036
-    @debug rgb(95%, 92.5%, 89.5%); // #f2ece4
-    ===
-    @debug rgb(0, 51, 102)  // #036
-    @debug rgb(95%, 92.5%, 89.5%)  // #f2ece4
+    Note that for these implementations, the `$alpha` argument is *required* if
+    the function name `rgba()` is used, and *forbidden* if the function name
+    `rgb()` is used.
   <% end %>
-<% end %>
 
-
-<% function 'rgba($red, $green, $blue, $alpha)', returns: 'color' do %>
   <% impl_status dart: true, libsass: false, ruby: '3.7.0' do %>
     LibSass and older versions of Ruby Sass don't support alpha values specified
     as percentages.
@@ -634,20 +642,23 @@ SIGNATURE
 
   Returns a color with the given red, green, blue, and alpha channels.
 
-  The red, green, and blue channels can be specified as either a [unitless][]
-  number between 0 and 255 (inclusive), or a percentage between `0%` and `100%`
-  (inclusive). The alpha channel can be specified as either a unitless number
-  between 0 and 1 (inclusive), or a percentage between `0%` and `100%`
-  (inclusive).
+  Each channel can be specified as either a [unitless][] number between 0 and
+  255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
+  alpha channel can be specified as either a unitless number between 0 and 1
+  (inclusive), or a percentage between `0%` and `100%` (inclusive).
 
   [unitless]: ../values/numbers#units
 
   <% example(autogen_css: false) do %>
-    @debug rgba(0, 51, 102, 0.5); // rgba(0, 51, 102, 0.5)
-    @debug rgba(95%, 92.5%, 89.5%, 20%); // rgba(242, 236, 228, 0.2)
+    @debug rgb(0 51 102); // #036
+    @debug rgb(95%, 92.5%, 89.5%); // #f2ece4
+    @debug rgb(0 51 102 / 50%); // rgba(0, 51, 102, 0.5)
+    @debug rgba(95%, 92.5%, 89.5%, 0.2); // rgba(242, 236, 228, 0.2)
     ===
-    @debug rgba(0, 51, 102, 0.5) // rgba(0, 51, 102, 0.5)
-    @debug rgba(95%, 92.5%, 89.5%, 20%) // rgba(242, 236, 228, 0.2)
+    @debug rgb(0 51 102)  // #036
+    @debug rgb(95%, 92.5%, 89.5%)  // #f2ece4
+    @debug rgb(0 51 102 / 50%)  // rgba(0, 51, 102, 0.5)
+    @debug rgba(95%, 92.5%, 89.5%, 0.2)  // rgba(242, 236, 228, 0.2)
   <% end %>
 <% end %>
 
