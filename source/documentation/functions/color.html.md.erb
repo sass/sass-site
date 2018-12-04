@@ -372,6 +372,24 @@ SIGNATURE
   `100%` (inclusive).
 
   [unitless]: ../values/numbers#units
+
+  <% fun_fact do %>
+    You can pass [special functions][] like `calc()` or `var()` in place of any
+    argument to `hsl()`. You can even use `var()` in place of multiple
+    arguments, since it might be replaced by multiple values! When a color
+    function is called this way, it returns an unquoted string using the same
+    signature it was called with.
+
+    [special functions]: ../syntax/special-functions
+
+    <% example(autogen_css: false) do %>
+      @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
+      @debug hsla(var(--peach), 20%); // hsla(var(--peach), 20%)
+      ===
+      @debug hsl(210deg 100% 20% / var(--opacity))  // hsl(210deg 100% 20% / var(--opacity))
+      @debug hsla(var(--peach), 20%)  // hsla(var(--peach), 20%)
+    <% end %>
+  <% end %>
   
   <% heads_up do %>
     Sass's [special parsing rules][] for slash-separated values make it
@@ -648,6 +666,24 @@ SIGNATURE
   (inclusive), or a percentage between `0%` and `100%` (inclusive).
 
   [unitless]: ../values/numbers#units
+
+  <% fun_fact do %>
+    You can pass [special functions][] like `calc()` or `var()` in place of any
+    argument to `rgb()`. You can even use `var()` in place of multiple
+    arguments, since it might be replaced by multiple values! When a color
+    function is called this way, it returns an unquoted string using the same
+    signature it was called with.
+
+    [special functions]: ../syntax/special-functions
+
+    <% example(autogen_css: false) do %>
+      @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
+      @debug rgba(var(--peach), 0.2); // rgba(var(--peach), 0.2)
+      ===
+      @debug rgb(0 51 102 / var(--opacity))  // rgb(0 51 102 / var(--opacity))
+      @debug rgba(var(--peach), 0.2)  // rgba(var(--peach), 0.2)
+    <% end %>
+  <% end %>
 
   <% heads_up do %>
     Sass's [special parsing rules][] for slash-separated values make it
