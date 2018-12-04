@@ -638,15 +638,18 @@ SIGNATURE
 <% function 'rgb($red $green $blue)',
             'rgb($red $green $blue / $alpha)',
             'rgb($red, $green, $blue, $alpha: 1)',
+            'rgb($color, $alpha)',
             'rgba($red $green $blue)',
             'rgba($red $green $blue / $alpha)',
             'rgba($red, $green, $blue, $alpha: 1)',
+            'rgba($color, $alpha)',
             returns: 'color' do %>
   <% impl_status dart: '1.15.0', libsass: false, ruby: false do %>
     LibSass and Ruby Sass only support the following signatures:
 
     * `rgb($red, $green, $blue)`
     * `rgba($red, $green, $blue, $alpha)`
+    * `rgba($color, $alpha)`
 
     Note that for these implementations, the `$alpha` argument is *required* if
     the function name `rgba()` is used, and *forbidden* if the function name
@@ -658,7 +661,8 @@ SIGNATURE
     as percentages.
   <% end %>
 
-  Returns a color with the given red, green, blue, and alpha channels.
+  If `$red`, `$green`, `$blue`, and optionally `$alpha` are passed, returns a
+  color with the given red, green, blue, and alpha channels.
 
   Each channel can be specified as either a [unitless][] number between 0 and
   255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
@@ -704,6 +708,19 @@ SIGNATURE
     @debug rgb(95%, 92.5%, 89.5%)  // #f2ece4
     @debug rgb(0 51 102 / 50%)  // rgba(0, 51, 102, 0.5)
     @debug rgba(95%, 92.5%, 89.5%, 0.2)  // rgba(242, 236, 228, 0.2)
+  <% end %>
+
+  ---
+
+  If `$color` and `$alpha` are passed, this returns `$color` with the given
+  `$alpha` channel instead of its original alpha channel.
+
+  <% example(autogen_css: false) do %>
+    @debug rgb(#f2ece4, 50%); // rgba(242, 236, 228, 0.5);
+    @debug rgba(rgba(0, 51, 102, 0.5), 1); // #003366
+    ===
+    @debug rgb(#f2ece4, 50%)  // rgba(242, 236, 228, 0.5) 
+    @debug rgba(rgba(0, 51, 102, 0.5), 1)  // #003366
   <% end %>
 <% end %>
 
