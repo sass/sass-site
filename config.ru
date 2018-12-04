@@ -14,6 +14,13 @@ use Rack::Rewrite do
   r301 '/try.html', 'http://sassmeister.com'
   r301 '/about', '/'
   r301 '/about.html', '/'
+
+  r301 '/documentation/file.SASS_REFERENCE.html', '/documentation/'
+  r301 '/documentation/file.SASS_CHANGELOG.html', 'https://github.com/sass/dart-sass/blob/master/CHANGELOG.md'
+  r301 '/documentation/file.INDENTED_SYNTAX.html', '/documentation/syntax'
+  r301 '/documentation/file.SCSS_FOR_SASS_USERS.html', '/documentation/syntax'
+  r301 '/documentation/Sass/Script/Functions.html', '/documentation/functions'
+  r301 %r{/documentation/(Sass.*)}, 'http://www.rubydoc.info/gems/sass/$1'
 end
 
 use Rack::Deflater
