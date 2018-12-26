@@ -175,8 +175,8 @@ code point, whether it's escaped or unescaped:
 * If it's a valid identifier character, it's included unescaped in the unquoted
   string. For example, `\1F46D` returns the unquoted string `👭`.
 
-* If it's a printable character that's not a newline, it's included after a `\`.
-  For example, `\21 ` returns the unquoted string `\!`.
+* If it's a printable character other than a newline or a tab, it's included
+  after a `\`. For example, `\21 ` returns the unquoted string `\!`.
 
 * Otherwise, the lowercase Unicode escape is included with a trailing space. For
   example, `\7Fx` returns the unquoted string `\7f x`.
