@@ -5,4 +5,10 @@
     = partial "layouts/components/reference_table_of_contents"
 
   - content_for :complementary do
-    Put table of contents here
+    -# Put table of contents here
+    %nav.sl-c-list-navigation-wrapper
+      :markdown
+        - put
+        - your
+        - links
+        - here
