@@ -1,20 +1,22 @@
 = wrap_layout :layout do
-  .sl-l-holy-grail
-    .sl-l-holy-grail__body
-      %nav.sl-l-holy-grail__navigation(role='navigation')
+  .sl-l-medium-holy-grail
+    .sl-l-medium-holy-grail__body
+      %nav.sl-l-medium-holy-grail__navigation(role='navigation')
         = yield_content :navigation
 
-      .sl-l-holy-grail__main
-        - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
-        %div{class: container}
-          - if current_page.data.introduction
-            - center_introduction = current_page.data.center_introduction ? 'sl-c-introduction--center' : ''
-            .sl-c-introduction{class: center_introduction}
-              = markdown_wrap current_page.data.introduction
+      .sl-l-medium-holy-grail__main
+        .sl-l-x-large-holy-grail
+          .sl-l-x-large-holy-grail__body
+            - has_contents = current_page.data.table_of_contents ? 'sl-l-x-large-holy-grail__complementary--contents' : ''
+            %aside.sl-l-x-large-holy-grail__complementary(role='complementary'){class: has_contents}
+              = yield_content :complementary
 
-          =yield
+            .sl-l-x-large-holy-grail__main
+              - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
+              %div{class: container}
+                - if current_page.data.introduction
+                  - center_introduction = current_page.data.center_introduction ? 'sl-c-introduction--center' : ''
+                  .sl-c-introduction{class: center_introduction}
+                    = markdown_wrap current_page.data.introduction
 
-      - has_contents = current_page.data.table_of_contents ? 'sl-l-holy-grail__complementary--contents' : ''
-      %aside.sl-l-holy-grail__complementary(role='complementary'){class: has_contents}
-        = yield_content :complementary
-      }
+                =yield

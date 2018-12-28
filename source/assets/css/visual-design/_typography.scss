@@ -68,6 +68,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+* { min-width: 0; }
+
 a { text-decoration: none; }
 
 strong,

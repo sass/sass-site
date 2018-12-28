@@ -1,58 +1,54 @@
-.sl-l-holy-grail {
+@each $breakpoint,
+      $size in $sl-breakpoints {
+  $prefix: if(($breakpoint == 'none'), '', '#{$breakpoint}-');
 
-  &,
-  &__body {
-    display: flex;
-    flex-direction: column;
-  }
+  @include sl-breakpoint-set($breakpoint,
+                             $size) {
 
-  height: 100%;
+    .sl-l-#{$prefix}holy-grail {
 
-  &__header,
-  &__footer { flex: none; }
+      &,
+      &__body { display: flex; }
 
-  &__body {
-    flex: 1 0 auto;
+      flex-direction: column;
+      height: 100%;
 
-    @include sl-breakpoint--medium {
-      flex-direction: row;
-      margin: {
-        right: -2rem;
-        left: -2rem;
-      };
-    }
-  }
+      &__header,
+      &__footer { flex: none; }
 
-  &__main,
-  &__navigation,
-  &__complementary {
+      &__body {
+        flex: 1 0 auto;
+        flex-direction: row;
+        margin: {
+          right: -2rem;
+          left: -2rem;
+        };
+      }
 
-    @include sl-breakpoint--medium {
-      padding: {
-        right: sl-px-to-rem(32px);
-        left: sl-px-to-rem(32px);
-      };
-    }
-  }
+      &__main,
+      &__navigation,
+      &__complementary {
+        padding: {
+          right: sl-px-to-rem(32px);
+          left: sl-px-to-rem(32px);
+        };
+      }
 
-  &__main {
+      &__main { flex: 1; }
 
-    @include sl-breakpoint--medium { flex: 1; }
-  }
-
-  &__navigation {
-    order: -1;
-
-    @include sl-breakpoint--medium { flex: 0 0 sl-px-to-rem(320px); }
-  }
-
-  &__complementary {
-
-    @include sl-breakpoint--medium {
-      flex: 0 0 sl-px-to-rem(480px);
-
-      &--contents {
+      &__navigation {
         flex: 0 0 sl-px-to-rem(320px);
+        order: -1;
+      }
+
+      &__complementary {
+        order: 1;
+        flex: 0 0 sl-px-to-rem(480px);
+
+        &--contents {
+          flex: 0 0 sl-px-to-rem(320px);
+          order: -1;
+        }
       }
     }
   }
