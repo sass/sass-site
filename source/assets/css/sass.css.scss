@@ -3,64 +3,37 @@
 @charset 'utf-8';
 
 @import
+  'vendor/normalize',
+  'vendor/sanitize',
+  'vendor/html5-boilerplate',
+  'vendor/syntax',
+  'vendor/jquery-ui-custom/jquery-ui',
+  'vendor/jquery-ui-custom/jquery-ui-structure',
+  'vendor/jquery-ui-custom/jquery-ui-theme',
+
   'functions',
   'breakpoints',
 
-  // VENDOR LIBRARIES
-  'dependencies/temporary-compass-references-to-refactor',
-  'susy',
+  'visual-design/theme',
+  'visual-design/typography',
 
-  'dependencies/layout',
-  'dependencies/typography',
-  'dependencies/color',
-  'dependencies/animations',
-
-  'normalize-rails',
-  'vendor/html5boilerplate/base',
-  'foundation/site',
-  'foundation/block',
-  'foundation/inline',
-  'foundation/headings',
-  'foundation/lists',
-  'foundation/tables',
-  'foundation/forms',
-  'foundation/code',
-  'foundation/media',
-
-  'layout/holy-grail',
   'layout/containers',
+  'layout/grid-system',
+  'layout/holy-grail',
+  'layout/sections',
 
-  'vendor/html5boilerplate/browsehappy',
-  'vendor/jquery-ui/jquery-ui-1.11.0.custom',
-  'components/pop-stripe',
-  'components/type',
-  'components/page-header',
-  'components/lists',
-  'components/tables',
-  'components/forms',
-  'components/buttons',
   'components/alerts',
+  'components/banner',
+  'components/buttons',
   'components/callouts',
-  'components/progress',
-  'components/articles',
-  'components/hero-image',
-  'components/header-image',
-  'components/get-started',
-  'components/slides',
+  'components/code',
   'components/icons',
-  'components/logos',
-  'components/sass-syntax-switcher',
+  'components/introduction',
+  'components/lists',
+  'components/media',
+  'components/pop-stripe',
   'components/railroad',
+  'components/sass-syntax-switcher',
+  'components/tables';
 
-  'regions/page',
-  'regions/banner',
-  'regions/navigation',
-  'regions/section-bottom',
-  'regions/contentinfo',
-
-  'vendor/html5boilerplate/helpers',
-  'helpers/helpers',
-
-  'styleguide/guide',
-
-  'vendor/html5boilerplate/print';
+//  'utilities/display';

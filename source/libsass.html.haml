@@ -175,20 +175,21 @@ introduction: >
 - content_for :navigation do
   %h3 Wrappers
 
-  %ul.sl-c-list.sl-c-list--navigation.anchors
-    %li.sl-c-list--navigation__item= link_to 'SassC',      '#sassc'
-    %li.sl-c-list--navigation__item= link_to 'Crystal',    '#crystal'
-    %li.sl-c-list--navigation__item= link_to 'Go',         '#go'
-    %li.sl-c-list--navigation__item= link_to 'Java',       '#java'
-    %li.sl-c-list--navigation__item= link_to 'JavaScript', '#javascript'
-    %li.sl-c-list--navigation__item= link_to 'Lua',        '#lua'
-    %li.sl-c-list--navigation__item= link_to '.NET',       '#net'
-    %li.sl-c-list--navigation__item= link_to 'Node',       '#node'
-    %li.sl-c-list--navigation__item= link_to 'Perl',       '#perl'
-    %li.sl-c-list--navigation__item= link_to 'PHP',        '#php'
-    %li.sl-c-list--navigation__item= link_to 'Python',     '#python'
-    %li.sl-c-list--navigation__item= link_to 'Ruby',       '#ruby'
-    %li.sl-c-list--navigation__item= link_to 'Scala',      '#scala'
+  .sl-c-list-navigation-wrapper
+    :markdown
+      - [SassC](#sassc)
+      - [Crystal](#crystal)
+      - [Go](#go)
+      - [Java](#java)
+      - [JavaScript](#javascript)
+      - [Lua](#lua)
+      - [.NET](#net)
+      - [Node](#node)
+      - [Perl](#perl)
+      - [PHP](#php)
+      - [Python](#python)
+      - [Ruby](#ruby)
+      - [Scala](#scala)
 
 - content_for :complementary do
   %h3 Resources

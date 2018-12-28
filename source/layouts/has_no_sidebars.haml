@@ -1,5 +1,9 @@
 = wrap_layout :layout do
-  - if current_page.data.introduction
-    .sl-c-introduction= markdown_wrap current_page.data.introduction
+  - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
+  %div{class: container}
+    - if current_page.data.introduction
+      - center_introduction = current_page.data.center_introduction ? 'sl-c-introduction--center' : ''
+      .sl-c-introduction{class: center_introduction}
+        = markdown_wrap current_page.data.introduction
 
-  =yield
+    =yield

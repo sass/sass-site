@@ -9,32 +9,45 @@
   height: 100%;
 
   &__header,
-  &__footer { flex: none;     }
-  &__body   { flex: 1 0 auto; }
+  &__footer { flex: none; }
 
-  &__navigation { order: -1; }
+  &__body {
+    flex: 1 0 auto;
 
-  @include sl-breakpoint--medium {
-
-    &__body {
+    @include sl-breakpoint--medium {
       flex-direction: row;
       margin: {
         right: -2rem;
-        left:  -2rem;
+        left: -2rem;
       };
     }
+  }
 
-    &__main,
-    &__navigation,
-    &__complementary {
+  &__main,
+  &__navigation,
+  &__complementary {
+
+    @include sl-breakpoint--medium {
       padding: {
-        right: 2rem;
-        left:  2rem;
+        right: sl-px-to-rem(32px);
+        left: sl-px-to-rem(32px);
       };
     }
+  }
 
-    &__main          { flex: 1;         }
-    &__navigation    { flex: 0 0 20rem; }
-    &__complementary { flex: 0 0 30rem; }
+  &__main {
+
+    @include sl-breakpoint--medium { flex: 1; }
+  }
+
+  &__navigation {
+    order: -1;
+
+    @include sl-breakpoint--medium { flex: 0 0 sl-px-to-rem(320px); }
+  }
+
+  &__complementary {
+
+    @include sl-breakpoint--medium { flex: 0 0 sl-px-to-rem(480px); }
   }
 }

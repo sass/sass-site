@@ -1,5 +1,0 @@
-.get-started ol {
-  @extend %reset-list;
-  @include font-size-x-large;
-  @include adjust-leading-to(2, $font-size-x-large)
-}

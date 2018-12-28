@@ -1,0 +1,30 @@
+.sl-c-banner {
+  position: relative;
+
+  &__brand img {
+    display: inline-block;
+    margin: 0;
+    height: sl-px-to-rem(48px);
+
+    @include sl-breakpoint--medium { height: sl-px-to-rem(96px); }
+  }
+
+  &__navigation {
+    font-weight: $sl-font-weight--bold;
+
+    ul {
+      position: relative;
+      right: -(sl-px-to-rem(16px));
+    }
+
+    a {
+      display: block;
+      padding: sl-px-to-rem(12px) sl-px-to-rem(16px);
+
+      &:hover,
+      &:focus { background: rgba($sl-color--iron, .5); }
+
+      &:active { background: $sl-color--iron; }
+    }
+  }
+}

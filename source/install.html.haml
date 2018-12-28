@@ -1,9 +1,10 @@
 ---
 title: Install Sass
+no_container: true
 ---
 
-%ol.list-columns
-  %li.gui-application
+.sl-l-grid.sl-l-grid--full.sl-l-large-grid--fit.sl-l-large-grid--gutters-large
+  .sl-l-grid__column
     :markdown
       ## Applications
 
@@ -65,7 +66,7 @@ title: Install Sass
         %span.linux-icon
         %span.mac-icon
 
-  %li.command-line
+  .sl-l-grid__column
     :markdown
       ## Command Line
 
@@ -85,7 +86,7 @@ title: Install Sass
       Once it's all set up, <strong>go and play</strong>. If you're brand new to
       Sass we've set up some resources to help you learn pretty darn quick.
 
-    %p= link_to 'Learn More About Sass', '/guide', :class => 'button primary'
+    %p= link_to 'Learn More About Sass', '/guide', :class => 'sl-c-button sl-c-button--primary'
 
     %dl
       %dt Install Anywhere (Standalone)

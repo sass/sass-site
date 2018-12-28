@@ -1,27 +1,33 @@
-.button {
-  @extend %reset-margin;
-  @extend %button;
-}
+.sl-c-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 0 {
+    radius: sl-px-to-rem(4px);
+  };
+  padding: sl-px-to-rem(12px) sl-px-to-rem(16px);
+  background: $sl-color--iron;
+  box-shadow: 0 2px 1px rgba($sl-color--midnight-blue, .125);
+  color: darken($sl-color--hopbush, 10%);
+  cursor: pointer;
 
-.primary {
-  background-color: darken($color-primary, 10%);
-  border-color: darken($color-primary, 5);
-
-  &,
   &:hover,
-  &:focus,
-  &:active,
-  &.active { color: $color-text-strong-invert; }
+  &:focus { color: darken($sl-color--bouquet, 10%); }
 
-  &:hover,
-  &:focus,
-  &:active
-  &.active { background-color: darken($color-primary, 8%); }
-}
+  &:active { color: darken($sl-color--venus, 10%); }
 
-%clear-button {
-  box-shadow: none;
-  border-color: transparent;
-  background: none;
-  color: inherit;
+  &--primary {
+    background-color: darken($sl-color--hopbush, 10%);
+
+    &,
+    &:hover,
+    &:focus,
+    &:active { color: $sl-color--white; }
+
+    &:hover,
+    &:focus { background-color: darken($sl-color--bouquet, 10%); }
+
+    &:active { background-color: darken($sl-color--venus, 10%); }
+  }
 }

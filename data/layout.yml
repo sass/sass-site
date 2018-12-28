@@ -1,9 +1,3 @@
-susy:
-  total_columns: 12
-  column_width:  48px
-  gutter_width:  16px
-
-
 resolutions:
   - target: small
     width:  480

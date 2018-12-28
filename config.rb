@@ -1,5 +1,4 @@
 require 'middleman-syntax'
-require 'susy'
 
 activate :automatic_image_sizes
 activate :autoprefixer do |config|
@@ -27,10 +26,11 @@ page '/community.html',            :layout => :has_complementary
 page '/community-guidelines.html', :layout => :has_complementary
 page '/libsass.html',              :layout => :has_both_sidebars
 page '/404.html',                  :layout => :has_no_sidebars
+page '/about.html',                :layout => :has_no_sidebars
+page '/implementation.html',       :layout => :has_no_sidebars
 page '/install.html',              :layout => :has_no_sidebars
 page '/dart-sass.html',            :layout => :has_no_sidebars
 page '/ruby-sass.html',            :layout => :has_no_sidebars
-page '/implementation.html',       :layout => :has_no_sidebars
 page '/styleguide/*',              :layout => :section_styleguide
 page '/documentation/*',           :layout => :section_reference
 
