@@ -139,10 +139,13 @@ module SassHelpers
       sass_lines = (sass_section || "").lines.count
       css_lines = (css_section || "").lines.count
 
+      # Whether the current section is the last section for the given syntax.
       last_scss_section = i == scss_sections.length - 1
       last_sass_section = i == sass_sections.length - 1
       last_css_section = i == css_sections.length - 1
 
+      # The maximum lines for any syntax in this section, ignoring syntaxes for
+      # which this is the last section.
       max_lines = [
         last_scss_section ? 0 : scss_lines,
         last_sass_section ? 0 : sass_lines,
@@ -229,15 +232,8 @@ module SassHelpers
     content_tag(:div, [
       content_tag(:h3, name),
       *sections.zip(paddings).map do |section, padding|
-        html = _render_markdown("```#{syntax}\n#{section}\n```")
-
-        # Multiply the lines of padding by 2em, and add 1em to compensate for
-        # the existing padding that we're overriding.
-        if padding
-          html.sub("<pre ", "<pre style='padding-bottom: #{padding * 2 + 1}em'")
-        else
-          html
-        end
+        padding = 0 if padding.nil? || padding.negative?
+        _render_markdown("```#{syntax}\n#{section}#{"\n" * padding}\n```")
       end
     ], id: "example-#{id}-#{syntax}", class: syntax)
   end
