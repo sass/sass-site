@@ -74,7 +74,7 @@
         - if current_page.data.h1?
           = Typogruby.improve(current_page.data.h1)
 
-        - else
+        - elsif current_page.data.title
           = Typogruby.improve(current_page.data.title)
 
 

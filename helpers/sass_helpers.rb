@@ -271,7 +271,7 @@ module SassHelpers
   def heads_up
     concat(content_tag :aside, [
       content_tag(:h3, 'Heads up!'),
-      _render_markdown(capture {yield})
+      _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--warning')
   end
 
@@ -282,8 +282,15 @@ module SassHelpers
   def fun_fact
     concat(content_tag :aside, [
       content_tag(:h3, 'Fun fact:'),
-      _render_markdown(capture {yield})
+      _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--fun-fact')
+  end
+
+  def table_of_contents(resource)
+    content = File.read(resource.source_file)
+    toc_renderer = Redcarpet::Render::HTML_TOC.new
+    markdown = Redcarpet::Markdown.new(toc_renderer)
+    markdown.render(content)
   end
 
   def markdown_wrap(content)
@@ -301,20 +308,16 @@ module SassHelpers
   #
   # This takes a Markdown block that should provide more information about the
   # implementation differences or the old behavior.
-  def impl_status(dart: nil, libsass: nil, ruby: nil)
-    raise ArgumentError.new("Missing argument dart.") if dart.nil?
-    raise ArgumentError.new("Missing argument libsass.") if libsass.nil?
-    raise ArgumentError.new("Missing argument ruby.") if ruby.nil?
-
-    contents = [
-      _impl_status_row('Dart Sass', dart),
-      _impl_status_row('LibSass', libsass),
-      _impl_status_row('Ruby Sass', ruby),
-    ]
+  def impl_status(dart: nil, libsass: nil, ruby: nil, node: nil)
+    contents = []
+    contents << _impl_status_row('Dart Sass', dart) if dart
+    contents << _impl_status_row('LibSass', libsass) if libsass
+    contents << _impl_status_row('Node Sass', node) if node
+    contents << _impl_status_row('Ruby Sass', ruby) if ruby
 
     if block_given?
       contents.unshift(content_tag(:caption, [
-        _render_markdown(capture {yield})
+        _render_markdown(_capture {yield})
       ]))
     end
 
@@ -368,10 +371,10 @@ MARKDOWN
         content_tag(:code, highlighted_signatures.join("\n"))
       ], class: 'signature highlight scss'),
       returns ? content_tag(:div, return_type_link(returns), class: 'return-type') : '',
-      _render_markdown(capture {yield})
+      _render_markdown(_capture {yield})
     ], class: 'function', id: names.first
 
-    concat(names[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
+    concat(names.uniq[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
   end
 
   def return_type_link(return_type)
@@ -397,7 +400,7 @@ MARKDOWN
   # Removes leading spaces from every non-empty line in `text` while preserving
   # relative indentation.
   def remove_leading_indentation(text)
-    text.gsub(/^#{text.scan(/^ *(?=\S)/).min}/, "")
+    text.gsub(/^#{text.scan(/^ *(?=\S)(?!<)/).min}/, "")
   end
 
   # A helper method that renders a chunk of Markdown text.
