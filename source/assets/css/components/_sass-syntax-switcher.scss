@@ -66,6 +66,11 @@
 
     .ui-tabs-anchor { padding: .75rem 1rem; }
   }
+
+  // Carefully calibrated so that the distance between two code blocks in the
+  // syntax switcher is exactly equal to two lines, so there's no visual jitter
+  // when switching between syntaxes.
+  pre { margin-top: 22px; }
 }
 
 .ui-widget.ui-widget-content,
