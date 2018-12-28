@@ -1,6 +1,6 @@
-require 'semantic'
-require 'yaml'
-require 'yard'
+require "semantic"
+require "yaml"
+require "yard"
 
 namespace :sass do
   # Adds an implementation's version number to data/version.yml.
