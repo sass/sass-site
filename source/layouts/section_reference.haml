@@ -6,5 +6,7 @@
 
   - if current_page.data.table_of_contents
     - content_for :complementary do
+      %h3 Page Sections
+
       %nav.sl-c-list-navigation-wrapper
         = current_page.metadata[:table_of_contents]
