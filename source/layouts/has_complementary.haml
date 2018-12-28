@@ -1,7 +1,7 @@
 = wrap_layout :layout do
-  .sl-l-holy-grail
-    .sl-l-holy-grail__body
-      .sl-l-holy-grail__main
+  .sl-l-large-holy-grail
+    .sl-l-large-holy-grail__body
+      .sl-l-large-holy-grail__main
         - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
         %div{class: container}
           - if current_page.data.introduction
@@ -11,5 +11,5 @@
 
           =yield
 
-      %aside.sl-l-holy-grail__complementary(role='complementary')
+      %aside.sl-l-large-holy-grail__complementary(role='complementary')
         = yield_content :complementary
