@@ -168,53 +168,53 @@ introduction: >
     We want to import `_reset.scss` into `base.scss`.
 
   - example do
-      :plain
-        // _reset.scss
-        html,
-        body,
-        ul,
-        ol {
-          margin:  0;
-          padding: 0;
-        }
-        ---
-        // base.scss
-        @import 'reset';
-        body {
-          font: 100% Helvetica, sans-serif;
-          background-color: #efefef;
-        }
-        ===
-        // _reset.sass
-        html,
-        body,
-        ul,
-        ol
-          margin:  0
-          padding: 0
-        ---
-        // base.sass
-        @import reset
-        body
-          font: 100% Helvetica, sans-serif
-          background-color: #efefef
-        ===
-        html,
-        body,
-        ul,
-        ol {
-          margin:  0;
-          padding: 0;
-        }
-        body {
-          font: 100% Helvetica, sans-serif;
-          background-color: #efefef;
-        }
+    :plain
+      // _reset.scss
+      html,
+      body,
+      ul,
+      ol {
+        margin:  0;
+        padding: 0;
+      }
+      ---
+      // base.scss
+      @import 'reset';
+      body {
+        font: 100% Helvetica, sans-serif;
+        background-color: #efefef;
+      }
+      ===
+      // _reset.sass
+      html,
+      body,
+      ul,
+      ol
+        margin:  0
+        padding: 0
+      ---
+      // base.sass
+      @import reset
+      body
+        font: 100% Helvetica, sans-serif
+        background-color: #efefef
+      ===
+      html,
+      body,
+      ul,
+      ol {
+        margin:  0;
+        padding: 0;
+      }
+      body {
+        font: 100% Helvetica, sans-serif;
+        background-color: #efefef;
+      }
 
-  :markdown
-    Notice we're using `@import 'reset';` in the `base.scss` file. When you
-    import a file you don't need to include the file extension `.scss`. Sass
-    is smart and will figure it out for you.
+:markdown
+  Notice we're using `@import 'reset';` in the `base.scss` file. When you
+  import a file you don't need to include the file extension `.scss`. Sass
+  is smart and will figure it out for you.
 
 %section.sl-l-section.sl-l-section--small#topic-6
   :markdown
@@ -384,40 +384,40 @@ introduction: >
     We've created a very simple fluid grid, based on 960px. Operations in Sass
     let us do something like take pixel values and convert them to percentages
     without much hassle.
-=======
-      ## Mixins
 
-      Some things in CSS are a bit tedious to write, especially with CSS3 and
-      the many vendor prefixes that exist. A mixin lets you make groups of CSS
-      declarations that you want to reuse throughout your site. You can even
-      pass in values to make your mixin more flexible. A good use of a mixin is
-      for vendor prefixes. Here's an example for <code>transform</code>.
+    ## Mixins
 
-    - example do
-      :plain
-        @mixin transform($property) {
-          -webkit-transform: $property;
-          -ms-transform: $property;
-          transform: $property;
-        }
+    Some things in CSS are a bit tedious to write, especially with CSS3 and
+    the many vendor prefixes that exist. A mixin lets you make groups of CSS
+    declarations that you want to reuse throughout your site. You can even
+    pass in values to make your mixin more flexible. A good use of a mixin is
+    for vendor prefixes. Here's an example for <code>transform</code>.
 
-        .box { @include transform(rotate(30deg)); }
-        ===
-        =transform($property)
-          -webkit-transform: $property
-          -ms-transform: $property
-          transform: $property
+  - example do
+    :plain
+      @mixin transform($property) {
+        -webkit-transform: $property;
+        -ms-transform: $property;
+        transform: $property;
+      }
 
-        .box
-          +transform(rotate(30deg))
+      .box { @include transform(rotate(30deg)); }
+      ===
+      =transform($property)
+        -webkit-transform: $property
+        -ms-transform: $property
+        transform: $property
 
-    :markdown
-      To create a mixin you use the <code>@mixin</code> directive and give it a
-      name. We've named our mixin <code>transform</code>. We're also using
-      the variable <code>$property</code> inside the parentheses so we can pass in
-      a transform of whatever we want. After you create your mixin, you can then
-      use it as a CSS declaration starting with <code>@include</code> followed
-      by the name of the mixin.
+      .box
+        +transform(rotate(30deg))
+
+  :markdown
+    To create a mixin you use the <code>@mixin</code> directive and give it a
+    name. We've named our mixin <code>transform</code>. We're also using
+    the variable <code>$property</code> inside the parentheses so we can pass in
+    a transform of whatever we want. After you create your mixin, you can then
+    use it as a CSS declaration starting with <code>@include</code> followed
+    by the name of the mixin.
 
     %hr/
 
