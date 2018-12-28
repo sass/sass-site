@@ -7,9 +7,10 @@
       .sl-l-medium-holy-grail__main
         .sl-l-large-holy-grail
           .sl-l-large-holy-grail__body
-            - has_contents = current_page.data.table_of_contents ? 'sl-l-large-holy-grail__complementary--contents' : ''
-            %aside.sl-l-large-holy-grail__complementary(role='complementary'){class: has_contents}
-              = yield_content :complementary
+            - if content_for?(:complememtary)
+              - has_contents = current_page.data.table_of_contents ? 'sl-l-large-holy-grail__complementary--contents' : ''
+              %aside.sl-l-large-holy-grail__complementary(role='complementary'){class: has_contents}
+                = yield_content :complementary
 
             .sl-l-large-holy-grail__main
               - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
