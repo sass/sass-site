@@ -11,7 +11,7 @@ project, much more popular than its original host project.
 It was originally conceived of by [Hampton Catlin](http://www.hamptoncatlin.com)
 in 2006, however he only remained an active Core Team member through version
 2009 and is no longer actively developing on Sass. [Natalie
-Weizenbaum](http://nex-3.com/) is the primary developer and designer of Sass and
+Weizenbaum](https://twitter.com/nex3) is the primary developer and designer of Sass and
 has been involved in the project since the second commit. In 2008, [Chris
 Eppstein](http://chriseppstein.github.io/) joined the Sass Core Team and is also
 the creator of Compass. Since joining, he and Natalie have designed Sass
