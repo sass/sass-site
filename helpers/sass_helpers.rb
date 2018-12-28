@@ -232,7 +232,7 @@ module SassHelpers
     content_tag(:div, [
       content_tag(:h3, name),
       *sections.zip(paddings).map do |section, padding|
-        padding = 0 if padding.nil? || padding < 0
+        padding = 0 if padding.nil? || padding.negative?
         _render_markdown("```#{syntax}\n#{section}#{"\n" * padding}\n```")
       end
     ], id: "example-#{id}-#{syntax}", class: syntax)
