@@ -14,7 +14,12 @@
 
     ul {
       position: relative;
-      right: -(sl-px-to-rem(16px));
+      margin: 0 -1rem !important;
+
+      @include sl-breakpoint--medium {
+        right: -(sl-px-to-rem(16px));
+        margin: 0 !important;
+      }
     }
 
     a {
