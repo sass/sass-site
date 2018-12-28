@@ -14,5 +14,7 @@
 
           =yield
 
-      %aside.sl-l-holy-grail__complementary(role='complementary')
+      - has_contents = current_page.data.table_of_contents ? 'sl-l-holy-grail__complementary--contents' : ''
+      %aside.sl-l-holy-grail__complementary(role='complementary'){class: has_contents}
         = yield_content :complementary
+      }

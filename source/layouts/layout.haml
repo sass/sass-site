@@ -95,21 +95,21 @@
 
           %li
             %span.release-name<
-              = link_to 'LibSass', 'libsass'
+              = link_to 'LibSass', '/libsass'
               -# Force space between the two links.
               &#32;
               = link_to impl_version(:libsass) || '???', release_url(:libsass)
 
           %li
             %span.release-name<
-              = link_to 'Ruby Sass', 'ruby-sass'
+              = link_to 'Ruby Sass', '/ruby-sass'
               -# Force space between the two links.
               &#32;
               = link_to impl_version(:ruby) || '???',     |
                 '/documentation/file.SASS_CHANGELOG.html' |
 
           %li.sl-l-grid__column.sl-l-large-grid__column--auto-size
-            = link_to 'Implementation Guide', 'implementation'
+            = link_to 'Implementation Guide', '/implementation'
 
     - if content_for?(:section_bottom)
       %section.sl-background--white.sl-l-container= Typogruby.improve(yield_content :section_bottom)

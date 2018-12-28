@@ -48,6 +48,12 @@
 
   &__complementary {
 
-    @include sl-breakpoint--medium { flex: 0 0 sl-px-to-rem(480px); }
+    @include sl-breakpoint--medium {
+      flex: 0 0 sl-px-to-rem(480px);
+
+      &--contents {
+        flex: 0 0 sl-px-to-rem(320px);
+      }
+    }
   }
 }
