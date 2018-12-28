@@ -54,6 +54,8 @@ before_render do |body, _, _, template_class|
   if current_page.data.table_of_contents &&
      template_class == Middleman::Renderers::RedcarpetTemplate
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC.new)
-    markdown.render(body).sub(/<ul( |>)/, '<ul class="table-of-contents"\1') + body
+    current_page.add_metadata(table_of_contents:
+        markdown.render(body).sub(/<ul( |>)/, '<ul class="table-of-contents"\1'))
+    body
   end
 end
