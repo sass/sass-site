@@ -232,5 +232,8 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
   <% example(autogen_css: false) do %>
     @debug compound-selectors("a.disabled"); // a, .disabled
     @debug compound-selectors("main.blog:after"); // main, .blog, :after
+    ===
+    @debug compound-selectors("a.disabled")  // a, .disabled
+    @debug compound-selectors("main.blog:after")  // main, .blog, :after
   <% end %>
 <% end %>

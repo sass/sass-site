@@ -1,5 +1,6 @@
 ---
 title: Dart Sass Command-Line Interface
+table_of_contents: true
 ---
 
 ## Usage
@@ -44,13 +45,13 @@ The inputs are separated from the outputs with colons. It can also compile all
 Sass files in a directory to CSS files with the same names in another directory.
 
 ```shellsession
-# Compiles style.scss to style.css.
+​# Compiles style.scss to style.css.
 $ sass style.scss:style.css
 
-# Compiles light.scss and dark.scss to light.css and dark.css.
+​# Compiles light.scss and dark.scss to light.css and dark.css.
 $ sass light.scss:light.css dark.scss:dark.css
 
-# Compiles all Sass files in themes/ to CSS files in public/css/.
+​# Compiles all Sass files in themes/ to CSS files in public/css/.
 $ sass themes:public/css
 ```
 
@@ -176,10 +177,10 @@ of URLs:
 [`file:` URLs]: https://en.wikipedia.org/wiki/File_URI_scheme
 
 ```shellsession
-# Generates a URL like "../sass/style.scss".
+​# Generates a URL like "../sass/style.scss".
 $ sass --source-map-urls=relative sass/style.scss css/style.css
 
-# Generates a URL like "file:///home/style-wiz/sassy-app/sass/style.scss".
+​# Generates a URL like "file:///home/style-wiz/sassy-app/sass/style.scss".
 $ sass --source-map-urls=absolute sass/style.scss css/style.css
 ```
 
@@ -218,7 +219,7 @@ they or their dependencies change.
 $ sass --watch themes:public/css
 Compiled themes/light.scss to public/css/light.css.
 
-# Then when you edit themes/dark.scss...
+​# Then when you edit themes/dark.scss...
 Compiled themes/dark.scss to public/css/dark.css.
 ```
 
@@ -234,7 +235,7 @@ system doesn't work.
 $ sass --watch --poll themes:public/css
 Compiled themes/light.scss to public/css/light.css.
 
-# Then when you edit themes/dark.scss...
+​# Then when you edit themes/dark.scss...
 Compiled themes/dark.scss to public/css/dark.css.
 ```
 

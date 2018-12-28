@@ -1,24 +1,29 @@
-$os-icons: "icons/os-icons.png";
+$os-icons: 'icons/os-icons.png';
 
 // TODO: Make these use a 16-base instead of 15.
 %os-icons {
-  @include square(15px);
   background: image-url($os-icons) 0 0 no-repeat;
-  background-size: auto 15px;
+  background-size: auto sl-px-to-rem(15px);
   display: inline-block;
+  width: sl-px-to-rem(15px);
+  height: sl-px-to-rem(15px);
 }
+
 .mac-icon {
   @extend %os-icons;
-  background-position: -35px 0;
+  background-position: -(sl-px-to-rem(35px)) 0;
 }
+
 .windows-icon {
   @extend %os-icons;
 }
+
 .linux-icon {
   @extend %os-icons;
-  background-position: -65px 0;
+  background-position: -(sl-px-to-rem(65px)) 0;
 }
+
 .paid-icon {
   @extend %os-icons;
-  background-position: -100px 0;
+  background-position: -(sl-px-to-rem(100px)) 0;
 }

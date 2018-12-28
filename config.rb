@@ -1,5 +1,4 @@
 require 'middleman-syntax'
-require 'susy'
 
 activate :automatic_image_sizes
 activate :autoprefixer do |config|
@@ -27,10 +26,11 @@ page '/community.html',            :layout => :has_complementary
 page '/community-guidelines.html', :layout => :has_complementary
 page '/libsass.html',              :layout => :has_both_sidebars
 page '/404.html',                  :layout => :has_no_sidebars
+page '/about.html',                :layout => :has_no_sidebars
+page '/implementation.html',       :layout => :has_no_sidebars
 page '/install.html',              :layout => :has_no_sidebars
 page '/dart-sass.html',            :layout => :has_no_sidebars
 page '/ruby-sass.html',            :layout => :has_no_sidebars
-page '/implementation.html',       :layout => :has_no_sidebars
 page '/styleguide/*',              :layout => :section_styleguide
 page '/documentation/*',           :layout => :section_reference
 
@@ -48,4 +48,12 @@ configure :build do
   activate :relative_assets
 
   set :relative_links, true
+end
+
+before_render do |body, _, _, template_class|
+  if current_page.data.table_of_contents &&
+     template_class == Middleman::Renderers::RedcarpetTemplate
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC.new)
+    markdown.render(body).sub(/<ul( |>)/, '<ul class="table-of-contents"\1') + body
+  end
 end

@@ -1,1 +1,1 @@
-$( "table" ).wrap( "<div class='table-responsive'></div>" );
+$( "table" ).wrap( "<div class='sl-c-table-responsive'></div>" );

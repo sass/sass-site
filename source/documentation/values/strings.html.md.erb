@@ -1,5 +1,6 @@
 ---
 title: Strings
+table_of_contents: true
 ---
 
 Strings are sequences of characters (specifically [Unicode code points][]). Sass
@@ -121,7 +122,10 @@ diagram below. They may include [interpolation][] anywhere.
 
 [identifiers]: https://drafts.csswg.org/css-syntax-3/#ident-token-diagram
 
-<%= partial 'assets/img/illustrations/identifier-diagram' %>
+<figure>
+  <object type="image/svg+xml" data="/assets/img/illustrations/identifier-diagram.svg"></object>
+  <figcaption class="copyright">Railroad diagram copyright © 2018 W3C<sup>®</sup> (MIT, ERCIM, Keio, Beihang). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.
+</figcaption>
 
 <% example do %>
   @debug bold; // bold
@@ -175,8 +179,8 @@ code point, whether it's escaped or unescaped:
 * If it's a valid identifier character, it's included unescaped in the unquoted
   string. For example, `\1F46D` returns the unquoted string `👭`.
 
-* If it's a printable character that's not a newline, it's included after a `\`.
-  For example, `\21 ` returns the unquoted string `\!`.
+* If it's a printable character other than a newline or a tab, it's included
+  after a `\`. For example, `\21 ` returns the unquoted string `\!`.
 
 * Otherwise, the lowercase Unicode escape is included with a trailing space. For
   example, `\7Fx` returns the unquoted string `\7f x`.

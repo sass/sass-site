@@ -1,5 +1,6 @@
 ---
 title: Ruby Sass Command-Line Interface
+table_of_contents: true
 ---
 
 <% heads_up do %>
@@ -210,7 +211,7 @@ $ sass --watch themes:public/css
       write public/css/light.css
       write public/css/light.css.map
 
-# Then when you edit themes/dark.scss...
+​# Then when you edit themes/dark.scss...
       write public/css/dark.css
       write public/css/dark.css.map
 ```
@@ -228,7 +229,7 @@ $ sass --watch --poll themes:public/css
       write public/css/light.css
       write public/css/light.css.map
 
-# Then when you edit themes/dark.scss...
+​# Then when you edit themes/dark.scss...
       write public/css/dark.css
       write public/css/dark.css.map
 ```
@@ -308,16 +309,16 @@ your Sass files in browsers. See instructions for using source maps in
 [`file:` URLs]: https://en.wikipedia.org/wiki/File_URI_scheme
 
 ```shellsession
-# Generates a URL like "../sass/style.scss".
+​# Generates a URL like "../sass/style.scss".
 $ sass --sourcemap=auto sass/style.scss css/style.css
 
-# Generates a URL like "file:///home/style-wiz/sassy-app/sass/style.scss".
+​# Generates a URL like "file:///home/style-wiz/sassy-app/sass/style.scss".
 $ sass --sourcemap=file sass/style.scss css/style.css
 
-# Includes the full text of sass/style.scss in the source map.
+​# Includes the full text of sass/style.scss in the source map.
 $ sass --sourcemap=inline sass/style.scss css/style.css
 
-# Doesn't generate a source map.
+​# Doesn't generate a source map.
 $ sass --sourcemap=none sass/style.scss css/style.css
 ```
 

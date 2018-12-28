@@ -35,7 +35,6 @@ otherwise.
     much simpler set:
     - `c-` is for **components**. Example: `sl-c-card`.
     - `l-` is for **layouts**. Example: `sl-l-grid`.
-    - `u-` is for **utilities**. Example: `sl-u-display--inline-flex`. (More on
       this double-dash syntax in a bit).
     - `is-` and `has-` for states. Example: `sl-is-active`.
     - `js-` is for classes specifically created for JavaScript targeting.

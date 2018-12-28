@@ -4,6 +4,7 @@ $sl-breakpoint--large:   960px  !default;
 $sl-breakpoint--x-large: 1280px !default;
 
 $sl-breakpoints: (
+  none:    0, // for mixins to span across breakpoints and without one
   small:   $sl-breakpoint--small,
   medium:  $sl-breakpoint--medium,
   large:   $sl-breakpoint--large,
@@ -77,5 +78,20 @@ $sl-breakpoints: (
 
   @include sl-breakpoint-max($sl-breakpoint--x-large) {
     @content;
+  }
+}
+
+@mixin sl-breakpoint-set($breakpoint,
+                         $size) {
+
+  @if $breakpoint == none {
+    @content;
+  }
+
+  @else {
+
+    @include sl-breakpoint($size) {
+      @content;
+    }
   }
 }

@@ -1,5 +1,15 @@
-= wrap_layout :has_navigation do
+= wrap_layout :has_both_sidebars do
   =yield
 
   - content_for :navigation do
     = partial "layouts/components/reference_table_of_contents"
+
+  - if current_page.data.table_of_contents
+    - content_for :complementary do
+      -# Put table of contents here and make it conditional
+      %nav.sl-c-list-navigation-wrapper
+        :markdown
+          - put
+          - your
+          - links
+          - here

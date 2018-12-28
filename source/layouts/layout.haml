@@ -1,13 +1,39 @@
 !!!5
-%html.no-js(lang="en"){:class => data.page.head_classes}
+%html.no-js(lang='en'){class: data.page.head_classes}
   %head
-    %meta(charset="utf-8")/
-    %meta(http-equiv="X-UA-Compatible" content="IE=edge")/
+    %meta(charset='utf-8')
+    %meta(http-equiv='X-UA-Compatible' content='IE=edge')
     %title= page_title
-    = partial 'layouts/head/meta'
-    = partial 'layouts/head/link'
-    = partial 'layouts/head/css'
-    = partial 'layouts/head/js'
+    %meta(name='description' content='Syntatically Awesome Style Sheets')
+    %meta(name='viewport' content='width=device-width, initial-scale=1')
+
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,600|Source+Serif+Pro'
+    = stylesheet_link_tag 'sass'
+    = yield_content :css
+
+    -# Old version of analytics (https://developers.google.com/analytics/devguides/collection/gajs/).
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-535380-8']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    -# New version of analytics (https://developers.google.com/analytics/devguides/collection/analyticsjs/).
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-535380-14', 'sass-lang.com');
+      ga('send', 'pageview');
+
+    = yield_content :js_head
 
   %body{class: page_classes}
     /[if lt IE 9]
@@ -18,23 +44,109 @@
         = link_to 'upgrade your browser', 'https://browsehappy.com/'
         to improve your experience and security.
 
-    = partial 'layouts/roles/alert'
+    .sl-c-alert.sl-c-alert--info
+      .sl-l-container
+        %p
+          %strong Your laptop needs more Sass.
+          = succeed '.' do
+            = link_to 'http://devswag.com/products/sass-stickers-4' do
+              Grab a set of Sass stickers now
 
-    .pop-stripe
+    .sl-c-pop-stripe
 
-    = partial 'layouts/regions/banner'
+    %header.sl-c-banner(itemtype='http://schema.org/WPHeader' itemscope='itemscope' role='banner')
+      .sl-l-container
+        .sl-l-grid.sl-l-grid--full.sl-l-large-grid--fit.sl-l-large-grid--center.sl-l-large-grid--gutters
+          %p.sl-l-grid__column.sl-c-banner__brand
+            = link_to '/' do
+              = image_tag 'logos/logo.svg', alt: 'Sass', height: '48'
 
-    %main(role='main')
-      = partial 'layouts/regions/page_header'
+          %nav.sl-c-banner__navigation.sl-l-grid__column.sl-l-large-grid.sl-l-large-grid__column--auto-size.sl-c-list-horizontal-wrapper(itemtype='http://schema.org/SiteNavigationElement' itemscope='itemscope' role='navigation')
+            :markdown
+              - [Install](/install)
+              - [Learn Sass](/guide)
+              - [Blog](http://blog.sass-lang.com/)
+              - [Documentation](/documentation/)
+              - [Get Involved](/community)
 
-      .body
-        .sl-l-container= Typogruby.improve(yield)
+    %main.content(itemprop='mainContentOfPage' role='main')
+      %h1.sl-l-container
+        - if current_page.data.h1?
+          = Typogruby.improve(current_page.data.h1)
 
-    = partial 'layouts/regions/release'
+        - elsif current_page.data.title
+          = Typogruby.improve(current_page.data.title)
+
+
+      .sl-l-section.sl-l-container.sl-background--white= Typogruby.improve(yield)
+
+    .sl-c-alert
+      .sl-l-container.sl-c-list-horizontal-wrapper
+        %ul.sl-l-grid--justify-center
+          %li
+            Current Releases:
+
+          %li
+            %span.release-name<
+              = link_to 'Dart Sass', '/dart-sass'
+              -# Force space between the two links.
+              &#32;
+              = link_to impl_version(:dart) || '???', release_url(:dart)
+
+          %li
+            %span.release-name<
+              = link_to 'LibSass', '/libsass'
+              -# Force space between the two links.
+              &#32;
+              = link_to impl_version(:libsass) || '???', release_url(:libsass)
+
+          %li
+            %span.release-name<
+              = link_to 'Ruby Sass', '/ruby-sass'
+              -# Force space between the two links.
+              &#32;
+              = link_to impl_version(:ruby) || '???',     |
+                '/documentation/file.SASS_CHANGELOG.html' |
+
+          %li.sl-l-grid__column.sl-l-large-grid__column--auto-size
+            = link_to 'Implementation Guide', '/implementation'
 
     - if content_for?(:section_bottom)
-      %section.section-bottom
-        .sl-l-container= Typogruby.improve(yield_content :section_bottom)
+      %section.sl-background--white.sl-l-container= Typogruby.improve(yield_content :section_bottom)
 
-    = partial 'layouts/regions/contentinfo'
-    = partial 'layouts/foot/js'
+    %footer.site-footer.contentinfo(itemtype='http://schema.org/WPFooter' itemscope='itemscope' role='contentinfo')
+      .sl-l-container.sl-l-section
+        .sl-l-grid.sl-l-grid--full.sl-l-large-grid--fit.sl-l-large-grid--center.sl-l-large-grid--gutters
+          .sl-l-grid__column
+            :markdown
+              Sass &copy; 2006&ndash;2018 [Hampton Catlin][hampton], [Natalie
+              Weizenbaum][natalie], [Chris Eppstein][chris], [Jina Anne][jina], and
+              numerous contributors. It is available for use and modification under
+              the [MIT&nbsp;License][license].
+
+              [hampton]: http://www.hamptoncatlin.com/
+              [natalie]: http://nex-3.com/
+              [chris]:   http://chriseppstein.github.io/
+              [jina]:    https://www.sushiandrobots.com
+              [license]: http://sass-lang.com/docs/yardoc/file.MIT-LICENSE.html
+
+            %nav.sl-c-list-horizontal-wrapper
+              :markdown
+                - [Sass on GitHub](https://github.com/sass)
+                - [Website Source Code](https://github.com/sass/sass-site)
+                - [Style Guide](/styleguide)
+                - [Community Guidelines](/community-guidelines)
+
+          .sl-l-grid__column.sl-l-large-grid__column--auto-size.sl-l-large-grid--justify-right
+            %a.twitter-follow-button(href='https://twitter.com/SassCSS' data-show-count='false' data-size='large')
+              Follow @SassCSS
+
+            :javascript
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+    = javascript_include_tag 'vendor/modernizr.custom.min'
+    = javascript_include_tag 'vendor/jquery.min'
+    = javascript_include_tag 'vendor/jquery-ui.min'
+    = javascript_include_tag 'vendor/html5-boilerplate/plugins'
+    = javascript_include_tag 'sass'
+    = yield_content :js_foot

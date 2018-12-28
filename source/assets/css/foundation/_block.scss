@@ -1,9 +1,0 @@
-%block-text,
-p {
-  @extend %reset-margin;
-  @include padding-trailer;
-}
-
-p,
-li,
-dd { max-width: sl-px-to-em(1024px); }

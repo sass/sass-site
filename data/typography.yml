@@ -1,7 +1,7 @@
 sizes:
   - name:  small
     value: 12
-  - name:  regular
+  - name:  medium
     value: 16
   - name:  large
     value: 24
