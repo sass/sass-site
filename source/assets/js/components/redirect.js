@@ -2,7 +2,7 @@
 // that refers to a more specific piece of documentation. If so, forward the
 // user to that documentation.
 if (window.location.hash) {
-  if (window.location.pathname == "/documentation/") {
+  if (window.location.pathname == "/documentation") {
     var redirects = {
       "#syntax": "syntax",
       "#using_sass": "/install",

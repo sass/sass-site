@@ -5,7 +5,6 @@ activate :autoprefixer do |config|
   config.browsers = ['last 2 versions']
   # config.ignore   = ['hacks.css']
 end
-activate :directory_indexes
 activate :livereload
 activate :syntax
 
