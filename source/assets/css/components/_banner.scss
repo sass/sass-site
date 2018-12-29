@@ -1,6 +1,11 @@
 .sl-c-banner {
   position: relative;
 
+  a {
+    display: inline-block;
+    border: 0;
+  }
+
   &__brand img {
     display: inline-block;
     margin: 0;
@@ -24,13 +29,7 @@
 
     a {
       display: block;
-      border: 0;
       padding: sl-px-to-rem(12px) sl-px-to-rem(16px);
-
-      &:hover,
-      &:focus { background: rgba($sl-color--iron, .5); }
-
-      &:active { background: $sl-color--iron; }
     }
   }
 }

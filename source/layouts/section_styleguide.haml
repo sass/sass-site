@@ -22,13 +22,12 @@
   - content_for :navigation do
     - root_url = config[:host]
 
-    %h3= link_to "Style Guide", "/styleguide"
+    %nav.sl-c-list-navigation-wrapper
+      :markdown
+        ### [Style Guide](/styleguide)
 
-    %ul.sl-c-list.sl-c-list--navigation
-      - sitemap.resources.each do |page|
-        - if page.url =~ /styleguide/
-          - unless page.url =~ /assets/
-            - unless page.data.title == "Style Guide"
-              %li.sl-c-list--navigation__item
-                = link_to "#{root_url}#{page.url.gsub!(/(\/)+$/,'')}" do
-                  = page.data.title
+        - [Brand](/styleguide/brand)
+        - [Color](/styleguide/color)
+        - [Typography](/styleguide/typography)
+        - [Layout](/styleguide/layout)
+        - [Code](/styleguide/code)

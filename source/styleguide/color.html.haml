@@ -3,20 +3,9 @@ title: Color & Theming
 ---
 
 %h2 Brand Colors
-%ul.swatches
+%ul.sl-l-grid.sl-l-grid--full.sl-l-large-grid--divide-by-3.sl-l-large-grid--gutters
   - for swatch in data.color.colors
-    %li{class: "swatch-" + swatch.name}
-      %pre
-        %code
-          = "$" + swatch.name
-          %br/
-          = "#" + swatch.hex
+    %li.sl-l-grid__column
+      %p{class: "sl-background--" + swatch.name} &nbsp;
 
-%h2 Usage
-- for swatch in data.color.semantic_colors
-  %dl.guide-description-list.swatches
-    %dt
-      %code= "$color-" + swatch.name
-
-    %dd{class: "swatch-color-" + swatch.name}
-      %code= swatch.value
+      %code= "$sl-color--" + swatch.name

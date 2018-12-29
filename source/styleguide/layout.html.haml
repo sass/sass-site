@@ -2,27 +2,9 @@
 title: Layouts & Grid
 introduction: >
   We use a flex-box grid.
-breakpoints:
-  - name: small
-    size: 30em (480px)
-  - name: medium
-    size: 40em (640px)
-  - name: large
-    size: 60em (960px)
-  - name: x-large
-    size: 80em (1280px)
 ---
 
 %h2 Other Tools & Resources
 
 %ul.list-feature
   %li= link_to 'The EMs have it: Proportional Media Queries FTW!', 'http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/'
-
-%h2 Breakpoints
-
-- current_page.data.breakpoints.each do |breakpoint|
-  %dl.guide-description-list
-    %dt
-      %code= '@include sl-breakpoint--' + breakpoint.name
-
-    %dd= breakpoint.size
