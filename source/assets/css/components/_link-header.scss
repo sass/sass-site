@@ -1,6 +1,7 @@
 .sl-c-link-header {
 
   a {
+    border: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,6 +18,8 @@
 
     &:hover,
     &:focus {
+      background: none;
+
       &:after { visibility: visible; }
     }
   }
