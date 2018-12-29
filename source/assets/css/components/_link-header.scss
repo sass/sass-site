@@ -12,6 +12,12 @@
       };
       font-size: 1rem;
       content: "\1F517";
+      visibility: hidden;
+    }
+
+    &:hover,
+    &:focus {
+      &:after { visibility: visible; }
     }
   }
 }
