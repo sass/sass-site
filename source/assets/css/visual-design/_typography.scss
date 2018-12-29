@@ -152,3 +152,32 @@ h4 { font-size: $sl-font-size--large; }
   letter-spacing: sl-px-to-em(1px);
   line-height: 0;
 }
+
+code,
+pre { font-family: $sl-font-family--code; }
+
+code { line-height: 1; }
+
+pre {
+  padding: .75rem 1rem;
+  overflow: auto;
+
+  code { line-height: inherit; }
+}
+
+img {
+  display: block;
+  margin: {
+    right: auto;
+    left: auto;
+  };
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  margin: {
+    top: 3rem;
+    bottom: 3rem;
+  };
+}

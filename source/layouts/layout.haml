@@ -54,14 +54,14 @@
 
     .sl-c-pop-stripe
 
-    %header.sl-c-banner(itemtype='http://schema.org/WPHeader' itemscope='itemscope' role='banner')
+    %header.sl-r-banner(itemtype='http://schema.org/WPHeader' itemscope='itemscope' role='banner')
       .sl-l-container
         .sl-l-grid.sl-l-grid--full.sl-l-large-grid--fit.sl-l-large-grid--center.sl-l-large-grid--gutters
-          %p.sl-l-grid__column.sl-c-banner__brand
+          %p.sl-l-grid__column.sl-r-banner__brand
             = link_to '/' do
               = image_tag 'logos/logo.svg', alt: 'Sass', height: '48'
 
-          %nav.sl-c-banner__navigation.sl-l-grid__column.sl-l-large-grid.sl-l-large-grid__column--auto-size.sl-c-list-horizontal-wrapper(itemtype='http://schema.org/SiteNavigationElement' itemscope='itemscope' role='navigation')
+          %nav.sl-r-banner__navigation.sl-l-grid__column.sl-l-large-grid.sl-l-large-grid__column--auto-size.sl-c-list-horizontal-wrapper(itemtype='http://schema.org/SiteNavigationElement' itemscope='itemscope' role='navigation')
             :markdown
               - [Install](/install)
               - [Learn Sass](/guide)

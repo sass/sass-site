@@ -1,0 +1,17 @@
+.sl-c-link-header {
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:after {
+      margin: {
+        right: .5rem;
+        left: 1rem;
+      };
+      font-size: 1rem;
+      content: "\1F517";
+    }
+  }
+}

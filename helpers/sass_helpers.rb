@@ -320,7 +320,7 @@ module SassHelpers
       ]))
     end
 
-    concat(content_tag :table, contents, class: 'impl-status')
+    concat(content_tag :table, contents, class: 'sl-c-table impl-status')
   end
 
   # Renders a single row for `impl_status`.

@@ -1,27 +1,7 @@
 = wrap_layout :has_navigation do
   = yield
 
-  - if current_page.data.previous_page_url or current_page.data.next_page_url
-    %footer
-      %ul.pager
-        - if current_page.data.previous_page_url
-          %li.previous
-            - if current_page.data.previous_page_url == "index"
-              - previous = ""
-            - else
-              - previous = current_page.data.previous_page_url
-            = link_to "/styleguide/" + previous do
-              &larr;
-              = current_page.data.previous_page_name
-        - if current_page.data.next_page_url
-          %li.next
-            = link_to "/styleguide/" + current_page.data.next_page_url do
-              = current_page.data.next_page_name
-              &rarr;
-
   - content_for :navigation do
-    - root_url = config[:host]
-
     %nav.sl-c-list-navigation-wrapper
       :markdown
         ### [Style Guide](/styleguide)
@@ -30,4 +10,5 @@
         - [Color](/styleguide/color)
         - [Typography](/styleguide/typography)
         - [Layout](/styleguide/layout)
+        - [Components](/styleguide/components)
         - [Code](/styleguide/code)

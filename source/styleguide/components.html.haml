@@ -1,0 +1,69 @@
+---
+title: Components
+---
+
+.sl-c-alert
+  .sl-l-container
+    %p
+      %strong Alert
+      = lorem.sentence
+
+.sl-c-alert.sl-c-alert--info
+  .sl-l-container
+    %p
+      %strong Info Alert
+      = lorem.sentence
+
+= link_to 'Link', '#', class: 'sl-c-button'
+%button.sl-c-button(type='button') Button
+
+= link_to 'Link', '#', class: 'sl-c-button sl-c-button--primary'
+%button.sl-c-button.sl-c-button--primary(type='button') Button
+
+.sl-c-callout
+  %h3 Callout
+  %p= lorem.paragraph
+
+.sl-c-callout.sl-c-callout--warning
+  %h3 Warning
+  %p= lorem.paragraph
+
+.sl-c-callout.sl-c-callout--fun-fact
+  %h3 Fun Fact
+  %p= lorem.paragraph
+
+%p.sl-c-introduction= lorem.paragraph
+
+.sl-c-introduction
+  %p= lorem.paragraph
+
+%h2.sl-c-link-header
+  = link_to '#' do
+    %span Link Header 2
+
+%h3.sl-c-link-header
+  = link_to '#' do
+    %span Link Header 3
+
+%h4.sl-c-link-header
+  = link_to '#' do
+    %span Link Header 4
+
+.sl-c-list-navigation-wrapper
+  :markdown
+    - [Vertical](#)
+    - [Navigation](#)
+    - [List](#)
+
+.sl-c-list-horizontal-wrapper
+  :markdown
+    - [Horizontal](#)
+    - [Navigation](#)
+    - [List](#)
+
+.sl-c-pop-stripe
+
+%table.sl-c-table
+  %tr
+    %td Table
+    %td Table

@@ -348,3 +348,16 @@ a {
 
   &:active { border-bottom-color: $sl-color--iron; }
 }
+
+code,
+pre {
+  border-radius: sl-px-to-em(2px);
+  color: darken($sl-color--pale-sky, 25%);
+
+  a & { color: inherit; }
+}
+
+pre {
+  border: 1px solid #ebebeb;
+  background: rgba($sl-color--midnight-blue, .0625);
+}
