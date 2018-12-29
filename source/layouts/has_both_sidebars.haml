@@ -1,14 +1,14 @@
 = wrap_layout :layout do
   .sl-l-medium-holy-grail
     .sl-l-medium-holy-grail__body
-      %nav.sl-l-medium-holy-grail__navigation.sl-js-sticky(role='navigation')
+      %nav.sl-l-medium-holy-grail__navigation(role='navigation')
         = yield_content :navigation
 
       .sl-l-medium-holy-grail__main
         .sl-l-large-holy-grail
           .sl-l-large-holy-grail__body
-            - if content_for?(:complememtary)
-              - has_contents = current_page.data.table_of_contents ? 'sl-l-large-holy-grail__complementary--contents sl-js-sticky' : ''
+            - if content_for?(:complementary)
+              - has_contents = current_page.data.table_of_contents ? 'sl-l-large-holy-grail__complementary--contents' : ''
               %aside.sl-l-large-holy-grail__complementary(role='complementary'){class: has_contents}
                 = yield_content :complementary
 
