@@ -337,14 +337,14 @@ body {
 }
 
 a {
-  color: darken($sl-color--hopbush, 10%);
+  border-bottom: 1px solid rgba($sl-color--iron, .5);
+  color: $sl-color--midnight-blue;
 
   &:hover,
   &:focus {
-    color: darken($sl-color--bouquet, 10%);
+    border-bottom-color: rgba($sl-color--iron, .75);
+    background: rgba($sl-color--iron, .25);
   }
 
-  &:active {
-    color: darken($sl-color--venus, 10%);
-  }
+  &:active { border-bottom-color: $sl-color--iron; }
 }

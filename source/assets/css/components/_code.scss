@@ -2,7 +2,7 @@ code,
 pre {
   font-family: $sl-font-family--code;
   border-radius: sl-px-to-em(2px);
-  color: $sl-color--midnight-blue;
+  color: darken($sl-color--pale-sky, 25%);
 
   a & { color: inherit; }
 }
