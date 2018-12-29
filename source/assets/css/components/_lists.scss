@@ -30,9 +30,16 @@
   }
 
   &-navigation-wrapper {
+    position: relative;
 
     li { margin: .125rem 0; }
 
     ul ul { margin: 0 0 0 1rem; }
   }
+}
+
+.sl-is-fixed {
+  position: absolute;
+  top: 0;
+
 }
