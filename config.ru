@@ -22,22 +22,12 @@ use Rack::Rewrite do
 
   r301 %r{/(.+)/$}, '/$1'
   r301 %r{/(.+)/index\.html$}, '/$1'
-end
+rack
 
 use Rack::Deflater
 
-if ENV["HEROKU"].nil? || ENV["HEROKU"] == 'false'
-  require "middleman"
+use Rack::TryStatic,
+    urls: ["/"], root: 'build', index: 'index.html',
+    try: ['.html', '/index.html']
 
-  server = Middleman.server
-  run Rack::Cascade.new([
-    server,
-    lambda {|env| server.call(env.merge!('PATH_INFO' => '/404'))}
-  ])
-else
-  use Rack::TryStatic,
-    :urls => ["/"], :root => 'build', :index => 'index.html',
-    :try => ['.html', '/index.html']
-
-  run Rack::NotFound.new("build/404.html")
-end
+run Rack::NotFound.new("build/404.html")

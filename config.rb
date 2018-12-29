@@ -1,5 +1,9 @@
 require 'middleman-syntax'
 
+require_relative 'lib/rack/try_dynamic'
+
+use Rack::TryDynamic, try: ['.html', '/index.html']
+
 activate :automatic_image_sizes
 activate :autoprefixer do |config|
   config.browsers = ['last 2 versions']
