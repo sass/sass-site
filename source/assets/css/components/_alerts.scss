@@ -5,7 +5,7 @@
   };
   text-align: center;
   background: darken($sl-color--hopbush, 10%);
-  color: rgba($sl-color--white, .75);
+  color: rgba($sl-color--white, .875);
 
   p,
   ul,
@@ -21,12 +21,15 @@
   dd { max-width: none; }
 
   a {
-    border-bottom: 1px solid rgba($sl-color--white, .5);
+    border-bottom-color: rgba($sl-color--white, .5);
     font-weight: $sl-font-weight--bold;
-    color: inherit;
+    color: $sl-color--white;
 
     &:hover,
-    &:focus { border-bottom-color: rgba($sl-color--white, .75); }
+    &:focus {
+      border-bottom-color: rgba($sl-color--white, .75);
+      background: rgba(black, .0625);
+    }
 
     &:active { border-bottom-color: $sl-color--white; }
   }
