@@ -5,7 +5,6 @@ activate :autoprefixer do |config|
   config.browsers = ['last 2 versions']
   # config.ignore   = ['hacks.css']
 end
-activate :directory_indexes
 activate :livereload
 activate :syntax
 
@@ -45,7 +44,6 @@ configure :build do
   activate :minify_css
   activate :minify_html
   activate :minify_javascript
-  activate :relative_assets
 
   set :relative_links, true
 end

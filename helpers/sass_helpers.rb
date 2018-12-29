@@ -246,12 +246,15 @@ module SassHelpers
 
   # Returns the URL tag for the latest release of the given implementation.
   def release_url(impl)
+    if impl == :ruby
+      return "https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md"
+    end
+
     version = impl_version(impl)
     repo =
       case impl
       when :dart; "dart-sass"
       when :libsass; "libsass"
-      when :ruby; "sass"
       end
 
     if version
