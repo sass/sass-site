@@ -335,8 +335,8 @@ module SassHelpers
       end
 
     content_tag :tr, [
-      content_tag(:th, name, class: 'name'),
-      content_tag(:th, status_text, class: 'status'),
+      content_tag(:td, name, class: 'name'),
+      content_tag(:td, status_text, class: 'status'),
     ], class: status ? 'supported' : 'unsupported'
   end
 

@@ -2,7 +2,7 @@
 title: Syntax
 introduction: >
   Sass supports two different syntaxes. Each one can import the other, so it's
-  up to your and your team which one to choose.
+  up to you and your team which one to choose.
 ---
 
 ## SCSS
