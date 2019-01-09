@@ -61,3 +61,15 @@ before_render do |body, _, _, template_class|
     body
   end
 end
+
+after_render do |content, path, locs|
+  # Only modify the original page's rendering.
+  next if path.include?("source/layouts/")
+
+  content.gsub(%r{^<(h[0-6])(.*?)</\1>}m) do |header_text|
+    header = Nokogiri::HTML::DocumentFragment.parse(header_text).children.first
+    id = header.attr(:id)
+    header.children.before("<a class='anchor' href='##{id}'></a>") if id
+    header.to_html
+  end
+end
