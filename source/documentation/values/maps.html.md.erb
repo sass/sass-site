@@ -133,3 +133,36 @@ Note that because Sass maps are [immutable][], `map-merge()` doesn't modify the
 original list.
 
 [immutable]: #immutability
+
+## Immutability
+
+Maps in Sass are *immutable*, which means that the contents of a map value never
+changes. Sass's map functions all return new maps rather than modifying the
+originals. Immutability helps avoid lots of sneaky bugs that can creep in when
+the same map is shared across different parts of the stylesheet.
+
+You can still update your state over time by assigning new maps to the same
+variable, though. This is often used in functions and mixins to track
+configuration in a map.
+
+<% example(autogen_css: false) do %>
+  $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms);
+
+  @mixin add-browser-prefix($browser, $prefix) {
+    $prefixes: map-merge($prefixes-by-browser, ($browser: $prefix));
+  }
+
+  @include add-browser-prefix("opera", o);
+  @debug $prefixes-by-browser;
+  // ("firefox": moz, "safari": webkit, "ie": ms, "opera": o)
+  ===
+  $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms)
+
+  @mixin add-browser-prefix($browser, $prefix)
+    $prefixes: map-merge($prefixes-by-browser, ($browser: $prefix))
+
+
+  @include add-browser-prefix("opera", o)
+  @debug $prefixes-by-browser
+  // ("firefox": moz, "safari": webkit, "ie": ms, "opera": o)
+<% end %>

@@ -14,7 +14,7 @@ A variable declaration looks a lot like a [property declaration][]: it's written
 style rule or at-rule, variables can be declared anywhere you want. To use a
 variable, just include it in a value.
 
-[property declaration]: ../style-rules/declarations
+[property declaration]: style-rules/declarations
 
 <% example do %>
   $base-color: #c6538c;
@@ -35,7 +35,7 @@ variable, just include it in a value.
   CSS has [variables of its own][], which are totally different than Sass
   variables. Know the differences!
 
-  [variables of its own]: ../style-rules/declarations#custom-properties
+  [variables of its own]: style-rules/declarations#custom-properties
 
   * Sass variables are all compiled away by Sass. CSS variables are included in
     the CSS output.
@@ -91,7 +91,7 @@ to a variable *only if* that variable isn't defined or its value is [`null`][].
 Otherwise, the existing value will be used. This way, users can set variables
 before they import your library to customize its behavior.
 
-[`null`]: ../values/null
+[`null`]: values/null
 
 <% example do %>
   // _library.scss
@@ -235,7 +235,7 @@ don't shadow variables at the same level as the flow control rule. Instead, they
 just assign to those variables. This makes it much easier to conditionally
 assign a value to a variable, or build up a value as part of a loop.
 
-[flow control rules]: ../at-rules/control
+[flow control rules]: at-rules/control
 
 <% example do %>
   $dark-theme: true !default;
@@ -282,8 +282,8 @@ variables. The [`variable-exists()` function][] returns whether a variable with
 the given name exists in the current scope, and the [`global-variable-exists()`
 function][] does the same but only for the global scope.
 
-[`variable-exists()` function]: ../functions/meta#variable-exists
-[`global-variable-exists()` function]: ../functions/meta#global-variable-exists
+[`variable-exists()` function]: functions/meta#variable-exists
+[`global-variable-exists()` function]: functions/meta#global-variable-exists
 
 <% heads_up do %>
   Users occasionally want to use interpolation to define a variable name based
@@ -292,7 +292,7 @@ function][] does the same but only for the global scope.
   though, is define a [map][] from names to values that you can then access
   using variables.
 
-  [map]: ../values/maps
+  [map]: values/maps
 
   <% example do %>
     $theme-colors: (

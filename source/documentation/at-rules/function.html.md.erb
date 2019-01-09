@@ -60,7 +60,7 @@ function call. Functions are called using the normal CSS function syntax.
   side-effects, and use functions just to compute values.
 
   [global variables]: ../variables#scope
-  [mixins]: mixins
+  [mixins]: mixin
 <% end %>
 
 ## Arguments
@@ -200,7 +200,7 @@ Argument lists can also be used to take arbitrary keyword arguments. The
 that were passed to the function as a [map][] from argument names (not including
 `$`) to those arguments' values.
 
-[`keywords()` function]: ../functions/meta#keywords
+[`keywords()` function]: ../functions/map#keywords
 [map]: ../values/maps
 
 <% fun_fact do %>
@@ -209,7 +209,7 @@ that were passed to the function as a [map][] from argument names (not including
   function make sure they haven't accidentally written any typos in their
   argument names.
 
-  [`keywords()` function]: ../functions/meta#keywords
+  [`keywords()` function]: ../functions/map#keywords
 <% end %>
 
 #### Passing Arbitrary Arguments
@@ -262,7 +262,7 @@ its result. Returning early can be useful for handling edge-cases or cases where
 a more efficient algorithm is available without wrapping the entire function in
 an [`@else` block][].
 
-[`@else` block]: if#else
+[`@else` block]: control/if#else
 
 <% example do %>
   @function str-insert($string, $insert, $index) {
@@ -296,6 +296,6 @@ language. And of course, you can always call [plain CSS functions][] (even ones
 with [weird syntax][]).
 
 [core library]: ../functions
-[custom functions]: ../functions#custom-functions
-[plain CSS functions]: ../functoins/css
+[custom functions]: ../js-api#functions
+[plain CSS functions]: ../functions/css
 [weird syntax]: ../syntax/special-functions

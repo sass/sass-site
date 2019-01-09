@@ -16,7 +16,7 @@ types come straight from CSS:
 * [Colors](values/colors), which can be referred to by their hex representation
   or by name, like `#c6538c` or `blue`, or returned from functions, like
   `rgb(107, 113, 127)` or `hsl(210, 100%, 20%)`.
-* [Lists of values](../values/lists), which may be separated by spaces or commas
+* [Lists of values](values/lists), which may be separated by spaces or commas
   and which may be enclosed in square brackets or no brackets at all, like
   `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`, or `[col1-start]`.
 

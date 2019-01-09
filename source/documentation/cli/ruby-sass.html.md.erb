@@ -36,6 +36,7 @@ two extensions, or if it comes from standard input, it's parsed as the
 indented syntax by default. This can be controlled with the [`--scss` flag][].
 
 [SCSS]: ../syntax#scss
+[indented syntax]: ../syntax#the-indented-syntax
 [`--scss` flag]: #scss
 
 ### Many-to-Many Mode
@@ -78,6 +79,8 @@ $ sass themes:public/css
 When compiling whole directories, Sass will ignore [partial files][] whose names
 begin with `_`. You can use partials to separate out your stylesheets without
 creating a bunch of unnecessary output files.
+
+[partial files]: ../at-rules/import#partials
 
 Many-to-many mode will only compile stylesheets whose dependencies have been
 modified more recently than the corresponding CSS file was generated. It will

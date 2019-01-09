@@ -7,18 +7,18 @@ Interpolation can be used almost anywhere in a Sass stylesheet to embed the
 result of a [SassScript expression][] into a chunk of CSS. Just wrap an
 expression in `#{}` in any of the following places:
 
-[SassScript expression]: ../syntax/structure#expressions
+[SassScript expression]: syntax/structure#expressions
 
-* [Selectors in style rules](../style-rules#interpolation)
-* [Property names in declarations](../style-rules/declarations#interpolation)
-* [Custom property values](../style-rules/declarations#custom-properties)
-* [CSS at-rules](../at-rules/css#interpolation)
-* [`@extend`s](../at-rules/extend#interpolation)
-* [Plain CSS `@import`s](../at-rules/import#interpolation)
-* [Quoted or unquoted strings](../values/strings#interpolation)
-* [Special functions](../syntax/special-functions)
-* [Plain CSS function names](../functions/css#interpolation)
-* [Loud comments](../syntax/comments)
+* [Selectors in style rules](style-rules#interpolation)
+* [Property names in declarations](style-rules/declarations#interpolation)
+* [Custom property values](style-rules/declarations#custom-properties)
+* [CSS at-rules](at-rules/css)
+* [`@extend`s](at-rules/extend)
+* [Plain CSS `@import`s](at-rules/import#plain-css-imports)
+* [Quoted or unquoted strings](values/strings)
+* [Special functions](syntax/special-functions)
+* [Plain CSS function names](functions/css)
+* [Loud comments](syntax/comments)
 
 <% example do %>
   @mixin corner-icon($name, $top-or-bottom, $left-or-right) {
@@ -60,8 +60,8 @@ strings][]. This is particularly useful when dynamically generating names (for
 example for animations), or when using [slash-separated values][]. Note that
 interpolation in SassScript always returns an unquoted string.
 
-[unquoted strings]: ../values/strings#unquoted
-[slash-separated values]: ../operators/numeric#slash-separated-values
+[unquoted strings]: values/strings#unquoted
+[slash-separated values]: operators/numeric#slash-separated-values
 
 <% example do %>
   @mixin inline-animation($duration) {
@@ -121,7 +121,7 @@ interpolation in SassScript always returns an unquoted string.
   already has units, you'll get a nice error message instead of compiling bogus
   CSS.
 
-  [unit arithmetic]: ../values/numbers#units
+  [unit arithmetic]: values/numbers#units
 <% end %>
 
 ## Quoted Strings
@@ -133,7 +133,7 @@ strings are in lists). This makes it possible to write quoted strings that
 contain syntax that's not allowed in SassScript (like selectors) and interpolate
 them into style rules.
 
-[property value]: ../style-rules/declarations
+[property value]: style-rules/declarations
 
 <% example do %>
   .example {
@@ -149,5 +149,5 @@ them into style rules.
   strings, it's a lot clearer to use the [`unquote()` function][]. Instead of
   `#{$string}`, write `unquote($string)`!
 
-  [`unquote()` function]: ../functions/string#unquote
+  [`unquote()` function]: functions/string#unquote
 <% end %>

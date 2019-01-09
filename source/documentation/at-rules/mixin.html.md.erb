@@ -260,7 +260,7 @@ Argument lists can also be used to take arbitrary keyword arguments. The
 that were passed to the mixin as a [map][] from argument names (not including
 `$`) to those arguments' values.
 
-[`keywords()` function]: ../functions/meta#keywords
+[`keywords()` function]: ../functions/map#keywords
 [map]: ../values/maps
 
 <%# TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass %>
@@ -273,7 +273,7 @@ that were passed to the mixin as a [map][] from argument names (not including
   mixin make sure they haven't accidentally written any typos in their argument
   names.
 
-  [`keywords()` function]: ../functions/meta#keywords
+  [`keywords()` function]: ../functions/map#keywords
 <% end %>
 
 #### Passing Arbitrary Arguments
@@ -358,9 +358,9 @@ the `@content` rule.
   variables][] in the scope where the mixin is included. It can't see any
   variables that are defined in the mixin it's passed to, even if they're
   defined before the content block is invoked.
-<% end %>
 
-[local variables]: ../variables#scope
+  [local variables]: ../variables#scope
+<% end %>
 
 ### Passing Arguments to Content Blocks
 

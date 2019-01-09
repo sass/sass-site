@@ -5,18 +5,19 @@ require "yard"
 
 require File.dirname(__FILE__) + '/lib/raw_markdown_link'
 
-task :test => ["sass:dart:version", "sass:libsass:version", "sass:ruby:version", :middleman] do
-  HTMLProofer.check_directory("./build",
+task :test => ["sass:dart:version", "sass:libsass:version", "sass:ruby:version", :middleman, :test_without_rebuild]
+
+task :test_without_rebuild do
+  HTMLProofer.check_directory("build",
     url_ignore: [
-      /file\.SASS/, # We don't want to verify reference links.
       "https://www.drupal.org/dcoc", # This doesn't allow automated requests.
+      "http://sass.logdown.com/posts/7081811", # This times out occasionally.
       # These fail on Travis only.
       "https://dnomak.com/flexiblegs/",
       "https://incident57.com/codekit/",
       "https://daringfireball.net/projects/markdown/",
     ],
-    file_ignore: [%r{^\./build/documentation}],
-    assume_extension: true
+    assume_extension: true,
   ).run
 end
 

@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ruby "2.5.3"
 
 gem "builder",                "~> 3.2.2"
-gem "html-proofer",           "~> 3.9"
+gem "html-proofer",           "~> 3.10"
 gem "middleman",              "~> 3.4.1"
 gem "middleman-autoprefixer", "~> 2.6.2"
 gem "middleman-livereload",   "~> 3.4.5"

@@ -211,7 +211,7 @@ The column of [`error.line`][] in [`error.file`][] on which the error occurred.
 The [exit status][] that should be used if this error causes the enclosing
 program to exit.
 
-[status]: https://en.wikipedia.org/wiki/Exit_status
+[exit status]: https://en.wikipedia.org/wiki/Exit_status
 
 ## Options
 
@@ -471,8 +471,8 @@ console.log(result.css.toString());
 #### `sourceComments`
 
 <% impl_status dart: false, node: true do %>
-  This option isn't supported by Dart Sass, because [source maps][] are
-  recommended as the best way of determining where a style rule is defined.
+  This option isn't supported by Dart Sass, because source maps are recommended
+  as the best way of determining where a style rule is defined.
 <% end %>
 
 This flag causes Sass to emit comments for every style rule that indicate where
@@ -615,6 +615,34 @@ source files.
 
 These options use JavaScript callbacks to expand the functionality of Sass
 compilation.
+
+#### `fiber`
+
+When using Dart Sass, **`renderSync()` is more than twice as fast as
+`render()`**, due to the overhead of asynchronous callbacks. To avoid this
+performance hit, `render()` can use the [`fibers`][fibers] package to call
+asynchronous importers from the synchronous code path. To enable this, pass the
+`Fiber` class to the `fiber` option:
+
+[fibers]: https://www.npmjs.com/package/fibers
+
+```js
+var sass = require("sass");
+var Fiber = require("fibers");
+
+sass.render({
+  file: "input.scss",
+  importer: function(url, prev, done) {
+    // ...
+  },
+  fiber: Fiber
+}, function(err, result) {
+  // ...
+});
+```
+
+This option is allowed, but will have no effect, when using Node Sass or when
+using the `renderSync()` function.
 
 #### `functions`
 
@@ -1012,7 +1040,7 @@ This class represents a [Sass boolean][].
 Custom functions should respect Sass's notion of [truthiness][] by treating
 `false` and `null` as falsey and everything else as truthy.
 
-[truthiness]: values/booleans#truthiness-and-falsinesss
+[truthiness]: at-rules/control/if#truthiness-and-falsiness
 
 <% heads_up do %>
   Calling `new sass.types.Boolean()` is forbidden.
@@ -1063,7 +1091,7 @@ the list is comma-separated; otherwise, it's space-separated.
   set using the [`setValue()` method][] before accessing them or passing the
   list back to Sass.
 
-  [`setValue()` method]: #list-setvalue-value
+  [`setValue()` method]: #list-setvalue-index-value
 <% end %>
 
 ```js
@@ -1124,9 +1152,9 @@ Sets whether the list is comma-separated.
 
 ### `types.Map`
 
-This class represents a [Sass map][]. 
+This class represents a [Sass map][].
 
-[Sass list]: values/maps
+[Sass map]: values/maps
 
 <% heads_up do %>
   This map type is represented as a list of key-value pairs rather than a
@@ -1145,8 +1173,8 @@ Creates a new Sass map with the given number of key/value pairs.
   the [`setKey()` method][] and the [`setValue()` method][] before accessing
   them or passing the map back to Sass.
 
-  [`setKey()` method]: #map-setkey-key
-  [`setValue()` method]: #map-setvalue-value
+  [`setKey()` method]: #map-setkey-index-key
+  [`setValue()` method]: #map-setvalue-index-value
 <% end %>
 
 ```js
