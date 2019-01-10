@@ -52,12 +52,27 @@ configure :build do
   set :relative_links, true
 end
 
-before_render do |body, _, _, template_class|
+before_render do |body, page, _, template_class|
   if current_page.data.table_of_contents &&
      template_class == Middleman::Renderers::RedcarpetTemplate
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC.new)
-    current_page.add_metadata(table_of_contents:
-        markdown.render(body).sub(/<ul( |>)/, '<ul class="table-of-contents"\1'))
+    toc = markdown.render(body).sub(/<ul( |>)/, '<ul class="table-of-contents"\1')
+
+    # The JS API's header names are uniquely large and difficult to break up
+    # effectively. We do some post-processing to clean them up.
+    if page.start_with?("js-api.")
+      fragment = Nokogiri::HTML::DocumentFragment.parse(toc)
+      fragment.css("a code").each do |code|
+        code.content = code.content.
+          gsub(/^types\.[A-Za-z]+\./, '').
+          gsub(/^[a-z]+\./, '').
+          gsub(/^new types\./, 'new ').
+          gsub(/\(.+\)$/, '()')
+      end
+      toc = fragment.to_html
+    end
+
+    current_page.add_metadata(table_of_contents: toc)
     body
   end
 end
