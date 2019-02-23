@@ -22,7 +22,7 @@ use Rack::Rewrite do
 
   r301 %r{/(.+)/$}, '/$1'
   r301 %r{/(.+)/index\.html$}, '/$1'
-rack
+end
 
 use Rack::Deflater
 
