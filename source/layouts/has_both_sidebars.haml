@@ -12,7 +12,7 @@
               %aside.sl-l-large-holy-grail__complementary(role='complementary'){class: has_contents}
                 = yield_content :complementary
 
-            .sl-l-large-holy-grail__main
+            .sl-l-large-holy-grail__main.docSearch-content
               - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
               %div{class: container}
                 - if current_page.data.introduction
