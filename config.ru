@@ -1,8 +1,11 @@
 require "rubygems"
 
 require "rack/rewrite"
+require "rack/ssl"
 require "rack/contrib/not_found"
 require "rack/contrib/try_static"
+
+use Rack::SSL if ENV["HEROKU"] == 'true'
 
 use Rack::Rewrite do
   r301 %r{/docs/yardoc/(.*)}, '/documentation/$1'
