@@ -368,11 +368,11 @@ MARKDOWN
       unless names.include?(name)
         names << name
         name_element = signature_elements.find {|el| el.text == name}
-        name_element.add_class '.docSearch-function'
+        name_element.add_class ".docSearch-function"
         name_element['name'] = name
       end
 
-      highlighted_signature = signature_elements.map(&:to_html).join.strip
+      signature_elements.map(&:to_html).join.strip
     end
 
     html = content_tag :div, [
