@@ -1,26 +1,42 @@
-.sl-c-link-header {
-
-  a {
+h1, h2, h3, h4, h5, h6 {
+  a.anchor {
+    display: block;
+    float: left;
+    vertical-align: middle;
+    margin: {
+      left: -1.5rem;
+      top: -3px;
+    }
+    width: 1.5rem;
+    background: none;
     border: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    &:after {
-      margin: {
-        right: .5rem;
-        left: 1rem;
-      };
-      font-size: 1rem;
-      content: "\1F517";
+    &::after {
       visibility: hidden;
+      font: {
+        size: 1rem;
+        weight: normal;
+      }
+      content: "\1F517";
     }
+  }
 
-    &:hover,
-    &:focus {
-      background: none;
+  &:hover a.anchor::after {
+    visibility: visible;
+  }
 
-      &:after { visibility: visible; }
-    }
+  &:target {
+    animation-name: highlight-header;
+    animation-duration: 5s;
+  }
+}
+
+@keyframes highlight-header {
+  from {
+    background-color: $sl-color--dawn-pink;
+  }
+
+  to {
+    background-color: unset;
   }
 }
