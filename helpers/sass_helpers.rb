@@ -1,5 +1,7 @@
 # coding: utf-8
 require "pathname"
+require "set"
+
 require "redcarpet"
 require "rouge"
 require "rouge/plugins/redcarpet"
@@ -349,20 +351,28 @@ module SassHelpers
   # Multiple signatures may be passed, in which case they're all included in
   # sequence.
   def function(*signatures, returns: nil)
-    names = []
+    names = Set.new
     highlighted_signatures = signatures.map do |signature|
       name = signature.split("(").first
-      names << name
       html = Nokogiri::HTML(_render_markdown(<<MARKDOWN))
 ```scss
 @function #{signature}
 {}
 ```
 MARKDOWN
-      highlighted_signature = html.css("pre code").children.
+      signature_elements = html.css("pre code").children.
         drop_while {|el| el.text != "@function"}.
-        take_while {|el| el.text != "{}"}[1...-1].
-        map(&:to_html).join.strip
+        take_while {|el| el.text != "{}"}[1...-1]
+
+      # Add a class to make it easier to index function documentation.
+      unless names.include?(name)
+        names << name
+        name_element = signature_elements.find {|el| el.text == name}
+        name_element.add_class ".docSearch-function"
+        name_element['name'] = name
+      end
+
+      signature_elements.map(&:to_html).join.strip
     end
 
     html = content_tag :div, [

@@ -8,6 +8,7 @@
     %meta(name='viewport' content='width=device-width, initial-scale=1')
 
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,600|Source+Serif+Pro'
+    = stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css'
     = stylesheet_link_tag 'sass'
     = yield_content :css
 
@@ -68,6 +69,7 @@
               - [Blog](http://blog.sass-lang.com/)
               - [Documentation](/documentation)
               - [Get Involved](/community)
+              - <input class='search' type='text'>
 
     %main.content(itemprop='mainContentOfPage' role='main')
       %h1.sl-l-container
@@ -143,6 +145,14 @@
             :javascript
               !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
+    = javascript_include_tag 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js'
+    :javascript
+      docsearch({
+        apiKey: 'a409ff5d6a2476083c1a8dd1f8c04ec5',
+        indexName: 'sass-lang',
+        inputSelector: 'input.search',
+        debug: false
+      });
     = javascript_include_tag 'vendor/modernizr.custom.min'
     = javascript_include_tag 'vendor/jquery.min'
     = javascript_include_tag 'vendor/jquery-ui.min'
