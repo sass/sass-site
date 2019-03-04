@@ -1,6 +1,7 @@
 .ui-helper-reset { line-height: inherit; }
 
 .ui-tabs {
+
   &,
   .ui-tabs-nav,
   .ui-tabs-nav li.ui-tabs-active,
@@ -8,7 +9,7 @@
 
   .ui-tabs-nav {
     position: relative;
-    top: 4.78rem;
+    top: 2.5rem;
     margin-right: -1em;
 
     a { border: 0; background: none; }
@@ -130,3 +131,11 @@ html .ui-button.ui-state-disabled:active { background: none; }
   }
 }
 
+.ui-tabs-panel > h3 {
+  margin: 0;
+  text-transform: uppercase;
+  color: $sl-color--hopbush;
+
+  &,
+  * { font-size: 1rem; }
+}

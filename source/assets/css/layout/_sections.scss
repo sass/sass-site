@@ -11,11 +11,4 @@
   &:first-child { margin-top: 0; }
 
   &:last-child { margin-bottom: 0; }
-
-  &--small {
-    margin: {
-      top: 1.5rem;
-      bottom: 1.5rem;
-    };
-  }
 }
