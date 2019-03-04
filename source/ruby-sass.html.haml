@@ -1,192 +1,90 @@
 ---
-title: LibSass
+title: Ruby Sass
+introduction: >
+  Ruby Sass was the original implementation of Sass, but it's since been
+  deprecated. It's currently in a sunset maintenance period, and it will be
+  officially unmaintained one year after the release of Dart Sass 1.0.0. Ruby
+  Sass users should migrate to another implementation.
 ---
 
-%p.introduction
-  We want everyone to enjoy Sass, no matter what language they use. Sass was
-  originally written in Ruby. LibSass is a C/C++ port of the Sass engine. The
-  point is to be simple, faster, and easy to integrate. Find out more about the
-  project over at
-  = succeed "." do
-    = link_to "GitHub", "http://github.com/sass/libsass"
-
 :markdown
-  ## Wrappers
+  ## Maintenance Policy
 
-  LibSass is just a library. To run the code locally (i.e. to compile your
-  stylesheets), you need an implementer, or "wrapper". There are a number of
-  other wrappers for LibSass. We encourage you to write your own wrapper - the
-  whole point of LibSass is that we want to bring Sass to many other languages,
-  not just Ruby!
+  Ruby Sass will continue to be maintained until 26 March 2019. During this
+  maintenance period, bugs will be fixed as much as possible but no new
+  features will be added. The only exception is for features that are
+  necessary to support new CSS syntax, which will continue to be added.
 
-  Below are the LibSass wrappers that we're currently aware of. Sometimes there
-  are multiple wrappers per language – in those cases, we put the most
-  recently-updated wrapper first.
+  [Dart Sass][], the new primary implementation, doesn't always behave 100%
+  the same as Ruby Sass—it implements a number of behavioral changes that
+  were planned for Ruby Sass, but were never implemented in a stable
+  version. To make migration easier, recent versions of Ruby Sass emit
+  warnings for any code that won't be compatible with Dart Sass. Ongoing
+  maintenance includes adding any warnings for new behavioral differences,
+  if they come up.
 
-%ul.slides
-  %li#sassc
-    :markdown
-      ### Sass C
+   [Dart Sass]: #{url_for "dart-sass"}
 
-      [SassC](https://github.com/sass/sassc) (get it?) is a wrapper written in
-      C.
+   Once the maintenance period ends, Ruby Sass's repository will be archived,
+  no more changes of any kind will be made, and no new releases will be cut.
 
-      To run the compiler on your local machine, you need to build SassC. To
-      build SassC, you must have either a local copy of the LibSass source or it
-      must be installed into your system. For development, please use the source
-      version. You must then setup an environment variable pointing to the
-      LibSass folder, for example:
+   ## Adopt Ruby Sass
 
-    ~ partial "code-snippets/libsass-setup"
+   Support for Ruby Sass is being turned down because the Sass core team no
+  longer has time to maintain it as well as [Dart Sass][] and [LibSass][].
+  But that doesn't mean it has to go away. If a community member wanted to
+  take on the task of maintaining it, the core team would be happy to help
+  get them up to speed. It's not an easy job: it would require keeping on
+  top of bug fixes and implementing new language features as they're
+  designed by the language team. But it would also be an opportunity to work
+  on a project that's used be thousands of people every day.
 
-    %p
-      The executable will be in the bin folder. To run it, simply try something
-      like:
+   [LibSass]: #{url_for "libsass"}
 
-    ~ partial "code-snippets/libsass-execute"
+   If you're interested in adopting Ruby Sass, send an email to
+  [Natalie](mailto:nex342@gmail.com) and [Chris](mailto:chris@eppsteins.net)
+  and they'll talk to you about next steps.
 
-  %li#crystal
-    :markdown
-      ### Crystal
-      [sass.cr](https://github.com/straight-shoota/sass.cr)
-      is a LibSass wrapper for the
-      [Crystal programming language](https://crystal-lang.org/).
+   ## Migrating Away
 
-  %li#go
-    :markdown
-      ### Go
-      [go-libsass](https://github.com/wellington/go-libsass) has the most active
-      GoLang wrapper.  [gosass](https://github.com/moovweb/gosass) is another
-      libsass wrapper.
+   If you run Ruby Sass using the command-line `sass` executable, all you
+  need to do is install Dart Sass's [command-line executable][install]
+  instead. The interface isn't identical, but most options work the same
+  way.
 
-      [Wellington](http://getwt.io/) is an extension to libsass that adds
-      spriting.  It is available on brew: `brew install wellington`
+  [install]: #{url_for "install"}
 
-      [C6](https://github.com/c9s/c6) is a SASS 3.2 compatible implementation
-      written in pure GoLang that aims to extend SASS.
-      [wellington/sass](https://github.com/wellington/sass) is an in-progress
-      pure Go sass lexer, parser, and compiler.
+  If you use the `sass` gem as a library, the [`sassc`][] gem is the most
+  seamless way to move away from Ruby Sass. It uses [LibSass][] to provide
+  the same API for compiling Sass and defining custom functions as Ruby
+  Sass, except that it uses the `SassC` module instead of `Sass`. However,
+  it [doesn't yet][sassc#72] support the same `Importer` API. You can also
+  use the [`sassc-rails`][] gem to plug smoothly into Ruby on Rails.
 
-  %li#java
-    :markdown
-      ### Java
-      There is one Java wrapper – [jsass](https://github.com/bit3/jsass).
-      There is also a plugin for Maven -
-      [LibSass Maven plugin](https://github.com/warmuuh/libsass-maven-plugin).
+  [`sassc`]: http://rubygems.org/gems/sassc
+  [LibSass]: #{url_for "/libsass"}
+  [sassc#72]: https://github.com/sass/sassc-ruby/issues/72
+  [`sassc-rails`]: https://rubygems.org/gems/sassc-rails
 
-  %li#javascript
-    :markdown
-      ### JavaScript
-      The [sass.js](https://github.com/medialize/sass.js) project makes
-      LibSass available as pure JavaScript. There's a way to [test it in the
-      browser](http://medialize.github.io/playground.sass.js/), too.
+  Alternately, if you're using a JS build system, you can integrate that
+  with [Dart Sass][] as a JavaScript library.
 
-  %li#lua
-    :markdown
-      ### Lua
-      The Lua wrapper is found at
-      [lua-sass](https://github.com/craigbarnes/lua-sass).
+  [Dart Sass]: #{url_for "/dart-sass"}
 
-  %li#net
-    :markdown
-      ### .NET
-      [libsass-net](https://github.com/darrenkopp/libsass-net) is updated
-      regularly, and is probably the best bet. There's also
-      [NSass](https://github.com/TBAPI-0KA/NSass), although it hasn't been
-      updated in a while.
+  ## Installing
 
-  %li#node
-    :markdown
-      ### Node
-      The [node-sass](https://github.com/sass/node-sass) project has proven to
-      be popular, and we've taken it into the main Sass GitHub repo. Check out
-      its package page [here](https://www.npmjs.org/package/node-sass), and
-      [there's a dedicated twitter account](https://twitter.com/nodesass) for
-      updates.
+  If you need to install Ruby Sass for a legacy app, run
 
-  %li#perl
-    :markdown
-      ### Perl
-      The [CSS::Sass](https://github.com/sass/perl-libsass) project is updated
-      regularly. There's the
-      [Text-Sass-XS](https://github.com/ysasaki/Text-Sass-XS) project, too,
-      although it hasn't been updated in a while.
+      gem install sass
 
-  %li#php
-    :markdown
-      ### PHP
-      The [SassPHP](https://github.com/sensational/sassphp) project is an
-      updated fork of an
-      [older PHP version](https://github.com/jamierumbelow/sassphp).
+  If you get a permissions error on Linux of Mac OS X, you may instead need
+  to run
 
-  %li#python
-    :markdown
-      ### Python
-      There are two Python projects that are updated regularly. The
-      [libsass-python](https://github.com/sass/libsass-python) project (there
-      are more details on
-      [its own website](https://sass.github.io/libsass-python/)) and the
-      [python-scss](https://github.com/pistolero/python-scss) project.
+      sudo gem install sass
 
-      Two other Python projects,
-      [pylibsass](https://github.com/rsenk330/pylibsass) and
-      [SassPython](https://github.com/marianoguerra/SassPython), haven't been
-      updated in a while.
+  Once Ruby Sass installed, try running
 
+      sass --version
 
-  %li#ruby
-    :markdown
-      ### Ruby
-      LibSass has also been ported back into Ruby for the
-      [sassc-ruby](https://github.com/sass/sassc-ruby) project.
-
-  %li#rust
-    :markdown
-      ### Rust
-      The [`sass_rs`](https://github.com/compass-rs/sass-rs) crate is a
-      LibSass wrapper and is updated regularly.
-
-  %li#scala
-    :markdown
-      ### Scala
-      The only Scala project, [Sass-Scala](https://github.com/kkung/Sass-Scala),
-      hasn't been updated in a couple of years.
-
-%h2 About LibSass
-
-:markdown
-  This project is the brainchild of
-  [Hampton Catlin](https://github.com/hcatlin), the original creator of Sass,
-  and is sponsored by [Moovweb](http://moovweb.com/).
-  [Aaron Leung](http://github.com/akhleung) from Moovweb is the primary
-  developer.
-
-%figure
-  = image_tag "logos/libsass.png", alt: "LibSass logo"
-
-- content_for :complementary do
-  %h3 Wrappers
-  %ul.anchors
-    %li= link_to "SassC",      "#sassc"
-    %li= link_to "Crystal",    "#crystal"
-    %li= link_to "Go",         "#go"
-    %li= link_to "Java",       "#java"
-    %li= link_to "JavaScript", "#javascript"
-    %li= link_to "Lua",        "#lua"
-    %li= link_to ".NET",       "#net"
-    %li= link_to "Node",       "#node"
-    %li= link_to "Perl",       "#perl"
-    %li= link_to "PHP",        "#php"
-    %li= link_to "Python",     "#python"
-    %li= link_to "Ruby",       "#ruby"
-    %li= link_to "Scala",      "#scala"
-
-
-  %h3 Resources
-
-  %ul
-    - for project in data.libsass.resources
-      %li
-        = link_to project.name, project.url
-        &mdash;
-        = project.description
+  If it installed correctly, this should print
+  `Ruby Sass #{impl_version :ruby}`.
