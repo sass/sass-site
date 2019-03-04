@@ -140,6 +140,8 @@ GEM
     rack-livereload (0.3.16)
       rack
     rack-rewrite (1.5.1)
+    rack-ssl (1.4.1)
+      rack
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rake (12.3.0)
@@ -207,6 +209,7 @@ DEPENDENCIES
   rack
   rack-contrib
   rack-rewrite
+  rack-ssl (~> 1.4)
   rake
   redcarpet (~> 3.3.3)
   semantic (~> 1.6)
@@ -221,4 +224,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.2
+   1.16.6

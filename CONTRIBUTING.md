@@ -1,7 +1,7 @@
 Contributing to the Sass website
 ================================
 
-**Please read the [Implementation Guide](http://sass-lang.com/implementation)**
+**Please read the [Implementation Guide](https://sass-lang.com/implementation)**
 The Sass website is open source. See a bug or typo? Have an idea? Just do the
 following:
 
