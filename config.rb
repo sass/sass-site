@@ -24,16 +24,16 @@ set :images_dir, 'assets/img'
 page '/*.xml',                     :layout => false
 page '/*.json',                    :layout => false
 page '/*.txt',                     :layout => false
-page '/*.html',                    :layout => :has_navigation
-page '/community.html',            :layout => :has_complementary
-page '/community-guidelines.html', :layout => :has_complementary
-page '/libsass.html',              :layout => :has_both_sidebars
+page '/*.html',                    :layout => :has_no_sidebars
 page '/404.html',                  :layout => :has_no_sidebars
 page '/about.html',                :layout => :has_no_sidebars
 page '/implementation.html',       :layout => :has_no_sidebars
 page '/install.html',              :layout => :has_no_sidebars
 page '/dart-sass.html',            :layout => :has_no_sidebars
 page '/ruby-sass.html',            :layout => :has_no_sidebars
+page '/community.html',            :layout => :has_complementary
+page '/community-guidelines.html', :layout => :has_complementary
+page '/libsass.html',              :layout => :has_both_sidebars
 page '/styleguide/*',              :layout => :section_styleguide
 page '/documentation/*',           :layout => :section_reference
 

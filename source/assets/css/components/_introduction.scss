@@ -1,7 +1,7 @@
 .sl-c-introduction {
   color: $sl-color--patina;
 
-  @include sl-breakpoint--medium { font-size: $sl-font-size--large; }
+  @include sl-breakpoint--medium { font-size: $sl-font-size--xx-large; }
 
   &--center { text-align: center; }
 }

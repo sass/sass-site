@@ -16,13 +16,13 @@ $sl-font-weights: (
 
 
 
-$sl-font-size--small:      sl-px-to-rem(12px) !default;
+$sl-font-size--small:      sl-px-to-rem(14px) !default;
 $sl-font-size--medium:     sl-px-to-rem(16px) !default;
-$sl-font-size--large:      sl-px-to-rem(24px) !default;
-$sl-font-size--x-large:    sl-px-to-rem(32px) !default;
-$sl-font-size--xx-large:   sl-px-to-rem(48px) !default;
-$sl-font-size--xxx-large:  sl-px-to-rem(64px) !default;
-$sl-font-size--xxxx-large: sl-px-to-rem(96px) !default;
+$sl-font-size--large:      sl-px-to-rem(18px) !default;
+$sl-font-size--x-large:    sl-px-to-rem(24px) !default;
+$sl-font-size--xx-large:   sl-px-to-rem(28px) !default;
+$sl-font-size--xxx-large:  sl-px-to-rem(48px) !default;
+$sl-font-size--xxxx-large: sl-px-to-rem(80px) !default;
 
 $sl-font-sizes: (
   small:      $sl-font-size--small,
@@ -119,6 +119,7 @@ h1,
 h2 { font-weight: $sl-font-weight--light; }
 
 h1 {
+  margin-top: 0;
   font-size: $sl-font-size--xx-large;
   line-height: 1;
   text-align: center;

@@ -80,7 +80,12 @@
           = Typogruby.improve(current_page.data.title)
 
 
-      .sl-l-section.sl-l-container.sl-background--white= yield
+      - section_class = ''
+
+      - unless current_page.data.h1 == 'CSS with superpowers'
+        - section_class = 'sl-l-section'
+
+      .sl-l-container.sl-background--white{class: section_class}= yield
 
     .sl-c-alert
       .sl-l-container.sl-c-list-horizontal-wrapper
