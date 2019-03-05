@@ -173,7 +173,10 @@ pre {
   padding: .75rem 1rem;
   overflow: auto;
 
-  code { line-height: inherit; }
+  code {
+    font-size: 1em;
+    line-height: inherit;
+  }
 }
 
 img {
