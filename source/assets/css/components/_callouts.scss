@@ -1,11 +1,27 @@
 .sl-c-callout {
   margin: 1.5rem 0;
   padding: 1.5rem 1rem;
-  background: darken($sl-color--pale-sky, 25%);
+  background: lighten($sl-color--pale-sky, 50%);
 
   &--warning { background: lighten($sl-color--hopbush, 36%); }
 
   &--fun-fact { background: lighten($sl-color--patina, 43%); }
+
+  &--function {
+    padding: {
+      top: 0;
+      bottom: .25rem;
+    };
+
+    .code-example { margin-top: -3rem; }
+
+    .signature {
+      margin: {
+        right: -1rem;
+        left: -1rem;
+      };
+    }
+  }
 
   > *:first-child { margin-top: 0; }
 

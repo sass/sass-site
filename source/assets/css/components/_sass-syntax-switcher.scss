@@ -132,6 +132,8 @@ html .ui-button.ui-state-disabled:active { background: none; }
 }
 
 .ui-tabs-panel > h3 {
+  position: relative;
+  top: .45rem;
   margin: 0;
   text-transform: uppercase;
   color: $sl-color--hopbush;
