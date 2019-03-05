@@ -1,16 +1,13 @@
 ---
 title: "@if and @else"
 table_of_contents: true
+introduction: >
+  The `@if` rule is written `@if <expression> { ... }`, and it controls whether
+  or not its block gets evaluated (including emitting any styles as CSS). The
+  [expression](../../syntax/structure#expressions) usually returns either
+  [`true` or `false`](../../values/booleans)—if the expression returns `true`,
+  the block is evaluated, and if the expression returns `false` it’s not.
 ---
-
-The `@if` rule is written `@if <expression> { ... }`, and it controls whether or
-not its block gets evaluated (including emitting any styles as CSS). The
-[expression][] usually returns either [`true` or `false`][]—if the expression
-returns `true`, the block is evaluated, and if the expression returns `false`
-it's not.
-
-[expression]: ../../syntax/structure#expressions
-[`true` or `false`]: ../../values/booleans
 
 <%= partial 'code-snippets/example-if' %>
 

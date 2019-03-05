@@ -1,17 +1,15 @@
 ---
 title: "@each"
+introduction: >
+  The `@each` rule makes it easy to emit styles or evaluate code for each
+  element of a [list](../../values/lists) or each pair in a
+  [map](../../values/maps). It’s great for repetitive styles that only have a
+  few variations between them. It’s usually written `@each <variable> in
+  <expression> { ... }`, where the
+  [expression](../../syntax/structure#expressions) returns a list. The block is
+  evaluated for each element of the list in turn, which is assigned to the given
+  variable name.
 ---
-
-The `@each` rule makes it easy to emit styles or evaluate code for each element
-of a [list][] or each pair in a [map][]. It's great for repetitive styles that
-only have a few variations between them. It's usually written
-`@each <variable> in <expression> { ... }`, where the [expression][] returns a
-list. The block is evaluated for each element of the list in turn, which is
-assigned to the given variable name.
-
-[list]: ../../values/lists
-[map]: ../../values/maps
-[expression]: ../../syntax/structure#expressions
 
 <%= partial 'code-snippets/example-each-list' %>
 

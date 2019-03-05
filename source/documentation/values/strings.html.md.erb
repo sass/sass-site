@@ -1,17 +1,14 @@
 ---
 title: Strings
 table_of_contents: true
+introduction: >
+  Strings are sequences of characters (specifically [Unicode code
+  points](https://en.wikipedia.org/wiki/Code_point)). Sass supports two kinds of
+  strings whose internal structure is the same but which are rendered
+  differently: [quoted strings](#quoted), like `"Helvetica Neue"`, and [unquoted
+  strings](#unquoted) (also known as *identifiers*), like `bold`. Together,
+  these cover the different kinds of text that appear in CSS.
 ---
-
-Strings are sequences of characters (specifically [Unicode code points][]). Sass
-supports two kinds of strings whose internal structure is the same but which are
-rendered differently: [quoted strings][], like `"Helvetica Neue"`, and [unquoted
-strings][] (also known as *identifiers*), like `bold`. Together, these cover the
-different kinds of text that appear in CSS.
-
-[Unicode code points]: https://en.wikipedia.org/wiki/Code_point
-[quoted strings]: #quoted
-[unquoted strings]: #unquoted
 
 <% fun_fact do %>
   You can convert a quoted string to an unquoted string using the [`unquote()`

@@ -1,18 +1,15 @@
 ---
 title: "@import"
 table_of_contents: true
+introduction: >
+  Sass extends CSS's [`@import`
+  rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@import) with the
+  ability to import Sass and CSS stylesheets, providing access to
+  [mixins](mixin), [functions](function), and [variables](../variables) and
+  combining multiple stylesheets' CSS together. Unlike plain CSS imports, which
+  require the browser to make multiple HTTP requests as it renders your page,
+  Sass imports are handled entirely during compilation.
 ---
-
-Sass extends CSS's [`@import` rule][] with the ability to import Sass and CSS
-stylesheets, providing access to [mixins][], [functions][], and [variables][]
-and combining multiple stylesheets' CSS together. Unlike plain CSS imports,
-which require the browser to make multiple HTTP requests as it renders your
-page, Sass imports are handled entirely during compilation.
-
-[`@import` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/@import
-[mixins]: mixin
-[functions]: function
-[variables]: ../variables
 
 Sass imports have the same syntax as CSS imports, except that they allow
 multiple imports to be separated by commas rather than requiring each one to

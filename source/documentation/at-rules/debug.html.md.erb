@@ -1,14 +1,12 @@
 ---
 title: "@debug"
+introduction: >
+  Sometimes it’s useful to see the value of a [variable](../variables) or
+  [expression](../syntax/structure#expressions) while you’re developing your
+  stylesheet. That’s what the `@debug` rule is for: it’s written
+  `@debug <expression>`, and it prints the value of that expression, along with
+  the filename and line number.
 ---
-
-Sometimes it's useful to see the value of a [variable][] or [expression][] while
-you're developing your stylesheet. That's what the `@debug` rule is for: it's
-written `@debug <expression>`, and it prints the value of that expression, along
-with the filename and line number.
-
-[variable]: ../variables
-[expression]: ../syntax/structure#expressions
 
 <% example(autogen_css: false) do %>
   @mixin inset-divider-offset($offset, $padding) {

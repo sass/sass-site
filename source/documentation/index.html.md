@@ -1,16 +1,14 @@
 ---
 title: Documentation
+introduction: >
+  Sass is a stylesheet language that’s compiled to CSS. It allows you to use
+  [variables](/documentation/variables), [nested
+  rules](/documentation/style-rules#nesting),
+  [mixins](/documentation/at-rules/mixin),
+  [functions](/documentation/functions), and more, all with a fully
+  CSS-compatible syntax. Sass helps keep large stylesheets well-organized and
+  makes it easy to share design within and across projects.
 ---
-
-Sass is a stylesheet language that's compiled to CSS. It allows you to use
-[variables][], [nested rules][], [mixins][], [functions][], and more, all with a
-fully CSS-compatible syntax. Sass helps keep large stylesheets well-organized
-and makes it easy to share design within and across projects.
-
-[variables]:    /documentation/variables
-[nested rules]: /documentation/style-rules#nesting
-[mixins]:       /documentation/at-rules/mixin
-[functions]:    /documentation/functions
 
 * If you're looking for an introduction to Sass, check out [the
   tutorial](/guide).

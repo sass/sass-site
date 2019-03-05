@@ -1,13 +1,11 @@
 ---
 title: "@while"
+introduction: >
+  The `@while` rule, written `@while <expression> { ... }`, evaluates its block
+  if its [expression](../../syntax/structure#expressions) returns `true`. Then,
+  if its expression still returns `true`, it evaluates its block again. This
+  continues until the expression finally returns `false`.
 ---
-
-The `@while` rule, written `@while <expression> { ... }`, evaluates its block if
-its [expression][] returns `true`. Then, if its expression still returns `true`,
-it evaluates its block again. This continues until the expression finally
-returns `false`.
-
-[expression]: ../../syntax/structure#expressions
 
 <% example do %>
   /// Divides `$value` by `$ratio` until it's below `$base`.

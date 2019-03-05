@@ -1,14 +1,11 @@
 ---
 title: "@error"
+introduction: >
+  When writing [mixins](mixin) and [functions](function) that take arguments,
+  you usually want to ensure that those arguments have the types and formats
+  your API expects. If they aren't, the user needs to be notified and your
+  mixin/function needs to stop running.
 ---
-
-When writing [mixins][] and [functions][] that take arguments, you usually want
-to ensure that those arguments have the types and formats your API expects. If
-they aren't, the user needs to be notified and your mixin/function needs to stop
-running.
-
-[mixins]: mixin
-[functions]: function
 
 Sass makes this easy with the `@error` rule, which is written
 `@error <expression>`. It prints the value of the [expression][] (usually a

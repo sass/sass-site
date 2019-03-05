@@ -1,13 +1,10 @@
 ---
 title: Values
+introduction: >
+  Sass supports a number of value types, most of which come straight from CSS.
+  Every [expression](syntax/structure#expressions) produces a value,
+  [variables](variables) hold values. Most value types come straight from CSS:
 ---
-
-Sass supports a number of value types, most of which come straight from CSS.
-Every [expression][] produces a value, [variables][] hold values. Most value
-types come straight from CSS:
-
-[expression]: syntax/structure#expressions
-[variables]: variables
 
 * [Numbers](values/numbers), which may or may not have units, like `12` or
   `100px`.

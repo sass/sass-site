@@ -1,24 +1,13 @@
 .sl-c-callout {
   margin: 1.5rem 0;
-  padding: .75rem 1rem;
-  background: $sl-color--midnight-blue;
-  color: $sl-color--white;
+  padding: 1.5rem 1rem;
+  background: darken($sl-color--pale-sky, 25%);
 
-  a,
-  code { color: inherit; }
+  &--warning { background: lighten($sl-color--hopbush, 36%); }
 
-  a {
-    border-bottom: 1px solid rgba(rgba($sl-color--white, .75), .5);
-    font-weight: $sl-font-weight--bold;
-    color: inherit;
+  &--fun-fact { background: lighten($sl-color--patina, 43%); }
 
-    &:hover,
-    &:focus { border-bottom-color: rgba($sl-color--white, .5); }
+  > *:first-child { margin-top: 0; }
 
-    &:active { border-bottom-color: rgba($sl-color--white, .75); }
-  }
-
-  &--warning { background: darken($sl-color--hopbush, 10%); }
-
-  &--fun-fact { background: darken($sl-color--patina, 10%); }
+  > *:last-child { margin-bottom: 0; }
 }

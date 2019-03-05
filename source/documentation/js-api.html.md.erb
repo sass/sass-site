@@ -1,16 +1,13 @@
 ---
 title: JavaScript API
 table_of_contents: true
+introduction: >
+  Both major Sass implementations support the same JavaScript API. [Dart
+  Sass](/dart-sass) is distributed as the pure-Javascript [`sass`
+  package](https://www.npmjs.com/package/sass), and [LibSass](/libsass) is
+  distributed as a native extension in the [`node-sass`
+  package](https://www.npmjs.com/package/node-sass).
 ---
-
-Both major Sass implementations support the same JavaScript API. [Dart Sass][]
-is distributed as the pure-Javascript [`sass` package][], and [LibSass][] is
-distributed as a native extension in the [`node-sass` package][].
-
-[Dart Sass]: /dart-sass
-[`sass` package]: https://www.npmjs.com/package/sass
-[LibSass]: /libsass
-[`node-sass` package]: https://www.npmjs.com/package/node-sass
 
 ## Usage
 
@@ -810,7 +807,7 @@ wrappers for its various [value types][]. These are all provided under the
   they don't match the general principle that Sass values are immutable. Users
   should construct new objects rather than modifying existing ones.
 
-  
+
   [`Map` type]: #types-map
   [`List` type]: #types-list
 <% end %>

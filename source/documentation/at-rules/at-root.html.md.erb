@@ -1,15 +1,13 @@
 ---
 title: "@at-root"
+introduction: >
+  The `@at-root` rule is usually written `@at-root <selector> { ... }` and
+  causes everything within it to be emitted at the root of the document instead
+  of using the normal nesting. It's most often used when doing [advanced
+  nesting](../style-rules/parent-selector#advanced-nesting) with the [SassScript
+  parent selector](../style-rules/parent-selector#in-sassscript) and [selector
+  functions](../functions/selector).
 ---
-
-The `@at-root` rule is usually written `@at-root <selector> { ... }` and causes
-everything within it to be emitted at the root of the document instead of using
-the normal nesting. It's most often used when doing [advanced nesting][] with
-the [SassScript parent selector][] and [selector functions][].
-
-[advanced nesting]: ../style-rules/parent-selector#advanced-nesting
-[SassScript parent selector]: ../style-rules/parent-selector#in-sassscript
-[selector functions]: ../functions/selector
 
 <%= partial 'code-snippets/example-advanced-nesting' %>
 

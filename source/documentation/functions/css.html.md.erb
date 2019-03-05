@@ -1,16 +1,14 @@
 ---
 title: Plain CSS Functions
+introduction: >
+  Any function call that's not either a [built-in](../functions) or
+  [user-defined](../at-rules/function) function is compiled to a plain CSS
+  function (unless it uses [Sass argument
+  syntax](../at-rules/function#arguments)). The arguments will be compiled to
+  CSS and included as-is in the function call. This ensures that Sass supports
+  all CSS functions without needing to release new versions every time a new one
+  is added.
 ---
-
-Any function call that's not either a [built-in][] or [user-defined][] function
-is compiled to a plain CSS function (unless it uses [Sass argument syntax][]).
-The arguments will be compiled to CSS and included as-is in the function call.
-This ensures that Sass supports all CSS functions without needing to release new
-versions every time a new one is added.
-
-[built-in]: ../functions
-[user-defined]: ../at-rules/function
-[Sass argument syntax]: ../at-rules/function#arguments
 
 <% example(autogen_css: false) do %>
   @debug var(--main-bg-color); // var(--main-bg-color)

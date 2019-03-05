@@ -1,14 +1,13 @@
 ---
 title: Parent Selector
+introduction: >
+  The parent selector, `&`, is a special selector invented by Sass that’s used
+  in [nested selectors](../style-rules#nesting) to refer to the outer selector.
+  It makes it possible to re-use the outer selector in more complex ways, like
+  adding a
+  [pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
+  or adding a selector *before* the parent.
 ---
-
-The parent selector, `&`, is a special selector invented by Sass that's used in
-[nested selectors][] to refer to the outer selector. It makes it possible to
-re-use the outer selector in more complex ways, like adding a [pseudo-class][]
-or adding a selector *before* the parent.
-
-[nested selectors]: ../style-rules#nesting
-[pseudo-class]: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
 
 When a parent selector is used in an inner selector, it's replaced with the
 corresponding outer selector. This happens instead of the normal nesting
