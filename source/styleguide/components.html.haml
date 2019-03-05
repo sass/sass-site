@@ -2,27 +2,39 @@
 title: Components
 ---
 
+%h2 With details:
+
+%table.sl-c-table.impl-status
+  %tbody
+    %tr
+      %th(scope='row') Dart Sass
+      %td ✓
+
+    %tr
+      %th(scope='row') Ruby Sass
+
+      %td since 3.5.0
+
 %details
-  %summary Implementation
+  %summary Learn more
 
-  %figure
-    %table.sl-c-table.impl-status
-      %tbody
-        %tr
-          %th(scope='row') Dart Sass
-          %td ✓
+  %p
+    LibSass and older versions of Ruby Sass default to 5 digits of numeric
+    precision, but can be configured to use a different number. It’s
+    recommended that users configure them for 10 digits for greater
+    accuracy&nbsp;and forwards-compatibility.
 
-        %tr
-          %th(scope='row') Ruby Sass
+%h2 Without details:
+%table.sl-c-table.impl-status
+  %tbody
+    %tr
+      %th(scope='row') Dart Sass
+      %td ✓
 
-          %td since 3.5.0
+    %tr
+      %th(scope='row') Ruby Sass
 
-    %figcaption
-      %p
-        LibSass and older versions of Ruby Sass default to 5 digits of numeric
-        precision, but can be configured to use a different number. It’s
-        recommended that users configure them for 10 digits for greater
-        accuracy&nbsp;and forwards-compatibility.
+      %td since 3.5.0
 
 .sl-c-alert
   .sl-l-container
