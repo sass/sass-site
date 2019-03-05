@@ -375,11 +375,17 @@ MARKDOWN
       signature_elements.map(&:to_html).join.strip
     end
 
+    merged_signatures = highlighted_signatures.join("\n")
+    if returns
+      merged_signatures << " " <<
+        content_tag(:span, "//=> #{return_type_link(returns)}", class: 'c1')
+    end
+
     html = content_tag :div, [
       content_tag(:pre, [
-        content_tag(:code, highlighted_signatures.join("\n"))
+        content_tag(:code, merged_signatures)
       ], class: 'signature highlight scss'),
-      returns ? content_tag(:h3, return_type_link(returns), class: 'return-type') : '',
+
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--function', id: names.first
 
