@@ -1,13 +1,10 @@
 $table-cell-padding: 1rem / 2;
 
 .sl-c-table {
-  margin: {
-    right: -$table-cell-padding;
-    left:  -$table-cell-padding;
-  };
   border: 0;
   width: 100%;
   max-width: 100%;
+  background: white;
 
   td,
   th {
@@ -34,5 +31,15 @@ $table-cell-padding: 1rem / 2;
 
       td { white-space: nowrap; }
     }
+  }
+}
+
+.impl-status {
+
+  tr { border-bottom: 1px solid $sl-color--iron; }
+
+  caption {
+    caption-side: bottom;
+    font: inherit;
   }
 }
