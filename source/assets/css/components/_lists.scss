@@ -32,7 +32,10 @@
   &-navigation-wrapper {
     position: relative;
 
-    li { margin: .125rem 0; }
+    li {
+      margin: .5rem 0;
+      line-height: 1.25;
+    }
 
     ul ul { margin: 0 0 0 1rem; }
   }
