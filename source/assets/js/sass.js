@@ -32,12 +32,12 @@ $(function() {
 
     var ul = $("<ul></ul>");
 
-    if (figure.find(".sass").length) {
-      ul.append("<li><a href='#example-" + id + "-sass'>Sass</a></li>");
-    }
-
     if (figure.find(".scss").length) {
       ul.append("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
+    }
+
+    if (figure.find(".sass").length) {
+      ul.append("<li><a href='#example-" + id + "-sass'>Sass</a></li>");
     }
 
     var hasCssTab = figure.find(".css").length;
