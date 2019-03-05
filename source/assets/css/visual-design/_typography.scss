@@ -91,7 +91,8 @@ p,
 ul,
 ol,
 dl,
-figure {
+figure,
+details {
   margin: 1.5rem 0;
   padding: 0;
 }
@@ -194,4 +195,10 @@ hr {
     top: 3rem;
     bottom: 3rem;
   };
+}
+
+summary {
+  padding: .25rem 1rem;
+  border: 0;
+  cursor: pointer;
 }

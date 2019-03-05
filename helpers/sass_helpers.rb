@@ -232,7 +232,7 @@ module SassHelpers
   # Returns the text of an example div for a single syntax.
   def _syntax_div(name, syntax, sections, paddings, id)
     content_tag(:div, [
-      content_tag(:h3, name, class: 'invisible'),
+      content_tag(:h3, name, class: 'visuallyhidden'),
       *sections.zip(paddings).map do |section, padding|
         padding = 0 if padding.nil? || padding.negative?
         _render_markdown("```#{syntax}\n#{section}#{"\n" * padding}\n```")

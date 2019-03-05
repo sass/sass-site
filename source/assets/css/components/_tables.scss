@@ -1,10 +1,10 @@
 $table-cell-padding: 1rem / 2;
 
 .sl-c-table {
+  margin: 1.5rem 0;
   border: 0;
   width: 100%;
   max-width: 100%;
-  background: white;
 
   td,
   th {
@@ -19,6 +19,7 @@ $table-cell-padding: 1rem / 2;
   }
 
   @include sl-breakpoint--medium-max {
+
     &-responsive {
       margin-bottom: 1.5rem;
       width: 100%;
@@ -35,9 +36,10 @@ $table-cell-padding: 1rem / 2;
 }
 
 .impl-status {
-  border-top: 1px solid $sl-color--iron;
+  width: auto;
 
-  tr { border-bottom: 1px solid $sl-color--iron; }
+  th,
+  td { padding-left: 0; }
 
   caption {
     caption-side: bottom;

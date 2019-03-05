@@ -336,7 +336,8 @@ body {
   background: $sl-color--iron;
 }
 
-a {
+a,
+summary {
   border-bottom: 1px solid rgba($sl-color--iron, .5);
   color: $sl-color--midnight-blue;
 
