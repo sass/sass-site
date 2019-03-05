@@ -10,7 +10,7 @@
   .ui-tabs-nav {
     position: relative;
     top: 2.5rem;
-    margin-right: -1em;
+    margin-left: -1em;
 
     a { border: 0; background: none; }
 
@@ -50,7 +50,7 @@
     }
 
     li {
-      float: right;
+      float: left;
 
       &,
       &.ui-tabs-active { margin: 0; }
@@ -68,7 +68,7 @@
           font-weight: $sl-font-weight--bold;
           left: -1.2em;
           position: absolute;
-          top: sl-px-to-rem(7.5px);
+          top: 0.75rem;
         }
       }
     }
