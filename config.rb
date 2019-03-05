@@ -12,10 +12,12 @@ end
 activate :livereload
 activate :syntax
 
-set :markdown, :fenced_code_blocks => true,
-               :autolink => true,
-               :smartypants => true,
-               :with_toc_data => true
+set :markdown, fenced_code_blocks: true,
+               autolink: true,
+               smartypants: true,
+               with_toc_data: true
+Haml::Filters::Markdown.options.merge! fenced_code_blocks: true,
+                                       autolink: true
 set :markdown_engine, :redcarpet
 set :css_dir,    'assets/css'
 set :js_dir,     'assets/js'

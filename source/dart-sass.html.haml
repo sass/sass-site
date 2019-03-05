@@ -19,7 +19,9 @@ introduction: >
       check out the #{link_to "installation instructions", "/install"}. Once
       you've got it running, you can use it compile files:
 
-          sass source/stylesheets/index.scss build/stylesheets/index.css
+      ```sh
+      sass source/index.scss css/index.css
+      ```
 
       See `sass --help` for additional information on the command-line
       interface.
@@ -30,56 +32,45 @@ introduction: >
       VM plus the ability to define your own functions and importers. To add it
       to an existing project:
 
-    %ol
-      %li
-        :markdown
-          [Install the Dart SDK][install]. Make sure its `bin` directory is [on
-          your `PATH`][path].
+      1. [Install the Dart SDK][install]. Make sure its `bin` directory is [on
+         your `PATH`][path].
 
-          [install]: https://www.dartlang.org/install#automated-installation-and-updates
-          [path]:    https://katiek2.github.io/path-doc/
+         [install]: https://www.dartlang.org/install#automated-installation-and-updates
+         [path]:    https://katiek2.github.io/path-doc/
 
-      %li
-        :markdown
-          Create a `pubspec.yaml` file like this:
+      2. Create a `pubspec.yaml` file like this:
 
-        :code
-          # lang: yaml
-          name: my_project
-          dev_dependencies:
-            sass: ^#{impl_version(:dart)}
+         ```yaml
+      name: my_project
+      dev_dependencies:
+        sass: ^#{impl_version(:dart)}
+         ```
 
-      %li
-        :markdown
-          Run `pub get`.
+      3. Run `pub get`.
 
-      %li
-        :markdown
-          Create a `compile-sass.dart` file like this:
+      4. Create a `compile-sass.dart` file like this:
 
-        :code
-          # lang: dart
-          import 'dart:io';
-          import 'package:sass/sass.dart' as sass;
+         ```dart
+      import 'dart:io';
+      import 'package:sass/sass.dart' as sass;
 
-          void main(List<String> arguments) {
-            var result = sass.compile(arguments[0]);
-            new File(arguments[1]).writeAsStringSync(result);
-          }
+      void main(List<String> arguments) {
+        var result = sass.compile(arguments[0]);
+        new File(arguments[1]).writeAsStringSync(result);
+      }
+         ```
 
-      %li
-        :markdown
-          You can now use this to compile files:
+      5. You can now use this to compile files:
 
-              dart compile-sass.dart styles.scss styles.css
+         ```sh
+      dart compile-sass.dart styles.scss styles.css
+         ```
 
-      %li
-        :markdown
-          Learn more about [writing Dart code][dart] (it's easy!) and about
-          [Sass's Dart API][sass].
+      6. Learn more about [writing Dart code][dart] (it's easy!) and about
+         [Sass's Dart API][sass].
 
-          [dart]: https://www.dartlang.org/guides/language/language-tour
-          [sass]: https://www.dartdocs.org/documentation/sass/latest/sass/compile.html
+         [dart]: https://www.dartlang.org/guides/language/language-tour
+         [sass]: https://www.dartdocs.org/documentation/sass/latest/sass/compile.html
 
   .sl-l-grid__column
     :markdown
@@ -92,17 +83,22 @@ introduction: >
       importers in JavaScript. You can add it to your project using
       `npm install --save-dev sass` and `require()` it as a library:
 
-    :code
-      # lang: js
+      ```js
       var sass = require('sass');
 
-      sass.render({file: scss_filename}, function(err, result) { /* ... */ });
+      sass.render({
+        file: scss_filename
+      }, function(err, result) {
+        /* ... */
+      });
 
       // OR
 
-      var result = sass.renderSync({file: scss_filename});
+      var result = sass.renderSync({
+        file: scss_filename
+      });
+      ```
 
-    :markdown
       When installed via npm, Dart Sass supports a JavaScript API that aims to
       be compatible with [Node Sass](https://github.com/sass/node-sass#usage).
       Full compatibility is a work in progress, but Dart Sass currently supports
@@ -116,8 +112,7 @@ introduction: >
 
       [fibers]: https://www.npmjs.com/package/fibers
 
-    :code
-      # lang: js
+      ```js
       var sass = require("sass");
       var Fiber = require("fibers");
 
@@ -130,8 +125,8 @@ introduction: >
       }, function(err, result) {
         // ...
       });
+      ```
 
-    :markdown
       See [Dart Sass's documentation][js api] for more information about its
       JavaScript API.
 
