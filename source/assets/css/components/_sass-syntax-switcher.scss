@@ -8,8 +8,7 @@
   .ui-tabs-panel { padding: 0; }
 
   .ui-tabs-nav {
-    position: relative;
-    top: 1.35rem;
+    margin-top: -1rem;
     margin-left: -1em;
 
     a { border: 0; background: none; }
@@ -78,10 +77,12 @@
     .ui-tabs-anchor { padding: .75rem 1rem; }
   }
 
+  pre { margin-top: 0; }
+
   // Carefully calibrated so that the distance between two code blocks in the
   // syntax switcher is exactly equal to two lines, so there's no visual jitter
   // when switching between syntaxes.
-  pre { margin-top: 22px; }
+  pre + pre { margin-top: 22px; }
 }
 
 .ui-widget.ui-widget-content,
