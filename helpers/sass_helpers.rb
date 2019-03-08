@@ -232,7 +232,7 @@ module SassHelpers
   # Returns the text of an example div for a single syntax.
   def _syntax_div(name, syntax, sections, paddings, id)
     content_tag(:div, [
-      content_tag(:h3, name, class: 'invisible'),
+      content_tag(:h3, name, class: 'visuallyhidden'),
       *sections.zip(paddings).map do |section, padding|
         padding = 0 if padding.nil? || padding.negative?
         _render_markdown("```#{syntax}\n#{section}#{"\n" * padding}\n```")
@@ -307,22 +307,29 @@ module SassHelpers
   #
   # When possible, prefer using the start version rather than `true`.
   #
-  # This takes a Markdown block that should provide more information about the
-  # implementation differences or the old behavior.
+  # This takes an optional Markdown block that should provide more information
+  # about the implementation differences or the old behavior.
   def impl_status(dart: nil, libsass: nil, ruby: nil, node: nil)
     contents = []
-    contents << _impl_status_row('Dart Sass', dart) if dart
-    contents << _impl_status_row('LibSass', libsass) if libsass
-    contents << _impl_status_row('Node Sass', node) if node
-    contents << _impl_status_row('Ruby Sass', ruby) if ruby
+    contents << _impl_status_row('Dart Sass', dart) unless dart.nil?
+    contents << _impl_status_row('LibSass', libsass) unless libsass.nil?
+    contents << _impl_status_row('Node Sass', node) unless node.nil?
+    contents << _impl_status_row('Ruby Sass', ruby) unless ruby.nil?
 
     if block_given?
-      contents.unshift(content_tag(:caption, [
-        _render_markdown(_capture {yield})
-      ]))
+      contents << content_tag(:div, content_tag(:a, '▶'))
     end
 
-    concat(content_tag :table, contents, class: 'sl-c-table impl-status')
+    contents = content_tag(:dl, contents, class: 'impl-status sl-c-description-list sl-c-description-list--horizontal')
+
+    # Remove newlines because otherwise Markdown can try to inject <p> tags that
+    # we don't want.
+    concat(contents.gsub("\n", ""))
+
+    if block_given?
+      # Get rid of extra whitespace to avoid more bogus <p> tags.
+      concat(content_tag :div, _render_markdown(_capture {yield}).strip, class: 'sl-c-callout')
+    end
   end
 
   # Renders a single row for `impl_status`.
@@ -336,10 +343,10 @@ module SassHelpers
         "since #{status}"
       end
 
-    content_tag :tr, [
-      content_tag(:td, name, class: 'name'),
-      content_tag(:td, status_text, class: 'status'),
-    ], class: status ? 'supported' : 'unsupported'
+    content_tag :div, [
+      content_tag(:dt, name),
+      content_tag(:dd, status_text),
+    ]
   end
 
   # Renders API docs for a Sass function.
