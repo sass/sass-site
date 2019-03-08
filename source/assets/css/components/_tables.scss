@@ -34,21 +34,3 @@ $table-cell-padding: 1rem / 2;
     }
   }
 }
-
-.impl-status {
-  width: auto;
-
-  th,
-  td {
-    padding: {
-      top: 0;
-      left: 0;
-      bottom: 0;
-    };
-  }
-
-  caption {
-    caption-side: bottom;
-    font: inherit;
-  }
-}
