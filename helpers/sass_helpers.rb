@@ -270,7 +270,7 @@ module SassHelpers
   #
   # The contents should be supplied as a block.
   def heads_up
-    concat(content_tag :aside, [
+    _concat(content_tag :aside, [
       content_tag(:h3, '⚠️ Heads up!'),
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--warning')
@@ -281,7 +281,7 @@ module SassHelpers
   #
   # The contents should be supplied as a block.
   def fun_fact
-    concat(content_tag :aside, [
+    _concat(content_tag :aside, [
       content_tag(:h3, '💡 Fun fact:'),
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--fun-fact')
@@ -320,15 +320,11 @@ module SassHelpers
       contents << content_tag(:div, content_tag(:a, '▶'))
     end
 
-    contents = content_tag(:dl, contents, class: 'impl-status sl-c-description-list sl-c-description-list--horizontal')
-
-    # Remove newlines because otherwise Markdown can try to inject <p> tags that
-    # we don't want.
-    concat(contents.gsub("\n", ""))
+    _concat(content_tag(:dl, contents, class: 'impl-status sl-c-description-list sl-c-description-list--horizontal'))
 
     if block_given?
       # Get rid of extra whitespace to avoid more bogus <p> tags.
-      concat(content_tag :div, _render_markdown(_capture {yield}).strip, class: 'sl-c-callout')
+      _concat(content_tag :div, _render_markdown(_capture {yield}).strip, class: 'sl-c-callout')
     end
   end
 
@@ -384,13 +380,13 @@ MARKDOWN
 
     html = content_tag :div, [
       content_tag(:pre, [
-        content_tag(:code, highlighted_signatures.join("\n"))
+        content_tag(:code, highlighted_signatures.join("&#x0000A"))
       ], class: 'signature highlight scss'),
       returns ? content_tag(:h3, return_type_link(returns), class: 'return-type') : '',
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--function', id: names.first
 
-    concat(names.uniq[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
+    _concat(names.uniq[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
   end
 
   def return_type_link(return_type)
@@ -433,6 +429,15 @@ MARKDOWN
   # Strips all leading indentation from the block.
   def _capture(&block)
     remove_leading_indentation(
-      block_is_haml?(block) ? capture_haml(&block) : capture(&block))
+      (block_is_haml?(block) ? capture_haml(&block) : capture(&block)) || "")
+  end
+
+  # Concatenates `text` to the document.
+  #
+  # Converts all newlines to spaces in order to avoid weirdness when rendered
+  # HTML is nested within Markdown. Adds newlines before and after the content
+  # to ensure that it doesn't cause adjacent markdown not to be parsed.
+  def _concat(text)
+    concat("\n\n" + text.gsub("\n", " ") + "\n\n")
   end
 end
