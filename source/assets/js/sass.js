@@ -83,7 +83,7 @@ $(function() {
     details.hide();
     expandLink.click(function() {
       details.toggle();
-      expandLink.text(expandLink.text() == "▶" ? "▼" : "▶");
+      expandLink.toggleClass("expanded");
     });
   });
 });

@@ -23,6 +23,16 @@
     }
   }
 
+  &--impl-status {
+    font-size: 0.8em;
+    margin-top: -1rem;
+    padding: 0.8rem;
+
+    .sl-c-callout & {
+      background: lighten($sl-color--pale-sky, 53%);
+    }
+  }
+
   > *:first-child { margin-top: 0; }
 
   > *:last-child { margin-bottom: 0; }

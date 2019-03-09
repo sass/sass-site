@@ -328,7 +328,7 @@ module SassHelpers
 
     if block_given?
       # Get rid of extra whitespace to avoid more bogus <p> tags.
-      concat(content_tag :div, _render_markdown(_capture {yield}).strip, class: 'sl-c-callout')
+      concat(content_tag :div, _render_markdown(_capture {yield}).strip, class: 'sl-c-callout sl-c-callout--impl-status')
     end
   end
 

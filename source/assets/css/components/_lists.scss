@@ -63,4 +63,21 @@
 
     &:first-child { padding-left: 0; }
   }
+
+  &.impl-status {
+    font-size: 0.8em;
+    margin-top: -1em;
+
+    a {
+      transition: transform 0.1s;
+      border-bottom: none;
+      background: none;
+      cursor: pointer;
+      width: 19px;
+      text-align: center;
+      transform-origin: 8px 11px;
+
+      &.expanded { transform: rotate(90deg); }
+    }
+  }
 }
