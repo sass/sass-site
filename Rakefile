@@ -16,6 +16,7 @@ task :test_without_rebuild do
       "https://dnomak.com/flexiblegs/",
       "https://incident57.com/codekit/",
       "https://daringfireball.net/projects/markdown/",
+      "#",
     ],
     assume_extension: true,
   ).run
