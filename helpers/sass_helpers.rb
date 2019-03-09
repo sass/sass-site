@@ -300,10 +300,13 @@ module SassHelpers
 
   # Renders a status dashboard for each implementation's support for a feature.
   #
-  # Each implementation's value can be `true`, indicating that that
-  # implementation fully supports the feature; `false`, indicating that it does
-  # not yet support the feature; or a string, indicating the version it started
-  # supporting the feature.
+  # Each implementation's value can be:
+  #
+  # * `true`, indicating that that implementation fully supports the feature;
+  # * `false`, indicating that it does not yet support the feature at all;
+  # * `:partial`, indicating that it has limited or incorrect support for the
+  #   feature;
+  # * or a string, indicating the version it started supporting the feature.
   #
   # When possible, prefer using the start version rather than `true`.
   #
@@ -346,6 +349,8 @@ module SassHelpers
         "✓"
       elsif status == false
         "✗"
+      elsif status == :partial
+        "partial"
       else
         "since #{status}"
       end
