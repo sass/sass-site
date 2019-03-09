@@ -218,7 +218,7 @@ These options control how Sass loads it input files.
 
 #### `file`
 
-<% impl_status dart: '1.11.0', node: false do %>
+<% impl_status dart: '1.11.0', node: false, feature: "Plain CSS Files" do %>
   Node Sass and older versions of Dart Sass support loading files with the
   extension `.css`, but contrary to the specification they're treated as SCSS
   files rather than being parsed as CSS. This behavior has been deprecated in
@@ -283,7 +283,7 @@ h1
 
 ### `includePaths`
 
-<% impl_status dart: '1.15.0', node: '3.9.0' do %>
+<% impl_status dart: '1.15.0', node: '3.9.0', feature: "SASS_PATH" do %>
   Earlier versions of Dart Sass and Node Sass didn't support the `SASS_PATH`
   environment variable.
 <% end %>
@@ -718,7 +718,7 @@ h1 {
 
 #### `importer`
 
-<% impl_status dart: false, node: '3.0.0' do %>
+<% impl_status dart: true, node: '3.0.0' do %>
   Versions of Node Sass before 3.0.0 don't support arrays of importers,
   nor do they support importers that return `Error` objects.
 

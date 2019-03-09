@@ -307,10 +307,17 @@ module SassHelpers
   #
   # When possible, prefer using the start version rather than `true`.
   #
+  # If `feature` is passed, it should be a terse (one- to three-word)
+  # description of the particular feature whose compatibility is described. This
+  # should be used whenever the status isn't referring to the entire feature
+  # being described by the surrounding prose.
+  #
   # This takes an optional Markdown block that should provide more information
   # about the implementation differences or the old behavior.
-  def impl_status(dart: nil, libsass: nil, ruby: nil, node: nil)
-    contents = []
+  def impl_status(dart: nil, libsass: nil, ruby: nil, node: nil, feature: nil)
+    compatibility = feature ? "Compatibility (#{feature}):" : "Compatibility:"
+
+    contents = [content_tag(:div, compatibility, class: "compatibility")]
     contents << _impl_status_row('Dart Sass', dart) unless dart.nil?
     contents << _impl_status_row('LibSass', libsass) unless libsass.nil?
     contents << _impl_status_row('Node Sass', node) unless node.nil?

@@ -57,6 +57,13 @@
     &:first-child { border: 0; }
   }
 
+  .compatibility {
+    font-weight: 600;
+    opacity: 0.5;
+
+    + div { border: 0; }
+  }
+
   dt,
   dd {
     padding-left: 1rem;
