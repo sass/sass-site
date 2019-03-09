@@ -1,5 +1,8 @@
 language: ruby
 
+rvm:
+- 2.5.3
+
 script: bundle exec rake test
 
 branches:
