@@ -12,13 +12,12 @@ task :test_without_rebuild do
     url_ignore: [
       "https://www.drupal.org/dcoc", # This doesn't allow automated requests.
       "http://sass.logdown.com/posts/7081811", # This times out occasionally.
-      # These fail on Travis only.
-      "https://dnomak.com/flexiblegs/",
-      "https://incident57.com/codekit/",
-      "https://daringfireball.net/projects/markdown/",
       "#",
     ],
     assume_extension: true,
+    # Lots of external URLs fail flakily on Travis, so we just don't check them
+    # there.
+    disable_external: ENV["TRAVIS"] == "true"
   ).run
 end
 
