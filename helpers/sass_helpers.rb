@@ -232,7 +232,7 @@ module SassHelpers
   # Returns the text of an example div for a single syntax.
   def _syntax_div(name, syntax, sections, paddings, id)
     content_tag(:div, [
-      content_tag(:h3, name, class: 'invisible'),
+      content_tag(:h3, name, class: 'visuallyhidden'),
       *sections.zip(paddings).map do |section, padding|
         padding = 0 if padding.nil? || padding.negative?
         _render_markdown("```#{syntax}\n#{section}#{"\n" * padding}\n```")
@@ -270,7 +270,7 @@ module SassHelpers
   #
   # The contents should be supplied as a block.
   def heads_up
-    concat(content_tag :aside, [
+    _concat(content_tag :aside, [
       content_tag(:h3, '⚠️ Heads up!'),
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--warning')
@@ -281,7 +281,7 @@ module SassHelpers
   #
   # The contents should be supplied as a block.
   def fun_fact
-    concat(content_tag :aside, [
+    _concat(content_tag :aside, [
       content_tag(:h3, '💡 Fun fact:'),
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--fun-fact')
@@ -307,22 +307,25 @@ module SassHelpers
   #
   # When possible, prefer using the start version rather than `true`.
   #
-  # This takes a Markdown block that should provide more information about the
-  # implementation differences or the old behavior.
+  # This takes an optional Markdown block that should provide more information
+  # about the implementation differences or the old behavior.
   def impl_status(dart: nil, libsass: nil, ruby: nil, node: nil)
     contents = []
-    contents << _impl_status_row('Dart Sass', dart) if dart
-    contents << _impl_status_row('LibSass', libsass) if libsass
-    contents << _impl_status_row('Node Sass', node) if node
-    contents << _impl_status_row('Ruby Sass', ruby) if ruby
+    contents << _impl_status_row('Dart Sass', dart) unless dart.nil?
+    contents << _impl_status_row('LibSass', libsass) unless libsass.nil?
+    contents << _impl_status_row('Node Sass', node) unless node.nil?
+    contents << _impl_status_row('Ruby Sass', ruby) unless ruby.nil?
 
     if block_given?
-      contents.unshift(content_tag(:caption, [
-        _render_markdown(_capture {yield})
-      ]))
+      contents << content_tag(:div, content_tag(:a, '▶'))
     end
 
-    concat(content_tag :table, contents, class: 'sl-c-table impl-status')
+    _concat(content_tag(:dl, contents, class: 'impl-status sl-c-description-list sl-c-description-list--horizontal'))
+
+    if block_given?
+      # Get rid of extra whitespace to avoid more bogus <p> tags.
+      _concat(content_tag :div, _render_markdown(_capture {yield}).strip, class: 'sl-c-callout')
+    end
   end
 
   # Renders a single row for `impl_status`.
@@ -336,10 +339,10 @@ module SassHelpers
         "since #{status}"
       end
 
-    content_tag :tr, [
-      content_tag(:td, name, class: 'name'),
-      content_tag(:td, status_text, class: 'status'),
-    ], class: status ? 'supported' : 'unsupported'
+    content_tag :div, [
+      content_tag(:dt, name),
+      content_tag(:dd, status_text),
+    ]
   end
 
   # Renders API docs for a Sass function.
@@ -375,7 +378,7 @@ MARKDOWN
       signature_elements.map(&:to_html).join.strip
     end
 
-    merged_signatures = highlighted_signatures.join("\n")
+    merged_signatures = highlighted_signatures.join("&#x0000A")
     if returns
       merged_signatures << " " <<
         content_tag(:span, "//=> #{return_type_link(returns)}", class: 'c1')
@@ -389,7 +392,7 @@ MARKDOWN
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--function', id: names.first
 
-    concat(names.uniq[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
+    _concat(names.uniq[1..-1].inject(html) {|h, n| content_tag(:div, h, id: n)})
   end
 
   def return_type_link(return_type)
@@ -432,6 +435,15 @@ MARKDOWN
   # Strips all leading indentation from the block.
   def _capture(&block)
     remove_leading_indentation(
-      block_is_haml?(block) ? capture_haml(&block) : capture(&block))
+      (block_is_haml?(block) ? capture_haml(&block) : capture(&block)) || "")
+  end
+
+  # Concatenates `text` to the document.
+  #
+  # Converts all newlines to spaces in order to avoid weirdness when rendered
+  # HTML is nested within Markdown. Adds newlines before and after the content
+  # to ensure that it doesn't cause adjacent markdown not to be parsed.
+  def _concat(text)
+    concat("\n\n" + text.gsub("\n", " ") + "\n\n")
   end
 end

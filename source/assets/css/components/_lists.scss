@@ -40,3 +40,27 @@
     ul ul { margin: 0 0 0 1rem; }
   }
 }
+
+.sl-c-description-list--horizontal {
+  margin: {
+    right: -1rem;
+    left: -1rem;
+  };
+
+  &,
+  > div { display: flex; }
+
+  > div {
+    border-left: 1px solid $sl-color--iron;
+    padding: 0 1rem;
+
+    &:first-child { border: 0; }
+  }
+
+  dt,
+  dd {
+    padding-left: 1rem;
+
+    &:first-child { padding-left: 0; }
+  }
+}
