@@ -2,18 +2,23 @@
   margin: 1.5rem 0;
   padding: 1.5rem 1rem;
   background: lighten($sl-color--pale-sky, 50%);
+  border-radius: 2px;
 
-  &--warning { background: lighten($sl-color--hopbush, 36%); }
+  &--warning {
+    background: lighten($sl-color--hopbush, 36%);
+    border: 1px solid lighten($sl-color--hopbush, 27%);
+  }
 
-  &--fun-fact { background: lighten($sl-color--patina, 43%); }
+  &--fun-fact {
+    background: lighten($sl-color--patina, 43%);
+    border: 1px solid lighten($sl-color--patina, 32%);
+  }
 
   &--function {
     padding: {
       top: 0;
       bottom: .25rem;
     };
-
-    .code-example { margin-top: -3rem; }
 
     .signature {
       margin: {
