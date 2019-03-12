@@ -228,6 +228,19 @@ in a mixin), you can use the `!global` flag. A variable declaration flagged as
     value: $variable
 <% end %>
 
+<% heads_up do %>
+  <% impl_status dart: '2.0.0', libsass: false, ruby: false do %>
+    Older Sass versions allowed `!global` to be used for a variable that
+    doesn't exist yet. This behavior was deprecated to make sure each stylesheet
+    declares the same variables no matter how it's executed.
+  <% end %>
+
+  The `!global` flag may only be used to set a variable that has already been
+  declared at the top level of a file. It *may not* be used to declare a new
+  variable.
+
+<% end %>
+
 ### Flow Control Scope
 
 Variables declared in [flow control rules][] have special scoping rules: they
