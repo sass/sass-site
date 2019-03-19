@@ -21,6 +21,9 @@
     };
 
     .signature {
+      // Make sure permalinks are visible.
+      overflow: visible;
+
       margin: {
         right: -1rem;
         left: -1rem;

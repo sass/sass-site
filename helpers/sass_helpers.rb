@@ -392,7 +392,10 @@ MARKDOWN
 
     html = content_tag :div, [
       content_tag(:pre, [
-        content_tag(:code, highlighted_signatures.join("&#x0000A"))
+        # Make sure there's no whitespace between these two, since they're in a
+        # <pre>.
+        content_tag(:a, '', class: 'anchor', href: "##{names.first}") +
+          content_tag(:code, highlighted_signatures.join("&#x0000A"))
       ], class: 'signature highlight scss'),
       returns ? content_tag(:h3, return_type_link(returns), class: 'return-type') : '',
       _render_markdown(_capture {yield})
