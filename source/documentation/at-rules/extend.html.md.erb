@@ -238,7 +238,7 @@ avoid cascade headaches and make it easier to configure down the line.
 
 ### Disallowed Selectors
 
-<% impl_status dart: true, libsass: false, ruby: false do %>
+<% impl_status dart: true, libsass: false, ruby: false, feature: "No Compound Extensions" do %>
   LibSass and Ruby Sass currently allow complex selectors like `.message.info` to
   be extended. However, this behavior didn't match the definition of `@extend`:
   instead of styling elements that matched the extending selector as though it had

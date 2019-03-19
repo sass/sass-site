@@ -21,10 +21,23 @@
     };
 
     .signature {
+      // Make sure permalinks are visible.
+      overflow: visible;
+
       margin: {
         right: -1rem;
         left: -1rem;
       };
+    }
+  }
+
+  &--impl-status {
+    font-size: 0.8em;
+    margin-top: -1rem;
+    padding: 0.8rem;
+
+    .sl-c-callout & {
+      background: lighten($sl-color--pale-sky, 53%);
     }
   }
 

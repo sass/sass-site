@@ -300,17 +300,27 @@ module SassHelpers
 
   # Renders a status dashboard for each implementation's support for a feature.
   #
-  # Each implementation's value can be `true`, indicating that that
-  # implementation fully supports the feature; `false`, indicating that it does
-  # not yet support the feature; or a string, indicating the version it started
-  # supporting the feature.
+  # Each implementation's value can be:
+  #
+  # * `true`, indicating that that implementation fully supports the feature;
+  # * `false`, indicating that it does not yet support the feature at all;
+  # * `:partial`, indicating that it has limited or incorrect support for the
+  #   feature;
+  # * or a string, indicating the version it started supporting the feature.
   #
   # When possible, prefer using the start version rather than `true`.
   #
+  # If `feature` is passed, it should be a terse (one- to three-word)
+  # description of the particular feature whose compatibility is described. This
+  # should be used whenever the status isn't referring to the entire feature
+  # being described by the surrounding prose.
+  #
   # This takes an optional Markdown block that should provide more information
   # about the implementation differences or the old behavior.
-  def impl_status(dart: nil, libsass: nil, ruby: nil, node: nil)
-    contents = []
+  def impl_status(dart: nil, libsass: nil, ruby: nil, node: nil, feature: nil)
+    compatibility = feature ? "Compatibility (#{feature}):" : "Compatibility:"
+
+    contents = [content_tag(:div, compatibility, class: "compatibility")]
     contents << _impl_status_row('Dart Sass', dart) unless dart.nil?
     contents << _impl_status_row('LibSass', libsass) unless libsass.nil?
     contents << _impl_status_row('Node Sass', node) unless node.nil?
@@ -324,7 +334,7 @@ module SassHelpers
 
     if block_given?
       # Get rid of extra whitespace to avoid more bogus <p> tags.
-      _concat(content_tag :div, _render_markdown(_capture {yield}).strip, class: 'sl-c-callout')
+      _concat(content_tag :div, _render_markdown(_capture {yield}).strip, class: 'sl-c-callout sl-c-callout--impl-status')
     end
   end
 
@@ -335,6 +345,8 @@ module SassHelpers
         "✓"
       elsif status == false
         "✗"
+      elsif status == :partial
+        "partial"
       else
         "since #{status}"
       end
@@ -386,7 +398,10 @@ MARKDOWN
 
     html = content_tag :div, [
       content_tag(:pre, [
-        content_tag(:code, merged_signatures)
+        # Make sure there's no whitespace between these two, since they're in a
+        # <pre>.
+        content_tag(:a, '', class: 'anchor', href: "##{names.first}") +
+          content_tag(:code, merged_signatures)
       ], class: 'signature highlight scss'),
 
       _render_markdown(_capture {yield})

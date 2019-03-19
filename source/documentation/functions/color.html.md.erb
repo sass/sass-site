@@ -344,7 +344,7 @@ SIGNATURE
             'hsla($hue $saturation $lightness / $alpha)',
             'hsla($hue, $saturation, $lightness, $alpha: 1)',
             returns: 'color' do %>
-  <% impl_status dart: '1.15.0', libsass: false, ruby: false do %>
+  <% impl_status dart: '1.15.0', libsass: false, ruby: false, feature: "Level 4 Syntax" do %>
     LibSass and Ruby Sass only support the following signatures:
 
     * `hsl($hue, $saturation, $lightness)`
@@ -355,7 +355,7 @@ SIGNATURE
     `hsl()` is used.
   <% end %>
 
-  <% impl_status dart: true, libsass: false, ruby: '3.7.0' do %>
+  <% impl_status dart: true, libsass: false, ruby: '3.7.0', feature: "Percent Alpha" do %>
     LibSass and older versions of Ruby Sass don't support alpha values specified as
     percentages.
   <% end %>
@@ -644,7 +644,7 @@ SIGNATURE
             'rgba($red, $green, $blue, $alpha: 1)',
             'rgba($color, $alpha)',
             returns: 'color' do %>
-  <% impl_status dart: '1.15.0', libsass: false, ruby: false do %>
+  <% impl_status dart: '1.15.0', libsass: false, ruby: false, feature: "Level 4 Syntax" do %>
     LibSass and Ruby Sass only support the following signatures:
 
     * `rgb($red, $green, $blue)`
@@ -656,7 +656,7 @@ SIGNATURE
     `rgb()` is used.
   <% end %>
 
-  <% impl_status dart: true, libsass: false, ruby: '3.7.0' do %>
+  <% impl_status dart: true, libsass: false, ruby: '3.7.0', feature: "Percent Alpha" do %>
     LibSass and older versions of Ruby Sass don't support alpha values specified
     as percentages.
   <% end %>

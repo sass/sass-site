@@ -47,7 +47,7 @@ $(function() {
                 .prepend("<a href='#example-" + id + "-css'>CSS</a>"));
     }
 
-    figure.prepend(ul).tabs({active: hasCssTab ? 1 : 0});
+    figure.prepend(ul).tabs({active: 0});
   });
 
   // Switch ALL the tabs (Sass/SCSS) together
@@ -83,7 +83,7 @@ $(function() {
     details.hide();
     expandLink.click(function() {
       details.toggle();
-      expandLink.text(expandLink.text() == "▶" ? "▼" : "▶");
+      expandLink.toggleClass("expanded");
     });
   });
 });
