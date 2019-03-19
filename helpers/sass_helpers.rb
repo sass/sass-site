@@ -387,7 +387,7 @@ MARKDOWN
         name_element['name'] = name
       end
 
-      signature_elements.map(&:to_html).join.strip
+      signature_elements.map(&:to_html).join.strip.gsub("\n", "&#x0000A")
     end
 
     merged_signatures = highlighted_signatures.join("&#x0000A")
