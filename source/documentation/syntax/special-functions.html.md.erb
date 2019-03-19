@@ -124,7 +124,7 @@ Nothing is interpreted as a SassScript expression, with the exception that
 
 ## `min()` and `max()`
 
-<% impl_status(dart: "1.11.0", libsass: false, ruby: false) do %>
+<% impl_status dart: "1.11.0", libsass: false, ruby: false do %>
   LibSass and Ruby Sass currently *always* parse `min()` and `max()` as Sass
   functions. To create a plain CSS `min()` or `max()` call for those
   implementations, you can write something like `unquote("min(#{$padding},
