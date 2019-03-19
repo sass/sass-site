@@ -340,6 +340,8 @@ a {
   border-bottom: 1px solid rgba($sl-color--iron, .5);
   color: $sl-color--midnight-blue;
 
+  .c1 & { color: inherit; }
+
   &:hover,
   &:focus {
     border-bottom-color: rgba($sl-color--iron, .75);

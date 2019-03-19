@@ -387,7 +387,13 @@ MARKDOWN
         name_element['name'] = name
       end
 
-      signature_elements.map(&:to_html).join.strip
+      signature_elements.map(&:to_html).join.strip.gsub("\n", "&#x0000A")
+    end
+
+    merged_signatures = highlighted_signatures.join("&#x0000A")
+    if returns
+      merged_signatures << " " <<
+        content_tag(:span, "//=> #{return_type_link(returns)}", class: 'c1')
     end
 
     html = content_tag :div, [
@@ -395,9 +401,9 @@ MARKDOWN
         # Make sure there's no whitespace between these two, since they're in a
         # <pre>.
         content_tag(:a, '', class: 'anchor', href: "##{names.first}") +
-          content_tag(:code, highlighted_signatures.join("&#x0000A"))
+          content_tag(:code, merged_signatures)
       ], class: 'signature highlight scss'),
-      returns ? content_tag(:h3, return_type_link(returns), class: 'return-type') : '',
+
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--function', id: names.first
 
