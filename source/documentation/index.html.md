@@ -8,6 +8,7 @@ introduction: >
   [functions](/documentation/functions), and more, all with a fully
   CSS-compatible syntax. Sass helps keep large stylesheets well-organized and
   makes it easy to share design within and across projects.
+intro: true
 ---
 
 * If you're looking for an introduction to Sass, check out [the
