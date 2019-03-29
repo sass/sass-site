@@ -45,3 +45,11 @@
 
   > *:last-child { margin-bottom: 0; }
 }
+
+@include sl-breakpoint--medium {
+  .sl-l-container--overview {
+    font-size: 1.25rem;
+
+    .sl-c-callout { font-size: 1rem; }
+  }
+}
