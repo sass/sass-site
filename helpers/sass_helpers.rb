@@ -200,8 +200,12 @@ module SassHelpers
         _syntax_div("CSS Output", "css", css_sections, css_paddings, id)
     end
 
+    max_source_width = (scss_sections + sass_sections).map {|s| s.split("\n")}.flatten.map(&:size).max
+    max_css_width = css_sections.map {|s| s.split("\n")}.flatten.map(&:size).max
+    can_split = max_css_width && max_source_width < 55 && max_css_width < 55
+
     text = content_tag(:div, contents,
-      class: "code-example",
+      class: "code-example #{'can-split' if can_split}",
       "data-unique-id": @unique_id)
 
     # Newlines between tags cause Markdown to parse these blocks incorrectly.
