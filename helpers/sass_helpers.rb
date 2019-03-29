@@ -202,11 +202,21 @@ module SassHelpers
 
     max_source_width = (scss_sections + sass_sections).map {|s| s.split("\n")}.flatten.map(&:size).max
     max_css_width = css_sections.map {|s| s.split("\n")}.flatten.map(&:size).max
-    can_split = max_css_width && max_source_width < 55 && max_css_width < 55
+
+    can_split = max_css_width && (max_source_width + max_css_width) < 110
+    if can_split
+      if max_source_width < 55 && max_css_width < 55
+        split_location = 0.5
+      else
+        # Put the split exactly in between the two longest lines.
+        split_location = 0.5 + (max_source_width - max_css_width) / 110.0 / 2
+      end
+    end
 
     text = content_tag(:div, contents,
       class: "code-example #{'can-split' if can_split}",
-      "data-unique-id": @unique_id)
+      "data-unique-id": @unique_id,
+      "style": ("--split-location: #{split_location * 100}%" if split_location))
 
     # Newlines between tags cause Markdown to parse these blocks incorrectly.
     text = text.gsub(%r{\n+<(/?[a-z0-9]+)}, '<\1')

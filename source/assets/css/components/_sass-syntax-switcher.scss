@@ -147,14 +147,14 @@ html .ui-button.ui-state-disabled:active { background: none; }
 @mixin -split-css-tabs {
   .ui-tabs.can-split {
     .ui-tabs-panel {
-      width: calc(50% - 5px);
-
       &.scss, &.sass {
+        width: calc(var(--split-location) - 5px);
         display: inline-block;
         &.ui-tabs-panel-inactive { display: none; }
       }
 
       &.css {
+        width: calc(100% - var(--split-location) - 5px);
         float: right;
         &.ui-tabs-panel-inactive { display: block; }
       }
@@ -169,7 +169,7 @@ html .ui-button.ui-state-disabled:active { background: none; }
 
     .css-tab {
       position: absolute;
-      left: 49%;
+      left: calc(var(--split-location) - 1%);
       @include -active-tab;
 
       &,
