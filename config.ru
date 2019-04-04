@@ -17,6 +17,7 @@ use Rack::Rewrite do
   r301 '/try.html', 'http://sassmeister.com'
   r301 '/about', '/'
   r301 '/about.html', '/'
+  r301 %r{/blog/(.*)}, 'http://sass.logdown.com/$1'
 end
 
 use Rack::Deflater
