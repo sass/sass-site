@@ -16,9 +16,10 @@ $sl-font-weights: (
 
 
 
-$sl-font-size--small:      sl-px-to-rem(14px) !default;
-$sl-font-size--medium:     sl-px-to-rem(16px) !default;
-$sl-font-size--large:      sl-px-to-rem(18px) !default;
+$sl-font-size--x-small:    sl-px-to-rem(14px) !default;
+$sl-font-size--small:      sl-px-to-rem(16px) !default;
+$sl-font-size--medium:     sl-px-to-rem(18px) !default;
+$sl-font-size--large:      sl-px-to-rem(20px) !default;
 $sl-font-size--x-large:    sl-px-to-rem(24px) !default;
 $sl-font-size--xx-large:   sl-px-to-rem(28px) !default;
 $sl-font-size--xxx-large:  sl-px-to-rem(32px) !default;
@@ -93,8 +94,18 @@ ol,
 dl,
 figure,
 details {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   padding: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2.5rem;
+
+  aside &, nav & { margin-top: 1rem; }
 }
 
 ul,
@@ -148,6 +159,9 @@ caption, {
 h3,
 h4 { font-size: $sl-font-size--large; }
 
+nav,
+footer { font-size: $sl-font-size--small; }
+
 .caps {
   font-size: sl-px-to-em(14px);
   text-transform: uppercase;
@@ -157,13 +171,12 @@ h4 { font-size: $sl-font-size--large; }
 
 code,
 pre {
-  font: {
-    size: 0.875em;
-    family: $sl-font-family--code;
-  }
+  font-family: $sl-font-family--code;
 }
 
 code {
+  // Scale the code font size down, because the font itself is much larger.
+  font-size: ($sl-font-size--small / $sl-font-size--medium) * 1em;
   line-height: 1;
 
   nav &,
@@ -171,6 +184,7 @@ code {
 }
 
 pre {
+  font-size: $sl-font-size--x-small;
   padding: .75rem 1rem;
   overflow: auto;
 
