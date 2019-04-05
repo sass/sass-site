@@ -37,7 +37,50 @@
       line-height: 1.25;
     }
 
-    ul ul { margin: 0 0 0 1rem; }
+    &--collapsible {
+      ul ul a { padding-left: 1rem; }
+      ul ul ul a { padding-left: 2rem; }
+      ul ul ul ul a { padding-left: 3rem; }
+
+      a {
+        border: none;
+        cursor: pointer;
+        display: block;
+        margin: -0.5rem 0;
+        padding: 0.3rem;
+        width: 100%;
+
+        &:hover { background-color: $sl-color--dawn-pink; }
+        &.overview {
+          font-size: $sl-font-size--small;
+          &:not(.selected) { color: transparentize($sl-color--midnight-blue, 0.5); }
+        }
+      }
+
+      li a {
+        &:not([href]) {
+          &::after {
+            content: "▶";
+            float: right;
+            font-size: 0.5em;
+            text-align: center;
+            margin-top: 5px;
+            transition: transform 0.1s;
+            width: 19px;
+          }
+
+          &.open::after { transform: rotate(90deg); }
+
+          + ul { display: none; }
+          &.open + ul { display: block; }
+        }
+
+        &.selected {
+          font-weight: bold;
+          &[href] { background-color: $sl-color--dawn-pink; }
+        }
+      }
+    }
   }
 }
 

@@ -51,6 +51,24 @@ module SassHelpers
     pages.flatten
   end
 
+  def documentation_toc
+    _toc_level(data.documentation.toc)
+  end
+
+  def _toc_level(links)
+    content_tag(:ul, links.map do |link|
+      children = link[:children]
+      text = link.keys.reject {|k| k == :children}.first
+      href = link[text]
+
+      content_tag(:li, [
+        content_tag(:a, text, href: href,
+          class: ("open selected" if current_page.url.start_with?(href))),
+        (_toc_level(children) if children)
+      ].compact)
+    end)
+  end
+
   # Renders a code example.
   #
   # This takes a block of SCSS and/or indented syntax code, and emits HTML that
