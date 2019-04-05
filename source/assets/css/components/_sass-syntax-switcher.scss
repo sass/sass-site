@@ -1,11 +1,48 @@
 .ui-helper-reset { line-height: inherit; }
 
+@mixin -active-tab {
+  margin: 0;
+
+  a {
+    color: $sl-color--regent-grey;
+    cursor: text;
+  }
+
+  &:after,
+  &:before {
+    bottom: -3px;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-color: transparent;
+    border-bottom-color: #f8f8f8;
+    border-width: 10px;
+    margin-left: -10px;
+  }
+
+  &:before {
+    border-color: transparent;
+    border-bottom-color: #ebebeb;
+    border-width: 11px;
+    margin-left: -11px;
+  }
+}
+
 .ui-tabs {
 
   &,
   .ui-tabs-nav,
   .ui-tabs-nav li.ui-tabs-active,
   .ui-tabs-panel { padding: 0; }
+
+  .ui-tabs-panel-inactive { display: none; }
 
   .ui-tabs-nav {
     margin-top: -1rem;
@@ -19,41 +56,11 @@
       box-shadow:none !important;
     }
 
-    .ui-tabs-active {
-
-      &:after,
-      &:before {
-        bottom: -3px;
-        left: 50%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-      }
-
-      &:after {
-        border-color: transparent;
-        border-bottom-color: #f8f8f8;
-        border-width: 10px;
-        margin-left: -10px;
-      }
-
-      &:before {
-        border-color: transparent;
-        border-bottom-color: #ebebeb;
-        border-width: 11px;
-        margin-left: -11px;
-      }
-    }
+    .ui-tabs-active { @include -active-tab; }
 
     li {
       float: left;
-
-      &,
-      &.ui-tabs-active { margin: 0; }
-
+      margin: 0;
 
       &.css-tab {
 
@@ -71,8 +78,6 @@
         }
       }
     }
-
-    .ui-tabs-active a { color: $sl-color--regent-grey; }
 
     .ui-tabs-anchor { padding: .75rem 1rem; }
   }
@@ -137,4 +142,48 @@ html .ui-button.ui-state-disabled:active { background: none; }
 
   &,
   * { font-size: 1rem; }
+}
+
+@mixin -split-css-tabs {
+  .ui-tabs.can-split {
+    .ui-tabs-panel {
+      &.scss, &.sass {
+        width: calc(var(--split-location) - 5px);
+        display: inline-block;
+        &.ui-tabs-panel-inactive { display: none; }
+      }
+
+      &.css {
+        width: calc(100% - var(--split-location) - 5px);
+        float: right;
+        &.ui-tabs-panel-inactive { display: block; }
+      }
+    }
+
+
+    &.ui-tabs-panel-css-is-active {
+      .scss, .sass {
+        &.ui-tabs-panel.ui-tabs-panel-previously-active { display: inline-block; }
+      }
+    }
+
+    .css-tab {
+      position: absolute;
+      left: calc(var(--split-location) - 1%);
+      @include -active-tab;
+
+      &,
+      &.ui-tabs-active { margin-left: 0; }
+
+      ::before {content: none}
+    }
+  }
+}
+
+@media screen and (min-width: sl-px-to-rem(1500px)) {
+  body.documentation { @include -split-css-tabs }
+}
+
+@media screen and (min-width: sl-px-to-rem(1000px)) {
+  body.guide { @include -split-css-tabs }
 }
