@@ -242,7 +242,6 @@ module SassHelpers
       case impl
       when :dart; "dart-sass"
       when :libsass; "libsass"
-      when :ruby; "sass"
       end
 
     if version

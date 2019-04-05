@@ -5,7 +5,7 @@ require 'yard'
 
 require File.dirname(__FILE__) + '/lib/raw_markdown_link'
 
-task :test => ["sass:dart:version", "sass:libsass:version", "sass:ruby:version", :middleman] do
+task :test => ["sass:dart:version", "sass:libsass:version", :middleman] do
   HTMLProofer.check_directory("./build",
     url_ignore: [
       /file\.SASS/, # We don't want to verify reference links.
@@ -109,10 +109,6 @@ namespace :sass do
       end
     end
 
-    task :version => :checkout do
-      add_version 'ruby', File.read(".ruby-sass/VERSION").strip
-    end
-
     YARD::Rake::YardocTask.new(:doc) do |t|
       t.before = lambda do
         t.files = FileList.new('.ruby-sass/lib/**/*.rb') do |list|
@@ -175,7 +171,7 @@ namespace :sass do
   end
 
   desc "Import information from Sass implementations."
-  task :import => ["dart:version", "libsass:version", "ruby:version", "ruby:doc"]
+  task :import => ["dart:version", "libsass:version", "ruby:doc"]
 end
 
 desc "Build the middleman-controlled portion of the site."
