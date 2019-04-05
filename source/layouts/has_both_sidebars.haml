@@ -14,6 +14,7 @@
 
             .sl-l-large-holy-grail__main.docSearch-content
               - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
+              - container << ' sl-l-container--overview' if current_page.data.intro
               %div{class: container}
                 - if current_page.data.introduction
                   - center_introduction = current_page.data.center_introduction ? 'sl-c-introduction--center' : ''
