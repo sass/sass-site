@@ -314,6 +314,31 @@ $width: 15px + 2em
         ^^^^^^^^^^
   style.scss 1:9  root stylesheet</code></pre>
 
+#### `--no-unicode`
+
+This flag tells Sass only to emit ASCII characters to the terminal as part of
+error and warning messages. By default, or if `--unicode` is passed, Sass will
+emit non-ASCII characters for these messages. This flag does not affect the CSS
+output.
+
+```shellsession
+$ sass --no-unicode style.scss style.css
+Error: Incompatible units em and px.
+  ,
+1 | $width: 15px + 2em;
+  |         ^^^^^^^^^^
+  '
+  test.scss 1:9  root stylesheet
+
+$ sass --unicode style.scss style.css
+Error: Incompatible units em and px.
+  ╷
+1 │ $width: 15px + 2em;
+  │         ^^^^^^^^^^
+  ╵
+  test.scss 1:9  root stylesheet
+```
+
 #### `--quiet`
 
 This flag (abbreviated `-q`) tells Sass not to emit any warnings when compiling.
