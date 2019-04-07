@@ -136,6 +136,28 @@ $ sass --style=compressed style.scss
 h1{font-size:40px}
 ```
 
+#### `--no-charset`
+
+This flag tells Sass never to emit a `@charset` declaration or a UTF-8
+[byte-order mark][]. By default, or if `--charset` is passed, Sass will insert
+either a `@charset` declaration (in expanded output mode) or a byte-order mark
+(in compressed output mode) if the stylesheet contains any non-ASCII characters.
+
+[byte-order mark]: https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8
+
+```shellsession
+$ echo 'h1::before {content: "👭"}' | sass --no-charset
+h1::before {
+  content: "👭";
+}
+
+$ echo 'h1::before {content: "👭"}' | sass --charset
+@charset "UTF-8";
+h1::before {
+  content: "👭";
+}
+```
+
 #### `--update`
 
 If the `--update` flag is passed, Sass will only compile stylesheets whose
