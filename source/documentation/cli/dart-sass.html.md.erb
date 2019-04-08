@@ -270,8 +270,10 @@ mostly useful in [many-to-many mode][].
 ```shellsession
 $ sass --stop-on-error themes:public/css
 Error: Expected expression.
-h1 {font-face: }
-               ^
+   ╷
+42 │ h1 {font-face: }
+   │                ^
+   ╵
   themes/light.scss 42:16  root stylesheet
 ```
 
@@ -302,24 +304,27 @@ colors if it looks like it's being run on a terminal that supports them.
 
 [terminal colors]: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
 
-<pre><code>$ sass --color style.scss style.css
+<pre class="highlight plaintext"><code>$ sass --color style.scss style.css
 Error: Incompatible units em and px.
-$width: <span style="color: red">15px + 2em</span>
-        <span style="color: red">^^^^^^^^^^</span>
+  <span style="color: blue">╷</span>
+<span style="color: blue">1 │</span> $width: <span style="color: red">15px + 2em</span>
+  <span style="color: blue">│</span>         <span style="color: red">^^^^^^^^^^</span>
+  <span style="color: blue">╵</span>
   style.scss 1:9  root stylesheet
 
 $ sass --no-color style.scss style.css
 Error: Incompatible units em and px.
-$width: 15px + 2em
-        ^^^^^^^^^^
+  ╷
+1 │ $width: 15px + 2em
+  │         ^^^^^^^^^^
+  ╵
   style.scss 1:9  root stylesheet</code></pre>
 
 #### `--no-unicode`
 
 This flag tells Sass only to emit ASCII characters to the terminal as part of
-error and warning messages. By default, or if `--unicode` is passed, Sass will
-emit non-ASCII characters for these messages. This flag does not affect the CSS
-output.
+error messages. By default, or if `--unicode` is passed, Sass will emit non-ASCII
+characters for these messages. This flag does not affect the CSS output.
 
 ```shellsession
 $ sass --no-unicode style.scss style.css
@@ -360,8 +365,10 @@ error is encountered. It's used by the Sass team for debugging errors.
 ```shellsession
 $ sass --trace style.scss style.css
 Error: Expected expression.
-h1 {font-face: }
-               ^
+   ╷
+42 │ h1 {font-face: }
+   │                ^
+   ╵
   themes/light.scss 42:16  root stylesheet
 
 package:sass/src/visitor/evaluate.dart 1846:7                        _EvaluateVisitor._addExceptionSpan

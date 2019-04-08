@@ -66,8 +66,10 @@ like in Dart Sass when run from the command line:
 
 ```
 Error: "Property top must be either left or right."
-    @error "Property #{$property} must be either left or right.";
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╷
+3 │     @error "Property #{$property} must be either left or right.";
+  │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
   example.scss 3:5   reflexive-position()
   example.scss 19:3  root stylesheet
 ```
