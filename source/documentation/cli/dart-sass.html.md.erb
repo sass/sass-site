@@ -136,6 +136,28 @@ $ sass --style=compressed style.scss
 h1{font-size:40px}
 ```
 
+#### `--no-charset`
+
+This flag tells Sass never to emit a `@charset` declaration or a UTF-8
+[byte-order mark][]. By default, or if `--charset` is passed, Sass will insert
+either a `@charset` declaration (in expanded output mode) or a byte-order mark
+(in compressed output mode) if the stylesheet contains any non-ASCII characters.
+
+[byte-order mark]: https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8
+
+```shellsession
+$ echo 'h1::before {content: "👭"}' | sass --no-charset
+h1::before {
+  content: "👭";
+}
+
+$ echo 'h1::before {content: "👭"}' | sass --charset
+@charset "UTF-8";
+h1::before {
+  content: "👭";
+}
+```
+
 #### `--update`
 
 If the `--update` flag is passed, Sass will only compile stylesheets whose
@@ -248,8 +270,10 @@ mostly useful in [many-to-many mode][].
 ```shellsession
 $ sass --stop-on-error themes:public/css
 Error: Expected expression.
-h1 {font-face: }
-               ^
+   ╷
+42 │ h1 {font-face: }
+   │                ^
+   ╵
   themes/light.scss 42:16  root stylesheet
 ```
 
@@ -280,17 +304,45 @@ colors if it looks like it's being run on a terminal that supports them.
 
 [terminal colors]: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
 
-<pre><code>$ sass --color style.scss style.css
+<pre class="highlight plaintext"><code>$ sass --color style.scss style.css
 Error: Incompatible units em and px.
-$width: <span style="color: red">15px + 2em</span>
-        <span style="color: red">^^^^^^^^^^</span>
+  <span style="color: blue">╷</span>
+<span style="color: blue">1 │</span> $width: <span style="color: red">15px + 2em</span>
+  <span style="color: blue">│</span>         <span style="color: red">^^^^^^^^^^</span>
+  <span style="color: blue">╵</span>
   style.scss 1:9  root stylesheet
 
 $ sass --no-color style.scss style.css
 Error: Incompatible units em and px.
-$width: 15px + 2em
-        ^^^^^^^^^^
+  ╷
+1 │ $width: 15px + 2em
+  │         ^^^^^^^^^^
+  ╵
   style.scss 1:9  root stylesheet</code></pre>
+
+#### `--no-unicode`
+
+This flag tells Sass only to emit ASCII characters to the terminal as part of
+error messages. By default, or if `--unicode` is passed, Sass will emit non-ASCII
+characters for these messages. This flag does not affect the CSS output.
+
+```shellsession
+$ sass --no-unicode style.scss style.css
+Error: Incompatible units em and px.
+  ,
+1 | $width: 15px + 2em;
+  |         ^^^^^^^^^^
+  '
+  test.scss 1:9  root stylesheet
+
+$ sass --unicode style.scss style.css
+Error: Incompatible units em and px.
+  ╷
+1 │ $width: 15px + 2em;
+  │         ^^^^^^^^^^
+  ╵
+  test.scss 1:9  root stylesheet
+```
 
 #### `--quiet`
 
@@ -313,8 +365,10 @@ error is encountered. It's used by the Sass team for debugging errors.
 ```shellsession
 $ sass --trace style.scss style.css
 Error: Expected expression.
-h1 {font-face: }
-               ^
+   ╷
+42 │ h1 {font-face: }
+   │                ^
+   ╵
   themes/light.scss 42:16  root stylesheet
 
 package:sass/src/visitor/evaluate.dart 1846:7                        _EvaluateVisitor._addExceptionSpan
