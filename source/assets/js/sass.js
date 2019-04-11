@@ -112,3 +112,21 @@ $(function() {
     });
   });
 });
+
+$(function() {
+  $(".sl-c-list-navigation-wrapper--collapsible li > ul")
+      .parent().children("a").each(function() {
+    var overview = $('<li><a class="overview">Overview</a></li>\n');
+    var link = overview.children().first().attr("href", $(this).attr("href"));
+
+    if ($(this).hasClass("selected") &&
+        link[0].pathname == window.location.pathname) {
+      link.addClass("selected");
+    }
+
+    $(this).parent().children("ul").prepend(overview);
+    $(this).removeAttr("href");
+  }).click(function() {
+    $(this).toggleClass("open");
+  });
+});
