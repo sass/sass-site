@@ -215,17 +215,23 @@ module SassHelpers
     @unique_id ||= 0
     @unique_id += 1
     id = @unique_id
-    contents = []
+    ul_contents = []
+    ul_contents << _syntax_tab("SCSS", "scss", id, enabled: scss) if scss
+    ul_contents << _syntax_tab("Sass", "sass", id, enabled: !scss) if sass
+    ul_contents << _syntax_tab("CSS", "css", id) if css
+
+    contents = [
+      content_tag(:ul, ul_contents,
+        class: "ui-tabs-nav ui-helper-reset ui-helper-clearfix")
+    ]
     if scss
       contents <<
-        _syntax_div("SCSS Syntax", "scss", scss_sections, scss_paddings, id)
+        _syntax_div("SCSS Syntax", "scss", scss_sections, scss_paddings, id, enabled: scss)
     end
-
     if sass
       contents <<
-        _syntax_div("Sass Syntax", "sass", sass_sections, sass_paddings, id)
+        _syntax_div("Sass Syntax", "sass", sass_sections, sass_paddings, id, enabled: !scss)
     end
-
     if css
       contents <<
         _syntax_div("CSS Output", "css", css_sections, css_paddings, id)
@@ -245,8 +251,7 @@ module SassHelpers
     end
 
     text = content_tag(:div, contents,
-      class: "code-example #{'can-split' if can_split}",
-      "data-unique-id": @unique_id,
+      class: "code-example ui-tabs #{'can-split' if can_split}",
       "style": ("--split-location: #{split_location * 100}%" if split_location))
 
     # Newlines between tags cause Markdown to parse these blocks incorrectly.
@@ -274,15 +279,31 @@ module SassHelpers
     end
   end
 
+  # Returns the text of an example tab for a single syntax.
+  def _syntax_tab(name, syntax, id, enabled: false)
+    content_tag(:li, [
+      content_tag(:a, name, href: "#example-#{id}-#{syntax}", class: "ui-tabs-anchor")
+    ], class: [
+      "ui-tabs-tab",
+      ('css-tab' if syntax == 'css'),
+      ('ui-tabs-active' if enabled)
+    ].compact.join(' '))
+  end
+
   # Returns the text of an example div for a single syntax.
-  def _syntax_div(name, syntax, sections, paddings, id)
+  def _syntax_div(name, syntax, sections, paddings, id, enabled: false)
+    inactive = syntax == 'scss' ? '' : 'ui-tabs-panel-inactive'
     content_tag(:div, [
       content_tag(:h3, name, class: 'visuallyhidden'),
       *sections.zip(paddings).map do |section, padding|
         padding = 0 if padding.nil? || padding.negative?
         _render_markdown("```#{syntax}\n#{section}#{"\n" * padding}\n```")
       end
-    ], id: "example-#{id}-#{syntax}", class: syntax)
+    ], id: "example-#{id}-#{syntax}", class: [
+      "ui-tabs-panel",
+      syntax,
+      ('ui-tabs-panel-inactive' unless enabled)
+    ].compact.join(' '))
   end
 
   # Returns the version for the given implementation (`:dart`, `:ruby`, or

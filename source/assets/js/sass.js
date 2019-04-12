@@ -28,26 +28,8 @@ tab.click(function () {
 $(function() {
   $(".code-example").each(function() {
     var figure = $(this);
-    var id = figure.attr("data-unique-id");
 
-    var ul = $("<ul></ul>");
-
-    if (figure.find(".scss").length) {
-      ul.append("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
-    }
-
-    if (figure.find(".sass").length) {
-      ul.append("<li><a href='#example-" + id + "-sass'>Sass</a></li>");
-    }
-
-    var hasCssTab = figure.find(".css").length;
-    if (hasCssTab) {
-        ul.append(
-            $("<li class='css-tab'></li>")
-                .prepend("<a href='#example-" + id + "-css'>CSS</a>"));
-    }
-
-    figure.prepend(ul).tabs({
+    figure.tabs({
       active: 0,
       beforeActivate: function(event, ui) {
         // If multiple panels are visible, the CSS tab shouldn't be clickable.
@@ -70,8 +52,6 @@ $(function() {
       }
     });
     var allPanels = figure.find(".ui-tabs-panel");
-
-    allPanels.slice(1).addClass('ui-tabs-panel-inactive');
     allPanels.css('display', '');
   });
 
