@@ -52,21 +52,34 @@ module SassHelpers
   end
 
   def documentation_toc
-    _toc_level(data.documentation.toc)
+    _toc_level(nil, data.documentation.toc)
   end
 
-  def _toc_level(links)
-    content_tag(:ul, links.map do |link|
-      children = link[:children]
-      text = link.keys.reject {|k| k == :children}.first
-      href = link[text]
+  def _toc_level(parent_href, links)
+    if parent_href
+      overview = content_tag(:li,
+        content_tag(:a, "Overview", href: parent_href,
+          class: ("selected" if current_page.url == parent_href + ".html")),
+        class: "overview")
+    end
 
-      content_tag(:li, [
-        content_tag(:a, text, href: href,
-          class: ("open selected" if current_page.url.start_with?(href))),
-        (_toc_level(children) if children)
-      ].compact)
-    end)
+    content_tag(:ul, [
+      overview,
+      *links.map do |link|
+        children = link[:children]
+        text = link.keys.reject {|k| k == :children}.first
+        href = link[text]
+
+        content_tag(:li, [
+          content_tag(:a, text, href: href,
+            class: [
+              ("section" if children),
+              ("open selected" if current_page.url.start_with?(href))
+            ].compact.join(" ")),
+          (_toc_level(href, children) if children)
+        ].compact)
+      end
+    ].compact)
   end
 
   # Renders a code example.

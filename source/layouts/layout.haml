@@ -11,6 +11,7 @@
     = stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css'
     = stylesheet_link_tag 'sass'
     = yield_content :css
+    %noscript= stylesheet_link_tag 'noscript'
 
     -# Old version of analytics (https://developers.google.com/analytics/devguides/collection/gajs/).
     :javascript

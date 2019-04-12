@@ -1,0 +1,10 @@
+// Styles that are included only when JavaScript is disabled. These override the
+// default styles to make them work better without JS.
+
+// Make the in-page table of contents fully open by default, since we can't
+// dynamically expand it.
+.page-sections li a.section {
+  &::after { transform: rotate(90deg); }
+  + ul {display: block; }
+}
+
