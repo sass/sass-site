@@ -38,6 +38,8 @@
     }
 
     &--collapsible {
+      user-select: none;
+
       ul ul a { padding-left: 1rem; }
       ul ul ul a { padding-left: 2rem; }
       ul ul ul ul a { padding-left: 3rem; }
