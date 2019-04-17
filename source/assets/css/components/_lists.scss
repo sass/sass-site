@@ -51,14 +51,15 @@
         width: 100%;
 
         &:hover { background-color: $sl-color--dawn-pink; }
-        &.overview {
-          font-size: $sl-font-size--small;
-          &:not(.selected) { color: transparentize($sl-color--midnight-blue, 0.5); }
-        }
+      }
+
+      li.overview a {
+        font-size: $sl-font-size--small;
+        &:not(.selected) { color: transparentize($sl-color--midnight-blue, 0.5); }
       }
 
       li a {
-        &:not([href]) {
+        &.section {
           &::after {
             content: "▶";
             float: right;
@@ -77,7 +78,7 @@
 
         &.selected {
           font-weight: bold;
-          &[href] { background-color: $sl-color--dawn-pink; }
+          &:not(.section) { background-color: $sl-color--dawn-pink; }
         }
       }
     }
