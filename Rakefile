@@ -5,7 +5,7 @@ require "yard"
 
 require File.dirname(__FILE__) + '/lib/raw_markdown_link'
 
-task :test => ["sass:dart:version", "sass:libsass:version", "sass:ruby:version", :middleman, :test_without_rebuild]
+task :test => ["sass:dart:version", "sass:libsass:version", :middleman, :test_without_rebuild]
 
 task :test_without_rebuild do
   HTMLProofer.check_directory("build",
@@ -88,32 +88,8 @@ namespace :sass do
     end
   end
 
-  namespace :ruby do
-    # Check out the latest stable version of Ruby Sass into the .ruby-sass directory.
-    task :checkout do
-      unless Dir.exists?(".ruby-sass")
-        sh %{git clone git://github.com/sass/ruby-sass .ruby-sass}
-      end
-
-      Dir.chdir(".ruby-sass") do
-        sh %{git fetch}
-        if ENV["RUBY_SASS_REVISION"]
-          sh %{git checkout #{ENV["RUBY_SASS_REVISION"]}}
-        else
-          sh %{git checkout origin/stable}
-          # Check out the most recent released stable version
-          sh %{git checkout #{File.read("VERSION").strip}}
-        end
-      end
-    end
-
-    task :version => :checkout do
-      add_version 'ruby', File.read(".ruby-sass/VERSION").strip
-    end
-  end
-
   desc "Import information from Sass implementations."
-  task :import => ["dart:version", "libsass:version", "ruby:version"]
+  task :import => ["dart:version", "libsass:version"]
 end
 
 desc "Build the middleman-controlled portion of the site."
@@ -127,6 +103,6 @@ task "build" => ["sass:import", :middleman]
 # Build the site on Heroku, then clean up unnecessary intermediate files.
 task "assets:precompile" => :build do
   # Clean up unneccessary files to reduce slug size.
-  sh %{rm -rf .dart-sass .libsass .ruby-sass .yardoc}
+  sh %{rm -rf .dart-sass .libsass}
   sh %{bundle install --without=development}
 end

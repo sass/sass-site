@@ -136,6 +136,8 @@ GEM
     rack-livereload (0.3.17)
       rack
     rack-rewrite (1.5.1)
+    rack-ssl (1.4.1)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (12.3.2)
@@ -197,6 +199,7 @@ DEPENDENCIES
   rack
   rack-contrib
   rack-rewrite
+  rack-ssl (~> 1.4)
   rake
   redcarpet (~> 3.3.3)
   semantic (~> 1.6)
