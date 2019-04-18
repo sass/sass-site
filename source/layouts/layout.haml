@@ -111,9 +111,8 @@
           %li
             %span.release-name<
               = link_to 'Ruby Sass', '/ruby-sass'
-              -# Force space between the two links.
-              &#32;
-              = link_to impl_version(:ruby) || '???', release_url(:ruby)
+              -# Force space between the link and the coffin.
+              &#32; ⚰
 
           %li.sl-l-grid__column.sl-l-large-grid__column--auto-size
             = link_to 'Implementation Guide', '/implementation'
@@ -157,6 +156,15 @@
         apiKey: 'a409ff5d6a2476083c1a8dd1f8c04ec5',
         indexName: 'sass-lang',
         inputSelector: 'input.search',
+        transformData: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (!hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        },
         debug: false
       });
     = javascript_include_tag 'vendor/modernizr.custom.min'
