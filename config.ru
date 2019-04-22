@@ -1,8 +1,11 @@
 require "rubygems"
 
 require "rack/rewrite"
+require "rack/ssl"
 require "rack/contrib/not_found"
 require "rack/contrib/try_static"
+
+use Rack::SSL if ENV["HEROKU"] == 'true'
 
 use Rack::Rewrite do
   r301 %r{/docs/yardoc/(.*)}, '/documentation/$1'
@@ -22,6 +25,8 @@ use Rack::Rewrite do
 
   r301 %r{/(.+)/$}, '/$1'
   r301 %r{/(.+)/index\.html$}, '/$1'
+
+  r301 %r{/blog/(.*)}, 'http://sass.logdown.com/$1'
 end
 
 use Rack::Deflater
