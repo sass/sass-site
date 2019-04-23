@@ -1,11 +1,13 @@
 require "rubygems"
 
+require "rack/conditional"
 require "rack/rewrite"
 require "rack/ssl"
 require "rack/contrib/not_found"
 require "rack/contrib/try_static"
 
-use Rack::SSL if ENV["HEROKU"] == 'true'
+# Make sure we don't force SSL on domains that don't have SSL certificates.
+use Rack::Conditional, proc {|env| env["SERVER_NAME"] == "sass-lang.com"}, Rack::SSL
 
 use Rack::Rewrite do
   r301 %r{/docs/yardoc/(.*)}, '/documentation/$1'

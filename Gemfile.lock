@@ -131,6 +131,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (1.6.11)
+    rack-conditional (0.3.1)
+      rack (>= 1.6.11)
     rack-contrib (1.8.0)
       rack (~> 1.4)
     rack-livereload (0.3.17)
@@ -197,6 +199,7 @@ DEPENDENCIES
   nokogiri (~> 1.6)
   puma
   rack
+  rack-conditional (~> 0.3)
   rack-contrib
   rack-rewrite
   rack-ssl (~> 1.4)
