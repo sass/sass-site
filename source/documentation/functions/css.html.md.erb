@@ -1,0 +1,41 @@
+---
+title: Plain CSS Functions
+introduction: >
+  Any function call that's not either a [built-in](../functions) or
+  [user-defined](../at-rules/function) function is compiled to a plain CSS
+  function (unless it uses [Sass argument
+  syntax](../at-rules/function#arguments)). The arguments will be compiled to
+  CSS and included as-is in the function call. This ensures that Sass supports
+  all CSS functions without needing to release new versions every time a new one
+  is added.
+---
+
+<% example(autogen_css: false) do %>
+  @debug var(--main-bg-color); // var(--main-bg-color)
+
+  $primary: #f2ece4;
+  $accent: #e1d7d2;
+  @debug radial-gradient($primary, $accent); // radial-gradient(#f2ece4, #e1d7d2)
+  ===
+  @debug var(--main-bg-color)  // var(--main-bg-color)
+
+  $primary: #f2ece4
+  $accent: #e1d7d2
+  @debug radial-gradient($primary, $accent)  // radial-gradient(#f2ece4, #e1d7d2)
+<% end %>
+
+<% heads_up do %>
+  Because any unknown function will be compiled to CSS, it's easy to miss when
+  you typo a function name. Consider running a [CSS linter][] on your
+  stylesheet's output to be notified when this happens!
+
+  [CSS linter]: https://stylelint.io/
+<% end %>
+
+<% fun_fact do %>
+  Some CSS functions, like `calc()` and `element()` have unusual syntax. Sass
+  [parses these functions specially][] as [unquoted strings][].
+
+  [parses these functions specially]: ../syntax/special-functions
+  [unquoted strings]: ../values/strings#unquoted
+<% end %>

@@ -13,9 +13,7 @@ bundle
 /.libsass
 /.sass-cache
 *.scssc
-/source/assets/css/vendor
-/source/assets/js/vendor
-/source/documentation
 Thumbs.db
 .Trashes
 /.yardoc
+/vendor/bundle/

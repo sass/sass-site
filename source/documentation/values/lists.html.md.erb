@@ -1,0 +1,178 @@
+---
+title: Lists
+table_of_contents: true
+---
+
+<% impl_status dart: true, libsass: '3.5.0', ruby: '3.5.0', feature: 'Square Brackets' do %>
+  Older implementations of LibSass and Ruby Sass didn't support lists with
+  square brackets.
+<% end %>
+
+Lists contain a sequence of other values. In Sass, elements in lists can be
+separated by commas (`Helvetica, Arial, sans-serif`) or by spaces
+(`10px 15px 0 0`), as long as it's consistent within the list. Unlike most other
+languages, lists in Sass don't require special brackets; any [expressions][]
+separated with spaces or commas count as a list. However, you're allowed to
+write lists with square brackets (`[line1 line2]`), which is useful when using
+[`grid-template-columns`][].
+
+[expressions]: ../syntax/structure#expressions
+[`grid-template-columns`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+
+Sass lists can contain one or even zero elements. A single-element list can be
+written either `(<expression>,)` or `[<expression>]`, and a zero-element list
+can be written either `()` or `[]`. Also, all [list functions][] will treat
+individual values that aren't in lists as though they're lists containing that
+value, which means you rarely need to explicitly create single-element lists.
+
+[list functions]: ../functions/list
+
+<% heads_up do %>
+  Empty lists without brackets aren't valid CSS, so Sass won't let you use one
+  in a property value.
+<% end %>
+
+## Using Lists
+
+Sass provides a handful of [functions][] that make it possible to use lists to
+write powerful style libraries, or to make your app's stylesheet cleaner and
+more maintainable.
+
+[functions]: ../functions/list
+
+### Indexes
+
+Many of these functions take or return numbers, called *indexes*, that refer to
+the elements in a list. The index 1 indicates the first element of the list.
+Note that this is different than many programming languages where indexes start
+at 0! Sass also makes it easy to refer to the end of a list. The index -1 refers
+to the last element in a list, -2 refers to the second-to-last, and so on.
+
+### Access an Element
+
+Lists aren't much use if you can't get values out of them. You can use the
+[`nth($list, $n)` function][] to get the element at a given index in a list. The
+first argument is the list itself, and the second is the index of the value you
+want to get out.
+
+[`nth($list, $n)` function]: ../functions/list#nth
+
+<%= partial 'code-snippets/example-list-nth' %>
+
+### Do Something for Every Element
+
+This doesn't actually use a function, but it's still one of the most common ways
+to use lists. The [`@each` rule][] evaluates a block of styles for each element
+in a list, and assigns that element to a variable.
+
+[`@each` rule]: ../at-rules/control/each
+
+<%= partial 'code-snippets/example-each-list' %>
+
+### Add to a List
+
+It's also useful to add elements to a list. The [`append($list, $val)`
+function][] takes a list and a value, and returns a copy of the list with the value
+added to the end. Note that because Sass lists are [immutable][], it doesn't
+modify the original list.
+
+[`append($list, $val)` function]: ../functions/list#append
+[immutable]: #immutability
+
+<% example(autogen_css: false) do %>
+  @debug append(10px 12px 16px, 25px); // 10px 12px 16px 25px
+  @debug append([col1-line1], col1-line2); // [col1-line1, col1-line2]
+  ===
+  @debug append(10px 12px 16px, 25px)  // 10px 12px 16px 25px
+  @debug append([col1-line1], col1-line2)  // [col1-line1, col1-line2]
+<% end %>
+
+### Find an Element in a List
+
+If you need to check if an element is in a list or figure out what index it's
+at, use the [`index($list, $value)` function][]. This takes a list and a value
+to locate in that list, and returns the index of that value.
+
+[`index($list, $value)` function]: ../functions/list#index
+
+<%= partial 'code-snippets/example-list-index' %>
+
+If the value isn't in the list at all, `index()` returns [`null`][]. Because
+`null` is [falsey][], you can use `index()` with [`@if`][] or [`if()`][] to
+check whether a list does or doesn't contain a given value.
+
+[`null`]: null
+[falsey]: ../at-rules/control/if#truthiness-and-falsiness
+[`@if`]: ../at-rules/control/if
+[`if()`]: ../functions#if
+
+<% example do %>
+  $valid-sides: top, bottom, left, right;
+
+  @mixin attach($side) {
+    @if not index($valid-sides, $side) {
+      @error "#{$side} is not a valid side. Expected one of #{$sides}.";
+    }
+
+    // ...
+  }
+  ===
+  $valid-sides: top, bottom, left, right
+
+  @mixin attach($side)
+    @if not index($valid-sides, $side)
+      @error "#{$side} is not a valid side. Expected one of #{$sides}."
+
+
+    // ...
+<% end %>
+
+## Immutability
+
+Lists in Sass are *immutable*, which means that the contents of a list value
+never changes. Sass's list functions all return new lists rather than modifying
+the originals. Immutability helps avoid lots of sneaky bugs that can creep in
+when the same list is shared across different parts of the stylesheet.
+
+You can still update your state over time by assigning new lists to the same
+variable, though. This is often used in functions and mixins to collect a bunch
+of values into one list.
+
+<% example do %>
+  $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms);
+
+  @function prefixes-for-browsers($browsers) {
+    $prefixes: ();
+    @each $browser in $browsers {
+      $prefixes: append($prefixes, map-get($prefixes-by-browser, $browser));
+    }
+    @return $prefixes;
+  }
+
+  @debug prefixes-for-browsers("firefox" "ie"); // moz ms
+  ===
+  $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms)
+
+  @function prefixes-for-browsers($browsers)
+    $prefixes: ()
+    @each $browser in $browsers
+      $prefixes: append($prefixes, map-get($prefixes-by-browser, $browser))
+
+    @return $prefixes
+
+
+  @debug prefixes-for-browsers("firefox" "ie")  // moz ms
+<% end %>
+
+## Argument Lists
+
+When you declare a mixin or function that takes [arbitrary arguments][], the
+value you get is a special list known as an *argument list*. It acts just like a
+list that contains all the arguments passed to the mixin or function, with one
+extra feature: if the user passed keyword arguments, they can be accessed as a
+map by passing the argument list to the [`keywords()` function][].
+
+<%= partial 'code-snippets/example-mixin-arbitrary-keyword-arguments' %>
+
+[arbitrary arguments]: ../at-rules/mixin#taking-arbitrary-arguments
+[`keywords()` function]: ../functions/map#keywords

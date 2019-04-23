@@ -6,16 +6,16 @@ $(function() {
     var ul = $("<ul></ul>");
 
     if (figure.find(".sass").length) {
-      ul.prepend("<li><a href='#example-" + id + "-sass'>Sass</a></li>");
+      ul.append("<li><a href='#example-" + id + "-sass'>Sass</a></li>");
     }
 
     if (figure.find(".scss").length) {
-      ul.prepend("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
+      ul.append("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
     }
 
     var hasCssTab = figure.find(".css").length;
     if (hasCssTab) {
-        ul.prepend(
+        ul.append(
             $("<li class='css-tab'></li>")
                 .prepend("<a href='#example-" + id + "-css'>CSS</a>"));
     }

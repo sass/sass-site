@@ -1,0 +1,11 @@
+<% impl_status dart: true, libsass: '3.5.0', ruby: '3.5.0', feature: 'Argument Type' do %>
+  In older versions of LibSass and Ruby Sass, the [`call()` function][] took a
+  string representing a function's name. This was changed to take a function
+  value instead in preparation for a new module system where functions are no
+  longer global and so a given name may not always refer to the same function.
+
+  [`call()` function]: /documentation/functions/meta#call
+
+  Passing a string to `call()` still works in all implementations, but it's
+  deprecated and will be disallowed in future versions.
+<% end %>

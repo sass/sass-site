@@ -1,24 +1,13 @@
-susy:
-  total_columns: 12
-  column_width:  48px
-  gutter_width:  16px
-
 resolutions:
-  - target: mobile-small
-    width:  240
-    height: 320
-  - target: mobile-large
-    width:  320
-    height: 480
-  - target: tablet-small
+  - target: small
     width:  480
-    height: 768
-  - target: tablet-large
-    width:  768
-    height: 1024
-  - target: screen-small
-    width:  1024
+    height: 640
+  - target: medium
+    width:  640
+    height: 960
+  - target: large
+    width:  960
     height: 1280
-  - target: screen-large
+  - target: x-large
     width:  1280
-    height: 1024
+    height: 1920

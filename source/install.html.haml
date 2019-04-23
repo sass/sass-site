@@ -1,67 +1,77 @@
 ---
 title: Install Sass
+no_container: true
 ---
 
-%h2 There are a couple of ways to start using&nbsp;Sass:
-%ol.list-columns
-  %li.gui-application
-    %h3 Applications
-    %p= image_tag "illustrations/mouse.svg", class: "header-image", height: "160", alt: "Mouse"
-    %p
+.sl-l-grid.sl-l-grid--full.sl-l-large-grid--fit.sl-l-large-grid--gutters-large
+  .sl-l-grid__column
+    :markdown
+      ## Applications
+
+      ![Mouse](illustrations/mouse.svg)
+
       There are a good many applications that will get you up and running
       with Sass in a few minutes for Mac, Windows, and Linux. You can download
       most of the applications for free but a few of them are paid apps
       <small>(and totally worth it)</small>.
 
-    %ul.list-feature
+    %ul
       %li
         = link_to "CodeKit", "https://incident57.com/codekit/"
-        %span.info (Paid)
-        %span.mac-icon
-      %li
-        = link_to "Compass.app", "http://compass.kkbox.com/"
-        %span.info (Paid, Open Source)
-        %span.mac-icon
-        %span.windows-icon
-        %span.linux-icon
-      %li
-        = link_to "Ghostlab", "http://www.vanamco.com/ghostlab/"
-        %span.info (Paid)
-        %span.mac-icon
-        %span.windows-icon
-      %li
-        = link_to "Hammer", "http://hammerformac.com/"
-        %span.info (Paid)
-        %span.mac-icon
-      %li
-        = link_to "Koala", "http://koala-app.com/"
-        %span.info (Open Source)
-        %span.mac-icon
-        %span.windows-icon
-        %span.linux-icon
-      %li
-        = link_to "LiveReload", "http://livereload.com/"
-        %span.info (Paid, Open Source)
-        %span.mac-icon
-        %span.windows-icon
-      %li
-        = link_to "Prepros", "https://prepros.io/"
-        %span.info (Paid)
-        %span.mac-icon
-        %span.windows-icon
-        %span.linux-icon
-      %li
-        = link_to "Scout-App", "http://scout-app.io/"
-        %span.info (Free, Open Source)
-        %span.windows-icon
-        %span.linux-icon
-        %span.mac-icon
+        (Paid)
+        Mac
 
-  %li.command-line
-    %h3 Command Line
-    %p= image_tag "illustrations/keyboard.svg", class: "header-image", height: "160", alt: "Keyboard"
+      %li
+        = link_to 'Compass.app', 'http://compass.kkbox.com/'
+        (Paid, Open Source)
+        Mac
+        Windows
+        Linux
 
+      %li
+        = link_to 'Ghostlab', 'http://www.vanamco.com/ghostlab/'
+        (Paid)
+        Mac
+        Windows
+
+      %li
+        = link_to 'Hammer', 'http://hammerformac.com/'
+        (Paid)
+        Mac
+
+      %li
+        = link_to 'Koala', 'http://koala-app.com/'
+        (Open Source)
+        Mac
+        Windows
+        Linux
+
+      %li
+        = link_to 'LiveReload', 'http://livereload.com/'
+        (Paid, Open Source)
+        Mac
+        Windows
+
+      %li
+        = link_to 'Prepros', 'https://prepros.io/'
+        (Paid)
+        Mac
+        Windows
+        Linux
+
+      %li
+        = link_to 'Scout-App', 'http://scout-app.io/'
+        (Free, Open Source)
+        Windows
+        Linux
+        Mac
+
+  .sl-l-grid__column
     :markdown
+      ## Command Line
+
+      ![Keyboard](illustrations/keyboard.svg)
+
       When you install Sass on the command line, you'll be able to run the
       `sass` executable to compile `.sass` and `.scss` files to `.css` files.
       For example:
@@ -76,23 +86,25 @@ title: Install Sass
       Once it's all set up, <strong>go and play</strong>. If you're brand new to
       Sass we've set up some resources to help you learn pretty darn quick.
 
-    %p= link_to "Learn More About Sass", "/guide", :class => "button primary"
+    %p= link_to 'Learn More About Sass', '/guide', :class => 'sl-c-button sl-c-button--primary'
 
     %dl
       %dt Install Anywhere (Standalone)
+
       %dd
         You can install Sass on Windows, Mac, or Linux by downloading the
         package for your operating system
-        #{link_to "from GitHub", release_url(:dart)} and
-        <a href="https://katiek2.github.io/path-doc/">adding it to your
+        #{link_to 'from GitHub', release_url(:dart)} and
+        <a href='https://katiek2.github.io/path-doc/'>adding it to your
         <code>PATH</code></a>. That's all—there are no external dependencies and
         nothing else you need to install.
 
       %dt Install Anywhere (npm)
+
       %dd
         %p
           If you use Node.js, you can also install Sass using
-          <a href="https://www.npmjs.com/">npm</a> by running
+          <a href='https://www.npmjs.com/'>npm</a> by running
 
         %pre
           :preserve
@@ -105,9 +117,10 @@ title: Install Sass
         speed!
 
       %dt Install on Windows (Chocolatey)
+
       %dd
         %p
-          If you use <a href="https://chocolatey.org/">the Chocolatey package
+          If you use <a href='https://chocolatey.org/'>the Chocolatey package
           manager</a> for Windows, you can install Dart Sass by running
 
         %pre
@@ -115,9 +128,10 @@ title: Install Sass
             choco install sass
 
       %dt Install on Mac OS X (Homebrew)
+
       %dd
         %p
-          If you use <a href="https://brew.sh/">the Homebrew package
+          If you use <a href='https://brew.sh/'>the Homebrew package
           manager</a> for Mac OS X, you can install Dart Sass by running
 
         %pre

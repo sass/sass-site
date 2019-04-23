@@ -1,0 +1,205 @@
+---
+title: Number Functions
+---
+
+<% function 'abs($number)', returns: 'number' do %>
+  Returns the [absolute value][] of `$number`. If `$number` is negative, this
+  returns `-$number`, and if `$number` is positive, it returns `$number` as-is.
+
+  [absolute value]: https://en.wikipedia.org/wiki/Absolute_value
+
+  <% example(autogen_css: false) do %>
+    @debug abs(10px); // 10px
+    @debug abs(-10px); // 10px
+    ===
+    @debug abs(10px) // 10px
+    @debug abs(-10px) // 10px
+  <% end %>
+<% end %>
+
+
+<% function 'ceil($number)', returns: 'number' do %>
+  Rounds `$number` up to the next highest whole number.
+
+  <% example(autogen_css: false) do %>
+    @debug ceil(4); // 4
+    @debug ceil(4.2); // 5
+    @debug ceil(4.9); // 5
+    ===
+    @debug ceil(4)  // 4
+    @debug ceil(4.2)  // 5
+    @debug ceil(4.9)  // 5
+  <% end %>
+<% end %>
+
+
+<% function 'comparable($number1, $number2)', returns: 'boolean' do %>
+  Returns whether `$number1` and `$number2` have compatible units.
+
+  If this returns `true`, `$number1` and `$number2` can safely be [added][],
+  [subtracted][], and [compared][]. Otherwise, doing so will produce errors.
+
+  [added]: ../operators/numeric
+  [subtracted]: ../operators/numeric
+  [compared]: ../operators/relational
+
+  <% example(autogen_css: false) do %>
+    @debug comparable(2px, 1px); // true
+    @debug comparable(100px, 3em); // false
+    @debug comparable(10cm, 3mm); // true
+    ===
+    @debug comparable(2px, 1px)  // true
+    @debug comparable(100px, 3em)  // false
+    @debug comparable(10cm, 3mm)  // true
+  <% end %>
+<% end %>
+
+
+<% function 'floor($number)', returns: 'number' do %>
+  Rounds `$number` down to the next lowest whole number.
+
+  <% example(autogen_css: false) do %>
+    @debug floor(4); // 4
+    @debug floor(4.2); // 4
+    @debug floor(4.9); // 4
+    ===
+    @debug floor(4)  // 4
+    @debug floor(4.2)  // 4
+    @debug floor(4.9)  // 4
+  <% end %>
+<% end %>
+
+
+<% function 'max($number...)', returns: 'number' do %>
+  Returns the highest of one or more numbers. A list of numbers can be passed
+  [using `...`][].
+
+  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
+
+  <% example(autogen_css: false) do %>
+    @debug max(1px, 4px); // 4px
+
+    $widths: 50px, 30px, 100px;
+    @debug max($widths...); // 100px
+    ===
+    @debug max(1px, 4px)  // 4px
+
+    $widths: 50px, 30px, 100px 
+    @debug max($widths...)  // 100px
+  <% end %>
+<% end %>
+
+
+<% function 'min($number...)', returns: 'number' do %>
+  Returns the lowest of one or more numbers. A list of numbers can be passed
+  [using `...`][].
+
+  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
+
+  <% example(autogen_css: false) do %>
+    @debug min(1px, 4px); // 1px
+
+    $widths: 50px, 30px, 100px;
+    @debug min($widths...); // 30px
+    ===
+    @debug min(1px, 4px)  // 1px
+
+    $widths: 50px, 30px, 100px 
+    @debug min($widths...)  // 30px
+  <% end %>
+<% end %>
+
+
+<% function 'percentage($number)', returns: 'number' do %>
+  Converts a unitless `$number` (usually a decimal between 0 and 1) to a
+  percentage.
+
+  <% fun_fact do %>
+    This function is identical to `$number * 100%`.
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug percentage(0.2); // 20%
+    @debug percentage(100px / 50px); // 200%
+    ===
+    @debug percentage(0.2)  // 20%
+    @debug percentage(100px / 50px)  // 200%
+  <% end %>
+<% end %>
+
+
+<% function 'random($limit: null)', returns: 'number' do %>
+  If `$limit` is [`null`][], returns a random decimal number between 0 and 1.
+
+  [`null`]: ../values/null
+
+  <% example(autogen_css: false) do %>
+    @debug random(); // 0.2821251858
+    @debug random(); // 0.6221325814
+    ===
+    @debug random()  // 0.2821251858
+    @debug random()  // 0.6221325814
+  <% end %>
+
+  * * *
+
+  If `$limit` is a number greater than or equal to 1, returns a random whole
+  number between 1 and `$limit`.
+
+  <% example(autogen_css: false) do %>
+    @debug random(10); // 4
+    @debug random(10000); // 5373
+    ===
+    @debug random(10)  // 4
+    @debug random(10000)  // 5373
+  <% end %>
+<% end %>
+
+
+<% function 'round($number)', returns: 'number' do %>
+  Rounds `$number` to the nearest whole number.
+
+  <% example(autogen_css: false) do %>
+    @debug round(4); // 4
+    @debug round(4.2); // 4
+    @debug round(4.9); // 5
+    ===
+    @debug round(4)  // 4
+    @debug round(4.2)  // 4
+    @debug round(4.9)  // 5
+  <% end %>
+<% end %>
+
+
+<% function 'unit($number)', returns: 'quoted string' do %>
+  Returns a string representation of `$number`'s units.
+
+  <% heads_up do %>
+    This function is intended for debugging; its output format is not guaranteed
+    to be consistent across Sass versions or implementations.
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug unit(100); // ""
+    @debug unit(100px); // "px"
+    @debug unit(5px * 10px); // "px*px"
+    @debug unit(5px / 1s); // "px/s"
+    ===
+    @debug unit(100)  // ""
+    @debug unit(100px)  // "px"
+    @debug unit(5px * 10px)  // "px*px"
+    @debug unit(5px / 1s)  // "px/s"
+  <% end %>
+<% end %>
+
+<% function 'unitless($number)', returns: 'boolean' do %>
+  Returns whether `$number` has no units.
+
+  <% example(autogen_css: false) do %>
+    @debug unitless(100); // true
+    @debug unitless(100px); // false
+    ===
+    @debug unitless(100)  // true
+    @debug unitless(100px)  // false
+  <% end %>  
+<% end %>

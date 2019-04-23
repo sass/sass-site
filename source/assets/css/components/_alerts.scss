@@ -1,44 +1,39 @@
-.alert {
-  @include padding-leader(.5);
-  @include padding-trailer(.5);
-  background: darken($color-background-invert, 5);
-  color: $color-text-invert;
+.sl-c-alert {
+  padding: {
+    top: sl-px-to-rem(12px);
+    bottom: sl-px-to-rem(12px);
+  };
+  text-align: center;
+  background: darken($sl-color--hopbush, 10%);
+  color: rgba($sl-color--white, .875);
+  font-size: $sl-font-size--small;
 
+  p,
   ul,
-  p {
-    margin: {
-      right: 0;
-       left: 0;
-    }
-    padding-bottom: 0;
+  dl {
+
+    &:first-child { margin-top: 0; }
+
+    &:last-child { margin-bottom: 0; }
   }
+
+  p,
+  li,
+  dd { max-width: none; }
 
   a {
-    font-weight: $font-weight-bold;
-    color: darken($color-text-strong-invert, 10%);
+    border-bottom-color: rgba($sl-color--white, .5);
+    font-weight: $sl-font-weight--bold;
+    color: $sl-color--white;
 
     &:hover,
-    &:focus { border-bottom: 1px solid $color-text-invert; }
+    &:focus {
+      border-bottom-color: rgba($sl-color--white, .75);
+      background: rgba(black, .0625);
+    }
+
+    &:active { border-bottom-color: $sl-color--white; }
   }
-}
 
-.release ul {
-  @extend %reset-list;
-  text-align: inherit;
-  margin-bottom: -0.16em;
-
-  @include breakpoint($tablet-small) { @extend %horizontal-list-tablet-small; }
-}
-
-.release-name { white-space: nowrap; }
-
-.alert.stickers {
-  background: $midnight-blue;
-}
-
-.browsehappy {
-  margin: 0;
-  padding: 0;
-  background: 0;
-  color: inherit;
+  &--info { background: $sl-color--midnight-blue; }
 }

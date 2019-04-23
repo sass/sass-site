@@ -5,7 +5,3 @@ resources:
   - name: "Node, Express and libSass"
     url: "https://www.gitbooks.io/book/anotheruiguy/nodeexpreslibsass_from-scratch"
     description: "Node, Express and libSass: a project from scratch workshop"
-
-
-
-

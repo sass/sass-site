@@ -1,117 +1,37 @@
-/*! Sass
- *  by Team Sass Design (@teamsassdesign)
- */
+/*! Sass */
 
-
-
-// ---------------------------------------------------------------------------
-// VENDOR LIBRARIES
+@charset 'utf-8';
 
 @import
-  "compass"
-, "compass/layout"
-, "susy"
-, "breakpoint"
-;
+  'vendor/normalize',
+  'vendor/sanitize',
+  'vendor/html5-boilerplate',
+  'vendor/syntax',
+  'vendor/jquery-ui-custom/jquery-ui',
+  'vendor/jquery-ui-custom/jquery-ui-structure',
+  'vendor/jquery-ui-custom/jquery-ui-theme',
+
+  'functions',
+  'breakpoints',
+
+  'visual-design/theme',
+  'visual-design/typography',
+
+  'layout/containers',
+  'layout/grid-system',
+  'layout/holy-grail',
+  'layout/sections',
+
+  'components/alerts',
+  'components/buttons',
+  'components/callouts',
+  'components/inputs',
+  'components/introduction',
+  'components/link-header',
+  'components/lists',
+  'components/pop-stripe',
+  'components/sass-syntax-switcher',
+  'components/tables',
 
 
-
-// ---------------------------------------------------------------------------
-// DEPENDENCIES
-
-@import
-  "dependencies/layout"
-, "dependencies/typography"
-, "dependencies/color"
-, "dependencies/animations"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// FOUNDATION
-
-@import
-  "normalize-rails"
-, "vendor/html5boilerplate/base"
-, "foundation/site"
-, "foundation/block"
-, "foundation/inline"
-, "foundation/headings"
-, "foundation/lists"
-, "foundation/tables"
-, "foundation/forms"
-, "foundation/code"
-, "foundation/media"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// COMPONENTS
-
-@import
-  "vendor/html5boilerplate/browsehappy"
-, "vendor/jquery-ui/jquery-ui-1.11.0.custom"
-, "components/pop-stripe"
-, "components/type"
-, "components/page-header"
-, "components/lists"
-, "components/tables"
-, "components/forms"
-, "components/buttons"
-, "components/code"
-, "components/alerts"
-, "components/progress"
-, "components/articles"
-, "components/hero-image"
-, "components/header-image"
-, "components/get-started"
-, "components/slides"
-, "components/icons"
-, "components/logos"
-, "components/sass-syntax-switcher"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// REGIONS
-
-@import
-  "regions/page"
-, "regions/banner"
-, "regions/navigation"
-, "regions/content"
-, "regions/content-primary"
-, "regions/content-secondary"
-, "regions/main"
-, "regions/complementary"
-, "regions/section-bottom"
-, "regions/contentinfo"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// HELPERS
-
-@import
-  "vendor/html5boilerplate/helpers"
-, "helpers/grid"
-, "helpers/helpers"
-;
-
-
-
-// ---------------------------------------------------------------------------
-// PAGES
-
-@import "styleguide/guide";
-
-
-
-// ---------------------------------------------------------------------------
-// RESPONSIVE
-
-@import "vendor/html5boilerplate/print";
+  'regions/banner';

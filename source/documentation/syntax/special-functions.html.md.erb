@@ -1,0 +1,199 @@
+---
+title: Special Functions
+table_of_contents: true
+introduction: >
+  CSS defines many functions, and most of them work just fine with Sass’s normal
+  function syntax. They’re parsed as function calls, resolved to [plain CSS
+  functions](../functions/css), and compiled as-is to CSS. There are a few
+  exceptions, though, which have special syntax that can’t just be parsed as a
+  [SassScript expression](structure#expressions). All special function calls
+  return [unquoted strings](../values/strings#unquoted).
+---
+
+## `url()`
+
+The [`url()` function][] is commonly used in CSS, but its syntax is different
+than other functions: it can take either a quoted *or* unquoted URL. Because an
+unquoted URL isn't a valid SassScript expression, Sass needs special logic to
+parse it.
+
+[`url()` function]: https://developer.mozilla.org/en-US/docs/Web/CSS/url
+
+If the `url()`'s argument is a valid unquoted URL, Sass parses it as-is,
+although [interpolation][] may also be used to inject SassScript values. If it's
+not a valid unquoted URL—for example, if it contains [variables][] or [function
+calls][]—it's parsed as a normal [plain CSS function call][].
+
+[interpolation]: ../interpolation
+[variables]: ../variables
+[function calls]: ../at-rules/function
+[plain CSS function call]: ../functions/css
+
+<% example do %>
+  $roboto-font-path: "../fonts/roboto";
+
+  @font-face {
+      // This is parsed as a normal function call that takes a quoted string.
+      src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2");
+
+      font-family: "Roboto";
+      font-weight: 100;
+  }
+
+  @font-face {
+      // This is parsed as a normal function call that takes an arithmetic
+      // expression.
+      src: url($roboto-font-path + "/Roboto-Light.woff2") format("woff2");
+
+      font-family: "Roboto";
+      font-weight: 300;
+  }
+
+  @font-face {
+      // This is parsed as an interpolated special function.
+      src: url(#{$roboto-font-path}/Roboto-Regular.woff2) format("woff2");
+
+      font-family: "Roboto";
+      font-weight: 400;
+  }
+  ===
+  $roboto-font-path: "../fonts/roboto"
+
+  @font-face
+      // This is parsed as a normal function call that takes a quoted string.
+      src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2")
+
+      font-family: "Roboto"
+      font-weight: 100
+
+
+  @font-face
+      // This is parsed as a normal function call that takes an arithmetic
+      // expression.
+      src: url($roboto-font-path + "/Roboto-Light.woff2") format("woff2")
+
+      font-family: "Roboto"
+      font-weight: 300
+
+
+  @font-face
+      // This is parsed as an interpolated special function.
+      src: url(#{$roboto-font-path}/Roboto-Regular.woff2) format("woff2")
+
+      font-family: "Roboto"
+      font-weight: 400
+<% end %>
+
+## `calc()`, `element()`, `progid:...()`, and `expression()`
+
+The [`calc()`][] and [`element()`][] functions are defined in the CSS spec.
+Because `calc()`'s mathematical expressions conflict with Sass's arithmetic, and
+`element()`'s IDs could be parsed as colors, they need special parsing.
+
+[`calc()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+[`element()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/element
+
+[`expression()`][] and functions beginning with [`progid:`][] are legacy
+Internet Explorer features that use non-standard syntax. Although they're no
+longer supported by recent browsers, Sass continues to parse them for backwards
+compatibility.
+
+[`expression()`]: https://blogs.msdn.microsoft.com/ie/2008/10/16/ending-expressions/
+[`progid:`]: https://blogs.msdn.microsoft.com/ie/2009/02/19/the-css-corner-using-filters-in-ie8/
+
+Sass allows *any text* in these function calls, including nested parentheses.
+Nothing is interpreted as a SassScript expression, with the exception that
+[interpolation][] can be used to inject dynamic values.
+
+<% example do %>
+  .logo {
+    $width: 800px;
+    width: $width;
+    position: absolute;
+    left: calc(50% - #{$width / 2});
+    top: 0;
+  }
+  ===
+  .logo
+    $width: 800px
+    width: $width
+    position: absolute
+    left: calc(50% - #{$width / 2})
+    top: 0
+<% end %>
+
+## `min()` and `max()`
+
+<% impl_status dart: "1.11.0", libsass: false, ruby: false do %>
+  LibSass and Ruby Sass currently *always* parse `min()` and `max()` as Sass
+  functions. To create a plain CSS `min()` or `max()` call for those
+  implementations, you can write something like `unquote("min(#{$padding},
+  env(safe-area-inset-left))")` instead.
+<% end %>
+
+CSS added support for [`min()` and `max()` functions][] in Values and Units
+Level 4, from where they were quickly adopted by Safari [to support the
+iPhoneX][]. But Sass supported its own [`min()`][] and [`max()`][] functions
+long before this, and it needed to be backwards-compatible with all those
+existing stylesheets. This led for the need for extra-special syntactic
+cleverness.
+
+[`min()` and `max()` functions]: https://drafts.csswg.org/css-values-4/#calc-notation
+[to support the iPhoneX]: https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+[`min()`]: ../functions/math#min
+[`max()`]: ../functions/math#max
+
+If a `min()` or `max()` function call is valid plain CSS, it will be compiled to
+a CSS `min()` or `max()` call. "Plain CSS" includes nested calls to
+[`calc()`][], [`env()`][], [`var()`][], `min()`, or `max()`, as well as
+[interpolation][]. As soon as any part of the call contains a SassScript feature
+like [variables][] or [function calls][], though, it's parsed as a call to
+Sass's core `min()` or `max()` function instead.
+
+[`env()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/env
+[`var()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/var
+
+<!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
+
+<% example do %>
+  $padding: 12px;
+
+  .post {
+    // Since these max() calls don't use any Sass features other than
+    // interpolation, they're compiled to CSS max() calls.
+    padding-left: max(#{$padding}, env(safe-area-inset-left));
+    padding-right: max(#{$padding}, env(safe-area-inset-right));
+  }
+
+  .sidebar {
+    // Since these refer to a Sass variable without interpolation, they call
+    // Sass's built-in max() function.
+    padding-left: max($padding, 20px);
+    padding-right: max($padding, 20px);
+  }
+  ===
+  $padding: 12px
+
+  .post
+    // Since these max() calls don't use any Sass features other than
+    // interpolation, they're compiled to CSS max() calls.
+    padding-left: max(#{$padding}, env(safe-area-inset-left))
+    padding-right: max(#{$padding}, env(safe-area-inset-right))
+
+
+  .sidebar
+    // Since these refer to a Sass variable without interpolation, they call
+    // Sass's built-in max() function.
+    padding-left: max($padding, 20px)
+    padding-right: max($padding, 20px)
+  ===
+  .post {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+
+  .sidebar {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+<% end %>

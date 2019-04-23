@@ -1,0 +1,92 @@
+---
+title: Operators
+introduction: >
+  Sass supports a handful of useful `operators` for working with different
+  values. These include the standard mathematical operators like `+` and `*`, as
+  well as operators for various other types:
+---
+
+<%= partial 'documentation/snippets/operator-list', locals: {parens: false} %>
+
+<% heads_up do %>
+  Early on in Sass's history, it added support for mathematical operations on
+  [colors][]. These operations operated on each of the colors' RGB channels
+  separately, so adding two colors would produce a color with the sum of their
+  red channels as its red channel and so on.
+
+  [colors]: values/colors
+
+  This behavior wasn't very useful, since it channel-by-channel RGB arithmetic
+  didn't correspond well to how humans perceive color. [Color functions][] were
+  added which are much more useful, and color operations were deprecated.
+  They're still supported in LibSass and Ruby Sass, but they'll produce warnings
+  and users are strongly encouraged to avoid them.
+
+  [Color functions]: functions/color
+<% end %>
+
+## Order of Operations
+
+Sass has a pretty standard [order of operations][], from tightest to loosest:
+
+[order of operations]: https://en.wikipedia.org/wiki/Order_of_operations#Programming_languages
+
+1. The unary operators [`not`][], [`+`, `-`][], and [`/`][].
+2. The [`*`, `/`, and `%` operators][].
+3. The [`+` and `-` operators][].
+4. The [`>`, `>=`, `<` and `<=` operators][].
+5. The [`==` and `!=` operators][].
+6. The [`and` operator][].
+7. The [`or` operator][].
+8. The [`=` operator][], when it's available.
+
+[`not`]: operators/boolean
+[`+`, `-`]: operators/numeric#unary-operators
+[`/`]: operators/string#unary-operators
+[`*`, `/`, and `%` operators]: operators/numeric
+[`+` and `-` operators]: operators/numeric
+[`>`, `>=`, `<` and `<=` operators]: operators/relational
+[`==` and `!=` operators]: operators/equality
+[`and` operator]: operators/boolean
+[`or` operator]: operators/boolean
+[`=` operator]: #single-equals
+
+<% example(autogen_css: false) do %>
+  @debug 1 + 2 * 3 == 1 + (2 * 3); // true
+  @debug true or false and false == true or (false and false); // true
+  ===
+  @debug 1 + 2 * 3 == 1 + (2 * 3)  // true
+  @debug true or false and false == true or (false and false)  // true
+<% end %>
+
+### Parentheses
+
+You can explicitly control the order of operations using parentheses. An
+operation inside parentheses is always evaluated before any operations outside
+of them. Parentheses can even be nested, in which case the innermost parentheses
+will be evaluated first.
+
+<% example(autogen_css: false) do %>
+  @debug (1 + 2) * 3; // 6
+  @debug ((1 + 2) * 3 + 4) * 5; // 65
+  ===
+  @debug (1 + 2) * 3  // 6
+  @debug ((1 + 2) * 3 + 4) * 5  // 65
+<% end %>
+
+## Single Equals
+
+Sass supports a special `=` operator that's only allowed in function arguments,
+which just creates an [unquoted string][] with its two operands separated by
+`=`. This exists for backwards-compatibility with very old IE-only syntax.
+
+[unquoted string]: values/strings#unquoted
+
+<% example do %>
+  .transparent-blue {
+    filter: chroma(color=#0000ff);
+  }
+  ===
+  .transparent-blue
+    filter: chroma(color=#0000ff)
+<% end %>

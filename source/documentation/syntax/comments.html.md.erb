@@ -1,0 +1,135 @@
+---
+title: Comments
+introduction: >
+  The way Sass comments work differs substantially between SCSS and the indented
+  syntax. Both syntaxes support two types of comments: comments defined using
+  `/* */` that are (usually) compiled to CSS, and comments defined using `//` that
+  are not.
+---
+
+## In SCSS
+
+Comments in SCSS work similarly to comments in other languages like JavaScript.
+**Single-line comments** start with `//`, and go until the end of the line.
+Nothing in a single-line comment is emitted as CSS; as far as Sass is concerned,
+they may as well not exist. They're also called **silent comments**, because
+they don't produce any CSS.
+
+**Multi-line comments** start with `/*` and end at the next `*/`. If a
+multi-line comment is written somewhere that a [statement][] is allowed, it's
+compiled to a CSS comment. They're also called **loud comment**, by contrast
+with silent comments. A multi-line comment that's compiled to CSS may contain
+[interpolation][], which will be evaluated before the comment is compiled.
+
+By default, multi-line comments be stripped from the compiled CSS in [compressed
+mode][]. If a comment begins with `/*!`, though, it will always be included in
+the CSS output.
+
+[statement]: structure#statements
+[interpolation]: ../interpolation
+[compressed mode]: ../cli/dart-sass#style
+
+<% example(syntax: :scss) do %>
+  // This comment won't be included in the CSS.
+
+  /* But this comment will, except in compressed mode. */
+
+  /* It can also contain interpolation:
+   * 1 + 1 = #{1 + 1} */
+
+  /*! This comment will be included even in compressed mode. */
+
+  p /* Multi-line comments can be written anywhere
+     * whitespace is allowed. */ .sans {
+    font: Helvetica, // So can single-line commments.
+          sans-serif;
+  }
+<% end %>
+
+## In Sass
+
+Comments in the indented syntax work a little differently: they're
+indentation-based, just like the rest of the syntax. Like SCSS, silent comments
+written with `//` are never emitted as CSS, but unlike SCSS everything indented
+beneath the opening `//` is also commented out.
+
+Indented syntax comments that start with `/*` work with indentation the same
+way, except that they are compiled to CSS. Because the extend of the comment is
+based on indentation, the closing `*/` is optional. Also like SCSS, `/*`
+comments can contain [interpolation][] and can start with `/*!` to avoid being
+stripped in compressed mode.
+
+Comments can also be used within [expressions][] in the indented syntax. In this
+case, they have exactly the same syntax as they do in SCSS.
+
+[expressions]: structure#expressions
+
+<% example(syntax: :sass) do %>
+  // This comment won't be included in the CSS.
+     This is also commented out.
+
+  /* But this comment will, except in compressed mode.
+
+  /* It can also contain interpolation:
+     1 + 1 = #{1 + 1}
+
+  /*! This comment will be included even in compressed mode.
+
+  p .sans
+    font: Helvetica, /* Inline comments must be closed. */ sans-serif
+<% end %>
+
+## Documentation Comments
+
+When writing style libraries using Sass, you can use comments to document the
+[mixins][], [functions][], [variables][], and [placeholder selectors][] that
+your library provides, as well as the library itself. These are comments are
+read by the [SassDoc][] tool, which uses them to generate beautiful
+documentation. Check out [the Susy grid engine][susy]'s documentation to see it
+in action!
+
+[mixins]: ../at-rules/mixin
+[functions]: ../at-rules/function
+[variables]: ../variables
+[placeholder selectors]: ../style-rules/placeholder-selectors
+[SassDoc]: http://sassdoc.com
+[susy]: http://oddbird.net/susy/docs/index.html
+
+Documentation comments are silent comments, written with three slashes (`///`)
+directly above the thing you're documenting. SassDoc parses text in the comments
+as [Markdown][], and supports many useful [annotations][] to describe it in
+detail.
+
+[Markdown]: https://www.markdownguide.org/getting-started
+[annotations]: http://sassdoc.com/annotations/
+
+<% example do %>
+  /// Computes an exponent.
+  ///
+  /// @param {number} $base
+  ///   The number to multiply by itself.
+  /// @param {integer (unitless)} $exponent
+  ///   The number of `$base`s to multiply together.
+  /// @return {number} `$base` to the power of `$exponent`.
+  @function pow($base, $exponent) {
+    $result: 1;
+    @for $_ from 1 through $exponent {
+      $result: $result * $base;
+    }
+    @return $result;
+  }
+  ===
+  /// Computes an exponent.
+  ///
+  /// @param {number} $base
+  ///   The number to multiply by itself.
+  /// @param {integer (unitless)} $exponent
+  ///   The number of `$base`s to multiply together.
+  /// @return {number} `$base` to the power of `$exponent`.
+  @function pow($base, $exponent)
+    $result: 1
+    @for $_ from 1 through $exponent
+      $result: $result * $base
+
+    @return $result
+<% end %>

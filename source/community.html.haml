@@ -1,102 +1,70 @@
 ---
 title: "#teamSass"
----
-
-- content_for :introduction do
+introduction: >
   Sass has an awesome community of designers and developers who love to spread
   the word and help people out. Here we&rsquo;ve collected some resources.
   Happy&nbsp;Styling!
+---
 
+:markdown
+  __Everyone is welcome in the Sass community, except those who are
+  unwelcoming__. Please read and follow our
+  [community&nbsp;guidelines](/community-guidelines).
 
+  Thinking of __contributing__  to Sass itself? We rely on everyone to
+  keep Sass as stable as it is. Feel free to
+  [submit a patch via pull request](#Contribute) to the Sass project.
 
-%ul.list-columns.anchors
-  %li
+  Want to create your own Sass implementation? Check out our
+  [implementation guidelines](/implementation).
+
+%h2#Contribute Contribute
+
+:markdown
+
+  Sass is an [open source project][github] and we encourage you to contribute.
+  You can contribute with [bug reports and feature requests][issues], and if
+  you contribute code, we'll love you forever. If you just want to help out
+  but you're not sure what to do, check out the "Help Wanted" label for [the
+  Sass language][lang help] or for [Dart Sass][dart help]. These issues
+  are a mix of feature requests, bugs, and tasks that aren't coding-intensive
+  that the developers think are a good place for someone new to the codebase
+  to jump in.
+
+  [github]: https://github.com/sass/sass
+  [issues]: https://github.com/sass/sass/issues
+  [lang help]: https://github.com/sass/sass/labels/Help%20Wanted
+  [dart help]: https://github.com/sass/dart-sass/labels/help%20wanted
+
+  [Dart Sass][] is the reference implementation of Sass, and the easiest
+  implementation to start hacking on. If you don't know Dart, don't worry!
+  It's very easy to pick up. Check out the [contributing info][] for more
+  information on helping out. Or, if you're interested in helping add new
+  features to the Sass language, look at [the language contribution
+  process][].
+
+  [Dart Sass]: /dart-sass
+  [contributing info]: https://github.com/sass/dart-sass/blob/master/CONTRIBUTING.md
+  [the language contribution process]: https://github.com/sass/language/blob/master/CONTRIBUTING.md
+
+- content_for :complementary do
+  %nav.sl-c-list-navigation-wrapper
     :markdown
-      __Everyone is welcome in the Sass community, except those who are
-      unwelcoming__. Please read and follow our
-      [community&nbsp;guidelines](/community-guidelines).
+      ## Resources
 
-      Still __getting started__? There are some great  [tutorials](#Tutorials)
-      out there to get you on your feet. Want to __learn more__? There's some
-      great [Sass blogs](#Blogs) (including
-      [a few particular articles](#Articles) we recommend reading), and even a
-      few [books about Sass](#Books) to help you learn some new tips and
-      tricks.
+      ### [Sass News](http://sass.news/)
+      Sass community newsletter curated by Sass core team designer, [Jina Anne](https://www.sushiandrobots.com)
 
-  %li
-    :markdown
-      The Sass community is amazing. There are a number of
-      [frameworks](#Projects) that make using Sass simple. Want to try Sass in
-      Node, Python, or another framework? Check out the
-      [libSass&nbsp;resources](/libsass).
+      ### [Jump Start Sass] (https://amzn.to/2LKF0uR)
+      by Hugo Giraudel and Miriam Suzanne
 
-      Thinking of __contributing__  to Sass itself? We rely on everyone to
-      keep Sass as stable as it is. Feel free to
-      [submit a patch via pull request](#Contribute) to the Sass project.
+      ### [Pragmatic Guide to Sass 3: Tame the Modern Style Sheet](https://amzn.to/2LEwXiZ)
+      by Hampton Lintorn Catlin and Michael Lintorn Catlin
 
-      Want to create your own Sass implementation? Check out our
-      [implementation guidelines](/implementation).
+      ### [Sass for Web Designers](https://amzn.to/2RkIVU3)
+      by Dan Cederholm
 
+      ### [Sass and Compass in Action](https://amzn.to/2RjAQz7)
+      by Wynn Netherland, Natalie Weizenbaum, Chris Eppstein, Brandon Mathis
 
-%hr/
-
-.content-primary
-  %h2#Articles Sass Articles on the Web
-  %ul.articles
-    - for article in data.community.articles
-      %li
-        %h3= link_to article.name, article.url
-        %p= article.description
-
-  %h2#Contribute Contribute
-
-  :markdown
-
-    Sass is an [open source project][github] and we encourage you to contribute.
-    You can contribute with [bug reports and feature requests][issues], and if
-    you contribute code, we'll love you forever. If you just want to help out
-    but you're not sure what to do, check out the "Help Wanted" label for [the
-    Sass language][lang help] or for [Dart Sass][dart help]. These issues
-    are a mix of feature requests, bugs, and tasks that aren't coding-intensive
-    that the developers think are a good place for someone new to the codebase
-    to jump in.
-
-    [github]: https://github.com/sass/sass
-    [issues]: https://github.com/sass/sass/issues
-    [lang help]: https://github.com/sass/sass/labels/Help%20Wanted
-    [dart help]: https://github.com/sass/dart-sass/labels/help%20wanted
-
-    [Dart Sass][] is the reference implementation of Sass, and the easiest
-    implementation to start hacking on. If you don't know Dart, don't worry!
-    It's very easy to pick up. Check out the [contributing info][] for more
-    information on helping out. Or, if you're interested in helping add new
-    features to the Sass language, look at [the language contribution
-    process][].
-
-    [Dart Sass]: /dart-sass
-    [contributing info]: https://github.com/sass/dart-sass/blob/master/CONTRIBUTING.md
-    [the language contribution process]: https://github.com/sass/language/blob/master/CONTRIBUTING.md
-
-.content-secondary
-  %h3#Tutorials Tutorials
-  %ul
-    - for tutorial in data.community.tutorials
-      %li= link_to tutorial.name, tutorial.url
-
-  %h3#Blogs Sass Blogs
-  %ul
-    - for blog in data.community.blogs
-      %li= link_to blog.name, blog.url
-
-  %h3#Books Sass Books
-  %ul
-    - for book in data.community.books
-      %li= link_to book.name, book.url
-
-  %h3#Projects Projects & Frameworks
-  %ul
-    - for project in data.community.projects
-      %li
-        = link_to project.name, project.url
-        &mdash;
-        = project.description
+      ### [The Sass Way](http://thesassway.com/)

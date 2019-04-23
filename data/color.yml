@@ -38,21 +38,19 @@ semantic_colors:
   - name:  background-invert
     value: "$hopbush"
   - name:  text
-    value: "darken($pale-sky, 15)"
+    value: "darken($pale-sky, 15%)"
   - name:  text-weak
-    value: "$regent-grey"
+    value: "darken($regent-grey, 10%)"
   - name:  text-strong
     value: "$midnight-blue"
   - name:  text-heading
     value: "$regent-grey"
   - name:  text-invert
-    value: "rgba($color-background, .75)"
+    value: "$color-background"
   - name:  text-strong-invert
     value: "$color-background"
   - name:  text-link
     value: "$color-primary"
-  - name:  text-link-visited
-    value: "$bouquet"
   - name:  text-link-hover
     value: "$midnight-blue"
   - name:  border

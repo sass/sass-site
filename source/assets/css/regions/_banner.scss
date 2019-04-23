@@ -1,53 +1,35 @@
-.banner {
-  @include padding-leader;
-  @include padding-trailer;
+.sl-r-banner {
+  position: relative;
 
-  * { vertical-align: middle; }
-
-  .container { position: relative; }
-}
-
-.site-brand {
-  @include font-size-regular;
-  margin: 0;
-  line-height: 0;
-  text-align: left;
-
-  img {
-    @include transition-property(height);
-    height: rhythm(2);
+  a {
+    display: inline-block;
+    border: 0;
   }
 
-  @include breakpoint($tablet-large) {
-    @include span(3);
+  &__brand img {
+    display: inline-block;
+    margin: 0;
+    height: sl-px-to-rem(48px);
 
-    img { height: rhythm(4); }
-  }
-}
-
-.banner-toggle {
-  position: absolute;
-  top:   0;
-  right:  $gutter-width;
-
-  button {
-    @extend %clear-button;
-    @include square($column-width);
-    padding: 0;
+    @include sl-breakpoint--medium { height: sl-px-to-rem(96px); }
   }
 
-  .icon-bar {
-    @include leader(.25);
-    @include trailer(.25);
-    display: block;
-    margin: {
-      right: auto;
-       left: auto;
+  &__navigation {
+    font-weight: $sl-font-weight--bold;
+
+    ul {
+      position: relative;
+      margin: 0 -1rem !important;
+
+      @include sl-breakpoint--medium {
+        right: -(sl-px-to-rem(16px));
+        margin: 0 !important;
+      }
     }
-    width: 2em;
-    height: 0.125em;
-    background-color: $color-primary;
-  }
 
-  @include breakpoint($tablet-large) { display: none; }
+    a {
+      display: block;
+      padding: sl-px-to-rem(12px) sl-px-to-rem(16px);
+    }
+  }
 }

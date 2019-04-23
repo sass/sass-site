@@ -1,0 +1,21 @@
+## Truthiness and Falsiness
+
+Anywhere `true` or `false` are allowed, you can use other values as well. The
+values `false` and [`null`][] are *falsey*, which means Sass considers them to
+indicate falsehood and cause conditions to fail. Every other value is considered
+*truthy*, so Sass considers them to work like `true` and cause conditions to
+succeed.
+
+[`null`]: /documentation/values/null
+
+For example, if you want to check if a string contains a space, you can just
+write `index($string, " ")`. The [`str-index()` function][] returns `null` if
+the string isn't found and a number otherwise.
+
+[`str-index()` function]: /documentation/functions/string#str-index
+
+<% heads_up do %>
+  Some languages consider more values falsey than just `false` and `null`. Sass
+  isn't one of those languages! Empty strings, empty lists, and the number `0`
+  are all truthy in Sass.
+<% end %>

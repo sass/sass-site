@@ -1,18 +1,13 @@
+# Website Credits
 team:
   - name: Jina
     role: design lead, code, content
     twitter: jina
-  - name: Bermon Painter
-    role: design, code, content
-    twitter: bermonpainter
-  - name: Michael Parenteau
-    role: design, code, content
-    twitter: parenteau
-
-contributors:
   - name: Natalie Weizenbaum
     role: code, content
     twitter: nex3
+
+contributors:
   - name: Chris Eppstein
     role: code, content
     twitter: chriseppstein
@@ -22,6 +17,12 @@ contributors:
   - name: Michael Catlin
     role: content
     twitter: malrase
+  - name: Bermon Painter
+    role: design, code, content
+    twitter: bermonpainter
+  - name: Michael Parenteau
+    role: design, code, content
+    twitter: parenteau
 
 thanks:
   - name: All the people at SassConf that came to help with DNS and server-related issues.
@@ -35,18 +36,12 @@ markup:
 style:
   - name: CSS3
   - name: Sass
-  - name: Compass
-  - name: Susy
-  - name: Breakpoint
   - name: Normalize
+  - name: Sanitize
 
 behavior:
   - name: Modernizr
   - name: jQuery
-  - name: jQuery UI
-  - name: Bootstrap.js
-  - name: Responsive Design Testing
-  - name: balance-text
 
 misc:
   - name: Middleman

@@ -1,0 +1,15 @@
+= wrap_layout :layout do
+  .sl-l-large-holy-grail
+    .sl-l-large-holy-grail__body
+      .sl-l-large-holy-grail__main
+        - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
+        %div{class: container}
+          - if current_page.data.introduction
+            - center_introduction = current_page.data.center_introduction ? 'sl-c-introduction--center' : ''
+            .sl-c-introduction{class: center_introduction}
+              = markdown_wrap current_page.data.introduction
+
+          = Typogruby.improve(yield)
+
+      %aside.sl-l-large-holy-grail__complementary(role='complementary')
+        = yield_content :complementary

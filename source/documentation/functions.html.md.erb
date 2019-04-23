@@ -1,0 +1,68 @@
+---
+title: Built-In Functions
+introduction: >
+  In addition to allowing users to [define their own
+  functions](at-rules/function), there are many useful functions built right
+  into Sass. These functions are called using the normal CSS function syntax,
+  with the addition of [special Sass argument
+  syntax](at-rules/function#arguments).
+overview: true
+---
+
+Sass's built-in functions are divided into a few categories:
+
+* Any function that Sass doesn't recognize as built-in or user-defined is
+  treated as a [plain CSS function][].
+
+* [Number functions][] operate on [numbers][], usually to perform some sort of
+  math.
+
+* [String functions][] make it easy to combine, search, or split apart
+  [strings][].
+
+* [Color functions][] generate new [colors][] based on existing ones, making it
+  easy to build color themes.
+
+* [List functions][] access and modify values in [lists][].
+
+* [Map functions][] make it possible to look up the value associated with a key
+  in a [map][], and much more.
+
+* [Selector functions][] provide access to Sass's powerful selector engine.
+
+* [Introspection functions][] expose the details of Sass's inner workings.
+
+[plain CSS function]: functions/css
+[Number functions]: functions/math
+[numbers]: values/numbers
+[String functions]: functions/string
+[strings]: values/strings
+[Color functions]: functions/color
+[colors]: values/colors
+[List functions]: functions/list
+[lists]: values/lists
+[Map functions]: functions/map
+[map]: values/maps
+[Selector functions]: functions/selector
+[Introspection functions]: functions/meta
+
+
+<% function "if($condition, $if-true, $if-false)" do %>
+  Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
+
+  This function is special in that it doesn't even evaluate the argument that
+  isn't returned, so it's safe to call even if the unused argument would throw an
+  error.
+
+  [truthy]: at-rules/control/if#truthiness-and-falsiness
+
+  <% example(autogen_css: false) do %>
+    @debug if(true, 10px, 15px); // 10px
+    @debug if(false, 10px, 15px); // 15px
+    @debug if(variable-defined($var), $var, null); // null
+    ===
+    @debug if(true, 10px, 15px)  // 10px
+    @debug if(false, 10px, 15px)  // 15px
+    @debug if(variable-defined($var), $var, null)  // null
+  <% end %>
+<% end %>
