@@ -23,6 +23,7 @@ use Rack::Rewrite do
   r301 '/documentation/file.INDENTED_SYNTAX.html', '/documentation/syntax'
   r301 '/documentation/file.SCSS_FOR_SASS_USERS.html', '/documentation/syntax'
   r301 '/documentation/Sass/Script/Functions.html', '/documentation/functions'
+  r301 '/documentation/Sass/Script/Functions', '/documentation/functions'
   r301 %r{/documentation/(Sass.*)}, 'http://www.rubydoc.info/gems/sass/$1'
 
   r301 %r{/(.+)/$}, '/$1'
