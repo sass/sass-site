@@ -46,7 +46,7 @@ property name!
   ===
   @mixin prefix($property, $value, $prefixes)
     @each $prefix in $prefixes
-      -#{$value}-#{$property}: $value
+      -#{$prefix}-#{$property}: $value
 
     #{$property}: $value
 
