@@ -162,6 +162,50 @@ h1::before {
 }
 ```
 
+#### `--error-css`
+
+<% impl_status dart: '1.20.0' %>
+
+This flag tells Sass whether to emit a CSS file when an error occurs during
+compilation. This CSS file describes the error in a comment *and* in the
+`content` property of `body::before`, so that you can see the error message in
+the browser without needing to switch back to the terminal.
+
+By default, error CSS is enabled if you're compiling to at least one file on
+disk (as opposed to standard output). You can pass `--error-css` explicitly to
+enable it even when you're compiling to standard out, or `--no-error-css` to
+disable it everywhere. When it's disabled, the [`--update` flag][] and
+[`--watch` flag][] will delete CSS files instead when an error occurs.
+
+[`--watch` flag]: #watch
+
+```shellsession
+$ sass --error-css style.scss style.css
+/* Error: Incompatible units em and px.
+ *   ,
+ * 1 | $width: 15px + 2em;
+ *   |         ^^^^^^^^^^
+ *   '
+ *   test.scss 1:9  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Incompatible units em and px.\a   \2577 \a 1 \2502  $width: 15px + 2em;\a   \2502          ^^^^^^^^^^\a   \2575 \a   test.scss 1:9  root stylesheet";         
+}
+Error: Incompatible units em and px.
+  ╷
+1 │ $width: 15px + 2em;
+  │         ^^^^^^^^^^
+  ╵
+  test.scss 1:9  root stylesheet
+```
+
 #### `--update`
 
 <% impl_status dart: '1.4.0' %>
