@@ -163,32 +163,28 @@ argument is known as an [argument list][].
 [argument list]: ../values/lists#argument-lists
 
 <% example do %>
-  @function min($numbers...) {
-    $min: null;
+  @function sum($numbers...) {
+    $sum: null;
     @each $number in $numbers {
-      @if $min == null or $number < $min {
-        $min: $number;
-      }
+      $sum: $sum + $number;
     }
-    @return $min;
+    @return $sum;
   }
 
   .micro {
-    width: min(50px, 30px, 100px);
+    width: sum(50px, 30px, 100px);
   }
   ===
-  @function min($numbers...)
-    $min: null
+  @function sum($numbers...)
+    $sum: null
     @each $number in $numbers
-      @if $min == null or $number < $min
-        $min: $number
+      $sum: $sum + $number
 
-
-    @return $min
+    @return $sum
 
 
   .micro
-    width: min(50px, 30px, 100px)
+    width: sum(50px, 30px, 100px)
 <% end %>
 
 #### Taking Arbitrary Keyword Arguments
