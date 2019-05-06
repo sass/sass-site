@@ -164,7 +164,7 @@ argument is known as an [argument list][].
 
 <% example do %>
   @function sum($numbers...) {
-    $sum: null;
+    $sum: 0;
     @each $number in $numbers {
       $sum: $sum + $number;
     }
@@ -176,7 +176,7 @@ argument is known as an [argument list][].
   }
   ===
   @function sum($numbers...)
-    $sum: null
+    $sum: 0
     @each $number in $numbers
       $sum: $sum + $number
 
