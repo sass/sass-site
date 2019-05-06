@@ -36,6 +36,8 @@ SCSS unless the [`--indented` flag][] is passed.
 
 ### Many-to-many Mode
 
+<% impl_status dart: '1.4.0' %>
+
 ```
 sass [<input.css>:<output.css>] [<input/>:<output/>]...
 ```
@@ -138,6 +140,8 @@ h1{font-size:40px}
 
 #### `--no-charset`
 
+<% impl_status dart: '1.19.0' %>
+
 This flag tells Sass never to emit a `@charset` declaration or a UTF-8
 [byte-order mark][]. By default, or if `--charset` is passed, Sass will insert
 either a `@charset` declaration (in expanded output mode) or a byte-order mark
@@ -158,7 +162,53 @@ h1::before {
 }
 ```
 
+#### `--error-css`
+
+<% impl_status dart: '1.20.0' %>
+
+This flag tells Sass whether to emit a CSS file when an error occurs during
+compilation. This CSS file describes the error in a comment *and* in the
+`content` property of `body::before`, so that you can see the error message in
+the browser without needing to switch back to the terminal.
+
+By default, error CSS is enabled if you're compiling to at least one file on
+disk (as opposed to standard output). You can pass `--error-css` explicitly to
+enable it even when you're compiling to standard out, or `--no-error-css` to
+disable it everywhere. When it's disabled, the [`--update` flag][] and
+[`--watch` flag][] will delete CSS files instead when an error occurs.
+
+[`--watch` flag]: #watch
+
+```shellsession
+$ sass --error-css style.scss style.css
+/* Error: Incompatible units em and px.
+ *   ,
+ * 1 | $width: 15px + 2em;
+ *   |         ^^^^^^^^^^
+ *   '
+ *   test.scss 1:9  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Incompatible units em and px.\a   \2577 \a 1 \2502  $width: 15px + 2em;\a   \2502          ^^^^^^^^^^\a   \2575 \a   test.scss 1:9  root stylesheet";         
+}
+Error: Incompatible units em and px.
+  ╷
+1 │ $width: 15px + 2em;
+  │         ^^^^^^^^^^
+  ╵
+  test.scss 1:9  root stylesheet
+```
+
 #### `--update`
+
+<% impl_status dart: '1.4.0' %>
 
 If the `--update` flag is passed, Sass will only compile stylesheets whose
 dependencies have been modified more recently than the corresponding CSS file
@@ -170,6 +220,8 @@ Compiled themes/light.scss to public/css/light.css.
 ```
 
 ### Source Maps
+
+<% impl_status dart: '1.3.0' %>
 
 <%= partial 'documentation/snippets/source-maps' %>
 
@@ -231,6 +283,8 @@ $ sass --embed-source-map sass/style.scss css.style.css
 
 #### `--watch`
 
+<% impl_status dart: '1.6.0' %>
+
 This flag acts like the [`--update` flag][], but after the first round
 compilation is done Sass stays open and continues compiling stylesheets whenever
 they or their dependencies change.
@@ -246,6 +300,8 @@ Compiled themes/dark.scss to public/css/dark.css.
 ```
 
 #### `--poll`
+
+<% impl_status dart: '1.8.0' %>
 
 This flag, which may only be passed along with `--watch`, tells Sass to manually
 check for changes to the source files every so often instead of relying on the
@@ -263,6 +319,8 @@ Compiled themes/dark.scss to public/css/dark.css.
 
 #### `--stop-on-error`
 
+<% impl_status dart: '1.8.0' %>
+
 This flag tells Sass to stop compiling immediately when an error is detected,
 rather than trying to compile other Sass files that may not contain errors. It's
 mostly useful in [many-to-many mode][].
@@ -278,6 +336,8 @@ Error: Expected expression.
 ```
 
 #### `--interactive`
+
+<% impl_status dart: '1.5.0' %>
 
 This flag (abbreviated `-i`) tells Sass to run in interactive mode, where you
 can write [SassScript expressions][] and see their results. Interactive mode
@@ -321,6 +381,8 @@ Error: Incompatible units em and px.
   style.scss 1:9  root stylesheet</code></pre>
 
 #### `--no-unicode`
+
+<% impl_status dart: '1.17.0' %>
 
 This flag tells Sass only to emit ASCII characters to the terminal as part of
 error messages. By default, or if `--unicode` is passed, Sass will emit non-ASCII
