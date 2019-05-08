@@ -1,26 +1,31 @@
 $(function() {
   $(".code-example").each(function() {
     var figure = $(this);
-    var id = figure.attr("data-unique-id");
 
-    var ul = $("<ul></ul>");
+    figure.tabs({
+      active: 0,
+      beforeActivate: function(event, ui) {
+        // If multiple panels are visible, the CSS tab shouldn't be clickable.
+        if (ui.newPanel.hasClass('css') &&
+            allPanels.filter(":visible").length > 1) {
+          return false;
+        }
+      },
+      activate: function(event, ui) {
+        if (ui.newPanel.hasClass('css')) {
+          figure.addClass('ui-tabs-panel-css-is-active');
+        } else {
+          figure.removeClass('ui-tabs-panel-css-is-active');
+        }
 
-    if (figure.find(".sass").length) {
-      ul.append("<li><a href='#example-" + id + "-sass'>Sass</a></li>");
-    }
-
-    if (figure.find(".scss").length) {
-      ul.append("<li><a href='#example-" + id + "-scss'>SCSS</a></li>");
-    }
-
-    var hasCssTab = figure.find(".css").length;
-    if (hasCssTab) {
-        ul.append(
-            $("<li class='css-tab'></li>")
-                .prepend("<a href='#example-" + id + "-css'>CSS</a>"));
-    }
-
-    figure.prepend(ul).tabs({active: hasCssTab ? 1 : 0});
+        allPanels.removeClass('ui-tabs-panel-previously-active');
+        ui.oldPanel.addClass('ui-tabs-panel-inactive').addClass('ui-tabs-panel-previously-active');
+        ui.newPanel.removeClass('ui-tabs-panel-inactive');
+        allPanels.css('display', '');
+      }
+    });
+    var allPanels = figure.find(".ui-tabs-panel");
+    allPanels.css('display', '');
   });
 
   // Switch ALL the tabs (Sass/SCSS) together
