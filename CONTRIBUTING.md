@@ -4,7 +4,7 @@ Contributing to the Sass website
 The Sass website is open source. See a bug or typo? Have an idea? Do the
 following:
 
-* **Please read the [Implementation Guide][sg] and the [Style Guide][sg]**
+* **Please read the [Implementation Guide][ig] and the [Style Guide][sg]**
   before contributing.
 * Write a detailed description of what you're adding in the pull request
   (screenshots help).
