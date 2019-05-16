@@ -726,6 +726,21 @@ h1 {
   Versions of Node Sass before 2.0.0 don't support the `importer` option at all.
 <% end %>
 
+<% impl_status dart: '1.20.2', node: false, feature: "Import order" do %>
+  Versions of Dart Sass before 1.20.2 preferred resolving imports using load
+  paths ([includePaths](#includepaths)) before resolving them using custom
+  importers.
+
+  All versions of Node Sass currently pass imports to importers before loading
+  them relative to the file in which the `@import` appears. This behavior is
+  considered incorrect and should not be relied on because it violates the
+  principle of *locality*, which says that it should be possible to reason about
+  a stylesheet without knowing everything about how the entire system is set up.
+  If a user tries to import a stylesheet relative to another stylesheet, that
+  import should *always* work. It shouldn't be possible for some configuration
+  somewhere else to break it.
+<% end %>
+
 This option defines one or more additional handlers for loading files when an
 [`@import` rule][] is encountered. It can either be a single JavaScript
 function, or an array of functions. These functions are always passed two
@@ -757,6 +772,19 @@ Importers must return one of the following types:
 All importers can return synchronously, but importers passed to the asynchronous
 [`render()` function][] can also take an additional callback to which they can
 asynchronously pass the result of the import once it's complete.
+
+Imports are resolved by trying, in order:
+
+* Loading a file relative to the file in which the `@import` appeared.
+
+* Each custom importer.
+
+* Loading a file relative to the current working directory.
+
+* Each load path in [includePaths](#includepaths)
+
+* Each load path specified in the `SASS_PATH` environment variable, which
+  should be semicolon-separated on Windows and colon-separated elsewhere.
 
 ```js
 sass.render({
