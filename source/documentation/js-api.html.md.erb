@@ -727,8 +727,9 @@ h1 {
 <% end %>
 
 <% impl_status dart: '1.20.2', node: false, feature: "Import order" do %>
-  Versions of Dart Sass before 1.20.2 loaded imports from load paths if possible
-  before passing them to importers.
+  Versions of Dart Sass before 1.20.2 preferred resolving imports using load
+  paths ([includePaths](#includepaths)) before resolving them using custom
+  importers.
 
   All versions of Node Sass currently pass imports to importers before loading
   them relative to the file in which the `@import` appears. This behavior is
@@ -780,7 +781,7 @@ Imports are resolved by trying, in order:
 
 * Loading a file relative to the current working directory.
 
-* Each load path in [includePaths][#includepaths].
+* Each load path in [includePaths](#includepaths)
 
 * Each load path specified in the `SASS_PATH` environment variable, which
   should be semicolon-separated on Windows and colon-separated elsewhere.
