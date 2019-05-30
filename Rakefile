@@ -14,6 +14,7 @@ task :test_without_rebuild do
       "http://sass.logdown.com/posts/7081811", # This times out occasionally.
       "#",
     ],
+    url_swap: {%r{^/blog/} => "http://sass.logdown.com/"},
     assume_extension: true,
     # Lots of external URLs fail flakily on Travis, so we just don't check them
     # there.
