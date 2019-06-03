@@ -30,6 +30,10 @@ use Rack::Rewrite do
   r301 %r{/(.+)/index\.html$}, '/$1'
 
   r301 %r{/blog/(.*)}, 'http://sass.logdown.com/$1'
+
+  # Provide short links for breaking changes so that they can be tersely
+  # referenced from warning and errors.
+  r301 %r{/d/(.*)}, '/documentation/breaking-changes/$1'
 end
 
 use Rack::Deflater
