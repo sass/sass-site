@@ -56,6 +56,10 @@ toc:
   - Maps: /documentation/functions/map
   - Selectors: /documentation/functions/selector
   - Introspection: /documentation/functions/meta
+- Breaking Changes: /documentation/breaking-changes
+  :children:
+  - Extending Compound Selectors: /documentation/breaking-changes/extend-compound
+  - CSS Variable Syntax: /documentation/breaking-changes/css-vars
 - Command Line: /documentation/cli
   :children:
   - Dart Sass: /documentation/cli/dart-sass
