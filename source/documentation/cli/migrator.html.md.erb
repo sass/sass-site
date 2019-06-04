@@ -1,0 +1,214 @@
+---
+title: Sass Migrator
+introduction: >
+  The Sass migrator automatically updates stylesheets that deprecated behavior to
+  the latest and greatest Sass features. It's easy to install from npm and
+  elsewhere as `sass-migrator`.
+table_of_contents: true
+---
+
+## Installation
+
+### From npm
+
+The Sass migrator is available as a [pure JavaScript npm package][]. You can
+install it by running
+
+
+```sh
+npm install -g sass-migrator
+```
+
+It doesn't currently have a JavaScript API beyond the executable.
+
+[pure JavaScript npm package]: http://npmjs.com/package/sass-migrator
+
+### From Chocolatey (Windows)
+
+If you use [the Chocolatey package manager](https://chocolatey.org/) for
+Windows, you can install the Sass migrator by running
+
+```cmd
+choco install sass-migrator
+```
+
+### Standalone
+
+You can download the standalone Sass migrator archive for your operating
+system—containing the Dart VM and the snapshot of the executable—from [the
+GitHub release page][]. Extract it, [add the directory to your path][], restart
+your terminal, and the `sass-migrator` executable is ready to run!
+
+[the GitHub release page]: https://github.com/sass/sass-migrator/releases/
+[add the directory to your path]: https://katiek2.github.io/path-doc/
+
+### From Pub
+
+If you're a Dart user, you can install the Sass migrator by running
+
+```sh
+pub global activate sass-migrator
+```
+
+It doesn't currently have a Dart API beyond the executable.
+
+## Usage
+
+```
+sass-migrator <migration> <input.scss...>
+```
+
+This updates each Sass file provided on the command line in-place according to
+the migration with the given name. If you pass the [`--migrate-deps`][] flag, it
+also updates files imported by those files.
+
+[`--migrate-deps`]: #migrate-deps
+
+```shellsession
+​# Update all stylesheets to use divide().
+$ sass-migrator division site/css/*.scss
+```
+
+Currently, the only available migration is [the `division` migration][], which
+migrates stylesheets [from `/` to `divide()`][].
+
+[the `division` migration]: #slash-as-division
+[from `/` to `divide()`]: ../breaking-changes/slash-div
+
+## Options
+
+### `--migrate-deps`
+
+This flag (abbreviated `-d`) tells the migrator to update not only the stylesheets passed on the
+command line, but all stylesheets they import as well.
+
+```shellsession
+$ sass-migrator division --migrate-deps site/assets/style.scss
+```
+
+### `--dry-run`
+
+This flag (abbreviated `-n`) tells the migrator to print the names of files that
+would be migrated, but not to actually change them on disk. It can be combined
+with [`--verbose`][] to see everything the migration will change without
+actually changing it.
+
+[`--verbose`]: #verbose
+
+```shellsession
+$ sass-migrator division --dry-run site/css/*.scss
+Dry run. Logging migrated files instead of overwriting...
+
+site/css/style.scss
+site/css/_functions.scss
+site/css/_math.scss
+```
+
+### `--no-unicode`
+
+This flag tells the migrator only to emit ASCII characters to the terminal as
+part of error messages. By default, or if `--unicode` is passed, the migrator
+will emit non-ASCII characters for these messages. This flag does not affect the
+CSS output.
+
+```shellsession
+$ sass-migrator division --no-unicode style.scss
+Error: Expected expression.
+  ,
+1 | $width: 1px +;
+  |             ^
+  '
+  test.scss 1:13  root stylesheet
+
+$ sass-migrator division --unicode style.scss
+Error: Incompatible units em and px.
+  ╷
+2 │ $width: 1px +;
+  │             ^
+  ╵
+  test.scss 1:13  root stylesheet
+```
+
+### `--verbose`
+
+This flag (abbreviated `-v`) tells the migrator to print the names of files it
+updates.
+
+```shellsession
+$ sass-migrator division --verbose style.scss
+Migrating style.scss
+```
+
+With [`--dry-run`][], this prints the entire contents of files that would be
+migrated.
+
+[`--dry-run`]: #dry-run
+
+## Migrators
+
+### Slash as Division
+
+This migrator addresses the [removal of `/` as division][]. It updates all `/`
+operations that might be interpreted as division to use the `divide()` function
+instead, and updates `/` operations that will be interpreted as separators to
+use the `slash-list()` function instead.
+
+[removal of `/` as division]: ../breaking-changes/slash-div
+
+<%# TODO(nweiz): Make #example flexible enough to generate these side-by-side. %>
+
+<% example(autogen_css: false) do %>
+  // Before
+  @debug 100px / 2;
+  @debug 2 / span 7;
+  @debug image-size() / 5;
+  ===
+  // Before
+  @debug 100px / 2
+  @debug 2 / span 7
+  @debug image-size() / 5
+<% end %>
+
+<% example(autogen_css: false) do %>
+  // After
+  @debug divide(100px, 2);
+  @debug slash-list(2, span 7);
+  @debug divide(image-size(), 5);
+  ===
+  // After
+  @debug divide(100px, 2)
+  @debug slash-list(2, span 7)
+  @debug divide(image-size(), 5)
+<% end %>
+
+#### `--pessimistic`
+
+This flag (abbreviated `-p`) tells the migrator *not* to migrate `/` operations
+that aren't clearly meant to be either division or a slash separator, such as
+operations involving function calls. These operations will then need to be
+migrated manually by the user.
+
+<% example(autogen_css: false) do %>
+  // Before
+  @debug 100px / 2;
+  @debug 2 / span 7;
+  @debug image-size() / 5;
+  ===
+  // Before
+  @debug 100px / 2
+  @debug 2 / span 7
+  @debug image-size() / 5
+<% end %>
+
+<% example(autogen_css: false) do %>
+  // After
+  @debug divide(100px, 2);
+  @debug slash-list(2, span 7);
+  @debug image-size() / 5;
+  ===
+  // After
+  @debug divide(100px, 2)
+  @debug slash-list(2, span 7)
+  @debug image-size() / 5
+<% end %>
+
