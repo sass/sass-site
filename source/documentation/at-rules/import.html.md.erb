@@ -362,10 +362,9 @@ rendered as-is. It can even be [extended][]!
 ## Plain CSS `@import`s
 
 <% impl_status dart: true, libsass: :partial, ruby: true do %>
-  By default, LibSass handles plain CSS imports correctly. However, if [custom
-  importers][] are passed to LibSass, they will incorrectly be invoked for
-  imports that should be plain-CSS, making it possible for those imports to load
-  Sass files.
+  By default, LibSass handles plain CSS imports correctly. However, any [custom
+  importers][] will incorrectly apply to plain-CSS `@import` rules, making it
+  possible for those rules to load Sass files.
 
   [custom importers]: ../js-api#importer
 <% end %>
