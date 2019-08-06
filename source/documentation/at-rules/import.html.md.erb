@@ -361,6 +361,15 @@ rendered as-is. It can even be [extended][]!
 
 ## Plain CSS `@import`s
 
+<% impl_status dart: true, libsass: :partial, ruby: true do %>
+  By default, LibSass handles plain CSS imports correctly. However, any [custom
+  importers][] will incorrectly apply to plain-CSS `@import` rules, making it
+  possible for those rules to load Sass files.
+
+  [custom importers]: ../js-api#importer
+<% end %>
+
+
 Because `@import` is also defined in CSS, Sass needs a way of compiling plain
 CSS `@import`s without trying to import the files at compile time. To accomplish
 this, and to ensure SCSS is as much of a superset of CSS as possible, Sass will
