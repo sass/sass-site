@@ -11,7 +11,7 @@
   .square-av { @include avatar(100px, $circle: false); }
   .circle-av { @include avatar(100px, $circle: true); }
   ===
-  @mixin avatar($size, $circle: false)
+  =avatar($size, $circle: false)
     width: $size
     height: $size
 
@@ -19,7 +19,7 @@
       border-radius: $size / 2
 
   .square-av
-    @include avatar(100px, $circle: false)
+    +avatar(100px, $circle: false)
   .circle-av
-    @include avatar(100px, $circle: true)
+    +avatar(100px, $circle: true)
 <% end %>
