@@ -15,7 +15,7 @@ introduction: >
       - [Variables](#topic-2)
       - [Nesting](#topic-3)
       - [Partials](#topic-4)
-      - [Import](#topic-5)
+      - [Modules](#topic-5)
       - [Mixins](#topic-6)
       - [Inheritance](#topic-7)
       - [Operators](#topic-8)
@@ -158,72 +158,72 @@ introduction: >
     Sass file named with a leading underscore. You might name it something
     like `_partial.scss`. The underscore lets Sass know that the file is only
     a partial file and that it should not be generated into a CSS file. Sass
-    partials are used with the `@import` directive.
+    partials are used with the `@use` rule.
 
     ---
 
 %section#topic-5
+  %h2 Modules
+  = partial 'documentation/snippets/module-system-status'
+
   :markdown
-    ## Import
+    You don't have to write all your Sass in a single file. You can split it up
+    however you want with the `@use` rule. This rule loads another Sass file as
+    a *module*, which means you can refer to its variables, [mixins][], and
+    [functions][] in your Sass file with a namespace based on the filename.
+    Using a file will also include the CSS it generates in your compiled output!
 
-    CSS has an import option that lets you split your CSS into smaller, more
-    maintainable portions. The only drawback is that each time you use
-    `@import` in CSS it creates another HTTP request. Sass builds on top of
-    the current CSS `@import` but instead of requiring an HTTP request, Sass
-    will take the file that you want to import and combine it with the file
-    you're importing into so you can serve a single CSS file to the web browser.
-
-    Let's say you have a couple of Sass files, `_reset.scss` and `base.scss`.
-    We want to import `_reset.scss` into `base.scss`.
+    [mixins]: #topic-6
+    [functions]: documentation/at-rules/function
 
   - example do
     :plain
-      // _reset.scss
-      html,
-      body,
-      ul,
-      ol {
-        margin:  0;
-        padding: 0;
+      // _base.scss
+      $font-stack:    Helvetica, sans-serif;
+      $primary-color: #333;
+
+      body {
+        font: 100% $font-stack;
+        color: $primary-color;
       }
       ---
-      // base.scss
-      @import 'reset';
-      body {
-        font: 100% Helvetica, sans-serif;
-        background-color: #efefef;
+      // styles.scss
+      @use 'base';
+
+      .inverse {
+        background-color: base.$primary-color;
+        color: white;
       }
       ===
-      // _reset.sass
-      html,
-      body,
-      ul,
-      ol
-        margin:  0
-        padding: 0
-      ---
-      // base.sass
-      @import reset
+      // _base.sass
+      $font-stack:    Helvetica, sans-serif
+      $primary-color: #333
+
       body
-        font: 100% Helvetica, sans-serif
-        background-color: #efefef
+        font: 100% $font-stack
+        color: $primary-color
+      ---
+      // styles.sass
+      @use 'base'
+
+      .inverse
+        background-color: base.$primary-color
+        color: white
       ===
-      html,
-      body,
-      ul,
-      ol {
-        margin:  0;
-        padding: 0;
-      }
       body {
         font: 100% Helvetica, sans-serif;
-        background-color: #efefef;
+        color: #333;
+      }
+
+      .inverse {
+        background-color: #333;
+        color: white;
       }
 
   :markdown
-    Notice we're using `@import 'reset';` in the `base.scss` file. When you
-    import a file you don't need to include the file extension `.scss`. Sass
-    is smart and will figure it out for you.
+    Notice we're using `@use 'reset';` in the `base.scss` file. When you use a
+    file you don't need to include the file extension. Sass is smart and will
+    figure it out for you.
 
     ---
 

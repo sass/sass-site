@@ -18,6 +18,48 @@ required to have quotes.
 
 [indented syntax]: ../syntax#the-indented-syntax
 
+<% heads_up do %>
+  Continued use of the `@import` rule is discouraged. It will be [gradually
+  phased out][] over the next few years, and eventually removed from the
+  language entirely. The [`@use` rule][] should be used instead.
+
+  [gradually phased out]: https://github.com/sass/sass/blob/master/accepted/module-system.md#timeline
+  [`@use` rule]: use
+
+  #### What's Wrong With `@import`?
+
+  The `@import` rule has a number of serious issues:
+
+  * `@import` makes all variables, mixins, and functions globally accessible.
+    This makes it very difficult for people (or tools) to tell where anything is
+    defined.
+
+  * Because everything's global, libraries are forced to add prefixes to all
+    their members to avoid naming conflicts.
+
+  * [`@extend` rules][] are also global, which makes it difficult to predict
+    which style rules will be extended.
+  
+    [`@extend` rules]: extend
+
+  * Each stylesheet is executed and its CSS emitted *every time* it's
+    `@import`ed, which increases compilation time and produces bloated output.
+
+  * There was no way to define private members or placeholder selectors that
+    were inaccessible to downstream stylesheets.
+
+  All of these are addressed in `@use` and the new module system.
+
+  #### How Do I Migrate?
+
+  We've written a [migration tool][] that can automatically convert most
+  `@import`-based code to `@use`-based code in a flash. Just point it at your
+  entrypoints and let it run!
+
+  [migration tool]: cli/migrator
+
+<% end %>
+
 <% example do %>
   // foundation/_code.scss
   code {
@@ -414,3 +456,89 @@ for example based on mixin parameters.
 
   @include google-font("Droid Sans")
 <% end %>
+
+## Import and Modules
+
+<%= partial '../snippets/module-system-status' %>
+
+Sass's [module system][] integrates seamlessly with `@import`, whether you're
+importing a file that contains `@use` rules or loading a file that contains
+imports as a module. We want to make the transition from `@import` to `@use` as
+smooth as possible.
+
+[module system]: use
+
+### Importing a Module-System File
+
+When you import a file that contains `@use` rules, the importing file has access
+to all members (even private members) defined directly in that file, but *not*
+any members from modules that file has loaded. However, if that file contains
+[`@forward` rules][], the importing file will have access to forwarded members.
+This means that you can import a library that was written to be used with the
+module system.
+
+[`@forward` rules]: forward
+
+<% heads_up do %>
+  When a file with `@use` rules is imported, all the CSS transitively loaded by
+  those is included in the resulting stylesheet, even if it's already been
+  included by another import. If you're not careful, this can result in bloated
+  CSS output!
+<% end %>
+
+#### Import-Only Files
+
+An API that makes sense for `@use` might not make sense for `@import`. For
+example, `@use` adds a namespace to all members by default so you can safely use
+short names, but `@import` doesn't so you might need something longer. If you're
+a library author, you may be concerned that if you update your library to use
+the new module system, your existing `@import`-based users will break.
+
+To make this easier, Sass also supports *import-only files*. If you name a file
+`<name>.import.scss`, it will only be loaded for imports, not for `@use`s. This
+way, you can retain compatibility for `@import` users while still providing a
+nice API for users of the new module system.
+
+<% example(autogen_css: false) do %>
+  // _reset.scss
+
+  // Module system users write `@include reset.list()`.
+  @mixin list() {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  }
+  ---
+  // _reset.import.scss
+
+  // Legacy import users can keep writing `@include reset-list()`.
+  @forward "reset" as reset-*;
+  ===
+  // _reset.sass
+
+  // Module system users write `@include reset.list()`.
+  @mixin list()
+    ul
+      margin: 0
+      padding: 0
+      list-style: none
+  ---
+  // _reset.import.sass
+
+  // Legacy import users can keep writing `@include reset-list()`.
+  @forward "reset" as reset-*
+<% end %>
+
+### Loading a Module That Contains Imports
+
+When you use `@use` (or `@forward`) load a module that uses `@import`, that
+module will contain all the public members defined by the stylesheet you load
+*and* everything that stylesheet transitively imports. In other words,
+everything that's imported is treated as though it were written in one big
+stylesheet.
+
+This makes it easy to convert start using `@use` in a stylesheet even before all
+the libraries you depend on have converted to the new module system. Be aware,
+though, that if they do convert their APIs may well change!

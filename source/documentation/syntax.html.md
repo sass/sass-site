@@ -1,7 +1,7 @@
 ---
 title: Syntax
 introduction: >
-  Sass supports two different syntaxes. Each one can import the other, so it's
+  Sass supports two different syntaxes. Each one can load the other, so it's
   up to you and your team which one to choose.
 ---
 

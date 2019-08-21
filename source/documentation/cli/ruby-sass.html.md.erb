@@ -80,7 +80,7 @@ When compiling whole directories, Sass will ignore [partial files][] whose names
 begin with `_`. You can use partials to separate out your stylesheets without
 creating a bunch of unnecessary output files.
 
-[partial files]: ../at-rules/import#partials
+[partial files]: ../at-rules/use#partials
 
 Many-to-many mode will only compile stylesheets whose dependencies have been
 modified more recently than the corresponding CSS file was generated. It will
@@ -93,10 +93,10 @@ also print status messages when updating stylesheets.
 #### `--load-path`
 
 This option (abbreviated `-I`) adds an additional [load path][] for Sass to look
-for imports. It can be passed multiple times to provide multiple load paths.
+for stylesheets. It can be passed multiple times to provide multiple load paths.
 Earlier load paths will take precedence over later ones.
 
-[load path]: ../at-rules/import#load-paths
+[load path]: ../at-rules/use#load-paths
 
 ```shellsession
 $ sass --load-path=node_modules/bootstrap/dist/css style.scss style.css
