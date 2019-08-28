@@ -66,4 +66,5 @@ toc:
   :children:
   - Dart Sass: /documentation/cli/dart-sass
   - Ruby Sass: /documentation/cli/ruby-sass
+  - Migrator: /documentation/cli/migrator
 - JavaScript API: /documentation/js-api
