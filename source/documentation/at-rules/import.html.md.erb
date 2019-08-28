@@ -19,9 +19,9 @@ required to have quotes.
 [indented syntax]: ../syntax#the-indented-syntax
 
 <% heads_up do %>
-  Continued use of the `@import` rule is discouraged. It will be [gradually
-  phased out][] over the next few years, and eventually removed from the
-  language entirely. The [`@use` rule][] should be used instead.
+  The Sass team discourages the continued use of the `@import` rule. Sass will
+  [gradually phase it out][] over the next few years, and eventually remove it
+  from the language entirely. Prefer the [`@use` rule][] instead.
 
   [gradually phased out]: https://github.com/sass/sass/blob/master/accepted/module-system.md#timeline
   [`@use` rule]: use
@@ -34,8 +34,8 @@ required to have quotes.
     This makes it very difficult for people (or tools) to tell where anything is
     defined.
 
-  * Because everything's global, libraries are forced to add prefixes to all
-    their members to avoid naming conflicts.
+  * Because everything's global, libraries must prefix to all their members to
+    avoid naming collisions.
 
   * [`@extend` rules][] are also global, which makes it difficult to predict
     which style rules will be extended.
@@ -48,11 +48,11 @@ required to have quotes.
   * There was no way to define private members or placeholder selectors that
     were inaccessible to downstream stylesheets.
 
-  All of these are addressed in `@use` and the new module system.
+  The new module system and the `@use` rule address all these problems.
 
   #### How Do I Migrate?
 
-  We've written a [migration tool][] that can automatically convert most
+  We've written a [migration tool][] that automatically converts most
   `@import`-based code to `@use`-based code in a flash. Just point it at your
   entrypoints and let it run!
 
