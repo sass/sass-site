@@ -14,6 +14,8 @@ toc:
 - Interpolation: /documentation/interpolation
 - At-Rules: /documentation/at-rules
   :children:
+  - <code>@use</code>: /documentation/at-rules/use
+  - <code>@forward</code>: /documentation/at-rules/forward
   - <code>@import</code>: /documentation/at-rules/import
   - <code>@mixin</code> and <code>@include</code>: /documentation/at-rules/mixin
   - <code>@function</code>: /documentation/at-rules/function
@@ -64,4 +66,5 @@ toc:
   :children:
   - Dart Sass: /documentation/cli/dart-sass
   - Ruby Sass: /documentation/cli/ruby-sass
+  - Migrator: /documentation/cli/migrator
 - JavaScript API: /documentation/js-api
