@@ -1,22 +1,27 @@
 ---
-title: Introspection Functions
+title: sass:meta
 ---
 
-<% function 'call($function, $args...)' do %>
+<%= partial '../snippets/built-in-module-status' %>
+
+<% function 'meta.call($function, $args...)', 'call($function, $args...)' do %>
   <%= partial 'documentation/snippets/call-impl-status' %>
 
   Invokes `$function` with `$args` and returns the result.
 
-  The `$function` should be a [function][] returned by [`get-function()`][].
+  The `$function` should be a [function][] returned by
+  [`meta.get-function()`][].
 
   [function]: ../values/functions
-  [`get-function()`]: #get-function
+  [`meta.get-function()`]: #get-function
 
   <%= partial 'code-snippets/example-first-class-function' %>
 <% end %>
 
 
-<% function 'content-exists()', returns: 'boolean' do %>
+<% function 'meta.content-exists()',
+            'content-exists()',
+            returns: 'boolean' do %>
   Returns whether the current mixin was passed a [`@content` block][].
 
   [`@content` block]: ../at-rules/mixin#content-blocks
@@ -25,7 +30,7 @@ title: Introspection Functions
 
   <% example(autogen_css: false) do %>
     @mixin debug-content-exists {
-      @debug content-exists();
+      @debug meta.content-exists();
       @content;
     }
 
@@ -35,7 +40,7 @@ title: Introspection Functions
     }
     ===
     @mixin debug-content-exists
-      @debug content-exists()
+      @debug meta.content-exists()
       @content
 
 
@@ -46,7 +51,9 @@ title: Introspection Functions
 <% end %>
 
 
-<% function 'feature-exists($feature)', returns: 'boolean' do %>
+<% function 'meta.feature-exists($feature)',
+            'feature-exists($feature)',
+            returns: 'boolean' do %>
   Returns whether the current Sass implementation supports `$feature`.
 
   The `$feature` must be a string. The currently recognized features are:
@@ -73,40 +80,44 @@ title: Introspection Functions
   Returns `false` for any unrecognized `$feature`.
 
   <% example(autogen_css: false) do %>
-    @debug feature-exists("at-error"); // true
-    @debug feature-exists("unrecognized"); // false
+    @debug meta.feature-exists("at-error"); // true
+    @debug meta.feature-exists("unrecognized"); // false
     ===
-    @debug feature-exists("at-error")  // true
-    @debug feature-exists("unrecognized")  // false
+    @debug meta.feature-exists("at-error")  // true
+    @debug meta.feature-exists("unrecognized")  // false
   <% end %>
 <% end %>
 
 
-<% function 'function-exists($name)', returns: 'boolean' do %>
+<% function 'meta.function-exists($name)',
+            'function-exists($name)',
+            returns: 'boolean' do %>
   Returns whether a function named `$name` is defined, either as a built-in
   function or a user-defined function.
 
   <% example(autogen_css: false) do %>
-    @debug function-exists("scale-color"); // true
-    @debug function-exists("add"); // false
+    @debug meta.function-exists("scale-color"); // true
+    @debug meta.function-exists("add"); // false
 
     @function add($num1, $num2) {
       @return $num1 + $num2;
     }
-    @debug function-exists("add"); // true
+    @debug meta.function-exists("add"); // true
     ===
-    @debug function-exists("scale-color")  // true
-    @debug function-exists("add")  // false
+    @debug meta.function-exists("scale-color")  // true
+    @debug meta.function-exists("add")  // false
 
     @function add($num1, $num2)
       @return $num1 + $num2
 
-    @debug function-exists("add")  // true
+    @debug meta.function-exists("add")  // true
   <% end %>
 <% end %>
 
 
-<% function 'get-function($name, $css: false)', returns: 'function' do %>
+<% function 'meta.get-function($name, $css: false)',
+            'get-function($name, $css: false)',
+            returns: 'function' do %>
   Returns the [function][] named `$name`.
 
   [function]: ../values/functions
@@ -119,46 +130,49 @@ title: Introspection Functions
   [user-defined]: ../at-rules/function
   [plain CSS function]: css
 
-  The returned function can be called using [`call()`](#call).
+  The returned function can be called using [`meta.call()`](#call).
 
   <%= partial 'code-snippets/example-first-class-function' %>
 <% end %>
 
 
-<% function 'global-variable-exists($name)', returns: 'boolean' do %>
+<% function 'meta.global-variable-exists($name)',
+            'global-variable-exists($name)',
+            returns: 'boolean' do %>
   Returns whether a [global variable][] named `$name` (without the `$`) exists.
 
   [global variable]: ../variables#scope
 
-  See also [`variable-exists()`](#variable-exists).
+  See also [`meta.variable-exists()`](#variable-exists).
 
   <% example(autogen_css: false) do %>
-    @debug global-variable-exists("var1"); // false
+    @debug meta.global-variable-exists("var1"); // false
 
     $var1: value;
-    @debug global-variable-exists("var1"); // true
+    @debug meta.global-variable-exists("var1"); // true
 
     h1 {
       // $var2 is local.
       $var2: value;
-      @debug global-variable-exists("var2"); // false
+      @debug meta.global-variable-exists("var2"); // false
     }
     ===
-    @debug global-variable-exists("var1")  // false
+    @debug meta.global-variable-exists("var1")  // false
 
     $var1: value 
-    @debug global-variable-exists("var1")  // true
+    @debug meta.global-variable-exists("var1")  // true
 
     h1
       // $var2 is local.
       $var2: value
-      @debug global-variable-exists("var2")  // false
+      @debug meta.global-variable-exists("var2")  // false
   <% end %>
 <% end %>
 
 
-<% function 'inspect($value)', returns: 'unquoted string' do %>
-
+<% function 'meta.inspect($value)',
+            'inspect($value)',
+            returns: 'unquoted string' do %>
   Returns a string representation of `$value`.
   
   Returns a representation of *any* Sass value, not just those that can be
@@ -171,45 +185,49 @@ title: Introspection Functions
   <% end %>
 
   <% example(autogen_css: false) do %>
-    @debug inspect(10px 20px 30px); // unquote("10px 20px 30px")
-    @debug inspect(("width": 200px)); // unquote('("width": 200px)')
-    @debug inspect(null); // unquote("null")
-    @debug inspect("Helvetica"); // unquote('"Helvetica"')
+    @debug meta.inspect(10px 20px 30px); // unquote("10px 20px 30px")
+    @debug meta.inspect(("width": 200px)); // unquote('("width": 200px)')
+    @debug meta.inspect(null); // unquote("null")
+    @debug meta.inspect("Helvetica"); // unquote('"Helvetica"')
     ===
-    @debug inspect(10px 20px 30px)  // unquote("10px 20px 30px")
-    @debug inspect(("width": 200px))  // unquote('("width": 200px)')
-    @debug inspect(null)  // unquote("null")
-    @debug inspect("Helvetica")  // unquote('"Helvetica"')
+    @debug meta.inspect(10px 20px 30px)  // unquote("10px 20px 30px")
+    @debug meta.inspect(("width": 200px))  // unquote('("width": 200px)')
+    @debug meta.inspect(null)  // unquote("null")
+    @debug meta.inspect("Helvetica")  // unquote('"Helvetica"')
   <% end %>
 <% end %>
 
 
-<% function 'mixin-exists($name)', returns: 'boolean' do %>
+<% function 'meta.mixin-exists($name)',
+            'mixin-exists($name)',
+            returns: 'boolean' do %>
   Returns whether a [mixin][] named `$name` exists.
 
   [mixin]: ../at-rules/mixin
 
   <% example(autogen_css: false) do %>
-    @debug mixin-exists("shadow-none"); // false
+    @debug meta.mixin-exists("shadow-none"); // false
 
     @mixin shadow-none {
       box-shadow: none;
     }
 
-    @debug mixin-exists("shadow-none"); // true
+    @debug meta.mixin-exists("shadow-none"); // true
     ===
-    @debug mixin-exists("shadow-none")  // false
+    @debug meta.mixin-exists("shadow-none")  // false
 
     @mixin shadow-none
       box-shadow: none
 
 
-    @debug mixin-exists("shadow-none")  // true
+    @debug meta.mixin-exists("shadow-none")  // true
   <% end %>
 <% end %>
 
 
-<% function 'type-of($value)', returns: 'unquoted string' do %>
+<% function 'meta.type-of($value)',
+            'type-of($value)',
+            returns: 'unquoted string' do %>
   Returns the type of `$value`.
 
   This can return the following values:
@@ -231,45 +249,47 @@ title: Introspection Functions
   [map function]: map
 
   <% example(autogen_css: false) do %> 
-    @debug type-of(10px); // number
-    @debug type-of(10px 20px 30px); // list
-    @debug type-of(()); // list
+    @debug meta.type-of(10px); // number
+    @debug meta.type-of(10px 20px 30px); // list
+    @debug meta.type-of(()); // list
     ===
-    @debug type-of(10px)  // number
-    @debug type-of(10px 20px 30px)  // list
-    @debug type-of(())  // list
+    @debug meta.type-of(10px)  // number
+    @debug meta.type-of(10px 20px 30px)  // list
+    @debug meta.type-of(())  // list
   <% end %>
 <% end %>
 
 
-<% function 'variable-exists($name)', returns: 'boolean' do %>
+<% function 'meta.variable-exists($name)',
+            'variable-exists($name)',
+            returns: 'boolean' do %>
   Returns whether a variable named `$name` (without the `$`) exists in the
   current [scope][].
 
   [scope]: ../variables#scope
 
-  See also [`global-variable-exists()`](#global-variable-exists).
+  See also [`meta.global-variable-exists()`](#global-variable-exists).
 
   <% example(autogen_css: false) do %>
-    @debug variable-exists("var1"); // false
+    @debug meta.variable-exists("var1"); // false
 
     $var1: value;
-    @debug variable-exists("var1"); // true
+    @debug meta.variable-exists("var1"); // true
 
     h1 {
       // $var2 is local.
       $var2: value;
-      @debug variable-exists("var2"); // true
+      @debug meta.variable-exists("var2"); // true
     }
     ===
-    @debug variable-exists("var1")  // false
+    @debug meta.variable-exists("var1")  // false
 
     $var1: value 
-    @debug variable-exists("var1")  // true
+    @debug meta.variable-exists("var1")  // true
 
     h1
       // $var2 is local.
       $var2: value
-      @debug variable-exists("var2")  // true
+      @debug meta.variable-exists("var2")  // true
   <% end %>
 <% end %>

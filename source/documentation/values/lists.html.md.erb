@@ -51,11 +51,11 @@ to the last element in a list, -2 refers to the second-to-last, and so on.
 ### Access an Element
 
 Lists aren't much use if you can't get values out of them. You can use the
-[`nth($list, $n)` function][] to get the element at a given index in a list. The
-first argument is the list itself, and the second is the index of the value you
-want to get out.
+[`list.nth($list, $n)` function][] to get the element at a given index in a
+list. The first argument is the list itself, and the second is the index of the
+value you want to get out.
 
-[`nth($list, $n)` function]: ../modules/list#nth
+[`list.nth($list, $n)` function]: ../modules/list#nth
 
 <%= partial 'code-snippets/example-list-nth' %>
 
@@ -71,12 +71,12 @@ in a list, and assigns that element to a variable.
 
 ### Add to a List
 
-It's also useful to add elements to a list. The [`append($list, $val)`
+It's also useful to add elements to a list. The [`list.append($list, $val)`
 function][] takes a list and a value, and returns a copy of the list with the value
 added to the end. Note that because Sass lists are [immutable][], it doesn't
 modify the original list.
 
-[`append($list, $val)` function]: ../modules/list#append
+[`list.append($list, $val)` function]: ../modules/list#append
 [immutable]: #immutability
 
 <% example(autogen_css: false) do %>
@@ -90,15 +90,15 @@ modify the original list.
 ### Find an Element in a List
 
 If you need to check if an element is in a list or figure out what index it's
-at, use the [`index($list, $value)` function][]. This takes a list and a value
+at, use the [`list.index($list, $value)` function][]. This takes a list and a value
 to locate in that list, and returns the index of that value.
 
-[`index($list, $value)` function]: ../modules/list#index
+[`list.index($list, $value)` function]: ../modules/list#index
 
 <%= partial 'code-snippets/example-list-index' %>
 
-If the value isn't in the list at all, `index()` returns [`null`][]. Because
-`null` is [falsey][], you can use `index()` with [`@if`][] or [`if()`][] to
+If the value isn't in the list at all, `list.index()` returns [`null`][]. Because
+`null` is [falsey][], you can use `list.index()` with [`@if`][] or [`if()`][] to
 check whether a list does or doesn't contain a given value.
 
 [`null`]: null
@@ -106,21 +106,25 @@ check whether a list does or doesn't contain a given value.
 [`@if`]: ../at-rules/control/if
 [`if()`]: ../modules#if
 
-<% example do %>
+<% example(autogen_css: false) do %>
+  @use "sass:list";
+
   $valid-sides: top, bottom, left, right;
 
   @mixin attach($side) {
-    @if not index($valid-sides, $side) {
+    @if not list.index($valid-sides, $side) {
       @error "#{$side} is not a valid side. Expected one of #{$sides}.";
     }
 
     // ...
   }
   ===
+  @use "sass:list"
+
   $valid-sides: top, bottom, left, right
 
   @mixin attach($side)
-    @if not index($valid-sides, $side)
+    @if not list.index($valid-sides, $side)
       @error "#{$side} is not a valid side. Expected one of #{$sides}."
 
 
@@ -138,25 +142,31 @@ You can still update your state over time by assigning new lists to the same
 variable, though. This is often used in functions and mixins to collect a bunch
 of values into one list.
 
-<% example do %>
+<% example(autogen_css: false) do %>
+  @use "sass:list";
+  @use "sass:map";
+
   $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms);
 
   @function prefixes-for-browsers($browsers) {
     $prefixes: ();
     @each $browser in $browsers {
-      $prefixes: append($prefixes, map-get($prefixes-by-browser, $browser));
+      $prefixes: list.append($prefixes, map.get($prefixes-by-browser, $browser));
     }
     @return $prefixes;
   }
 
   @debug prefixes-for-browsers("firefox" "ie"); // moz ms
   ===
+  @use "sass:list"
+  @use "sass:map"
+
   $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms)
 
   @function prefixes-for-browsers($browsers)
     $prefixes: ()
     @each $browser in $browsers
-      $prefixes: append($prefixes, map-get($prefixes-by-browser, $browser))
+      $prefixes: list.append($prefixes, map.get($prefixes-by-browser, $browser))
 
     @return $prefixes
 
@@ -170,9 +180,9 @@ When you declare a mixin or function that takes [arbitrary arguments][], the
 value you get is a special list known as an *argument list*. It acts just like a
 list that contains all the arguments passed to the mixin or function, with one
 extra feature: if the user passed keyword arguments, they can be accessed as a
-map by passing the argument list to the [`keywords()` function][].
+map by passing the argument list to the [`map.keywords()` function][].
 
 <%= partial 'code-snippets/example-mixin-arbitrary-keyword-arguments' %>
 
 [arbitrary arguments]: ../at-rules/mixin#taking-arbitrary-arguments
-[`keywords()` function]: ../modules/map#keywords
+[`map.keywords()` function]: ../modules/map#keywords

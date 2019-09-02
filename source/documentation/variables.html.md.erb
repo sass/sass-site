@@ -269,12 +269,13 @@ assign a value to a variable, or build up a value as part of a loop.
 ## Advanced Variable Functions
 
 The Sass core library provides a couple advanced functions for working with
-variables. The [`variable-exists()` function][] returns whether a variable with
-the given name exists in the current scope, and the [`global-variable-exists()`
-function][] does the same but only for the global scope.
+variables. The [`meta.variable-exists()` function][] returns whether a variable
+with the given name exists in the current scope, and the
+[`meta.global-variable-exists()` function][] does the same but only for the
+global scope.
 
-[`variable-exists()` function]: functions/meta#variable-exists
-[`global-variable-exists()` function]: functions/meta#global-variable-exists
+[`meta.variable-exists()` function]: functions/meta#variable-exists
+[`meta.global-variable-exists()` function]: functions/meta#global-variable-exists
 
 <% heads_up do %>
   Users occasionally want to use interpolation to define a variable name based
@@ -286,6 +287,8 @@ function][] does the same but only for the global scope.
   [map]: values/maps
 
   <% example do %>
+    @use "sass:map";
+
     $theme-colors: (
       "success": #28a745,
       "info": #17a2b8,
@@ -294,13 +297,19 @@ function][] does the same but only for the global scope.
 
     .alert {
       // Instead of $theme-color-#{warning}
-      background-color: map-get($theme-colors, "warning");
+      background-color: map.get($theme-colors, "warning");
     }
     ===
+    @use "sass:map"
+
     $theme-colors: ("success": #28a745, "info": #17a2b8, "warning": #ffc107)
 
     .alert
       // Instead of $theme-color-#{warning}
-      background-color: map-get($theme-colors, "warning")
+      background-color: map.get($theme-colors, "warning")
+    ===
+    .alert {
+      background-color: #ffc107;
+    }
   <% end %>
 <% end %>

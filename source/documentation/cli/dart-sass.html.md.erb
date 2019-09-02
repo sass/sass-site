@@ -341,18 +341,20 @@ Error: Expected expression.
 
 This flag (abbreviated `-i`) tells Sass to run in interactive mode, where you
 can write [SassScript expressions][] and see their results. Interactive mode
-also supports [variables][].
+also supports [variables][] and [`@use` rules][].
 
 [SassScript expressions]: ../syntax/structure#expressions
 [variables]: ../variables
+[`@use` rules]: ../at-rules/use
 
 ```shellsession
 $ sass --interactive
 >> 1px + 1in
 97px
+>> @use "sass:map"
 >> $map: ("width": 100px, "height": 70px)
 ("width": 100px, "height": 70px)
->> map-get($map, "width")
+>> map.get($map, "width")
 100px
 ```
 

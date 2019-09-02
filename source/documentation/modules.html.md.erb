@@ -1,50 +1,174 @@
 ---
-title: Built-In Functions
+title: Built-In Modules
 introduction: >
-  In addition to allowing users to [define their own
-  functions](at-rules/function), there are many useful functions built right
-  into Sass. These functions are called using the normal CSS function syntax,
-  with the addition of [special Sass argument
-  syntax](at-rules/function#arguments).
+  Sass provides many built-in modules which contain useful functions (and the
+  occasional mixin). These modules can be loaded with the
+  [`@use` rule](at-rules/use) like any user-defined stylesheet, and their
+  functions can be called [like any other module
+  member](at-rules/use#loading-members). All built-in module URLs begin with
+  `sass:` to indicate that they're part of Sass itself.
 overview: true
 ---
 
-Sass's built-in functions are divided into a few categories:
+<% content_for :before_introduction do %>
+  <%= partial 'snippets/built-in-module-status' %>
+<% end %>
+
+<% heads_up do %>
+  Before the Sass module system was introduced, all Sass functions were globally
+  available at all times. Many functions still have global aliases (these are
+  listed in their documentation). The Sass team discourages their use and will
+  eventually deprecate them, but for now they're still available for
+  compatibility with older Sass versions and with LibSass (which doesn't support
+  the module system yet).
+
+  [A few functions][] are still *only* available globally, either because they
+  have special evaluation behavior ([`if()`][]) or because they add extra
+  behavior on top of built-in CSS functions ([`rgb()`][] and [`hsl()`][]). These
+  will not be deprecated and can be used freely.
+
+  [a few functions]: #global-functions
+  [`if()`]: #if
+  [`rgb()`]: #rgb
+  [`hsl()`]: #hsl
+<% end %>
+
+<% example do %>
+  @use "sass:color";
+
+  .button {
+    $primary-color: #6b717f;
+    color: $primary-color;
+    border: 1px solid color.scale($primary-color, $lightness: 20%);
+  }
+  ===
+  @use "sass:color"
+
+  .button
+    $primary-color: #6b717f
+    color: $primary-color
+    border: 1px solid color.scale($primary-color, $lightness: 20%)
+  ===
+  .button {
+    color: #6b717f;
+    border: 1px solid #878d9a;
+  }
+<% end %>
+
+Sass provides the following built-in modules:
 
 * Any function that Sass doesn't recognize as built-in or user-defined is
-  treated as a [plain CSS function][].
+  treated as a [plain CSS function][]. (TODO: find a home for this)
 
-* [Number functions][] operate on [numbers][], usually to perform some sort of
-  math.
+* The [`sass:math` module][] provides functions that operate on [numbers][].
 
-* [String functions][] make it easy to combine, search, or split apart
+* The [`sass:string` module][] makes it easy to combine, search, or split apart
   [strings][].
 
-* [Color functions][] generate new [colors][] based on existing ones, making it
-  easy to build color themes.
+* The [`sass:color` module][] generates new [colors][] based on existing ones,
+  making it easy to build color themes.
 
-* [List functions][] access and modify values in [lists][].
+* The [`sass:list` module][] lets you access and modify values in [lists][].
 
-* [Map functions][] make it possible to look up the value associated with a key
-  in a [map][], and much more.
+* The [`sass:map` module][] makes it possible to look up the value associated
+  with a key in a [map][], and much more.
 
-* [Selector functions][] provide access to Sass's powerful selector engine.
+* The [`sass:selector` module][] provides access to Sass's powerful selector
+  engine.
 
-* [Introspection functions][] expose the details of Sass's inner workings.
+* The [`sass:meta` module][] exposes the details of Sass's inner workings.
 
 [plain CSS function]: functions/css
-[Number functions]: functions/math
+[`sass:math` module]: modules/math
 [numbers]: values/numbers
-[String functions]: functions/string
+[`sass:string` module]: modules/string
 [strings]: values/strings
-[Color functions]: functions/color
+[`sass:color` module]: modules/color
 [colors]: values/colors
-[List functions]: functions/list
+[`sass:list` module]: modules/list
 [lists]: values/lists
-[Map functions]: functions/map
+[`sass:map` module]: modules/map
 [map]: values/maps
-[Selector functions]: functions/selector
-[Introspection functions]: functions/meta
+[`sass:selector` module]: modules/selector
+[`sass:meta` module]: modules/meta
+
+## Global Functions
+
+<% function 'hsl($hue $saturation $lightness)',
+            'hsl($hue $saturation $lightness / $alpha)',
+            'hsl($hue, $saturation, $lightness, $alpha: 1)',
+            'hsla($hue $saturation $lightness)',
+            'hsla($hue $saturation $lightness / $alpha)',
+            'hsla($hue, $saturation, $lightness, $alpha: 1)',
+            returns: 'color' do %>
+  <% impl_status dart: '1.15.0', libsass: false, ruby: false, feature: "Level 4 Syntax" do %>
+    LibSass and Ruby Sass only support the following signatures:
+
+    * `hsl($hue, $saturation, $lightness)`
+    * `hsla($hue, $saturation, $lightness, $alpha)`
+
+    Note that for these implementations, the `$alpha` argument is *required* if
+    the function name `hsla()` is used, and *forbidden* if the function name
+    `hsl()` is used.
+  <% end %>
+
+  <% impl_status dart: true, libsass: false, ruby: '3.7.0', feature: "Percent Alpha" do %>
+    LibSass and older versions of Ruby Sass don't support alpha values specified as
+    percentages.
+  <% end %>
+
+  Returns a color with the given [hue, saturation, and lightness][] and the given
+  alpha channel.
+
+  [hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
+
+  The hue is a number between `0deg` and `360deg` (inclusive). The saturation
+  and lightness are numbers between `0%` and `100%` (inclusive). All these
+  numbers may be [unitless][]. The alpha channel can be specified as either a
+  unitless number between 0 and 1 (inclusive), or a percentage between `0%` and
+  `100%` (inclusive).
+
+  [unitless]: ../values/numbers#units
+
+  <% fun_fact do %>
+    You can pass [special functions][] like `calc()` or `var()` in place of any
+    argument to `hsl()`. You can even use `var()` in place of multiple
+    arguments, since it might be replaced by multiple values! When a color
+    function is called this way, it returns an unquoted string using the same
+    signature it was called with.
+
+    [special functions]: ../syntax/special-functions
+
+    <% example(autogen_css: false) do %>
+      @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
+      @debug hsla(var(--peach), 20%); // hsla(var(--peach), 20%)
+      ===
+      @debug hsl(210deg 100% 20% / var(--opacity))  // hsl(210deg 100% 20% / var(--opacity))
+      @debug hsla(var(--peach), 20%)  // hsla(var(--peach), 20%)
+    <% end %>
+  <% end %>
+  
+  <% heads_up do %>
+    Sass's [special parsing rules][] for slash-separated values make it
+    difficult to pass variables for `$lightness` or `$alpha` when using the
+    `hsl($hue $saturation $lightness / $alpha)` signature. Consider using
+    `hsl($hue, $saturation, $lightness, $alpha)` instead.
+
+    [special parsing rules]: ../operators/numeric#slash-separated-values
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug hsl(210deg 100% 20%); // #036
+    @debug hsl(34, 35%, 92%); // #f2ece4
+    @debug hsl(210deg 100% 20% / 50%); // rgba(0, 51, 102, 0.5)
+    @debug hsla(34, 35%, 92%, 0.2); // rgba(242, 236, 228, 0.2)
+    ===
+    @debug hsl(210deg 100% 20%) // #036
+    @debug hsl(34, 35%, 92%) // #f2ece4
+    @debug hsl(210deg 100% 20% / 50%)  // rgba(0, 51, 102, 0.5)
+    @debug hsla(34, 35%, 92%, 0.2)  // rgba(242, 236, 228, 0.2)
+  <% end %>
+<% end %>
 
 
 <% function "if($condition, $if-true, $if-false)" do %>
@@ -64,5 +188,95 @@ Sass's built-in functions are divided into a few categories:
     @debug if(true, 10px, 15px)  // 10px
     @debug if(false, 10px, 15px)  // 15px
     @debug if(variable-defined($var), $var, null)  // null
+  <% end %>
+<% end %>
+
+
+<% function 'rgb($red $green $blue)',
+            'rgb($red $green $blue / $alpha)',
+            'rgb($red, $green, $blue, $alpha: 1)',
+            'rgb($color, $alpha)',
+            'rgba($red $green $blue)',
+            'rgba($red $green $blue / $alpha)',
+            'rgba($red, $green, $blue, $alpha: 1)',
+            'rgba($color, $alpha)',
+            returns: 'color' do %>
+  <% impl_status dart: '1.15.0', libsass: false, ruby: false, feature: "Level 4 Syntax" do %>
+    LibSass and Ruby Sass only support the following signatures:
+
+    * `rgb($red, $green, $blue)`
+    * `rgba($red, $green, $blue, $alpha)`
+    * `rgba($color, $alpha)`
+
+    Note that for these implementations, the `$alpha` argument is *required* if
+    the function name `rgba()` is used, and *forbidden* if the function name
+    `rgb()` is used.
+  <% end %>
+
+  <% impl_status dart: true, libsass: false, ruby: '3.7.0', feature: "Percent Alpha" do %>
+    LibSass and older versions of Ruby Sass don't support alpha values specified
+    as percentages.
+  <% end %>
+
+  If `$red`, `$green`, `$blue`, and optionally `$alpha` are passed, returns a
+  color with the given red, green, blue, and alpha channels.
+
+  Each channel can be specified as either a [unitless][] number between 0 and
+  255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
+  alpha channel can be specified as either a unitless number between 0 and 1
+  (inclusive), or a percentage between `0%` and `100%` (inclusive).
+
+  [unitless]: ../values/numbers#units
+
+  <% fun_fact do %>
+    You can pass [special functions][] like `calc()` or `var()` in place of any
+    argument to `rgb()`. You can even use `var()` in place of multiple
+    arguments, since it might be replaced by multiple values! When a color
+    function is called this way, it returns an unquoted string using the same
+    signature it was called with.
+
+    [special functions]: ../syntax/special-functions
+
+    <% example(autogen_css: false) do %>
+      @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
+      @debug rgba(var(--peach), 0.2); // rgba(var(--peach), 0.2)
+      ===
+      @debug rgb(0 51 102 / var(--opacity))  // rgb(0 51 102 / var(--opacity))
+      @debug rgba(var(--peach), 0.2)  // rgba(var(--peach), 0.2)
+    <% end %>
+  <% end %>
+
+  <% heads_up do %>
+    Sass's [special parsing rules][] for slash-separated values make it
+    difficult to pass variables for `$blue` or `$alpha` when using the
+    `rgb($red $green $blue / $alpha)` signature. Consider using
+    `hsl($red, $green, $blue, $alpha)` instead.
+
+    [special parsing rules]: ../operators/numeric#slash-separated-values
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug rgb(0 51 102); // #036
+    @debug rgb(95%, 92.5%, 89.5%); // #f2ece4
+    @debug rgb(0 51 102 / 50%); // rgba(0, 51, 102, 0.5)
+    @debug rgba(95%, 92.5%, 89.5%, 0.2); // rgba(242, 236, 228, 0.2)
+    ===
+    @debug rgb(0 51 102)  // #036
+    @debug rgb(95%, 92.5%, 89.5%)  // #f2ece4
+    @debug rgb(0 51 102 / 50%)  // rgba(0, 51, 102, 0.5)
+    @debug rgba(95%, 92.5%, 89.5%, 0.2)  // rgba(242, 236, 228, 0.2)
+  <% end %>
+
+  ---
+
+  If `$color` and `$alpha` are passed, this returns `$color` with the given
+  `$alpha` channel instead of its original alpha channel.
+
+  <% example(autogen_css: false) do %>
+    @debug rgb(#f2ece4, 50%); // rgba(242, 236, 228, 0.5);
+    @debug rgba(rgba(0, 51, 102, 0.5), 1); // #003366
+    ===
+    @debug rgb(#f2ece4, 50%)  // rgba(242, 236, 228, 0.5) 
+    @debug rgba(rgba(0, 51, 102, 0.5), 1)  // #003366
   <% end %>
 <% end %>

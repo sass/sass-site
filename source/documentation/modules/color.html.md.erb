@@ -1,9 +1,11 @@
 ---
-title: Color Functions
+title: sass:color
 ---
 
-<% function <<SIGNATURE, returns: 'color' do
-adjust-color($color,
+<%= partial '../snippets/built-in-module-status' %>
+
+<% function <<SIGNATURE, 'adjust-color(...)', returns: 'color' do
+color.adjust($color,
   $red: null, $green: null, $blue: null,
   $hue: null, $saturation: null, $lightness: null,
   $alpha: null)
@@ -27,17 +29,17 @@ SIGNATURE
 
   See also:
 
-  * [`scale-color()`](#scale-color) for fluidly scaling a color's properties.
-  * [`change-color()`](#change-color) for setting a color's properties.
+  * [`color.scale()`](#scale) for fluidly scaling a color's properties.
+  * [`color.change()`](#change) for setting a color's properties.
 
   <% example(autogen_css: false) do %>
-    @debug adjust-color(#6b717f, $red: 15); // #7a717f
-    @debug adjust-color(#d2e1dd, $red: -10, $blue: 10); // #c8e1e7
-    @debug adjust-color(#998099, $lightness: -30%, $alpha: -0.4); // rgba(71, 57, 71, 0.6)
+    @debug color.adjust(#6b717f, $red: 15); // #7a717f
+    @debug color.adjust(#d2e1dd, $red: -10, $blue: 10); // #c8e1e7
+    @debug color.adjust(#998099, $lightness: -30%, $alpha: -0.4); // rgba(71, 57, 71, 0.6)
     ===
-    @debug adjust-color(#6b717f, $red: 15)  // #7a717f
-    @debug adjust-color(#d2e1dd, $red: -10, $blue: 10)  // #c8e1e7
-    @debug adjust-color(#998099, $lightness: -30%, $alpha: -0.4)  // rgba(71, 57, 71, 0.6)
+    @debug color.adjust(#6b717f, $red: 15)  // #7a717f
+    @debug color.adjust(#d2e1dd, $red: -10, $blue: 10)  // #c8e1e7
+    @debug color.adjust(#998099, $lightness: -30%, $alpha: -0.4)  // rgba(71, 57, 71, 0.6)
   <% end %>
 <% end %>
 
@@ -50,8 +52,15 @@ SIGNATURE
 
   [unitless]: ../values/numbers#units
 
-  See also [`adjust-color()`](#adjust-color), which can adjust any property of a
+  See also [`color.adjust()`](#adjust), which can adjust any property of a
   color.
+
+  <% heads_up do %>
+    Because `adjust-hue()` is redundant with [`adjust()`](#adjust), it's not
+    included directly in the new module system. Instead of
+    `adjust-hue($color, $amount)`, you can write
+    [`color.adjust($color, $hue: $amount)`](#adjust).
+  <% end %>
 
   <% example(autogen_css: false) do %>
     // Hue 222deg becomes 282deg.
@@ -75,7 +84,10 @@ SIGNATURE
 <% end %>
 
 
-<% function 'alpha($color)', 'opacity($color)', returns: 'number' do %>
+<% function 'color.alpha($color)',
+            'alpha($color)',
+            'opacity($color)',
+            returns: 'number' do %>
   Returns the alpha channel of `$color` as a number between 0 and 1.
 
   As a special case, this supports the Internet Explorer syntax
@@ -85,51 +97,51 @@ SIGNATURE
 
   See also:
 
-  * [`red()`](#red) for getting a color's red channel.
-  * [`green()`](#green) for getting a color's green channel.
-  * [`blue()`](#blue) for getting a color's blue channel.
-  * [`hue()`](#hue) for getting a color's hue.
-  * [`saturation()`](#saturation) for getting a color's saturation.
-  * [`lightness()`](#lightness) for getting a color's lightness.
+  * [`color.red()`](#red) for getting a color's red channel.
+  * [`color.green()`](#green) for getting a color's green channel.
+  * [`color.blue()`](#blue) for getting a color's blue channel.
+  * [`color.hue()`](#hue) for getting a color's hue.
+  * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.lightness()`](#lightness) for getting a color's lightness.
 
   <% example(autogen_css: false) do %>
-    @debug alpha(#e1d7d2); // 1
-    @debug opacity(rgb(210, 225, 221, 0.4)); // 0.4
+    @debug color.alpha(#e1d7d2); // 1
+    @debug color.opacity(rgb(210, 225, 221, 0.4)); // 0.4
     @debug alpha(opacity=20); // alpha(opacity=20)
     ===
-    @debug alpha(#e1d7d2)  // 1
-    @debug opacity(rgb(210, 225, 221, 0.4))  // 0.4
+    @debug color.alpha(#e1d7d2)  // 1
+    @debug color.opacity(rgb(210, 225, 221, 0.4))  // 0.4
     @debug alpha(opacity=20)  // alpha(opacity=20)
   <% end %>
 <% end %>
 
 
-<% function 'blue($color)', returns: 'number' do %>
+<% function 'color.blue($color)', 'blue($color)', returns: 'number' do %>
   Returns the blue channel of `$color` as a number between 0 and 255.
 
   See also:
 
-  * [`red()`](#red) for getting a color's red channel.
-  * [`green()`](#green) for getting a color's green channel.
-  * [`hue()`](#hue) for getting a color's hue.
-  * [`saturation()`](#saturation) for getting a color's saturation.
-  * [`lightness()`](#lightness) for getting a color's lightness.
-  * [`alpha()`](#alpha) for getting a color's alpha channel.
+  * [`color.red()`](#red) for getting a color's red channel.
+  * [`color.green()`](#green) for getting a color's green channel.
+  * [`color.hue()`](#hue) for getting a color's hue.
+  * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
-    @debug blue(#e1d7d2); // 210
-    @debug blue(white); // 255
-    @debug blue(black); // 0
+    @debug color.blue(#e1d7d2); // 210
+    @debug color.blue(white); // 255
+    @debug color.blue(black); // 0
     ===
-    @debug blue(#e1d7d2)  // 210
-    @debug blue(white)  // 255
-    @debug blue(black)  // 0
+    @debug color.blue(#e1d7d2)  // 210
+    @debug color.blue(white)  // 255
+    @debug color.blue(black)  // 0
   <% end %>
 <% end %>
 
 
-<% function <<SIGNATURE, returns: 'color' do
-change-color($color,
+<% function <<SIGNATURE, 'change-color(...)', returns: 'color' do
+color.change($color,
   $red: null, $green: null, $blue: null,
   $hue: null, $saturation: null, $lightness: null,
   $alpha: null)
@@ -153,47 +165,49 @@ SIGNATURE
 
   See also:
 
-  * [`scale-color()`](#scale-color) for fluidly scaling a color's properties.
-  * [`adjust-color()`](#adjust-color) for adjusting a color's properties by fixed
+  * [`color.scale()`](#scale) for fluidly scaling a color's properties.
+  * [`color.adjust()`](#adjust) for adjusting a color's properties by fixed
     amounts.
 
   <% example(autogen_css: false) do %>
-    @debug change-color(#6b717f, $red: 100); // #64717f
-    @debug change-color(#d2e1dd, $red: 100, $blue: 50); // #64e132
-    @debug change-color(#998099, $lightness: 30%, $alpha: 0.5); // rgba(85, 68, 85, 0.5)
+    @debug color.change(#6b717f, $red: 100); // #64717f
+    @debug color.change(#d2e1dd, $red: 100, $blue: 50); // #64e132
+    @debug color.change(#998099, $lightness: 30%, $alpha: 0.5); // rgba(85, 68, 85, 0.5)
     ===
-    @debug change-color(#6b717f, $red: 100)  // #64717f
-    @debug change-color(#d2e1dd, $red: 100, $blue: 50)  // #64e132
-    @debug change-color(#998099, $lightness: 30%, $alpha: 0.5)  // rgba(85, 68, 85, 0.5)
+    @debug color.change(#6b717f, $red: 100)  // #64717f
+    @debug color.change(#d2e1dd, $red: 100, $blue: 50)  // #64e132
+    @debug color.change(#998099, $lightness: 30%, $alpha: 0.5)  // rgba(85, 68, 85, 0.5)
   <% end %>
 <% end %>
 
 
-<% function 'complement($color)', returns: 'color' do %>
+<% function 'color.complement($color)',
+            'complement($color)',
+            returns: 'color' do %>
   Returns the RGB [complement][] of `$color`.
 
-  This is identical to [`adjust-hue($color, 180deg)`](#adjust-hue).
+  This is identical to [`color.adjust($color, $hue: 180deg)`](#adjust).
 
   [complement]: https://en.wikipedia.org/wiki/Complementary_colors
 
   <% example(autogen_css: false) do %>
     // Hue 222deg becomes 42deg.
-    @debug complement(#6b717f); // #7f796b
+    @debug color.complement(#6b717f); // #7f796b
 
     // Hue 164deg becomes 344deg.
-    @debug complement(#d2e1dd); // #e1d2d6
+    @debug color.complement(#d2e1dd); // #e1d2d6
 
     // Hue 210deg becomes 30deg.
-    @debug complement(#036); // #663300
+    @debug color.complement(#036); // #663300
     ===
     // Hue 222deg becomes 42deg.
-    @debug complement(#6b717f)  // #7f796b
+    @debug color.complement(#6b717f)  // #7f796b
 
     // Hue 164deg becomes 344deg.
-    @debug complement(#d2e1dd)  // #e1d2d6
+    @debug color.complement(#d2e1dd)  // #e1d2d6
 
     // Hue 210deg becomes 30deg.
-    @debug complement(#036)  // #663300
+    @debug color.complement(#036)  // #663300
   <% end %>
 <% end %>
 
@@ -207,20 +221,25 @@ SIGNATURE
   <% heads_up do %>
     The `darken()` function decreases lightness by a fixed amount, which is often
     not the desired effect. To make a color a certain percentage darker than it was
-    before, use [`scale-color()`](#scale-color) instead.
+    before, use [`color.scale()`](#scale) instead.
+
+    Because `darken()` is usually not the best way to make a color darker, it's
+    not included directly in the new module system. However, if you have to
+    preserve the existing behavior, `darken($color, $amount)` can be written
+    [`color.adjust($color, $lightness: -$amount)`](#adjust).
 
     <% example(autogen_css: false) do %>
       // #036 has lightness 20%, so when darken() subtracts 30% it just returns black.
       @debug darken(#036, 30%); // black
 
-      // scale-color() instead makes it 30% darker than it was originally.
-      @debug scale-color(#036, $lightness: -30%); // #002447
+      // scale() instead makes it 30% darker than it was originally.
+      @debug color.scale(#036, $lightness: -30%); // #002447
       ===
       // #036 has lightness 20%, so when darken() subtracts 30% it just returns black.
       @debug darken(#036, 30%)  // black
 
-      // scale-color() instead makes it 30% darker than it was originally.
-      @debug scale-color(#036, $lightness: -30%)  // #002447
+      // scale() instead makes it 30% darker than it was originally.
+      @debug color.scale(#036, $lightness: -30%)  // #002447
     <% end %>
   <% end %>
 
@@ -255,22 +274,27 @@ SIGNATURE
   <% heads_up do %>
     The `desaturate()` function decreases saturation by a fixed amount, which is
     often not the desired effect. To make a color a certain percentage less
-    saturated than it was before, use [`scale-color()`](#scale-color) instead.
+    saturated than it was before, use [`color.scale()`](#scale) instead.
+
+    Because `desaturate()` is usually not the best way to make a color less
+    saturated, it's not included directly in the new module system. However, if
+    you have to preserve the existing behavior, `desaturate($color, $amount)`
+    can be written [`color.adjust($color, $saturation: -$amount)`](#adjust).
 
     <% example(autogen_css: false) do %>
       // #d2e1dd has saturation 20%, so when desaturate() subtracts 30% it just
       // returns gray.
       @debug desaturate(#d2e1dd, 30%); // #dadada
 
-      // scale-color() instead makes it 30% less saturated than it was originally.
-      @debug scale-color(#6b717f, $saturation: -30%); // #6e727c
+      // scale() instead makes it 30% less saturated than it was originally.
+      @debug color.scale(#6b717f, $saturation: -30%); // #6e727c
       ===
       // #6b717f has saturation 20%, so when desaturate() subtracts 30% it just
       // returns gray.
       @debug desaturate(#d2e1dd, 30%)  // #dadada
 
-      // scale-color() instead makes it 30% less saturated than it was originally.
-      @debug scale-color(#6b717f, $saturation: -30%)  // #6e727c
+      // scale() instead makes it 30% less saturated than it was originally.
+      @debug color.scale(#6b717f, $saturation: -30%)  // #6e727c
     <% end %>
   <% end %>
 
@@ -296,167 +320,96 @@ SIGNATURE
 <% end %>
 
 
-<% function 'grayscale($color)', returns: 'color' do %>
+<% function 'color.grayscale($color)',
+            'grayscale($color)',
+            returns: 'color' do %>
   Returns a gray color with the same lightness as `$color`.
 
-  This is identical to [`change-color($color, $saturation: 0%)`](#change-color).
+  This is identical to [`color.change($color, $saturation: 0%)`](#change).
 
   <% example(autogen_css: false) do %>
-    @debug grayscale(#6b717f); // #757575
-    @debug grayscale(#d2e1dd); // #dadada
-    @debug grayscale(#036); // #333333
+    @debug color.grayscale(#6b717f); // #757575
+    @debug color.grayscale(#d2e1dd); // #dadada
+    @debug color.grayscale(#036); // #333333
     ===
-    @debug grayscale(#6b717f)  // #757575
-    @debug grayscale(#d2e1dd)  // #dadada
-    @debug grayscale(#036)  // #333333
+    @debug color.grayscale(#6b717f)  // #757575
+    @debug color.grayscale(#d2e1dd)  // #dadada
+    @debug color.grayscale(#036)  // #333333
   <% end %>
 <% end %>
 
 
-<% function 'green($color)', returns: 'number' do %>
+<% function 'color.green($color)', 'green($color)', returns: 'number' do %>
   Returns the green channel of `$color` as a number between 0 and 255.
 
   See also:
 
-  * [`red()`](#red) for getting a color's red channel.
-  * [`blue()`](#blue) for getting a color's blue channel.
-  * [`hue()`](#hue) for getting a color's hue.
-  * [`saturation()`](#saturation) for getting a color's saturation.
-  * [`lightness()`](#lightness) for getting a color's lightness.
-  * [`alpha()`](#alpha) for getting a color's alpha channel.
+  * [`color.red()`](#red) for getting a color's red channel.
+  * [`color.blue()`](#blue) for getting a color's blue channel.
+  * [`color.hue()`](#hue) for getting a color's hue.
+  * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
-    @debug green(#e1d7d2); // 215
-    @debug green(white); // 255
-    @debug green(black); // 0
+    @debug color.green(#e1d7d2); // 215
+    @debug color.green(white); // 255
+    @debug color.green(black); // 0
     ===
-    @debug green(#e1d7d2)  // 215
-    @debug green(white)  // 255
-    @debug green(black)  // 0
+    @debug color.green(#e1d7d2)  // 215
+    @debug color.green(white)  // 255
+    @debug color.green(black)  // 0
   <% end %>
 <% end %>
 
 
-<% function 'hsl($hue $saturation $lightness)',
-            'hsl($hue $saturation $lightness / $alpha)',
-            'hsl($hue, $saturation, $lightness, $alpha: 1)',
-            'hsla($hue $saturation $lightness)',
-            'hsla($hue $saturation $lightness / $alpha)',
-            'hsla($hue, $saturation, $lightness, $alpha: 1)',
-            returns: 'color' do %>
-  <% impl_status dart: '1.15.0', libsass: false, ruby: false, feature: "Level 4 Syntax" do %>
-    LibSass and Ruby Sass only support the following signatures:
-
-    * `hsl($hue, $saturation, $lightness)`
-    * `hsla($hue, $saturation, $lightness, $alpha)`
-
-    Note that for these implementations, the `$alpha` argument is *required* if
-    the function name `hsla()` is used, and *forbidden* if the function name
-    `hsl()` is used.
-  <% end %>
-
-  <% impl_status dart: true, libsass: false, ruby: '3.7.0', feature: "Percent Alpha" do %>
-    LibSass and older versions of Ruby Sass don't support alpha values specified as
-    percentages.
-  <% end %>
-
-  Returns a color with the given [hue, saturation, and lightness][] and the given
-  alpha channel.
-
-  [hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
-
-  The hue is a number between `0deg` and `360deg` (inclusive). The saturation
-  and lightness are numbers between `0%` and `100%` (inclusive). All these
-  numbers may be [unitless][]. The alpha channel can be specified as either a
-  unitless number between 0 and 1 (inclusive), or a percentage between `0%` and
-  `100%` (inclusive).
-
-  [unitless]: ../values/numbers#units
-
-  <% fun_fact do %>
-    You can pass [special functions][] like `calc()` or `var()` in place of any
-    argument to `hsl()`. You can even use `var()` in place of multiple
-    arguments, since it might be replaced by multiple values! When a color
-    function is called this way, it returns an unquoted string using the same
-    signature it was called with.
-
-    [special functions]: ../syntax/special-functions
-
-    <% example(autogen_css: false) do %>
-      @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
-      @debug hsla(var(--peach), 20%); // hsla(var(--peach), 20%)
-      ===
-      @debug hsl(210deg 100% 20% / var(--opacity))  // hsl(210deg 100% 20% / var(--opacity))
-      @debug hsla(var(--peach), 20%)  // hsla(var(--peach), 20%)
-    <% end %>
-  <% end %>
-  
-  <% heads_up do %>
-    Sass's [special parsing rules][] for slash-separated values make it
-    difficult to pass variables for `$lightness` or `$alpha` when using the
-    `hsl($hue $saturation $lightness / $alpha)` signature. Consider using
-    `hsl($hue, $saturation, $lightness, $alpha)` instead.
-
-    [special parsing rules]: ../operators/numeric#slash-separated-values
-  <% end %>
-
-  <% example(autogen_css: false) do %>
-    @debug hsl(210deg 100% 20%); // #036
-    @debug hsl(34, 35%, 92%); // #f2ece4
-    @debug hsl(210deg 100% 20% / 50%); // rgba(0, 51, 102, 0.5)
-    @debug hsla(34, 35%, 92%, 0.2); // rgba(242, 236, 228, 0.2)
-    ===
-    @debug hsl(210deg 100% 20%) // #036
-    @debug hsl(34, 35%, 92%) // #f2ece4
-    @debug hsl(210deg 100% 20% / 50%)  // rgba(0, 51, 102, 0.5)
-    @debug hsla(34, 35%, 92%, 0.2)  // rgba(242, 236, 228, 0.2)
-  <% end %>
-<% end %>
-
-
-<% function 'hue($color)', returns: 'number' do %>
+<% function 'color.hue($color)', 'hue($color)', returns: 'number' do %>
   Returns the hue of `$color` as a number between `0deg` and `255deg`.
 
   See also:
 
-  * [`red()`](#red) for getting a color's red channel.
-  * [`green()`](#green) for getting a color's green channel.
-  * [`blue()`](#blue) for getting a color's blue channel.
-  * [`saturation()`](#saturation) for getting a color's saturation.
-  * [`lightness()`](#lightness) for getting a color's lightness.
-  * [`alpha()`](#alpha) for getting a color's alpha channel.
+  * [`color.red()`](#red) for getting a color's red channel.
+  * [`color.green()`](#green) for getting a color's green channel.
+  * [`color.blue()`](#blue) for getting a color's blue channel.
+  * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
-    @debug hue(#e1d7d2); // 20deg
-    @debug hue(#f2ece4); // 34.2857142857deg
-    @debug hue(#dadbdf); // 228deg
+    @debug color.hue(#e1d7d2); // 20deg
+    @debug color.hue(#f2ece4); // 34.2857142857deg
+    @debug color.hue(#dadbdf); // 228deg
     ===
-    @debug hue(#e1d7d2)  // 20deg
-    @debug hue(#f2ece4)  // 34.2857142857deg
-    @debug hue(#dadbdf)  // 228deg
+    @debug color.hue(#e1d7d2)  // 20deg
+    @debug color.hue(#f2ece4)  // 34.2857142857deg
+    @debug color.hue(#dadbdf)  // 228deg
   <% end %>
 <% end %>
 
 
-<% function 'ie-hex-str($color)', returns: 'unquoted string' do %>
+<% function 'color.ie-hex-str($color)',
+            'ie-hex-str($color)',
+            returns: 'unquoted string' do %>
   Returns an unquoted string that represents `$color` in the `#AARRGGBB` format
   expected by Internet Explorer's [`-ms-filter`][] property.
 
   [`-ms-filter`]: https://developer.mozilla.org/en-US/docs/Web/CSS/-ms-filter
 
   <% example(autogen_css: false) do %>
-    @debug ie-hex-str(#b37399); // #FFB37399
-    @debug ie-hex-str(#808c99); // #FF808C99
-    @debug ie-hex-str(rgba(242, 236, 228, 0.6)); // #99F2ECE4
+    @debug color.ie-hex-str(#b37399); // #FFB37399
+    @debug color.ie-hex-str(#808c99); // #FF808C99
+    @debug color.ie-hex-str(rgba(242, 236, 228, 0.6)); // #99F2ECE4
     ===
-    @debug ie-hex-str(#b37399); // #FFB37399
-    @debug ie-hex-str(#808c99); // #FF808C99
-    @debug ie-hex-str(rgba(242, 236, 228, 0.6)); // #99F2ECE4
+    @debug color.ie-hex-str(#b37399); // #FFB37399
+    @debug color.ie-hex-str(#808c99); // #FF808C99
+    @debug color.ie-hex-str(rgba(242, 236, 228, 0.6)); // #99F2ECE4
   <% end %>
 <% end %>
 
 
-<% function 'invert($color, $weight: 100%)', returns: 'color' do %>
+<% function 'color.invert($color, $weight: 100%)',
+            'invert($color, $weight: 100%)',
+            returns: 'color' do %>
   Returns the inverse or [negative][] of `$color`.
 
   [negative]: https://en.wikipedia.org/wiki/Negative_(photography)
@@ -466,13 +419,13 @@ SIGNATURE
   it will be closer to `$color`. Weight `50%` will always produce `#808080`.
 
   <% example(autogen_css: false) do %>
-    @debug invert(#b37399); // #4c8c66
-    @debug invert(black); // white
-    @debug invert(#550e0c, 20%); // #663b3a
+    @debug color.invert(#b37399); // #4c8c66
+    @debug color.invert(black); // white
+    @debug color.invert(#550e0c, 20%); // #663b3a
     ===
-    @debug invert(#b37399)  // #4c8c66
-    @debug invert(black)  // white
-    @debug invert(#550e0c, 20%)  // #663b3a
+    @debug color.invert(#b37399)  // #4c8c66
+    @debug color.invert(black)  // white
+    @debug color.invert(#550e0c, 20%)  // #663b3a
   <% end %>
 <% end %>
 
@@ -486,20 +439,25 @@ SIGNATURE
   <% heads_up do %>
     The `lighten()` function increases lightness by a fixed amount, which is often
     not the desired effect. To make a color a certain percentage lighter than it was
-    before, use [`scale-color()`](#scale-color) instead.
+    before, use [`scale()`](#scale) instead.
+
+    Because `lighten()` is usually not the best way to make a color lighter,
+    it's not included directly in the new module system. However, if you have to
+    preserve the existing behavior, `lighten($color, $amount)` can be written
+    [`adjust($color, $lightness: $amount)`](#adjust).
 
     <% example(autogen_css: false) do %>
       // #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
       @debug lighten(#e1d7d2, 30%); // white
 
-      // scale-color() instead makes it 30% lighter than it was originally.
-      @debug scale-color(#e1d7d2, $lightness: 30%); // #eae3e0
+      // scale() instead makes it 30% lighter than it was originally.
+      @debug color.scale(#e1d7d2, $lightness: 30%); // #eae3e0
       ===
       // #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
       @debug lighten(#e1d7d2, 30%)  // white
 
-      // scale-color() instead makes it 30% lighter than it was originally.
-      @debug scale-color(#e1d7d2, $lightness: 30%)  // #eae3e0
+      // scale() instead makes it 30% lighter than it was originally.
+      @debug color.scale(#e1d7d2, $lightness: 30%)  // #eae3e0
     <% end %>
   <% end %>
 
@@ -525,31 +483,35 @@ SIGNATURE
 <% end %>
 
 
-<% function 'lightness($color)', returns: 'number' do %>
+<% function 'color.lightness($color)',
+            'lightness($color)',
+            returns: 'number' do %>
   Returns the HSL lightness of `$color` as a number between `0%` and `100%`.
 
   See also:
 
-  * [`red()`](#red) for getting a color's red channel.
-  * [`green()`](#green) for getting a color's green channel.
-  * [`blue()`](#blue) for getting a color's blue channel.
-  * [`hue()`](#hue) for getting a color's hue.
-  * [`saturation()`](#saturation) for getting a color's saturation.
-  * [`alpha()`](#alpha) for getting a color's alpha channel.
+  * [`color.red()`](#red) for getting a color's red channel.
+  * [`color.green()`](#green) for getting a color's green channel.
+  * [`color.blue()`](#blue) for getting a color's blue channel.
+  * [`color.hue()`](#hue) for getting a color's hue.
+  * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
-    @debug lightness(#e1d7d2); // 85.2941176471%
-    @debug lightness(#f2ece4); // 92.1568627451%
-    @debug lightness(#dadbdf); // 86.4705882353%
+    @debug color.lightness(#e1d7d2); // 85.2941176471%
+    @debug color.lightness(#f2ece4); // 92.1568627451%
+    @debug color.lightness(#dadbdf); // 86.4705882353%
     ===
-    @debug lightness(#e1d7d2)  // 85.2941176471%
-    @debug lightness(#f2ece4)  // 92.1568627451%
-    @debug lightness(#dadbdf)  // 86.4705882353%
+    @debug color.lightness(#e1d7d2)  // 85.2941176471%
+    @debug color.lightness(#f2ece4)  // 92.1568627451%
+    @debug color.lightness(#dadbdf)  // 86.4705882353%
   <% end %>
 <% end %>
 
 
-<% function 'mix($color1, $color2, $weight: 50%)', returns: 'color' do %>
+<% function 'color.mix($color1, $color2, $weight: 50%)',
+            'mix($color1, $color2, $weight: 50%)',
+            returns: 'color' do %>
   Returns a number that's a mixture of `$color1` and `$color2`.
 
   Both the `$weight` and the relative opacity of each color determines how much of
@@ -558,15 +520,15 @@ SIGNATURE
   used, and a smaller weight indicates that more of `$color2` should be used.
 
   <% example(autogen_css: false) do %>
-    @debug mix(#036, #d2e1dd); // #698aa2
-    @debug mix(#036, #d2e1dd, 75%); // #355f84
-    @debug mix(#036, #d2e1dd, 25%); // #9eb6bf
-    @debug mix(rgba(242, 236, 228, 0.5), #6b717f); // rgba(141, 144, 152, 0.75)
+    @debug color.mix(#036, #d2e1dd); // #698aa2
+    @debug color.mix(#036, #d2e1dd, 75%); // #355f84
+    @debug color.mix(#036, #d2e1dd, 25%); // #9eb6bf
+    @debug color.mix(rgba(242, 236, 228, 0.5), #6b717f); // rgba(141, 144, 152, 0.75)
     ===
-    @debug mix(#036, #d2e1dd)  // #698aa2
-    @debug mix(#036, #d2e1dd, 75%)  // #355f84
-    @debug mix(#036, #d2e1dd, 25%)  // #9eb6bf
-    @debug mix(rgba(242, 236, 228, 0.5), #6b717f)  // rgba(141, 144, 152, 0.75)
+    @debug color.mix(#036, #d2e1dd)  // #698aa2
+    @debug color.mix(#036, #d2e1dd, 75%)  // #355f84
+    @debug color.mix(#036, #d2e1dd, 25%)  // #9eb6bf
+    @debug color.mix(rgba(242, 236, 228, 0.5), #6b717f)  // rgba(141, 144, 152, 0.75)
   <% end %>
 <% end %>
 
@@ -580,22 +542,27 @@ SIGNATURE
   <% heads_up do %>
     The `opacify()` function increases the alpha channel by a fixed amount, which is often
     not the desired effect. To make a color a certain percentage more opaque than it was
-    before, use [`scale-color()`](#scale-color) instead.
+    before, use [`scale()`](#scale) instead.
+
+    Because `opacify()` is usually not the best way to make a color more opaque,
+    it's not included directly in the new module system. However, if you have to
+    preserve the existing behavior, `opacify($color, $amount)` can be written
+    [`adjust($color, $alpha: -$amount)`](#adjust).
 
     <% example(autogen_css: false) do %>
       // rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully
       // opaque color.
       @debug opacify(rgba(#036, 0.7), 0.3); // #036
 
-      // scale-color() instead makes it 30% more opaque than it was originally.
-      @debug scale-color(rgba(#036, 0.7), $alpha: 30%); // rgba(0, 51, 102, 0.79)
+      // scale() instead makes it 30% more opaque than it was originally.
+      @debug color.scale(rgba(#036, 0.7), $alpha: 30%); // rgba(0, 51, 102, 0.79)
       ===
       // rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully
       // opaque color.
       @debug opacify(rgba(#036, 0.7), 0.3)  // #036
 
-      // scale-color() instead makes it 30% more opaque than it was originally.
-      @debug scale-color(rgba(#036, 0.7), $alpha: 30%)  // rgba(0, 51, 102, 0.79)
+      // scale() instead makes it 30% more opaque than it was originally.
+      @debug color.scale(rgba(#036, 0.7), $alpha: 30%)  // rgba(0, 51, 102, 0.79)
     <% end %>
   <% end %>
 
@@ -611,121 +578,31 @@ SIGNATURE
 <% end %>
 
 
-<% function 'red($color)', returns: 'number' do %>
+<% function 'color.red($color)', 'red($color)', returns: 'number' do %>
   Returns the red channel of `$color` as a number between 0 and 255.
 
   See also:
 
-  * [`green()`](#green) for getting a color's green channel.
-  * [`blue()`](#blue) for getting a color's blue channel.
-  * [`hue()`](#hue) for getting a color's hue.
-  * [`saturation()`](#saturation) for getting a color's saturation.
-  * [`lightness()`](#lightness) for getting a color's lightness.
-  * [`alpha()`](#alpha) for getting a color's alpha channel.
+  * [`color.green()`](#green) for getting a color's green channel.
+  * [`color.blue()`](#blue) for getting a color's blue channel.
+  * [`color.hue()`](#hue) for getting a color's hue.
+  * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
-    @debug red(#e1d7d2); // 225
-    @debug red(white); // 255
-    @debug red(black); // 0
+    @debug color.red(#e1d7d2); // 225
+    @debug color.red(white); // 255
+    @debug color.red(black); // 0
     ===
-    @debug red(#e1d7d2)  // 225
-    @debug red(white)  // 255
-    @debug red(black)  // 0
+    @debug color.red(#e1d7d2)  // 225
+    @debug color.red(white)  // 255
+    @debug color.red(black)  // 0
   <% end %>
 <% end %>
 
 
-<% function 'rgb($red $green $blue)',
-            'rgb($red $green $blue / $alpha)',
-            'rgb($red, $green, $blue, $alpha: 1)',
-            'rgb($color, $alpha)',
-            'rgba($red $green $blue)',
-            'rgba($red $green $blue / $alpha)',
-            'rgba($red, $green, $blue, $alpha: 1)',
-            'rgba($color, $alpha)',
-            returns: 'color' do %>
-  <% impl_status dart: '1.15.0', libsass: false, ruby: false, feature: "Level 4 Syntax" do %>
-    LibSass and Ruby Sass only support the following signatures:
-
-    * `rgb($red, $green, $blue)`
-    * `rgba($red, $green, $blue, $alpha)`
-    * `rgba($color, $alpha)`
-
-    Note that for these implementations, the `$alpha` argument is *required* if
-    the function name `rgba()` is used, and *forbidden* if the function name
-    `rgb()` is used.
-  <% end %>
-
-  <% impl_status dart: true, libsass: false, ruby: '3.7.0', feature: "Percent Alpha" do %>
-    LibSass and older versions of Ruby Sass don't support alpha values specified
-    as percentages.
-  <% end %>
-
-  If `$red`, `$green`, `$blue`, and optionally `$alpha` are passed, returns a
-  color with the given red, green, blue, and alpha channels.
-
-  Each channel can be specified as either a [unitless][] number between 0 and
-  255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
-  alpha channel can be specified as either a unitless number between 0 and 1
-  (inclusive), or a percentage between `0%` and `100%` (inclusive).
-
-  [unitless]: ../values/numbers#units
-
-  <% fun_fact do %>
-    You can pass [special functions][] like `calc()` or `var()` in place of any
-    argument to `rgb()`. You can even use `var()` in place of multiple
-    arguments, since it might be replaced by multiple values! When a color
-    function is called this way, it returns an unquoted string using the same
-    signature it was called with.
-
-    [special functions]: ../syntax/special-functions
-
-    <% example(autogen_css: false) do %>
-      @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
-      @debug rgba(var(--peach), 0.2); // rgba(var(--peach), 0.2)
-      ===
-      @debug rgb(0 51 102 / var(--opacity))  // rgb(0 51 102 / var(--opacity))
-      @debug rgba(var(--peach), 0.2)  // rgba(var(--peach), 0.2)
-    <% end %>
-  <% end %>
-
-  <% heads_up do %>
-    Sass's [special parsing rules][] for slash-separated values make it
-    difficult to pass variables for `$blue` or `$alpha` when using the
-    `rgb($red $green $blue / $alpha)` signature. Consider using
-    `hsl($red, $green, $blue, $alpha)` instead.
-
-    [special parsing rules]: ../operators/numeric#slash-separated-values
-  <% end %>
-
-  <% example(autogen_css: false) do %>
-    @debug rgb(0 51 102); // #036
-    @debug rgb(95%, 92.5%, 89.5%); // #f2ece4
-    @debug rgb(0 51 102 / 50%); // rgba(0, 51, 102, 0.5)
-    @debug rgba(95%, 92.5%, 89.5%, 0.2); // rgba(242, 236, 228, 0.2)
-    ===
-    @debug rgb(0 51 102)  // #036
-    @debug rgb(95%, 92.5%, 89.5%)  // #f2ece4
-    @debug rgb(0 51 102 / 50%)  // rgba(0, 51, 102, 0.5)
-    @debug rgba(95%, 92.5%, 89.5%, 0.2)  // rgba(242, 236, 228, 0.2)
-  <% end %>
-
-  ---
-
-  If `$color` and `$alpha` are passed, this returns `$color` with the given
-  `$alpha` channel instead of its original alpha channel.
-
-  <% example(autogen_css: false) do %>
-    @debug rgb(#f2ece4, 50%); // rgba(242, 236, 228, 0.5);
-    @debug rgba(rgba(0, 51, 102, 0.5), 1); // #003366
-    ===
-    @debug rgb(#f2ece4, 50%)  // rgba(242, 236, 228, 0.5) 
-    @debug rgba(rgba(0, 51, 102, 0.5), 1)  // #003366
-  <% end %>
-<% end %>
-
-
-<% function 'saturate($color, $amount)', returns: 'color' do %>
+<% function 'saturate($color, $amount)', 'saturate($color, $amount)', returns: 'color' do %>
   Makes `$color` more saturated.
 
   The `$amount` must be a number between `0%` and `100%` (inclusive). Increases
@@ -734,22 +611,27 @@ SIGNATURE
   <% heads_up do %>
     The `saturate()` function increases saturation by a fixed amount, which is often
     not the desired effect. To make a color a certain percentage more saturated than
-    it was before, use [`scale-color()`](#scale-color) instead.
+    it was before, use [`scale()`](#scale) instead.
+
+    Because `saturate()` is usually not the best way to make a color more
+    saturated, it's not included directly in the new module system. However, if
+    you have to preserve the existing behavior, `saturate($color, $amount)` can
+    be written [`adjust($color, $saturation: $amount)`](#adjust).
 
     <% example(autogen_css: false) do %>
       // #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes
       // fully saturated.
       @debug saturate(#0e4982, 30%); // #004990
 
-      // scale-color() instead makes it 30% more saturated than it was originally.
-      @debug scale-color(#0e4982, $saturation: 30%); // #0a4986
+      // scale() instead makes it 30% more saturated than it was originally.
+      @debug color.scale(#0e4982, $saturation: 30%); // #0a4986
       ===
       // #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes
       // fully saturated.
       @debug saturate(#0e4982, 30%)  // #004990
 
-      // scale-color() instead makes it 30% more saturated than it was originally.
-      @debug scale-color(#0e4982, $saturation: 30%)  // #0a4986
+      // scale() instead makes it 30% more saturated than it was originally.
+      @debug color.scale(#0e4982, $saturation: 30%)  // #0a4986
     <% end %>
   <% end %>
 
@@ -775,32 +657,34 @@ SIGNATURE
 <% end %>
 
 
-<% function 'saturation($color)', returns: 'number' do %>
+<% function 'color.saturation($color)',
+            'saturation($color)',
+            returns: 'number' do %>
   Returns the HSL saturation of `$color` as a number between `0%` and `100%`.
 
   See also:
 
-  * [`red()`](#red) for getting a color's red channel.
-  * [`green()`](#green) for getting a color's green channel.
-  * [`blue()`](#blue) for getting a color's blue channel.
-  * [`hue()`](#hue) for getting a color's hue.
-  * [`lightness()`](#lightness) for getting a color's lightness.
-  * [`alpha()`](#alpha) for getting a color's alpha channel.
+  * [`color.red()`](#red) for getting a color's red channel.
+  * [`color.green()`](#green) for getting a color's green channel.
+  * [`color.blue()`](#blue) for getting a color's blue channel.
+  * [`color.hue()`](#hue) for getting a color's hue.
+  * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
-    @debug saturation(#e1d7d2); // 20%
-    @debug saturation(#f2ece4); // 30%
-    @debug saturation(#dadbdf); // 7.2463768116%
+    @debug color.saturation(#e1d7d2); // 20%
+    @debug color.saturation(#f2ece4); // 30%
+    @debug color.saturation(#dadbdf); // 7.2463768116%
     ===
-    @debug saturation(#e1d7d2)  // 20%
-    @debug saturation(#f2ece4)  // 30%
-    @debug saturation(#dadbdf)  // 7.2463768116%
+    @debug color.saturation(#e1d7d2)  // 20%
+    @debug color.saturation(#f2ece4)  // 30%
+    @debug color.saturation(#dadbdf)  // 7.2463768116%
   <% end %>
 <% end %>
 
 
-<% function <<SIGNATURE, returns: 'color' do
-scale-color($color,
+<% function  <<SIGNATURE, 'scale-color(...)', returns: 'color' do
+color.scale($color,
   $red: null, $green: null, $blue: null,
   $saturation: null, $lightness: null,
   $alpha: null)
@@ -820,18 +704,18 @@ SIGNATURE
 
   See also:
 
-  * [`adjust-color()`](#adjust-color) for changing a color's properties by fixed
+  * [`color.adjust()`](#adjust) for changing a color's properties by fixed
     amounts.
-  * [`change-color()`](#change-color) for setting a color's properties.
+  * [`color.change()`](#change) for setting a color's properties.
 
   <% example(autogen_css: false) do %>
-    @debug scale-color(#6b717f, $red: 15%); // #81717f
-    @debug scale-color(#d2e1dd, $lightness: -10%, $saturation: 10%); // #b3d4cb
-    @debug scale-color(#998099, $alpha: -40%); // rgba(153, 128, 153, 0.6)
+    @debug color.scale(#6b717f, $red: 15%); // #81717f
+    @debug color.scale(#d2e1dd, $lightness: -10%, $saturation: 10%); // #b3d4cb
+    @debug color.scale(#998099, $alpha: -40%); // rgba(153, 128, 153, 0.6)
     ===
-    @debug scale-color(#6b717f, $red: 15%)  // #81717f
-    @debug scale-color(#d2e1dd, $lightness: -10%, $saturation: 10%)  // #b3d4cb
-    @debug scale-color(#998099, $alpha: -40%)  // rgba(153, 128, 153, 0.6)
+    @debug color.scale(#6b717f, $red: 15%)  // #81717f
+    @debug color.scale(#d2e1dd, $lightness: -10%, $saturation: 10%)  // #b3d4cb
+    @debug color.scale(#998099, $alpha: -40%)  // rgba(153, 128, 153, 0.6)
   <% end %>
 <% end %>
 
@@ -845,22 +729,28 @@ SIGNATURE
   <% heads_up do %>
     The `transparentize()` function decreases the alpha channel by a fixed amount,
     which is often not the desired effect. To make a color a certain percentage more
-    transparent than it was before, use [`scale-color()`](#scale-color) instead.
+    transparent than it was before, use [`color.scale()`](#scale) instead.
+
+    Because `transparentize()` is usually not the best way to make a color more
+    transparent, it's not included directly in the new module system. However,
+    if you have to preserve the existing behavior,
+    `transparentize($color, $amount)` can be written
+    [`color.adjust($color, $alpha: -$amount)`](#adjust).
 
     <% example(autogen_css: false) do %>
       // rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it
       // returns a fully transparent color.
       @debug transparentize(rgba(#036, 0.3), 0.3); // rgba(0, 51, 102, 0)
 
-      // scale-color() instead makes it 30% more transparent than it was originally.
-      @debug scale-color(rgba(#036, 0.3), $alpha: -30%); // rgba(0, 51, 102, 0.21)
+      // scale() instead makes it 30% more transparent than it was originally.
+      @debug color.scale(rgba(#036, 0.3), $alpha: -30%); // rgba(0, 51, 102, 0.21)
       ===
       // rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it
       // returns a fully transparent color.
       @debug transparentize(rgba(#036, 0.3), 0.3)  // rgba(0, 51, 102, 0)
 
-      // scale-color() instead makes it 30% more transparent than it was originally.
-      @debug scale-color(rgba(#036, 0.3), $alpha: -30%)  // rgba(0, 51, 102, 0.21)
+      // scale() instead makes it 30% more transparent than it was originally.
+      @debug color.scale(rgba(#036, 0.3), $alpha: -30%)  // rgba(0, 51, 102, 0.21)
     <% end %>
   <% end %>
 

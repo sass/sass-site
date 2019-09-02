@@ -4,20 +4,24 @@ introduction: >
   Booleans are the logical values `true` and `false`. In addition their literal
   forms, booleans are returned by [equality](../operators/equality) and
   [relational](../operators/relational) operators, as well as many built-in
-  functions like [`comparable()`](../modules/math#comparable) and
-  [`map-has-key()`](../modules/map#map-has-key).
+  functions like [`math.comparable()`](../modules/math#comparable) and
+  [`map.has-key()`](../modules/map#has-key).
 ---
 
 <% example(autogen_css: false) do %>
+  @use "sass:math";
+
   @debug 1px == 2px; // false
   @debug 1px == 1px; // true
   @debug 10px < 3px; // false
-  @debug comparable(100px, 3in); // true
+  @debug math.comparable(100px, 3in); // true
   ===
+  @use "sass:math";
+
   @debug 1px == 2px  // false
   @debug 1px == 1px  // true
   @debug 10px < 3px  // false
-  @debug comparable(100px, 3in)  // true
+  @debug math.comparable(100px, 3in)  // true
 <% end %>
 
 You can work with booleans using [boolean operators][]. The `and` operator

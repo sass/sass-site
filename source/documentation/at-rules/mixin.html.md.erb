@@ -256,11 +256,11 @@ is known as an [argument list][].
 #### Taking Arbitrary Keyword Arguments
 
 Argument lists can also be used to take arbitrary keyword arguments. The
-[`keywords()` function][] takes an argument list and returns any extra keywords
-that were passed to the mixin as a [map][] from argument names (not including
-`$`) to those arguments' values.
+[`map.keywords()` function][] takes an argument list and returns any extra
+keywords that were passed to the mixin as a [map][] from argument names (not
+including `$`) to those arguments' values.
 
-[`keywords()` function]: ../modules/map#keywords
+[`map.keywords()` function]: ../modules/map#keywords
 [map]: ../values/maps
 
 <%# TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass %>
@@ -268,12 +268,12 @@ that were passed to the mixin as a [map][] from argument names (not including
 <%= partial 'code-snippets/example-mixin-arbitrary-keyword-arguments' %>
 
 <% fun_fact do %>
-  If you don't ever pass an argument list to the [`keywords()` function][], that
-  argument list won't allow extra keyword arguments. This helps callers of your
-  mixin make sure they haven't accidentally written any typos in their argument
-  names.
+  If you don't ever pass an argument list to the [`map.keywords()` function][],
+  that argument list won't allow extra keyword arguments. This helps callers of
+  your mixin make sure they haven't accidentally written any typos in their
+  argument names.
 
-  [`keywords()` function]: ../modules/map#keywords
+  [`map.keywords()` function]: ../modules/map#keywords
 <% end %>
 
 #### Passing Arbitrary Arguments

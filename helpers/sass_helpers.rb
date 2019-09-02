@@ -434,7 +434,8 @@ module SassHelpers
   def function(*signatures, returns: nil)
     names = Set.new
     highlighted_signatures = signatures.map do |signature|
-      name = signature.split("(").first
+      name, rest = signature.split("(", 2)
+      name_without_namespace = name.split(".").last
       html = Nokogiri::HTML(_render_markdown(<<MARKDOWN))
 ```scss
 @function #{signature}
@@ -446,9 +447,9 @@ MARKDOWN
         take_while {|el| el.text != "{}"}[1...-1]
 
       # Add a class to make it easier to index function documentation.
-      unless names.include?(name)
-        names << name
-        name_element = signature_elements.find {|el| el.text == name}
+      unless names.include?(name_without_namespace)
+        names << name_without_namespace
+        name_element = signature_elements.find {|el| el.text == name_without_namespace}
         name_element.add_class ".docSearch-function"
         name_element['name'] = name
       end

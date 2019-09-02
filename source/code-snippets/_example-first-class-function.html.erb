@@ -1,14 +1,18 @@
 <%# TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass %>
 
 <% example do %>
+  @use "sass:list";
+  @use "sass:meta";
+  @use "sass:string";
+
   /// Return a copy of $list with all elements for which $condition returns `true`
   /// removed.
   @function remove-where($list, $condition) {
     $new-list: ();
-    $separator: list-separator($list);
+    $separator: list.separator($list);
     @each $element in $list {
-      @if not call($condition, $element) {
-        $new-list: append($new-list, $element, $separator: $separator);
+      @if not meta.call($condition, $element) {
+        $new-list: list.append($new-list, $element, $separator: $separator);
       }
     }
     @return $new-list;
@@ -18,19 +22,23 @@
 
   content {
     @function contains-helvetica($string) {
-      @return str-index($string, "Helvetica");
+      @return string.index($string, "Helvetica");
     }
-    font-family: remove-where($fonts, get-function("contains-helvetica"));
+    font-family: remove-where($fonts, meta.get-function("contains-helvetica"));
   }
   ===
+  @use "sass:list"
+  @use "sass:meta"
+  @use "sass:string"
+
   /// Return a copy of $list with all elements for which $condition returns `true`
   /// removed.
   @function remove-where($list, $condition)
     $new-list: ()
-    $separator: list-separator($list)
+    $separator: list.separator($list)
     @each $element in $list
-      @if not call($condition, $element)
-        $new-list: append($new-list, $element, $separator: $separator)
+      @if not meta.call($condition, $element)
+        $new-list: list.append($new-list, $element, $separator: $separator)
 
 
     @return $new-list
@@ -40,9 +48,9 @@
 
   content
     @function contains-helvetica($string)
-      @return str-index($string, "Helvetica")
+      @return string.index($string, "Helvetica")
 
-    font-family: remove-where($fonts, get-function("contains-helvetica"))
+    font-family: remove-where($fonts, meta.get-function("contains-helvetica"))
   ===
   content {
     font-family: Tahoma, Geneva, Arial, sans-serif;

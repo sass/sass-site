@@ -1,8 +1,11 @@
 <% example do %>
-  @mixin syntax-colors($args...) {
-    @debug keywords($args); // (string: #080, comment: #800, $variable: $60b)
+  @use "sass:map";
 
-    @each $name, $color in keywords($args) {
+  @mixin syntax-colors($args...) {
+    @debug map.keywords($args);
+    // (string: #080, comment: #800, $variable: $60b)
+
+    @each $name, $color in map.keywords($args) {
       pre span.stx-#{$name} {
         color: $color;
       }
@@ -15,17 +18,20 @@
     $variable: #60b,
   )
   ===
-  @mixin syntax-colors($args...)
-    @debug keywords($args)  // (string: #080, comment: #800, $variable: $60b)
+  @use "sass:map"
 
-    @each $name, $color in keywords($args)
+  @mixin syntax-colors($args...)
+    @debug map.keywords($args)
+    // (string: #080, comment: #800, $variable: $60b)
+
+    @each $name, $color in map.keywords($args)
       pre span.stx-#{$name}
         color: $color
 
 
 
 
-  @include syntax-colors($string: #080, $comment: #800, $variable: #60b);
+  @include syntax-colors($string: #080, $comment: #800, $variable: #60b)
   ===
   pre span.stx-string {
     color: #080;

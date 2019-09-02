@@ -190,20 +190,20 @@ argument is known as an [argument list][].
 #### Taking Arbitrary Keyword Arguments
 
 Argument lists can also be used to take arbitrary keyword arguments. The
-[`keywords()` function][] takes an argument list and returns any extra keywords
-that were passed to the function as a [map][] from argument names (not including
-`$`) to those arguments' values.
+[`map.keywords()` function][] takes an argument list and returns any extra
+keywords that were passed to the function as a [map][] from argument names (not
+including `$`) to those arguments' values.
 
-[`keywords()` function]: ../modules/map#keywords
+[`map.keywords()` function]: ../modules/map#keywords
 [map]: ../values/maps
 
 <% fun_fact do %>
-  If you don't ever pass an argument list to the [`keywords()` function][], that
-  argument list won't allow extra keyword arguments. This helps callers of your
-  function make sure they haven't accidentally written any typos in their
+  If you don't ever pass an argument list to the [`map.keywords()` function][],
+  that argument list won't allow extra keyword arguments. This helps callers of
+  your function make sure they haven't accidentally written any typos in their
   argument names.
 
-  [`keywords()` function]: ../modules/map#keywords
+  [`map.keywords()` function]: ../modules/map#keywords
 <% end %>
 
 #### Passing Arbitrary Arguments
@@ -258,26 +258,30 @@ an [`@else` block][].
 
 [`@else` block]: control/if#else
 
-<% example do %>
+<% example(autogen_css: false) do %>
+  @use "sass:string";
+
   @function str-insert($string, $insert, $index) {
     // Avoid making new strings if we don't need to.
-    @if str-length($string) == 0 {
+    @if string.length($string) == 0 {
       @return $insert;
     }
 
-    $before: str-slice($string, 0, $index);
-    $after: str-slice($string, $index);
+    $before: string.slice($string, 0, $index);
+    $after: string.slice($string, $index);
     @return $before + $insert + $after;
   }
   ===
+  @use "sass:string"
+
   @function str-insert($string, $insert, $index)
     // Avoid making new strings if we don't need to.
-    @if str-length($string) == 0
+    @if string.length($string) == 0
       @return $insert
 
 
-    $before: str-slice($string, 0, $index)
-    $after: str-slice($string, $index)
+    $before: string.slice($string, 0, $index)
+    $after: string.slice($string, $index)
     @return $before + $insert + $after
 <% end %>
 

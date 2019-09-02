@@ -61,12 +61,12 @@ means a few different things:
   they're the same up to the tenth digit after the decimal point.
 
 * If a number is less than `0.0000000001` away from an integer, it's considered
-  to be an integer for the purposes of functions like [`nth()`][] that require
+  to be an integer for the purposes of functions like [`list.nth()`][] that require
   integer arguments.
 
 [`==`]: ../operators/equality
 [`>=`]: ../operators/relational
-[`nth()`]: ../modules/list#nth
+[`list.nth()`]: ../modules/list#nth
 
 <% example(autogen_css: false) do %>
   @debug 0.012345678912345; // 0.0123456789

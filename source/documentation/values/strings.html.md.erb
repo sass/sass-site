@@ -11,19 +11,23 @@ introduction: >
 ---
 
 <% fun_fact do %>
-  You can convert a quoted string to an unquoted string using the [`unquote()`
-  function][], and you can convert an unquoted string to a quoted string using
-  the [`quote()` function][].
+  You can convert a quoted string to an unquoted string using the
+  [`string.unquote()` function][], and you can convert an unquoted string to a
+  quoted string using the [`string.quote()` function][].
 
-  [`unquote()` function]: ../modules/string#unquote
-  [`quote()` function]: ../modules/string#quote
+  [`string.unquote()` function]: ../modules/string#unquote
+  [`string.quote()` function]: ../modules/string#quote
 
   <% example(autogen_css: false) do %>
-    @debug unquote(".widget:hover"); // .widget:hover
-    @debug quote(bold); // "bold"
+    @use "sass:string";
+
+    @debug string.unquote(".widget:hover"); // .widget:hover
+    @debug string.quote(bold); // "bold"
     ===
-    @debug unquote(".widget:hover")  // .widget:hover
-    @debug quote(bold)  // "bold"
+    @use "sass:string"
+
+    @debug string.unquote(".widget:hover")  // .widget:hover
+    @debug string.quote(bold)  // "bold"
   <% end %>
 <% end %>
 
@@ -182,16 +186,20 @@ code point, whether it's escaped or unescaped:
 * Otherwise, the lowercase Unicode escape is included with a trailing space. For
   example, `\7Fx` returns the unquoted string `\7f x`.
 
-<% example do %>
+<% example(autogen_css: false) do %>
+  @use "sass:string";
+
   @debug \1F46D; // 👭
   @debug \21; // \!
   @debug \7Fx; // \7f x
-  @debug str-length(\7Fx); // 5
+  @debug string.length(\7Fx); // 5
   ===
+  @use "sass:string"
+
   @debug \1F46D  // 👭
   @debug \21  // \!
   @debug \7Fx  // \7f x
-  @debug str-length(\7Fx)  // 5
+  @debug string.length(\7Fx)  // 5
 <% end %>
 
 ## String Indexes
@@ -205,12 +213,16 @@ the second-to-last, and so on.
 
 [string functions]: ../modules/string
 
-<% example do %>
-  @debug str-index("Helvetica Neue", "Helvetica"); // 1
-  @debug str-index("Helvetica Neue", "Neue"); // 11
-  @debug str-slice("Roboto Mono", -4); // "Mono"
+<% example(autogen_css: false) do %>
+  @use "sass:string";
+
+  @debug string.index("Helvetica Neue", "Helvetica"); // 1
+  @debug string.index("Helvetica Neue", "Neue"); // 11
+  @debug string.slice("Roboto Mono", -4); // "Mono"
   ===
-  @debug str-index("Helvetica Neue", "Helvetica")  // 1
-  @debug str-index("Helvetica Neue", "Neue")  // 11
-  @debug str-slice("Roboto Mono", -4)  // "Mono"
+  @use "sass:string"
+
+  @debug string.index("Helvetica Neue", "Helvetica")  // 1
+  @debug string.index("Helvetica Neue", "Neue")  // 11
+  @debug string.slice("Roboto Mono", -4)  // "Mono"
 <% end %>

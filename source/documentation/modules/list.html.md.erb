@@ -1,6 +1,8 @@
 ---
-title: List Functions
+title: sass:list
 ---
+
+<%= partial '../snippets/built-in-module-status' %>
 
 <% fun_fact do %>
   In Sass, every [map][] counts as a list that contains a two-element list for
@@ -14,7 +16,9 @@ title: List Functions
 <% end %>
 
 
-<% function 'append($list, $val, $separator: auto)', returns: 'list' do %>
+<% function 'list.append($list, $val, $separator: auto)',
+            'append($list, $val, $separator: auto)',
+            returns: 'list' do %>
   Returns a copy of `$list` with `$val` added to the end.
 
   If `$separator` is `comma`, the returned list is comma-separted. If it's
@@ -24,26 +28,29 @@ title: List Functions
 
   [separator]: ../values/lists
 
-  Note that unlike [`join()`](#join), if `$val` is a list it's nested within the
-  returned list rather than having all its elements added to the returned list.
+  Note that unlike [`list.join()`](#join), if `$val` is a list it's nested
+  within the returned list rather than having all its elements added to the
+  returned list.
 
   <% example(autogen_css: false) do %>
-    @debug append(10px 20px, 30px); // 10px 20px 30px
-    @debug append((blue, red), green); // blue, red, green
-    @debug append(10px 20px, 30px 40px); // 10px 20px (30px 40px)
-    @debug append(10px, 20px, $separator: comma); // 10px, 20px
-    @debug append((blue, red), green, $separator: space); // blue red green
+    @debug list.append(10px 20px, 30px); // 10px 20px 30px
+    @debug list.append((blue, red), green); // blue, red, green
+    @debug list.append(10px 20px, 30px 40px); // 10px 20px (30px 40px)
+    @debug list.append(10px, 20px, $separator: comma); // 10px, 20px
+    @debug list.append((blue, red), green, $separator: space); // blue red green
     ===
-    @debug append(10px 20px, 30px)  // 10px 20px 30px
-    @debug append((blue, red), green)  // blue, red, green
-    @debug append(10px 20px, 30px 40px)  // 10px 20px (30px 40px)
-    @debug append(10px, 20px, $separator: comma)  // 10px, 20px
-    @debug append((blue, red), green, $separator: space)  // blue red green
+    @debug list.append(10px 20px, 30px)  // 10px 20px 30px
+    @debug list.append((blue, red), green)  // blue, red, green
+    @debug list.append(10px 20px, 30px 40px)  // 10px 20px (30px 40px)
+    @debug list.append(10px, 20px, $separator: comma)  // 10px, 20px
+    @debug list.append((blue, red), green, $separator: space)  // blue red green
   <% end %>
 <% end %>
 
 
-<% function 'index($list, $value)', returns: 'number | null' do %>
+<% function 'list.index($list, $value)',
+            'index($list, $value)',
+            returns: 'number | null' do %>
   Returns the [index][] of `$value` in `$list`.
 
   [index]: ../values/lists#indexes
@@ -58,31 +65,35 @@ title: List Functions
 <% end %>
 
 
-<% function 'is-bracketed($list)', returns: 'boolean' do %>
+<% function 'list.is-bracketed($list)',
+            'is-bracketed($list)',
+            returns: 'boolean' do %>
   Returns whether `$list` has square brackets.
 
   <% example(autogen_css: false) do %>
-    @debug is-bracketed(1px 2px 3px); // false
-    @debug is-bracketed([1px, 2px, 3px]); // true
+    @debug list.is-bracketed(1px 2px 3px); // false
+    @debug list.is-bracketed([1px, 2px, 3px]); // true
     ===
-    @debug is-bracketed(1px 2px 3px)  // false
-    @debug is-bracketed([1px, 2px, 3px])  // true
+    @debug list.is-bracketed(1px 2px 3px)  // false
+    @debug list.is-bracketed([1px, 2px, 3px])  // true
   <% end %>
 <% end %>
 
 
-<% function 'join($list1, $list2, $separator: auto, $bracketed: auto)', returns: 'list' do %>
+<% function 'list.join($list1, $list2, $separator: auto, $bracketed: auto)',
+            'join($list1, $list2, $separator: auto, $bracketed: auto)',
+            returns: 'list' do %>
   Returns a new list containing the elements of `$list1` followed by the elements
   of `$list2`.
 
   <% heads_up do %>
     Because individual values count as single-element lists, it's possible to
-    use `join()` to add a value to the end of a list. However, *this is not
+    use `list.join()` to add a value to the end of a list. However, *this is not
     recommended*, since if that value is a list it will be concatenated, which
     is probably not what you're expecting.
 
-    Use [`append()`](#append) instead to add a single value to a list. Only use
-    `join()` to combine two lists together into one.
+    Use [`list.append()`](#append) instead to add a single value to a list. Only
+    use `list.join()` to combine two lists together into one.
   <% end %>
 
   If `$separator` is `comma`, the returned list is comma-separted. If it's
@@ -96,62 +107,64 @@ title: List Functions
   returned list will be bracketed if `$list1` is. Other values aren't allowed.
 
   <% example(autogen_css: false) do %>
-    @debug join(10px 20px, 30px 40px); // 10px 20px 30px 40px
-    @debug join((blue, red), (#abc, #def)); // blue, red, #abc, #def
-    @debug join(10px, 20px); // 10px 20px
-    @debug join(10px, 20px, $separator: comma); // 10px, 20px
-    @debug join((blue, red), (#abc, #def), $separator: space); // blue red #abc #def
-    @debug join([10px], 20px); // [10px 20px]
-    @debug join(10px, 20px, $bracketed: true); // [10px 20px]
+    @debug list.join(10px 20px, 30px 40px); // 10px 20px 30px 40px
+    @debug list.join((blue, red), (#abc, #def)); // blue, red, #abc, #def
+    @debug list.join(10px, 20px); // 10px 20px
+    @debug list.join(10px, 20px, $separator: comma); // 10px, 20px
+    @debug list.join((blue, red), (#abc, #def), $separator: space); // blue red #abc #def
+    @debug list.join([10px], 20px); // [10px 20px]
+    @debug list.join(10px, 20px, $bracketed: true); // [10px 20px]
     ===
-    @debug join(10px 20px, 30px 40px)  // 10px 20px 30px 40px
-    @debug join((blue, red), (#abc, #def))  // blue, red, #abc, #def
-    @debug join(10px, 20px)  // 10px 20px
-    @debug join(10px, 20px, comma)  // 10px, 20px
-    @debug join((blue, red), (#abc, #def), space)  // blue red #abc #def
-    @debug join([10px], 20px)  // [10px 20px]
-    @debug join(10px, 20px, $bracketed: true)  // [10px 20px]
+    @debug list.join(10px 20px, 30px 40px)  // 10px 20px 30px 40px
+    @debug list.join((blue, red), (#abc, #def))  // blue, red, #abc, #def
+    @debug list.join(10px, 20px)  // 10px 20px
+    @debug list.join(10px, 20px, comma)  // 10px, 20px
+    @debug list.join((blue, red), (#abc, #def), space)  // blue red #abc #def
+    @debug list.join([10px], 20px)  // [10px 20px]
+    @debug list.join(10px, 20px, $bracketed: true)  // [10px 20px]
   <% end %>
 <% end %>
 
 
-<% function 'length($list)', returns: 'number' do %>
+<% function 'list.length($list)', 'length($list)', returns: 'number' do %>
   Returns the length of `$list`.
 
   This can also return the number of pairs in a map.
 
   <% example(autogen_css: false) do %>
-    @debug length(10px); // 1
-    @debug length(10px 20px 30px); // 3
-    @debug length((width: 10px, height: 20px)); // 2
+    @debug list.length(10px); // 1
+    @debug list.length(10px 20px 30px); // 3
+    @debug list.length((width: 10px, height: 20px)); // 2
     ===
-    @debug length(10px)  // 1
-    @debug length(10px 20px 30px)  // 3
-    @debug length((width: 10px, height: 20px))  // 2
+    @debug list.length(10px)  // 1
+    @debug list.length(10px 20px 30px)  // 3
+    @debug list.length((width: 10px, height: 20px))  // 2
   <% end %>
 <% end %>
 
 
-<% function 'list-separator($list)', returns: 'unquoted string' do %>
+<% function 'list.separator($list)',
+            'list-separator($list)',
+            returns: 'unquoted string' do %>
   Returns the name of the separator used by `$list`, either `space` or `comma`.
 
   If `$list` doesn't have a separator, returns `space`.
 
   <% example(autogen_css: false) do %>
-    @debug list-separator(1px 2px 3px); // space
-    @debug list-separator(1px, 2px, 3px); // comma
-    @debug list-separator('Helvetica'); // space
-    @debug list-separator(()); // space
+    @debug list.separator(1px 2px 3px); // space
+    @debug list.separator(1px, 2px, 3px); // comma
+    @debug list.separator('Helvetica'); // space
+    @debug list.separator(()); // space
     ===
-    @debug list-separator(1px 2px 3px)  // space
-    @debug list-separator(1px, 2px, 3px)  // comma
-    @debug list-separator('Helvetica')  // space
-    @debug list-separator(())  // space
+    @debug list.separator(1px 2px 3px)  // space
+    @debug list.separator(1px, 2px, 3px)  // comma
+    @debug list.separator('Helvetica')  // space
+    @debug list.separator(())  // space
   <% end %>
 <% end %>
 
 
-<% function 'nth($list, $n)' do %>
+<% function 'list.nth($list, $n)', 'nth($list, $n)' do %>
   Returns the element of `$list` at [index][] `$n`.
 
   [index]: ../values/lists#indexes
@@ -163,7 +176,9 @@ title: List Functions
 <% end %>
 
 
-<% function 'set-nth($list, $n, $value)', returns: 'list' do %>
+<% function 'list.set-nth($list, $n, $value)',
+            'set-nth($list, $n, $value)',
+            returns: 'list' do %>
   Returns a copy of `$list` with the element at [index][] `$n` replaced with
   `$value`.
 
@@ -173,18 +188,18 @@ title: List Functions
   there is no existing element at index `$n`.
 
   <% example(autogen_css: false) do %>
-    @debug set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
-    @debug set-nth(10px 20px 30px, -1, 8em); // 10px, 20px, 8em
-    @debug set-nth((Helvetica, Arial, sans-serif), 3, Roboto); // Helvetica, Arial, Roboto
+    @debug list.set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
+    @debug list.set-nth(10px 20px 30px, -1, 8em); // 10px, 20px, 8em
+    @debug list.set-nth((Helvetica, Arial, sans-serif), 3, Roboto); // Helvetica, Arial, Roboto
     ===
-    @debug set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
-    @debug set-nth(10px 20px 30px, -1, 8em); // 10px, 20px, 8em
-    @debug set-nth((Helvetica, Arial, sans-serif), 3, Roboto); // Helvetica, Arial, Roboto
+    @debug list.set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
+    @debug list.set-nth(10px 20px 30px, -1, 8em); // 10px, 20px, 8em
+    @debug list.set-nth((Helvetica, Arial, sans-serif), 3, Roboto); // Helvetica, Arial, Roboto
   <% end %>
 <% end %>
 
 
-<% function 'zip($lists...)', returns: 'list' do %>
+<% function 'list.zip($lists...)', 'zip($lists...)', returns: 'list' do %>
   Combines every list in `$lists` into a single list of sub-lists.
 
   Each element in the returned list contains all the elements at that position
@@ -194,10 +209,10 @@ title: List Functions
   space-separated.
 
   <% example(autogen_css: false) do %>
-    @debug zip(10px 50px 100px, short mid long); // 10px short, 50px mid, 100px long
-    @debug zip(10px 50px 100px, short mid); // 10px short, 50px mid
+    @debug list.zip(10px 50px 100px, short mid long); // 10px short, 50px mid, 100px long
+    @debug list.zip(10px 50px 100px, short mid); // 10px short, 50px mid
     ===
-    @debug zip(10px 50px 100px, short mid long)  // 10px short, 50px mid, 100px long
-    @debug zip(10px 50px 100px, short mid)  // 10px short, 50px mid
+    @debug list.zip(10px 50px 100px, short mid long)  // 10px short, 50px mid, 100px long
+    @debug list.zip(10px 50px 100px, short mid)  // 10px short, 50px mid
   <% end %>
 <% end %>

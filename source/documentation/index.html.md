@@ -15,7 +15,7 @@ overview: true
   tutorial](/guide).
 
 * If you want to look up a built-in Sass function, look no further than [the
-  function reference](/documentation/modules).
+  built-in module reference](/documentation/modules).
 
 * If you're calling Sass from JavaScript, you may want the [JS API
   documentation][js].
