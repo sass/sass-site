@@ -15,8 +15,8 @@ introduction: >
   function][], and you can convert an unquoted string to a quoted string using
   the [`quote()` function][].
 
-  [`unquote()` function]: ../functions/string#unquote
-  [`quote()` function]: ../functions/string#quote
+  [`unquote()` function]: ../modules/string#unquote
+  [`quote()` function]: ../modules/string#quote
 
   <% example(autogen_css: false) do %>
     @debug unquote(".widget:hover"); // .widget:hover
@@ -203,7 +203,7 @@ languages where indexes start at 0! Sass also makes it easy to refer to the end
 of a string. The index -1 refers to the last character in a string, -2 refers to
 the second-to-last, and so on.
 
-[string functions]: ../functions/string
+[string functions]: ../modules/string
 
 <% example do %>
   @debug str-index("Helvetica Neue", "Helvetica"); // 1

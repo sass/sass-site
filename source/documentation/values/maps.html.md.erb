@@ -40,7 +40,7 @@ Since maps aren't valid CSS values, they don't do much of anything on their own.
 That's why Sass provides a bunch of [functions][] to create maps and access the
 values they contain. With
 
-[functions]: ../functions/map
+[functions]: ../modules/map
 
 ### Look Up a Value
 
@@ -49,7 +49,7 @@ get the value associated with a key: the [`map-get($map, $key)` function][]!
 This function returns the value in the map associated with the given key. It
 returns [`null`][] if the map doesn't contain the key.
 
-[`map-get($map, $key)` function]: ../functions/map#map-get
+[`map-get($map, $key)` function]: ../modules/map#map-get
 [`null`]: null
 
 <%= partial 'code-snippets/example-map-get' %>
@@ -71,7 +71,7 @@ It's also useful to add new pairs to a map, or to replace the value for an
 existing key. The [`map-merge($map1, $map2)` function][] does this: it returns a
 new map that contains all the key/value pairs in *both* arguments.
 
-[`map-merge($map1, $map2)` function]: ../functions/map#map-merge
+[`map-merge($map1, $map2)` function]: ../modules/map#map-merge
 
 <% example(autogen_css: false) do %>
   $light-weights: ("lightest": 100, "light": 300);

@@ -48,16 +48,16 @@ toc:
   - Numeric: /documentation/operators/numeric
   - String: /documentation/operators/string
   - Boolean: /documentation/operators/boolean
-- Built-In Functions: /documentation/functions
+- Built-In Modules: /documentation/modules
   :children:
-  - Plain CSS: /documentation/functions/css
-  - Numbers: /documentation/functions/math
-  - Strings: /documentation/functions/string
-  - Colors: /documentation/functions/color
-  - Lists: /documentation/functions/list
-  - Maps: /documentation/functions/map
-  - Selectors: /documentation/functions/selector
-  - Introspection: /documentation/functions/meta
+  - Plain CSS: /documentation/modules/css
+  - Numbers: /documentation/modules/math
+  - Strings: /documentation/modules/string
+  - Colors: /documentation/modules/color
+  - Lists: /documentation/modules/list
+  - Maps: /documentation/modules/map
+  - Selectors: /documentation/modules/selector
+  - Introspection: /documentation/modules/meta
 - Breaking Changes: /documentation/breaking-changes
   :children:
   - Extending Compound Selectors: /documentation/breaking-changes/extend-compound

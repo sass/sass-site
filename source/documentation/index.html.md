@@ -5,7 +5,7 @@ introduction: >
   [variables](/documentation/variables), [nested
   rules](/documentation/style-rules#nesting),
   [mixins](/documentation/at-rules/mixin),
-  [functions](/documentation/functions), and more, all with a fully
+  [functions](/documentation/modules), and more, all with a fully
   CSS-compatible syntax. Sass helps keep large stylesheets well-organized and
   makes it easy to share design within and across projects.
 overview: true
@@ -15,7 +15,7 @@ overview: true
   tutorial](/guide).
 
 * If you want to look up a built-in Sass function, look no further than [the
-  function reference](/documentation/functions).
+  function reference](/documentation/modules).
 
 * If you're calling Sass from JavaScript, you may want the [JS API
   documentation][js].
