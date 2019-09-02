@@ -83,7 +83,7 @@ variable, just include it in a value.
 
 Normally when you assign a value to a variable, if that variable already had a
 value, its old value is overwritten. But if you're writing a Sass library, you
-might want to allow your users to customize your library's variables before you
+might want to allow your users to configure your library's variables before you
 use them to generate CSS.
 
 To make this possible, Sass provides the `!default` flag. This assigns a value
@@ -92,55 +92,22 @@ Otherwise, the existing value will be used.
 
 [`null`]: values/null
 
-### Customizing Modules
+### Configuring Modules
 
 <%= partial 'snippets/module-system-status' %>
 
-Variables defined with `!default` can be customized when loading a module with
+Variables defined with `!default` can be configured when loading a module with
 the [`@use` rule][]. Sass libraries often use `!default` variables to allow
-their users to customize the library's CSS.
+their users to configure the library's CSS.
 
 [`@use` rule]: at-rules/use
 
-To load a module with customization, write `@use <url> with (<variable>:
-<value>, <variable>: <value>)`. The customized values will override the
+To load a module with configuration, write `@use <url> with (<variable>:
+<value>, <variable>: <value>)`. The configured values will override the
 variables' default values. Only variables written at the top level of the
-stylesheet with a `!default` flag can be customized.
+stylesheet with a `!default` flag can be configured.
 
-<% example do %>
-  // _library.scss
-  $black: #000 !default;
-  $border-radius: 0.25rem !default;
-  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
-
-  code {
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-  }
-  ---
-  // style.scss
-  @use 'library' with (
-    $black: #222,
-    $border-radius: 0.1rem
-  );
-  ===
-  // _library.sass
-  $black: #000 !default
-  $border-radius: 0.25rem !default
-  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default
-
-  code
-    border-radius: $border-radius
-    box-shadow: $box-shadow
-  ---
-  // style.sass
-  @use 'library' with ($black: #222, $border-radius: 0.1rem)
-  ===
-  code {
-    border-radius: 0.1rem;
-    box-shadow: 0 0.5rem 1rem rgba(#222, 0.15);
-  }
-<% end %>
+<%= partial '../code-snippets/example-use-with' %>
 
 ## Scope
 
