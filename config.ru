@@ -25,6 +25,7 @@ use Rack::Rewrite do
   r301 '/documentation/Sass/Script/Functions.html', '/documentation/modules'
   r301 '/documentation/Sass/Script/Functions', '/documentation/modules'
   r301 %r{/documentation/(Sass.*)}, 'http://www.rubydoc.info/gems/sass/$1'
+  r301 '/documentation/functions/css', '/documentation/at-rules/function#plain-css-functions'
   r301 %r{/documentation/functions(.*)}, '/documentation/modules$1'
 
   r301 %r{/(.+)/$}, '/$1'

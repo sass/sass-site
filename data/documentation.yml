@@ -50,7 +50,6 @@ toc:
   - Boolean: /documentation/operators/boolean
 - Built-In Modules: /documentation/modules
   :children:
-  - Plain CSS: /documentation/modules/css
   - Numbers: /documentation/modules/math
   - Strings: /documentation/modules/string
   - Colors: /documentation/modules/color
