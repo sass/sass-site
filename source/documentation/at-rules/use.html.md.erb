@@ -14,8 +14,8 @@ introduction: >
 <% end %>
 
 The simplest `@use` rule is written `@use "<url>"`, which loads the module at
-the given URL. Any CSS in modules you load will be included exactly once in your
-compiled CSS, no matter how many times they're loaded.
+the given URL. Any styles loaded this way will be included exactly once in the
+compiled CSS output, no matter how many times those styles are loaded.
 
 <% heads_up do %>
   A stylesheet's `@use` rules must come before any rules other than `@forward`,
@@ -83,7 +83,7 @@ compiled CSS, no matter how many times they're loaded.
 
 ## Loading Members
 
-You can access the variables, functions, and mixins by writing
+You can access variables, functions, and mixins from another module by writing
 `<namespace>.<variable>`, `<namespace>.<function>()`, or `@include
 <namespace>.<mixin>()`. By default, the namespace is just the last component of
 the module's URL.
@@ -299,7 +299,7 @@ load; `@use "variables"` will automatically load `variables.scss`,
 <% heads_up do %>
   To ensure that stylesheets work on every operating system, Sass loads files by
   *URL*, not by *file path*. This means you need to use forward slashes, not
-  backslashes, even when you're on Windows.
+  backslashes, even on Windows.
 <% end %>
 
 ### Load Paths
