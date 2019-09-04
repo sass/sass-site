@@ -81,6 +81,23 @@ before_render do |body, page, _, template_class|
       ul.elements.first.elements.first['href'] = a['href']
     end
 
+    # Expand the page's table of contents to the deepest level possible without
+    # making it longer than the most-collapsed-possible documentation table of
+    # contents.
+    entries = fragment.css("> li")
+    total_entries = entries.count
+    loop do
+      child_entries = entries.css("> ul > li")
+      total_entries += child_entries.count
+      break if total_entries > data.documentation.toc.count
+
+      sections = entries.xpath("a[following-sibling::ul]")
+      sections.add_class("section open")
+      break if sections.empty?
+
+      entries = child_entries
+    end
+
     current_page.add_metadata(table_of_contents: fragment.to_html)
     body
   end
