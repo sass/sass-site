@@ -7,6 +7,7 @@
       .sl-l-medium-holy-grail__main
         - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
         %div{class: container}
+          = yield_content :before_introduction
           - if current_page.data.introduction
             - center_introduction = current_page.data.center_introduction ? 'sl-c-introduction--center' : ''
             .sl-c-introduction{class: center_introduction}
