@@ -75,7 +75,6 @@ Sass provides the following built-in modules:
 
 * The [`sass:meta` module][] exposes the details of Sass's inner workings.
 
-[plain CSS function]: functions/css
 [`sass:math` module]: modules/math
 [numbers]: values/numbers
 [`sass:string` module]: modules/string
@@ -125,7 +124,7 @@ Sass provides the following built-in modules:
   unitless number between 0 and 1 (inclusive), or a percentage between `0%` and
   `100%` (inclusive).
 
-  [unitless]: ../values/numbers#units
+  [unitless]: values/numbers#units
 
   <% fun_fact do %>
     You can pass [special functions][] like `calc()` or `var()` in place of any
@@ -134,7 +133,7 @@ Sass provides the following built-in modules:
     function is called this way, it returns an unquoted string using the same
     signature it was called with.
 
-    [special functions]: ../syntax/special-functions
+    [special functions]: syntax/special-functions
 
     <% example(autogen_css: false) do %>
       @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
@@ -151,7 +150,7 @@ Sass provides the following built-in modules:
     `hsl($hue $saturation $lightness / $alpha)` signature. Consider using
     `hsl($hue, $saturation, $lightness, $alpha)` instead.
 
-    [special parsing rules]: ../operators/numeric#slash-separated-values
+    [special parsing rules]: operators/numeric#slash-separated-values
   <% end %>
 
   <% example(autogen_css: false) do %>
@@ -223,7 +222,7 @@ Sass provides the following built-in modules:
   alpha channel can be specified as either a unitless number between 0 and 1
   (inclusive), or a percentage between `0%` and `100%` (inclusive).
 
-  [unitless]: ../values/numbers#units
+  [unitless]: values/numbers#units
 
   <% fun_fact do %>
     You can pass [special functions][] like `calc()` or `var()` in place of any
@@ -232,7 +231,7 @@ Sass provides the following built-in modules:
     function is called this way, it returns an unquoted string using the same
     signature it was called with.
 
-    [special functions]: ../syntax/special-functions
+    [special functions]: syntax/special-functions
 
     <% example(autogen_css: false) do %>
       @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
@@ -249,7 +248,7 @@ Sass provides the following built-in modules:
     `rgb($red $green $blue / $alpha)` signature. Consider using
     `hsl($red, $green, $blue, $alpha)` instead.
 
-    [special parsing rules]: ../operators/numeric#slash-separated-values
+    [special parsing rules]: operators/numeric#slash-separated-values
   <% end %>
 
   <% example(autogen_css: false) do %>

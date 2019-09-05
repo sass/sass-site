@@ -4,10 +4,10 @@ table_of_contents: true
 introduction: >
   CSS defines many functions, and most of them work just fine with Sass’s normal
   function syntax. They’re parsed as function calls, resolved to [plain CSS
-  functions](../modules/css), and compiled as-is to CSS. There are a few
-  exceptions, though, which have special syntax that can’t just be parsed as a
-  [SassScript expression](structure#expressions). All special function calls
-  return [unquoted strings](../values/strings#unquoted).
+  functions](../at-rules/function#plain-css-functions), and compiled as-is to
+  CSS. There are a few exceptions, though, which have special syntax that can’t
+  just be parsed as a [SassScript expression](structure#expressions). All
+  special function calls return [unquoted strings](../values/strings#unquoted).
 ---
 
 ## `url()`
@@ -27,7 +27,7 @@ calls][]—it's parsed as a normal [plain CSS function call][].
 [interpolation]: ../interpolation
 [variables]: ../variables
 [function calls]: ../at-rules/function
-[plain CSS function call]: ../modules/css
+[plain CSS function call]: ../at-rules/function#plain-css-functions
 
 <% example do %>
   $roboto-font-path: "../fonts/roboto";
