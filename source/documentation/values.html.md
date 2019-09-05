@@ -33,5 +33,5 @@ A few more are specific to Sass:
 * [Function references](values/functions) returned by [`get-function()`][] and
   called with [`call()`][].
 
-[`get-function()`]: functions/meta#get-function
-[`call()`]: functions/meta#call
+[`get-function()`]: modules/meta#get-function
+[`call()`]: modules/meta#call

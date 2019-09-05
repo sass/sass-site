@@ -196,26 +196,35 @@ is the only way to inject dynamic values into a custom property.
 <% heads_up do %>
   Unfortunately, [interpolation][] removes quotes from strings, which makes it
   difficult to use quoted strings as values for custom properties when they come
-  from Sass variables. As a workaround, you can use the [`inspect()` function][]
-  to preserve the quotes.
+  from Sass variables. As a workaround, you can use the [`meta.inspect()`
+  function][] to preserve the quotes.
 
   [interpolation]: ../interpolation
-  [`inspect()` function]: ../functions/meta#inspect
+  [`meta.inspect()` function]: ../modules/meta#inspect
 
   <% example do %>
+    @use "sass:meta";
+
     $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
     $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas;
 
     :root {
-      --font-family-sans-serif: #{inspect($font-family-sans-serif)};
-      --font-family-monospace: #{inspect($font-family-monospace)};
+      --font-family-sans-serif: #{meta.inspect($font-family-sans-serif)};
+      --font-family-monospace: #{meta.inspect($font-family-monospace)};
     }
     ===
+    @use "sass:meta"
+
     $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto
     $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas
 
     :root
-      --font-family-sans-serif: #{inspect($font-family-sans-serif)}
-      --font-family-monospace: #{inspect($font-family-monospace)}
+      --font-family-sans-serif: #{meta.inspect($font-family-sans-serif)}
+      --font-family-monospace: #{meta.inspect($font-family-monospace)}
+    ===
+    :root {
+      --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas;
+    }
   <% end %>
 <% end %>

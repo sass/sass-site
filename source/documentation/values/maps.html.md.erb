@@ -40,16 +40,16 @@ Since maps aren't valid CSS values, they don't do much of anything on their own.
 That's why Sass provides a bunch of [functions][] to create maps and access the
 values they contain. With
 
-[functions]: ../functions/map
+[functions]: ../modules/map
 
 ### Look Up a Value
 
 Maps are all about associating keys and values, so naturally there's a way to
-get the value associated with a key: the [`map-get($map, $key)` function][]!
+get the value associated with a key: the [`map.get($map, $key)` function][]!
 This function returns the value in the map associated with the given key. It
 returns [`null`][] if the map doesn't contain the key.
 
-[`map-get($map, $key)` function]: ../functions/map#map-get
+[`map.get($map, $key)` function]: ../modules/map#get
 [`null`]: null
 
 <%= partial 'code-snippets/example-map-get' %>
@@ -68,16 +68,18 @@ easily be accessed in the block.
 ### Add to a Map
 
 It's also useful to add new pairs to a map, or to replace the value for an
-existing key. The [`map-merge($map1, $map2)` function][] does this: it returns a
+existing key. The [`map.merge($map1, $map2)` function][] does this: it returns a
 new map that contains all the key/value pairs in *both* arguments.
 
-[`map-merge($map1, $map2)` function]: ../functions/map#map-merge
+[`map.merge($map1, $map2)` function]: ../modules/map#merge
 
 <% example(autogen_css: false) do %>
+  @use "sass:map";
+
   $light-weights: ("lightest": 100, "light": 300);
   $heavy-weights: ("medium": 500, "bold": 700);
 
-  @debug map-merge($light-weights, $heavy-weights);
+  @debug map.merge($light-weights, $heavy-weights);
   // (
   //   "lightest": 100,
   //   "light": 300,
@@ -85,10 +87,12 @@ new map that contains all the key/value pairs in *both* arguments.
   //   "bold": 700
   // )
   ===
+  @use "sass:map"
+
   $light-weights: ("lightest": 100, "light": 300)
   $heavy-weights: ("medium": 500, "bold": 700)
 
-  @debug map-merge($light-weights, $heavy-weights)
+  @debug map.merge($light-weights, $heavy-weights)
   // (
   //   "lightest": 100,
   //   "light": 300,
@@ -97,17 +101,21 @@ new map that contains all the key/value pairs in *both* arguments.
   // )
 <% end %>
 
-`map-merge()` is often used with an inline map to add a single key/value pair.
+`map.merge()` is often used with an inline map to add a single key/value pair.
 
 <% example(autogen_css: false) do %>
+  @use "sass:map";
+
   $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
-  @debug map-merge($font-weights, ("extra-bold": 900));
+  @debug map.merge($font-weights, ("extra-bold": 900));
   // ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)
   ===
+  @use "sass:map"
+
   $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
-  @debug map-merge($font-weights, ("extra-bold": 900))
+  @debug map.merge($font-weights, ("extra-bold": 900))
   // ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)
 <% end %>
 
@@ -115,18 +123,22 @@ If both maps have the same keys, the second map's values are used in the map
 that gets returned.
 
 <% example(autogen_css: false) do %>
+  @use "sass:map";
+
   $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
-  @debug map-merge($font-weights, ("medium": 600));
+  @debug map.merge($font-weights, ("medium": 600));
   // ("regular": 400, "medium": 600, "bold": 700)
   ===
+  @use "sass:map"
+
   $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
-  @debug map-merge($font-weights, ("medium": 600))
+  @debug map.merge($font-weights, ("medium": 600))
   // ("regular": 400, "medium": 600, "bold": 700)
 <% end %>
 
-Note that because Sass maps are [immutable][], `map-merge()` doesn't modify the
+Note that because Sass maps are [immutable][], `map.merge()` doesn't modify the
 original list.
 
 [immutable]: #immutability
@@ -143,20 +155,24 @@ variable, though. This is often used in functions and mixins to track
 configuration in a map.
 
 <% example(autogen_css: false) do %>
+  @use "sass:map";
+
   $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms);
 
   @mixin add-browser-prefix($browser, $prefix) {
-    $prefixes-by-browser: map-merge($prefixes-by-browser, ($browser: $prefix));
+    $prefixes-by-browser: map.merge($prefixes-by-browser, ($browser: $prefix));
   }
 
   @include add-browser-prefix("opera", o);
   @debug $prefixes-by-browser;
   // ("firefox": moz, "safari": webkit, "ie": ms, "opera": o)
   ===
+  @use "sass:map";
+
   $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms)
 
   @mixin add-browser-prefix($browser, $prefix)
-    $prefixes-by-browser: map-merge($prefixes-by-browser, ($browser: $prefix))
+    $prefixes-by-browser: map.merge($prefixes-by-browser, ($browser: $prefix))
 
 
   @include add-browser-prefix("opera", o)

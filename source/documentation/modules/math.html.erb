@@ -1,0 +1,225 @@
+---
+title: sass:math
+---
+
+<%= partial '../snippets/built-in-module-status' %>
+
+<% function 'math.abs($number)', 'abs($number)', returns: 'number' do %>
+  Returns the [absolute value][] of `$number`. If `$number` is negative, this
+  returns `-$number`, and if `$number` is positive, it returns `$number` as-is.
+
+  [absolute value]: https://en.wikipedia.org/wiki/Absolute_value
+
+  <% example(autogen_css: false) do %>
+    @debug math.abs(10px); // 10px
+    @debug math.abs(-10px); // 10px
+    ===
+    @debug math.abs(10px) // 10px
+    @debug math.abs(-10px) // 10px
+  <% end %>
+<% end %>
+
+
+<% function 'math.ceil($number)', 'ceil($number)', returns: 'number' do %>
+  Rounds `$number` up to the next highest whole number.
+
+  <% example(autogen_css: false) do %>
+    @debug math.ceil(4); // 4
+    @debug math.ceil(4.2); // 5
+    @debug math.ceil(4.9); // 5
+    ===
+    @debug math.ceil(4)  // 4
+    @debug math.ceil(4.2)  // 5
+    @debug math.ceil(4.9)  // 5
+  <% end %>
+<% end %>
+
+
+<% function 'math.compatible($number1, $number2)',
+            'comparable($number1, $number2)',
+            returns: 'boolean' do %>
+  Returns whether `$number1` and `$number2` have compatible units.
+
+  If this returns `true`, `$number1` and `$number2` can safely be [added][],
+  [subtracted][], and [compared][]. Otherwise, doing so will produce errors.
+
+  [added]: ../operators/numeric
+  [subtracted]: ../operators/numeric
+  [compared]: ../operators/relational
+
+  <% heads_up do %>
+    The global name of this function
+    is <code>compa<strong>ra</strong>ble</code>, but when it was added to the
+    `sass:math` module the name was changed
+    to <code>compa<strong>ti</strong>ble</code> to more clearly convey what the
+    function does.
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug math.compatible(2px, 1px); // true
+    @debug math.compatible(100px, 3em); // false
+    @debug math.compatible(10cm, 3mm); // true
+    ===
+    @debug math.compatible(2px, 1px)  // true
+    @debug math.compatible(100px, 3em)  // false
+    @debug math.compatible(10cm, 3mm)  // true
+  <% end %>
+<% end %>
+
+
+<% function 'math.floor($number)', 'floor($number)', returns: 'number' do %>
+  Rounds `$number` down to the next lowest whole number.
+
+  <% example(autogen_css: false) do %>
+    @debug math.floor(4); // 4
+    @debug math.floor(4.2); // 4
+    @debug math.floor(4.9); // 4
+    ===
+    @debug math.floor(4)  // 4
+    @debug math.floor(4.2)  // 4
+    @debug math.floor(4.9)  // 4
+  <% end %>
+<% end %>
+
+
+<% function 'math.max($number...)', 'max($number...)', returns: 'number' do %>
+  Returns the highest of one or more numbers. A list of numbers can be passed
+  [using `...`][].
+
+  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
+
+  <% example(autogen_css: false) do %>
+    @debug math.max(1px, 4px); // 4px
+
+    $widths: 50px, 30px, 100px;
+    @debug math.max($widths...); // 100px
+    ===
+    @debug math.max(1px, 4px)  // 4px
+
+    $widths: 50px, 30px, 100px 
+    @debug math.max($widths...)  // 100px
+  <% end %>
+<% end %>
+
+
+<% function 'math.min($number...)', 'min($number...)', returns: 'number' do %>
+  Returns the lowest of one or more numbers. A list of numbers can be passed
+  [using `...`][].
+
+  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
+
+  <% example(autogen_css: false) do %>
+    @debug math.min(1px, 4px); // 1px
+
+    $widths: 50px, 30px, 100px;
+    @debug math.min($widths...); // 30px
+    ===
+    @debug math.min(1px, 4px)  // 1px
+
+    $widths: 50px, 30px, 100px 
+    @debug math.min($widths...)  // 30px
+  <% end %>
+<% end %>
+
+
+<% function 'math.percentage($number)',
+            'percentage($number)',
+            returns: 'number' do %>
+  Converts a unitless `$number` (usually a decimal between 0 and 1) to a
+  percentage.
+
+  <% fun_fact do %>
+    This function is identical to `$number * 100%`.
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug math.percentage(0.2); // 20%
+    @debug math.percentage(100px / 50px); // 200%
+    ===
+    @debug math.percentage(0.2)  // 20%
+    @debug math.percentage(100px / 50px)  // 200%
+  <% end %>
+<% end %>
+
+
+<% function 'math.random($limit: null)',
+            'random($limit: null)',
+            returns: 'number' do %>
+  If `$limit` is [`null`][], returns a random decimal number between 0 and 1.
+
+  [`null`]: ../values/null
+
+  <% example(autogen_css: false) do %>
+    @debug math.random(); // 0.2821251858
+    @debug math.random(); // 0.6221325814
+    ===
+    @debug math.random()  // 0.2821251858
+    @debug math.random()  // 0.6221325814
+  <% end %>
+
+  * * *
+
+  If `$limit` is a number greater than or equal to 1, returns a random whole
+  number between 1 and `$limit`.
+
+  <% example(autogen_css: false) do %>
+    @debug math.random(10); // 4
+    @debug math.random(10000); // 5373
+    ===
+    @debug math.random(10)  // 4
+    @debug math.random(10000)  // 5373
+  <% end %>
+<% end %>
+
+
+<% function 'math.round($number)', 'round($number)', returns: 'number' do %>
+  Rounds `$number` to the nearest whole number.
+
+  <% example(autogen_css: false) do %>
+    @debug math.round(4); // 4
+    @debug math.round(4.2); // 4
+    @debug math.round(4.9); // 5
+    ===
+    @debug math.round(4)  // 4
+    @debug math.round(4.2)  // 4
+    @debug math.round(4.9)  // 5
+  <% end %>
+<% end %>
+
+
+<% function 'math.unit($number)',
+            'unit($number)',
+            returns: 'quoted string' do %>
+  Returns a string representation of `$number`'s units.
+
+  <% heads_up do %>
+    This function is intended for debugging; its output format is not guaranteed
+    to be consistent across Sass versions or implementations.
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug math.unit(100); // ""
+    @debug math.unit(100px); // "px"
+    @debug math.unit(5px * 10px); // "px*px"
+    @debug math.unit(5px / 1s); // "px/s"
+    ===
+    @debug math.unit(100)  // ""
+    @debug math.unit(100px)  // "px"
+    @debug math.unit(5px * 10px)  // "px*px"
+    @debug math.unit(5px / 1s)  // "px/s"
+  <% end %>
+<% end %>
+
+<% function 'math.is-unitless($number)',
+            'unitless($number)',
+            returns: 'boolean' do %>
+  Returns whether `$number` has no units.
+
+  <% example(autogen_css: false) do %>
+    @debug math.is-unitless(100); // true
+    @debug math.is-unitless(100px); // false
+    ===
+    @debug math.is-unitless(100)  // true
+    @debug math.is-unitless(100px)  // false
+  <% end %>  
+<% end %>
