@@ -18,14 +18,14 @@ overview: true
   Before the Sass module system was introduced, all Sass functions were globally
   available at all times. Many functions still have global aliases (these are
   listed in their documentation). The Sass team discourages their use and will
-  eventually deprecate them, but for now they're still available for
-  compatibility with older Sass versions and with LibSass (which doesn't support
-  the module system yet).
+  eventually deprecate them, but for now they remain available for compatibility
+  with older Sass versions and with LibSass (which doesn't support the module
+  system yet).
 
-  [A few functions][] are still *only* available globally, either because they
-  have special evaluation behavior ([`if()`][]) or because they add extra
-  behavior on top of built-in CSS functions ([`rgb()`][] and [`hsl()`][]). These
-  will not be deprecated and can be used freely.
+  [A few functions][] are *only* available globally even in the new module
+  system, either because they have special evaluation behavior ([`if()`][]) or
+  because they add extra behavior on top of built-in CSS functions ([`rgb()`][]
+  and [`hsl()`][]). These will not be deprecated and can be used freely.
 
   [a few functions]: #global-functions
   [`if()`]: #if
@@ -56,9 +56,6 @@ overview: true
 <% end %>
 
 Sass provides the following built-in modules:
-
-* Any function that Sass doesn't recognize as built-in or user-defined is
-  treated as a [plain CSS function][]. (TODO: find a home for this)
 
 * The [`sass:math` module][] provides functions that operate on [numbers][].
 
