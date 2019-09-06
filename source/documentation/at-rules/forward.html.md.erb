@@ -1,25 +1,27 @@
 ---
 title: "@forward"
 introduction: >
-  The `@forward` rule makes [mixins](mixin), [functions](function), and
-  [variables](../variables) from another Sass stylesheet available to
-  stylesheets that load your stylesheet with the [`@use` rule](use). It makes it
-  possible to organize Sass libraries across many files, while allowing their
-  users to load a single entrypoint file.
+  The `@forward` rule loads a Sass stylesheet and makes its [mixins](mixin),
+  [functions](function), and [variables](../variables) available when your
+  stylesheet is loaded with the [`@use` rule](use). It makes it possible to
+  organize Sass libraries across many files, while allowing their users to load
+  a single entrypoint file.
 ---
 
-It's written `@forward "<url>"`. It loads the module at the given URL just like
-`@use`, but it makes the [public][] members of the loaded module available to
-users of your module as though they were defined directly in your module. Those
-members aren't visible in your module, though—if you want that, you'll need to
-write a `@use` rule as well. Don't worry, it'll only load the module once!
+The rule is written `@forward "<url>"`. It loads the module at the given URL
+just like `@use`, but it makes the [public][] members of the loaded module
+available to users of your module as though they were defined directly in your
+module. Those members aren't available in your module, though—if you want that,
+you'll need to write a `@use` rule as well. Don't worry, it'll only load the
+module once!
 
 [public]: use#private-members
 
 <% fun_fact do %>
   The `@forward` rule acts just like `@use` when it comes to a module's CSS.
   Styles from a forwarded module will be included in the compiled CSS output,
-  and your module can [extend][] it, even if it isn't also `@use`d.
+  and the module with the `@forward` can [extend][] it, even if it isn't also
+  `@use`d.
 
   [extend]: extend
 <% end %>
