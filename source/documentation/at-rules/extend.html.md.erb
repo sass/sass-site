@@ -199,6 +199,36 @@ are.
 
 <%= partial "code-snippets/example-placeholder" %>
 
+### Private Placeholders
+
+Like [module members][], a placeholder selector can be marked private by
+starting its name with either `-` or `_`. A private placeholder selector can
+only be extended within the stylesheet that defines it. To any other
+stylesheets, it will look as though that selector doesn't exist.
+
+[module members]: use#private-members
+
+## Extension Scope
+
+When one stylesheet extends a selector, that extension will only affect style
+rules written in *upstream* modules—that is, modules that are loaded by that
+stylesheet using the [`@use` rule][] or the [`@forward` rule][], modules loaded
+by *those* modules, and so on. This helps make your `@extend` rules more
+predictable, ensuring that they affect only the styles you were aware of when
+you wrote them.
+
+[`@use` rule]: use
+[`@forward` rule]: forward
+
+<% heads_up do %>
+  Extensions aren't scoped at all if you're using the [`@import` rule][]. Not
+  only will they affect every stylesheet you import, they'll affect every
+  stylesheet that imports your stylesheet, everything else those stylesheets
+  import, and so on. Without `@use`, extensions are *global*.
+
+  [`@import` rule]: import
+<% end %>
+
 ## Mandatory and Optional Extends
 
 Normally, if an `@extend` doesn't match any selectors in the stylesheet, Sass
