@@ -1,11 +1,11 @@
 <% example do %>
-  @use "sass:map";
+  @use "sass:meta";
 
   @mixin syntax-colors($args...) {
-    @debug map.keywords($args);
+    @debug meta.keywords($args);
     // (string: #080, comment: #800, $variable: $60b)
 
-    @each $name, $color in map.keywords($args) {
+    @each $name, $color in meta.keywords($args) {
       pre span.stx-#{$name} {
         color: $color;
       }
@@ -18,13 +18,13 @@
     $variable: #60b,
   )
   ===
-  @use "sass:map"
+  @use "sass:meta"
 
   @mixin syntax-colors($args...)
-    @debug map.keywords($args)
+    @debug meta.keywords($args)
     // (string: #080, comment: #800, $variable: $60b)
 
-    @each $name, $color in map.keywords($args)
+    @each $name, $color in meta.keywords($args)
       pre span.stx-#{$name}
         color: $color
 

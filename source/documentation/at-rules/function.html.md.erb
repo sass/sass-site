@@ -190,20 +190,20 @@ argument is known as an [argument list][].
 #### Taking Arbitrary Keyword Arguments
 
 Argument lists can also be used to take arbitrary keyword arguments. The
-[`map.keywords()` function][] takes an argument list and returns any extra
+[`meta.keywords()` function][] takes an argument list and returns any extra
 keywords that were passed to the function as a [map][] from argument names (not
 including `$`) to those arguments' values.
 
-[`map.keywords()` function]: ../modules/map#keywords
+[`meta.keywords()` function]: ../modules/meta#keywords
 [map]: ../values/maps
 
 <% fun_fact do %>
-  If you don't ever pass an argument list to the [`map.keywords()` function][],
+  If you don't ever pass an argument list to the [`meta.keywords()` function][],
   that argument list won't allow extra keyword arguments. This helps callers of
   your function make sure they haven't accidentally misspelled any argument
   names.
 
-  [`map.keywords()` function]: ../modules/map#keywords
+  [`meta.keywords()` function]: ../modules/meta#keywords
 <% end %>
 
 #### Passing Arbitrary Arguments

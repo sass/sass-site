@@ -49,20 +49,6 @@ title: sass:map
 <% end %>
 
 
-<% function 'map.keywords($args)', 'keywords($args)', returns: 'map' do %>
-  Returns the keywords passed to a mixin or function that takes [arbitrary
-  arguments][]. The `$args` argument must be an [argument list][].
-
-  [arbitrary arguments]: ../at-rules/mixin#taking-arbitrary-arguments
-  [argument list]: ../values/lists#argument-lists
-
-  The keywords are returned as a map from argument names as unquoted strings (not
-  including `$`) to the values of those arguments.
-
-  <%= partial 'code-snippets/example-mixin-arbitrary-keyword-arguments' %>
-<% end %>
-
-
 <% function 'map.merge($map1, $map2)',
             'map-merge($map1, $map2)',
             returns: 'map' do %>
