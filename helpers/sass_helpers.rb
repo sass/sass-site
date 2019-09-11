@@ -423,7 +423,7 @@ module SassHelpers
     ]
   end
 
-  # Renders API docs for a Sass function.
+  # Renders API docs for a Sass function (or mixin).
   #
   # The function's name is parsed from the signature. The API description is
   # passed as a Markdown block. If `returns` is passed, it's included as the
