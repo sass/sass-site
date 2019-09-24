@@ -198,5 +198,12 @@ if (window.location.hash) {
 
     var redirect = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
+  } else if (window.location.pathname == "/documentation/modules/map") {
+    var redirects = {
+      "#keywords": "/documentation/modules/meta#keywords"
+    };
+
+    var redirect = redirects[window.location.hash];
+    if (redirect) window.location.href = redirect;
   }
 }
