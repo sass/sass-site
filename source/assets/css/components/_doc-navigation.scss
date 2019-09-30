@@ -1,0 +1,16 @@
+.sl-l-medium-holy-grail__body {
+
+  &.nav--is-sticky {
+
+    .sl-c-list-navigation-wrapper {
+      top: 0;
+      bottom: 0;
+      position: sticky;
+      overflow-y: scroll;
+
+      @include sl-breakpoint--large { 
+        height: 100vh;
+      }
+    }
+  }
+}
