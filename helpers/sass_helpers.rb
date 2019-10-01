@@ -322,6 +322,7 @@ module SassHelpers
     repo =
       case impl
       when :dart; "dart-sass"
+      when :migrator; "migrator"
       when :libsass; "libsass"
       end
 

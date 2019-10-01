@@ -67,6 +67,28 @@ namespace :sass do
     end
   end
 
+  namespace :migrator do
+    # Check out the latest commit of the Sass migrator into the .sass-migrator directory.
+    task :checkout do
+      unless Dir.exists?(".sass-migrator")
+        sh %{git clone git://github.com/sass/migrator .sass-migrator}
+      end
+
+      Dir.chdir(".sass-migrator") do
+        sh %{git fetch}
+        if ENV["SASS_MIGRATOR_REVISION"]
+          sh %{git checkout #{ENV["SASS_MIGRATOR_REVISION"]}}
+        else
+          sh %{git checkout origin/master}
+        end
+      end
+    end
+
+    task :version => :checkout do
+      add_version 'migrator', Dir.chdir(".sass-migrator") {latest_stable_tag}
+    end
+  end
+
   namespace :libsass do
     # Check out the latest commit of Dart Sass into the .libsass directory.
     task :checkout do
