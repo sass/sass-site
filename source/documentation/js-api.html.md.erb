@@ -137,8 +137,8 @@ console.log(result.map.toString());
 
 An array of the absolute paths of all Sass files loaded during compilation. If a
 stylesheet was loaded from an [importer][] that returned the stylesheet's
-contents, the raw strings of that stylesheet's `@import` is included in this
-array.
+contents, the raw string of the `@use` or `@import` that loaded that stylesheet
+is included in this array.
 
 [importer]: #importer
 
@@ -188,9 +188,9 @@ provides the same information.
 The stylesheet where the error occurred. If the error occurred in a stylesheet
 loaded from disk, this is the absolute path of that stylesheet. If the error
 occurred in a stylesheet that was loaded from an [importer][] which returned the
-stylesheet's contents, this is the raw string of that stylesheet's `@import`. If
-it occurred in the contents of the [`data` option][], this is the string
-`"stdin"`.
+stylesheet's contents, this is the raw string of the `@use` or `@import` that
+loaded that stylesheet. If it occurred in the contents of the [`data` option][],
+this is the string `"stdin"`.
 
 #### `error.line`
 
@@ -741,21 +741,23 @@ h1 {
   somewhere else to break it.
 <% end %>
 
-This option defines one or more additional handlers for loading files when an
-[`@import` rule][] is encountered. It can either be a single JavaScript
-function, or an array of functions. These functions are always passed two
-arguments:
+This option defines one or more additional handlers for loading files when a
+[`@use` rule] or an [`@import` rule][] is encountered. It can either be a single
+JavaScript function, or an array of functions. These functions are always passed
+two arguments:
 
+[`@use` rule]: at-rules/use
 [`@import` rule]: at-rules/import
 
-1. The `@import` rule's URL as a string, exactly as it appears in the
+1. The `@use` or `@import` rule's URL as a string, exactly as it appears in the
    stylesheet.
-2. A string identifying for the stylesheet that contained the `@import`. This
-   identifier's format depends on how that stylesheet was loaded:
+2. A string identifying for the stylesheet that contained the `@use` or
+   `@import`. This identifier's format depends on how that stylesheet was
+   loaded:
    * If the stylesheet was loaded from the filesystem, it's the absolute path of
      its file.
    * If the stylesheet was loaded from an importer that returned its contents,
-     it's the URL of the `@import` rule that loaded it.
+     it's the URL of the `@use` or `@import` rule that loaded it.
    * If the stylesheet came from the [`data` option][], it's the string
      `"stdin"`.
 
@@ -775,7 +777,7 @@ asynchronously pass the result of the import once it's complete.
 
 Imports are resolved by trying, in order:
 
-* Loading a file relative to the file in which the `@import` appeared.
+* Loading a file relative to the file in which the `@use` or `@import` appeared.
 
 * Each custom importer.
 
@@ -793,7 +795,7 @@ sass.render({
     // This importer uses the synchronous API, and can be passed to either
     // renderSync() or render().
     function(url, prev) {
-      // This generates a stylesheet from scratch for `@import "big-headers"`.
+      // This generates a stylesheet from scratch for `@use "big-headers"`.
       if (url != "big-headers") return null;
 
       return {
@@ -807,7 +809,7 @@ h1 {
     // This importer uses the asynchronous API, and can only be passed to
     // render().
     function(url, prev, done) {
-      // Convert `@import "foo/bar"` to "node_modules/foo/sass/bar".
+      // Convert `@use "foo/bar"` to "node_modules/foo/sass/bar".
       var components = url.split('/');
       var innerPath = components.slice(1).join('/');
       done({

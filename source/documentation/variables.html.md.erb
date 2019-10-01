@@ -83,61 +83,39 @@ variable, just include it in a value.
 
 Normally when you assign a value to a variable, if that variable already had a
 value, its old value is overwritten. But if you're writing a Sass library, you
-might want to allow your users to customize your library's variables before you
+might want to allow your users to configure your library's variables before you
 use them to generate CSS.
 
 To make this possible, Sass provides the `!default` flag. This assigns a value
 to a variable *only if* that variable isn't defined or its value is [`null`][].
-Otherwise, the existing value will be used. This way, users can set variables
-before they import your library to customize its behavior.
+Otherwise, the existing value will be used.
 
 [`null`]: values/null
 
-<% example do %>
-  // _library.scss
-  $black: #000 !default;
-  $border-radius: 0.25rem !default;
-  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
+### Configuring Modules
 
-  code {
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-  }
-  ---
-  // style.scss
-  $black: #222;
-  $border-radius: 0.1rem;
+<%= partial 'snippets/module-system-status' %>
 
-  @import 'library';
-  ===
-  // _library.sass
-  $black: #000 !default
-  $border-radius: 0.25rem !default
-  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default
+Variables defined with `!default` can be configured when loading a module with
+the [`@use` rule][]. Sass libraries often use `!default` variables to allow
+their users to configure the library's CSS.
 
-  code
-    border-radius: $border-radius
-    box-shadow: $box-shadow
-  ---
-  // style.sass
-  $black: #222
-  $border-radius: 0.1rem
+[`@use` rule]: at-rules/use
 
-  @import 'library'
-  ===
-  code {
-    border-radius: 0.1rem;
-    box-shadow: 0 0.5rem 1rem rgba(#222, 0.15);
-  }
-<% end %>
+To load a module with configuration, write `@use <url> with (<variable>:
+<value>, <variable>: <value>)`. The configured values will override the
+variables' default values. Only variables written at the top level of the
+stylesheet with a `!default` flag can be configured.
+
+<%= partial '../code-snippets/example-use-with' %>
 
 ## Scope
 
 Variables declared at the top level of a stylesheet are *global*. This means
-that they can be accessed anywhere after they've been declared—even in another
-stylesheet! But that's not true for all variables. Those declared in blocks
-(curly braces in SCSS or indented code in Sass) are usually *local*, and can
-only be accessed within the block they were declared.
+that they can be accessed anywhere in their module after they've been declared.
+But that's not true for all variables. Those declared in blocks (curly braces in
+SCSS or indented code in Sass) are usually *local*, and can only be accessed
+within the block they were declared.
 
 <% example do %>
   $global-variable: global value;
@@ -291,12 +269,13 @@ assign a value to a variable, or build up a value as part of a loop.
 ## Advanced Variable Functions
 
 The Sass core library provides a couple advanced functions for working with
-variables. The [`variable-exists()` function][] returns whether a variable with
-the given name exists in the current scope, and the [`global-variable-exists()`
-function][] does the same but only for the global scope.
+variables. The [`meta.variable-exists()` function][] returns whether a variable
+with the given name exists in the current scope, and the
+[`meta.global-variable-exists()` function][] does the same but only for the
+global scope.
 
-[`variable-exists()` function]: functions/meta#variable-exists
-[`global-variable-exists()` function]: functions/meta#global-variable-exists
+[`meta.variable-exists()` function]: modules/meta#variable-exists
+[`meta.global-variable-exists()` function]: modules/meta#global-variable-exists
 
 <% heads_up do %>
   Users occasionally want to use interpolation to define a variable name based
@@ -308,6 +287,8 @@ function][] does the same but only for the global scope.
   [map]: values/maps
 
   <% example do %>
+    @use "sass:map";
+
     $theme-colors: (
       "success": #28a745,
       "info": #17a2b8,
@@ -316,13 +297,19 @@ function][] does the same but only for the global scope.
 
     .alert {
       // Instead of $theme-color-#{warning}
-      background-color: map-get($theme-colors, "warning");
+      background-color: map.get($theme-colors, "warning");
     }
     ===
+    @use "sass:map"
+
     $theme-colors: ("success": #28a745, "info": #17a2b8, "warning": #ffc107)
 
     .alert
       // Instead of $theme-color-#{warning}
-      background-color: map-get($theme-colors, "warning")
+      background-color: map.get($theme-colors, "warning")
+    ===
+    .alert {
+      background-color: #ffc107;
+    }
   <% end %>
 <% end %>

@@ -4,20 +4,24 @@ introduction: >
   Booleans are the logical values `true` and `false`. In addition their literal
   forms, booleans are returned by [equality](../operators/equality) and
   [relational](../operators/relational) operators, as well as many built-in
-  functions like [`comparable()`](../functions/math#comparable) and
-  [`map-has-key()`](../functions/map#map-has-key).
+  functions like [`math.comparable()`](../modules/math#comparable) and
+  [`map.has-key()`](../modules/map#has-key).
 ---
 
 <% example(autogen_css: false) do %>
+  @use "sass:math";
+
   @debug 1px == 2px; // false
   @debug 1px == 1px; // true
   @debug 10px < 3px; // false
-  @debug comparable(100px, 3in); // true
+  @debug math.comparable(100px, 3in); // true
   ===
+  @use "sass:math";
+
   @debug 1px == 2px  // false
   @debug 1px == 1px  // true
   @debug 10px < 3px  // false
-  @debug comparable(100px, 3in)  // true
+  @debug math.comparable(100px, 3in)  // true
 <% end %>
 
 You can work with booleans using [boolean operators][]. The `and` operator
@@ -59,7 +63,7 @@ You can use booleans to choose whether or not to do various things in Sass. The
 The [`if()` function][] chooses returns one value if its argument is `true` and
 another if its argument is `false`:
 
-[`if()` function]: ../functions#if
+[`if()` function]: ../modules#if
 
 <% example(autogen_css: false) do %>
   @debug if(true, 10px, 30px); // 10px

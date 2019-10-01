@@ -15,7 +15,7 @@ introduction: >
 * [Plain CSS `@import`s](at-rules/import#plain-css-imports)
 * [Quoted or unquoted strings](values/strings)
 * [Special functions](syntax/special-functions)
-* [Plain CSS function names](functions/css)
+* [Plain CSS function names](at-rules/function#plain-css-functions)
 * [Loud comments](syntax/comments)
 
 <% example do %>
@@ -144,8 +144,8 @@ them into style rules.
 
 <% heads_up do %>
   While it's tempting to use this feature to convert quoted strings to unquoted
-  strings, it's a lot clearer to use the [`unquote()` function][]. Instead of
-  `#{$string}`, write `unquote($string)`!
+  strings, it's a lot clearer to use the [`string.unquote()` function][].
+  Instead of `#{$string}`, write `string.unquote($string)`!
 
-  [`unquote()` function]: functions/string#unquote
+  [`string.unquote()` function]: modules/string#unquote
 <% end %>

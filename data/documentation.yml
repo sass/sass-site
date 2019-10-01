@@ -14,6 +14,8 @@ toc:
 - Interpolation: /documentation/interpolation
 - At-Rules: /documentation/at-rules
   :children:
+  - <code>@use</code>: /documentation/at-rules/use
+  - <code>@forward</code>: /documentation/at-rules/forward
   - <code>@import</code>: /documentation/at-rules/import
   - <code>@mixin</code> and <code>@include</code>: /documentation/at-rules/mixin
   - <code>@function</code>: /documentation/at-rules/function
@@ -46,16 +48,15 @@ toc:
   - Numeric: /documentation/operators/numeric
   - String: /documentation/operators/string
   - Boolean: /documentation/operators/boolean
-- Built-In Functions: /documentation/functions
+- Built-In Modules: /documentation/modules
   :children:
-  - Plain CSS: /documentation/functions/css
-  - Numbers: /documentation/functions/math
-  - Strings: /documentation/functions/string
-  - Colors: /documentation/functions/color
-  - Lists: /documentation/functions/list
-  - Maps: /documentation/functions/map
-  - Selectors: /documentation/functions/selector
-  - Introspection: /documentation/functions/meta
+  - <code>sass:color</code>: /documentation/modules/color
+  - <code>sass:list</code>: /documentation/modules/list
+  - <code>sass:map</code>: /documentation/modules/map
+  - <code>sass:math</code>: /documentation/modules/math
+  - <code>sass:meta</code>: /documentation/modules/meta
+  - <code>sass:selector</code>: /documentation/modules/selector
+  - <code>sass:string</code>: /documentation/modules/string
 - Breaking Changes: /documentation/breaking-changes
   :children:
   - Extending Compound Selectors: /documentation/breaking-changes/extend-compound
@@ -64,4 +65,5 @@ toc:
   :children:
   - Dart Sass: /documentation/cli/dart-sass
   - Ruby Sass: /documentation/cli/ruby-sass
+  - Migrator: /documentation/cli/migrator
 - JavaScript API: /documentation/js-api
