@@ -103,6 +103,27 @@ Migrating _fonts.scss
 Migrating _grid.scss
 ```
 
+<% heads_up do %>
+  The [module migrator][] assumes that any stylesheet that is depended on using
+  a [`@use` rule][] or a [`@forward` rule][] has already been migrated to the
+  module system, so it won't attempt to migrate them, even when the
+  `--migrate-deps` option is passed.
+
+  [module migrator]: #module
+<% end %>
+
+### `--load-path`
+
+This option (abbreviated `-I`) tells the migrator a [load path][] where it
+should look for stylesheets. It can be passed multiple times to provide multiple
+load paths. Earlier load paths will take precedence over later ones.
+
+Dependencies loaded from load paths are assumed to be third-party libraries, so
+the migrator will not migrate them even when the [`--migrate-deps` option][] is
+passed.
+
+[load path]: ../at-rules/use#load-paths
+
 ### `--dry-run`
 
 This flag (abbreviated `-n`) tells the migrator not to save any changes to
@@ -160,9 +181,7 @@ the `===` as a heading. %>
 
     $ sass-migrator module --verbose --dry-run style.scss
     Dry run. Logging migrated files instead of overwriting...
-
-    style.scss
-    ================================================================================
+    <==> style.scss
     @use "bootstrap" with (
       $body-bg: #000,
       $body-color: #111
@@ -173,8 +192,6 @@ the `===` as a heading. %>
         display: block;
       }
     }
-
-    --------------------------------------------------------------------------------
     $ sass-migrator module --verbose style.scss
     Migrating style.scss
 
@@ -222,6 +239,37 @@ before, including:
 <% end %>
 
 <%= partial 'code-snippets/example-module-migrator' %>
+
+#### Loading Dependencies
+
+The module migrator needs to be able to read all of the stylesheets depended on
+by the ones it's migrating, even if the [`--migrate-deps` option][] is not
+passed. If the migrator fails to find a dependency, you'll get an error.
+
+```shellsession
+$ ls .
+style.scss
+$ sass-migrator module style.scss
+Error: Could not find Sass file at 'dependency'.
+  ,
+1 | @import "dependency";
+  |         ^^^^^^^^^^^^
+  '
+  style.scss 1:9  root stylesheet
+Migration failed!
+$ sass-migrator --load-path node_modules module style.scss
+```
+
+If you use a [load path][] when compiling your stylesheets, make sure to pass
+that to the migrator using the [`--load-path` option][].
+
+Unfortunately, the migrator does not support custom importers, but it does have
+built-in support for resolving URLs starting with `~` by searching in
+`node_modules`, similar to [what Webpack supports][].
+
+[load path]: ../at-rules/use#load-paths
+[`--load-path` option]: #load-path
+[what Webpack supports]: https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules
 
 #### `--remove-prefix`
 
@@ -293,7 +341,5 @@ $ sass-migrator --migrate-deps module --forward=all style.scss
 $ cat _index.scss
 @forward "theme";
 @forward "typography";
-@forward "components/button";
-@forward "components/nav";
-@forward "components/drawer";
+@forward "components";
 ```
