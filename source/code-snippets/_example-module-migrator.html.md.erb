@@ -1,0 +1,25 @@
+```shellsession
+$ cat style.scss
+$body-bg: #000;
+$body-color: #111;
+
+@import "bootstrap";
+
+@include media-breakpoint-up(sm) {
+  .navbar {
+    display: block;
+  }
+}
+$ sass-migrator --migrate-deps module style.scss
+$ cat style.scss
+@use "bootstrap" with (
+  $body-bg: #000,
+  $body-color: #111
+);
+
+@include bootstrap.media-breakpoint-up(sm) {
+  .navbar {
+    display: block;
+  }
+}
+```

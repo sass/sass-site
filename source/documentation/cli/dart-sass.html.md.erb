@@ -91,11 +91,11 @@ The `--stdin` flag may not be used with [many-to-many mode][].
 
 This flag tells Sass to parse the input file as the [indented syntax][]. If it's
 used in [many-to-many mode][], all input files are parsed as the indented
-syntax, although files they [import][] will have their syntax determined as
-usual. The inverse, `--no-indented`, can be used to force all input files to be
-parsed as [SCSS][] instead.
+syntax, although files they [use][] will have their syntax determined as usual.
+The inverse, `--no-indented`, can be used to force all input files to be parsed
+as [SCSS][] instead.
 
-[import]: ../at-rules/import
+[use]: ../at-rules/use
 
 The `--indented` flag is mostly useful when the input file is coming from
 [standard input][], so its syntax can't be automatically determined.
@@ -110,10 +110,10 @@ h1 {
 #### `--load-path`
 
 This option (abbreviated `-I`) adds an additional [load path][] for Sass to look
-for imports. It can be passed multiple times to provide multiple load paths.
+for stylesheets. It can be passed multiple times to provide multiple load paths.
 Earlier load paths will take precedence over later ones.
 
-[load path]: ../at-rules/import#load-paths
+[load path]: ../at-rules/use#load-paths
 
 ```shellsession
 $ sass --load-path=node_modules/bootstrap/dist/css style.scss style.css
@@ -341,18 +341,20 @@ Error: Expected expression.
 
 This flag (abbreviated `-i`) tells Sass to run in interactive mode, where you
 can write [SassScript expressions][] and see their results. Interactive mode
-also supports [variables][].
+also supports [variables][] and [`@use` rules][].
 
 [SassScript expressions]: ../syntax/structure#expressions
 [variables]: ../variables
+[`@use` rules]: ../at-rules/use
 
 ```shellsession
 $ sass --interactive
 >> 1px + 1in
 97px
+>> @use "sass:map"
 >> $map: ("width": 100px, "height": 70px)
 ("width": 100px, "height": 70px)
->> map-get($map, "width")
+>> map.get($map, "width")
 100px
 ```
 
