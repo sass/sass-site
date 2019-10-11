@@ -16,7 +16,7 @@ aside:hover, .sidebar p` would be returned as:
 [unquoted strings]: ../values/strings#unquoted
 
 ```scss
-@debug selector.((unquote(".main") unquote("aside:hover")),
+@debug ((unquote(".main") unquote("aside:hover")),
         (unquote(".sidebar") unquote("p")));
 // .main aside:hover, .sidebar p
 ```
