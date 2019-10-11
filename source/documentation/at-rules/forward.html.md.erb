@@ -17,6 +17,13 @@ module once!
 
 [public]: use#private-members
 
+If you *do* write both a `@forward` and a `@use` for the same module in the same
+file, it's always a good idea to write the `@forward` first. That way, if your
+users want to [configure the forwarded module][], that configuration will be
+applied to the `@forward` before your `@use` loads it without any configuration.
+
+[configure the forwarded module]: use#configuring-modules
+
 <% fun_fact do %>
   The `@forward` rule acts just like `@use` when it comes to a module's CSS.
   Styles from a forwarded module will be included in the compiled CSS output,
