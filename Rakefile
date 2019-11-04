@@ -1,7 +1,6 @@
 require "html-proofer"
 require "semantic"
 require "yaml"
-require "yard"
 
 require File.dirname(__FILE__) + '/lib/raw_markdown_link'
 
