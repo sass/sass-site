@@ -23,4 +23,3 @@ gem "therubyracer",           "~> 0.12.3"
 gem "typogruby",              "~> 1.0.18"
 gem "tzinfo-data",            "~> 1.2015.7", platforms: [:mswin, :mingw, :jruby]
 gem "wdm",                    "~> 0.1.1",    platforms: [:mswin, :mingw]
-gem "yard",                   "~> 0.9"
