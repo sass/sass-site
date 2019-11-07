@@ -1,5 +1,5 @@
 // Documentation Nav Scroll
-$(function() {
+(function docNav() {
   // Vars
   var nav = $(".sl-c-list-navigation-wrapper");
   var sticky = nav.offset();
@@ -19,4 +19,4 @@ $(function() {
     });
 
   return stickyNav();
-});
+})();
