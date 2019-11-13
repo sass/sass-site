@@ -9,7 +9,7 @@ xml.feed xmlns: "http://www.w3.org/2005/Atom" do
 
   blog.articles[0..5].each do |article|
     xml.entry do
-      url = config[:host] + article.url
+      url = config[:host] + without_html(article.url)
       xml.title article.title
       xml.link href: url, rel: "alternate"
       xml.id url
