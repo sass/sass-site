@@ -6,6 +6,7 @@
     %title= page_title
     %meta(name='description' content='Syntatically Awesome Style Sheets')
     %meta(name='viewport' content='width=device-width, initial-scale=1')
+    %link(rel="alternate" type="application/atom+xml" href="/feed.xml")
 
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,600|Source+Serif+Pro'
     = stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css'
@@ -51,7 +52,7 @@
         %p
           %strong Sass just launched a brand new module system.
           = succeed '!' do
-            = link_to '/blog/posts/7858341-the-module-system-is-launched' do
+            = link_to '/blog/the-module-system-is-launched' do
               Learn all about it on the Sass blog
 
     .sl-c-pop-stripe
@@ -67,7 +68,7 @@
             :markdown
               - [Install](/install)
               - [Learn Sass](/guide)
-              - [Blog](http://blog.sass-lang.com/)
+              - [Blog](/blog)
               - [Documentation](/documentation)
               - [Get Involved](/community)
               - <input class='search' type='text'>
