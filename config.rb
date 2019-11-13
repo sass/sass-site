@@ -12,9 +12,19 @@ end
 activate :livereload
 activate :syntax
 
+activate :blog do |blog|
+  blog.prefix = "blog"
+  blog.default_extension = ".md"
+  blog.sources = "{id}-{title}.html"
+  blog.permalink = "/{title}.html"
+  blog.paginate = true
+  blog.summary_length = 1000
+end
+
 set :markdown, fenced_code_blocks: true,
                autolink: true,
                smartypants: true,
+               footnotes: true,
                with_toc_data: true
 Haml::Filters::Markdown.options.merge! fenced_code_blocks: true,
                                        autolink: true
@@ -38,6 +48,7 @@ page '/community-guidelines.html', :layout => :has_complementary
 page '/libsass.html',              :layout => :has_both_sidebars
 page '/styleguide/*',              :layout => :section_styleguide
 page '/documentation/*',           :layout => :section_reference
+page '/blog/*',                    :layout => :blog
 
 configure :development do
   config[:host] = 'http://localhost:4567'
