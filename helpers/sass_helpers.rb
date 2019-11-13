@@ -51,6 +51,10 @@ module SassHelpers
     pages.flatten
   end
 
+  def without_html(page)
+    url_for(page).sub(/\.html$/, '')
+  end
+
   def documentation_toc
     _toc_level(nil, data.documentation.toc)
   end
