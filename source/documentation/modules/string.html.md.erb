@@ -149,7 +149,9 @@ title: sass:string
 <% end %>
 
 
-<% function 'string.unquote()', 'unquote()', returns: 'string' do %>
+<% function 'string.unquote($string)',
+            'unquote($string)',
+            returns: 'string' do %>
   Returns `$string` as an unquoted string. This can produce strings that aren't
   valid CSS, so use with caution.
 
