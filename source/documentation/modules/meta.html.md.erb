@@ -208,17 +208,23 @@ title: sass:meta
 <% end %>
 
 
-<% function 'meta.get-function($name, $css: false)',
-            'get-function($name, $css: false)',
+<% function 'meta.get-function($name, $css: false, $module: null)',
+            'get-function($name, $css: false, $module: null)',
             returns: 'function' do %>
   Returns the [function][] named `$name`.
 
   [function]: ../values/functions
 
-  This can access both built-in and [user-defined][] functions. By default, it
-  throws an error if `$name` doesn't refer to either a built-in or user-defined
-  function. However, if `$css` is `true`, it instead returns a
-  [plain CSS function][].
+  If `$module` is `null`, this returns the function named `$name` without a
+  namespace (including [global built-in functions][]). Otherwise, `$module` must
+  be a string matching the namespace of a [`@use` rule][] in the current file,
+  in which case this returns the function in that module named `$name`.
+
+  [global built-in functions]: ../modules#global-functions
+  [`@use` rule]: ../at-rules/use
+
+  By default, this throws an error if `$name` doesn't refer to Sass function.
+  However, if `$css` is `true`, it instead returns a [plain CSS function][].
 
   [user-defined]: ../at-rules/function
   [plain CSS function]: ../at-rules/function#plain-css-functions
@@ -229,12 +235,19 @@ title: sass:meta
 <% end %>
 
 
-<% function 'meta.global-variable-exists($name)',
-            'global-variable-exists($name)',
+<% function 'meta.global-variable-exists($name, $module: null)',
+            'global-variable-exists($name, $module: null)',
             returns: 'boolean' do %>
   Returns whether a [global variable][] named `$name` (without the `$`) exists.
 
   [global variable]: ../variables#scope
+
+  If `$module` is `null`, this returns whether a variable named `$name` without
+  a namespace exists. Otherwise, `$module` must be a string matching the
+  namespace of a [`@use` rule][] in the current file, in which case this returns
+  whether that module has a variable named `$name`.
+
+  [`@use` rule]: ../at-rules/use
 
   See also [`meta.variable-exists()`](#variable-exists).
 
@@ -305,12 +318,20 @@ title: sass:meta
 <% end %>
 
 
-<% function 'meta.mixin-exists($name)',
-            'mixin-exists($name)',
+<% function 'meta.mixin-exists($name, $module: null)',
+            'mixin-exists($name, $module: null)',
             returns: 'boolean' do %>
   Returns whether a [mixin][] named `$name` exists.
 
   [mixin]: ../at-rules/mixin
+  
+  If `$module` is `null`, this returns whether a mixin named `$name` without a
+  namespace exists. Otherwise, `$module` must be a string matching the namespace
+  of a [`@use` rule][] in the current file, in which case this returns whether
+  that module has a mixin named `$name`.
+
+  [`@use` rule]: ../at-rules/use
+
 
   <% example(autogen_css: false) do %>
     @debug meta.mixin-exists("shadow-none"); // false
