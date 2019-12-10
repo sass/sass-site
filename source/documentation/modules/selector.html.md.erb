@@ -211,7 +211,7 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
 
 
 <% function 'selector.unify($selector1, $selector2)',
-            'selector.unify($selector1, $selector2)',
+            'selector-unify($selector1, $selector2)',
             returns: 'selector | null' do %>
   Returns a selector that matches only elements matched by *both* `$selector1`
   and `$selector2`.
@@ -251,10 +251,10 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
   strings.
 
   <% example(autogen_css: false) do %>
-    @debug selector.compound-selectors("a.disabled"); // a, .disabled
-    @debug selector.compound-selectors("main.blog:after"); // main, .blog, :after
+    @debug selector.simple-selectors("a.disabled"); // a, .disabled
+    @debug selector.simple-selectors("main.blog:after"); // main, .blog, :after
     ===
-    @debug selector.compound-selectors("a.disabled")  // a, .disabled
-    @debug selector.compound-selectors("main.blog:after")  // main, .blog, :after
+    @debug selector.simple-selectors("a.disabled")  // a, .disabled
+    @debug selector.simple-selectors("main.blog:after")  // main, .blog, :after
   <% end %>
 <% end %>
