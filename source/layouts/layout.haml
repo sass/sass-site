@@ -58,6 +58,15 @@
     .sl-c-pop-stripe
 
     %header.sl-r-banner(itemtype='http://schema.org/WPHeader' itemscope='itemscope' role='banner')
+      .sl-c-alert.sl-c-alert--info
+        .sl-l-container
+          %p
+            %strong Sass just launched a brand new module system.
+            = succeed '!' do
+              = link_to '/blog/posts/7858341-the-module-system-is-launched' do
+                Learn all about it on the Sass blog
+
+      .sl-c-pop-stripe
       .sl-l-container
         .sl-l-grid.sl-l-grid--full.sl-l-large-grid--fit.sl-l-large-grid--center.sl-l-large-grid--gutters
           %p.sl-l-grid__column.sl-r-banner__brand
@@ -89,38 +98,38 @@
 
       .sl-l-container.sl-background--white{class: section_class}= yield
 
-    .sl-c-alert
-      .sl-l-container.sl-c-list-horizontal-wrapper
-        %ul.sl-l-grid--justify-center
-          %li
-            Current Releases:
+      .sl-c-alert
+        .sl-l-container.sl-c-list-horizontal-wrapper
+          %ul.sl-l-grid--justify-center
+            %li
+              Current Releases:
 
-          %li
-            %span.release-name<
-              = link_to 'Dart Sass', '/dart-sass'
-              -# Force space between the two links.
-              &#32;
-              = link_to impl_version(:dart) || '???', release_url(:dart)
+            %li
+              %span.release-name<
+                = link_to 'Dart Sass', '/dart-sass'
+                -# Force space between the two links.
+                &#32;
+                = link_to impl_version(:dart) || '???', release_url(:dart)
 
-          %li
-            %span.release-name<
-              = link_to 'LibSass', '/libsass'
-              -# Force space between the two links.
-              &#32;
-              = link_to impl_version(:libsass) || '???', release_url(:libsass)
+            %li
+              %span.release-name<
+                = link_to 'LibSass', '/libsass'
+                -# Force space between the two links.
+                &#32;
+                = link_to impl_version(:libsass) || '???', release_url(:libsass)
 
-          %li
-            %span.release-name<
-              = link_to 'Ruby Sass', '/ruby-sass'
-              -# Force space between the link and the coffin.
-              %span(role='presentation' aria-label='coffin')
-                &#32; ⚰
+            %li
+              %span.release-name<
+                = link_to 'Ruby Sass', '/ruby-sass'
+                -# Force space between the link and the coffin.
+                %span(role='presentation' aria-label='coffin')
+                  &#32; ⚰
 
-          %li.sl-l-grid__column.sl-l-large-grid__column--auto-size
-            = link_to 'Implementation Guide', '/implementation'
+            %li.sl-l-grid__column.sl-l-large-grid__column--auto-size
+              = link_to 'Implementation Guide', '/implementation'
 
-    - if content_for?(:section_bottom)
-      %section.sl-background--white.sl-l-container= Typogruby.improve(yield_content :section_bottom)
+      - if content_for?(:section_bottom)
+        %section.sl-background--white.sl-l-container= Typogruby.improve(yield_content :section_bottom)
 
     %footer.site-footer.contentinfo(itemtype='http://schema.org/WPFooter' itemscope='itemscope' role='contentinfo')
       .sl-l-container.sl-l-section
