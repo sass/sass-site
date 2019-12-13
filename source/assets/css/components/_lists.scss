@@ -57,7 +57,7 @@
 
       li.overview a {
         font-size: $sl-font-size--small;
-        &:not(.selected) { color: transparentize($sl-color--midnight-blue, 0.5); }
+        &:not(.selected) { color: transparentize($sl-color--midnight-blue, 0.3); }
       }
 
       li a {
