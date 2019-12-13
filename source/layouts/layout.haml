@@ -99,9 +99,9 @@
       .sl-l-container.sl-background--white{class: section_class}= yield
 
       .sl-c-alert
-        .sl-l-container.sl-c-list-horizontal-wrapper
+        .sl-l-container.sl-c-list-horizontal-wrapper(aria-labelledby='release-nav')
           %ul.sl-l-grid--justify-center
-            %li
+            %li#release-nav
               Current Releases:
 
             %li

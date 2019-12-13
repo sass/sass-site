@@ -7,7 +7,7 @@
   - if current_page.data.table_of_contents
     - content_for :complementary do
 
-      %nav.page-sections.sl-c-list-navigation-wrapper.sl-c-list-navigation-wrapper--collapsible
-        %h3 Page Sections
+      %nav.page-sections.sl-c-list-navigation-wrapper.sl-c-list-navigation-wrapper--collapsible(aria-labelledby='page-sections')
+        %h3#page-sections Page Sections
         
         = current_page.metadata[:table_of_contents]
