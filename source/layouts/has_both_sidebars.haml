@@ -1,7 +1,7 @@
 = wrap_layout :layout do
   .sl-l-medium-holy-grail
     .sl-l-medium-holy-grail__body
-      %nav.sl-l-medium-holy-grail__navigation(role='navigation')
+      %nav.sl-l-medium-holy-grail__navigation(aria-labelledby='content-nav' role='navigation')
         = yield_content :navigation
 
       .sl-l-medium-holy-grail__main
