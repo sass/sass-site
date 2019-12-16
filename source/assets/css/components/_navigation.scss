@@ -13,6 +13,7 @@
   display: block;
   padding: 0.25em 1em;
   transform: translateY(calc(-100% - 1em));
+  transition: all .1s ease-in-out;
   position: absolute;
   left: 1em;
   top: 1em;
@@ -20,7 +21,6 @@
 
   &:focus {
     transform: translateY(0);
-    transition: all .1s ease-in-out;
     background: $sl-color--hopbush;
     color: $sl-color--white;
   }
