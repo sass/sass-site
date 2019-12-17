@@ -189,7 +189,7 @@ variables (including the `$`).
 
 ## Configuring Modules
 
-<% impl_status dart: '1.24.0', libsass: false, ruby: false do %>
+<% impl_status dart: '1.24.0', libsass: false, ruby: false %>
 
 The `@forward` rule can also load a module with [configuration][]. This mostly
 works the same as it does for `@use`, with one addition: a `@forward` rule's
@@ -211,7 +211,7 @@ downstream stylesheets to override them.
   }
   ---
   // _opinionated.scss
-  @use 'library' with (
+  @forward 'library' with (
     $black: #222 !default,
     $border-radius: 0.1rem !default
   );
@@ -229,7 +229,7 @@ downstream stylesheets to override them.
     box-shadow: $box-shadow
   ---
   // _opinionated.sass
-  @use 'library' with ($black: #222 !default, $border-radius: 0.1rem !default)
+  @forward 'library' with ($black: #222 !default, $border-radius: 0.1rem !default)
   ---
   // style.sass
   @use 'opinionated' with ($black: #333)
