@@ -121,7 +121,7 @@ after_render do |content, path, locs|
   content.gsub(%r{^<(h[0-6])(.*?)</\1>}m) do |header_text|
     header = Nokogiri::HTML::DocumentFragment.parse(header_text).children.first
     id = header.attr(:id)
-    # header.children.before("<a class='anchor' href='##{id}'></a>") if id // Commenting this out, as it appears to serve no function and is generating empty links, which causes accessibility issues. 
+    header.children.before("<a class='anchor' href='##{id}'><span class='visuallyhidden'>#{header.text} permalink</a>") if id 
     header.to_html
   end
 end
