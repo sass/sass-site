@@ -3,7 +3,7 @@
 .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight .cm {
-  color: #999988;
+  color: #656556;
   font-style: italic;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .highlight .c1 {
-  color: #999988;
+  color: #656556;
   font-style: italic;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .highlight .c, .highlight .cd {
-  color: #999988;
+  color: #006666;
   font-style: italic;
 }
 
@@ -112,27 +112,27 @@
 }
 
 .highlight .mf {
-  color: #009999;
+  color: #006666;
 }
 
 .highlight .mh {
-  color: #009999;
+  color: #006666;
 }
 
 .highlight .il {
-  color: #009999;
+  color: #006666;
 }
 
 .highlight .mi {
-  color: #009999;
+  color: #006666;
 }
 
 .highlight .mo {
-  color: #009999;
+  color: #006666;
 }
 
 .highlight .m, .highlight .mb, .highlight .mx {
-  color: #009999;
+  color: #006666;
 }
 
 .highlight .sb {
@@ -168,7 +168,7 @@
 }
 
 .highlight .sr {
-  color: #009926;
+  color: #006619;
 }
 
 .highlight .s1 {
@@ -184,15 +184,15 @@
 }
 
 .highlight .na {
-  color: #008080;
+  color: #006666;
 }
 
 .highlight .bp {
-  color: #999999;
+  color: #666666;
 }
 
 .highlight .nb {
-  color: #0086B3;
+  color: #006080;
 }
 
 .highlight .nc {
@@ -201,7 +201,7 @@
 }
 
 .highlight .no {
-  color: #008080;
+  color: #004D4D;
 }
 
 .highlight .nd {
@@ -217,3 +217,49 @@
   color: #990000;
   font-weight: bold;
 }
+
+.highlight .ne {
+    color: #990000;
+    font-weight: bold;
+  }
+  .highlight .nf {
+    color: #990000;
+    font-weight: bold;
+  }
+  .highlight .nl {
+    color: #990000;
+    font-weight: bold;
+  }
+  .highlight .nn {
+    color: #555555;
+  }
+  .highlight .nt {
+    color: #000080;
+  }
+  .highlight .vc {
+    color: #004D4D;
+  }
+  .highlight .vg {
+    color: #004D4D;
+  }
+  .highlight .vi {
+    color: #004D4D;
+  }
+  .highlight .nv {
+    color: #006666;
+  }
+
+  .highlight .ow {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .o {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .w {
+    color: #bbbbbb;
+  }
+  .highlight {
+    background-color: #f8f8f8;
+  }
