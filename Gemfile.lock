@@ -6,8 +6,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.3.8)
     autoprefixer-rails (6.2.3)
       execjs
       json
@@ -23,7 +22,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    colorize (0.8.1)
     compass (1.0.3)
       chunky_png (~> 1.2)
       compass-core (~> 1.0.2)
@@ -40,7 +38,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
-    ethon (0.11.0)
+    ethon (0.12.0)
       ffi (>= 1.3.0)
     eventmachine (1.2.7)
     execjs (2.7.0)
@@ -51,13 +49,12 @@ GEM
     hike (1.2.3)
     hooks (0.4.1)
       uber (~> 0.0.14)
-    html-proofer (3.10.0)
-      activesupport (>= 4.2, < 6.0)
+    html-proofer (3.13.0)
       addressable (~> 2.3)
-      colorize (~> 0.8)
-      mercenary (~> 0.3.2)
-      nokogiri (~> 1.9)
+      mercenary (~> 0.3)
+      nokogiri (~> 1.10)
       parallel (~> 1.3)
+      rainbow (~> 3.0)
       typhoeus (~> 1.3)
       yell (~> 2.0)
     htmlcompressor (0.2.0)
@@ -84,6 +81,10 @@ GEM
     middleman-autoprefixer (2.6.3)
       autoprefixer-rails (~> 6.2.1)
       middleman-core (>= 3.3.3)
+    middleman-blog (3.5.3)
+      addressable (~> 2.3.5)
+      middleman-core (~> 3.2)
+      tzinfo (>= 0.3.0)
     middleman-core (3.4.1)
       activesupport (~> 4.1)
       bundler (~> 1.1)
@@ -127,8 +128,7 @@ GEM
       tilt (>= 1.4.1, < 3)
     padrino-support (0.12.9)
       activesupport (>= 3.1)
-    parallel (1.12.1)
-    public_suffix (3.0.3)
+    parallel (1.18.0)
     puma (3.12.0)
     rack (1.6.11)
     rack-conditional (0.3.1)
@@ -142,6 +142,7 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rainbow (3.0.0)
     rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
@@ -181,16 +182,17 @@ GEM
       json (>= 1.8.0)
     xpath (2.1.0)
       nokogiri (~> 1.3)
-    yell (2.0.7)
+    yell (2.2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   builder (~> 3.2.2)
-  html-proofer (~> 3.10)
+  html-proofer (~> 3.13)
   middleman (~> 3.4.1)
   middleman-autoprefixer (~> 2.6.2)
+  middleman-blog (~> 3.5.3)
   middleman-livereload (~> 3.4.5)
   middleman-minify-html (~> 3.4.1)
   middleman-syntax (~> 2.0.0)

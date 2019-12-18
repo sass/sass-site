@@ -31,7 +31,16 @@ use Rack::Rewrite do
   r301 %r{/(.+)/$}, '/$1'
   r301 %r{/(.+)/index\.html$}, '/$1'
 
-  r301 %r{/blog/(.*)}, 'http://sass.logdown.com/$1'
+  # We used to redirect Logdown URLs to the sass.logdown.com, but now we
+  # redirect them to the local site's corresponding blog URLs.
+  r301 %r{/blog/posts/\d+-(.*)}, '/blog/$1'
+
+  # Some blog posts didn't have slugs in Logdown.
+  r301 %r{/blog/posts/560719}, '/blog/dropping-support-for-old-ruby-versions'
+  r301 %r{/blog/posts/1305238}, '/blog/dart-sass-is-on-chocolatey'
+  r301 %r{/blog/posts/1404451}, '/blog/sass-and-browser-compatibility'
+  r301 %r{/blog/posts/1909151}, '/blog/dart-sass-is-in-beta'
+  r301 %r{/blog/posts/7081811}, '/blog/ruby-sass-is-deprecated'
 
   # Provide short links for breaking changes so that they can be tersely
   # referenced from warning and errors.

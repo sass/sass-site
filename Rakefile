@@ -10,11 +10,16 @@ task :test_without_rebuild do
   HTMLProofer.check_directory("build",
     url_ignore: [
       "https://www.drupal.org/dcoc", # This doesn't allow automated requests.
-      "http://sass.logdown.com/posts/7081811", # This times out occasionally.
+      # These are linked to from older blog posts. They redirect to updated
+      # pages.
+      %r{/documentation/file.SASS_REFERENCE.html(#.*)?},
+      %r{/documentation/file.SASS_CHANGELOG.html(#.*)?},
+      %r{/documentation/Sass/Script/Functions.html(#.*)?},
       "#",
     ],
-    url_swap: {%r{^/blog/} => "http://sass.logdown.com/"},
     assume_extension: true,
+    # These have the same links as blog posts
+    file_ignore: ["blog.html", %r{blog/page/.*}],
     # Lots of external URLs fail flakily on Travis, so we just don't check them
     # there.
     disable_external: ENV["TRAVIS"] == "true"
