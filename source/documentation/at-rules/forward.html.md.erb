@@ -186,3 +186,56 @@ variables (including the `$`).
   // bootstrap.sass
   @forward "src/list" hide list-reset, $horizontal-list-gap
 <% end %>
+
+## Configuring Modules
+
+<% impl_status dart: '1.24.0', libsass: false, ruby: false %>
+
+The `@forward` rule can also load a module with [configuration][]. This mostly
+works the same as it does for `@use`, with one addition: a `@forward` rule's
+configuration can use the `!default` flag in its configuration. This allows a
+module to change the defaults of an upstream stylesheet while still allowing
+downstream stylesheets to override them.
+
+[configuration]: use#configuring-modules
+
+<% example do %>
+  // _library.scss
+  $black: #000 !default;
+  $border-radius: 0.25rem !default;
+  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
+
+  code {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+  ---
+  // _opinionated.scss
+  @forward 'library' with (
+    $black: #222 !default,
+    $border-radius: 0.1rem !default
+  );
+  ---
+  // style.scss
+  @use 'opinionated' with ($black: #333);
+  ===
+  // _library.sass
+  $black: #000 !default
+  $border-radius: 0.25rem !default
+  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default
+
+  code
+    border-radius: $border-radius
+    box-shadow: $box-shadow
+  ---
+  // _opinionated.sass
+  @forward 'library' with ($black: #222 !default, $border-radius: 0.1rem !default)
+  ---
+  // style.sass
+  @use 'opinionated' with ($black: #333)
+  ===
+  code {
+    border-radius: 0.1rem;
+    box-shadow: 0 0.5rem 1rem rgba(51, 51, 51, 0.15);
+  }
+<% end %>
