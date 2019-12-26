@@ -39,7 +39,7 @@ required to have quotes.
 
   * [`@extend` rules][] are also global, which makes it difficult to predict
     which style rules will be extended.
-  
+
     [`@extend` rules]: extend
 
   * Each stylesheet is executed and its CSS emitted *every time* it's
@@ -529,6 +529,56 @@ nice API for users of the new module system.
 
   // Legacy import users can keep writing `@include reset-list()`.
   @forward "reset" as reset-*
+<% end %>
+
+#### Configuring Modules Through Imports
+
+<% impl_status dart: '1.24.0', libsass: false, ruby: false %>
+
+You can configure modules that are loaded through an `@import` simply by
+defining global variables prior the `@import` that first loads that module.
+
+Note that changes to the configuration after the module is first loaded will be
+ignored.
+
+<% example do %>
+  // _library.scss
+  $color: blue !default;
+
+  a {
+    color: $color;
+  }
+  ---
+  // _library.import.scss
+  @forward 'library' as lib-*;
+  ---
+  // style.sass
+  $lib-color: green;
+  @import "library";
+  $lib-color: red;
+  @import "library";
+  ===
+  $color: blue !default
+
+  a
+    color: $color
+  ---
+  // _library.import.sass
+  @forward 'library' as lib-*
+  ---
+  // style.sass
+  $lib-color: green
+  @import "library"
+  $lib-color: red
+  @import "library"
+  ===
+  a {
+    color: green;
+  }
+
+  a {
+    color: green;
+  }
 <% end %>
 
 ### Loading a Module That Contains Imports
