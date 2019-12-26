@@ -535,11 +535,10 @@ nice API for users of the new module system.
 
 <% impl_status dart: '1.24.0', libsass: false, ruby: false %>
 
-You can configure modules that are loaded through an `@import` simply by
-defining global variables prior the `@import` that first loads that module.
+You can [configure modules][] that are loaded through an `@import` by defining
+global variables prior the `@import` that first loads that module.
 
-Note that changes to the configuration after the module is first loaded will be
-ignored.
+[configure modules]: use#configuring-modules
 
 <% example do %>
   // _library.scss
@@ -555,8 +554,6 @@ ignored.
   // style.sass
   $lib-color: green;
   @import "library";
-  $lib-color: red;
-  @import "library";
   ===
   $color: blue !default
 
@@ -569,16 +566,16 @@ ignored.
   // style.sass
   $lib-color: green
   @import "library"
-  $lib-color: red
-  @import "library"
   ===
   a {
     color: green;
   }
+<% end %>
 
-  a {
-    color: green;
-  }
+<% heads_up do %>
+  Modules are only loaded once, so if you change the configuration after you
+  `@import` a module for the first time (even indirectly), the change will be
+  ignored if you `@import` the module again.
 <% end %>
 
 ### Loading a Module That Contains Imports
