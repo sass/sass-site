@@ -1,6 +1,6 @@
 // Stylesheet pulled from Rogue stylesheet with colours updated for a11y
 
-.highlight table td { padding: 5px; }
+.highlight table td { padding: sl-px-to-rem(5px); }
 .highlight table pre { margin: 0; }
 .highlight .cm {
   color: #656556;
@@ -218,48 +218,54 @@
   font-weight: bold;
 }
 
-.highlight .ne {
-    color: #990000;
-    font-weight: bold;
-  }
-  .highlight .nf {
-    color: #990000;
-    font-weight: bold;
-  }
-  .highlight .nl {
-    color: #990000;
-    font-weight: bold;
-  }
-  .highlight .nn {
-    color: #555555;
-  }
-  .highlight .nt {
-    color: #000080;
-  }
-  .highlight .vc {
-    color: #004D4D;
-  }
-  .highlight .vg {
-    color: #004D4D;
-  }
-  .highlight .vi {
-    color: #004D4D;
-  }
-  .highlight .nv {
-    color: #006666;
-  }
+.highlight .nf {
+  color: #990000;
+  font-weight: bold;
+}
 
-  .highlight .ow {
-    color: #000000;
-    font-weight: bold;
-  }
-  .highlight .o {
-    color: #000000;
-    font-weight: bold;
-  }
-  .highlight .w {
-    color: #bbbbbb;
-  }
-  .highlight {
-    background-color: #f8f8f8;
-  }
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+
+.highlight .nn {
+  color: #555555;
+}
+
+.highlight .nt {
+  color: #000080;
+}
+
+.highlight .vc {
+  color: #004D4D;
+}
+
+.highlight .vg {
+  color: #004D4D;
+}
+
+.highlight .vi {
+  color: #004D4D;
+}
+
+.highlight .nv {
+  color: #006666;
+}
+
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
+}
+
+.highlight .o {
+  color: #000000;
+  font-weight: bold;
+}
+
+.highlight .w {
+  color: #bbbbbb;
+}
+
+.highlight {
+  background-color: #f8f8f8;
+}
