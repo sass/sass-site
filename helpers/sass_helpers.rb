@@ -341,7 +341,7 @@ module SassHelpers
   #
   # The contents should be supplied as a block.
   def heads_up
-    _concat(content_tag :aside, [
+    _concat(content_tag :div, [
       content_tag(:h3, '⚠️ Heads up!'),
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--warning')
@@ -352,7 +352,7 @@ module SassHelpers
   #
   # The contents should be supplied as a block.
   def fun_fact
-    _concat(content_tag :aside, [
+    _concat(content_tag :div, [
       content_tag(:h3, '💡 Fun fact:'),
       _render_markdown(_capture {yield})
     ], class: 'sl-c-callout sl-c-callout--fun-fact')

@@ -5,7 +5,7 @@
   };
   text-align: center;
   background: darken($sl-color--hopbush, 10%);
-  color: rgba($sl-color--white, .875);
+  color: $sl-color--white;
   font-size: $sl-font-size--small;
 
   p,
