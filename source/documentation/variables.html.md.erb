@@ -118,14 +118,12 @@ Variables that are defined by a [built-in module] cannot be modified.
 <% example(autogen_css: false) do %>
   @use "sass:math" as math;
 
-  // This reassignment will fail.
+  // This assignment will fail.
   math.$pi: 0;
-
   ===
-
   @use "sass:math" as math
 
-  // This reassignment will fail.
+  // This assignment will fail.
   math.$pi: 0
 <% end %>
 
