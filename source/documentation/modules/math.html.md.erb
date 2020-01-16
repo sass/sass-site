@@ -7,7 +7,11 @@ title: sass:math
 ## Variables
 
 <% function 'math.$e' do %>
-  Equal to the value of the mathematical constant `e`.
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
+  Equal to the value of the [mathematical constant *e*][].
+
+  [mathematical constant *e*]: https://en.wikipedia.org/wiki/E_(mathematical_constant)
 
   <% example(autogen_css: false) do %>
     @debug math.$e; // 2.7182818285
@@ -18,7 +22,11 @@ title: sass:math
 
 
 <% function 'math.$pi' do %>
-  Equal to the value of the mathematical constant `pi`.
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
+  Equal to the value of the [mathematical constant *π*].
+
+  [mathematical constant *π*]: https://en.wikipedia.org/wiki/Pi
 
   <% example(autogen_css: false) do %>
     @debug math.$pi; // 3.1415926536
@@ -46,18 +54,22 @@ title: sass:math
 
 
 <% function 'math.clamp($min, $number, $max)', returns: 'number' do %>
-  Clamps `$number` in between `$min` and `$max`.
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
+  Restricts `$number` to the range between `$min` and `$max`. If `$number`
+  crosses a boundary (`$min` or `$max`), this returns the value of that
+  boundary.
 
   `$min`, `$number`, and `$max` must have compatible units, or all be unitless.
 
   <% example(autogen_css: false) do %>
     @debug math.clamp(-1, 0, 1); // 0
-    @debug math.clamp(0.5px, 10px, 5px); // 5px
-    @debug math.clamp(1cm, 10mm, 1in); // 1cm
+    @debug math.clamp(1px, -1px, 10px); // 1px
+    @debug math.clamp(-1in, 1cm, 10mm); // 10mm
     ===
     @debug math.clamp(-1, 0, 1) // 0
-    @debug math.clamp(0.5px, 10px, 5px) // 5px
-    @debug math.clamp(1cm, 10mm, 1in) // 1cm
+    @debug math.clamp(1px, -1px, 10px) // 1px
+    @debug math.clamp(-1in, 1cm, 10mm) // 10mm
   <% end %>
 <% end %>
 
@@ -78,10 +90,7 @@ title: sass:math
 
 
 <% function 'math.max($number...)', 'max($number...)', returns: 'number' do %>
-  Returns the highest of one or more numbers. A list of numbers can be passed
-  [using `...`][].
-
-  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
+  Returns the highest of one or more numbers.
 
   <% example(autogen_css: false) do %>
     @debug math.max(1px, 4px); // 4px
@@ -98,10 +107,7 @@ title: sass:math
 
 
 <% function 'math.min($number...)', 'min($number...)', returns: 'number' do %>
-  Returns the lowest of one or more numbers. A list of numbers can be passed
-  [using `...`][].
-
-  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
+  Returns the lowest of one or more numbers.
 
   <% example(autogen_css: false) do %>
     @debug math.min(1px, 4px); // 1px
@@ -117,9 +123,7 @@ title: sass:math
 <% end %>
 
 
-<% function 'math.round($number)',
-            'round($number)',
-            returns: 'number' do %>
+<% function 'math.round($number)', 'round($number)', returns: 'number' do %>
   Rounds `$number` to the nearest whole number.
 
   <% example(autogen_css: false) do %>
@@ -136,9 +140,7 @@ title: sass:math
 
 ## Distance Functions
 
-<% function 'math.abs($number)',
-            'abs($number)',
-            returns: 'number' do %>
+<% function 'math.abs($number)', 'abs($number)', returns: 'number' do %>
   Returns the [absolute value][] of `$number`. If `$number` is negative, this
   returns `-$number`, and if `$number` is positive, it returns `$number` as-is.
 
@@ -155,16 +157,15 @@ title: sass:math
 
 
 <% function 'math.hypot($number...)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the length of the *n*-dimensional vector that has components equal to
-  each `$number`.
+  each `$number`. For example, for three numbers *a*, *b*, and *c*, this returns
+  the square root of *a² + b² + c²*.
 
   The numbers must either all have compatible units, or all be unitless. And
   since the numbers' units may differ, the output takes the unit of the first
   number.
-
-  A list of numbers can be passed [using `...`][].
-
-  [using `...`]: ../at-rules/function#passing-arbitrary-arguments
 
   <% example(autogen_css: false) do %>
     @debug math.hypot(3, 4); // 5
@@ -182,14 +183,14 @@ title: sass:math
 
 ## Exponential Functions
 
-<% function 'math.log($number, $base: null)',
-            returns: 'number' do %>
+<% function 'math.log($number, $base: null)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the logarithm of `$number` with respect to `$base`. If `$base` is
-  [`null`][], the [natural log][] is calculated.
+  `null`, the [natural log][] is calculated.
 
   `$number` and `$base` must be unitless.
 
-  [`null`]: ../values/null
   [natural log]: https://en.wikipedia.org/wiki/Natural_logarithm
 
   <% example(autogen_css: false) do %>
@@ -203,6 +204,8 @@ title: sass:math
 
 
 <% function 'math.pow($base, $exponent)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Raises `$base` to the power of `$exponent`.
 
   `$base` and `$exponent` must be unitless.
@@ -220,6 +223,8 @@ title: sass:math
 
 
 <% function 'math.sqrt($number)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the square root of `$number`.
 
   `$number` must be unitless.
@@ -239,10 +244,12 @@ title: sass:math
 ## Trigonometric Functions
 
 <% function 'math.cos($number)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the [cosine][] of `$number`.
 
-  `$number` must be an angle (its units are compatible with `deg`) or unitless.
-  If `$number` has no units, it is assumed to be in `rad`.
+  `$number` must be an angle (its units must be compatible with `deg`) or
+  unitless. If `$number` has no units, it is assumed to be in `rad`.
 
   [cosine]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
@@ -259,10 +266,12 @@ title: sass:math
 
 
 <% function 'math.sin($number)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the [sine][] of `$number`.
 
-  `$number` must be an angle (its units are compatible with `deg`) or unitless.
-  If `$number` has no units, it is assumed to be in `rad`.
+  `$number` must be an angle (its units must be compatible with `deg`) or
+  unitless. If `$number` has no units, it is assumed to be in `rad`.
 
   [sine]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
@@ -279,10 +288,12 @@ title: sass:math
 
 
 <% function 'math.tan($number)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the [tangent][] of `$number`.
 
-  `$number` must be an angle (its units are compatible with `deg`) or unitless.
-  If `$number` has no units, it is assumed to be in `rad`.
+  `$number` must be an angle (its units must be compatible with `deg`) or
+  unitless. If `$number` has no units, it is assumed to be in `rad`.
 
   [tangent]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
@@ -299,6 +310,8 @@ title: sass:math
 
 
 <% function 'math.acos($number)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the [arccosine][] of `$number` in `deg`.
 
   `$number` must be unitless.
@@ -316,6 +329,8 @@ title: sass:math
 
 
 <% function 'math.asin($number)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the [arcsine][] of `$number` in `deg`.
 
   `$number` must be unitless.
@@ -333,6 +348,8 @@ title: sass:math
 
 
 <% function 'math.atan($number)', returns: 'number' do %>
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
   Returns the [arctangent][] of `$number` in `deg`.
 
   `$number` must be unitless.
@@ -348,7 +365,9 @@ title: sass:math
 
 
 <% function 'math.atan2($y, $x)', returns: 'number' do %>
-  Returns the [2-argument arctangent] of `$y` and `$x` in `deg`.
+  <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
+
+  Returns the [2-argument arctangent][] of `$y` and `$x` in `deg`.
 
   `$y` and `$x` must have compatible units or be unitless.
 
@@ -467,9 +486,7 @@ title: sass:math
 <% function 'math.random($limit: null)',
             'random($limit: null)',
             returns: 'number' do %>
-  If `$limit` is [`null`][], returns a random decimal number between 0 and 1.
-
-  [`null`]: ../values/null
+  If `$limit` is `null`, returns a random decimal number between 0 and 1.
 
   <% example(autogen_css: false) do %>
     @debug math.random(); // 0.2821251858
