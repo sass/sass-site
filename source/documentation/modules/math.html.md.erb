@@ -24,7 +24,7 @@ title: sass:math
 <% function 'math.$pi' do %>
   <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
 
-  Equal to the value of the [mathematical constant *π*].
+  Equal to the value of the [mathematical constant *π*][].
 
   [mathematical constant *π*]: https://en.wikipedia.org/wiki/Pi
 
@@ -56,9 +56,9 @@ title: sass:math
 <% function 'math.clamp($min, $number, $max)', returns: 'number' do %>
   <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
 
-  Restricts `$number` to the range between `$min` and `$max`. If `$number`
-  crosses a boundary (`$min` or `$max`), this returns the value of that
-  boundary.
+  Restricts `$number` to the range between `$min` and `$max`. If `$number` is
+  less than `$min` this returns `$min`, and if it's greater than `$max` this
+  returns `$max`.
 
   `$min`, `$number`, and `$max` must have compatible units, or all be unitless.
 
@@ -159,13 +159,15 @@ title: sass:math
 <% function 'math.hypot($number...)', returns: 'number' do %>
   <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
 
-  Returns the length of the *n*-dimensional vector that has components equal to
-  each `$number`. For example, for three numbers *a*, *b*, and *c*, this returns
-  the square root of *a² + b² + c²*.
+  Returns the length of the *n*-dimensional [vector][] that has components equal
+  to each `$number`. For example, for three numbers *a*, *b*, and *c*, this
+  returns the square root of *a² + b² + c²*.
 
   The numbers must either all have compatible units, or all be unitless. And
   since the numbers' units may differ, the output takes the unit of the first
   number.
+
+  [vector]: https://en.wikipedia.org/wiki/Euclidean_vector
 
   <% example(autogen_css: false) do %>
     @debug math.hypot(3, 4); // 5
@@ -186,11 +188,12 @@ title: sass:math
 <% function 'math.log($number, $base: null)', returns: 'number' do %>
   <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
 
-  Returns the logarithm of `$number` with respect to `$base`. If `$base` is
+  Returns the [logarithm][] of `$number` with respect to `$base`. If `$base` is
   `null`, the [natural log][] is calculated.
 
   `$number` and `$base` must be unitless.
 
+  [logarithm]: https://en.wikipedia.org/wiki/Logarithm
   [natural log]: https://en.wikipedia.org/wiki/Natural_logarithm
 
   <% example(autogen_css: false) do %>
@@ -206,9 +209,11 @@ title: sass:math
 <% function 'math.pow($base, $exponent)', returns: 'number' do %>
   <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
 
-  Raises `$base` to the power of `$exponent`.
+  Raises `$base` [to the power of][] `$exponent`.
 
   `$base` and `$exponent` must be unitless.
+
+  [to the power of]: https://en.wikipedia.org/wiki/Exponentiation
 
   <% example(autogen_css: false) do %>
     @debug math.pow(10, 2); // 100
@@ -225,9 +230,11 @@ title: sass:math
 <% function 'math.sqrt($number)', returns: 'number' do %>
   <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
 
-  Returns the square root of `$number`.
+  Returns the [square root][] of `$number`.
 
   `$number` must be unitless.
+
+  [square root]: https://en.wikipedia.org/wiki/Square_root
 
   <% example(autogen_css: false) do %>
     @debug math.sqrt(100); // 10
