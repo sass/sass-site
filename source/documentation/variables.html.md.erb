@@ -109,6 +109,24 @@ stylesheet with a `!default` flag can be configured.
 
 <%= partial '../code-snippets/example-use-with' %>
 
+## Built-in Variables
+
+Variables that are defined by a [built-in module] cannot be modified.
+
+[built-in module]: modules
+
+<% example(autogen_css: false) do %>
+  @use "sass:math" as math;
+
+  // This assignment will fail.
+  math.$pi: 0;
+  ===
+  @use "sass:math" as math
+
+  // This assignment will fail.
+  math.$pi: 0
+<% end %>
+
 ## Scope
 
 Variables declared at the top level of a stylesheet are *global*. This means
