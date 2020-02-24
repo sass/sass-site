@@ -15,19 +15,15 @@
   }
 
   &--function {
-    padding: {
-      top: 0;
-      bottom: .25rem;
-    };
+    padding-bottom: .25rem;
+    padding-top: 0;
 
     .signature {
       // Make sure permalinks are visible.
       overflow: visible;
 
-      margin: {
-        right: -1rem;
-        left: -1rem;
-      };
+      margin-left: -1rem;
+      margin-right: -1rem;
     }
   }
 
@@ -51,5 +47,16 @@
     font-size: 1.25rem;
 
     .sl-c-callout { font-size: 1rem; }
+  }
+}
+
+@include sl-breakpoint--large {
+  .sl-c-callout--function {
+    padding-left: 2.25rem;
+
+    .signature {
+      margin-left: -2.25rem;
+      margin-right: 0;
+    }
   }
 }
