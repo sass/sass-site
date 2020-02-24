@@ -310,6 +310,10 @@ preserve backwards-compatibility for users who were importing the library.
 [import-only stylesheet]: ../at-rules/import#import-only-files
 [forwards]: ../at-rules/forward
 
+This option may be passed multiple times, or with multiple values separated by
+commas. Each prefix will be removed from any members that have it. If a member
+matches multiple prefixes, the longest matching prefix will be removed.
+
 #### `--forward`
 
 This option tells the migrator which members to forward using the [`@forward`
