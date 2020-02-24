@@ -1,5 +1,6 @@
 {
   "name": "sass-site",
+  "stack": "heroku-18",
   "scripts": {
   },
   "env": {
