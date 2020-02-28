@@ -129,7 +129,7 @@ GEM
     padrino-support (0.12.9)
       activesupport (>= 3.1)
     parallel (1.18.0)
-    puma (3.12.2)
+    puma (3.12.3)
     rack (1.6.12)
     rack-conditional (0.3.1)
       rack (>= 1.6.11)
