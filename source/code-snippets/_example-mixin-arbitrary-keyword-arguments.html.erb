@@ -3,7 +3,7 @@
 
   @mixin syntax-colors($args...) {
     @debug meta.keywords($args);
-    // (string: #080, comment: #800, $variable: $60b)
+    // (string: #080, comment: #800, variable: $60b)
 
     @each $name, $color in meta.keywords($args) {
       pre span.stx-#{$name} {
@@ -22,7 +22,7 @@
 
   @mixin syntax-colors($args...)
     @debug meta.keywords($args)
-    // (string: #080, comment: #800, $variable: $60b)
+    // (string: #080, comment: #800, variable: $60b)
 
     @each $name, $color in meta.keywords($args)
       pre span.stx-#{$name}
