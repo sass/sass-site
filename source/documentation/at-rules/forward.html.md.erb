@@ -22,7 +22,7 @@ file, it's always a good idea to write the `@forward` first. That way, if your
 users want to [configure the forwarded module][], that configuration will be
 applied to the `@forward` before your `@use` loads it without any configuration.
 
-[configure the forwarded module]: use#configuring-modules
+[configure the forwarded module]: use#configuration
 
 <% fun_fact do %>
   The `@forward` rule acts just like `@use` when it comes to a module's CSS.
@@ -197,7 +197,7 @@ configuration can use the `!default` flag in its configuration. This allows a
 module to change the defaults of an upstream stylesheet while still allowing
 downstream stylesheets to override them.
 
-[configuration]: use#configuring-modules
+[configuration]: use#configuration
 
 <% example do %>
   // _library.scss

@@ -205,5 +205,12 @@ if (window.location.hash) {
 
     var redirect = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
+  } else if (window.location.pathname == "/documentation/at-rules/use") {
+    var redirects = {
+      "#configuring-modules": "/documentation/at-rules/use#configuration"
+    };
+
+    var redirect = redirects[window.location.hash];
+    if (redirect) window.location.href = redirect;
   }
 }
