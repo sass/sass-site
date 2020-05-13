@@ -277,7 +277,7 @@ them!
     padding: 5px + corners.$-radius
 <% end %>
 
-## Configuring Modules
+## Configuration
 
 A stylesheet can define variables with the [`!default` flag][] to make them
 configurable. To load a module with configuration, write `@use <url> with
@@ -287,6 +287,94 @@ the variables' default values.
 [`!default` flag]: ../variables#default-values
 
 <%= partial '../../code-snippets/example-use-with' %>
+
+### With Mixins
+
+Configuring modules with `@use ... with` can be very handy, especially when
+using libraries that were originally written to work with the [`@import`
+rule][]. But it's not particularly flexible, and we don't recommend it for more
+advanced use-cases. If you find yourself wanting to configure many variables at
+once, pass [maps][] as configuration, or update the configuration after the
+module is loaded, consider writing a mixin to set your variables instead and
+another mixin to inject your styles.
+
+[`@import` rule]: import
+[maps]: ../values/maps
+
+<% example do %>
+  // _library.scss
+  $-black: #000;
+  $-border-radius: 0.25rem;
+  $-box-shadow: null;
+
+  /// If the user has configured `$-box-shadow`, returns their configured value.
+  /// Otherwise returns a value derived from `$-black`.
+  @function -box-shadow() {
+    @return $-box-shadow or (0 0.5rem 1rem rgba($-black, 0.15));
+  }
+
+  @mixin configure($black: null, $border-radius: null, $box-shadow: null) {
+    @if $black {
+      $-black: $black !global;
+    }
+    @if $border-radius {
+      $-border-radius: $border-radius !global;
+    }
+    @if $box-shadow {
+      $-box-shadow: $box-shadow !global;
+    }
+  }
+
+  @include styles {
+    code {
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+    }
+  }
+  ---
+  // style.scss
+  @use 'library';
+
+  @include library.configure(
+    $black: #222,
+    $border-radius: 0.1rem
+  );
+
+  @include library.styles;
+  ===
+  // _library.sass
+  $-black: #000
+  $-border-radius: 0.25rem
+  $-box-shadow: null
+
+  /// If the user has configured `$-box-shadow`, returns their configured value.
+  /// Otherwise returns a value derived from `$-black`.
+  @function -box-shadow()
+    @return $-box-shadow or (0 0.5rem 1rem rgba($-black, 0.15))
+
+
+  @mixin configure($black: null, $border-radius: null, $box-shadow: null)
+    @if $black
+      $-black: $black !global
+    @if $border-radius
+      $-border-radius: $border-radius !global
+    @if $box-shadow
+      $-box-shadow: $box-shadow !global
+
+
+  @include styles
+    code
+      border-radius: $border-radius
+      box-shadow: $box-shadow
+  ---
+  // style.sass
+  @use 'library' with ($black: #222, $border-radius: 0.1rem)
+  ===
+  code {
+    border-radius: 0.1rem;
+    box-shadow: 0 0.5rem 1rem rgba(34, 34, 34, 0.15);
+  }
+<% end %>
 
 ## Finding the Module
 
