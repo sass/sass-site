@@ -324,7 +324,7 @@ the `@content` rule.
 
 <% example do %>
   @mixin hover {
-    &:not([disabled]):hover {
+    #{if(&, "&", "*")}:not([disabled]):hover {
       @content;
     }
   }
@@ -360,6 +360,14 @@ the `@content` rule.
   defined before the content block is invoked.
 
   [local variables]: ../variables#scope
+<% end %>
+  
+<% heads_up do %>
+  When using `&` in a `@mixin` you must give it a fallback `*` selector
+  using `#{if(&, "&", "*")}` in case the mixin is used outside of a
+  nested scope. Otherwise you would get this error:
+  
+  `SassError: Top-level selectors may not contain the parent selector "&".`
 <% end %>
 
 ### Passing Arguments to Content Blocks
