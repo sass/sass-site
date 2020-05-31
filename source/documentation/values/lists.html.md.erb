@@ -113,7 +113,7 @@ check whether a list does or doesn't contain a given value.
 
   @mixin attach($side) {
     @if not list.index($valid-sides, $side) {
-      @error "#{$side} is not a valid side. Expected one of #{$sides}.";
+      @error "#{$side} is not a valid side. Expected one of #{$valid-sides}.";
     }
 
     // ...
@@ -125,7 +125,7 @@ check whether a list does or doesn't contain a given value.
 
   @mixin attach($side)
     @if not list.index($valid-sides, $side)
-      @error "#{$side} is not a valid side. Expected one of #{$sides}."
+      @error "#{$side} is not a valid side. Expected one of #{$valid-sides}."
 
 
     // ...
