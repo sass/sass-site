@@ -160,7 +160,7 @@ configuration in a map.
   $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms);
 
   @mixin add-browser-prefix($browser, $prefix) {
-    $prefixes-by-browser: map.merge($prefixes-by-browser, ($browser: $prefix));
+    $prefixes-by-browser: map.merge($prefixes-by-browser, ($browser: $prefix)) !global;
   }
 
   @include add-browser-prefix("opera", o);
@@ -172,7 +172,7 @@ configuration in a map.
   $prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms)
 
   @mixin add-browser-prefix($browser, $prefix)
-    $prefixes-by-browser: map.merge($prefixes-by-browser, ($browser: $prefix))
+    $prefixes-by-browser: map.merge($prefixes-by-browser, ($browser: $prefix)) !global
 
 
   @include add-browser-prefix("opera", o)
