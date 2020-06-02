@@ -325,10 +325,10 @@ another mixin to inject your styles.
     }
   }
 
-  @include styles {
+  @mixin styles {
     code {
-      border-radius: $border-radius;
-      box-shadow: $box-shadow;
+      border-radius: $-border-radius;
+      box-shadow: -box-shadow();
     }
   }
   ---
