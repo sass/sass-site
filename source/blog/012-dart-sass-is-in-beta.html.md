@@ -25,7 +25,7 @@ us](https://github.com/sass/dart-sass/issues/new)!
 ## Next Steps: Ruby Sass
 
 There are a number of [intentional behavior
-differences](https://github.com/sass/dart-sass#behavioral-differences) between
+differences](https://github.com/sass/dart-sass#behavioral-differences-from-ruby-sass) between
 Dart Sass and the existing implementations. All of these differences are things
 we think improve the language, and many of them have also made Dart Sass much
 easier to implement, but we recognize that they can make migration more
