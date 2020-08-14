@@ -7,5 +7,5 @@ introduction: >
 
 ### Site Objectives
 
-1. Show why Sass is the best CSS Preprocessor,  and why you should use it.
+1. Show why Sass is the best CSS Preprocessor, and why you should use it.
 2. Be a resource for those who are already using Sass, at whatever level.
