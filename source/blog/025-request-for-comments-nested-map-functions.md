@@ -4,13 +4,13 @@ author: Natalie Weizenbaum
 date: 2020-9-16 14:40 PST
 ---
 
-As Sass libraries get more complex and have more users with different needs,
-they tend to develop the need for configuration. This configuration is often
-hierarchical, and ends up being represented as maps that contain maps that
-contain still more maps. Up until now, Sass's map functions haven't really made
-it easy to work with this sort of nested map structure. But that's changing with
-the latest language proposal, written by Sass core team member [Miriam
-Suzanne].
+As Sass libraries and design systems get more complex and have more users with
+different needs, they tend to develop the need to share and override
+configuration and design tokens. This configuration is often hierarchical, and
+ends up being represented as maps that contain maps that contain still more
+maps. Up until now, Sass's map functions haven't really made it easy to work
+with this sort of nested map structure. But that's changing with the latest
+language proposal, written by Sass core team member [Miriam Suzanne].
 
 [Miriam Suzanne]: https://www.miriamsuzanne.com/
 
