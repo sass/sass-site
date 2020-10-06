@@ -21,7 +21,9 @@ required to have quotes.
 <% heads_up do %>
   The Sass team discourages the continued use of the `@import` rule. Sass will
   [gradually phase it out][] over the next few years, and eventually remove it
-  from the language entirely. Prefer the [`@use` rule][] instead.
+  from the language entirely. Prefer the [`@use` rule][] instead. (Note that
+  only Dart Sass currently supports `@use`. Users of other implementations must
+  use the `@import` rule instead.)
 
   [gradually phase it out]: https://github.com/sass/sass/blob/master/accepted/module-system.md#timeline
   [`@use` rule]: use
