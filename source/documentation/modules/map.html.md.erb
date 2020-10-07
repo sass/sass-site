@@ -100,9 +100,9 @@ title: sass:map
 
   ---
 
-  If `$keys` is not empty, the map targeted for updating is nested within
-  `$map`. From left to right, including `$key` and excluding the last key in
-  `$keys`, these keys form a path of nested maps that leads to the targeted map.
+  If `$keys` is not empty, follows the set of keys including `$key` and
+  excluding the last key in `$keys`, from left to right, to find the nested map
+  targeted for updating.
 
   Returns a copy of `$map` where the targeted map does not have a value
   associated with the last key in `$keys`.
@@ -153,9 +153,9 @@ title: sass:map
 
   ---
 
-  If `$keys` is not empty, the map targeted for searching is nested within
-  `$map`. From left to right, including `$key` and excluding the last key in
-  `$keys`, these keys form a path of nested maps that leads to the targeted map.
+  If `$keys` is not empty, follows the set of keys including `$key` and
+  excluding the last key in `$keys`, from left to right, to find the nested map
+  targeted for searching.
 
   Returns the value in the targeted map associated with the last key in `$keys`.
 
@@ -207,9 +207,9 @@ title: sass:map
 
   ---
 
-  If `$keys` is not empty, the map targeted for searching is nested within
-  `$map`. From left to right, including `$key` and excluding the last key in
-  `$keys`, these keys form a path of nested maps that leads to the targeted map.
+  If `$keys` is not empty, follows the set of keys including `$key` and
+  excluding the last key in `$keys`, from left to right, to find the nested map
+  targeted for searching.
 
   Returns true if the targeted map contains a value associated with the last key
   in `$keys`.
@@ -290,14 +290,12 @@ title: sass:map
 
   ---
 
-  If `$keys` are passed, the map targeted for merging is nested within `$map1`.
-  The multiple keys in `$keys` form a path of nested maps that leads to the
-  targeted map.
+  If `$keys` is not empty, follows the `$keys` to find the nested map targeted
+  for merging. If any key in `$keys` is missing from a map or references a value
+  that is not a map, sets the value at that key to an empty map.
 
   Returns a copy of `$map1` where the targeted map is replaced by a new map that
-  contains all the keys and values from both the targeted map and `$map2`. If
-  any key in `$keys` references a value that is not a map, that value is
-  replaced with a map containing the key.
+  contains all the keys and values from both the targeted map and `$map2`.
 
   <% example(autogen_css: false) do %>
     $fonts: (
@@ -391,13 +389,12 @@ title: sass:map
 
   ---
 
-  If `$keys` are passed in addition to `$key`, the map targeted for updating is
-  nested within `$map`. The multiple keys in `$keys` form a path of nested maps
-  that leads to the targeted map.
+  If `$keys` are passed, follows the `$keys` to find the nested map targeted for
+  updating. If any key in `$keys` is missing from a map or references a value
+  that is not a map, sets the value at that key to an empty map.
 
   Returns a copy of `$map` with the targeted map's value at `$key` set to
-  `$value`. If any key in `$keys` references a value that is not a map, that
-  value is replaced with a map containing the key.
+  `$value`.
 
   <% example(autogen_css: false) do %>
     $fonts: (
