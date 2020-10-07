@@ -68,8 +68,33 @@ easily be accessed in the block.
 ### Add to a Map
 
 It's also useful to add new pairs to a map, or to replace the value for an
-existing key. The [`map.merge($map1, $map2)` function][] does this: it returns a
-new map that contains all the key/value pairs in *both* arguments.
+existing key. The [`map.set($map, $key, $value)` function][] does this: it
+returns a copy of `$map` with the value at `$key` set to `$value`.
+
+[`map.set($map, $key, $value)` function]: ../modules/map#set
+
+<% example(autogen_css: false) do %>
+  @use "sass:map";
+
+  $font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+  @debug map.set($font-weights, "extra-bold", 900);
+  // ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)
+  @debug map.set($font-weights, "bold", 900);
+  // ("regular": 400, "medium": 500, "bold": 900)
+  ===
+  @use "sass:map"
+
+  $font-weights: ("regular": 400, "medium": 500, "bold": 700)
+
+  @debug map.set($font-weights, "extra-bold": 900)
+  // ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)
+  @debug map.set($font-weights, "bold", 900)
+  // ("regular": 400, "medium": 500, "bold": 900)
+<% end %>
+
+Instead of setting values one-by-one, you can also merge two existing maps using
+[`map.merge($map1, $map2)`][].
 
 [`map.merge($map1, $map2)` function]: ../modules/map#merge
 
@@ -80,12 +105,7 @@ new map that contains all the key/value pairs in *both* arguments.
   $heavy-weights: ("medium": 500, "bold": 700);
 
   @debug map.merge($light-weights, $heavy-weights);
-  // (
-  //   "lightest": 100,
-  //   "light": 300,
-  //   "medium": 500,
-  //   "bold": 700
-  // )
+  // ("lightest": 100, "light": 300, "medium": 500, "bold": 700)
   ===
   @use "sass:map"
 
@@ -93,30 +113,7 @@ new map that contains all the key/value pairs in *both* arguments.
   $heavy-weights: ("medium": 500, "bold": 700)
 
   @debug map.merge($light-weights, $heavy-weights)
-  // (
-  //   "lightest": 100,
-  //   "light": 300,
-  //   "medium": 500,
-  //   "bold": 700
-  // )
-<% end %>
-
-`map.merge()` is often used with an inline map to add a single key/value pair.
-
-<% example(autogen_css: false) do %>
-  @use "sass:map";
-
-  $font-weights: ("regular": 400, "medium": 500, "bold": 700);
-
-  @debug map.merge($font-weights, ("extra-bold": 900));
-  // ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)
-  ===
-  @use "sass:map"
-
-  $font-weights: ("regular": 400, "medium": 500, "bold": 700)
-
-  @debug map.merge($font-weights, ("extra-bold": 900))
-  // ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)
+  // ("lightest": 100, "light": 300, "medium": 500, "bold": 700)
 <% end %>
 
 If both maps have the same keys, the second map's values are used in the map
@@ -125,21 +122,21 @@ that gets returned.
 <% example(autogen_css: false) do %>
   @use "sass:map";
 
-  $font-weights: ("regular": 400, "medium": 500, "bold": 700);
+  $weights: ("light": 300, "medium": 500);
 
-  @debug map.merge($font-weights, ("medium": 600));
-  // ("regular": 400, "medium": 600, "bold": 700)
+  @debug map.merge($weights, ("medium": 700));
+  // ("light": 300, "medium": 700)
   ===
-  @use "sass:map"
+  @use "sass:map";
 
-  $font-weights: ("regular": 400, "medium": 500, "bold": 700)
+  $weights: ("light": 300, "medium": 500)
 
-  @debug map.merge($font-weights, ("medium": 600))
-  // ("regular": 400, "medium": 600, "bold": 700)
+  @debug map.merge($weights, ("medium": 700))
+  // ("light": 300, "medium": 700)
 <% end %>
 
-Note that because Sass maps are [immutable][], `map.merge()` doesn't modify the
-original list.
+Note that because Sass maps are [immutable][], `map.set()` and `map.merge()` do
+not modify the original list.
 
 [immutable]: #immutability
 
