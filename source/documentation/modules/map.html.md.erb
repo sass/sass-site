@@ -4,20 +4,23 @@ title: sass:map
 
 <%= partial '../snippets/built-in-module-status' %>
 
-  <% fun_fact do %>
-    Sass libraries and design systems tend to share and override configurations
-    that are represented as nested maps (maps that contain maps that contain
-    maps).
+<% fun_fact do %>
+  Sass libraries and design systems tend to share and override configurations
+  that are represented as nested maps (maps that contain maps that contain
+  maps).
 
-    To help you work with nested maps, some map functions support deep
-    operations. For example, if you pass multiple keys to `map.get()`, it will
-    follow those keys to find the desired nested map:
+  To help you work with nested maps, some map functions support deep
+  operations. For example, if you pass multiple keys to `map.get()`, it will
+  follow those keys to find the desired nested map:
 
-    <% example(autogen_css: false) do %>
-      $config: (a: (b: (c: d)));
-      @debug map.get($config, a, b, c)); // d
-    <% end %>
+  <% example(autogen_css: false) do %>
+    $config: (a: (b: (c: d)));
+    @debug map.get($config, a, b, c)); // d
+    ===
+    $config: (a: (b: (c: d)))
+    @debug map.get($config, a, b, c)) // d
   <% end %>
+<% end %>
 
 
 <% function 'map.keys($map)', 'map-keys($map)', returns: 'list' do %>
