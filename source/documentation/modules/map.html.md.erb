@@ -24,10 +24,8 @@ title: sass:map
 
 
 <% function 'map.deep-merge($map1, $map2)', returns: 'map' do %>
-  Identical to [`map.merge()`][], except that nested map values are *also*
+  Identical to [`map.merge()`](#merge), except that nested map values are *also*
   recursively merged.
-
-  [`map.merge()`][#merge]
 
   <% example(autogen_css: false) do %>
     $helvetica-light: (
@@ -100,6 +98,8 @@ title: sass:map
     // ("medium": 500, "bold": 700)
   <% end %>
 
+  ---
+
   If `$keys` is not empty, the map targeted for updating is nested within
   `$map`. From left to right, including `$key` and excluding the last key in
   `$keys`, these keys form a path of nested maps that leads to the targeted map.
@@ -151,6 +151,8 @@ title: sass:map
 
   <%= partial 'code-snippets/example-map-get' %>
 
+  ---
+
   If `$keys` is not empty, the map targeted for searching is nested within
   `$map`. From left to right, including `$key` and excluding the last key in
   `$keys`, these keys form a path of nested maps that leads to the targeted map.
@@ -158,7 +160,8 @@ title: sass:map
   Returns the value in the targeted map associated with the last key in `$keys`.
 
   Returns [`null`][] if the map does not have a value associated with the key,
-  or if any key in `$keys` references a value that is not a map.
+  or if any key in `$keys` is missing from a map or references a value that is
+  not a map.
 
   <% example(autogen_css: false) do %>
     $fonts: (
@@ -202,6 +205,8 @@ title: sass:map
     @debug map.has-key($font-weights, "bolder") // false
   <% end %>
 
+  ---
+
   If `$keys` is not empty, the map targeted for searching is nested within
   `$map`. From left to right, including `$key` and excluding the last key in
   `$keys`, these keys form a path of nested maps that leads to the targeted map.
@@ -209,8 +214,8 @@ title: sass:map
   Returns true if the targeted map contains a value associated with the last key
   in `$keys`.
 
-  Returns false if it does not, or if any key in `$keys` references a value
-  that is not a map.
+  Returns false if it does not, or if any key in `$keys` is missing from a map
+  or references a value that is not a map.
 
   <% example(autogen_css: false) do %>
     $fonts: (
@@ -256,7 +261,7 @@ title: sass:map
             returns: 'map' do %>
   <% heads_up do %>
     In practice, the actual arguments to `map.merge($map1, $keys..., $map2)`
-    are passed as `map.set($map1, $args). They are described here as `$map1,
+    are passed as `map.set($map1, $args...). They are described here as `$map1,
     $keys..., $map2` for explanation purposes only.
   <% end %>
 
@@ -365,7 +370,7 @@ title: sass:map
             returns: 'map' do %>
   <% heads_up do %>
     In practice, the actual arguments to `map.set($map, $keys..., $key, $value)`
-    are passed as `map.set($map, $args). They are described here as `$map,
+    are passed as `map.set($map, $args...). They are described here as `$map,
     $keys..., $key, $value` for explanation purposes only.
   <% end %>
 
