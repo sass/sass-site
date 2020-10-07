@@ -31,6 +31,8 @@ bundle exec rake sass:import
 bundle exec middleman
 ```
 
+Try this [gist](https://gist.github.com/fernandoaleman/868b64cd60ab2d51ab24e7bf384da1ca) if you are having v8 trouble on macosx Catalina
+
 ## Deploying
 
 Every time a new commit is pushed to master, it will automatically be deployed
