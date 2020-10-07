@@ -23,33 +23,164 @@ title: sass:map
 <% end %>
 
 
-<% function 'map.keys($map)', 'map-keys($map)', returns: 'list' do %>
-  Returns a comma-separated list of all the keys in `$map`.
+<% function 'map.deep-merge($map1, $map2)', returns: 'map' do %>
+  Identical to [`map.merge()`][], except that nested map values are *also*
+  recursively merged.
+
+  [`map.merge()`][#merge]
 
   <% example(autogen_css: false) do %>
-    $font-weights: ("regular": 400, "medium": 500, "bold": 700);
+    $helvetica-light: (
+      "weights": (
+        "lightest": 100,
+        "light": 300
+      )
+    );
+    $helvetica-heavy: (
+      "weights": (
+        "medium": 500,
+        "bold": 700
+      )
+    );
 
-    @debug map.keys($font-weights); // "regular", "medium", "bold"
+    @debug map.deep-merge($helvetica-light, $helvetica-heavy);
+    // (
+    //   "weights": (
+    //     "lightest": 100,
+    //     "light": 300,
+    //     "medium": 500,
+    //     "bold": 700
+    //   )
+    // )
+    @debug map.merge($helvetica-light, $helvetica-heavy);
+    // (
+    //   "weights": (
+    //     "medium: 500,
+    //     "bold": 700
+    //   )
+    // )
     ===
-    $font-weights: ("regular": 400, "medium": 500, "bold": 700)
+    $helvetica-light: ("weights": ("lightest": 100, "light": 300))
+    $helvetica-heavy: ("weights": ("medium": 500, "bold": 700))
 
-    @debug map.keys($font-weights)  // "regular", "medium", "bold"
+    @debug map.deep-merge($helvetica-light, $helvetica-heavy)
+    // (
+    //   "weights": (
+    //     "lightest": 100,
+    //     "light": 300,
+    //     "medium": 500,
+    //     "bold": 700
+    //   )
+    // )
+    @debug map.merge($helvetica-light, $helvetica-heavy);
+    // (
+    //   "weights": (
+    //     "medium: 500,
+    //     "bold": 700
+    //   )
+    // )
   <% end %>
 <% end %>
 
 
-<% function 'map.values($map)', 'map-values($map)', returns: 'list' do %>
-  Returns a comma-separated list of all the values in `$map`.
+<% function 'map.deep-remove($map, $key, $keys...)',
+            returns: 'map' do %>
+  If `$keys` is empty, returns a copy of `$map` without a value associated with
+  `$key`.
 
   <% example(autogen_css: false) do %>
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
-    @debug map.values($font-weights); // 400, 500, 700
+    @debug map.deep-remove($font-weights, "regular");
+    // ("medium": 500, "bold": 700)
     ===
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
-    @debug map.values($font-weights)  // 400, 500, 700
+    @debug map.deep-remove($font-weights, "regular")
+    // ("medium": 500, "bold": 700)
   <% end %>
+
+  If `$keys` is not empty, the map targeted for updating is nested within
+  `$map`. From left to right, including `$key` and excluding the last key in
+  `$keys`, these keys form a path of nested maps that leads to the targeted map.
+
+  Returns a copy of `$map` where the targeted map does not have a value
+  associated with the last key in `$keys`.
+
+  <% example(autogen_css: false) do %>
+    $fonts: (
+      "Helvetica": (
+        "weights": (
+          "regular": 400,
+          "medium": 500,
+          "bold": 700
+        )
+      )
+    );
+
+    @debug map.deep-remove($fonts, "Helvetica", "weights", "regular");
+    // (
+    //   "Helvetica": (
+    //     "weights: (
+    //       "medium": 500,
+    //       "bold": 700
+    //     )
+    //   )
+    // )
+    ===
+    $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
+
+    @debug map.deep-remove($fonts, "Helvetica", "weights", "regular")
+    // (
+    //   "Helvetica": (
+    //     "weights: (
+    //       "medium": 500,
+    //       "bold": 700
+    //     )
+    //   )
+    // )
+  <% end %>
+<% end %>
+
+
+<% function 'map.get($map, $key, $keys...)',
+            'map-get($map, $key, $keys...)' do %>
+  If `$keys` is empty, returns the value in `$map` associated with `$key`.
+
+  If `$map` doesn't have a value associated with `$key`, returns [`null`][].
+
+  <%= partial 'code-snippets/example-map-get' %>
+
+  If `$keys` is not empty, the map targeted for searching is nested within
+  `$map`. From left to right, including `$key` and excluding the last key in
+  `$keys`, these keys form a path of nested maps that leads to the targeted map.
+
+  Returns the value in the targeted map associated with the last key in `$keys`.
+
+  Returns [`null`][] if the map does not have a value associated with the key,
+  or if any key in `$keys` references a value that is not a map.
+
+  <% example(autogen_css: false) do %>
+    $fonts: (
+      "Helvetica": (
+        "weights": (
+          "regular": 400,
+          "medium": 500,
+          "bold": 700
+        )
+      )
+    );
+
+    @debug map.get($fonts, "Helvetica", "weights", "regular"); // 400
+    @debug map.get($fonts, "Helvetica", "colors"); // null
+    ===
+    $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
+
+    @debug map.get($fonts, "Helvetica", "weights", "regular") // 400
+    @debug map.get($fonts, "Helvetica", "colors") // null
+  <% end %>
+
+  [`null`]: ../values/null
 <% end %>
 
 
@@ -103,115 +234,17 @@ title: sass:map
 <% end %>
 
 
-<% function 'map.get($map, $key, $keys...)',
-            'map-get($map, $key, $keys...)' do %>
-  If `$keys` is empty, returns the value in `$map` associated with `$key`.
-
-  If `$map` doesn't have a value associated with `$key`, returns [`null`][].
-
-  <%= partial 'code-snippets/example-map-get' %>
-
-  If `$keys` is not empty, the map targeted for searching is nested within
-  `$map`. From left to right, including `$key` and excluding the last key in
-  `$keys`, these keys form a path of nested maps that leads to the targeted map.
-
-  Returns the value in the targeted map associated with the last key in `$keys`.
-
-  Returns [`null`][] if the map does not have a value associated with the key,
-  or if any key in `$keys` references a value that is not a map.
-
-  <% example(autogen_css: false) do %>
-    $fonts: (
-      "Helvetica": (
-        "weights": (
-          "regular": 400,
-          "medium": 500,
-          "bold": 700
-        )
-      )
-    );
-
-    @debug map.get($fonts, "Helvetica", "weights", "regular"); // 400
-    @debug map.get($fonts, "Helvetica", "colors"); // null
-    ===
-    $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
-
-    @debug map.get($fonts, "Helvetica", "weights", "regular") // 400
-    @debug map.get($fonts, "Helvetica", "colors") // null
-  <% end %>
-
-  [`null`]: ../values/null
-<% end %>
-
-
-<% function 'map.set($map, $key, $value)',
-            'map.set($map, $keys..., $key, $value)',
-            returns: 'map' do %>
-  <% heads_up do %>
-    In practice, the actual arguments to `map.set($map, $keys..., $key, $value)`
-    are passed as `map.set($map, $args). They are described here as `$map,
-    $keys..., $key, $value` for explanation purposes only.
-  <% end %>
-
-  If `$keys` are not passed, returns a copy of `$map` with the value at `$key`
-  set to `$value`.
+<% function 'map.keys($map)', 'map-keys($map)', returns: 'list' do %>
+  Returns a comma-separated list of all the keys in `$map`.
 
   <% example(autogen_css: false) do %>
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
-    @debug map.set($font-weights, "regular", 300);
-    // ("regular": 300, "medium": 500, "bold": 700)
+    @debug map.keys($font-weights); // "regular", "medium", "bold"
     ===
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
-    @debug map.set($font-weights, "regular", 300)
-    // ("regular": 300, "medium": 500, "bold": 700)
-  <% end %>
-
-  ---
-
-  If `$keys` are passed in addition to `$key`, the map targeted for updating is
-  nested within `$map`. The multiple keys in `$keys` form a path of nested maps
-  that leads to the targeted map.
-
-  Returns a copy of `$map` with the targeted map's value at `$key` set to
-  `$value`. If any key in `$keys` references a value that is not a map, that
-  value is replaced with a map containing the key.
-
-  <% example(autogen_css: false) do %>
-    $fonts: (
-      "Helvetica": (
-        "weights": (
-          "regular": 400,
-          "medium": 500,
-          "bold": 700
-        )
-      )
-    );
-
-    @debug map.set($fonts, "Helvetica", "weights", "regular", 300);
-    // (
-    //   "Helvetica": (
-    //     "weights": (
-    //       "regular": 300,
-    //       "medium": 500,
-    //       "bold": 700
-    //     )
-    //   )
-    // )
-    ===
-    $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
-
-    @debug map.set($fonts, "Helvetica", "weights", "regular", 300)
-    // (
-    //   "Helvetica": (
-    //     "weights": (
-    //       "regular": 300,
-    //       "medium": 500,
-    //       "bold": 700
-    //     )
-    //   )
-    // )
+    @debug map.keys($font-weights)  // "regular", "medium", "bold"
   <% end %>
 <% end %>
 
@@ -302,66 +335,6 @@ title: sass:map
 <% end %>
 
 
-<% function 'map.deep-merge($map1, $map2)', returns: 'map' do %>
-  Identical to [`map.merge()`][], except that nested map values are *also*
-  recursively merged.
-
-  [`map.merge()`][#merge]
-
-  <% example(autogen_css: false) do %>
-    $helvetica-light: (
-      "weights": (
-        "lightest": 100,
-        "light": 300
-      )
-    );
-    $helvetica-heavy: (
-      "weights": (
-        "medium": 500,
-        "bold": 700
-      )
-    );
-
-    @debug map.deep-merge($helvetica-light, $helvetica-heavy);
-    // (
-    //   "weights": (
-    //     "lightest": 100,
-    //     "light": 300,
-    //     "medium": 500,
-    //     "bold": 700
-    //   )
-    // )
-    @debug map.merge($helvetica-light, $helvetica-heavy);
-    // (
-    //   "weights": (
-    //     "medium: 500,
-    //     "bold": 700
-    //   )
-    // )
-    ===
-    $helvetica-light: ("weights": ("lightest": 100, "light": 300))
-    $helvetica-heavy: ("weights": ("medium": 500, "bold": 700))
-
-    @debug map.deep-merge($helvetica-light, $helvetica-heavy)
-    // (
-    //   "weights": (
-    //     "lightest": 100,
-    //     "light": 300,
-    //     "medium": 500,
-    //     "bold": 700
-    //   )
-    // )
-    @debug map.merge($helvetica-light, $helvetica-heavy);
-    // (
-    //   "weights": (
-    //     "medium: 500,
-    //     "bold": 700
-    //   )
-    // )
-  <% end %>
-<% end %>
-
-
 <% function 'map.remove($map, $keys...)',
             'map-remove($map, $keys...)',
             returns: 'map' do %>
@@ -387,29 +360,39 @@ title: sass:map
 <% end %>
 
 
-<% function 'map.deep-remove($map, $key, $keys...)',
+<% function 'map.set($map, $key, $value)',
+            'map.set($map, $keys..., $key, $value)',
             returns: 'map' do %>
-  If `$keys` is empty, returns a copy of `$map` without a value associated with
-  `$key`.
+  <% heads_up do %>
+    In practice, the actual arguments to `map.set($map, $keys..., $key, $value)`
+    are passed as `map.set($map, $args). They are described here as `$map,
+    $keys..., $key, $value` for explanation purposes only.
+  <% end %>
+
+  If `$keys` are not passed, returns a copy of `$map` with the value at `$key`
+  set to `$value`.
 
   <% example(autogen_css: false) do %>
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
-    @debug map.deep-remove($font-weights, "regular");
-    // ("medium": 500, "bold": 700)
+    @debug map.set($font-weights, "regular", 300);
+    // ("regular": 300, "medium": 500, "bold": 700)
     ===
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
-    @debug map.deep-remove($font-weights, "regular")
-    // ("medium": 500, "bold": 700)
+    @debug map.set($font-weights, "regular", 300)
+    // ("regular": 300, "medium": 500, "bold": 700)
   <% end %>
 
-  If `$keys` is not empty, the map targeted for updating is nested within
-  `$map`. From left to right, including `$key` and excluding the last key in
-  `$keys`, these keys form a path of nested maps that leads to the targeted map.
+  ---
 
-  Returns a copy of `$map` where the targeted map does not have a value
-  associated with the last key in `$keys`.
+  If `$keys` are passed in addition to `$key`, the map targeted for updating is
+  nested within `$map`. The multiple keys in `$keys` form a path of nested maps
+  that leads to the targeted map.
+
+  Returns a copy of `$map` with the targeted map's value at `$key` set to
+  `$value`. If any key in `$keys` references a value that is not a map, that
+  value is replaced with a map containing the key.
 
   <% example(autogen_css: false) do %>
     $fonts: (
@@ -422,10 +405,11 @@ title: sass:map
       )
     );
 
-    @debug map.deep-remove($fonts, "Helvetica", "weights", "regular");
+    @debug map.set($fonts, "Helvetica", "weights", "regular", 300);
     // (
     //   "Helvetica": (
-    //     "weights: (
+    //     "weights": (
+    //       "regular": 300,
     //       "medium": 500,
     //       "bold": 700
     //     )
@@ -434,14 +418,30 @@ title: sass:map
     ===
     $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 
-    @debug map.deep-remove($fonts, "Helvetica", "weights", "regular")
+    @debug map.set($fonts, "Helvetica", "weights", "regular", 300)
     // (
     //   "Helvetica": (
-    //     "weights: (
+    //     "weights": (
+    //       "regular": 300,
     //       "medium": 500,
     //       "bold": 700
     //     )
     //   )
     // )
+  <% end %>
+<% end %>
+
+
+<% function 'map.values($map)', 'map-values($map)', returns: 'list' do %>
+  Returns a comma-separated list of all the values in `$map`.
+
+  <% example(autogen_css: false) do %>
+    $font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+    @debug map.values($font-weights); // 400, 500, 700
+    ===
+    $font-weights: ("regular": 400, "medium": 500, "bold": 700)
+
+    @debug map.values($font-weights)  // 400, 500, 700
   <% end %>
 <% end %>
