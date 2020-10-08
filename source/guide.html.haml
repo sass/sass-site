@@ -229,11 +229,12 @@ introduction: >
   :markdown
     ## Mixins
 
-    Some things in CSS are a bit tedious to write, especially with CSS3 and
-    the many vendor prefixes that exist. A mixin lets you make groups of CSS
-    declarations that you want to reuse throughout your site. You can even
-    pass in values to make your mixin more flexible. A good use of a mixin is
-    for vendor prefixes. Here's an example for `transform`.
+    This is one of the most useful features of Sass. A mixin lets you make
+    groups of CSS declarations that you can reuse throughout your site. You can
+    even pass in values to make your mixin more flexible.
+
+    Mixins can simplify repetitive CSS that is tedious to write by hand. Here's
+    an example for vendor-prefixes:
 
   - example do
     :plain
@@ -242,14 +243,18 @@ introduction: >
         -ms-transform: $property;
         transform: $property;
       }
-      .box { @include transform(rotate(30deg)); }
+
+      .box {
+        @include transform(rotate(30deg));
+      }
       ===
-      =transform($property)
+      @mixin transform($property)
         -webkit-transform: $property
         -ms-transform: $property
         transform: $property
+
       .box
-        +transform(rotate(30deg))
+        @include transform(rotate(30deg))
 
   :markdown
     To create a mixin you use the `@mixin` directive and give it a name. We've
@@ -257,6 +262,53 @@ introduction: >
     inside the parentheses so we can pass in a transform of whatever we want.
     After you create your mixin, you can then use it as a CSS declaration
     starting with `@include` followed by the name of the mixin.
+
+    In the next example, we're going to create a series of messages for errors,
+    warnings, and successes.
+
+  - example do
+    :plain
+      @mixin message {
+        border: 1px solid #ccc;
+        padding: 10px;
+        color: #333;
+      }
+
+      .success {
+        @include message;
+        border-color: green;
+      }
+
+      .error {
+        @include message;
+        border-color: red;
+      }
+
+      .warning {
+        @include message;
+        border-color: yellow;
+      }
+      ===
+      @mixin message
+        border: 1px solid #ccc
+        padding: 10px
+        color: #333
+
+      .success
+        @include message
+        border-color: green
+
+      .error
+        @include message
+        border-color: red
+
+      .warning
+        @include message
+        border-color: yellow
+
+  :markdown
+    Since all of these message types have similar CSS, capturing the shared
+    styles in a mixin helps to DRY up your code.
 
     ---
 
