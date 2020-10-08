@@ -364,11 +364,13 @@ another mixin to inject your styles.
 
   @include styles
     code
-      border-radius: $border-radius
-      box-shadow: $box-shadow
+      border-radius: $-border-radius
+      box-shadow: -box-shadow()
   ---
   // style.sass
-  @use 'library' with ($black: #222, $border-radius: 0.1rem)
+  @use 'library'
+  @include library.configure($black: #222, $border-radius: 0.1rem)
+  @include library.styles
   ===
   code {
     border-radius: 0.1rem;
