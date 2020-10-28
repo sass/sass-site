@@ -50,7 +50,7 @@ Because LibSass doesn't support the [Sass module system] that launched last
 year, major shared Sass libraries have been unable to use it for fear that their
 downstream users would be incompatible. By clearly indicating that all Sass
 users should eventually move off of LibSass, we hope to make it more feasible
-for these library authors touse more modern features.
+for these library authors to use more modern features.
 
 [Sass module system]: https://sass-lang.com/blog/the-module-system-is-launched
 
@@ -98,6 +98,30 @@ JavaScript host for it is in active development.
 
 [Sass embedded protocol]: https://github.com/sass/embedded-protocol
 
+## How do I migrate?
+
+If you're a user of Node Sass, migrating to Dart Sass is straightforward: just
+replace `node-sass` in your `package.json` file with `sass`. Both packages
+expose the same JavaScript API.
+
+If you're using the SassC command-line interface, you can switch to [Dart Sass's
+CLI]. Note that this doesn't have exactly the same interface as SassC, so you
+may need to change a few flags.
+
+[Dart Sass's CLI]: https://sass-lang.com/documentation/cli/dart-sass
+
+If you're using LibSass through a wrapper library in another language, you can
+either switch to the Dart Sass CLI or ask the maintainer of the LibSass wrapper
+to convert it to a host for the [Sass embedded protocol]. The embedded protocol
+allows any language to provide a native API that calls out to Dart Sass.
+
+Please note that because activity on LibSass has been low for several years, it
+has a number of outstanding bugs and behavioral variations from the Sass spec.
+You may need to make minor updates to stylesheets to make them compatible with
+Dart Sass. See [this list of major compatibility issues] for reference.
+
+[this list of major compatibility issues]: https://github.com/sass/libsass/issues?q=is%3Aopen+is%3Aissue+label%3A%22Compatibility+-+P1+%E2%9A%A0%EF%B8%8F%22
+
 ## Thank you
 
 Finally, I want to thank everyone who's put so much time and energy into LibSass
@@ -107,5 +131,5 @@ to its existence. Many people have tried to implement Sass only to find that the
 language is much deeper and more complex than they expected, and LibSass alone
 among all of those implementations managed to become fully-featured enough to
 provide real value for thousands if not millions of users. These maintainers
-deserve to be proud of that work, and I hope they'll always themselves part of
-the Sass community going forward.
+deserve to be proud of that work, and I hope they'll always consider themselves
+part of the Sass community going forward.
