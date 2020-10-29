@@ -24,6 +24,8 @@ title: sass:map
 
 
 <% function 'map.deep-merge($map1, $map2)', returns: 'map' do %>
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false %>
+
   Identical to [`map.merge()`](#merge), except that nested map values are *also*
   recursively merged.
 
@@ -83,7 +85,9 @@ title: sass:map
 
 <% function 'map.deep-remove($map, $key, $keys...)',
             returns: 'map' do %>
-  If `$keys` is empty, returns a copy of `$map` without a value associated with
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false %>
+
+If `$keys` is empty, returns a copy of `$map` without a value associated with
   `$key`.
 
   <% example(autogen_css: false) do %>
@@ -153,6 +157,10 @@ title: sass:map
 
   ---
 
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false do %>
+    Only Dart Sass supports calling `map.get()` with more than two arguments.
+  <% end %>
+
   If `$keys` is not empty, follows the set of keys including `$key` and
   excluding the last key in `$keys`, from left to right, to find the nested map
   targeted for searching.
@@ -206,6 +214,10 @@ title: sass:map
   <% end %>
 
   ---
+
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false do %>
+    Only Dart Sass supports calling `map.has-key()` with more than two arguments.
+  <% end %>
 
   If `$keys` is not empty, follows the set of keys including `$key` and
   excluding the last key in `$keys`, from left to right, to find the nested map
@@ -289,6 +301,10 @@ title: sass:map
   <% end %>
 
   ---
+
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false do %>
+    Only Dart Sass supports calling `map.merge()` with more than two arguments.
+  <% end %>
 
   If `$keys` is not empty, follows the `$keys` to find the nested map targeted
   for merging. If any key in `$keys` is missing from a map or references a value
@@ -388,6 +404,10 @@ title: sass:map
   <% end %>
 
   ---
+
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false do %>
+    Only Dart Sass supports calling `map.set()` with more than three arguments.
+  <% end %>
 
   If `$keys` are passed, follows the `$keys` to find the nested map targeted for
   updating. If any key in `$keys` is missing from a map or references a value
