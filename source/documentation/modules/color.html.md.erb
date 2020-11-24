@@ -436,9 +436,9 @@ SIGNATURE
 <% end %>
 
 
-<% function 'hwb($hue $whiteness $blackness)',
-            'hwb($hue $whiteness $blackness / $alpha)',
-            'hwb($hue, $whiteness, $blackness, $alpha: 1)', returns: 'color' do %>
+<% function 'color.hwb($hue $whiteness $blackness)',
+            'color.hwb($hue $whiteness $blackness / $alpha)',
+            'color.hwb($hue, $whiteness, $blackness, $alpha: 1)', returns: 'color' do %>
   <% impl_status dart: '1.27.0', libsass: false, ruby: false %>
 
   Returns a color with the given [hue, whiteness, and blackness][] and the given
@@ -457,19 +457,19 @@ SIGNATURE
   <% heads_up do %>
     Sass's [special parsing rules][] for slash-separated values make it
     difficult to pass variables for `$blackness` or `$alpha` when using the
-    `hwb($hue $whiteness $blackness / $alpha)` signature. Consider using
-    `hwb($hue, $whiteness, $blackness, $alpha)` instead.
+    `color.hwb($hue $whiteness $blackness / $alpha)` signature. Consider using
+    `color.hwb($hue, $whiteness, $blackness, $alpha)` instead.
 
     [special parsing rules]: ../operators/numeric#slash-separated-values
   <% end %>
 
   <% example(autogen_css: false) do %>
-    @debug hwb(210, 0%, 60%); // #036
-    @debug hwb(34, 89%, 5%); // #f2ece4
-    @debug hwb(210 0% 60% / 0.5); // rgba(0, 51, 102, 0.5)
+    @debug color.hwb(210, 0%, 60%); // #036
+    @debug color.hwb(34, 89%, 5%); // #f2ece4
+    @debug color.hwb(210 0% 60% / 0.5); // rgba(0, 51, 102, 0.5)
     ===
-    @debug hwb(210, 0%, 60%)  // #036
-    @debug hwb(34, 89%, 5%)  // #f2ece4
+    @debug color.hwb(210, 0%, 60%)  // #036
+    @debug color.hwb(34, 89%, 5%)  // #f2ece4
     @debug hwb(210 0% 60% / 0.5)  // rgba(0, 51, 102, 0.5)
   <% end %>
 <% end %>
