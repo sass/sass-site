@@ -11,11 +11,11 @@ the CSS spec, and that we keep other Sass functions that deal with colors
 consistent with `hsl()`. One notable place where Sass has historically differed
 from the spec is the way that `hsl()` (and other color functions) handled units.
 
-[`hsl()`]: ../modules/color#hsl
+[`hsl()`]: ../modules#hsl
 
-For hue, CSS allows any [angle unit] (`deg`, `grad`, `rad`, or `turn`). It also
-allows a unitless number, which is interpreted as `deg`. Historically, Sass has
-allowed *any* unit, and interpreted it as `deg`. This is particularly
+For hue, CSS allows any [angle unit][] (`deg`, `grad`, `rad`, or `turn`). It
+also allows a unitless number, which is interpreted as `deg`. Historically, Sass
+has allowed *any* unit, and interpreted it as `deg`. This is particularly
 problematic because it meant that the valid CSS expression `hsl(0.5turn, 100%,
 50%)` would be allowed by Sass but interpreted entirely wrong.
 
