@@ -29,7 +29,7 @@ SIGNATURE
   arguments must be [unitless][] and between -255 and 255 (inclusive). The
   `$hue` argument must have either the unit `deg` or no unit. The `$saturation`,
   `$lightness`, `$whiteness`, and `$blackness` arguments must be between `-100%`
-  and `100%` (inclusive), and may be unitless. The `$alpha` argument must be
+  and `100%` (inclusive), and may not be unitless. The `$alpha` argument must be
   unitless and between -1 and 1 (inclusive).
 
   [unitless]: ../values/numbers#units
@@ -55,7 +55,8 @@ SIGNATURE
   Increases or decreases `$color`'s hue.
 
   The `$hue` must be a number between `-360deg` and `360deg` (inclusive) to add
-  to `$color`'s hue. It may be [unitless][].
+  to `$color`'s hue. It may be [unitless][] but it may not have any unit other
+  than `deg`.
 
   [unitless]: ../values/numbers#units
 
@@ -203,7 +204,7 @@ SIGNATURE
   arguments must be [unitless][] and between 0 and 255 (inclusive). The `$hue`
   argument must have either the unit `deg` or no unit. The `$saturation`,
   `$lightness`, `$whiteness`, and `$blackness` arguments must be between `0%`
-  and `100%` (inclusive), and may be unitless. The `$alpha` argument must be
+  and `100%` (inclusive), and may not be unitless. The `$alpha` argument must be
   unitless and between -1 and 1 (inclusive).
 
   [unitless]: ../values/numbers#units
