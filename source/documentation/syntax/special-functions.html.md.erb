@@ -86,6 +86,13 @@ calls][]—it's parsed as a normal [plain CSS function call][].
 
 ## `calc()`, `clamp()`, `element()`, `progid:...()`, and `expression()`
 
+<% impl_status dart: "1.31.0", libsass: false, ruby: false, feature: "clamp()" do %>
+  LibSass, Ruby Sass, and older versions of Dart Sass treat `clamp()` as a
+  [plain CSS function] rather than supporting special syntax within it.
+
+  [plain CSS function]: ../at-rules/function#plain-css-functions
+<% end %>
+
 The [`calc()`], [`clamp()`] and [`element()`] functions are defined in the CSS
 spec. Because `calc()`'s mathematical expressions conflict with Sass's
 arithmetic, and `element()`'s IDs could be parsed as colors, they need special
