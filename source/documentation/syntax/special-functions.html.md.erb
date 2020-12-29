@@ -84,13 +84,15 @@ calls][]—it's parsed as a normal [plain CSS function call][].
       font-weight: 400
 <% end %>
 
-## `calc()`, `element()`, `progid:...()`, and `expression()`
+## `calc()`, `clamp()`, `element()`, `progid:...()`, and `expression()`
 
-The [`calc()`][] and [`element()`][] functions are defined in the CSS spec.
-Because `calc()`'s mathematical expressions conflict with Sass's arithmetic, and
-`element()`'s IDs could be parsed as colors, they need special parsing.
+The [`calc()`], [`clamp()`] and [`element()`] functions are defined in the CSS
+spec. Because `calc()`'s mathematical expressions conflict with Sass's
+arithmetic, and `element()`'s IDs could be parsed as colors, they need special
+parsing.
 
 [`calc()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+[`clamp()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
 [`element()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/element
 
 [`expression()`][] and functions beginning with [`progid:`][] are legacy
