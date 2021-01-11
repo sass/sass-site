@@ -147,7 +147,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    redcarpet (3.3.4)
+    redcarpet (3.5.1)
     ref (2.0.0)
     rouge (1.11.1)
     rubypants (0.7.0)
@@ -205,7 +205,7 @@ DEPENDENCIES
   rack-rewrite
   rack-ssl (~> 1.4)
   rake
-  redcarpet (~> 3.3.3)
+  redcarpet (~> 3.5.1)
   semantic (~> 1.6)
   therubyracer (~> 0.12.3)
   typogruby (~> 1.0.18)
