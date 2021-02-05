@@ -199,9 +199,6 @@ the `===` as a heading. %>
 
 ## Migrations
 
-The migrator currently supports only one migration, but expect more to come as
-the Sass language continues to evolve!
-
 ### Module
 
 This migration converts stylesheets that use the old [`@import` rule][] to load
@@ -349,3 +346,87 @@ $ cat _index.scss
 @forward "typography";
 @forward "components";
 ```
+
+### Namespace
+
+This migration allows you to easily change the [namespaces][] of the `@use`
+rules in a stylesheet. This is useful if the namespaces that the module migrator
+generates to resolve conflicts are non-ideal, or if you don't want to use the
+default namespace that Sass determines based on the rule's URL.
+
+[namespaces]: ../at-rules/use#choosing-a-namespace
+
+#### `--rename`
+
+You can tell the migrator which namespace(s) you want it to change by passing
+expressions to the `--rename` option.
+
+These expressions are of the form `<old-namespace> to <new-namespace>` or
+`url <rule-url> to <new-namespace>`. In these expressions, `<old-namespace>` and
+`<rule-url>` are [regular expressions][] which match against the entirety of the
+existing namespace or the `@use` rule's URL, respectively.
+
+[regular expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+For simple use cases, this just looks like `--rename 'old to new'`, which would
+rename a `@use` rule with the namespace `old` to instead be `new`.
+
+However, you can also do this to accomplish more complicated renames. For
+instance, say that you previously had a stylesheet that looked like this:
+
+```scss
+@import "components/button/lib/mixins";
+@import "components/input/lib/mixins";
+@import "components/table/lib/mixins";
+...
+```
+
+Since all of these URLs would have the default namespace `mixins` when migrated
+to `@use` rules, the module migrator may end up generating something like this:
+
+```scss
+@use "components/button/lib/mixins" as button-lib-mixins;
+@use "components/input/lib/mixins" as input-lib-mixins;
+@use "components/table/lib/mixins" as table-lib-mixins;
+...
+```
+
+This is valid code since the namespaces don't conflict, but they're way more
+complicated than they need to be. The relevant part of the URL is the component
+name, so we can use the namespace migrator to extract that part out.
+
+If we run the namespace migrator with
+`--rename 'url components/(\w+)/lib/mixins to \1'`, we'll end up with:
+
+```scss
+@use "components/button/lib/mixins" as button;
+@use "components/input/lib/mixins" as input;
+@use "components/table/lib/mixins" as table;
+...
+```
+
+The rename script here says to find all of the `@use` rules whose URLs look like
+`components/(\w+)/lib/mixins` (`\w+` in a regular expression means to match any
+word of one or more characters). The `\1` in the output clause means to
+substitute in the contents of the first set of parentheses in the regular
+expression (called a [group][]).
+
+[group]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges
+
+If you wish to try multiple renames, you can pass the `--rename` option multiple
+times, or separate them with a semicolon or a line break. Only the first rename
+that applies to a given rule will be used, so you could pass something like
+`--rename 'a to b; b to a'` to swap the namespaces `a` and `b`.
+
+#### `--force`
+
+By default, if two or more `@use` rules have the same namespace after the
+migration, the migrator will fail, and no changes will be made.
+
+In this case, you'll usually want to adjust your `--rename` script to avoid
+creating conflicts, but if you'd prefer to force the migration, you can instead
+pass `--force`.
+
+With `--force`, if any conflicts are encountered, the first `@use` rule will
+get its preferred namespace, while subsequent `@use` rules with the same
+preferred namespace will instead have a numerical suffix added to them.
