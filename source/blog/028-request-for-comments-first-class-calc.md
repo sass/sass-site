@@ -6,7 +6,7 @@ date: 2021-3-15 1:35 PST
 
 One of the absolutely most-requested features in Sass is the ability to more
 easily work with `calc()` expressions. These expressions have historically been
-parsed as opaquely: between the parentheses, you can put any text at all, and
+parsed opaquely: between the parentheses, you can put any text at all, and
 Sass will just treat it as an unquoted string. This has simplified Sass's
 parser, since we don't have to support the specific `calc()` microsyntax, and
 it's meant that we automatically support new features like the use of [CSS
