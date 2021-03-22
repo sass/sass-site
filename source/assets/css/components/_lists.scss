@@ -126,6 +126,8 @@
   &.impl-status {
     font-size: 0.8em;
     margin-top: -1em;
+    
+    dt { word-break: normal; }
 
     a {
       transition: transform 0.1s;
