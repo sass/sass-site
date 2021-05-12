@@ -19,10 +19,11 @@ use `/` as a separator, this is becoming more and more painful to Sass users.
 [CSS Grid]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
 [new `rgb()` and `hsl()` syntax]: https://drafts.csswg.org/css-color/#rgb-functions
 
-Because Sass is a CSS superset, it's redefining `/` to be *only* a separator.
-`/` will be treated as a new type of list separator, similar to how `,` works
-today. Division will instead be written using the new `math.div()` function.
-This function will behave exactly the same as `/` does today.
+Because Sass is a CSS superset, we're matching CSS's syntax by redefining `/` to
+be *only* a separator. `/` will be treated as a new type of list separator,
+similar to how `,` works today. Division will instead be written using the new
+`math.div()` function. This function will behave exactly the same as `/` does
+today.
 
 <% example do %>
   @use "sass:math";
@@ -47,13 +48,12 @@ This function will behave exactly the same as `/` does today.
 
 ## Transition Period
 
-<% impl_status dart: false, libsass: false, ruby: false,
+<% impl_status dart: "1.33.0", libsass: false, ruby: false,
                feature: "math.div() and list.slash()" %>
 
-To ease the transition, implementations will begin by adding the `math.div()`
-function. The `/` operator will continue to do division, but it also prints a
-deprecation warning when it does so. Users should switch all division to use
-`math.div()` instead.
+To ease the transition, we've begun by adding the `math.div()` function. The `/`
+operator still does division for now, but it also prints a deprecation warning
+when it does so. Users should switch all division to use `math.div()` instead.
 
 <% example(autogen_css: false) do %>
   @use "sass:math";
@@ -82,13 +82,17 @@ create them. You will also be able to pass `"slash"` as the `$separator` to the
 [`list.append()` function]: ../modules/list#append
 
 <% example do %>
+  @use "sass:list";
+
   .item3 {
-    $row: slash-list(span divide(6, 2), 7);
+    $row: list.slash(span divide(6, 2), 7);
     grid-row: $row;
   }
   ===
+  @use "sass:list";
+
   .item3
-    $row: slash-list(span divide(6, 2), 7)
+    $row: list.slash(span divide(6, 2), 7)
     grid-row: $row
   ===
   .item3 {
