@@ -788,6 +788,14 @@ Imports are resolved by trying, in order:
 * Each load path specified in the `SASS_PATH` environment variable, which
   should be semicolon-separated on Windows and colon-separated elsewhere.
 
+<% impl_status dart: '1.33.0', node: false, feature: "this.fromImport" %>
+
+An importer can determine whether it's being called from an `@import` rule by
+checking `this.fromImport`. This should *only* be used for determining whether
+or not to load [import-only files].
+
+[import-only files]: https://sass-lang.com/documentation/at-rules/import#import-only-files
+
 ```js
 sass.render({
   file: "style.scss",
