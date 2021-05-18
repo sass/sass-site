@@ -59,6 +59,7 @@ toc:
   - <code>sass:string</code>: /documentation/modules/string
 - Breaking Changes: /documentation/breaking-changes
   :children:
+  - <code>/</code> as Division: /documentation/breaking-changes/slash-div
   - Color Units: /documentation/breaking-changes/color-units
   - Extending Compound Selectors: /documentation/breaking-changes/extend-compound
   - CSS Variable Syntax: /documentation/breaking-changes/css-vars
