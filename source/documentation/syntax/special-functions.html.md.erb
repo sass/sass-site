@@ -115,20 +115,33 @@ Nothing is interpreted as a SassScript expression, with the exception that
 [interpolation][] can be used to inject dynamic values.
 
 <% example do %>
+  @use "sass:math";
+
   .logo {
     $width: 800px;
     width: $width;
     position: absolute;
-    left: calc(50% - #{$width / 2});
+    left: calc(50% - #{math.div($width, 2)});
     top: 0;
   }
   ===
+  @use "sass:math"
+
   .logo
     $width: 800px
     width: $width
     position: absolute
-    left: calc(50% - #{$width / 2})
+    left: calc(50% - #{math.div($width, 2)})
     top: 0
+  ===
+  @use "sass:math";
+
+  .logo {
+    width: 800px;
+    position: absolute;
+    left: calc(50% - 400px);
+    top: 0;
+  }
 <% end %>
 
 ## `min()` and `max()`

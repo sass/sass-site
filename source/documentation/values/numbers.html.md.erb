@@ -35,9 +35,9 @@ been spotty, Sass always compiles it to fully expanded numbers.
 <% end %>
 
 <% heads_up do %>
-  Sass doesn't distinguish between whole numbers and decimals, so for example `5
-  / 2` returns `2.5` rather than `2`. This is the same behavior as JavaScript,
-  but different than many other programming languages.
+  Sass doesn't distinguish between whole numbers and decimals, so for example
+  `math.div(5, 2)` returns `2.5` rather than `2`. This is the same behavior as
+  JavaScript, but different than many other programming languages.
 <% end %>
 
 <%= partial 'documentation/snippets/number-units' %>

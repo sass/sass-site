@@ -392,8 +392,10 @@ generating CSS that includes numbers. It defaults to 5 for Node Sass.
 ```js
 var result = sass.renderSync({
   data: `
+@use "sass:math";
+
 h1 {
-  font-size: (100px / 3);
+  font-size: math.div(100px, 3);
 }`,
   precision: 20
 });
@@ -870,8 +872,8 @@ separated by `*`.
 new sass.types.Number(0.5); // == 0.5
 new sass.types.Number(10, "px"); // == 10px
 new sass.types.Number(10, "px*px"); // == 10px * 1px
-new sass.types.Number(10, "px/s"); // == 10px / 1s
-new sass.types.Number(10, "px*px/s*s"); // == 10px * 1px / 1s / 1s
+new sass.types.Number(10, "px/s"); // == math.div(10px, 1s)
+new sass.types.Number(10, "px*px/s*s"); // == 10px * math.div(math.div(1px, 1s), 1s)
 ```
 
 #### `number.getValue()`
@@ -899,7 +901,7 @@ same format that [the constructor][new Number] accepts them.
 // number is `10px`.
 console.log(number.getUnit()); // "px"
 
-// number is `10px / 1s`.
+// number is `math.div(10px, 1s)`.
 console.log(number.getUnit()); // "px/s"
 ```
 
