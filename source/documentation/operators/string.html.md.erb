@@ -8,9 +8,6 @@ introduction: >
   values. If the either value is a [quoted string][], the result will be quoted;
   otherwise, it will be unquoted.
 
-* `<expression> / <expression>` returns an unquoted string that contains both
-  expressions' values, separated by `/`.
-
 * `<expression> - <expression>` returns an unquoted string that contains both
   expressions' values, separated by `-`. This is a legacy operator, and
   [interpolation][] should generally be used instead.
@@ -21,12 +18,10 @@ introduction: >
 <% example(autogen_css: false) do %>
   @debug "Helvetica" + " Neue"; // "Helvetica Neue"
   @debug sans- + serif; // sans-serif
-  @debug #{10px + 5px} / 30px; // 15px/30px
   @debug sans - serif; // sans-serif
   ===
   @debug "Helvetica" + " Neue"  // "Helvetica Neue"
   @debug sans- + serif  // sans-serif
-  @debug #{10px + 5px} / 30px  // 15px/30px
   @debug sans - serif  // sans-serif
 <% end %>
 

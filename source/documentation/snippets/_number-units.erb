@@ -11,22 +11,24 @@ denominator.
 
 <% example(autogen_css: false) do %>
   @debug 4px * 6px; // 24px*px (read "square pixels")
-  @debug 5px / 2s; // 2.5px/s (read "pixels per second")
-  @debug 5px * 30deg / 2s / 24em; // 3.125px*deg/s*em
-                                  // (read "pixel-degrees per second-em")
+  @debug math.div(5px, 2s); // 2.5px/s (read "pixels per second")
 
-  $degrees-per-second: 20deg/1s;
+  // 3.125px*deg/s*em (read "pixel-degrees per second-em")
+  @debug 5px * math.div(math.div(30deg, 2s), 24em); 
+
+  $degrees-per-second: math.div(20deg, 1s);
   @debug $degrees-per-second; // 20deg/s
-  @debug 1 / $degrees-per-second; // 0.05s/deg
+  @debug math.div(1, $degrees-per-second); // 0.05s/deg
   ===
   @debug 4px * 6px  // 24px*px (read "square pixels")
-  @debug 5px / 2s  // 2.5px/s (read "pixels per second")
-  @debug 5px * 30deg / 2s / 24em  // 3.125px*deg/s*em
-                                  // (read "pixel-degrees per second-em")
+  @debug math.div(5px, 2s)  // 2.5px/s (read "pixels per second")
 
-  $degrees-per-second: 20deg/1s
+  // 3.125px*deg/s*em (read "pixel-degrees per second-em")
+  @debug 5px * math.div(math.div(30deg, 2s), 24em)  
+
+  $degrees-per-second: math.div(20deg, 1s) 
   @debug $degrees-per-second  // 20deg/s
-  @debug 1 / $degrees-per-second  // 0.05s/deg
+  @debug math.div(1, $degrees-per-second)  // 0.05s/deg
 <% end %>
 
 <% heads_up do %>
@@ -64,8 +66,8 @@ throw an error.
 <% end %>
 
 As in real-world unit calculations, if the numerator contains units that are
-compatible with units in the denominator (like `96px / 1in`), they'll cancel
-out. This makes it easy to define a ratio that you can use for converting
+compatible with units in the denominator (like `math.div(96px, 1in)`), they'll
+cancel out. This makes it easy to define a ratio that you can use for converting
 between units. In the example below, we set the desired speed to one second per
 50 pixels, and then multiply that by the number of pixels the transition covers
 to get the time it should take.
@@ -73,7 +75,7 @@ to get the time it should take.
 <%# TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass %>
 
 <% example do %>
-  $transition-speed: 1s/50px;
+  $transition-speed: math.div(1s, 50px);
 
   @mixin move($left-start, $left-stop) {
     position: absolute;
@@ -89,7 +91,7 @@ to get the time it should take.
     @include move(10px, 120px);
   }
   ===
-  $transition-speed: 1s/50px
+  $transition-speed: math.div(1s, 50px)
 
   @mixin move($left-start, $left-stop)
     position: absolute
@@ -138,10 +140,10 @@ to get the time it should take.
   Sass considers it different than the number `0.5`.
 
   You can convert between decimals and percentages using unit arithmetic.
-  `$percentage / 100%` will return the corresponding decimal, and `$decimal *
-  100%` will return the corresponding percentage. You can also use the
-  [`math.percentage()` function][] as a more explicit way of writing `$decimal *
-  100%`.
+  `math.div($percentage, 100%)` will return the corresponding decimal, and
+  `$decimal * 100%` will return the corresponding percentage. You can also use
+  the [`math.percentage()` function][] as a more explicit way of writing
+  `$decimal * 100%`.
 
   [`math.percentage()` function]: /documentation/modules/math#percentage
 <% end %>

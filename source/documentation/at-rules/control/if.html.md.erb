@@ -74,13 +74,15 @@ no others. If there's a plain `@else` at the end of the chain, its block will be
 evaluated if every other block fails.
 
 <% example do %>
+  @use "sass:math";
+
   @mixin triangle($size, $color, $direction) {
     height: 0;
     width: 0;
 
     border-color: transparent;
     border-style: solid;
-    border-width: $size / 2;
+    border-width: math.div($size, 2);
 
     @if $direction == up {
       border-bottom-color: $color;
@@ -99,13 +101,15 @@ evaluated if every other block fails.
     @include triangle(5px, black, right);
   }
   ===
+  @use "sass:math"
+
   @mixin triangle($size, $color, $direction)
     height: 0
     width: 0
 
     border-color: transparent
     border-style: solid
-    border-width: $size / 2
+    border-width: math.div($size, 2)
 
     @if $direction == up
       border-bottom-color: $color
@@ -122,6 +126,15 @@ evaluated if every other block fails.
 
   .next
     @include triangle(5px, black, right)
+  ===
+  .next {
+    height: 0;
+    width: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 2.5px;
+    border-left-color: black;
+  }
 <% end %>
 
 <%= partial 'documentation/snippets/truthiness-and-falsiness' %>

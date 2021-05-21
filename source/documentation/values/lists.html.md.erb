@@ -9,13 +9,14 @@ table_of_contents: true
 <% end %>
 
 Lists contain a sequence of other values. In Sass, elements in lists can be
-separated by commas (`Helvetica, Arial, sans-serif`) or by spaces
-(`10px 15px 0 0`), as long as it's consistent within the list. Unlike most other
-languages, lists in Sass don't require special brackets; any [expressions][]
+separated by commas (`Helvetica, Arial, sans-serif`), spaces (`10px 15px 0 0`),
+or [slashes] as long as it's consistent within the list. Unlike most other
+languages, lists in Sass don't require special brackets; any [expressions]
 separated with spaces or commas count as a list. However, you're allowed to
 write lists with square brackets (`[line1 line2]`), which is useful when using
-[`grid-template-columns`][].
+[`grid-template-columns`].
 
+[slashes]: #slash-separated-lists
 [expressions]: ../syntax/structure#expressions
 [`grid-template-columns`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
 
@@ -31,6 +32,23 @@ value, which means you rarely need to explicitly create single-element lists.
   Empty lists without brackets aren't valid CSS, so Sass won't let you use one
   in a property value.
 <% end %>
+
+## Slash-Separated Lists
+
+Lists in Sass can be separated by slashes, to represent values like the `font:
+12px/30px` shorthand for setting `font-size` and `line-height` or the `hsl(80
+100% 50% / 0.5)` syntax for creating a color with a given opacity value.
+However, **slash-separated lists can't currently be written literally.** Sass
+historically used the `/` character to indicate division, so while existing
+stylesheets transition to using [`math.div()`] slash-separated lists can only be
+written using [`list.slash()`].
+
+[`math.div()`]: ../modules/math#div
+[`list.slash()`]: ../modules/list#slash
+
+For more details, see [Breaking Change: Slash as Division].
+
+[Breaking Change: Slash as Division]: ../breaking-changes/slash-div
 
 ## Using Lists
 
