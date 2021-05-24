@@ -378,6 +378,39 @@ another mixin to inject your styles.
   }
 <% end %>
 
+### Reassigning Variables
+
+After loading a module, you can reassign its variables.
+
+<% example(autogen_css: false) do %>
+  // _library.scss
+  $color: red;
+  ---
+  // _override.scss
+  @use 'library';
+  library.$color: blue;
+  ---
+  // style.scss
+  @use 'library';
+  @use 'override';
+  @debug library.$color;  //=> blue
+  ===
+  // _library.sass
+  $color: red
+  ---
+  // _override.sass
+  @use 'library'
+  library.$color: blue
+  ---
+  // style.sass
+  @use 'library'
+  @use 'override'
+  @debug library.$color  //=> blue
+<% end %>
+
+Note that built-in module variables (e.g. `math.$pi` from the math module)
+cannot be reassigned.
+
 ## Finding the Module
 
 It wouldn't be any fun to write out absolute URLs for every stylesheet you load,
