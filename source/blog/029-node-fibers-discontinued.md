@@ -11,7 +11,7 @@ users to pass in `node-fibers` to improve the performance of the asynchronous
 `render()` method, but going forward this will unfortunately no longer be an
 option in Node 16 and on.
 
-[the node-fibers package has reached its end-of-life]: https://github.com/laverdet/node-fibers/commit/8f2809869cc92c28c92880c4a38317ae3dbe654d
+[the `node-fibers` package has reached its end-of-life]: https://github.com/laverdet/node-fibers/commit/8f2809869cc92c28c92880c4a38317ae3dbe654d
 
 There are a number of [alternative options] for reclaiming this lost
 performance, some of them which are available today, some which are in
@@ -116,7 +116,7 @@ provides several important improvements over the existing alternatives:
   stylesheets.
 
 The Node.js host for Embedded Sass is still in active development, but there's
-[a beta release] avialable (with minimal features) if you want to kick the
+[a beta release] available (with minimal features) if you want to kick the
 tires.
 
 [a beta release]: https://www.npmjs.com/package/sass-embedded
