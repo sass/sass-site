@@ -46,13 +46,13 @@
 
   $fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif
 
-  content
+  body
     @function contains-helvetica($string)
       @return string.index($string, "Helvetica")
 
     font-family: remove-where($fonts, meta.get-function("contains-helvetica"))
   ===
-  content {
+  body {
     font-family: Tahoma, Geneva, Arial, sans-serif;
   }
 <% end %>

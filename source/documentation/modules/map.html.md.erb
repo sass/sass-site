@@ -15,10 +15,10 @@ title: sass:map
 
   <% example(autogen_css: false) do %>
     $config: (a: (b: (c: d)));
-    @debug map.get($config, a, b, c)); // d
+    @debug map.get($config, a, b, c); // d
     ===
     $config: (a: (b: (c: d)))
-    @debug map.get($config, a, b, c)) // d
+    @debug map.get($config, a, b, c) // d
   <% end %>
 <% end %>
 
