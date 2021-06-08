@@ -199,6 +199,29 @@ the `===` as a heading. %>
 
 ## Migrations
 
+### Division
+
+This migration converts stylesheets that use [`/` as division][] to use the
+built-in `math.div` function instead.
+
+[`/` as division]: ../breaking-changes/slash-div
+
+#### `--pessimistic`
+
+By default, the migrator converts `/` operations to `math.div` even when it
+isn't sure that it will be division when evaluated. It only leaves them as-is
+when it can statically determine that they're doing something else (such as when
+there's no SassScript involved, or when one of the operands is a string). The
+`math.div` function currently functions identically to the `/` operator, so
+this is safe to do, but may result in new warnings if one of the arguments to
+`math.div` at runtime is not a number.
+
+If you want to avoid this behavior, you can pass the `--pessimistic` flag. With
+this flag, the migrator will only convert `/` operations that it knows for sure
+are doing division. This will prevent any unnecessary `math.div` conversions,
+but it's likely to leave some division unmigrated if it can't be statically
+determined.
+
 ### Module
 
 This migration converts stylesheets that use the old [`@import` rule][] to load
