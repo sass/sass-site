@@ -832,6 +832,39 @@ h1 {
 });
 ```
 
+### Other
+
+#### `quietDeps`
+
+<% impl_status dart: '1.35.0', node: false %>
+
+If this option is set to `true`, Sass won't print warnings that are caused by
+dependencies. A "dependency" is defined as any file that's loaded through a
+[load path] or an [importer]. Stylesheets that are imported relative to the
+entrypoint are not considered dependencies.
+
+[load path]: #includepath
+
+This is useful for silencing deprecation warnings that you can't fix on your
+own. However, please *also* notify your dependencies of the deprecations so that
+they can get fixed as soon as possible!
+
+<% heads_up do %>
+  If `render()` or `renderSync()` is called without the [`file` option], *all*
+  stylesheets it loads will be considered dependencies. Since it doesn't have a
+  path of its own, everything it loads is coming from a load path rather than a
+  relative import.
+<% end %>
+
+#### `verbose`
+
+<% impl_status dart: '1.35.0', node: false %>
+
+By default, Dart Sass will print only five instances of the same deprecation
+warning per compilation to avoid deluging users in console noise. If you set
+`verbose` to `true`, it will instead print every deprecation warning it
+encounters.
+
 ## Value Types
 
 In order to support [custom functions][], Sass provides access to JavaScript
