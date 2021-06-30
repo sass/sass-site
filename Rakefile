@@ -61,7 +61,7 @@ namespace :sass do
         if ENV["DART_SASS_REVISION"]
           sh %{git checkout #{ENV["DART_SASS_REVISION"]}}
         else
-          sh %{git checkout origin/master}
+          sh %{git checkout origin/main}
         end
       end
     end
@@ -83,7 +83,7 @@ namespace :sass do
         if ENV["SASS_MIGRATOR_REVISION"]
           sh %{git checkout #{ENV["SASS_MIGRATOR_REVISION"]}}
         else
-          sh %{git checkout origin/master}
+          sh %{git checkout origin/main}
         end
       end
     end
