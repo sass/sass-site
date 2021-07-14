@@ -8,7 +8,7 @@ Dart Sass 1.11 has just been released, and with it a handful of new features.
 This is an exciting moment, because it marks the first major new feature that's
 been added to the language since Dart Sass was launched. It's also the first
 release with features that have gone through the new process, from
-[proposal](https://github.com/sass/language/blob/master/accepted/css-imports.md)
+[proposal](https://github.com/sass/language/blob/main/accepted/css-imports.md)
 to [tests](https://github.com/sass/sass-spec/pull/1277) to
 [implementation](https://github.com/sass/dart-sass/pull/436).
 

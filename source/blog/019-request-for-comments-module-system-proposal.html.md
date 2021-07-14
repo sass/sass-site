@@ -22,7 +22,7 @@ proposal is now in a place that the core team is pretty happy with, at least as
 a starting point, so we want to open it up for community feedback.
 
 If you want to read the full proposal, [it's available on
-GitHub](https://github.com/sass/language/blob/master/accepted/module-system.md).
+GitHub](https://github.com/sass/language/blob/main/accepted/module-system.md).
 Feel free to [file issues](https://github.com/sass/language/issues/new) for any
 feedback you have. The main body of the proposal is written as a spec, so it's
 very detailed, but the Goals, Summary, and FAQ sections (reproduced below)

@@ -11,7 +11,7 @@ following:
 * If there is new design or CSS, please add @Jina as a reviewer so she can see
   if it needs to be added to the style guide (or if a suitable alternative
   exists).
-* Submit the pull request to the `master` branch.
+* Submit the pull request to the `main` branch.
 * Drink whisky.
 
 ## Running Locally
@@ -33,7 +33,7 @@ bundle exec middleman
 
 ## Deploying
 
-Every time a new commit is pushed to master, it will automatically be deployed
+Every time a new commit is pushed to main, it will automatically be deployed
 to sass-lang.com. Easy as that!
 
 Thanks!

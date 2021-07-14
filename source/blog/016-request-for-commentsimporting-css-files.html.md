@@ -80,7 +80,7 @@ their imported CSS without entirely breaking their build process.
 
 If you want more details on exactly how the proposed behavior will work, [head
 over to the `sass/language` repo and read the full
-proposal](https://github.com/sass/language/blob/master/accepted/css-imports.md).
+proposal](https://github.com/sass/language/blob/main/accepted/css-imports.md).
 You can skip the Background and Summary sections, since they're included above.
 Be aware, though, that it's written to be a specification; it's a great for
 figuring out how exactly an edge case should work, but it's not as

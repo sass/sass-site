@@ -61,7 +61,7 @@ Sass or fail to compile in LibSass. By marking LibSass as deprecated, this
 becomes much more feasible, and Sass becomes much better at supporting the
 latest versions of CSS.
 
-[treating `/` as a separator]: https://github.com/sass/sass/blob/master/accepted/slash-separator.md
+[treating `/` as a separator]: https://github.com/sass/sass/blob/main/accepted/slash-separator.md
 
 ## What does "deprecated" mean?
 

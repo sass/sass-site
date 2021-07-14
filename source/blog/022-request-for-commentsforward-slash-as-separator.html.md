@@ -59,7 +59,7 @@ in a three-stage process:
 
 If you want more details on exactly how the proposed behavior will work, [head
 over to the Sass language repo and read the full
-proposal](https://github.com/sass/sass/blob/master/accepted/slash-separator.md).
+proposal](https://github.com/sass/sass/blob/main/accepted/slash-separator.md).
 You can skip the Background and Summary sections, since they're included above.
 Be aware, though, that it's written to be a specification; it's a great for
 figuring out how exactly an edge case should work, but it's not as
