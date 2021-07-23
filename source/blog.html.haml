@@ -11,7 +11,7 @@ per_page: 5
 - page_articles.each_with_index do |article, i|
   %h2= link_to article.title, without_html(article)
   = partial 'layouts/components/attribution', locals: {page: article}
-  = article.summary
+  = article.summary.gsub(/href="#/, "href=\"#{without_html(article)}#")
 
 - if paginate
   %p= link_to 'Next page', without_html(next_page) if next_page

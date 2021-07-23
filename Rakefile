@@ -20,9 +20,12 @@ task :test_without_rebuild do
     assume_extension: true,
     # These have the same links as blog posts
     file_ignore: ["blog.html", %r{blog/page/.*}],
-    # Lots of external URLs fail flakily on Travis, so we just don't check them
+    # Lots of external URLs fail flakily on CI, so we just don't check them
     # there.
-    disable_external: ENV["TRAVIS"] == "true"
+    disable_external: ENV["CI"] == "true",
+    # This error occurs (usually on GitHub) when the same IP requests a given
+    # domain too often.
+    http_status_ignore: [429],
   ).run
 end
 
@@ -61,7 +64,7 @@ namespace :sass do
         if ENV["DART_SASS_REVISION"]
           sh %{git checkout #{ENV["DART_SASS_REVISION"]}}
         else
-          sh %{git checkout origin/master}
+          sh %{git checkout origin/main}
         end
       end
     end
@@ -83,7 +86,7 @@ namespace :sass do
         if ENV["SASS_MIGRATOR_REVISION"]
           sh %{git checkout #{ENV["SASS_MIGRATOR_REVISION"]}}
         else
-          sh %{git checkout origin/master}
+          sh %{git checkout origin/main}
         end
       end
     end

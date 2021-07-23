@@ -73,5 +73,5 @@ If you're interested in learning more about this proposal, [read it in full] on
 GitHub. It's open for comments and revisions for the next month, so if you'd
 like to see something change please [file an issue] and we can discuss it!
 
-[read it in full]: https://github.com/sass/sass/tree/master/proposal/first-class-calc.md
+[read it in full]: https://github.com/sass/sass/tree/main/proposal/first-class-calc.md
 [file an issue]: https://github.com/sass/sass/issues/new
