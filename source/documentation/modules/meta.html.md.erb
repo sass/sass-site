@@ -188,10 +188,9 @@ title: sass:meta
   Returns whether a function named `$name` is defined, either as a built-in
   function or a user-defined function.
 
-  If `$module` is `null`, this returns the function named `$name` without a
-  namespace (including [global built-in functions][]). Otherwise, `$module` must
-  be a string matching the namespace of a [`@use` rule][] in the current file,
-  in which case this returns the function in that module named `$name`.
+  If `$module` is passed, this also checks the module named `$module` for the
+  function definition. `$module` must be a string matching the namespace of a
+  [`@use` rule][] in the current file.
 
   <% example(autogen_css: false) do %>
     @use "sass:math";
