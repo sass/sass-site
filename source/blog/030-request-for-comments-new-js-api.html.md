@@ -58,7 +58,7 @@ will make working with Sass from JS a breeze.
 
 ## Compilation
 
-The heart of the API is are four functions that do the actual Sass compilation,
+At the heart of the API are four functions that do the actual Sass compilation,
 two synchronous and two asynchronous. They're presented here in TypeScript
 syntax to clarify exactly what they take and return, but you can always call
 them from plain JS:
@@ -132,10 +132,10 @@ support the `fibers` option for speeding up asynchronous compilation, since [the
 
 ## Loggers
 
-The logger API gives users more fine-grained control over how and when warnings
+The logger API gives you more fine-grained control over how and when warnings
 and debug messages are emitted. Unlike other aspects of this proposal, a
-`logger` option will also be added to the *old* API to allow users to control
-their messages there without needing to upgrade to the new API immediately.
+`logger` option will also be added to the *old* API to allow you to control your
+messages there without needing to upgrade to the new API immediately.
 
 A logger implements the following interface:
 
@@ -174,7 +174,7 @@ Logger proposal].
 [the Logger proposal]: https://github.com/sass/sass/tree/main/proposal/js-logger.d.ts
 
 Sass will also provide a built-in logger, `Logger.silent`, that never emits any
-messages. This will allow users to easily run Sass in "quiet mode" where no
+messages. This will allow you to easily run Sass in "quiet mode" where no
 warnings are ever surfaced.
 
 ## Importers
@@ -234,23 +234,25 @@ same stylesheet isn't loaded multiple times in the new module system.
 #### Canonicalizing Relative Loads
 
 When a stylesheet tries to load a relative URL, such as `@use "variables"`, it's
-not clear from the document itself text whether that's meant to refer to a file
-that exists relative to the stylesheet or to another importer or load path.
-Here's how the importer API resolves that ambiguity:
+not clear from the document itself whether that refers to a file that exists
+relative to the stylesheet or to another importer or load path. Here's how the
+importer API resolves that ambiguity:
 
-* First, the relative URL is resolved relative to the old stylesheet's canonical
-  URL. For example, if the canonical URL is `file:///path/to/my/_styles.scss`,
-  then the resolved URL will be `file://path/to/my/variables`.
+* First, the relative URL is resolved relative to the canonical URL of the
+  stylesheet that contained the `@use` (or `@forward` or `@import`). For
+  example, if the canonical URL is `file:///path/to/my/_styles.scss`, then the
+  resolved URL will be `file:///path/to/my/variables`.
 
 * This URL is then passed to the `canonicalize()` method of the importer that
   loaded the old stylesheet. (That means it's important for your importers to
   support absolute URLs!) If the importer recognizes it, it returns the
-  canonical value which is then passed to `load()`; otherwise, it returns
-  `null`.
+  canonical value which is then passed to that importer's `load()`; otherwise,
+  it returns `null`.
 
 * If the old stylesheet's importer didn't recognize the URL, it's passed to all
-  the `importers`' canonicalize functions in order, then checked for in all the
-  `loadPaths`. If none of those recognizes it, the load fails.
+  the `importers`' canonicalize functions in the order they appear in `options`,
+  then checked for in all the `loadPaths`. If none of those recognizes it, the
+  load fails.
 
 It's important that local relative paths take precedence over other importers or
 load paths, because otherwise your local stylesheets could get unexpectedly
@@ -318,9 +320,9 @@ abstract class Value {
   /**
    * Returns the values of `this` when interpreted as a list.
    *
-   * * For a list, this returns its elements.
-   * * For a map, this returns each of its key/value pairs as a `SassList`.
-   * * For any other value, this returns a list that contains only that value.
+   * - For a list, this returns its elements.
+   * - For a map, this returns each of its key/value pairs as a `SassList`.
+   * - For any other value, this returns a list that contains only that value.
    */
   get asList(): List<Value>;
 
@@ -397,9 +399,9 @@ abstract class Value {
   /**
    * Returns the value of `this` if it can be interpreted as a map.
    *
-   * * If this is a map, returns its contents.
-   * * If this is an empty list, returns an empty map.
-   * * Otherwise, returns `null`.
+   * - If this is a map, returns its contents.
+   * - If this is an empty list, returns an empty map.
+   * - Otherwise, returns `null`.
    */
   tryMap(): OrderedMap<Value, Value> | null;
 
