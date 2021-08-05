@@ -15,7 +15,7 @@ The API has four main components, all of which I'll cover in this post:
 * [The core compilation API](#compilation)
 * [The logger API](#loggers)
 * [The importer API](#importers)
-* [The function API](#function)
+* [The function API](#functions)
 
 As you read on, remember that this API is still just a proposal. We want to hear
 from you, our users, whether it meets your needs and how we can improve it
