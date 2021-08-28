@@ -377,6 +377,30 @@ console.log(result.css.toString());
 // h1 code { font-face: Roboto Mono; }
 ```
 
+#### `charset`
+
+<% impl_status dart: '1.39.0', node: false %>
+
+By default, if the CSS document contains non-ASCII characters, Sass adds a
+`@charset` declaration (in expanded output mode) or a byte-order mark (in
+compressed mode) to indicate its encoding to browsers or other consumers. If
+`charset` is `false`, these annotations are omitted.
+
+```js
+var result = sass.renderSync({
+  data: `
+.pride::after {
+  content: "\1F46D";
+}`,
+  charset: false
+});
+
+console.log(result.css.toString());
+// .pride::after {
+//   content: "👭";
+// }
+```
+
 #### `precision`
 
 <% impl_status dart: false, node: true do %>
