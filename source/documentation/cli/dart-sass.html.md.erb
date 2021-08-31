@@ -421,6 +421,17 @@ By default, Sass emits warnings when deprecated features are used or when the
 $ sass --quiet style.scss style.css
 ```
 
+#### `--quiet-deps`
+
+This flag tells Sass not to emit deprecation warnings that come from
+dependencies. It considers any file that's transitively imported through a [load
+path] to be a "dependency". This flag doesn't affect the [`@warn` rule] or the
+[`@debug` rule].
+
+```shellsession
+$ sass --load-path=node_modules --quiet-deps style.scss style.css
+```
+
 #### `--trace`
 
 This flag tells Sass to print the full Dart or JavaScript stack trace when an
