@@ -28,6 +28,8 @@ different types:
   equal to space-separated lists, and bracketed lists aren't equal to
   unbracketed lists.
 * [Maps][] are equal if their keys and values are both equal.
+* [Calculations] are equal if their names and arguments are all equal.
+  Operation arguments are compared textually.
 * [`true`, `false`][], and [`null`][] are only equal to themselves.
 * [Functions][] are equal to the same function. Functions are compared *by
   reference*, so even if two functions have the same name and definition they're
@@ -42,6 +44,7 @@ different types:
 [`true`, `false`]: ../values/booleans
 [`null`]: ../values/null
 [Maps]: ../values/maps
+[Calculations]: ../values/calculations
 [Functions]: ../values/functions
 
 <% example(autogen_css: false) do %>
@@ -91,6 +94,9 @@ different types:
   $theme: ("venus": #998099, "nebula": #d2e1dd) 
   @debug $theme == ("venus": #998099, "nebula": #d2e1dd)  // true
   @debug $theme != ("venus": #998099, "iron": #dadbdf)  // true
+
+  @debug calc(10px + 10%) == calc(10px + 10%)  // true
+  @debug calc(10% + 10px) == calc(10px + 10%)  // false
 
   @debug true == true  // true
   @debug true != false  // true

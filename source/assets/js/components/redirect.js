@@ -212,5 +212,13 @@ if (window.location.hash) {
 
     var redirect = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
+  } else if (window.location.pathname == "/documentation/syntax/special-functions") {
+    var redirects = {
+      "#calc-clamp-element-progid-and-expression": "/documentation/syntax/special-functions#element-progid-and-expression",
+      "#min-and-max": "/documentation/values/calculations#min-and-max"
+    };
+
+    var redirect = redirects[window.location.hash];
+    if (redirect) window.location.href = redirect;
   }
 }
