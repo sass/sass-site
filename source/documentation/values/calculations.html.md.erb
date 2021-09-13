@@ -106,6 +106,16 @@ exactly where calculations are allowed and where they aren't.
 
 [math functions]: ../modules/math
 
+<% example(autogen_css: false) do %>
+  $width: calc(100% + 10px);
+  @debug $width * 2; // Error!
+  @debug calc($width * 2); // calc((100% + 10px) * 2);
+  ===
+  $width: calc(100% + 10px);
+  @debug $width * 2; // Error!
+  @debug calc($width * 2); // calc((100% + 10px) * 2);
+<% end %>
+
 ## `min()` and `max()`
 
 <% impl_status dart: ">=1.11.0 <1.40.0", libsass: false, ruby: false, feature: "Special function syntax" do %>
