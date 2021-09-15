@@ -118,16 +118,21 @@ exactly where calculations are allowed and where they aren't.
 
 ## `min()` and `max()`
 
-<% impl_status dart: ">=1.11.0 <1.40.0", libsass: false, ruby: false, feature: "Special function syntax" do %>
+<% impl_status dart: ">=1.11.0 <1.42.0", libsass: false, ruby: false, feature: "Special function syntax" do %>
   LibSass, Ruby Sass, and versions of Dart Sass prior to 1.11.0 *always* parse
   `min()` and `max()` as Sass functions. To create a plain CSS `min()` or
   `max()` call for those implementations, you can write something like
   `unquote("min(#{$padding}, env(safe-area-inset-left))")` instead.
 
-  Versions of Dart Sass between 1.11.0 and 1.40.0 parse `min()` and `max()`
-  functions as [special functions] if they're valid plain CSS, but parses them
-  as Sass functions if they contain Sass features other than interpolation, like
-  variables or function calls.
+  Versions of Dart Sass between 1.11.0 and 1.40.0, and between 1.40.1 and 1.42.0
+  parse `min()` and `max()` functions as [special functions] if they're valid
+  plain CSS, but parse them as Sass functions if they contain Sass features
+  other than interpolation, like variables or function calls.
+
+  Dart Sass 1.41.0 parses `min()` and `max()` functions as calculations, but
+  doesn't allow unitless numbers to be combined with numbers with units. This
+  was backwards-incompatible with the global `min()` and `max()` functions, so
+  that behavior was reverted.
 
   [special functions]: ../syntax/special-functions
 <% end %>
@@ -154,6 +159,15 @@ substantive difference is that the Sass functions only support units that can be
 combined at build time, so `min(12px % 10, 10%)` will throw an error.
 
 [modulo operator]: ../operators/numeric
+
+<% heads_up do %>
+  Other calculations don't allow unitless numbers to be added to, subtracted
+  from, or compared to numbers with units. `min()` and `max()` are different,
+  though: for backwards-compatibility with the global Sass `min()` and `max()`
+  functions which allow unit/unitless mixing for historical reasons, these units
+  can be mixed as long as they're contained directly within a `min()` or `max()`
+  calculation.
+<% end %>
 
 <!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
 
