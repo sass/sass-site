@@ -3,7 +3,7 @@ title: Sass Basics
 introduction: >
   Before you can use Sass, you need to set it up on your project. If you want to
   just browse here, go ahead, but we recommend you go install Sass first. [Go
-  here](/install) if you want to learn how to get everything setup.
+  here](/install) if you want to learn how to get everything set up.
 ---
 
 - content_for :navigation do
@@ -71,7 +71,7 @@ introduction: >
 
   - example do
     :plain
-      $font-stack:    Helvetica, sans-serif;
+      $font-stack: Helvetica, sans-serif;
       $primary-color: #333;
 
       body {
@@ -79,7 +79,7 @@ introduction: >
         color: $primary-color;
       }
       ===
-      $font-stack:    Helvetica, sans-serif
+      $font-stack: Helvetica, sans-serif
       $primary-color: #333
 
       body
@@ -179,7 +179,7 @@ introduction: >
   - example do
     :plain
       // _base.scss
-      $font-stack:    Helvetica, sans-serif;
+      $font-stack: Helvetica, sans-serif;
       $primary-color: #333;
 
       body {
@@ -196,7 +196,7 @@ introduction: >
       }
       ===
       // _base.sass
-      $font-stack:    Helvetica, sans-serif
+      $font-stack: Helvetica, sans-serif
       $primary-color: #333
 
       body
@@ -233,9 +233,9 @@ introduction: >
 
     Some things in CSS are a bit tedious to write, especially with CSS3 and
     the many vendor prefixes that exist. A mixin lets you make groups of CSS
-    declarations that you want to reuse throughout your site. You can even
-    pass in values to make your mixin more flexible. A good use of a mixin is
-    for vendor prefixes. Here's an example for `theme`.
+    declarations that you want to reuse throughout your site. It helps keep your
+    Sass very DRY. You can even pass in values to make your mixin more flexible.
+    Here's an example for `theme`.
 
   - example do
     :plain
@@ -283,13 +283,12 @@ introduction: >
   :markdown
     ## Extend/Inheritance
 
-    This is one of the most useful features of Sass. Using `@extend` lets you
-    share a set of CSS properties from one selector to another. It helps keep
-    your Sass very DRY. In our example we're going to create a simple series
-    of messaging for errors, warnings and successes using another feature
-    which goes hand in hand with extend, placeholder classes. A placeholder
-    class is a special type of class that only prints when it is extended, and
-    can help keep your compiled CSS neat and clean.
+    Using `@extend` lets you share a set of CSS properties from one selector to
+    another. In our example we're going to create a simple series of messaging
+    for errors, warnings and successes using another feature which goes hand in
+    hand with extend, placeholder classes. A placeholder class is a special type
+    of class that only prints when it is extended, and can help keep your
+    compiled CSS neat and clean.
 
   - example do
     :plain
@@ -379,38 +378,38 @@ introduction: >
     ## Operators
 
     Doing math in your CSS is very helpful. Sass has a handful of standard
-    math operators like `+`, `-`, `*`, `/`, and `%`. In our example we're
-    going to do some simple math to calculate widths for an `aside` &
-    `article`.
+    math operators like `+`, `-`, `*`, `math.div()`, and `%`. In our example
+    we're going to do some simple math to calculate widths for an `article` and
+    `aside`.
 
   - example do
     :plain
+      @use "sass:math";
+
       .container {
-        width: 100%;
+        display: flex;
       }
 
       article[role="main"] {
-        float: left;
-        width: 600px / 960px * 100%;
+        width: math.div(600px, 960px) * 100%;
       }
 
       aside[role="complementary"] {
-        float: right;
-        width: 300px / 960px * 100%;
+        width: math.div(300px, 960px) * 100%;
+        margin-left: auto;
       }
       ===
-      .container
-        width: 100%
+      @use "sass:math"
 
+      .container
+        display: flex
 
       article[role="main"]
-        float: left
-        width: 600px / 960px * 100%
-
+        width: math.div(600px, 960px) * 100%
 
       aside[role="complementary"]
-        float: right
-        width: 300px / 960px * 100%
+        width: math.div(300px, 960px) * 100%
+        margin-left: auto
 
   :markdown
     We've created a very simple fluid grid, based on 960px. Operations in Sass
