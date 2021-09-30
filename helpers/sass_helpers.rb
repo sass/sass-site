@@ -55,6 +55,10 @@ module SassHelpers
     url_for(page).sub(/\.html$/, '')
   end
 
+  def typedoc?
+    current_page.url.start_with?("/documentation/js-api/")
+  end
+
   def documentation_toc
     _toc_level(nil, data.documentation.toc)
   end

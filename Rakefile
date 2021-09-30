@@ -4,7 +4,10 @@ require "yaml"
 
 require File.dirname(__FILE__) + '/lib/raw_markdown_link'
 
-task :test => ["sass:dart:version", "sass:libsass:version", :middleman, :test_without_rebuild]
+task :test => [
+  "sass:dart:version", "sass:libsass:version", "sass:typedoc:build", :middleman,
+  :test_without_rebuild
+]
 
 task :test_without_rebuild do
   HTMLProofer.check_directory("build",
@@ -97,7 +100,7 @@ namespace :sass do
   end
 
   namespace :libsass do
-    # Check out the latest commit of Dart Sass into the .libsass directory.
+    # Check out the latest commit of LibSass into the .libsass directory.
     task :checkout do
       unless Dir.exists?(".libsass")
         sh %{git clone git://github.com/sass/libsass .libsass}
@@ -118,8 +121,41 @@ namespace :sass do
     end
   end
 
+  namespace :typedoc do
+    # Check out the latest commit of the Sass specification into the .language
+    # directory.
+    task :checkout do
+      unless Dir.exists?(".language")
+        sh %{git clone git://github.com/sass/sass .language}
+      end
+
+      Dir.chdir(".language") do
+        sh %{git fetch}
+        if ENV["LANGUAGE_REVISION"]
+          sh %{git checkout #{ENV["LANGUAGE_REVISION"]}}
+        else
+          sh %{git checkout origin/main}
+        end
+      end
+    end
+
+    task :build => :checkout do
+      Dir.chdir(".language") do
+        sh %{npm install}
+        sh %{ln -sf ../.language/node_modules ../tool/node_modules}
+        sh %{npx typedoc \
+            --plugin ../tool/typedoc-theme.js --theme sass-site \
+            --out ../source/documentation/js-api \
+            --cleanOutputDir \
+            js-api-doc/index.d.ts
+        }
+      end
+      sh %{rm -r source/documentation/js-api/assets}
+    end
+  end
+
   desc "Import information from Sass implementations."
-  task :import => ["dart:version", "libsass:version"]
+  task :import => ["dart:version", "libsass:version", "typedoc:build"]
 end
 
 desc "Build the middleman-controlled portion of the site."
