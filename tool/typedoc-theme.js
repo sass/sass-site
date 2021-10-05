@@ -18,23 +18,6 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
     }
   };
 
-  // Relative URLs don't work well for index pages since they can be rendered
-  // at different directory levels, so we just convert all URLs to absolute to
-  // be safe.
-  urlTo = bind(function(context, reflection) {
-    if (!reflection.url) return undefined;
-
-    const relative = context.theme.markedPlugin.getRelativeUrl(reflection.url);
-    const absolute = new URL(
-      relative,
-      `relative:///documentation/js-api/${context.theme.markedPlugin.location}`
-    );
-    absolute.pathname = absolute.pathname
-      .replace(/\.html$/, '')
-      .replace(/\/index$/, '');
-    return absolute.toString().replace(/^relative:\/\//, '');
-  }, this);
-
   // We don't include Typedoc's JS, so the default means of displaying overloads
   // as multiple togglable definitions within a single member documentation
   // doesn't work. Instead, we emit each overload as a separate entry with its
@@ -59,6 +42,29 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
 class SassSiteTheme extends DefaultTheme {
   constructor(renderer) {
     super(renderer);
+
+    // This is an ugly monkeypatch but it's necessary to work around
+    // TypeStrong/typedoc#1731.
+    //
+    // Relative URLs don't work well for index pages since they can be rendered at
+    // different directory levels, so we just convert all URLs to absolute to be
+    // safe.
+    const ContextAwareRendererComponent =
+        Object.getPrototypeOf(this.markedPlugin.constructor);
+    const oldGetRelativeUrl =
+        ContextAwareRendererComponent.prototype.getRelativeUrl;
+    ContextAwareRendererComponent.prototype.getRelativeUrl = function(url) {
+      const relative = oldGetRelativeUrl.call(this, url);
+
+      const absolute = new URL(
+        relative,
+        `relative:///documentation/js-api/${this.location}`
+      );
+      absolute.pathname = absolute.pathname
+        .replace(/\.html$/, '')
+        .replace(/\/index$/, '');
+      return absolute.toString().replace(/^relative:\/\//, '');
+    };
   }
 
   getRenderContext() {
