@@ -13,7 +13,7 @@
                 = yield_content :complementary
 
             .sl-l-large-holy-grail__main.docSearch-content
-              - container = current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
+              - container = typedoc? || current_page.data.no_container ? '' : 'sl-l-container sl-l-container--small'
               - container << ' sl-l-container--overview' if current_page.data.intro
               %div{class: container}
                 = yield_content :before_introduction
