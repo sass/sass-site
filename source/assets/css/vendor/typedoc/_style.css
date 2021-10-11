@@ -85,10 +85,6 @@
     }
 }
 
-.typedoc .container-main {
-    padding-bottom: 200px;
-}
-
 .typedoc .row {
     display: flex;
     position: relative;
@@ -1273,4 +1269,21 @@ input[type="checkbox"]:checked + .tsd-widget:before {
 /* Undo the global reset because the typedoc styles don't expect it. */
 .typedoc h1, .typedoc h2, .typedoc h3, .typedoc h4, .typedoc h5, .typedoc h6 {
   font-weight: 700;
+}
+
+/* Undo the global link style for the TypeDoc navigation. */
+.tsd-navigation a {
+  border-bottom: none;
+}
+
+/* Add styles for our custom category labels in the navigation. */
+.tsd-navigation .sl-tsd-category-label {
+  font-weight: bold;
+  padding-left: 25px;
+}
+.tsd-navigation .sl-tsd-category-label span {
+  display: block;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-left: 2px solid transparent;
 }

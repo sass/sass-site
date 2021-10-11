@@ -38,6 +38,62 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
     return context.oldMember(props);
   }, this);
 
+  // Make categories visible in the sidebar as well as in the main page's index.
+  // Hopefully this will no longer be necessary once TypeStrong/typedoc#1532 is
+  // implemented.
+  oldNavigation = this.navigation;
+  navigation = bind(function(context, props) {
+    const navigation = context.oldNavigation(props);
+    const childrenByCategories = context._groupByCategory(props.model);
+    if (childrenByCategories.size === 0) return navigation;
+
+    const secondary  = navigation.children[navigation.children.length - 1];
+    if (!secondary) return navigation;
+
+    const firstLI = secondary.children[0].children[0];
+    const ul = firstLI.props["class"].startsWith("current ")
+        ? firstLI.children[1]
+        : secondary.children[0];
+
+    ul.children = Array.from(childrenByCategories).map(([title, children]) =>
+        JSX.createElement(JSX.Fragment, null,
+            JSX.createElement("li", {class: "sl-tsd-category-label"},
+                JSX.createElement("span", null, title)),
+            ...children.map(child =>
+                JSX.createElement("li", {class: child.cssClasses},
+                    JSX.createElement("a", {
+                      href: context.urlTo(child), class: "tsd-kind-icon"
+                    }, child.name)))));
+
+    return navigation;
+  }, this);
+
+  // Returns a map from category titles to the set of members of those
+  // categories.
+  _groupByCategory = (model) => {
+    const map = new Map();
+    function addCategoriesToMap(categories) {
+      for (const category of categories) {
+        const children = map.get(category.title);
+        if (children) {
+          children.push(...category.children);
+        } else {
+          map.set(category.title, [...category.children]);
+        }
+      }
+    }
+
+    if (model.categories) {
+      addCategoriesToMap(model.categories);
+    } else if (model.groups) {
+      for (const group of model.groups) {
+        if (group.categories) addCategoriesToMap(group.categories);
+      }
+    }
+
+    return map;
+  };
+
   // Add compatibility indicators to the beginning of documentation blocks.
   oldComment = this.comment;
   comment = bind((context, props) => {
