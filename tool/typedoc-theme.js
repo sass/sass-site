@@ -47,13 +47,13 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
     const childrenByCategories = context._groupByCategory(props.model);
     if (childrenByCategories.size === 0) return navigation;
 
-    const secondary  = navigation.children[navigation.children.length - 1];
+    const secondary = context._getNthChild(navigation, 1);
     if (!secondary) return navigation;
 
-    const firstLI = secondary.children[0].children[0];
+    const firstLI = context._getNthChild(context._getNthChild(secondary, 0), 0);
     const ul = firstLI.props["class"].startsWith("current ")
-        ? firstLI.children[1]
-        : secondary.children[0];
+        ? context._getNthChild(firstLI, 1)
+        : context._getNthChild(secondary, 0);
 
     ul.children = Array.from(childrenByCategories).map(([title, children]) =>
         JSX.createElement(JSX.Fragment, null,
@@ -67,6 +67,26 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
 
     return navigation;
   }, this);
+
+  // Returns the `n`-th child of a JSX node. For some reason, JSX nodes created
+  // by TypeDoc can contain nested arrays, so this traverses them.
+  _getNthChild = (node, n) => {
+    let i = 0;
+
+    function traverse(array) {
+      for (const element of array) {
+        if (element instanceof Array) {
+          const result = traverse(element);
+          if (result != undefined) return result;
+        } else {
+          if (i === n) return element;
+          i++;
+        }
+      }
+    }
+
+    return traverse(node.children);
+  };
 
   // Returns a map from category titles to the set of members of those
   // categories.
