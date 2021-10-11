@@ -134,7 +134,7 @@ namespace :sass do
         if ENV["LANGUAGE_REVISION"]
           sh %{git checkout #{ENV["LANGUAGE_REVISION"]}}
         else
-          sh %{git checkout origin/main}
+          sh %{git checkout origin/new-api-docs}
         end
       end
     end
