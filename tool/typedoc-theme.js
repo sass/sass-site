@@ -37,6 +37,48 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
 
     return context.oldMember(props);
   }, this);
+
+  // Add compatibility indicators to the beginning of documentation blocks.
+  oldComment = this.comment;
+  comment = bind((context, props) => {
+    const compatibilityTags = props.comment?.tags
+        .filter(tag => tag.tagName === "compatibility");
+    props.comment?.removeTags("compatibility");
+
+    const parent = this.oldComment(props);
+    if (!parent) return;
+
+    parent.children.unshift(...compatibilityTags.map(compat => {
+      // The first line is arguments to impl_status, anything after that is the
+      // contents of the block.
+      const lineBreak = compat.text.indexOf("\n");
+      const firstLine =
+          lineBreak === -1 ? compat.text : compat.text.substring(0, lineBreak);
+      const rest =
+          lineBreak === -1 ? null : compat.text.substring(lineBreak + 1).trim();
+
+      return JSX.createElement(JSX.Raw, {
+        html: `<% impl_status(${firstLine}) ${rest ? 'do' : ''} %>` +
+            context.markdown(rest) +
+            (rest ? '<% end %>' : '')
+      });
+    }));
+
+    return parent;
+  }, this);
+
+  // Convert paragraphs that start with **Heads up!** or **Fun fact!** into
+  // proper callouts.
+  oldMarkdown = this.markdown;
+  markdown = bind((context, text) =>
+      context.oldMarkdown(text)
+          .replace(
+              /<p><strong>Heads up!<\/strong>([^]*?)<\/p>/g,
+              '<% heads_up do %>$1<% end %>')
+          .replace(
+              /<p><strong>Fun fact!<\/strong>([^]*?)<\/p>/g,
+              '<% fun_fact do %>$1<% end %>'),
+      this);
 }
 
 class SassSiteTheme extends DefaultTheme {
