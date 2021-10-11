@@ -68,7 +68,7 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
     return navigation;
   }, this);
 
-  // Returns the first child of a JSX node. For some reason, JSX nodes created
+  // Returns the `n`-th child of a JSX node. For some reason, JSX nodes created
   // by TypeDoc can contain nested arrays, so this traverses them.
   _getNthChild = (node, n) => {
     let i = 0;
