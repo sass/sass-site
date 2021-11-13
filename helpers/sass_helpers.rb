@@ -459,7 +459,7 @@ MARKDOWN
       unless names.include?(name_without_namespace)
         names << name_without_namespace
         name_element = signature_elements.find {|el| el.text == name_without_namespace}
-        name_element.add_class ".docSearch-function"
+        name_element.add_class "docSearch-function"
         name_element['name'] = name
       end
 

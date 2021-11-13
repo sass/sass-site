@@ -9,7 +9,7 @@
     %link(rel="alternate" type="application/atom+xml" href="/feed.xml")
 
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,600|Source+Serif+Pro'
-    = stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css'
+    = stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/@docsearch/css@alpha'
     = stylesheet_link_tag 'sass'
     = yield_content :css
     %noscript= stylesheet_link_tag 'noscript'
@@ -71,7 +71,7 @@
               - [Blog](/blog)
               - [Documentation](/documentation)
               - [Get Involved](/community)
-              - <label class="visuallyhidden" for="s">Search</label><input placeholder='Search' class='search' type='text' id="s" name="s">
+              - <div id="docsearch"></div>
 
     %main{:class => "content", :id => "main-content"}(itemprop='mainContentOfPage' role='main')
       - unless typedoc?
@@ -151,13 +151,14 @@
             :javascript
               !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-    = javascript_include_tag 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js'
+    = javascript_include_tag 'https://cdn.jsdelivr.net/npm/@docsearch/js@alpha'
     :javascript
       docsearch({
-        apiKey: 'a409ff5d6a2476083c1a8dd1f8c04ec5',
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
         indexName: 'sass-lang',
-        inputSelector: 'input.search',
-        transformData: function(hits) {
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
           var domain = window.location.origin + "/";
           hits.forEach(function(hit) {
             if (!hit.url.startsWith(domain)) {
@@ -166,7 +167,6 @@
           });
           return hits;
         },
-        debug: false
       });
     = javascript_include_tag 'sass'
     = yield_content :js_foot
