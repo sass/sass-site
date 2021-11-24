@@ -25,6 +25,8 @@ similar to how `,` works today. Division will instead be written using the new
 `math.div()` function. This function will behave exactly the same as `/` does
 today.
 
+This deprecation does not affect uses of `/` inside `calc()` expressions.
+
 <% example do %>
   @use "sass:math";
 
@@ -100,6 +102,24 @@ create them. You will also be able to pass `"slash"` as the `$separator` to the
   .item3 {
     grid-row: span 3 / 7;
   }
+<% end %>
+
+<% impl_status dart: "1.40.0", libsass: false, ruby: false, feature: "First-class calc" %>
+
+Alternatively, users can wrap division operations inside a `calc()` expression.
+
+<% example(autogen_css: false) do %>
+  // WRONG, will not work in future Sass versions.
+  @debug (12px/4px); // 3
+
+  // RIGHT, will work in future Sass versions.
+  @debug calc(12px / 4px); // 3
+  ===
+  // WRONG, will not work in future Sass versions.
+  @debug (12px/4px) // 3
+
+  // RIGHT, will work in future Sass versions.
+  @debug calc(12px / 4px) // 3
 <% end %>
 
 ## Automatic Migration
