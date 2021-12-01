@@ -24,7 +24,7 @@ are necessary, we plan to make a stable release some time next week.
 The new API comes with four new entrypoint functions: `compile()` and
 `compileAsync()` take Sass file paths and return the result of compiling them to
 CSS, while `compileString()` and `compileStringAsync()` take a
-string of Sass source and compiles it to CSS. Unlike the old API, the async
+string of Sass source and compile it to CSS. Unlike the old API, the async
 functions all return `Promise`s. As with the old API, the synchronous functions
 are substantially faster than their async counterparts, so we recommend using
 them if at all possible.
