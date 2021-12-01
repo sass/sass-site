@@ -10,7 +10,7 @@ more idiomatic, performant, and usable than the old one, and we hope it'll be
 adopted swiftly by tooling packages.
 
 Because this is such a substantial addition, we want to give users a chance to
-kick the tires a bit before we set it in stone, so we've released it a release
+kick the tires a bit before we set it in stone, so we've released it as a release
 candidate in Dart Sass 1.45.0-rc.1. Download it, try it out, and let us know
 what you think by [filing issues] or [sending us a tweet]. Unless major changes
 are necessary, we plan to make a stable release some time next week.
@@ -23,7 +23,7 @@ are necessary, we plan to make a stable release some time next week.
 
 The new API comes with four new entrypoint functions: `compile()` and
 `compileAsync()` take Sass file paths and return the result of compiling them to
-CSS, while `compileString()` and `compileStringAsync()` functions that take a
+CSS, while `compileString()` and `compileStringAsync()` take a
 string of Sass source and compiles it to CSS. Unlike the old API, the async
 functions all return `Promise`s. As with the old API, the synchronous functions
 are substantially faster than their async counterparts, so we recommend using
