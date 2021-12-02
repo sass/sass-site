@@ -106,7 +106,8 @@ create them. You will also be able to pass `"slash"` as the `$separator` to the
 
 <% impl_status dart: "1.40.0", libsass: false, ruby: false, feature: "First-class calc" %>
 
-Alternatively, users can wrap division operations inside a `calc()` expression.
+Alternatively, users can wrap division operations inside a `calc()` expression,
+which Sass will simplify to a single number.
 
 <% example(autogen_css: false) do %>
   // WRONG, will not work in future Sass versions.
