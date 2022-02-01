@@ -15,15 +15,17 @@ available to as many different languages as possible, starting with Node.js.
 Although Node.js already has access to the pure-JS `sass` package, the nature of
 JavaScript inherently limits how quickly this package can process large Sass
 files especially in asynchronous mode. We expect `sass-embedded` to be a major
-boon to developers for whom compilation speed is a concern.
+boon to developers for whom compilation speed is a concern, particularly the
+remaining users of `node-sass` for whom performance has been a major reason to
+avoid Dart Sass.
 
 The `sass-embedded` package fully supports the [new JS API] as well as the
 [legacy API] other than a few cosmetic options. You can use it as a drop-in
 replacement for the `sass` package, and it should work with all the same build
-plugins and libraries. Note the `sass` package is much faster at compiling files
-synchronously, the `sass-embedded` package is actually a bit faster at compiling
-them *asynchronously* instead—although for substantial Sass files it will
-generally be much faster than `sass` either way.
+plugins and libraries. Note that `sass-embedded` is a bit faster in
+*asynchronous* mode than it is in synchronous mode (whereas the `sass` package
+was faster in synchronous mode). For substantial Sass files, running
+`sass-embedded` in either mode will generally be much faster than `sass`.
 
 [new JS API]: https://sass-lang.com/documentation/js-api#usage
 [legacy API]: https://sass-lang.com/documentation/js-api#legacy-api
