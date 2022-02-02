@@ -52,6 +52,28 @@ no_container: true
         Linux
         Mac
 
+    :markdown
+      ## Libraries
+
+      The Sass team maintains two Node.js packages for Sass, both of which
+      support [the standard JavaScript API]. The [`sass` package] is pure
+      JavaScript, which is a little slower but can be installed on all platforms
+      Node.js supports. The [`sass-embedded` package] wraps a JS API around the
+      Dart VM, so it's faster but only supports Windows, Mac OS, and Linux.
+
+      [the standard JavaScript API]: /documentation/js-api
+      [`sass` package]: https://www.npmjs.com/package/sass
+      [`sass-embedded` package]: https://www.npmjs.com/package/sass-embedded
+
+      There are also community-maintained wrappers for the following languages:
+
+    %ul
+      %li
+        #{link_to 'Java', 'https://mvnrepository.com/artifact/de.larsgrefer.sass'},
+        including a
+        = link_to 'Gradle', 'https://docs.freefair.io/gradle-plugins/current/reference/#_embedded_sass'
+        plugin.
+
   .sl-l-grid__column
     :markdown
       ## Command Line
