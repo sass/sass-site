@@ -40,6 +40,7 @@ toc:
   - Maps: /documentation/values/maps
   - <code>true</code> and <code>false</code>: /documentation/values/booleans
   - <code>null</code>: /documentation/values/null
+  - Calculations: /documentation/values/calculations
   - Functions: /documentation/values/functions
 - Operators: /documentation/operators
   :children:
