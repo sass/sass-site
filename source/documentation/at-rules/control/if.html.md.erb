@@ -61,6 +61,10 @@ An `@if` rule can optionally be followed by an `@else` rule, written
       @include theme-colors($light-theme: false)
 <% end %>
 
+Conditional expressions may contain [boolean operators][] (`and`, `or`, `not`).
+
+[boolean operators]: ../../operators/boolean
+
 ### `@else if`
 
 You can also choose whether to evaluate an `@else` rule's block by writing it
