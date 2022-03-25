@@ -83,9 +83,9 @@ if (window.location.hash) {
       "#nested": "/documentation/cli/ruby-sass#style",
       "#compact": "/documentation/cli/ruby-sass#style",
       "#extending_sass": "/documentation/js-api",
-      "#defining_custom_sass_functions": "/documentation/js-api#functions",
+      "#defining_custom_sass_functions": "/documentation/js-api/interfaces/LegacySharedOptions#importer",
       "#cache_stores": "/ruby-sass",
-      "#custom_importers": "/documentation/js-api#importers"
+      "#custom_importers": "/documentation/js-api/interfaces/LegacySharedOptions#functions"
     };
 
     var redirect = redirects[window.location.hash];
@@ -208,6 +208,107 @@ if (window.location.hash) {
   } else if (window.location.pathname == "/documentation/at-rules/use") {
     var redirects = {
       "#configuring-modules": "/documentation/at-rules/use#configuration"
+    };
+
+    var redirect = redirects[window.location.hash];
+    if (redirect) window.location.href = redirect;
+  } else if (window.location.pathname == "/documentation/syntax/special-functions") {
+    var redirects = {
+      "#calc-clamp-element-progid-and-expression": "/documentation/syntax/special-functions#element-progid-and-expression",
+      "#min-and-max": "/documentation/values/calculations#min-and-max"
+    };
+
+    var redirect = redirects[window.location.hash];
+    if (redirect) window.location.href = redirect;
+  } else if (window.location.pathname == "/documentation/js-api") {
+    var redirects = {
+      "#rendersync": "/documentation/js-api/modules#renderSync",
+      "#render": "/documentation/js-api/modules#render",
+      "#info": "/documentation/js-api/modules#info",
+      "#result-css": "/documentation/js-api/interfaces/LegacyResult#css",
+      "#result-map": "/documentation/js-api/interfaces/LegacyResult#map",
+      "#result-stats-includedfiles": "/documentation/js-api/interfaces/LegacyResult#stats",
+      "#result-stats-entry": "/documentation/js-api/interfaces/LegacyResult#stats",
+      "#result-stats-start": "/documentation/js-api/interfaces/LegacyResult#stats",
+      "#result-stats-end": "/documentation/js-api/interfaces/LegacyResult#stats",
+      "#result-stats-duration": "/documentation/js-api/interfaces/LegacyResult#stats",
+      "#error-object": "/documentation/js-api/interfaces/LegacyException",
+      "#error-formatted": "/documentation/js-api/interfaces/LegacyException#formatted",
+      "#error-file": "/documentation/js-api/interfaces/LegacyException#file",
+      "#error-line": "/documentation/js-api/interfaces/LegacyException#line",
+      "#error-column": "/documentation/js-api/interfaces/LegacyException#column",
+      "#error-status": "/documentation/js-api/interfaces/LegacyException#status",
+      "#options": "/documentation/js-api/interfaces/LegacySharedOptions",
+      "#input": "/documentation/js-api/interfaces/LegacyFileOptions#includepaths",
+      "#file": "/documentation/js-api/interfaces/LegacyFileOptions#file",
+      "#data": "/documentation/js-api/interfaces/LegacyStringOptions#data",
+      "#indentedsyntax": "/documentation/js-api/interfaces/LegacyStringOptions#indentedSyntax",
+      "#includepaths": "/documentation/js-api/interfaces/LegacySharedOptions#includePaths",
+      "#output": "/documentation/js-api/interfaces/LegacySharedOptions#charset",
+      "#outputstyle": "/documentation/js-api/interfaces/LegacySharedOptions#outputStyle",
+      "#charset": "/documentation/js-api/interfaces/LegacySharedOptions#charset",
+      "#precision": "/documentation/js-api/interfaces/LegacySharedOptions#precision",
+      "#indentType": "/documentation/js-api/interfaces/LegacySharedOptions#indentType",
+      "#indentWidth": "/documentation/js-api/interfaces/LegacySharedOptions#indentWidth",
+      "#linefeed": "/documentation/js-api/interfaces/LegacySharedOptions#linefeed",
+      "#sourceComments": "/documentation/js-api/interfaces/LegacySharedOptions#sourceComments",
+      "#source-maps": "/documentation/js-api/interfaces/LegacySharedOptions#sourceMap",
+      "#sourcemap": "/documentation/js-api/interfaces/LegacySharedOptions#sourceMap",
+      "#outfile": "/documentation/js-api/interfaces/LegacySharedOptions#outFile",
+      "#omitsourcemapurl": "/documentation/js-api/interfaces/LegacySharedOptions#omitSourceMapUrl",
+      "#sourcemapcontents": "/documentation/js-api/interfaces/LegacySharedOptions#sourceMapContents",
+      "#sourcemapembed": "/documentation/js-api/interfaces/LegacySharedOptions#sourceMapEmbed",
+      "#sourcemaproot": "/documentation/js-api/interfaces/LegacySharedOptions#sourceMapRoot",
+      "#plugins": "/documentation/js-api/interfaces/LegacySharedOptions",
+      "#fiber": "/blog/node-fibers-discontinued",
+      "#functions": "/documentation/js-api/interfaces/LegacySharedOptions#functions",
+      "#importer": "/documentation/js-api/interfaces/LegacySharedOptions#importer",
+      "#other": "/documentation/js-api/interfaces/LegacySharedOptions",
+      "#quietdeps": "/documentation/js-api/interfaces/LegacySharedOptions#quietDeps",
+      "#verbose": "/documentation/js-api/interfaces/LegacySharedOptions#verbose",
+      "#value-types": "/documentation/js-api/modules/types",
+      "#types-number": "/documentation/js-api/classes/types.Number",
+      "#new-types-number-value-unit": "/documentation/js-api/classes/types.Number#constructor",
+      "#number-getvalue": "/documentation/js-api/classes/types.Number#getValue",
+      "#number-getunit": "/documentation/js-api/classes/types.Number#getUnit",
+      "#number-setvalue-value": "/documentation/js-api/classes/types.Number#setValue",
+      "#number-setunit-unit": "/documentation/js-api/classes/types.Number#setUnit",
+      "#types-string": "/documentation/js-api/classes/types.String",
+      "#new-types-string-value": "/documentation/js-api/classes/types.String#constructor",
+      "#string-getvalue": "/documentation/js-api/classes/types.String#getValue",
+      "#string-setvalue-value": "/documentation/js-api/classes/types.String#setValue",
+      "#types-color": "/documentation/js-api/classes/types.Color",
+      "#new-types-color-red-green-blue-alpha-1": "/documentation/js-api/classes/types.Color#constructor",
+      "#new-types-argb": "/documentation/js-api/classes/types.Color#constructor",
+      "#color-getr": "/documentation/js-api/classes/types.Color#getR",
+      "#color-getg": "/documentation/js-api/classes/types.Color#getG",
+      "#color-getb": "/documentation/js-api/classes/types.Color#getB",
+      "#color-geta": "/documentation/js-api/classes/types.Color#getA",
+      "#color-setr-red": "/documentation/js-api/classes/types.Color#setR",
+      "#color-setg-green": "/documentation/js-api/classes/types.Color#setG",
+      "#color-setb-blue": "/documentation/js-api/classes/types.Color#setB",
+      "#color-seta-alpha": "/documentation/js-api/classes/types.Color#setA",
+      "#types-boolean": "/documentation/js-api/classes/types.Boolean",
+      "#types-boolean-true": "/documentation/js-api/classes/types.Boolean#TRUE",
+      "#types-boolean-false": "/documentation/js-api/classes/types.Boolean#FALSE",
+      "#types-boolean-getvalue": "/documentation/js-api/classes/types.Boolean#getValue",
+      "#types-list": "/documentation/js-api/classes/types.List",
+      "#new-types-list-length-comma-true": "/documentation/js-api/classes/types.List#constructor",
+      "#list-getvalue-index": "/documentation/js-api/classes/types.List#getValue",
+      "#list-getseparator": "/documentation/js-api/classes/types.List#getSeparator",
+      "#list-getlength": "/documentation/js-api/classes/types.List#getLength",
+      "#list-setvalue-index-value": "/documentation/js-api/classes/types.List#setValue",
+      "#list-setseparator-comma": "/documentation/js-api/classes/types.List#setSeparator",
+      "#types-map": "/documentation/js-api/classes/types.Map",
+      "#new-types-map-length": "/documentation/js-api/classes/types.Map#constructor",
+      "#new-types-map-length": "/documentation/js-api/classes/types.Map#constructor",
+      "#map-getkey-index": "/documentation/js-api/classes/types.Map#getKey",
+      "#map-getvalue-index": "/documentation/js-api/classes/types.Map#getValue",
+      "#map-getlength": "/documentation/js-api/classes/types.Map#getLength",
+      "#map-setkey-index-key": "/documentation/js-api/classes/types.Map#setKey",
+      "#map-setvalue-index-value": "/documentation/js-api/classes/types.Map#setValue",
+      "#types-null": "/documentation/js-api/classes/types.Null",
+      "#types-null-null": "/documentation/js-api/classes/types.Null#NULL",
     };
 
     var redirect = redirects[window.location.hash];

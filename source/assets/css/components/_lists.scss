@@ -10,6 +10,12 @@
 
   &-horizontal-wrapper {
 
+    @include sl-breakpoint--medium {
+      // add margin-bottom space
+      // to the twitter follow button
+      margin-bottom: 1rem;
+    }
+
     @include sl-breakpoint--large {
 
       ul {
@@ -106,6 +112,7 @@
   .compatibility {
     font-weight: 600;
     color: $sl-color--midnight-blue;
+    display: block;
 
     + div { border: 0; }
   }
@@ -120,6 +127,8 @@
   &.impl-status {
     font-size: 0.8em;
     margin-top: -1em;
+    
+    dt { word-break: normal; }
 
     a {
       transition: transform 0.1s;

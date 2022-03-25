@@ -58,7 +58,7 @@ mixin.
 ```
 
 For more details, see [the feature
-proposal](https://github.com/sass/language/blob/master/accepted/content-args.md).
+proposal](https://github.com/sass/language/blob/main/accepted/content-args.md).
 This feature is implemented in LibSass, and will be released in version 3.6.0.
 Since [Ruby Sass is deprecated](/blog/ruby-sass-is-deprecated) and this isn't a
 CSS compatibility feature, it won't be implemented in Ruby Sass.
@@ -102,7 +102,7 @@ This change is fully backwards-compatible, so all the arguments to `rgb()`,
 `hsl()`, `rgba()`, and `hsla()` that previously worked will continue to do so.
 
 For more details, see [the feature
-proposal](https://github.com/sass/language/blob/master/accepted/color-4-rgb-hsl.md).
+proposal](https://github.com/sass/language/blob/main/accepted/color-4-rgb-hsl.md).
 This feature isn't yet implemented in
 [LibSass](https://github.com/sass/libsass/issues/2722) or [Ruby
 Sass](https://github.com/sass/ruby-sass/issues/84).
@@ -127,7 +127,7 @@ This works just how you'd expect:
 ```
 
 For more details, see [the feature
-proposal](https://github.com/sass/language/blob/master/accepted/at-rule-interpolation.md).
+proposal](https://github.com/sass/language/blob/main/accepted/at-rule-interpolation.md).
 This feature isn't yet implemented in
 [LibSass](https://github.com/sass/libsass/issues/2721). Since [Ruby Sass is
 deprecated](http://sass.logdown.com/posts/7081811) and this isn't a CSS

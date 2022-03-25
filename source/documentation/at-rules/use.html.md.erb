@@ -265,7 +265,7 @@ them!
   $-radius: 3px
 
   @mixin rounded
-    border-radius: $radius
+    border-radius: $-radius
   ---
   // style.sass
   @use "src/corners"
@@ -376,6 +376,46 @@ another mixin to inject your styles.
     border-radius: 0.1rem;
     box-shadow: 0 0.5rem 1rem rgba(34, 34, 34, 0.15);
   }
+<% end %>
+
+### Reassigning Variables
+
+After loading a module, you can reassign its variables.
+
+<% example(autogen_css: false) do %>
+  // _library.scss
+  $color: red;
+  ---
+  // _override.scss
+  @use 'library';
+  library.$color: blue;
+  ---
+  // style.scss
+  @use 'library';
+  @use 'override';
+  @debug library.$color;  //=> blue
+  ===
+  // _library.sass
+  $color: red
+  ---
+  // _override.sass
+  @use 'library'
+  library.$color: blue
+  ---
+  // style.sass
+  @use 'library'
+  @use 'override'
+  @debug library.$color  //=> blue
+<% end %>
+
+This even works if you import a module without a namespace using `as *`.
+Assigning to a variable name defined in that module will overwrite its value in
+that module.
+
+<% heads_up do %>
+  Built-in module variables (such as [`math.$pi`]) cannot be reassigned.
+
+  [`math.$pi`]: /documentation/modules/math#$pi
 <% end %>
 
 ## Finding the Module

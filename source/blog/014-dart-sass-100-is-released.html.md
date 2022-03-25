@@ -55,7 +55,7 @@ features, but if anyone else is interested there are a number that [wouldn't be
 too hard to
 add](https://github.com/sass/sass/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22+label%3APlanned).
 Dart is a very easy language to learn, and I've written up a [helpful guide on
-contributing](https://github.com/sass/dart-sass/blob/master/CONTRIBUTING.md#readme).
+contributing](https://github.com/sass/dart-sass/blob/main/CONTRIBUTING.md#readme).
 
 ### What About Ruby Sass?
 

@@ -217,11 +217,11 @@ title: sass:math
 
   <% example(autogen_css: false) do %>
     @debug math.pow(10, 2); // 100
-    @debug math.pow(100, 1/3); // 4.6415888336
+    @debug math.pow(100, math.div(1, 3)); // 4.6415888336
     @debug math.pow(5, -2); // 0.04
     ===
     @debug math.pow(10, 2) // 100
-    @debug math.pow(100, 1/3) // 4.6415888336
+    @debug math.pow(100, math.div(1, 3)) // 4.6415888336
     @debug math.pow(5, -2) // 0.04
   <% end %>
 <% end %>
@@ -238,11 +238,11 @@ title: sass:math
 
   <% example(autogen_css: false) do %>
     @debug math.sqrt(100); // 10
-    @debug math.sqrt(1/3); // 0.5773502692
+    @debug math.sqrt(math.div(1, 3)); // 0.5773502692
     @debug math.sqrt(-1); // NaN
     ===
     @debug math.sqrt(100) // 10
-    @debug math.sqrt(1/3) // 0.5773502692
+    @debug math.sqrt(math.div(1, 3)) // 0.5773502692
     @debug math.sqrt(-1) // NaN
   <% end %>
 <% end %>
@@ -381,10 +381,10 @@ title: sass:math
   [2-argument arctangent]: https://en.wikipedia.org/wiki/Atan2
 
   <% fun_fact do %>
-    `atan2($y, $x)` is distinct from `atan($y / $x)` because it preserves the
-    quadrant of the point in question. For example, `atan2(1, -1)` corresponds
-    to the point `(-1, 1)` and returns `135deg`. In contrast, `atan(1 / -1)` and
-    `atan(-1 / 1)` resolve first to `atan(-1)`, so both return `-45deg`.
+    `math.atan2($y, $x)` is distinct from `atan(math.div($y, $x))` because it preserves the
+    quadrant of the point in question. For example, `math.atan2(1, -1)` corresponds
+    to the point `(-1, 1)` and returns `135deg`. In contrast, `math.atan(math.div(1, -1))` and
+    `math.atan(math.div(-1, 1))` resolve first to `atan(-1)`, so both return `-45deg`.
   <% end %>
 
   <% example(autogen_css: false) do %>
@@ -458,17 +458,49 @@ title: sass:math
     @debug math.unit(100); // ""
     @debug math.unit(100px); // "px"
     @debug math.unit(5px * 10px); // "px*px"
-    @debug math.unit(5px / 1s); // "px/s"
+    @debug math.unit(math.div(5px, 1s)); // "px/s"
     ===
     @debug math.unit(100)  // ""
     @debug math.unit(100px)  // "px"
     @debug math.unit(5px * 10px)  // "px*px"
-    @debug math.unit(5px / 1s)  // "px/s"
+    @debug math.unit(math.div(5px, 1s))  // "px/s"
   <% end %>
 <% end %>
 
 
 ## Other Functions
+
+<% function 'math.div($number1, $number2)', returns: 'number' do %>
+  <% impl_status dart: '1.33.0', libsass: false, ruby: false %>
+
+  Returns the result of dividing `$number1` by `$number2`.
+
+  Any units shared by both numbers will be canceled out. Units in `$number1`
+  that aren't in `$number2` will end up in the return value's numerator, and
+  units in `$number2` that aren't in `$number1` will end up in its denominator.
+
+  <% heads_up do %>
+    For backwards-compatibility purposes, this returns the *exact same result*
+    as [the deprecated `/` operator], including concatenating two strings with a
+    `/` character between them. However, this behavior will be removed
+    eventually and shouldn't be used in new stylesheets.
+
+    [the deprecated `/` operator]: ../breaking-changes/slash-div
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug math.div(1, 2); // 0.5
+    @debug math.div(100px, 5px); // 20
+    @debug math.div(100px, 5); // 20px
+    @debug math.div(100px, 5s); // 20px/s
+    ===
+    @debug math.div(1, 2)  // 0.5
+    @debug math.div(100px, 5px)  // 20
+    @debug math.div(100px, 5)  // 20px
+    @debug math.div(100px, 5s)  // 20px/s
+  <% end %>
+<% end %>
+
 
 <% function 'math.percentage($number)',
             'percentage($number)',
@@ -482,10 +514,10 @@ title: sass:math
 
   <% example(autogen_css: false) do %>
     @debug math.percentage(0.2); // 20%
-    @debug math.percentage(100px / 50px); // 200%
+    @debug math.percentage(math.div(100px, 50px)); // 200%
     ===
     @debug math.percentage(0.2)  // 20%
-    @debug math.percentage(100px / 50px)  // 200%
+    @debug math.percentage(math.div(100px, 50px))  // 200%
   <% end %>
 <% end %>
 

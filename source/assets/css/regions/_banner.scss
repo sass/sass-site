@@ -1,6 +1,10 @@
 .sl-r-banner {
   position: relative;
 
+  // add bottom padding to increase space
+  // above page titles (visible on mobile site)
+  padding-bottom: 3rem;
+
   a {
     display: inline-block;
   }

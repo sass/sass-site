@@ -196,7 +196,7 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Incompatible units em and px.\a   \2577 \a 1 \2502  $width: 15px + 2em;\a   \2502          ^^^^^^^^^^\a   \2575 \a   test.scss 1:9  root stylesheet";         
+  content: "Error: Incompatible units em and px.\a   \2577 \a 1 \2502  $width: 15px + 2em;\a   \2502          ^^^^^^^^^^\a   \2575 \a   test.scss 1:9  root stylesheet";
 }
 Error: Incompatible units em and px.
   ╷
@@ -285,11 +285,16 @@ $ sass --embed-source-map sass/style.scss css.style.css
 
 <% impl_status dart: '1.6.0' %>
 
-This flag acts like the [`--update` flag][], but after the first round
-compilation is done Sass stays open and continues compiling stylesheets whenever
-they or their dependencies change.
+This flag (abbreviated `-w`) acts like the [`--update` flag][], but after the
+first round compilation is done Sass stays open and continues compiling
+stylesheets whenever they or their dependencies change.
 
 [`--update` flag]: #update
+
+Sass watches only the directories that you pass as-is on the command line,
+parent directories of filenames you pass on the command line, and load paths. It
+does not watch additional directories based on a file's `@import`/`@use`/
+`@forward` rules.
 
 ```shellsession
 $ sass --watch themes:public/css
@@ -419,6 +424,17 @@ By default, Sass emits warnings when deprecated features are used or when the
 
 ```shellsession
 $ sass --quiet style.scss style.css
+```
+
+#### `--quiet-deps`
+
+This flag tells Sass not to emit deprecation warnings that come from
+dependencies. It considers any file that's transitively imported through a [load
+path] to be a "dependency". This flag doesn't affect the [`@warn` rule] or the
+[`@debug` rule].
+
+```shellsession
+$ sass --load-path=node_modules --quiet-deps style.scss style.css
 ```
 
 #### `--trace`

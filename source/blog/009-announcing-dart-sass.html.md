@@ -57,7 +57,7 @@ that could generate CSS quickly *and* add new features quickly.
 We considered a number of possible languages, and ended up deciding on Dart for
 a number of reasons. First, it's *really fast*—the Dart VM is generally much
 faster than JavaScript VMs, and [early
-benchmarks](https://github.com/sass/dart-sass/blob/master/perf.md)[^2] indicate
+benchmarks](https://github.com/sass/dart-sass/blob/main/perf.md)[^2] indicate
 that, for large stylesheets, Dart Sass is 5-10x faster than Ruby Sass and only
 about 1.5x slower than LibSass. I'll hazard a guess that it would be about
 1.5-2x faster than an idiomatic JS implementation, but I can't say for sure. And

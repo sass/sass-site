@@ -1,0 +1,14 @@
+// Colors updated to match the standard Sass styling.
+.typedoc pre {@extend .highlight}
+
+.hl-0 { @extend .k; }
+.hl-1 { @extend .p !optional; }
+.hl-2 { @extend .na; }
+.hl-3 { @extend .nx !optional; }
+.hl-4 { @extend .k; }
+.hl-5 { @extend .s2; }
+.hl-6 { @extend .k; }
+.hl-7 { @extend .c1; }
+.hl-8 { @extend .na; }
+.hl-9 { @extend .nx !optional; }
+.hl-10 { @extend .nb; }

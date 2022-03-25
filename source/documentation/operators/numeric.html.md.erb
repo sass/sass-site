@@ -13,8 +13,6 @@ introduction: >
   the second's.
 * `<expression> * <expression>` multiplies the first [expression][]'s value by
   the second's.
-* `<expression> / <expression>` divides the first [expression][]'s value by the
-  second's.
 * `<expression> % <expression>` returns the remainder of the first
   [expression][]'s value divided by the second's. This is known as the [*modulo*
   operator][].
@@ -26,13 +24,11 @@ introduction: >
   @debug 10s + 15s; // 25s
   @debug 1in - 10px; // 0.8958333333in
   @debug 5px * 3px; // 15px*px
-  @debug (12px/4px); // 3
   @debug 1in % 9px; // 0.0625in
   ===
   @debug 10s + 15s  // 25s
   @debug 1in - 10px  // 0.8958333333in
   @debug 5px * 3px  // 15px*px
-  @debug (12px/4px)  // 3
   @debug 1in % 9px  // 0.0625in
 <% end %>
 
@@ -117,10 +113,23 @@ You can also write `+` and `-` as unary operators, which take only one value:
   <% end %>
 <% end %>
 
-## Slash-Separated Values
+## Division
 
-A few CSS properties support `/` as a way of separating values. This means Sass
-has to disambiguate between `/` as a property value and `/` as division. In
+<% impl_status dart: '1.33.0', libsass: false, ruby: false, feature: 'math.div()' %>
+
+Unlike other mathematical operations, division in Sass is done with the
+[`math.div()`] function. Although many programming languages use `/` as a
+division operator, in CSS `/` is used as a separator (as in `font: 15px/32px` or
+`hsl(120 100% 50% / 0.8)`). While Sass does support the use of `/` as a division
+operator, this is deprecated and [will be removed] in a future version.
+
+[`math.div()`]: ../modules/math#div
+[will be removed]: ../breaking-changes/slash-div
+
+### Slash-Separated Values
+
+For the time being while Sass still supports `/` as a division operator, it has
+to have a way to disambiguate between `/` as a separator and `/` as division. In
 order to make this work, if two numbers are separated by `/`, Sass will print
 the result as slash-separated instead of divided unless one of these conditions
 is met:
@@ -131,13 +140,16 @@ is met:
   outside a list that contains the operation.
 * The result is used as part of another operation (other than `/`).
 
-If you want to force `/` to be used as a separator, you can write it as
-`#{<expression>} / #{<expression>}`.
+You can use [`list.slash()`] to force `/` to be used as a separator.
 
-<% example do %>
+[`list.slash`]: ../modules/list#slash
+
+<% example(autogen_css: false) do %>
+  @use "sass:list";
+
   @debug 15px / 30px; // 15px/30px
   @debug (10px + 5px) / 30px; // 0.5
-  @debug #{10px + 5px} / 30px; // 15px/30px
+  @debug list.slash(10px + 5px, 30px); // 15px/30px
 
   $result: 15px / 30px;
   @debug $result; // 0.5
@@ -151,8 +163,11 @@ If you want to force `/` to be used as a separator, you can write it as
   @debug (bold 15px/30px sans-serif); // bold 15px/30px sans-serif
   @debug 15px/30px + 1; // 1.5
   ===
+  @use "sass:list";
+
   @debug 15px / 30px  // 15px/30px
   @debug (10px + 5px) / 30px  // 0.5
+  @debug list.slash(10px + 5px, 30px)  // 15px/30px
 
   $result: 15px / 30px
   @debug $result  // 0.5

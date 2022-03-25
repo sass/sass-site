@@ -8,22 +8,29 @@ title: sass:color
 color.adjust($color,
   $red: null, $green: null, $blue: null,
   $hue: null, $saturation: null, $lightness: null,
+  $whiteness: null, $blackness: null,
   $alpha: null)
 SIGNATURE
 %>
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false, feature: "$whiteness and $blackness" %>
+
   Increases or decreases one or more properties of `$color` by fixed amounts.
 
   Adds the value passed for each keyword argument to the corresponding property
   of the color, and returns the adjusted color. It's an error to specify an RGB
   property (`$red`, `$green`, and/or `$blue`) at the same time as an HSL
-  property (`$hue`, `$saturation`, and/or `$lightness`).
+  property (`$hue`, `$saturation`, and/or `$lightness`), or either of those at
+  the same time as an [HWB][] property (`$hue`, `$whiteness`, and/or
+  `$blackness`).
+
+  [HWB]: https://en.wikipedia.org/wiki/HWB_color_model
 
   All optional arguments must be numbers. The `$red`, `$green`, and `$blue`
   arguments must be [unitless][] and between -255 and 255 (inclusive). The
-  `$hue` argument must have either the unit `deg` or no unit. The `$saturation`
-  and `$lightness` arguments must be between `-100%` and `100%` (inclusive), and
-  may be unitless. The `$alpha` argument must be unitless and between -1 and 1
-  (inclusive).
+  `$hue` argument must have either the unit `deg` or no unit. The `$saturation`,
+  `$lightness`, `$whiteness`, and `$blackness` arguments must be between `-100%`
+  and `100%` (inclusive), and may not be unitless. The `$alpha` argument must be
+  unitless and between -1 and 1 (inclusive).
 
   [unitless]: ../values/numbers#units
 
@@ -48,7 +55,8 @@ SIGNATURE
   Increases or decreases `$color`'s hue.
 
   The `$hue` must be a number between `-360deg` and `360deg` (inclusive) to add
-  to `$color`'s hue. It may be [unitless][].
+  to `$color`'s hue. It may be [unitless][] but it may not have any unit other
+  than `deg`.
 
   [unitless]: ../values/numbers#units
 
@@ -116,6 +124,35 @@ SIGNATURE
 <% end %>
 
 
+<% function 'color.blackness($color)', returns: 'number' do %>
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false %>
+
+  Returns the [HWB][] blackness of `$color` as a number between `0%` and `100%`.
+
+  [HWB]: https://en.wikipedia.org/wiki/HWB_color_model
+
+  See also:
+
+  * [`color.red()`](#red) for getting a color's red channel.
+  * [`color.green()`](#green) for getting a color's green channel.
+  * [`color.hue()`](#hue) for getting a color's hue.
+  * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
+  * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+
+  <% example(autogen_css: false) do %>
+    @debug color.blackness(#e1d7d2); // 11.7647058824%
+    @debug color.blackness(white); // 0%
+    @debug color.blackness(black); // 100%
+    ===
+    @debug color.blackness(#e1d7d2)  // 11.7647058824%
+    @debug color.blackness(white)  // 0%
+    @debug color.blackness(black)  // 100%
+  <% end %>
+<% end %>
+
+
 <% function 'color.blue($color)', 'blue($color)', returns: 'number' do %>
   Returns the blue channel of `$color` as a number between 0 and 255.
 
@@ -126,6 +163,8 @@ SIGNATURE
   * [`color.hue()`](#hue) for getting a color's hue.
   * [`color.saturation()`](#saturation) for getting a color's saturation.
   * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
+  * [`color.blackness()`](#blackness) for getting a color's blackness.
   * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
@@ -144,22 +183,29 @@ SIGNATURE
 color.change($color,
   $red: null, $green: null, $blue: null,
   $hue: null, $saturation: null, $lightness: null,
+  $whiteness: null, $blackness: null,
   $alpha: null)
 SIGNATURE
 %>
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false, feature: "$whiteness and $blackness" %>
+
   Sets one or more properties of a color to new values.
 
   Uses the value passed for each keyword argument in place of the corresponding
   property of the color, and returns the changed color. It's an error to specify
   an RGB property (`$red`, `$green`, and/or `$blue`) at the same time as an HSL
-  property (`$hue`, `$saturation`, and/or `$lightness`).
+  property (`$hue`, `$saturation`, and/or `$lightness`), or either of those at
+  the same time as an [HWB][] property (`$hue`, `$whiteness`, and/or
+  `$blackness`).
+
+  [HWB]: https://en.wikipedia.org/wiki/HWB_color_model
 
   All optional arguments must be numbers. The `$red`, `$green`, and `$blue`
   arguments must be [unitless][] and between 0 and 255 (inclusive). The `$hue`
-  argument must have either the unit `deg` or no unit. The `$saturation` and
-  `$lightness` arguments must be between `0%` and `100%` (inclusive), and may be
-  unitless. The `$alpha` argument must be unitless and between -1 and 1
-  (inclusive).
+  argument must have either the unit `deg` or no unit. The `$saturation`,
+  `$lightness`, `$whiteness`, and `$blackness` arguments must be between `0%`
+  and `100%` (inclusive), and may not be unitless. The `$alpha` argument must be
+  unitless and between 0 and 1 (inclusive).
 
   [unitless]: ../values/numbers#units
 
@@ -349,6 +395,8 @@ SIGNATURE
   * [`color.hue()`](#hue) for getting a color's hue.
   * [`color.saturation()`](#saturation) for getting a color's saturation.
   * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
+  * [`color.blackness()`](#blackness) for getting a color's blackness.
   * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
@@ -373,6 +421,8 @@ SIGNATURE
   * [`color.blue()`](#blue) for getting a color's blue channel.
   * [`color.saturation()`](#saturation) for getting a color's saturation.
   * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
+  * [`color.blackness()`](#blackness) for getting a color's blackness.
   * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
@@ -383,6 +433,45 @@ SIGNATURE
     @debug color.hue(#e1d7d2)  // 20deg
     @debug color.hue(#f2ece4)  // 34.2857142857deg
     @debug color.hue(#dadbdf)  // 228deg
+  <% end %>
+<% end %>
+
+
+<% function 'color.hwb($hue $whiteness $blackness)',
+            'color.hwb($hue $whiteness $blackness / $alpha)',
+            'color.hwb($hue, $whiteness, $blackness, $alpha: 1)', returns: 'color' do %>
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false %>
+
+  Returns a color with the given [hue, whiteness, and blackness][] and the given
+  alpha channel.
+
+  [hue, whiteness, and blackness]: https://en.wikipedia.org/wiki/HWB_color_model
+
+  The hue is a number between `0deg` and `360deg` (inclusive). The whiteness and
+  blackness are numbers between `0%` and `100%` (inclusive). The hue may be
+  [unitless][], but the whiteness and blackness must have unit `%`. The alpha
+  channel can be specified as either a unitless number between 0 and 1
+  (inclusive), or a percentage between `0%` and `100%` (inclusive).
+
+  [unitless]: ../values/numbers#units
+  
+  <% heads_up do %>
+    Sass's [special parsing rules][] for slash-separated values make it
+    difficult to pass variables for `$blackness` or `$alpha` when using the
+    `color.hwb($hue $whiteness $blackness / $alpha)` signature. Consider using
+    `color.hwb($hue, $whiteness, $blackness, $alpha)` instead.
+
+    [special parsing rules]: ../operators/numeric#slash-separated-values
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug color.hwb(210, 0%, 60%); // #036
+    @debug color.hwb(34, 89%, 5%); // #f2ece4
+    @debug color.hwb(210 0% 60% / 0.5); // rgba(0, 51, 102, 0.5)
+    ===
+    @debug color.hwb(210, 0%, 60%)  // #036
+    @debug color.hwb(34, 89%, 5%)  // #f2ece4
+    @debug color.hwb(210 0% 60% / 0.5)  // rgba(0, 51, 102, 0.5)
   <% end %>
 <% end %>
 
@@ -495,6 +584,8 @@ SIGNATURE
   * [`color.blue()`](#blue) for getting a color's blue channel.
   * [`color.hue()`](#hue) for getting a color's hue.
   * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
+  * [`color.blackness()`](#blackness) for getting a color's blackness.
   * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
@@ -512,7 +603,7 @@ SIGNATURE
 <% function 'color.mix($color1, $color2, $weight: 50%)',
             'mix($color1, $color2, $weight: 50%)',
             returns: 'color' do %>
-  Returns a number that's a mixture of `$color1` and `$color2`.
+  Returns a color that's a mixture of `$color1` and `$color2`.
 
   Both the `$weight` and the relative opacity of each color determines how much of
   each color is in the result. The `$weight` must be a number between `0%` and
@@ -588,6 +679,8 @@ SIGNATURE
   * [`color.hue()`](#hue) for getting a color's hue.
   * [`color.saturation()`](#saturation) for getting a color's saturation.
   * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
+  * [`color.blackness()`](#blackness) for getting a color's blackness.
   * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
@@ -669,6 +762,8 @@ SIGNATURE
   * [`color.blue()`](#blue) for getting a color's blue channel.
   * [`color.hue()`](#hue) for getting a color's hue.
   * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
+  * [`color.blackness()`](#blackness) for getting a color's blackness.
   * [`color.alpha()`](#alpha) for getting a color's alpha channel.
 
   <% example(autogen_css: false) do %>
@@ -687,10 +782,13 @@ SIGNATURE
 color.scale($color,
   $red: null, $green: null, $blue: null,
   $saturation: null, $lightness: null,
+  $whiteness: null, $blackness: null,
   $alpha: null)
 SIGNATURE
 %>
-  Fluidly scales one or more properties of `$color`.
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false, feature: "$whiteness and $blackness" %>
+
+Fluidly scales one or more properties of `$color`.
 
   Each keyword argument must be a number between `-100%` and `100%` (inclusive).
   This indicates how far the corresponding property should be moved from its
@@ -700,7 +798,11 @@ SIGNATURE
   without making them fully white.
 
   It's an error to specify an RGB property (`$red`, `$green`, and/or `$blue`) at
-  the same time as an HSL property (`$saturation`, and/or `$lightness`).
+  the same time as an HSL property (`$saturation`, and/or `$lightness`), or
+  either of those at the same time as an [HWB][] property (`$whiteness`, and/or
+  `$blackness`).
+
+  [HWB]: https://en.wikipedia.org/wiki/HWB_color_model
 
   See also:
 
@@ -762,5 +864,34 @@ SIGNATURE
     @debug transparentize(rgba(#6b717f, 0.5), 0.2)  // rgba(107, 113, 127, 0.3)
     @debug fade-out(rgba(#e1d7d2, 0.5), 0.4)  // rgba(225, 215, 210, 0.1)
     @debug transparentize(rgba(#036, 0.3), 0.3)  // rgba(0, 51, 102, 0)
+  <% end %>
+<% end %>
+
+
+<% function 'color.whiteness($color)', returns: 'number' do %>
+  <% impl_status dart: '1.27.0', libsass: false, ruby: false %>
+
+  Returns the [HWB][] whiteness of `$color` as a number between `0%` and `100%`.
+
+  [HWB]: https://en.wikipedia.org/wiki/HWB_color_model
+
+  See also:
+
+  * [`color.red()`](#red) for getting a color's red channel.
+  * [`color.green()`](#green) for getting a color's green channel.
+  * [`color.hue()`](#hue) for getting a color's hue.
+  * [`color.saturation()`](#saturation) for getting a color's saturation.
+  * [`color.lightness()`](#lightness) for getting a color's lightness.
+  * [`color.blackness()`](#blackness) for getting a color's blackness.
+  * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+
+  <% example(autogen_css: false) do %>
+    @debug color.whiteness(#e1d7d2); // 82.3529411765%
+    @debug color.whiteness(white); // 100%
+    @debug color.whiteness(black); // 0%
+    ===
+    @debug color.whiteness(#e1d7d2)  // 82.3529411765%
+    @debug color.whiteness(white)  // 100%
+    @debug color.whiteness(black)  // 0%
   <% end %>
 <% end %>

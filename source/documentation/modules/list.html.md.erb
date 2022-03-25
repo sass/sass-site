@@ -21,10 +21,10 @@ title: sass:list
             returns: 'list' do %>
   Returns a copy of `$list` with `$val` added to the end.
 
-  If `$separator` is `comma`, the returned list is comma-separated. If it's
-  `space`, the returned list is space-separated. If it's `auto` (the default), the
-  returned list will use the same separator as `$list` (or `space` if `$list`
-  doesn't have a separator). Other values aren't allowed.
+  If `$separator` is `comma`, `space`, or `slash`, the returned list is
+  comma-separated, space-separated, or slash-separated, respectively. If it's
+  `auto` (the default), the returned list will use the same separator as `$list`
+  (or `space` if `$list` doesn't have a separator). Other values aren't allowed.
 
   [separator]: ../values/lists
 
@@ -96,11 +96,11 @@ title: sass:list
     use `list.join()` to combine two lists together into one.
   <% end %>
 
-  If `$separator` is `comma`, the returned list is comma-separted. If it's
-  `space`, the returned list is space-separated. If it's `auto` (the default),
-  the returned list will use the same separator as `$list1` if it has a
-  separator, or else `$list2` if it has a separator, or else `space`. Other
-  values aren't allowed.
+  If `$separator` is `comma`, `space`, or `slash`, the returned list is
+  comma-separated, space-separated, or slash-separated, respectively. If it's
+  `auto` (the default), the returned list will use the same separator as
+  `$list1` if it has a separator, or else `$list2` if it has a separator, or
+  else `space`. Other values aren't allowed.
 
   If `$bracketed` is `true`, the returned list has square brackets. If it's
   `false`, the returned list has no brackets. If it's `auto` (the default), the
@@ -146,7 +146,8 @@ title: sass:list
 <% function 'list.separator($list)',
             'list-separator($list)',
             returns: 'unquoted string' do %>
-  Returns the name of the separator used by `$list`, either `space` or `comma`.
+  Returns the name of the separator used by `$list`, either `space`, `comma`, or
+  `slash`.
 
   If `$list` doesn't have a separator, returns `space`.
 
@@ -195,6 +196,26 @@ title: sass:list
     @debug list.set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
     @debug list.set-nth(10px 20px 30px, -1, 8em); // 10px, 20px, 8em
     @debug list.set-nth((Helvetica, Arial, sans-serif), 3, Roboto); // Helvetica, Arial, Roboto
+  <% end %>
+<% end %>
+
+
+<% function 'list.slash($elements...)', returns: 'list' do %>
+  Returns a slash-separated list that contains `$elements`.
+
+  <% heads_up do %>
+    This function is a temporary solution for creating slash-separated lists.
+    Eventually, they'll be written literally with slashes, as in
+    `1px / 2px / solid`, but for the time being [slashes are used for division]
+    so Sass can't use them for new syntax until the old syntax is removed.
+
+    [slashes are used for division]: ../breaking-changes/slash-div
+  <% end %>
+
+  <% example(autogen_css: false) do %>
+    @debug list.slash(1px, 50px, 100px); // 10px / 50px / 100px
+    ===
+    @debug list.slash(1px, 50px, 100px)  // 10px / 50px / 100px
   <% end %>
 <% end %>
 

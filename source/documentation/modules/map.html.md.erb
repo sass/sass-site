@@ -15,10 +15,10 @@ title: sass:map
 
   <% example(autogen_css: false) do %>
     $config: (a: (b: (c: d)));
-    @debug map.get($config, a, b, c)); // d
+    @debug map.get($config, a, b, c); // d
     ===
     $config: (a: (b: (c: d)))
-    @debug map.get($config, a, b, c)) // d
+    @debug map.get($config, a, b, c) // d
   <% end %>
 <% end %>
 
@@ -273,7 +273,7 @@ If `$keys` is empty, returns a copy of `$map` without a value associated with
             returns: 'map' do %>
   <% heads_up do %>
     In practice, the actual arguments to `map.merge($map1, $keys..., $map2)`
-    are passed as `map.set($map1, $args...)`. They are described here as `$map1,
+    are passed as `map.merge($map1, $args...)`. They are described here as `$map1,
     $keys..., $map2` for explanation purposes only.
   <% end %>
 

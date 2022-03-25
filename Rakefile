@@ -4,7 +4,10 @@ require "yaml"
 
 require File.dirname(__FILE__) + '/lib/raw_markdown_link'
 
-task :test => ["sass:dart:version", "sass:libsass:version", :middleman, :test_without_rebuild]
+task :test => [
+  "sass:dart:version", "sass:libsass:version", "sass:typedoc:build", :middleman,
+  :test_without_rebuild
+]
 
 task :test_without_rebuild do
   HTMLProofer.check_directory("build",
@@ -20,9 +23,12 @@ task :test_without_rebuild do
     assume_extension: true,
     # These have the same links as blog posts
     file_ignore: ["blog.html", %r{blog/page/.*}],
-    # Lots of external URLs fail flakily on Travis, so we just don't check them
+    # Lots of external URLs fail flakily on CI, so we just don't check them
     # there.
-    disable_external: ENV["TRAVIS"] == "true"
+    disable_external: ENV["CI"] == "true",
+    # This error occurs (usually on GitHub) when the same IP requests a given
+    # domain too often.
+    http_status_ignore: [429],
   ).run
 end
 
@@ -53,7 +59,7 @@ namespace :sass do
     # Check out the latest commit of Dart Sass into the .dart-sass directory.
     task :checkout do
       unless Dir.exists?(".dart-sass")
-        sh %{git clone git://github.com/sass/dart-sass .dart-sass}
+        sh %{git clone https://github.com/sass/dart-sass .dart-sass}
       end
 
       Dir.chdir(".dart-sass") do
@@ -61,7 +67,7 @@ namespace :sass do
         if ENV["DART_SASS_REVISION"]
           sh %{git checkout #{ENV["DART_SASS_REVISION"]}}
         else
-          sh %{git checkout origin/master}
+          sh %{git checkout origin/main}
         end
       end
     end
@@ -75,7 +81,7 @@ namespace :sass do
     # Check out the latest commit of the Sass migrator into the .sass-migrator directory.
     task :checkout do
       unless Dir.exists?(".sass-migrator")
-        sh %{git clone git://github.com/sass/migrator .sass-migrator}
+        sh %{git clone https://github.com/sass/migrator .sass-migrator}
       end
 
       Dir.chdir(".sass-migrator") do
@@ -83,7 +89,7 @@ namespace :sass do
         if ENV["SASS_MIGRATOR_REVISION"]
           sh %{git checkout #{ENV["SASS_MIGRATOR_REVISION"]}}
         else
-          sh %{git checkout origin/master}
+          sh %{git checkout origin/main}
         end
       end
     end
@@ -94,10 +100,10 @@ namespace :sass do
   end
 
   namespace :libsass do
-    # Check out the latest commit of Dart Sass into the .libsass directory.
+    # Check out the latest commit of LibSass into the .libsass directory.
     task :checkout do
       unless Dir.exists?(".libsass")
-        sh %{git clone git://github.com/sass/libsass .libsass}
+        sh %{git clone https://github.com/sass/libsass .libsass}
       end
 
       Dir.chdir(".libsass") do
@@ -115,8 +121,41 @@ namespace :sass do
     end
   end
 
+  namespace :typedoc do
+    # Check out the latest commit of the Sass specification into the .language
+    # directory.
+    task :checkout do
+      unless Dir.exists?(".language")
+        sh %{git clone https://github.com/sass/sass .language}
+      end
+
+      Dir.chdir(".language") do
+        sh %{git fetch}
+        if ENV["LANGUAGE_REVISION"]
+          sh %{git checkout #{ENV["LANGUAGE_REVISION"]}}
+        else
+          sh %{git checkout origin/main}
+        end
+      end
+    end
+
+    task :build => :checkout do
+      Dir.chdir(".language") do
+        sh %{npm install}
+        sh %{ln -sf ../.language/node_modules ../tool/node_modules}
+        sh %{npx typedoc \
+            --plugin ../tool/typedoc-theme.js --theme sass-site \
+            --out ../source/documentation/js-api \
+            --cleanOutputDir \
+            js-api-doc/index.d.ts
+        }
+      end
+      sh %{rm -r source/documentation/js-api/assets}
+    end
+  end
+
   desc "Import information from Sass implementations."
-  task :import => ["dart:version", "libsass:version"]
+  task :import => ["dart:version", "libsass:version", "typedoc:build"]
 end
 
 desc "Build the middleman-controlled portion of the site."

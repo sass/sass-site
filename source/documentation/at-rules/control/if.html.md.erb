@@ -61,6 +61,10 @@ An `@if` rule can optionally be followed by an `@else` rule, written
       @include theme-colors($light-theme: false)
 <% end %>
 
+Conditional expressions may contain [boolean operators][] (`and`, `or`, `not`).
+
+[boolean operators]: ../../operators/boolean
+
 ### `@else if`
 
 You can also choose whether to evaluate an `@else` rule's block by writing it
@@ -68,19 +72,21 @@ You can also choose whether to evaluate an `@else` rule's block by writing it
 preceding `@if`'s expression returns `false` *and* the `@else if`'s expression
 returns `true`.
 
-In fact, you can to chain as many `@else if`s as you want after an `@if`. The
+In fact, you can chain as many `@else if`s as you want after an `@if`. The
 first block in the chain whose expression returns `true` will be evaluated, and
 no others. If there's a plain `@else` at the end of the chain, its block will be
 evaluated if every other block fails.
 
 <% example do %>
+  @use "sass:math";
+
   @mixin triangle($size, $color, $direction) {
     height: 0;
     width: 0;
 
     border-color: transparent;
     border-style: solid;
-    border-width: $size / 2;
+    border-width: math.div($size, 2);
 
     @if $direction == up {
       border-bottom-color: $color;
@@ -99,13 +105,15 @@ evaluated if every other block fails.
     @include triangle(5px, black, right);
   }
   ===
+  @use "sass:math"
+
   @mixin triangle($size, $color, $direction)
     height: 0
     width: 0
 
     border-color: transparent
     border-style: solid
-    border-width: $size / 2
+    border-width: math.div($size, 2)
 
     @if $direction == up
       border-bottom-color: $color
@@ -122,6 +130,15 @@ evaluated if every other block fails.
 
   .next
     @include triangle(5px, black, right)
+  ===
+  .next {
+    height: 0;
+    width: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 2.5px;
+    border-left-color: black;
+  }
 <% end %>
 
 <%= partial 'documentation/snippets/truthiness-and-falsiness' %>

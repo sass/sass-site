@@ -84,13 +84,34 @@ calls][]—it's parsed as a normal [plain CSS function call][].
       font-weight: 400
 <% end %>
 
-## `calc()`, `element()`, `progid:...()`, and `expression()`
+## `element()`, `progid:...()`, and `expression()`
 
-The [`calc()`][] and [`element()`][] functions are defined in the CSS spec.
-Because `calc()`'s mathematical expressions conflict with Sass's arithmetic, and
-`element()`'s IDs could be parsed as colors, they need special parsing.
+<% impl_status dart: "<1.40.0", libsass: false, ruby: false, feature: "calc()" do %>
+  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse `calc()`
+  as special syntactic function like `element()`.
 
-[`calc()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+  Dart Sass versions 1.40.0 and later parse `calc()` as a [calculation].
+
+  [calculation]: ../values/calculations
+<% end %>
+
+<% impl_status dart: ">=1.31.0 <1.40.0", libsass: false, ruby: false, feature: "clamp()" do %>
+  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.31.0 parse `clamp()`
+  as a [plain CSS function] rather than supporting special syntax within it.
+
+  [plain CSS function]: ../at-rules/function#plain-css-functions
+
+  Dart Sass versions between 1.31.0 and 1.40.0 parse `clamp()` as special
+  syntactic function like `element()`.
+
+  Dart Sass versions 1.40.0 and later parse `clamp()` as a [calculation].
+
+  [calculation]: ../values/calculations
+<% end %>
+
+The [`element()`] function is defined in the CSS spec, and because its IDs could
+be parsed as colors, they need special parsing.
+
 [`element()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/element
 
 [`expression()`][] and functions beginning with [`progid:`][] are legacy
@@ -106,94 +127,18 @@ Nothing is interpreted as a SassScript expression, with the exception that
 [interpolation][] can be used to inject dynamic values.
 
 <% example do %>
+  $logo-element: logo-bg;
+
   .logo {
-    $width: 800px;
-    width: $width;
-    position: absolute;
-    left: calc(50% - #{$width / 2});
-    top: 0;
+    background: element(##{$logo-element});
   }
   ===
+  $logo-element: logo-bg
+
   .logo
-    $width: 800px
-    width: $width
-    position: absolute
-    left: calc(50% - #{$width / 2})
-    top: 0
-<% end %>
-
-## `min()` and `max()`
-
-<% impl_status dart: "1.11.0", libsass: false, ruby: false do %>
-  LibSass and Ruby Sass currently *always* parse `min()` and `max()` as Sass
-  functions. To create a plain CSS `min()` or `max()` call for those
-  implementations, you can write something like `unquote("min(#{$padding},
-  env(safe-area-inset-left))")` instead.
-<% end %>
-
-CSS added support for [`min()` and `max()` functions][] in Values and Units
-Level 4, from where they were quickly adopted by Safari [to support the
-iPhoneX][]. But Sass supported its own [`min()`][] and [`max()`][] functions
-long before this, and it needed to be backwards-compatible with all those
-existing stylesheets. This led for the need for extra-special syntactic
-cleverness.
-
-[`min()` and `max()` functions]: https://drafts.csswg.org/css-values-4/#calc-notation
-[to support the iPhoneX]: https://webkit.org/blog/7929/designing-websites-for-iphone-x/
-[`min()`]: ../modules/math#min
-[`max()`]: ../modules/math#max
-
-If a `min()` or `max()` function call is valid plain CSS, it will be compiled to
-a CSS `min()` or `max()` call. "Plain CSS" includes nested calls to
-[`calc()`][], [`env()`][], [`var()`][], `min()`, or `max()`, as well as
-[interpolation][]. As soon as any part of the call contains a SassScript feature
-like [variables][] or [function calls][], though, it's parsed as a call to
-Sass's core `min()` or `max()` function instead.
-
-[`env()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/env
-[`var()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/var
-
-<!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
-
-<% example do %>
-  $padding: 12px;
-
-  .post {
-    // Since these max() calls don't use any Sass features other than
-    // interpolation, they're compiled to CSS max() calls.
-    padding-left: max(#{$padding}, env(safe-area-inset-left));
-    padding-right: max(#{$padding}, env(safe-area-inset-right));
-  }
-
-  .sidebar {
-    // Since these refer to a Sass variable without interpolation, they call
-    // Sass's built-in max() function.
-    padding-left: max($padding, 20px);
-    padding-right: max($padding, 20px);
-  }
+    background: element(##{$logo-element})
   ===
-  $padding: 12px
-
-  .post
-    // Since these max() calls don't use any Sass features other than
-    // interpolation, they're compiled to CSS max() calls.
-    padding-left: max(#{$padding}, env(safe-area-inset-left))
-    padding-right: max(#{$padding}, env(safe-area-inset-right))
-
-
-  .sidebar
-    // Since these refer to a Sass variable without interpolation, they call
-    // Sass's built-in max() function.
-    padding-left: max($padding, 20px)
-    padding-right: max($padding, 20px)
-  ===
-  .post {
-    padding-left: max(12px, env(safe-area-inset-left));
-    padding-right: max(12px, env(safe-area-inset-right));
-  }
-
-  .sidebar {
-    padding-left: 20px;
-    padding-right: 20px;
+  .logo {
+    background: element(#logo-bg);
   }
 <% end %>

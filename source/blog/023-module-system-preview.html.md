@@ -39,7 +39,7 @@ release series.
 The original [summary of the module
 system](/blog/request-for-comments-module-system-proposal) is still a great way
 to learn how it works. You can also check out the [official
-proposal](https://github.com/sass/sass/blob/master/accepted/module-system.md)
+proposal](https://github.com/sass/sass/blob/main/accepted/module-system.md)
 for a much more detailed dive into its behavior.
 
 ## Sending Feedback

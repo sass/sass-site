@@ -40,6 +40,7 @@ toc:
   - Maps: /documentation/values/maps
   - <code>true</code> and <code>false</code>: /documentation/values/booleans
   - <code>null</code>: /documentation/values/null
+  - Calculations: /documentation/values/calculations
   - Functions: /documentation/values/functions
 - Operators: /documentation/operators
   :children:
@@ -59,6 +60,8 @@ toc:
   - <code>sass:string</code>: /documentation/modules/string
 - Breaking Changes: /documentation/breaking-changes
   :children:
+  - <code>/</code> as Division: /documentation/breaking-changes/slash-div
+  - Color Units: /documentation/breaking-changes/color-units
   - Extending Compound Selectors: /documentation/breaking-changes/extend-compound
   - CSS Variable Syntax: /documentation/breaking-changes/css-vars
 - Command Line: /documentation/cli

@@ -124,8 +124,8 @@ interpolation into Sass 4-compatible code. It has some false negatives—it only
 converts cases it can prove will be incompatible—but it's enough to get users a
 long way there.
 
-The final step once the deprecation was in place was to move to [the `master`
-branch](https://github.com/sass/sass/commits/master) (which will eventually
+The final step once the deprecation was in place was to move to [the `main`
+branch](https://github.com/sass/sass/commits/main) (which will eventually
 become Sass 4), rip out all the old behavior, and implement the new. And it was
 *wonderful*. Deleting gross code and replacing it with something clean feels
 like taking a shower after spending a day hiking through dust under a hot sun.

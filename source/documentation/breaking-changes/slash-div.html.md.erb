@@ -7,7 +7,7 @@ introduction: >
   `/` as a separator.
 ---
 
-<% impl_status dart: false, libsass: false, ruby: false %>
+<% impl_status dart: :partial, libsass: false, ruby: false %>
 
 Today, Sass uses [complex heuristics][] to figure out whether a `/` should be
 treated as division or a separator. Even then, as a separator it just produces
@@ -19,10 +19,13 @@ use `/` as a separator, this is becoming more and more painful to Sass users.
 [CSS Grid]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
 [new `rgb()` and `hsl()` syntax]: https://drafts.csswg.org/css-color/#rgb-functions
 
-Because Sass is a CSS superset, it's redefining `/` to be *only* a separator.
-`/` will be treated as a new type of list separator, similar to how `,` works
-today. Division will instead be written using the new `math.div()` function.
-This function will behave exactly the same as `/` does today.
+Because Sass is a CSS superset, we're matching CSS's syntax by redefining `/` to
+be *only* a separator. `/` will be treated as a new type of list separator,
+similar to how `,` works today. Division will instead be written using the new
+`math.div()` function. This function will behave exactly the same as `/` does
+today.
+
+This deprecation does not affect uses of `/` inside `calc()` expressions.
 
 <% example do %>
   @use "sass:math";
@@ -47,13 +50,12 @@ This function will behave exactly the same as `/` does today.
 
 ## Transition Period
 
-<% impl_status dart: false, libsass: false, ruby: false,
+<% impl_status dart: "1.33.0", libsass: false, ruby: false,
                feature: "math.div() and list.slash()" %>
 
-To ease the transition, implementations will begin by adding the `math.div()`
-function. The `/` operator will continue to do division, but it also prints a
-deprecation warning when it does so. Users should switch all division to use
-`math.div()` instead.
+To ease the transition, we've begun by adding the `math.div()` function. The `/`
+operator still does division for now, but it also prints a deprecation warning
+when it does so. Users should switch all division to use `math.div()` instead.
 
 <% example(autogen_css: false) do %>
   @use "sass:math";
@@ -82,18 +84,43 @@ create them. You will also be able to pass `"slash"` as the `$separator` to the
 [`list.append()` function]: ../modules/list#append
 
 <% example do %>
+  @use "sass:list";
+  @use "sass:math";
+
   .item3 {
-    $row: slash-list(span divide(6, 2), 7);
+    $row: list.slash(span math.div(6, 2), 7);
     grid-row: $row;
   }
   ===
+  @use "sass:list"
+  @use "sass:math"
+
   .item3
-    $row: slash-list(span divide(6, 2), 7)
+    $row: list.slash(span math.div(6, 2), 7)
     grid-row: $row
   ===
   .item3 {
     grid-row: span 3 / 7;
   }
+<% end %>
+
+<% impl_status dart: "1.40.0", libsass: false, ruby: false, feature: "First-class calc" %>
+
+Alternatively, users can wrap division operations inside a `calc()` expression,
+which Sass will simplify to a single number.
+
+<% example(autogen_css: false) do %>
+  // WRONG, will not work in future Sass versions.
+  @debug (12px/4px); // 3
+
+  // RIGHT, will work in future Sass versions.
+  @debug calc(12px / 4px); // 3
+  ===
+  // WRONG, will not work in future Sass versions.
+  @debug (12px/4px) // 3
+
+  // RIGHT, will work in future Sass versions.
+  @debug calc(12px / 4px) // 3
 <% end %>
 
 ## Automatic Migration
@@ -105,5 +132,5 @@ use `math.div()` and `list.slash()`.
 
 ```shellsession
 $ npm install -g sass-migrator
-$ sass-migrator division **/*
+$ sass-migrator division **/*.scss
 ```

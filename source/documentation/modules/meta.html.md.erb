@@ -7,7 +7,7 @@ title: sass:meta
 ## Mixins
 
 <% function 'meta.load-css($url, $with: null)' do %>
-  <% impl_status dart: '(unreleased)', libsass: false, ruby: false do %>
+  <% impl_status dart: '1.23.0', libsass: false, ruby: false do %>
     Only Dart Sass currently supports this mixin.
   <% end %>
 
@@ -97,6 +97,43 @@ title: sass:meta
 
 ## Functions
 
+<% function 'meta.calc-args($calc)', returns: 'list' do %>
+  <% impl_status dart: '1.40.0', libsass: false, ruby: false %>
+
+  Returns the arguments for the given [calculation].
+
+  [calculation]: ../values/calculations
+
+  If an argument is a number or a nested calculation, it's returned as that
+  type. Otherwise, it's returned as an unquoted string.
+
+  <% example(autogen_css: false) do %>
+    @debug meta.calc-args(calc(100px + 10%)); // unquote("100px + 10%")
+    @debug meta.calc-args(clamp(50px, var(--width), 1000px)); // 50px, unquote("var(--width)"), 1000px
+    ===
+    @debug meta.calc-args(calc(100px + 10%))  // unquote("100px + 10%")
+    @debug meta.calc-args(clamp(50px, var(--width), 1000px))  // 50px, unquote("var(--width)"), 1000px
+  <% end %>
+<% end %>
+
+
+<% function 'meta.calc-name($calc)', returns: 'quoted string' do %>
+  <% impl_status dart: '1.40.0', libsass: false, ruby: false %>
+
+  Returns the name of the given [calculation].
+
+  [calculation]: ../values/calculations
+
+  <% example(autogen_css: false) do %>
+    @debug meta.calc-name(calc(100px + 10%)); // "calc"
+    @debug meta.calc-name(clamp(50px, var(--width), 1000px)); // "clamp"
+    ===
+    @debug meta.calc-name(calc(100px + 10%))  // "calc"
+    @debug meta.calc-name(clamp(50px, var(--width), 1000px))  // "clamp"
+  <% end %>
+<% end %>
+
+
 <% function 'meta.call($function, $args...)', 'call($function, $args...)' do %>
   <%= partial 'documentation/snippets/call-impl-status' %>
 
@@ -182,13 +219,20 @@ title: sass:meta
 <% end %>
 
 
-<% function 'meta.function-exists($name)',
+<% function 'meta.function-exists($name, $module: null)',
             'function-exists($name)',
             returns: 'boolean' do %>
   Returns whether a function named `$name` is defined, either as a built-in
   function or a user-defined function.
 
+  If `$module` is passed, this also checks the module named `$module` for the
+  function definition. `$module` must be a string matching the namespace of a
+  [`@use` rule][] in the current file.
+
   <% example(autogen_css: false) do %>
+    @use "sass:math";
+
+    @debug meta.function-exists("div", "math"); // true
     @debug meta.function-exists("scale-color"); // true
     @debug meta.function-exists("add"); // false
 
@@ -197,6 +241,9 @@ title: sass:meta
     }
     @debug meta.function-exists("add"); // true
     ===
+    @use "sass:math"
+
+    @debug meta.function-exists("div", "math")  // true
     @debug meta.function-exists("scale-color")  // true
     @debug meta.function-exists("add")  // false
 
@@ -265,7 +312,7 @@ title: sass:meta
     ===
     @debug meta.global-variable-exists("var1")  // false
 
-    $var1: value 
+    $var1: value
     @debug meta.global-variable-exists("var1")  // true
 
     h1
@@ -280,7 +327,7 @@ title: sass:meta
             'inspect($value)',
             returns: 'unquoted string' do %>
   Returns a string representation of `$value`.
-  
+
   Returns a representation of *any* Sass value, not just those that can be
   represented in CSS. As such, its return value is not guaranteed to be valid
   CSS.
@@ -324,7 +371,7 @@ title: sass:meta
   Returns whether a [mixin][] named `$name` exists.
 
   [mixin]: ../at-rules/mixin
-  
+
   If `$module` is `null`, this returns whether a mixin named `$name` without a
   namespace exists. Otherwise, `$module` must be a string matching the namespace
   of a [`@use` rule][] in the current file, in which case this returns whether
@@ -466,6 +513,7 @@ title: sass:meta
   * [`color`](../values/colors)
   * [`list`](../values/lists)
   * [`map`](../values/maps)
+  * [`calculation`](../values/calculations)
   * [`bool`](../values/booleans)
   * [`null`](../values/null)
   * [`function`](../values/functions)
@@ -477,7 +525,7 @@ title: sass:meta
 
   [map function]: map
 
-  <% example(autogen_css: false) do %> 
+  <% example(autogen_css: false) do %>
     @debug meta.type-of(10px); // number
     @debug meta.type-of(10px 20px 30px); // list
     @debug meta.type-of(()); // list
@@ -513,7 +561,7 @@ title: sass:meta
     ===
     @debug meta.variable-exists("var1")  // false
 
-    $var1: value 
+    $var1: value
     @debug meta.variable-exists("var1")  // true
 
     h1
