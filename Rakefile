@@ -59,7 +59,7 @@ namespace :sass do
     # Check out the latest commit of Dart Sass into the .dart-sass directory.
     task :checkout do
       unless Dir.exists?(".dart-sass")
-        sh %{git clone git://github.com/sass/dart-sass .dart-sass}
+        sh %{git clone https://github.com/sass/dart-sass .dart-sass}
       end
 
       Dir.chdir(".dart-sass") do
@@ -81,7 +81,7 @@ namespace :sass do
     # Check out the latest commit of the Sass migrator into the .sass-migrator directory.
     task :checkout do
       unless Dir.exists?(".sass-migrator")
-        sh %{git clone git://github.com/sass/migrator .sass-migrator}
+        sh %{git clone https://github.com/sass/migrator .sass-migrator}
       end
 
       Dir.chdir(".sass-migrator") do
@@ -103,7 +103,7 @@ namespace :sass do
     # Check out the latest commit of LibSass into the .libsass directory.
     task :checkout do
       unless Dir.exists?(".libsass")
-        sh %{git clone git://github.com/sass/libsass .libsass}
+        sh %{git clone https://github.com/sass/libsass .libsass}
       end
 
       Dir.chdir(".libsass") do
@@ -126,7 +126,7 @@ namespace :sass do
     # directory.
     task :checkout do
       unless Dir.exists?(".language")
-        sh %{git clone git://github.com/sass/sass .language}
+        sh %{git clone https://github.com/sass/sass .language}
       end
 
       Dir.chdir(".language") do
