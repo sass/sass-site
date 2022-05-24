@@ -1,0 +1,471 @@
+<!DOCTYPE html> <html class=no-js lang=en> <head> <meta charset=utf-8> <meta content='IE=edge' http-equiv=X-UA-Compatible> <title>Sass: Request for Comments: New JS API</title> <meta content='Syntactically Awesome Style Sheets' name=description> <meta content='width=device-width, initial-scale=1' name=viewport> <link href='/feed.xml' rel=alternate type='application/atom+xml'> <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,600|Source+Serif+Pro" rel=stylesheet /> <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha" rel=stylesheet /> <link href="/assets/css/sass-23d735b1.css" rel=stylesheet /> <noscript><link href="/assets/css/noscript-c6723936.css" rel=stylesheet /></noscript> <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535380-8']);
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script> <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-535380-14', 'sass-lang.com');
+  ga('send', 'pageview');
+</script> </head> <body class='blog blog_request-for-comments-new-js-api'> <!--[if lt IE 9]><p class=browserupgrade> You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security. </p><![endif]--> <header class=sl-r-banner itemscope=itemscope itemtype='http://schema.org/WPHeader' role=banner> <div class='sl-c-alert sl-c-alert--info' style='background: #000; padding: 3rem 0; text-align: left;'> <div class=sl-l-container> <h2 style='margin-top: 0;'>Black Lives Matter</h2> <p> Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you can</strong>. </p> </div> </div> <div class=sl-c-pop-stripe></div> <div class=sl-l-container> <div class='sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters'> <p class='sl-l-grid__column sl-r-banner__brand'> <a href="/"><img alt=Sass height=48 src="/assets/img/logos/logo-b6e1ef6e.svg"/> </a></p> <nav aria-label='Site navigation' class='sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper' itemscope=itemscope itemtype='http://schema.org/SiteNavigationElement' role=navigation> <ul> <li><a href="/install">Install</a></li> <li><a href="/guide">Learn Sass</a></li> <li><a href="/blog">Blog</a></li> <li><a href="/documentation">Documentation</a></li> <li><a href="/community">Get Involved</a></li> <li><div id=docsearch></div></li> </ul> </nav> </div> </div> </header> <main class=content id=main-content itemprop=mainContentOfPage role=main> <h1 class=sl-l-container> Request for Comments: New <span class=caps>JS</span>&nbsp;<span class=caps>API</span> </h1> <div class='sl-background--white sl-l-container sl-l-section'><p class=sl-c-attribution>Posted 5 August 2021 by Natalie Weizenbaum</p> <p>I&rsquo;m excited to officially unveil something that&rsquo;s been in the works for quite&nbsp;a while now: a (proposal for a) brand new JavaScript <span class=caps>API</span> for Sass. This <span class=caps>API</span>&nbsp;has been redesigned from the ground up based on lessons learned from both the&nbsp;Node Sass <span class=caps>API</span> and various other historical Sass APIs in other languages through&nbsp;the years, and it addresses many of the shortcomings of the existing&nbsp;<span class=caps>API.</span></p> <p>The <span class=caps>API</span> has four main components, all of which I&rsquo;ll cover in this&nbsp;post:</p> <ul> <li><a href="#compilation">The core compilation&nbsp;<span class=caps>API</span></a></li> <li><a href="#loggers">The logger&nbsp;<span class=caps>API</span></a></li> <li><a href="#importers">The importer&nbsp;<span class=caps>API</span></a></li> <li><a href="#functions">The function&nbsp;<span class=caps>API</span></a></li> </ul> <p>As you read on, remember that this <span class=caps>API</span> is still just a proposal. We want to&nbsp;hear from you, our users, whether it meets your needs and how we can improve&nbsp;it before we lock it in to a full release. So go ahead and make your voices&nbsp;known <a href="https://github.com/sass/sass/issues/new">on the issue tracker</a>!</p> <h2 id=why-a-new-api> <a class=anchor href="#why-a-new-api"><span class=visuallyhidden>Why a New <span class=caps>API</span>? permalink</span></a>Why a New&nbsp;<span class=caps>API</span>?</h2> <p>The existing JavaScript <span class=caps>API</span> is showing its age. It predates Dart Sass,&nbsp;having been originally designed for the <code>node-sass</code> package, which wrapped&nbsp;the now-<a href="/libsass">deprecated</a> implementation. (That&rsquo;s why we call it the &ldquo;Node&nbsp;Sass <span class=caps>API</span>&rdquo;!) It grew organically and often messily along with LibSass, and ended&nbsp;up with more than a few awkward legacy behaviors. Many of these behaviors are&nbsp;more of a pain for implementation than anything else, but a few of them made&nbsp;life quite&nbsp;difficult:</p> <ul> <li><p>The importer <span class=caps>API</span> was built around file paths rather than URLs, and was&nbsp;tightly coupled to the physical filesystem. This made it impossible to override <em>all</em> file-based loads and present a fully virtual filesystem, and caused&nbsp;custom Node importers to interact poorly with the new <a href="https://sass-lang.com/blog/the-module-system-is-launched">module system</a>.</p></li> <li><p>The function <span class=caps>API</span> was built around mutable value objects, which runs counter&nbsp;to Sass&rsquo;s immutable nature. It also provided no utility methods (such as&nbsp;looking up a key in a map) to make it easier to implement idiomatic custom&nbsp;functions, and didn&rsquo;t provide access to crucial information about values such as&nbsp;whether strings were&nbsp;quoted.</p></li> <li><p>All of the asynchronous functions were callback-based rather&nbsp;than promise-based.</p></li> </ul> <p>The new <span class=caps>API</span> addresses these issues and more with a modern, idiomatic <span class=caps>API</span>&nbsp;that will make working with Sass from <span class=caps>JS</span> a&nbsp;breeze.</p> <h2 id=compilation> <a class=anchor href="#compilation"><span class=visuallyhidden>Compilation permalink</span></a>Compilation</h2> <p>At the heart of the <span class=caps>API</span> are four functions that do the actual Sass&nbsp;compilation, two synchronous and two asynchronous. They&rsquo;re presented here in&nbsp;TypeScript syntax to clarify exactly what they take and return, but you can always&nbsp;call them from plain&nbsp;<span class=caps>JS</span>:</p> <pre class="highlight typescript"><code><span class="kd">function</span> <span class="nx">compile</span><span class="p">(</span>
+  <span class="nx">path</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+  <span class="nx">options</span><span class="p">?:</span> <span class="nx">Options</span><span class="o">&lt;</span><span class="s1">'sync'</span><span class="o">&gt;</span>
+<span class="p">)</span><span class="err">:</span> <span class="nx">CompileResult</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">compileString</span><span class="p">(</span>
+  <span class="nx">source</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+  <span class="nx">options</span><span class="p">?:</span> <span class="nx">StringOptions</span><span class="o">&lt;</span><span class="s1">'sync'</span><span class="o">&gt;</span>
+<span class="p">)</span><span class="err">:</span> <span class="nx">CompileResult</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">compileAsync</span><span class="p">(</span>
+  <span class="nx">path</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+  <span class="nx">options</span><span class="p">?:</span> <span class="nx">Options</span><span class="o">&lt;</span><span class="s1">'async'</span><span class="o">&gt;</span>
+<span class="p">)</span><span class="err">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">CompileResult</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">compileStringAsync</span><span class="p">(</span>
+  <span class="nx">source</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+  <span class="nx">options</span><span class="p">?:</span> <span class="nx">StringOptions</span><span class="o">&lt;</span><span class="s1">'async'</span><span class="o">&gt;</span>
+<span class="p">)</span><span class="err">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">CompileResult</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre> <p>The <code>compile()</code> and <code>compileAsync()</code> functions load a Sass file from a path&nbsp;on disk, whereas <code>compileString()</code> and <code>compileStringAsync()</code> compile Sass&nbsp;source code passed in as a string. All these take the following&nbsp;options:</p> <ul> <li><code>alertAscii</code>: Whether errors and warnings should use only <span class=caps>ASCII</span> characters&nbsp;(as opposed to, for example, Unicode box-drawing&nbsp;characters).</li> <li><code>alertColor</code>: Whether errors and warnings should use terminal&nbsp;colors.</li> <li><code>loadPaths</code>: A list of file paths to use to look up files to load, just&nbsp;like <code>includePaths</code> in the old&nbsp;<span class=caps>API.</span></li> <li><code>importers</code>: A list of <a href="#importers">custom importers</a> to use to load&nbsp;Sass source&nbsp;files.</li> <li><code>functions</code>: An object whose keys are Sass function signatures and&nbsp;whose values are <a href="#functions">custom functions</a>.</li> <li><code>quietDeps</code>: Whether to silence deprecation warnings in&nbsp;dependencies.</li> <li><code>logger</code>: The <a href="#loggers">custom logger</a> to use to emit warnings and&nbsp;debug messages.</li> <li><code>sourceMap</code>: Whether to generate a source map during&nbsp;compilation.</li> <li><code>style</code>: The output style, <code>&#39;compressed&#39;</code> or&nbsp;<code>&#39;expanded&#39;</code>.</li> <li><code>verbose</code>: Whether to emit every deprecation warning&nbsp;encountered.</li> </ul> <p>The <code>compileString()</code> and <code>compileStringAsync()</code> functions take a few&nbsp;additional options:</p> <ul> <li><code>syntax</code>: The syntax of the file, <code>&#39;scss&#39;</code> (the default), <code>&#39;indented&#39;</code>,&nbsp;or <code>&#39;css&#39;</code>.</li> <li><code>url</code>: The <a href="#canonicalizing">canonical <span class=caps>URL</span></a> of the&nbsp;file.</li> <li><code>importer</code>: The <a href="#importers">custom importer</a> to treat as the file&rsquo;s&nbsp;source. If this is passed, this importer will be used to resolve relative loads&nbsp;from this&nbsp;stylesheet.</li> </ul> <p>All these functions return an object with the following&nbsp;fields:</p> <ul> <li><code>css</code>: The compiled <span class=caps>CSS</span>, as a&nbsp;string.</li> <li><code>loadedUrls</code>: All the URLs loaded during the compilation, in no&nbsp;particular order.</li> <li><code>sourceMap</code>: The source map for the file if <code>sourceMap: true</code> was passed,&nbsp;as a decoded&nbsp;object.</li> </ul> <p>As with the Node Sass <span class=caps>API</span>, the synchronous functions will be&nbsp;substantially faster than their asynchronous counterparts. Unfortunately the new <span class=caps>API</span> will&nbsp;not support the <code>fibers</code> option for speeding up asynchronous compilation, since <a href="/blog/node-fibers-discontinued">the <code>fibers</code> package has been discontinued</a>.</p> <h2 id=loggers> <a class=anchor href="#loggers"><span class=visuallyhidden>Loggers permalink</span></a>Loggers</h2> <p>The logger <span class=caps>API</span> gives you more fine-grained control over how and when&nbsp;warnings and debug messages are emitted. Unlike other aspects of this proposal,&nbsp;a <code>logger</code> option will also be added to the <em>old</em> <span class=caps>API</span> to allow you to control&nbsp;your messages there without needing to upgrade to the new <span class=caps>API</span>&nbsp;immediately.</p> <p>A logger implements the following&nbsp;interface:</p> <pre class="highlight typescript"><code><span class="kr">interface</span> <span class="nx">Logger</span> <span class="p">{</span>
+  <span class="nx">warn</span><span class="p">?(</span>
+    <span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">options</span><span class="err">:</span> <span class="p">{</span>
+      <span class="nl">deprecation</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+      <span class="nx">span</span><span class="p">?:</span> <span class="nx">SourceSpan</span><span class="p">;</span>
+      <span class="nx">stack</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">)</span><span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+
+  <span class="nx">debug</span><span class="p">?(</span>
+    <span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">options</span><span class="err">:</span> <span class="p">{</span><span class="nl">span</span><span class="p">:</span> <span class="nx">SourceSpan</span><span class="p">}</span>
+  <span class="p">)</span><span class="err">:</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <p>The <code>warn</code> function handles warnings, including both warnings from the&nbsp;compiler itself and from <code>@warn</code> rules. It&rsquo;s&nbsp;passed:</p> <ul> <li>The warning&nbsp;message</li> <li>A flag indicating whether it&rsquo;s specifically a deprecation&nbsp;warning</li> <li>A span indicating where the warning was located, if it comes from a&nbsp;specific location</li> <li>The Sass stack trace at the point at which the warning was encountered, if&nbsp;it was encountered during&nbsp;execution</li> </ul> <p>The <code>debug</code> function handles only <code>@debug</code> rules, and is just passed the&nbsp;message and the rule&rsquo;s span. For more information on the <code>SourceSpan</code> type, see <a href="https://github.com/sass/sass/tree/main/proposal/js-logger.d.ts">the Logger proposal</a>.</p> <p>Sass will also provide a built-in logger, <code>Logger.silent</code>, that never emits&nbsp;any messages. This will allow you to easily run Sass in &ldquo;quiet mode&rdquo; where&nbsp;no warnings are ever&nbsp;surfaced.</p> <h2 id=importers> <a class=anchor href="#importers"><span class=visuallyhidden>Importers permalink</span></a>Importers</h2> <p>Rather than modeling importers as single-function callbacks, the new <span class=caps>API</span>&nbsp;models them as objects that expose two methods: one that <em>canonicalizes</em> a <span class=caps>URL</span>, and&nbsp;one that <em>loads</em> a canonical&nbsp;<span class=caps>URL.</span></p> <pre class="highlight typescript"><code><span class="c1">// Importers for compileAsync() and compileStringAsync() are the same, except</span>
+<span class="c1">// they may return Promises as well.</span>
+<span class="kr">interface</span> <span class="nx">Importer</span> <span class="p">{</span>
+  <span class="nx">canonicalize</span><span class="p">(</span>
+    <span class="nx">url</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">options</span><span class="err">:</span> <span class="p">{</span><span class="nl">fromImport</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">}</span>
+  <span class="p">)</span><span class="err">:</span> <span class="nx">URL</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="nx">load</span><span class="p">(</span><span class="nx">canonicalUrl</span><span class="err">:</span> <span class="nx">URL</span><span class="p">)</span><span class="err">:</span> <span class="nx">ImporterResult</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <p>Note that even stylesheets that are loaded directly from the filesystem&nbsp;through <code>compile()</code> or <code>loadPaths</code> are treated as though they&rsquo;re loaded by an&nbsp;importer. This built-in filesystem importer canonicalizes all paths to <code>file:</code> URLs,&nbsp;and loads those URLs from the physical&nbsp;filesystem.</p> <h3 id=canonicalizing> <a class=anchor href="#canonicalizing"><span class=visuallyhidden>Canonicalizing permalink</span></a>Canonicalizing</h3> <p>The first step determines the canonical <span class=caps>URL</span> for a stylesheet. Each&nbsp;stylesheet has exactly one canonical <span class=caps>URL</span> that in turn refers to exactly one stylesheet.&nbsp;The canonical <span class=caps>URL</span> must be absolute, including a scheme, but the specific&nbsp;structure is up to the importer. In most cases, the stylesheet in question will exist&nbsp;on disk and the importer will just return a <code>file:</code> <span class=caps>URL</span> for&nbsp;it.</p> <p>The <code>canonicalize()</code> method takes a <span class=caps>URL</span> string that may be either relative&nbsp;or absolute. If the importer recognizes that <span class=caps>URL</span>, it returns a&nbsp;corresponding absolute <span class=caps>URL</span> (including a scheme). This is the <em>canonical <span class=caps>URL</span></em> for&nbsp;the stylesheet in question. Although the input <span class=caps>URL</span> may omit a file extension&nbsp;or an initial underscore, the canonical <span class=caps>URL</span> must be fully&nbsp;resolved.</p> <p>For a stylesheet that&rsquo;s loaded from the filesystem, the canonical <span class=caps>URL</span> will&nbsp;be the absolute <code>file:</code> <span class=caps>URL</span> of the physical file on disk. If it&rsquo;s&nbsp;generated in-memory, the importer should choose a custom <span class=caps>URL</span> scheme to guarantee&nbsp;that its canonical URLs don&rsquo;t conflict with any other&nbsp;importer&rsquo;s.</p> <p>For example, if you&rsquo;re loading Sass files from a database, you might use&nbsp;the scheme <code>db:</code>. The canonical <span class=caps>URL</span> for a stylesheet associated with key&nbsp;<code>styles</code> in the database might be&nbsp;<code>db:styles</code>.</p> <p>This function also takes a <code>fromImport</code> option that indicates whether&nbsp;the importer is being invoked from an <code>@import</code> rule (as opposed to&nbsp;<code>@use</code>, <code>@forward</code>, or&nbsp;<code>meta.load-css()</code>).</p> <p>Having a canonical <span class=caps>URL</span> for each stylesheet allows Sass to ensure that&nbsp;the same stylesheet isn&rsquo;t loaded multiple times in the new module&nbsp;system.</p> <h4 id=canonicalizing-relative-loads> <a class=anchor href="#canonicalizing-relative-loads"><span class=visuallyhidden>Canonicalizing Relative Loads permalink</span></a>Canonicalizing Relative&nbsp;Loads</h4> <p>When a stylesheet tries to load a relative <span class=caps>URL</span>, such as <code>@use &quot;variables&quot;</code>,&nbsp;it&rsquo;s not clear from the document itself whether that refers to a file that&nbsp;exists relative to the stylesheet or to another importer or load path. Here&rsquo;s how&nbsp;the importer <span class=caps>API</span> resolves that&nbsp;ambiguity:</p> <ul> <li><p>First, the relative <span class=caps>URL</span> is resolved relative to the canonical <span class=caps>URL</span> of&nbsp;the stylesheet that contained the <code>@use</code> (or <code>@forward</code> or <code>@import</code>).&nbsp;For example, if the canonical <span class=caps>URL</span> is <code>file:///path/to/my/_styles.scss</code>, then&nbsp;the resolved <span class=caps>URL</span> will be&nbsp;<code>file:///path/to/my/variables</code>.</p></li> <li><p>This <span class=caps>URL</span> is then passed to the <code>canonicalize()</code> method of the importer&nbsp;that loaded the old stylesheet. (That means it&rsquo;s important for your importers&nbsp;to support absolute URLs!) If the importer recognizes it, it returns&nbsp;the canonical value which is then passed to that importer&rsquo;s <code>load()</code>;&nbsp;otherwise, it returns&nbsp;<code>null</code>.</p></li> <li><p>If the old stylesheet&rsquo;s importer didn&rsquo;t recognize the <span class=caps>URL</span>, it&rsquo;s passed to&nbsp;all the <code>importers</code>&lsquo; canonicalize functions in the order they appear in&nbsp;<code>options</code>, then checked for in all the <code>loadPaths</code>. If none of those recognizes it,&nbsp;the load&nbsp;fails.</p></li> </ul> <p>It&rsquo;s important that local relative paths take precedence over other importers&nbsp;or load paths, because otherwise your local stylesheets could get&nbsp;unexpectedly broken by a dependency adding a file with a conflicting&nbsp;name.</p> <h3 id=loading> <a class=anchor href="#loading"><span class=visuallyhidden>Loading permalink</span></a>Loading</h3> <p>The second step actually loads the text of the stylesheet. The&nbsp;<code>load()</code> method takes a canonical <span class=caps>URL</span> that was returned by <code>canonicalize()</code>&nbsp;and returns the contents of the stylesheet at that <span class=caps>URL.</span> This is only called&nbsp;once per compilation for each canonical <span class=caps>URL</span>; future loads of the same <span class=caps>URL</span>&nbsp;will re-use either the existing module (for <code>@use</code> and <code>@forward</code>) or the&nbsp;parse tree (for&nbsp;<code>@import</code>).</p> <p>The <code>load()</code> method returns an object with the following&nbsp;fields:</p> <ul> <li><code>css</code>: The text of the loaded&nbsp;stylesheet.</li> <li><code>syntax</code>: The syntax of the file: <code>&#39;scss&#39;</code>, <code>&#39;indented&#39;</code>, or&nbsp;<code>&#39;css&#39;</code>.</li> <li><code>sourceMapUrl</code>: An optional browser-accessible <code>URL</code> to include in source&nbsp;maps when referring to this&nbsp;file.</li> </ul> <h3 id=fileimporter> <a class=anchor href="#fileimporter"><span class=visuallyhidden>FileImporter permalink</span></a><code>FileImporter</code> </h3> <p>This proposal also adds a special type of importer known as a&nbsp;<code>FileImporter</code>. This importer makes the common case of redirecting loads to somewhere on&nbsp;the physical filesystem easier. It doesn&rsquo;t require the caller to&nbsp;implement <code>load()</code>, since that&rsquo;s always going to be the same for files on&nbsp;disk.</p> <pre class="highlight typescript"><code><span class="kr">interface</span> <span class="nx">FileImporter</span> <span class="p">{</span>
+  <span class="nx">findFileUrl</span><span class="p">(</span>
+    <span class="nx">url</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">options</span><span class="err">:</span> <span class="p">{</span><span class="nl">fromImport</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">}</span>
+  <span class="p">)</span><span class="err">:</span> <span class="nx">FileImporterResult</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <p>The <code>findFileUrl()</code> method takes a relative <span class=caps>URL</span> and returns an object with&nbsp;the following&nbsp;fields:</p> <ul> <li><code>url</code>: The absolute <code>file:</code> <span class=caps>URL</span> of the file to load. This <span class=caps>URL</span> doesn&rsquo;t need&nbsp;to be fully canonicalized: the Sass compiler will take care of&nbsp;resolving partials, file extensions, index files, and so&nbsp;on.</li> <li><code>sourceMapUrl</code>: An optional browser-accessible <code>URL</code> to include in source&nbsp;maps when referring to this&nbsp;file.</li> </ul> <h2 id=functions> <a class=anchor href="#functions"><span class=visuallyhidden>Functions permalink</span></a>Functions</h2> <p>The new function <span class=caps>API</span>&rsquo;s function type is very similar to the old&nbsp;<span class=caps>API</span>&rsquo;s:</p> <pre class="highlight typescript"><code><span class="kd">type</span> <span class="nx">CustomFunctionCallback</span> <span class="o">=</span> <span class="p">(</span><span class="nx">args</span><span class="err">:</span> <span class="nx">Value</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="nx">Value</span><span class="p">;</span>
+</code></pre> <p>The only differences&nbsp;are:</p> <ul> <li>Async functions return a <code>Promise&lt;Value&gt;</code> rather than calling a&nbsp;callback.</li> <li>The value types themselves are&nbsp;different.</li> </ul> <p>The second point is pretty substantial, though! The new value types are&nbsp;much more fleshed out than the old versions. Let&rsquo;s start with the parent&nbsp;class:</p> <pre class="highlight typescript"><code><span class="kd">abstract</span> <span class="kr">class</span> <span class="nx">Value</span> <span class="p">{</span>
+  <span class="cm">/**
+   * Returns the values of `this` when interpreted as a list.
+   *
+   * - For a list, this returns its elements.
+   * - For a map, this returns each of its key/value pairs as a `SassList`.
+   * - For any other value, this returns a list that contains only that value.
+   */</span>
+  <span class="nx">get</span> <span class="nx">asList</span><span class="p">()</span><span class="err">:</span> <span class="nx">List</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="p">;</span>
+
+  <span class="cm">/** Whether `this` is a bracketed Sass list. */</span>
+  <span class="nx">get</span> <span class="nx">hasBrackets</span><span class="p">()</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">;</span>
+
+  <span class="cm">/** Whether `this` is truthy (any value other than `null` or `false`). */</span>
+  <span class="nx">get</span> <span class="nx">isTruthy</span><span class="p">()</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">;</span>
+
+  <span class="cm">/** Returns JS's null if this is `sassNull`, or `this` otherwise. */</span>
+  <span class="nx">get</span> <span class="nx">realNull</span><span class="p">()</span><span class="err">:</span> <span class="kc">null</span> <span class="o">|</span> <span class="nx">Value</span><span class="p">;</span>
+
+  <span class="cm">/** If `this` is a list, return its separator. Otherwise, return `null`. */</span>
+  <span class="nx">get</span> <span class="nx">separator</span><span class="p">()</span><span class="err">:</span> <span class="nx">ListSeparator</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Converts the Sass index `sassIndex` to a JS index into the array returned
+   * by `asList`.
+   *
+   * Sass indices start counting at 1, and may be negative in order to index
+   * from the end of the list.
+   */</span>
+  <span class="nx">sassIndexToListIndex</span><span class="p">(</span><span class="nx">sassIndex</span><span class="err">:</span> <span class="nx">Value</span><span class="p">)</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns `this` if it's a `SassBoolean`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertBoolean</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">SassBoolean</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns `this` if it's a `SassColor`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertColor</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">SassColor</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns `this` if it's a `SassFunction`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of the parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertFunction</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">SassFunction</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns `this` if it's a `SassMap` (or converts it to a `SassMap` if it's
+   * an empty list), and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of the parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertMap</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">SassMap</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns `this` if it's a `SassNumber`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertNumber</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">SassNumber</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns `this` if it's a `SassString`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertString</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">SassString</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns the value of `this` if it can be interpreted as a map.
+   *
+   * - If this is a map, returns its contents.
+   * - If this is an empty list, returns an empty map.
+   * - Otherwise, returns `null`.
+   */</span>
+  <span class="nx">tryMap</span><span class="p">()</span><span class="err">:</span> <span class="nx">OrderedMap</span><span class="o">&lt;</span><span class="nx">Value</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&gt;</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="cm">/** Returns whether `this == other` in SassScript. */</span>
+  <span class="nx">equals</span><span class="p">(</span><span class="nx">other</span><span class="err">:</span> <span class="nx">Value</span><span class="p">)</span><span class="err">:</span> <span class="kr">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <p>There are a couple important things to note&nbsp;here:</p> <ul> <li><p>Because <span class=caps>CSS</span> doesn&rsquo;t have a strong syntactic differentiation between a&nbsp;single element and a list containing one element, any Sass value may be treated&nbsp;as though it&rsquo;s a list. The <code>Value</code> makes it easy to follow this convention&nbsp;by making the <code>asList()</code>, <code>hasBrackets()</code>, and <code>separator()</code> getters&nbsp;available for every&nbsp;<code>Value</code>.</p></li> <li><p>The list returned this was and the map returned by <code>asMap()</code> are&nbsp;immutable types from the <a href="https://immutable-js.com/"><code>immutable</code> package</a>. This reflects Sass&rsquo;s&nbsp;built-in immutability of all its types. Although these values can&rsquo;t be&nbsp;modified directly, their APIs make it easy and efficient to create new values&nbsp;with changes&nbsp;applied.</p></li> <li><p>Sass&rsquo;s list-indexing conventions are different than JavaScript&rsquo;s.&nbsp;The <code>sassIndexToListIndex()</code> function makes it easy to convert from Sass index&nbsp;to <span class=caps>JS</span>&nbsp;index.</p></li> <li><p>In Sass, any value may be used in a boolean context, with&nbsp;<code>false</code> and <code>null</code> counting as &ldquo;falsey&rdquo; values. The <code>isTruthy</code> getter makes&nbsp;this convention easy to&nbsp;follow.</p></li> <li><p>The <code>assert*()</code> functions make it easy to ensure that you&rsquo;re being passed&nbsp;the arguments you expect, and to throw an idiomatic error if you&rsquo;re not.&nbsp;They&rsquo;re particularly useful for TypeScript users since they&rsquo;ll automatically&nbsp;narrow the type of the&nbsp;<code>Value</code>.</p></li> </ul> <p>Most Sass values have their own subclasses, but there are three singleton&nbsp;values that are just available as constants: <code>sassTrue</code>, <code>sassFalse</code>, and&nbsp;<code>sassNull</code> represent Sass&rsquo;s <code>true</code>, <code>false</code>, and <code>null</code> values&nbsp;respectively.</p> <h3 id=colors> <a class=anchor href="#colors"><span class=visuallyhidden>Colors permalink</span></a>Colors</h3> <p>The new <span class=caps>API</span>&rsquo;s <code>SassColor</code> class provides access to colors in <span class=caps>RGB</span>, <span class=caps>HSL</span>, and&nbsp;<span class=caps>HWB</span> format. As with built-in Sass color functions, any attribute can be accessed&nbsp;on any color regardless of how it was initially&nbsp;created.</p> <pre class="highlight typescript"><code><span class="kr">class</span> <span class="nx">SassColor</span> <span class="k">extends</span> <span class="nx">Value</span> <span class="p">{</span>
+  <span class="cm">/** Creates an RGB color. */</span>
+  <span class="k">static</span> <span class="nx">rgb</span><span class="p">(</span>
+    <span class="nx">red</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">green</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">blue</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">alpha</span><span class="p">?:</span> <span class="kr">number</span>
+  <span class="p">)</span><span class="err">:</span> <span class="nx">SassColor</span><span class="p">;</span>
+
+  <span class="cm">/** Creates an HSL color. */</span>
+  <span class="k">static</span> <span class="nx">hsl</span><span class="p">(</span>
+    <span class="nx">hue</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">saturation</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">lightness</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">alpha</span><span class="p">?:</span> <span class="kr">number</span>
+  <span class="p">)</span><span class="err">:</span> <span class="nx">SassColor</span><span class="p">;</span>
+
+  <span class="cm">/** Creates an HWB color. */</span>
+  <span class="k">static</span> <span class="nx">hwb</span><span class="p">(</span>
+    <span class="nx">hue</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">whiteness</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">blackness</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">alpha</span><span class="p">?:</span> <span class="kr">number</span>
+  <span class="p">)</span><span class="err">:</span> <span class="nx">SassColor</span><span class="p">;</span>
+
+  <span class="cm">/** The color's red channel. */</span>
+  <span class="nx">get</span> <span class="nx">red</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** The color's green channel. */</span>
+  <span class="nx">get</span> <span class="nx">green</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** The color's blue channel. */</span>
+  <span class="nx">get</span> <span class="nx">blue</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** The color's hue. */</span>
+  <span class="nx">get</span> <span class="nx">hue</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** The color's saturation. */</span>
+  <span class="nx">get</span> <span class="nx">saturation</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** The color's lightness. */</span>
+  <span class="nx">get</span> <span class="nx">lightness</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** The color's whiteness. */</span>
+  <span class="nx">get</span> <span class="nx">whiteness</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** The color's blackeness. */</span>
+  <span class="nx">get</span> <span class="nx">blackness</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** The color's alpha channel. */</span>
+  <span class="nx">get</span> <span class="nx">alpha</span><span class="p">()</span><span class="err">:</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns a copy of `this` with the RGB channels updated to match `options`.
+   */</span>
+  <span class="nx">changeRgb</span><span class="p">(</span><span class="nx">options</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nx">red</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">green</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">blue</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">alpha</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="p">})</span><span class="err">:</span> <span class="nx">SassColor</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns a copy of `this` with the HSL values updated to match `options`.
+   */</span>
+  <span class="nx">changeHsl</span><span class="p">(</span><span class="nx">options</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nx">hue</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">saturation</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">lightness</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">alpha</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="p">})</span><span class="err">:</span> <span class="nx">SassColor</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns a copy of `this` with the HWB values updated to match `options`.
+   */</span>
+  <span class="nx">changeHwb</span><span class="p">(</span><span class="nx">options</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nx">hue</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">whiteness</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">blackness</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nx">alpha</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="p">})</span><span class="err">:</span> <span class="nx">SassColor</span><span class="p">;</span>
+
+  <span class="cm">/** Returns a copy of `this` with `alpha` as its alpha channel. */</span>
+  <span class="nx">changeAlpha</span><span class="p">(</span><span class="nx">alpha</span><span class="err">:</span> <span class="kr">number</span><span class="p">)</span><span class="err">:</span> <span class="nx">SassColor</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <h3 id=numbers> <a class=anchor href="#numbers"><span class=visuallyhidden>Numbers permalink</span></a>Numbers</h3> <p>The <code>SassNumber</code> class stores its numerator and denominator units as&nbsp;arrays rather than strings. In addition, it provides methods for asserting that it&nbsp;has specific units (<code>assertNoUnits()</code>, <code>assertUnit()</code>) and for converting it&nbsp;to specific units (<code>convert()</code>, <code>convertToMatch()</code>,&nbsp;<code>convertValue()</code>, <code>convertValueToMatch()</code>, <code>coerce()</code>, <code>coerceValue()</code>,&nbsp;<code>coerceValueToMatch()</code>).</p> <p>Sass&rsquo;s numeric logic is also subtly different from <span class=caps>JS</span>, since Sass&nbsp;considers numbers that differ by less than the 10th decimal digit to be identical.&nbsp;This <span class=caps>API</span> provides a number of methods that help convert between this and&nbsp;JavaScript&rsquo;s numeric&nbsp;logic.</p> <pre class="highlight typescript"><code><span class="kr">class</span> <span class="nx">SassNumber</span> <span class="k">extends</span> <span class="nx">Value</span> <span class="p">{</span>
+  <span class="cm">/** Creates a Sass number with no units or a single numerator unit. */</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">value</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">unit</span><span class="p">?:</span> <span class="kr">string</span><span class="p">);</span>
+
+  <span class="cm">/** Creates a Sass number with multiple numerator and/or denominator units. */</span>
+  <span class="k">static</span> <span class="nx">withUnits</span><span class="p">(</span>
+    <span class="nx">value</span><span class="err">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="nx">options</span><span class="p">?:</span> <span class="p">{</span>
+      <span class="nx">numeratorUnits</span><span class="p">?:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">;</span>
+      <span class="nx">denominatorUnits</span><span class="p">?:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">):</span> <span class="nx">SassNumber</span><span class="p">;</span>
+
+  <span class="cm">/** This number's value. */</span>
+  <span class="nx">get</span> <span class="nx">value</span><span class="p">():</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Whether `value` is an integer according to Sass's numeric logic.
+   *
+   * The integer value can be accessed using `asInt`.
+   */</span>
+  <span class="nx">get</span> <span class="nx">isInt</span><span class="p">():</span> <span class="kr">boolean</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * If `value` is an integer according to Sass's numeric logic, returns the
+   * corresponding JS integer, or `null` if `value` isn't an integer.
+   */</span>
+  <span class="nx">get</span> <span class="nx">asInt</span><span class="p">():</span> <span class="kr">number</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="cm">/** This number's numerator units. */</span>
+  <span class="nx">get</span> <span class="nx">numeratorUnits</span><span class="p">():</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">;</span>
+
+  <span class="cm">/** This number's denominator units. */</span>
+  <span class="nx">get</span> <span class="nx">denominatorUnits</span><span class="p">():</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">;</span>
+
+  <span class="cm">/** Whether `this` has numerator or denominator units. */</span>
+  <span class="nx">get</span> <span class="nx">hasUnits</span><span class="p">():</span> <span class="kr">boolean</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * If `value` is an integer according to Sass's numeric logic, returns the
+   * corresponding JS integer, or throws an error if `value` isn't an integer.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of the parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertInt</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * If `value` is between `min` and `max` according to Sass's numeric logic,
+   * returns it clamped to that range. Otherwise, throws an error.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of the parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertInRange</span><span class="p">(</span><span class="na">min</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">max</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns `this` if it has no units. Otherwise, throws an error.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertNoUnits</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">SassNumber</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Returns `this` if it has `unit` as its single (numerator) unit. Otherwise,
+   * throws an error.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="nx">assertUnit</span><span class="p">(</span><span class="nx">name</span><span class="p">?:</span> <span class="na">stringunit</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">SassNumber</span><span class="p">;</span>
+
+  <span class="cm">/** Returns whether `this` has the single numerator unit `unit`. */</span>
+  <span class="nx">hasUnit</span><span class="p">(</span><span class="na">unit</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">boolean</span><span class="p">;</span>
+
+  <span class="cm">/** Returns whether this number's units are compatible with `unit`. */</span>
+  <span class="nx">compatibleWithUnit</span><span class="p">(</span><span class="na">unit</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">boolean</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * If this number's units are compatible with `newNumerators` and
+   * `newDenominators`, returns a new number with those units that's equal to
+   * `this`. Otherwise, throws an error.
+   *
+   * Note that unitless numbers are only compatible with other unitless numbers.
+   */</span>
+  <span class="nx">convert</span><span class="p">(</span>
+    <span class="na">newNumerators</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="na">newDenominators</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+  <span class="p">):</span> <span class="nx">SassNumber</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * If this number's units are compatible with `other`'s, returns a new number
+   * with `other`'s units that's equal to `this`. Otherwise, throws an error.
+   *
+   * Note that unitless numbers are only compatible with other unitless numbers.
+   */</span>
+  <span class="nx">convertToMatch</span><span class="p">(</span><span class="na">other</span><span class="p">:</span> <span class="nx">SassNumber</span><span class="p">):</span> <span class="nx">SassNumber</span><span class="p">;</span>
+
+  <span class="cm">/** Equivalent to `convert(newNumerators, newDenominators).value`. */</span>
+  <span class="nx">convertValue</span><span class="p">(</span>
+    <span class="na">newNumerators</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="na">newDenominators</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+  <span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** Equivalent to `convertToMatch(other).value`. */</span>
+  <span class="nx">convertValueToMatch</span><span class="p">(</span><span class="na">other</span><span class="p">:</span> <span class="nx">SassNumber</span><span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Like `convert()`, but if `this` is unitless returns a copy of it with the
+   * same value and the given units.
+   */</span>
+  <span class="nx">coerce</span><span class="p">(</span>
+    <span class="na">newNumerators</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="na">newDenominators</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+  <span class="p">):</span> <span class="nx">SassNumber</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Like `convertToMatch()`, but if `this` is unitless returns a copy of it
+   * with the same value and `other`'s units.
+   */</span>
+  <span class="nx">coerceToMatch</span><span class="p">(</span><span class="na">other</span><span class="p">:</span> <span class="nx">SassNumber</span><span class="p">):</span> <span class="nx">SassNumber</span><span class="p">;</span>
+
+  <span class="cm">/** Equivalent to `coerce(newNumerators, newDenominators).value`. */</span>
+  <span class="nx">coerceValue</span><span class="p">(</span>
+    <span class="na">newNumerators</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="na">newDenominators</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+  <span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/** Equivalent to `coerceToMatch(other).value`. */</span>
+  <span class="nx">coerceValueToMatch</span><span class="p">(</span><span class="na">other</span><span class="p">:</span> <span class="nx">SassNumber</span><span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <h3 id=strings> <a class=anchor href="#strings"><span class=visuallyhidden>Strings permalink</span></a>Strings</h3> <p>The <code>SassString</code> class provides access to information about whether or not&nbsp;the string is quoted. As with lists, <span class=caps>JS</span>&rsquo;s notion of indexes differs from Sass&rsquo;s,&nbsp;so it also provides the <code>sassIndexToStringIndex()</code> method to convert a <span class=caps>JS</span>&nbsp;index into a Sass&nbsp;index.</p> <pre class="highlight typescript"><code><span class="kr">class</span> <span class="nx">SassString</span> <span class="k">extends</span> <span class="nx">Value</span> <span class="p">{</span>
+  <span class="cm">/** Creates a string with the given `text`. */</span>
+  <span class="kd">constructor</span><span class="p">(</span>
+    <span class="nx">text</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">options</span><span class="p">?:</span> <span class="p">{</span>
+      <span class="cm">/** @default true */</span>
+      <span class="na">quotes</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+
+  <span class="cm">/** Creates an empty string`. */</span>
+  <span class="k">static</span> <span class="nx">empty</span><span class="p">(</span><span class="nx">options</span><span class="p">?:</span> <span class="p">{</span>
+    <span class="cm">/** @default true */</span>
+    <span class="na">quotes</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+  <span class="p">}):</span> <span class="nx">SassString</span><span class="p">;</span>
+
+  <span class="cm">/** The contents of `this`. */</span>
+  <span class="nx">get</span> <span class="nx">text</span><span class="p">():</span> <span class="kr">string</span><span class="p">;</span>
+
+  <span class="cm">/** Whether `this` has quotes. */</span>
+  <span class="nx">get</span> <span class="nx">hasQuotes</span><span class="p">():</span> <span class="kr">boolean</span><span class="p">;</span>
+
+  <span class="cm">/** The number of Unicode code points in `text`. */</span>
+  <span class="nx">get</span> <span class="nx">sassLength</span><span class="p">():</span> <span class="kr">number</span><span class="p">;</span>
+
+  <span class="cm">/**
+   * Converts the Sass index `sassIndex` to a JS index into `text`.
+   *
+   * Sass indices start counting at 1, and may be negative in order to index
+   * from the end of the list. In addition, Sass indexes strings by Unicode code
+   * point, while JS indexes them by UTF-16 code unit.
+   */</span>
+  <span class="nx">sassIndexToStringIndex</span><span class="p">(</span><span class="na">sassIndex</span><span class="p">:</span> <span class="nx">Value</span><span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <h3 id=lists> <a class=anchor href="#lists"><span class=visuallyhidden>Lists permalink</span></a>Lists</h3> <p>As mentioned above, most list functions are on the <code>Value</code> superclass to make&nbsp;it easy to follow the Sass convention of treating all values as lists. However,&nbsp;the <code>SassList</code> class can still be constructed to make new&nbsp;lists:</p> <pre class="highlight typescript"><code><span class="kr">class</span> <span class="nx">SassList</span> <span class="k">extends</span> <span class="nx">Value</span> <span class="p">{</span>
+  <span class="cm">/** Creates a Sass list with the given `contents`. */</span>
+  <span class="kd">constructor</span><span class="p">(</span>
+    <span class="nx">contents</span><span class="err">:</span> <span class="nx">Value</span><span class="p">[]</span> <span class="o">|</span> <span class="nx">List</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="nx">options</span><span class="p">?:</span> <span class="p">{</span>
+      <span class="cm">/** @default ',' */</span>
+      <span class="nx">separator</span><span class="p">?:</span> <span class="nx">ListSeparator</span><span class="p">;</span>
+      <span class="cm">/** @default false */</span>
+      <span class="nx">brackets</span><span class="p">?:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+
+  <span class="cm">/** Creates an empty Sass list. */</span>
+  <span class="k">static</span> <span class="nx">empty</span><span class="p">(</span><span class="nx">options</span><span class="p">?:</span> <span class="p">{</span>
+    <span class="cm">/** @default null */</span>
+    <span class="nx">separator</span><span class="p">?:</span> <span class="nx">ListSeparator</span><span class="p">;</span>
+    <span class="cm">/** @default false */</span>
+    <span class="nx">brackets</span><span class="p">?:</span> <span class="kr">boolean</span><span class="p">;</span>
+  <span class="p">}):</span> <span class="nx">SassList</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <h3 id=maps> <a class=anchor href="#maps"><span class=visuallyhidden>Maps permalink</span></a>Maps</h3> <p>The <code>SassMap</code> class simply exposes its contents as an <code>OrderedMap</code> from&nbsp;the <a href="https://immutable-js.com/"><code>immutable</code> package</a>.</p> <pre class="highlight typescript"><code><span class="kr">class</span> <span class="nx">SassMap</span> <span class="k">extends</span> <span class="nx">Value</span> <span class="p">{</span>
+  <span class="cm">/** Creates a Sass map with the given `contents`. */</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">contents</span><span class="err">:</span> <span class="nx">OrderedMap</span><span class="o">&lt;</span><span class="nx">Value</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&gt;</span><span class="p">);</span>
+
+  <span class="cm">/** Creates an empty Sass map. */</span>
+  <span class="k">static</span> <span class="nx">empty</span><span class="p">()</span><span class="err">:</span> <span class="nx">SassMap</span><span class="p">;</span>
+
+  <span class="cm">/** Returns this map's contents. */</span>
+  <span class="nx">get</span> <span class="nx">contents</span><span class="p">()</span><span class="err">:</span> <span class="nx">OrderedMap</span><span class="o">&lt;</span><span class="nx">Value</span><span class="p">,</span> <span class="nx">Value</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre> <h3 id=functions> <a class=anchor href="#functions"><span class=visuallyhidden>Functions permalink</span></a>Functions</h3> <p>The <code>SassFunction</code> class is fairly restrictive: it just allows a new&nbsp;first-class function to be created with a synchronous callback. These functions can&rsquo;t&nbsp;be invoked by custom functions—but they still provide more power than the old&nbsp;<span class=caps>API</span>!</p> <pre class="highlight typescript"><code><span class="kr">class</span> <span class="nx">SassFunction</span> <span class="k">extends</span> <span class="nx">Value</span> <span class="p">{</span>
+  <span class="cm">/**
+   * Creates a Sass function value with the given `signature` that calls
+   * `callback` when it's invoked.
+   */</span>
+  <span class="kd">constructor</span><span class="p">(</span>
+    <span class="nx">signature</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">callback</span><span class="err">:</span> <span class="nx">CustomFunctionCallback</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre> <h2 id=more-information> <a class=anchor href="#more-information"><span class=visuallyhidden>More Information permalink</span></a>More&nbsp;Information</h2> <p>If you want to know more about these proposals and see their most&nbsp;up-to-date forms, they&rsquo;re available on GitHub to view in&nbsp;full:</p> <ul> <li><a href="https://github.com/sass/sass/tree/main/proposal/new-js-api.d.ts">Compile <span class=caps>API</span>&nbsp;proposal</a></li> <li><a href="https://github.com/sass/sass/blob/main/proposal/js-logger.d.ts">Logger&nbsp;proposal</a></li> <li><a href="https://github.com/sass/sass/blob/main/proposal/new-js-importer.d.ts">Importer&nbsp;proposal</a></li> <li><a href="https://github.com/sass/sass/blob/main/proposal/new-function-and-values-api.d.ts">Functions and values&nbsp;proposal</a></li> </ul> <p>We&rsquo;re eager for feedback, so please <a href="https://github.com/sass/sass/issues/new">let us know what you think</a>! The&nbsp;proposals in question will be open for at least a month after this blog post goes&nbsp;live, and possibly more depending on how lively the discussion around them&nbsp;is.</p> </div> <div class=sl-c-alert> <div aria-labelledby=release-nav class='sl-l-container sl-c-list-horizontal-wrapper'> <ul class=sl-l-grid--justify-center> <li id=release-nav> Current Releases: </li> <li> <span class=release-name><a href="/dart-sass">Dart Sass</a>&#32;<a href="https://github.com/sass/dart-sass/releases/tag/1.52.1">1.52.1</a></span> </li> <li> <span class=release-name><a href="/libsass">LibSass</a>&#32;<a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span> </li> <li> <span class=release-name><a href="/ruby-sass">Ruby Sass</a><span aria-label=coffin role=presentation> &#32; ⚰ </span></span> </li> <li class='sl-l-grid__column sl-l-large-grid__column--auto-size'> <a href="/implementation">Implementation Guide</a> </li> </ul> </div> </div> </main> <footer class='site-footer contentinfo' itemscope=itemscope itemtype='http://schema.org/WPFooter' role=contentinfo> <div class='sl-l-container sl-l-section'> <div class='sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters'> <div class=sl-l-grid__column> <p>Sass &copy; 2006&ndash;2022 the Sass team, and numerous contributors. It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/master/LICENSE">MIT&nbsp;License</a>.</p> <nav class=sl-c-list-horizontal-wrapper> <ul> <li><a href="https://github.com/sass">Sass on GitHub</a></li> <li><a href="https://github.com/sass/sass-site">Website Source Code</a></li> <li><a href="/styleguide">Style Guide</a></li> <li><a href="/community-guidelines">Community Guidelines</a></li> </ul> </nav> </div> <div class='sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right'> <a class=twitter-follow-button data-show-count=false data-size=large href='https://twitter.com/SassCSS'> Follow @SassCSS </a> <script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script> </div> </div> </div> </footer> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script> <script>
+  docsearch({
+    container: '#docsearch',
+    appId: 'Q9MULQONSV',
+    indexName: 'sass-lang',
+    apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+    transformItems: function(hits) {
+      var domain = window.location.origin + "/";
+      hits.forEach(function(hit) {
+        if (!hit.url.startsWith(domain)) {
+          hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+        }
+      });
+      return hits;
+    },
+  });
+</script> <script src="/assets/js/sass-9c3ad270.js"></script> </body> </html>
