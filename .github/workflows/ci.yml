@@ -5,19 +5,37 @@ on:
     branches: [main, 'feature.*']
   pull_request:
 
+env:
+  RUBY_VERSION: 2.5.3
+  NODE_VERSION: 16
+
 jobs:
   unit_tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version: ['2.5.3']
 
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
-      with: {node-version: 16}
+      with:
+        node-version: ${{ env.NODE_VERSION }}
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        ruby-version: ${{ env.RUBY_VERSION }}
+        bundler-cache: true
     - run: bundle exec rake test
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [unit_tests]
+    if:
+      github.event_name == 'push' &&
+        github.ref == 'refs/heads/main' &&
+        github.repository == 'sass/sass-site'
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: akhileshns/heroku-deploy@79ef2ae4ff9b897010907016b268fd0f88561820 # v3.12.12
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_TOKEN }}
+        heroku_app_name: sass-lang
+        heroku_email: sass.bot.beep.boop@gmail.com
