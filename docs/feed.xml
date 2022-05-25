@@ -4,13 +4,13 @@
   <id>https://sass-lang.com/blog</id>
   <link href="https://sass-lang.com/blog"/>
   <link href="https://sass-lang.com/feed.xml" rel="self"/>
-  <updated>2022-02-01T02:00:00-08:00</updated>
+  <updated>2022-02-01T10:00:00+00:00</updated>
   <entry>
     <title>Embedded Sass is Live</title>
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
-    <published>2022-02-01T02:00:00-08:00</published>
-    <updated>2022-03-25T16:22:21-07:00</updated>
+    <published>2022-02-01T10:00:00+00:00</published>
+    <updated>2022-05-25T23:52:38+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -78,8 +78,8 @@ for many other popular frontend languages. If you end up doing so, message us
     <title>New JS API Release Candidate is Live</title>
     <link href="https://sass-lang.com/blog/new-js-api-release-candidate" rel="alternate"/>
     <id>https://sass-lang.com/blog/new-js-api-release-candidate</id>
-    <published>2021-11-20T16:15:00-08:00</published>
-    <updated>2022-03-25T16:22:21-07:00</updated>
+    <published>2021-11-21T00:15:00+00:00</published>
+    <updated>2022-05-25T23:52:38+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -132,8 +132,8 @@ in a year or so, and to be disabled for good once we release Dart Sass 2.0.0.&lt
     <title>Request for Comments: New JS API</title>
     <link href="https://sass-lang.com/blog/request-for-comments-new-js-api" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-new-js-api</id>
-    <published>2021-08-05T16:30:00-07:00</published>
-    <updated>2022-03-25T16:22:21-07:00</updated>
+    <published>2021-08-05T23:30:00+00:00</published>
+    <updated>2022-05-25T23:52:38+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -943,8 +943,8 @@ and possibly more depending on how lively the discussion around them is.&lt;/p&g
     <title>The Discontinuation of node-fibers</title>
     <link href="https://sass-lang.com/blog/node-fibers-discontinued" rel="alternate"/>
     <id>https://sass-lang.com/blog/node-fibers-discontinued</id>
-    <published>2021-03-26T16:00:00-07:00</published>
-    <updated>2022-03-25T16:22:21-07:00</updated>
+    <published>2021-03-26T23:00:00+00:00</published>
+    <updated>2022-05-25T23:52:38+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -1102,8 +1102,8 @@ please don&amp;rsquo;t hesitate to &lt;a href="mailto:nweiz@google.com"&gt;reach
     <title>Request for Comments: First-Class Calc</title>
     <link href="https://sass-lang.com/blog/request-for-comments-first-class-calc" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-first-class-calc</id>
-    <published>2021-03-15T02:35:00-07:00</published>
-    <updated>2022-03-25T16:22:21-07:00</updated>
+    <published>2021-03-15T09:35:00+00:00</published>
+    <updated>2022-05-25T23:52:38+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -1174,8 +1174,8 @@ like to see something change please &lt;a href="https://github.com/sass/sass/iss
     <title>LibSass is Deprecated</title>
     <link href="https://sass-lang.com/blog/libsass-is-deprecated" rel="alternate"/>
     <id>https://sass-lang.com/blog/libsass-is-deprecated</id>
-    <published>2020-10-26T13:00:00-07:00</published>
-    <updated>2022-03-25T16:22:21-07:00</updated>
+    <published>2020-10-26T20:00:00+00:00</published>
+    <updated>2022-05-25T23:52:38+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
