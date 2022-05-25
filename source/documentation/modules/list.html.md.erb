@@ -102,9 +102,11 @@ title: sass:list
   `$list1` if it has a separator, or else `$list2` if it has a separator, or
   else `space`. Other values aren't allowed.
 
-  If `$bracketed` is `true`, the returned list has square brackets. If it's
-  `false`, the returned list has no brackets. If it's `auto` (the default), the
-  returned list will be bracketed if `$list1` is. Other values aren't allowed.
+  If `$bracketed` is `auto` (the default), the returned list will be bracketed
+  if `$list1` is. Otherwise, the returned list will have square brackets if
+  `$bracketed` is [truthy] and no brackets if `$bracketed` is falsey.
+
+  [truthy]: /documentation/values/booleans#truthiness-and-falsiness
 
   <% example(autogen_css: false) do %>
     @debug list.join(10px 20px, 30px 40px); // 10px 20px 30px 40px
