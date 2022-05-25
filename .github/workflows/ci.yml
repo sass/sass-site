@@ -34,8 +34,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: akhileshns/heroku-deploy@79ef2ae4ff9b897010907016b268fd0f88561820 # v3.12.12
+    - uses: actions/setup-node@v2
       with:
-        heroku_api_key: ${{ secrets.HEROKU_TOKEN }}
-        heroku_app_name: sass-lang
-        heroku_email: sass.bot.beep.boop@gmail.com
+        node-version: ${{ env.NODE_VERSION }}
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ env.RUBY_VERSION }}
+        bundler-cache: true
+    - run: bundle exec rake build
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305 # v3.8.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
+        destination_dir: docs
+        cname: gh-pages.sass-lang.com
+        allow_empty_commit: true
