@@ -559,3 +559,26 @@ valid CSS will produce errors. Otherwise, the CSS will be rendered as-is. It can
 even be [extended][]!
 
 [extended]: extend
+
+## Differences From `@import`
+
+The `@use` rule is intended to replace the old [`@import` rule], but it's
+intentionally designed to work differently. Here are some major differences
+between the two:
+
+* `@use` only makes variables, functions, and mixins available within the scope
+  of the current file. It never adds them to the global scope. This makes it
+  easy to figure out where each name your Sass file references comes from, and
+  means you can use shorter names without any risk of collision.
+
+* `@use` only ever loads each file once. This ensures you don't end up
+  accidentally duplicating your dependencies' CSS many times over.
+
+* `@use` must appear at the beginning your file, and cannot be nested in style
+  rules.
+
+* Each `@use` rule can only have one URL.
+
+* `@use` requires quotes around its URL, even when using the [indented syntax].
+
+[indented syntax]: /documentation/syntax#the-indented-syntax
