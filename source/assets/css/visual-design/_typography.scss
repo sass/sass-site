@@ -179,8 +179,7 @@ code {
   font-size: ($sl-font-size--small / $sl-font-size--medium) * 1em;
   line-height: 1;
 
-  nav &,
-  p & { white-space: nowrap; }
+  nav & { white-space: nowrap; }
 }
 
 pre {
