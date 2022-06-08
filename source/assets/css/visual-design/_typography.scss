@@ -180,6 +180,9 @@ code {
   line-height: 1;
 
   nav & { white-space: nowrap; }
+  p & {
+    @include sl-breakpoint--x-large { white-space: nowrap; }
+  }
 }
 
 pre {
