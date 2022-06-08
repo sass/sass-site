@@ -1,10 +1,10 @@
-## Bug Description
+### Bug Description
 
 
-## Screenshot(s)
+### Screenshot(s)
 | Bug Screenshot(s) | 
 | --- | 
 |  |
 
-## Additional context
+### Additional context
 
