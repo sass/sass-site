@@ -148,7 +148,7 @@ h3,
 thead th { font-family: $sl-font-family--display; }
 
 h2,
-caption, {
+caption {
   font-size: $sl-font-size--x-large;
 
   @include sl-breakpoint--medium { font-size: $sl-font-size--xx-large; }
