@@ -148,7 +148,7 @@ h3,
 thead th { font-family: $sl-font-family--display; }
 
 h2,
-caption, {
+caption {
   font-size: $sl-font-size--x-large;
 
   @include sl-breakpoint--medium { font-size: $sl-font-size--xx-large; }
@@ -179,8 +179,10 @@ code {
   font-size: ($sl-font-size--small / $sl-font-size--medium) * 1em;
   line-height: 1;
 
-  nav &,
-  p & { white-space: nowrap; }
+  nav & { white-space: nowrap; }
+  p & {
+    @include sl-breakpoint--x-large { white-space: nowrap; }
+  }
 }
 
 pre {
