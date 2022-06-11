@@ -48,5 +48,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build
-        cname: gh-pages.sass-lang.com
+        cname: sass-lang.com
         allow_empty_commit: true
