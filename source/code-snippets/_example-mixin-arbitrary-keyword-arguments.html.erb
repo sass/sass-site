@@ -24,8 +24,8 @@
     @debug meta.keywords($args)
     // (string: #080, comment: #800, variable: #60b)
 
-    @each $name, $color in meta.keywords($args)
-      pre span.stx-#{$name}
+    @each $string, $color in meta.keywords($args)
+      pre span.stx-#{$string}
         color: $color
 
 
