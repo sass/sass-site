@@ -15,10 +15,23 @@ feedback, we propose to first deprecate and then eventually disallow expressions
 of the form `$a -$b`. We know deprecations are never pleasant, but this should
 be fairly painless as they go: you can simply write `$a - $b` or `$a (-$b)`,
 depending which you intend. We'll also provide a [Sass migrator] migration to
-automatically update your stylesheets. 
+automatically update your stylesheets.
 
 [strict unary operators]: https://github.com/sass/sass/blob/main/proposal/strict-unary.md
 [Sass migrator]: https://sass-lang.com/documentation/cli/migrator
+
+**Deprecated:**
+
+* `$a -$b` will no longer be allowed, because it's unclear what the author
+  intended and the current behavior is likely to be incorrect.
+
+**Still allowed:**
+
+* `$a - $b` will continue to work, since it's clearly supposed to indicate
+  subtraction.
+
+* `$a (-$b)` will continue to work, since the parentheses make the unary minus
+  unambiguous.
 
 The `$a - $b` or `$a (-$b)` options are supported by all widely-used Sass
 versions, so there shouldn't be any trouble for libraries to avoid this
