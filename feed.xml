@@ -4,13 +4,103 @@
   <id>https://sass-lang.com/blog</id>
   <link href="https://sass-lang.com/blog"/>
   <link href="https://sass-lang.com/feed.xml" rel="self"/>
-  <updated>2022-02-01T10:00:00+00:00</updated>
+  <updated>2022-06-15T23:30:00+00:00</updated>
+  <entry>
+    <title>Request for Comments: Strict Unary Operators</title>
+    <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators" rel="alternate"/>
+    <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators</id>
+    <published>2022-06-15T23:30:00+00:00</published>
+    <updated>2022-06-16T00:19:24+00:00</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;Do you know what &lt;code&gt;margin: $a -$b&lt;/code&gt; does in Sass? If you said &amp;ldquo;the same thing as
+&lt;code&gt;margin: $a (-$b)&lt;/code&gt;, I&amp;rsquo;m sorry, but you&amp;rsquo;re wrong. It&amp;rsquo;s &lt;em&gt;actually&lt;/em&gt; the same thing
+as &lt;code&gt;margin: $a - $b&lt;/code&gt;. Don&amp;rsquo;t worry, you&amp;rsquo;re not the first person to get tripped up
+by this weird corner of Sass&amp;rsquo;s parser! But our new language proposal aims to fix
+that.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;a href="https://github.com/sass/sass/blob/main/proposal/strict-unary.md"&gt;Strict Unary Operators&lt;/a&gt; proposal, which is currently open for community
+feedback, we propose to first deprecate and then eventually disallow expressions
+of the form &lt;code&gt;$a -$b&lt;/code&gt;. We know deprecations are never pleasant, but this should
+be fairly painless as they go: you can simply write &lt;code&gt;$a - $b&lt;/code&gt; or &lt;code&gt;$a (-$b)&lt;/code&gt;,
+depending which you intend. We&amp;rsquo;ll also provide a &lt;a href="https://sass-lang.com/documentation/cli/migrator"&gt;Sass migrator&lt;/a&gt; migration to
+automatically update your stylesheets.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Deprecated:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$a -$b&lt;/code&gt; will no longer be allowed, because it&amp;rsquo;s unclear what the author
+intended and the current behavior is likely to be incorrect.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Still allowed:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;$a - $b&lt;/code&gt; will continue to work, since it&amp;rsquo;s clearly supposed to indicate
+subtraction.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;$a (-$b)&lt;/code&gt; will continue to work, since the parentheses make the unary minus
+unambiguous.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;code&gt;$a - $b&lt;/code&gt; or &lt;code&gt;$a (-$b)&lt;/code&gt; options are supported by all widely-used Sass
+versions, so there shouldn&amp;rsquo;t be any trouble for libraries to avoid this
+deprecation warning and continue to support older Sass versions. In addition,
+you can always use the &lt;a href="https://sass-lang.com/documentation/cli/dart-sass#quiet-deps"&gt;&lt;code&gt;--quiet-deps&lt;/code&gt; command-line flag&lt;/a&gt; or the &lt;a href="https://sass-lang.com/documentation/js-api/interfaces/Options#quietDeps"&gt;&lt;code&gt;quietDeps&lt;/code&gt; JS
+API option&lt;/a&gt; to silence warnings from dependencies you don&amp;rsquo;t control.&lt;/p&gt;
+
+&lt;h2 id="why-does-it-work-this-way"&gt;
+&lt;a class="anchor" href="#why-does-it-work-this-way"&gt;&lt;span class="visuallyhidden"&gt;Why does it work this way? permalink&lt;/span&gt;&lt;/a&gt;Why does it work this way?&lt;/h2&gt;
+
+&lt;p&gt;Why, you might wonder, does &lt;code&gt;$a -$b&lt;/code&gt; parse this way in the first place? The
+short answer is, &amp;quot;because other programming languages do it that way&amp;rdquo;. In most
+programming languages, operators are parsed the same way regardless of the
+whitespace that may or may not surround them. If you parse &lt;code&gt;$a - $b&lt;/code&gt; as
+subtraction, you should parse &lt;code&gt;$a -$b&lt;/code&gt; as subtraction as well.&lt;/p&gt;
+
+&lt;p&gt;The problem for Sass is that we also inherit CSS&amp;rsquo;s use of space-separated lists
+of values, so in some contexts users expect to be able to write two expressions
+next to one another and have them parse the same way they would if they were
+each used on their own. These two principles come into conflict and produce the
+confusion this proposal seeks to address.&lt;/p&gt;
+
+&lt;h2 id="why-not-just-change-the-way-it-works"&gt;
+&lt;a class="anchor" href="#why-not-just-change-the-way-it-works"&gt;&lt;span class="visuallyhidden"&gt;Why not just change the way it works? permalink&lt;/span&gt;&lt;/a&gt;Why not just change the way it works?&lt;/h2&gt;
+
+&lt;p&gt;In theory, we could change Sass so that &lt;code&gt;$a -$b&lt;/code&gt; parses the same as &lt;code&gt;$a (-$b)&lt;/code&gt;:
+a space-separated list of two values, the latter with a unary minus. We chose
+not to do that for two reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Pragmatically, it&amp;rsquo;s more painful to make a breaking change that changes the
+behavior of existing syntax than it is to make one that just forbids the
+syntax entirely. It requires more releases and more different versions of
+Sass with different behaviors. It also opens the door for a stylesheet that
+upgrades many versions at once to switch to the new behavior &lt;em&gt;without
+producing an error&lt;/em&gt;, which could lead to the worst-case scenario: shipping
+incorrect styles.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;It&amp;rsquo;s not obvious that &lt;code&gt;$a -$b&lt;/code&gt; &lt;em&gt;should&lt;/em&gt; parse as &lt;code&gt;$a (-$b)&lt;/code&gt; in every case.
+Users coming from other programming languages may expect it to parse the same
+way it does in those languages. Even in Sass, &lt;code&gt;$a -$b&lt;/code&gt; will continue to be a
+valid binary operation within &lt;code&gt;calc()&lt;/code&gt;. It may not be elegant style, but
+sometimes formatting isn&amp;rsquo;t at the top of an author&amp;rsquo;s mind!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id="let-us-know-what-you-think"&gt;
+&lt;a class="anchor" href="#let-us-know-what-you-think"&gt;&lt;span class="visuallyhidden"&gt;Let us know what you think! permalink&lt;/span&gt;&lt;/a&gt;Let us know what you think!&lt;/h2&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve got thoughts or opinions about this change, please read over &lt;a href="https://github.com/sass/sass/blob/main/proposal/strict-unary.md"&gt;the full
+proposal&lt;/a&gt; and then &lt;a href="https://github.com/sass/sass/issues/new"&gt;file an issue&lt;/a&gt; with your feedback. We&amp;rsquo;ll be leaving this
+open to comments for a month, after which we&amp;rsquo;ll finalize the proposal and start
+implementing it.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Embedded Sass is Live</title>
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
     <published>2022-02-01T10:00:00+00:00</published>
-    <updated>2022-06-11T02:16:36+00:00</updated>
+    <updated>2022-06-16T00:19:24+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -79,7 +169,7 @@ for many other popular frontend languages. If you end up doing so, message us
     <link href="https://sass-lang.com/blog/new-js-api-release-candidate" rel="alternate"/>
     <id>https://sass-lang.com/blog/new-js-api-release-candidate</id>
     <published>2021-11-21T00:15:00+00:00</published>
-    <updated>2022-06-11T02:16:36+00:00</updated>
+    <updated>2022-06-16T00:19:24+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -133,7 +223,7 @@ in a year or so, and to be disabled for good once we release Dart Sass 2.0.0.&lt
     <link href="https://sass-lang.com/blog/request-for-comments-new-js-api" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-new-js-api</id>
     <published>2021-08-05T23:30:00+00:00</published>
-    <updated>2022-06-11T02:16:36+00:00</updated>
+    <updated>2022-06-16T00:19:24+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -944,7 +1034,7 @@ and possibly more depending on how lively the discussion around them is.&lt;/p&g
     <link href="https://sass-lang.com/blog/node-fibers-discontinued" rel="alternate"/>
     <id>https://sass-lang.com/blog/node-fibers-discontinued</id>
     <published>2021-03-26T23:00:00+00:00</published>
-    <updated>2022-06-11T02:16:36+00:00</updated>
+    <updated>2022-06-16T00:19:24+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -1103,7 +1193,7 @@ please don&amp;rsquo;t hesitate to &lt;a href="mailto:nweiz@google.com"&gt;reach
     <link href="https://sass-lang.com/blog/request-for-comments-first-class-calc" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-first-class-calc</id>
     <published>2021-03-15T09:35:00+00:00</published>
-    <updated>2022-06-11T02:16:36+00:00</updated>
+    <updated>2022-06-16T00:19:24+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -1168,135 +1258,6 @@ numbers.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re interested in learning more about this proposal, &lt;a href="https://github.com/sass/sass/tree/main/proposal/first-class-calc.md"&gt;read it in full&lt;/a&gt; on
 GitHub. It&amp;rsquo;s open for comments and revisions for the next month, so if you&amp;rsquo;d
 like to see something change please &lt;a href="https://github.com/sass/sass/issues/new"&gt;file an issue&lt;/a&gt; and we can discuss it!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>LibSass is Deprecated</title>
-    <link href="https://sass-lang.com/blog/libsass-is-deprecated" rel="alternate"/>
-    <id>https://sass-lang.com/blog/libsass-is-deprecated</id>
-    <published>2020-10-26T20:00:00+00:00</published>
-    <updated>2022-06-11T02:16:36+00:00</updated>
-    <author>
-      <name>Natalie Weizenbaum</name>
-    </author>
-    <content type="html">&lt;p&gt;After much discussion among the Sass core team, we&amp;rsquo;ve come to the conclusion
-that it&amp;rsquo;s time to officially declare that LibSass and the packages built on top
-of it, including Node Sass, are deprecated. For several years now, it&amp;rsquo;s been
-clear that there&amp;rsquo;s simply not enough engineering bandwidth behind LibSass to
-keep it up-to-date with the latest developments in the Sass language (for
-example, the most recent new language feature was added in &lt;a href="https://github.com/sass/libsass/releases/tag/3.5.5"&gt;November 2018&lt;/a&gt;). As
-much as we&amp;rsquo;ve hoped to see this pattern turn around, even the excellent work of
-long-time LibSass contributors Michael Mifsud and Marcel Greter couldn&amp;rsquo;t keep up
-with the fast pace of language development in both CSS and Sass.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll go into detail about what this means below, but here are the major points:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;We no longer recommend LibSass for new Sass projects. Use &lt;a href="https://sass-lang.com/dart-sass"&gt;Dart Sass&lt;/a&gt; instead.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;We recommend all existing LibSass users make plans to eventually move onto
-Dart Sass, and that all Sass libraries make plans to eventually drop support
-for LibSass.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;We&amp;rsquo;re no longer planning to add any new features to LibSass, including
-compatibility with new CSS features.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;LibSass and Node Sass will continue to be maintained indefinitely on a
-best-effort basis, including fixing major bugs and security issues and
-maintaining compatibility with the latest Node versions.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id="why-deprecate"&gt;
-&lt;a class="anchor" href="#why-deprecate"&gt;&lt;span class="visuallyhidden"&gt;Why deprecate? permalink&lt;/span&gt;&lt;/a&gt;Why deprecate?&lt;/h2&gt;
-
-&lt;p&gt;For several years now, Sass has managed to exist in an ambiguous kind of state
-where LibSass was an officially-supported implementation in theory, but its
-feature surface was static in practice. As time has gone on, it&amp;rsquo;s becoming
-increasingly clear that this state causes substantial concrete problems for Sass
-users. For example, we regularly see users confused as to why &lt;a href="https://github.com/sass/sass/issues/2849"&gt;plain-CSS &lt;code&gt;min()&lt;/code&gt;
-and &lt;code&gt;max()&lt;/code&gt; don&amp;rsquo;t work&lt;/a&gt; and assuming Sass as a whole is at fault, when in fact
-it&amp;rsquo;s only LibSass that doesn&amp;rsquo;t support that feature.&lt;/p&gt;
-
-&lt;p&gt;Official support for LibSass doesn&amp;rsquo;t just cause pain for individual users.
-Because LibSass doesn&amp;rsquo;t support the &lt;a href="https://sass-lang.com/blog/the-module-system-is-launched"&gt;Sass module system&lt;/a&gt; that launched last
-year, major shared Sass libraries have been unable to use it for fear that their
-downstream users would be incompatible. By clearly indicating that all Sass
-users should eventually move off of LibSass, we hope to make it more feasible
-for these library authors to use more modern features.&lt;/p&gt;
-
-&lt;p&gt;LibSass has even inhibited the development of the Sass language itself. We&amp;rsquo;ve
-been unable to move forward with the proposal for &lt;a href="https://github.com/sass/sass/blob/main/accepted/slash-separator.md"&gt;treating &lt;code&gt;/&lt;/code&gt; as a separator&lt;/a&gt;
-because any code they&amp;rsquo;d write would either produce deprecation warnings in Dart
-Sass or fail to compile in LibSass. By marking LibSass as deprecated, this
-becomes much more feasible, and Sass becomes much better at supporting the
-latest versions of CSS.&lt;/p&gt;
-
-&lt;h2 id="what-does-deprecated-mean"&gt;
-&lt;a class="anchor" href="#what-does-deprecated-mean"&gt;&lt;span class="visuallyhidden"&gt;What does “deprecated” mean? permalink&lt;/span&gt;&lt;/a&gt;What does “deprecated” mean?&lt;/h2&gt;
-
-&lt;p&gt;We&amp;rsquo;re choosing to use the term &amp;ldquo;deprecated&amp;rdquo; because it carries a lot of weight
-in the programming community, and provides a strong signal that users should
-start planning to move away from LibSass. However, it doesn&amp;rsquo;t mean that the
-project is entirely dead. Michael Mifsud, the lead maintainer of LibSass and
-Node Sass, has affirmed that he plans to continue maintenance on the same level
-as the past few years. This means that although there will be no more features
-added (and as such LibSass will slowly drift further and further out of
-compatibility with the latest CSS and Sass syntax), there will continue to be
-maintenance releases indefinitely.&lt;/p&gt;
-
-&lt;h2 id="what-about-portability-and-performance"&gt;
-&lt;a class="anchor" href="#what-about-portability-and-performance"&gt;&lt;span class="visuallyhidden"&gt;What about portability and performance? permalink&lt;/span&gt;&lt;/a&gt;What about portability and performance?&lt;/h2&gt;
-
-&lt;p&gt;LibSass today has two major benefits over Dart Sass:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Portability&lt;/strong&gt;: since it&amp;rsquo;s written in C++, it&amp;rsquo;s easy to embed LibSass within
-other programming languages and provide a native-feeling API.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Performance&lt;/strong&gt;: calling out to LibSass via the C++ API is very fast relative
-to the speeds of code written directly in scripting languages. In particular,
-this means LibSass is substantially faster in JavaScript than Dart
-Sass-compiled-to-JS (although it&amp;rsquo;s comparable to Dart Sass&amp;rsquo;s command-line
-executable).&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We&amp;rsquo;re working on addressing both of those with the &lt;a href="https://github.com/sass/embedded-protocol"&gt;Sass embedded protocol&lt;/a&gt;,
-which runs a Sass compiler as a subprocess that can communicate with any host
-language via message-passing. The embedded protocol supports all the features of
-a native Sass API, including the ability to define custom importers and Sass
-functions, while also providing the high performance of the CLI app. Dart Sass
-has already implemented the compiler side of the embedded protocol, and a
-JavaScript host for it is in active development.&lt;/p&gt;
-
-&lt;h2 id="how-do-i-migrate"&gt;
-&lt;a class="anchor" href="#how-do-i-migrate"&gt;&lt;span class="visuallyhidden"&gt;How do I migrate? permalink&lt;/span&gt;&lt;/a&gt;How do I migrate?&lt;/h2&gt;
-
-&lt;p&gt;If you&amp;rsquo;re a user of Node Sass, migrating to Dart Sass is straightforward: just
-replace &lt;code&gt;node-sass&lt;/code&gt; in your &lt;code&gt;package.json&lt;/code&gt; file with &lt;code&gt;sass&lt;/code&gt;. Both packages
-expose the same JavaScript API.&lt;/p&gt;
-
-&lt;p&gt;If you&amp;rsquo;re using the SassC command-line interface, you can switch to &lt;a href="https://sass-lang.com/documentation/cli/dart-sass"&gt;Dart Sass&amp;rsquo;s
-CLI&lt;/a&gt;. Note that this doesn&amp;rsquo;t have exactly the same interface as SassC, so you
-may need to change a few flags.&lt;/p&gt;
-
-&lt;p&gt;If you&amp;rsquo;re using LibSass through a wrapper library in another language, you can
-either switch to the Dart Sass CLI or ask the maintainer of the LibSass wrapper
-to convert it to a host for the &lt;a href="https://github.com/sass/embedded-protocol"&gt;Sass embedded protocol&lt;/a&gt;. The embedded protocol
-allows any language to provide a native API that calls out to Dart Sass.&lt;/p&gt;
-
-&lt;p&gt;Please note that because activity on LibSass has been low for several years, it
-has a number of outstanding bugs and behavioral variations from the Sass spec.
-You may need to make minor updates to stylesheets to make them compatible with
-Dart Sass. See &lt;a href="https://github.com/sass/libsass/issues?q=is%3Aopen+is%3Aissue+label%3A%22Compatibility+-+P1+%E2%9A%A0%EF%B8%8F%22"&gt;this list of major compatibility issues&lt;/a&gt; for reference.&lt;/p&gt;
-
-&lt;h2 id="thank-you"&gt;
-&lt;a class="anchor" href="#thank-you"&gt;&lt;span class="visuallyhidden"&gt;Thank you permalink&lt;/span&gt;&lt;/a&gt;Thank you&lt;/h2&gt;
-
-&lt;p&gt;Finally, I want to thank everyone who&amp;rsquo;s put so much time and energy into LibSass
-and Node Sass over the years. It will always be a towering achievement, and
-Sass&amp;rsquo;s popularity outside of the Ruby community is undoubtedly due in large part
-to its existence. Many people have tried to implement Sass only to find that the
-language is much deeper and more complex than they expected, and LibSass alone
-among all of those implementations managed to become fully-featured enough to
-provide real value for thousands if not millions of users. These maintainers
-deserve to be proud of that work, and I hope they&amp;rsquo;ll always consider themselves
-part of the Sass community going forward.&lt;/p&gt;
 </content>
   </entry>
 </feed>
