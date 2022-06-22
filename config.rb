@@ -50,6 +50,37 @@ page '/styleguide/*',              :layout => :section_styleguide
 page '/documentation/*',           :layout => :section_reference
 page '/blog/*',                    :layout => :blog
 
+for dir in ['docs/yardoc', 'documentation'] do
+  redirect "#{dir}/file.SASS_REFERENCE.html", to: '/documentation'
+  redirect "#{dir}/file.SASS_CHANGELOG.html", to: 'https://github.com/sass/dart-sass/blob/master/CHANGELOG.md'
+  redirect "#{dir}/file.INDENTED_SYNTAX.html", to: '/documentation/syntax'
+  redirect "#{dir}/file.SCSS_FOR_SASS_USERS.html", to: '/documentation/syntax'
+  redirect "#{dir}/Sass/Script/Functions.html", to: '/documentation/modules'
+  redirect "#{dir}/Sass/Script/Functions.html", to: '/documentation/modules'
+  redirect "#{dir}/functions.html", to: '/documentation/functions'
+  redirect "#{dir}/functions/css.html", to: '/documentation/at-rules/function#plain-css-functions'
+
+  Dir['source/documentation/modules/*.html.md.erb'].each do |file|
+    module_name = File.basename(file, ".html.md.erb")
+    redirect "#{dir}/functions/#{module_name}.html", to: "/documentation/modules/#{module_name}"
+  end
+end
+
+Dir['source/documentation/breaking-changes/**'].each do |file|
+  basename = File.basename(file).gsub(/\..*/, '')
+  redirect "d/#{basename}.html", to: "/documentation/breaking-changes/#{basename}"
+end
+
+redirect 'tutorial.html', to: '/guide'
+redirect 'download.html', to: '/install'
+redirect 'try.html', to: 'http://sassmeister.com'
+redirect 'about.html', to: '/'
+redirect 'blog/posts/560719.html', to: '/blog/dropping-support-for-old-ruby-versions'
+redirect 'blog/posts/1305238.html', to: '/blog/dart-sass-is-on-chocolatey'
+redirect 'blog/posts/1404451.html', to: '/blog/sass-and-browser-compatibility'
+redirect 'blog/posts/1909151.html', to: '/blog/dart-sass-is-in-beta'
+redirect 'blog/posts/7081811.html', to: '/blog/ruby-sass-is-deprecated'
+
 configure :development do
   config[:host] = 'http://localhost:4567'
 end
