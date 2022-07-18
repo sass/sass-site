@@ -402,6 +402,7 @@ module SassHelpers
     contents << _impl_status_row('Ruby Sass', ruby) unless ruby.nil?
 
     if block_given?
+      # The no-op href here ensures that this toggle is focusable in browsers.
       contents << content_tag(:div, content_tag(:a, '▶', href: 'javascript:;'))
     end
 
