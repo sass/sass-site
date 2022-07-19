@@ -57,6 +57,8 @@ To ease the transition, we've begun by adding the `math.div()` function. The `/`
 operator still does division for now, but it also prints a deprecation warning
 when it does so. Users should switch all division to use `math.div()` instead.
 
+<%= partial '../snippets/silence-deprecations' %>
+
 <% example(autogen_css: false) do %>
   @use "sass:math";
 
