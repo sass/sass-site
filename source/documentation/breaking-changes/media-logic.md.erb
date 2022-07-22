@@ -1,0 +1,32 @@
+---
+title: "Breaking Change: Media Queries Level 4"
+introduction: >
+  Sass is adding support for the CSS Media Queries Level 4 specification, but
+  this conflicts with some Sass-specific syntax. That syntax is deprecated to
+  ensure that Sass remains fully CSS-compatible.
+---
+
+Because Sass supports almost any Sass expression in parenthesized media
+conditions, there are a few constructs that could be broken by adding full
+support for Media Queries Level 4. Specifically:
+
+* `@media (not (foo))` was historically interpreted by Sass as meaning
+  `@media (#{not (foo)})`, and so compiled to `@media (false)`.
+
+* `@media ((foo) and (bar))` and `@media ((foo) or (bar))` were similarly
+  interpreted as SassScript's logical operators, compiling to `@media (bar)` and
+  `@media (foo)` respectively.
+
+Fortunately, these are unlikely to come up in practice.
+
+## Transition Period
+
+<% impl_status dart: '1.54.0', libsass: false, ruby: false %>
+
+First, we'll emit deprecation warnings for the previous ambiguous cases. These
+will have suggestions for how to preserve the existing behavior or how to use
+the new CSS syntax.
+
+Once the deprecation warnings have been out for at least three months, we'll
+release a version that exclusively interprets these ambiguous cases according to
+the CSS spec.

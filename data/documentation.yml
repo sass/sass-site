@@ -61,6 +61,7 @@ toc:
 - Breaking Changes: /documentation/breaking-changes
   :children:
   - Invalid Combinators: /documentation/breaking-changes/bogus-combinators
+  - Media Queries Level 4: /documentation/breaking-changes/media-logic
   - <code>/</code> as Division: /documentation/breaking-changes/slash-div
   - Color Units: /documentation/breaking-changes/color-units
   - Extending Compound Selectors: /documentation/breaking-changes/extend-compound
