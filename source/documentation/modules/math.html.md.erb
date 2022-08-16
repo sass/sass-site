@@ -540,6 +540,20 @@ title: sass:math
   If `$limit` is a number greater than or equal to 1, returns a random whole
   number between 1 and `$limit`.
 
+  <% heads_up do %>
+    `random($limit)` ignores units in `$limit`. This behavior will eventually
+    change and `random($limit)` will return a random integer with the same units
+    as the `$limit` argument.
+
+    <% example(autogen_css: false) do %>
+      @debug math.random(100px); // 42
+      @debug math.random(10000%); // 9001
+      ===
+      @debug math.random(100px)  // 42
+      @debug math.random(10000%)  // 9001
+    <% end %>
+  <% end %>
+
   <% example(autogen_css: false) do %>
     @debug math.random(10); // 4
     @debug math.random(10000); // 5373
