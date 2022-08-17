@@ -10,7 +10,18 @@ The function [`random($limit)`] has historically ignored units in `$limit` which
 returned a unitless value. For example `random(100px)` would drop "px" and
 return a value like `42`.
 
+A future implementation of Dart Sass will stop ignoring units for the `$limit`
+argument will return a random integer with the same units.
+
 [`random($limit)`]: ../modules/math#random
+
+<% example(autogen_css: false) do %>
+  // Future Sass, doesn't work yet!
+  @debug math.random(100px); // 42px
+  ===
+  // Future Sass, doesn't work yet!
+  @debug math.random(100px)  // 42px
+<% end %>
 
 ## Transition Period
 
