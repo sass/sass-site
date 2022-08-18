@@ -2,1225 +2,1237 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sass-lang.com/install</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/guide</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/styleguide/components</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/styleguide/index</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/styleguide/brand</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/styleguide/color</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/styleguide/layout</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/styleguide/typography</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/styleguide/code</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/community</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/style-rules</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/syntax/parsing</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/syntax/comments</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/syntax/structure</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/syntax/special-functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/import</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/control/while</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/control/if</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/control/for</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/control/each</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/at-root</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/forward</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/mixin</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/use</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/extend</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/error</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/css</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/debug</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/warn</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/function</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules/control</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/breaking-changes</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/operators/equality</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/operators/relational</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/operators/boolean</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/operators/string</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/operators/numeric</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/syntax</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/modules/list</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/modules/selector</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/modules/math</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/modules/map</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/modules/meta</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/modules/color</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/modules/string</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/cli</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/style-rules/declarations</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/style-rules/parent-selector</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/style-rules/placeholder-selectors</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/index</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/modules/types</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/modules/Logger</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/SassList</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/SassMap</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/types.String</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/types.Boolean</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/types.Error</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/SassColor</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/types.List</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/types.Null</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/Exception</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/SassString</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/SassNumber</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/SassArgumentList</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/SassBoolean</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/SassFunction</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/types.Map</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/types.Color</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/types.Number</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/classes/Value</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/modules</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyException</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/SourceSpan</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyFileOptions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/CompileResult</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/Options</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/ImporterResult</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyResult</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/SourceLocation</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/FileImporter</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/Importer</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyImporterThis</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/Logger</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/StringOptionsWithImporter</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyPluginThis</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacySharedOptions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/js-api/interfaces/StringOptionsWithoutImporter</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/calculations</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/strings</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/numbers</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/null</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/maps</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/booleans</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/lists</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/values/colors</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/cli/ruby-sass</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/cli/migrator</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/cli/dart-sass</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/interpolation</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/operators</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/index</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/at-rules</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/modules</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/breaking-changes/slash-div</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/breaking-changes/css-vars</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/breaking-changes/color-units</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/breaking-changes/media-logic</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/breaking-changes/extend-compound</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/breaking-changes/bogus-combinators</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/documentation/variables</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/index</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/014-dart-sass-100-is-released</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/008-sass-35-release-candidate</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/005-cleaning-up-interpolation</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/001-how-extend-works</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/027-libsass-is-deprecated</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/013-sass-35-is-released</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/028-request-for-comments-first-class-calc</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/011-sass-and-browser-compatibility</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/024-the-module-system-is-launched</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/026-request-for-comments-hwb-functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/004-sass-34-is-released</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/029-node-fibers-discontinued</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/033-request-for-comments-strict-unary-operators</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/020-ruby-sass-is-unsupported</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/002-a-change-in-plans-for-sass-33</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/032-embedded-sass-is-live</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/012-dart-sass-is-in-beta</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/031-new-js-api-release-candidate</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/017-feature-watchcss-imports-and-css-compatibility</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/006-dropping-support-for-old-ruby-versions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/015-ruby-sass-is-deprecated</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/018-feature-watchcontent-arguments-and-color-functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/022-request-for-commentsforward-slash-as-separator</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/010-dart-sass-is-on-chocolatey</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/030-request-for-comments-new-js-api</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/025-request-for-comments-nested-map-functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/009-announcing-dart-sass</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/023-module-system-preview</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/019-request-for-comments-module-system-proposal</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/021-brand-new-sass-docs</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/003-sass-33-is-released</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/016-request-for-commentsimporting-css-files</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/blog/007-thank-you-marcel</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/community-guidelines</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/ruby-sass</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/libsass</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/blog/022-request-for-commentsforward-slash-as-separator</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/about</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/blog/020-ruby-sass-is-unsupported</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/001-how-extend-works</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/009-announcing-dart-sass</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/005-cleaning-up-interpolation</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/024-the-module-system-is-launched</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/007-thank-you-marcel</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/027-libsass-is-deprecated</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/029-node-fibers-discontinued</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/002-a-change-in-plans-for-sass-33</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/013-sass-35-is-released</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/003-sass-33-is-released</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/004-sass-34-is-released</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/028-request-for-comments-first-class-calc</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/008-sass-35-release-candidate</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/019-request-for-comments-module-system-proposal</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/030-request-for-comments-new-js-api</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/015-ruby-sass-is-deprecated</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/021-brand-new-sass-docs</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/016-request-for-commentsimporting-css-files</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/018-feature-watchcontent-arguments-and-color-functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/031-new-js-api-release-candidate</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/011-sass-and-browser-compatibility</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/023-module-system-preview</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/032-embedded-sass-is-live</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/017-feature-watchcss-imports-and-css-compatibility</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/010-dart-sass-is-on-chocolatey</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/012-dart-sass-is-in-beta</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/014-dart-sass-100-is-released</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/026-request-for-comments-hwb-functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/025-request-for-comments-nested-map-functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/006-dropping-support-for-old-ruby-versions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/033-request-for-comments-strict-unary-operators</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/implementation</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://sass-lang.com/dart-sass</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/404</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/file.SASS_REFERENCE</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/control/each</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/file.SASS_CHANGELOG</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/control/while</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/control/if</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/file.SCSS_FOR_SASS_USERS</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/control/for</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/Sass/Script/Functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/forward</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/extend</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions/css</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/import</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions/list</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/at-root</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions/selector</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/mixin</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions/math</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/warn</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions/map</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/error</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions/meta</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/control</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions/color</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/use</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/docs/yardoc/functions/string</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/css</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/file.SASS_REFERENCE</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/debug</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/file.SASS_CHANGELOG</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules/function</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/file.INDENTED_SYNTAX</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/breaking-changes/slash-div</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/file.SCSS_FOR_SASS_USERS</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/breaking-changes/random-with-units</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/Sass/Script/Functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/breaking-changes/color-units</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/breaking-changes/media-logic</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions/css</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/breaking-changes/bogus-combinators</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions/list</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/breaking-changes/extend-compound</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions/selector</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/breaking-changes/css-vars</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions/math</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/index</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions/map</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/at-rules</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions/meta</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/modules/color</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions/color</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/modules/selector</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/documentation/functions/string</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/modules/math</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/d/slash-div</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/modules/meta</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/d/css-vars</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/modules/string</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/d/color-units</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/modules/list</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/d/media-logic</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/modules/map</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/d/extend-compound</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/values</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/d/bogus-combinators</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/values/calculations</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/tutorial</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/values/maps</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/download</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/values/strings</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/try</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <loc>https://sass-lang.com/documentation/values/functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/values/lists</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/values/null</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/values/booleans</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/values/numbers</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/values/colors</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/operators</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/style-rules/declarations</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/style-rules/placeholder-selectors</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/style-rules/parent-selector</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/modules</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/breaking-changes</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/variables</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/interpolation</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/style-rules</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/syntax</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/syntax/special-functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/syntax/comments</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/syntax/parsing</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/syntax/structure</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/operators/relational</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/operators/numeric</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/operators/boolean</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/operators/string</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/operators/equality</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/cli/dart-sass</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/cli/ruby-sass</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/cli/migrator</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/modules/Logger</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/modules/types</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/SourceLocation</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/CompileResult</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/StringOptionsWithImporter</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/FileImporter</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyPluginThis</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/Logger</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/ImporterResult</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyResult</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyException</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyImporterThis</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/Importer</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyFileOptions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/SourceSpan</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/StringOptionsWithoutImporter</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacySharedOptions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/interfaces/Options</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/index</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/types.Boolean</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/types.Map</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/Exception</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/SassList</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/types.Number</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/SassNumber</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/types.List</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/SassString</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/types.Color</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/SassBoolean</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/types.Error</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/SassFunction</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/SassMap</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/Value</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/types.String</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/types.Null</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/SassColor</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/classes/SassArgumentList</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/js-api/modules</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/cli</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/guide</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/dart-sass</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/libsass</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/styleguide/code</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/styleguide/color</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/styleguide/layout</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/styleguide/components</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/styleguide/index</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/styleguide/brand</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/styleguide/typography</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/about</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/index</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/community-guidelines</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/file.SASS_REFERENCE</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/file.SASS_CHANGELOG</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/file.INDENTED_SYNTAX</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/file.SCSS_FOR_SASS_USERS</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/Sass/Script/Functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions/css</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions/color</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions/selector</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions/math</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions/meta</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions/string</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions/list</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/docs/yardoc/functions/map</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/file.SASS_REFERENCE</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/file.SASS_CHANGELOG</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/file.INDENTED_SYNTAX</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/file.SCSS_FOR_SASS_USERS</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/Sass/Script/Functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions/css</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions/color</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions/selector</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions/math</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions/meta</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions/string</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions/list</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/documentation/functions/map</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/d/slash-div</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/d/random-with-units</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/d/color-units</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/d/media-logic</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/d/bogus-combinators</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/d/extend-compound</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/d/css-vars</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/tutorial</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/download</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/try</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/about</loc>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/posts/560719</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/posts/1305238</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/posts/1404451</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/posts/1909151</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/posts/7081811</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/page/2</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/page/3</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/page/4</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/page/5</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/page/6</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/page/7</loc>
-    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
