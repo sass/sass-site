@@ -60,6 +60,7 @@ toc:
   - <code>sass:string</code>: /documentation/modules/string
 - Breaking Changes: /documentation/breaking-changes
   :children:
+  - Random With Units: /documentation/breaking-changes/random-with-units
   - Invalid Combinators: /documentation/breaking-changes/bogus-combinators
   - Media Queries Level 4: /documentation/breaking-changes/media-logic
   - <code>/</code> as Division: /documentation/breaking-changes/slash-div
