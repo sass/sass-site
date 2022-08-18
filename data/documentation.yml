@@ -60,13 +60,13 @@ toc:
   - <code>sass:string</code>: /documentation/modules/string
 - Breaking Changes: /documentation/breaking-changes
   :children:
+  - Random With Units: /documentation/breaking-changes/random-with-units
   - Invalid Combinators: /documentation/breaking-changes/bogus-combinators
   - Media Queries Level 4: /documentation/breaking-changes/media-logic
   - <code>/</code> as Division: /documentation/breaking-changes/slash-div
   - Color Units: /documentation/breaking-changes/color-units
   - Extending Compound Selectors: /documentation/breaking-changes/extend-compound
   - CSS Variable Syntax: /documentation/breaking-changes/css-vars
-  - Random With Units: /documentation/breaking-changes/random-with-units
 - Command Line: /documentation/cli
   :children:
   - Dart Sass: /documentation/cli/dart-sass

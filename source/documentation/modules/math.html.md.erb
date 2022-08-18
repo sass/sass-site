@@ -541,11 +541,11 @@ title: sass:math
   number between 1 and `$limit`.
 
   <% heads_up do %>
-    `random($limit)` ignores units in `$limit`. [This behavior will be
-    deprecated] and `random($limit)` will return a random integer with the same
-    units as the `$limit` argument.
+    `random()` ignores units in `$limit`. [This behavior is deprecated] and
+    `random($limit)` will return a random integer with the same units as the
+    `$limit` argument.
 
-    [This behavior will be deprecated]: ../breaking-changes/random-with-units
+    [This behavior is deprecated]: ../breaking-changes/random-with-units
 
     <% example(autogen_css: false) do %>
       @debug math.random(100px); // 42
