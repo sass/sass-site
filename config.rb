@@ -73,7 +73,7 @@ end
 
 redirect 'tutorial.html', to: '/guide'
 redirect 'download.html', to: '/install'
-redirect 'try.html', to: 'http://sassmeister.com'
+redirect 'try.html', to: 'https://www.sassmeister.com'
 redirect 'about.html', to: '/'
 redirect 'blog/posts/560719.html', to: '/blog/dropping-support-for-old-ruby-versions'
 redirect 'blog/posts/1305238.html', to: '/blog/dart-sass-is-on-chocolatey'
