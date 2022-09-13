@@ -1,0 +1,37 @@
+---
+title: "Breaking Change: Random With Units"
+introduction: >
+  The `random()` function will no longer ignore units on the `$limit` argument
+  in a future version. Passing a `$limit` with units is deprecated to ensure the
+  compilation results don't change once the new behavior lands.
+---
+
+[The `random()` function] has historically ignored units in `$limit` and
+returned a unitless value. For example `random(100px)` would drop "px" and
+return a value like `42`.
+
+A future implementation of Dart Sass will stop ignoring units for the `$limit`
+argument and return a random integer with the same units.
+
+[The `random()` function]: ../modules/math#random
+
+<% example(autogen_css: false) do %>
+  // Future Sass, doesn't work yet!
+  @debug math.random(100px); // 42px
+  ===
+  // Future Sass, doesn't work yet!
+  @debug math.random(100px)  // 42px
+<% end %>
+
+## Transition Period
+
+<% impl_status dart: '1.54.5', libsass: false, ruby: false %>
+
+First, the Sass compiler will emit a deprecation warning for previous uses of
+`random()` when the `$limit` argument has units. The warning will suggest a way
+to preserve the existing behavior and another way that emulates the future
+implementation.
+
+In Dart 2.0.0 passing a `$limit` number with units will be an error, and then in
+a future minor release the `random()` function will return a random integer the
+same units as `$limit`.

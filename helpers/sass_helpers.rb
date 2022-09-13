@@ -402,7 +402,8 @@ module SassHelpers
     contents << _impl_status_row('Ruby Sass', ruby) unless ruby.nil?
 
     if block_given?
-      contents << content_tag(:div, content_tag(:a, '▶'))
+      # The no-op href here ensures that this toggle is focusable in browsers.
+      contents << content_tag(:div, content_tag(:a, '▶', href: 'javascript:;'))
     end
 
     _concat(content_tag(:dl, contents, class: 'impl-status sl-c-description-list sl-c-description-list--horizontal'))
