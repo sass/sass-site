@@ -4,13 +4,286 @@
   <id>https://sass-lang.com/blog</id>
   <link href="https://sass-lang.com/blog"/>
   <link href="https://sass-lang.com/feed.xml" rel="self"/>
-  <updated>2022-06-15T23:30:00+00:00</updated>
+  <updated>2022-09-21T21:00:00+00:00</updated>
+  <entry>
+    <title>Request for Comments: Color Spaces</title>
+    <link href="https://sass-lang.com/blog/request-for-comments-color-spaces" rel="alternate"/>
+    <id>https://sass-lang.com/blog/request-for-comments-color-spaces</id>
+    <published>2022-09-21T21:00:00+00:00</published>
+    <updated>2022-09-21T21:00:45+00:00</updated>
+    <author>
+      <name>Miriam Suzanne and Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;There&amp;rsquo;s been a lot of exciting work in the CSS color specifications lately, and
+as it begins to land in browsers we&amp;rsquo;ve been preparing to add support for it in
+Sass as well. The first and largest part of that is adding support for &lt;em&gt;color
+spaces&lt;/em&gt; to Sass, which represents a huge (but largely backwards-compatible)
+rethinking of the way colors work.&lt;/p&gt;
+
+&lt;p&gt;Historically, all colors in CSS have existed in the same color space, known as
+&amp;ldquo;sRGB&amp;rdquo;. Whether you represent them as a hex code, an &lt;code&gt;hsl()&lt;/code&gt; function, or a
+color name, they represented the same set of visible colors you could tell a
+screen to display. While this is conceptually simple, there are some major
+downsides:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;As monitors have improved over time, they&amp;rsquo;ve become capable of displaying more
+colors than can be represented in the sRGB color space.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;sRGB, even when you&amp;rsquo;re using it via &lt;code&gt;hsl()&lt;/code&gt;, doesn&amp;rsquo;t correspond very well with
+how humans perceive colors. Cyan looks noticeably lighter than purple with the
+same saturation and lightness values.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;There&amp;rsquo;s no way to represent domain- or device-specific color spaces, such as
+the &lt;a href="https://en.wikipedia.org/wiki/CMYK_color_model"&gt;CMYK&lt;/a&gt; color space that&amp;rsquo;s used by printers.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Color spaces solve all of these problems. Now not every color has a red, green,
+and blue channel (which can be interpreted as hue, saturation, and lightness).
+Instead, a every color has a specific &lt;em&gt;color space&lt;/em&gt; which specifies which
+channels it has. For example, the color &lt;code&gt;oklch(80% 50% 90deg)&lt;/code&gt; has &lt;code&gt;oklch&lt;/code&gt; as
+its color space, &lt;code&gt;80%&lt;/code&gt; lightness, &lt;code&gt;50%&lt;/code&gt; chroma, and &lt;code&gt;90deg&lt;/code&gt; hue.&lt;/p&gt;
+
+&lt;h2 id="color-spaces-in-sass"&gt;
+&lt;a class="anchor" href="#color-spaces-in-sass"&gt;&lt;span class="visuallyhidden"&gt;Color Spaces in Sass permalink&lt;/span&gt;&lt;/a&gt;Color Spaces in Sass&lt;/h2&gt;
+
+&lt;p&gt;Today we&amp;rsquo;re announcing &lt;a href="https://github.com/sass/sass/blob/main/proposal/color-4-new-spaces.md"&gt;a proposal for how to handle color spaces in Sass&lt;/a&gt;. In
+addition to expanding Sass&amp;rsquo;s color values to support color spaces, this proposal
+defines Sassified versions of all the color functions in [CSS Color Level
+4][color-4].&lt;/p&gt;
+
+&lt;h3 id="rules-of-thumb"&gt;
+&lt;a class="anchor" href="#rules-of-thumb"&gt;&lt;span class="visuallyhidden"&gt;Rules of Thumb permalink&lt;/span&gt;&lt;/a&gt;Rules of Thumb&lt;/h3&gt;
+
+&lt;p&gt;There are several rules of thumb for working with color spaces in Sass:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;rgb&lt;/code&gt;, &lt;code&gt;hsl&lt;/code&gt;, and &lt;code&gt;hwb&lt;/code&gt; spaces are considered &amp;ldquo;legacy spaces&amp;rdquo;, and will
+often get special handling for the sake of backwards compatibility. Colors
+defined using hex notation or CSS color names are considered part of the &lt;code&gt;rgb&lt;/code&gt;
+color space. Legacy colors are emitted in the most compatible format. This
+matches CSS&amp;rsquo;s own backwards-compatibility behavior.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Otherwise, any color defined in a given space will remain in that space, and
+be emitted in that space.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Authors can explicitly convert a color&amp;rsquo;s space by using &lt;code&gt;color.to-space()&lt;/code&gt;.
+This can be useful to enforce non-legacy behavior, by converting into a
+non-legacy space, or to ensure the color output is compatible with older
+browsers by converting colors into a legacy space before emitting.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;srgb&lt;/code&gt; color space is equivalent to &lt;code&gt;rgb&lt;/code&gt;, except that one is a legacy
+space, and the other is not. They also use different coordinate systems, with
+&lt;code&gt;rgb()&lt;/code&gt; accepting a range from 0-255, and &lt;code&gt;srgb&lt;/code&gt; using a range of 0-1.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Color functions that allow specifying a color space for manipulation will
+always use the source color space by default. When an explicit space is
+provided for manipulation, the resulting color will still be returned in the
+same space as the origin color. For &lt;code&gt;color.mix()&lt;/code&gt;, the first color parameter
+is considered the origin color.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;All legacy and RGB-style spaces represent bounded gamuts of color. Since
+mapping colors into gamut is a lossy process, it should generally be left to
+browsers, which can map colors as-needed, based on the capabilities of a
+display. For that reason, out-of-gamut channel values are maintained by Sass
+whenever possible, even when converting into gamut-bounded color spaces. The
+only exception is that &lt;code&gt;hsl&lt;/code&gt; and &lt;code&gt;hwb&lt;/code&gt; color spaces are not able to express
+out-of-gamut color, so converting colors into those spaces will gamut-map the
+colors as well. Authors can also perform explicit gamut mapping with the
+&lt;code&gt;color.to-gamut()&lt;/code&gt; function.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Legacy browsers require colors in the &lt;code&gt;srgb&lt;/code&gt; gamut. However, most modern
+displays support the wider &lt;code&gt;display-p3&lt;/code&gt; gamut.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="standard-css-color-functions"&gt;
+&lt;a class="anchor" href="#standard-css-color-functions"&gt;&lt;span class="visuallyhidden"&gt;Standard CSS Color Functions permalink&lt;/span&gt;&lt;/a&gt;Standard CSS Color Functions&lt;/h3&gt;
+
+&lt;h4 id="oklab-and-oklch"&gt;
+&lt;a class="anchor" href="#oklab-and-oklch"&gt;&lt;span class="visuallyhidden"&gt;oklab() and oklch() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;oklab()&lt;/code&gt; and &lt;code&gt;oklch()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;oklab()&lt;/code&gt; (cubic) and &lt;code&gt;oklch()&lt;/code&gt; (cylindrical) functions provide access to an
+unbounded gamut of colors in a perceptually uniform space. Authors can use these
+functions to define reliably uniform colors. For example, the following colors
+are perceptually similar in lightness and saturation:&lt;/p&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nv"&gt;$pink&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;oklch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;64%&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="mi"&gt;.196&lt;/span&gt; &lt;span class="m"&gt;353&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// hsl(329.8 70.29% 58.75%)
+&lt;/span&gt;&lt;span class="nv"&gt;$blue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;oklch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;64%&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="mi"&gt;.196&lt;/span&gt; &lt;span class="m"&gt;253&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// hsl(207.4 99.22% 50.69%)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;oklch()&lt;/code&gt; format uses consistent &amp;ldquo;lightness&amp;rdquo; and &amp;ldquo;chroma&amp;rdquo; values, while the
+&lt;code&gt;hsl()&lt;/code&gt; format shows dramatic changes in both &amp;ldquo;lightness&amp;rdquo; and &amp;ldquo;saturation&amp;rdquo;. As
+such, &lt;code&gt;oklch&lt;/code&gt; is often the best space for consistent transforms.&lt;/p&gt;
+
+&lt;h4 id="lab-and-lch"&gt;
+&lt;a class="anchor" href="#lab-and-lch"&gt;&lt;span class="visuallyhidden"&gt;lab() and lch() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;lab()&lt;/code&gt; and &lt;code&gt;lch()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;lab()&lt;/code&gt; and &lt;code&gt;lch()&lt;/code&gt; functions provide access to an unbounded gamut of colors
+in a space that&amp;rsquo;s less perpetually-uniform but more widely-adopted than OKLab
+and OKLCH.&lt;/p&gt;
+
+&lt;h4 id="hwb"&gt;
+&lt;a class="anchor" href="#hwb"&gt;&lt;span class="visuallyhidden"&gt;hwb() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;hwb()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;Sass now supports a top-level &lt;code&gt;hwb()&lt;/code&gt; function that uses the same syntax as
+CSS&amp;rsquo;s built-in &lt;code&gt;hwb()&lt;/code&gt; syntax.&lt;/p&gt;
+
+&lt;h4 id="color"&gt;
+&lt;a class="anchor" href="#color"&gt;&lt;span class="visuallyhidden"&gt;color() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;color()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;The new &lt;code&gt;color()&lt;/code&gt; function provides access to a number of specialty spaces. Most
+notably, &lt;code&gt;display-p3&lt;/code&gt; is a common space for wide-gamut monitors, making it
+likely one of the more popular options for authors who simply want access to a
+wider range of colors. For example, P3 greens are significantly &amp;lsquo;brighter&amp;rsquo; and
+more saturated than the greens available in sRGB:&lt;/p&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nv"&gt;$fallback-green&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;rgb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0%&lt;/span&gt; &lt;span class="m"&gt;100%&lt;/span&gt; &lt;span class="m"&gt;0%&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nv"&gt;$brighter-green&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;color&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;display-p3&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sass will natively support all predefined color spaces declared in the Colors
+Level 4 specification. It will also support unknown color spaces, although these
+can&amp;rsquo;t be converted to and from any other color space.&lt;/p&gt;
+
+&lt;h3 id="new-sass-color-functions"&gt;
+&lt;a class="anchor" href="#new-sass-color-functions"&gt;&lt;span class="visuallyhidden"&gt;New Sass Color Functions permalink&lt;/span&gt;&lt;/a&gt;New Sass Color Functions&lt;/h3&gt;
+
+&lt;h4 id="color-channel"&gt;
+&lt;a class="anchor" href="#color-channel"&gt;&lt;span class="visuallyhidden"&gt;color.channel() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;color.channel()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;This function returns the value of a single channel in a color. By default, it
+only supports channels that are available in the color&amp;rsquo;s own space, but you can
+pass the &lt;code&gt;$space&lt;/code&gt; parameter to return the value of the channel after converting
+to the given space.&lt;/p&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nv"&gt;$brand&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;hsl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;100%&lt;/span&gt; &lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="mi"&gt;.1%&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: 25.1%
+&lt;/span&gt;&lt;span class="nv"&gt;$hsl-lightness&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;channel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$brand&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"lightness"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: 37.67%
+&lt;/span&gt;&lt;span class="nv"&gt;$oklch-lightness&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;channel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$brand&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"lightness"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$space&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;oklch&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="color-space"&gt;
+&lt;a class="anchor" href="#color-space"&gt;&lt;span class="visuallyhidden"&gt;color.space() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;color.space()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;This function returns the name of the color&amp;rsquo;s space.&lt;/p&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="c1"&gt;// result: hsl
+&lt;/span&gt;&lt;span class="nv"&gt;$hsl-space&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;space&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;hsl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;100%&lt;/span&gt; &lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="mi"&gt;.1%&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: oklch
+&lt;/span&gt;&lt;span class="nv"&gt;$oklch-space&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;space&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;oklch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;37&lt;/span&gt;&lt;span class="mi"&gt;.7%&lt;/span&gt; &lt;span class="m"&gt;38&lt;/span&gt;&lt;span class="mi"&gt;.75%&lt;/span&gt; &lt;span class="m"&gt;29&lt;/span&gt;&lt;span class="mi"&gt;.23deg&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="color-is-in-gamut-color-is-legacy"&gt;
+&lt;a class="anchor" href="#color-is-in-gamut-color-is-legacy"&gt;&lt;span class="visuallyhidden"&gt;color.is-in-gamut(), color.is-legacy() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;color.is-in-gamut()&lt;/code&gt;, &lt;code&gt;color.is-legacy()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;These functions return various facts about the color. &lt;code&gt;color.is-in-gamut()&lt;/code&gt;
+returns whether the color is in-gamut for its color space (as opposed to having
+one or more of its channels out of bounds, like &lt;code&gt;rgb(300 0 0)&lt;/code&gt;).
+&lt;code&gt;color.is-legacy()&lt;/code&gt; returns whether the color is a legacy color in the &lt;code&gt;rgb&lt;/code&gt;,
+&lt;code&gt;hsl&lt;/code&gt;, or &lt;code&gt;hwb&lt;/code&gt; color space.&lt;/p&gt;
+
+&lt;h4 id="color-is-powerless"&gt;
+&lt;a class="anchor" href="#color-is-powerless"&gt;&lt;span class="visuallyhidden"&gt;color.is-powerless() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;color.is-powerless()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;This function returns whether a given channel is &amp;ldquo;powerless&amp;rdquo; in the given color.
+This is a special state that&amp;rsquo;s defined for individual color spaces, which
+indicates that a channel&amp;rsquo;s value won&amp;rsquo;t affect how a color is displayed.&lt;/p&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nv"&gt;$grey&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;hsl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0%&lt;/span&gt; &lt;span class="m"&gt;60%&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: true, because saturation is 0
+&lt;/span&gt;&lt;span class="nv"&gt;$hue-powerless&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;is-powerless&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$grey&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"hue"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: false
+&lt;/span&gt;&lt;span class="nv"&gt;$hue-powerless&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;is-powerless&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$grey&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"lightness"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="color-same"&gt;
+&lt;a class="anchor" href="#color-same"&gt;&lt;span class="visuallyhidden"&gt;color.same() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;color.same()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;This function returns whether two colors will be displayed the same way, even if
+this requires converting between spaces. This is unlike the &lt;code&gt;==&lt;/code&gt; operator, which
+always considers colors in different non-legacy spaces to be inequal.&lt;/p&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nv"&gt;$orange-rgb&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#ff5f00&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="nv"&gt;$orange-oklch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;oklch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;68&lt;/span&gt;&lt;span class="mi"&gt;.72%&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&gt;&lt;span class="mi"&gt;.966858279%&lt;/span&gt; &lt;span class="m"&gt;41&lt;/span&gt;&lt;span class="mi"&gt;.4189852913deg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: false
+&lt;/span&gt;&lt;span class="nv"&gt;$equal&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;$orange-rgb&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nv"&gt;$orange-oklch&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: true
+&lt;/span&gt;&lt;span class="nv"&gt;$same&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;same&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$orange-rb&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$orange-oklch&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="existing-sass-color-functions"&gt;
+&lt;a class="anchor" href="#existing-sass-color-functions"&gt;&lt;span class="visuallyhidden"&gt;Existing Sass Color Functions permalink&lt;/span&gt;&lt;/a&gt;Existing Sass Color Functions&lt;/h3&gt;
+
+&lt;h4 id="color-scale-color-adjust-and-color-change"&gt;
+&lt;a class="anchor" href="#color-scale-color-adjust-and-color-change"&gt;&lt;span class="visuallyhidden"&gt;color.scale(), color.adjust(), and color.change() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;color.scale()&lt;/code&gt;, &lt;code&gt;color.adjust()&lt;/code&gt;, and &lt;code&gt;color.change()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;By default, all Sass color transformations are handled and returned in the color
+space of the original color parameter. However, all relevant functions now allow
+specifying an explicit color space for transformations. For example, lightness &amp;amp;
+darkness adjustments are most reliable in &lt;code&gt;oklch&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nv"&gt;$brand&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;hsl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;100%&lt;/span&gt; &lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="mi"&gt;.1%&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: hsl(0 100% 43.8%)
+&lt;/span&gt;&lt;span class="nv"&gt;$hsl-lightness&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;scale&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$brand&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$lightness&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;25%&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// result: hsl(5.76 56% 45.4%)
+&lt;/span&gt;&lt;span class="nv"&gt;$oklch-lightness&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;scale&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$brand&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$lightness&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;25%&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$space&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;oklch&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that the returned color is still emitted in the original color space, even
+when the adjustment is performed in a different space.&lt;/p&gt;
+
+&lt;h4 id="color-mix"&gt;
+&lt;a class="anchor" href="#color-mix"&gt;&lt;span class="visuallyhidden"&gt;color.mix() permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;color.mix()&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;color.mix()&lt;/code&gt; function will retain its existing behavior for legacy color
+spaces, but for new color spaces it will match CSS&amp;rsquo;s &amp;ldquo;color interpolation&amp;rdquo;
+specification. This is how CSS computes which color to use in between two colors
+in a gradient or an animation.&lt;/p&gt;
+
+&lt;h4 id="deprecations"&gt;
+&lt;a class="anchor" href="#deprecations"&gt;&lt;span class="visuallyhidden"&gt;Deprecations permalink&lt;/span&gt;&lt;/a&gt;Deprecations&lt;/h4&gt;
+
+&lt;p&gt;A number of existing functions only make sense for legacy colors, and so are
+being deprecated in favor of color-space-friendly functions like
+&lt;code&gt;color.channel()&lt;/code&gt; and &lt;code&gt;color.adjust()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;color.red()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.green()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.blue()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.hue()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.saturation()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.lightness()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.whiteness()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.blackness()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;adjust-hue()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;saturate()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;desaturate()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transparentize()&lt;/code&gt;/&lt;code&gt;fade-out()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opacify()&lt;/code&gt;/&lt;code&gt;fade-in()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lighten()&lt;/code&gt;/&lt;code&gt;darken()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="let-us-know-what-you-think"&gt;
+&lt;a class="anchor" href="#let-us-know-what-you-think"&gt;&lt;span class="visuallyhidden"&gt;Let Us Know What You Think! permalink&lt;/span&gt;&lt;/a&gt;Let Us Know What You Think!&lt;/h2&gt;
+
+&lt;p&gt;There&amp;rsquo;s lots more detail to this proposal, and it&amp;rsquo;s not set in stone yet. We
+want your feedback on it! Read it over &lt;a href="https://github.com/sass/sass/blob/main/proposal/color-4-new-spaces.md#deprecated-functions"&gt;on GitHub&lt;/a&gt;, and &lt;a href="https://github.com/sass/sass/issues/new"&gt;file an issue&lt;/a&gt; with any
+thoughts or concerns you may have.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Request for Comments: Strict Unary Operators</title>
     <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators</id>
     <published>2022-06-15T23:30:00+00:00</published>
-    <updated>2022-09-15T21:02:00+00:00</updated>
+    <updated>2022-09-21T21:00:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -100,7 +373,7 @@ implementing it.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
     <published>2022-02-01T10:00:00+00:00</published>
-    <updated>2022-09-15T21:02:00+00:00</updated>
+    <updated>2022-09-21T21:00:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -169,7 +442,7 @@ for many other popular frontend languages. If you end up doing so, message us
     <link href="https://sass-lang.com/blog/new-js-api-release-candidate" rel="alternate"/>
     <id>https://sass-lang.com/blog/new-js-api-release-candidate</id>
     <published>2021-11-21T00:15:00+00:00</published>
-    <updated>2022-09-15T21:02:00+00:00</updated>
+    <updated>2022-09-21T21:00:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -223,7 +496,7 @@ in a year or so, and to be disabled for good once we release Dart Sass 2.0.0.&lt
     <link href="https://sass-lang.com/blog/request-for-comments-new-js-api" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-new-js-api</id>
     <published>2021-08-05T23:30:00+00:00</published>
-    <updated>2022-09-15T21:02:00+00:00</updated>
+    <updated>2022-09-21T21:00:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -1034,7 +1307,7 @@ and possibly more depending on how lively the discussion around them is.&lt;/p&g
     <link href="https://sass-lang.com/blog/node-fibers-discontinued" rel="alternate"/>
     <id>https://sass-lang.com/blog/node-fibers-discontinued</id>
     <published>2021-03-26T23:00:00+00:00</published>
-    <updated>2022-09-15T21:02:00+00:00</updated>
+    <updated>2022-09-21T21:00:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -1186,78 +1459,6 @@ and V8&amp;rsquo;s isolate APIs, and skills in both API design and human interac
 negotiate a stable API that will meet the needs of &lt;code&gt;node-fibers&lt;/code&gt; &lt;em&gt;and&lt;/em&gt; that the
 V8 team feels comfortable committing to maintain. But if you&amp;rsquo;re interested,
 please don&amp;rsquo;t hesitate to &lt;a href="mailto:nweiz@google.com"&gt;reach out&lt;/a&gt;!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Request for Comments: First-Class Calc</title>
-    <link href="https://sass-lang.com/blog/request-for-comments-first-class-calc" rel="alternate"/>
-    <id>https://sass-lang.com/blog/request-for-comments-first-class-calc</id>
-    <published>2021-03-15T09:35:00+00:00</published>
-    <updated>2022-09-15T21:02:00+00:00</updated>
-    <author>
-      <name>Natalie Weizenbaum</name>
-    </author>
-    <content type="html">&lt;p&gt;One of the absolutely most-requested features in Sass is the ability to more
-easily work with &lt;code&gt;calc()&lt;/code&gt; expressions. These expressions have historically been
-parsed opaquely: between the parentheses, you can put any text at all, and
-Sass will just treat it as an unquoted string. This has simplified Sass&amp;rsquo;s
-parser, since we don&amp;rsquo;t have to support the specific &lt;code&gt;calc()&lt;/code&gt; microsyntax, and
-it&amp;rsquo;s meant that we automatically support new features like the use of &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"&gt;CSS
-variables&lt;/a&gt; within &lt;code&gt;calc()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;However, it comes at a substantial usability cost as well. Because each &lt;code&gt;calc()&lt;/code&gt;
-is totally opaque to Sass&amp;rsquo;s parser, users can&amp;rsquo;t simply use Sass variables in
-place of values; they have to &lt;a href="https://sass-lang.com/documentation/interpolation"&gt;interpolate&lt;/a&gt; variables explicitly. And once a
-&lt;code&gt;calc()&lt;/code&gt; expression has been created, there&amp;rsquo;s no way to manipulate it with Sass
-the way you can manipulate a plain number.&lt;/p&gt;
-
-&lt;p&gt;We&amp;rsquo;re looking to change that with a new proposal we call &amp;ldquo;First-Class Calc&amp;rdquo;.
-This proposal changes &lt;code&gt;calc()&lt;/code&gt; (and other supported mathematical functions) from
-being parsed as unquoted strings to being parsed in-depth, and sometimes
-(although not always) producing a new data type known as a &amp;ldquo;calculation&amp;rdquo;. This
-data type represents mathematical expressions that can&amp;rsquo;t be resolved at
-compile-time, such as &lt;code&gt;calc(10% + 5px)&lt;/code&gt;, and allows those expressions to be
-combined gracefully within further mathematical functions.&lt;/p&gt;
-
-&lt;p&gt;To be more specific: a &lt;code&gt;calc()&lt;/code&gt; expression will be parsed according to the &lt;a href="https://drafts.csswg.org/css-values-3/#calc-syntax"&gt;CSS
-syntax&lt;/a&gt;, with additional support for Sass variables, functions, and (for
-backwards compatibility) interpolation. Sass will perform as much math as
-possible at compile-time, and if the result is a single number it will return it
-as a normal Sass number type. Otherwise, it will return a calculation that
-represents the (simplified) expression that can be resolved in the browser.&lt;/p&gt;
-
-&lt;p&gt;For example:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;calc(1px + 10px)&lt;/code&gt; will return the number &lt;code&gt;11px&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Similarly, if &lt;code&gt;$length&lt;/code&gt; is &lt;code&gt;10px&lt;/code&gt;, &lt;code&gt;calc(1px + $length)&lt;/code&gt; will return &lt;code&gt;11px&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;However, &lt;code&gt;calc(1px + 10%)&lt;/code&gt; will return the calc &lt;code&gt;calc(1px + 10%)&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If &lt;code&gt;$length&lt;/code&gt; is &lt;code&gt;calc(1px + 10%)&lt;/code&gt;, &lt;code&gt;calc(1px + $length)&lt;/code&gt; will return
-&lt;code&gt;calc(2px + 10%)&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Sass functions can be used directly in &lt;code&gt;calc()&lt;/code&gt;, so &lt;code&gt;calc(1% +
-math.round(15.3px))&lt;/code&gt; returns &lt;code&gt;calc(1% + 15px)&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Note that calculations cannot generally be used in place of numbers. For
-example, &lt;code&gt;1px + calc(1px + 10%)&lt;/code&gt; will produce an error, as will
-&lt;code&gt;math.round(calc(1px + 10%))&lt;/code&gt;. This is because calculations can&amp;rsquo;t be used
-interchangeably with numbers (you can&amp;rsquo;t pass a calculation to &lt;code&gt;math.sqrt()&lt;/code&gt;), so
-we want to make sure mathematical functions are explicit about whether or not
-they support calculations by either wrapping all of their math in &lt;code&gt;calc()&lt;/code&gt; or
-using normal Sass arithmetic.&lt;/p&gt;
-
-&lt;p&gt;For backwards compatibility, &lt;code&gt;calc()&lt;/code&gt; expressions that contain interpolation
-will continue to be parsed using the old highly-permissive syntax, although this
-behavior will eventually be deprecated and removed. These expressions will still
-return calculation values, but they&amp;rsquo;ll never be simplified or resolve to plain
-numbers.&lt;/p&gt;
-
-&lt;h2 id="let-us-know-what-you-think"&gt;
-&lt;a class="anchor" href="#let-us-know-what-you-think"&gt;&lt;span class="visuallyhidden"&gt;Let us know what you think! permalink&lt;/span&gt;&lt;/a&gt;Let us know what you think!&lt;/h2&gt;
-
-&lt;p&gt;If you&amp;rsquo;re interested in learning more about this proposal, &lt;a href="https://github.com/sass/sass/tree/main/proposal/first-class-calc.md"&gt;read it in full&lt;/a&gt; on
-GitHub. It&amp;rsquo;s open for comments and revisions for the next month, so if you&amp;rsquo;d
-like to see something change please &lt;a href="https://github.com/sass/sass/issues/new"&gt;file an issue&lt;/a&gt; and we can discuss it!&lt;/p&gt;
 </content>
   </entry>
 </feed>
