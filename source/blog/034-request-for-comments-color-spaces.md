@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: Color Spaces"
 author: Miriam Suzanne and Natalie Weizenbaum
-date: 2022-09-20 19:00 PST
+date: 2022-09-21 13:00 PST
 ---
 
 There's been a lot of exciting work in the CSS color specifications lately, and
@@ -49,8 +49,9 @@ There are several rules of thumb for working with color spaces in Sass:
 
 * The `rgb`, `hsl`, and `hwb` spaces are considered "legacy spaces", and will
   often get special handling for the sake of backwards compatibility. Colors
-  defined using hex notation or CSS color names are considered part of the
-  `rgb` color space. Legacy colors are emitted in the most compatible format.
+  defined using hex notation or CSS color names are considered part of the `rgb`
+  color space. Legacy colors are emitted in the most compatible format. This
+  matches CSS's own backwards-compatibility behavior.
 
 * Otherwise, any color defined in a given space will remain in that space, and
   be emitted in that space.
@@ -127,7 +128,7 @@ $brighter-green: color(display-p3 0 1 0);
 
 Sass will natively support all predefined color spaces declared in the Colors
 Level 4 specification. It will also support unknown color spaces, although these
-can't be converted to and from and other color space.
+can't be converted to and from any other color space.
 
 ### New Sass Color Functions
 
