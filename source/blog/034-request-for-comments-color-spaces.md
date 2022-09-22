@@ -30,7 +30,7 @@ downsides:
 
 Color spaces solve all of these problems. Now not every color has a red, green,
 and blue channel (which can be interpreted as hue, saturation, and lightness).
-Instead, a every color has a specific *color space* which specifies which
+Instead, every color has a specific *color space* which specifies which
 channels it has. For example, the color `oklch(80% 50% 90deg)` has `oklch` as
 its color space, `80%` lightness, `50%` chroma, and `90deg` hue.
 
@@ -42,6 +42,7 @@ defines Sassified versions of all the color functions in [CSS Color Level
 4][color-4].
 
 [a proposal for how to handle color spaces in Sass]: https://github.com/sass/sass/blob/main/proposal/color-4-new-spaces.md
+[color-4]: https://www.w3.org/TR/css-color-4/
 
 ### Rules of Thumb
 
