@@ -40,8 +40,8 @@ Thanks!
 
 &mdash; Sass Core Team
 
-[ig]:        http://sass-lang.com/implementation
-[sg]:        http://sass-lang.com/styleguide
-[middleman]: http://middlemanapp.com
+[ig]:        https://sass-lang.com/implementation
+[sg]:        https://sass-lang.com/styleguide
+[middleman]: https://middlemanapp.com
 [ruby]:      https://www.ruby-lang.org/en/downloads/
-[bundler]:   http://bundler.io/
+[bundler]:   https://bundler.io/
