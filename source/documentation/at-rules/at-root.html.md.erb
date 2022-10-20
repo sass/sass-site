@@ -27,7 +27,7 @@ just a shorthand for `@at-root { <selector> { ... } }`!
 
 On its own, `@at-root` only gets rid of [style rules][]. Any at-rules like
 [`@media`][] or [`@supports`][] will be left in. If this isn't what you want,
-though, you can control exactly what it includes or includes using syntax like
+though, you can control exactly what it includes or excludes using syntax like
 [media query features][], written `@at-root (with: <rules...>) { ... }` or
 `@at-root (without: <rules...>) { ... }`. The `(without: ...)` query tells Sass
 which rules should be excluded; the `(with: ...)` query excludes all rules
