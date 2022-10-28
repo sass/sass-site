@@ -71,6 +71,11 @@ Dir['source/documentation/breaking-changes/**'].each do |file|
   redirect "d/#{basename}.html", to: "/documentation/breaking-changes/#{basename}"
 end
 
+for url in %w[d/random-with-units documentation/breaking-changes/random-with-units
+    d/breaking-changes/color-units documentation/breaking-changes/color-units] do
+  redirect url, to: "/documentation/breaking-changes/function-units"
+end
+
 redirect 'tutorial.html', to: '/guide'
 redirect 'download.html', to: '/install'
 redirect 'try.html', to: 'https://www.sassmeister.com'
