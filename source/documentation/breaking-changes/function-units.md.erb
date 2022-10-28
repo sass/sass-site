@@ -27,7 +27,7 @@ in multiple phases:
 <% impl_status dart: '1.32.0', libsass: false, ruby: false %>
 
 At first, Sass just emitted a deprecation warning if you passed a number with a
-unit other than `deg` as a hue to any function. Passing a unitless number was
+unit other than `deg` as a hue to any function. Passing a unitless number is
 still allowed.
 
 ### Phase 2
@@ -67,9 +67,8 @@ in two phases:
 
 <% impl_status dart: '1.32.0', libsass: false, ruby: false %>
 
-Currently, Sass just emits a deprecation warning if you pass a number with a
-unit other than `deg` as a hue to any function. Passing a unitless number was
-still allowed.
+Currently, Sass just emits a deprecation warning if you pass a number with no
+unit or a unit other than `%` as a lightness or saturation to any function.
 
 ### Phase 2
 
