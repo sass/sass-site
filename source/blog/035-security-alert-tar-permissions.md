@@ -15,9 +15,10 @@ of users, it does affect the following groups:
 * Users who installed the `sass-embedded` package from npm as the Unix root user
   prior to version 1.54.5.
 
-* Users on multi-user systems who the stand-alone Dart Sass, Dart Sass Embedded,
-  or Sass Migrator `.tar.gz` archives from the Dart Sass website and explicitly
-  passed the `-p`/`--preserve-permissions` flag when extracting them.
+* Users on multi-user systems who downloaded the stand-alone Dart Sass, Dart
+  Sass Embedded, or Sass Migrator `.tar.gz` archives from the Dart Sass website
+  and explicitly passed the `-p`/`--preserve-permissions` flag when extracting
+  them.
 
 We strongly recommend that users in these vulnerable groups delete and
 re-install Sass. All the `.tar.gz` files on GitHub have been scrubbed to remove
