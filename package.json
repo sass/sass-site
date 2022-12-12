@@ -1,1 +1,19 @@
-{ "engines" : { "node": "16.x" } }
+{
+  "name": "sass-site",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sass/sass-site.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "16.x"
+  },
+  "packageManager": "yarn@3.3.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.2"
+  }
+}
