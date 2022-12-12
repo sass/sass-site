@@ -12,13 +12,20 @@ of users, it does affect the following groups:
   Migrator `.tar.gz` archives from the Dart Sass website and extracted them as
   the Unix root user.
 
-* Users who installed the `sass-embedded` package from npm as the Unix root user
+* Users who installed the `sass-embedded` npm package as the Unix root user
   prior to version 1.54.5.
+
+* Users who installed the "non-native" version of the community-maintained
+  `sass-embedded` RubyGems package as the Unix root user prior to version
+  1.56.2.
 
 * Users on multi-user systems who downloaded the stand-alone Dart Sass, Dart
   Sass Embedded, or Sass Migrator `.tar.gz` archives from the Dart Sass website
   and explicitly passed the `-p`/`--preserve-permissions` flag when extracting
   them.
+
+Users who installed Dart Sass via the `sass` npm package, Homebrew, or
+Chocolatey are categorically not at risk, nor are users on Windows.
 
 We strongly recommend that users in these vulnerable groups delete and
 re-install Sass. All the `.tar.gz` files on GitHub have been scrubbed to remove
