@@ -4,9 +4,31 @@ author: Natalie Weizenbaum
 date: 2022-12-09 16:00 PST
 ---
 
-The Sass team has recently been alerted to a security issue in our release
-process. While we don't expect this issue to be a problem for the vast majority
-of users, it does affect the following groups:
+The Sass team was recently alerted by prolific external contributor [@ntkme] to
+a security issue in our release process.
+
+[@ntkme]: https://github.com/ntkme
+
+## TL;DR
+
+If you're using Linux or Mac OS, run `ls -ax path/to/sass`. If the last group of
+letters in the first column contains `w`, you're vulnerable:
+
+```
+Vulnerable:
+-rwxr-xrwx 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+
+Not vulnerable:
+-rwxr-xr-x 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+```
+
+If you're using the `sass-embedded` package, do the same thing for
+`node_modules/sass-embedded/dist/lib/src/vendor/dart-sass-embedded/dart-sass-embedded`.
+
+## Who's Affected?
+
+While we don't expect this issue to be a problem for the vast majority of users,
+it does affect the following groups:
 
 * Users who downloaded the stand-alone Dart Sass, Dart Sass Embedded, or Sass
   Migrator `.tar.gz` archives from the Dart Sass website and extracted them as
@@ -80,10 +102,8 @@ conversion wrong. The actual permissions that got set were `757`
 group) and `654` (read/write for the owner, read/execute for the group, and
 read-only for other users).
 
-This went unnoticed for several years, until prolific external contributor
-[@ntkme] notified us of the issue today and provided a fix to `cli_pkg`.
-
-[@ntkme]: https://github.com/ntkme
+This went unnoticed for several years, until @ntkme notified us of the issue
+last week and provided a fix to `cli_pkg`.
 
 ## What's been done?
 
