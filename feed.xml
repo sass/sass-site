@@ -4,13 +4,127 @@
   <id>https://sass-lang.com/blog</id>
   <link href="https://sass-lang.com/blog"/>
   <link href="https://sass-lang.com/feed.xml" rel="self"/>
-  <updated>2022-09-21T21:00:00+00:00</updated>
+  <updated>2022-12-10T00:00:00+00:00</updated>
+  <entry>
+    <title>Security Alert: Tar Permissions</title>
+    <link href="https://sass-lang.com/blog/security-alert-tar-permissions" rel="alternate"/>
+    <id>https://sass-lang.com/blog/security-alert-tar-permissions</id>
+    <published>2022-12-10T00:00:00+00:00</published>
+    <updated>2022-12-15T22:11:47+00:00</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;The Sass team was recently alerted by prolific external contributor &lt;a href="https://github.com/ntkme"&gt;@ntkme&lt;/a&gt; to
+a security issue in our release process.&lt;/p&gt;
+
+&lt;h2 id="tl-dr"&gt;
+&lt;a class="anchor" href="#tl-dr"&gt;&lt;span class="visuallyhidden"&gt;TL;DR permalink&lt;/span&gt;&lt;/a&gt;TL;DR&lt;/h2&gt;
+
+&lt;p&gt;If you&amp;rsquo;re using Linux or Mac OS, run &lt;code&gt;ls -ax path/to/sass&lt;/code&gt;. If the last group of
+letters in the first column contains &lt;code&gt;w&lt;/code&gt;, you&amp;rsquo;re vulnerable:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;Vulnerable:
+-rwxr-xrwx 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+
+Not vulnerable:
+-rwxr-xr-x 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you&amp;rsquo;re using the &lt;code&gt;sass-embedded&lt;/code&gt; package, do the same thing for
+&lt;code&gt;node_modules/sass-embedded/dist/lib/src/vendor/dart-sass-embedded/dart-sass-embedded&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id="whos-affected"&gt;
+&lt;a class="anchor" href="#whos-affected"&gt;&lt;span class="visuallyhidden"&gt;Who’s Affected? permalink&lt;/span&gt;&lt;/a&gt;Who’s Affected?&lt;/h2&gt;
+
+&lt;p&gt;While we don&amp;rsquo;t expect this issue to be a problem for the vast majority of users,
+it does affect the following groups:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Users who downloaded the stand-alone Dart Sass, Dart Sass Embedded, or Sass
+Migrator &lt;code&gt;.tar.gz&lt;/code&gt; archives from the Dart Sass website and extracted them as
+the Unix root user.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Users who installed the &lt;code&gt;sass-embedded&lt;/code&gt; npm package as the Unix root user
+prior to version 1.54.5.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Users who installed the &amp;ldquo;non-native&amp;rdquo; version of the community-maintained
+&lt;code&gt;sass-embedded&lt;/code&gt; RubyGems package as the Unix root user prior to version
+1.56.2.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Users on multi-user systems who downloaded the stand-alone Dart Sass, Dart
+Sass Embedded, or Sass Migrator &lt;code&gt;.tar.gz&lt;/code&gt; archives from the Dart Sass website
+and explicitly passed the &lt;code&gt;-p&lt;/code&gt;/&lt;code&gt;--preserve-permissions&lt;/code&gt; flag when extracting
+them.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Users who installed Dart Sass via the &lt;code&gt;sass&lt;/code&gt; npm package, Homebrew, or
+Chocolatey are categorically not at risk, nor are users on Windows.&lt;/p&gt;
+
+&lt;p&gt;We strongly recommend that users in these vulnerable groups delete and
+re-install Sass. All the &lt;code&gt;.tar.gz&lt;/code&gt; files on GitHub have been scrubbed to remove
+the vulnerability, so you can reinstall the same version you were previously
+using without needing to upgrade to the latest version.&lt;/p&gt;
+
+&lt;p&gt;This is a privilege-escalation issue, which means it could allow a hypothetical
+attacker with access to a low-privilege account on your computer to escalate
+their access to your account&amp;rsquo;s privileges. However, this also means that it&amp;rsquo;s
+not a risk &lt;em&gt;unless&lt;/em&gt; an attacker already has access to an account on your
+machine.&lt;/p&gt;
+
+&lt;h2 id="what-went-wrong"&gt;
+&lt;a class="anchor" href="#what-went-wrong"&gt;&lt;span class="visuallyhidden"&gt;What went wrong? permalink&lt;/span&gt;&lt;/a&gt;What went wrong?&lt;/h2&gt;
+
+&lt;p&gt;We were inadvertently uploading &lt;code&gt;.tar.gz&lt;/code&gt; archives with permissions metadata
+indicating that executable files could be overwritten by all users, not just the
+owner.&lt;/p&gt;
+
+&lt;p&gt;In most cases, this metadata is ignored when extracting the archives and the
+permissions are set to only be writable by the user doing the extraction.
+However, when extracting archives as the Unix root user or explicitly passing
+the &lt;code&gt;-p&lt;/code&gt;/&lt;code&gt;--preserve-permissions&lt;/code&gt; flag, the permissions for the extracted files
+are set according to the archive&amp;rsquo;s metadata. Because the metadata was incorrect,
+an attacker with access to a low-privilege account would be able to overwrite
+the executable file and escalate their privileges once it&amp;rsquo;s executed.&lt;/p&gt;
+
+&lt;h2 id="how-did-this-happen"&gt;
+&lt;a class="anchor" href="#how-did-this-happen"&gt;&lt;span class="visuallyhidden"&gt;How did this happen? permalink&lt;/span&gt;&lt;/a&gt;How did this happen?&lt;/h2&gt;
+
+&lt;p&gt;Dart Sass is automatically deployed to various different release platforms using
+a Dart package called &lt;a href="https://pub.dev/packages/cli_pkg"&gt;&lt;code&gt;cli_pkg&lt;/code&gt;&lt;/a&gt;, which is also written maintained by the Sass
+team. This package uses the Dart &lt;a href="https://pub.dev/packages/archive"&gt;&lt;code&gt;archive&lt;/code&gt;&lt;/a&gt; package to generate &lt;code&gt;.tar.gz&lt;/code&gt; files
+for stand-alone release packages which are then uploaded to GitHub, and when
+initially writing the code to use this package I wrote the following function:&lt;/p&gt;
+&lt;pre class="highlight dart"&gt;&lt;code&gt;&lt;span class="n"&gt;ArchiveFile&lt;/span&gt; &lt;span class="nf"&gt;fileFromBytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;executable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;})&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+    &lt;span class="n"&gt;ArchiveFile&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;length&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="na"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;executable&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="mi"&gt;495&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;428&lt;/span&gt;
+      &lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="na"&gt;lastModTime&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DateTime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;now&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;millisecondsSinceEpoch&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;My intention was to set the executable mode to &lt;code&gt;755&lt;/code&gt; (read/write/execute for the
+owner, read/execute only for the other users) and the non-executable mode to
+&lt;code&gt;644&lt;/code&gt; (read/write for the owner, read-only for other users). However, Dart
+doesn&amp;rsquo;t support literal octal numbers and I must have done the decimal-to-octal
+conversion wrong. The actual permissions that got set were &lt;code&gt;757&lt;/code&gt;
+(read/write/execute for the owner &lt;strong&gt;and other users&lt;/strong&gt;, read/execute for the
+group) and &lt;code&gt;654&lt;/code&gt; (read/write for the owner, read/execute for the group, and
+read-only for other users).&lt;/p&gt;
+
+&lt;p&gt;This went unnoticed for several years, until @ntkme notified us of the issue
+last week and provided a fix to &lt;code&gt;cli_pkg&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id="whats-been-done"&gt;
+&lt;a class="anchor" href="#whats-been-done"&gt;&lt;span class="visuallyhidden"&gt;What’s been done? permalink&lt;/span&gt;&lt;/a&gt;What’s been done?&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;ve released &lt;code&gt;cli_pkg&lt;/code&gt; 2.1.7 which sets the archive permissions correctly. In
+addition, we&amp;rsquo;ve updated all &lt;code&gt;.tar.gz&lt;/code&gt; files in the Dart Sass, Dart Sass
+Embedded, and Sass Migrator repositories to correctly limit write permissions to
+only the owner of the files. We&amp;rsquo;re announcing the vulnerability here and on the
+&lt;a href="https://twitter.com/SassCSS"&gt;@SassCSS Twitter account&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Request for Comments: Color Spaces</title>
     <link href="https://sass-lang.com/blog/request-for-comments-color-spaces" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-color-spaces</id>
     <published>2022-09-21T21:00:00+00:00</published>
-    <updated>2022-12-08T21:45:40+00:00</updated>
+    <updated>2022-12-15T22:11:47+00:00</updated>
     <author>
       <name>Miriam Suzanne and Natalie Weizenbaum</name>
     </author>
@@ -283,7 +397,7 @@ thoughts or concerns you may have.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators</id>
     <published>2022-06-15T23:30:00+00:00</published>
-    <updated>2022-12-08T21:45:40+00:00</updated>
+    <updated>2022-12-15T22:11:47+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -373,7 +487,7 @@ implementing it.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
     <published>2022-02-01T10:00:00+00:00</published>
-    <updated>2022-12-08T21:45:40+00:00</updated>
+    <updated>2022-12-15T22:11:47+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -442,7 +556,7 @@ for many other popular frontend languages. If you end up doing so, message us
     <link href="https://sass-lang.com/blog/new-js-api-release-candidate" rel="alternate"/>
     <id>https://sass-lang.com/blog/new-js-api-release-candidate</id>
     <published>2021-11-21T00:15:00+00:00</published>
-    <updated>2022-12-08T21:45:40+00:00</updated>
+    <updated>2022-12-15T22:11:47+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -496,7 +610,7 @@ in a year or so, and to be disabled for good once we release Dart Sass 2.0.0.&lt
     <link href="https://sass-lang.com/blog/request-for-comments-new-js-api" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-new-js-api</id>
     <published>2021-08-05T23:30:00+00:00</published>
-    <updated>2022-12-08T21:45:40+00:00</updated>
+    <updated>2022-12-15T22:11:47+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -1300,165 +1414,6 @@ forms, they&amp;rsquo;re available on GitHub to view in full:&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;re eager for feedback, so please &lt;a href="https://github.com/sass/sass/issues/new"&gt;let us know what you think&lt;/a&gt;! The proposals
 in question will be open for at least a month after this blog post goes live,
 and possibly more depending on how lively the discussion around them is.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>The Discontinuation of node-fibers</title>
-    <link href="https://sass-lang.com/blog/node-fibers-discontinued" rel="alternate"/>
-    <id>https://sass-lang.com/blog/node-fibers-discontinued</id>
-    <published>2021-03-26T23:00:00+00:00</published>
-    <updated>2022-12-08T21:45:40+00:00</updated>
-    <author>
-      <name>Natalie Weizenbaum</name>
-    </author>
-    <content type="html">&lt;p&gt;We have recently received the unfortunate but not entirely surprising news that
-&lt;a href="https://github.com/laverdet/node-fibers/commit/8f2809869cc92c28c92880c4a38317ae3dbe654d"&gt;the &lt;code&gt;node-fibers&lt;/code&gt; package has reached its end-of-life&lt;/a&gt; and will not be updated
-for compatibility with Node 16. Dart Sass has historically allowed JavaScript
-users to pass in &lt;code&gt;node-fibers&lt;/code&gt; to improve the performance of the asynchronous
-&lt;code&gt;render()&lt;/code&gt; method, but going forward this will unfortunately no longer be an
-option in Node 16 and on.&lt;/p&gt;
-
-&lt;p&gt;There are a number of &lt;a href="#reclaiming-performance"&gt;alternative options&lt;/a&gt; for reclaiming this lost
-performance, some of them which are available today, some which are in
-development, and some which are theoretical but could be made real with pull
-requests from users like you. Sadly, none of the options that are ready today
-are drop-in solutions with the same level of ease-of-use as &lt;code&gt;node-fibers&lt;/code&gt;, so if
-that performance is crucial to you we recommend staying on Node 14 for the time
-being.&lt;/p&gt;
-
-&lt;h2 id="what-happened"&gt;
-&lt;a class="anchor" href="#what-happened"&gt;&lt;span class="visuallyhidden"&gt;What Happened? permalink&lt;/span&gt;&lt;/a&gt;What Happened?&lt;/h2&gt;
-
-&lt;p&gt;In order to understand how we got here, it&amp;rsquo;s important to know two pieces of
-history. First, why does Dart Sass use &lt;code&gt;node-fibers&lt;/code&gt; in the first place? And
-second, why is &lt;code&gt;node-fibers&lt;/code&gt; dying?&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;This section is fairly technical, so feel free to &lt;a href="#reclaiming-performance"&gt;skip ahead&lt;/a&gt; if you don&amp;rsquo;t care
-about the gory details.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id="fibers-in-sass"&gt;
-&lt;a class="anchor" href="#fibers-in-sass"&gt;&lt;span class="visuallyhidden"&gt;Fibers in Sass permalink&lt;/span&gt;&lt;/a&gt;Fibers in Sass&lt;/h3&gt;
-
-&lt;p&gt;Dart Sass inherited its &lt;a href="/documentation/js-api"&gt;JavaScript API&lt;/a&gt; from the now-deprecated &lt;a href="https://www.npmjs.com/package/node-sass"&gt;Node Sass&lt;/a&gt;.
-This API has two main functions for compiling Sass files: &lt;code&gt;renderSync()&lt;/code&gt; which
-synchronously returned the compiled CSS, and &lt;code&gt;render()&lt;/code&gt; which instead takes a
-callback to which it passes the compiled CSS asynchronously. Only &lt;code&gt;render()&lt;/code&gt;
-allowed asynchronous plugins, including widely-used importers such as webpack&amp;rsquo;s
-&lt;a href="https://www.npmjs.com/package/sass-loader"&gt;&lt;code&gt;sass-loader&lt;/code&gt;&lt;/a&gt;, so &lt;code&gt;render()&lt;/code&gt; became very widely used in practice.&lt;/p&gt;
-
-&lt;p&gt;For Node Sass, the performance difference between &lt;code&gt;render()&lt;/code&gt; and &lt;code&gt;renderSync()&lt;/code&gt;
-was negligible, because it was built on C++ code which had few restrictions on
-how it handled asynchrony. However, Dart Sass runs as pure JavaScript, which
-makes it subject to JavaScript&amp;rsquo;s strict async rules. Asynchrony in JavaScript is
-&lt;em&gt;contagious&lt;/em&gt;, which means that if any function (such as an importer plugin) is
-asynchronous, then everything that calls it must be asynchronous, and so on
-until the entire program is asynchronous.&lt;/p&gt;
-
-&lt;p&gt;And asynchrony in JavaScript isn&amp;rsquo;t free. Every asynchronous function call has to
-allocate callbacks, store them somewhere, and take a trip back to the event loop
-before invoking those callbacks, and that all takes time. In fact, it takes
-enough time that the asynchronous &lt;code&gt;render()&lt;/code&gt; in Dart Sass tends to be 2-3x
-slower than &lt;code&gt;renderSync()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Enter fibers. Fibers are a very cool concept, available in languages like Ruby
-and C++, that give the programmer more control over asynchronous functions. They
-can even allow a chunk of synchronous code (such as the Sass compiler) to call
-asynchronous callbacks (such as the webpack plugin). The &lt;code&gt;node-fibers&lt;/code&gt; package
-did some arcane magick with the V8 virtual machine to implement Fibers in
-JavaScript, which allowed Dart Sass to use the fast synchronous code to
-implement the asynchronous &lt;code&gt;render()&lt;/code&gt; API. And for a time, it was great.&lt;/p&gt;
-
-&lt;h3 id="the-death-of-fibers"&gt;
-&lt;a class="anchor" href="#the-death-of-fibers"&gt;&lt;span class="visuallyhidden"&gt;The Death of Fibers permalink&lt;/span&gt;&lt;/a&gt;The Death of Fibers&lt;/h3&gt;
-
-&lt;p&gt;Unfortunately, the arcane magick that &lt;code&gt;node-fibers&lt;/code&gt; used involved accessing some
-parts of V8 that were not officially part of its public API. There was no
-guarantee that the interfaces they were using would stay the same from release
-to release, and indeed they tended to change fairly regularly. For a long time,
-those changes were small enough that it was possible to release a new version of
-&lt;code&gt;node-fibers&lt;/code&gt; that supported them, but with Node.js 16 the luck ran out.&lt;/p&gt;
-
-&lt;p&gt;The latest version of V8 involves some major overhauls to its internals. These
-will eventually allow it to implement some cool improvements, so its hard to
-begrudge, but a side effect is that the APIs &lt;code&gt;node-fibers&lt;/code&gt; was using are
-completely gone without an obvious replacement. This is no one&amp;rsquo;s fault: since
-those interfaces weren&amp;rsquo;t part of V8&amp;rsquo;s public API, they were under no obligation
-to keep them stable. Sometimes in software that&amp;rsquo;s just the way things go.&lt;/p&gt;
-
-&lt;h2 id="reclaiming-performance"&gt;
-&lt;a class="anchor" href="#reclaiming-performance"&gt;&lt;span class="visuallyhidden"&gt;Reclaiming Performance permalink&lt;/span&gt;&lt;/a&gt;Reclaiming Performance&lt;/h2&gt;
-
-&lt;p&gt;There are a few options for getting back the performance that&amp;rsquo;s lost by no
-longer being able to pass &lt;code&gt;node-fibers&lt;/code&gt; to &lt;code&gt;sass.render()&lt;/code&gt;. In order from
-nearest to longest term:&lt;/p&gt;
-
-&lt;h3 id="avoid-asynchronous-plugins"&gt;
-&lt;a class="anchor" href="#avoid-asynchronous-plugins"&gt;&lt;span class="visuallyhidden"&gt;Avoid Asynchronous Plugins permalink&lt;/span&gt;&lt;/a&gt;Avoid Asynchronous Plugins&lt;/h3&gt;
-
-&lt;p&gt;This is something you can do today. If it&amp;rsquo;s at all possible to make the plugins
-you pass in to Sass synchronous, you can use the &lt;code&gt;renderSync()&lt;/code&gt; method which
-doesn&amp;rsquo;t need fibers to go fast. This may require rewriting some existing
-plugins, but it will pay dividends immediately.&lt;/p&gt;
-
-&lt;h3 id="embedded-dart-sass"&gt;
-&lt;a class="anchor" href="#embedded-dart-sass"&gt;&lt;span class="visuallyhidden"&gt;Embedded Dart Sass permalink&lt;/span&gt;&lt;/a&gt;Embedded Dart Sass&lt;/h3&gt;
-
-&lt;p&gt;While it&amp;rsquo;s not ready for prime-time yet, the Sass team is working on a project
-called &amp;ldquo;embedded Dart Sass&amp;rdquo;. This involves running Dart Sass as a &lt;em&gt;subprocess&lt;/em&gt;,
-rather than a library, and communicating with it using a special protocol. This
-provides several important improvements over the existing alternatives:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Unlike running &lt;code&gt;sass&lt;/code&gt; from the command line, this will still work with plugins
-like the webpack importer. In fact, we plan to match the existing JavaScript
-API as closely as possible. This will probably run asynchronous plugins &lt;em&gt;even
-faster&lt;/em&gt; than synchronous ones.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Unlike the existing JS-compiled version, this will use the Dart VM. Due to the
-more static nature of the Dart language, the Dart VM runs Sass substantially
-faster than Node.js, which will provide about a 2x speed improvement for large
-stylesheets.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The Node.js host for Embedded Sass is still in active development, but there&amp;rsquo;s
-&lt;a href="https://www.npmjs.com/package/sass-embedded"&gt;a beta release&lt;/a&gt; available (with minimal features) if you want to kick the
-tires.&lt;/p&gt;
-
-&lt;h3 id="worker-threads"&gt;
-&lt;a class="anchor" href="#worker-threads"&gt;&lt;span class="visuallyhidden"&gt;Worker Threads permalink&lt;/span&gt;&lt;/a&gt;Worker Threads&lt;/h3&gt;
-
-&lt;p&gt;We&amp;rsquo;ve explored the possibility of running the pure-JS Dart Sass in a Node.js
-worker thread. Worker threads work a bit like fibers in that they make it
-possible for synchronous code to wait for asynchronous callbacks to run.
-Unfortunately, they&amp;rsquo;re also &lt;em&gt;extremely&lt;/em&gt; restrictive about what sorts of
-information can be passed across the thread boundary, which makes it much harder
-to use them to wrap a complex API like Sass&amp;rsquo;s.&lt;/p&gt;
-
-&lt;p&gt;At the moment, the Sass team is focused on Embedded Sass, so we don&amp;rsquo;t have the
-spare bandwidth to dive into worker threads as an alternative. That said, we&amp;rsquo;d
-be happy to help a motivated user implement this. If you&amp;rsquo;re interested, follow
-up on &lt;a href="https://github.com/sass/dart-sass/issues/868"&gt;the GitHub issue&lt;/a&gt;!&lt;/p&gt;
-
-&lt;h3 id="reanimating-node-fibers"&gt;
-&lt;a class="anchor" href="#reanimating-node-fibers"&gt;&lt;span class="visuallyhidden"&gt;Reanimating node-fibers permalink&lt;/span&gt;&lt;/a&gt;Reanimating &lt;code&gt;node-fibers&lt;/code&gt;
-&lt;/h3&gt;
-
-&lt;p&gt;There&amp;rsquo;s one other potential solution, although it would take true dedication to
-turn into reality. It would in principle be possible to add a new API to V8 that
-would &lt;em&gt;officially&lt;/em&gt; support the hooks &lt;code&gt;node-fibers&lt;/code&gt; needs to do its good work.
-This would allow the package to return gloriously to life and Sass to make
-&lt;code&gt;render()&lt;/code&gt; fast on into the future.&lt;/p&gt;
-
-&lt;p&gt;The Sass team has contacted both the V8 team and the owner of &lt;code&gt;node-fibers&lt;/code&gt;, and
-both of them are amenable to this idea in principle. While neither one has the
-time to see it through to completion themselves, they&amp;rsquo;ve expressed willingness
-to help an engineer who&amp;rsquo;s willing to give it a shot.&lt;/p&gt;
-
-&lt;p&gt;This isn&amp;rsquo;t a contribution for the faint of heart, though: it requires knowledge
-of C++, a willingness to learn at least the basics of the &lt;code&gt;node-fibers&lt;/code&gt; codebase
-and V8&amp;rsquo;s isolate APIs, and skills in both API design and human interaction to
-negotiate a stable API that will meet the needs of &lt;code&gt;node-fibers&lt;/code&gt; &lt;em&gt;and&lt;/em&gt; that the
-V8 team feels comfortable committing to maintain. But if you&amp;rsquo;re interested,
-please don&amp;rsquo;t hesitate to &lt;a href="mailto:nweiz@google.com"&gt;reach out&lt;/a&gt;!&lt;/p&gt;
 </content>
   </entry>
 </feed>
