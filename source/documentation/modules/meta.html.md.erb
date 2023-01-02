@@ -431,7 +431,7 @@ title: sass:meta
 
     @debug meta.module-functions("functions"); // ("pow": get-function("pow"))
 
-    @debug meta.call(map.get(meta.module-variables("functions"), "pow"), 3, 4); // 16
+    @debug meta.call(map.get(meta.module-functions("functions"), "pow"), 3, 4); // 81
     ===
     // _functions.sass
     @function pow($base, $exponent)
@@ -448,7 +448,7 @@ title: sass:meta
 
     @debug meta.module-functions("functions") // ("pow": get-function("pow"))
 
-    @debug meta.call(map.get(meta.module-variables("functions"), "pow"), 3, 4) // 16
+    @debug meta.call(map.get(meta.module-functions("functions"), "pow"), 3, 4) // 81
   <% end %>
 <% end %>
 
