@@ -19,6 +19,7 @@ Thumbs.db
 /.yardoc
 /vendor/bundle/
 /source/documentation/js-api
+/_site/
 
 # NPM/Yarn
 node_modules/

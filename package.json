@@ -11,12 +11,14 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "16.x"
+    "node": "^16",
+    "yarn": "^3"
   },
   "type": "module",
   "packageManager": "yarn@3.3.0",
   "scripts": {
-    "build": "yarn eleventy --config=.eleventy.cjs",
+    "build": "eleventy --config=.eleventy.cjs",
+    "serve": "eleventy --config=.eleventy.cjs --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
