@@ -9,6 +9,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addWatchTarget("source/assets/img");
   eleventyConfig.addPassthroughCopy("source/assets/img");
+  eleventyConfig.addPassthroughCopy("source/favicon.ico");
 
   // settings
   return {

@@ -18,16 +18,30 @@
   "packageManager": "yarn@3.3.0",
   "scripts": {
     "serve": "run-p 'watch:**'",
-    "build": "run-s 'build:**'",
+    "build": "run-s build-dev:scripts 'build:**'",
+    "build-prod": "run-s build-prod:scripts 'build:**'",
     "build:sass": "sass --style=compressed ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
     "watch:sass": "sass --watch ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
+    "build-dev:scripts": "rollup -c",
+    "build-prod:scripts": "BABEL_ENV=production rollup -c",
+    "watch:scripts": "npm run build-dev:scripts -- -w",
     "build:11ty": "eleventy --config=.eleventy.cjs",
     "watch:11ty": "eleventy --config=.eleventy.cjs --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.2",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-inject": "^5.0.3",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.3.0",
+    "jquery": "^3.6.3",
+    "jquery-ui": "^1.13.2",
     "npm-run-all": "^4.1.5",
+    "rollup": "^3.9.1",
     "sass": "^1.57.1"
   }
 }
