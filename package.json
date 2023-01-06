@@ -1,16 +1,22 @@
 {
   "name": "sass-site",
   "version": "1.0.0",
+  "homepage": "https://sass-lang.com/",
+  "title": "Sass",
+  "description": "Sass: Syntactically Awesome Style Sheets",
   "repository": {
     "type": "git",
     "url": "https://github.com/sass/sass-site.git"
   },
+  "private": true,
   "license": "MIT",
   "engines": {
     "node": "16.x"
   },
+  "type": "module",
   "packageManager": "yarn@3.3.0",
   "scripts": {
+    "build": "yarn eleventy --config=.eleventy.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
