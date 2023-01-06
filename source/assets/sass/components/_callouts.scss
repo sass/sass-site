@@ -1,0 +1,62 @@
+.sl-c-callout {
+  margin: 1.5rem 0;
+  padding: 1.5rem 1rem;
+  background: lighten($sl-color--pale-sky, 60%);
+  border-radius: 2px;
+
+  &--warning {
+    background: lighten($sl-color--hopbush, 38%);
+    border: 1px solid lighten($sl-color--hopbush, 27%);
+  }
+
+  &--fun-fact {
+    background: lighten($sl-color--patina, 47%);
+    border: 1px solid lighten($sl-color--patina, 32%);
+  }
+
+  &--function {
+    padding-bottom: .25rem;
+    padding-top: 0;
+
+    .signature {
+      // Make sure permalinks are visible.
+      overflow: visible;
+
+      margin-left: -1rem;
+      margin-right: -1rem;
+    }
+  }
+
+  &--impl-status {
+    font-size: 0.8em;
+    margin-top: -1rem;
+    padding: 0.8rem;
+
+    .sl-c-callout & {
+      background: lighten($sl-color--pale-sky, 53%);
+    }
+  }
+
+  > *:first-child { margin-top: 0; }
+
+  > *:last-child { margin-bottom: 0; }
+}
+
+@include sl-breakpoint--medium {
+  .sl-l-container--overview {
+    font-size: 1.25rem;
+
+    .sl-c-callout { font-size: 1rem; }
+  }
+}
+
+@include sl-breakpoint--large {
+  .sl-c-callout--function {
+    padding-left: 2.25rem;
+
+    .signature {
+      margin-left: -2.25rem;
+      margin-right: 0;
+    }
+  }
+}

@@ -17,11 +17,17 @@
   "type": "module",
   "packageManager": "yarn@3.3.0",
   "scripts": {
-    "build": "eleventy --config=.eleventy.cjs",
-    "serve": "eleventy --config=.eleventy.cjs --serve",
+    "serve": "run-p 'watch:**'",
+    "build": "run-s 'build:**'",
+    "build:sass": "sass --style=compressed ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
+    "watch:sass": "sass --watch ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
+    "build:11ty": "eleventy --config=.eleventy.cjs",
+    "watch:11ty": "eleventy --config=.eleventy.cjs --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2"
+    "@11ty/eleventy": "^1.0.2",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.57.1"
   }
 }

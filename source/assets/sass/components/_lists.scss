@@ -1,0 +1,145 @@
+.sl-c-list {
+
+  &,
+  &-horizontal-wrapper ul,
+  &-navigation-wrapper ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-horizontal-wrapper {
+
+    @include sl-breakpoint--medium {
+      // add margin-bottom space
+      // to the twitter follow button
+      margin-bottom: 1rem;
+    }
+
+    @include sl-breakpoint--large {
+
+      ul {
+        display: flex;
+        margin: {
+          right: -0.5rem;
+          left:  -0.5rem;
+        };
+      }
+
+      li {
+        padding: {
+          right: .5rem;
+          left:  .5rem;
+        };
+      }
+    }
+  }
+
+  &-navigation-wrapper {
+    position: relative;
+
+    li {
+      margin: .5rem 0;
+      line-height: 1.25;
+    }
+
+    &--collapsible {
+      user-select: none;
+
+      ul ul a { padding-left: 1rem; }
+      ul ul ul a { padding-left: 2rem; }
+      ul ul ul ul a { padding-left: 3rem; }
+
+      a {
+        border: none;
+        cursor: pointer;
+        display: block;
+        margin: -0.5rem 0;
+        padding: 0.3rem;
+        width: 100%;
+
+        &:hover { background-color: $sl-color--dawn-pink; }
+      }
+
+      li.overview a {
+        font-size: $sl-font-size--small;
+        &:not(.selected) { color: transparentize($sl-color--midnight-blue, 0.3); }
+      }
+
+      li a {
+        &.section {
+          &::after {
+            content: "▶";
+            float: right;
+            font-size: 0.5em;
+            text-align: center;
+            margin-top: 5px;
+            transition: transform 0.1s;
+            width: 19px;
+          }
+
+          &.open::after { transform: rotate(90deg); }
+
+          + ul { display: none; }
+          &.open + ul { display: block; }
+        }
+
+        &.selected {
+          font-weight: bold;
+          &:not(.section) { background-color: $sl-color--dawn-pink; }
+        }
+      }
+    }
+  }
+}
+
+.sl-c-description-list--horizontal {
+  margin: {
+    right: -1rem;
+    left: -1rem;
+  };
+
+  &,
+  > div { display: flex; }
+
+  > div {
+    border-left: 1px solid $sl-color--iron;
+    padding: 0 1rem;
+
+    &:first-child { border: 0; }
+  }
+
+  .compatibility {
+    font-weight: 600;
+    color: $sl-color--midnight-blue;
+    display: block;
+
+    + div { border: 0; }
+  }
+
+  dt,
+  dd {
+    padding-left: 1rem;
+
+    &:first-child { padding-left: 0; }
+  }
+
+  &.impl-status {
+    font-size: 0.8em;
+    margin-top: -1em;
+    
+    dt { word-break: normal; }
+
+    a {
+      transition: transform 0.1s;
+      border-bottom: none;
+      background: none;
+      cursor: pointer;
+      width: 19px;
+      text-align: center;
+      transform-origin: 8px 11px;
+
+      &.expanded { transform: rotate(90deg); }
+    }
+  }
+}
