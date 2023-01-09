@@ -22,7 +22,7 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
-      - run: bundle exec rake test
+      - run: bundle exec rake test --trace
 
   release:
     runs-on: ubuntu-latest
