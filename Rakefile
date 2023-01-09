@@ -144,7 +144,7 @@ namespace :sass do
         sh %{npm install}
         sh %{ln -sf ../.language/node_modules ../tool/node_modules}
         sh %{npx typedoc \
-            --plugin ../tool/typedoc-theme.js --theme sass-site \
+            --plugin ../tool/typedoc-theme.ts --theme sass-site \
             --out ../source/documentation/js-api \
             --cleanOutputDir \
             js-api-doc/index.d.ts

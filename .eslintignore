@@ -1,0 +1,14 @@
+!.*
+.git/
+.vscode/
+.yarn/
+.yarnrc
+.yarnrc.yml
+/_site/
+/old_source/
+coverage/
+node_modules/
+source/assets/dist/
+source/assets/js/vendor/**
+!source/assets/js/vendor/index.js
+source/assets/sass/vendor/

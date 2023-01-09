@@ -1,8 +1,8 @@
 // Documentation Nav Scroll
 $(function () {
   // Vars
-  var nav = $('.sl-c-list-navigation-wrapper');
-  var sticky = nav.offset();
+  const nav = $('.sl-c-list-navigation-wrapper');
+  const sticky = nav.offset();
 
   // Added sticky class when window top is great than nav top
   function stickyNav() {

@@ -1,9 +1,9 @@
-const {
+import {
   DefaultTheme,
   DefaultThemeRenderContext,
   JSX,
   UrlMapping,
-} = require('typedoc');
+} from 'typedoc';
 
 function bind(fn, first) {
   return (...r) => fn(first, ...r);
@@ -263,7 +263,7 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
         ${breadcrumb}
         <h1>${heading}</h1>
       </div>
-    </div>    
+    </div>
   </header>
 
   <div class="container container-main">

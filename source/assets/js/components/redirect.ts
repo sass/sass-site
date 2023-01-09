@@ -3,7 +3,7 @@
 // user to that documentation.
 if (window.location.hash) {
   if (window.location.pathname == '/documentation') {
-    var redirects: Record<string, string> = {
+    const redirects: Record<string, string> = {
       '#syntax': '/documentation/syntax',
       '#using_sass': '/install',
       '#rackrailsmerb_plugin': 'https://github.com/rails/sass-rails',
@@ -102,7 +102,7 @@ if (window.location.hash) {
         '/documentation/js-api/interfaces/LegacySharedOptions#functions',
     };
 
-    var redirect: string | undefined = redirects[window.location.hash];
+    let redirect: string | undefined = redirects[window.location.hash];
 
     // If the user is looking for a Ruby Sass option, redirect them to the Ruby
     // Sass page for an explanation that it's deprecated.
@@ -112,7 +112,7 @@ if (window.location.hash) {
 
     if (redirect) window.location.href = redirect;
   } else if (window.location.pathname == '/documentation/modules') {
-    var redirects: Record<string, string> = {
+    const redirects: Record<string, string> = {
       '#declare-class_method': '/ruby-sass',
       '#random_number_generator-class_method': '/ruby-sass',
       '#random_seed=-class_method': '/ruby-sass',
@@ -218,45 +218,45 @@ if (window.location.hash) {
       '#zip-instance_method': '/documentation/modules/list#zip',
     };
 
-    var redirect: string | undefined = redirects[window.location.hash];
+    const redirect: string | undefined = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
   } else if (window.location.pathname == '/documentation/modules/color') {
-    var redirects: Record<string, string> = {
+    const redirects: Record<string, string> = {
       '#rgb': '/documentation/modules#rgb',
       '#rgba': '/documentation/modules#rgba',
       '#hsl': '/documentation/modules#hsl',
       '#hsla': '/documentation/modules#hsla',
     };
 
-    var redirect: string | undefined = redirects[window.location.hash];
+    const redirect: string | undefined = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
   } else if (window.location.pathname == '/documentation/modules/map') {
-    var redirects: Record<string, string> = {
+    const redirects: Record<string, string> = {
       '#keywords': '/documentation/modules/meta#keywords',
     };
 
-    var redirect: string | undefined = redirects[window.location.hash];
+    const redirect: string | undefined = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
   } else if (window.location.pathname == '/documentation/at-rules/use') {
-    var redirects: Record<string, string> = {
+    const redirects: Record<string, string> = {
       '#configuring-modules': '/documentation/at-rules/use#configuration',
     };
 
-    var redirect: string | undefined = redirects[window.location.hash];
+    const redirect: string | undefined = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
   } else if (
     window.location.pathname == '/documentation/syntax/special-functions'
   ) {
-    var redirects: Record<string, string> = {
+    const redirects: Record<string, string> = {
       '#calc-clamp-element-progid-and-expression':
         '/documentation/syntax/special-functions#element-progid-and-expression',
       '#min-and-max': '/documentation/values/calculations#min-and-max',
     };
 
-    var redirect: string | undefined = redirects[window.location.hash];
+    const redirect: string | undefined = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
   } else if (window.location.pathname == '/documentation/js-api') {
-    var redirects: Record<string, string> = {
+    const redirects: Record<string, string> = {
       '#rendersync': '/documentation/js-api/modules#renderSync',
       '#render': '/documentation/js-api/modules#render',
       '#info': '/documentation/js-api/modules#info',
@@ -390,7 +390,7 @@ if (window.location.hash) {
       '#types-null-null': '/documentation/js-api/classes/types.Null#NULL',
     };
 
-    var redirect: string | undefined = redirects[window.location.hash];
+    const redirect: string | undefined = redirects[window.location.hash];
     if (redirect) window.location.href = redirect;
   }
 }

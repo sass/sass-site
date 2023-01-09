@@ -1,6 +1,6 @@
 $(function () {
   $('.code-example').each(function () {
-    var figure = $(this);
+    const figure = $(this);
 
     figure.tabs({
       active: 0,
@@ -28,24 +28,24 @@ $(function () {
         allPanels.css('display', '');
       },
     });
-    var allPanels = figure.find('.ui-tabs-panel');
+    const allPanels = figure.find('.ui-tabs-panel');
     allPanels.css('display', '');
   });
 
   // Switch ALL the tabs (Sass/SCSS) together
-  var noRecursion = false,
-    jqA = $('a.ui-tabs-anchor'),
-    jqASass = jqA.filter(":contains('Sass')").click(function () {
+  let noRecursion = false;
+  const jqA = $('a.ui-tabs-anchor'),
+    jqASass = jqA.filter(":contains('Sass')").on('click', function () {
       if (!noRecursion) {
         noRecursion = true;
-        jqASass.not(this).click();
+        jqASass.not(this).trigger('click');
         noRecursion = false;
       }
     }),
-    jqASCSS = jqA.filter(":contains('SCSS')").click(function () {
+    jqASCSS = jqA.filter(":contains('SCSS')").on('click', function () {
       if (!noRecursion) {
         noRecursion = true;
-        jqASCSS.not(this).click();
+        jqASCSS.not(this).trigger('click');
         noRecursion = false;
       }
     });
