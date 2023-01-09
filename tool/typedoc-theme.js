@@ -1,9 +1,10 @@
-import {
+/* eslint-disable @typescript-eslint/no-var-requires */
+const {
   DefaultTheme,
   DefaultThemeRenderContext,
   JSX,
   UrlMapping,
-} from 'typedoc';
+} = require('typedoc');
 
 function bind(fn, first) {
   return (...r) => fn(first, ...r);
