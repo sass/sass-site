@@ -35,7 +35,7 @@
     &:hover,
     &:focus {
       border-bottom-color: rgba($sl-color--white, 0.75);
-      background: rgb(black 0.0625);
+      background: rgba(black, 0.0625);
     }
 
     &:active {
