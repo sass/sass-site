@@ -10,8 +10,8 @@
     cursor: text;
   }
 
-  &:after,
-  &:before {
+  &::after,
+  &::before {
     bottom: -3px;
     left: 50%;
     border: solid transparent;
@@ -22,14 +22,14 @@
     pointer-events: none;
   }
 
-  &:after {
+  &::after {
     border-color: transparent;
     border-bottom-color: #f8f8f8;
     border-width: 10px;
     margin-left: -10px;
   }
 
-  &:before {
+  &::before {
     border-color: transparent;
     border-bottom-color: #ebebeb;
     border-width: 11px;
@@ -60,7 +60,7 @@
     }
 
     a:focus {
-      outline: 0px !important;
+      outline: 0 !important;
       border: none !important;
       box-shadow: none !important;
     }
@@ -155,8 +155,7 @@ html .ui-button.ui-state-disabled:active {
   .ui-state-default a:visited,
   a.ui-button,
   a:link.ui-button,
-  a:visited.ui-button,
-  .ui-button {
+  a:visited.ui-button {
     color: inherit;
   }
 
@@ -185,6 +184,7 @@ html .ui-button.ui-state-disabled:active {
       &.sass {
         width: calc(var(--split-location) - 5px);
         display: inline-block;
+
         &.ui-tabs-panel-inactive {
           display: none;
         }
@@ -193,6 +193,7 @@ html .ui-button.ui-state-disabled:active {
       &.css {
         width: calc(100% - var(--split-location) - 5px);
         float: right;
+
         &.ui-tabs-panel-inactive {
           display: block;
         }

@@ -46,9 +46,11 @@
       ul ul a {
         padding-left: 1rem;
       }
+
       ul ul ul a {
         padding-left: 2rem;
       }
+
       ul ul ul ul a {
         padding-left: 3rem;
       }
@@ -68,6 +70,7 @@
 
       li.overview a {
         font-size: $sl-font-size--small;
+
         &:not(.selected) {
           color: transparentize($sl-color--midnight-blue, 0.3);
         }
@@ -92,6 +95,7 @@
           + ul {
             display: none;
           }
+
           &.open + ul {
             display: block;
           }
@@ -99,6 +103,7 @@
 
         &.selected {
           font-weight: bold;
+
           &:not(.section) {
             background-color: $sl-color--dawn-pink;
           }

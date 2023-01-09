@@ -4,7 +4,7 @@
   justify-content: center;
   margin: 0;
   border: 0 {
-    radius: sl-px-to-rem(4px);
+    radius: sl-px-to-rem(4px); /* stylelint-disable-line property-no-unknown */
   }
   padding: sl-px-to-rem(12px) sl-px-to-rem(16px);
   background: $sl-color--iron;

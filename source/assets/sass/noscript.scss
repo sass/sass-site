@@ -9,6 +9,7 @@
   &::after {
     transform: rotate(90deg);
   }
+
   + ul {
     display: block;
   }
@@ -34,11 +35,14 @@
     .scss pre::after {
       content: 'SCSS';
     }
+
     .sass pre::after {
       content: 'Sass';
     }
+
     .css {
       display: block;
+
       pre::after {
         content: 'CSS';
       }

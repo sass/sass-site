@@ -2,7 +2,6 @@ $sl-breakpoint--small: 480px !default;
 $sl-breakpoint--medium: 640px !default;
 $sl-breakpoint--large: 960px !default;
 $sl-breakpoint--x-large: 1280px !default;
-
 $sl-breakpoints: (
   // for mixins to span across breakpoints and without one
   none: 0,

@@ -4,11 +4,13 @@ $sl-colors: $sl-color--hopbush $sl-color--bouquet $sl-color--venus
   $sl-color--midnight-blue;
 
 @function stripes($position, $sl-colors) {
+  /* stylelint-disable annotation-no-unknown */
   $sl-colors: if(
     type-of($sl-colors) != 'list',
     compact($sl-colors),
     $sl-colors
   );
+  /* stylelint-enable annotation-no-unknown */
   $gradient: compact();
   $width: 100% / length($sl-colors);
 

@@ -32,8 +32,10 @@
     "prettier:ci": "prettier --check .",
     "eslint": "eslint --fix .",
     "eslint:ci": "eslint .",
-    "lint": "run-s prettier eslint tsc",
-    "lint:ci": "run-s prettier:ci eslint:ci tsc",
+    "stylelint": "stylelint '**/*.{css,scss}' --fix",
+    "stylelint:ci": "stylelint '**/*.{css,scss}'",
+    "lint": "run-s prettier eslint stylelint tsc",
+    "lint:ci": "run-s prettier:ci eslint:ci stylelint:ci tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -62,6 +64,9 @@
     "prettier": "^2.8.2",
     "rollup": "^3.9.1",
     "sass": "^1.57.1",
+    "stylelint": "^14.16.1",
+    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-standard-scss": "^6.1.0",
     "typedoc": "^0.23.24",
     "typescript": "^4.9.4"
   },

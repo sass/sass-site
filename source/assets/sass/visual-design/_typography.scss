@@ -1,7 +1,6 @@
 $sl-font-weight--light: 300 !default;
 $sl-font-weight--regular: 400 !default;
 $sl-font-weight--bold: 600 !default;
-
 $sl-font-weights: (
   light: $sl-font-weight--light,
   regular: $sl-font-weight--regular,
@@ -22,7 +21,6 @@ $sl-font-size--x-large: sl-px-to-rem(24px) !default;
 $sl-font-size--xx-large: sl-px-to-rem(28px) !default;
 $sl-font-size--xxx-large: sl-px-to-rem(32px) !default;
 $sl-font-size--xxxx-large: sl-px-to-rem(80px) !default;
-
 $sl-font-sizes: (
   small: $sl-font-size--small,
   medium: $sl-font-size--medium,
@@ -40,14 +38,13 @@ $sl-font-sizes: (
 }
 
 $sl-font-family--text: 'Source Sans Pro', system-ui, -apple-system, 'Segoe UI',
-  Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  roboto, ubuntu, cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji',
   'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
 $sl-font-family--display: 'Source Serif Pro', 'Apple Garamond', 'Baskerville',
-  'Times New Roman', 'Droid Serif', Times, serif, 'Apple Color Emoji',
+  'Times New Roman', 'Droid Serif', times, serif, 'Apple Color Emoji',
   'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$sl-font-family--code: 'Source Code Pro', 'SF Mono', Monaco, Inconsolata,
+$sl-font-family--code: 'Source Code Pro', 'SF Mono', monaco, inconsolata,
   'Fira Mono', 'Droid Sans Mono', monospace, monospace !default;
-
 $sl-font-families: (
   text: $sl-font-family--text,
   display: $sl-font-family--display,
@@ -69,7 +66,7 @@ h6 {
 body {
   line-height: 1.5;
   font-family: $sl-font-family--text;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
 }
 
 * {
@@ -214,6 +211,7 @@ code {
   nav & {
     white-space: nowrap;
   }
+
   p & {
     @include sl-breakpoint--x-large {
       white-space: nowrap;
@@ -239,6 +237,7 @@ img {
     right: auto;
     left: auto;
   }
+
   max-width: 100%;
   height: auto;
 }

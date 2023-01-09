@@ -3,14 +3,13 @@ $sl-color--bouquet: #b37399 !default;
 $sl-color--venus: #998099 !default;
 $sl-color--patina: #699 !default;
 $sl-color--nebula: #d2e1dd !default;
-$sl-color--white: #fff !default;
+$sl-color--white: white !default;
 $sl-color--dawn-pink: #f2ece4 !default;
 $sl-color--wafer: #e1d7d2 !default;
 $sl-color--iron: #dadbdf !default;
 $sl-color--regent-grey: #808c99 !default;
 $sl-color--pale-sky: #6b717f !default;
 $sl-color--midnight-blue: #036 !default;
-
 $sl-colors: (
   hopbush: $sl-color--hopbush,
   bouquet: $sl-color--bouquet,
@@ -45,7 +44,7 @@ $sl-colors: (
   $lightContrast: contrast($color, $sl-color--white);
   $darkContrast: contrast($color, $sl-color--black);
 
-  @if ($lightContrast > $darkContrast) {
+  @if $lightContrast > $darkContrast {
     @return $sl-color--white;
   } @else {
     @return $sl-color--black;
