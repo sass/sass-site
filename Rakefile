@@ -160,7 +160,7 @@ end
 
 desc "Build the middleman-controlled portion of the site."
 task :middleman do
-  sh %{bundle exec middleman build --verbose}
+  sh %{bundle exec middleman build --verbose --trace}
 end
 
 desc "Build the site."
