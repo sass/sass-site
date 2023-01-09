@@ -1,95 +1,81 @@
-$sl-breakpoint--small:   480px  !default;
-$sl-breakpoint--medium:  640px  !default;
-$sl-breakpoint--large:   960px  !default;
+$sl-breakpoint--small: 480px !default;
+$sl-breakpoint--medium: 640px !default;
+$sl-breakpoint--large: 960px !default;
 $sl-breakpoint--x-large: 1280px !default;
 
 $sl-breakpoints: (
-  none:    0, // for mixins to span across breakpoints and without one
-  small:   $sl-breakpoint--small,
-  medium:  $sl-breakpoint--medium,
-  large:   $sl-breakpoint--large,
-  x-large: $sl-breakpoint--x-large,
+  // for mixins to span across breakpoints and without one
+  none: 0,
+  small: $sl-breakpoint--small,
+  medium: $sl-breakpoint--medium,
+  large: $sl-breakpoint--large,
+  x-large: $sl-breakpoint--x-large
 );
 
 @mixin sl-breakpoint($breakpoint) {
-
   @media only screen and (min-width: #{sl-px-to-em($breakpoint)}) {
     @content;
   }
 }
 
 @mixin sl-breakpoint-max($breakpoint) {
-
   @media only screen and (max-width: #{sl-px-to-em($breakpoint)}) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--small {
-
   @include sl-breakpoint($sl-breakpoint--small) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--small-max {
-
   @include sl-breakpoint-max($sl-breakpoint--small) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--medium {
-
   @include sl-breakpoint($sl-breakpoint--medium) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--medium-max {
-
   @include sl-breakpoint-max($sl-breakpoint--medium) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--large {
-
   @include sl-breakpoint($sl-breakpoint--large) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--large-max {
-
   @include sl-breakpoint-max($sl-breakpoint--large) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--x-large {
-
   @include sl-breakpoint($sl-breakpoint--x-large) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--x-large-max {
-
   @include sl-breakpoint-max($sl-breakpoint--x-large) {
     @content;
   }
 }
 
-@mixin sl-breakpoint-set($breakpoint,
-                         $size) {
-
+@mixin sl-breakpoint-set($breakpoint, $size) {
   @if $breakpoint == none {
     @content;
-  }
-
-  @else {
-
+  } @else {
     @include sl-breakpoint($size) {
       @content;
     }

@@ -18,7 +18,9 @@
     margin: 0;
     height: sl-px-to-rem(48px);
 
-    @include sl-breakpoint--medium { height: sl-px-to-rem(96px); }
+    @include sl-breakpoint--medium {
+      height: sl-px-to-rem(96px);
+    }
   }
 
   &__navigation {

@@ -1,4 +1,6 @@
-.ui-helper-reset { line-height: inherit; }
+.ui-helper-reset {
+  line-height: inherit;
+}
 
 @mixin -active-tab {
   margin: 0;
@@ -13,7 +15,7 @@
     bottom: -3px;
     left: 50%;
     border: solid transparent;
-    content: " ";
+    content: ' ';
     height: 0;
     width: 0;
     position: absolute;
@@ -36,41 +38,50 @@
 }
 
 .ui-tabs {
-
   &,
   .ui-tabs-nav,
   .ui-tabs-nav li.ui-tabs-active,
-  .ui-tabs-panel { padding: 0; }
+  .ui-tabs-panel {
+    padding: 0;
+  }
 
-  .ui-tabs-panel-inactive { display: none; }
+  .ui-tabs-panel-inactive {
+    display: none;
+  }
 
   .ui-tabs-nav {
     font-size: $sl-font-size--small;
     margin-top: -1rem;
     margin-left: -1em;
 
-    a { border: 0; background: none; }
+    a {
+      border: 0;
+      background: none;
+    }
 
     a:focus {
       outline: 0px !important;
-      border:none !important;
-      box-shadow:none !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
-    .ui-tabs-active { @include -active-tab; }
+    .ui-tabs-active {
+      @include -active-tab;
+    }
 
     li {
       float: left;
       margin: 0;
 
       &.css-tab {
-
         &,
-        &.ui-tabs-active { margin-left: 2em; }
+        &.ui-tabs-active {
+          margin-left: 2em;
+        }
 
         a::before {
           color: $sl-color--regent-grey;
-          content: "\21d2";
+          content: '\21d2';
           font-size: $sl-font-size--large;
           font-weight: $sl-font-weight--bold;
           left: -1.2em;
@@ -80,15 +91,21 @@
       }
     }
 
-    .ui-tabs-anchor { padding: .75rem 1rem; }
+    .ui-tabs-anchor {
+      padding: 0.75rem 1rem;
+    }
   }
 
-  pre { margin-top: 0; }
+  pre {
+    margin-top: 0;
+  }
 
   // Carefully calibrated so that the distance between two code blocks in the
   // syntax switcher is exactly equal to two lines, so there's no visual jitter
   // when switching between syntaxes.
-  pre + pre { margin-top: 22px; }
+  pre + pre {
+    margin-top: 22px;
+  }
 }
 
 .ui-widget.ui-widget-content,
@@ -98,11 +115,17 @@
 .ui-widget-header .ui-state-default,
 .ui-button,
 html .ui-button.ui-state-disabled:hover,
-html .ui-button.ui-state-disabled:active { border: 0; }
+html .ui-button.ui-state-disabled:active {
+  border: 0;
+}
 
-.ui-widget-header { font-weight: inherit; }
+.ui-widget-header {
+  font-weight: inherit;
+}
 
-.ui-widget { font: inherit; }
+.ui-widget {
+  font: inherit;
+}
 
 .ui-widget-content,
 .ui-widget-header,
@@ -111,10 +134,14 @@ html .ui-button.ui-state-disabled:active { border: 0; }
 .ui-widget-header .ui-state-default,
 .ui-button,
 html .ui-button.ui-state-disabled:hover,
-html .ui-button.ui-state-disabled:active { background: none; }
+html .ui-button.ui-state-disabled:active {
+  background: none;
+}
 
 .ui-widget-content,
-.ui-widget-header { color: inherit; }
+.ui-widget-header {
+  color: inherit;
+}
 
 .sl-c-callout {
   .ui-state-default,
@@ -129,42 +156,55 @@ html .ui-button.ui-state-disabled:active { background: none; }
   a.ui-button,
   a:link.ui-button,
   a:visited.ui-button,
-  .ui-button { color: inherit; }
+  .ui-button {
+    color: inherit;
+  }
 
-  .ui-widget a { border: 0; }
+  .ui-widget a {
+    border: 0;
+  }
 }
 
 .ui-tabs-panel > h3 {
   position: relative;
-  top: .45rem;
+  top: 0.45rem;
   margin: 0;
   text-transform: uppercase;
   color: $sl-color--hopbush;
 
   &,
-  * { font-size: 1rem; }
+  * {
+    font-size: 1rem;
+  }
 }
 
 @mixin -split-css-tabs {
   .ui-tabs.can-split {
     .ui-tabs-panel {
-      &.scss, &.sass {
+      &.scss,
+      &.sass {
         width: calc(var(--split-location) - 5px);
         display: inline-block;
-        &.ui-tabs-panel-inactive { display: none; }
+        &.ui-tabs-panel-inactive {
+          display: none;
+        }
       }
 
       &.css {
         width: calc(100% - var(--split-location) - 5px);
         float: right;
-        &.ui-tabs-panel-inactive { display: block; }
+        &.ui-tabs-panel-inactive {
+          display: block;
+        }
       }
     }
 
-
     &.ui-tabs-panel-css-is-active {
-      .scss, .sass {
-        &.ui-tabs-panel.ui-tabs-panel-previously-active { display: inline-block; }
+      .scss,
+      .sass {
+        &.ui-tabs-panel.ui-tabs-panel-previously-active {
+          display: inline-block;
+        }
       }
     }
 
@@ -174,17 +214,25 @@ html .ui-button.ui-state-disabled:active { background: none; }
       @include -active-tab;
 
       &,
-      &.ui-tabs-active { margin-left: 0; }
+      &.ui-tabs-active {
+        margin-left: 0;
+      }
 
-      ::before {content: none}
+      ::before {
+        content: none;
+      }
     }
   }
 }
 
 @media screen and (min-width: sl-px-to-rem(1500px)) {
-  body.documentation { @include -split-css-tabs }
+  body.documentation {
+    @include -split-css-tabs;
+  }
 }
 
 @media screen and (min-width: sl-px-to-rem(1000px)) {
-  body.guide { @include -split-css-tabs }
+  body.guide {
+    @include -split-css-tabs;
+  }
 }

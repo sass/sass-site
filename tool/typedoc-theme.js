@@ -1,4 +1,9 @@
-const {DefaultTheme, DefaultThemeRenderContext, JSX, UrlMapping} = require('typedoc');
+const {
+  DefaultTheme,
+  DefaultThemeRenderContext,
+  JSX,
+  UrlMapping,
+} = require('typedoc');
 
 function bind(fn, first) {
   return (...r) => fn(first, ...r);
@@ -8,7 +13,7 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
   // Link to the external documentation of external APIs. Unfortunately, there's
   // no way to use `addUnknownSymbolResolver` for names that don't come from npm
   // packages.
-  attemptExternalResolution = function(symbol) {
+  attemptExternalResolution = function (symbol) {
     if (symbol.escapedName === 'URL') {
       return 'https://developer.mozilla.org/en-US/docs/Web/API/URL';
     } else if (symbol.escapedName === 'Buffer') {
@@ -23,14 +28,17 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
   // doesn't work. Instead, we emit each overload as a separate entry with its
   // own panel.
   oldMember = this.member;
-  member = bind(function(context, props) {
+  member = bind(function (context, props) {
     const signatures = props?.signatures;
     if (signatures && signatures.length > 1) {
-      const element = JSX.createElement(JSX.Fragment, null,
-        ...signatures.map(signature => {
+      const element = JSX.createElement(
+        JSX.Fragment,
+        null,
+        ...signatures.map((signature) => {
           props.signatures = [signature];
           return context.oldMember(props);
-        }));
+        }),
+      );
       props.signatures = signatures;
       return element;
     }
@@ -42,7 +50,7 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
   // Hopefully this will no longer be necessary once TypeStrong/typedoc#1532 is
   // implemented.
   oldNavigation = this.navigation;
-  navigation = bind(function(context, props) {
+  navigation = bind(function (context, props) {
     const navigation = context.oldNavigation(props);
     const childrenByCategories = context._groupByCategory(props.model);
     if (childrenByCategories.size === 0) return navigation;
@@ -51,19 +59,35 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
     if (!secondary) return navigation;
 
     const firstLI = context._getNthChild(context._getNthChild(secondary, 0), 0);
-    const ul = firstLI.props["class"].startsWith("current ")
-        ? context._getNthChild(firstLI, 1)
-        : context._getNthChild(secondary, 0);
+    const ul = firstLI.props['class'].startsWith('current ')
+      ? context._getNthChild(firstLI, 1)
+      : context._getNthChild(secondary, 0);
 
     ul.children = Array.from(childrenByCategories).map(([title, children]) =>
-        JSX.createElement(JSX.Fragment, null,
-            JSX.createElement("li", {class: "sl-tsd-category-label"},
-                JSX.createElement("span", null, title)),
-            ...children.map(child =>
-                JSX.createElement("li", {class: child.cssClasses},
-                    JSX.createElement("a", {
-                      href: context.urlTo(child), class: "tsd-kind-icon"
-                    }, child.name)))));
+      JSX.createElement(
+        JSX.Fragment,
+        null,
+        JSX.createElement(
+          'li',
+          { class: 'sl-tsd-category-label' },
+          JSX.createElement('span', null, title),
+        ),
+        ...children.map((child) =>
+          JSX.createElement(
+            'li',
+            { class: child.cssClasses },
+            JSX.createElement(
+              'a',
+              {
+                href: context.urlTo(child),
+                class: 'tsd-kind-icon',
+              },
+              child.name,
+            ),
+          ),
+        ),
+      ),
+    );
 
     return navigation;
   }, this);
@@ -117,28 +141,32 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
   // Add compatibility indicators to the beginning of documentation blocks.
   oldComment = this.comment;
   comment = bind((context, props) => {
-    const compatibilityTags = props.comment?.tags
-        .filter(tag => tag.tagName === "compatibility");
-    props.comment?.removeTags("compatibility");
+    const compatibilityTags = props.comment?.tags.filter(
+      (tag) => tag.tagName === 'compatibility',
+    );
+    props.comment?.removeTags('compatibility');
 
     const parent = this.oldComment(props);
     if (!parent) return;
 
-    parent.children.unshift(...compatibilityTags.map(compat => {
-      // The first line is arguments to impl_status, anything after that is the
-      // contents of the block.
-      const lineBreak = compat.text.indexOf("\n");
-      const firstLine =
+    parent.children.unshift(
+      ...compatibilityTags.map((compat) => {
+        // The first line is arguments to impl_status, anything after that is the
+        // contents of the block.
+        const lineBreak = compat.text.indexOf('\n');
+        const firstLine =
           lineBreak === -1 ? compat.text : compat.text.substring(0, lineBreak);
-      const rest =
+        const rest =
           lineBreak === -1 ? null : compat.text.substring(lineBreak + 1).trim();
 
-      return JSX.createElement(JSX.Raw, {
-        html: `<% impl_status(${firstLine}) ${rest ? 'do' : ''} %>` +
+        return JSX.createElement(JSX.Raw, {
+          html:
+            `<% impl_status(${firstLine}) ${rest ? 'do' : ''} %>` +
             context.markdown(rest) +
-            (rest ? '<% end %>' : '')
-      });
-    }));
+            (rest ? '<% end %>' : ''),
+        });
+      }),
+    );
 
     return parent;
   }, this);
@@ -146,15 +174,20 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
   // Convert paragraphs that start with **Heads up!** or **Fun fact!** into
   // proper callouts.
   oldMarkdown = this.markdown;
-  markdown = bind((context, text) =>
-      context.oldMarkdown(text)
-          .replace(
-              /<p><strong>Heads up!<\/strong>([^]*?)<\/p>/g,
-              '<% heads_up do %>$1<% end %>')
-          .replace(
-              /<p><strong>Fun fact!<\/strong>([^]*?)<\/p>/g,
-              '<% fun_fact do %>$1<% end %>'),
-      this);
+  markdown = bind(
+    (context, text) =>
+      context
+        .oldMarkdown(text)
+        .replace(
+          /<p><strong>Heads up!<\/strong>([^]*?)<\/p>/g,
+          '<% heads_up do %>$1<% end %>',
+        )
+        .replace(
+          /<p><strong>Fun fact!<\/strong>([^]*?)<\/p>/g,
+          '<% fun_fact do %>$1<% end %>',
+        ),
+    this,
+  );
 }
 
 class SassSiteTheme extends DefaultTheme {
@@ -167,16 +200,17 @@ class SassSiteTheme extends DefaultTheme {
     // Relative URLs don't work well for index pages since they can be rendered at
     // different directory levels, so we just convert all URLs to absolute to be
     // safe.
-    const ContextAwareRendererComponent =
-        Object.getPrototypeOf(this.markedPlugin.constructor);
+    const ContextAwareRendererComponent = Object.getPrototypeOf(
+      this.markedPlugin.constructor,
+    );
     const oldGetRelativeUrl =
-        ContextAwareRendererComponent.prototype.getRelativeUrl;
-    ContextAwareRendererComponent.prototype.getRelativeUrl = function(url) {
+      ContextAwareRendererComponent.prototype.getRelativeUrl;
+    ContextAwareRendererComponent.prototype.getRelativeUrl = function (url) {
       const relative = oldGetRelativeUrl.call(this, url);
 
       const absolute = new URL(
         relative,
-        `relative:///documentation/js-api/${this.location}`
+        `relative:///documentation/js-api/${this.location}`,
       );
       absolute.pathname = absolute.pathname
         .replace(/\.html$/, '')
@@ -186,8 +220,10 @@ class SassSiteTheme extends DefaultTheme {
   }
 
   getRenderContext() {
-    this.contextCache ??=
-        new SassSiteRenderContext(this, this.application.options);
+    this.contextCache ??= new SassSiteRenderContext(
+      this,
+      this.application.options,
+    );
     return this.contextCache;
   }
 
@@ -198,7 +234,7 @@ class SassSiteTheme extends DefaultTheme {
     // render title on its own.
     const breadcrumb = page.model.parent
       ? `<ul class="tsd-breadcrumb">${JSX.renderElement(
-          context.breadcrumb(page.model)
+          context.breadcrumb(page.model),
         )}</ul>`
       : '';
     const heading =
@@ -208,7 +244,7 @@ class SassSiteTheme extends DefaultTheme {
       page.model.name +
       (page.model.typeParameters
         ? `&lt;${page.model.typeParameters
-            .map(item => item.name)
+            .map((item) => item.name)
             .join(', ')}&gt;`
         : '');
 
@@ -248,8 +284,8 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
     return super
       .getUrls(project)
       .map(
-        mapping =>
-          new UrlMapping(`${mapping.url}.erb`, mapping.model, mapping.template)
+        (mapping) =>
+          new UrlMapping(`${mapping.url}.erb`, mapping.model, mapping.template),
       );
   }
 }
@@ -257,9 +293,11 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
 // TODO: See if there's a graceful way to support "Heads up!" and Compatibility
 // annotations as @-tags rather than needing to write out the HTML by hand.
 
-exports.load = app => {
-  app.renderer.addUnknownSymbolResolver('immutable', (name) =>
-      `https://immutable-js.com/docs/latest@main/${name}/`);
+exports.load = (app) => {
+  app.renderer.addUnknownSymbolResolver(
+    'immutable',
+    (name) => `https://immutable-js.com/docs/latest@main/${name}/`,
+  );
   app.renderer.addUnknownSymbolResolver('source-map-js', (name) => {
     if (name === 'RawSourceMap') {
       return 'https://github.com/mozilla/source-map/blob/58819f09018d56ef84dc41ba9c93f554e0645169/source-map.d.ts#L15-L23';

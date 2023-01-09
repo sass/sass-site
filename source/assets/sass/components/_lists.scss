@@ -1,5 +1,4 @@
 .sl-c-list {
-
   &,
   &-horizontal-wrapper ul,
   &-navigation-wrapper ul {
@@ -9,7 +8,6 @@
   }
 
   &-horizontal-wrapper {
-
     @include sl-breakpoint--medium {
       // add margin-bottom space
       // to the twitter follow button
@@ -17,20 +15,19 @@
     }
 
     @include sl-breakpoint--large {
-
       ul {
         display: flex;
         margin: {
           right: -0.5rem;
-          left:  -0.5rem;
-        };
+          left: -0.5rem;
+        }
       }
 
       li {
         padding: {
-          right: .5rem;
-          left:  .5rem;
-        };
+          right: 0.5rem;
+          left: 0.5rem;
+        }
       }
     }
   }
@@ -39,16 +36,22 @@
     position: relative;
 
     li {
-      margin: .5rem 0;
+      margin: 0.5rem 0;
       line-height: 1.25;
     }
 
     &--collapsible {
       user-select: none;
 
-      ul ul a { padding-left: 1rem; }
-      ul ul ul a { padding-left: 2rem; }
-      ul ul ul ul a { padding-left: 3rem; }
+      ul ul a {
+        padding-left: 1rem;
+      }
+      ul ul ul a {
+        padding-left: 2rem;
+      }
+      ul ul ul ul a {
+        padding-left: 3rem;
+      }
 
       a {
         border: none;
@@ -58,18 +61,22 @@
         padding: 0.3rem;
         width: 100%;
 
-        &:hover { background-color: $sl-color--dawn-pink; }
+        &:hover {
+          background-color: $sl-color--dawn-pink;
+        }
       }
 
       li.overview a {
         font-size: $sl-font-size--small;
-        &:not(.selected) { color: transparentize($sl-color--midnight-blue, 0.3); }
+        &:not(.selected) {
+          color: transparentize($sl-color--midnight-blue, 0.3);
+        }
       }
 
       li a {
         &.section {
           &::after {
-            content: "▶";
+            content: '▶';
             float: right;
             font-size: 0.5em;
             text-align: center;
@@ -78,15 +85,23 @@
             width: 19px;
           }
 
-          &.open::after { transform: rotate(90deg); }
+          &.open::after {
+            transform: rotate(90deg);
+          }
 
-          + ul { display: none; }
-          &.open + ul { display: block; }
+          + ul {
+            display: none;
+          }
+          &.open + ul {
+            display: block;
+          }
         }
 
         &.selected {
           font-weight: bold;
-          &:not(.section) { background-color: $sl-color--dawn-pink; }
+          &:not(.section) {
+            background-color: $sl-color--dawn-pink;
+          }
         }
       }
     }
@@ -97,16 +112,20 @@
   margin: {
     right: -1rem;
     left: -1rem;
-  };
+  }
 
   &,
-  > div { display: flex; }
+  > div {
+    display: flex;
+  }
 
   > div {
     border-left: 1px solid $sl-color--iron;
     padding: 0 1rem;
 
-    &:first-child { border: 0; }
+    &:first-child {
+      border: 0;
+    }
   }
 
   .compatibility {
@@ -114,21 +133,27 @@
     color: $sl-color--midnight-blue;
     display: block;
 
-    + div { border: 0; }
+    + div {
+      border: 0;
+    }
   }
 
   dt,
   dd {
     padding-left: 1rem;
 
-    &:first-child { padding-left: 0; }
+    &:first-child {
+      padding-left: 0;
+    }
   }
 
   &.impl-status {
     font-size: 0.8em;
     margin-top: -1em;
-    
-    dt { word-break: normal; }
+
+    dt {
+      word-break: normal;
+    }
 
     a {
       transition: transform 0.1s;
@@ -139,7 +164,9 @@
       text-align: center;
       transform-origin: 8px 11px;
 
-      &.expanded { transform: rotate(90deg); }
+      &.expanded {
+        transform: rotate(90deg);
+      }
     }
   }
 }

@@ -1,13 +1,13 @@
 resolutions:
   - target: small
-    width:  480
+    width: 480
     height: 640
   - target: medium
-    width:  640
+    width: 640
     height: 960
   - target: large
-    width:  960
+    width: 960
     height: 1280
   - target: x-large
-    width:  1280
+    width: 1280
     height: 1920

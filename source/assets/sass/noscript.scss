@@ -1,18 +1,24 @@
 // Styles that are included only when JavaScript is disabled. These override the
 // default styles to make them work better without JS.
 
-@import "functions";
+@import 'functions';
 
 // Make the in-page table of contents fully open by default, since we can't
 // dynamically expand it.
 .page-sections li a.section {
-  &::after { transform: rotate(90deg); }
-  + ul {display: block; }
+  &::after {
+    transform: rotate(90deg);
+  }
+  + ul {
+    display: block;
+  }
 }
 
 @mixin -sequence-css-tabs {
   .code-example {
-    ul { display: none; }
+    ul {
+      display: none;
+    }
 
     .ui-tabs-panel {
       position: relative;
@@ -25,19 +31,29 @@
       }
     }
 
-    .scss pre::after { content: "SCSS"; }
-    .sass pre::after { content: "Sass"; }
+    .scss pre::after {
+      content: 'SCSS';
+    }
+    .sass pre::after {
+      content: 'Sass';
+    }
     .css {
       display: block;
-      pre::after { content: "CSS"; }
+      pre::after {
+        content: 'CSS';
+      }
     }
   }
 }
 
 @media screen and (max-width: sl-px-to-rem(1500.00001px)) {
-  body.documentation { @include -sequence-css-tabs }
+  body.documentation {
+    @include -sequence-css-tabs;
+  }
 }
 
 @media screen and (max-width: sl-px-to-rem(1000.00001px)) {
-  body.guide { @include -sequence-css-tabs }
+  body.guide {
+    @include -sequence-css-tabs;
+  }
 }

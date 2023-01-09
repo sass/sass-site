@@ -1,67 +1,70 @@
-$sl-font-weight--light:   300 !default;
+$sl-font-weight--light: 300 !default;
 $sl-font-weight--regular: 400 !default;
-$sl-font-weight--bold:    600 !default;
+$sl-font-weight--bold: 600 !default;
 
 $sl-font-weights: (
-  light:   $sl-font-weight--light,
+  light: $sl-font-weight--light,
   regular: $sl-font-weight--regular,
-  bold:    $sl-font-weight--bold,
+  bold: $sl-font-weight--bold,
 );
 
-@each $name,
-      $value in $sl-font-weights {
-
-  .sl-font-weight--#{$name} { font-weight: $value; }
+@each $name, $value in $sl-font-weights {
+  .sl-font-weight--#{$name} {
+    font-weight: $value;
+  }
 }
 
-
-
-$sl-font-size--x-small:    sl-px-to-rem(14px) !default;
-$sl-font-size--small:      sl-px-to-rem(16px) !default;
-$sl-font-size--medium:     sl-px-to-rem(18px) !default;
-$sl-font-size--large:      sl-px-to-rem(20px) !default;
-$sl-font-size--x-large:    sl-px-to-rem(24px) !default;
-$sl-font-size--xx-large:   sl-px-to-rem(28px) !default;
-$sl-font-size--xxx-large:  sl-px-to-rem(32px) !default;
+$sl-font-size--x-small: sl-px-to-rem(14px) !default;
+$sl-font-size--small: sl-px-to-rem(16px) !default;
+$sl-font-size--medium: sl-px-to-rem(18px) !default;
+$sl-font-size--large: sl-px-to-rem(20px) !default;
+$sl-font-size--x-large: sl-px-to-rem(24px) !default;
+$sl-font-size--xx-large: sl-px-to-rem(28px) !default;
+$sl-font-size--xxx-large: sl-px-to-rem(32px) !default;
 $sl-font-size--xxxx-large: sl-px-to-rem(80px) !default;
 
 $sl-font-sizes: (
-  small:      $sl-font-size--small,
-  medium:     $sl-font-size--medium,
-  large:      $sl-font-size--large,
-  x-large:    $sl-font-size--x-large,
-  xx-large:   $sl-font-size--xx-large,
-  xxx-large:  $sl-font-size--xxx-large,
+  small: $sl-font-size--small,
+  medium: $sl-font-size--medium,
+  large: $sl-font-size--large,
+  x-large: $sl-font-size--x-large,
+  xx-large: $sl-font-size--xx-large,
+  xxx-large: $sl-font-size--xxx-large,
   xxxx-large: $sl-font-size--xxxx-large,
 );
 
-@each $name,
-      $value in $sl-font-sizes {
-
-  .sl-font-size--#{$name} { font-size: $value; }
+@each $name, $value in $sl-font-sizes {
+  .sl-font-size--#{$name} {
+    font-size: $value;
+  }
 }
 
-
-
-$sl-font-family--text:     'Source Sans Pro', system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$sl-font-family--display:  'Source Serif Pro', 'Apple Garamond', 'Baskerville', 'Times New Roman', 'Droid Serif', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$sl-font-family--code:     'Source Code Pro', 'SF Mono', Monaco, Inconsolata, 'Fira Mono', 'Droid Sans Mono', monospace, monospace !default;
+$sl-font-family--text: 'Source Sans Pro', system-ui, -apple-system, 'Segoe UI',
+  Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$sl-font-family--display: 'Source Serif Pro', 'Apple Garamond', 'Baskerville',
+  'Times New Roman', 'Droid Serif', Times, serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$sl-font-family--code: 'Source Code Pro', 'SF Mono', Monaco, Inconsolata,
+  'Fira Mono', 'Droid Sans Mono', monospace, monospace !default;
 
 $sl-font-families: (
-  text:    $sl-font-family--text,
+  text: $sl-font-family--text,
   display: $sl-font-family--display,
-  code:    $sl-font-family--code,
+  code: $sl-font-family--code,
 );
 
-@each $name,
-      $value in $sl-font-families {
-
-  .sl-font-family--#{$name} { font-family: $value; }
+@each $name, $value in $sl-font-families {
+  .sl-font-family--#{$name} {
+    font-family: $value;
+  }
 }
 
 body,
 h5,
-h6 { font-size: $sl-font-size--medium; }
+h6 {
+  font-size: $sl-font-size--medium;
+}
 
 body {
   line-height: 1.5;
@@ -69,9 +72,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-* { min-width: 0; }
+* {
+  min-width: 0;
+}
 
-a { text-decoration: none; }
+a {
+  text-decoration: none;
+}
 
 strong,
 b,
@@ -79,7 +86,9 @@ h5,
 h6,
 dt,
 tbody th,
-label { font-weight: $sl-font-weight--bold; }
+label {
+  font-weight: $sl-font-weight--bold;
+}
 
 h1,
 h2,
@@ -105,12 +114,17 @@ h5,
 h6 {
   margin-top: 2.5rem;
 
-  aside &, nav & { margin-top: 1rem; }
+  aside &,
+  nav & {
+    margin-top: 1rem;
+  }
 }
 
 ul,
 ol,
-dd { margin-left: 1.75rem; }
+dd {
+  margin-left: 1.75rem;
+}
 
 h1,
 h2,
@@ -125,10 +139,14 @@ h6 {
 
 h1,
 h2,
-caption { letter-spacing: -#{sl-px-to-em(.5px)}; }
+caption {
+  letter-spacing: -#{sl-px-to-em(0.5px)};
+}
 
 h1,
-h2 { font-weight: $sl-font-weight--light; }
+h2 {
+  font-weight: $sl-font-weight--light;
+}
 
 h1 {
   margin-top: 0;
@@ -136,31 +154,45 @@ h1 {
   line-height: 1;
   text-align: center;
 
-  @include sl-breakpoint--medium { font-size: $sl-font-size--xxx-large; }
+  @include sl-breakpoint--medium {
+    font-size: $sl-font-size--xxx-large;
+  }
 
-  @include sl-breakpoint--large { font-size: $sl-font-size--xxxx-large; }
+  @include sl-breakpoint--large {
+    font-size: $sl-font-size--xxxx-large;
+  }
 }
 
 h2,
 caption,
 legend,
 h3,
-thead th { font-family: $sl-font-family--display; }
+thead th {
+  font-family: $sl-font-family--display;
+}
 
 h2,
 caption {
   font-size: $sl-font-size--x-large;
 
-  @include sl-breakpoint--medium { font-size: $sl-font-size--xx-large; }
+  @include sl-breakpoint--medium {
+    font-size: $sl-font-size--xx-large;
+  }
 
-  @include sl-breakpoint--large { font-size: $sl-font-size--xxx-large; }
+  @include sl-breakpoint--large {
+    font-size: $sl-font-size--xxx-large;
+  }
 }
 
 h3,
-h4 { font-size: $sl-font-size--large; }
+h4 {
+  font-size: $sl-font-size--large;
+}
 
 nav,
-footer { font-size: $sl-font-size--small; }
+footer {
+  font-size: $sl-font-size--small;
+}
 
 .caps {
   font-size: sl-px-to-em(14px);
@@ -179,15 +211,19 @@ code {
   font-size: ($sl-font-size--small / $sl-font-size--medium) * 1em;
   line-height: 1;
 
-  nav & { white-space: nowrap; }
+  nav & {
+    white-space: nowrap;
+  }
   p & {
-    @include sl-breakpoint--x-large { white-space: nowrap; }
+    @include sl-breakpoint--x-large {
+      white-space: nowrap;
+    }
   }
 }
 
 pre {
   font-size: $sl-font-size--x-small;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   overflow: auto;
   white-space: pre-wrap;
 
@@ -202,7 +238,7 @@ img {
   margin: {
     right: auto;
     left: auto;
-  };
+  }
   max-width: 100%;
   height: auto;
 }
@@ -211,7 +247,9 @@ hr {
   margin: {
     top: 3rem;
     bottom: 3rem;
-  };
+  }
 }
 
-dd { margin: 0; }
+dd {
+  margin: 0;
+}

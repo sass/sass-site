@@ -1,2 +1,2 @@
-import "./vendor";
-import "./components";
+import './vendor';
+import './components';

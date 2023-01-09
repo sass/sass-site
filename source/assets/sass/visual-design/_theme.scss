@@ -1,28 +1,28 @@
-$sl-color--hopbush:       #c69    !default;
-$sl-color--bouquet:       #b37399 !default;
-$sl-color--venus:         #998099 !default;
-$sl-color--patina:        #699    !default;
-$sl-color--nebula:        #d2e1dd !default;
-$sl-color--white:         #fff    !default;
-$sl-color--dawn-pink:     #f2ece4 !default;
-$sl-color--wafer:         #e1d7d2 !default;
-$sl-color--iron:          #dadbdf !default;
-$sl-color--regent-grey:   #808c99 !default;
-$sl-color--pale-sky:      #6b717f !default;
-$sl-color--midnight-blue: #036    !default;
+$sl-color--hopbush: #c69 !default;
+$sl-color--bouquet: #b37399 !default;
+$sl-color--venus: #998099 !default;
+$sl-color--patina: #699 !default;
+$sl-color--nebula: #d2e1dd !default;
+$sl-color--white: #fff !default;
+$sl-color--dawn-pink: #f2ece4 !default;
+$sl-color--wafer: #e1d7d2 !default;
+$sl-color--iron: #dadbdf !default;
+$sl-color--regent-grey: #808c99 !default;
+$sl-color--pale-sky: #6b717f !default;
+$sl-color--midnight-blue: #036 !default;
 
 $sl-colors: (
-  hopbush:       $sl-color--hopbush,
-  bouquet:       $sl-color--bouquet,
-  venus:         $sl-color--venus,
-  patina:        $sl-color--patina,
-  nebula:        $sl-color--nebula,
-  white:         $sl-color--white,
-  dawn-pink:     $sl-color--dawn-pink,
-  wafer:         $sl-color--wafer,
-  iron:          $sl-color--iron,
-  regent-grey:   $sl-color--regent-grey,
-  pale-sky:      $sl-color--pale-sky,
+  hopbush: $sl-color--hopbush,
+  bouquet: $sl-color--bouquet,
+  venus: $sl-color--venus,
+  patina: $sl-color--patina,
+  nebula: $sl-color--nebula,
+  white: $sl-color--white,
+  dawn-pink: $sl-color--dawn-pink,
+  wafer: $sl-color--wafer,
+  iron: $sl-color--iron,
+  regent-grey: $sl-color--regent-grey,
+  pale-sky: $sl-color--pale-sky,
   midnight-blue: $sl-color--midnight-blue,
 );
 
@@ -31,12 +31,12 @@ $sl-colors: (
   $green: nth($linear-channel-values, green($color) + 1);
   $blue: nth($linear-channel-values, blue($color) + 1);
 
-  @return .2126 * $red + .7152 * $green + .0722 * $blue;
+  @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 }
 
 @function contrast($back, $front) {
-  $backLum: luminance($back) + .05;
-  $foreLum: luminance($front) + .05;
+  $backLum: luminance($back) + 0.05;
+  $foreLum: luminance($front) + 0.05;
 
   @return max($backLum, $foreLum) / min($backLum, $foreLum);
 }
@@ -47,12 +47,12 @@ $sl-colors: (
 
   @if ($lightContrast > $darkContrast) {
     @return $sl-color--white;
-  }
-  @else {
+  } @else {
     @return $sl-color--black;
   }
 }
 
+/* prettier-ignore */
 $linear-channel-values:
   0
   .0003035269835488375
@@ -311,20 +311,21 @@ $linear-channel-values:
   .9911020971138298
   1;
 
-@each $name,
-      $value in $sl-colors {
-
-  .sl-background--#{'' + $name} { // to avoid Sass yelling at using 'white' or 'black' as a color name
+@each $name, $value in $sl-colors {
+  // to avoid Sass yelling at using 'white' or 'black' as a color name
+  .sl-background--#{'' + $name} {
     background: $value;
   }
 
-  .sl-color--#{'' + $name} { // to avoid Sass yelling at using 'white' or 'black' as a color name
+  // to avoid Sass yelling at using 'white' or 'black' as a color name
+  .sl-color--#{'' + $name} {
     color: $value;
   }
 }
 
 html {
-  background: #f8f9fa url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23f1f3f5' fill-opacity='0.47' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background: #f8f9fa
+    url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23f1f3f5' fill-opacity='0.47' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 body {
@@ -337,18 +338,22 @@ body {
 }
 
 a {
-  border-bottom: 1px solid rgba($sl-color--iron, .5);
+  border-bottom: 1px solid rgba($sl-color--iron, 0.5);
   color: $sl-color--midnight-blue;
 
-  .c1 & { color: inherit; }
+  .c1 & {
+    color: inherit;
+  }
 
   &:hover,
   &:focus {
-    border-bottom-color: rgba($sl-color--iron, .75);
-    background: rgba($sl-color--iron, .25);
+    border-bottom-color: rgba($sl-color--iron, 0.75);
+    background: rgba($sl-color--iron, 0.25);
   }
 
-  &:active { border-bottom-color: $sl-color--iron; }
+  &:active {
+    border-bottom-color: $sl-color--iron;
+  }
 }
 
 code,
@@ -356,10 +361,12 @@ pre {
   border-radius: sl-px-to-em(2px);
   color: darken($sl-color--pale-sky, 25%);
 
-  a & { color: inherit; }
+  a & {
+    color: inherit;
+  }
 }
 
 pre {
   border: 1px solid #ebebeb;
-  background: rgba($sl-color--midnight-blue, .0625);
+  background: rgba($sl-color--midnight-blue, 0.0625);
 }

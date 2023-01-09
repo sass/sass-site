@@ -1,13 +1,20 @@
-$sl-colors: $sl-color--hopbush $sl-color--bouquet $sl-color--venus $sl-color--patina $sl-color--nebula $sl-color--white $sl-color--dawn-pink $sl-color--wafer $sl-color--iron $sl-color--regent-grey $sl-color--pale-sky $sl-color--midnight-blue;
+$sl-colors: $sl-color--hopbush $sl-color--bouquet $sl-color--venus
+  $sl-color--patina $sl-color--nebula $sl-color--white $sl-color--dawn-pink
+  $sl-color--wafer $sl-color--iron $sl-color--regent-grey $sl-color--pale-sky
+  $sl-color--midnight-blue;
 
 @function stripes($position, $sl-colors) {
-  $sl-colors:   if(type-of($sl-colors) != 'list', compact($sl-colors), $sl-colors);
+  $sl-colors: if(
+    type-of($sl-colors) != 'list',
+    compact($sl-colors),
+    $sl-colors
+  );
   $gradient: compact();
-  $width:    100% / length($sl-colors);
+  $width: 100% / length($sl-colors);
 
   @for $i from 1 through length($sl-colors) {
-    $pop:      nth($sl-colors,$i);
-    $new:      $pop ($width * ($i - 1)), $pop ($width * $i);
+    $pop: nth($sl-colors, $i);
+    $new: $pop ($width * ($i - 1)), $pop ($width * $i);
     $gradient: join($gradient, $new, comma);
   }
 

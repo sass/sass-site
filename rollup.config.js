@@ -1,19 +1,19 @@
-import { babel } from "@rollup/plugin-babel";
-import commonjs from "@rollup/plugin-commonjs";
-import inject from "@rollup/plugin-inject";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import terser from "@rollup/plugin-terser";
+import { babel } from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import inject from '@rollup/plugin-inject';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
 
-const prod = process.env.BABEL_ENV === "production";
+const prod = process.env.BABEL_ENV === 'production';
 
 const plugins = [
   nodeResolve({ browser: true }),
   commonjs(),
   inject({
-    $: "jquery",
-    jQuery: "jquery",
+    $: 'jquery',
+    jQuery: 'jquery',
   }),
-  babel({ babelHelpers: "bundled" }),
+  babel({ babelHelpers: 'bundled' }),
 ];
 
 if (prod) {
@@ -21,10 +21,10 @@ if (prod) {
 }
 
 export default {
-  input: "source/assets/js/sass.js",
+  input: 'source/assets/js/sass.js',
   output: {
-    file: "source/assets/dist/js/sass.js",
-    format: "iife",
+    file: 'source/assets/dist/js/sass.js',
+    format: 'iife',
     sourcemap: !prod,
   },
   plugins,

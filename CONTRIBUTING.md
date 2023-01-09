@@ -1,18 +1,17 @@
-Contributing to the Sass website
-================================
+# Contributing to the Sass website
 
 The Sass website is open source. See a bug or typo? Have an idea? Do the
 following:
 
-* **Please read the [Implementation Guide][ig] and the [Style Guide][sg]**
+- **Please read the [Implementation Guide][ig] and the [Style Guide][sg]**
   before contributing.
-* Write a detailed description of what you're adding in the pull request
+- Write a detailed description of what you're adding in the pull request
   (screenshots help).
-* If there is new design or CSS, please add @Jina as a reviewer so she can see
+- If there is new design or CSS, please add @Jina as a reviewer so she can see
   if it needs to be added to the style guide (or if a suitable alternative
   exists).
-* Submit the pull request to the `main` branch.
-* Drink whisky.
+- Submit the pull request to the `main` branch.
+- Drink whisky.
 
 ## Running Locally
 
@@ -40,8 +39,8 @@ Thanks!
 
 &mdash; Sass Core Team
 
-[ig]:        https://sass-lang.com/implementation
-[sg]:        https://sass-lang.com/styleguide
+[ig]: https://sass-lang.com/implementation
+[sg]: https://sass-lang.com/styleguide
 [middleman]: https://middlemanapp.com
-[ruby]:      https://www.ruby-lang.org/en/downloads/
-[bundler]:   https://bundler.io/
+[ruby]: https://www.ruby-lang.org/en/downloads/
+[bundler]: https://bundler.io/

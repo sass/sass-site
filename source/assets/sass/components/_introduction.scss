@@ -2,7 +2,11 @@
   color: $sl-color--patina;
   font-weight: $sl-font-weight--light;
 
-  @include sl-breakpoint--medium { font-size: $sl-font-size--xx-large; }
+  @include sl-breakpoint--medium {
+    font-size: $sl-font-size--xx-large;
+  }
 
-  &--center { text-align: center; }
+  &--center {
+    text-align: center;
+  }
 }
