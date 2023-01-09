@@ -6,7 +6,11 @@ $(function () {
 
   // Added sticky class when window top is great than nav top
   function stickyNav() {
-    if (nav.length > 0 && $(window).scrollTop() >= sticky.top) {
+    if (
+      nav.length > 0 &&
+      sticky &&
+      ($(window).scrollTop() ?? 0) >= sticky.top
+    ) {
       $('.sl-l-medium-holy-grail__body').addClass('sl-js-nav--is-sticky');
     } else {
       $('.sl-l-medium-holy-grail__body').removeClass('sl-js-nav--is-sticky');
@@ -14,7 +18,7 @@ $(function () {
   }
 
   // When scrolling the page, execute stickyNav
-  $(window).scroll(function () {
+  $(window).on('scroll', function () {
     stickyNav();
   });
 
