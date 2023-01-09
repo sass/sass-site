@@ -15,7 +15,7 @@
     "yarn": "^3"
   },
   "type": "module",
-  "packageManager": "yarn@3.3.0",
+  "packageManager": "yarn@3.3.1",
   "scripts": {
     "serve": "run-p 'watch:**'",
     "build": "run-s build-dev:scripts 'build:**'",
@@ -29,8 +29,11 @@
     "watch:11ty": "eleventy --config=.eleventy.cjs --serve",
     "tsc": "tsc",
     "prettier": "prettier --write .",
+    "prettier:ci": "prettier --check .",
     "eslint": "eslint --fix .",
+    "eslint:ci": "eslint .",
     "lint": "run-s prettier eslint tsc",
+    "lint:ci": "run-s prettier:ci eslint:ci tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -45,7 +48,7 @@
     "@rollup/plugin-terser": "^0.3.0",
     "@types/jquery": "^3.5.16",
     "@types/jqueryui": "^1.12.16",
-    "@types/node": "^18.11.18",
+    "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
     "eslint": "^8.31.0",
@@ -61,5 +64,13 @@
     "sass": "^1.57.1",
     "typedoc": "^0.23.24",
     "typescript": "^4.9.4"
+  },
+  "resolutions": {
+    "tslib": ">=2"
+  },
+  "yarn-upgrade-all": {
+    "ignore": [
+      "@types/node"
+    ]
   }
 }
