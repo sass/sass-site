@@ -6,7 +6,7 @@
     <meta name="description" content="Syntactically Awesome Style Sheets" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Sass: {{ page.data.title or 'Syntactically Awesome Style Sheets' }}</title>
+    <title>Sass: {{ page.data.title | default: 'Syntactically Awesome Style Sheets' }}</title>
 
     <link
       rel="alternate"
