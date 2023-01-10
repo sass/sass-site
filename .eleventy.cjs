@@ -11,6 +11,10 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('source/assets/img');
   eleventyConfig.addPassthroughCopy('source/favicon.ico');
 
+  eleventyConfig.setLiquidOptions({
+    jsTruthy: true,
+  });
+
   // settings
   return {
     dir: {
