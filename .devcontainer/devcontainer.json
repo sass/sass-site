@@ -1,4 +1,4 @@
-// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+// See https://containers.dev/implementors/json_reference/ for format details.
 {
   "name": "sass-site",
   "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.dev.yml"],
@@ -11,6 +11,7 @@
     "esbenp.prettier-vscode",
     "formulahendry.auto-rename-tag",
     "naumovs.color-highlight",
+    "sissel.shopify-liquid",
     "stkb.rewrap",
     "stylelint.vscode-stylelint",
     "syler.sass-indented",
@@ -32,6 +33,10 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
     "eslint.validate": ["javascript", "typescript"],
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "stylelint.validate": ["css", "scss", "less", "postcss"],
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
@@ -46,9 +51,6 @@
     },
     "[typescript]": {
       "editor.rulers": [80]
-    },
-    "[html]": {
-      "editor.formatOnSave": false
     },
     "[scss]": {
       "editor.rulers": [80],
@@ -70,12 +72,15 @@
       "**/*.egg-info": true
     },
     "search.exclude": {
-      "**/node_modules": true,
       "**/*.css.map": true,
       "**/*.js.map": true,
-      "yarn.lock": true,
+      "**/node_modules": true,
+      ".yarn/": true,
+      "_site/": true,
+      "assets/dist/": true,
       "yarn-debug.log": true,
-      "yarn-error.log": true
+      "yarn-error.log": true,
+      "yarn.lock": true
     }
   }
 }
