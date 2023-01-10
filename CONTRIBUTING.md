@@ -15,24 +15,55 @@ following:
 
 ## Running Locally
 
-This site is built with [middleman][], a Ruby framework for building static
-sites.
+### Install Node and Yarn
 
-You will need [Ruby][], [rubygems](http://rubygems.org/) and [bundler][]
-installed before you can run the site locally.
+We recommend using [nvm](https://github.com/nvm-sh/nvm) for node version
+management. [Install it](https://github.com/nvm-sh/nvm#installation-and-update)
+if necessary, then run `nvm install` (once per active shell) to use the correct
+version of node for development.
 
-If the above dependencies are installed, in your command line of preference,
-navigate to the project repo and run:
+The correct [Yarn](https://yarnpkg.com/) version is included in the repo, and
+will be used automatically for any `yarn` command.
+
+To upgrade the node version used by the Sass website, update the version number
+in these places and then run `nvm install` to upgrade:
+
+- `package.json` (`engines.node` field)
+- `.nvmrc`
+
+To upgrade the yarn version, run `yarn set version latest`, then update the
+version number in `package.json` (`engines.yarn` field) if necessary.
+
+### Install dependencies
 
 ```
-bundle install
-bundle exec rake sass:import
-bundle exec middleman
+yarn
+```
+
+### Development tasks
+
+Compile and run [Eleventy](https://www.11ty.dev/) server, with a watcher for
+file changes:
+
+```
+yarn serve
+```
+
+The site will be compiled into `_site/` and available at http://localhost:8080.
+
+You can also run individual commands:
+
+```
+# build the static site for development
+yarn build
+
+# format and lint all files
+yarn lint
 ```
 
 ## Deploying
 
-Every time a new commit is pushed to main, it will automatically be deployed
+Every time a new commit is pushed to `main`, it will automatically be deployed
 to sass-lang.com. Easy as that!
 
 Thanks!
@@ -41,6 +72,3 @@ Thanks!
 
 [ig]: https://sass-lang.com/implementation
 [sg]: https://sass-lang.com/styleguide
-[middleman]: https://middlemanapp.com
-[ruby]: https://www.ruby-lang.org/en/downloads/
-[bundler]: https://bundler.io/
