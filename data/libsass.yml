@@ -1,7 +1,7 @@
 resources:
-  - name: "Lightning fast Sass compiling with libsass, Node-sass and Grunt-sass"
-    url: "http://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/"
-    description: "by Ben Frain, August 2013"
-  - name: "Node, Express and libSass"
-    url: "https://anotheruiguy.gitbooks.io/nodeexpreslibsass_from-scratch/content/index.html"
-    description: "Node, Express and libSass: a project from scratch workshop"
+  - name: 'Lightning fast Sass compiling with libsass, Node-sass and Grunt-sass'
+    url: 'http://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/'
+    description: 'by Ben Frain, August 2013'
+  - name: 'Node, Express and libSass'
+    url: 'https://anotheruiguy.gitbooks.io/nodeexpreslibsass_from-scratch/content/index.html'
+    description: 'Node, Express and libSass: a project from scratch workshop'

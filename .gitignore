@@ -19,3 +19,20 @@ Thumbs.db
 /.yardoc
 /vendor/bundle/
 /source/documentation/js-api
+
+# Eleventy
+/_site/
+source/assets/dist/
+
+# NPM/Yarn
+node_modules/
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

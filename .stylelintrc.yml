@@ -1,0 +1,46 @@
+# See https://stylelint.io/user-guide/rules/
+# Also https://github.com/stylelint-scss/stylelint-scss#list-of-rules
+
+extends:
+  - stylelint-config-standard-scss
+  - stylelint-config-prettier
+
+rules:
+  # Default rules:
+  #   - https://github.com/stylelint-scss/stylelint-config-standard-scss/blob/main/index.js
+  #   - https://github.com/stylelint-scss/stylelint-config-recommended-scss/blob/master/index.js
+  #   - https://github.com/stylelint/stylelint-config-standard/blob/main/index.js
+  #   - https://github.com/stylelint/stylelint-config-recommended/blob/main/index.js
+  #   - https://github.com/prettier/stylelint-config-prettier/blob/master/src/index.js
+
+  # possible errors (these are all on by default)
+  no-descending-specificity: null
+
+  # limit language features
+  color-function-notation: null
+  color-named: always-where-possible
+  custom-property-pattern: null
+  function-url-no-scheme-relative: true
+  number-max-precision: null
+  selector-class-pattern: null
+
+  # Sass
+  scss/at-mixin-pattern: null
+  scss/dollar-variable-pattern: null
+  scss/no-global-function-names: null
+
+  # Disable for Prettier
+  scss/at-else-closing-brace-newline-after: null
+  scss/at-else-closing-brace-space-after: null
+  scss/at-else-empty-line-before: null
+  scss/at-else-if-parentheses-space-before: null
+  scss/at-function-parentheses-space-before: null
+  scss/at-if-closing-brace-newline-after: null
+  scss/at-if-closing-brace-space-after: null
+  scss/at-mixin-parentheses-space-before: null
+  scss/dollar-variable-colon-newline-after: null
+  scss/dollar-variable-colon-space-after: null
+  scss/dollar-variable-colon-space-before: null
+  scss/operator-no-newline-after: null
+  scss/operator-no-newline-before: null
+  scss/operator-no-unspaced: null

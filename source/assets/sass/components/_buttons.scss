@@ -1,0 +1,43 @@
+.sl-c-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 0 {
+    radius: sl-px-to-rem(4px); /* stylelint-disable-line property-no-unknown */
+  }
+  padding: sl-px-to-rem(12px) sl-px-to-rem(16px);
+  background: $sl-color--iron;
+  box-shadow: 0 2px 1px rgba($sl-color--midnight-blue, 0.125);
+  color: darken($sl-color--hopbush, 10%);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: darken($sl-color--bouquet, 10%);
+  }
+
+  &:active {
+    color: darken($sl-color--venus, 10%);
+  }
+
+  &--primary {
+    background-color: darken($sl-color--hopbush, 10%);
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $sl-color--white;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: darken($sl-color--bouquet, 10%);
+    }
+
+    &:active {
+      background-color: darken($sl-color--venus, 10%);
+    }
+  }
+}

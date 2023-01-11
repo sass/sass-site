@@ -1,0 +1,57 @@
+@each $breakpoint, $size in $sl-breakpoints {
+  $prefix: if(($breakpoint == 'none'), '', '#{$breakpoint}-');
+
+  @include sl-breakpoint-set($breakpoint, $size) {
+    .sl-l-#{$prefix}holy-grail {
+      &,
+      &__body {
+        display: flex;
+      }
+
+      flex-direction: column;
+      height: 100%;
+
+      &__header,
+      &__footer {
+        flex: none;
+      }
+
+      &__body {
+        flex: 1 0 auto;
+        flex-direction: row;
+        margin: {
+          right: -2rem;
+          left: -2rem;
+        }
+      }
+
+      &__main,
+      &__navigation,
+      &__complementary {
+        padding: {
+          right: sl-px-to-rem(32px);
+          left: sl-px-to-rem(32px);
+        }
+      }
+
+      &__main {
+        flex: 1;
+      }
+
+      &__navigation {
+        flex: 0 0 sl-px-to-rem(240px);
+        order: -1;
+      }
+
+      &__complementary {
+        order: 1;
+        flex: 0 0 sl-px-to-rem(480px);
+
+        &--contents {
+          flex: 0 0 sl-px-to-rem(240px);
+          order: -1;
+        }
+      }
+    }
+  }
+}

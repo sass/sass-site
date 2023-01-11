@@ -1,0 +1,12 @@
+input {
+  display: block;
+  margin: 0 1rem;
+  border: 1px solid $sl-color--iron;
+  padding: 0.25rem 1rem;
+  width: 100%;
+
+  @include sl-breakpoint--large {
+    top: 0.5rem;
+    margin: 0;
+  }
+}

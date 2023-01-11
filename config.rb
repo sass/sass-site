@@ -60,13 +60,13 @@ for dir in ['docs/yardoc', 'documentation'] do
   redirect "#{dir}/functions.html", to: '/documentation/functions'
   redirect "#{dir}/functions/css.html", to: '/documentation/at-rules/function#plain-css-functions'
 
-  Dir['source/documentation/modules/*.html.md.erb'].each do |file|
+  Dir['old_source/documentation/modules/*.html.md.erb'].each do |file|
     module_name = File.basename(file, ".html.md.erb")
     redirect "#{dir}/functions/#{module_name}.html", to: "/documentation/modules/#{module_name}"
   end
 end
 
-Dir['source/documentation/breaking-changes/**'].each do |file|
+Dir['old_source/documentation/breaking-changes/**'].each do |file|
   basename = File.basename(file).gsub(/\..*/, '')
   redirect "d/#{basename}.html", to: "/documentation/breaking-changes/#{basename}"
 end
@@ -152,12 +152,12 @@ end
 
 after_render do |content, path, locs|
   # Only modify the original page's rendering.
-  next if path.include?("source/layouts/")
+  next if path.include?("old_source/layouts/")
 
   content.gsub(%r{^<(h[0-6])(.*?)</\1>}m) do |header_text|
     header = Nokogiri::HTML::DocumentFragment.parse(header_text).children.first
     id = header.attr(:id)
-    header.children.before("<a class='anchor' href='##{id}'><span class='visuallyhidden'>#{header.text} permalink</span></a>") if id 
+    header.children.before("<a class='anchor' href='##{id}'><span class='visuallyhidden'>#{header.text} permalink</span></a>") if id
     header.to_html
   end
 end

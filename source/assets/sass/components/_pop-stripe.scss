@@ -1,0 +1,30 @@
+$sl-colors: $sl-color--hopbush $sl-color--bouquet $sl-color--venus
+  $sl-color--patina $sl-color--nebula $sl-color--white $sl-color--dawn-pink
+  $sl-color--wafer $sl-color--iron $sl-color--regent-grey $sl-color--pale-sky
+  $sl-color--midnight-blue;
+
+@function stripes($position, $sl-colors) {
+  /* stylelint-disable annotation-no-unknown */
+  $sl-colors: if(
+    type-of($sl-colors) != 'list',
+    compact($sl-colors),
+    $sl-colors
+  );
+  /* stylelint-enable annotation-no-unknown */
+  $gradient: compact();
+  $width: 100% / length($sl-colors);
+
+  @for $i from 1 through length($sl-colors) {
+    $pop: nth($sl-colors, $i);
+    $new: $pop ($width * ($i - 1)), $pop ($width * $i);
+    $gradient: join($gradient, $new, comma);
+  }
+
+  @return linear-gradient($position, $gradient);
+}
+
+.sl-c-pop-stripe {
+  height: sl-px-to-rem(4px);
+  background-image: stripes((to right), ($sl-colors));
+  background-size: 100%;
+}

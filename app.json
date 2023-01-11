@@ -1,8 +1,7 @@
 {
   "name": "sass-site",
   "stack": "heroku-18",
-  "scripts": {
-  },
+  "scripts": {},
   "env": {
     "HEROKU": {
       "required": true
@@ -28,9 +27,7 @@
       "quantity": 1
     }
   },
-  "addons": [
-
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

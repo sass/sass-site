@@ -1,0 +1,163 @@
+.sl-l-grid {
+  &,
+  &--flex-columns > .sl-l-grid__column {
+    display: flex;
+  }
+
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__column {
+    flex: 1;
+  }
+}
+
+@each $breakpoint, $size in $sl-breakpoints {
+  $prefix: if(($breakpoint == 'none'), '', '#{$breakpoint}-');
+
+  @include sl-breakpoint-set($breakpoint, $size) {
+    .sl-l-#{$prefix}grid {
+      &--top {
+        align-items: flex-start;
+      }
+
+      &--center {
+        align-items: center;
+      }
+
+      &--bottom {
+        align-items: flex-end;
+      }
+
+      &--stretch {
+        align-items: stretch;
+      }
+
+      &--baseline {
+        align-items: baseline;
+      }
+
+      &--justify {
+        &-left {
+          justify-content: flex-start;
+        }
+
+        &-center {
+          justify-content: center;
+        }
+
+        &-right {
+          justify-content: flex-end;
+        }
+
+        &-space {
+          &-between {
+            justify-content: space-between;
+          }
+
+          &-around {
+            justify-content: space-around;
+          }
+
+          &-evenly {
+            justify-content: space-evenly;
+          }
+        }
+      }
+
+      &--fit > .sl-l-grid__column {
+        flex: 1;
+      }
+
+      &--full > .sl-l-grid__column {
+        flex: 0 0 100%;
+      }
+
+      @for $i from 2 through 12 {
+        &--divide-by-#{$i} > .sl-l-grid__column {
+          flex: 0 0 (100 / $i) * 1%;
+        }
+      }
+
+      &__column {
+        &--top {
+          align-self: flex-start !important;
+        }
+
+        &--center {
+          align-self: center !important;
+        }
+
+        &--bottom {
+          align-self: flex-end !important;
+        }
+
+        &--baseline {
+          align-self: baseline !important;
+        }
+
+        &--stretch {
+          align-self: stretch !important;
+        }
+
+        &--auto-size {
+          flex: none !important;
+        }
+
+        @for $i from 1 through 11 {
+          &--#{$i}-of-12 {
+            width: (100% / 12) * $i !important;
+          }
+        }
+
+        &--full {
+          width: 100% !important;
+        }
+      }
+
+      &--gutters {
+        margin: {
+          right: -(sl-px-to-rem(16px));
+          left: -(sl-px-to-rem(16px));
+        }
+
+        > .sl-l-grid__column {
+          padding: {
+            right: sl-px-to-rem(16px);
+            left: sl-px-to-rem(16px);
+          }
+        }
+
+        &-large {
+          margin: {
+            right: -(sl-px-to-rem(32px));
+            left: -(sl-px-to-rem(32px));
+          }
+
+          > .sl-l-grid__column {
+            padding: {
+              right: sl-px-to-rem(32px);
+              left: sl-px-to-rem(32px);
+            }
+          }
+        }
+
+        &-small {
+          margin: {
+            right: -(sl-px-to-rem(8px));
+            left: -(sl-px-to-rem(8px));
+          }
+
+          > .sl-l-grid__column {
+            padding: {
+              right: sl-px-to-rem(8px);
+              left: sl-px-to-rem(8px);
+            }
+          }
+        }
+      }
+    }
+  }
+}

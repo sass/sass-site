@@ -1,0 +1,28 @@
+.sl-l-medium-holy-grail__body.sl-js-nav--is-sticky
+  .sl-c-list-navigation-wrapper {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+
+  @include sl-breakpoint--large {
+    height: 100vh;
+  }
+}
+
+.skip-link {
+  display: block;
+  padding: 0.25em 1em;
+  transform: translateY(calc(-100% - 1em));
+  transition: all 0.1s ease-in-out;
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  z-index: 9999;
+
+  &:focus {
+    transform: translateY(0);
+    background: $sl-color--hopbush;
+    color: $sl-color--white;
+  }
+}

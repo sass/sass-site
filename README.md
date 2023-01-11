@@ -6,4 +6,4 @@ the [Contributing guide][contrib]! Also, check out the [Style Guide][sg].
 Thanks!
 
 [contrib]: https://github.com/sass/sass-site/blob/main/CONTRIBUTING.md
-[sg]:      http://sass-lang.com/styleguide
+[sg]: http://sass-lang.com/styleguide
