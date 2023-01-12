@@ -1,3 +1,9 @@
+@use "sass:math";
+
+@use "sass:color";
+@use "sass:list";
+@use "../functions";
+
 $sl-color--hopbush: #c69 !default;
 $sl-color--bouquet: #b37399 !default;
 $sl-color--venus: #998099 !default;
@@ -26,9 +32,9 @@ $sl-colors: (
 );
 
 @function luminance($color) {
-  $red: nth($linear-channel-values, red($color) + 1);
-  $green: nth($linear-channel-values, green($color) + 1);
-  $blue: nth($linear-channel-values, blue($color) + 1);
+  $red: list.nth($linear-channel-values, color.red($color) + 1);
+  $green: list.nth($linear-channel-values, color.green($color) + 1);
+  $blue: list.nth($linear-channel-values, color.blue($color) + 1);
 
   @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 }
@@ -37,7 +43,7 @@ $sl-colors: (
   $backLum: luminance($back) + 0.05;
   $foreLum: luminance($front) + 0.05;
 
-  @return max($backLum, $foreLum) / min($backLum, $foreLum);
+  @return math.div(max($backLum, $foreLum), min($backLum, $foreLum));
 }
 
 @function choose-contrast-color($color) {
@@ -357,8 +363,8 @@ a {
 
 code,
 pre {
-  border-radius: sl-px-to-em(2px);
-  color: darken($sl-color--pale-sky, 25%);
+  border-radius: functions.sl-px-to-em(2px);
+  color: color.adjust($sl-color--pale-sky, $lightness: -25%);
 
   a & {
     color: inherit;

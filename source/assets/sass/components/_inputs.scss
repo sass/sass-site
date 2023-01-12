@@ -1,11 +1,14 @@
+@use "../breakpoints";
+@use "../visual-design/theme";
+
 input {
   display: block;
   margin: 0 1rem;
-  border: 1px solid $sl-color--iron;
+  border: 1px solid theme.$sl-color--iron;
   padding: 0.25rem 1rem;
   width: 100%;
 
-  @include sl-breakpoint--large {
+  @include breakpoints.sl-breakpoint--large {
     top: 0.5rem;
     margin: 0;
   }

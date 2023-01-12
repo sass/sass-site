@@ -1,3 +1,5 @@
+@use "functions";
+
 $sl-breakpoint--small: 480px !default;
 $sl-breakpoint--medium: 640px !default;
 $sl-breakpoint--large: 960px !default;
@@ -12,13 +14,13 @@ $sl-breakpoints: (
 );
 
 @mixin sl-breakpoint($breakpoint) {
-  @media only screen and (min-width: #{sl-px-to-em($breakpoint)}) {
+  @media only screen and (min-width: #{functions.sl-px-to-em($breakpoint)}) {
     @content;
   }
 }
 
 @mixin sl-breakpoint-max($breakpoint) {
-  @media only screen and (max-width: #{sl-px-to-em($breakpoint)}) {
+  @media only screen and (max-width: #{functions.sl-px-to-em($breakpoint)}) {
     @content;
   }
 }

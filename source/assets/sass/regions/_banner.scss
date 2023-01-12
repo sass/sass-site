@@ -1,3 +1,7 @@
+@use "../breakpoints";
+@use "../functions";
+@use "../visual-design/typography";
+
 .sl-r-banner {
   position: relative;
 
@@ -16,29 +20,29 @@
   img {
     display: inline-block;
     margin: 0;
-    height: sl-px-to-rem(48px);
+    height: functions.sl-px-to-rem(48px);
 
-    @include sl-breakpoint--medium {
-      height: sl-px-to-rem(96px);
+    @include breakpoints.sl-breakpoint--medium {
+      height: functions.sl-px-to-rem(96px);
     }
   }
 
   &__navigation {
-    font-weight: $sl-font-weight--bold;
+    font-weight: typography.$sl-font-weight--bold;
 
     ul {
       position: relative;
       margin: 0 -1rem !important;
 
-      @include sl-breakpoint--medium {
-        right: -(sl-px-to-rem(16px));
+      @include breakpoints.sl-breakpoint--medium {
+        right: -(functions.sl-px-to-rem(16px));
         margin: 0 !important;
       }
     }
 
     a {
       display: block;
-      padding: sl-px-to-rem(12px) sl-px-to-rem(16px);
+      padding: functions.sl-px-to-rem(12px) functions.sl-px-to-rem(16px);
       border: 0;
     }
   }

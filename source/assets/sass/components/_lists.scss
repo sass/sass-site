@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "../breakpoints";
+@use "../visual-design/theme";
+@use "../visual-design/typography";
+
 .sl-c-list {
   &,
   &-horizontal-wrapper ul,
@@ -8,13 +13,13 @@
   }
 
   &-horizontal-wrapper {
-    @include sl-breakpoint--medium {
+    @include breakpoints.sl-breakpoint--medium {
       // add margin-bottom space
       // to the twitter follow button
       margin-bottom: 1rem;
     }
 
-    @include sl-breakpoint--large {
+    @include breakpoints.sl-breakpoint--large {
       ul {
         display: flex;
         margin: {
@@ -64,15 +69,15 @@
         width: 100%;
 
         &:hover {
-          background-color: $sl-color--dawn-pink;
+          background-color: theme.$sl-color--dawn-pink;
         }
       }
 
       li.overview a {
-        font-size: $sl-font-size--small;
+        font-size: typography.$sl-font-size--small;
 
         &:not(.selected) {
-          color: transparentize($sl-color--midnight-blue, 0.3);
+          color: color.adjust(theme.$sl-color--midnight-blue, $alpha: -0.3);
         }
       }
 
@@ -105,7 +110,7 @@
           font-weight: bold;
 
           &:not(.section) {
-            background-color: $sl-color--dawn-pink;
+            background-color: theme.$sl-color--dawn-pink;
           }
         }
       }
@@ -125,7 +130,7 @@
   }
 
   > div {
-    border-left: 1px solid $sl-color--iron;
+    border-left: 1px solid theme.$sl-color--iron;
     padding: 0 1rem;
 
     &:first-child {
@@ -135,7 +140,7 @@
 
   .compatibility {
     font-weight: 600;
-    color: $sl-color--midnight-blue;
+    color: theme.$sl-color--midnight-blue;
     display: block;
 
     + div {
