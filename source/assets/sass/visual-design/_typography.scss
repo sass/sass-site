@@ -1,7 +1,7 @@
-@use "sass:math";
+@use 'sass:math';
 
-@use "../breakpoints";
-@use "../functions";
+@use '../breakpoints';
+@use '../functions';
 
 $sl-font-weight--light: 300 !default;
 $sl-font-weight--regular: 400 !default;

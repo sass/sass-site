@@ -1,6 +1,6 @@
-@use "sass:color";
-@use "../functions";
-@use "../visual-design/theme";
+@use 'sass:color';
+@use '../functions';
+@use '../visual-design/theme';
 
 .sl-c-button {
   display: inline-flex;
@@ -8,7 +8,8 @@
   justify-content: center;
   margin: 0;
   border: 0 {
-    radius: functions.sl-px-to-rem(4px); /* stylelint-disable-line property-no-unknown */
+    /* stylelint-disable-next-line property-no-unknown */
+    radius: functions.sl-px-to-rem(4px);
   }
   padding: functions.sl-px-to-rem(12px) functions.sl-px-to-rem(16px);
   background: theme.$sl-color--iron;
@@ -37,7 +38,10 @@
 
     &:hover,
     &:focus {
-      background-color: color.adjust(theme.$sl-color--bouquet, $lightness: -10%);
+      background-color: color.adjust(
+        theme.$sl-color--bouquet,
+        $lightness: -10%
+      );
     }
 
     &:active {

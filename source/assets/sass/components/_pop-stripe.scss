@@ -1,13 +1,14 @@
-@use "sass:math";
+@use 'sass:math';
 
-@use "sass:list";
-@use "sass:meta";
-@use "../functions";
-@use "../visual-design/theme";
+@use 'sass:list';
+@use 'sass:meta';
+@use '../functions';
+@use '../visual-design/theme';
 
-$sl-colors: theme.$sl-color--hopbush theme.$sl-color--bouquet theme.$sl-color--venus
-  theme.$sl-color--patina theme.$sl-color--nebula theme.$sl-color--white theme.$sl-color--dawn-pink
-  theme.$sl-color--wafer theme.$sl-color--iron theme.$sl-color--regent-grey theme.$sl-color--pale-sky
+$sl-colors: theme.$sl-color--hopbush theme.$sl-color--bouquet
+  theme.$sl-color--venus theme.$sl-color--patina theme.$sl-color--nebula
+  theme.$sl-color--white theme.$sl-color--dawn-pink theme.$sl-color--wafer
+  theme.$sl-color--iron theme.$sl-color--regent-grey theme.$sl-color--pale-sky
   theme.$sl-color--midnight-blue;
 
 @function stripes($position, $sl-colors) {

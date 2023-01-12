@@ -1,7 +1,7 @@
-@use "sass:color";
-@use "../functions";
-@use "../visual-design/theme";
-@use "../visual-design/typography";
+@use 'sass:color';
+@use '../functions';
+@use '../visual-design/theme';
+@use '../visual-design/typography';
 
 .sl-c-alert {
   padding: {
