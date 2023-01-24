@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Syntactically Awesome Style Sheets" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Sass: {{ page.data.title | default: 'Syntactically Awesome Style Sheets' }}</title>
+    <title>Sass: {{ title | default: 'Syntactically Awesome Style Sheets' }}</title>
 
     <link
       rel="alternate"
@@ -33,50 +32,70 @@
         rel="stylesheet" />
     </noscript>
 
-    <!-- Old version of analytics (https://developers.google.com/analytics/devguides/collection/gajs/). -->
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
     <script>
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-535380-8']);
-      _gaq.push(['_trackPageview']);
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-      (function() {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = (
-          'https:' == document.location.protocol
-            ? 'https://ssl'
-            : 'http://www'
-        ) + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-
-    <!-- New version of analytics (https://developers.google.com/analytics/devguides/collection/analyticsjs/). -->
-    <script>
-      (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-          (i[r].q = i[r].q || []).push(arguments)
-        },
-        i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-535380-14', 'sass-lang.com');
-      ga('send', 'pageview');
+      gtag('config', 'UA-535380-14');
     </script>
   </head>
 
   <body data-layout="body">
-    {{ content }}
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
 
-    {% include "footer" %}
+    {% include 'header' %}
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      {% unless page | isTypedoc %}
+        <h1 class="sl-l-container">
+          {%- if h1 -%}
+            {{ h1 | typogr }}
+          {%- elsif title -%}
+            {{ title | typogr }}
+          {%- endif -%}
+        </h1>
+      {% endunless %}
+
+      <div class="sl-l-container sl-background--white{% unless is_home %} sl-l-section{% endunless %}">
+        {{ content }}
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.57.1">1.57.1</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      {% if section_bottom %}
+        <section class="sl-background--white sl-l-container">
+          <ul class="sl-l-grid sl-l-grid--full sl-l-medium-grid--gutters-large sl-l-medium-grid--divide-by-2 sl-l-large-grid--divide-by-3 sl-l-section">
+            {% for item in section_bottom %}
+              <li class="sl-l-grid__column">
+                <h2>{{ item.header | typogr }}</h2>
+                {% markdown %}{{ item.body }}{% endmarkdown %}
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+    </main>
+
+    {% include 'footer' %}
 
     <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
     <script>
