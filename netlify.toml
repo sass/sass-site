@@ -1,5 +1,4 @@
 [build.environment]
-    RUBY_VERSION = "2.5.3"
     NODE_VERSION = "16"
     YARN_VERSION = "3.3.1"
     YARN_CACHE_FOLDER = "/opt/buildhome/.yarn_cache"
