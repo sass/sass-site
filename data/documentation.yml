@@ -65,7 +65,7 @@ toc:
       - Invalid Combinators: /documentation/breaking-changes/bogus-combinators
       - Media Queries Level 4: /documentation/breaking-changes/media-logic
       - <code>/</code> as Division: /documentation/breaking-changes/slash-div
-      - Color Units: /documentation/breaking-changes/color-units
+      - Function Units: /documentation/breaking-changes/function-units
       - <code>-moz-document</code>: /documentation/breaking-changes/moz-document
       - Extending Compound Selectors: /documentation/breaking-changes/extend-compound
       - CSS Variable Syntax: /documentation/breaking-changes/css-vars
