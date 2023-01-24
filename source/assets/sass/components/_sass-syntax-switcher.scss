@@ -1,3 +1,7 @@
+@use '../functions';
+@use '../visual-design/theme';
+@use '../visual-design/typography';
+
 .ui-helper-reset {
   line-height: inherit;
 }
@@ -6,7 +10,7 @@
   margin: 0;
 
   a {
-    color: $sl-color--pale-sky;
+    color: theme.$sl-color--pale-sky;
     cursor: text;
   }
 
@@ -50,7 +54,7 @@
   }
 
   .ui-tabs-nav {
-    font-size: $sl-font-size--small;
+    font-size: typography.$sl-font-size--small;
     margin-top: -1rem;
     margin-left: -1em;
 
@@ -80,10 +84,10 @@
         }
 
         a::before {
-          color: $sl-color--regent-grey;
+          color: theme.$sl-color--regent-grey;
           content: '\21d2';
-          font-size: $sl-font-size--large;
-          font-weight: $sl-font-weight--bold;
+          font-size: typography.$sl-font-size--large;
+          font-weight: typography.$sl-font-weight--bold;
           left: -1.2em;
           position: absolute;
           top: 0.75rem;
@@ -169,7 +173,7 @@ html .ui-button.ui-state-disabled:active {
   top: 0.45rem;
   margin: 0;
   text-transform: uppercase;
-  color: $sl-color--hopbush;
+  color: theme.$sl-color--hopbush;
 
   &,
   * {
@@ -226,13 +230,13 @@ html .ui-button.ui-state-disabled:active {
   }
 }
 
-@media screen and (min-width: sl-px-to-rem(1500px)) {
+@media screen and (min-width: functions.sl-px-to-rem(1500px)) {
   body.documentation {
     @include -split-css-tabs;
   }
 }
 
-@media screen and (min-width: sl-px-to-rem(1000px)) {
+@media screen and (min-width: functions.sl-px-to-rem(1000px)) {
   body.guide {
     @include -split-css-tabs;
   }

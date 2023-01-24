@@ -1,4 +1,6 @@
-$table-cell-padding: 1rem / 2;
+@use '../breakpoints';
+
+$table-cell-padding: 1rem * 0.5;
 
 .sl-c-table {
   margin: 1.5rem 0;
@@ -18,7 +20,7 @@ $table-cell-padding: 1rem / 2;
     text-align: left;
   }
 
-  @include sl-breakpoint--medium-max {
+  @include breakpoints.sl-breakpoint--medium-max {
     &-responsive {
       margin-bottom: 1.5rem;
       width: 100%;

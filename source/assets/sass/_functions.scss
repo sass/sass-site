@@ -1,11 +1,13 @@
+@use 'sass:math';
+
 @function sl-px-to-rem($pixels, $font-size: 16px) {
-  @return ($pixels / $font-size * 1rem);
+  @return (math.div($pixels, $font-size) * 1rem);
 }
 
 @function sl-px-to-em($pixels, $font-size: 16px) {
-  @return ($pixels / $font-size * 1em);
+  @return (math.div($pixels, $font-size) * 1em);
 }
 
 @function sl-px-to-unitless($pixels, $font-size: 16px) {
-  @return ($pixels / $font-size);
+  @return math.div($pixels, $font-size);
 }

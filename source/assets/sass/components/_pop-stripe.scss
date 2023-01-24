@@ -1,30 +1,38 @@
-$sl-colors: $sl-color--hopbush $sl-color--bouquet $sl-color--venus
-  $sl-color--patina $sl-color--nebula $sl-color--white $sl-color--dawn-pink
-  $sl-color--wafer $sl-color--iron $sl-color--regent-grey $sl-color--pale-sky
-  $sl-color--midnight-blue;
+@use 'sass:math';
+
+@use 'sass:list';
+@use 'sass:meta';
+@use '../functions';
+@use '../visual-design/theme';
+
+$sl-colors: theme.$sl-color--hopbush theme.$sl-color--bouquet
+  theme.$sl-color--venus theme.$sl-color--patina theme.$sl-color--nebula
+  theme.$sl-color--white theme.$sl-color--dawn-pink theme.$sl-color--wafer
+  theme.$sl-color--iron theme.$sl-color--regent-grey theme.$sl-color--pale-sky
+  theme.$sl-color--midnight-blue;
 
 @function stripes($position, $sl-colors) {
   /* stylelint-disable annotation-no-unknown */
   $sl-colors: if(
-    type-of($sl-colors) != 'list',
+    meta.type-of($sl-colors) != 'list',
     compact($sl-colors),
     $sl-colors
   );
   /* stylelint-enable annotation-no-unknown */
-  $gradient: compact();
-  $width: 100% / length($sl-colors);
+  $gradient: ();
+  $width: math.div(100%, list.length($sl-colors));
 
-  @for $i from 1 through length($sl-colors) {
-    $pop: nth($sl-colors, $i);
+  @for $i from 1 through list.length($sl-colors) {
+    $pop: list.nth($sl-colors, $i);
     $new: $pop ($width * ($i - 1)), $pop ($width * $i);
-    $gradient: join($gradient, $new, comma);
+    $gradient: list.join($gradient, $new, comma);
   }
 
   @return linear-gradient($position, $gradient);
 }
 
 .sl-c-pop-stripe {
-  height: sl-px-to-rem(4px);
+  height: functions.sl-px-to-rem(4px);
   background-image: stripes((to right), ($sl-colors));
   background-size: 100%;
 }

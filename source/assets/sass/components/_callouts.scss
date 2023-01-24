@@ -1,17 +1,21 @@
+@use 'sass:color';
+@use '../breakpoints';
+@use '../visual-design/theme';
+
 .sl-c-callout {
   margin: 1.5rem 0;
   padding: 1.5rem 1rem;
-  background: lighten($sl-color--pale-sky, 60%);
+  background: color.adjust(theme.$sl-color--pale-sky, $lightness: 60%);
   border-radius: 2px;
 
   &--warning {
-    background: lighten($sl-color--hopbush, 38%);
-    border: 1px solid lighten($sl-color--hopbush, 27%);
+    background: color.adjust(theme.$sl-color--hopbush, $lightness: 38%);
+    border: 1px solid color.adjust(theme.$sl-color--hopbush, $lightness: 27%);
   }
 
   &--fun-fact {
-    background: lighten($sl-color--patina, 47%);
-    border: 1px solid lighten($sl-color--patina, 32%);
+    background: color.adjust(theme.$sl-color--patina, $lightness: 47%);
+    border: 1px solid color.adjust(theme.$sl-color--patina, $lightness: 32%);
   }
 
   &--function {
@@ -32,7 +36,7 @@
     padding: 0.8rem;
 
     .sl-c-callout & {
-      background: lighten($sl-color--pale-sky, 53%);
+      background: color.adjust(theme.$sl-color--pale-sky, $lightness: 53%);
     }
   }
 
@@ -45,7 +49,7 @@
   }
 }
 
-@include sl-breakpoint--medium {
+@include breakpoints.sl-breakpoint--medium {
   .sl-l-container--overview {
     font-size: 1.25rem;
 
@@ -55,7 +59,7 @@
   }
 }
 
-@include sl-breakpoint--large {
+@include breakpoints.sl-breakpoint--large {
   .sl-c-callout--function {
     padding-left: 2.25rem;
 

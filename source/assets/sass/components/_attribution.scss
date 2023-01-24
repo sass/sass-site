@@ -1,6 +1,8 @@
+@use '../visual-design/typography';
+
 .sl-c-attribution {
-  font-weight: $sl-font-weight--light;
-  font-size: $sl-font-size--small;
+  font-weight: typography.$sl-font-weight--light;
+  font-size: typography.$sl-font-size--small;
 
   &:first-child {
     text-align: center;

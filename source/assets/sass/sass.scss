@@ -3,43 +3,36 @@
 @charset 'utf-8';
 
 /* prettier-ignore */
-@import
-  'vendor/normalize',
-  'vendor/sanitize',
-  'vendor/html5-boilerplate',
-  'vendor/syntax-accessible',
-  'vendor/jquery-ui-custom/jquery-ui',
-  'vendor/jquery-ui-custom/jquery-ui-structure',
-  'vendor/jquery-ui-custom/jquery-ui-theme',
-  'vendor/typedoc/style',
-  'vendor/typedoc/highlight',
-  'vendor/typedoc/icons',
-
-  'functions',
-  'breakpoints',
-
-  'visual-design/theme',
-  'visual-design/typography',
-
-  'layout/containers',
-  'layout/grid-system',
-  'layout/holy-grail',
-  'layout/sections',
-
-  'components/alerts',
-  'components/attribution',
-  'components/buttons',
-  'components/callouts',
-  'components/docsearch',
-  'components/navigation',
-  'components/inputs',
-  'components/introduction',
-  'components/link-header',
-  'components/lists',
-  'components/mac-stadium-icon',
-  'components/pop-stripe',
-  'components/sass-syntax-switcher',
-  'components/tables',
-
-
-  'regions/banner';
+@use 'vendor/normalize';
+@use 'vendor/sanitize';
+@use 'vendor/html5-boilerplate';
+@use 'vendor/syntax-accessible';
+@use 'vendor/jquery-ui-custom/jquery-ui';
+@use 'vendor/jquery-ui-custom/jquery-ui-structure';
+@use 'vendor/jquery-ui-custom/jquery-ui-theme';
+@use 'vendor/typedoc/style';
+@use 'vendor/typedoc/highlight';
+@use 'vendor/typedoc/icons';
+@use 'functions';
+@use 'breakpoints';
+@use 'visual-design/theme';
+@use 'visual-design/typography';
+@use 'layout/containers';
+@use 'layout/grid-system';
+@use 'layout/holy-grail';
+@use 'layout/sections';
+@use 'components/alerts';
+@use 'components/attribution';
+@use 'components/buttons';
+@use 'components/callouts';
+@use 'components/docsearch';
+@use 'components/navigation';
+@use 'components/inputs';
+@use 'components/introduction';
+@use 'components/link-header';
+@use 'components/lists';
+@use 'components/mac-stadium-icon';
+@use 'components/pop-stripe';
+@use 'components/sass-syntax-switcher';
+@use 'components/tables';
+@use 'regions/banner';

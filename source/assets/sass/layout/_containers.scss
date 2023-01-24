@@ -1,24 +1,27 @@
+@use '../breakpoints';
+@use '../functions';
+
 .sl-l-container {
   margin: {
     right: auto;
     left: auto;
   }
   padding: {
-    right: sl-px-to-rem(16px);
-    left: sl-px-to-rem(16px);
+    right: functions.sl-px-to-rem(16px);
+    left: functions.sl-px-to-rem(16px);
   }
 
-  max-width: sl-px-to-rem(1920px);
+  max-width: functions.sl-px-to-rem(1920px);
 
-  @include sl-breakpoint--small {
+  @include breakpoints.sl-breakpoint--small {
     padding: {
-      right: sl-px-to-rem(32px);
-      left: sl-px-to-rem(32px);
+      right: functions.sl-px-to-rem(32px);
+      left: functions.sl-px-to-rem(32px);
     }
   }
 
   &--small {
-    max-width: sl-px-to-rem(960px);
+    max-width: functions.sl-px-to-rem(960px);
   }
 
   .sl-l-container {

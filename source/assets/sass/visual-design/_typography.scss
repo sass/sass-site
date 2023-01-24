@@ -1,3 +1,8 @@
+@use 'sass:math';
+
+@use '../breakpoints';
+@use '../functions';
+
 $sl-font-weight--light: 300 !default;
 $sl-font-weight--regular: 400 !default;
 $sl-font-weight--bold: 600 !default;
@@ -13,14 +18,14 @@ $sl-font-weights: (
   }
 }
 
-$sl-font-size--x-small: sl-px-to-rem(14px) !default;
-$sl-font-size--small: sl-px-to-rem(16px) !default;
-$sl-font-size--medium: sl-px-to-rem(18px) !default;
-$sl-font-size--large: sl-px-to-rem(20px) !default;
-$sl-font-size--x-large: sl-px-to-rem(24px) !default;
-$sl-font-size--xx-large: sl-px-to-rem(28px) !default;
-$sl-font-size--xxx-large: sl-px-to-rem(32px) !default;
-$sl-font-size--xxxx-large: sl-px-to-rem(80px) !default;
+$sl-font-size--x-small: functions.sl-px-to-rem(14px) !default;
+$sl-font-size--small: functions.sl-px-to-rem(16px) !default;
+$sl-font-size--medium: functions.sl-px-to-rem(18px) !default;
+$sl-font-size--large: functions.sl-px-to-rem(20px) !default;
+$sl-font-size--x-large: functions.sl-px-to-rem(24px) !default;
+$sl-font-size--xx-large: functions.sl-px-to-rem(28px) !default;
+$sl-font-size--xxx-large: functions.sl-px-to-rem(32px) !default;
+$sl-font-size--xxxx-large: functions.sl-px-to-rem(80px) !default;
 $sl-font-sizes: (
   small: $sl-font-size--small,
   medium: $sl-font-size--medium,
@@ -137,7 +142,7 @@ h6 {
 h1,
 h2,
 caption {
-  letter-spacing: -#{sl-px-to-em(0.5px)};
+  letter-spacing: -#{functions.sl-px-to-em(0.5px)};
 }
 
 h1,
@@ -151,11 +156,11 @@ h1 {
   line-height: 1;
   text-align: center;
 
-  @include sl-breakpoint--medium {
+  @include breakpoints.sl-breakpoint--medium {
     font-size: $sl-font-size--xxx-large;
   }
 
-  @include sl-breakpoint--large {
+  @include breakpoints.sl-breakpoint--large {
     font-size: $sl-font-size--xxxx-large;
   }
 }
@@ -172,11 +177,11 @@ h2,
 caption {
   font-size: $sl-font-size--x-large;
 
-  @include sl-breakpoint--medium {
+  @include breakpoints.sl-breakpoint--medium {
     font-size: $sl-font-size--xx-large;
   }
 
-  @include sl-breakpoint--large {
+  @include breakpoints.sl-breakpoint--large {
     font-size: $sl-font-size--xxx-large;
   }
 }
@@ -192,9 +197,9 @@ footer {
 }
 
 .caps {
-  font-size: sl-px-to-em(14px);
+  font-size: functions.sl-px-to-em(14px);
   text-transform: uppercase;
-  letter-spacing: sl-px-to-em(1px);
+  letter-spacing: functions.sl-px-to-em(1px);
   line-height: 0;
 }
 
@@ -205,7 +210,7 @@ pre {
 
 code {
   // Scale the code font size down, because the font itself is much larger.
-  font-size: ($sl-font-size--small / $sl-font-size--medium) * 1em;
+  font-size: math.div($sl-font-size--small, $sl-font-size--medium) * 1em;
   line-height: 1;
 
   nav & {
@@ -213,7 +218,7 @@ code {
   }
 
   p & {
-    @include sl-breakpoint--x-large {
+    @include breakpoints.sl-breakpoint--x-large {
       white-space: nowrap;
     }
   }

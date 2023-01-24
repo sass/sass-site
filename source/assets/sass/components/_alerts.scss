@@ -1,13 +1,18 @@
+@use 'sass:color';
+@use '../functions';
+@use '../visual-design/theme';
+@use '../visual-design/typography';
+
 .sl-c-alert {
   padding: {
-    top: sl-px-to-rem(12px);
-    bottom: sl-px-to-rem(12px);
+    top: functions.sl-px-to-rem(12px);
+    bottom: functions.sl-px-to-rem(12px);
   }
 
   text-align: center;
-  background: darken($sl-color--hopbush, 10%);
-  color: $sl-color--white;
-  font-size: $sl-font-size--small;
+  background: color.adjust(theme.$sl-color--hopbush, $lightness: -10%);
+  color: theme.$sl-color--white;
+  font-size: typography.$sl-font-size--small;
 
   p,
   ul,
@@ -28,22 +33,22 @@
   }
 
   a {
-    border-bottom-color: rgba($sl-color--white, 0.5);
-    font-weight: $sl-font-weight--bold;
-    color: $sl-color--white;
+    border-bottom-color: rgba(theme.$sl-color--white, 0.5);
+    font-weight: typography.$sl-font-weight--bold;
+    color: theme.$sl-color--white;
 
     &:hover,
     &:focus {
-      border-bottom-color: rgba($sl-color--white, 0.75);
+      border-bottom-color: rgba(theme.$sl-color--white, 0.75);
       background: rgba(black, 0.0625);
     }
 
     &:active {
-      border-bottom-color: $sl-color--white;
+      border-bottom-color: theme.$sl-color--white;
     }
   }
 
   &--info {
-    background: $sl-color--midnight-blue;
+    background: theme.$sl-color--midnight-blue;
   }
 }

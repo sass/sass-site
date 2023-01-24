@@ -1,5 +1,7 @@
+@use '../syntax-accessible';
+
 // Colors updated to match the standard Sass styling.
-.typedoc pre {@extend .highlight}
+.typedoc pre { @extend .highlight; }
 
 .hl-0 { @extend .k; }
 .hl-1 { @extend .p !optional; }

@@ -1,9 +1,13 @@
-.sl-c-introduction {
-  color: $sl-color--patina;
-  font-weight: $sl-font-weight--light;
+@use '../breakpoints';
+@use '../visual-design/theme';
+@use '../visual-design/typography';
 
-  @include sl-breakpoint--medium {
-    font-size: $sl-font-size--xx-large;
+.sl-c-introduction {
+  color: theme.$sl-color--patina;
+  font-weight: typography.$sl-font-weight--light;
+
+  @include breakpoints.sl-breakpoint--medium {
+    font-size: typography.$sl-font-size--xx-large;
   }
 
   &--center {
