@@ -1,8 +1,6 @@
-{% markdown %}
 - [Install](/install)
 - [Learn Sass](/guide)
 - [Blog](/blog)
 - [Documentation](/documentation)
 - [Get Involved](/community)
 - <div id="docsearch"></div>
-{% endmarkdown %}
