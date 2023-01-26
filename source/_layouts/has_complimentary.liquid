@@ -1,0 +1,27 @@
+---
+layout: base
+---
+
+<div class="sl-l-large-holy-grail">
+    <div class="sl-l-large-holy-grail__body">
+        <div class="sl-l-large-holy-grail__main">
+            <div class="sl-l-container sl-l-container--small">
+                <div class="sl-c-introduction">
+                    {{ introduction}}
+                </div>
+                
+                {{ content | typogr  }}
+            </div>
+        </div>
+            
+        {% if complementary_content %}
+        <div class="sl-l-large-holy-grail__complementary">
+                <nav aria-label={{ complementary_content_aria_label }} class="sl-c-list-navigation-wrapper">
+                    {% markdown %}
+                        {{ complementary_content }}
+                    {% endmarkdown %}
+                </nav>
+        </div>
+        {% endif %}
+    </div>
+</div>
