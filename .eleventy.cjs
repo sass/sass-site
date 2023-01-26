@@ -1,5 +1,6 @@
 'use strict';
 
+const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const yaml = require('js-yaml');
 const markdown = require('markdown-it');
 const typogrify = require('typogr');
@@ -34,6 +35,10 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPairedLiquidShortcode('markdownInline', (content) =>
     typogrify.typogrify(mdown.renderInline(content)),
   );
+
+  eleventyConfig.addLiquidShortcode('yearsAgo', () => {
+    return formatDistanceToNow(new Date('Tue Nov 28 19:43:58 2006 +0000'));
+  });
 
   eleventyConfig.addLiquidFilter('typogr', (content) =>
     typogrify.typogrify(content),
