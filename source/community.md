@@ -1,12 +1,12 @@
 ---
 layout: has_complimentary
-title: "#teamSass"
+title: '#teamSass'
 introduction: >
   Sass has an awesome community of designers and developers who love to spread
   the word and help people out. Here we&rsquo;ve collected some resources.
   Happy&nbsp;Styling!
 complementary_content: |-
-  
+
   ## Resources
 
   ### [Jump Start Sass](https://amzn.to/2LKF0uR) 
@@ -21,42 +21,43 @@ complementary_content: |-
   ### [Sass and Compass in Action](https://amzn.to/2RjAQz7) 
   by Wynn Netherland, Natalie Weizenbaum, Chris Eppstein, Brandon Mathis
 complementary_content_nav: True
-complementary_content_aria_label: "Resources"
+complementary_content_aria_label: 'Resources'
 ---
 
-  __Everyone is welcome in the Sass community, except those who are
-  unwelcoming__. Please read and follow our
-  [community&nbsp;guidelines](/community-guidelines).
+**Everyone is welcome in the Sass community, except those who are
+unwelcoming**. Please read and follow our
+[community&nbsp;guidelines](/community-guidelines).
 
-  Thinking of __contributing__  to Sass itself? We rely on everyone to
-  keep Sass as stable as it is. Feel free to
-  [submit a patch via pull request](#Contribute) to the Sass project.
+Thinking of **contributing** to Sass itself? We rely on everyone to
+keep Sass as stable as it is. Feel free to
+[submit a patch via pull request](#Contribute) to the Sass project.
 
-  Want to create your own Sass implementation? Check out our
-  [implementation guidelines](/implementation).
+Want to create your own Sass implementation? Check out our
+[implementation guidelines](/implementation).
 
- ##  Contribute
- Sass is an [open source project][github] and we encourage you to contribute.
-  You can contribute with [bug reports and feature requests][issues], and if
-  you contribute code, we'll love you forever. If you just want to help out
-  but you're not sure what to do, check out the "Help Wanted" label for [the
-  Sass language][lang help] or for [Dart Sass][dart help]. These issues
-  are a mix of feature requests, bugs, and tasks that aren't coding-intensive
-  that the developers think are a good place for someone new to the codebase
-  to jump in.
+## Contribute
 
-  [github]: https://github.com/sass/sass
-  [issues]: https://github.com/sass/sass/issues
-  [lang help]: https://github.com/sass/sass/labels/Help%20Wanted
-  [dart help]: https://github.com/sass/dart-sass/labels/help%20wanted
+Sass is an [open source project][github] and we encourage you to contribute.
+You can contribute with [bug reports and feature requests][issues], and if
+you contribute code, we'll love you forever. If you just want to help out
+but you're not sure what to do, check out the "Help Wanted" label for [the
+Sass language][lang help] or for [Dart Sass][dart help]. These issues
+are a mix of feature requests, bugs, and tasks that aren't coding-intensive
+that the developers think are a good place for someone new to the codebase
+to jump in.
 
-  [Dart Sass][] is the reference implementation of Sass, and the easiest
-  implementation to start hacking on. If you don't know Dart, don't worry!
-  It's very easy to pick up. Check out the [contributing info][] for more
-  information on helping out. Or, if you're interested in helping add new
-  features to the Sass language, look at [the language contribution
-  process][].
+[github]: https://github.com/sass/sass
+[issues]: https://github.com/sass/sass/issues
+[lang help]: https://github.com/sass/sass/labels/Help%20Wanted
+[dart help]: https://github.com/sass/dart-sass/labels/help%20wanted
 
-  [Dart Sass]: /dart-sass
-  [contributing info]: https://github.com/sass/dart-sass/blob/master/CONTRIBUTING.md
-  [the language contribution process]: https://github.com/sass/language/blob/master/CONTRIBUTING.md
+[Dart Sass][] is the reference implementation of Sass, and the easiest
+implementation to start hacking on. If you don't know Dart, don't worry!
+It's very easy to pick up. Check out the [contributing info][] for more
+information on helping out. Or, if you're interested in helping add new
+features to the Sass language, look at [the language contribution
+process][].
+
+[Dart Sass]: /dart-sass
+[contributing info]: https://github.com/sass/dart-sass/blob/master/CONTRIBUTING.md
+[the language contribution process]: https://github.com/sass/language/blob/master/CONTRIBUTING.md
