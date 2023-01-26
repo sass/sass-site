@@ -9,16 +9,16 @@ complementary_content: |-
 
   ## Resources
 
-  ### [Jump Start Sass](https://amzn.to/2LKF0uR) 
+  ### [Jump Start Sass](https://amzn.to/2LKF0uR)
   by Hugo Giraudel and Miriam Suzanne
 
-  ### [Pragmatic Guide to Sass 3: Tame the Modern Style Sheet](https://amzn.to/2LEwXiZ) 
+  ### [Pragmatic Guide to Sass 3: Tame the Modern Style Sheet](https://amzn.to/2LEwXiZ)
   by Hampton Lintorn Catlin and Michael Lintorn Catlin
 
-  ### [Sass for Web Designers](https://amzn.to/2RkIVU3) 
+  ### [Sass for Web Designers](https://amzn.to/2RkIVU3)
   by Dan Cederholm
 
-  ### [Sass and Compass in Action](https://amzn.to/2RjAQz7) 
+  ### [Sass and Compass in Action](https://amzn.to/2RjAQz7)
   by Wynn Netherland, Natalie Weizenbaum, Chris Eppstein, Brandon Mathis
 complementary_content_nav: True
 complementary_content_aria_label: 'Resources'
