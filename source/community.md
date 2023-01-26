@@ -20,6 +20,7 @@ complementary_content: |-
 
   ### [Sass and Compass in Action](https://amzn.to/2RjAQz7) 
   by Wynn Netherland, Natalie Weizenbaum, Chris Eppstein, Brandon Mathis
+complementary_content_nav: True
 complementary_content_aria_label: "Resources"
 ---
 
