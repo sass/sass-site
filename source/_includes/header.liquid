@@ -28,7 +28,9 @@
         itemscope="itemscope"
         role="navigation"
         aria-label="Site navigation">
-        {% include 'header_links' %}
+        {% markdown -%}
+          {% include 'header_links.md' %}
+        {%- endmarkdown %}
       </nav>
     </div>
   </div>
