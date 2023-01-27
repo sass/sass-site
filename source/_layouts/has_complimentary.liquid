@@ -5,12 +5,12 @@ layout: base
 <div class="sl-l-large-holy-grail">
   <div class="sl-l-large-holy-grail__body">
     <div class="sl-l-large-holy-grail__main">
-      <div {% unless no_container %}class="sl-l-container sl-l-container--small" {% endunless %}>
-        {% if before_introduction_include %}
-          {% include before_introduction_include %}
+      <div{% unless no_container %} class="sl-l-container sl-l-container--small"{% endunless %}>
+        {% if before_introduction %}
+          {{ before_introduction }}
         {% endif %}
         {% if introduction %}
-          <div class="sl-c-introduction {% if center_introduction %} sl-c-introduction--center{% endif %}">
+          <div class="sl-c-introduction{% if center_introduction %} sl-c-introduction--center{% endif %}">
             {{ introduction | markdown }}
           </div>
         {% endif %}
@@ -21,13 +21,7 @@ layout: base
 
     {% if complementary_content %}
       <div class="sl-l-large-holy-grail__complementary">
-        {% if complementary_content_nav %}
-          <nav aria-label={{ complementary_content_aria_label }} class="sl-c-list-navigation-wrapper">
-        {% endif %}
-          {{ complementary_content | markdown }}
-        {% if complementary_content_nav %}
-          </nav>
-        {% endif %}
+        {{ complementary_content }}
       </div>
     {% endif %}
   </div>
