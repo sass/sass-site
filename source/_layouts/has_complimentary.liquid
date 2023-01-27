@@ -11,7 +11,7 @@ layout: base
         {% endif %}
         {% if introduction %}
           <div class="sl-c-introduction {% if center_introduction %} sl-c-introduction--center{% endif %}">
-            {{ introduction }}
+            {{ introduction | markdown }}
           </div>
         {% endif %}
 
@@ -23,11 +23,9 @@ layout: base
       <div class="sl-l-large-holy-grail__complementary">
         {% if complementary_content_nav %}
           <nav aria-label={{ complementary_content_aria_label }} class="sl-c-list-navigation-wrapper">
-          {% endif %}
-          {% markdown %}
-            {{ complementary_content }}
-          {% endmarkdown %}
-          {% if complementary_content_nav %}
+        {% endif %}
+          {{ complementary_content | markdown }}
+        {% if complementary_content_nav %}
           </nav>
         {% endif %}
       </div>

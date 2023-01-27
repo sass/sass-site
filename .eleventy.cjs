@@ -28,6 +28,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.setLibrary('md', mdown);
   eleventyConfig.addDataExtension('yaml', yaml.load);
 
+  // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>
     typogrify.typogrify(mdown.render(content)),
   );
@@ -36,9 +37,19 @@ module.exports = (eleventyConfig) => {
     typogrify.typogrify(mdown.renderInline(content)),
   );
 
+  // Shortcodes...
   eleventyConfig.addLiquidShortcode('yearsAgo', () => {
     return formatDistanceToNow(new Date('Tue Nov 28 19:43:58 2006 +0000'));
   });
+
+  // Filters...
+  eleventyConfig.addLiquidFilter('markdown', (content) =>
+    typogrify.typogrify(mdown.render(content)),
+  );
+
+  eleventyConfig.addLiquidFilter('markdownInline', (content) =>
+    typogrify.typogrify(mdown.renderInline(content)),
+  );
 
   eleventyConfig.addLiquidFilter('typogr', (content) =>
     typogrify.typogrify(content),
