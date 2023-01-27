@@ -5,13 +5,15 @@ layout: base
 <div class="sl-l-large-holy-grail">
   <div class="sl-l-large-holy-grail__body">
     <div class="sl-l-large-holy-grail__main">
-      <div class="sl-l-container sl-l-container--small">
+      <div {% unless no_container %}class="sl-l-container sl-l-container--small" {% endunless %}>
         {% if before_introduction_include %}
           {% include before_introduction_include %}
         {% endif %}
-        <div class="sl-c-introduction">
-          {{ introduction }}
-        </div>
+        {% if introduction %}
+          <div class="sl-c-introduction {% if center_introduction %} sl-c-introduction--center{% endif %}">
+            {{ introduction }}
+          </div>
+        {% endif %}
 
         {{ content | typogr }}
       </div>

@@ -61,7 +61,7 @@ complementary_content: |-
     actively remove someone from the community. Ultimately, we can only use our
     voice to publicly declare that we do not agree with or endorse people or
     organizations who don't act in the spirit of these guidelines.
-complementary_content_aria_label: 'Resources'
+no_container: false
 ---
 
 As such, the Sass Community Guidelines states our ideals as a community. It's

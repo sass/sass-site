@@ -1,10 +1,10 @@
 ---
 layout: has_complimentary
 title: '#teamSass'
-introduction: >
+introduction: |-
   Sass has an awesome community of designers and developers who love to spread
-  the word and help people out. Here we&rsquo;ve collected some resources.
-  Happy&nbsp;Styling!
+  the word and help people out. Here we've collected some resources.
+  Happy Styling!
 complementary_content: |-
 
   ## Resources
@@ -22,6 +22,7 @@ complementary_content: |-
   by Wynn Netherland, Natalie Weizenbaum, Chris Eppstein, Brandon Mathis
 complementary_content_nav: True
 complementary_content_aria_label: 'Resources'
+no_container: false
 ---
 
 **Everyone is welcome in the Sass community, except those who are
