@@ -17,8 +17,9 @@ eleventyComputed:
         keep up, but stay ahead.
     - header: Mature
       body: |
-        Sass has been actively supported for {% yearsAgo %} by its loving Core
-        Team.
+        Sass has been actively supported for
+        {{ 'Tue Nov 28 19:43:58 2006 +0000' | formatDistanceToNow }} by its
+        loving Core Team.
     - header: Industry Approved
       body: |
         Over and over again, the industry is choosing Sass as the premier CSS

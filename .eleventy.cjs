@@ -36,8 +36,8 @@ module.exports = (eleventyConfig) => {
     typogrify.typogrify(mdown.renderInline(content)),
   );
 
-  eleventyConfig.addLiquidShortcode('yearsAgo', () => {
-    return formatDistanceToNow(new Date('Tue Nov 28 19:43:58 2006 +0000'));
+  eleventyConfig.addLiquidFilter('formatDistanceToNow', (date) => {
+    return formatDistanceToNow(new Date(date));
   });
 
   eleventyConfig.addLiquidFilter('typogr', (content) =>
