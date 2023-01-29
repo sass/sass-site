@@ -1,4 +1,0 @@
-- [Sass on GitHub](https://github.com/sass)
-- [Website Source Code](https://github.com/sass/sass-site)
-- [Style Guide](/styleguide)
-- [Community Guidelines](/community-guidelines)
