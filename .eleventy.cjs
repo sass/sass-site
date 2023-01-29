@@ -3,6 +3,7 @@
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const yaml = require('js-yaml');
 const markdown = require('markdown-it');
+const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
@@ -23,7 +24,9 @@ module.exports = (eleventyConfig) => {
     html: true,
     breaks: false,
     typographer: true,
-  }).disable('code');
+  })
+    .disable('code')
+    .use(markdownDefList);
 
   eleventyConfig.setLibrary('md', mdown);
   eleventyConfig.addDataExtension('yaml', yaml.load);
