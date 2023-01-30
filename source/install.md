@@ -69,7 +69,7 @@ Sass we've set up some resources to help you learn pretty darn quick.
 
 Install Anywhere (Standalone)
 
-~ You can install Sass on Windows, Mac, or Linux by downloading the package for
+: You can install Sass on Windows, Mac, or Linux by downloading the package for
 your operating system [from
 GitHub](https://github.com/sass/dart-sass/releases/tag/1.57.1) and [adding it to
 your `PATH`](https://katiek2.github.io/path-doc/). That's all—there are no
@@ -77,7 +77,7 @@ external dependencies and nothing else you need to install.
 
 Install Anywhere (npm)
 
-~ If you use Node.js, you can also install Sass using
+: If you use Node.js, you can also install Sass using
 [npm](https://www.npmjs.com/) by running
 
     ```shell
@@ -91,7 +91,7 @@ Install Anywhere (npm)
 
 Install on Windows (Chocolatey)
 
-~ If you use the [Chocolatey package manager](https://chocolatey.org/) for
+: If you use the [Chocolatey package manager](https://chocolatey.org/) for
 Windows, you can install Dart Sass by running
 
     ```shell
@@ -100,12 +100,12 @@ Windows, you can install Dart Sass by running
 
 Install on Mac OS X or Linux (Homebrew)
 
-~ If you use [the Homebrew package manager](https://brew.sh/) for Mac OS X or
+: If you use [the Homebrew package manager](https://brew.sh/) for Mac OS X or
 Linux, you can install Dart Sass by running
 
     ```shell
     brew install sass/sass/sass
     ```
 
-</div>
+  </div>
 </div>
