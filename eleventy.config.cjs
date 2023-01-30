@@ -3,16 +3,15 @@
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const yaml = require('js-yaml');
 const markdown = require('markdown-it');
+const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
+const { EleventyRenderPlugin } = require('@11ty/eleventy');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('source/assets/dist');
   eleventyConfig.addPassthroughCopy('source/assets/img');
   eleventyConfig.addPassthroughCopy('source/favicon.ico');
-
-  eleventyConfig.addWatchTarget('source/assets/dist');
-  eleventyConfig.addWatchTarget('source/assets/img');
 
   eleventyConfig.setLiquidOptions({
     jsTruthy: true,
@@ -21,9 +20,8 @@ module.exports = (eleventyConfig) => {
 
   const mdown = markdown({
     html: true,
-    breaks: false,
     typographer: true,
-  }).disable('code');
+  }).use(markdownDefList);
 
   eleventyConfig.setLibrary('md', mdown);
   eleventyConfig.addDataExtension('yaml', yaml.load);
@@ -57,6 +55,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addLiquidFilter('isTypedoc', (page) =>
     page.url.startsWith('/documentation/js-api/'),
   );
+
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
 
   // settings
   return {
