@@ -6,30 +6,30 @@ is_home: true
 eleventyComputed:
   section_bottom:
     - header: CSS Compatible
-      body: |
+      body: >
         Sass is completely compatible with all versions of CSS. We take this
         compatibility seriously, so that you can seamlessly use any available
         CSS libraries.
     - header: Feature Rich
-      body: |
+      body: >
         Sass boasts more features and abilities than any other CSS extension
         language out there. The Sass Core Team has worked endlessly to not only
         keep up, but stay ahead.
     - header: Mature
-      body: |
+      body: >
         Sass has been actively supported for
         {{ 'Tue Nov 28 19:43:58 2006 +0000' | formatDistanceToNow }} by its
         loving Core Team.
     - header: Industry Approved
-      body: |
+      body: >
         Over and over again, the industry is choosing Sass as the premier CSS
         extension language.
     - header: Large Community
-      body: |
+      body: >
         Sass is actively supported and developed by a consortium of several tech
         companies and hundreds of developers.
     - header: Frameworks
-      body: |
+      body: >
         There are an endless number of frameworks built with Sass.
         [Bootstrap](https://getbootstrap.com/), [Bourbon](http://bourbon.io/),
         and [Susy](http://susy.oddbird.net/) just to name a few.
