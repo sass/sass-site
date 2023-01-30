@@ -19,21 +19,8 @@
       <p class="sl-l-grid__column sl-r-banner__brand">
         <a href="/"><img height="48" alt="Sass" src="/assets/img/logos/logo.svg"></a>
       </p>
-      <nav
-        class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
-        itemtype="http://schema.org/SiteNavigationElement"
-        itemscope="itemscope"
-        role="navigation"
-        aria-label="Site navigation">
-        {% renderTemplate 'md' %}
-- [Install](/install)
-- [Learn Sass](/guide)
-- [Blog](/blog)
-- [Documentation](/documentation)
-- [Get Involved](/community)
-- <div id="docsearch"></div>
-        {% endrenderTemplate %}
-      </nav>
+
+      {% renderFile 'source/_includes/header_nav.md' %}
     </div>
   </div>
 </header>
