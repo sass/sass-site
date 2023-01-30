@@ -1,9 +1,5 @@
 <nav
-  class="sl-r-banner__navigation
-    sl-l-grid__column
-    sl-l-large-grid
-    sl-l-large-grid__column--auto-size
-    sl-c-list-horizontal-wrapper"
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
   itemtype="http://schema.org/SiteNavigationElement"
   itemscope="itemscope"
   role="navigation"
