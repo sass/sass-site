@@ -36,3 +36,6 @@
 @use 'components/sass-syntax-switcher';
 @use 'components/tables';
 @use 'regions/banner';
+
+// @@@ Do we want this theme?
+@use 'prismjs/themes/prism.css';

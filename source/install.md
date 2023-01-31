@@ -53,7 +53,7 @@ When you install Sass on the command line, you'll be able to run the
 `sass` executable to compile `.sass` and `.scss` files to `.css` files.
 For example:
 
-```shell
+```sh
 sass source/stylesheets/index.scss build/stylesheets/index.css
 ```
 
@@ -80,7 +80,7 @@ Install Anywhere (npm)
 : If you use Node.js, you can also install Sass using
 [npm](https://www.npmjs.com/) by running
 
-    ```shell
+    ```sh
     npm install -g sass
     ```
 
@@ -94,7 +94,7 @@ Install on Windows (Chocolatey)
 : If you use the [Chocolatey package manager](https://chocolatey.org/) for
 Windows, you can install Dart Sass by running
 
-    ```shell
+    ```sh
     choco install sass
     ```
 
@@ -103,7 +103,7 @@ Install on Mac OS X or Linux (Homebrew)
 : If you use [the Homebrew package manager](https://brew.sh/) for Mac OS X or
 Linux, you can install Dart Sass by running
 
-    ```shell
+    ```sh
     brew install sass/sass/sass
     ```
 
