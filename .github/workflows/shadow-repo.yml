@@ -20,7 +20,7 @@ jobs:
       - name: Clone shadow repo
         uses: actions/checkout@v3
         with:
-          repository: ${{ secrets.SHADOW_OWNER }}/${{ secrets.SHADOW_REPO }}
+          repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
           ssh-key: ${{ secrets.SHADOW_REPO_PRIVATE_KEY }}
           ref: main
       - name: Create branch on shadow repo
