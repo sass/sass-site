@@ -38,4 +38,7 @@
 @use 'regions/banner';
 
 // @@@ Do we want this theme?
-@use 'prismjs/themes/prism.css';
+// @use 'prismjs/themes/prism.css';
+
+// @@@ Or this one? Or neither?
+@use 'vendor/prism-ghcolors';
