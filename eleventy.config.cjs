@@ -35,6 +35,10 @@ module.exports = (eleventyConfig) => {
     typogrify.typogrify(mdown.renderInline(content)),
   );
 
+  eleventyConfig.addPairedLiquidShortcode('typogr', (content) =>
+    typogrify.typogrify(content),
+  );
+
   // Filters...
   eleventyConfig.addLiquidFilter('formatDistanceToNow', (date) => {
     return formatDistanceToNow(new Date(date));
