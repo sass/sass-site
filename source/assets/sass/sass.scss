@@ -3,6 +3,7 @@
 @charset 'utf-8';
 
 /* prettier-ignore */
+@use 'config';
 @use 'vendor/normalize';
 @use 'vendor/sanitize';
 @use 'vendor/html5-boilerplate';

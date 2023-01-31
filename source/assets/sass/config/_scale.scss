@@ -1,0 +1,17 @@
+// Spacing Sizes
+// -------------
+/// @group scale
+
+$gutter: 1rem; // 16
+$gutter-quarter: calc(var(--gutter) * 0.25); // 4
+$gutter-half: calc(var(--gutter) * 0.5); // 8
+$gutter-minus: calc(var(--gutter) * 0.75); // 12
+$gutter-plus: calc(var(--gutter) * 1.25);
+$gutter-sesqui: calc(var(--gutter) * 1.5);
+$gutter-double: calc(var(--gutter) * 2);
+$gutter-triple: calc(var(--gutter) * 3);
+
+// UI Sizes
+// --------
+/// @group scale
+$table-cell-padding: var(--gutter-sesqui);

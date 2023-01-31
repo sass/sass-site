@@ -3,13 +3,13 @@
 
 input {
   display: block;
-  margin: 0 1rem;
+  margin: 0 var(--gutter);
   border: 1px solid theme.$sl-color--iron;
-  padding: 0.25rem 1rem;
+  padding: var(--gutter-quarter) var(--gutter);
   width: 100%;
 
   @include breakpoints.sl-breakpoint--large {
-    top: 0.5rem;
+    top: var(--gutter-half);
     margin: 0;
   }
 }
