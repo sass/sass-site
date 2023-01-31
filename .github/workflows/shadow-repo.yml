@@ -1,0 +1,72 @@
+name: Sync with shadow repo
+
+on:
+  push:
+  create:
+  delete:
+  pull_request:
+    types: [opened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  sync-branch:
+    name: Create/delete shadow branch
+    runs-on: ubuntu-latest
+    if: github.event.ref_type == 'branch'
+    steps:
+      - name: Clone shadow repo
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ secrets.SHADOW_OWNER }}/${{ secrets.SHADOW_REPO }}
+          ssh-key: ${{ secrets.SHADOW_REPO_PRIVATE_KEY }}
+          ref: main
+      - name: Create branch on shadow repo
+        if: github.event_name == 'create'
+        run: git push origin main:${{ github.event.ref }}
+      - name: Delete branch on shadow repo
+        if: github.event_name == 'delete'
+        run: git push origin --delete ${{ github.event.ref }}
+
+  push-branch:
+    name: Push to shadow branch
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+      - run: yarn install
+      - run: yarn build-prod
+      - name: Clone shadow repo
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ secrets.SHADOW_OWNER }}/${{ secrets.SHADOW_REPO }}
+          ssh-key: ${{ secrets.SHADOW_REPO_PRIVATE_KEY }}
+          ref: ${{ github.ref_name }}
+          path: shadow-repo
+      - name: Push to shadow branch
+        run: |
+          cd shadow-repo
+          rm -rf ./*
+          cp -rT ../_site .
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit --allow-empty -m "Update from https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+          git push origin
+
+  diff-link:
+    name: Create comment to diff link
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.number }}
+          body: |
+            View diff of compiled files (may take a few minutes): https://github.com/${{ secrets.SHADOW_OWNER }}/${{ secrets.SHADOW_REPO }}/compare/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.ref }}
