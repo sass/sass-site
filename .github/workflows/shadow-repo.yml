@@ -45,7 +45,7 @@ jobs:
       - name: Clone shadow repo
         uses: actions/checkout@v3
         with:
-          repository: ${{ secrets.SHADOW_OWNER }}/${{ secrets.SHADOW_REPO }}
+          repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
           ssh-key: ${{ secrets.SHADOW_REPO_PRIVATE_KEY }}
           ref: ${{ github.ref_name }}
           path: shadow-repo
@@ -69,4 +69,4 @@ jobs:
         with:
           issue-number: ${{ github.event.number }}
           body: |
-            View diff of compiled files (may take a few minutes): https://github.com/${{ secrets.SHADOW_OWNER }}/${{ secrets.SHADOW_REPO }}/compare/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.ref }}
+            View diff of compiled files (may take a few minutes): https://github.com/${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}/compare/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.ref }}
