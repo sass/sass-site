@@ -12,7 +12,7 @@ eleventyComputed:
       ## Resources
 
       ### [Jump Start Sass](https://amzn.to/2LKF0uR)
-      by Hugo Giraudel and Miriam Suzanne
+      by Kitty Giraudel and Miriam Suzanne
 
       ### [Pragmatic Guide to Sass 3: Tame the Modern Style Sheet](https://amzn.to/2LEwXiZ)
       by Hampton Lintorn Catlin and Michael Lintorn Catlin
