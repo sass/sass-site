@@ -14,8 +14,6 @@
   padding-top: var(--alert-padding-block, var(--gutter-minus));
   text-align: var(--alert-align, center);
 
-  h2,
-  h3,
   p,
   ul,
   dl {
@@ -59,4 +57,8 @@
   --alert-align: left;
   --alert-bg: #000;
   --alert-padding-block: var(--gutter-triple);
+}
+
+.sl-c-alert-title {
+  margin-top: 0;
 }
