@@ -3,15 +3,14 @@
   itemtype="http://schema.org/WPHeader"
   itemscope="itemscope"
   role="banner">
-  <div class="sl-c-alert sl-c-alert--special">
-    <div class="sl-l-container">
-      <h2 class="sl-c-alert-title">Black Lives Matter</h2>
-      {% renderTemplate 'md' %}
-        Sass stands with the protesters against police violence. We encourage our users to
-        **get in the streets and join them if you can**.
-      {% endrenderTemplate %}
+  {% for alert in alerts | default: [] %}
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">{{ alert.heading | typogr }}</h2>
+        {{ alert.body | markdown }}
+      </div>
     </div>
-  </div>
+  {% endfor %}
 
   <div class="sl-c-pop-stripe"></div>
   <div class="sl-l-container">
