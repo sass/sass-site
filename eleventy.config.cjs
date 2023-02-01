@@ -30,11 +30,11 @@ module.exports = (eleventyConfig) => {
 
   // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>
-    typogrify.typogrify(mdown.render(content)),
+    mdown.render(content),
   );
 
   eleventyConfig.addPairedLiquidShortcode('markdownInline', (content) =>
-    typogrify.typogrify(mdown.renderInline(content)),
+    mdown.renderInline(content),
   );
 
   eleventyConfig.addPairedLiquidShortcode('typogr', (content) =>
@@ -47,11 +47,11 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addLiquidFilter('markdown', (content) =>
-    typogrify.typogrify(mdown.render(content)),
+    mdown.render(content),
   );
 
   eleventyConfig.addLiquidFilter('markdownInline', (content) =>
-    typogrify.typogrify(mdown.renderInline(content)),
+    mdown.renderInline(content),
   );
 
   eleventyConfig.addLiquidFilter('typogr', (content) =>

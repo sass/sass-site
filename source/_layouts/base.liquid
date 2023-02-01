@@ -87,7 +87,7 @@
             {% for item in section_bottom %}
               <li class="sl-l-grid__column">
                 <h2>{{ item.header | typogr }}</h2>
-                {{ item.body | markdown }}
+                {{ item.body | markdown | typogr }}
               </li>
             {% endfor %}
           </ul>

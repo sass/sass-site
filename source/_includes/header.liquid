@@ -6,7 +6,7 @@
   {% for alert in alerts | default: [] %}
     <div class="sl-c-alert sl-c-alert--special">
       <div class="sl-l-container">
-        <h2 class="sl-c-alert-title">{{ alert.heading | typogr }}</h2>
+        <h2 class="sl-c-alert-title">{{ alert.heading }}</h2>
         {{ alert.body | markdown }}
       </div>
     </div>
