@@ -24,7 +24,9 @@ module.exports = (eleventyConfig) => {
   }).use(markdownDefList);
 
   eleventyConfig.setLibrary('md', mdown);
-  eleventyConfig.addDataExtension('yaml', yaml.load);
+  eleventyConfig.addDataExtension('yml, yaml', (contents) =>
+    yaml.load(contents),
+  );
 
   // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>
