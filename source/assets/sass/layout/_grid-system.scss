@@ -124,8 +124,8 @@
 
       &--gutters {
         margin: {
-          right: calc((var(--gutter)) * -1);
-          left: calc((var(--gutter)) * -1);
+          right: var(--gutter-negative);
+          left: var(--gutter-negative);
         }
 
         > .sl-l-grid__column {
@@ -137,8 +137,8 @@
 
         &-large {
           margin: {
-            right: calc((var(--gutter-double)) * -1);
-            left: calc((var(--gutter-double)) * -1);
+            right: var(--gutter-double-negative);
+            left: var(--gutter-double-negative);
           }
 
           > .sl-l-grid__column {
@@ -151,8 +151,8 @@
 
         &-small {
           margin: {
-            right: calc((var(--gutter-half)) * -1);
-            left: calc((var(--gutter-half)) * -1);
+            right: var(--gutter-half-negative);
+            left: var(--gutter-half-negative);
           }
 
           > .sl-l-grid__column {
