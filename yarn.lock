@@ -6176,6 +6176,7 @@ __metadata:
     prettier: ^2.8.3
     rollup: ^3.12.0
     sass: ^1.57.1
+    semver-parser: ^4.0.1
     stylelint: ^14.16.1
     stylelint-config-prettier: ^9.0.4
     stylelint-config-standard-scss: ^6.1.0
@@ -6212,6 +6213,13 @@ __metadata:
   version: 1.0.0
   resolution: "semver-compare@npm:1.0.0"
   checksum: dd1d7e2909744cf2cf71864ac718efc990297f9de2913b68e41a214319e70174b1d1793ac16e31183b128c2b9812541300cb324db8168e6cf6b570703b171c68
+  languageName: node
+  linkType: hard
+
+"semver-parser@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "semver-parser@npm:4.0.1"
+  checksum: a737d33882124b64936e1ae3ea8f39c9c78077e8eecfcbee2958f3062debd6410be511a59cb089b93e62f7c1546ee2a252a38b8721f00ab80f916e25ff3eda7e
   languageName: node
   linkType: hard
 

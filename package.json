@@ -68,6 +68,7 @@
     "prettier": "^2.8.3",
     "rollup": "^3.12.0",
     "sass": "^1.57.1",
+    "semver-parser": "^4.0.1",
     "stylelint": "^14.16.1",
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-standard-scss": "^6.1.0",
