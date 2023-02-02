@@ -52,7 +52,7 @@
     </p>
     <![endif]-->
 
-    {% include 'header' %}
+    {% render 'header', alerts: alerts %}
 
     <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
       {% unless page | isTypedoc %}
@@ -95,7 +95,7 @@
       {% endif %}
     </main>
 
-    {% include 'footer' %}
+    {% render 'footer' %}
 
     <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
     <script>
