@@ -32,10 +32,10 @@
 
     ul {
       position: relative;
-      margin: 0 calc(var(--gutter) * -1) !important;
+      margin: 0 var(--gutter-negative) !important;
 
       @include breakpoints.sl-breakpoint--medium {
-        right: calc(var(--gutter) * -1);
+        right: var(--gutter-negative);
         margin: 0 !important;
       }
     }

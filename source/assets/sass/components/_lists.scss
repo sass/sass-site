@@ -23,8 +23,8 @@
       ul {
         display: flex;
         margin: {
-          right: calc(var(--gutter-half) * -1);
-          left: calc(var(--gutter-half) * -1);
+          right: var(--gutter-half-negative);
+          left: var(--gutter-half-negative);
         }
       }
 
@@ -64,7 +64,7 @@
         border: none;
         cursor: pointer;
         display: block;
-        margin: calc(var(--gutter-half) * -1) 0;
+        margin: var(--gutter-half-negative) 0;
         padding: 0.3rem;
         width: 100%;
 
@@ -120,8 +120,8 @@
 
 .sl-c-description-list--horizontal {
   margin: {
-    right: calc(var(--gutter) * -1);
-    left: calc(var(--gutter) * -1);
+    right: var(--gutter-negative);
+    left: var(--gutter-negative);
   }
 
   &,
@@ -159,7 +159,7 @@
 
   &.impl-status {
     font-size: 0.8em;
-    margin-top: calc(var(--gutter) * -1);
+    margin-top: var(--gutter-negative);
 
     dt {
       word-break: normal;

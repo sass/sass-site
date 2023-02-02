@@ -52,7 +52,7 @@
     </p>
     <![endif]-->
 
-    {% include 'header' %}
+    {% typogr %}{% render 'header', alerts: alerts %}{% endtypogr %}
 
     <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
       {% unless page | isTypedoc %}
@@ -66,7 +66,7 @@
       {% endunless %}
 
       <div class="sl-l-container sl-background--white{% unless is_home %} sl-l-section{% endunless %}">
-        {{ content }}
+        {{ content | typogr }}
       </div>
 
       <div class="sl-c-alert">
@@ -87,7 +87,7 @@
             {% for item in section_bottom %}
               <li class="sl-l-grid__column">
                 <h2>{{ item.header | typogr }}</h2>
-                {{ item.body | markdown }}
+                {{ item.body | markdown | typogr }}
               </li>
             {% endfor %}
           </ul>
@@ -95,7 +95,7 @@
       {% endif %}
     </main>
 
-    {% include 'footer' %}
+    {% typogr %}{% render 'footer' %}{% endtypogr %}
 
     <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
     <script>
@@ -114,6 +114,21 @@
           return hits;
         }
       });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
     </script>
     <script src="/assets/dist/js/sass.js"></script>
     <!-- Current page: {{ page.url }} -->
