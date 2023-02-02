@@ -25,9 +25,7 @@ function spawn(cmd, args, options) {
   });
 }
 
-// Retrieve the highest stable version of `repo`, based on its git tags
-// Store results in `VERSION_CACHE_PATH` for faster future runs
-async function getLatestVersion(repo) {
+async function getCacheFile() {
   let versionCache;
   try {
     versionCache = JSON.parse(await fs.readFile(VERSION_CACHE_PATH));
@@ -38,9 +36,17 @@ async function getLatestVersion(repo) {
       throw err;
     }
   }
-  let latestVersion = versionCache[repo];
-  if (latestVersion !== undefined) return latestVersion;
+  return versionCache;
+}
 
+async function writeCacheFile(cache) {
+  // eslint-disable-next-line no-console
+  console.info(chalk.green(`[11ty] Writing version cache file...`));
+  await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(cache));
+}
+
+// Retrieve the highest stable version of `repo`, based on its git tags
+async function getLatestVersion(repo) {
   // eslint-disable-next-line no-console
   console.info(chalk.cyan(`[11ty] Fetching version information for ${repo}`));
   const { parseSemVer, compareSemVer } = await import('semver-parser');
@@ -60,16 +66,14 @@ async function getLatestVersion(repo) {
     const parsed = parseSemVer(version);
     return parsed.matches && !parsed.pre;
   };
-  latestVersion = stdout
+  const version = stdout
     .split('\n')
     .map((line) => line.split('refs/tags/').at(-1))
     .filter(isNotPreRelease)
     .sort(compareSemVer)
     .at(-1);
 
-  versionCache[repo] = latestVersion;
-  await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(versionCache));
-  return latestVersion;
+  return version;
 }
 
 function getReleaseUrl(repo, version = null) {
@@ -81,10 +85,21 @@ function getReleaseUrl(repo, version = null) {
 module.exports = async () => {
   const data = {};
   const repos = ['sass/libsass', 'sass/dart-sass', 'sass/migrator'];
+  const cache = await getCacheFile();
+  let cacheUpdated = false;
   for (const repo of repos) {
-    const version = await getLatestVersion(repo);
+    let version = cache[repo];
+    if (!version) {
+      version = await getLatestVersion(repo);
+      // Store results in `VERSION_CACHE_PATH` for faster future runs
+      cache[repo] = version;
+      cacheUpdated = true;
+    }
     const url = getReleaseUrl(repo, version);
     data[repo.replace('sass/', '')] = { version, url };
+  }
+  if (cacheUpdated) {
+    await writeCacheFile(cache);
   }
   return data;
 };

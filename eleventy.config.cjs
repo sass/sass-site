@@ -17,6 +17,7 @@ module.exports = (eleventyConfig) => {
     jsTruthy: true,
   });
   eleventyConfig.setUseGitIgnore(false);
+  eleventyConfig.watchIgnores.add('source/_data/versionCache.json');
 
   const mdown = markdown({
     html: true,
