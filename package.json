@@ -18,8 +18,8 @@
   "packageManager": "yarn@3.3.1",
   "scripts": {
     "serve": "run-p 'watch:**'",
-    "build": "run-s build-dev:scripts 'build:**'",
-    "build-prod": "run-s build-prod:scripts 'build:**'",
+    "build": "REBUILD_VERSION_CACHE=true run-s build-dev:scripts 'build:**'",
+    "build-prod": "NETLIFY=true run-s build-prod:scripts 'build:**'",
     "build:sass": "sass --style=compressed ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
     "watch:sass": "sass --watch ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
     "build-dev:scripts": "rollup -c",

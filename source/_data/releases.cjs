@@ -26,6 +26,7 @@ function spawn(cmd, args, options) {
 }
 
 async function getCacheFile() {
+  if (process.env.NETLIFY || process.env.REBUILD_VERSION_CACHE) return {};
   let versionCache;
   try {
     versionCache = JSON.parse(await fs.readFile(VERSION_CACHE_PATH));
