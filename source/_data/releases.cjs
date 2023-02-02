@@ -1,6 +1,8 @@
 const { spawn: nodeSpawn } = require('node:child_process');
 const fs = require('node:fs/promises');
 
+const chalk = require('kleur');
+
 const VERSION_CACHE_PATH = './source/_data/versionCache.json';
 
 // Promise version of `spawn` to avoid blocking the main thread while waiting
@@ -39,7 +41,8 @@ async function getLatestVersion(repo) {
   let latestVersion = versionCache[repo];
   if (latestVersion !== undefined) return latestVersion;
 
-  console.log(`Fetching version information for ${repo}`);
+  // eslint-disable-next-line no-console
+  console.info(chalk.cyan(`[11ty] Fetching version information for ${repo}`));
   const { parseSemVer, compareSemVer } = await import('semver-parser');
   let stdout;
   try {
@@ -49,7 +52,8 @@ async function getLatestVersion(repo) {
       { env: { ...process.env, GIT_TERMINAL_PROMPT: 0 } },
     );
   } catch (err) {
-    console.error(`Failed to fetch git tags for ${repo}`);
+    // eslint-disable-next-line no-console
+    console.error(chalk.red(`[11ty] Failed to fetch git tags for ${repo}`));
     throw err;
   }
   const isNotPreRelease = (version) => {
@@ -58,11 +62,10 @@ async function getLatestVersion(repo) {
   };
   latestVersion = stdout
     .split('\n')
-    .map((line) => line.split('refs/tags/').slice(-1).at(0))
+    .map((line) => line.split('refs/tags/').at(-1))
     .filter(isNotPreRelease)
     .sort(compareSemVer)
-    .slice(-1)
-    .at(0);
+    .at(-1);
 
   versionCache[repo] = latestVersion;
   await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(versionCache));
@@ -70,9 +73,6 @@ async function getLatestVersion(repo) {
 }
 
 function getReleaseUrl(repo, version = null) {
-  if (repo === 'ruby/sass') {
-    return 'https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md';
-  }
   return `https://github.com/${repo}/releases${
     version ? `/tag/${version}` : ''
   }`;
@@ -81,7 +81,7 @@ function getReleaseUrl(repo, version = null) {
 module.exports = async () => {
   const data = {};
   const repos = ['sass/libsass', 'sass/dart-sass', 'sass/migrator'];
-  for await (const repo of repos) {
+  for (const repo of repos) {
     const version = await getLatestVersion(repo);
     const url = getReleaseUrl(repo, version);
     data[repo.replace('sass/', '')] = { version, url };
