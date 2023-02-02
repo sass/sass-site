@@ -52,7 +52,7 @@
     </p>
     <![endif]-->
 
-    {% typogr %}{% include 'header' %}{% endtypogr %}
+    {% typogr %}{% render 'header', alerts: alerts %}{% endtypogr %}
 
     <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
       {% unless page | isTypedoc %}
@@ -95,7 +95,7 @@
       {% endif %}
     </main>
 
-    {% typogr %}{% include 'footer' %}{% endtypogr %}
+    {% typogr %}{% render 'footer' %}{% endtypogr %}
 
     <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
     <script>
