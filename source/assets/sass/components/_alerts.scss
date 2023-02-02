@@ -10,10 +10,12 @@
   );
   color: theme.$sl-color--white;
   font-size: typography.$sl-font-size--small;
-  padding {
+
+  padding: {
     top: var(--alert-padding-block, var(--gutter-minus));
     bottom: var(--alert-padding-block, var(--gutter-minus));
   }
+
   text-align: var(--alert-align, center);
 
   p,
