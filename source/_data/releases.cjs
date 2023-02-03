@@ -1,5 +1,6 @@
 const { spawn: nodeSpawn } = require('node:child_process');
 const fs = require('node:fs/promises');
+const deepEqual = require('deep-equal');
 
 const chalk = require('kleur');
 
@@ -77,30 +78,25 @@ async function getLatestVersion(repo) {
   return version;
 }
 
-function getReleaseUrl(repo, version = null) {
-  return `https://github.com/${repo}/releases${
-    version ? `/tag/${version}` : ''
-  }`;
-}
-
 module.exports = async () => {
-  const data = {};
   const repos = ['sass/libsass', 'sass/dart-sass', 'sass/migrator'];
   const cache = await getCacheFile();
-  let cacheUpdated = false;
-  for (const repo of repos) {
-    let version = cache[repo];
-    if (!version) {
-      version = await getLatestVersion(repo);
-      // Store results in `VERSION_CACHE_PATH` for faster future runs
-      cache[repo] = version;
-      cacheUpdated = true;
-    }
-    const url = getReleaseUrl(repo, version);
-    data[repo.replace('sass/', '')] = { version, url };
-  }
-  if (cacheUpdated) {
-    await writeCacheFile(cache);
-  }
+
+  const versions = await Promise.all(
+    repos.map(async (repo) => [
+      repo,
+      cache[repo] ? cache[repo] : await getLatestVersion(repo),
+    ]),
+  );
+  const data = Object.fromEntries(
+    versions.map(([repo, version]) => [
+      repo.replace('sass/', ''),
+      { version, url: `https://github.com/${repo}/releases/tag/${version}` },
+    ]),
+  );
+
+  const nextCache = Object.fromEntries(versions);
+  if (!deepEqual(cache, nextCache)) await writeCacheFile(nextCache);
+
   return data;
 };
