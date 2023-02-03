@@ -16,22 +16,22 @@
     @include breakpoints.sl-breakpoint--medium {
       // add margin-bottom space
       // to the twitter follow button
-      margin-bottom: 1rem;
+      margin-bottom: var(--gutter);
     }
 
     @include breakpoints.sl-breakpoint--large {
       ul {
         display: flex;
         margin: {
-          right: -0.5rem;
-          left: -0.5rem;
+          right: var(--gutter-half-negative);
+          left: var(--gutter-half-negative);
         }
       }
 
       li {
         padding: {
-          right: 0.5rem;
-          left: 0.5rem;
+          right: var(--gutter-half);
+          left: var(--gutter-half);
         }
       }
     }
@@ -41,7 +41,7 @@
     position: relative;
 
     li {
-      margin: 0.5rem 0;
+      margin: var(--gutter-half) 0;
       line-height: 1.25;
     }
 
@@ -49,22 +49,22 @@
       user-select: none;
 
       ul ul a {
-        padding-left: 1rem;
+        padding-left: var(--gutter);
       }
 
       ul ul ul a {
-        padding-left: 2rem;
+        padding-left: var(--gutter-double);
       }
 
       ul ul ul ul a {
-        padding-left: 3rem;
+        padding-left: var(--gutter-triple);
       }
 
       a {
         border: none;
         cursor: pointer;
         display: block;
-        margin: -0.5rem 0;
+        margin: var(--gutter-half-negative) 0;
         padding: 0.3rem;
         width: 100%;
 
@@ -120,8 +120,8 @@
 
 .sl-c-description-list--horizontal {
   margin: {
-    right: -1rem;
-    left: -1rem;
+    right: var(--gutter-negative);
+    left: var(--gutter-negative);
   }
 
   &,
@@ -131,7 +131,7 @@
 
   > div {
     border-left: 1px solid theme.$sl-color--iron;
-    padding: 0 1rem;
+    padding: 0 var(--gutter);
 
     &:first-child {
       border: 0;
@@ -150,7 +150,7 @@
 
   dt,
   dd {
-    padding-left: 1rem;
+    padding-left: var(--gutter);
 
     &:first-child {
       padding-left: 0;
@@ -159,7 +159,7 @@
 
   &.impl-status {
     font-size: 0.8em;
-    margin-top: -1em;
+    margin-top: var(--gutter-negative);
 
     dt {
       word-break: normal;

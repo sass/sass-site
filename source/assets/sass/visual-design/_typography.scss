@@ -105,7 +105,7 @@ ol,
 dl,
 figure,
 details {
-  margin: 1rem 0;
+  margin: var(--gutter) 0;
   padding: 0;
 }
 
@@ -118,7 +118,7 @@ h6 {
 
   aside &,
   nav & {
-    margin-top: 1rem;
+    margin-top: var(--gutter);
   }
 }
 
@@ -226,7 +226,7 @@ code {
 
 pre {
   font-size: $sl-font-size--x-small;
-  padding: 0.75rem 1rem;
+  padding: var(--gutter-minus) var(--gutter);
   overflow: auto;
   white-space: pre-wrap;
 
@@ -249,8 +249,8 @@ img {
 
 hr {
   margin: {
-    top: 3rem;
-    bottom: 3rem;
+    top: var(--gutter-triple);
+    bottom: var(--gutter-triple);
   }
 }
 

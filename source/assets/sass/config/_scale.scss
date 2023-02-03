@@ -1,0 +1,28 @@
+// Spacing Sizes
+// -------------
+/// @group scale
+
+$gutter: 1rem; // 16
+$gutter-quarter: calc(var(--gutter) * 0.25); // 4
+$gutter-half: calc(var(--gutter) * 0.5); // 8
+$gutter-minus: calc(var(--gutter) * 0.75); // 12
+$gutter-plus: calc(var(--gutter) * 1.25);
+$gutter-sesqui: calc(var(--gutter) * 1.5);
+$gutter-double: calc(var(--gutter) * 2);
+$gutter-triple: calc(var(--gutter) * 3);
+
+// Negative Spacing Sizes
+// ----------------------
+$gutter-negative: calc(var(--gutter) * -1);
+$gutter-quarter-negative: calc(var(--gutter-quarter) * -1);
+$gutter-half-negative: calc(var(--gutter-half) * -1);
+$gutter-minus-negative: calc(var(--gutter-minus) * -1);
+$gutter-plus-negative: calc(var(--gutter-plus) * -1);
+$gutter-sesqui-negative: calc(var(--gutter-sesqui) * -1);
+$gutter-double-negative: calc(var(--gutter-double) * -1);
+$gutter-triple-negative: calc(var(--gutter-triple) * -1);
+
+// UI Sizes
+// --------
+/// @group scale
+$table-cell-padding: var(--gutter-sesqui);

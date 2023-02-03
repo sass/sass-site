@@ -4,15 +4,19 @@
 @use '../visual-design/typography';
 
 .sl-c-alert {
-  padding: {
-    top: functions.sl-px-to-rem(12px);
-    bottom: functions.sl-px-to-rem(12px);
-  }
-
-  text-align: center;
-  background: color.adjust(theme.$sl-color--hopbush, $lightness: -10%);
+  background: var(
+    --alert-bg,
+    color.adjust(theme.$sl-color--hopbush, $lightness: -10%)
+  );
   color: theme.$sl-color--white;
   font-size: typography.$sl-font-size--small;
+
+  padding: {
+    top: var(--alert-padding-block, var(--gutter-minus));
+    bottom: var(--alert-padding-block, var(--gutter-minus));
+  }
+
+  text-align: var(--alert-align, center);
 
   p,
   ul,
@@ -34,21 +38,31 @@
 
   a {
     border-bottom-color: rgba(theme.$sl-color--white, 0.5);
-    font-weight: typography.$sl-font-weight--bold;
     color: theme.$sl-color--white;
+    font-weight: typography.$sl-font-weight--bold;
 
     &:hover,
     &:focus {
-      border-bottom-color: rgba(theme.$sl-color--white, 0.75);
       background: rgba(black, 0.0625);
+      border-bottom-color: rgba(theme.$sl-color--white, 0.75);
     }
 
     &:active {
       border-bottom-color: theme.$sl-color--white;
     }
   }
+}
 
-  &--info {
-    background: theme.$sl-color--midnight-blue;
-  }
+.sl-c-alert--info {
+  --alert-bg: theme.$sl-color--midnight-blue;
+}
+
+.sl-c-alert--special {
+  --alert-align: left;
+  --alert-bg: black;
+  --alert-padding-block: var(--gutter-triple);
+}
+
+.sl-c-alert-title {
+  margin-top: 0;
 }

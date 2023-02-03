@@ -12,7 +12,7 @@ h6,
     float: left;
     vertical-align: middle;
     margin-top: -3px;
-    width: 1.5rem;
+    width: var(--gutter-sesqui);
     background: none;
     border: 0;
 
@@ -39,7 +39,7 @@ h4,
 h5,
 h6 {
   a.anchor {
-    margin-left: -1.5rem;
+    margin-left: var(--gutter-sesqui-negative);
   }
 
   &:target {

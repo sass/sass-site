@@ -3,8 +3,8 @@
 @use '../visual-design/theme';
 
 .sl-c-callout {
-  margin: 1.5rem 0;
-  padding: 1.5rem 1rem;
+  margin: var(--gutter-sesqui) 0;
+  padding: var(--gutter-sesqui) var(--gutter);
   background: color.adjust(theme.$sl-color--pale-sky, $lightness: 60%);
   border-radius: 2px;
 
@@ -19,20 +19,20 @@
   }
 
   &--function {
-    padding-bottom: 0.25rem;
+    padding-bottom: var(--gutter-quarter);
     padding-top: 0;
 
     .signature {
       // Make sure permalinks are visible.
       overflow: visible;
-      margin-left: -1rem;
-      margin-right: -1rem;
+      margin-left: var(--gutter-negative);
+      margin-right: var(--gutter-negative);
     }
   }
 
   &--impl-status {
     font-size: 0.8em;
-    margin-top: -1rem;
+    margin-top: var(--gutter-negative);
     padding: 0.8rem;
 
     .sl-c-callout & {

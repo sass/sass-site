@@ -23,8 +23,8 @@
         flex: 1 0 auto;
         flex-direction: row;
         margin: {
-          right: -2rem;
-          left: -2rem;
+          right: var(--gutter-double-negative);
+          left: var(--gutter-double-negative);
         }
       }
 
@@ -32,8 +32,8 @@
       &__navigation,
       &__complementary {
         padding: {
-          right: functions.sl-px-to-rem(32px);
-          left: functions.sl-px-to-rem(32px);
+          right: var(--gutter-double);
+          left: var(--gutter-double);
         }
       }
 

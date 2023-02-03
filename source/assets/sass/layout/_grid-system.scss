@@ -124,41 +124,41 @@
 
       &--gutters {
         margin: {
-          right: -(functions.sl-px-to-rem(16px));
-          left: -(functions.sl-px-to-rem(16px));
+          right: var(--gutter-negative);
+          left: var(--gutter-negative);
         }
 
         > .sl-l-grid__column {
           padding: {
-            right: functions.sl-px-to-rem(16px);
-            left: functions.sl-px-to-rem(16px);
+            right: var(--gutter);
+            left: var(--gutter);
           }
         }
 
         &-large {
           margin: {
-            right: -(functions.sl-px-to-rem(32px));
-            left: -(functions.sl-px-to-rem(32px));
+            right: var(--gutter-double-negative);
+            left: var(--gutter-double-negative);
           }
 
           > .sl-l-grid__column {
             padding: {
-              right: functions.sl-px-to-rem(32px);
-              left: functions.sl-px-to-rem(32px);
+              right: var(--gutter-double);
+              left: var(--gutter-double);
             }
           }
         }
 
         &-small {
           margin: {
-            right: -(functions.sl-px-to-rem(8px));
-            left: -(functions.sl-px-to-rem(8px));
+            right: var(--gutter-half-negative);
+            left: var(--gutter-half-negative);
           }
 
           > .sl-l-grid__column {
             padding: {
-              right: functions.sl-px-to-rem(8px);
-              left: functions.sl-px-to-rem(8px);
+              right: var(--gutter-half);
+              left: var(--gutter-half);
             }
           }
         }

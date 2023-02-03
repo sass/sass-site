@@ -1,0 +1,16 @@
+---
+layout: base
+---
+
+<div class="docSearch-content{% unless no_container %} sl-l-container sl-l-container--small{% endunless %}">
+  {% if before_introduction %}
+    {{ before_introduction | markdown }}
+  {% endif %}
+  {% if introduction %}
+    <div class="sl-c-introduction{% if center_introduction %} sl-c-introduction--center{% endif %}">
+      {{ introduction | markdown }}
+    </div>
+  {% endif %}
+
+  {{ content }}
+</div>

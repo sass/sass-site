@@ -1,0 +1,28 @@
+---
+layout: base
+---
+
+<div class="sl-l-large-holy-grail">
+  <div class="sl-l-large-holy-grail__body">
+    <div class="sl-l-large-holy-grail__main">
+      <div{% unless no_container %} class="sl-l-container sl-l-container--small"{% endunless %}>
+        {% if before_introduction %}
+          {{ before_introduction | markdown }}
+        {% endif %}
+        {% if introduction %}
+          <div class="sl-c-introduction{% if center_introduction %} sl-c-introduction--center{% endif %}">
+            {{ introduction | markdown }}
+          </div>
+        {% endif %}
+
+        {{ content }}
+      </div>
+    </div>
+
+    {% if complementary_content %}
+      <div class="sl-l-large-holy-grail__complementary">
+        {{ complementary_content | markdown }}
+      </div>
+    {% endif %}
+  </div>
+</div>

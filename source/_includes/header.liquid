@@ -1,0 +1,25 @@
+<header
+  class="sl-r-banner"
+  itemtype="http://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  {% for alert in alerts | default: [] %}
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">{{ alert.heading }}</h2>
+        {{ alert.body | markdown }}
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img height="48" alt="Sass" src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      {% renderFile 'source/_includes/header_nav.md' %}
+    </div>
+  </div>
+</header>

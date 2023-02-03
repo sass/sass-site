@@ -7,7 +7,7 @@
 
   // add bottom padding to increase space
   // above page titles (visible on mobile site)
-  padding-bottom: 3rem;
+  padding-bottom: var(--gutter-triple);
 
   a {
     display: inline-block;
@@ -32,17 +32,17 @@
 
     ul {
       position: relative;
-      margin: 0 -1rem !important;
+      margin: 0 var(--gutter-negative) !important;
 
       @include breakpoints.sl-breakpoint--medium {
-        right: -(functions.sl-px-to-rem(16px));
+        right: var(--gutter-negative);
         margin: 0 !important;
       }
     }
 
     a {
       display: block;
-      padding: functions.sl-px-to-rem(12px) functions.sl-px-to-rem(16px);
+      padding: var(--gutter-minus) var(--gutter);
       border: 0;
     }
   }
