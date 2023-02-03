@@ -25,15 +25,21 @@ module.exports = (eleventyConfig) => {
   }).use(markdownDefList);
 
   eleventyConfig.setLibrary('md', mdown);
-  eleventyConfig.addDataExtension('yaml', yaml.load);
+  eleventyConfig.addDataExtension('yml, yaml', (contents) =>
+    yaml.load(contents),
+  );
 
   // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>
-    typogrify.typogrify(mdown.render(content)),
+    mdown.render(content),
   );
 
   eleventyConfig.addPairedLiquidShortcode('markdownInline', (content) =>
-    typogrify.typogrify(mdown.renderInline(content)),
+    mdown.renderInline(content),
+  );
+
+  eleventyConfig.addPairedLiquidShortcode('typogr', (content) =>
+    typogrify.typogrify(content),
   );
 
   // Filters...
@@ -42,11 +48,11 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addLiquidFilter('markdown', (content) =>
-    typogrify.typogrify(mdown.render(content)),
+    mdown.render(content),
   );
 
   eleventyConfig.addLiquidFilter('markdownInline', (content) =>
-    typogrify.typogrify(mdown.renderInline(content)),
+    mdown.renderInline(content),
   );
 
   eleventyConfig.addLiquidFilter('typogr', (content) =>

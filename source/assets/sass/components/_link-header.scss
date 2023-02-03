@@ -39,7 +39,7 @@ h4,
 h5,
 h6 {
   a.anchor {
-    margin-left: calc(var(--gutter-sesqui) * -1);
+    margin-left: var(--gutter-sesqui-negative);
   }
 
   &:target {

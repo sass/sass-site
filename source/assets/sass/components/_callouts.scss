@@ -25,14 +25,14 @@
     .signature {
       // Make sure permalinks are visible.
       overflow: visible;
-      margin-left: calc(var(--gutter) * -1);
-      margin-right: calc(var(--gutter) * -1);
+      margin-left: var(--gutter-negative);
+      margin-right: var(--gutter-negative);
     }
   }
 
   &--impl-status {
     font-size: 0.8em;
-    margin-top: calc(var(--gutter) * -1);
+    margin-top: var(--gutter-negative);
     padding: 0.8rem;
 
     .sl-c-callout & {

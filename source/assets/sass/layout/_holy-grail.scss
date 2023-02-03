@@ -23,8 +23,8 @@
         flex: 1 0 auto;
         flex-direction: row;
         margin: {
-          right: calc((var(--gutter-double)) * -1);
-          left: calc((var(--gutter-double)) * -1);
+          right: var(--gutter-double-negative);
+          left: var(--gutter-double-negative);
         }
       }
 
