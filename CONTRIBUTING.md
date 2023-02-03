@@ -61,6 +61,27 @@ yarn build
 yarn lint
 ```
 
+## Templates
+
+- `.liquid` files are parsed as [LiquidJS](https://liquidjs.com/) templates.
+  - To embed Markdown (or other languages) inside LiquidJS templates, use the
+    [11ty `{% renderTemplate 'md' %}` tag](https://www.11ty.dev/docs/plugins/render/#rendertemplate). Note that multiple languages can be used, e.g.
+    `{% renderTemplate 'liquid,md' %}`
+  - To include partials, use either the
+    [11ty `{% renderFile %}` tag](https://www.11ty.dev/docs/plugins/render/#renderfile)
+    or the [LiquidJS `{% render %}` tag](https://liquidjs.com/tags/render.html).
+    - Note that `renderFile` requires a relative path from the root directory,
+      while `render` uses a relative path from the `/source/_includes/`
+      directory.
+    - Both tags create an encapsulated scope for the partial, so any variables
+      used in the partial must be explicitly passed in.
+    - `renderFile` allows overriding the template language (e.g.
+      `{% renderFile 'source/_includes/footer_nav.md', data, 'liquid,md' %}`),
+      while `render` always parses the partial as a LiquidJS template.
+- `.md` files are parsed both as Markdown _and_ as LiquidJS templates.
+- When using Markdown, remember that _indentation and whitespace (e.g newlines)
+  matter_.
+
 ## Deploying
 
 Every time a new commit is pushed to `main`, it will automatically be deployed
