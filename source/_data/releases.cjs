@@ -85,7 +85,7 @@ module.exports = async () => {
   const versions = await Promise.all(
     repos.map(async (repo) => [
       repo,
-      cache[repo] ? cache[repo] : await getLatestVersion(repo),
+      cache[repo] ?? (await getLatestVersion(repo)),
     ]),
   );
   const data = Object.fromEntries(
