@@ -1,11 +1,11 @@
 'use strict';
 
+const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const yaml = require('js-yaml');
 const markdown = require('markdown-it');
 const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
-const { EleventyRenderPlugin } = require('@11ty/eleventy');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
@@ -17,6 +17,7 @@ module.exports = (eleventyConfig) => {
     jsTruthy: true,
   });
   eleventyConfig.setUseGitIgnore(false);
+  eleventyConfig.watchIgnores.add('source/_data/versionCache.json');
 
   const mdown = markdown({
     html: true,

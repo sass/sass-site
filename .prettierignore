@@ -6,6 +6,7 @@
 .yarnrc.yml
 /_site/
 /old_source/
+/source/_data/versionCache.json
 coverage/
 node_modules/
 source/assets/dist/
