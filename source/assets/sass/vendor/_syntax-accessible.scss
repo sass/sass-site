@@ -1,5 +1,3 @@
-// @@@ These definitions no longer match the added classes...
-
 @use '../functions';
 
 /**
@@ -21,10 +19,6 @@ pre[class*="language-"] {
 
 .token table td { padding: functions.sl-px-to-rem(5px); }
 .token table pre { margin: 0; }
-.token .cm {
-  color: #656556;
-  font-style: italic;
-}
 
 .token.comment,
 .token.prolog,
@@ -34,11 +28,11 @@ pre[class*="language-"] {
 	font-style: italic;
 }
 
-[class*="language-css"]  {
-  & .token.comment {
+.token.comment {
+  [class*="language-css"] & {
     color: #006666;
   }
-}
+ }
 
 .token.namespace {
 	opacity: .7;
