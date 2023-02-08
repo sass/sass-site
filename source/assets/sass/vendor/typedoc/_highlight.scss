@@ -3,16 +3,19 @@
 @use '../syntax-accessible';
 
 // Colors updated to match the standard Sass styling.
-.typedoc pre { @extend .highlight; }
+.typedoc pre { @extend .token; }
 
-.hl-0 { @extend .k; }
-.hl-1 { @extend .p !optional; }
+/* @@@ TODO: match selectors with prism classnames */
+
+ .hl-0 { @extend .keyword; }
+/* .hl-1 { @extend .p !optional; }
 .hl-2 { @extend .na; }
 .hl-3 { @extend .nx !optional; }
-.hl-4 { @extend .k; }
+.hl-4 { @extend .keyword; }
 .hl-5 { @extend .s2; }
-.hl-6 { @extend .k; }
-.hl-7 { @extend .c1; }
+.hl-6 { @extend .keyword; }
+.hl-7 { @extend .comment; }
 .hl-8 { @extend .na; }
 .hl-9 { @extend .nx !optional; }
 .hl-10 { @extend .nb; }
+ */
