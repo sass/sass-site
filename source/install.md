@@ -59,8 +59,9 @@ sass source/stylesheets/index.scss build/stylesheets/index.css
 
 First install Sass using one of the options below, then run
 `sass --version` to be sure it installed correctly. If it did, this will
-include `#{impl_version(:dart)}`. You can also run `sass --help` for more
-information about the command-line interface.
+include `{{ releases['dart-sass'].version }}`.
+You can also run `sass --help` for more information
+about the command-line interface.
 
 Once it's all set up, **go and play**. If you're brand new to
 Sass we've set up some resources to help you learn pretty darn quick.

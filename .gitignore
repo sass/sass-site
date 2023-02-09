@@ -3,15 +3,12 @@
 /.bundle
 bundle
 /.cache
-/data/version.yml
+/source/_data/versionCache.json
 .DS_Store
 .DS_Store?
 /Icon
 "Icon\r"
 .ruby-version
-/.dart-sass
-/.libsass
-/.language
 /.sass-cache
 *.scssc
 Thumbs.db
