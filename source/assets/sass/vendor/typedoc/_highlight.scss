@@ -1,21 +1,16 @@
-// @@@ These should extend the updated syntax styles...
-
 @use '../syntax-accessible';
 
 // Colors updated to match the standard Sass styling.
 .typedoc pre { @extend .token; }
 
-/* @@@ TODO: match selectors with prism classnames */
-
- .hl-0 { @extend .keyword; }
-/* .hl-1 { @extend .p !optional; }
-.hl-2 { @extend .na; }
-.hl-3 { @extend .nx !optional; }
+.hl-0 { @extend .keyword; }
+.hl-1 { @extend .punctuation; }
+.hl-2 { @extend .variable; }
+.hl-3 { @extend .function; }
 .hl-4 { @extend .keyword; }
-.hl-5 { @extend .s2; }
+.hl-5 { @extend .string; }
 .hl-6 { @extend .keyword; }
 .hl-7 { @extend .comment; }
-.hl-8 { @extend .na; }
-.hl-9 { @extend .nx !optional; }
-.hl-10 { @extend .nb; }
- */
+.hl-8 { @extend .variable; }
+.hl-9 { @extend .comment; }
+.hl-10 { @extend .variable; }
