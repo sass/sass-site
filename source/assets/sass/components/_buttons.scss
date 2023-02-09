@@ -7,10 +7,7 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  border: 0 {
-    /* stylelint-disable-next-line property-no-unknown */
-    radius: functions.sl-px-to-rem(4px);
-  }
+  border-radius: var(--border-radius-large);
   padding: var(--gutter-minus) var(--gutter);
   background: theme.$sl-color--iron;
   box-shadow: 0 2px 1px rgba(theme.$sl-color--midnight-blue, 0.125);

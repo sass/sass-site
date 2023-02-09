@@ -42,16 +42,16 @@
       }
 
       &__navigation {
-        flex: 0 0 functions.sl-px-to-rem(240px);
+        flex: 0 0 var(--column-small);
         order: -1;
       }
 
       &__complementary {
         order: 1;
-        flex: 0 0 functions.sl-px-to-rem(480px);
+        flex: 0 0 var(--column-medium);
 
         &--contents {
-          flex: 0 0 functions.sl-px-to-rem(240px);
+          flex: 0 0 var(--column-small);
           order: -1;
         }
       }

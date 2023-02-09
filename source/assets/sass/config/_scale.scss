@@ -9,10 +9,12 @@ $gutter-minus: calc(var(--gutter) * 0.75); // 12
 $gutter-plus: calc(var(--gutter) * 1.25);
 $gutter-sesqui: calc(var(--gutter) * 1.5);
 $gutter-double: calc(var(--gutter) * 2);
+$gutter-double-sesqui: calc(var(--gutter) * 2.5);
 $gutter-triple: calc(var(--gutter) * 3);
 
 // Negative Spacing Sizes
 // ----------------------
+/// @group scale
 $gutter-negative: calc(var(--gutter) * -1);
 $gutter-quarter-negative: calc(var(--gutter-quarter) * -1);
 $gutter-half-negative: calc(var(--gutter-half) * -1);
@@ -20,9 +22,41 @@ $gutter-minus-negative: calc(var(--gutter-minus) * -1);
 $gutter-plus-negative: calc(var(--gutter-plus) * -1);
 $gutter-sesqui-negative: calc(var(--gutter-sesqui) * -1);
 $gutter-double-negative: calc(var(--gutter-double) * -1);
+$gutter-double-sesqui-negative: calc(var(--gutter-double-sesqui) * -1);
 $gutter-triple-negative: calc(var(--gutter-triple) * -1);
 
 // UI Sizes
 // --------
 /// @group scale
 $table-cell-padding: var(--gutter-sesqui);
+$border-small: 1px;
+$border-radius-small: 0.125rem;
+$border-radius-large: 0.25rem;
+$column-small: 15rem;
+$column-medium: 30rem;
+
+
+// Layout Sizes
+// --------
+/// @group scale
+$sl-breakpoint--small: 30em;  // 480px
+$sl-breakpoint--medium: 40em; // 640px
+$sl-breakpoint--large: 60em; // 960px
+$sl-breakpoint--x-large: 80em; // 1280px
+// 1920px
+
+// Font Sizes Generic
+// ------------------
+$sl-font-size--x-small: 0.875rem; // 14px
+$sl-font-size--small: 1rem; // 16px
+$sl-font-size--medium:  1.125rem; // 18px
+$sl-font-size--large: 1.25rem; //20
+$sl-font-size--x-large: 1.5rem; // 22px
+$sl-font-size--xx-large: 1.75rem; // 28px
+$sl-font-size--xxx-large: 2rem; // 32px
+$sl-font-size--xxxx-large: 5rem; // 80px
+
+
+// Font Sizes Custom
+// -----------------
+$status-text-size: 0.8em;

@@ -9,7 +9,7 @@
     color.adjust(theme.$sl-color--hopbush, $lightness: -10%)
   );
   color: theme.$sl-color--white;
-  font-size: typography.$sl-font-size--small;
+  font-size: var(--sl-font-size--small);
 
   padding: {
     top: var(--alert-padding-block, var(--gutter-minus));

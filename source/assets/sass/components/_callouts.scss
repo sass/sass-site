@@ -6,16 +6,16 @@
   margin: var(--gutter-sesqui) 0;
   padding: var(--gutter-sesqui) var(--gutter);
   background: color.adjust(theme.$sl-color--pale-sky, $lightness: 60%);
-  border-radius: 2px;
+  border-radius: var(--border-radius-small);
 
   &--warning {
     background: color.adjust(theme.$sl-color--hopbush, $lightness: 38%);
-    border: 1px solid color.adjust(theme.$sl-color--hopbush, $lightness: 27%);
+    border: var(--border-small) solid color.adjust(theme.$sl-color--hopbush, $lightness: 27%);
   }
 
   &--fun-fact {
     background: color.adjust(theme.$sl-color--patina, $lightness: 47%);
-    border: 1px solid color.adjust(theme.$sl-color--patina, $lightness: 32%);
+    border: var(--border-small) solid color.adjust(theme.$sl-color--patina, $lightness: 32%);
   }
 
   &--function {
@@ -31,9 +31,9 @@
   }
 
   &--impl-status {
-    font-size: 0.8em;
+    font-size: var(--status-text-size);
     margin-top: var(--gutter-negative);
-    padding: 0.8rem;
+    padding: var(--gutter-minus);
 
     .sl-c-callout & {
       background: color.adjust(theme.$sl-color--pale-sky, $lightness: 53%);
@@ -51,10 +51,10 @@
 
 @include breakpoints.sl-breakpoint--medium {
   .sl-l-container--overview {
-    font-size: 1.25rem;
+    font-size: var(--sl-font-size--large);
 
     .sl-c-callout {
-      font-size: 1rem;
+      font-size: var(--sl-font-size--small);
     }
   }
 }

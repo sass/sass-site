@@ -7,7 +7,7 @@
   font-weight: typography.$sl-font-weight--light;
 
   @include breakpoints.sl-breakpoint--medium {
-    font-size: typography.$sl-font-size--xx-large;
+    font-size: var(--sl-font-size--xx-large);
   }
 
   &--center {

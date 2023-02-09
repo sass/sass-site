@@ -17,13 +17,10 @@ h6,
     border: 0;
 
     &::after {
-      visibility: hidden;
-      font: {
-        size: 1rem;
-        weight: normal;
-      }
-
       content: '\1F517';
+      font-size: var(--sl-font-size--small);
+      font-weight: normal;
+      visibility: hidden;
     }
   }
 
@@ -60,7 +57,7 @@ h6 {
 
 .signature {
   a.anchor {
-    margin-left: -2.5rem;
+    margin-left: var(--gutter-double-sesqui-negative);
   }
 
   .sl-c-callout--function:target & {

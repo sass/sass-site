@@ -18,29 +18,6 @@ $sl-font-weights: (
   }
 }
 
-$sl-font-size--x-small: functions.sl-px-to-rem(14px) !default;
-$sl-font-size--small: functions.sl-px-to-rem(16px) !default;
-$sl-font-size--medium: functions.sl-px-to-rem(18px) !default;
-$sl-font-size--large: functions.sl-px-to-rem(20px) !default;
-$sl-font-size--x-large: functions.sl-px-to-rem(24px) !default;
-$sl-font-size--xx-large: functions.sl-px-to-rem(28px) !default;
-$sl-font-size--xxx-large: functions.sl-px-to-rem(32px) !default;
-$sl-font-size--xxxx-large: functions.sl-px-to-rem(80px) !default;
-$sl-font-sizes: (
-  small: $sl-font-size--small,
-  medium: $sl-font-size--medium,
-  large: $sl-font-size--large,
-  x-large: $sl-font-size--x-large,
-  xx-large: $sl-font-size--xx-large,
-  xxx-large: $sl-font-size--xxx-large,
-  xxxx-large: $sl-font-size--xxxx-large,
-);
-
-@each $name, $value in $sl-font-sizes {
-  .sl-font-size--#{$name} {
-    font-size: $value;
-  }
-}
 
 $sl-font-family--text: 'Source Sans Pro', system-ui, -apple-system, 'Segoe UI',
   roboto, ubuntu, cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji',
@@ -65,7 +42,7 @@ $sl-font-families: (
 body,
 h5,
 h6 {
-  font-size: $sl-font-size--medium;
+  font-size: var(--sl-font-size--medium);
 }
 
 body {
@@ -114,7 +91,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 2.5rem;
+  margin-top: var(--gutter-double-sesqui);
 
   aside &,
   nav & {
@@ -152,16 +129,16 @@ h2 {
 
 h1 {
   margin-top: 0;
-  font-size: $sl-font-size--xx-large;
+  font-size: var(h1-size, var(--sl-font-size--xx-large));
   line-height: 1;
   text-align: center;
 
   @include breakpoints.sl-breakpoint--medium {
-    font-size: $sl-font-size--xxx-large;
+    --h1-size: var(--sl-font-size--xxx-large);
   }
 
   @include breakpoints.sl-breakpoint--large {
-    font-size: $sl-font-size--xxxx-large;
+    --h1-size: var(--sl-font-size--xxxx-large);
   }
 }
 
@@ -175,29 +152,29 @@ thead th {
 
 h2,
 caption {
-  font-size: $sl-font-size--x-large;
+  font-size: var(--h2-size, var(--sl-font-size--x-large));
 
   @include breakpoints.sl-breakpoint--medium {
-    font-size: $sl-font-size--xx-large;
+    --h2-size: var(--sl-font-size--xx-large);
   }
 
   @include breakpoints.sl-breakpoint--large {
-    font-size: $sl-font-size--xxx-large;
+    --h2-size: var(--sl-font-size--xxx-large);
   }
 }
 
 h3,
 h4 {
-  font-size: $sl-font-size--large;
+  font-size: var(--sl-font-size--large);
 }
 
 nav,
 footer {
-  font-size: $sl-font-size--small;
+  font-size: var(--sl-font-size--small);
 }
 
 .caps {
-  font-size: functions.sl-px-to-em(14px);
+  font-size: 0.875em;
   text-transform: uppercase;
   letter-spacing: functions.sl-px-to-em(1px);
   line-height: 0;
@@ -210,7 +187,8 @@ pre {
 
 code {
   // Scale the code font size down, because the font itself is much larger.
-  font-size: math.div($sl-font-size--small, $sl-font-size--medium) * 1em;
+  font-size: 0.88889em;
+  font-size: var(--sl-font-size--small);
   line-height: 1;
 
   nav & {
@@ -225,7 +203,7 @@ code {
 }
 
 pre {
-  font-size: $sl-font-size--x-small;
+  font-size: var(--sl-font-size--x-small);
   padding: var(--gutter-minus) var(--gutter);
   overflow: auto;
   white-space: pre-wrap;

@@ -16,6 +16,8 @@
 
   &::after,
   &::before {
+    --tab-point: 10px;
+
     bottom: -3px;
     left: 50%;
     border: solid transparent;
@@ -29,15 +31,15 @@
   &::after {
     border-color: transparent;
     border-bottom-color: #f8f8f8;
-    border-width: 10px;
-    margin-left: -10px;
+    border-width: var(--tab-point);
+    margin-left: calc(var(--tab-point) * -1);
   }
 
   &::before {
     border-color: transparent;
     border-bottom-color: #ebebeb;
-    border-width: 11px;
-    margin-left: -11px;
+    border-width: calc(var(--tab-point) + 1px);
+    margin-left: calc((var(--tab-point) + 1px) * -1);
   }
 }
 
@@ -54,9 +56,9 @@
   }
 
   .ui-tabs-nav {
-    font-size: typography.$sl-font-size--small;
-    margin-top: -1rem;
-    margin-left: -1em;
+    font-size: var(--sl-font-size--small);
+    margin-top: var(--gutter-negative);
+    margin-left: var(--gutter-negative);
 
     a {
       border: 0;
@@ -80,23 +82,23 @@
       &.css-tab {
         &,
         &.ui-tabs-active {
-          margin-left: 2em;
+          margin-left: var(--gutter-double);
         }
 
         a::before {
           color: theme.$sl-color--regent-grey;
           content: '\21d2';
-          font-size: typography.$sl-font-size--large;
+          font-size: var(--sl-font-size--large);
           font-weight: typography.$sl-font-weight--bold;
           left: -1.2em;
           position: absolute;
-          top: 0.75rem;
+          top: var(--gutter-minus);
         }
       }
     }
 
     .ui-tabs-anchor {
-      padding: 0.75rem 1rem;
+      padding: var(--gutter-minus) var(--gutter);
     }
   }
 
@@ -177,7 +179,7 @@ html .ui-button.ui-state-disabled:active {
 
   &,
   * {
-    font-size: 1rem;
+    font-size: var(--sl-font-size--small);
   }
 }
 

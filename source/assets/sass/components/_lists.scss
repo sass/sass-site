@@ -74,7 +74,7 @@
       }
 
       li.overview a {
-        font-size: typography.$sl-font-size--small;
+        font-size: var(--sl-font-size--small);
 
         &:not(.selected) {
           color: color.adjust(theme.$sl-color--midnight-blue, $alpha: -0.3);
@@ -90,7 +90,7 @@
             text-align: center;
             margin-top: 5px;
             transition: transform 0.1s;
-            width: 19px;
+            width: var(--gutter-plus);
           }
 
           &.open::after {
@@ -130,7 +130,7 @@
   }
 
   > div {
-    border-left: 1px solid theme.$sl-color--iron;
+    border-left: var(--border-small) solid theme.$sl-color--iron;
     padding: 0 var(--gutter);
 
     &:first-child {
@@ -158,7 +158,7 @@
   }
 
   &.impl-status {
-    font-size: 0.8em;
+    font-size: var(--status-text-size);
     margin-top: var(--gutter-negative);
 
     dt {
@@ -170,9 +170,9 @@
       border-bottom: none;
       background: none;
       cursor: pointer;
-      width: 19px;
+      width: var(--gutter-plus);
       text-align: center;
-      transform-origin: 8px 11px;
+      transform-origin: var(--gutter-half) calc(var(--gutter-minus) - 1px);
 
       &.expanded {
         transform: rotate(90deg);

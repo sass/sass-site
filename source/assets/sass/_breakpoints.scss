@@ -14,13 +14,13 @@ $sl-breakpoints: (
 );
 
 @mixin sl-breakpoint($breakpoint) {
-  @media only screen and (min-width: #{functions.sl-px-to-em($breakpoint)}) {
+  @media only screen and (min-width: $breakpoint) {
     @content;
   }
 }
 
 @mixin sl-breakpoint-max($breakpoint) {
-  @media only screen and (max-width: #{functions.sl-px-to-em($breakpoint)}) {
+  @media only screen and (max-width: $breakpoint) {
     @content;
   }
 }

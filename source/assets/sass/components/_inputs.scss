@@ -4,7 +4,7 @@
 input {
   display: block;
   margin: 0 var(--gutter);
-  border: 1px solid theme.$sl-color--iron;
+  border: var(--border-small) solid theme.$sl-color--iron;
   padding: var(--gutter-quarter) var(--gutter);
   width: 100%;
 

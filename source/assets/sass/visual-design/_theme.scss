@@ -346,7 +346,7 @@ body {
 }
 
 a {
-  border-bottom: 1px solid rgba($sl-color--iron, 0.5);
+  border-bottom: var(--border-small) solid rgba($sl-color--iron, 0.5);
   color: $sl-color--midnight-blue;
 
   .c1 & {
@@ -366,7 +366,7 @@ a {
 
 code,
 pre {
-  border-radius: functions.sl-px-to-em(2px);
+  border-radius: var(--border-radius-small);
   color: color.adjust($sl-color--pale-sky, $lightness: -25%);
 
   a & {
@@ -375,6 +375,6 @@ pre {
 }
 
 pre {
-  border: 1px solid #ebebeb;
+  border: var(--border-small) solid #ebebeb;
   background: rgba($sl-color--midnight-blue, 0.0625);
 }

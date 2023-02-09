@@ -1,11 +1,11 @@
 .sl-l-section {
   margin: {
-    top: 3rem;
-    bottom: 3rem;
+    top: var(--gutter-triple);
+    bottom: var(--gutter-triple);
   }
   padding: {
-    top: 3rem;
-    bottom: 3rem;
+    top: var(--gutter-triple);
+    bottom: var(--gutter-triple);
   }
 
   &:first-child {
