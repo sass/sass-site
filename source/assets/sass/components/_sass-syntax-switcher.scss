@@ -216,6 +216,7 @@ html .ui-button.ui-state-disabled:active {
     .css-tab {
       position: absolute;
       left: calc(var(--split-location) - 1%);
+
       @include -active-tab;
 
       &,
