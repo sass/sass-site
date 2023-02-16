@@ -1,6 +1,5 @@
 @use '../config';
 @use 'sass:math';
-
 @use 'sass:color';
 @use 'sass:list';
 @use '../functions';
@@ -59,8 +58,7 @@ $sl-colors: (
 }
 
 /* prettier-ignore */
-$linear-channel-values:
-  0
+$linear-channel-values: 0
   .0003035269835488375
   .000607053967097675
   .0009105809506465125
