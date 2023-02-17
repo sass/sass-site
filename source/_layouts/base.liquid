@@ -45,7 +45,7 @@
     </script>
   </head>
 
-  {% assign classes = page.filePathStem | replace: "/", " " %}
+  {%- assign classes = page.filePathStem | replace: "/", " " | strip -%}
 
   <body data-layout="body" class="{{ classes }}">
     <!--[if lt IE 9]>
