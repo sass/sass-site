@@ -66,23 +66,22 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addLiquidFilter(
     'codeExample',
-    (contents, autogenCSS=true, syntax=null) => {
+    (contents, autogenCSS = true, syntax = null) => {
       //TODO when are values for syntax passed in?
-      //TODO add tests 
-      const splitContents = contents.split('===');      
-      
+      //TODO add tests
+      const splitContents = contents.split('===');
+
       const scssContents = splitContents[0];
       const sassContents = splitContents[1];
       const cssContents = splitContents[2];
 
-      const scssExamples = scssContents.split('---')
-      const sassExamples = sassContents.split('---')
+      const scssExamples = scssContents.split('---');
+      const sassExamples = sassContents.split('---');
 
       let cssExample;
-      if(cssContents){
-        cssExample = cssContents
-      }
-      else if(!cssContents && autogenCSS) {
+      if (cssContents) {
+        cssExample = cssContents;
+      } else if (!cssContents && autogenCSS) {
         // TODO check first if you even have scss or sass to generate css from
         // TODO what if no scss but sass?
         cssExample = '';
@@ -93,10 +92,10 @@ module.exports = (eleventyConfig) => {
       }
 
       return {
-        scss: scssExamples, 
+        scss: scssExamples,
         css: cssExample,
         sass: sassExamples,
-        splitLocation: '50.0%' //TODO dynamically determine
+        splitLocation: '50.0%', //TODO dynamically determine
       };
     },
   );

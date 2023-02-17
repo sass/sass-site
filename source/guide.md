@@ -97,8 +97,8 @@ color: $primary-color" | codeExample: true, 'scss' -%}
 
 {% assign example_id = 1 %}
 {% assign ui_id = 1 %}
-{% render 'code_example', 
-code: code, 
+{% render 'code_example',
+code: code,
 example_id: example_id,
 ui_id: ui_id %}
 
@@ -122,46 +122,45 @@ With that in mind, here's an example of some typical styles for a site's
 navigation:
 
 {% capture example_id %}
-  {{ example_id | plus: 1 }} 
+{{ example_id | plus: 1 }}
 {% endcapture %}
 {% capture ui_id %}
-  {{ ui_id | plus: 3 }} 
+{{ ui_id | plus: 3 }}
 {% endcapture %}
 
-{% assign code = 
+{% assign code =
 "nav {
 ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+margin: 0;
+padding: 0;
+list-style: none;
 }
 
 li { display: inline-block; }
 
 a {
-  display: block;
-  padding: 6px 12px;
-  text-decoration: none;
+display: block;
+padding: 6px 12px;
+text-decoration: none;
 }
 }
 ===
 nav
-  ul
-    margin: 0
-    padding: 0
-    list-style: none
+ul
+margin: 0
+padding: 0
+list-style: none
 
-  li
-    display: inline-block
+li
+display: inline-block
 
-  a
-    display: block
-    padding: 6px 12px
-    text-decoration: none" | codeExample: true, 'scss' %}
+a
+display: block
+padding: 6px 12px
+text-decoration: none" | codeExample: true, 'scss' %}
 
-
-{% render 'code_example', 
-code: code, 
+{% render 'code_example',
+code: code,
 example_id: example_id,
 ui_id: ui_id %}
 
@@ -169,7 +168,7 @@ ui_id: ui_id %}
 
 ## Partials
 
-You can create partial Sass files that contain little snippets of CSS that you can include in other Sass files. 
+You can create partial Sass files that contain little snippets of CSS that you can include in other Sass files.
 This is a great way to modularize your CSS and help keep things easier to maintain. A partial is a
 Sass file named with a leading underscore. You might name it something
 like `_partial.scss`. The underscore lets Sass know that the file is only
@@ -181,23 +180,24 @@ partials are used with the `@use` rule.
 ## Modules
 
 <!-- TODO compatibility snippet -->
+
 You don't have to write all your Sass in a single file. You can split it up however you want with the `@use` rule. This rule loads another Sass file as
-a *module*, which means you can refer to its variables, [mixins][], and [functions][] in your Sass file with a namespace based on the filename. Using a file will also include the CSS it generates in your compiled output!
+a _module_, which means you can refer to its variables, [mixins][], and [functions][] in your Sass file with a namespace based on the filename. Using a file will also include the CSS it generates in your compiled output!
 
 [mixins]: #topic-6
 [functions]: documentation/at-rules/function
 
 {% capture example_id %}
-  {{ example_id | plus: 1 }} 
+{{ example_id | plus: 1 }}
 {% endcapture %}
 {% capture ui_id %}
-  {{ ui_id | plus: 3 }} 
+{{ ui_id | plus: 3 }}
 {% endcapture %}
 
-{% assign code = 
-"// _base.scss
-    $font-stack: Helvetica, sans-serif;
-    $primary-color: #333;
+{% assign code =
+"// \_base.scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
 
     body {
       font: 100% $font-stack;
@@ -235,12 +235,12 @@ a *module*, which means you can refer to its variables, [mixins][], and [functio
     .inverse {
       background-color: #333;
       color: white;
-    }" 
+    }"
+
 | codeExample: true, 'scss' %}
 
-
-{% render 'code_example', 
-code: code, 
+{% render 'code_example',
+code: code,
 example_id: example_id,
 ui_id: ui_id %}
 
@@ -252,13 +252,13 @@ Some things in CSS are a bit tedious to write, especially with CSS3 and the many
 Sass very DRY. You can even pass in values to make your mixin more flexible. Here's an example for `theme`.
 
 {% capture example_id %}
-  {{ example_id | plus: 1 }} 
+{{ example_id | plus: 1 }}
 {% endcapture %}
 {% capture ui_id %}
-  {{ ui_id | plus: 3 }} 
+{{ ui_id | plus: 3 }}
 {% endcapture %}
 
-{% assign code = 
+{% assign code =
 "@mixin theme($theme: DarkGray) {
 background: $theme;
 box-shadow: 0 0 1px rgba($theme, .25);
@@ -280,7 +280,6 @@ background: $theme
 box-shadow: 0 0 1px rgba($theme, .25)
 color: #fff
 
-
 .info
 @include theme
 
@@ -291,8 +290,8 @@ color: #fff
 @include theme($theme: DarkGreen)"
 | codeExample: true, 'scss' %}
 
-{% render 'code_example', 
-code: code, 
+{% render 'code_example',
+code: code,
 example_id: example_id,
 ui_id: ui_id %}
 
@@ -306,78 +305,73 @@ After you create your mixin, you can then use it as a CSS declaration starting w
 Using `@extend` lets you share a set of CSS properties from one selector to another. In our example we're going to create a simple series of messaging for errors, warnings and successes using another feature which goes hand in hand with extend, placeholder classes. A placeholder class is a special type of class that only prints when it is extended, and can help keep your compiled CSS neat and clean.
 
 {% capture example_id %}
-  {{ example_id | plus: 1 }} 
+{{ example_id | plus: 1 }}
 {% endcapture %}
 {% capture ui_id %}
-  {{ ui_id | plus: 3 }} 
+{{ ui_id | plus: 3 }}
 {% endcapture %}
 
-{% assign code = 
-"// This CSS will print because %message-shared is extended. 
+{% assign code =
+"// This CSS will print because %message-shared is extended.
 %message-shared {
-  border: 1px solid #ccc;
-  padding: 10px;
-  color: #333;
+border: 1px solid #ccc;
+padding: 10px;
+color: #333;
 }
 
 // This CSS won't print because %equal-heights is never extended.
 %equal-heights {
-  display: flex;
-  flex-wrap: wrap;
+display: flex;
+flex-wrap: wrap;
 }
 
 .message {
-  @extend %message-shared;
+@extend %message-shared;
 }
 
 .success {
-  @extend %message-shared;
-  border-color: green;
+@extend %message-shared;
+border-color: green;
 }
 
 .error {
-  @extend %message-shared;
-  border-color: red;
+@extend %message-shared;
+border-color: red;
 }
 
 .warning {
-  @extend %message-shared;
-  border-color: yellow;
+@extend %message-shared;
+border-color: yellow;
 }
 ===
-// This CSS will print because %message-shared is extended. 
+// This CSS will print because %message-shared is extended.
 %message-shared
-  border: 1px solid #ccc
-  padding: 10px
-  color: #333
-
+border: 1px solid #ccc
+padding: 10px
+color: #333
 
 // This CSS won't print because %equal-heights is never extended.
 %equal-heights
-  display: flex
-  flex-wrap: wrap
-
+display: flex
+flex-wrap: wrap
 
 .message
-  @extend %message-shared
-
+@extend %message-shared
 
 .success
-  @extend %message-shared
-  border-color: green
-
+@extend %message-shared
+border-color: green
 
 .error
-  @extend %message-shared
-  border-color: red
-
+@extend %message-shared
+border-color: red
 
 .warning
-  @extend %message-shared
-  border-color: yellow"| codeExample: true, 'scss' %}
+@extend %message-shared
+border-color: yellow"| codeExample: true, 'scss' %}
 
-{% render 'code_example', 
-code: code, 
+{% render 'code_example',
+code: code,
 example_id: example_id,
 ui_id: ui_id %}
 
@@ -394,54 +388,54 @@ Note that the CSS in `%equal-heights` isn't generated, because `%equal-heights` 
 Doing math in your CSS is very helpful. Sass has a handful of standard math operators like `+`, `-`, `*`, `math.div()`, and `%`. In our example we're going to do some simple math to calculate widths for an `article` and `aside`.
 
 {% capture example_id %}
-  {{ example_id | plus: 1 }} 
+{{ example_id | plus: 1 }}
 {% endcapture %}
 {% capture ui_id %}
-  {{ ui_id | plus: 3 }} 
+{{ ui_id | plus: 3 }}
 {% endcapture %}
 
-{% assign code = 
+{% assign code =
 '@use "sass:math";
 
 .container {
-  display: flex;
+display: flex;
 }
 
 article[role="main"] {
-  width: math.div(600px, 960px) * 100%;
+width: math.div(600px, 960px) \* 100%;
 }
 
 aside[role="complementary"] {
-  width: math.div(300px, 960px) * 100%;
-  margin-left: auto;
+width: math.div(300px, 960px) \* 100%;
+margin-left: auto;
 }
 ===
 @use "sass:math"
 
 .container
-  display: flex
+display: flex
 
 article[role="main"]
-  width: math.div(600px, 960px) * 100%
+width: math.div(600px, 960px) \* 100%
 
 aside[role="complementary"]
-  width: math.div(300px, 960px) * 100%
-  margin-left: auto
+width: math.div(300px, 960px) \* 100%
+margin-left: auto
 ===
 .container {
-  display: flex;
+display: flex;
 }
 
 article[role="main"] {
-  width: 62.5%;
+width: 62.5%;
 }
 
 aside[role="complementary"] {
-  width: 31.25%;
-  margin-left: auto;
+width: 31.25%;
+margin-left: auto;
 }'| codeExample: true, 'scss' %}
 
-{% render 'code_example', 
-code: code, 
+{% render 'code_example',
+code: code,
 example_id: example_id,
 ui_id: ui_id %}
