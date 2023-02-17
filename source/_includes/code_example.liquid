@@ -54,13 +54,9 @@
     role="tabpanel"
     aria-hidden="false"
     style="">
-    {% for scss in code.scss %}
-      <pre class="highlight scss">
-            <code>
-                {{ scss | strip }}
-            </code>
-        </pre>
-    {% endfor %}
+    {%- for scss in code.scss -%}
+      <pre><code class="language-scss">{{ scss | strip }}</code></pre>
+    {%- endfor -%}
   </div>
   <div
     id="example-{{ example_id | strip }}-sass"
@@ -69,13 +65,9 @@
     role="tabpanel"
     aria-hidden="true"
     style="">
-    {% for sass in code.sass %}
-      <pre class="highlight sass">
-            <code>
-                {{ sass | strip }}
-            </code>
-        </pre>
-    {% endfor %}
+    {%- for sass in code.sass -%}
+      <pre><code class="language-sass">{{ sass | strip }}</code></pre>
+    {%- endfor -%}
   </div>
   <div
     id="example-{{ example_id | strip }}-css"
@@ -84,10 +76,6 @@
     role="tabpanel"
     aria-hidden="true"
     style="">
-    <pre class="highlight css">
-            <code>
-                {{ code.css | strip }}
-            </code>
-        </pre>
+    <pre><code class="language-css">{{ code.css | strip }}</code></pre>
   </div>
 </div>
