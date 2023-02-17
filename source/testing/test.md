@@ -1,5 +1,0 @@
----
-layout: base
----
-
-testing
