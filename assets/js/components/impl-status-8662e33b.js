@@ -1,1 +1,1 @@
-$(function(){$(".impl-status").each(function(){var e=($(this),$(this).find("a"));if(null!=e){var t=$(this).next();t.hasClass("sl-c-callout")&&(t.hide(),e.click(function(){t.toggle(),e.toggleClass("expanded")}))}})});
+$(function(){$(".impl-status").each(function(){var t=($(this),$(this).find("a"));if(null!=t){var e=$(this).next();e.hasClass("sl-c-callout")&&(e.hide(),t.click(function(){e.toggle(),t.toggleClass("expanded")}))}})});
