@@ -172,7 +172,6 @@
       cursor: pointer;
       width: var(--gutter-plus);
       text-align: center;
-      transform-origin: var(--gutter-half) calc(var(--gutter-minus) - 1px);
 
       &.expanded {
         transform: rotate(90deg);
