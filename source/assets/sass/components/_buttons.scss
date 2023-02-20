@@ -13,7 +13,7 @@
     radius: functions.sl-px-to-rem(4px);
   }
   padding: var(--gutter-minus) var(--gutter);
-  background: var(--color-button-bg, var(--sl-color-iron));
+  background: var(--color-button-bg, var(--sl-color--iron));
   box-shadow: 0 2px 1px var(--shadow);
   color: var(--color-button-text, var(--highlight));
   cursor: pointer;
