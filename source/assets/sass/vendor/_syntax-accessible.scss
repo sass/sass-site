@@ -7,7 +7,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  background-color: var(--code-background);
+  background-color: #f8f8f8;
   hyphens: none;
 	word-spacing: normal;
 	word-break: normal;
@@ -22,13 +22,13 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: var(--code-comment);
+	color: #656556;
 	font-style: italic;
 }
 
 [class*="language-css"] {
    & .token.comment {
-    --code-comment: var(--code-alt);
+   color: #006666;
   }
  }
 
@@ -38,7 +38,7 @@ pre[class*="language-"] {
 
 .token.string,
 .token.attr-value {
-	color: var(--code-string);
+	color: #df1144;
 }
 
 .token.punctuation,
@@ -94,6 +94,6 @@ pre[class*="language-"] {
 
 .token.variable,
 .token[class*="placeholder"] {
-  color: var(--code-alt);
+  color: #006666;
   font-weight: normal;
 }

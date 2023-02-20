@@ -1,7 +1,5 @@
-// Code Syntax Highlighting
-// -------------
+@use 'sass:color';
+@use 'brand';
 
-$code-alt: #066;
-$code-background: #f8f8f8;
-$code-comment: #656556;
-$code-string: #d14;
+$highlight: color.adjust(brand.$sl-color--hopbush, $lightness: -10%);
+$action: color.adjust(brand.$sl-color--bouquet, $lightness: -10%);
