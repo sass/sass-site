@@ -10,12 +10,14 @@
 
   &--warning {
     background: color.adjust(theme.$sl-color--hopbush, $lightness: 38%);
-    border: var(--border-small) solid color.adjust(theme.$sl-color--hopbush, $lightness: 27%);
+    border: var(--border-small) solid
+      color.adjust(theme.$sl-color--hopbush, $lightness: 27%);
   }
 
   &--fun-fact {
     background: color.adjust(theme.$sl-color--patina, $lightness: 47%);
-    border: var(--border-small) solid color.adjust(theme.$sl-color--patina, $lightness: 32%);
+    border: var(--border-small) solid
+      color.adjust(theme.$sl-color--patina, $lightness: 32%);
   }
 
   &--function {
