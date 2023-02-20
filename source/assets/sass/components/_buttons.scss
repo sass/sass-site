@@ -1,6 +1,7 @@
 @use 'sass:color';
 @use '../functions';
 @use '../visual-design/theme';
+@use '../config/color/brand';
 
 .sl-c-button {
   display: inline-flex;
@@ -13,7 +14,7 @@
   }
   padding: var(--gutter-minus) var(--gutter);
   background: var(--color-button-bg, var(--sl-color-iron));
-  box-shadow: 0 2px 1px rgba(theme.$sl-color--midnight-blue, 0.125);
+  box-shadow: 0 2px 1px var(--shadow);
   color: var(--color-button-text, var(--highlight));
   cursor: pointer;
 
@@ -23,7 +24,7 @@
   }
 
   &:active {
-    --color-button-text: color.adjust(theme.$sl-color--venus, $lightness: -10%);
+    --color-button-text: color.adjust(brand.$sl-color--venus, $lightness: -10%);
   }
 
   &--primary {
@@ -42,7 +43,7 @@
     }
 
     &:active {
-      background-color: color.adjust(theme.$sl-color--venus, $lightness: -10%);
+      background-color: color.adjust(brand.$sl-color--venus, $lightness: -10%);
     }
   }
 }
