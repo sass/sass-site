@@ -72,7 +72,7 @@ a {
   &:hover,
   &:focus {
     border-bottom-color: rgba($sl-color--iron, 0.75);
-    background: rgba($sl-color--iron, 0.25);
+    background: var(--color-action-bg, rgba($sl-color--iron, 0.25));
   }
 
   &:active {

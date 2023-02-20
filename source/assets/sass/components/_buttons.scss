@@ -24,7 +24,7 @@
   }
 
   &:active {
-    --color-button-text: color.adjust(brand.$sl-color--venus, $lightness: -10%);
+    --color-button-text: var(--active);
   }
 
   &--primary {
@@ -39,11 +39,11 @@
 
     &:hover,
     &:focus {
-      background-color: var(--action);
+      --color-action-bg: var(--action);
     }
 
     &:active {
-      background-color: color.adjust(brand.$sl-color--venus, $lightness: -10%);
+      --color-button-bg: var(--active);
     }
   }
 }
