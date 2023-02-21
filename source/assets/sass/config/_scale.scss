@@ -1,7 +1,5 @@
 // Spacing Sizes
 // -------------
-/// @group scale
-
 $gutter: 1rem; // ~16px
 $gutter-quarter: calc(var(--gutter) * 0.25); // ~4px
 $gutter-half: calc(var(--gutter) * 0.5); // ~8px
@@ -14,7 +12,6 @@ $gutter-triple: calc(var(--gutter) * 3); // ~48px
 
 // Negative Spacing Sizes
 // ----------------------
-/// @group scale
 $gutter-negative: calc(var(--gutter) * -1);
 $gutter-quarter-negative: calc(var(--gutter-quarter) * -1);
 $gutter-half-negative: calc(var(--gutter-half) * -1);
@@ -27,17 +24,15 @@ $gutter-triple-negative: calc(var(--gutter-triple) * -1);
 
 // UI Sizes
 // --------
-/// @group scale
-$table-cell-padding: var(--gutter-sesqui);
-$border-small: 1px;
-$border-radius-small: 0.125rem;
 $border-radius-large: 0.25rem;
-$column-small: 15rem;
+$border-radius-small: 0.125rem;
+$border-small: 1px;
 $column-medium: 30rem;
+$column-small: 15rem;
+$table-cell-padding: var(--gutter-sesqui);
 
 // Layout Sizes
-// --------
-/// @group scale
+// ------------
 $sl-breakpoint--small: 30em; // 480px
 $sl-breakpoint--medium: 40em; // 640px
 $sl-breakpoint--large: 60em; // 960px
@@ -45,6 +40,7 @@ $sl-breakpoint--x-large: 80em; // 1280px
 
 // Font Sizes Generic
 // ------------------
+$sl-font-size--smaller: 90%;
 $sl-font-size--x-small: 0.875rem; // 14px
 $sl-font-size--small: 1rem; // 16px
 $sl-font-size--medium: 1.125rem; // 18px
@@ -57,4 +53,3 @@ $sl-font-size--xxxx-large: 5rem; // 80px
 // Font Sizes Custom
 // -----------------
 $status-text-size: 0.8em;
-$sl-font-size--smaller: 90%;
