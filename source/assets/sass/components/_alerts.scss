@@ -12,8 +12,8 @@
   font-size: var(--sl-font-size--small);
 
   padding: {
-    top: var(--alert-padding-block, var(--gutter-minus));
-    bottom: var(--alert-padding-block, var(--gutter-minus));
+    top: var(--alert-padding-block, var(--sl-gutter--minus));
+    bottom: var(--alert-padding-block, var(--sl-gutter--minus));
   }
 
   text-align: var(--alert-align, center);
@@ -60,7 +60,7 @@
 .sl-c-alert--special {
   --alert-align: left;
   --alert-bg: black;
-  --alert-padding-block: var(--gutter-triple);
+  --alert-padding-block: var(--sl-gutter--triple);
 }
 
 .sl-c-alert-title {

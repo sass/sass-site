@@ -57,8 +57,8 @@
 
   .ui-tabs-nav {
     font-size: var(--sl-font-size--small);
-    margin-top: var(--gutter-negative);
-    margin-left: var(--gutter-negative);
+    margin-top: var(--sl-gutter--negative);
+    margin-left: var(--sl-gutter--negative);
 
     a {
       border: 0;
@@ -82,7 +82,7 @@
       &.css-tab {
         &,
         &.ui-tabs-active {
-          margin-left: var(--gutter-double);
+          margin-left: var(--sl-gutter--double);
         }
 
         a::before {
@@ -92,13 +92,13 @@
           font-weight: typography.$sl-font-weight--bold;
           left: -1.2em;
           position: absolute;
-          top: var(--gutter-minus);
+          top: var(--sl-gutter--minus);
         }
       }
     }
 
     .ui-tabs-anchor {
-      padding: var(--gutter-minus) var(--gutter);
+      padding: var(--sl-gutter--minus) var(--sl-gutter);
     }
   }
 

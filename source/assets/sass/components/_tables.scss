@@ -1,7 +1,7 @@
 @use '../breakpoints';
 
 .sl-c-table {
-  margin: var(--gutter-sesqui) 0;
+  margin: var(--sl-gutter--sesqui) 0;
   border: 0;
   width: 100%;
   max-width: 100%;
@@ -9,7 +9,7 @@
   td,
   th {
     border: 0;
-    padding: var(--gutter-minus) var(--table-cell-padding);
+    padding: var(--sl-gutter--minus) var(--sl-table-cell-padding);
     vertical-align: top;
   }
 
@@ -20,7 +20,7 @@
 
   @include breakpoints.sl-breakpoint--medium-max {
     &-responsive {
-      margin-bottom: var(--gutter-sesqui);
+      margin-bottom: var(--sl-gutter--sesqui);
       width: 100%;
       overflow: {
         x: auto;

@@ -16,22 +16,22 @@
     @include breakpoints.sl-breakpoint--medium {
       // add margin-bottom space
       // to the twitter follow button
-      margin-bottom: var(--gutter);
+      margin-bottom: var(--sl-gutter);
     }
 
     @include breakpoints.sl-breakpoint--large {
       ul {
         display: flex;
         margin: {
-          right: var(--gutter-half-negative);
-          left: var(--gutter-half-negative);
+          right: var(--sl-gutter--half-negative);
+          left: var(--sl-gutter--half-negative);
         }
       }
 
       li {
         padding: {
-          right: var(--gutter-half);
-          left: var(--gutter-half);
+          right: var(--sl-gutter--half);
+          left: var(--sl-gutter--half);
         }
       }
     }
@@ -41,7 +41,7 @@
     position: relative;
 
     li {
-      margin: var(--gutter-half) 0;
+      margin: var(--sl-gutter--half) 0;
       line-height: 1.25;
     }
 
@@ -49,22 +49,22 @@
       user-select: none;
 
       ul ul a {
-        padding-left: var(--gutter);
+        padding-left: var(--sl-gutter);
       }
 
       ul ul ul a {
-        padding-left: var(--gutter-double);
+        padding-left: var(--sl-gutter--double);
       }
 
       ul ul ul ul a {
-        padding-left: var(--gutter-triple);
+        padding-left: var(--sl-gutter--triple);
       }
 
       a {
         border: none;
         cursor: pointer;
         display: block;
-        margin: var(--gutter-half-negative) 0;
+        margin: var(--sl-gutter--half-negative) 0;
         padding: 0.3rem;
         width: 100%;
 
@@ -90,7 +90,7 @@
             text-align: center;
             margin-top: 5px;
             transition: transform 0.1s;
-            width: var(--gutter-plus);
+            width: var(--sl-gutter--plus);
           }
 
           &.open::after {
@@ -120,8 +120,8 @@
 
 .sl-c-description-list--horizontal {
   margin: {
-    right: var(--gutter-negative);
-    left: var(--gutter-negative);
+    right: var(--sl-gutter--negative);
+    left: var(--sl-gutter--negative);
   }
 
   &,
@@ -130,8 +130,8 @@
   }
 
   > div {
-    border-left: var(--border-small) solid theme.$sl-color--iron;
-    padding: 0 var(--gutter);
+    border-left: var(--sl-border--small) solid theme.$sl-color--iron;
+    padding: 0 var(--sl-gutter);
 
     &:first-child {
       border: 0;
@@ -150,7 +150,7 @@
 
   dt,
   dd {
-    padding-left: var(--gutter);
+    padding-left: var(--sl-gutter);
 
     &:first-child {
       padding-left: 0;
@@ -158,8 +158,8 @@
   }
 
   &.impl-status {
-    font-size: var(--status-text-size);
-    margin-top: var(--gutter-negative);
+    font-size: var(--sl-status-text-size);
+    margin-top: var(--sl-gutter--negative);
 
     dt {
       word-break: normal;
@@ -170,7 +170,7 @@
       border-bottom: none;
       background: none;
       cursor: pointer;
-      width: var(--gutter-plus);
+      width: var(--sl-gutter--plus);
       text-align: center;
 
       &.expanded {

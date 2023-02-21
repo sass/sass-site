@@ -23,8 +23,8 @@
         flex: 1 0 auto;
         flex-direction: row;
         margin: {
-          right: var(--gutter-double-negative);
-          left: var(--gutter-double-negative);
+          right: var(--sl-gutter--double-negative);
+          left: var(--sl-gutter--double-negative);
         }
       }
 
@@ -32,8 +32,8 @@
       &__navigation,
       &__complementary {
         padding: {
-          right: var(--gutter-double);
-          left: var(--gutter-double);
+          right: var(--sl-gutter--double);
+          left: var(--sl-gutter--double);
         }
       }
 
@@ -42,16 +42,16 @@
       }
 
       &__navigation {
-        flex: 0 0 var(--column-small);
+        flex: 0 0 var(--sl-column--small);
         order: -1;
       }
 
       &__complementary {
         order: 1;
-        flex: 0 0 var(--column-medium);
+        flex: 0 0 var(--sl-column--medium);
 
         &--contents {
-          flex: 0 0 var(--column-small);
+          flex: 0 0 var(--sl-column--small);
           order: -1;
         }
       }

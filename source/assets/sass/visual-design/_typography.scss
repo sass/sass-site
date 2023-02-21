@@ -81,7 +81,7 @@ ol,
 dl,
 figure,
 details {
-  margin: var(--gutter) 0;
+  margin: var(--sl-gutter) 0;
   padding: 0;
 }
 
@@ -90,11 +90,11 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: var(--gutter-double-sesqui);
+  margin-top: var(--sl-gutter--double-sesqui);
 
   aside &,
   nav & {
-    margin-top: var(--gutter);
+    margin-top: var(--sl-gutter);
   }
 }
 
@@ -202,7 +202,7 @@ code {
 
 pre {
   font-size: var(--sl-font-size--x-small);
-  padding: var(--gutter-minus) var(--gutter);
+  padding: var(--sl-gutter--minus) var(--sl-gutter);
   overflow: auto;
   white-space: pre-wrap;
 
@@ -225,8 +225,8 @@ img {
 
 hr {
   margin: {
-    top: var(--gutter-triple);
-    bottom: var(--gutter-triple);
+    top: var(--sl-gutter--triple);
+    bottom: var(--sl-gutter--triple);
   }
 }
 
