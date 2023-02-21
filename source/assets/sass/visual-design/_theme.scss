@@ -83,7 +83,7 @@ a {
 code,
 pre {
   border-radius: functions.sl-px-to-em(2px);
-  color: color.adjust($sl-color--pale-sky, $lightness: -25%);
+  color: var(--color-code-text);
 
   a & {
     color: inherit;
