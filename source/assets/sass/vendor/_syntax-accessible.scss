@@ -2,16 +2,16 @@
 
 /**
  * Based on the GHColors theme by Avi Aryan (http://aviaryan.in)
- * Inspired by Github syntax coloring
+ * Inspired by GitHub syntax coloring
  */
 
 code[class*="language-"],
 pre[class*="language-"] {
   background-color: #f8f8f8;
   hyphens: none;
-	word-spacing: normal;
-	word-break: normal;
-	tab-size: 4;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 4;
   text-align: left;
 }
 
@@ -22,8 +22,8 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: #656556;
-	font-style: italic;
+  color: #656556;
+  font-style: italic;
 }
 
 [class*="language-css"] {
@@ -33,17 +33,17 @@ pre[class*="language-"] {
  }
 
 .token.namespace {
-	opacity: .7;
+  opacity: .7;
 }
 
 .token.string,
 .token.attr-value {
-	color: #df1144;
+  color: #df1144;
 }
 
 .token.punctuation,
 .token.operator {
-	color: #393A34; /* no highlight */
+  color: #393A34; /* no highlight */
   font-weight: bold;
 }
 
@@ -56,7 +56,7 @@ pre[class*="language-"] {
 .token.property,
 .token.regex,
 .token.inserted {
-	color: #990000;
+  color: #990000;
   font-weight: bold;
 }
 
@@ -65,31 +65,31 @@ pre[class*="language-"] {
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
-	color: #000000;
+  color: #000000;
   font-weight: bold;
 }
 
 .token.function,
 .token.deleted,
 .language-autohotkey .token.tag {
-	color: #9a050f;
+  color: #9a050f;
 }
 
 .token.tag,
 .token.selector,
 .language-autohotkey .token.keyword {
-	color: #445588;
+  color: #445588;
   font-weight: bold;
 }
 
 .token.important,
 .token.function,
 .token.bold {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .token.italic {
-	font-style: italic;
+  font-style: italic;
 }
 
 .token.variable,
