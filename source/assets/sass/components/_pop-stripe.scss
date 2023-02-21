@@ -11,13 +11,11 @@ $sl-colors: theme.$sl-color--hopbush theme.$sl-color--bouquet
   theme.$sl-color--midnight-blue;
 
 @function stripes($position, $sl-colors) {
-  /* stylelint-disable annotation-no-unknown */
   $sl-colors: if(
     meta.type-of($sl-colors) != 'list',
     compact($sl-colors),
     $sl-colors
   );
-  /* stylelint-enable annotation-no-unknown */
   $gradient: ();
   $width: math.div(100%, list.length($sl-colors));
 
