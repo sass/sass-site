@@ -174,9 +174,10 @@ footer {
 
 .caps {
   font-size: 0.875em;
-  text-transform: uppercase;
+  font-size: var(--sl-font-size--smaller);
   letter-spacing: 0.0625em;
   line-height: 0;
+  text-transform: uppercase;
 }
 
 code,
@@ -186,7 +187,7 @@ pre {
 
 code {
   // Scale the code font size down, because the font itself is much larger.
-  font-size: 0.88889em;
+  font-size: var(--sl-font-size--smaller);
   line-height: 1;
 
   nav & {
