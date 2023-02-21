@@ -2,7 +2,7 @@
 
 /**
  * Based on the GHColors theme by Avi Aryan (http://aviaryan.in)
- * Inspired by Github syntax coloring
+ * Inspired by GitHub syntax coloring
  */
 
 code[class*="language-"],
@@ -37,7 +37,7 @@ pre[class*="language-"] {
  }
 
 .token.namespace {
-	opacity: .7;
+  opacity: .7;
 }
 
 .token.string,
@@ -89,11 +89,11 @@ pre[class*="language-"] {
 .token.important,
 .token.function,
 .token.bold {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .token.italic {
-	font-style: italic;
+  font-style: italic;
 }
 
 .token.variable,
