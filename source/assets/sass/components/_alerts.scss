@@ -4,7 +4,7 @@
 @use '../visual-design/typography';
 
 .sl-c-alert {
-  background: var(--alert-bg, var(--highlight));
+  background: var(--alert-bg, var(--sl-color--highlight));
   color: var(--sl-color--white);
   font-size: typography.$sl-font-size--small;
 
