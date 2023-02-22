@@ -21,6 +21,7 @@
   &:hover,
   &:focus {
     --color-button-text: var(--action);
+    --color-button-bg: var(--color-link--action);
   }
 
   &:active {
@@ -39,7 +40,7 @@
 
     &:hover,
     &:focus {
-      --color-action-bg: var(--action);
+      --color-button-bg: var(--action);
     }
 
     &:active {

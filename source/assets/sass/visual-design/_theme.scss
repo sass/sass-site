@@ -63,6 +63,7 @@ body {
 
 a {
   border-bottom: 1px solid rgba($sl-color--iron, 0.5);
+  background: var(--color-link-bg, transparent);
   color: $sl-color--midnight-blue;
 
   .c1 & {
@@ -71,8 +72,9 @@ a {
 
   &:hover,
   &:focus {
+    --color-link-bg: var(--color-link--action);
+
     border-bottom-color: rgba($sl-color--iron, 0.75);
-    background: var(--color-action-bg, rgba($sl-color--iron, 0.25));
   }
 
   &:active {
@@ -83,7 +85,7 @@ a {
 code,
 pre {
   border-radius: functions.sl-px-to-em(2px);
-  color: var(--color-code-text);
+  color: var(--color-code--text);
 
   a & {
     color: inherit;

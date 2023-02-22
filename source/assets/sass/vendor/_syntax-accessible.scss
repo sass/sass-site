@@ -7,7 +7,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  background-color: var(--color-code-bg);
+  background-color: var(--color-code--bg);
   hyphens: none;
   word-break: normal;
 	word-spacing: normal;
@@ -16,7 +16,7 @@ pre[class*="language-"] {
 }
 
 .token {
-  color: var(--color-code-text);
+  color: var(--color-code--text);
 }
 
 .token table td { padding: functions.sl-px-to-rem(5px); }
@@ -26,13 +26,13 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	--color-code-text: #656556;
+	--color-code--text: #656556;
 	font-style: italic;
 }
 
 [class*="language-css"] {
    & .token.comment {
-   --color-code-text: #006666;
+   --color-code--text: #006666;
   }
  }
 
@@ -42,12 +42,12 @@ pre[class*="language-"] {
 
 .token.string,
 .token.attr-value {
-	--color-code-text: #df1144;
+	--color-code--text: #df1144;
 }
 
 .token.punctuation,
 .token.operator {
-	--color-code-text: #393A34; /* no highlight */
+	--color-code--text: #393A34; /* no highlight */
   font-weight: bold;
 }
 
@@ -60,7 +60,7 @@ pre[class*="language-"] {
 .token.property,
 .token.regex,
 .token.inserted {
-	--color-code-text: #990000;
+	--color-code--text: #990000;
   font-weight: bold;
 }
 
@@ -69,20 +69,20 @@ pre[class*="language-"] {
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
-	--color-code-text: #000000;
+	--color-code--text: #000000;
   font-weight: bold;
 }
 
 .token.function,
 .token.deleted,
 .language-autohotkey .token.tag {
-	--color-code-text: #9a050f;
+	--color-code--text: #9a050f;
 }
 
 .token.tag,
 .token.selector,
 .language-autohotkey .token.keyword {
-	--color-code-text: #445588;
+	--color-code--text: #445588;
   font-weight: bold;
 }
 
@@ -92,12 +92,19 @@ pre[class*="language-"] {
   font-weight: bold;
 }
 
+[class*="language-shell"]  {
+  & .token.function {
+  --color-code--text: unset;
+  font-weight: normal;
+  }
+}
+
 .token.italic {
   font-style: italic;
 }
 
 .token.variable,
 .token[class*="placeholder"] {
-  --color-code-text: #006666;
+  --color-code--text: #006666;
   font-weight: normal;
 }
