@@ -43,8 +43,7 @@
 
     &:hover,
     &:focus {
-      background: rgba(black, 0.0625);
-
+      --color-link-bg: rgba(0, 0, 0, 6.25%);
       --opacity-border: 0.75;
     }
 
