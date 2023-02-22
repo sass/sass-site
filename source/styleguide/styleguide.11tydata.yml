@@ -1,0 +1,14 @@
+layout: has_navigation
+navigation: |
+  <nav class="sl-c-list-navigation-wrapper">
+
+  ### [Style Guide](/styleguide)
+
+  - [Brand](/styleguide/brand)
+  - [Color](/styleguide/color)
+  - [Typography](/styleguide/typography)
+  - [Layout](/styleguide/layout)
+  - [Components](/styleguide/components)
+  - [Code](/styleguide/code)
+
+  </nav>

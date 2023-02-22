@@ -1,0 +1,48 @@
+---
+title: Brand Guidelines
+---
+
+## Brand Usage
+
+- Do not stretch or distort the logo. Use the "seal" version of the logo when
+  needing to use a square image (like avatars).
+- Do not alter the color of the logo. The official logo color is
+  `$sl-color--hopbush` (`#c69`).
+- If you have to put the logo on a busy/colorful background, then you can use
+  one of the reversed (on white) logos, provided here.
+- When using the Sass brand and identity in your presentations, articles,
+  videos, or any other media, please be respectful. The Sass brand is feminine
+  and we love that. But our brand must never be used alongside sexist imagery.
+  In fact, we [explicitly changed our
+  logo](https://github.com/sass/sass/issues/349) for that very reason. Read
+  our [community guidelines](/community-guidelines) for more information. If
+  you have questions about the images you want to use, please feel free to
+  contact us at: [community@sass-lang.com](mailto:community@sass-lang.com?subject=[Sass Community] Hello 'Email the Sass community leaders').
+
+<a href="/assets/img/styleguide/sass-logo.zip" class="sl-c-button sl-c-button--primary">Download vector logos</a>
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+
+### Standard
+
+<ul class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--gutters-large sl-l-large-grid--center">
+  <li class="sl-l-grid__column"><img height="80" alt="Sass" src="/assets/img/styleguide/color.png"></li>
+  <li class="sl-l-grid__column"><img height="80" alt="Sass" src="/assets/img/styleguide/seal-color.png"></li>
+</ul>
+
+### White
+
+<ul class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--gutters-large sl-l-large-grid--center sl-background--midnight-blue">
+  <li class="sl-l-grid__column"><img height="80" alt="Sass" src="/assets/img/styleguide/white.png"></li>
+  <li class="sl-l-grid__column"><img height="80" alt="Sass" src="/assets/img/styleguide/seal-color-reversed.png"></li>
+  <li class="sl-l-grid__column"><img height="80" alt="Sass" src="/assets/img/styleguide/seal-black-reversed.png"></li>
+</ul>
+
+### Black
+
+<ul class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--gutters-large sl-l-large-grid--center">
+  <li class="sl-l-grid__column"><img height="80" alt="Sass" src="/assets/img/styleguide/black.png"></li>
+  <li class="sl-l-grid__column"><img height="80" alt="Sass" src="/assets/img/styleguide/seal-black.png"></li>
+</ul>

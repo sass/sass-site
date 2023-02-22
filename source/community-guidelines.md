@@ -31,9 +31,7 @@ complementary_content: |
   and accessible space for all attendees. This should include the publication
   of a Code of Conduct that includes clear anti-harassment procedures. Please
   consult with us if you feel the need to significantly deviate from these
-  guidelines by sending an email to:
-
-  [sass.organizers@gmail.com](mailto:sass.organizers@gmail.com)
+  guidelines by sending an email to: [sass.organizers@gmail.com](mailto:sass.organizers@gmail.com).
 
   We understand and acknowledge that the "Sass Community" is a loosely defined
   group of people who identify as Sass enthusiasts. We have no power to
