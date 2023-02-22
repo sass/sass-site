@@ -17,10 +17,10 @@ most of the applications for free but a few of them are paid apps
 <small>(and totally worth it)</small>.
 
 - [CodeKit](https://codekitapp.com/) (Paid) Mac
-- [Hammer](http://hammerformac.com/) (Paid) Mac
+- [Hammer](https://hammerformac.com/) (Paid) Mac
 - [LiveReload](http://livereload.com/) (Paid, Open Source) Mac Windows
 - [Prepros](https://prepros.io/) (Paid) Mac Windows Linux
-- [Scout-App](http://scout-app.io/) (Free, Open Source) Windows Linux Mac
+- [Scout-App](https://scout-app.io/) (Free, Open Source) Windows Linux Mac
 
 ## Libraries
 

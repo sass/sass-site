@@ -31,8 +31,8 @@ eleventyComputed:
     - header: Frameworks
       body: >
         There are an endless number of frameworks built with Sass.
-        [Bootstrap](https://getbootstrap.com/), [Bourbon](http://bourbon.io/),
-        and [Susy](http://susy.oddbird.net/) just to name a few.
+        [Bootstrap](https://getbootstrap.com/), [Bourbon](https://www.bourbon.io/),
+        and [Susy](https://www.oddbird.net/susy/) just to name a few.
 ---
 
 <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters-large">

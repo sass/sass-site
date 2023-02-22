@@ -20,7 +20,7 @@ complementary_content: |
   project, and modify it as you wish; just please allow others to use your
   modifications and give credit to Sass, [Ubuntu][] and [Drupal][].
 
-  [ubuntu]: http://www.ubuntu.com/about/about-ubuntu/conduct
+  [ubuntu]: https://ubuntu.com/community/governance/code-of-conduct
   [drupal]: https://www.drupal.org/dcoc
   [cc]:     https://creativecommons.org/licenses/by-sa/3.0/us/
 
