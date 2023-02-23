@@ -12,18 +12,15 @@ h6,
     float: left;
     vertical-align: middle;
     margin-top: -3px;
-    width: var(--gutter-sesqui);
+    width: var(--sl-gutter--sesqui);
     background: none;
     border: 0;
 
     &::after {
-      visibility: hidden;
-      font: {
-        size: 1rem;
-        weight: normal;
-      }
-
       content: '\1F517';
+      font-size: var(--sl-font-size--small);
+      font-weight: normal;
+      visibility: hidden;
     }
   }
 
@@ -39,7 +36,7 @@ h4,
 h5,
 h6 {
   a.anchor {
-    margin-left: var(--gutter-sesqui-negative);
+    margin-left: var(--sl-gutter--sesqui-negative);
   }
 
   &:target {
@@ -60,7 +57,7 @@ h6 {
 
 .signature {
   a.anchor {
-    margin-left: -2.5rem;
+    margin-left: var(--sl-gutter--double-sesqui-negative);
   }
 
   .sl-c-callout--function:target & {

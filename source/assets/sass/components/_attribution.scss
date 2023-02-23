@@ -2,11 +2,11 @@
 
 .sl-c-attribution {
   font-weight: typography.$sl-font-weight--light;
-  font-size: typography.$sl-font-size--small;
+  font-size: var(--sl-font-size--small);
 
   &:first-child {
     text-align: center;
-    margin-top: -3em;
-    margin-bottom: 2em;
+    margin-top: var(--sl-gutter--triple-negative);
+    margin-bottom: var(--sl-gutter--double);
   }
 }
