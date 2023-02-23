@@ -123,41 +123,41 @@
 
       &--gutters {
         margin: {
-          right: var(--gutter-negative);
-          left: var(--gutter-negative);
+          right: var(--sl-gutter--negative);
+          left: var(--sl-gutter--negative);
         }
 
         > .sl-l-grid__column {
           padding: {
-            right: var(--gutter);
-            left: var(--gutter);
+            right: var(--sl-gutter);
+            left: var(--sl-gutter);
           }
         }
 
         &-large {
           margin: {
-            right: var(--gutter-double-negative);
-            left: var(--gutter-double-negative);
+            right: var(--sl-gutter--double-negative);
+            left: var(--sl-gutter--double-negative);
           }
 
           > .sl-l-grid__column {
             padding: {
-              right: var(--gutter-double);
-              left: var(--gutter-double);
+              right: var(--sl-gutter--double);
+              left: var(--sl-gutter--double);
             }
           }
         }
 
         &-small {
           margin: {
-            right: var(--gutter-half-negative);
-            left: var(--gutter-half-negative);
+            right: var(--sl-gutter--half-negative);
+            left: var(--sl-gutter--half-negative);
           }
 
           > .sl-l-grid__column {
             padding: {
-              right: var(--gutter-half);
-              left: var(--gutter-half);
+              right: var(--sl-gutter--half);
+              left: var(--sl-gutter--half);
             }
           }
         }
