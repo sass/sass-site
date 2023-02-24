@@ -10,8 +10,8 @@ pre[class*="language-"] {
   background-color: var(--sl-color-code--bg);
   hyphens: none;
   word-break: normal;
-	word-spacing: normal;
-	tab-size: 4;
+  word-spacing: normal;
+  tab-size: 4;
   text-align: left;
 }
 
@@ -19,35 +19,41 @@ pre[class*="language-"] {
   color: var(--sl-color-code--text);
 }
 
-.token table td { padding: functions.sl-px-to-rem(5px); }
-.token table pre { margin: 0; }
+.token table td {
+  padding: functions.sl-px-to-rem(5px);
+}
+
+.token table pre {
+  margin: 0;
+}
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	--sl-color-code--text: #656556;
-	font-style: italic;
+  --sl-color-code--text: #656556;
+  font-style: italic;
 }
 
 [class*="language-css"] {
-   & .token.comment {
-   --sl-color-code--text: #006666;
+  & .token.comment {
+    --sl-color-code--text: #006666;
   }
- }
+}
 
 .token.namespace {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .token.string,
 .token.attr-value {
-	--sl-color-code--text: #df1144;
+  --sl-color-code--text: #df1144;
 }
 
 .token.punctuation,
 .token.operator {
-	--sl-color-code--text: #393A34; /* no highlight */
+  --sl-color-code--text: #393A34;
+  /* no highlight */
   font-weight: bold;
 }
 
@@ -60,7 +66,7 @@ pre[class*="language-"] {
 .token.property,
 .token.regex,
 .token.inserted {
-	--sl-color-code--text: #990000;
+  --sl-color-code--text: #990000;
   font-weight: bold;
 }
 
@@ -69,20 +75,20 @@ pre[class*="language-"] {
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
-	--sl-color-code--text: #000000;
+  --sl-color-code--text: #000000;
   font-weight: bold;
 }
 
 .token.function,
 .token.deleted,
 .language-autohotkey .token.tag {
-	--sl-color-code--text: #9a050f;
+  --sl-color-code--text: #9a050f;
 }
 
 .token.tag,
 .token.selector,
 .language-autohotkey .token.keyword {
-	--sl-color-code--text: #445588;
+  --sl-color-code--text: #445588;
   font-weight: bold;
 }
 
@@ -92,10 +98,10 @@ pre[class*="language-"] {
   font-weight: bold;
 }
 
-[class*="language-shell"]  {
+[class*="language-shell"] {
   & .token.function {
-  --sl-color-code--text: unset;
-  font-weight: normal;
+    --sl-color-code--text: unset;
+    font-weight: normal;
   }
 }
 
