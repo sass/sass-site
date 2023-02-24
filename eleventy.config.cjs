@@ -3,6 +3,7 @@
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const yaml = require('js-yaml');
+const { LoremIpsum } = require('lorem-ipsum');
 const markdown = require('markdown-it');
 const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
@@ -28,6 +29,23 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addDataExtension('yml, yaml', (contents) =>
     yaml.load(contents),
   );
+
+  // Shortcodes...
+  const lorem = new LoremIpsum();
+  eleventyConfig.addLiquidShortcode('lorem', (type, number = 1) => {
+    switch (type) {
+      case 'sentence':
+      case 'sentences':
+        return lorem.generateSentences(number);
+      case 'paragraph':
+      case 'paragraphs':
+        return lorem.generateParagraphs(number);
+      case 'word':
+      case 'words':
+        return lorem.generateWords(number);
+    }
+    return '';
+  });
 
   // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>
