@@ -7,13 +7,13 @@ introduction: >
 
 - Please try to keep lines at a maximum of 80 characters.
 - Favor clarity over brevity in naming anything.
-- Pages end with `.html.haml`, `.html.erb`, `.html.md`, etc.
-- Partials and layouts end with `.haml`, `.md`, `.erb`, etc.
+- Pages, partials, and layouts end with `.liquid` or `.md`.
 
 ## Markup
 
-For the most part, we use [Haml][] and [Markdown][] for writing markup. If you
-need to use regular HTML anywhere, write HTML5, but favor a strict XHTML style:
+For the most part, we use [LiquidJS][] and [Markdown][] for writing markup. If
+you need to use regular HTML anywhere, write HTML5, but favor a strict XHTML
+style:
 
 - Use well-formed markup; elements are nested properly and do not overlap.
 - Write elements and attributes in lowercase.
@@ -53,7 +53,7 @@ otherwise.
   general-to-specific approach. See [this article][gts] for more details.
 - Write comma-delimited selectors on separate lines.
 
-[haml]: https://haml.info/
+[liquidjs]: https://liquidjs.com/
 [markdown]: https://daringfireball.net/projects/markdown/
 [bf]: https://bradfrost.com/blog/post/css-architecture-for-design-systems/
 [hr]: https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/
