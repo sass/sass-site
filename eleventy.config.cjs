@@ -1,6 +1,7 @@
 'use strict';
 
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const yaml = require('js-yaml');
 const { LoremIpsum } = require('lorem-ipsum');
@@ -82,6 +83,7 @@ module.exports = (eleventyConfig) => {
   );
 
   eleventyConfig.addPlugin(EleventyRenderPlugin);
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   // settings
   return {

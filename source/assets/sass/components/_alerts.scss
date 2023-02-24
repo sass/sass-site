@@ -1,14 +1,11 @@
 @use 'sass:color';
 @use '../functions';
-@use '../visual-design/theme';
+@use '../config/color/brand';
 @use '../visual-design/typography';
 
 .sl-c-alert {
-  background: var(
-    --alert-bg,
-    color.adjust(theme.$sl-color--hopbush, $lightness: -10%)
-  );
-  color: theme.$sl-color--white;
+  background: var(--alert-bg, var(--sl-color--highlight));
+  color: var(--sl-color--white);
   font-size: var(--sl-font-size--small);
 
   padding: {
@@ -37,24 +34,27 @@
   }
 
   a {
-    border-bottom-color: rgba(theme.$sl-color--white, 0.5);
-    color: theme.$sl-color--white;
+    border-bottom-color: rgba(
+      brand.$sl-color--white,
+      var(--opacity-border, 0.5)
+    );
+    color: var(--sl-color--white);
     font-weight: typography.$sl-font-weight--bold;
 
     &:hover,
     &:focus {
-      background: rgba(black, 0.0625);
-      border-bottom-color: rgba(theme.$sl-color--white, 0.75);
+      --color-link-bg: rgba(0, 0, 0, 6.25%);
+      --opacity-border: 0.75;
     }
 
     &:active {
-      border-bottom-color: theme.$sl-color--white;
+      --opacity-border: 1;
     }
   }
 }
 
 .sl-c-alert--info {
-  --alert-bg: theme.$sl-color--midnight-blue;
+  --alert-bg: var(--sl-color--midnight-blue);
 }
 
 .sl-c-alert--special {
