@@ -2,19 +2,17 @@
 @use '../functions';
 
 .sl-c-button {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  margin: 0;
-  border: 0 {
-    /* stylelint-disable-next-line property-no-unknown */
-    radius: functions.sl-px-to-rem(4px);
-  }
-  padding: var(--gutter-minus) var(--gutter);
+  border: 0;
+  border-radius: var(--sl-border-radius--large);
   background: var(--color-button-bg, var(--sl-color--iron));
   box-shadow: 0 2px 1px var(--sl-color--shadow);
   color: var(--color-button-text, var(--sl-color--highlight));
   cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0;
+  padding: var(--sl-gutter--minus) var(--sl-gutter);
 
   &:hover,
   &:focus {

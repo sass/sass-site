@@ -7,16 +7,16 @@
     left: auto;
   }
   padding: {
-    right: var(--gutter);
-    left: var(--gutter);
+    right: var(--sl-gutter);
+    left: var(--sl-gutter);
   }
 
   max-width: functions.sl-px-to-rem(1920px);
 
   @include breakpoints.sl-breakpoint--small {
     padding: {
-      right: var(--gutter-double);
-      left: var(--gutter-double);
+      right: var(--sl-gutter--double);
+      left: var(--sl-gutter--double);
     }
   }
 

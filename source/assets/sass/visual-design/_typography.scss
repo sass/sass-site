@@ -1,6 +1,6 @@
+@use '../config';
 @use 'sass:math';
 @use '../breakpoints';
-@use '../functions';
 
 $sl-font-weight--light: 300 !default;
 $sl-font-weight--regular: 400 !default;
@@ -14,30 +14,6 @@ $sl-font-weights: (
 @each $name, $value in $sl-font-weights {
   .sl-font-weight--#{$name} {
     font-weight: $value;
-  }
-}
-
-$sl-font-size--x-small: functions.sl-px-to-rem(14px) !default;
-$sl-font-size--small: functions.sl-px-to-rem(16px) !default;
-$sl-font-size--medium: functions.sl-px-to-rem(18px) !default;
-$sl-font-size--large: functions.sl-px-to-rem(20px) !default;
-$sl-font-size--x-large: functions.sl-px-to-rem(24px) !default;
-$sl-font-size--xx-large: functions.sl-px-to-rem(28px) !default;
-$sl-font-size--xxx-large: functions.sl-px-to-rem(32px) !default;
-$sl-font-size--xxxx-large: functions.sl-px-to-rem(80px) !default;
-$sl-font-sizes: (
-  small: $sl-font-size--small,
-  medium: $sl-font-size--medium,
-  large: $sl-font-size--large,
-  x-large: $sl-font-size--x-large,
-  xx-large: $sl-font-size--xx-large,
-  xxx-large: $sl-font-size--xxx-large,
-  xxxx-large: $sl-font-size--xxxx-large,
-);
-
-@each $name, $value in $sl-font-sizes {
-  .sl-font-size--#{$name} {
-    font-size: $value;
   }
 }
 
@@ -64,7 +40,7 @@ $sl-font-families: (
 body,
 h5,
 h6 {
-  font-size: $sl-font-size--medium;
+  font-size: var(--sl-font-size--medium);
 }
 
 body {
@@ -104,7 +80,7 @@ ol,
 dl,
 figure,
 details {
-  margin: var(--gutter) 0;
+  margin: var(--sl-gutter) 0;
   padding: 0;
 }
 
@@ -113,11 +89,11 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 2.5rem;
+  margin-top: var(--sl-gutter--double-sesqui);
 
   aside &,
   nav & {
-    margin-top: var(--gutter);
+    margin-top: var(--sl-gutter);
   }
 }
 
@@ -141,7 +117,7 @@ h6 {
 h1,
 h2,
 caption {
-  letter-spacing: -#{functions.sl-px-to-em(0.5px)};
+  letter-spacing: -0.03125em;
 }
 
 h1,
@@ -151,16 +127,16 @@ h2 {
 
 h1 {
   margin-top: 0;
-  font-size: $sl-font-size--xx-large;
+  font-size: var(--h1-size, var(--sl-font-size--xx-large));
   line-height: 1;
   text-align: center;
 
   @include breakpoints.sl-breakpoint--medium {
-    font-size: $sl-font-size--xxx-large;
+    --h1-size: var(--sl-font-size--xxx-large);
   }
 
   @include breakpoints.sl-breakpoint--large {
-    font-size: $sl-font-size--xxxx-large;
+    --h1-size: var(--sl-font-size--xxxx-large);
   }
 }
 
@@ -174,32 +150,32 @@ thead th {
 
 h2,
 caption {
-  font-size: $sl-font-size--x-large;
+  font-size: var(--h2-size, var(--sl-font-size--x-large));
 
   @include breakpoints.sl-breakpoint--medium {
-    font-size: $sl-font-size--xx-large;
+    --h2-size: var(--sl-font-size--xx-large);
   }
 
   @include breakpoints.sl-breakpoint--large {
-    font-size: $sl-font-size--xxx-large;
+    --h2-size: var(--sl-font-size--xxx-large);
   }
 }
 
 h3,
 h4 {
-  font-size: $sl-font-size--large;
+  font-size: var(--sl-font-size--large);
 }
 
 nav,
 footer {
-  font-size: $sl-font-size--small;
+  font-size: var(--sl-font-size--small);
 }
 
 .caps {
-  font-size: functions.sl-px-to-em(14px);
-  text-transform: uppercase;
-  letter-spacing: functions.sl-px-to-em(1px);
+  font-size: var(--sl-font-size--smaller);
+  letter-spacing: 0.0625em;
   line-height: 0;
+  text-transform: uppercase;
 }
 
 code,
@@ -209,7 +185,7 @@ pre {
 
 code {
   // Scale the code font size down, because the font itself is much larger.
-  font-size: math.div($sl-font-size--small, $sl-font-size--medium) * 1em;
+  font-size: var(--sl-font-size--smaller);
   line-height: 1;
 
   nav & {
@@ -224,13 +200,13 @@ code {
 }
 
 pre {
-  font-size: $sl-font-size--x-small;
-  padding: var(--gutter-minus) var(--gutter);
+  font-size: var(--sl-font-size--x-small);
+  padding: var(--sl-gutter--minus) var(--sl-gutter);
   overflow: auto;
   white-space: pre-wrap;
 
   code {
-    font-size: 1em;
+    font-size: inherit;
     line-height: inherit;
   }
 }
@@ -248,8 +224,8 @@ img {
 
 hr {
   margin: {
-    top: var(--gutter-triple);
-    bottom: var(--gutter-triple);
+    top: var(--sl-gutter--triple);
+    bottom: var(--sl-gutter--triple);
   }
 }
 
