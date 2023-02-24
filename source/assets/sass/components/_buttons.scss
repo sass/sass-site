@@ -1,49 +1,46 @@
 @use 'sass:color';
 @use '../functions';
-@use '../visual-design/theme';
 
 .sl-c-button {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  margin: 0;
   border: 0;
   border-radius: var(--sl-border-radius--large);
-  padding: var(--sl-gutter--minus) var(--sl-gutter);
-  background: theme.$sl-color--iron;
-  box-shadow: 0 2px 1px rgba(theme.$sl-color--midnight-blue, 0.125);
-  color: color.adjust(theme.$sl-color--hopbush, $lightness: -10%);
+  background: var(--color-button-bg, var(--sl-color--iron));
+  box-shadow: 0 2px 1px var(--sl-color--shadow);
+  color: var(--color-button-text, var(--sl-color--highlight));
   cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0;
+  padding: var(--sl-gutter--minus) var(--sl-gutter);
 
   &:hover,
   &:focus {
-    color: color.adjust(theme.$sl-color--bouquet, $lightness: -10%);
+    --color-button-text: var(--sl-color--action);
+    --color-button-bg: var(--sl-color-link--action);
   }
 
   &:active {
-    color: color.adjust(theme.$sl-color--venus, $lightness: -10%);
+    --color-button-text: var(--sl-color--active);
   }
 
   &--primary {
-    background-color: color.adjust(theme.$sl-color--hopbush, $lightness: -10%);
+    --color-button-bg: var(--sl-color--highlight);
 
     &,
     &:hover,
     &:focus,
     &:active {
-      color: theme.$sl-color--white;
+      --color-button-text: var(--sl-color--white);
     }
 
     &:hover,
     &:focus {
-      background-color: color.adjust(
-        theme.$sl-color--bouquet,
-        $lightness: -10%
-      );
+      --color-button-bg: var(--sl-color--action);
     }
 
     &:active {
-      background-color: color.adjust(theme.$sl-color--venus, $lightness: -10%);
+      --color-button-bg: var(--sl-color--active);
     }
   }
 }
