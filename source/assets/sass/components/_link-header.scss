@@ -72,8 +72,6 @@ h6 {
   }
 
   to {
-    background-color: #f8f8f8;
-
-    // background-color: <%= Rouge::Themes::Github.get_style(Rouge::Token::Tokens::Text)[:bg] %>;
+    background-color: var(--sl-color-code--bg);
   }
 }
