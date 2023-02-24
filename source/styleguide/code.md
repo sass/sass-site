@@ -41,10 +41,10 @@ otherwise.
     - **Block** -- the overall component object. Example: `sl-c-card`.
     - **Element** -- any child of the block. Example: `sl-c-card__header`.
     - **Modifier** -- any variation. This can be put on a block. Example:
-    `sl-c-card--primary`. It can also be put on an element Example:
-    `sl-c-card__header--large`.
+      `sl-c-card--primary`. It can also be put on an element Example:
+      `sl-c-card__header--large`.
 - Keep classes as flat as possible, and avoid nesting too deep.
-- Avoid using element selectors __unless__ you're using a wrapper utility to
+- Avoid using element selectors **unless** you're using a wrapper utility to
   target everything inside (such as a class around a block of markdown or other
   longform text to style all its elements properly). This is specifically for
   when it doesn't make sense to use classes. Be mindful when do this. We can
@@ -53,9 +53,9 @@ otherwise.
   general-to-specific approach. See [this article][gts] for more details.
 - Write comma-delimited selectors on separate lines.
 
-[haml]:     http://haml.info/
-[markdown]: http://daringfireball.net/projects/markdown/
-[bf]:       http://bradfrost.com/blog/post/css-architecture-for-design-systems/
-[hr]:       https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/
-[bem]:      http://getbem.com/introduction/
-[gts]:      http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-name-your-sass-variables-modularly/
+[haml]: https://haml.info/
+[markdown]: https://daringfireball.net/projects/markdown/
+[bf]: https://bradfrost.com/blog/post/css-architecture-for-design-systems/
+[hr]: https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/
+[bem]: https://getbem.com/introduction/
+[gts]: https://webdesign.tutsplus.com/articles/quick-tip-name-your-sass-variables-modularly--webdesign-13364
