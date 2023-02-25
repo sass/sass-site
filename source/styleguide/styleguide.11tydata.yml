@@ -13,18 +13,18 @@ navigation: |
 
   </nav>
 colors:
-  - name: hopbush
-  - name: bouquet
-  - name: venus
-  - name: patina
-  - name: nebula
-  - name: white
-  - name: dawn-pink
-  - name: wafer
-  - name: iron
-  - name: regent-grey
-  - name: pale-sky
-  - name: midnight-blue
+  - hopbush
+  - bouquet
+  - venus
+  - patina
+  - nebula
+  - white
+  - dawn-pink
+  - wafer
+  - iron
+  - regent-grey
+  - pale-sky
+  - midnight-blue
 font_families:
   - style: text
     value: sans-serif
