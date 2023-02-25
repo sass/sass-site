@@ -8,6 +8,7 @@ const markdown = require('markdown-it');
 const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
 const sass = require('sass');
+const { getImplStatus } = require('./source/helpers/sass_helpers.ts');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
@@ -63,6 +64,28 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addLiquidFilter('isTypedoc', (page) =>
     page.url.startsWith('/documentation/js-api/'),
+  );
+
+  eleventyConfig.addLiquidFilter(
+    'implStatus',
+    (
+      dart = null,
+      libsass = null,
+      ruby = null,
+      node = null,
+      feature = null,
+      markdown = null,
+    ) => {
+      const data = {
+        dart: getImplStatus(dart),
+        libsass: getImplStatus(libsass),
+        ruby: getImplStatus(ruby),
+        node: getImplStatus(node),
+        feature: feature,
+        markdown: markdown,
+      };
+      return data;
+    },
   );
 
   eleventyConfig.addLiquidFilter(

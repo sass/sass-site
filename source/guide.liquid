@@ -191,7 +191,10 @@ nav
 {% markdown %}
 
 ## Modules
-<!-- TODO compatibility snippet -->
+{% assign implStatusData =  "1.23.0" | implStatus: false, false, false, false, "Only Dart Sass currently supports `@use`. Users of other implementations must use the [`@import` rule][] instead.
+
+[`@import` rule]: /documentation/at-rules/import" %}
+{% render 'impl_status', implStatusData: implStatusData %}
 
 You don't have to write all your Sass in a single file. You can split it up however you want with the `@use` rule. This rule loads another Sass file as a _module_, which means you can refer to its variables, [mixins][], and [functions][] in your Sass file with a namespace based on the filename. Using a file will also include the CSS it generates in your compiled output! 
 
