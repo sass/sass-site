@@ -66,7 +66,7 @@ about the command-line interface.
 Once it's all set up, **go and play**. If you're brand new to
 Sass we've set up some resources to help you learn pretty darn quick.
 
-<a href="/guide" class="sl-c-button sl-c-button--primary">Learn More About Sass</a>
+[Learn More About Sass](/guide){.sl-c-button .sl-c-button--primary}
 
 Install Anywhere (Standalone)
 
