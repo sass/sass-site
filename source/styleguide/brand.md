@@ -20,18 +20,20 @@ title: Brand Guidelines
   contact us at: [community@sass-lang.com](mailto:community@sass-lang.com?subject=[Sass Community] Hello 'Email the Sass community leaders').
 
 [Download vector logos](/assets/img/styleguide/sass-logo.zip){.sl-c-button .sl-c-button--primary}
-[![Creative Commons License](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="border-width:0"}](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US){rel=license}
 
+[![Creative Commons License](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="border-width:0"}](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US){rel=license}<br />
 This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US){rel=license}.
 
 ### Standard
 
+<!-- prettier-ignore -->
 - ![Sass](/assets/img/styleguide/color.png){height=80} {.sl-l-grid__column}
 - ![Sass](/assets/img/styleguide/seal-color.png){height=80} {.sl-l-grid__column}
 {.sl-l-grid .sl-l-grid--full .sl-l-large-grid--fit .sl-l-large-grid--gutters-large .sl-l-large-grid--center}
 
 ### White
 
+<!-- prettier-ignore -->
 - ![Sass](/assets/img/styleguide/white.png){height=80} {.sl-l-grid__column}
 - ![Sass](/assets/img/styleguide/seal-color-reversed.png){height=80} {.sl-l-grid__column}
 - ![Sass](/assets/img/styleguide/seal-black-reversed.png){height=80} {.sl-l-grid__column}
@@ -39,6 +41,7 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareA
 
 ### Black
 
+<!-- prettier-ignore -->
 - ![Sass](/assets/img/styleguide/black.png){height=80} {.sl-l-grid__column}
 - ![Sass](/assets/img/styleguide/seal-black.png){height=80} {.sl-l-grid__column}
 {.sl-l-grid .sl-l-grid--full .sl-l-large-grid--fit .sl-l-large-grid--gutters-large .sl-l-large-grid--center}
