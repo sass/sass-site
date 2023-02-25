@@ -14,29 +14,17 @@ navigation: |
   </nav>
 colors:
   - name: hopbush
-    hex: 'c69'
   - name: bouquet
-    hex: 'b37399'
   - name: venus
-    hex: '998099'
   - name: patina
-    hex: '699'
   - name: nebula
-    hex: 'd2e1dd'
   - name: white
-    hex: 'fff'
   - name: dawn-pink
-    hex: 'f2ece4'
   - name: wafer
-    hex: 'e1d7d2'
   - name: iron
-    hex: 'dadbdf'
   - name: regent-grey
-    hex: '808c99'
   - name: pale-sky
-    hex: '6b717f'
   - name: midnight-blue
-    hex: '036'
 font_families:
   - style: text
     value: sans-serif
