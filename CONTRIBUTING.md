@@ -64,8 +64,10 @@ yarn lint
 ## Templates
 
 - `.liquid` files are parsed as [LiquidJS](https://liquidjs.com/) templates.
-  - To embed Markdown (or other languages) inside LiquidJS templates, use the
-    [11ty `{% renderTemplate 'md' %}` tag](https://www.11ty.dev/docs/plugins/render/#rendertemplate). Note that multiple languages can be used, e.g.
+  - To embed Markdown (or other languages) inside LiquidJS templates, use either
+    the `{% markdown %}` tag or the [11ty `{% renderTemplate 'md' %}`
+    tag](https://www.11ty.dev/docs/plugins/render/#rendertemplate). With the
+    latter, note that multiple languages can be used, e.g.
     `{% renderTemplate 'liquid,md' %}`
   - To include partials, use either the
     [11ty `{% renderFile %}` tag](https://www.11ty.dev/docs/plugins/render/#renderfile)
