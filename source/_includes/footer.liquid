@@ -1,15 +1,15 @@
 <footer
   class="site-footer contentinfo"
-  itemtype="http://schema.org/WPFooter"
+  itemtype="https://schema.org/WPFooter"
   itemscope="itemscope"
   role="contentinfo">
   <div class="sl-l-container sl-l-section">
     <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
       <div class="sl-l-grid__column">
-        {% renderTemplate 'liquid,md' %}
+        {% markdown %}
           Sass &copy; 2006&ndash;{{ 'now' | date: '%Y' }} the Sass team, and numerous contributors.
           It is available for use and modification under the [MIT License](https://github.com/sass/dart-sass/blob/master/LICENSE).
-        {% endrenderTemplate %}
+        {% endmarkdown %}
 
         {% renderFile 'source/_includes/footer_nav.md' %}
       </div>

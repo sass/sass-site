@@ -8,14 +8,14 @@
 {% endif %}
 {% if implStatusData.libsass %}
 <div>
-<dt>LibSass</dt> 
-<dd>{{ implStatusData.libsass }}</dd> 
+<dt>LibSass</dt>
+<dd>{{ implStatusData.libsass }}</dd>
 </div>
 {% endif %}
 {% if implStatusData.ruby %}
 <div>
-<dt>Ruby Sass</dt> 
-<dd>{{ implStatusData.ruby }}</dd> 
+<dt>Ruby Sass</dt>
+<dd>{{ implStatusData.ruby }}</dd>
 </div>
 {% endif %}
 {% if implStatusData.markdown %}
@@ -23,11 +23,10 @@
 {% endif %}
 </dl>
 
-{% if implStatusData.markdown %} 
+{% if implStatusData.markdown %}
 <div class="sl-c-callout sl-c-callout--impl-status" style="display:none">
 {% markdown %}
 {{ implStatusData.markdown }}
 {% endmarkdown %}
 </div>
-{% endif  %}
-
+{% endif %}

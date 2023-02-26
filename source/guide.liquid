@@ -8,13 +8,14 @@ introduction: >
 ---
 
 <section id="topic-1">
+
 {% markdown %}
 
 ## Preprocessing
-    
+
 CSS on its own can be fun, but stylesheets are getting larger, more
 complex, and harder to maintain. This is where a preprocessor can help.
-    
+
 Sass has features that don't exist in CSS yet like nesting, mixins,
 inheritance, and other nifty goodies that help you write robust,
 maintainable CSS.
@@ -42,15 +43,17 @@ sass --watch input.scss output.css
 You can watch and output to directories by using folder paths as your
 input and output, and separating them with a colon. In this example:
 
-
 {% renderFile 'source/code-snippets/_homepage-sass-watch.md' %}
 
 Sass would watch all files in the `app/sass` folder for changes, and
 compile CSS to the `public/stylesheets` folder.
+
 {% endmarkdown %}
 
 <div class="sl-c-callout sl-c-callout--fun-fact">
+
 {% markdown %}
+
 ### 💡 Fun fact:
 
 Sass has two syntaxes! The SCSS syntax (`.scss`) is used most commonly. It's
@@ -60,15 +63,16 @@ curly braces to nest statements, and newlines instead of semicolons to
 separate them. All our examples are available in both syntaxes.
 
 {% endmarkdown %}
-</div>
 
+</div>
 </section>
 
 <hr>
 
 <section id="topic-2">
+
 {% markdown %}
-  
+
   ## Variables
 
   Think of variables as a way to store information that you want to reuse
@@ -80,8 +84,8 @@ separate them. All our examples are available in both syntaxes.
 
 {%- capture captureCode -%}
 $font-stack: Helvetica, sans-serif;
-$primary-color: #333; 
-            
+$primary-color: #333;
+
 body {
   font: 100% $font-stack;
   color: $primary-color;
@@ -96,27 +100,30 @@ body
 {%- endcapture -%}
 
 {%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
+{%- assign example_id = 1 -%}
+{%- assign ui_id = 1 -%}
 
-{% assign example_id = 1 %}
-{% assign ui_id = 1 %}
 {% render 'code_example', code: parsedExample,example_id: example_id, ui_id: ui_id %}
 
 {% markdown %}
-  When the Sass is processed, it takes the variables we define for the
-  `$font-stack` and `$primary-color` and outputs normal CSS with our
-  variable values placed in the CSS. This can be extremely powerful when
-  working with brand colors and keeping them consistent throughout the site.
+When the Sass is processed, it takes the variables we define for the
+`$font-stack` and `$primary-color` and outputs normal CSS with our
+variable values placed in the CSS. This can be extremely powerful when
+working with brand colors and keeping them consistent throughout the site.
 {% endmarkdown %}
+
 </section>
 
 <hr>
 
 <section id="topic-3">
+
 {% markdown %}
 
 ## Nesting
+
 When writing HTML you've probably noticed that it has a clear nested and visual hierarchy. CSS, on the other hand, doesn't.
-      
+
 Sass will let you nest your CSS selectors in a way that follows the same
 visual hierarchy of your HTML. Be aware that overly nested rules will
 result in over-qualified CSS that could prove hard to maintain and is
@@ -126,7 +133,7 @@ With that in mind, here's an example of some typical styles for a site's
 navigation:
 
 {% endmarkdown %}
-  
+
 {%- capture captureCode -%}
 nav {
   ul {
@@ -134,9 +141,9 @@ nav {
     padding: 0;
     list-style: none;
   }
-  
+
   li { display: inline-block; }
-  
+
   a {
     display: block;
     padding: 6px 12px;
@@ -149,16 +156,16 @@ nav
     margin: 0
     padding: 0
     list-style: none
-  
+
   li
     display: inline-block
-  
+
   a
     display: block
     padding: 6px 12px
     text-decoration: none
 {%- endcapture -%}
-    
+
 {% capture example_id %}
   {{ example_id | plus: 1 }}
 {% endcapture %}
@@ -168,6 +175,7 @@ nav
 {% endcapture %}
 
 {%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
+
 {% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
 
 </section>
@@ -175,32 +183,46 @@ nav
 <hr>
 
 <section id="topic-4">
-  {% markdown %}## Partials
-    You can create partial Sass files that contain little snippets of CSS that you can include in other Sass files.
-    This is a great way to modularize your CSS and help keep things easier to maintain. A partial is a
-    Sass file named with a leading underscore. You might name it something
-    like `_partial.scss`. The underscore lets Sass know that the file is only
-    a partial file and that it should not be generated into a CSS file. Sass
-    partials are used with the `@use` rule.
-  {% endmarkdown %}
+
+{% markdown %}
+
+## Partials
+
+You can create partial Sass files that contain little snippets of CSS that you can include in other Sass files.
+This is a great way to modularize your CSS and help keep things easier to maintain. A partial is a
+Sass file named with a leading underscore. You might name it something
+like `_partial.scss`. The underscore lets Sass know that the file is only
+a partial file and that it should not be generated into a CSS file. Sass
+partials are used with the `@use` rule.
+
+{% endmarkdown %}
+
 </section>
 
 <hr>
 
 <section id="topic-5">
+
 {% markdown %}
 
 ## Modules
-{% assign implStatusData =  "1.23.0" | implStatus: false, false, false, false, "Only Dart Sass currently supports `@use`. Users of other implementations must use the [`@import` rule][] instead.
+
+{% assign implStatusData = "1.23.0" | implStatus: false, false, false, false, "Only Dart Sass currently supports `@use`. Users of other implementations must use the [`@import` rule][] instead.
 
 [`@import` rule]: /documentation/at-rules/import" %}
+
 {% render 'impl_status', implStatusData: implStatusData %}
 
-You don't have to write all your Sass in a single file. You can split it up however you want with the `@use` rule. This rule loads another Sass file as a _module_, which means you can refer to its variables, [mixins][], and [functions][] in your Sass file with a namespace based on the filename. Using a file will also include the CSS it generates in your compiled output! 
+You don't have to write all your Sass in a single file. You can split it up
+however you want with the `@use` rule. This rule loads another Sass file as a
+_module_, which means you can refer to its variables, [mixins][], and
+[functions][] in your Sass file with a namespace based on the filename. Using a
+file will also include the CSS it generates in your compiled output!
 
 [mixins]: #topic-6
 [functions]: documentation/at-rules/function
-{% endmarkdown %}  
+
+{% endmarkdown %}
 
 {%- capture captureCode -%}
 // _base.scss
@@ -259,6 +281,7 @@ body {
 {% endcapture %}
 
 {%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
+
 {% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
 
 </section>
@@ -266,6 +289,7 @@ body {
 <hr>
 
 <section id="topic-6">
+
 {% markdown %}
 
 ## Mixins
@@ -275,7 +299,7 @@ Sass very DRY. You can even pass in values to make your mixin more flexible. Her
 
 {% endmarkdown %}
 
-{% capture captureCode %} 
+{% capture captureCode %}
 @mixin theme($theme: DarkGray) {
   background: $theme;
   box-shadow: 0 0 1px rgba($theme, .25);
@@ -306,7 +330,6 @@ Sass very DRY. You can even pass in values to make your mixin more flexible. Her
 
 .success
   @include theme($theme: DarkGreen)
-
 {% endcapture %}
 
 {% capture example_id %}
@@ -318,6 +341,7 @@ Sass very DRY. You can even pass in values to make your mixin more flexible. Her
 {% endcapture %}
 
 {%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
+
 {% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
 
 {% markdown %}
@@ -408,26 +432,39 @@ Using `@extend` lets you share a set of CSS properties from one selector to anot
 {% endcapture %}
 
 {%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
+
 {% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
 
 {% markdown %}
-What the above code does is tells `.message`, `.success`, `.error`, and `.warning` to behave just like `%message-shared`. That means anywhere that `%message-shared` shows up, `.message`, `.success`, `.error`, & `.warning` will too. The magic happens in the generated CSS, where each of these classes will get the same CSS properties as `%message-shared`. This helps you avoid having to write multiple class names on HTML elements.
+What the above code does is tells `.message`, `.success`, `.error`, and
+`.warning` to behave just like `%message-shared`. That means anywhere that
+`%message-shared` shows up, `.message`, `.success`, `.error`, & `.warning` will
+too. The magic happens in the generated CSS, where each of these classes will
+get the same CSS properties as `%message-shared`. This helps you avoid having to
+write multiple class names on HTML elements.
 
-You can extend most simple CSS selectors in addition to placeholder classes in Sass, but using placeholders is the easiest way to make sure you aren't extending a class that's nested elsewhere in your styles, which can result in unintended selectors in your CSS.
+You can extend most simple CSS selectors in addition to placeholder classes in
+Sass, but using placeholders is the easiest way to make sure you aren't
+extending a class that's nested elsewhere in your styles, which can result in
+unintended selectors in your CSS.
 
-Note that the CSS in `%equal-heights` isn't generated, because `%equal-heights` is never extended.
+Note that the CSS in `%equal-heights` isn't generated, because `%equal-heights`
+is never extended.
 {% endmarkdown %}
+
 </section>
 
 <hr>
 
 <section id="topic-8">
 
-{% markdown%}
+{% markdown %}
 
 ## Operators
 
-Doing math in your CSS is very helpful. Sass has a handful of standard math operators like `+`, `-`, `*`, `math.div()`, and `%`. In our example we're going to do some simple math to calculate widths for an `article` and `aside`.
+Doing math in your CSS is very helpful. Sass has a handful of standard math
+operators like `+`, `-`, `*`, `math.div()`, and `%`. In our example we're going
+to do some simple math to calculate widths for an `article` and `aside`.
 
 {% endmarkdown %}
 
@@ -485,6 +522,7 @@ aside[role="complementary"] {
 {% endcapture %}
 
 {%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
+
 {% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
 
 {% markdown %}

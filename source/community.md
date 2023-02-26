@@ -35,7 +35,7 @@ the Sass project.
 Want to create your own Sass implementation? Check out our [implementation
 guidelines](/implementation).
 
-<h2 id="Contribute">Contribute</h2>
+## Contribute {#Contribute}
 
 Sass is an [open source project][github] and we encourage you to contribute. You
 can contribute with [bug reports and feature requests][issues], and if you
