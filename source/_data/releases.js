@@ -1,7 +1,7 @@
 const { spawn: nodeSpawn } = require('node:child_process');
 const fs = require('node:fs/promises');
-const deepEqual = require('deep-equal');
 
+const deepEqual = require('deep-equal');
 const chalk = require('kleur');
 
 const VERSION_CACHE_PATH = './source/_data/versionCache.json';

@@ -1,4 +1,4 @@
-function getImplStatus(status) {
+export function getImplStatus(status: string | boolean | null) {
   switch (status) {
     case null:
       return status;
@@ -12,5 +12,3 @@ function getImplStatus(status) {
       return `since ${status}`;
   }
 }
-
-module.exports = { getImplStatus };
