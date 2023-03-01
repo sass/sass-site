@@ -1,7 +1,7 @@
 ---
 title: Ruby Sass is Deprecated
 author: Natalie Weizenbaum
-date: 2018-04-02 11:35 PST
+# date: 2018-04-02 11:35 PST
 ---
 
 With the release of [Dart Sass 1.0.0 stable](/blog/dart-sass-100-is-released)

@@ -1,7 +1,7 @@
 ---
 title: The Module System is Launched
 author: Natalie Weizenbaum
-date: 2019-10-01 18:58 PST
+# date: 2019-10-01 18:58 PST
 ---
 
 The Sass team has known for years that the `@import` rule, one of the earliest

@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: Color Spaces"
 author: Miriam Suzanne and Natalie Weizenbaum
-date: 2022-09-21 13:00 PST
+# date: 2022-09-21 13:00 PST
 ---
 
 There's been a lot of exciting work in the CSS color specifications lately, and

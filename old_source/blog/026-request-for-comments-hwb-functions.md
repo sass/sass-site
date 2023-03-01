@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: HWB Functions"
 author: Natalie Weizenbaum
-date: 2020-10-06 16:00 PST
+# date: 2020-10-06 16:00 PST
 ---
 
 The CSS working group has been up to all sorts of exciting stuff recently in the

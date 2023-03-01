@@ -1,7 +1,7 @@
 ---
 title: Cleaning Up Interpolation
 author: Natalie Weizenbaum
-date: 2015-12-09 15:20 PST
+# date: 2015-12-09 15:20 PST
 ---
 
 Interpolation—the ability to add variables and other snippets using `#{...}`—is

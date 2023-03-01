@@ -1,7 +1,7 @@
 ---
 title: Sass 3.4 is Released
 author: Natalie Weizenbaum
-date: 2014-08-18 16:38 PST
+# date: 2014-08-18 16:38 PST
 ---
 
 We've been trying to increase the pace of Sass releases, and it looks like we've

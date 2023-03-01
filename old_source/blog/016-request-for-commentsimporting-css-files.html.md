@@ -1,7 +1,7 @@
 ---
 title: "Request For Comments: Importing CSS Files"
 author: Natalie Weizenbaum
-date: 2018-07-09 11:19 PST
+# date: 2018-07-09 11:19 PST
 ---
 
 As Dart Sass catches up with Ruby Sass in terms of usability, we're starting

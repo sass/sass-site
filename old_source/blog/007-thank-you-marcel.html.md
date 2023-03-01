@@ -1,7 +1,7 @@
 ---
 title: Dropping Support For Old Ruby Versions
 author: Natalie Weizenbaum
-date: 2016-05-24 14:41 PST
+# date: 2016-05-24 14:41 PST
 ---
 
 You may not know [Marcel Greter](https://github.com/mgreter), but you almost

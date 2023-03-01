@@ -1,7 +1,7 @@
 ---
 title: Dart Sass is in Beta
 author: Natalie Weizenbaum
-date: 2017-06-05 13:00 PST
+# date: 2017-06-05 13:00 PST
 ---
 
 Last weekend was [three days long](https://en.wikipedia.org/wiki/Memorial_Day)

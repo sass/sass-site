@@ -1,7 +1,7 @@
 ---
 title: Brand New Sass Docs
 author: Natalie Weizenbaum
-date: 2019-04-23 10:04 PST
+# date: 2019-04-23 10:04 PST
 ---
 
 I'm excited to announce the launch of [a full rewrite and redesign of the Sass

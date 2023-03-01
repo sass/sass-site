@@ -1,7 +1,7 @@
 ---
 title: LibSass is Deprecated
 author: Natalie Weizenbaum
-date: 2020-10-26 12:00 PST
+# date: 2020-10-26 12:00 PST
 ---
 
 After much discussion among the Sass core team, we've come to the conclusion

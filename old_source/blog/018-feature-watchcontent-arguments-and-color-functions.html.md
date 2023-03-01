@@ -1,7 +1,7 @@
 ---
 title: "Feature Watch: Content Arguments and Color Functions"
 author: Natalie Weizenbaum
-date: 2018-11-14 14:14 PST
+# date: 2018-11-14 14:14 PST
 ---
 
 Dart Sass 1.15, released today and available [on
