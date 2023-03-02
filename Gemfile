@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.5.3"
+ruby "2.7.7"
 
 gem "builder",                "~> 3.2.2"
 gem "html-proofer",           "~> 3.13"
