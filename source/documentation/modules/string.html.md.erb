@@ -101,6 +101,29 @@ title: sass:string
 <% end %>
 
 
+<% function 'string.split($string, $separator, $limit: null)',
+            returns: 'list' do %>
+  <% impl_status dart: '1.57.0', libsass: false, ruby: false %>
+
+  Returns a bracketed, comma-separated list of substrings of `$string` that are
+  separated by `$separator`. The `$separator`s aren't included in these
+  substrings.
+
+  If `$limit` is a number `1` or higher, this splits on at most that many
+  `$separator`s (and so returns at most `$limit + 1` strings). The last
+  substring contains the rest of the string, including any remaining
+  `$separator`s.
+
+  <% example(autogen_css: false) do %>
+    @debug string.split("Segoe UI Emoji", " "); // ["Segoe", "UI", "Emoji"]
+    @debug string.split("Segoe UI Emoji", " ", $limit: 1); // ["Segoe", "UI Emoji"]
+    ===
+    @debug string.split("Segoe UI Emoji", " ")  // ["Segoe", "UI", "Emoji"]
+    @debug string.split("Segoe UI Emoji", " ", $limit: 1)  // ["Segoe", "UI Emoji"]
+  <% end %>
+<% end %>
+
+
 <% function 'string.to-upper-case($string)',
             'to-upper-case($string)',
             returns: 'string' do %>
