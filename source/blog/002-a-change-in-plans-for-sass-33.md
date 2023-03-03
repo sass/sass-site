@@ -2,7 +2,7 @@
 title: A Change in Plans for Sass 3.3
 author: Natalie Weizenbaum
 tags: blog
-#date: 2013-12-19 20:05 PST
+date: 2013-12-19 20:05:00 -8
 ---
 
 _This was originally published as [a gist](https://gist.github.com/nex3/8050187)._

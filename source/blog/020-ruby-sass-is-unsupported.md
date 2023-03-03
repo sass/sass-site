@@ -2,7 +2,7 @@
 title: Ruby Sass Has Reached End-Of-Life
 author: Natalie Weizenbaum
 tags: blog
-#date: 2019-04-03 16:15 PST
+date: 2019-04-03 16:15:00 -8
 ---
 
 One year has passed since we announced [the deprecation of Ruby

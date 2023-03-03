@@ -2,7 +2,7 @@
 title: Sass 3.5 is Released
 author: Natalie Weizenbaum
 tags: blog
-#date: 2017-07-07 15:33 PST
+date: 2017-07-07 15:33:00 -8
 ---
 
 I'm excited to announce that I've just released the stable version of Sass 3.5.

@@ -2,7 +2,7 @@
 title: Sass and Browser Compatibility
 author: Natalie Weizenbaum
 tags: blog
-#date: 2017-02-10 17:46 PST
+date: 2017-02-10 17:46:00 -8
 ---
 
 One of the core design principles of Sass has always been to **understand CSS as

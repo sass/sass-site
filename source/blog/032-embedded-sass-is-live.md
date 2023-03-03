@@ -2,7 +2,7 @@
 title: 'Embedded Sass is Live'
 author: Natalie Weizenbaum
 tags: blog
-# date: 2022-02-01 2:00 PST
+date: 2022-02-01 2:00:00 -8
 ---
 
 After several years of planning and development, I'm excited to finally announce

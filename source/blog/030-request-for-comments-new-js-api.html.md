@@ -2,7 +2,7 @@
 title: 'Request for Comments: New JS API'
 author: Natalie Weizenbaum
 tags: blog
-# date: 2021-08-05 15:30 PST
+date: 2021-08-05 15:30:00 -8
 ---
 
 I'm excited to officially unveil something that's been in the works for quite a

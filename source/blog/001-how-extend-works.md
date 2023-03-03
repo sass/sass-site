@@ -3,7 +3,7 @@ title: How @extend Works
 author: Natalie Weizenbaum
 tags: blog
 layout: base
-# date: 2013-11-22 16:57 -8
+date: 2013-11-22 16:57:00 -8
 ---
 
 _This was originally published as [a gist](https://gist.github.com/nex3/7609394)_.

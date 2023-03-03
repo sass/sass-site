@@ -2,7 +2,7 @@
 title: 'Request for Comments: First-Class Calc'
 author: Natalie Weizenbaum
 tags: blog
-# date: 2021-3-15 1:35 PST
+date: 2021-3-15 1:35:00 -8
 ---
 
 One of the absolutely most-requested features in Sass is the ability to more

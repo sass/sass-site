@@ -2,7 +2,7 @@
 title: 'Request For Comments: Forward Slash as Separator'
 author: Natalie Weizenbaum
 tags: blog
-#date: 2019-05-06 16:15 PST
+date: 2019-05-06 16:15:00 -8
 ---
 
 Early on in Sass's history, the decision was made to use `/` as a division

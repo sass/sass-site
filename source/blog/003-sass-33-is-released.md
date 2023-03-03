@@ -2,7 +2,7 @@
 title: Sass 3.3 is Released
 author: Natalie Weizenbaum
 tags: blog
-#date: 2014-03-07 16:40 PST
+date: 2014-03-07 16:40:00 -8
 ---
 
 After ironing out a bunch of bugs in numerous release candidates, we're finally

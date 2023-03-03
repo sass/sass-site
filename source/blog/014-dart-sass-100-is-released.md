@@ -2,7 +2,7 @@
 title: Dart Sass 1.0.0 is Released
 author: Natalie Weizenbaum
 tags: blog
-#date: 2018-03-26 13:15 PST
+date: 2018-03-26 13:15:00 -8
 ---
 
 I've just uploaded Dart Sass 1.0.0, the very first stable release, to

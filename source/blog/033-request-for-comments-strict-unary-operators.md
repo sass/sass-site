@@ -2,7 +2,7 @@
 title: 'Request for Comments: Strict Unary Operators'
 author: Natalie Weizenbaum
 tags: blog
-# date: 2022-06-15 15:30 PST
+date: 2022-06-15 15:30:00 -8
 ---
 
 Do you know what `margin: $a -$b` does in Sass? If you said "the same thing as
