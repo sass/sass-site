@@ -6,8 +6,8 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 2.7.7
-  NODE_VERSION: 18
+  RUBY_VERSION: 2.5.2
+  NODE_VERSION: 16
 
 jobs:
   unit_tests:
