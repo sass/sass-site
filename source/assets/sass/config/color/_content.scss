@@ -1,10 +1,10 @@
 @use 'sass:color';
 @use 'brand';
 
-$highlight: color.adjust(brand.$hopbush, $lightness: -10%);
-$action: color.adjust(brand.$bouquet, $lightness: -10%);
-$shadow: rgba(brand.$midnight-blue, 0.125);
-$active: color.adjust(brand.$venus, $lightness: -10%);
-$code--bg: #f8f8f8;
-$code--text: color.adjust(brand.$pale-sky, $lightness: -25%);
-$link--action: rgba(218, 219, 223, 25%);
+$sl-color--highlight: color.adjust(brand.$sl-color--hopbush, $lightness: -10%);
+$sl-color--action: color.adjust(brand.$sl-color--bouquet, $lightness: -10%);
+$sl-color--shadow: rgba(brand.$sl-color--midnight-blue, 0.125);
+$sl-color--active: color.adjust(brand.$sl-color--venus, $lightness: -10%);
+$sl-color--code-bg: #f8f8f8;
+$sl-color--code-text: color.adjust(brand.$sl-color--pale-sky, $lightness: -25%);
+$sl-color--link-action: rgba(218, 219, 223, 25%);

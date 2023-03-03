@@ -76,7 +76,7 @@
         font-size: var(--sl-font-size--small);
 
         &:not(.selected) {
-          color: color.adjust(brand.$midnight-blue, $alpha: -0.3);
+          color: color.adjust(brand.$sl-color--midnight-blue, $alpha: -0.3);
         }
       }
 
