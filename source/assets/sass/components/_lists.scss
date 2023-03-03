@@ -1,7 +1,6 @@
 @use 'sass:color';
 @use '../breakpoints';
-@use '../visual-design/theme';
-@use '../visual-design/typography';
+@use '../config/color/brand';
 
 .sl-c-list {
   &,
@@ -69,7 +68,7 @@
         width: 100%;
 
         &:hover {
-          background-color: theme.$sl-color--dawn-pink;
+          background-color: var(--sl-color--dawn-pink);
         }
       }
 
@@ -77,7 +76,7 @@
         font-size: var(--sl-font-size--small);
 
         &:not(.selected) {
-          color: color.adjust(theme.$sl-color--midnight-blue, $alpha: -0.3);
+          color: color.adjust(brand.$midnight-blue, $alpha: -0.3);
         }
       }
 
@@ -110,7 +109,7 @@
           font-weight: bold;
 
           &:not(.section) {
-            background-color: theme.$sl-color--dawn-pink;
+            background-color: var(--sl-color--dawn-pink);
           }
         }
       }
@@ -130,7 +129,7 @@
   }
 
   > div {
-    border-left: var(--sl-border--small) solid theme.$sl-color--iron;
+    border-left: var(--sl-border--small) solid var(--sl-color--iron);
     padding: 0 var(--sl-gutter);
 
     &:first-child {
@@ -140,7 +139,7 @@
 
   .compatibility {
     font-weight: 600;
-    color: theme.$sl-color--midnight-blue;
+    color: var(--sl-color--midnight-blue);
     display: block;
 
     + div {

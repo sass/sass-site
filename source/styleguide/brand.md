@@ -37,7 +37,7 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareA
 - ![Sass](/assets/img/styleguide/white.png){height=80} {.sl-l-grid__column}
 - ![Sass](/assets/img/styleguide/seal-color-reversed.png){height=80} {.sl-l-grid__column}
 - ![Sass](/assets/img/styleguide/seal-black-reversed.png){height=80} {.sl-l-grid__column}
-{.sl-l-grid .sl-l-grid--full .sl-l-large-grid--fit .sl-l-large-grid--gutters-large .sl-l-large-grid--center .sl-background--midnight-blue}
+{.sl-l-grid .sl-l-grid--full .sl-l-large-grid--fit .sl-l-large-grid--gutters-large .sl-l-large-grid--center .sl-color--midnight-blue--background}
 
 ### Black
 

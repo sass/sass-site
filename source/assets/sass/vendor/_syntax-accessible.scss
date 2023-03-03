@@ -7,7 +7,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  background-color: var(--sl-color-code--bg);
+  background-color: var(--sl-color--code--bg);
   hyphens: none;
   word-break: normal;
   word-spacing: normal;
@@ -16,7 +16,7 @@ pre[class*="language-"] {
 }
 
 .token {
-  color: var(--sl-color-code--text);
+  color: var(--sl-color--code--text);
 }
 
 .token table td {
@@ -31,13 +31,13 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  --sl-color-code--text: #656556;
+  --sl-color--code--text: #656556;
   font-style: italic;
 }
 
 [class*="language-css"] {
   & .token.comment {
-    --sl-color-code--text: #006666;
+    --sl-color--code--text: #006666;
   }
 }
 
@@ -47,12 +47,12 @@ pre[class*="language-"] {
 
 .token.string,
 .token.attr-value {
-  --sl-color-code--text: #df1144;
+  --sl-color--code--text: #df1144;
 }
 
 .token.punctuation,
 .token.operator {
-  --sl-color-code--text: #393A34;
+  --sl-color--code--text: #393A34;
   /* no highlight */
   font-weight: bold;
 }
@@ -66,7 +66,7 @@ pre[class*="language-"] {
 .token.property,
 .token.regex,
 .token.inserted {
-  --sl-color-code--text: #990000;
+  --sl-color--code--text: #990000;
   font-weight: bold;
 }
 
@@ -75,20 +75,20 @@ pre[class*="language-"] {
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
-  --sl-color-code--text: #000000;
+  --sl-color--code--text: #000000;
   font-weight: bold;
 }
 
 .token.function,
 .token.deleted,
 .language-autohotkey .token.tag {
-  --sl-color-code--text: #9a050f;
+  --sl-color--code--text: #9a050f;
 }
 
 .token.tag,
 .token.selector,
 .language-autohotkey .token.keyword {
-  --sl-color-code--text: #445588;
+  --sl-color--code--text: #445588;
   font-weight: bold;
 }
 
@@ -100,7 +100,7 @@ pre[class*="language-"] {
 
 [class*="language-shell"] {
   & .token.function {
-    --sl-color-code--text: unset;
+    --sl-color--code--text: unset;
     font-weight: normal;
   }
 }
@@ -111,6 +111,6 @@ pre[class*="language-"] {
 
 .token.variable,
 .token[class*="placeholder"] {
-  --sl-color-code--text: #006666;
+  --sl-color--code--text: #006666;
   font-weight: normal;
 }

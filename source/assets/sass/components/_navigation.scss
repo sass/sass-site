@@ -1,5 +1,4 @@
 @use '../breakpoints';
-@use '../visual-design/theme';
 
 .sl-l-medium-holy-grail__body.sl-js-nav--is-sticky
   .sl-c-list-navigation-wrapper {
@@ -25,7 +24,7 @@
 
   &:focus {
     transform: translateY(0);
-    background: theme.$sl-color--hopbush;
-    color: theme.$sl-color--white;
+    background: var(--sl-color--hopbush);
+    color: var(--sl-color--white);
   }
 }

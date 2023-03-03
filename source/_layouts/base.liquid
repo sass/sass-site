@@ -67,7 +67,7 @@
         </h1>
       {% endunless %}
 
-      <div class="sl-l-container sl-background--white{% unless is_home %} sl-l-section{% endunless %}">
+      <div class="sl-l-container sl-color--white--background{% unless is_home %} sl-l-section{% endunless %}">
         {{ content | typogr }}
       </div>
 
@@ -84,7 +84,7 @@
       </div>
 
       {% if section_bottom %}
-        <section class="sl-background--white sl-l-container">
+        <section class="sl-color--white--background sl-l-container">
           <ul class="sl-l-grid sl-l-grid--full sl-l-medium-grid--gutters-large sl-l-medium-grid--divide-by-2 sl-l-large-grid--divide-by-3 sl-l-section">
             {% for item in section_bottom %}
               <li class="sl-l-grid__column">

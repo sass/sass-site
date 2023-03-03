@@ -3,7 +3,7 @@
 @use '../visual-design/typography';
 
 .sl-c-introduction {
-  color: theme.$sl-color--patina;
+  color: var(--sl-color--patina);
   font-weight: typography.$sl-font-weight--light;
 
   @include breakpoints.sl-breakpoint--medium {
