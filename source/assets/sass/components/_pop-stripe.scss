@@ -4,11 +4,11 @@
 @use '../functions';
 @use '../config/color/brand';
 
-$sl-colors: brand.$sl-color--hopbush brand.$sl-color--bouquet
-  brand.$sl-color--venus brand.$sl-color--patina brand.$sl-color--nebula
-  brand.$sl-color--white brand.$sl-color--dawn-pink brand.$sl-color--wafer
-  brand.$sl-color--iron brand.$sl-color--regent-grey brand.$sl-color--pale-sky
-  brand.$sl-color--midnight-blue;
+$sl-colors: var(--sl-color--hopbush) var(--sl-color--bouquet)
+  var(--sl-color--venus) var(--sl-color--patina) var(--sl-color--nebula)
+  var(--sl-color--white) var(--sl-color--dawn-pink) var(--sl-color--wafer)
+  var(--sl-color--iron) var(--sl-color--regent-grey) var(--sl-color--pale-sky)
+  var(--sl-color--midnight-blue);
 
 @function stripes($position, $sl-colors) {
   $sl-colors: if(
