@@ -19,13 +19,13 @@
 }
 
 @function choose-contrast-color($color) {
-  $lightContrast: contrast($color, brand.$white);
-  $darkContrast: contrast($color, brand.$black);
+  $lightContrast: contrast($color, brand.$sl-color--white);
+  $darkContrast: contrast($color, brand.$sl-color--black);
 
   @if $lightContrast > $darkContrast {
-    @return brand.$white;
+    @return brand.$sl-color--white;
   } @else {
-    @return brand.$black;
+    @return brand.$sl-color--black;
   }
 }
 
