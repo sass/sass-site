@@ -82,7 +82,7 @@ separate them. All our examples are available in both syntaxes.
 
 {% endmarkdown %}
 
-{%- capture variablesCodeExample -%}
+{% codeExample 'variables' %}
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
 
@@ -97,8 +97,7 @@ $primary-color: #333
 body
   font: 100% $font-stack
   color: $primary-color
-{%- endcapture -%}
-{% codeExample variablesCodeExample, 'variables' %}
+{% endcodeExample %}
 
 {% markdown %}
 When the Sass is processed, it takes the variables we define for the
@@ -129,7 +128,7 @@ navigation:
 
 {% endmarkdown %}
 
-{%- capture nestingCodeExample -%}
+{% codeExample 'nesting' %}
 nav {
   ul {
     margin: 0;
@@ -159,8 +158,7 @@ nav
     display: block
     padding: 6px 12px
     text-decoration: none
-{%- endcapture -%}
-{% codeExample nestingCodeExample, 'nesting' %}
+{% endcodeExample %}
 
 </section>
 
@@ -207,7 +205,7 @@ file will also include the CSS it generates in your compiled output!
 
 {% endmarkdown %}
 
-{%- capture modulesCodeExample -%}
+{% codeExample 'modules' %}
 // _base.scss
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
@@ -253,8 +251,7 @@ body {
   background-color: #333;
   color: white;
 }
-{% endcapture %}
-{% codeExample modulesCodeExample, 'modules' %}
+{% endcodeExample %}
 
 </section>
 
@@ -271,7 +268,7 @@ Sass very DRY. You can even pass in values to make your mixin more flexible. Her
 
 {% endmarkdown %}
 
-{% capture mixinsCodeExample %}
+{% codeExample 'mixins' %}
 @mixin theme($theme: DarkGray) {
   background: $theme;
   box-shadow: 0 0 1px rgba($theme, .25);
@@ -302,9 +299,7 @@ Sass very DRY. You can even pass in values to make your mixin more flexible. Her
 
 .success
   @include theme($theme: DarkGreen)
-{% endcapture %}
-
-{% codeExample mixinsCodeExample, 'mixins' %}
+{% endcodeExample %}
 
 {% markdown %}
 To create a mixin you use the `@mixin` directive and give it a name. We've named our mixin `theme`. We're also using the variable `$theme` inside the parentheses so we can pass in a `theme` of whatever we want. After you create your mixin, you can then use it as a CSS declaration starting with `@include` followed by the name of the mixin.
@@ -324,7 +319,7 @@ Using `@extend` lets you share a set of CSS properties from one selector to anot
 
 {% endmarkdown %}
 
-{%- capture extendInheritanceCodeExample -%}
+{% codeExample 'extend-inheritance' %}
 // This CSS will print because %message-shared is extended.
 %message-shared {
   border: 1px solid #ccc;
@@ -383,8 +378,7 @@ Using `@extend` lets you share a set of CSS properties from one selector to anot
 .warning
   @extend %message-shared
   border-color: yellow
-{% endcapture %}
-{% codeExample extendInheritanceCodeExample, 'extend-inheritance' %}
+{% endcodeExample %}
 
 {% markdown %}
 What the above code does is tells `.message`, `.success`, `.error`, and
@@ -419,7 +413,7 @@ to do some simple math to calculate widths for an `article` and `aside`.
 
 {% endmarkdown %}
 
-{%- capture operatorsCodeExample -%}
+{% codeExample 'operators' %}
 @use "sass:math";
 
 .container {
@@ -462,8 +456,7 @@ aside[role="complementary"] {
   width: 31.25%;
   margin-left: auto;
 }
-{% endcapture %}
-{% codeExample operatorsCodeExample, 'operators' %}
+{% endcodeExample %}
 
 {% markdown %}
 We've created a very simple fluid grid, based on 960px. Operations in Sass

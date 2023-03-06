@@ -23,9 +23,17 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('source/assets/img');
   eleventyConfig.addPassthroughCopy('source/favicon.ico');
 
-  eleventyConfig.setLiquidOptions({
+  const liquidEngine = new Liquid({
+    root: [
+      path.resolve(__dirname, 'source/_includes/'),
+      path.resolve(__dirname, 'source/'),
+    ],
+    extname: '.liquid',
+    strictFilters: true,
     jsTruthy: true,
   });
+
+  eleventyConfig.setLibrary('liquid', liquidEngine);
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.watchIgnores.add('source/_data/versionCache.json');
 
@@ -58,22 +66,18 @@ module.exports = (eleventyConfig) => {
     return '';
   });
 
-  const engine = new Liquid({
-    root: path.resolve(__dirname, 'source/_includes/'),
-    extname: '.liquid',
-  });
-  eleventyConfig.addLiquidShortcode(
+  // Paired shortcodes...
+  eleventyConfig.addPairedLiquidShortcode(
     'codeExample',
-    (contents, exampleName, autogenCSS = true, syntax = null) => {
-      const codeExample = generateCodeExample(contents, autogenCSS);
-      return engine.renderFile('code_example.liquid', {
-        code: codeExample,
-        exampleName: exampleName,
+    async (contents, exampleName, autogenCSS = true, syntax = null) => {
+      const code = generateCodeExample(contents, autogenCSS);
+      return await liquidEngine.renderFile('code_example', {
+        code,
+        exampleName,
       });
     },
   );
 
-  // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>
     mdown.render(content),
   );
