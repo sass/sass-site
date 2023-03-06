@@ -82,7 +82,7 @@ separate them. All our examples are available in both syntaxes.
 
 {% endmarkdown %}
 
-{%- capture captureCode -%}
+{%- capture variablesCodeExample -%}
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
 
@@ -98,12 +98,7 @@ body
   font: 100% $font-stack
   color: $primary-color
 {%- endcapture -%}
-
-{%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
-{%- assign example_id = 1 -%}
-{%- assign ui_id = 1 -%}
-
-{% render 'code_example', code: parsedExample,example_id: example_id, ui_id: ui_id %}
+{% codeExample variablesCodeExample, 'variables' %}
 
 {% markdown %}
 When the Sass is processed, it takes the variables we define for the
@@ -134,7 +129,7 @@ navigation:
 
 {% endmarkdown %}
 
-{%- capture captureCode -%}
+{%- capture nestingCodeExample -%}
 nav {
   ul {
     margin: 0;
@@ -165,18 +160,7 @@ nav
     padding: 6px 12px
     text-decoration: none
 {%- endcapture -%}
-
-{% capture example_id %}
-  {{ example_id | plus: 1 }}
-{% endcapture %}
-
-{% capture ui_id %}
-  {{ ui_id | plus: 3 }}
-{% endcapture %}
-
-{%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
-
-{% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
+{% codeExample nestingCodeExample, 'nesting' %}
 
 </section>
 
@@ -210,7 +194,6 @@ partials are used with the `@use` rule.
 {% assign implStatusData = "1.23.0" | implStatus: false, false, false, false, "Only Dart Sass currently supports `@use`. Users of other implementations must use the [`@import` rule][] instead.
 
 [`@import` rule]: /documentation/at-rules/import" %}
-
 {% render 'impl_status', implStatusData: implStatusData %}
 
 You don't have to write all your Sass in a single file. You can split it up
@@ -224,7 +207,7 @@ file will also include the CSS it generates in your compiled output!
 
 {% endmarkdown %}
 
-{%- capture captureCode -%}
+{%- capture modulesCodeExample -%}
 // _base.scss
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
@@ -271,18 +254,7 @@ body {
   color: white;
 }
 {% endcapture %}
-
-{% capture example_id %}
-  {{ example_id | plus: 1 }}
-{% endcapture %}
-
-{% capture ui_id %}
-  {{ ui_id | plus: 3 }}
-{% endcapture %}
-
-{%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
-
-{% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
+{% codeExample modulesCodeExample, 'modules' %}
 
 </section>
 
@@ -299,7 +271,7 @@ Sass very DRY. You can even pass in values to make your mixin more flexible. Her
 
 {% endmarkdown %}
 
-{% capture captureCode %}
+{% capture mixinsCodeExample %}
 @mixin theme($theme: DarkGray) {
   background: $theme;
   box-shadow: 0 0 1px rgba($theme, .25);
@@ -332,17 +304,7 @@ Sass very DRY. You can even pass in values to make your mixin more flexible. Her
   @include theme($theme: DarkGreen)
 {% endcapture %}
 
-{% capture example_id %}
-  {{ example_id | plus: 1 }}
-{% endcapture %}
-
-{% capture ui_id %}
-  {{ ui_id | plus: 3 }}
-{% endcapture %}
-
-{%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
-
-{% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
+{% codeExample mixinsCodeExample, 'mixins' %}
 
 {% markdown %}
 To create a mixin you use the `@mixin` directive and give it a name. We've named our mixin `theme`. We're also using the variable `$theme` inside the parentheses so we can pass in a `theme` of whatever we want. After you create your mixin, you can then use it as a CSS declaration starting with `@include` followed by the name of the mixin.
@@ -362,7 +324,7 @@ Using `@extend` lets you share a set of CSS properties from one selector to anot
 
 {% endmarkdown %}
 
-{%- capture captureCode -%}
+{%- capture extendInheritanceCodeExample -%}
 // This CSS will print because %message-shared is extended.
 %message-shared {
   border: 1px solid #ccc;
@@ -422,18 +384,7 @@ Using `@extend` lets you share a set of CSS properties from one selector to anot
   @extend %message-shared
   border-color: yellow
 {% endcapture %}
-
-{% capture example_id %}
-  {{ example_id | plus: 1 }}
-{% endcapture %}
-
-{% capture ui_id %}
-  {{ ui_id | plus: 3 }}
-{% endcapture %}
-
-{%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
-
-{% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
+{% codeExample extendInheritanceCodeExample, 'extend-inheritance' %}
 
 {% markdown %}
 What the above code does is tells `.message`, `.success`, `.error`, and
@@ -468,7 +419,7 @@ to do some simple math to calculate widths for an `article` and `aside`.
 
 {% endmarkdown %}
 
-{%- capture captureCode -%}
+{%- capture operatorsCodeExample -%}
 @use "sass:math";
 
 .container {
@@ -512,18 +463,7 @@ aside[role="complementary"] {
   margin-left: auto;
 }
 {% endcapture %}
-
-{% capture example_id %}
-  {{ example_id | plus: 1 }}
-{% endcapture %}
-
-{% capture ui_id %}
-  {{ ui_id | plus: 3 }}
-{% endcapture %}
-
-{%- assign parsedExample = captureCode | codeExample: true, 'scss' -%}
-
-{% render 'code_example', code: parsedExample, example_id: example_id, ui_id: ui_id %}
+{% codeExample operatorsCodeExample, 'operators' %}
 
 {% markdown %}
 We've created a very simple fluid grid, based on 960px. Operations in Sass

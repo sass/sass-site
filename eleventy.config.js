@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
@@ -9,8 +10,8 @@ const markdown = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
-const sass = require('sass');
-const { getImplStatus } = require('./source/helpers/sass_helpers.ts');
+const { Liquid } = require('liquidjs');
+const { getImplStatus, canSplit, generateCodeExample } = require('./source/helpers/sass_helpers.ts');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
@@ -52,6 +53,15 @@ module.exports = (eleventyConfig) => {
     }
     return '';
   });
+
+  const engine = new Liquid({
+    root: path.resolve(__dirname, 'source/_includes/'),
+    extname: '.liquid',
+  });
+  eleventyConfig.addLiquidShortcode('codeExample', (contents, exampleName, autogenCSS = true, syntax = null) => {
+    const codeExample = generateCodeExample(contents, autogenCSS)
+    return engine.renderFile('code_example.liquid', {code: codeExample, exampleName: exampleName})
+  })
 
   // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>
@@ -106,42 +116,6 @@ module.exports = (eleventyConfig) => {
         markdown: markdown,
       };
       return data;
-    },
-  );
-
-  eleventyConfig.addLiquidFilter(
-    'codeExample',
-    (contents, autogenCSS = true, syntax = null) => {
-      //TODO when are values for syntax passed in?
-      //TODO add tests
-      const splitContents = contents.split('===');
-
-      const scssContents = splitContents[0];
-      const sassContents = splitContents[1];
-      const cssContents = splitContents[2];
-
-      const scssExamples = scssContents.split('---');
-      const sassExamples = sassContents.split('---');
-
-      let cssExample;
-      if (cssContents) {
-        cssExample = cssContents;
-      } else if (!cssContents && autogenCSS) {
-        // TODO check first if you even have scss or sass to generate css from
-        // TODO what if no scss but sass?
-        cssExample = '';
-        scssExamples.forEach((scssSnippet) => {
-          const generatedCSS = sass.compileString(scssSnippet);
-          cssExample += generatedCSS.css;
-        });
-      }
-
-      return {
-        scss: scssExamples,
-        css: cssExample,
-        sass: sassExamples,
-        splitLocation: '50.0%', //TODO dynamically determine
-      };
     },
   );
 

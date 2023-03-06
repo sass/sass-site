@@ -1,56 +1,52 @@
-{% assign first_tab_id = ui_id %}
-{% assign second_tab_id = first_tab_id | plus: 1 %}
-{% assign third_tab_id = second_tab_id | plus: 1 %}
-
-<div class="code-example ui-tabs" style="--split-location: {{ code.splitLocation }}">
+<div class="code-example ui-tabs {% if code.canSplit %}can-split{% endif %}" style="--split-location: {{ code.splitLocation }}" >
   <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix" role="tablist">
     <li
       class="ui-tabs-tab ui-tab ui-tabs-active"
-      aria-controls="example-{{ example_id | strip }}-scss"
+      aria-controls="example-{{ exampleName | strip }}-scss"
       role="tab"
       aria-expanded="true"
       aria-selected="true">
       <a
-        href="#example-{{ example_id | strip }}-scss"
+        href="#example-{{ exampleName | strip }}-scss"
         class="ui-tabs-anchor"
         role="presentation"
         tabindex="-1"
-        id="ui-id-{{ first_tab_id | strip }}">SCSS</a>
+        id="ui-id-{{ exampleName | strip }}-scss">SCSS</a>
     </li>
     <li
       class="ui-tabs-tab ui-tab"
       role="tab"
-      aria-controls="example-{{ example_id | strip }}-sass"
+      aria-controls="example-{{ exampleName | strip }}-sass"
       aria-selected="false"
       aria-expanded="false"
       tabindex="-1">
       <a
-        href="#example-{{ example_id | strip }}-sass"
+        href="#example-{{ exampleName | strip }}-sass"
         class="ui-tabs-anchor"
         role="presentation"
         tabindex="-1"
-        id="ui-id-{{ second_tab_id | strip }}">Sass</a>
+        id="ui-id-{{ exampleName | strip }}-sass">Sass</a>
     </li>
     <li
       class="ui-tabs-tab css-tab ui-tab"
       role="tab"
       tabindex="-1"
-      aria-controls="example-{{ example_id | strip }}-css"
-      aria-labelledby="ui-id-{{ third_tab_id | strip }}"
+      aria-controls="example-{{ exampleName | strip }}-css"
+      aria-labelledby="ui-id-{{ exampleName | strip }}-css"
       aria-selected="false"
       aria-expanded="false">
       <a
-        href="#example-{{ example_id | strip }}-css"
+        href="#example-{{ exampleName | strip }}-css"
         class="ui-tabs-anchor"
         role="presentation"
         tabindex="-1"
-        id="ui-id-{{ third_tab_id | strip }}">CSS</a>
+        id="ui-id-{{ exampleName | strip }}-css">CSS</a>
     </li>
   </ul>
   <div
-    id="example-{{ example_id | strip }}-scss"
+    id="example-{{ exampleName | strip }}-scss"
     class="ui-tabs-panel scss"
-    aria-labelledby="ui-id-{{ first_tab_id | strip }}"
+    aria-labelledby="ui-id-{{ exampleName | strip }}-scss"
     role="tabpanel"
     aria-hidden="false"
     style="">
@@ -59,9 +55,9 @@
     {%- endfor -%}
   </div>
   <div
-    id="example-{{ example_id | strip }}-sass"
+    id="example-{{ exampleName | strip }}-sass"
     class="ui-tabs-panel sass ui-tabs-panel-inactive ui-tabs-panel-previously-active"
-    aria-labelledby="ui-id-{{ second_tab_id | strip }}"
+    aria-labelledby="ui-id-{{ exampleName | strip }}-sass"
     role="tabpanel"
     aria-hidden="true"
     style="">
@@ -70,9 +66,9 @@
     {%- endfor -%}
   </div>
   <div
-    id="example-{{ example_id | strip }}-css"
+    id="example-{{ exampleName | strip }}-css"
     class="ui-tabs-panel css ui-tabs-panel-inactive"
-    aria-labelledby="ui-id-{{ third_tab_id | strip }}"
+    aria-labelledby="ui-id-{{ exampleName | strip }}-css"
     role="tabpanel"
     aria-hidden="true"
     style="">
