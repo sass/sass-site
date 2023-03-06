@@ -11,7 +11,11 @@ const markdownItAttrs = require('markdown-it-attrs');
 const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
 const { Liquid } = require('liquidjs');
-const { getImplStatus, canSplit, generateCodeExample } = require('./source/helpers/sass_helpers.ts');
+const {
+  getImplStatus,
+  canSplit,
+  generateCodeExample,
+} = require('./source/helpers/sass_helpers.ts');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
@@ -58,10 +62,16 @@ module.exports = (eleventyConfig) => {
     root: path.resolve(__dirname, 'source/_includes/'),
     extname: '.liquid',
   });
-  eleventyConfig.addLiquidShortcode('codeExample', (contents, exampleName, autogenCSS = true, syntax = null) => {
-    const codeExample = generateCodeExample(contents, autogenCSS)
-    return engine.renderFile('code_example.liquid', {code: codeExample, exampleName: exampleName})
-  })
+  eleventyConfig.addLiquidShortcode(
+    'codeExample',
+    (contents, exampleName, autogenCSS = true, syntax = null) => {
+      const codeExample = generateCodeExample(contents, autogenCSS);
+      return engine.renderFile('code_example.liquid', {
+        code: codeExample,
+        exampleName: exampleName,
+      });
+    },
+  );
 
   // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>

@@ -1,6 +1,10 @@
 import sass from 'sass';
 
-export function generateCodeExample(contents: string, autogenCSS: boolean, syntax: string) {
+export function generateCodeExample(
+  contents: string,
+  autogenCSS: boolean,
+  syntax: string,
+) {
   const splitContents = contents.split('===');
 
   const scssContents = splitContents[0];
@@ -52,20 +56,18 @@ export function canSplit(
   sassExamples: string[],
   cssExample: string,
 ) {
-  const exampleSources: [string[], string[]] = [scssExamples, sassExamples]; 
+  const exampleSources: [string[], string[]] = [scssExamples, sassExamples];
   const exampleSourceLengths = exampleSources
     .map((sourceList) =>
-      sourceList.map((source) =>
-        source.split('\n').map((line) => line.length),
-      ),
+      sourceList.map((source) => source.split('\n').map((line) => line.length)),
     )
     .flat()
     .flat();
   const cssSourceLengths = cssExample.split('\n').map((line) => line.length);
 
   const maxSourceWidth = Math.max(...exampleSourceLengths);
-  const maxCSSWidth = Math.max(...cssSourceLengths) 
+  const maxCSSWidth = Math.max(...cssSourceLengths);
   //TODO css example doesn't include comments so extend inheritance example can split is wrong
 
-  return Boolean((maxSourceWidth + maxCSSWidth) < 110);
+  return Boolean(maxSourceWidth + maxCSSWidth < 110);
 }
