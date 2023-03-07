@@ -2,13 +2,14 @@
 
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const formatDistanceToNow = require('date-fns/formatDistanceToNow');
+const { formatDistanceToNow, format } = require('date-fns');
 const yaml = require('js-yaml');
 const { LoremIpsum } = require('lorem-ipsum');
 const markdown = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
+const truncate = require('truncate-html');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
@@ -65,6 +66,14 @@ module.exports = (eleventyConfig) => {
   );
 
   // Filters...
+eleventyConfig.addLiquidFilter('truncatePost', (post) => {
+  return truncate(post, 250, { byWords: true });
+})
+
+  eleventyConfig.addLiquidFilter('formatBlogDate', (date) => {
+    return format(new Date(date),'d MMMM yyyy');
+  })
+
   eleventyConfig.addLiquidFilter('formatDistanceToNow', (date) => {
     return formatDistanceToNow(new Date(date));
   });
