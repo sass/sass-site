@@ -1,7 +1,6 @@
 ---
 title: 'Request for Comments: Color Spaces'
 author: Miriam Suzanne and Natalie Weizenbaum
-tags: blog
 date: 2022-09-21 13:00:00 -8
 ---
 

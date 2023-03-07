@@ -1,7 +1,6 @@
 ---
 title: The Module System is Launched
 author: Natalie Weizenbaum
-tags: blog
 date: 2019-10-01 18:58:00 -8
 ---
 

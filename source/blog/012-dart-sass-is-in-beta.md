@@ -1,7 +1,6 @@
 ---
 title: Dart Sass is in Beta
 author: Natalie Weizenbaum
-tags: blog
 date: 2017-06-05 13:00:00 -8
 ---
 

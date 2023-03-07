@@ -1,7 +1,6 @@
 ---
 title: 'Feature Watch: CSS Imports and CSS Compatibility'
 author: Natalie Weizenbaum
-tags: blog
 date: 2018-08-13 14:17:00 -8
 ---
 

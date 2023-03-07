@@ -1,7 +1,6 @@
 ---
 title: Brand New Sass Docs
 author: Natalie Weizenbaum
-tags: blog
 date: 2019-04-23 10:04:00 -8
 ---
 

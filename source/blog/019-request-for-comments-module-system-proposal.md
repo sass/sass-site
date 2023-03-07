@@ -1,7 +1,6 @@
 ---
 title: 'Request For Comments: Module System'
 author: Natalie Weizenbaum
-tags: blog
 date: 2018-11-27 13:10:00 -8
 ---
 

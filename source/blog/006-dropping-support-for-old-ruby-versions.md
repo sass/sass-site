@@ -1,7 +1,6 @@
 ---
 title: Dropping Support For Old Ruby Versions
 author: Natalie Weizenbaum
-tags: blog
 date: 2016-02-29 14:25:00 -8
 ---
 

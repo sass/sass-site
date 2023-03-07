@@ -1,7 +1,6 @@
 ---
 title: Module System Preview
 author: Natalie Weizenbaum
-tags: blog
 date: 2019-09-04 15:14:00 -8
 ---
 

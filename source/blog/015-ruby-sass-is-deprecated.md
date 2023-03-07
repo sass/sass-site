@@ -1,7 +1,6 @@
 ---
 title: Ruby Sass is Deprecated
 author: Natalie Weizenbaum
-tags: blog
 date: 2018-04-02 11:35:00 -8
 ---
 

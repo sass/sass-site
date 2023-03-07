@@ -1,8 +1,6 @@
 ---
 title: How @extend Works
 author: Natalie Weizenbaum
-tags: blog
-layout: base
 date: 2013-11-22 16:57:00 -8
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: 'The Discontinuation of node-fibers'
 author: Natalie Weizenbaum
-tags: blog
 date: 2021-3-26 15:00:00 -8
 ---
 

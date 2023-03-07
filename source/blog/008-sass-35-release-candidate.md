@@ -1,7 +1,6 @@
 ---
 title: Sass 3.5 Release Candidate
 author: Natalie Weizenbaum
-tags: blog
 date: 2016-08-30 15:00:00 -8
 ---
 

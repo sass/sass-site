@@ -1,7 +1,6 @@
 ---
 title: Sass and Browser Compatibility
 author: Natalie Weizenbaum
-tags: blog
 date: 2017-02-10 17:46:00 -8
 ---
 

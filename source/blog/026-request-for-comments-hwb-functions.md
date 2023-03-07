@@ -1,7 +1,6 @@
 ---
 title: 'Request for Comments: HWB Functions'
 author: Natalie Weizenbaum
-tags: blog
 date: 2020-10-06 16:00:00 -8
 ---
 

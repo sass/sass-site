@@ -1,7 +1,6 @@
 ---
 title: 'Request For Comments: Forward Slash as Separator'
 author: Natalie Weizenbaum
-tags: blog
 date: 2019-05-06 16:15:00 -8
 ---
 

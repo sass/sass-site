@@ -1,7 +1,6 @@
 ---
 title: Cleaning Up Interpolation
 author: Natalie Weizenbaum
-tags: blog
 date: 2015-12-09 15:20:00 -8
 ---
 

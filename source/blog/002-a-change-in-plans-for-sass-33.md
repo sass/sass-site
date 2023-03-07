@@ -1,7 +1,6 @@
 ---
 title: A Change in Plans for Sass 3.3
 author: Natalie Weizenbaum
-tags: blog
 date: 2013-12-19 20:05:00 -8
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: LibSass is Deprecated
 author: Natalie Weizenbaum
-tags: blog
 date: 2020-10-26 12:00:00 -8
 ---
 

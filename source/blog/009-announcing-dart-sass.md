@@ -1,7 +1,6 @@
 ---
 title: Announcing Dart Sass
 author: Natalie Weizenbaum
-tags: blog
 date: 2016-10-31 13:28:00 -8
 ---
 

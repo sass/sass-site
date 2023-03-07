@@ -1,7 +1,6 @@
 ---
 title: Ruby Sass Has Reached End-Of-Life
 author: Natalie Weizenbaum
-tags: blog
 date: 2019-04-03 16:15:00 -8
 ---
 

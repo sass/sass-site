@@ -1,7 +1,6 @@
 ---
 title: Sass 3.5 is Released
 author: Natalie Weizenbaum
-tags: blog
 date: 2017-07-07 15:33:00 -8
 ---
 
