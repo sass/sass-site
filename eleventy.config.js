@@ -68,6 +68,18 @@ module.exports = (eleventyConfig) => {
 
   // Paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode(
+    'compatibility',
+    async (details, dart = null, libsass = null, ruby = null, feature = null) =>
+      liquidEngine.renderFile('compatibility', {
+        details,
+        dart,
+        libsass,
+        ruby,
+        feature,
+      }),
+  );
+
+  eleventyConfig.addPairedLiquidShortcode(
     'codeExample',
     async (contents, exampleName, autogenCSS = true, syntax = null) => {
       const code = generateCodeExample(contents, autogenCSS);
@@ -76,6 +88,12 @@ module.exports = (eleventyConfig) => {
         exampleName,
       });
     },
+  );
+
+  eleventyConfig.addPairedLiquidShortcode('funFact', async (contents) =>
+    liquidEngine.renderFile('fun_fact', {
+      contents,
+    }),
   );
 
   eleventyConfig.addPairedLiquidShortcode('markdown', (content) =>
@@ -111,26 +129,8 @@ module.exports = (eleventyConfig) => {
     page.url.startsWith('/documentation/js-api/'),
   );
 
-  eleventyConfig.addLiquidFilter(
-    'implStatus',
-    (
-      dart = null,
-      libsass = null,
-      ruby = null,
-      node = null,
-      feature = null,
-      markdown = null,
-    ) => {
-      const data = {
-        dart: getImplStatus(dart),
-        libsass: getImplStatus(libsass),
-        ruby: getImplStatus(ruby),
-        node: getImplStatus(node),
-        feature: feature,
-        markdown: markdown,
-      };
-      return data;
-    },
+  eleventyConfig.addLiquidFilter('implStatus', (status) =>
+    getImplStatus(status),
   );
 
   eleventyConfig.addPlugin(EleventyRenderPlugin);

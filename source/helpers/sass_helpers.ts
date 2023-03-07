@@ -38,14 +38,13 @@ export function generateCodeExample(
 
 export function getImplStatus(status: string | boolean | null) {
   switch (status) {
-    case null:
-      return status;
     case true:
       return '✓';
     case false:
       return '✗';
     case 'partial':
-      return 'partial';
+    case null:
+      return status;
     default:
       return `since ${status}`;
   }
