@@ -1,16 +1,20 @@
 'use strict';
 
 const path = require('path');
+
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const yaml = require('js-yaml');
+const { Liquid } = require('liquidjs');
 const { LoremIpsum } = require('lorem-ipsum');
 const markdown = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownDefList = require('markdown-it-deflist');
+const Prism = require('prismjs');
+const PrismLoader = require('prismjs/components/index.js');
 const typogrify = require('typogr');
-const { Liquid } = require('liquidjs');
+
 const {
   getImplStatus,
   canSplit,
@@ -107,6 +111,15 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPairedLiquidShortcode('typogr', (content) =>
     typogrify.typogrify(content),
   );
+
+  eleventyConfig.addPairedLiquidShortcode('code', (content, language) => {
+    if (!Prism.languages[language]) {
+      PrismLoader(language);
+    }
+    const html = Prism.highlight(content, Prism.languages[language], language);
+    const attr = `language-${language}`;
+    return `<pre class="${attr}"><code class="${attr}">${html}</code></pre>`;
+  });
 
   // Filters...
   eleventyConfig.addLiquidFilter('formatDistanceToNow', (date) => {

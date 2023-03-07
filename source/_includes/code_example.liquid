@@ -51,7 +51,7 @@
     aria-hidden="false"
     style="">
     {%- for scss in code.scss -%}
-      <pre><code class="language-scss">{{ scss | strip }}</code></pre>
+      {% code 'scss' %}{{ scss | strip }}{% endcode %}
     {%- endfor -%}
   </div>
   <div
@@ -62,7 +62,7 @@
     aria-hidden="true"
     style="">
     {%- for sass in code.sass -%}
-      <pre><code class="language-sass">{{ sass | strip }}</code></pre>
+      {% code 'sass' %}{{ sass | strip }}{% endcode %}
     {%- endfor -%}
   </div>
   <div
@@ -72,6 +72,6 @@
     role="tabpanel"
     aria-hidden="true"
     style="">
-    <pre><code class="language-css">{{ code.css | strip }}</code></pre>
+    {% code 'css' %}{{ code.css | strip }}{% endcode %}
   </div>
 </div>
