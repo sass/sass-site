@@ -1,2 +1,3 @@
 layout: blog
 tags: blog
+permalink: /{{ title | slugify }}
