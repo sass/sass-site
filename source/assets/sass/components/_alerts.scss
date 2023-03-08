@@ -8,10 +8,8 @@
   color: var(--sl-color--white);
   font-size: var(--sl-font-size--small);
 
-  padding: {
-    top: var(--alert-padding-block, var(--sl-gutter--minus));
-    bottom: var(--alert-padding-block, var(--sl-gutter--minus));
-  }
+  padding-bottom: var(--alert-padding-block, var(--sl-gutter--minus));
+  padding-top: var(--alert-padding-block, var(--sl-gutter--minus));
 
   text-align: var(--alert-align, center);
 
