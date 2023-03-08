@@ -15,7 +15,12 @@ export const funFact = async (contents: string) =>
 /**
  * Returns HTML for a code block with syntax highlighting via [Prism][].
  *
+ * This should be equivalent to the [11ty `{% highlight %}` tag][hl-tag], except
+ * this tag can wrap dynamic content (partials, variables, etc), while the 11ty
+ * tag only wraps plain text.
+ *
  * [Prism]: https://prismjs.com/
+ * [hl-tag]: https://www.11ty.dev/docs/plugins/syntaxhighlight/#usage
  *
  * @see https://prismjs.com/
  */
