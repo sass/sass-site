@@ -10,7 +10,7 @@ const VERSION_CACHE_PATH = './source/_data/versionCache.json';
  * Promise version of `spawn` to avoid blocking the main thread while waiting
  * for the child processes.
  */
-function spawn(cmd, args, options) {
+const spawn = (cmd, args, options) => {
   return new Promise((resolve, reject) => {
     const child = nodeSpawn(cmd, args, options);
     const stderr = [];
@@ -22,17 +22,22 @@ function spawn(cmd, args, options) {
       stderr.push(e.toString());
     });
     child.on('close', () => {
-      if (stderr.length) reject(stderr.join(''));
-      else resolve(stdout.join(''));
+      if (stderr.length) {
+        reject(stderr.join(''));
+      } else {
+        resolve(stdout.join(''));
+      }
     });
   });
-}
+};
 
 /**
  * Retrieves cached version object from cache file.
  */
-async function getCacheFile() {
-  if (process.env.NETLIFY || process.env.REBUILD_VERSION_CACHE) return {};
+const getCacheFile = async () => {
+  if (process.env.NETLIFY || process.env.REBUILD_VERSION_CACHE) {
+    return {};
+  }
   let versionCache;
   try {
     versionCache = JSON.parse(await fs.readFile(VERSION_CACHE_PATH));
@@ -44,21 +49,21 @@ async function getCacheFile() {
     }
   }
   return versionCache;
-}
+};
 
 /**
  * Writes version object to cache file.
  */
-async function writeCacheFile(cache) {
+const writeCacheFile = async (cache) => {
   // eslint-disable-next-line no-console
   console.info(chalk.green(`[11ty] Writing version cache file...`));
   await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(cache));
-}
+};
 
 /**
  * Retrieves the highest stable version of `repo`, based on its git tags.
  */
-async function getLatestVersion(repo) {
+const getLatestVersion = async (repo) => {
   // eslint-disable-next-line no-console
   console.info(chalk.cyan(`[11ty] Fetching version information for ${repo}`));
   const { parseSemVer, compareSemVer } = await import('semver-parser');
@@ -86,7 +91,7 @@ async function getLatestVersion(repo) {
     .at(-1);
 
   return version;
-}
+};
 
 /**
  * Returns the version and URL for the latest release of the given
@@ -110,7 +115,9 @@ module.exports = async () => {
   );
 
   const nextCache = Object.fromEntries(versions);
-  if (!deepEqual(cache, nextCache)) await writeCacheFile(nextCache);
+  if (!deepEqual(cache, nextCache)) {
+    await writeCacheFile(nextCache);
+  }
 
   return data;
 };

@@ -59,11 +59,11 @@ export default async function codeExample(
   });
 }
 
-function generateCodeExample(
+const generateCodeExample = (
   contents: string,
   autogenCSS: boolean,
   syntax: 'sass' | 'scss' | null,
-) {
+) => {
   const splitContents = contents.split('\n===\n');
 
   let scssContents, sassContents, cssContents;
@@ -126,13 +126,13 @@ function generateCodeExample(
     canSplit,
     splitLocation,
   };
-}
+};
 
-function getCanSplit(
+const getCanSplit = (
   scssExamples: string[],
   sassExamples: string[],
   cssExamples: string[],
-) {
+) => {
   const exampleSourceLengths = [...scssExamples, ...sassExamples].flatMap(
     (source) => source.split('\n').map((line) => line.length),
   );
@@ -150,4 +150,4 @@ function getCanSplit(
     maxSourceWidth,
     maxCSSWidth,
   };
-}
+};
