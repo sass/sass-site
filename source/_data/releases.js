@@ -6,8 +6,10 @@ const chalk = require('kleur');
 
 const VERSION_CACHE_PATH = './source/_data/versionCache.json';
 
-// Promise version of `spawn` to avoid blocking the main thread while waiting
-// for the child processes
+/**
+ * Promise version of `spawn` to avoid blocking the main thread while waiting
+ * for the child processes.
+ */
 function spawn(cmd, args, options) {
   return new Promise((resolve, reject) => {
     const child = nodeSpawn(cmd, args, options);
@@ -26,6 +28,9 @@ function spawn(cmd, args, options) {
   });
 }
 
+/**
+ * Retrieves cached version object from cache file.
+ */
 async function getCacheFile() {
   if (process.env.NETLIFY || process.env.REBUILD_VERSION_CACHE) return {};
   let versionCache;
@@ -41,13 +46,18 @@ async function getCacheFile() {
   return versionCache;
 }
 
+/**
+ * Writes version object to cache file.
+ */
 async function writeCacheFile(cache) {
   // eslint-disable-next-line no-console
   console.info(chalk.green(`[11ty] Writing version cache file...`));
   await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(cache));
 }
 
-// Retrieve the highest stable version of `repo`, based on its git tags
+/**
+ * Retrieves the highest stable version of `repo`, based on its git tags.
+ */
 async function getLatestVersion(repo) {
   // eslint-disable-next-line no-console
   console.info(chalk.cyan(`[11ty] Fetching version information for ${repo}`));
@@ -78,6 +88,10 @@ async function getLatestVersion(repo) {
   return version;
 }
 
+/**
+ * Returns the version and URL for the latest release of the given
+ * implementation.
+ */
 module.exports = async () => {
   const repos = ['sass/libsass', 'sass/dart-sass', 'sass/migrator'];
   const cache = await getCacheFile();
