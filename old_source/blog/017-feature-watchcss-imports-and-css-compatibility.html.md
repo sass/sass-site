@@ -1,7 +1,7 @@
 ---
 title: "Feature Watch: CSS Imports and CSS Compatibility"
 author: Natalie Weizenbaum
-# date: 2018-08-13 14:17 PST
+date: 2018-08-13 14:17 PST
 ---
 
 Dart Sass 1.11 has just been released, and with it a handful of new features.

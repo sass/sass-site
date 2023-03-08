@@ -90,6 +90,7 @@ sass` (or `choco upgrade sass` if you already have it).
 
 - [Homebrew](https://brew.sh/) users on Mac OS X can run `brew install
 sass/sass/sass` (or `brew upgrade sass` if you already have it).
+
 - Or if you're a Dart user, you can run `pub global activate sass`.
 
 Now, get styling!

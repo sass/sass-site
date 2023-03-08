@@ -346,6 +346,7 @@ support for `@import` on the following timeline:
   system, whichever comes sooner (**1 October 2021** at latest), we will
   deprecate `@import` as well as global core library function calls that could
   be made through modules.~~
+
 - ~~One year after this deprecation goes into effect (**1 October 2022** at
   latest), we will drop support for `@import` and most global functions
   entirely. This will involve a major version release for all implementations.~~

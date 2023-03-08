@@ -1,7 +1,7 @@
 ---
 title: Module System Preview
 author: Natalie Weizenbaum
-# date: 2019-09-04 15:14 PST
+date: 2019-09-04 15:14 PST
 ---
 
 Exciting news, Sass fans! After a year of development and some iteration on the

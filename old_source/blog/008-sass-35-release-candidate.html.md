@@ -1,7 +1,7 @@
 ---
 title: Sass 3.5 Release Candidate
 author: Natalie Weizenbaum
-# date: 2016-08-30 15:00 PST
+date: 2016-08-30 15:00 PST
 ---
 
 I've just pushed the button to release Sass 3.5.0-rc.1. If it seems like it's

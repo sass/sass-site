@@ -1,3 +1,5 @@
 layout: blog
-tags: blog
-permalink: /blog/{{ title | slugify }}
+tags:
+  - blog
+# @@@ This should strip the `id` from the slug first
+permalink: '/blog/{{ page.fileSlug }}/index.html'

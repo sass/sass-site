@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: Nested Map Functions"
 author: Natalie Weizenbaum
-# date: 2020-9-16 14:40 PST
+date: 2020-9-16 14:40 PST
 ---
 
 As Sass libraries and design systems get more complex and have more users with

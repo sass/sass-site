@@ -1,7 +1,7 @@
 ---
 title: Announcing Dart Sass
 author: Natalie Weizenbaum
-# date: 2016-10-31 13:28 PST
+date: 2016-10-31 13:28 PST
 ---
 
 Over the past few months, I've been quietly working on a new project. Today I'm

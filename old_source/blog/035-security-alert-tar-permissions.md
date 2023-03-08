@@ -1,7 +1,7 @@
 ---
 title: "Security Alert: Tar Permissions"
 author: Natalie Weizenbaum
-# date: 2022-12-09 16:00 PST
+date: 2022-12-09 16:00 PST
 ---
 
 The Sass team was recently alerted by prolific external contributor [@ntkme] to

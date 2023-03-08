@@ -66,13 +66,13 @@ module.exports = (eleventyConfig) => {
   );
 
   // Filters...
-eleventyConfig.addLiquidFilter('truncatePost', (post) => {
-  return truncate(post, 250, { byWords: true });
-})
+  eleventyConfig.addLiquidFilter('truncateHTML', (post, words = 250) => {
+    return truncate(post, words, { byWords: true });
+  });
 
-  eleventyConfig.addLiquidFilter('formatBlogDate', (date) => {
-    return format(new Date(date),'d MMMM yyyy');
-  })
+  eleventyConfig.addLiquidFilter('format', (date, pattern = 'd MMMM yyyy') => {
+    return format(new Date(date), pattern);
+  });
 
   eleventyConfig.addLiquidFilter('formatDistanceToNow', (date) => {
     return formatDistanceToNow(new Date(date));
@@ -96,6 +96,8 @@ eleventyConfig.addLiquidFilter('truncatePost', (post) => {
 
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  eleventyConfig.setQuietMode(true);
 
   // settings
   return {

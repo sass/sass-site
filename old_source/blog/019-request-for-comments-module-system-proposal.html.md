@@ -1,7 +1,7 @@
 ---
 title: "Request For Comments: Module System"
 author: Natalie Weizenbaum
-# date: 2018-11-27 13:10 PST
+date: 2018-11-27 13:10 PST
 ---
 
 Many of the most frequently-requested features for Sass have to do with its

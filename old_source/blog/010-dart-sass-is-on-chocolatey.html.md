@@ -1,7 +1,7 @@
 ---
 title: Dart Sass is On Chocolatey
 author: Natalie Weizenbaum
-# date: 2017-01-13 14:43 PST
+date: 2017-01-13 14:43 PST
 ---
 
 One of the quieter benefits of [moving to Dart](/blog/announcing-dart-sass) is

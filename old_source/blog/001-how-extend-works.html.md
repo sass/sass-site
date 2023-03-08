@@ -1,7 +1,7 @@
 ---
 title: How @extend Works
 author: Natalie Weizenbaum
-# date: 2013-11-22 16:57 PST
+date: 2013-11-22 16:57 PST
 ---
 
 _This was originally published as [a gist](https://gist.github.com/nex3/7609394)_.

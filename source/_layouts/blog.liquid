@@ -1,5 +1,6 @@
 ---
-layout: has_no_sidebars
+layout: base
 ---
-<p class="sl-c-attribution">Posted {{ page.date | formatBlogDate }} by {{ author }}</p>
+{% render 'attribution', date: page.date, author: author %}
+
 {{ content }}

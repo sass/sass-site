@@ -1,7 +1,7 @@
 ---
 title: "The Discontinuation of node-fibers"
 author: Natalie Weizenbaum
-# date: 2021-3-26 15:00 PST
+date: 2021-3-26 15:00 PST
 ---
 
 We have recently received the unfortunate but not entirely surprising news that
