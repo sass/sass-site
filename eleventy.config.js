@@ -16,9 +16,8 @@ const PrismLoader = require('prismjs/components/index.js');
 const typogrify = require('typogr');
 
 const {
-  getImplStatus,
-  canSplit,
   generateCodeExample,
+  getImplStatus,
 } = require('./source/helpers/sass_helpers.ts');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
@@ -71,6 +70,11 @@ module.exports = (eleventyConfig) => {
   });
 
   // Paired shortcodes...
+
+  // Ideally this could be used with named args, but that's not supported yet in
+  // 11ty's implementation of LiquidJS:
+  // https://github.com/11ty/eleventy/issues/2679
+  // In the meantime, the args are: `dart`, `libsass`, `ruby`, `feature`
   eleventyConfig.addPairedLiquidShortcode(
     'compatibility',
     async (details, dart = null, libsass = null, ruby = null, feature = null) =>
@@ -86,8 +90,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPairedLiquidShortcode(
     'codeExample',
     async (contents, exampleName, autogenCSS = true, syntax = null) => {
-      const code = generateCodeExample(contents, autogenCSS);
-      return await liquidEngine.renderFile('code_example', {
+      const code = generateCodeExample(contents, autogenCSS, syntax);
+      return liquidEngine.renderFile('code_examples/code_example', {
         code,
         exampleName,
       });
@@ -146,6 +150,7 @@ module.exports = (eleventyConfig) => {
     getImplStatus(status),
   );
 
+  // plugins
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
 

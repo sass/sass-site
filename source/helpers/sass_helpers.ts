@@ -3,36 +3,69 @@ import sass from 'sass';
 export function generateCodeExample(
   contents: string,
   autogenCSS: boolean,
-  syntax: string,
+  syntax: 'sass' | 'scss' | null,
 ) {
-  const splitContents = contents.split('===');
+  const splitContents = contents.split('\n===\n');
 
-  const scssContents = splitContents[0];
-  const sassContents = splitContents[1];
-  const cssContents = splitContents[2];
+  let scssContents, sassContents, cssContents;
+  switch (syntax) {
+    case 'scss':
+      scssContents = splitContents[0];
+      cssContents = splitContents[1];
+      break;
+    case 'sass':
+      sassContents = splitContents[0];
+      cssContents = splitContents[1];
+      break;
+    default:
+      scssContents = splitContents[0];
+      sassContents = splitContents[1];
+      cssContents = splitContents[2];
+      if (!sassContents) {
+        throw new Error(`Couldn't find === in:\n${contents}`);
+      }
+      break;
+  }
 
-  const scssExamples = scssContents.split('---');
-  const sassExamples = sassContents.split('---');
+  const scssExamples =
+    scssContents?.split('\n---\n').map((str) => str.trim()) ?? [];
+  const sassExamples =
+    sassContents?.split('\n---\n').map((str) => str.trim()) ?? [];
 
-  let cssExample: string;
-  if (cssContents) {
-    cssExample = cssContents;
-  } else {
-    // TODO check first if you even have scss or sass to generate css from
-    // TODO what if no scss but sass?
-    cssExample = '';
-    scssExamples.forEach((scssSnippet) => {
-      const generatedCSS = sass.compileString(scssSnippet);
-      cssExample += generatedCSS.css;
-    });
+  if (!cssContents && autogenCSS) {
+    const sections = scssContents ? scssExamples : sassExamples;
+    if (sections.length !== 1) {
+      throw new Error("Can't auto-generate CSS from more than one SCSS block.");
+    }
+    cssContents = sass.compileString(sections[0], {
+      syntax: syntax === 'sass' ? 'indented' : 'scss',
+    }).css;
+  }
+
+  const cssExamples =
+    cssContents?.split('\n---\n').map((str) => str.trim()) ?? [];
+
+  const { canSplit, maxSourceWidth, maxCSSWidth } = getCanSplit(
+    scssExamples,
+    sassExamples,
+    cssExamples,
+  );
+  let splitLocation: number | null = null;
+  if (canSplit) {
+    if (maxSourceWidth < 55 && maxCSSWidth < 55) {
+      splitLocation = 0.5 * 100;
+    } else {
+      // Put the split exactly in between the two longest lines.
+      splitLocation = 0.5 + ((maxSourceWidth - maxCSSWidth) / 110.0 / 2) * 100;
+    }
   }
 
   return {
     scss: scssExamples,
-    css: cssExample,
     sass: sassExamples,
-    canSplit: canSplit(scssExamples, sassExamples, cssExample),
-    splitLocation: '50.0%', // TODO remove when css grid implementation done
+    css: cssExamples,
+    canSplit,
+    splitLocation,
   };
 }
 
@@ -50,23 +83,26 @@ export function getImplStatus(status: string | boolean | null) {
   }
 }
 
-export function canSplit(
+function getCanSplit(
   scssExamples: string[],
   sassExamples: string[],
-  cssExample: string,
+  cssExamples: string[],
 ) {
-  const exampleSources: [string[], string[]] = [scssExamples, sassExamples];
-  const exampleSourceLengths = exampleSources
-    .map((sourceList) =>
-      sourceList.map((source) => source.split('\n').map((line) => line.length)),
-    )
-    .flat()
-    .flat();
-  const cssSourceLengths = cssExample.split('\n').map((line) => line.length);
+  const exampleSourceLengths = [...scssExamples, ...sassExamples].flatMap(
+    (source) => source.split('\n').map((line) => line.length),
+  );
+  const cssSourceLengths = cssExamples.flatMap((source) =>
+    source.split('\n').map((line) => line.length),
+  );
 
   const maxSourceWidth = Math.max(...exampleSourceLengths);
   const maxCSSWidth = Math.max(...cssSourceLengths);
-  //TODO css example doesn't include comments so extend inheritance example can split is wrong
 
-  return Boolean(maxSourceWidth + maxCSSWidth < 110);
+  const canSplit = Boolean(maxCSSWidth && maxSourceWidth + maxCSSWidth < 110);
+
+  return {
+    canSplit,
+    maxSourceWidth,
+    maxCSSWidth,
+  };
 }
