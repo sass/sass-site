@@ -8,25 +8,25 @@ The Sass team has known for years that the `@import` rule, one of the earliest
 additions to Sass, wasn't as good as we wanted it. It caused a litany of
 problems for our users:
 
-- It was next to impossible to figure out where a given variable, mixin, or
+* It was next to impossible to figure out where a given variable, mixin, or
   function (collectively called "members") was originally defined, since
   anything defined in one stylesheet was available to all stylesheets that were
   imported after it.
 
-- Even if you chose to explicitly import every stylesheet that defined members
+* Even if you chose to explicitly import every stylesheet that defined members
   you used, you'd end up with duplicate CSS and strange side-effects, because
   stylesheets were reloaded from scratch every time they were imported.
 
-- It wasn't safe to use terse and simple names because there was always a
+* It wasn't safe to use terse and simple names because there was always a
   possibility that some other stylesheet elsewhere in your application would use
   the same name and mess up your logic. To be safe users had to manually add
   long, awkward namespaces to everything they defined.
 
-- Library authors had no way to ensure that their private helpers wouldn't be
+* Library authors had no way to ensure that their private helpers wouldn't be
   accessed by downstream users, causing confusion and backwards-compatibility
   headaches.
 
-- The [`@extend` rule][] could affect any selector anywhere in the stylesheet,
+* The [`@extend` rule][] could affect any selector anywhere in the stylesheet,
   not just those that its author explicitly chose to extend.
 
   [`@extend` rule]: /documentation/at-rules/extend
@@ -38,7 +38,7 @@ years, we've discussed, designed, and developed a brand-new module system that
 solves these problems and more, and today we're excited to announce that it's
 available in Dart Sass 1.23.0.
 
-Please note that the module system is _fully backwards-compatible_. No existing
+Please note that the module system is *fully backwards-compatible*. No existing
 features have been removed or deprecated, and your current Sass stylesheets will
 keep working just as they always have. We designed the module system to be
 [fully interoperable with `@import`](#import-compatibility) to make it easy for
@@ -56,7 +56,7 @@ in a namespace based on the basename of the URL.
 [`@use` rule]: /documentation/at-rules/use
 
 ```scss
-@use 'bootstrap';
+@use "bootstrap";
 
 .element {
   background-color: bootstrap.$body-bg;
@@ -67,15 +67,16 @@ in a namespace based on the basename of the URL.
 In addition to namespacing, there are a few important differences between `@use`
 and `@import`:
 
-- `@use` only executes a stylesheet and includes its CSS once, no matter how
+* `@use` only executes a stylesheet and includes its CSS once, no matter how
   many times that stylesheet is used.
-- `@use` only makes names available in the current stylesheet, as opposed to globally.
-- Members whose names begin with `-` or `_` are private to the current
+* `@use` only makes names available in the current stylesheet, as opposed to
+  globally.
+* Members whose names begin with `-` or `_` are private to the current
   stylesheet with `@use`.
-- If a stylesheet includes `@extend`, that extension is only applied to
+* If a stylesheet includes `@extend`, that extension is only applied to
   stylesheets it imports, not stylesheets that import it.
 
-Note that placeholder selectors are _not_ namespaced, but they _do_ respect
+Note that placeholder selectors are *not* namespaced, but they *do* respect
 privacy.
 
 ### Controlling Namespaces
@@ -84,7 +85,7 @@ Although a `@use` rule's default namespace is determined by the basename of its
 URL, it can also be set explicitly using `as`.
 
 ```scss
-@use 'bootstrap' as b;
+@use "bootstrap" as b;
 
 .element {
   @include b.float-left;
@@ -96,7 +97,7 @@ top-level namespace. Note that if multiple modules expose members with the same
 name and are used with `as *`, Sass will produce an error.
 
 ```scss
-@use 'bootstrap' as *;
+@use "bootstrap" as *;
 
 .element {
   @include float-left;
@@ -121,7 +122,7 @@ p {
 ```
 
 ```scss
-@use 'bootstrap' with (
+@use "bootstrap" with (
   $paragraph-margin-bottom: 1.2rem
 );
 ```
@@ -144,9 +145,9 @@ to names.
 
 ```scss
 // bootstrap.scss
-@forward 'functions';
-@forward 'variables';
-@forward 'mixins';
+@forward "functions";
+@forward "variables";
+@forward "mixins";
 ```
 
 ### Visibility Controls
@@ -154,13 +155,13 @@ to names.
 A `@forward` rule can choose to show only specific names:
 
 ```scss
-@forward 'functions' show color-yiq;
+@forward "functions" show color-yiq;
 ```
 
 It can also hide names that are intended to be library-private:
 
 ```scss
-@forward 'functions' hide assert-ascending;
+@forward "functions" hide assert-ascending;
 ```
 
 ### Extra Prefixing
@@ -171,24 +172,20 @@ which adds a prefix to every member name that's forwarded:
 
 ```scss
 // material/_index.scss
-@forward 'theme' as theme-*;
+@forward "theme" as theme-*;
 ```
 
 This way users can use the all-in-one module with well-scoped names for theme
 variables:
 
 ```scss
-@use 'material' with (
-  $theme-primary: blue
-);
+@use "material" with ($theme-primary: blue);
 ```
 
 or they can use the child module with simpler names:
 
 ```scss
-@use 'material/theme' with (
-  $primary: blue
-);
+@use "material/theme" with ($primary: blue);
 ```
 
 ## Built-In Modules
@@ -256,11 +253,11 @@ to [interoperate well with
 `@import`](/documentation/at-rules/import#import-and-modules).
 This is supported in both directions:
 
-- When a file that contains `@import`s is `@use`d, everything in its global
+* When a file that contains `@import`s is `@use`d, everything in its global
   namespace is treated as a single module. This module's members are then
   referred to using its namespace as normal.
 
-- When a file that contains `@use`s is `@import`ed, everything in its public API
+* When a file that contains `@use`s is `@import`ed, everything in its public API
   is added to the importing stylesheet's global scope. This allows a library to
   control what specific names it exports, even for users who `@import` it rather
   than `@use` it.
@@ -351,8 +348,8 @@ support for `@import` on the following timeline:
   latest), we will drop support for `@import` and most global functions
   entirely. This will involve a major version release for all implementations.~~
 
-~~This means that there will be at least two full years when `@import` and `@use`
-are both usable at once, and likely closer to three years in practice.~~
+~~This means that there will be at least two full years when `@import` and
+`@use` are both usable at once, and likely closer to three years in practice.~~
 
 **July 2022**: In light of the fact that LibSass was deprecated before ever
 adding support for the new module system, the timeline for deprecating and

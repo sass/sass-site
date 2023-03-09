@@ -13,7 +13,7 @@ little improvements you can read about in [the
 changelog](/documentation/file.SASS_CHANGELOG.html)). As the version name
 suggests, both of these features have to do with selectors.
 
-# Using `&` in SassScript
+## Using `&` in SassScript
 
 "SassScript" is what we call the mini-language Sass uses for variables, property
 values, and so forth. It's mostly just CSS values, but it also supports custom
@@ -37,7 +37,7 @@ break when they contained commas](/blog/a-change-in-plans-for-sass-33).
 Because of that, we decided to delay it for a version to give us time to come up
 with its compantion feature: selector functions.
 
-# Selector Functions
+## Selector Functions
 
 The problem with just exposing `&` was that the only way to use it with other
 selectors was by glomming them together as strings. This works okay in simple
@@ -63,17 +63,17 @@ its selectors, where `selector-append()` doesn't. This means that
 Another function I like a lot is **`selector-replace()`**. This does a
 search-and-replace of one selector within another, but it's a lot more clever
 than your basic string replace. It uses Sass's `@extend` logic to replace
-selectors _semantically_, as though every element matched by the replacement
+selectors *semantically*, as though every element matched by the replacement
 selector was also matched by the replaced selector. For example,
 `selector-replace(".foo.bar.baz", ".foo.baz", ".qux")` returns `.bar.qux`.
 
 The last really powerful function I want to draw your attention to is
 **`selector-unify()`**. This takes two selectors and returns a new selector that
-matches only elements that are matched by _both_ input selectors. This is an
+matches only elements that are matched by *both* input selectors. This is an
 operation Sass uses a lot internally, and now users can access it as well. For
 example, `selector-unify(".foo.bar", ".bar.baz")` will return `.foo.bar.baz`.
 
-# What's Next?
+## What's Next?
 
 I won't rule out the possibility of Sass 3.5 existing, but
 [Chris](https://twitter.com/chriseppstein) and I plan to focus pretty hard on

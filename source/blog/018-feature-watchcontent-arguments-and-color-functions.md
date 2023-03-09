@@ -1,5 +1,5 @@
 ---
-title: 'Feature Watch: Content Arguments and Color Functions'
+title: "Feature Watch: Content Arguments and Color Functions"
 author: Natalie Weizenbaum
 date: 2018-11-14 14:14:00 -8
 ---
@@ -8,7 +8,7 @@ Dart Sass 1.15, released today and available [on
 npm](https://npmjs.com/package/sass) and [all other distribution
 channels](/install), brings with it a number of highly-anticipated new Sass
 features. This is also the first release of Dart Sass with major new language
-features that _aren't_ just for CSS compatibility. That's a big accomplishment,
+features that *aren't* just for CSS compatibility. That's a big accomplishment,
 and we intend to continue that pattern moving forward!
 
 ### `@content` Arguments
@@ -27,7 +27,7 @@ mixin.
 @mixin media($types...) {
   @each $type in $types {
     @media #{$type} {
-      @content ($type);
+      @content($type);
     }
   }
 }
@@ -92,12 +92,11 @@ support for all their definitions to `rgb()` and `hsl()`.
 
 All in all, this means that the function calls like all of the following are
 newly supported in Sass:
-
-- `rgb(0 255 0)`, `rgb(0% 100% 0%)`, `rgb(0 255 0 / 0.5)`, and `rgb(0, 255, 0,
-0.5)`;
-- `hsl(0 100% 50%)`, `hsl(0 100% 50% / 0.5)`, and `hsl(0, 100%, 50%, 0.5)`;
-- `rgba(0, 255, 0)` and `hsla(0, 100%, 50%)`;
-- and `rgb($color, 0.5)`.
+* `rgb(0 255 0)`, `rgb(0% 100% 0%)`, `rgb(0 255 0 / 0.5)`, and `rgb(0, 255, 0,
+  0.5)`;
+* `hsl(0 100% 50%)`, `hsl(0 100% 50% / 0.5)`, and `hsl(0, 100%, 50%, 0.5)`;
+* `rgba(0, 255, 0)` and `hsla(0, 100%, 50%)`;
+* and `rgb($color, 0.5)`.
 
 This change is fully backwards-compatible, so all the arguments to `rgb()`,
 `hsl()`, `rgba()`, and `hsla()` that previously worked will continue to do so.
@@ -117,7 +116,7 @@ This works just how you'd expect:
 ```scss
 @mixin viewport($prefixes) {
   @each $prefix in $prefixes {
-    @- #{$prefix}-viewport {
+    @-#{$prefix}-viewport {
       @content;
     }
   }

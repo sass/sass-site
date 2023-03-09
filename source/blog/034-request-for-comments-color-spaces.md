@@ -1,13 +1,13 @@
 ---
-title: 'Request for Comments: Color Spaces'
+title: "Request for Comments: Color Spaces"
 author: Miriam Suzanne and Natalie Weizenbaum
 date: 2022-09-21 13:00:00 -8
 ---
 
 There's been a lot of exciting work in the CSS color specifications lately, and
 as it begins to land in browsers we've been preparing to add support for it in
-Sass as well. The first and largest part of that is adding support for _color
-spaces_ to Sass, which represents a huge (but largely backwards-compatible)
+Sass as well. The first and largest part of that is adding support for *color
+spaces* to Sass, which represents a huge (but largely backwards-compatible)
 rethinking of the way colors work.
 
 Historically, all colors in CSS have existed in the same color space, known as
@@ -16,21 +16,21 @@ color name, they represented the same set of visible colors you could tell a
 screen to display. While this is conceptually simple, there are some major
 downsides:
 
-- As monitors have improved over time, they've become capable of displaying more
+* As monitors have improved over time, they've become capable of displaying more
   colors than can be represented in the sRGB color space.
 
-- sRGB, even when you're using it via `hsl()`, doesn't correspond very well with
+* sRGB, even when you're using it via `hsl()`, doesn't correspond very well with
   how humans perceive colors. Cyan looks noticeably lighter than purple with the
   same saturation and lightness values.
 
-- There's no way to represent domain- or device-specific color spaces, such as
+* There's no way to represent domain- or device-specific color spaces, such as
   the [CMYK] color space that's used by printers.
 
   [CMYK]: https://en.wikipedia.org/wiki/CMYK_color_model
 
 Color spaces solve all of these problems. Now not every color has a red, green,
 and blue channel (which can be interpreted as hue, saturation, and lightness).
-Instead, every color has a specific _color space_ which specifies which
+Instead, every color has a specific *color space* which specifies which
 channels it has. For example, the color `oklch(80% 50% 90deg)` has `oklch` as
 its color space, `80%` lightness, `50%` chroma, and `90deg` hue.
 
@@ -48,31 +48,31 @@ defines Sassified versions of all the color functions in [CSS Color Level
 
 There are several rules of thumb for working with color spaces in Sass:
 
-- The `rgb`, `hsl`, and `hwb` spaces are considered "legacy spaces", and will
+* The `rgb`, `hsl`, and `hwb` spaces are considered "legacy spaces", and will
   often get special handling for the sake of backwards compatibility. Colors
   defined using hex notation or CSS color names are considered part of the `rgb`
   color space. Legacy colors are emitted in the most compatible format. This
   matches CSS's own backwards-compatibility behavior.
 
-- Otherwise, any color defined in a given space will remain in that space, and
+* Otherwise, any color defined in a given space will remain in that space, and
   be emitted in that space.
 
-- Authors can explicitly convert a color's space by using `color.to-space()`.
+* Authors can explicitly convert a color's space by using `color.to-space()`.
   This can be useful to enforce non-legacy behavior, by converting into a
   non-legacy space, or to ensure the color output is compatible with older
   browsers by converting colors into a legacy space before emitting.
 
-- The `srgb` color space is equivalent to `rgb`, except that one is a legacy
+* The `srgb` color space is equivalent to `rgb`, except that one is a legacy
   space, and the other is not. They also use different coordinate systems, with
   `rgb()` accepting a range from 0-255, and `srgb` using a range of 0-1.
 
-- Color functions that allow specifying a color space for manipulation will
+* Color functions that allow specifying a color space for manipulation will
   always use the source color space by default. When an explicit space is
   provided for manipulation, the resulting color will still be returned in the
   same space as the origin color. For `color.mix()`, the first color parameter
   is considered the origin color.
 
-- All legacy and RGB-style spaces represent bounded gamuts of color. Since
+* All legacy and RGB-style spaces represent bounded gamuts of color. Since
   mapping colors into gamut is a lossy process, it should generally be left to
   browsers, which can map colors as-needed, based on the capabilities of a
   display. For that reason, out-of-gamut channel values are maintained by Sass
@@ -82,7 +82,7 @@ There are several rules of thumb for working with color spaces in Sass:
   colors as well. Authors can also perform explicit gamut mapping with the
   `color.to-gamut()` function.
 
-- Legacy browsers require colors in the `srgb` gamut. However, most modern
+* Legacy browsers require colors in the `srgb` gamut. However, most modern
   displays support the wider `display-p3` gamut.
 
 ### Standard CSS Color Functions
@@ -144,10 +144,10 @@ to the given space.
 $brand: hsl(0 100% 25.1%);
 
 // result: 25.1%
-$hsl-lightness: color.channel($brand, 'lightness');
+$hsl-lightness: color.channel($brand, "lightness");
 
 // result: 37.67%
-$oklch-lightness: color.channel($brand, 'lightness', $space: oklch);
+$oklch-lightness: color.channel($brand, "lightness", $space: oklch);
 ```
 
 #### `color.space()`
@@ -180,10 +180,10 @@ indicates that a channel's value won't affect how a color is displayed.
 $grey: hsl(0 0% 60%);
 
 // result: true, because saturation is 0
-$hue-powerless: color.is-powerless($grey, 'hue');
+$hue-powerless: color.is-powerless($grey, "hue");
 
 // result: false
-$hue-powerless: color.is-powerless($grey, 'lightness');
+$hue-powerless: color.is-powerless($grey, "lightness");
 ```
 
 #### `color.same()`
@@ -238,20 +238,20 @@ A number of existing functions only make sense for legacy colors, and so are
 being deprecated in favor of color-space-friendly functions like
 `color.channel()` and `color.adjust()`:
 
-- `color.red()`
-- `color.green()`
-- `color.blue()`
-- `color.hue()`
-- `color.saturation()`
-- `color.lightness()`
-- `color.whiteness()`
-- `color.blackness()`
-- `adjust-hue()`
-- `saturate()`
-- `desaturate()`
-- `transparentize()`/`fade-out()`
-- `opacify()`/`fade-in()`
-- `lighten()`/`darken()`
+* `color.red()`
+* `color.green()`
+* `color.blue()`
+* `color.hue()`
+* `color.saturation()`
+* `color.lightness()`
+* `color.whiteness()`
+* `color.blackness()`
+* `adjust-hue()`
+* `saturate()`
+* `desaturate()`
+* `transparentize()`/`fade-out()`
+* `opacify()`/`fade-in()`
+* `lighten()`/`darken()`
 
 ## Let Us Know What You Think!
 

@@ -66,7 +66,7 @@ module.exports = (eleventyConfig) => {
   );
 
   // Filters...
-  eleventyConfig.addLiquidFilter('truncateHTML', (post, words = 250) => {
+  eleventyConfig.addLiquidFilter('truncateHTML', (post, words = 170) => {
     return truncate(post, words, { byWords: true });
   });
 
@@ -92,6 +92,14 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addLiquidFilter('isTypedoc', (page) =>
     page.url.startsWith('/documentation/js-api/'),
+  );
+
+  eleventyConfig.addLiquidFilter('getBlogSlug', (page) =>
+    page.fileSlug.replace(/^(\d*-)/, ''),
+  );
+
+  eleventyConfig.addLiquidFilter('replaceInternalLinks', (content, url) =>
+    content.replace(/href="#/g, `href="${url}#`),
   );
 
   eleventyConfig.addPlugin(EleventyRenderPlugin);

@@ -44,8 +44,7 @@ Here's a small snippet of SCSS that demonstrates the issue. See if you can
 figure it out:
 
 ```scss
-.foo,
-.bar {
+.foo, .bar {
   @at-root #{&}-suffix {
     color: blue;
   }
@@ -120,6 +119,5 @@ to devote a large chunk of time to getting 3.3 out the door after I come back
 from winter vacation, so hopefully (no promises) it'll be released some time in
 January.
 
-[^1]:
-    The `@at-root` is necessary since Sass can't reliably figure out whether
+[^1]: The `@at-root` is necessary since Sass can't reliably figure out whether
     `&` was used in the selector like it can when `&` is used without `#{}`.

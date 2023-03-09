@@ -1,5 +1,5 @@
 ---
-title: 'New JS API Release Candidate is Live'
+title: "New JS API Release Candidate is Live"
 author: Natalie Weizenbaum
 date: 2021-11-20 16:15:00 -8
 ---

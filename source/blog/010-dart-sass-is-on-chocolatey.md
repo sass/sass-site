@@ -21,7 +21,7 @@ package](https://chocolatey.org/packages/sass) on
 [Chocolatey](https://chocolatey.org/), the Windows package manager. You can
 install it now using:
 
-```
+```shellsession
 $ choco install sass -prerelease
 ```
 
@@ -39,8 +39,7 @@ out with that, let us know—[this
 issue](https://github.com/sass/dart-sass/issues/97) would be a great place to
 start!
 
-[^1]:
-    There's also [an open
+[^1]: There's also [an open
     issue](https://github.com/dart-lang/sdk/issues/27596) for bundling the VM
     and the snapshot into a single executable file, which would allow us to pare
     down our distribution to a single file.

@@ -18,18 +18,18 @@ with the fast pace of language development in both CSS and Sass.
 
 I'll go into detail about what this means below, but here are the major points:
 
-- We no longer recommend LibSass for new Sass projects. Use [Dart Sass] instead.
+* We no longer recommend LibSass for new Sass projects. Use [Dart Sass] instead.
 
   [Dart Sass]: https://sass-lang.com/dart-sass
 
-- We recommend all existing LibSass users make plans to eventually move onto
+* We recommend all existing LibSass users make plans to eventually move onto
   Dart Sass, and that all Sass libraries make plans to eventually drop support
   for LibSass.
 
-- We're no longer planning to add any new features to LibSass, including
+* We're no longer planning to add any new features to LibSass, including
   compatibility with new CSS features.
 
-- LibSass and Node Sass will continue to be maintained indefinitely on a
+* LibSass and Node Sass will continue to be maintained indefinitely on a
   best-effort basis, including fixing major bugs and security issues and
   maintaining compatibility with the latest Node versions.
 
@@ -79,10 +79,10 @@ maintenance releases indefinitely.
 
 LibSass today has two major benefits over Dart Sass:
 
-- **Portability**: since it's written in C++, it's easy to embed LibSass within
+* **Portability**: since it's written in C++, it's easy to embed LibSass within
   other programming languages and provide a native-feeling API.
 
-- **Performance**: calling out to LibSass via the C++ API is very fast relative
+* **Performance**: calling out to LibSass via the C++ API is very fast relative
   to the speeds of code written directly in scripting languages. In particular,
   this means LibSass is substantially faster in JavaScript than Dart
   Sass-compiled-to-JS (although it's comparable to Dart Sass's command-line

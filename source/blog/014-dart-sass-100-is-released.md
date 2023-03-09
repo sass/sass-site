@@ -83,13 +83,13 @@ easiest for you:
   just download and run from the command line.
 
 - You can get the pure-JavaScript version from npm by running `npm install -g
-sass`.
+  sass`.
 
 - [Chocolatey](https://chocolatey.org/) users on Windows can run `choco install
-sass` (or `choco upgrade sass` if you already have it).
+  sass` (or `choco upgrade sass` if you already have it).
 
 - [Homebrew](https://brew.sh/) users on Mac OS X can run `brew install
-sass/sass/sass` (or `brew upgrade sass` if you already have it).
+  sass/sass/sass` (or `brew upgrade sass` if you already have it).
 
 - Or if you're a Dart user, you can run `pub global activate sass`.
 

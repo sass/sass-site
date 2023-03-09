@@ -10,7 +10,7 @@ This release has a lot of exciting new features that you can read about in full
 in [the changelog](/documentation/file.SASS_CHANGELOG.html), but there are three
 that I want to draw your attention to in particular.
 
-# Maps in SassScript
+## Maps in SassScript
 
 As language designers, most of our job is to listen to feedback from users and
 act upon it. This is tricker than it sounds: users are very good at knowing the
@@ -32,11 +32,7 @@ first-class data structure. The syntax is designed to be very similar to that
 used for `@media` queries. They look like this:
 
 ```scss
-$map: (
-  key1: value1,
-  key2: value2,
-  key3: value3,
-);
+$map: (key1: value1, key2: value2, key3: value3);
 ```
 
 Unlike lists, maps must always be surrounded by parentheses. `()`, which
@@ -49,15 +45,15 @@ functions](/documentation/Sass/Script/Functions.html#map_functions) that allow
 user-defined mixins and functions to use them. Here are a few particularly
 useful ones:
 
-- `map-get($map, $key)` looks up a value in a map using its key. For example,
+* `map-get($map, $key)` looks up a value in a map using its key. For example,
   using the example above, `map-get($map, key2)` would return `value2`.
 
-- `map-merge($map1, $map2)` merges two maps together. The keys in `$map2`
+* `map-merge($map1, $map2)` merges two maps together. The keys in `$map2`
   overwrite those in `$map1`, so this is also a good way to add values to a map.
   For example, `map-merge($map, (key1: new-value))` would return `(key1:
-new-value, key2: value2, key3: value3)`.
+  new-value, key2: value2, key3: value3)`.
 
-- `map-remove($map, $key)` removes a value in a map. For example,
+* `map-remove($map, $key)` removes a value in a map. For example,
   `map-remove($map, $key)` would return `(key: value2, key3: value3)`.
 
 In addition to the new map functions, all the existing list functions also work
@@ -89,7 +85,7 @@ h3 {
 }
 ```
 
-# Source Maps
+## Source Maps
 
 Continuing the map theme, Sass 3.3 comes with support for generating source maps
 when compiling to CSS. Source maps are a standard format for telling browsers
@@ -104,7 +100,7 @@ maps is pass the `--sourcemap` flag. Sass will automatically generate a
 make sure your `.scss` or `.sass` file is visible to the browser, and you'll be
 good to go.
 
-# More Flexible `&`
+## More Flexible `&`
 
 When we released Sass 3.0, we added support for SCSS, which meant we had to
 actually parse all the selectors in the document. This meant that you couldn't
@@ -123,7 +119,7 @@ In Sass 3.3, we're loosening these restrictions. You can now write `&-suffix`
 work. If this fails to apply&mdash;for example, if `&` is `*`&mdash;Sass will
 print a helpful error message.
 
-# Deprecation: Variable Scope and `!global`
+## Deprecation: Variable Scope and `!global`
 
 We don't always get everything right the first time, and in order to make Sass
 the best language it can be we occasionally have to change old behavior.
@@ -150,7 +146,7 @@ print a deprecation warning suggesting that the user add `!global`. Right now,
 `!global` doesn't do much other than make the warning go away, but in a future
 release it will work as I described above.
 
-# That's All
+## That's All
 
 Actually, there's a lot more, but that's all I have room for in this post. If
 you want to see the full assortment of new features, check out [the
@@ -158,6 +154,5 @@ changelog](/documentation/file.SASS_CHANGELOG.html#330_7_March_2014). You can
 also play with the new features on [SassMeister](http://sassmeister.com/) or on
 your own computer by running `gem update sass`. Enjoy!
 
-[^1]:
-    Some languages call them "hashes", "dictionaries", or "associative
+[^1]: Some languages call them "hashes", "dictionaries", or "associative
     arrays". JavaScript calls them "objects" for weird historical reasons.

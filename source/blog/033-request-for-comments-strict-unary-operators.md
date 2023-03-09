@@ -1,11 +1,11 @@
 ---
-title: 'Request for Comments: Strict Unary Operators'
+title: "Request for Comments: Strict Unary Operators"
 author: Natalie Weizenbaum
 date: 2022-06-15 15:30:00 -8
 ---
 
 Do you know what `margin: $a -$b` does in Sass? If you said "the same thing as
-`margin: $a (-$b)`, I'm sorry, but you're wrong. It's _actually_ the same thing
+`margin: $a (-$b)`, I'm sorry, but you're wrong. It's *actually* the same thing
 as `margin: $a - $b`. Don't worry, you're not the first person to get tripped up
 by this weird corner of Sass's parser! But our new language proposal aims to fix
 that.
@@ -22,15 +22,15 @@ automatically update your stylesheets.
 
 **Deprecated:**
 
-- `$a -$b` will no longer be allowed, because it's unclear what the author
+* `$a -$b` will no longer be allowed, because it's unclear what the author
   intended and the current behavior is likely to be incorrect.
 
 **Still allowed:**
 
-- `$a - $b` will continue to work, since it's clearly supposed to indicate
+* `$a - $b` will continue to work, since it's clearly supposed to indicate
   subtraction.
 
-- `$a (-$b)` will continue to work, since the parentheses make the unary minus
+* `$a (-$b)` will continue to work, since the parentheses make the unary minus
   unambiguous.
 
 The `$a - $b` or `$a (-$b)` options are supported by all widely-used Sass
@@ -66,11 +66,11 @@ not to do that for two reasons:
    behavior of existing syntax than it is to make one that just forbids the
    syntax entirely. It requires more releases and more different versions of
    Sass with different behaviors. It also opens the door for a stylesheet that
-   upgrades many versions at once to switch to the new behavior _without
-   producing an error_, which could lead to the worst-case scenario: shipping
+   upgrades many versions at once to switch to the new behavior *without
+   producing an error*, which could lead to the worst-case scenario: shipping
    incorrect styles.
 
-2. It's not obvious that `$a -$b` _should_ parse as `$a (-$b)` in every case.
+2. It's not obvious that `$a -$b` *should* parse as `$a (-$b)` in every case.
    Users coming from other programming languages may expect it to parse the same
    way it does in those languages. Even in Sass, `$a -$b` will continue to be a
    valid binary operation within `calc()`. It may not be elegant style, but

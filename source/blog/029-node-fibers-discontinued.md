@@ -1,5 +1,5 @@
 ---
-title: 'The Discontinuation of node-fibers'
+title: "The Discontinuation of node-fibers"
 author: Natalie Weizenbaum
 date: 2021-3-26 15:00:00 -8
 ---
@@ -29,8 +29,8 @@ In order to understand how we got here, it's important to know two pieces of
 history. First, why does Dart Sass use `node-fibers` in the first place? And
 second, why is `node-fibers` dying?
 
-_This section is fairly technical, so feel free to [skip ahead] if you don't care
-about the gory details._
+*This section is fairly technical, so feel free to [skip ahead] if you don't care
+about the gory details.*
 
 [skip ahead]: #reclaiming-performance
 
@@ -51,7 +51,7 @@ For Node Sass, the performance difference between `render()` and `renderSync()`
 was negligible, because it was built on C++ code which had few restrictions on
 how it handled asynchrony. However, Dart Sass runs as pure JavaScript, which
 makes it subject to JavaScript's strict async rules. Asynchrony in JavaScript is
-_contagious_, which means that if any function (such as an importer plugin) is
+*contagious*, which means that if any function (such as an importer plugin) is
 asynchronous, then everything that calls it must be asynchronous, and so on
 until the entire program is asynchronous.
 
@@ -101,16 +101,16 @@ plugins, but it will pay dividends immediately.
 ### Embedded Dart Sass
 
 While it's not ready for prime-time yet, the Sass team is working on a project
-called "embedded Dart Sass". This involves running Dart Sass as a _subprocess_,
+called "embedded Dart Sass". This involves running Dart Sass as a *subprocess*,
 rather than a library, and communicating with it using a special protocol. This
 provides several important improvements over the existing alternatives:
 
-- Unlike running `sass` from the command line, this will still work with plugins
+* Unlike running `sass` from the command line, this will still work with plugins
   like the webpack importer. In fact, we plan to match the existing JavaScript
-  API as closely as possible. This will probably run asynchronous plugins _even
-  faster_ than synchronous ones.
+  API as closely as possible. This will probably run asynchronous plugins *even
+  faster* than synchronous ones.
 
-- Unlike the existing JS-compiled version, this will use the Dart VM. Due to the
+* Unlike the existing JS-compiled version, this will use the Dart VM. Due to the
   more static nature of the Dart language, the Dart VM runs Sass substantially
   faster than Node.js, which will provide about a 2x speed improvement for large
   stylesheets.
@@ -126,7 +126,7 @@ tires.
 We've explored the possibility of running the pure-JS Dart Sass in a Node.js
 worker thread. Worker threads work a bit like fibers in that they make it
 possible for synchronous code to wait for asynchronous callbacks to run.
-Unfortunately, they're also _extremely_ restrictive about what sorts of
+Unfortunately, they're also *extremely* restrictive about what sorts of
 information can be passed across the thread boundary, which makes it much harder
 to use them to wrap a complex API like Sass's.
 
@@ -141,7 +141,7 @@ up on [the GitHub issue]!
 
 There's one other potential solution, although it would take true dedication to
 turn into reality. It would in principle be possible to add a new API to V8 that
-would _officially_ support the hooks `node-fibers` needs to do its good work.
+would *officially* support the hooks `node-fibers` needs to do its good work.
 This would allow the package to return gloriously to life and Sass to make
 `render()` fast on into the future.
 
@@ -153,7 +153,7 @@ to help an engineer who's willing to give it a shot.
 This isn't a contribution for the faint of heart, though: it requires knowledge
 of C++, a willingness to learn at least the basics of the `node-fibers` codebase
 and V8's isolate APIs, and skills in both API design and human interaction to
-negotiate a stable API that will meet the needs of `node-fibers` _and_ that the
+negotiate a stable API that will meet the needs of `node-fibers` *and* that the
 V8 team feels comfortable committing to maintain. But if you're interested,
 please don't hesitate to [reach out]!
 

@@ -1,5 +1,5 @@
 ---
-title: 'Request For Comments: Module System'
+title: "Request For Comments: Module System"
 author: Natalie Weizenbaum
 date: 2018-11-27 13:10:00 -8
 ---
@@ -36,21 +36,21 @@ These are the philosophical design goals for the module system as a whole. While
 they don't uniquely specify a system, they do represent the underlying
 motivations behind many of the lower-level design decisions.
 
-- **Locality**. The module system should make it possible to understand a Sass
+* **Locality**. The module system should make it possible to understand a Sass
   file by looking only at that file. An important aspect of this is that names
   in the file should be resolved based on the contents of the file rather than
   the global state of the compilation. This also applies to authoring: an author
   should be able to be confident that a name is safe to use as long as it
   doesn't conflict with any name visible in the file.
 
-- **Encapsulation**. The module system should allow authors, particularly
+* **Encapsulation**. The module system should allow authors, particularly
   library authors, to choose what API they expose. They should be able to define
   entities for internal use without making those entities available for external
   users to access or modify. The organization of a library's implementation into
   files should be flexible enough to change without changing the user-visible
   API.
 
-- **Configuration**. Sass is unusual among languages in that its design leads to
+* **Configuration**. Sass is unusual among languages in that its design leads to
   the use of files whose entire purpose is to produce side effects—specifically,
   to emit CSS. There's also a broader class of libraries that may not emit CSS
   directly, but do define configuration variables that are used in computations,
@@ -63,14 +63,14 @@ These are goals that are based less on philosophy than on practicality. For the
 most part, they're derived from user feedback that we've collected about
 `@import` over the years.
 
-- **Import once**. Because `@import` is a literal textual inclusion, multiple
+* **Import once**. Because `@import` is a literal textual inclusion, multiple
   `@import`s of the same Sass file within the scope of a compilation will
   compile and run that file multiple times. At best this hurts compilation time
   for little benefit, and it can also contribute to bloated CSS output when the
   styles themselves are duplicated. The new module system should only compile a
   file once.
 
-- **Backwards compatibility**. We want to make it as easy as possible for people
+* **Backwards compatibility**. We want to make it as easy as possible for people
   to migrate to the new module system, and that means making it work in
   conjunction with existing stylesheets that use `@import`. Existing stylesheets
   that only use `@import` should have identical importing behavior to earlier
@@ -83,24 +83,24 @@ These are potential goals that we have explicitly decided to avoid pursuing as
 part of this proposal for various reasons. Some of them may be on the table for
 future work, but we don't consider them to be blocking the module system.
 
-- **Dynamic imports**. Allowing the path to a module to be defined dynamically,
+* **Dynamic imports**. Allowing the path to a module to be defined dynamically,
   whether by including variables or including it in a conditional block, moves
   away from being declarative. In addition to making stylesheets harder to read,
   this makes any sort of static analysis more difficult (and actually impossible
   in the general case). It also limits the possibility of future implementation
   optimizations.
 
-- **Importing multiple files at once**. In addition to the long-standing reason
+* **Importing multiple files at once**. In addition to the long-standing reason
   that this hasn't been supported—that it opens authors up to sneaky and
   difficult-to-debug ordering bugs—this violates the principle of locality by
   obfuscating which files are imported and thus where names come from.
 
-- **Extend-only imports**. The idea of importing a file so that the CSS it
+* **Extend-only imports**. The idea of importing a file so that the CSS it
   generates isn't emitted unless it's `@extend`ed is cool, but it's also a lot
   of extra work. This is the most likely feature to end up in a future release,
   but it's not central enough to include in the initial module system.
 
-- **Context-independent modules**. It's tempting to try to make the loaded form
+* **Context-independent modules**. It's tempting to try to make the loaded form
   of a module, including the CSS it generates and the resolved values of all its
   variables, totally independent of the entrypoint that cause it to be loaded.
   This would make it possible to share loaded modules across multiple
@@ -119,7 +119,7 @@ future work, but we don't consider them to be blocking the module system.
   and potentially even constant-folded variable values and CSS trees. Full
   context independence isn't likely to provide much value in addition to that.
 
-- **Increased strictness**. Large teams with many people often want stricter
+* **Increased strictness**. Large teams with many people often want stricter
   rules around how Sass stylesheets are written, to enforce best practices and
   quickly catch mistakes. It's tempting to use a new module system as a lever to
   push strictness further; for example, we could make it harder to have partials
@@ -127,7 +127,7 @@ future work, but we don't consider them to be blocking the module system.
   people avoid to the new built-in modules.
 
   As tempting as it is, though, we want to make all existing use-cases as easy
-  as possible in the new system, _even if we think they should be avoided_. This
+  as possible in the new system, *even if we think they should be avoided*. This
   module system is already a major departure from the existing behavior, and
   will require a substantial amount of work from Sass users to support. We want
   to make this transition as easy as possible, and part of that is avoiding
@@ -138,7 +138,7 @@ future work, but we don't consider them to be blocking the module system.
   about increased strictness in the form of lints or TypeScript-style
   `--strict-*` flags.
 
-- **Code splitting**. The ability to split monolithic CSS into separate chunks
+* **Code splitting**. The ability to split monolithic CSS into separate chunks
   that can be served lazily is important for maintaining quick load times for
   very large applications. However, it's orthogonal to the problems that this
   module system is trying to solve. This system is primarily concerned with
@@ -166,7 +166,7 @@ accessible in the current stylesheet. By default, variables, mixins, and
 functions are available in a namespace based on the basename of the URL.
 
 ```scss
-@use 'bootstrap';
+@use "bootstrap";
 
 .element {
   @include bootstrap.float-left;
@@ -176,16 +176,16 @@ functions are available in a namespace based on the basename of the URL.
 In addition to namespacing, there are a few important differences between `@use`
 and `@import`:
 
-- `@use` only executes a stylesheet and includes its CSS once, no matter how
+* `@use` only executes a stylesheet and includes its CSS once, no matter how
   many times that stylesheet is used.
-- `@use` only makes names available in the current stylesheet, as opposed to
+* `@use` only makes names available in the current stylesheet, as opposed to
   globally.
-- Members whose names begin with `-` or `_` are private to the current
+* Members whose names begin with `-` or `_` are private to the current
   stylesheet with `@use`.
-- If a stylesheet includes `@extend`, that extension is only applied to
+* If a stylesheet includes `@extend`, that extension is only applied to
   stylesheets it imports, not stylesheets that import it.
 
-Note that placeholder selectors are _not_ namespaced, but they _do_ respect
+Note that placeholder selectors are *not* namespaced, but they *do* respect
 privacy.
 
 #### Controlling Namespaces
@@ -194,7 +194,7 @@ Although a `@use` rule's default namespace is determined by the basename of its
 URL, it can also be set explicitly using `as`.
 
 ```scss
-@use 'bootstrap' as b;
+@use "bootstrap" as b;
 
 .element {
   @include b.float-left;
@@ -206,7 +206,7 @@ top-level namespace. Note that if multiple modules expose members with the same
 name and are used with `as *`, Sass will produce an error.
 
 ```scss
-@use 'bootstrap' as *;
+@use "bootstrap" as *;
 
 .element {
   @include float-left;
@@ -231,7 +231,7 @@ p {
 ```
 
 ```scss
-@use 'bootstrap' with (
+@use "bootstrap" with (
   $paragraph-margin-bottom: 1.2rem
 );
 ```
@@ -251,9 +251,9 @@ within those files. Unlike `@use`, forward doesn't add any namespaces to names.
 
 ```scss
 // bootstrap.scss
-@forward 'functions';
-@forward 'variables';
-@forward 'mixins';
+@forward "functions";
+@forward "variables";
+@forward "mixins";
 ```
 
 #### Visibility Controls
@@ -261,13 +261,13 @@ within those files. Unlike `@use`, forward doesn't add any namespaces to names.
 A `@forward` rule can choose to show only specific names:
 
 ```scss
-@forward 'functions' show color-yiq;
+@forward "functions" show color-yiq;
 ```
 
 It can also hide names that are intended to be library-private:
 
 ```scss
-@forward 'functions' hide assert-ascending;
+@forward "functions" hide assert-ascending;
 ```
 
 #### Extra Prefixing
@@ -278,24 +278,20 @@ which adds a prefix to every member name that's forwarded:
 
 ```scss
 // material/_index.scss
-@forward 'theme' as theme-*;
+@forward "theme" as theme-*;
 ```
 
 This way users can use the all-in-one module with well-scoped names for theme
 variables:
 
 ```scss
-@use 'material' with (
-  $theme-primary: blue
-);
+@use "material" with ($theme-primary: blue);
 ```
 
 or they can use the child module with simpler names:
 
 ```scss
-@use 'material/theme' with (
-  $primary: blue
-);
+@use "material/theme" with ($primary: blue);
 ```
 
 ### `@import` Compatibility
@@ -303,11 +299,11 @@ or they can use the child module with simpler names:
 The Sass ecosystem won't switch to `@use` overnight, so in the meantime it needs
 to interoperate well with `@import`. This is supported in both directions:
 
-- When a file that contains `@import`s is `@use`d, everything in its global
+* When a file that contains `@import`s is `@use`d, everything in its global
   namespace is treated as a single module. This module's members are then
   referred to using its namespace as normal.
 
-- When a file that contains `@use`s is `@import`ed, everything in its public API
+* When a file that contains `@use`s is `@import`ed, everything in its public API
   is added to the importing stylesheet's global scope. This allows a library to
   control what specific names it exports, even for users who `@import` it rather
   than `@use` it.
@@ -339,7 +335,7 @@ loaded dynamically.
 
 ## Frequently Asked Questions
 
-- **Why this privacy model?** We considered a number of models for declaring
+* **Why this privacy model?** We considered a number of models for declaring
   members to be private, including a JS-like model where only members that were
   explicitly exported from a module were visible and a C#-like model with an
   explicit `@private` keyword. These models involve a lot more boilerplate,
@@ -348,7 +344,7 @@ loaded dynamically.
   provides a degree of compatibility with conventions libraries are already
   using.
 
-- **Can I make a member library-private?** There's no language-level notion of a
+* **Can I make a member library-private?** There's no language-level notion of a
   "library", so library-privacy isn't built in either. However, members used by
   one module aren't automatically visible to downstream modules. If a module
   isn't [`@forward`ed](#forward) through a library's main stylesheet, it won't
@@ -357,15 +353,15 @@ loaded dynamically.
   stylesheets that aren't intended to be used directly by their users in a
   directory named `src`.
 
-- **How do I make my library configurable?** If you have a large library made up
+* **How do I make my library configurable?** If you have a large library made up
   of many source files that all share some core `!default`-based configuration,
   we recommend that you define that configuration in a file that gets forwarded
   from your library's entrypoint and used by your library's files. For example:
 
 ```scss
 // bootstrap.scss
-@forward 'variables';
-@use 'reboot';
+@forward "variables";
+@use "reboot";
 ```
 
 ```scss
@@ -375,7 +371,7 @@ $paragraph-margin-bottom: 1rem !default;
 
 ```scss
 // _reboot.scss
-@use 'variables' as *;
+@use "variables" as *;
 
 p {
   margin-top: 0;
@@ -385,7 +381,7 @@ p {
 
 ```scss
 // User's stylesheet
-@use 'bootstrap' with (
+@use "bootstrap" with (
   $paragraph-margin-bottom: 1.2rem
 );
 ```

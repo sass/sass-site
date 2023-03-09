@@ -1,5 +1,5 @@
 ---
-title: 'Security Alert: Tar Permissions'
+title: "Security Alert: Tar Permissions"
 author: Natalie Weizenbaum
 date: 2022-12-09 16:00:00 -8
 ---
@@ -30,18 +30,18 @@ If you're using the `sass-embedded` package, do the same thing for
 While we don't expect this issue to be a problem for the vast majority of users,
 it does affect the following groups:
 
-- Users who downloaded the stand-alone Dart Sass, Dart Sass Embedded, or Sass
+* Users who downloaded the stand-alone Dart Sass, Dart Sass Embedded, or Sass
   Migrator `.tar.gz` archives from the Dart Sass website and extracted them as
   the Unix root user.
 
-- Users who installed the `sass-embedded` npm package as the Unix root user
+* Users who installed the `sass-embedded` npm package as the Unix root user
   prior to version 1.54.5.
 
-- Users who installed the "non-native" version of the community-maintained
+* Users who installed the "non-native" version of the community-maintained
   `sass-embedded` RubyGems package as the Unix root user prior to version
   1.56.2.
 
-- Users on multi-user systems who downloaded the stand-alone Dart Sass, Dart
+* Users on multi-user systems who downloaded the stand-alone Dart Sass, Dart
   Sass Embedded, or Sass Migrator `.tar.gz` archives from the Dart Sass website
   and explicitly passed the `-p`/`--preserve-permissions` flag when extracting
   them.
@@ -57,7 +57,7 @@ using without needing to upgrade to the latest version.
 This is a privilege-escalation issue, which means it could allow a hypothetical
 attacker with access to a low-privilege account on your computer to escalate
 their access to your account's privileges. However, this also means that it's
-not a risk _unless_ an attacker already has access to an account on your
+not a risk *unless* an attacker already has access to an account on your
 machine.
 
 ## What went wrong?

@@ -30,7 +30,7 @@ $ choco install sass --version 1.23.0.modulebeta-1
 $ pub global activate sass 1.23.0-module.beta.1
 ```
 
-Note that 1.23.0 may not _actually_ be the final version number for the stable
+Note that 1.23.0 may not *actually* be the final version number for the stable
 module system release, it's just the next minor version number in Dart Sass's
 release series.
 

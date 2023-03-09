@@ -1,5 +1,4 @@
 layout: blog
 tags:
   - blog
-# @@@ This should strip the `id` from the slug first
-permalink: '/blog/{{ page.fileSlug }}/index.html'
+permalink: '/blog/{{ page | getBlogSlug }}/index.html'

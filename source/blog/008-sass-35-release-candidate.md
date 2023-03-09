@@ -22,7 +22,7 @@ some time to add some new features, which are the focus of this release.
 Sass 3.5 now fully supports [CSS custom
 properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables).
 These posed a particular challenge for us, since the custom property syntax is
-_extremely_ broad. You can put just about anything on the right-hand side. For
+*extremely* broad. You can put just about anything on the right-hand side. For
 example, this is totally valid, meaningful CSS:
 
 ```css
@@ -31,7 +31,7 @@ example, this is totally valid, meaningful CSS:
 }
 ```
 
-In particular, this means that SassScript expressions are _also_ valid CSS,
+In particular, this means that SassScript expressions are *also* valid CSS,
 which poses a problem for our goal of CSS compatibility. Wherever possible, we
 want valid CSS to mean the same thing in Sass as it does in CSS. So treating
 custom properties just like normal properties—which we did in 3.4—wasn't a good
@@ -49,7 +49,7 @@ to impossible to represent in Sass:
 }
 ```
 
-On the other hand, we needed _some_ way of including dynamic SassScript values
+On the other hand, we needed *some* way of including dynamic SassScript values
 in custom properties. So we decided on a compromise: we'd treat custom
 properties like we do selectors and at-rule values, and only allow `#{}` as a
 means of including Sass values. While technically this is plain CSS, it's a very

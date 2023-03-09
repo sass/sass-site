@@ -1,5 +1,5 @@
 ---
-title: 'Feature Watch: CSS Imports and CSS Compatibility'
+title: "Feature Watch: CSS Imports and CSS Compatibility"
 author: Natalie Weizenbaum
 date: 2018-08-13 14:17:00 -8
 ---
@@ -50,13 +50,13 @@ to use these CSS functions... until now. Dart Sass 1.11 will intelligently
 decide whether to use the plain CSS functions or the built-in Sass functions
 based on whether or not you're passing in dynamic Sass values. For example:
 
-- The Sass function will be called if you pass a variable, like `max($width,
-100px)`.
-- The Sass function will be called if you call another Sass function, like
+* The Sass function will be called if you pass a variable, like `max($width,
+  100px)`.
+* The Sass function will be called if you call another Sass function, like
   `max(compute-width(), 100px)`.
-- It will compile to a plain CSS function if you just use plain CSS numbers,
+* It will compile to a plain CSS function if you just use plain CSS numbers,
   like `max(50% + 10px, 100px)`.
-- It will still compile to a plain CSS function even if you use interpolation,
+* It will still compile to a plain CSS function even if you use interpolation,
   like `max(50% + #{$width / 2}, #{$width})`.
 
 This preserves backwards-compatibility with existing uses of the Sass functions,

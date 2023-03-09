@@ -1,5 +1,5 @@
 ---
-title: 'Request for Comments: First-Class Calc'
+title: "Request for Comments: First-Class Calc"
 author: Natalie Weizenbaum
 date: 2021-3-15 1:35:00 -8
 ---
@@ -41,17 +41,17 @@ represents the (simplified) expression that can be resolved in the browser.
 
 For example:
 
-- `calc(1px + 10px)` will return the number `11px`.
+* `calc(1px + 10px)` will return the number `11px`.
 
-- Similarly, if `$length` is `10px`, `calc(1px + $length)` will return `11px`.
+* Similarly, if `$length` is `10px`, `calc(1px + $length)` will return `11px`.
 
-- However, `calc(1px + 10%)` will return the calc `calc(1px + 10%)`.
+* However, `calc(1px + 10%)` will return the calc `calc(1px + 10%)`.
 
-- If `$length` is `calc(1px + 10%)`, `calc(1px + $length)` will return
+* If `$length` is `calc(1px + 10%)`, `calc(1px + $length)` will return
   `calc(2px + 10%)`.
 
-- Sass functions can be used directly in `calc()`, so `calc(1% +
-math.round(15.3px))` returns `calc(1% + 15px)`.
+* Sass functions can be used directly in `calc()`, so `calc(1% +
+  math.round(15.3px))` returns `calc(1% + 15px)`.
 
 Note that calculations cannot generally be used in place of numbers. For
 example, `1px + calc(1px + 10%)` will produce an error, as will

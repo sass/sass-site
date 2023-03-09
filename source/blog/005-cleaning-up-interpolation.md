@@ -11,7 +11,7 @@ expression. In most of those places it just plops the value into the surrounding
 text. It's straightforward, easy to understand, and useful, which is exactly
 what we want from a feature.
 
-Unfortunately, that's only true in _most places_. For complicated historical
+Unfortunately, that's only true in *most places*. For complicated historical
 reasons, there's one place where interpolation goes a little bit bananas: inside
 an expression but outside quotes. Most of the time, it makes sense; if you write
 `display: -#{$prefix}-box`, you'll get what you expect. But if any operators
@@ -22,13 +22,13 @@ the text `name + 3`.
 This is really weird behavior. Why does `+` behave differently here than it does
 everywhere else? Why is it treated as plain text when `$name` gets evaluated
 normally? This behavior is confusing, inconsistent, and not particularly useful,
-which are very much _not_ things we want in a feature. So why do they exist in
+which are very much *not* things we want in a feature. So why do they exist in
 the first place?
 
 ## Complicated Historical Reasons
 
-_If you don't care for a history lesson, skip on down to [A Brave New
-World](#a-brave-new-world)._
+*If you don't care for a history lesson, skip on down to [A Brave New
+World](#a-brave-new-world).*
 
 Way back in the dawn of time, when the indented syntax was the only syntax, Sass
 had a distinction between "static" and "dynamic" properties. A static property
@@ -71,8 +71,8 @@ minimum of pain.
 This was mostly straightforward, since the old expression syntax was pretty much
 universally invalid CSS or something that emitted its CSS value anyway. But
 interpolation proved tricky. Backwards compatibility is really important to us,
-so we wanted to be sure that all the places interpolation was used—or _could
-theoretically be used_—in Sass 2 would continue to work in Sass 3, even though
+so we wanted to be sure that all the places interpolation was used—or *could
+theoretically be used*—in Sass 2 would continue to work in Sass 3, even though
 everything around them was now fully parsed.
 
 Our solution was to make basically anything around `#{}` that wasn't obviously
@@ -113,8 +113,8 @@ reasons), but `12px+#{$line-height}` won't.
 I won't go into the gory details of how we got deprecation working here; that's
 what the [GitHub issue](https://github.com/sass/sass/issues/1778) is for.
 Suffice it to say that it involved a lot of special cases, including some where
-a deprecation warning can be printed based on how a value is _used_ rather than
-how it's _written_. I'm pretty happy with where it ended up, though; I suspect
+a deprecation warning can be printed based on how a value is *used* rather than
+how it's *written*. I'm pretty happy with where it ended up, though; I suspect
 it'll catch 99% of cases that will actually break in practice.
 
 Another exciting bonus was the ability to automatically update code. This
@@ -127,7 +127,7 @@ long way there.
 The final step once the deprecation was in place was to move to [the `main`
 branch](https://github.com/sass/sass/commits/main) (which will eventually
 become Sass 4), rip out all the old behavior, and implement the new. And it was
-_wonderful_. Deleting gross code and replacing it with something clean feels
+*wonderful*. Deleting gross code and replacing it with something clean feels
 like taking a shower after spending a day hiking through dust under a hot sun.
 And after working on this feature for weeks, I was happy to see the other end of
 it.
@@ -148,6 +148,6 @@ prereleases pretty stable, but there's also a chance you'll run into a bug.
 If you do find a bug, please file it on [the issue
 tracker](https://github.com/sass/sass/issues). Even if it's something as simple
 as a typo, we want to know. If we've deprecated something that should be valid,
-we _especially_ want to know. And if you just have a question, feel free to
+we *especially* want to know. And if you just have a question, feel free to
 tweet at [@SassCSS](https://twitter.com/SassCSS) or post it on the [mailing
 list](https://groups.google.com/forum/#!forum/sass-lang).

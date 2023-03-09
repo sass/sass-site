@@ -13,23 +13,28 @@ permalink: '/blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumbe
 {% assign pages = pagination.pages.size %}
 
 {% if pages > 1 %}
-  <p>Page {{ pageNumber }} of {{ pagination.pages.size }}</p>
-  {% if pagination.page.previous %}
-    <p><a href="{{ pagination.href.previous }}">Previous page</a></p>
+  <p>Page {{ pageNumber }} of {{ pages }}</p>
+  {% if pagination.href.previous %}
+    <p>
+      <a href="{{ pagination.href.previous }}">Previous page</a>
+    </p>
   {% endif %}
 {% endif %}
 
 <ul class="sl-c-list">
   {% for post in posts %}
     <li>
-      <h2><a href="{{post.url}}">{{ post.data.title }}</a></h2>
+      <h2>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </h2>
       {% render 'attribution', date: post.date, author: post.data.author %}
-      {% # @@@ This shouls also replace internal links with links to the page %}
-      {{ post.content | truncateHTML }}
+      {{ post.content | truncateHTML | replaceInternalLinks: post.url }}
     </li>
   {% endfor %}
 </ul>
 
-{% if pagination.page.next %}
-  <p><a href="{{ pagination.href.next }}">Next page</a></p>
+{% if pagination.href.next %}
+  <p>
+    <a href="{{ pagination.href.next }}">Next page</a>
+  </p>
 {% endif %}

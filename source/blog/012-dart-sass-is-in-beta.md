@@ -11,8 +11,7 @@ that I love to curl up on the armchair in my living room and write some code.
 This weekend, that meant finishing up the last few outstanding `@extend` bugs,
 finally **making Dart Sass fully sass-spec compatible**[^1].
 
-[^1]:
-    Technically there are still two specs marked as "TODO". These test UTF-16
+[^1]: Technically there are still two specs marked as "TODO". These test UTF-16
     support, which is currently [blocked on Dart
     support](https://github.com/dart-lang/sdk/issues/11744).
 
@@ -55,17 +54,17 @@ work with Dart Sass as well.
 As with all Dart Sass releases, 1.0.0-beta.1 is available on many platforms.
 Give it a try on whichever is easiest for you:
 
-- Standalone tarballs are [available on
+* Standalone tarballs are [available on
   GitHub](https://github.com/sass/dart-sass/releases/tag/1.0.0-beta.1), which
   you can just download and run from the command line.
 
-- [Chocolatey](https://chocolatey.org) users on Windows can just run `choco
-install sass --pre` (or `choco upgrade sass --pre` if you already have it).
+* [Chocolatey](https://chocolatey.org) users on Windows can just run `choco
+  install sass --pre` (or `choco upgrade sass --pre` if you already have it).
 
-- You can get the pure-JavaScript version from npm by running `npm install -g
-dart-sass`.
+* You can get the pure-JavaScript version from npm by running `npm install -g
+  dart-sass`.
 
-- Or if you're a Dart user, you can run `pub global activate sass`.
+* Or if you're a Dart user, you can run `pub global activate sass`.
 
 I'm very pleased to have 1.0.0-beta.1 tagged and out in the world, but the work
 of a language maintainer is never done. I'm back to work, and if I hustle,

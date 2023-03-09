@@ -33,44 +33,46 @@ Following are a set of primitive objects, definitions, and operations that are
 necessary for implementing `@extend`. Implementing these is left as an exercise
 for the reader.
 
-- A selector object is obviously necessary, since `@extend` is all about
+* A selector object is obviously necessary, since `@extend` is all about
   selectors. Selectors will need to be parsed thoroughly and semantically. It's
   necessary for the implementation to know a fair amount of the meaning behind
   the various different forms of selectors.
 
-- A custom data structure I call a "subset map" is also necessary. A subset map
+* A custom data structure I call a "subset map" is also necessary. A subset map
   has two operations: `Map.set(Set, Object)` and `Map.get(Set) => [Object]`. The
   former associates a value with a set of keys in the map. The latter looks up
-  all values that are associated with _subsets_ of a set of keys. For example:
+  all values that are associated with *subsets* of a set of keys. For example:
 
-        map.set([1, 2], 'value1')
-        map.set([2, 3], 'value2)
-        map.set([3, 4], 'value3')
-        map.get([1, 2, 3]) => ['value1', 'value2']
+  ```ruby
+  map.set([1, 2], 'value1')
+  map.set([2, 3], 'value2')
+  map.set([3, 4], 'value3')
+  map.get([1, 2, 3]) => ['value1', 'value2']
+  ```
 
-- A selector `S1` is a "superselector" of a selector `S2` if every element
+* A selector `S1` is a "superselector" of a selector `S2` if every element
   matched by `S2` is also matched by `S1`. For example, `.foo` is a
   superselector of `.foo.bar`, `a` is a superselector of `div a`, and `*` is a
   superselector of everything. The inverse of a superselector is a
   "subselector".
 
-- An operation `unify(Compound Selector, Compound Selector) => Compound
-Selector` that returns a selector that matches exactly those elements matched
+* An operation `unify(Compound Selector, Compound Selector) => Compound
+  Selector` that returns a selector that matches exactly those elements matched
   by both input selectors. For example, `unify(.foo, .bar)` returns `.foo.bar`.
   This only needs to work for compound or simpler selectors. This operation can
   fail (e.g. `unify(a, h1)`), in which case it should return `null`.
 
-- An operation `trim([Selector List]) => Selector List` that removes complex
+* An operation `trim([Selector List]) => Selector List` that removes complex
   selectors that are subselectors of other complex selectors in the input. It
   takes the input as multiple selector lists and only checks for subselectors
   across these lists since the prior `@extend` process won't produce intra-list
   subselectors. For example, if it's passed `[[a], [.foo a]]` it would return
   `[a]` since `.foo a` is a subselector of `a`.
 
-- An operation `paths([[Object]]) => [[Object]]` that returns a list of all
+* An operation `paths([[Object]]) => [[Object]]` that returns a list of all
   possible paths through a list of choices for each step. For example,
   `paths([[1, 2], [3], [4, 5, 6]])` returns `[[1, 3, 4], [1, 3, 5], [1, 3, 6],
-[2, 3, 4], [2, 3, 5], [2, 3, 6]]`.
+  [2, 3, 4], [2, 3, 5], [2, 3, 6]]`.
 
 ## The Algorithm
 
@@ -142,7 +144,7 @@ so I wanted to explain it in detail.
 At a high level, the "weave" operation is pretty easy to understand. It's best
 to think of it as expanding a "parenthesized selector". Imagine you could write
 `.foo (.bar a)` and it would match every `a` element that has both a `.foo`
-parent element _and_ a `.bar` parent element. `weave` makes this happen.
+parent element *and* a `.bar` parent element. `weave` makes this happen.
 
 In order to match this `a` element, you need to expand `.foo (.bar a)` into the
 following selector list: `.foo .bar a, .foo.bar a, .bar .foo a`. This matches

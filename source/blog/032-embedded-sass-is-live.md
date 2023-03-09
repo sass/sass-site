@@ -1,5 +1,5 @@
 ---
-title: 'Embedded Sass is Live'
+title: "Embedded Sass is Live"
 author: Natalie Weizenbaum
 date: 2022-02-01 2:00:00 -8
 ---
@@ -23,7 +23,7 @@ The `sass-embedded` package fully supports the [new JS API] as well as the
 [legacy API] other than a few cosmetic options. You can use it as a drop-in
 replacement for the `sass` package, and it should work with all the same build
 plugins and libraries. Note that `sass-embedded` is a bit faster in
-_asynchronous_ mode than it is in synchronous mode (whereas the `sass` package
+*asynchronous* mode than it is in synchronous mode (whereas the `sass` package
 was faster in synchronous mode). For substantial Sass files, running
 `sass-embedded` in either mode will generally be much faster than `sass`.
 

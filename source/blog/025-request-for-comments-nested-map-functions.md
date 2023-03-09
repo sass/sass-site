@@ -1,5 +1,5 @@
 ---
-title: 'Request for Comments: Nested Map Functions'
+title: "Request for Comments: Nested Map Functions"
 author: Natalie Weizenbaum
 date: 2020-9-16 14:40:00 -8
 ---
@@ -37,11 +37,11 @@ For example, let's take the following simplified configuration map:
 
 ```scss
 $config: (
-  'colors': (
-    'primary': red,
-    'secondary': blue,
-  ),
-);
+  "colors": (
+    "primary": red,
+    "secondary": blue
+  )
+)
 ```
 
 For this map, `map.get($config, "colors", "primary")` gets the value of the
@@ -114,7 +114,7 @@ For example, `map.deep-remove($config, "colors", "secondary")` will return
 ### `map.deep-merge()`
 
 The final new function may be the most exciting. `map.deep-merge($map1, $map2)`
-works just like `map.merge()`, except that any nested maps are _also_ merged,
+works just like `map.merge()`, except that any nested maps are *also* merged,
 including maps within those maps and so on. This makes it easy to combine two
 configuration maps that have the same structure without having to manually merge
 each level by hand.

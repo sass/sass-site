@@ -37,7 +37,7 @@ We decided to use the analytics data for sass-lang.com to approximate the
 proportion of our user base that was still using operating systems that shipped
 with old Ruby versions. Before we looked at the data, we decided that we would
 drop support for a Ruby version if it had been retired by the Ruby maintainers,
-_and_ less than 2% of our visitors across the previous month were using an OS
+*and* less than 2% of our visitors across the previous month were using an OS
 that shipped it by default.
 
 Once we did that, we looked at the data. 34.3% of our visitors were using OS X,

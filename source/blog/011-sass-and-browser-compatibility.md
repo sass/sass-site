@@ -7,7 +7,7 @@ date: 2017-02-10 17:46:00 -8
 One of the core design principles of Sass has always been to **understand CSS as
 little as possible**. As a CSS preprocessor of course we have to understand the
 syntax of CSS, but as much as we can we try to avoid caring about the
-_semantics_—the meaning behind the styles. This means that Sass has no idea
+*semantics*—the meaning behind the styles. This means that Sass has no idea
 which properties are valid, which HTML elements actually exist, or even to a
 large extent what the syntax of most @-rules is.
 
@@ -15,7 +15,7 @@ We get a lot of benefit from this. The less built-in knowledge Sass has about
 CSS, the less likely it is to work poorly with new CSS features. Imagine having
 to file a feature request every time you want to use a new CSS property—that
 would suck! Instead, older versions of Sass will happily keep working unless the
-actual _syntax_ changes, which is much rarer.
+actual *syntax* changes, which is much rarer.
 
 Because of this decoupling, we've never needed to worry much about browser
 compatibility. Sass just passes whatever CSS its given on through. It's up to

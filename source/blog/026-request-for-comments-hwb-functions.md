@@ -1,5 +1,5 @@
 ---
-title: 'Request for Comments: HWB Functions'
+title: "Request for Comments: HWB Functions"
 author: Natalie Weizenbaum
 date: 2020-10-06 16:00:00 -8
 ---
@@ -35,7 +35,7 @@ colors use the same sRGB colorspace as all other Sass color values, colors
 created this way are fully compatible with all existing Sass color functions and
 will be emitted as their RGB equivalents for maximum browser compatibility.
 
-Note that _unlike_ `rgb()` and `hsl()`, the proposal doesn't add this function
+Note that *unlike* `rgb()` and `hsl()`, the proposal doesn't add this function
 to the global scope yet. This is because Sass has a policy of never adding
 support for new CSS syntax before at least one browser implements it. Specs have
 a tendency to change until they're locked in by browsers, and if Sass ends up
