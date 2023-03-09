@@ -13,3 +13,11 @@ interface Page {
  */
 export const isTypedoc = (page: Page) =>
   page.url ? page.url.startsWith('/documentation/js-api/') : false;
+
+/* eslint-disable @typescript-eslint/no-unsafe-member-access,
+                  @typescript-eslint/no-unsafe-call,
+                  @typescript-eslint/no-explicit-any */
+export default function pagesPlugin(eleventyConfig: any) {
+  // filters...
+  eleventyConfig.addLiquidFilter('isTypedoc', isTypedoc);
+}

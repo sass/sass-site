@@ -43,3 +43,21 @@ export const markdownInline = (content: string) =>
  * @see https://github.com/ekalinin/typogr.js
  */
 export const typogr = (content: string) => typogrify(content);
+
+/* eslint-disable @typescript-eslint/no-unsafe-member-access,
+                  @typescript-eslint/no-unsafe-call,
+                  @typescript-eslint/no-explicit-any */
+export default function typePlugin(eleventyConfig: any) {
+  // filters...
+  eleventyConfig.addLiquidFilter('markdown', markdown);
+  eleventyConfig.addLiquidFilter('markdownInline', markdownInline);
+  eleventyConfig.addLiquidFilter('typogr', typogr);
+
+  // shortcodes...
+  eleventyConfig.addLiquidShortcode('lorem', getLorem);
+
+  // paired shortcodes...
+  eleventyConfig.addPairedLiquidShortcode('markdown', markdown);
+  eleventyConfig.addPairedLiquidShortcode('markdownInline', markdownInline);
+  eleventyConfig.addPairedLiquidShortcode('typogr', typogr);
+}

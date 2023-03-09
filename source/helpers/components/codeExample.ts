@@ -1,6 +1,6 @@
 import sass from 'sass';
 
-import { liquidEngine } from './engines';
+import { liquidEngine } from '../engines';
 
 /**
  * Renders a code example.
