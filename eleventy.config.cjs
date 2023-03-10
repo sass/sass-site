@@ -2,13 +2,14 @@
 
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const formatDistanceToNow = require('date-fns/formatDistanceToNow');
+const { formatDistanceToNow, format } = require('date-fns');
 const yaml = require('js-yaml');
 const { LoremIpsum } = require('lorem-ipsum');
 const markdown = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownDefList = require('markdown-it-deflist');
 const typogrify = require('typogr');
+const truncate = require('truncate-html');
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
@@ -65,6 +66,14 @@ module.exports = (eleventyConfig) => {
   );
 
   // Filters...
+  eleventyConfig.addLiquidFilter('truncateHTML', (post, words = 170) => {
+    return truncate(post, words, { byWords: true });
+  });
+
+  eleventyConfig.addLiquidFilter('format', (date, pattern = 'd MMMM yyyy') => {
+    return format(new Date(date), pattern);
+  });
+
   eleventyConfig.addLiquidFilter('formatDistanceToNow', (date) => {
     return formatDistanceToNow(new Date(date));
   });
@@ -85,8 +94,18 @@ module.exports = (eleventyConfig) => {
     page.url.startsWith('/documentation/js-api/'),
   );
 
+  eleventyConfig.addLiquidFilter('getBlogSlug', (page) =>
+    page.fileSlug.replace(/^(\d*-)/, ''),
+  );
+
+  eleventyConfig.addLiquidFilter('replaceInternalLinks', (content, url) =>
+    content.replace(/href="#/g, `href="${url}#`),
+  );
+
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  eleventyConfig.setQuietMode(true);
 
   // settings
   return {
