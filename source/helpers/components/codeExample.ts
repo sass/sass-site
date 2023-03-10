@@ -104,6 +104,12 @@ const generateCodeExample = (
   const cssExamples =
     cssContents?.split('\n---\n').map((str) => str.trim()) ?? [];
 
+  const { scssPaddings, sassPaddings, cssPaddings } = getPaddings(
+    scssExamples,
+    sassExamples,
+    cssExamples,
+  );
+
   const { canSplit, maxSourceWidth, maxCSSWidth } = getCanSplit(
     scssExamples,
     sassExamples,
@@ -123,9 +129,130 @@ const generateCodeExample = (
     scss: scssExamples,
     sass: sassExamples,
     css: cssExamples,
+    scssPaddings,
+    sassPaddings,
+    cssPaddings,
     canSplit,
     splitLocation,
   };
+};
+
+/**
+ * Calculate the lines of padding to add to the bottom of each section so
+ * that it lines up with the same section in the other syntax.
+ */
+const getPaddings = (
+  scssExamples: string[],
+  sassExamples: string[],
+  cssExamples: string[],
+) => {
+  const scssPaddings: number[] = [];
+  const sassPaddings: number[] = [];
+  const cssPaddings: number[] = [];
+  const maxSections = Math.max(
+    scssExamples.length,
+    sassExamples.length,
+    cssExamples.length,
+  );
+  Array.from({ length: maxSections }).forEach((_, i) => {
+    const scssLines = (scssExamples[i] || '').split('\n').length;
+    const sassLines = (sassExamples[i] || '').split('\n').length;
+    const cssLines = (cssExamples[i] || '').split('\n').length;
+
+    // Whether the current section is the last section for the given syntax.
+    const isLastScssSection = i === scssExamples.length - 1;
+    const isLastSassSection = i === sassExamples.length - 1;
+    const isLastCssSection = i === cssExamples.length - 1;
+
+    // The maximum lines for any syntax in this section, ignoring syntaxes for
+    // which this is the last section.
+    const maxLines = Math.max(
+      isLastScssSection ? 0 : scssLines,
+      isLastSassSection ? 0 : sassLines,
+      isLastCssSection ? 0 : cssLines,
+    );
+
+    scssPaddings.push(
+      getPadding({
+        isLastSection: isLastScssSection,
+        comparisonA: sassExamples.slice(i),
+        comparisonB: cssExamples.slice(i),
+        lines: scssLines,
+        maxLines,
+      }),
+    );
+
+    sassPaddings.push(
+      getPadding({
+        isLastSection: isLastSassSection,
+        comparisonA: scssExamples.slice(i),
+        comparisonB: cssExamples.slice(i),
+        lines: sassLines,
+        maxLines,
+      }),
+    );
+
+    cssPaddings.push(
+      getPadding({
+        isLastSection: isLastCssSection,
+        comparisonA: scssExamples.slice(i),
+        comparisonB: sassExamples.slice(i),
+        lines: cssLines,
+        maxLines,
+      }),
+    );
+  });
+
+  return { scssPaddings, sassPaddings, cssPaddings };
+};
+
+/**
+ * Make sure the last section has as much padding as all the rest of
+ * the other syntaxes' sections.
+ */
+const getPadding = ({
+  isLastSection,
+  comparisonA,
+  comparisonB,
+  lines,
+  maxLines,
+}: {
+  isLastSection: boolean;
+  comparisonA: string[];
+  comparisonB: string[];
+  lines: number;
+  maxLines: number;
+}) => {
+  let padding = 0;
+  if (isLastSection) {
+    padding = getTotalPadding(comparisonA, comparisonB) - lines - 2;
+  } else if (maxLines > lines) {
+    padding = maxLines - lines;
+  }
+  return Math.max(padding, 0);
+};
+
+/**
+ * Returns the number of lines of padding that's needed to match the height of
+ * the `<pre>`s generated for `sections1` and `sections2`.
+ */
+const getTotalPadding = (sections1: string[], sections2: string[]) => {
+  sections1 ||= [];
+  sections2 ||= [];
+  return Array.from({
+    length: Math.max(sections1.length, sections2.length),
+  }).reduce((sum: number, _, i) => {
+    // Add 2 lines to each additional section: 1 for the extra padding, and 1
+    // for the extra margin.
+    return (
+      sum +
+      Math.max(
+        (sections1[i] || '').split('\n').length,
+        (sections2[i] || '').split('\n').length,
+      ) +
+      2
+    );
+  }, 0);
 };
 
 const getCanSplit = (
