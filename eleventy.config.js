@@ -36,6 +36,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
 
+  eleventyConfig.setQuietMode(true);
+
   // settings
   return {
     dir: {

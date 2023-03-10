@@ -1,4 +1,5 @@
 import { LoremIpsum } from 'lorem-ipsum';
+import truncate from 'truncate-html';
 import { typogrify } from 'typogr';
 
 import { markdownEngine } from './engines';
@@ -26,6 +27,14 @@ export const getLorem = (type: string, number = 1) => {
 };
 
 /**
+ * Truncates an HTML string without breaking tags.
+ *
+ * @see https://github.com/oe/truncate-html
+ */
+export const truncateHTML = (html: string, words = 170) =>
+  truncate(html, words, { byWords: true });
+
+/**
  * Renders block of Markdown into HTML.
  */
 export const markdown = (content: string) => markdownEngine.render(content);
@@ -44,14 +53,22 @@ export const markdownInline = (content: string) =>
  */
 export const typogr = (content: string) => typogrify(content);
 
+/**
+ * Appends full page URL to internal links (for embedding in another page).
+ */
+export const replaceInternalLinks = (content: string, url: string) =>
+  content.replace(/href="#/g, `href="${url}#`);
+
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,
                   @typescript-eslint/no-unsafe-call,
                   @typescript-eslint/no-explicit-any */
 export default function typePlugin(eleventyConfig: any) {
   // filters...
+  eleventyConfig.addLiquidFilter('truncateHTML', truncateHTML);
   eleventyConfig.addLiquidFilter('markdown', markdown);
   eleventyConfig.addLiquidFilter('markdownInline', markdownInline);
   eleventyConfig.addLiquidFilter('typogr', typogr);
+  eleventyConfig.addLiquidFilter('replaceInternalLinks', replaceInternalLinks);
 
   // shortcodes...
   eleventyConfig.addLiquidShortcode('lorem', getLorem);

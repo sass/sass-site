@@ -9,6 +9,11 @@ interface Page {
 }
 
 /**
+ * Removes leading id (e.g. `001-`) from blog filenames.
+ */
+export const getBlogSlug = (page: Page) => page.fileSlug.replace(/^(\d*-)/, '');
+
+/**
  * Indicates whether the given page is part of the JS API documentation.
  */
 export const isTypedoc = (page: Page) =>
@@ -19,5 +24,6 @@ export const isTypedoc = (page: Page) =>
                   @typescript-eslint/no-explicit-any */
 export default function pagesPlugin(eleventyConfig: any) {
   // filters...
+  eleventyConfig.addLiquidFilter('getBlogSlug', getBlogSlug);
   eleventyConfig.addLiquidFilter('isTypedoc', isTypedoc);
 }
