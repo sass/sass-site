@@ -29,11 +29,7 @@ export const funFact = async (contents: string) =>
  *
  * @see https://prismjs.com/
  */
-export const codeBlock = (
-  contents: string,
-  language: string,
-  padding = 0,
-) => {
+export const codeBlock = (contents: string, language: string, padding = 0) => {
   if (!languages[language]) {
     PrismLoader(language);
   }
