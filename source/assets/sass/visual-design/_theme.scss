@@ -3,7 +3,7 @@
 @use '../config/color/brand';
 
 html {
-  @include config.tokens(config.$scale, 'sl-');
+  @include config.tokens(config.$scale);
   @include config.tokens(config.$brand-colors);
   @include config.tokens(config.$content-colors);
 
