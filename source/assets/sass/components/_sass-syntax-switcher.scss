@@ -1,4 +1,3 @@
-@use '../functions';
 @use '../visual-design/theme';
 @use '../visual-design/typography';
 
@@ -110,7 +109,7 @@
   // syntax switcher is exactly equal to two lines, so there's no visual jitter
   // when switching between syntaxes.
   pre + pre {
-    margin-top: 22px;
+    margin-top: var(--sl-gutter);
   }
 }
 
@@ -233,13 +232,15 @@ html .ui-button.ui-state-disabled:active {
   }
 }
 
-@media screen and (min-width: functions.sl-px-to-rem(1500px)) {
+// custom breakpoint to make the split tabs work with a double nav column
+@media screen and (min-width: 93.75rem) {
   body.documentation {
     @include -split-css-tabs;
   }
 }
 
-@media screen and (min-width: functions.sl-px-to-rem(1000px)) {
+// custom breakpoint to make the split tabs work with a single nav column
+@media screen and (min-width: 76rem) {
   body.guide {
     @include -split-css-tabs;
   }
