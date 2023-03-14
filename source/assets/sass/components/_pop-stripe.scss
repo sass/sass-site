@@ -1,14 +1,20 @@
 @use 'sass:math';
 @use 'sass:list';
 @use 'sass:meta';
+@use 'sass:map';
 @use '../functions';
-@use '../visual-design/theme';
+@use '../config/color/brand';
 
-$sl-colors: theme.$sl-color--hopbush theme.$sl-color--bouquet
-  theme.$sl-color--venus theme.$sl-color--patina theme.$sl-color--nebula
-  theme.$sl-color--white theme.$sl-color--dawn-pink theme.$sl-color--wafer
-  theme.$sl-color--iron theme.$sl-color--regent-grey theme.$sl-color--pale-sky
-  theme.$sl-color--midnight-blue;
+$sl-colors: ();
+
+// loop over the variable names in config/color/brand.scss
+@each $color-name in map.keys(meta.module-variables('brand')) {
+  // turn each sass variable name into a css var() function
+  $var: var(--#{$color-name});
+
+  // add each var() function to the space-separated list
+  $sl-colors: list.append($sl-colors, $var, space);
+}
 
 @function stripes($position, $sl-colors) {
   $sl-colors: if(

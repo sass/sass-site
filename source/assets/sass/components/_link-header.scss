@@ -1,5 +1,3 @@
-@use '../visual-design/theme';
-
 h1,
 h2,
 h3,
@@ -47,7 +45,7 @@ h6 {
 
 @keyframes highlight-header {
   from {
-    background-color: theme.$sl-color--dawn-pink;
+    background-color: var(--sl-color--dawn-pink);
   }
 
   to {
@@ -68,10 +66,10 @@ h6 {
 
 @keyframes highlight-signature {
   from {
-    background-color: theme.$sl-color--dawn-pink;
+    background-color: var(--sl-color--dawn-pink);
   }
 
   to {
-    background-color: var(--sl-color-code--bg);
+    background-color: var(--sl-color--code-background);
   }
 }

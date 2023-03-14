@@ -9,7 +9,7 @@
   margin: 0;
 
   a {
-    color: theme.$sl-color--pale-sky;
+    color: var(--sl-color--pale-sky);
     cursor: text;
   }
 
@@ -85,7 +85,7 @@
         }
 
         a::before {
-          color: theme.$sl-color--regent-grey;
+          color: var(--sl-color--regent-grey);
           content: '\21d2';
           font-size: var(--sl-font-size--large);
           font-weight: typography.$sl-font-weight--bold;
@@ -174,7 +174,7 @@ html .ui-button.ui-state-disabled:active {
   top: 0.45rem;
   margin: 0;
   text-transform: uppercase;
-  color: theme.$sl-color--hopbush;
+  color: var(--sl-color--hopbush);
 
   &,
   * {

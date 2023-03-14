@@ -3,10 +3,10 @@
 $sl-breakpoints: (
   // for mixins to span across breakpoints and without one
   none: 0,
-  small: config.$breakpoint--small,
-  medium: config.$breakpoint--medium,
-  large: config.$breakpoint--large,
-  x-large: config.$breakpoint--x-large
+  small: config.$sl-breakpoint--small,
+  medium: config.$sl-breakpoint--medium,
+  large: config.$sl-breakpoint--large,
+  x-large: config.$sl-breakpoint--x-large
 );
 
 @mixin sl-breakpoint($breakpoint) {
@@ -22,49 +22,49 @@ $sl-breakpoints: (
 }
 
 @mixin sl-breakpoint--small {
-  @include sl-breakpoint(config.$breakpoint--small) {
+  @include sl-breakpoint(config.$sl-breakpoint--small) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--small-max {
-  @include sl-breakpoint-max(config.$breakpoint--small) {
+  @include sl-breakpoint-max(config.$sl-breakpoint--small) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--medium {
-  @include sl-breakpoint(config.$breakpoint--medium) {
+  @include sl-breakpoint(config.$sl-breakpoint--medium) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--medium-max {
-  @include sl-breakpoint-max(config.$breakpoint--medium) {
+  @include sl-breakpoint-max(config.$sl-breakpoint--medium) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--large {
-  @include sl-breakpoint(config.$breakpoint--large) {
+  @include sl-breakpoint(config.$sl-breakpoint--large) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--large-max {
-  @include sl-breakpoint-max(config.$breakpoint--large) {
+  @include sl-breakpoint-max(config.$sl-breakpoint--large) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--x-large {
-  @include sl-breakpoint(config.$breakpoint--x-large) {
+  @include sl-breakpoint(config.$sl-breakpoint--x-large) {
     @content;
   }
 }
 
 @mixin sl-breakpoint--x-large-max {
-  @include sl-breakpoint-max(config.$breakpoint--x-large) {
+  @include sl-breakpoint-max(config.$sl-breakpoint--x-large) {
     @content;
   }
 }

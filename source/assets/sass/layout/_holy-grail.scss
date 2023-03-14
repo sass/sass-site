@@ -1,5 +1,4 @@
 @use '../breakpoints';
-@use '../functions';
 
 @each $breakpoint, $size in breakpoints.$sl-breakpoints {
   $prefix: if(($breakpoint == 'none'), '', '#{$breakpoint}-');

@@ -1,5 +1,4 @@
 @use 'sass:color';
-@use '../functions';
 
 .sl-c-button {
   align-items: center;
@@ -17,7 +16,7 @@
   &:hover,
   &:focus {
     --color-button-text: var(--sl-color--action);
-    --color-button-bg: var(--sl-color-link--action);
+    --color-button-bg: var(--sl-color--link-action);
   }
 
   &:active {
