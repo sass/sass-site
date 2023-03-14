@@ -110,7 +110,9 @@ if (window.location.hash) {
       redirect = '/ruby-sass';
     }
 
-    if (redirect) window.location.href = redirect;
+    if (redirect) {
+      window.location.href = redirect;
+    }
   } else if (window.location.pathname == '/documentation/modules') {
     const redirects: Record<string, string> = {
       '#declare-class_method': '/ruby-sass',
@@ -219,7 +221,9 @@ if (window.location.hash) {
     };
 
     const redirect: string | undefined = redirects[window.location.hash];
-    if (redirect) window.location.href = redirect;
+    if (redirect) {
+      window.location.href = redirect;
+    }
   } else if (window.location.pathname == '/documentation/modules/color') {
     const redirects: Record<string, string> = {
       '#rgb': '/documentation/modules#rgb',
@@ -229,21 +233,27 @@ if (window.location.hash) {
     };
 
     const redirect: string | undefined = redirects[window.location.hash];
-    if (redirect) window.location.href = redirect;
+    if (redirect) {
+      window.location.href = redirect;
+    }
   } else if (window.location.pathname == '/documentation/modules/map') {
     const redirects: Record<string, string> = {
       '#keywords': '/documentation/modules/meta#keywords',
     };
 
     const redirect: string | undefined = redirects[window.location.hash];
-    if (redirect) window.location.href = redirect;
+    if (redirect) {
+      window.location.href = redirect;
+    }
   } else if (window.location.pathname == '/documentation/at-rules/use') {
     const redirects: Record<string, string> = {
       '#configuring-modules': '/documentation/at-rules/use#configuration',
     };
 
     const redirect: string | undefined = redirects[window.location.hash];
-    if (redirect) window.location.href = redirect;
+    if (redirect) {
+      window.location.href = redirect;
+    }
   } else if (
     window.location.pathname == '/documentation/syntax/special-functions'
   ) {
@@ -254,7 +264,9 @@ if (window.location.hash) {
     };
 
     const redirect: string | undefined = redirects[window.location.hash];
-    if (redirect) window.location.href = redirect;
+    if (redirect) {
+      window.location.href = redirect;
+    }
   } else if (window.location.pathname == '/documentation/js-api') {
     const redirects: Record<string, string> = {
       '#rendersync': '/documentation/js-api/modules#renderSync',
@@ -391,6 +403,8 @@ if (window.location.hash) {
     };
 
     const redirect: string | undefined = redirects[window.location.hash];
-    if (redirect) window.location.href = redirect;
+    if (redirect) {
+      window.location.href = redirect;
+    }
   }
 }
