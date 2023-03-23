@@ -1,0 +1,10 @@
+<div
+  id="example-{{ id }}-{{ syntax }}"
+  class="ui-tabs-panel {{ syntax }}{% unless enabled %} ui-tabs-panel-inactive{% endunless %}"
+>
+  <h3 class="visuallyhidden">{{ name }}</h3>
+  {% for example in examples %}
+    {% assign padding = paddings[forloop.index0] | default: 0 %}
+    {% code syntax, padding %}{{ example | strip }}{% endcode %}
+  {% endfor %}
+</div>

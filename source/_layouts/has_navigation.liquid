@@ -8,7 +8,7 @@ layout: base
       {{ navigation | markdown }}
     </nav>
     <div class="sl-l-medium-holy-grail__main">
-      <div{% unless no_container %} class="sl-l-container sl-l-container--small"{% endunless %}>
+      <div {% unless no_container %}class="sl-l-container sl-l-container--small"{% endunless %}>
         {% render 'intro', before_introduction: before_introduction, introduction: introduction, center_introduction: center_introduction %}
 
         {{ content }}
