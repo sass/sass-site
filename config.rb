@@ -72,8 +72,10 @@ Dir['source/documentation/breaking-changes/**'].each do |file|
 end
 
 for url in %w[d/random-with-units documentation/breaking-changes/random-with-units
-    d/breaking-changes/color-units documentation/breaking-changes/color-units] do
-  redirect url, to: "/documentation/breaking-changes/function-units"
+    d/color-units documentation/breaking-changes/color-units] do
+  # Middleman and GitHub Pages require the origin URL to contain an extension,
+  # otherwise it will serve the redirect as "octet-stream".
+  redirect "#{url}.html", to: "/documentation/breaking-changes/function-units"
 end
 
 redirect 'tutorial.html', to: '/guide'
