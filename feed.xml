@@ -10,7 +10,7 @@
     <link href="https://sass-lang.com/blog/security-alert-tar-permissions" rel="alternate"/>
     <id>https://sass-lang.com/blog/security-alert-tar-permissions</id>
     <published>2022-12-10T00:00:00+00:00</published>
-    <updated>2023-03-23T23:02:37+00:00</updated>
+    <updated>2023-03-23T23:14:17+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -124,7 +124,7 @@ only the owner of the files. We&amp;rsquo;re announcing the vulnerability here a
     <link href="https://sass-lang.com/blog/request-for-comments-color-spaces" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-color-spaces</id>
     <published>2022-09-21T21:00:00+00:00</published>
-    <updated>2023-03-23T23:02:37+00:00</updated>
+    <updated>2023-03-23T23:14:17+00:00</updated>
     <author>
       <name>Miriam Suzanne and Natalie Weizenbaum</name>
     </author>
@@ -397,7 +397,7 @@ thoughts or concerns you may have.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators</id>
     <published>2022-06-15T23:30:00+00:00</published>
-    <updated>2023-03-23T23:02:37+00:00</updated>
+    <updated>2023-03-23T23:14:17+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -487,7 +487,7 @@ implementing it.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
     <published>2022-02-01T10:00:00+00:00</published>
-    <updated>2023-03-23T23:02:37+00:00</updated>
+    <updated>2023-03-23T23:14:17+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -556,7 +556,7 @@ for many other popular frontend languages. If you end up doing so, message us
     <link href="https://sass-lang.com/blog/new-js-api-release-candidate" rel="alternate"/>
     <id>https://sass-lang.com/blog/new-js-api-release-candidate</id>
     <published>2021-11-21T00:15:00+00:00</published>
-    <updated>2023-03-23T23:02:37+00:00</updated>
+    <updated>2023-03-23T23:14:17+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -610,7 +610,7 @@ in a year or so, and to be disabled for good once we release Dart Sass 2.0.0.&lt
     <link href="https://sass-lang.com/blog/request-for-comments-new-js-api" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-new-js-api</id>
     <published>2021-08-05T23:30:00+00:00</published>
-    <updated>2023-03-23T23:02:37+00:00</updated>
+    <updated>2023-03-23T23:14:17+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
