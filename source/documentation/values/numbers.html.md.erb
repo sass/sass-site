@@ -51,8 +51,9 @@ been spotty, Sass always compiles it to fully expanded numbers.
   forwards-compatibility.
 <% end %>
 
-Sass numbers support up to 10 digits of precision after the decimal point. This
-means a few different things:
+Sass numbers are represented internally as 64-bit floating point values. They
+support up to 10 digits of precision after the decimal point when serialized to
+CSS and for the purposes of equality. This means a few different things:
 
 * Only the first ten digits of a number after the decimal point will be included
   in the generated CSS.
