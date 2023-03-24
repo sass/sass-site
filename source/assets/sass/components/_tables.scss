@@ -22,10 +22,7 @@
     &-responsive {
       margin-bottom: var(--sl-gutter--sesqui);
       width: 100%;
-      overflow: {
-        x: auto;
-        y: hidden;
-      }
+      overflow: auto hidden;
 
       table {
         margin-bottom: 0;

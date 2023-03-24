@@ -21,17 +21,13 @@
     @include breakpoints.sl-breakpoint--large {
       ul {
         display: flex;
-        margin: {
-          right: var(--sl-gutter--half-negative);
-          left: var(--sl-gutter--half-negative);
-        }
+        margin-left: var(--sl-gutter--half-negative);
+        margin-right: var(--sl-gutter--half-negative);
       }
 
       li {
-        padding: {
-          right: var(--sl-gutter--half);
-          left: var(--sl-gutter--half);
-        }
+        padding-left: var(--sl-gutter--half);
+        padding-right: var(--sl-gutter--half);
       }
     }
   }
@@ -118,10 +114,8 @@
 }
 
 .sl-c-description-list--horizontal {
-  margin: {
-    right: var(--sl-gutter--negative);
-    left: var(--sl-gutter--negative);
-  }
+  margin-left: var(--sl-gutter--negative);
+  margin-right: var(--sl-gutter--negative);
 
   &,
   > div {
