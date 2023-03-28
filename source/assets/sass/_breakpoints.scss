@@ -1,7 +1,7 @@
 @use 'config';
 
 $sl-breakpoints: (
-  // for mixins to span across breakpoints and without one
+  /* for mixins to span across breakpoints and without one*/
   none: 0,
   small: config.$sl-breakpoint--small,
   medium: config.$sl-breakpoint--medium,
