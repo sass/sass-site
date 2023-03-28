@@ -1,18 +1,14 @@
 .sl-l-section {
-  margin: {
-    top: var(--sl-gutter--triple);
-    bottom: var(--sl-gutter--triple);
-  }
-  padding: {
-    top: var(--sl-gutter--triple);
-    bottom: var(--sl-gutter--triple);
-  }
+  margin-bottom: var(--section-bottom-margin, var(--sl-gutter--triple));
+  margin-top: var(--section-top-margin, var(--sl-gutter--triple));
+  padding-bottom: var(--sl-gutter--triple);
+  padding-top: var(--sl-gutter--triple);
 
   &:first-child {
-    margin-top: 0;
+    --section-top-margin: 0;
   }
 
   &:last-child {
-    margin-bottom: 0;
+    --section-bottom-margin: 0;
   }
 }

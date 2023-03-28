@@ -21,19 +21,15 @@
       &__body {
         flex: 1 0 auto;
         flex-direction: row;
-        margin: {
-          right: var(--sl-gutter--double-negative);
-          left: var(--sl-gutter--double-negative);
-        }
+        margin-left: var(--sl-gutter--double-negative);
+        margin-right: var(--sl-gutter--double-negative);
       }
 
       &__main,
       &__navigation,
       &__complementary {
-        padding: {
-          right: var(--sl-gutter--double);
-          left: var(--sl-gutter--double);
-        }
+        padding-left: var(--sl-gutter--double);
+        padding-right: var(--sl-gutter--double);
       }
 
       &__main {
