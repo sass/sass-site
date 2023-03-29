@@ -28,7 +28,7 @@ supported native nesting.
 [98% of the global browser market share]: https://github.com/sass/dart-sass#browser-compatibility
 
 More importantly, though, **native CSS nesting is subtly incompatible with Sass
-nesting**. This effects three different cases:
+nesting**. This affects three different cases:
 
 1. Native CSS nesting implicitly wraps the parent selector in [`:is()`], while
    Sass copies its text into the resolved selector. That means that
@@ -48,7 +48,7 @@ nesting**. This effects three different cases:
    
    ```html
    <div class=foo>
-     <p class=bar>
+     <p class=baz>
    </div>
    ```
    
@@ -79,17 +79,8 @@ nesting**. This effects three different cases:
    but Sass will not, since the element matching `.foo` is outside the element
    matching `.green-theme`.
 
-3. Native CSS nesting and Sass nesting both support syntax that looks like
-   `&foo`, but it means different things. In native CSS, this adds a type
-   selector to the parent selector, so
-   
-   ```scss
-   .foo {
-     &div { /* ... */ }
-   }
-   ```
-
-   produces the selector `div.foo`. But in Sass, this adds a suffix to the
+3. Sass nesting and native CSS nesting and both support syntax that looks like
+   `&foo`, but it means different things. In Sass, this adds a suffix to the
    parent selector, so
 
    ```scss
@@ -98,8 +89,17 @@ nesting**. This effects three different cases:
    }
    ```
 
-   produces the selector `.foo-suffix`. Native CSS nesting has no
-   corresponding way to add a suffix to a selector.
+   produces the selector `.foo-suffix`. But in native CSS, this adds a type
+   selector to the parent selector, so
+   
+   ```scss
+   .foo {
+     &div { /* ... */ }
+   }
+   ```
+
+   produces the selector `div.foo` (where Sass would produce `.foodiv` instead).
+   Native CSS nesting has no way to add a suffix to a selector like Sass.
 
 ### Design Commitments
 
