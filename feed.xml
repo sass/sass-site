@@ -4,13 +4,153 @@
   <id>https://sass-lang.com/blog</id>
   <link href="https://sass-lang.com/blog"/>
   <link href="https://sass-lang.com/feed.xml" rel="self"/>
-  <updated>2022-12-10T00:00:00+00:00</updated>
+  <updated>2023-03-29T22:30:00+00:00</updated>
+  <entry>
+    <title>Sass and Native Nesting</title>
+    <link href="https://sass-lang.com/blog/sass-and-native-nesting" rel="alternate"/>
+    <id>https://sass-lang.com/blog/sass-and-native-nesting</id>
+    <published>2023-03-29T22:30:00+00:00</published>
+    <updated>2023-03-29T22:48:11+00:00</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;The stable release of Chrome 112, which is releasing today, is the first stable
+browser to add support for the new [native CSS nesting feature]. This feature—
+inspired by Sass&amp;rsquo;s nesting—adds the ability to nest style rules in plain CSS,
+and even uses Sass&amp;rsquo;s convention of &lt;code&gt;&amp;amp;&lt;/code&gt; to refer to the parent selector.&lt;/p&gt;
+
+&lt;p&gt;We here at Sass HQ are honored every time our language design inspires
+improvements in CSS itself. We&amp;rsquo;re excited to see the usability and clarity
+benefits of nesting brought to even more CSS authors as more browsers continue
+to roll out support for this feature.&lt;/p&gt;
+
+&lt;h2 id="the-future-of-sass-nesting"&gt;
+&lt;a class="anchor" href="#the-future-of-sass-nesting"&gt;&lt;span class="visuallyhidden"&gt;The Future of Sass Nesting permalink&lt;/span&gt;&lt;/a&gt;The Future of Sass Nesting&lt;/h2&gt;
+
+&lt;p&gt;This raises an important question, though: what will happen to Sass&amp;rsquo;s nesting?
+First of all, we won&amp;rsquo;t ever change existing valid Sass code so that it starts
+emitting CSS that&amp;rsquo;s incompatible with widely-used browsers. This means that even
+if we did decide to phase out Sass nesting and just emit plain CSS nesting
+instead, we wouldn&amp;rsquo;t do so until &lt;a href="https://github.com/sass/dart-sass#browser-compatibility"&gt;98% of the global browser market share&lt;/a&gt;
+supported native nesting.&lt;/p&gt;
+
+&lt;p&gt;More importantly, though, &lt;strong&gt;native CSS nesting is subtly incompatible with Sass
+nesting&lt;/strong&gt;. This affects three different cases:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Native CSS nesting implicitly wraps the parent selector in &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"&gt;&lt;code&gt;:is()&lt;/code&gt;&lt;/a&gt;, while
+Sass copies its text into the resolved selector. That means that&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;   &lt;span class="nc"&gt;.foo&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;#bar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+     &lt;span class="nc"&gt;.baz&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+   &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;produces the selector &lt;code&gt;.foo .baz, #bar .baz&lt;/code&gt; in Sass but &lt;code&gt;:is(.foo, #bar)
+   .baz&lt;/code&gt; in native CSS. This changes the specificity: &lt;code&gt;:is()&lt;/code&gt; always has the
+   specificity of its &lt;em&gt;most specific selector&lt;/em&gt;, so &lt;code&gt;:is(.foo, #bar) .baz&lt;/code&gt; will
+   match&lt;/p&gt;
+&lt;pre class="highlight html"&gt;&lt;code&gt;   &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;foo&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class="nt"&gt;&amp;lt;p&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;baz&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;with specificity 1 0 1 in native CSS and 0 0 2 in Sass even though neither
+   element is matched by ID.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Also because native CSS nesting uses &lt;code&gt;:is()&lt;/code&gt;, a parent selector with
+descendant combinators will behave differently.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;   &lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="nc"&gt;.bar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+     &lt;span class="nc"&gt;.green-theme&lt;/span&gt; &lt;span class="k"&gt;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+   &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;produces the selector &lt;code&gt;.green-theme .foo .bar&lt;/code&gt; in Sass, but in native CSS it
+   produces &lt;code&gt;.green-theme :is(.foo .bar)&lt;/code&gt;. This means that the native CSS
+   version will match&lt;/p&gt;
+&lt;pre class="highlight html"&gt;&lt;code&gt;   &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;foo&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"green-theme"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+       &lt;span class="nt"&gt;&amp;lt;p&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;bar&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+   &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;but Sass will not, since the element matching &lt;code&gt;.foo&lt;/code&gt; is outside the element
+   matching &lt;code&gt;.green-theme&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Sass nesting and native CSS nesting both support syntax that looks like
+&lt;code&gt;&amp;amp;foo&lt;/code&gt;, but it means different things. In Sass, this adds a suffix to the
+parent selector, so&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;   &lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+     &lt;span class="k"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;-suffix&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+   &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;produces the selector &lt;code&gt;.foo-suffix&lt;/code&gt;. But in native CSS, this adds a type
+   selector to the parent selector, so&lt;/p&gt;
+&lt;pre class="highlight scss"&gt;&lt;code&gt;   &lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+     &lt;span class="k"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+   &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;produces the selector &lt;code&gt;div.foo&lt;/code&gt; (where Sass would produce &lt;code&gt;.foodiv&lt;/code&gt; instead).
+   Native CSS nesting has no way to add a suffix to a selector like Sass.&lt;/p&gt;
+
+&lt;h3 id="design-commitments"&gt;
+&lt;a class="anchor" href="#design-commitments"&gt;&lt;span class="visuallyhidden"&gt;Design Commitments permalink&lt;/span&gt;&lt;/a&gt;Design Commitments&lt;/h3&gt;
+
+&lt;p&gt;When considering how to handle this new CSS feature, we have two important
+design commitments to keep in mind:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We&amp;rsquo;re committed to being a CSS superset. All valid CSS that&amp;rsquo;s supported by a
+real browser should also work in Sass with the same semantics.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We&amp;rsquo;re committed to backwards compatibility. As much as possible, we want to
+avoid changing the semantics of existing stylesheets, and if we need to do so
+we want to give users as much time and resources as possible to make the
+change gracefully.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In most cases, remaining a CSS superset trumps backwards compatibility. However,
+nesting is one of the oldest and most widely-used Sass features so we&amp;rsquo;re
+particularly reluctant to change it, especially in ways that would drop support
+for widely-used features like &lt;code&gt;&amp;amp;-suffix&lt;/code&gt; that don&amp;rsquo;t have an elegant equivalent
+in native CSS.&lt;/p&gt;
+
+&lt;h3 id="the-plan-for-sass"&gt;
+&lt;a class="anchor" href="#the-plan-for-sass"&gt;&lt;span class="visuallyhidden"&gt;The Plan for Sass permalink&lt;/span&gt;&lt;/a&gt;The Plan for Sass&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;In the short term&lt;/strong&gt;, we don&amp;rsquo;t intend to change anything about Sass nesting.
+Sass will simply not support plain CSS nesting unless we can do so in a way
+that&amp;rsquo;s fully compatible with existing Sass behavior.&lt;/p&gt;
+
+&lt;p&gt;We &lt;em&gt;will&lt;/em&gt; add support for parsing plain CSS nesting in &lt;code&gt;.css&lt;/code&gt; files. This
+nesting won&amp;rsquo;t be resolved in any way; Sass will just emit it as-is.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;In the long term&lt;/strong&gt;, once &lt;a href="https://caniuse.com/css-matches-pseudo"&gt;&lt;code&gt;:is()&lt;/code&gt; is supported by 98% of the global browser
+market share&lt;/a&gt;, we&amp;rsquo;ll start transitioning Sass to emit &lt;code&gt;:is()&lt;/code&gt; when resolving
+Sass nesting. This will make Sass behave like CSS in the first two behavioral
+incompatibilities. We will consider this a breaking change, and release it as
+part of a major version release to avoid unexpectedly breaking existing
+stylesheets. We&amp;rsquo;ll do our best to make this transition as smooth as possible
+using the &lt;a href="/documentation/cli/migrator"&gt;Sass Migrator&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We will &lt;em&gt;not&lt;/em&gt; drop our current behavior for &lt;code&gt;&amp;amp;-suffix&lt;/code&gt; unless we can come up
+with a comparably ergonomic way to represent it that&amp;rsquo;s more compatible with CSS.
+This behavior is too important to existing Sass users, and the benefit of the
+plain CSS version is not strong enough to override that.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Security Alert: Tar Permissions</title>
     <link href="https://sass-lang.com/blog/security-alert-tar-permissions" rel="alternate"/>
     <id>https://sass-lang.com/blog/security-alert-tar-permissions</id>
     <published>2022-12-10T00:00:00+00:00</published>
-    <updated>2023-03-29T22:27:22+00:00</updated>
+    <updated>2023-03-29T22:48:11+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -124,7 +264,7 @@ only the owner of the files. We&amp;rsquo;re announcing the vulnerability here a
     <link href="https://sass-lang.com/blog/request-for-comments-color-spaces" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-color-spaces</id>
     <published>2022-09-21T21:00:00+00:00</published>
-    <updated>2023-03-29T22:27:22+00:00</updated>
+    <updated>2023-03-29T22:48:11+00:00</updated>
     <author>
       <name>Miriam Suzanne and Natalie Weizenbaum</name>
     </author>
@@ -397,7 +537,7 @@ thoughts or concerns you may have.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators</id>
     <published>2022-06-15T23:30:00+00:00</published>
-    <updated>2023-03-29T22:27:22+00:00</updated>
+    <updated>2023-03-29T22:48:11+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -487,7 +627,7 @@ implementing it.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
     <published>2022-02-01T10:00:00+00:00</published>
-    <updated>2023-03-29T22:27:22+00:00</updated>
+    <updated>2023-03-29T22:48:11+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -556,7 +696,7 @@ for many other popular frontend languages. If you end up doing so, message us
     <link href="https://sass-lang.com/blog/new-js-api-release-candidate" rel="alternate"/>
     <id>https://sass-lang.com/blog/new-js-api-release-candidate</id>
     <published>2021-11-21T00:15:00+00:00</published>
-    <updated>2023-03-29T22:27:22+00:00</updated>
+    <updated>2023-03-29T22:48:11+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -603,817 +743,6 @@ importer and custom function APIs.&lt;/p&gt;
 be deprecated. Since it&amp;rsquo;s still widely-used, we&amp;rsquo;ll continue to maintain it for a
 good long while going forward. Expect it to start printing a deprecation warning
 in a year or so, and to be disabled for good once we release Dart Sass 2.0.0.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Request for Comments: New JS API</title>
-    <link href="https://sass-lang.com/blog/request-for-comments-new-js-api" rel="alternate"/>
-    <id>https://sass-lang.com/blog/request-for-comments-new-js-api</id>
-    <published>2021-08-05T23:30:00+00:00</published>
-    <updated>2023-03-29T22:27:22+00:00</updated>
-    <author>
-      <name>Natalie Weizenbaum</name>
-    </author>
-    <content type="html">&lt;p&gt;I&amp;rsquo;m excited to officially unveil something that&amp;rsquo;s been in the works for quite a
-while now: a (proposal for a) brand new JavaScript API for Sass. This API has
-been redesigned from the ground up based on lessons learned from both the Node
-Sass API and various other historical Sass APIs in other languages through the
-years, and it addresses many of the shortcomings of the existing API.&lt;/p&gt;
-
-&lt;p&gt;The API has four main components, all of which I&amp;rsquo;ll cover in this post:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="#compilation"&gt;The core compilation API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#loggers"&gt;The logger API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#importers"&gt;The importer API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#functions"&gt;The function API&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As you read on, remember that this API is still just a proposal. We want to hear
-from you, our users, whether it meets your needs and how we can improve it
-before we lock it in to a full release. So go ahead and make your voices known
-&lt;a href="https://github.com/sass/sass/issues/new"&gt;on the issue tracker&lt;/a&gt;!&lt;/p&gt;
-
-&lt;h2 id="why-a-new-api"&gt;
-&lt;a class="anchor" href="#why-a-new-api"&gt;&lt;span class="visuallyhidden"&gt;Why a New API? permalink&lt;/span&gt;&lt;/a&gt;Why a New API?&lt;/h2&gt;
-
-&lt;p&gt;The existing JavaScript API is showing its age. It predates Dart Sass, having
-been originally designed for the &lt;code&gt;node-sass&lt;/code&gt; package, which wrapped the
-now-&lt;a href="/libsass"&gt;deprecated&lt;/a&gt; implementation. (That&amp;rsquo;s why we call it the &amp;ldquo;Node Sass
-API&amp;rdquo;!) It grew organically and often messily along with LibSass, and ended up
-with more than a few awkward legacy behaviors. Many of these behaviors are more
-of a pain for implementation than anything else, but a few of them made life
-quite difficult:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;The importer API was built around file paths rather than URLs, and was tightly
-coupled to the physical filesystem. This made it impossible to override &lt;em&gt;all&lt;/em&gt;
-file-based loads and present a fully virtual filesystem, and caused custom
-Node importers to interact poorly with the new &lt;a href="https://sass-lang.com/blog/the-module-system-is-launched"&gt;module system&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The function API was built around mutable value objects, which runs counter to
-Sass&amp;rsquo;s immutable nature. It also provided no utility methods (such as looking
-up a key in a map) to make it easier to implement idiomatic custom functions,
-and didn&amp;rsquo;t provide access to crucial information about values such as whether
-strings were quoted.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;All of the asynchronous functions were callback-based rather than
-promise-based.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The new API addresses these issues and more with a modern, idiomatic API that
-will make working with Sass from JS a breeze.&lt;/p&gt;
-
-&lt;h2 id="compilation"&gt;
-&lt;a class="anchor" href="#compilation"&gt;&lt;span class="visuallyhidden"&gt;Compilation permalink&lt;/span&gt;&lt;/a&gt;Compilation&lt;/h2&gt;
-
-&lt;p&gt;At the heart of the API are four functions that do the actual Sass compilation,
-two synchronous and two asynchronous. They&amp;rsquo;re presented here in TypeScript
-syntax to clarify exactly what they take and return, but you can always call
-them from plain JS:&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-  &lt;span class="nx"&gt;path&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;Options&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="s1"&gt;'sync'&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;CompileResult&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;compileString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-  &lt;span class="nx"&gt;source&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;StringOptions&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="s1"&gt;'sync'&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;CompileResult&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;compileAsync&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-  &lt;span class="nx"&gt;path&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;Options&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="s1"&gt;'async'&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;Promise&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;CompileResult&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;compileStringAsync&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-  &lt;span class="nx"&gt;source&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;StringOptions&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="s1"&gt;'async'&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;Promise&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;CompileResult&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code&gt;compile()&lt;/code&gt; and &lt;code&gt;compileAsync()&lt;/code&gt; functions load a Sass file from a path on
-disk, whereas &lt;code&gt;compileString()&lt;/code&gt; and &lt;code&gt;compileStringAsync()&lt;/code&gt; compile Sass source
-code passed in as a string. All these take the following options:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;alertAscii&lt;/code&gt;: Whether errors and warnings should use only ASCII characters (as
-opposed to, for example, Unicode box-drawing characters).&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;alertColor&lt;/code&gt;: Whether errors and warnings should use terminal colors.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;loadPaths&lt;/code&gt;: A list of file paths to use to look up files to load, just like
-&lt;code&gt;includePaths&lt;/code&gt; in the old API.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;importers&lt;/code&gt;: A list of &lt;a href="#importers"&gt;custom importers&lt;/a&gt; to use to load Sass
-source files.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;functions&lt;/code&gt;: An object whose keys are Sass function signatures and whose
-values are &lt;a href="#functions"&gt;custom functions&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;quietDeps&lt;/code&gt;: Whether to silence deprecation warnings in dependencies.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;logger&lt;/code&gt;: The &lt;a href="#loggers"&gt;custom logger&lt;/a&gt; to use to emit warnings and debug
-messages.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sourceMap&lt;/code&gt;: Whether to generate a source map during compilation.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;style&lt;/code&gt;: The output style, &lt;code&gt;&amp;#39;compressed&amp;#39;&lt;/code&gt; or &lt;code&gt;&amp;#39;expanded&amp;#39;&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;verbose&lt;/code&gt;: Whether to emit every deprecation warning encountered.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The &lt;code&gt;compileString()&lt;/code&gt; and &lt;code&gt;compileStringAsync()&lt;/code&gt; functions take a few additional
-options:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;syntax&lt;/code&gt;: The syntax of the file, &lt;code&gt;&amp;#39;scss&amp;#39;&lt;/code&gt; (the default), &lt;code&gt;&amp;#39;indented&amp;#39;&lt;/code&gt;, or
-&lt;code&gt;&amp;#39;css&amp;#39;&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;url&lt;/code&gt;: The &lt;a href="#canonicalizing"&gt;canonical URL&lt;/a&gt; of the file.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;importer&lt;/code&gt;: The &lt;a href="#importers"&gt;custom importer&lt;/a&gt; to treat as the file&amp;rsquo;s source.
-If this is passed, this importer will be used to resolve relative loads from
-this stylesheet.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All these functions return an object with the following fields:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;css&lt;/code&gt;: The compiled CSS, as a string.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;loadedUrls&lt;/code&gt;: All the URLs loaded during the compilation, in no particular
-order.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sourceMap&lt;/code&gt;: The source map for the file if &lt;code&gt;sourceMap: true&lt;/code&gt; was passed, as
-a decoded object.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As with the Node Sass API, the synchronous functions will be substantially
-faster than their asynchronous counterparts. Unfortunately the new API will not
-support the &lt;code&gt;fibers&lt;/code&gt; option for speeding up asynchronous compilation, since &lt;a href="/blog/node-fibers-discontinued"&gt;the
-&lt;code&gt;fibers&lt;/code&gt; package has been discontinued&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id="loggers"&gt;
-&lt;a class="anchor" href="#loggers"&gt;&lt;span class="visuallyhidden"&gt;Loggers permalink&lt;/span&gt;&lt;/a&gt;Loggers&lt;/h2&gt;
-
-&lt;p&gt;The logger API gives you more fine-grained control over how and when warnings
-and debug messages are emitted. Unlike other aspects of this proposal, a
-&lt;code&gt;logger&lt;/code&gt; option will also be added to the &lt;em&gt;old&lt;/em&gt; API to allow you to control your
-messages there without needing to upgrade to the new API immediately.&lt;/p&gt;
-
-&lt;p&gt;A logger implements the following interface:&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kr"&gt;interface&lt;/span&gt; &lt;span class="nx"&gt;Logger&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nx"&gt;warn&lt;/span&gt;&lt;span class="p"&gt;?(&lt;/span&gt;
-    &lt;span class="nx"&gt;message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nl"&gt;deprecation&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-      &lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;SourceSpan&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-      &lt;span class="nx"&gt;stack&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="nx"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;?(&lt;/span&gt;
-    &lt;span class="nx"&gt;message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nl"&gt;span&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SourceSpan&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code&gt;warn&lt;/code&gt; function handles warnings, including both warnings from the compiler
-itself and from &lt;code&gt;@warn&lt;/code&gt; rules. It&amp;rsquo;s passed:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The warning message&lt;/li&gt;
-&lt;li&gt;A flag indicating whether it&amp;rsquo;s specifically a deprecation warning&lt;/li&gt;
-&lt;li&gt;A span indicating where the warning was located, if it comes from a specific
-location&lt;/li&gt;
-&lt;li&gt;The Sass stack trace at the point at which the warning was encountered, if it
-was encountered during execution&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The &lt;code&gt;debug&lt;/code&gt; function handles only &lt;code&gt;@debug&lt;/code&gt; rules, and is just passed the message
-and the rule&amp;rsquo;s span. For more information on the &lt;code&gt;SourceSpan&lt;/code&gt; type, see &lt;a href="https://github.com/sass/sass/tree/main/proposal/js-logger.d.ts"&gt;the
-Logger proposal&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Sass will also provide a built-in logger, &lt;code&gt;Logger.silent&lt;/code&gt;, that never emits any
-messages. This will allow you to easily run Sass in &amp;ldquo;quiet mode&amp;rdquo; where no
-warnings are ever surfaced.&lt;/p&gt;
-
-&lt;h2 id="importers"&gt;
-&lt;a class="anchor" href="#importers"&gt;&lt;span class="visuallyhidden"&gt;Importers permalink&lt;/span&gt;&lt;/a&gt;Importers&lt;/h2&gt;
-
-&lt;p&gt;Rather than modeling importers as single-function callbacks, the new API models
-them as objects that expose two methods: one that &lt;em&gt;canonicalizes&lt;/em&gt; a URL, and one
-that &lt;em&gt;loads&lt;/em&gt; a canonical URL.&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="c1"&gt;// Importers for compileAsync() and compileStringAsync() are the same, except&lt;/span&gt;
-&lt;span class="c1"&gt;// they may return Promises as well.&lt;/span&gt;
-&lt;span class="kr"&gt;interface&lt;/span&gt; &lt;span class="nx"&gt;Importer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nx"&gt;canonicalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nl"&gt;fromImport&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;URL&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="nx"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;canonicalUrl&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;ImporterResult&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Note that even stylesheets that are loaded directly from the filesystem through
-&lt;code&gt;compile()&lt;/code&gt; or &lt;code&gt;loadPaths&lt;/code&gt; are treated as though they&amp;rsquo;re loaded by an importer.
-This built-in filesystem importer canonicalizes all paths to &lt;code&gt;file:&lt;/code&gt; URLs, and
-loads those URLs from the physical filesystem.&lt;/p&gt;
-
-&lt;h3 id="canonicalizing"&gt;
-&lt;a class="anchor" href="#canonicalizing"&gt;&lt;span class="visuallyhidden"&gt;Canonicalizing permalink&lt;/span&gt;&lt;/a&gt;Canonicalizing&lt;/h3&gt;
-
-&lt;p&gt;The first step determines the canonical URL for a stylesheet. Each stylesheet
-has exactly one canonical URL that in turn refers to exactly one stylesheet. The
-canonical URL must be absolute, including a scheme, but the specific structure
-is up to the importer. In most cases, the stylesheet in question will exist on
-disk and the importer will just return a &lt;code&gt;file:&lt;/code&gt; URL for it.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code&gt;canonicalize()&lt;/code&gt; method takes a URL string that may be either relative or
-absolute. If the importer recognizes that URL, it returns a corresponding
-absolute URL (including a scheme). This is the &lt;em&gt;canonical URL&lt;/em&gt; for the
-stylesheet in question. Although the input URL may omit a file extension or
-an initial underscore, the canonical URL must be fully resolved.&lt;/p&gt;
-
-&lt;p&gt;For a stylesheet that&amp;rsquo;s loaded from the filesystem, the canonical URL will be
-the absolute &lt;code&gt;file:&lt;/code&gt; URL of the physical file on disk. If it&amp;rsquo;s generated
-in-memory, the importer should choose a custom URL scheme to guarantee that
-its canonical URLs don&amp;rsquo;t conflict with any other importer&amp;rsquo;s.&lt;/p&gt;
-
-&lt;p&gt;For example, if you&amp;rsquo;re loading Sass files from a database, you might use the
-scheme &lt;code&gt;db:&lt;/code&gt;. The canonical URL for a stylesheet associated with key &lt;code&gt;styles&lt;/code&gt;
-in the database might be &lt;code&gt;db:styles&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;This function also takes a &lt;code&gt;fromImport&lt;/code&gt; option that indicates whether the
-importer is being invoked from an &lt;code&gt;@import&lt;/code&gt; rule (as opposed to &lt;code&gt;@use&lt;/code&gt;,
-&lt;code&gt;@forward&lt;/code&gt;, or &lt;code&gt;meta.load-css()&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Having a canonical URL for each stylesheet allows Sass to ensure that the
-same stylesheet isn&amp;rsquo;t loaded multiple times in the new module system.&lt;/p&gt;
-
-&lt;h4 id="canonicalizing-relative-loads"&gt;
-&lt;a class="anchor" href="#canonicalizing-relative-loads"&gt;&lt;span class="visuallyhidden"&gt;Canonicalizing Relative Loads permalink&lt;/span&gt;&lt;/a&gt;Canonicalizing Relative Loads&lt;/h4&gt;
-
-&lt;p&gt;When a stylesheet tries to load a relative URL, such as &lt;code&gt;@use &amp;quot;variables&amp;quot;&lt;/code&gt;, it&amp;rsquo;s
-not clear from the document itself whether that refers to a file that exists
-relative to the stylesheet or to another importer or load path. Here&amp;rsquo;s how the
-importer API resolves that ambiguity:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;First, the relative URL is resolved relative to the canonical URL of the
-stylesheet that contained the &lt;code&gt;@use&lt;/code&gt; (or &lt;code&gt;@forward&lt;/code&gt; or &lt;code&gt;@import&lt;/code&gt;). For
-example, if the canonical URL is &lt;code&gt;file:///path/to/my/_styles.scss&lt;/code&gt;, then the
-resolved URL will be &lt;code&gt;file:///path/to/my/variables&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;This URL is then passed to the &lt;code&gt;canonicalize()&lt;/code&gt; method of the importer that
-loaded the old stylesheet. (That means it&amp;rsquo;s important for your importers to
-support absolute URLs!) If the importer recognizes it, it returns the
-canonical value which is then passed to that importer&amp;rsquo;s &lt;code&gt;load()&lt;/code&gt;; otherwise,
-it returns &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If the old stylesheet&amp;rsquo;s importer didn&amp;rsquo;t recognize the URL, it&amp;rsquo;s passed to all
-the &lt;code&gt;importers&lt;/code&gt;&amp;lsquo; canonicalize functions in the order they appear in &lt;code&gt;options&lt;/code&gt;,
-then checked for in all the &lt;code&gt;loadPaths&lt;/code&gt;. If none of those recognizes it, the
-load fails.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;It&amp;rsquo;s important that local relative paths take precedence over other importers or
-load paths, because otherwise your local stylesheets could get unexpectedly
-broken by a dependency adding a file with a conflicting name.&lt;/p&gt;
-
-&lt;h3 id="loading"&gt;
-&lt;a class="anchor" href="#loading"&gt;&lt;span class="visuallyhidden"&gt;Loading permalink&lt;/span&gt;&lt;/a&gt;Loading&lt;/h3&gt;
-
-&lt;p&gt;The second step actually loads the text of the stylesheet. The &lt;code&gt;load()&lt;/code&gt;
-method takes a canonical URL that was returned by &lt;code&gt;canonicalize()&lt;/code&gt; and
-returns the contents of the stylesheet at that URL. This is only called once
-per compilation for each canonical URL; future loads of the same URL will
-re-use either the existing module (for &lt;code&gt;@use&lt;/code&gt; and &lt;code&gt;@forward&lt;/code&gt;) or the parse
-tree (for &lt;code&gt;@import&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;The &lt;code&gt;load()&lt;/code&gt; method returns an object with the following fields:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;css&lt;/code&gt;: The text of the loaded stylesheet.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;syntax&lt;/code&gt;: The syntax of the file: &lt;code&gt;&amp;#39;scss&amp;#39;&lt;/code&gt;, &lt;code&gt;&amp;#39;indented&amp;#39;&lt;/code&gt;, or &lt;code&gt;&amp;#39;css&amp;#39;&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sourceMapUrl&lt;/code&gt;: An optional browser-accessible &lt;code&gt;URL&lt;/code&gt; to include in source maps
-when referring to this file.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id="fileimporter"&gt;
-&lt;a class="anchor" href="#fileimporter"&gt;&lt;span class="visuallyhidden"&gt;FileImporter permalink&lt;/span&gt;&lt;/a&gt;&lt;code&gt;FileImporter&lt;/code&gt;
-&lt;/h3&gt;
-
-&lt;p&gt;This proposal also adds a special type of importer known as a &lt;code&gt;FileImporter&lt;/code&gt;.
-This importer makes the common case of redirecting loads to somewhere on the
-physical filesystem easier. It doesn&amp;rsquo;t require the caller to implement
-&lt;code&gt;load()&lt;/code&gt;, since that&amp;rsquo;s always going to be the same for files on disk.&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kr"&gt;interface&lt;/span&gt; &lt;span class="nx"&gt;FileImporter&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nx"&gt;findFileUrl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nl"&gt;fromImport&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;FileImporterResult&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code&gt;findFileUrl()&lt;/code&gt; method takes a relative URL and returns an object with the
-following fields:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;url&lt;/code&gt;: The absolute &lt;code&gt;file:&lt;/code&gt; URL of the file to load. This URL doesn&amp;rsquo;t need to
-be fully canonicalized: the Sass compiler will take care of resolving
-partials, file extensions, index files, and so on.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sourceMapUrl&lt;/code&gt;: An optional browser-accessible &lt;code&gt;URL&lt;/code&gt; to include in source maps
-when referring to this file.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id="functions"&gt;
-&lt;a class="anchor" href="#functions"&gt;&lt;span class="visuallyhidden"&gt;Functions permalink&lt;/span&gt;&lt;/a&gt;Functions&lt;/h2&gt;
-
-&lt;p&gt;The new function API&amp;rsquo;s function type is very similar to the old API&amp;rsquo;s:&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;CustomFunctionCallback&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;args&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The only differences are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Async functions return a &lt;code&gt;Promise&amp;lt;Value&amp;gt;&lt;/code&gt; rather than calling a callback.&lt;/li&gt;
-&lt;li&gt;The value types themselves are different.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The second point is pretty substantial, though! The new value types are much
-more fleshed out than the old versions. Let&amp;rsquo;s start with the parent class:&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kd"&gt;abstract&lt;/span&gt; &lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="cm"&gt;/**
-   * Returns the values of `this` when interpreted as a list.
-   *
-   * - For a list, this returns its elements.
-   * - For a map, this returns each of its key/value pairs as a `SassList`.
-   * - For any other value, this returns a list that contains only that value.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;asList&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Whether `this` is a bracketed Sass list. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;hasBrackets&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Whether `this` is truthy (any value other than `null` or `false`). */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;isTruthy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Returns JS's null if this is `sassNull`, or `this` otherwise. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;realNull&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** If `this` is a list, return its separator. Otherwise, return `null`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;separator&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;ListSeparator&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Converts the Sass index `sassIndex` to a JS index into the array returned
-   * by `asList`.
-   *
-   * Sass indices start counting at 1, and may be negative in order to index
-   * from the end of the list.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;sassIndexToListIndex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;sassIndex&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns `this` if it's a `SassBoolean`, and throws an error otherwise.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of a parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertBoolean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassBoolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns `this` if it's a `SassColor`, and throws an error otherwise.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of a parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertColor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns `this` if it's a `SassFunction`, and throws an error otherwise.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of the parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertFunction&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassFunction&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns `this` if it's a `SassMap` (or converts it to a `SassMap` if it's
-   * an empty list), and throws an error otherwise.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of the parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertMap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassMap&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns `this` if it's a `SassNumber`, and throws an error otherwise.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of a parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertNumber&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns `this` if it's a `SassString`, and throws an error otherwise.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of a parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassString&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns the value of `this` if it can be interpreted as a map.
-   *
-   * - If this is a map, returns its contents.
-   * - If this is an empty list, returns an empty map.
-   * - Otherwise, returns `null`.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;tryMap&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;OrderedMap&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Returns whether `this == other` in SassScript. */&lt;/span&gt;
-  &lt;span class="nx"&gt;equals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;other&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;There are a couple important things to note here:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Because CSS doesn&amp;rsquo;t have a strong syntactic differentiation between a single
-element and a list containing one element, any Sass value may be treated as
-though it&amp;rsquo;s a list. The &lt;code&gt;Value&lt;/code&gt; makes it easy to follow this convention by
-making the &lt;code&gt;asList()&lt;/code&gt;, &lt;code&gt;hasBrackets()&lt;/code&gt;, and &lt;code&gt;separator()&lt;/code&gt; getters available
-for every &lt;code&gt;Value&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The list returned this was and the map returned by &lt;code&gt;asMap()&lt;/code&gt; are immutable
-types from the &lt;a href="https://immutable-js.com/"&gt;&lt;code&gt;immutable&lt;/code&gt; package&lt;/a&gt;. This reflects Sass&amp;rsquo;s built-in
-immutability of all its types. Although these values can&amp;rsquo;t be modified
-directly, their APIs make it easy and efficient to create new values with
-changes applied.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Sass&amp;rsquo;s list-indexing conventions are different than JavaScript&amp;rsquo;s. The
-&lt;code&gt;sassIndexToListIndex()&lt;/code&gt; function makes it easy to convert from Sass index to
-JS index.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;In Sass, any value may be used in a boolean context, with &lt;code&gt;false&lt;/code&gt;
-and &lt;code&gt;null&lt;/code&gt; counting as &amp;ldquo;falsey&amp;rdquo; values. The &lt;code&gt;isTruthy&lt;/code&gt; getter makes this
-convention easy to follow.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The &lt;code&gt;assert*()&lt;/code&gt; functions make it easy to ensure that you&amp;rsquo;re being passed the
-arguments you expect, and to throw an idiomatic error if you&amp;rsquo;re not. They&amp;rsquo;re
-particularly useful for TypeScript users since they&amp;rsquo;ll automatically narrow
-the type of the &lt;code&gt;Value&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Most Sass values have their own subclasses, but there are three singleton values
-that are just available as constants: &lt;code&gt;sassTrue&lt;/code&gt;, &lt;code&gt;sassFalse&lt;/code&gt;, and &lt;code&gt;sassNull&lt;/code&gt;
-represent Sass&amp;rsquo;s &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt;, and &lt;code&gt;null&lt;/code&gt; values respectively.&lt;/p&gt;
-
-&lt;h3 id="colors"&gt;
-&lt;a class="anchor" href="#colors"&gt;&lt;span class="visuallyhidden"&gt;Colors permalink&lt;/span&gt;&lt;/a&gt;Colors&lt;/h3&gt;
-
-&lt;p&gt;The new API&amp;rsquo;s &lt;code&gt;SassColor&lt;/code&gt; class provides access to colors in RGB, HSL, and HWB
-format. As with built-in Sass color functions, any attribute can be accessed on
-any color regardless of how it was initially created.&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="cm"&gt;/** Creates an RGB color. */&lt;/span&gt;
-  &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="nx"&gt;rgb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;red&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;blue&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;
-  &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Creates an HSL color. */&lt;/span&gt;
-  &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="nx"&gt;hsl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;hue&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;saturation&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;lightness&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;
-  &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Creates an HWB color. */&lt;/span&gt;
-  &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="nx"&gt;hwb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;hue&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;whiteness&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;blackness&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;
-  &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's red channel. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;red&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's green channel. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's blue channel. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;blue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's hue. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;hue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's saturation. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;saturation&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's lightness. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;lightness&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's whiteness. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;whiteness&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's blackeness. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;blackness&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The color's alpha channel. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns a copy of `this` with the RGB channels updated to match `options`.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;changeRgb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;red&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;blue&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns a copy of `this` with the HSL values updated to match `options`.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;changeHsl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;hue&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;saturation&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;lightness&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns a copy of `this` with the HWB values updated to match `options`.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;changeHwb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;hue&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;whiteness&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;blackness&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Returns a copy of `this` with `alpha` as its alpha channel. */&lt;/span&gt;
-  &lt;span class="nx"&gt;changeAlpha&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;alpha&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassColor&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id="numbers"&gt;
-&lt;a class="anchor" href="#numbers"&gt;&lt;span class="visuallyhidden"&gt;Numbers permalink&lt;/span&gt;&lt;/a&gt;Numbers&lt;/h3&gt;
-
-&lt;p&gt;The &lt;code&gt;SassNumber&lt;/code&gt; class stores its numerator and denominator units as arrays
-rather than strings. In addition, it provides methods for asserting that it has
-specific units (&lt;code&gt;assertNoUnits()&lt;/code&gt;, &lt;code&gt;assertUnit()&lt;/code&gt;) and for converting it to
-specific units (&lt;code&gt;convert()&lt;/code&gt;, &lt;code&gt;convertToMatch()&lt;/code&gt;, &lt;code&gt;convertValue()&lt;/code&gt;,
-&lt;code&gt;convertValueToMatch()&lt;/code&gt;, &lt;code&gt;coerce()&lt;/code&gt;, &lt;code&gt;coerceValue()&lt;/code&gt;, &lt;code&gt;coerceValueToMatch()&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Sass&amp;rsquo;s numeric logic is also subtly different from JS, since Sass considers
-numbers that differ by less than the 10th decimal digit to be identical. This
-API provides a number of methods that help convert between this and JavaScript&amp;rsquo;s
-numeric logic.&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="cm"&gt;/** Creates a Sass number with no units or a single numerator unit. */&lt;/span&gt;
-  &lt;span class="kd"&gt;constructor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;unit&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Creates a Sass number with multiple numerator and/or denominator units. */&lt;/span&gt;
-  &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="nx"&gt;withUnits&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nx"&gt;numeratorUnits&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-      &lt;span class="nx"&gt;denominatorUnits&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** This number's value. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Whether `value` is an integer according to Sass's numeric logic.
-   *
-   * The integer value can be accessed using `asInt`.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;isInt&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * If `value` is an integer according to Sass's numeric logic, returns the
-   * corresponding JS integer, or `null` if `value` isn't an integer.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;asInt&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** This number's numerator units. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;numeratorUnits&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** This number's denominator units. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;denominatorUnits&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Whether `this` has numerator or denominator units. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;hasUnits&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * If `value` is an integer according to Sass's numeric logic, returns the
-   * corresponding JS integer, or throws an error if `value` isn't an integer.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of the parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertInt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * If `value` is between `min` and `max` according to Sass's numeric logic,
-   * returns it clamped to that range. Otherwise, throws an error.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of the parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertInRange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;min&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="na"&gt;max&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns `this` if it has no units. Otherwise, throws an error.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of a parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertNoUnits&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Returns `this` if it has `unit` as its single (numerator) unit. Otherwise,
-   * throws an error.
-   *
-   * The `name` parameter is used for error reporting. It should match the name
-   * of a parameter passed to the custom function (without the `$`).
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;assertUnit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="na"&gt;stringunit&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Returns whether `this` has the single numerator unit `unit`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;hasUnit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;unit&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Returns whether this number's units are compatible with `unit`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;compatibleWithUnit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;unit&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * If this number's units are compatible with `newNumerators` and
-   * `newDenominators`, returns a new number with those units that's equal to
-   * `this`. Otherwise, throws an error.
-   *
-   * Note that unitless numbers are only compatible with other unitless numbers.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;convert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="na"&gt;newNumerators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;newDenominators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * If this number's units are compatible with `other`'s, returns a new number
-   * with `other`'s units that's equal to `this`. Otherwise, throws an error.
-   *
-   * Note that unitless numbers are only compatible with other unitless numbers.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;convertToMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;other&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Equivalent to `convert(newNumerators, newDenominators).value`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;convertValue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="na"&gt;newNumerators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;newDenominators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Equivalent to `convertToMatch(other).value`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;convertValueToMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;other&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Like `convert()`, but if `this` is unitless returns a copy of it with the
-   * same value and the given units.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;coerce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="na"&gt;newNumerators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;newDenominators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Like `convertToMatch()`, but if `this` is unitless returns a copy of it
-   * with the same value and `other`'s units.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;coerceToMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;other&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Equivalent to `coerce(newNumerators, newDenominators).value`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;coerceValue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="na"&gt;newNumerators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;newDenominators&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Equivalent to `coerceToMatch(other).value`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;coerceValueToMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;other&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassNumber&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id="strings"&gt;
-&lt;a class="anchor" href="#strings"&gt;&lt;span class="visuallyhidden"&gt;Strings permalink&lt;/span&gt;&lt;/a&gt;Strings&lt;/h3&gt;
-
-&lt;p&gt;The &lt;code&gt;SassString&lt;/code&gt; class provides access to information about whether or not the
-string is quoted. As with lists, JS&amp;rsquo;s notion of indexes differs from Sass&amp;rsquo;s, so
-it also provides the &lt;code&gt;sassIndexToStringIndex()&lt;/code&gt; method to convert a JS index
-into a Sass index.&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SassString&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="cm"&gt;/** Creates a string with the given `text`. */&lt;/span&gt;
-  &lt;span class="kd"&gt;constructor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="cm"&gt;/** @default true */&lt;/span&gt;
-      &lt;span class="na"&gt;quotes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;);&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Creates an empty string`. */&lt;/span&gt;
-  &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="nx"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="cm"&gt;/** @default true */&lt;/span&gt;
-    &lt;span class="na"&gt;quotes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;}):&lt;/span&gt; &lt;span class="nx"&gt;SassString&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The contents of `this`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Whether `this` has quotes. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;hasQuotes&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** The number of Unicode code points in `text`. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;sassLength&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/**
-   * Converts the Sass index `sassIndex` to a JS index into `text`.
-   *
-   * Sass indices start counting at 1, and may be negative in order to index
-   * from the end of the list. In addition, Sass indexes strings by Unicode code
-   * point, while JS indexes them by UTF-16 code unit.
-   */&lt;/span&gt;
-  &lt;span class="nx"&gt;sassIndexToStringIndex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;sassIndex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="kr"&gt;number&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id="lists"&gt;
-&lt;a class="anchor" href="#lists"&gt;&lt;span class="visuallyhidden"&gt;Lists permalink&lt;/span&gt;&lt;/a&gt;Lists&lt;/h3&gt;
-
-&lt;p&gt;As mentioned above, most list functions are on the &lt;code&gt;Value&lt;/code&gt; superclass to make it
-easy to follow the Sass convention of treating all values as lists. However, the
-&lt;code&gt;SassList&lt;/code&gt; class can still be constructed to make new lists:&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SassList&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="cm"&gt;/** Creates a Sass list with the given `contents`. */&lt;/span&gt;
-  &lt;span class="kd"&gt;constructor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;contents&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="cm"&gt;/** @default ',' */&lt;/span&gt;
-      &lt;span class="nx"&gt;separator&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;ListSeparator&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-      &lt;span class="cm"&gt;/** @default false */&lt;/span&gt;
-      &lt;span class="nx"&gt;brackets&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;);&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Creates an empty Sass list. */&lt;/span&gt;
-  &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="nx"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="cm"&gt;/** @default null */&lt;/span&gt;
-    &lt;span class="nx"&gt;separator&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;ListSeparator&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="cm"&gt;/** @default false */&lt;/span&gt;
-    &lt;span class="nx"&gt;brackets&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;}):&lt;/span&gt; &lt;span class="nx"&gt;SassList&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id="maps"&gt;
-&lt;a class="anchor" href="#maps"&gt;&lt;span class="visuallyhidden"&gt;Maps permalink&lt;/span&gt;&lt;/a&gt;Maps&lt;/h3&gt;
-
-&lt;p&gt;The &lt;code&gt;SassMap&lt;/code&gt; class simply exposes its contents as an &lt;code&gt;OrderedMap&lt;/code&gt; from the
-&lt;a href="https://immutable-js.com/"&gt;&lt;code&gt;immutable&lt;/code&gt; package&lt;/a&gt;.&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SassMap&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="cm"&gt;/** Creates a Sass map with the given `contents`. */&lt;/span&gt;
-  &lt;span class="kd"&gt;constructor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;contents&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;OrderedMap&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Creates an empty Sass map. */&lt;/span&gt;
-  &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="nx"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;SassMap&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-  &lt;span class="cm"&gt;/** Returns this map's contents. */&lt;/span&gt;
-  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;contents&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;OrderedMap&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id="functions"&gt;
-&lt;a class="anchor" href="#functions"&gt;&lt;span class="visuallyhidden"&gt;Functions permalink&lt;/span&gt;&lt;/a&gt;Functions&lt;/h3&gt;
-
-&lt;p&gt;The &lt;code&gt;SassFunction&lt;/code&gt; class is fairly restrictive: it just allows a new first-class
-function to be created with a synchronous callback. These functions can&amp;rsquo;t be
-invoked by custom functions—but they still provide more power than the old API!&lt;/p&gt;
-&lt;pre class="highlight typescript"&gt;&lt;code&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;SassFunction&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="cm"&gt;/**
-   * Creates a Sass function value with the given `signature` that calls
-   * `callback` when it's invoked.
-   */&lt;/span&gt;
-  &lt;span class="kd"&gt;constructor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="nx"&gt;signature&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;callback&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;CustomFunctionCallback&lt;/span&gt;
-  &lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id="more-information"&gt;
-&lt;a class="anchor" href="#more-information"&gt;&lt;span class="visuallyhidden"&gt;More Information permalink&lt;/span&gt;&lt;/a&gt;More Information&lt;/h2&gt;
-
-&lt;p&gt;If you want to know more about these proposals and see their most up-to-date
-forms, they&amp;rsquo;re available on GitHub to view in full:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/sass/sass/tree/main/proposal/new-js-api.d.ts"&gt;Compile API proposal&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/sass/sass/blob/main/proposal/js-logger.d.ts"&gt;Logger proposal&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/sass/sass/blob/main/proposal/new-js-importer.d.ts"&gt;Importer proposal&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/sass/sass/blob/main/proposal/new-function-and-values-api.d.ts"&gt;Functions and values proposal&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We&amp;rsquo;re eager for feedback, so please &lt;a href="https://github.com/sass/sass/issues/new"&gt;let us know what you think&lt;/a&gt;! The proposals
-in question will be open for at least a month after this blog post goes live,
-and possibly more depending on how lively the discussion around them is.&lt;/p&gt;
 </content>
   </entry>
 </feed>

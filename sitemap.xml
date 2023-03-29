@@ -733,6 +733,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://sass-lang.com/blog/036-sass-and-native-nesting</loc>
+    <lastmod>2023-03-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://sass-lang.com/blog/003-sass-33-is-released</loc>
     <lastmod>2023-03-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -1280,6 +1286,12 @@
   </url>
   <url>
     <loc>https://sass-lang.com/blog/page/7</loc>
+    <lastmod>2023-03-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/page/8</loc>
     <lastmod>2023-03-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
