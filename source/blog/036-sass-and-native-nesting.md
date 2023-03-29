@@ -79,7 +79,7 @@ nesting**. This affects three different cases:
    but Sass will not, since the element matching `.foo` is outside the element
    matching `.green-theme`.
 
-3. Sass nesting and native CSS nesting and both support syntax that looks like
+3. Sass nesting and native CSS nesting both support syntax that looks like
    `&foo`, but it means different things. In Sass, this adds a suffix to the
    parent selector, so
 
