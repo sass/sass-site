@@ -129,14 +129,15 @@ that's fully compatible with existing Sass behavior.
 We _will_ add support for parsing plain CSS nesting in `.css` files. This
 nesting won't be resolved in any way; Sass will just emit it as-is.
 
-**In the long term**, once `:is()` is supported by 98% of the global browser
-market share, we'll start transitioning Sass to emit `:is()` when resolving Sass
-nesting. This will make Sass behave like CSS in the first two behavioral
+**In the long term**, once [`:is()` is supported by 98% of the global browser
+market share], we'll start transitioning Sass to emit `:is()` when resolving
+Sass nesting. This will make Sass behave like CSS in the first two behavioral
 incompatibilities. We will consider this a breaking change, and release it as
 part of a major version release to avoid unexpectedly breaking existing
 stylesheets. We'll do our best to make this transition as smooth as possible
 using the [Sass Migrator].
 
+[`:is()` is supported by 98% of the global browser market share]: https://caniuse.com/css-matches-pseudo
 [Sass Migrator]: /documentation/cli/migrator
 
 We will _not_ drop our current behavior for `&-suffix` unless we can come up
