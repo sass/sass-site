@@ -116,6 +116,51 @@ exactly where calculations are allowed and where they aren't.
   @debug calc($width * 2); // calc((100% + 10px) * 2);
 <% end %>
 
+## Constants
+
+<% impl_status dart: "1.60.0", libsass: false, ruby: false %>
+
+Calculations can also contain constants, which are written as CSS identifiers.
+For forwards-compatibility with future CSS specs, *all* identifiers are allowed,
+and by default they're just treated as unquoted strings that are passed-through
+as-is.
+
+<% example(autogen_css: false) do %>
+  @debug calc(h + 30deg); // calc(h + 30deg);
+  ===
+  @debug calc(h + 30deg)  // calc(h + 30deg);
+<% end %>
+
+Sass automatically resolves a few special constant names that are specified in
+CSS to unitless numbers:
+
+* `pi` is a shorthand for the [mathematical constant *π*].
+
+  [mathematical constant *π*]: https://en.wikipedia.org/wiki/Pi
+
+* `e` is a shorthand for the [mathematical constant *e*].
+
+  [mathematical constant *e*]: https://en.wikipedia.org/wiki/E_(mathematical_constant)
+
+* `infinity`, `-infinity`, and `NaN` represent the corresponding floating-point
+  values.
+
+<% example(autogen_css: false) do %>
+  @use 'sass:math';
+
+  @debug calc(pi); // 3.1415926536
+  @debug calc(e);  // 2.7182818285
+  @debug calc(infinity) > math.$max-number;  // true
+  @debug calc(-infinity) < math.$min-number; // true
+  ===
+  @use 'sass:math'
+
+  @debug calc(pi)  // 3.1415926536
+  @debug calc(e)   // 2.7182818285
+  @debug calc(infinity) > math.$max-number   // true
+  @debug calc(-infinity) < math.$min-number  // true
+<% end %>
+
 ## `min()` and `max()`
 
 <% impl_status dart: ">=1.11.0 <1.42.0", libsass: false, ruby: false, feature: "Special function syntax" do %>

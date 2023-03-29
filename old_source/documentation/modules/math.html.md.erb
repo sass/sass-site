@@ -9,14 +9,75 @@ title: sass:math
 <% function 'math.$e' do %>
   <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
 
-  Equal to the value of the [mathematical constant *e*][].
+  The closest 64-bit floating point approximation of the [mathematical constant
+  *e*][].
 
   [mathematical constant *e*]: https://en.wikipedia.org/wiki/E_(mathematical_constant)
 
   <% example(autogen_css: false) do %>
     @debug math.$e; // 2.7182818285
     ===
-    @debug math.$e // 2.7182818285
+    @debug math.$e  // 2.7182818285
+  <% end %>
+<% end %>
+
+
+<% function 'math.$epsilon' do %>
+  <% impl_status dart: '1.55.0', libsass: false, ruby: false %>
+
+  The difference between 1 and the smallest 64-bit floating point number greater
+  than 1 according to floating-point comparisons. Because of Sass numbers' [10
+  digits of precision](../values/numbers), in many cases this will appear to
+  be 0.
+<% end %>
+
+<% function 'math.$max-number' do %>
+  <% impl_status dart: '1.55.0', libsass: false, ruby: false %>
+
+  The maximum finite number that can be represented as a 64-bit floating point
+  number.
+
+  <% example(autogen_css: false) do %>
+    @debug math.$max-number; // 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ===
+    @debug math.$max-number  // 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  <% end %>
+<% end %>
+
+
+<% function 'math.$max-safe-integer' do %>
+  <% impl_status dart: '1.55.0', libsass: false, ruby: false %>
+
+  The maximum integer `n` such that both `n` and `n + 1` can be precisely
+  represented as a 64-bit floating-point number.
+
+  <% example(autogen_css: false) do %>
+    @debug math.$max-safe-integer; // 9007199254740991
+    ===
+    @debug math.$max-safe-integer  // 9007199254740991
+  <% end %>
+<% end %>
+
+
+<% function 'math.$min-number' do %>
+  <% impl_status dart: '1.55.0', libsass: false, ruby: false %>
+
+  The smallest positive number that can be represented as a 64-bit floating
+  point number. Because of Sass numbers' [10 digits of
+  precision](../values/numbers), in many cases this will appear to be 0.
+<% end %>
+
+
+<% function 'math.$min-safe-integer' do %>
+  <% impl_status dart: '1.55.0', libsass: false, ruby: false %>
+
+  The minimum integer `n` such that both `n` and `n - 1` can be precisely
+  represented as a 64-bit floating-point number.
+
+  <% example(autogen_css: false) do %>
+    @debug math.$min-safe-integer; // -9007199254740991
+    ===
+    @debug math.$min-safe-integer  // -9007199254740991
   <% end %>
 <% end %>
 
@@ -24,14 +85,14 @@ title: sass:math
 <% function 'math.$pi' do %>
   <% impl_status dart: '1.25.0', libsass: false, ruby: false %>
 
-  Equal to the value of the [mathematical constant *π*][].
+  The closest 64-bit floating point approximation of the [mathematical constant *π*][].
 
   [mathematical constant *π*]: https://en.wikipedia.org/wiki/Pi
 
   <% example(autogen_css: false) do %>
     @debug math.$pi; // 3.1415926536
     ===
-    @debug math.$pi // 3.1415926536
+    @debug math.$pi  // 3.1415926536
   <% end %>
 <% end %>
 
