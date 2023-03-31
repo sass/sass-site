@@ -9,7 +9,7 @@ browser to add support for the new [native CSS nesting feature]. This feature—
 inspired by Sass's nesting—adds the ability to nest style rules in plain CSS,
 and even uses Sass's convention of `&` to refer to the parent selector.
 
-[native CSS nesting spec]: https://drafts.csswg.org/css-nesting/
+[native CSS nesting feature]: https://drafts.csswg.org/css-nesting/
 
 We here at Sass HQ are honored every time our language design inspires
 improvements in CSS itself. We're excited to see the usability and clarity
