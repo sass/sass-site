@@ -18,8 +18,6 @@ rules:
   color-function-notation: null
   color-named: always-where-possible
   custom-property-pattern: null
-  # https://github.com/stylelint/stylelint/issues/6741
-  function-url-quotes: null
   function-url-no-scheme-relative: true
   number-max-precision: null
   selector-class-pattern: null
