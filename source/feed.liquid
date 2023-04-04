@@ -24,7 +24,7 @@ eleventyExcludeFromCollections: true
     <link href="{{ absolutePostUrl }}" rel="alternate"/>
     <id>{{ absolutePostUrl }}</id>
     <published>{{ post.date | dateToRfc3339 }}</published>
-    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <updated>{{ post.data.updated | default: post.date | dateToRfc3339 }}</updated>
     <author>
       <name>{{ post.data.author }}</name>
     </author>
