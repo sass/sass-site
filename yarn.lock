@@ -33,6 +33,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@11ty/eleventy-plugin-rss@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@11ty/eleventy-plugin-rss@npm:1.2.0"
+  dependencies:
+    debug: ^4.3.4
+    posthtml: ^0.16.6
+    posthtml-urls: 1.0.0
+  checksum: e122a8483f353fa49ed40dd150c59efbc191e34e868a24ab62aba0ac16b8c1b2904c1c79fd717eea2286a98a68c3910221637fe5fdaa61ffcb66f34912a191ec
+  languageName: node
+  linkType: hard
+
 "@11ty/eleventy-plugin-syntaxhighlight@npm:^4.2.0":
   version: 4.2.0
   resolution: "@11ty/eleventy-plugin-syntaxhighlight@npm:4.2.0"
@@ -6289,7 +6300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"posthtml-urls@npm:^1.0.0":
+"posthtml-urls@npm:1.0.0, posthtml-urls@npm:^1.0.0":
   version: 1.0.0
   resolution: "posthtml-urls@npm:1.0.0"
   dependencies:
@@ -6818,6 +6829,7 @@ __metadata:
   resolution: "sass-site@workspace:."
   dependencies:
     "@11ty/eleventy": ^2.0.1
+    "@11ty/eleventy-plugin-rss": ^1.2.0
     "@11ty/eleventy-plugin-syntaxhighlight": ^4.2.0
     "@babel/core": ^7.21.4
     "@babel/preset-env": ^7.21.4
