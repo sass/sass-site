@@ -45,18 +45,31 @@ no_container: true
 
     %ul
       %li
-        #{link_to 'Java', 'https://mvnrepository.com/artifact/de.larsgrefer.sass'},
-        including
-        #{link_to 'Gradle', 'https://docs.freefair.io/gradle-plugins/current/reference/#_embedded_sass'}
-        and
-        #{link_to 'Maven', 'https://github.com/HebiRobotics/sass-cli-maven-plugin'}
-        plugins.
-
-      %li
         #{link_to 'Ruby', 'https://github.com/ntkme/sass-embedded-host-ruby#readme'}
 
       %li
         #{link_to 'Swift', 'https://github.com/johnfairh/swift-sass#readme'}
+
+      %li
+        #{link_to 'Java', 'https://mvnrepository.com/artifact/de.larsgrefer.sass'},
+        including:
+
+        %ul
+          %li
+            A
+            #{link_to 'Gradle plugin', 'https://docs.freefair.io/gradle-plugins/current/reference/#_embedded_sass'}.
+
+          %li
+            A lightweight
+            #{link_to 'Maven plugin wrapping the Sass CLI', 'https://github.com/HebiRobotics/sass-cli-maven-plugin'}.
+            It specifies the Sass version to use. The CLI arguments are
+            passed-in with an <code>&lt;args&gt;</code> list.
+
+          %li
+            A batteries-included
+            #{link_to 'Maven plugin wrapping Dart Sass', 'https://github.com/cleydyr/dart-sass-maven-plugin'}.
+            It bundles a fixed <code>dart-sass</code> version. The CLI arguments
+            are exposed as Maven parameters.
 
   .sl-l-grid__column
     :markdown
