@@ -28,7 +28,7 @@ high-level and easy to hack on, so it's where we iterate on new features and
 where they first get released. Then there's
 [LibSass](https://github.com/sass/libsass), the C++ implementation, originally
 created by [Aaron](https://github.com/akhleung) and
-[Hampton](https://github.com/hcatlin) and now maintained by
+[Hampton](https://github.com/hamptonmakes) and now maintained by
 [Marcel](https://github.com/mgreter) and [Michael](https://github.com/xzyfer).
 It's low-level, which makes it very fast and easy to install and embed in other
 languages. In particular, its [Node.js

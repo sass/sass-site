@@ -14,7 +14,7 @@ complementary_content: |
     by Kitty Giraudel and Miriam Suzanne
 
     ### [Pragmatic Guide to Sass 3: Tame the Modern Style Sheet](https://amzn.to/2LEwXiZ)
-    by Hampton Lintorn Catlin and Michael Lintorn Catlin
+    by Hampton Lintorn-Catlin and Michael Lintorn-Catlin
 
     ### [Sass for Web Designers](https://amzn.to/2RkIVU3)
     by Dan Cederholm

@@ -51,16 +51,6 @@
   }
 }
 
-@include breakpoints.sl-breakpoint--medium {
-  .sl-l-container--overview {
-    font-size: var(--sl-font-size--large);
-
-    .sl-c-callout {
-      font-size: var(--sl-font-size--small);
-    }
-  }
-}
-
 @include breakpoints.sl-breakpoint--large {
   .sl-c-callout--function {
     padding-left: 2.25rem;

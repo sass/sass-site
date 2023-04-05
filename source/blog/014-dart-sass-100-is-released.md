@@ -20,7 +20,7 @@ The 1.0.0 stable release indicates that Dart Sass is fully compatible with the
 Sass language as defined by [the sass-spec test
 suite](http://github.com/sass/sass-spec), and that its npm package is compatible
 with the [Node Sass
-API](https://github.com/sass/node-sass/blob/master/README.md#usage), with the
+API](https://github.com/sass/node-sass#usage), with the
 exception of source map support which is [coming
 soon](https://github.com/sass/dart-sass/issues/2).
 
