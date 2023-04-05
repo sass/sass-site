@@ -22,6 +22,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('source/assets/dist');
   eleventyConfig.addPassthroughCopy('source/assets/img');
   eleventyConfig.addPassthroughCopy('source/favicon.ico');
+  eleventyConfig.addPassthroughCopy('source/_redirects');
 
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.watchIgnores.add('source/_data/versionCache.json');

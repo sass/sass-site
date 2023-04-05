@@ -1,0 +1,10 @@
+/feed                 /feed.xml
+/tutorial             /guide
+/download             /install
+/try                  https://www.sassmeister.com
+/about                /
+/blog/posts/560719    /blog/dropping-support-for-old-ruby-versions
+/blog/posts/1305238   /blog/dart-sass-is-on-chocolatey
+/blog/posts/1404451   /blog/sass-and-browser-compatibility
+/blog/posts/1909151   /blog/dart-sass-is-in-beta
+/blog/posts/7081811   /blog/ruby-sass-is-deprecated

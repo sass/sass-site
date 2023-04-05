@@ -1,12 +1,5 @@
 ---
-pagination:
-  data: urls
-  alias: url
-  size: 1
-urls:
-  - 'feed.xml'
-  - 'feed'
-permalink: '{{ url }}'
+permalink: 'feed.xml'
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
@@ -14,7 +7,7 @@ eleventyExcludeFromCollections: true
   <title>Sass Blog</title>
   <id>{{ '/blog' | absoluteUrl: site.url }}</id>
   <link href="{{ '/blog' | absoluteUrl: site.url }}"/>
-  <link href="{{ '/feed.xml' | absoluteUrl: site.url }}" rel="self"/>
+  <link href="{{ page.url | absoluteUrl: site.url }}" rel="self"/>
   <updated>{{ collections.blog | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   {%- assign posts = collections.blog | reverse -%}
   {%- for post in posts limit:6 %}
