@@ -4,9 +4,8 @@ layout: base
 
 <div class="sl-l-medium-holy-grail">
   <div class="sl-l-medium-holy-grail__body">
-    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
-      {{ navigation | markdown }}
-    </nav>
+    {% render 'navigation', contents: navigation %}
+
     <div class="sl-l-medium-holy-grail__main">
       <div {% unless no_container %}class="sl-l-container sl-l-container--small"{% endunless %}>
         {% render 'intro', before_introduction: before_introduction, introduction: introduction, center_introduction: center_introduction %}
