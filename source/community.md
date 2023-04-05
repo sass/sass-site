@@ -57,5 +57,5 @@ on helping out. Or, if you're interested in helping add new features to the Sass
 language, look at [the language contribution process][].
 
 [Dart Sass]: /dart-sass
-[contributing info]: https://github.com/sass/dart-sass/blob/master/CONTRIBUTING.md
-[the language contribution process]: https://github.com/sass/language/blob/master/CONTRIBUTING.md
+[contributing info]: https://github.com/sass/dart-sass/blob/main/CONTRIBUTING.md
+[the language contribution process]: https://github.com/sass/sass/blob/main/CONTRIBUTING.md

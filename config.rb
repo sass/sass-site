@@ -52,7 +52,7 @@ page '/blog/*',                    :layout => :blog
 
 for dir in ['docs/yardoc', 'documentation'] do
   redirect "#{dir}/file.SASS_REFERENCE.html", to: '/documentation'
-  redirect "#{dir}/file.SASS_CHANGELOG.html", to: 'https://github.com/sass/dart-sass/blob/master/CHANGELOG.md'
+  redirect "#{dir}/file.SASS_CHANGELOG.html", to: 'https://github.com/sass/dart-sass/blob/main/CHANGELOG.md'
   redirect "#{dir}/file.INDENTED_SYNTAX.html", to: '/documentation/syntax'
   redirect "#{dir}/file.SCSS_FOR_SASS_USERS.html", to: '/documentation/syntax'
   redirect "#{dir}/Sass/Script/Functions.html", to: '/documentation/modules'
