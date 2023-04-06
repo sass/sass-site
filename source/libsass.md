@@ -164,8 +164,6 @@ recently-updated wrapper first.
   The only Scala project, [Sass-Scala](https://github.com/kkung/Sass-Scala),
   hasn't been updated in a couple of years.
 
-{.slides}
-
 ## About LibSass
 
 This project is the brainchild of [Hampton

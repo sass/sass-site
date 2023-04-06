@@ -52,5 +52,3 @@ introduction: >
   [Dart Sass][] as a JavaScript library.
 
   [Dart Sass]: /dart-sass
-
-{.list-columns}
