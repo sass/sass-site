@@ -1,0 +1,10 @@
+---
+permalink: '/robots.txt'
+eleventyExcludeFromCollections: true
+---
+# www.robotstxt.org/
+
+# Allow crawling of all content
+User-agent: *
+Disallow:
+Sitemap: {{ '/sitemap.xml' | absoluteUrl: site.url }}
