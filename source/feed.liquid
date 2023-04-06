@@ -10,8 +10,8 @@ eleventyExcludeFromCollections: true
   <link href="{{ page.url | absoluteUrl: site.url }}" rel="self"/>
   <updated>{{ collections.blog | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   {%- assign posts = collections.blog | reverse -%}
-  {%- for post in posts limit:6 %}
-  {%- assign absolutePostUrl = post.url | absoluteUrl: site.url -%}
+  {%- for post in posts limit:6 -%}
+  {%- assign absolutePostUrl = post.url | absoluteUrl: site.url %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}" rel="alternate"/>
@@ -22,6 +22,5 @@ eleventyExcludeFromCollections: true
       <name>{{ post.data.author }}</name>
     </author>
     <content type="html">{{ post.templateContent | htmlToAbsoluteUrls: absolutePostUrl | escape }}</content>
-  </entry>
-  {% endfor -%}
+  </entry>{% endfor %}
 </feed>
