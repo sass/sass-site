@@ -279,9 +279,9 @@ assign a value to a variable, or build up a value as part of a loop.
 
 <% heads_up do %>
   Variables in flow control scope can assign to existing variables in the outer
-  scope, but they can't declare new variables there. Make sure the variable is
-  already declared before you assign to it, even if you need to declare it as
-  `null`.
+  scope, but new variables declared in flow control scope won't be accessible in
+  the outer scope. Make sure the variable is already declared before you assign
+  to it, even if you need to declare it as `null`.
 <% end %>
 
 ## Advanced Variable Functions

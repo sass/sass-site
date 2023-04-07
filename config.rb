@@ -57,7 +57,7 @@ for dir in ['docs/yardoc', 'documentation'] do
   redirect "#{dir}/file.SCSS_FOR_SASS_USERS.html", to: '/documentation/syntax'
   redirect "#{dir}/Sass/Script/Functions.html", to: '/documentation/modules'
   redirect "#{dir}/Sass/Script/Functions.html", to: '/documentation/modules'
-  redirect "#{dir}/functions.html", to: '/documentation/functions'
+  redirect "#{dir}/functions.html", to: '/documentation/modules'
   redirect "#{dir}/functions/css.html", to: '/documentation/at-rules/function#plain-css-functions'
 
   Dir['old_source/documentation/modules/*.html.md.erb'].each do |file|
