@@ -33,11 +33,18 @@ Dart VM, so it's faster but only supports Windows, Mac OS, and Linux.
 
 There are also community-maintained wrappers for the following languages:
 
-- [Java](https://mvnrepository.com/artifact/de.larsgrefer.sass), including
-  [Gradle](https://docs.freefair.io/gradle-plugins/current/reference/#_embedded_sass)
-  and [Maven](https://github.com/HebiRobotics/sass-cli-maven-plugin) plugins
 - [Ruby](https://github.com/ntkme/sass-embedded-host-ruby#readme)
 - [Swift](https://github.com/johnfairh/swift-sass#readme)
+- [Java](https://mvnrepository.com/artifact/de.larsgrefer.sass), including:
+  - A [Gradle
+    plugin](https://docs.freefair.io/gradle-plugins/current/reference/#_embedded_sass).
+  - A lightweight [Maven plugin wrapping the Sass
+    CLI](https://github.com/HebiRobotics/sass-cli-maven-plugin). It specifies
+    the Sass version to use. The CLI arguments are passed-in with an `<args>`
+    list.
+  - A batteries-included [Maven plugin wrapping Dart
+    Sass](https://github.com/cleydyr/dart-sass-maven-plugin). It bundles a fixed
+    `dart-sass` version. The CLI arguments are exposed as Maven parameters.
 
 </div>
 <div class="sl-l-grid__column">
