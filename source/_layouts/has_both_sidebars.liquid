@@ -1,0 +1,30 @@
+---
+layout: base
+---
+
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    {% render 'navigation', contents: navigation %}
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-medium-holy-grail">
+        <div class="sl-l-medium-holy-grail__body">
+          {% if complementary_content %}
+            <div class="sl-l-large-holy-grail__complementary{% if table_of_contents %} sl-l-large-holy-grail__complementary--contents{% endif %}">
+              {{ complementary_content | markdown }}
+            </div>
+          {% endif %}
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            {% assign is_typedoc = page | isTypedoc %}
+            <div {% unless no_container or is_typedoc %}class="sl-l-container sl-l-container--small"{% endunless %}>
+              {% render 'intro', before_introduction: before_introduction, introduction: introduction, center_introduction: center_introduction %}
+
+              {{ content }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

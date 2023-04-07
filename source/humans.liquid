@@ -1,0 +1,26 @@
+---
+permalink: '/humans.txt'
+eleventyExcludeFromCollections: true
+---
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+{% for person in humans.team %}
+    {{ person.name }} -- {{ person.role }} -- @{{ person.twitter }}
+{%- endfor %}
+
+# THANKS
+{% for person in humans.contributors %}
+    {{ person.name }} -- {{ person.role }} -- @{{ person.twitter }}
+{%- endfor %}
+{%- for person in humans.thanks %}
+    {{ person.name }}
+{%- endfor %}
+
+# TECHNOLOGY COLOPHON
+
+    {% for tech in humans.markup %}{{ tech.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+    {% for tech in humans.style %}{{ tech.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+    {% for tech in humans.behavior %}{{ tech.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+    {% for tech in humans.misc %}{{ tech.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}

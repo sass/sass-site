@@ -1,0 +1,52 @@
+# Website Credits
+team:
+  - name: Jina
+    role: design lead, code, content
+    twitter: jina
+  - name: Natalie Weizenbaum
+    role: code, content
+    twitter: nex3
+
+contributors:
+  - name: Chris Eppstein
+    role: code, content
+    twitter: chriseppstein
+  - name: Hampton Lintorn-Catlin
+    role: code, content
+    twitter: HamptonMakes
+  - name: Michael Lintorn-Catlin
+    role: content
+    twitter: malrase
+  - name: Bermon Painter
+    role: design, code, content
+    twitter: bermonpainter
+  - name: Michael Parenteau
+    role: design, code, content
+    twitter: parenteau
+
+thanks:
+  - name: All the people at SassConf that came to help with DNS and server-related issues.
+  - name: To everyone who has contributed through pull requests.
+
+markup:
+  - name: HTML5
+  - name: LiquidJS
+  - name: Markdown
+
+style:
+  - name: CSS3
+  - name: Sass
+  - name: Normalize
+  - name: Sanitize
+
+behavior:
+  - name: Modernizr
+  - name: jQuery
+
+misc:
+  - name: Eleventy
+  - name: HTML5 Boilerplate
+  - name: GitHub
+  - name: Netlify
+  - name: Visual Studio Code
+  - name: iTerm

@@ -7,7 +7,7 @@ date: 2013-11-22 16:57:00 -8
 _This was originally published as [a gist](https://gist.github.com/nex3/7609394)_.
 
 [Aaron Leung](https://github.com/akhleung) is working on
-[hcatlin/libsass](http://github.com/hcatlin/libsass) and was wondering how
+[libsass](https://github.com/sass/libsass) and was wondering how
 `@extend` is implemented in the Ruby implementation of Sass. Rather than just
 tell him, I thought I'd write up a public document about it so anyone who's
 porting Sass or is just curious about how it works can see.

@@ -9,30 +9,29 @@ introduction: >
 
 <ul class="list-tiled">
 <li>
-{% markdown %}
+
 ## Resources
 
-* [`sass-spec`](https://github.com/sass/sass-spec) is a suite of
+- [`sass-spec`](https://github.com/sass/sass-spec) is a suite of
   implementation-agnostic test cases for verifying that a Sass
   implementation behaves correctly. It's the best way to track your
   implementation's compatibility with the Sass reference implementation.
 
-* [How `@extend` Works](https://gist.github.com/nex3/7609394) is a
+- [How `@extend` Works](https://gist.github.com/nex3/7609394) is a
   fairly comprehensive run-down of the algorithm used by Sass's
   trickiest feature. Natalie still says that the implementation of
   `@extend` is the hardest code she's ever had to write, but luckily you
   don't have to figure it out from scratch.
 
-* **Reach out!** If you're working on a new implementation, we want to
+- **Reach out!** If you're working on a new implementation, we want to
   hear about it. Send an email to [Natalie](mailto:nex342@gmail.com) and
   [Chris](mailto:chris@eppsteins.net), tell us about the cool work
   you're doing, and ask about any corners of the language that don't
   quite make sense.
-{% endmarkdown %}
-</li>
 
+</li>
 <li>
-{% markdown %}
+
 ## Requirements
 
 We whole-heartedly love new implementations of Sass, but we do have a
@@ -54,11 +53,10 @@ all is because the language enables styles and frameworks to be shared
 among designers, and it's crucial for sharing that Sass code that works
 for one implementation works the same for all of them. In addition, it's
 important that there be a unified vision for the language design.
-{% endmarkdown %}
-</li>
 
+</li>
 <li>
-{% markdown %}
+
 ## Making Language Changes
 
 Sass can still evolve as a language, of course. We have [a process][] for
@@ -70,6 +68,6 @@ this may be impossible in some circumstances, and the ultimate say lies
 with the lead designer of Sass, Natalie.
 
 [a process]: https://github.com/sass/sass/blob/main/CONTRIBUTING.md
-{% endmarkdown %}
+
 </li>
 </ul>
