@@ -1,0 +1,26 @@
+---
+permalink: 'feed.xml'
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sass Blog</title>
+  <id>{{ '/blog' | absoluteUrl: site.url }}</id>
+  <link href="{{ '/blog' | absoluteUrl: site.url }}"/>
+  <link href="{{ page.url | absoluteUrl: site.url }}" rel="self"/>
+  <updated>{{ collections.blog | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  {%- assign posts = collections.blog | reverse -%}
+  {%- for post in posts limit:6 -%}
+  {%- assign absolutePostUrl = post.url | absoluteUrl: site.url %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}" rel="alternate"/>
+    <id>{{ absolutePostUrl }}</id>
+    <published>{{ post.date | dateToRfc3339 }}</published>
+    <updated>{{ post.data.updated | default: post.date | dateToRfc3339 }}</updated>
+    <author>
+      <name>{{ post.data.author }}</name>
+    </author>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls: absolutePostUrl | escape }}</content>
+  </entry>{% endfor %}
+</feed>

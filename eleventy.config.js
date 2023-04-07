@@ -1,6 +1,12 @@
 'use strict';
 
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
+const {
+  absoluteUrl,
+  convertHtmlToAbsoluteUrls,
+  dateToRfc3339,
+  getNewestCollectionItemDate,
+} = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const yaml = require('js-yaml');
 
@@ -16,6 +22,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('source/assets/dist');
   eleventyConfig.addPassthroughCopy('source/assets/img');
   eleventyConfig.addPassthroughCopy('source/favicon.ico');
+  eleventyConfig.addPassthroughCopy('source/_redirects');
 
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.watchIgnores.add('source/_data/versionCache.json');
@@ -31,6 +38,18 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(datesPlugin);
   eleventyConfig.addPlugin(pagesPlugin);
   eleventyConfig.addPlugin(typePlugin);
+
+  // rss plugin
+  eleventyConfig.addLiquidFilter('absoluteUrl', absoluteUrl);
+  eleventyConfig.addLiquidFilter(
+    'getNewestCollectionItemDate',
+    getNewestCollectionItemDate,
+  );
+  eleventyConfig.addLiquidFilter('dateToRfc3339', dateToRfc3339);
+  eleventyConfig.addLiquidFilter(
+    'htmlToAbsoluteUrls',
+    convertHtmlToAbsoluteUrls,
+  );
 
   // other plugins
   eleventyConfig.addPlugin(EleventyRenderPlugin);
