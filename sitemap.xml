@@ -31,12 +31,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sass-lang.com/blog/036-sass-and-native-nesting</loc>
-    <lastmod>2023-04-13T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://sass-lang.com/blog/009-announcing-dart-sass</loc>
     <lastmod>2023-04-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -188,6 +182,12 @@
   </url>
   <url>
     <loc>https://sass-lang.com/blog/027-libsass-is-deprecated</loc>
+    <lastmod>2023-04-13T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sass-lang.com/blog/036-sass-and-native-nesting</loc>
     <lastmod>2023-04-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

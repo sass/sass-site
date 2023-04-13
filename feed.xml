@@ -10,7 +10,7 @@
     <link href="https://sass-lang.com/blog/sass-and-native-nesting" rel="alternate"/>
     <id>https://sass-lang.com/blog/sass-and-native-nesting</id>
     <published>2023-03-29T22:30:00+00:00</published>
-    <updated>2023-04-13T20:02:45+00:00</updated>
+    <updated>2023-04-13T21:59:03+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -37,68 +37,22 @@ supported native nesting.&lt;/p&gt;
 &lt;p&gt;More importantly, though, &lt;strong&gt;native CSS nesting is subtly incompatible with Sass
 nesting&lt;/strong&gt;. This affects three different cases:&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Native CSS nesting implicitly wraps the parent selector in &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"&gt;&lt;code&gt;:is()&lt;/code&gt;&lt;/a&gt;, while
-Sass copies its text into the resolved selector. That means that&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre class="highlight scss"&gt;&lt;code&gt;   &lt;span class="nc"&gt;.foo&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;#bar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-     &lt;span class="nc"&gt;.baz&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
-   &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;&lt;li&gt;
 
-&lt;p&gt;produces the selector &lt;code&gt;.foo .baz, #bar .baz&lt;/code&gt; in Sass but &lt;code&gt;:is(.foo, #bar)
-   .baz&lt;/code&gt; in native CSS. This changes the specificity: &lt;code&gt;:is()&lt;/code&gt; always has the
-   specificity of its &lt;em&gt;most specific selector&lt;/em&gt;, so &lt;code&gt;:is(.foo, #bar) .baz&lt;/code&gt; will
-   match&lt;/p&gt;
-&lt;pre class="highlight html"&gt;&lt;code&gt;   &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;foo&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-     &lt;span class="nt"&gt;&amp;lt;p&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;baz&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-   &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;with specificity 1 0 1 in native CSS and 0 0 2 in Sass even though neither
-   element is matched by ID.&lt;/p&gt;
+&lt;p&gt;Native CSS nesting implicitly wraps the parent selector in &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"&gt;&lt;code&gt;:is()&lt;/code&gt;&lt;/a&gt;, while Sass copies its text into the resolved selector. That means that&lt;/p&gt; &lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nc"&gt;.foo&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;#bar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&amp;#x000A;  &lt;span class="nc"&gt;.baz&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&amp;#x000A;&lt;span class="p"&gt;}&lt;/span&gt;&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;  &lt;p&gt;produces the selector &lt;code&gt;.foo .baz, #bar .baz&lt;/code&gt; in Sass but &lt;code&gt;:is(.foo, #bar)&amp;#x000A;.baz&lt;/code&gt; in native CSS. This changes the specificity: &lt;code&gt;:is()&lt;/code&gt; always has the specificity of its &lt;em&gt;most specific selector&lt;/em&gt;, so &lt;code&gt;:is(.foo, #bar) .baz&lt;/code&gt; will match&lt;/p&gt; &lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;foo&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&amp;#x000A;  &lt;span class="nt"&gt;&amp;lt;p&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;baz&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&amp;#x000A;&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;  &lt;p&gt;with specificity 1 0 1 in native CSS and 0 0 2 in Sass even though neither element is matched by ID.&lt;/p&gt; 
 
-&lt;ol&gt;
-&lt;li&gt;Also because native CSS nesting uses &lt;code&gt;:is()&lt;/code&gt;, a parent selector with
-descendant combinators will behave differently.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre class="highlight scss"&gt;&lt;code&gt;   &lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="nc"&gt;.bar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-     &lt;span class="nc"&gt;.green-theme&lt;/span&gt; &lt;span class="k"&gt;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
-   &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;&lt;li&gt;
 
-&lt;p&gt;produces the selector &lt;code&gt;.green-theme .foo .bar&lt;/code&gt; in Sass, but in native CSS it
-   produces &lt;code&gt;.green-theme :is(.foo .bar)&lt;/code&gt;. This means that the native CSS
-   version will match&lt;/p&gt;
-&lt;pre class="highlight html"&gt;&lt;code&gt;   &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;foo&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-     &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"green-theme"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-       &lt;span class="nt"&gt;&amp;lt;p&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;bar&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-     &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-   &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;but Sass will not, since the element matching &lt;code&gt;.foo&lt;/code&gt; is outside the element
-   matching &lt;code&gt;.green-theme&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Also because native CSS nesting uses &lt;code&gt;:is()&lt;/code&gt;, a parent selector with descendant combinators will behave differently.&lt;/p&gt; &lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="nc"&gt;.bar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&amp;#x000A;  &lt;span class="nc"&gt;.green-theme&lt;/span&gt; &lt;span class="k"&gt;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&amp;#x000A;&lt;span class="p"&gt;}&lt;/span&gt;&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;  &lt;p&gt;produces the selector &lt;code&gt;.green-theme .foo .bar&lt;/code&gt; in Sass, but in native CSS it produces &lt;code&gt;.green-theme :is(.foo .bar)&lt;/code&gt;. This means that the native CSS version will match&lt;/p&gt; &lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;foo&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&amp;#x000A;  &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"green-theme"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&amp;#x000A;    &lt;span class="nt"&gt;&amp;lt;p&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;bar&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&amp;#x000A;  &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&amp;#x000A;&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;  &lt;p&gt;but Sass will not, since the element matching &lt;code&gt;.foo&lt;/code&gt; is outside the element matching &lt;code&gt;.green-theme&lt;/code&gt;.&lt;/p&gt; 
 
-&lt;ol&gt;
-&lt;li&gt;Sass nesting and native CSS nesting both support syntax that looks like
-&lt;code&gt;&amp;amp;foo&lt;/code&gt;, but it means different things. In Sass, this adds a suffix to the
-parent selector, so&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre class="highlight scss"&gt;&lt;code&gt;   &lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-     &lt;span class="k"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;-suffix&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
-   &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;&lt;li&gt;
 
-&lt;p&gt;produces the selector &lt;code&gt;.foo-suffix&lt;/code&gt;. But in native CSS, this adds a type
-   selector to the parent selector, so&lt;/p&gt;
-&lt;pre class="highlight scss"&gt;&lt;code&gt;   &lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-     &lt;span class="k"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
-   &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;produces the selector &lt;code&gt;div.foo&lt;/code&gt; (where Sass would produce &lt;code&gt;.foodiv&lt;/code&gt; instead).
-   Native CSS nesting has no way to add a suffix to a selector like Sass.&lt;/p&gt;
+&lt;p&gt;Sass nesting and native CSS nesting both support syntax that looks like &lt;code&gt;&amp;amp;foo&lt;/code&gt;, but it means different things. In Sass, this adds a suffix to the parent selector, so&lt;/p&gt; &lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&amp;#x000A;  &lt;span class="k"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;-suffix&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&amp;#x000A;&lt;span class="p"&gt;}&lt;/span&gt;&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;  &lt;p&gt;produces the selector &lt;code&gt;.foo-suffix&lt;/code&gt;. But in native CSS, this adds a type selector to the parent selector, so&lt;/p&gt; &lt;pre class="highlight scss"&gt;&lt;code&gt;&lt;span class="nc"&gt;.foo&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&amp;#x000A;  &lt;span class="k"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* ... */&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&amp;#x000A;&lt;span class="p"&gt;}&lt;/span&gt;&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;  &lt;p&gt;produces the selector &lt;code&gt;div.foo&lt;/code&gt; (where Sass would produce &lt;code&gt;.foodiv&lt;/code&gt; instead). Native CSS nesting has no way to add a suffix to a selector like Sass.&lt;/p&gt; 
+
+&lt;/li&gt;&lt;/ol&gt;
 
 &lt;h3 id="design-commitments"&gt;
 &lt;a class="anchor" href="#design-commitments"&gt;&lt;span class="visuallyhidden"&gt;Design Commitments permalink&lt;/span&gt;&lt;/a&gt;Design Commitments&lt;/h3&gt;
@@ -150,7 +104,7 @@ plain CSS version is not strong enough to override that.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/security-alert-tar-permissions" rel="alternate"/>
     <id>https://sass-lang.com/blog/security-alert-tar-permissions</id>
     <published>2022-12-10T00:00:00+00:00</published>
-    <updated>2023-04-13T20:02:45+00:00</updated>
+    <updated>2023-04-13T21:59:03+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -264,7 +218,7 @@ only the owner of the files. We&amp;rsquo;re announcing the vulnerability here a
     <link href="https://sass-lang.com/blog/request-for-comments-color-spaces" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-color-spaces</id>
     <published>2022-09-21T21:00:00+00:00</published>
-    <updated>2023-04-13T20:02:45+00:00</updated>
+    <updated>2023-04-13T21:59:03+00:00</updated>
     <author>
       <name>Miriam Suzanne and Natalie Weizenbaum</name>
     </author>
@@ -537,7 +491,7 @@ thoughts or concerns you may have.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators</id>
     <published>2022-06-15T23:30:00+00:00</published>
-    <updated>2023-04-13T20:02:45+00:00</updated>
+    <updated>2023-04-13T21:59:03+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -627,7 +581,7 @@ implementing it.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
     <published>2022-02-01T10:00:00+00:00</published>
-    <updated>2023-04-13T20:02:45+00:00</updated>
+    <updated>2023-04-13T21:59:03+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -696,7 +650,7 @@ for many other popular frontend languages. If you end up doing so, message us
     <link href="https://sass-lang.com/blog/new-js-api-release-candidate" rel="alternate"/>
     <id>https://sass-lang.com/blog/new-js-api-release-candidate</id>
     <published>2021-11-21T00:15:00+00:00</published>
-    <updated>2023-04-13T20:02:45+00:00</updated>
+    <updated>2023-04-13T21:59:03+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
