@@ -6,6 +6,9 @@ team:
   - name: Natalie Weizenbaum
     role: code, content
     twitter: nex3
+  - name: OddBird
+    role: design, code
+    twitter: oddbird
 
 contributors:
   - name: Chris Eppstein
@@ -29,12 +32,12 @@ thanks:
   - name: To everyone who has contributed through pull requests.
 
 markup:
-  - name: HTML5
+  - name: HTML
   - name: LiquidJS
   - name: Markdown
 
 style:
-  - name: CSS3
+  - name: CSS
   - name: Sass
   - name: Normalize
   - name: Sanitize
