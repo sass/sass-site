@@ -55,8 +55,8 @@ introduction: >
       import 'package:sass/sass.dart' as sass;
 
       void main(List<String> arguments) {
-        var result = sass.compile(arguments[0]);
-        new File(arguments[1]).writeAsStringSync(result);
+        var result = sass.compileToResult(arguments[0]);
+        new File(arguments[1]).writeAsStringSync(result.css);
       }
          ```
 
@@ -84,50 +84,22 @@ introduction: >
       `npm install --save-dev sass` and `require()` it as a library:
 
       ```js
-      var sass = require('sass');
+      const sass = require('sass');
 
-      sass.render({
-        file: scss_filename
-      }, function(err, result) {
-        /* ... */
-      });
+      const result = sass.compile("style.scss");
+      console.log(result.css);
 
       // OR
 
-      var result = sass.renderSync({
-        file: scss_filename
-      });
+      const result = await sass.compileAsync("style.scss");
+      console.log(result.css);
       ```
 
-      When installed via npm, Dart Sass supports a JavaScript API that aims to
-      be compatible with [Node Sass](https://github.com/sass/node-sass#usage).
-      Full compatibility is a work in progress, but Dart Sass currently supports
-      the `render()` and `renderSync()` functions. Note however that by default,
-      **`renderSync()` is more than twice as fast as `render()`**, due to the
-      overhead of asynchronous callbacks.
+      When installed via npm, Dart Sass supports a [brand new JavaScript API],
+      as well as a [legacy API] that's fully compatible with the old Node Sass
+      API. Note that when using the `sass` asdf package, the synchronous API functions
+      are more than twice as fast as the asynchronous API, due to the overhead
+      of asynchronous callbacks.
 
-      To avoid this performance hit, `render()` can use the [`fibers`][fibers]
-      package to call asynchronous importers from the synchronous code path. To
-      enable this, pass the `Fiber` class to the `fiber` option:
-
-      [fibers]: https://www.npmjs.com/package/fibers
-
-      ```js
-      var sass = require("sass");
-      var Fiber = require("fibers");
-
-      sass.render({
-        file: "input.scss",
-        importer: function(url, prev, done) {
-          // ...
-        },
-        fiber: Fiber
-      }, function(err, result) {
-        // ...
-      });
-      ```
-
-      See [Dart Sass's documentation][js api] for more information about its
-      JavaScript API.
-
-      [js api]: https://github.com/sass/dart-sass/blob/master/README.md#javascript-api
+      [brand new JavaScript API]: https://sass-lang.com/documentation/js-api/
+      [legacy API]: https://sass-lang.com/documentation/js-api/#legacy-api

@@ -513,6 +513,11 @@ MARKDOWN
     text.gsub(/^#{text.scan(/^ *(?=\S)(?!<)/).min}/, "")
   end
 
+  # Evaluates a block as markdown and concatenates it to the template.
+  def force_markdown
+    _concat(_render_markdown(_capture {yield}))
+  end
+
   # A helper method that renders a chunk of Markdown text.
   def _render_markdown(content)
     @redcarpet ||= Redcarpet::Markdown.new(
