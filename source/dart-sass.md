@@ -98,9 +98,8 @@ console.log(result.css);
 
 When installed via npm, Dart Sass supports a [brand new JavaScript API], as well
 as a [legacy API] that's fully compatible with the old Node Sass API. Note that
-when using the `sass` asdf package, the synchronous API functions are more than
-twice as fast as the asynchronous API, due to the overhead of asynchronous
-callbacks.
+when using the `sass` package, the synchronous API functions are more than twice
+as fast as the asynchronous API, due to the overhead of asynchronous callbacks.
 
 [brand new JavaScript API]: https://sass-lang.com/documentation/js-api/
 [legacy API]: https://sass-lang.com/documentation/js-api/#legacy-api
