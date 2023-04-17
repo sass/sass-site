@@ -58,7 +58,9 @@ module.exports = (eleventyConfig) => {
 
   // other plugins
   eleventyConfig.addPlugin(EleventyRenderPlugin);
-  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    errorOnInvalidLanguage: true,
+  });
 
   eleventyConfig.setQuietMode(true);
 

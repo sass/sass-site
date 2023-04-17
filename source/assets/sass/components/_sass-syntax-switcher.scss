@@ -233,14 +233,14 @@ html .ui-button.ui-state-disabled:active {
 }
 
 // custom breakpoint to make the split tabs work with a double nav column
-@media screen and (min-width: 93.75rem) {
+@media screen and (width >= 93.75rem) {
   body.documentation {
     @include -split-css-tabs;
   }
 }
 
 // custom breakpoint to make the split tabs work with a single nav column
-@media screen and (min-width: 76rem) {
+@media screen and (width >= 76rem) {
   body.guide {
     @include -split-css-tabs;
   }
