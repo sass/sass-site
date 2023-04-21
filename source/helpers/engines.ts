@@ -1,8 +1,10 @@
 import { Liquid } from 'liquidjs';
-import markdown from 'markdown-it';
+import markdown, { PluginWithOptions } from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownDefList from 'markdown-it-deflist';
 import path from 'path';
+
+import { renderPermalink } from './components/anchors';
 
 /**
  * Returns Markdown engine with custom configuration and plugins.
@@ -16,7 +18,10 @@ export const markdownEngine = markdown({
   typographer: true,
 })
   .use(markdownDefList)
-  .use(markdownItAttrs);
+  .use(markdownItAttrs)
+  .use(require('markdown-it-anchor') as PluginWithOptions, {
+    permalink: renderPermalink,
+  });
 
 /**
  * Returns LiquidJS engine with custom configuration.
