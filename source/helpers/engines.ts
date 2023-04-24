@@ -1,5 +1,6 @@
 import { Liquid } from 'liquidjs';
-import markdown, { PluginWithOptions } from 'markdown-it';
+import markdown from 'markdown-it';
+import markdownAnchor from 'markdown-it-anchor';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownDefList from 'markdown-it-deflist';
 import path from 'path';
@@ -19,7 +20,7 @@ export const markdownEngine = markdown({
 })
   .use(markdownDefList)
   .use(markdownItAttrs)
-  .use(require('markdown-it-anchor') as PluginWithOptions, {
+  .use(markdownAnchor, {
     permalink: renderPermalink,
   });
 

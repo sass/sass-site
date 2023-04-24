@@ -1,5 +1,5 @@
 import Token from 'markdown-it/lib/token';
-import anchor from 'markdown-it-anchor/types';
+import type anchor from 'markdown-it-anchor';
 
 // Custom permalink function, inspired by and modification of linkInsideHeader
 // More context on custom permalink fns: https://github.com/valeriangalliat/markdown-it-anchor#custom-permalink
