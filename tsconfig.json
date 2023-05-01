@@ -1,15 +1,12 @@
 {
+  "extends": "ts-node/node16/tsconfig.json",
   "ts-node": {
     "transpileOnly": true
   },
   "compilerOptions": {
-    "module": "node16",
     "target": "es2022",
-    "moduleResolution": "Node16",
-    "strict": true,
-    "esModuleInterop": true,
+    "lib": ["es2022", "DOM"],
     "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true
   },
   "include": ["source/**/*.ts"],
