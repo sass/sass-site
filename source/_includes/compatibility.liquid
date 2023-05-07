@@ -2,34 +2,29 @@
   <div class="compatibility">
     Compatibility{% if feature %} ({{ feature }}){% endif %}:
   </div>
-  {% if dart != null %}
+  {%- if dart != null -%}
     <div>
       <dt>Dart Sass</dt>
       <dd>{{ dart | implStatus }}</dd>
     </div>
-  {% endif %}
-  {% if libsass != null %}
+  {%- endif -%}
+  {%- if libsass != null -%}
     <div>
       <dt>LibSass</dt>
       <dd>{{ libsass | implStatus }}</dd>
     </div>
-  {% endif %}
-  {% if ruby != null %}
+  {%- endif -%}
+  {%- if ruby != null -%}
     <div>
       <dt>Ruby Sass</dt>
       <dd>{{ ruby | implStatus }}</dd>
     </div>
-  {% endif %}
-  {% if details %}
-    <div>
-      {% # The no-op href here ensures that this toggle is focusable in browsers. %}
-      <a href="javascript:;">▶</a>
-    </div>
-  {% endif %}
+  {%- endif -%}
+  {%- if details -%}
+    <div>{% # The no-op href here ensures that this toggle is focusable in browsers. %}<a href="javascript:;">▶</a></div>
+  {%- endif -%}
 </dl>
 
 {% if details %}
-  <div class="sl-c-callout sl-c-callout--impl-status">
-    {{ details | markdown }}
-  </div>
+  <div class="sl-c-callout sl-c-callout--impl-status">{{ details | markdown }}</div>
 {% endif %}

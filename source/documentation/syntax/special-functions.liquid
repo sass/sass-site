@@ -1,0 +1,156 @@
+---
+title: Special Functions
+introduction: >
+  CSS defines many functions, and most of them work just fine with Sass’s normal
+  function syntax. They’re parsed as function calls, resolved to [plain CSS
+  functions](../at-rules/function#plain-css-functions), and compiled as-is to
+  CSS. There are a few exceptions, though, which have special syntax that can’t
+  just be parsed as a [SassScript expression](structure#expressions). All
+  special function calls return [unquoted strings](../values/strings#unquoted).
+table_of_contents: true
+complementary_content: |
+  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+
+  <h3 id="page-sections">Page Sections</h3>
+
+  - [<code>url()</code>](#url())
+  - [<code>element(),</code> <code>progid:...(),</code> and <code>expression()</code>](#element()%2C-progid%3A...()%2C-and-expression())
+
+  </nav>
+---
+{% markdown %}
+## `url()`
+
+The [`url()` function][] is commonly used in CSS, but its syntax is different
+than other functions: it can take either a quoted _or_ unquoted URL. Because an
+unquoted URL isn't a valid SassScript expression, Sass needs special logic to
+parse it.
+
+[`url()` function]: https://developer.mozilla.org/en-US/docs/Web/CSS/url
+
+If the `url()`'s argument is a valid unquoted URL, Sass parses it as-is,
+although [interpolation][] may also be used to inject SassScript values. If it's
+not a valid unquoted URL—for example, if it contains [variables][] or [function
+calls][]—it's parsed as a normal [plain CSS function call][].
+
+[interpolation]: ../interpolation
+[variables]: ../variables
+[function calls]: ../at-rules/function
+[plain CSS function call]: ../at-rules/function#plain-css-functions
+
+{% endmarkdown %}
+
+{% codeExample 'url' %}
+$roboto-font-path: "../fonts/roboto";
+
+@font-face {
+// This is parsed as a normal function call that takes a quoted string.
+src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2");
+
+font-family: "Roboto";
+font-weight: 100;
+}
+
+@font-face {
+// This is parsed as a normal function call that takes an arithmetic
+// expression.
+src: url($roboto-font-path + "/Roboto-Light.woff2") format("woff2");
+
+font-family: "Roboto";
+font-weight: 300;
+}
+
+@font-face {
+// This is parsed as an interpolated special function.
+src: url(#{$roboto-font-path}/Roboto-Regular.woff2) format("woff2");
+
+font-family: "Roboto";
+font-weight: 400;
+}
+===
+$roboto-font-path: "../fonts/roboto"
+
+@font-face
+// This is parsed as a normal function call that takes a quoted string.
+src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2")
+
+font-family: "Roboto"
+font-weight: 100
+
+
+@font-face
+// This is parsed as a normal function call that takes an arithmetic
+// expression.
+src: url($roboto-font-path + "/Roboto-Light.woff2") format("woff2")
+
+font-family: "Roboto"
+font-weight: 300
+
+
+@font-face
+// This is parsed as an interpolated special function.
+src: url(#{$roboto-font-path}/Roboto-Regular.woff2) format("woff2")
+
+font-family: "Roboto"
+font-weight: 400
+{% endcodeExample %}
+
+{% markdown %}
+## `element()`, `progid:...()`, and `expression()`
+
+{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
+{% compatibility "<1.40.0", false, false, "calc()" %}
+LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse `calc()` as special syntactic function like `element()`.
+
+Dart Sass versions 1.40.0 and later parse `calc()` as a [calculation].
+
+[calculation]: ../values/calculations
+{% endcompatibility %}
+
+{% compatibility ">=1.31.0 <1.40.0", false, false, "clamp()" %}
+LibSass, Ruby Sass, and versions of Dart Sass prior to 1.31.0 parse `clamp()`
+as a [plain CSS function] rather than supporting special syntax within it.
+
+[plain CSS function]: ../at-rules/function#plain-css-functions
+
+Dart Sass versions between 1.31.0 and 1.40.0 parse `clamp()` as special
+syntactic function like `element()`.
+
+Dart Sass versions 1.40.0 and later parse `clamp()` as a [calculation].
+
+[calculation]: ../values/calculations
+{% endcompatibility %}
+
+The [`element()`] function is defined in the CSS spec, and because its IDs couldbe parsed as colors, they need special parsing.
+
+[`element()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/element
+
+[`expression()`][] and functions beginning with [`progid:`][] are legacy
+Internet Explorer features that use non-standard syntax. Although they're no
+longer supported by recent browsers, Sass continues to parse them for backwards
+compatibility.
+
+[`expression()`]: https://blogs.msdn.microsoft.com/ie/2008/10/16/ending-expressions/
+[`progid:`]: https://blogs.msdn.microsoft.com/ie/2009/02/19/the-css-corner-using-filters-in-ie8/
+
+Sass allows _any text_ in these function calls, including nested parentheses.
+Nothing is interpreted as a SassScript expression, with the exception that
+[interpolation][] can be used to inject dynamic values.
+{% endmarkdown %}
+
+{% codeExample 'element' %}
+$logo-element: logo-bg;
+
+.logo {
+background: element(##{$logo-element});
+}
+===
+$logo-element: logo-bg
+
+.logo
+background: element(##{$logo-element})
+===
+.logo {
+background: element(#logo-bg);
+}
+{% endcodeExample %}
