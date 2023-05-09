@@ -1,1 +1,0 @@
-$(function(){$(".impl-status").each(function(){var t=($(this),$(this).find("a"));if(null!=t){var e=$(this).next();e.hasClass("sl-c-callout")&&(e.hide(),t.click(function(){e.toggle(),t.toggleClass("expanded")}))}})});
