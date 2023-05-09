@@ -146,7 +146,7 @@ namespace :sass do
         sh %{npm run typedoc -- \
             --plugin ../tool/typedoc-theme.js --theme sass-site \
             --out ../source/documentation/js-api \
-            --cleanOutputDir \
+            --cleanOutputDir
         }
       end
       sh %{rm -r source/documentation/js-api/assets}
