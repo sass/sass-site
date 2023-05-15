@@ -21,9 +21,9 @@ compiled to a CSS comment. They're also called **loud comment**, by contrast
 with silent comments. A multi-line comment that's compiled to CSS may contain
 [interpolation][], which will be evaluated before the comment is compiled.
 
-By default, multi-line comments be stripped from the compiled CSS in [compressed
-mode][]. If a comment begins with `/*!`, though, it will always be included in
-the CSS output.
+By default, multi-line comments will be stripped from the compiled CSS in
+[compressed mode][]. If a comment begins with `/*!`, though, it will always be
+included in the CSS output.
 
 [statement]: structure#statements
 [interpolation]: ../interpolation
@@ -83,7 +83,7 @@ case, they have exactly the same syntax as they do in SCSS.
 
 When writing style libraries using Sass, you can use comments to document the
 [mixins][], [functions][], [variables][], and [placeholder selectors][] that
-your library provides, as well as the library itself. These are comments are
+your library provides, as well as the library itself. These comments are
 read by the [SassDoc][] tool, which uses them to generate beautiful
 documentation. Check out [the Susy grid engine][susy]'s documentation to see it
 in action!
