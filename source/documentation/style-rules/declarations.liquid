@@ -1,0 +1,161 @@
+---
+title: Property Declarations
+table_of_contents: true
+introduction: >
+  In Sass as in CSS, property declarations define how elements that match a
+  selector are styled. But Sass adds extra features to make them easier to write
+  and to automate. First and foremost, a declaration's value can be any
+  [SassScript expression](../syntax/structure#expressions), which will be
+  evaluated and included in the result.
+complementary_content: |
+  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+
+  ### Page Sections{#page-sections}
+
+  - [Interpolation](#interpolation)
+  - [Nesting](#nesting)
+  - [Hidden Declarations](#hidden-declarations)
+  - [Custom Properties](#custom-properties)
+  </nav>
+---
+{% codeExample 'declaration' %}
+.circle {
+  $size: 100px;
+  width: $size;
+  height: $size;
+  border-radius: $size * 0.5;
+}
+===
+.circle
+  $size: 100px
+  width: $size
+  height: $size
+  border-radius: $size * 0.5
+{% endcodeExample %}
+
+{% markdown %}
+## Interpolation
+
+A property's name can include [interpolation][], which makes it possible to
+dynamically generate properties as needed. You can even interpolate the entire
+property name!
+
+[interpolation]: ../interpolation
+{% endmarkdown %}
+
+{% codeExample 'interpolation' %}
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+
+.gray {
+  @include prefix(filter, grayscale(50%), moz webkit);
+}
+===
+@mixin prefix($property, $value, $prefixes)
+  @each $prefix in $prefixes
+    -#{$prefix}-#{$property}: $value
+
+  #{$property}: $value
+
+
+.gray
+  @include prefix(filter, grayscale(50%), moz webkit)
+{% endcodeExample %}
+
+{% markdown %}
+## Nesting
+
+Many CSS properties start with the same prefix that acts as a kind of namespace.
+For example, `font-family`, `font-size`, and `font-weight` all start with
+`font-`. Sass makes this easier and less redundant by allowing property
+declarations to be nested. The outer property names are added to the inner,
+separated by a hyphen.
+{% endmarkdown %}
+
+{% codeExample 'nesting' %}
+.enlarge {
+  font-size: 14px;
+  transition: {
+    property: font-size;
+    duration: 4s;
+    delay: 2s;
+  }
+
+  &:hover { font-size: 36px; }
+}
+===
+.enlarge
+  font-size: 14px
+  transition:
+    property: font-size
+    duration: 4s
+    delay: 2s
+
+  &:hover
+    font-size: 36px
+{% endcodeExample %}
+
+{% markdown %}
+Some of these CSS properties have shorthand versions that use the namespace as
+the property name. For these, you can write both the shorthand value *and* the
+more explicit nested versions.
+{% endmarkdown %}
+
+{% codeExample 'nesting-shorthand' %}
+.info-page {
+  margin: auto {
+    bottom: 10px;
+    top: 2px;
+  }
+}
+===
+.info-page
+  margin: auto
+    bottom: 10px
+    top: 2px
+{% endcodeExample %}
+
+{% markdown %}
+## Hidden Declarations
+
+Sometimes you only want a property declaration to show up some of the time. If a
+declaration's value is [`null`][] or an empty [unquoted string][], Sass won't
+compile that declaration to CSS at all.
+
+[`null`]: ../values/null
+[unquoted string]: ../values/strings#unquoted
+{% endmarkdown %}
+
+{% codeExample 'hidden-declarations' %}
+$rounded-corners: false;
+
+.button {
+  border: 1px solid black;
+  border-radius: if($rounded-corners, 5px, null);
+}
+===
+$rounded-corners: false
+
+.button
+  border: 1px solid black
+  border-radius: if($rounded-corners, 5px, null)
+{% endcodeExample %}
+
+{% markdown %}
+## Custom Properties
+{% endmarkdown %}
+
+{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
+{% compatibility true, '3.5.0', '3.5.0', 'SassScript Syntax' %}
+Older versions of LibSass and Ruby Sass parsed custom property declarations just like any other property declaration, allowing the full range of SassScript expressions as values. Even when using these versions, it's
+recommended that you use interpolation to inject SassScript values for
+forwards-compatibility.
+
+See [the breaking change page][] for more details.
+
+[the breaking change page]: ../breaking-changes/css-vars
+{% endcompatibility %}
