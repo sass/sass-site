@@ -1,0 +1,59 @@
+---
+title: Placeholder Selectors
+introduction: >
+  Sass has a special kind of selector known as a “placeholder”. It looks and
+  acts a lot like a class selector, but it starts with a `%` and it's not
+  included in the CSS output. In fact, any complex selector (the ones between
+  the commas) that even *contains* a placeholder selector isn't included in the
+  CSS, nor is any style rule whose selectors all contain placeholders.
+---
+{% render 'code-snippets/example-placeholder' %}
+
+{% markdown %}
+What's the use of a selector that isn't emitted? It can still be [extended][]! Unlike class selectors, placeholders don't clutter up the CSS if they aren't extended and they don't mandate that users of a library use specific class names for their HTML.
+
+[extended]: ../../at-rules/extend
+{% endmarkdown %}
+
+{% codeExample 'extended-selector' %}
+%toolbelt {
+  box-sizing: border-box;
+  border-top: 1px rgba(#000, .12) solid;
+  padding: 16px 0;
+  width: 100%;
+
+  &:hover { border: 2px rgba(#000, .5) solid; }
+}
+
+.action-buttons {
+  @extend %toolbelt;
+  color: #4285f4;
+}
+
+.reset-buttons {
+  @extend %toolbelt;
+  color: #cddc39;
+}
+===
+%toolbelt
+  box-sizing: border-box
+  border-top: 1px rgba(#000, .12) solid
+  padding: 16px 0
+  width: 100%
+
+  &:hover
+    border: 2px rgba(#000, .5) solid
+
+.action-buttons
+  @extend %toolbelt
+  color: #4285f4
+
+
+.reset-buttons
+  @extend %toolbelt
+  color: #cddc39
+{% endcodeExample %}
+
+{% markdown %}
+Placeholder selectors are useful when writing a Sass library where each style rule may or may not be used. As a rule of thumb, if you're writing a stylesheet just for your own app, it's often better to just extend a class selector if one is available.
+{% endmarkdown %}
