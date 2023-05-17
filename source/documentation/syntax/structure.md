@@ -10,13 +10,13 @@ complementary_content: |
 
   ### Page Sections{#page-sections}
 
-  - [Statements](#statements){.section}
+  - [Statements](#statements){.section .open}
     - [Overview](#statements)
     - [Universal Statements](#universal-statements)
     - [CSS Statements](#css-statements)
     - [Top-Level Statements](#top-level-statements)
     - [Other Statements](#other-statements)
-  - [Expressions](#expressions){.section}
+  - [Expressions](#expressions){.section .open}
     - [Overview](#expressions)
     - [Literals](#literals)
     - [Operations](#operations)
