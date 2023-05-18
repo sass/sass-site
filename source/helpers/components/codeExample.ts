@@ -121,7 +121,7 @@ const generateCodeExample = (
       splitLocation = 0.5 * 100;
     } else {
       // Put the split exactly in between the two longest lines.
-      splitLocation = 0.5 + ((maxSourceWidth - maxCSSWidth) / 110.0 / 2) * 100;
+      splitLocation = (0.5 + ((maxSourceWidth - maxCSSWidth) / 110.0 / 2)) * 100;
     }
   }
 
