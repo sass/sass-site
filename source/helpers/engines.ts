@@ -21,7 +21,7 @@ export const markdownEngine = markdown({
   .use(markdownDefList)
   .use(markdownItAttrs)
   .use(markdownAnchor, {
-    level: [2, 3],
+    level: 2,
     permalink: renderPermalink,
   });
 
