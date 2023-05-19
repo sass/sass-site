@@ -1,1 +1,0 @@
-$(function(){function t(){e.length>0&&$(window).scrollTop()>=i.top?$(".sl-l-medium-holy-grail__body").addClass("sl-js-nav--is-sticky"):$(".sl-l-medium-holy-grail__body").removeClass("sl-js-nav--is-sticky")}var e=$(".sl-c-list-navigation-wrapper"),i=e.offset();return $(window).scroll(function(){t()}),t()});
