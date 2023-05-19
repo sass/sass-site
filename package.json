@@ -24,6 +24,7 @@
     "build-dev:scripts": "rollup -c",
     "build-prod:scripts": "BABEL_ENV=production rollup -c",
     "watch:scripts": "npm run build-dev:scripts -- -w",
+    "build:typedoc": "./tool/typedoc-build.sh",
     "build:11ty": "NODE_OPTIONS='-r ts-node/register' eleventy",
     "watch:11ty": "yarn build:11ty --serve --incremental",
     "tsc": "tsc",

@@ -174,7 +174,11 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
       .getUrls(project)
       .map(
         (mapping) =>
-          new UrlMapping(`${mapping.url}.erb`, mapping.model, mapping.template),
+          new UrlMapping(
+            `${mapping.url.replace(/\.html$/, '.md')}`,
+            mapping.model,
+            mapping.template,
+          ),
       );
   }
 }
@@ -194,6 +198,7 @@ exports.load = (app) => {
         if (name === 'RawSourceMap') {
           return 'https://github.com/mozilla/source-map/blob/58819f09018d56ef84dc41ba9c93f554e0645169/source-map.d.ts#L15-L23';
         }
+        break;
       case '@types/node':
         if (name === 'Buffer') {
           return 'https://nodejs.org/api/buffer.html';
