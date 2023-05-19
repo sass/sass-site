@@ -32,7 +32,7 @@ changes:
 
    [the Sass language repository]: https://github.com/sass/sass/blob/main/spec/embedded-protocol.md
 
-2. The embedded protocol now explicitly declares fields as `optional` using the
+2. The embedded protocol now explicitly declares optional fields using the
    protocol buffers language feature. This means that "default values" for
    various fields are no longer considered to be unset.
 
@@ -61,7 +61,7 @@ separate repositories and release processes we need to manage.
 ## Wire-Level Compilation ID
 
 We're pulling the compilation ID out to the protocol level in order to provide
-better parallelism, particularly on the side of the embedded compiler. Sass
+better concurrency, particularly on the side of the embedded compiler. Sass
 compilations done by the embedded compiler don't share any state between one
 another, which means that they could in theory be run in totally separate worker
 threads. However, with the embedded protocol as it exists today, directing each
@@ -72,5 +72,5 @@ _again_ in the worker thread to actually handle it.
 Making the compilation ID part of the protocol itself solves this issue. Each
 endpoint can read the ID, look up the worker thread that's handling the
 compilation, and pass the message on to that thread without parsing the rest of
-the message. This makes parallelism both easier and more efficient, which will
+the message. This makes concurrency both easier and more efficient, which will
 help ensure that large compilations happen as fast as possible.
