@@ -5,6 +5,7 @@
 .yarnrc
 .yarnrc.yml
 /_site/
+/data/
 /old_source/
 /source/_data/versionCache.json
 /source/blog/*.md

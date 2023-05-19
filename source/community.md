@@ -29,13 +29,13 @@ complementary_content: |
 Please read and follow our [community guidelines](/community-guidelines).
 
 Thinking of **contributing** to Sass itself? We rely on everyone to keep Sass as
-stable as it is. Feel free to [submit a patch via pull request](#Contribute) to
+stable as it is. Feel free to [submit a patch via pull request](#contribute) to
 the Sass project.
 
 Want to create your own Sass implementation? Check out our [implementation
 guidelines](/implementation).
 
-## Contribute {#Contribute}
+## Contribute
 
 Sass is an [open source project][github] and we encourage you to contribute. You
 can contribute with [bug reports and feature requests][issues], and if you

@@ -51,7 +51,7 @@ Below are the LibSass wrappers that we're currently aware of. Sometimes there
 are multiple wrappers per language -- in those cases, we put the most
 recently-updated wrapper first.
 
-- ### Sass C {#sassc}
+- <h3 id="sassc">Sass C</h3>
 
   [SassC](https://github.com/sass/sassc) (get it?) is a wrapper written in C.
 
@@ -71,12 +71,12 @@ recently-updated wrapper first.
   ./bin/sassc [input file] > output.css
   ```
 
-- ### Crystal {#crystal}
+- <h3 id="crystal">Crystal</h3>
 
   [sass.cr](https://github.com/straight-shoota/sass.cr) is a LibSass wrapper for
   the [Crystal programming language](https://crystal-lang.org/).
 
-- ### Go {#go}
+- <h3 id="go">Go</h3>
 
   [go-libsass](https://github.com/wellington/go-libsass) has the most active
   GoLang wrapper. [gosass](https://github.com/moovweb/gosass) is another LibSass
@@ -87,24 +87,24 @@ recently-updated wrapper first.
   [wellington/sass](https://github.com/wellington/sass) is an in-progress pure
   Go Sass lexer, parser, and compiler.
 
-- ### Java {#java}
+- <h3 id="java">Java</h3>
 
   There is one Java wrapper --- [jsass](https://github.com/bit3/jsass). There is
   also a plugin for Maven --- [LibSass Maven
   plugin](https://gitlab.com/haynes/libsass-maven-plugin).
 
-- ### JavaScript {#javascript}
+- <h3 id="javascript">JavaScript</h3>
 
   The [sass.js](https://github.com/medialize/sass.js) project makes LibSass
   available as pure JavaScript. There's a way to [test it in the
   browser](https://sass.js.org/), too.
 
-- ### Lua {#lua}
+- <h3 id="lua">Lua</h3>
 
   The Lua wrapper is found at
   [lua-sass](https://github.com/craigbarnes/lua-sass).
 
-- ### .NET {#net}
+- <h3 id="net">.NET</h3>
 
   [LibSass Host](https://github.com/Taritsyn/LibSassHost) is updated regularly,
   and is probably the best bet. There's also
@@ -112,25 +112,25 @@ recently-updated wrapper first.
   [NSass](https://github.com/TBAPI-0KA/NSass), although they haven't been
   updated in a while.
 
-- ### Node {#node}
+- <h3 id="node">Node</h3>
 
   The [node-sass](https://github.com/sass/node-sass) project has proven to be
   popular, and we've taken it into the main Sass GitHub repo. Check out its
   package page [here](https://www.npmjs.com/package/node-sass), and [there's a
   dedicated twitter account](https://twitter.com/nodesass) for updates.
 
-- ### Perl {#perl}
+- <h3 id="perl">Perl</h3>
 
   The [CSS::Sass](https://github.com/sass/perl-libsass) project is updated
   regularly. There's the [Text-Sass-XS](https://github.com/ysasaki/Text-Sass-XS)
   project, too, although it hasn't been updated in a while.
 
-- ### PHP {#php}
+- <h3 id="php">PHP</h3>
 
   The [SassPHP](https://github.com/absalomedia/sassphp) project is an updated
   fork of an [older PHP version](https://github.com/jamierumbelow/sassphp).
 
-- ### Python {#python}
+- <h3 id="python">Python</h3>
 
   The [libsass-python](https://github.com/sass/libsass-python) project is
   updated regularly. There are more details on [its own
@@ -142,24 +142,24 @@ recently-updated wrapper first.
   [SassPython](https://github.com/marianoguerra/SassPython), haven't been
   updated in a while.
 
-- ### Ruby {#ruby}
+- <h3 id="ruby">Ruby</h3>
 
   LibSass has also been ported back into Ruby for the
   [sassc-ruby](https://github.com/sass/sassc-ruby) project.
 
-- ### R {#r}
+- <h3 id="r">R</h3>
 
   The [R](https://www.r-project.org/) [Sass
   package](https://github.com/rstudio/sass) wraps LibSass with additional
   caching and bundling methods. [Extended
   documentation](https://rstudio.github.io/sass/).
 
-- ### Rust {#rust}
+- <h3 id="rust">Rust</h3>
 
   The [`sass_rs`](https://github.com/compass-rs/sass-rs) crate is a LibSass
   wrapper and is updated regularly.
 
-- ### Scala {#scala}
+- <h3 id="scala">Scala</h3>
 
   The only Scala project, [Sass-Scala](https://github.com/kkung/Sass-Scala),
   hasn't been updated in a couple of years.
