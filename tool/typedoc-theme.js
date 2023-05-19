@@ -94,11 +94,11 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
         .oldMarkdown(text)
         .replace(
           /<p><strong>Heads up!<\/strong>([^]*?)<\/p>/g,
-          '<% heads_up do %>$1<% end %>',
+          '{% headsUp %}$1{% endheadsUp %}',
         )
         .replace(
           /<p><strong>Fun fact!<\/strong>([^]*?)<\/p>/g,
-          '<% fun_fact do %>$1<% end %>',
+          '{% funFact %}$1{% endfunFact %}',
         ),
     this,
   );

@@ -18,6 +18,14 @@ export const funFact = async (contents: string) =>
   });
 
 /**
+ * Returns HTML for a warning.
+ */
+export const headsUp = async (contents: string) =>
+  liquidEngine.renderFile('heads_up', {
+    contents,
+  });
+
+/**
  * Returns HTML for a code block with syntax highlighting via [Prism][].
  *
  * This should be equivalent to the [11ty `{% highlight %}` tag][hl-tag], except
@@ -52,7 +60,8 @@ export default function componentsPlugin(eleventyConfig: any) {
   // Ideally this could be used with named args, but that's not supported yet in
   // 11ty's implementation of LiquidJS:
   // https://github.com/11ty/eleventy/issues/2679
-  // In the meantime, the args are: `dart`, `libsass`, `ruby`, `feature`
+  // In the meantime, check the order in the function definition of `compatibility`.
   eleventyConfig.addPairedLiquidShortcode('compatibility', compatibility);
   eleventyConfig.addPairedLiquidShortcode('funFact', funFact);
+  eleventyConfig.addPairedLiquidShortcode('headsUp', headsUp);
 }
