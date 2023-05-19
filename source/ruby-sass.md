@@ -7,7 +7,7 @@ introduction: >
   migrate to another implementation.
 ---
 
-- ## But Why?
+- <h2>But Why?</h2>
 
   When Natalie and Hampton first created Sass in 2006, Ruby was the language at
   the cutting edge of web development, the basis of their already-successful
@@ -28,7 +28,7 @@ introduction: >
   [Dart Sass]: /dart-sass
   [LibSass]: /libsass
 
-- ## Migrating Away
+- <h2>Migrating Away</h2>
 
   If you run Ruby Sass using the command-line `sass` executable, all you need to
   do is install Dart Sass's [command-line executable][install] instead. The
