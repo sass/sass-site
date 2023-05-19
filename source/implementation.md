@@ -10,7 +10,7 @@ introduction: >
 <ul class="list-tiled">
 <li>
 
-## Resources
+<h2>Resources</h2>
 
 - [`sass-spec`](https://github.com/sass/sass-spec) is a suite of
   implementation-agnostic test cases for verifying that a Sass
@@ -32,7 +32,7 @@ introduction: >
 </li>
 <li>
 
-## Requirements
+<h2>Requirements</h2>
 
 We whole-heartedly love new implementations of Sass, but we do have a
 few restrictions that we ask those implementations to follow in order to
@@ -57,7 +57,7 @@ important that there be a unified vision for the language design.
 </li>
 <li>
 
-## Making Language Changes
+<h2>Making Language Changes</h2>
 
 Sass can still evolve as a language, of course. We have [a process][] for
 proposing and iterating on new language features that anyone can
