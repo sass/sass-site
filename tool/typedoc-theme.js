@@ -9,6 +9,21 @@ function bind(fn, first) {
   return (...r) => fn(first, ...r);
 }
 
+/**
+ * Take `input` and convert it into a string of all arguments suitable for the
+ * {% compatibility %} tag.
+ */
+function parseCompatibility(input) {
+  const keyValueRegex = /(\w+):\s*([^,]+)/g;
+  const defaults = { dart: null, libsass: null, node: null, ruby: null };
+  const results = Object.fromEntries(
+    [...input.matchAll(keyValueRegex)].map(([, key, value]) => [key, value]),
+  );
+  return Object.values({ ...defaults, ...results })
+    .map(String)
+    .join(', ');
+}
+
 class SassSiteRenderContext extends DefaultThemeRenderContext {
   // We don't include Typedoc's JS, so the default means of displaying overloads
   // as multiple togglable definitions within a single member documentation
@@ -53,16 +68,16 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
         // The first line is arguments to impl_status, anything after that is the
         // contents of the block.
         const lineBreak = text.indexOf('\n');
-        const firstLine =
-          lineBreak === -1 ? text : text.substring(0, lineBreak);
+        const firstLine = parseCompatibility(
+          lineBreak === -1 ? text : text.substring(0, lineBreak),
+        );
         const rest =
           lineBreak === -1 ? null : text.substring(lineBreak + 1).trim();
-
         return JSX.createElement(JSX.Raw, {
           html:
-            `<% impl_status(${firstLine}) ${rest ? 'do' : ''} %>` +
-            context.markdown(rest) +
-            (rest ? '<% end %>' : ''),
+            `{% compatibility ${firstLine} %}` +
+            (rest ? context.markdown(rest) : '') +
+            '{% endcompatibility %}',
         });
       }),
     );

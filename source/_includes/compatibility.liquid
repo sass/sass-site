@@ -14,6 +14,12 @@
       <dd>{{ libsass | implStatus }}</dd>
     </div>
   {% endif %}
+  {% if node != null %}
+    <div>
+      <dt>Node Sass</dt>
+      <dd>{{ node | implStatus }}</dd>
+    </div>
+  {% endif %}
   {% if ruby != null %}
     <div>
       <dt>Ruby Sass</dt>
