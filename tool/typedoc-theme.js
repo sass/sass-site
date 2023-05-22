@@ -10,8 +10,8 @@ function bind(fn, first) {
 }
 
 /**
- * Take `input` and convert it into a string of all arguments suitable for the
- * {% compatibility %} tag.
+ * Take text `input` and convert it into a string of all arguments suitable for
+ * the `{% compatibility %}` tag.
  */
 function parseCompatibility(input) {
   const keyValueRegex = /(\w+):\s*([^,]+)/g;
@@ -65,17 +65,17 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
         // Compatibility tags should have a single text block.
         const text = compat.content[0].text;
 
-        // The first line is arguments to impl_status, anything after that is the
-        // contents of the block.
+        // The first line is arguments to `{% compatibility %}` tag, anything
+        // after that is the contents of the block.
         const lineBreak = text.indexOf('\n');
-        const firstLine = parseCompatibility(
+        const compatibilityArgs = parseCompatibility(
           lineBreak === -1 ? text : text.substring(0, lineBreak),
         );
         const rest =
           lineBreak === -1 ? null : text.substring(lineBreak + 1).trim();
         return JSX.createElement(JSX.Raw, {
           html:
-            `{% compatibility ${firstLine} %}` +
+            `{% compatibility ${compatibilityArgs} %}` +
             (rest ? context.markdown(rest) : '') +
             '{% endcompatibility %}',
         });

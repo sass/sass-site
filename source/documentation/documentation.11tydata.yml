@@ -5,20 +5,20 @@ navigation: |
   <h2>Contents</h2>
 
   - [Syntax](/documentation/syntax){.section}
-    - [Overview](/documentation/syntax)
+    - [Overview](/documentation/syntax) {.overview}
     - [Parsing a Stylesheet](/documentation/syntax/parsing)
     - [Structure of a Stylesheet](/documentation/syntax/structure)
     - [Comments](/documentation/syntax/comments)
     - [Special Functions](/documentation/syntax/special-functions)
   - [Style Rules](/documentation/style-rules){.section}
-    - [Overview](/documentation/style-rules)
+    - [Overview](/documentation/style-rules) {.overview}
     - [Property Declarations](/documentation/style-rules/declarations)
     - [Parent Selector](/documentation/style-rules/parent-selector)
     - [Placeholder Selectors](/documentation/style-rules/placeholder-selectors)
   - [Variables](/documentation/variables)
   - [Interpolation](/documentation/interpolation)
   - [At-Rules](/documentation/at-rules){.section}
-    - [Overview](/documentation/at-rules)
+    - [Overview](/documentation/at-rules) {.overview}
     - [<code>@use</code>](/documentation/at-rules/use)
     - [<code>@forward</code>](/documentation/at-rules/forward)
     - [<code>@import</code>](/documentation/at-rules/import)
@@ -30,14 +30,14 @@ navigation: |
     - [<code>@debug</code>](/documentation/at-rules/debug)
     - [<code>@at-root</code>](/documentation/at-rules/at-root)
     - [Flow Control](/documentation/at-rules/control)
-        - [Overview](/documentation/at-rules/control)
+        - [Overview](/documentation/at-rules/control) {.overview}
         - [<code>@if</code> and <code>@else</code>](/documentation/at-rules/control/if)
         - [<code>@each</code>](/documentation/at-rules/control/each)
         - [<code>@for</code>](/documentation/at-rules/control/for)
         - [<code>@while</code>](/documentation/at-rules/control/while)
     - [From CSS](/documentation/at-rules/css)
   - [Values](/documentation/values){.section}
-    - [Overview](/documentation/values)
+    - [Overview](/documentation/values) {.overview}
     - [Numbers](/documentation/values/numbers)
     - [Strings](/documentation/values/strings)
     - [Colors](/documentation/values/colors)
@@ -48,14 +48,14 @@ navigation: |
     - [Calculations](/documentation/values/calculations)
     - [Functions](/documentation/values/functions)
   - [Operators](/documentation/operators){.section}
-    - [Overview](/documentation/operators)
+    - [Overview](/documentation/operators) {.overview}
     - [Equality](/documentation/operators/equality)
     - [Relational](/documentation/operators/relational)
     - [Numeric](/documentation/operators/numeric)
     - [String](/documentation/operators/string)
     - [Boolean](/documentation/operators/boolean)
   - [Built-In Modules](/documentation/modules){.section}
-    - [Overview](/documentation/modules)
+    - [Overview](/documentation/modules) {.overview}
     - [<code>sass:color</code>](/documentation/modules/color)
     - [<code>sass:list</code>](/documentation/modules/list)
     - [<code>sass:map</code>](/documentation/modules/map)
@@ -64,7 +64,7 @@ navigation: |
     - [<code>sass:selector</code>](/documentation/modules/selector)
     - [<code>sass:string</code>](/documentation/modules/string)
   - [Breaking Changes](/documentation/breaking-changes){.section}
-    - [Overview](/documentation/breaking-changes)
+    - [Overview](/documentation/breaking-changes) {.overview}
     - [Strict Unary Operators](/documentation/breaking-changes/strict-unary)
     - [Random With Units](/documentation/breaking-changes/random-with-units)
     - [Invalid Combinators](/documentation/breaking-changes/bogus-combinators)
@@ -75,7 +75,7 @@ navigation: |
     - [Extending Compound Selectors](/documentation/breaking-changes/extend-compound)
     - [CSS Variable Syntax](/documentation/breaking-changes/css-vars)
   - [Command Line](/documentation/cli){.section}
-    - [Overview](/documentation/cli)
+    - [Overview](/documentation/cli) {.overview}
     - [Dart Sass](/documentation/cli/dart-sass)
     - [Ruby Sass](/documentation/cli/ruby-sass)
     - [Migrator](/documentation/cli/migrator)
