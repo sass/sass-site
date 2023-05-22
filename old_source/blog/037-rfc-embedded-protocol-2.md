@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: New Embedded Protocol"
 author: Natalie Weizenbaum
-date: 2023-05-19 16:00:00 -8
+date: 2023-05-19 16:00 PST
 ---
 
 If you're not an author of a host package for the Embedded Sass Protocol, you
