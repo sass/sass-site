@@ -4,13 +4,93 @@
   <id>https://sass-lang.com/blog</id>
   <link href="https://sass-lang.com/blog"/>
   <link href="https://sass-lang.com/feed.xml" rel="self"/>
-  <updated>2023-03-29T22:30:00+00:00</updated>
+  <updated>2023-05-20T00:00:00+00:00</updated>
+  <entry>
+    <title>Request for Comments: New Embedded Protocol</title>
+    <link href="https://sass-lang.com/blog/rfc-embedded-protocol-2" rel="alternate"/>
+    <id>https://sass-lang.com/blog/rfc-embedded-protocol-2</id>
+    <published>2023-05-20T00:00:00+00:00</published>
+    <updated>2023-05-22T21:44:45+00:00</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;If you&amp;rsquo;re not an author of a host package for the Embedded Sass Protocol, you
+can skip this blog post—although if you&amp;rsquo;re a big enough nerd, you may find it
+interesting regardless!&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re planning to make a number of breaking changes to the Embedded Sass
+Protocol, and we want your feedback before we lock in the new way of doing
+things. We intend to make a number of breaking changes all at once to keep the
+total number of disruptions to a minimum.&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re planning two major breaking changes:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;The Dart Sass embedded host will no longer be released as a separate
+executable. It will now be bundled into the main Dart Sass executable,
+accessible by running &lt;code&gt;sass --embedded&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Every packet in the embedded protocol now includes a compilation ID as part
+of the packet structure, rather than declaring it in the protocol buffer
+definitions.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We&amp;rsquo;re using this opportunity to also introduce three much smaller breaking
+changes:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;The specification for the embedded protocol and the protocol buffer
+definition have been moved to &lt;a href="https://github.com/sass/sass/blob/main/spec/embedded-protocol.md"&gt;the Sass language repository&lt;/a&gt; so that they can
+be updated at the same time as changes to the language and the JS API.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The embedded protocol now explicitly declares optional fields using the
+protocol buffers language feature. This means that &amp;ldquo;default values&amp;rdquo; for
+various fields are no longer considered to be unset.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;CompilationSuccess.loaded_urls&lt;/code&gt; field has been moved to
+&lt;code&gt;CompilationResult.loaded_urls&lt;/code&gt; so that it&amp;rsquo;s available even when a
+compilation fails. This allows watcher implementations to know which files to
+watch to redo a failed compilation.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The repository-organization changes have already been made, but the changes to
+the protocol itself are fully documented &lt;a href="https://github.com/sass/sass/blob/main/proposal/embedded-protocol-2.md"&gt;in a proposal in the language
+repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="combining-executables"&gt;
+&lt;a class="anchor" href="#combining-executables"&gt;&lt;span class="visuallyhidden"&gt;Combining Executables permalink&lt;/span&gt;&lt;/a&gt;Combining Executables&lt;/h2&gt;
+
+&lt;p&gt;The primary benefit of folding Embedded Dart Sass into the main Dart Sass
+executable is to provide embedded hosts an easy way to expose the standard Dart
+Sass command-line API to users. Now every user who installs any embedded host
+will have the full Dart Sass executable available to them at native Dart VM
+speeds.&lt;/p&gt;
+
+&lt;p&gt;This also helps simplify the Sass team&amp;rsquo;s organization by reducing the number of
+separate repositories and release processes we need to manage.&lt;/p&gt;
+
+&lt;h2 id="wire-level-compilation-id"&gt;
+&lt;a class="anchor" href="#wire-level-compilation-id"&gt;&lt;span class="visuallyhidden"&gt;Wire-Level Compilation ID permalink&lt;/span&gt;&lt;/a&gt;Wire-Level Compilation ID&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;re pulling the compilation ID out to the protocol level in order to provide
+better concurrency, particularly on the side of the embedded compiler. Sass
+compilations done by the embedded compiler don&amp;rsquo;t share any state between one
+another, which means that they could in theory be run in totally separate worker
+threads. However, with the embedded protocol as it exists today, directing each
+message to the correct worker thread requires parsing the entire message on the
+main thread to determine which compilation it belongs to, then parsing it
+&lt;em&gt;again&lt;/em&gt; in the worker thread to actually handle it.&lt;/p&gt;
+
+&lt;p&gt;Making the compilation ID part of the protocol itself solves this issue. Each
+endpoint can read the ID, look up the worker thread that&amp;rsquo;s handling the
+compilation, and pass the message on to that thread without parsing the rest of
+the message. This makes concurrency both easier and more efficient, which will
+help ensure that large compilations happen as fast as possible.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Sass and Native Nesting</title>
     <link href="https://sass-lang.com/blog/sass-and-native-nesting" rel="alternate"/>
     <id>https://sass-lang.com/blog/sass-and-native-nesting</id>
     <published>2023-03-29T22:30:00+00:00</published>
-    <updated>2023-05-19T23:25:53+00:00</updated>
+    <updated>2023-05-22T21:44:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -104,7 +184,7 @@ plain CSS version is not strong enough to override that.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/security-alert-tar-permissions" rel="alternate"/>
     <id>https://sass-lang.com/blog/security-alert-tar-permissions</id>
     <published>2022-12-10T00:00:00+00:00</published>
-    <updated>2023-05-19T23:25:53+00:00</updated>
+    <updated>2023-05-22T21:44:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -218,7 +298,7 @@ only the owner of the files. We&amp;rsquo;re announcing the vulnerability here a
     <link href="https://sass-lang.com/blog/request-for-comments-color-spaces" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-color-spaces</id>
     <published>2022-09-21T21:00:00+00:00</published>
-    <updated>2023-05-19T23:25:53+00:00</updated>
+    <updated>2023-05-22T21:44:45+00:00</updated>
     <author>
       <name>Miriam Suzanne and Natalie Weizenbaum</name>
     </author>
@@ -491,7 +571,7 @@ thoughts or concerns you may have.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators</id>
     <published>2022-06-15T23:30:00+00:00</published>
-    <updated>2023-05-19T23:25:53+00:00</updated>
+    <updated>2023-05-22T21:44:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -581,7 +661,7 @@ implementing it.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
     <published>2022-02-01T10:00:00+00:00</published>
-    <updated>2023-05-19T23:25:53+00:00</updated>
+    <updated>2023-05-22T21:44:45+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -643,60 +723,6 @@ functions, similarly to how C++ wrappers for &lt;a href="https://sass-lang.com/l
 hope that community members will use this protocol to implement embedded hosts
 for many other popular frontend languages. If you end up doing so, message us
 &lt;a href="https://twitter.com/SassCSS"&gt;on Twitter&lt;/a&gt; or &lt;a href="https://gitter.im/sass/sass"&gt;Gitter&lt;/a&gt; and we&amp;rsquo;ll link it on this site!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>New JS API Release Candidate is Live</title>
-    <link href="https://sass-lang.com/blog/new-js-api-release-candidate" rel="alternate"/>
-    <id>https://sass-lang.com/blog/new-js-api-release-candidate</id>
-    <published>2021-11-21T00:15:00+00:00</published>
-    <updated>2023-05-19T23:25:53+00:00</updated>
-    <author>
-      <name>Natalie Weizenbaum</name>
-    </author>
-    <content type="html">&lt;p&gt;The new JavaScript API that we &lt;a href="https://sass-lang.com/blog/request-for-comments-new-js-api"&gt;announced a few months ago&lt;/a&gt; is now fully
-implemented in Dart Sass and ready for you to try! The new API is designed to be
-more idiomatic, performant, and usable than the old one, and we hope it&amp;rsquo;ll be
-adopted swiftly by tooling packages.&lt;/p&gt;
-
-&lt;p&gt;Because this is such a substantial addition, we want to give users a chance to
-kick the tires a bit before we set it in stone, so we&amp;rsquo;ve released it as a release
-candidate in Dart Sass 1.45.0-rc.1. Download it, try it out, and let us know
-what you think by &lt;a href="https://github.com/sass/sass/issues/new"&gt;filing issues&lt;/a&gt; or &lt;a href="https://twitter.com/SassCSS"&gt;sending us a tweet&lt;/a&gt;. Unless major changes
-are necessary, we plan to make a stable release some time next week.&lt;/p&gt;
-
-&lt;h2 id="how-to-use-it"&gt;
-&lt;a class="anchor" href="#how-to-use-it"&gt;&lt;span class="visuallyhidden"&gt;How to use it permalink&lt;/span&gt;&lt;/a&gt;How to use it&lt;/h2&gt;
-
-&lt;p&gt;The new API comes with four new entrypoint functions: &lt;code&gt;compile()&lt;/code&gt; and
-&lt;code&gt;compileAsync()&lt;/code&gt; take Sass file paths and return the result of compiling them to
-CSS, while &lt;code&gt;compileString()&lt;/code&gt; and &lt;code&gt;compileStringAsync()&lt;/code&gt; take a
-string of Sass source and compile it to CSS. Unlike the old API, the async
-functions all return &lt;code&gt;Promise&lt;/code&gt;s. As with the old API, the synchronous functions
-are substantially faster than their async counterparts, so we recommend using
-them if at all possible.&lt;/p&gt;
-&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;sass&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'sass'&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-
-&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;sass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;compileString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
-&lt;span class="nx"&gt;h1&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nx"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;size&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="nx"&gt;code&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;face&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Roboto&lt;/span&gt; &lt;span class="nx"&gt;Mono&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;result&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;css&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Check out &lt;a href="/documentation/js-api"&gt;the API docs&lt;/a&gt; for more details on the API, including the brand-new
-importer and custom function APIs.&lt;/p&gt;
-
-&lt;h2 id="what-about-the-old-api"&gt;
-&lt;a class="anchor" href="#what-about-the-old-api"&gt;&lt;span class="visuallyhidden"&gt;What about the old API? permalink&lt;/span&gt;&lt;/a&gt;What about the old API?&lt;/h2&gt;
-
-&lt;p&gt;Once the new API has a stable release, we&amp;rsquo;ll officially consider the old API to
-be deprecated. Since it&amp;rsquo;s still widely-used, we&amp;rsquo;ll continue to maintain it for a
-good long while going forward. Expect it to start printing a deprecation warning
-in a year or so, and to be disabled for good once we release Dart Sass 2.0.0.&lt;/p&gt;
 </content>
   </entry>
 </feed>
