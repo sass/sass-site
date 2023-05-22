@@ -32,7 +32,7 @@ export const getLorem = (type: string, number = 1) => {
  * @see https://github.com/oe/truncate-html
  */
 export const truncateHTML = (html: string, words = 170) =>
-  truncate(html, words, { byWords: true });
+  truncate(html, words, { byWords: true, keepWhitespaces: true });
 
 /**
  * Renders block of Markdown into HTML.
