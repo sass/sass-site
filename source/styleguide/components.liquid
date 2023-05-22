@@ -2,7 +2,7 @@
 title: Components
 ---
 
-<h2>Closed</h2>
+{{ '## Closed' | markdown }}
 
 <dl class="sl-c-description-list sl-c-description-list--horizontal">
   <div>
@@ -16,7 +16,7 @@ title: Components
   <div><a href="#">▶︎</a></div>
 </dl>
 
-<h2>Open</h2>
+{{ '## Open' | markdown }}
 
 <dl class="sl-c-description-list sl-c-description-list--horizontal">
   <div>
@@ -34,7 +34,7 @@ title: Components
   <p>{% lorem 'paragraph' %}</p>
 </div>
 
-<h2>Alerts</h2>
+{{ '## Alerts' | markdown }}
 
 <div class="sl-c-alert">
   <div class="sl-l-container">
@@ -54,7 +54,7 @@ title: Components
   </div>
 </div>
 
-<h2>Buttons</h2>
+{{ '## Buttons' | markdown }}
 
 <a href="#" class="sl-c-button">Link</a>
 <button class="sl-c-button" type="button">Button</button>
@@ -62,24 +62,24 @@ title: Components
 <a href="#" class="sl-c-button sl-c-button--primary">Link</a>
 <button class="sl-c-button sl-c-button--primary" type="button">Button</button>
 
-<h2>Callouts</h2>
+{{ '## Callouts' | markdown }}
 
 <div class="sl-c-callout">
-  <h3>Callout</h3>
+  {{ '### Callout' | markdown }}
   <p>{% lorem 'paragraph' %}</p>
 </div>
 
 <div class="sl-c-callout sl-c-callout--warning">
-  <h3>Warning</h3>
+  {{ '### Warning' | markdown }}
   <p>{% lorem 'paragraph' %}</p>
 </div>
 
 <div class="sl-c-callout sl-c-callout--fun-fact">
-  <h3>Fun Fact</h3>
+  {{ '### Fun Fact' | markdown }}
   <p>{% lorem 'paragraph' %}</p>
 </div>
 
-<h2>Introduction</h2>
+{{ '## Introduction' | markdown }}
 
 <p class="sl-c-introduction">
   {% lorem 'paragraph' %}
@@ -89,13 +89,13 @@ title: Components
   <p>{% lorem 'paragraph' %}</p>
 </div>
 
-<h2>Link Headers</h2>
+{{ '## Link Headers' | markdown }}
 
-<h2 id="link-header-2">Link Header 2</h2>
-<h3 id="link-header-3">Link Header 3</h3>
-<h4 id="link-header-4">Link Header 4</h4>
+{{ '## Link Header 2' | markdown }}
+{{ '### Link Header 3' | markdown }}
+{{ '#### Link Header 4' | markdown }}
 
-<h2>Lists</h2>
+{{ '## Lists' | markdown }}
 
 <div class="sl-c-list-navigation-wrapper" style="height: unset; position: unset">
 {% markdown %}
@@ -113,11 +113,11 @@ title: Components
 {% endmarkdown %}
 </div>
 
-<h2>Pop Stripe</h2>
+{{ '## Pop Stripe' | markdown }}
 
 <div class="sl-c-pop-stripe"></div>
 
-<h2>Tables</h2>
+{{ '## Tables' | markdown }}
 
 <table class="sl-c-table">
   <tr>
