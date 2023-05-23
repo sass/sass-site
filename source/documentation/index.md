@@ -29,7 +29,7 @@ introduction: >
 ## Older Versions
 
 This documentation is written for the most recent version of the Sass language.
-If you're using [Dart Sass] <%= impl_version(:dart) %>, you'll have access to
+If you're using [Dart Sass] {{ releases['dart-sass'].version }}, you'll have access to
 all the features described here. But if you're using an older version of Dart
 Sass or a deprecated Sass implementation like [LibSass] or [Ruby Sass], there
 may be some behavioral differences.
