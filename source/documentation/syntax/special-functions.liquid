@@ -3,10 +3,10 @@ title: Special Functions
 introduction: >
   CSS defines many functions, and most of them work just fine with Sass’s normal
   function syntax. They’re parsed as function calls, resolved to [plain CSS
-  functions](../at-rules/function#plain-css-functions), and compiled as-is to
+  functions](../../at-rules/function#plain-css-functions), and compiled as-is to
   CSS. There are a few exceptions, though, which have special syntax that can’t
-  just be parsed as a [SassScript expression](structure#expressions). All
-  special function calls return [unquoted strings](../values/strings#unquoted).
+  just be parsed as a [SassScript expression](../structure#expressions). All
+  special function calls return [unquoted strings](../../values/strings#unquoted).
 table_of_contents: true
 complementary_content: |
   <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
@@ -33,10 +33,10 @@ although [interpolation][] may also be used to inject SassScript values. If it's
 not a valid unquoted URL—for example, if it contains [variables][] or [function
 calls][]—it's parsed as a normal [plain CSS function call][].
 
-[interpolation]: ../interpolation
-[variables]: ../variables
-[function calls]: ../at-rules/function
-[plain CSS function call]: ../at-rules/function#plain-css-functions
+[interpolation]: ../../interpolation
+[variables]: ../../variables
+[function calls]: ../../at-rules/function
+[plain CSS function call]: ../../at-rules/function#plain-css-functions
 
 {% endmarkdown %}
 
@@ -44,55 +44,55 @@ calls][]—it's parsed as a normal [plain CSS function call][].
 $roboto-font-path: "../fonts/roboto";
 
 @font-face {
-// This is parsed as a normal function call that takes a quoted string.
-src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2");
+  // This is parsed as a normal function call that takes a quoted string.
+  src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2");
 
-font-family: "Roboto";
-font-weight: 100;
+  font-family: "Roboto";
+  font-weight: 100;
 }
 
 @font-face {
-// This is parsed as a normal function call that takes an arithmetic
-// expression.
-src: url($roboto-font-path + "/Roboto-Light.woff2") format("woff2");
+  // This is parsed as a normal function call that takes an arithmetic
+  // expression.
+  src: url($roboto-font-path + "/Roboto-Light.woff2") format("woff2");
 
-font-family: "Roboto";
-font-weight: 300;
+  font-family: "Roboto";
+  font-weight: 300;
 }
 
 @font-face {
-// This is parsed as an interpolated special function.
-src: url(#{$roboto-font-path}/Roboto-Regular.woff2) format("woff2");
+  // This is parsed as an interpolated special function.
+  src: url(#{$roboto-font-path}/Roboto-Regular.woff2) format("woff2");
 
-font-family: "Roboto";
-font-weight: 400;
-}
+  font-family: "Roboto";
+  font-weight: 400;
+  }
 ===
 $roboto-font-path: "../fonts/roboto"
 
 @font-face
-// This is parsed as a normal function call that takes a quoted string.
-src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2")
+  // This is parsed as a normal function call that takes a quoted string.
+  src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2")
 
-font-family: "Roboto"
-font-weight: 100
-
-
-@font-face
-// This is parsed as a normal function call that takes an arithmetic
-// expression.
-src: url($roboto-font-path + "/Roboto-Light.woff2") format("woff2")
-
-font-family: "Roboto"
-font-weight: 300
+  font-family: "Roboto"
+  font-weight: 100
 
 
 @font-face
-// This is parsed as an interpolated special function.
-src: url(#{$roboto-font-path}/Roboto-Regular.woff2) format("woff2")
+  // This is parsed as a normal function call that takes an arithmetic
+  // expression.
+  src: url($roboto-font-path + "/Roboto-Light.woff2") format("woff2")
 
-font-family: "Roboto"
-font-weight: 400
+  font-family: "Roboto"
+  font-weight: 300
+
+
+@font-face
+  // This is parsed as an interpolated special function.
+  src: url(#{$roboto-font-path}/Roboto-Regular.woff2) format("woff2")
+
+  font-family: "Roboto"
+  font-weight: 400
 {% endcodeExample %}
 
 {% markdown %}
@@ -104,21 +104,21 @@ LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse `calc()` as 
 
 Dart Sass versions 1.40.0 and later parse `calc()` as a [calculation].
 
-[calculation]: ../values/calculations
+[calculation]: ../../values/calculations
 {% endcompatibility %}
 
 {% compatibility ">=1.31.0 <1.40.0", false, false, "clamp()" %}
 LibSass, Ruby Sass, and versions of Dart Sass prior to 1.31.0 parse `clamp()`
 as a [plain CSS function] rather than supporting special syntax within it.
 
-[plain CSS function]: ../at-rules/function#plain-css-functions
+[plain CSS function]: ../../at-rules/function#plain-css-functions
 
 Dart Sass versions between 1.31.0 and 1.40.0 parse `clamp()` as special
 syntactic function like `element()`.
 
 Dart Sass versions 1.40.0 and later parse `clamp()` as a [calculation].
 
-[calculation]: ../values/calculations
+[calculation]: ../../values/calculations
 {% endcompatibility %}
 
 The [`element()`] function is defined in the CSS spec, and because its IDs couldbe parsed as colors, they need special parsing.
@@ -136,6 +136,9 @@ compatibility.
 Sass allows _any text_ in these function calls, including nested parentheses.
 Nothing is interpreted as a SassScript expression, with the exception that
 [interpolation][] can be used to inject dynamic values.
+
+[interpolation]: ../../interpolation
+
 {% endmarkdown %}
 
 {% codeExample 'element' %}
