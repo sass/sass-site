@@ -117,7 +117,7 @@ Sass defines syntax for a number of operations:
 - [Function calls](../../at-rules/function), like `nth($list, 1)` or
   `var(--main-bg-color)`, which may call Sass core library functions or
   user-defined functions, or which may be compiled directly to CSS.
-- [Special functions](special-functions), like `calc(1px + 100%)` or
+- [Special functions](../special-functions), like `calc(1px + 100%)` or
   `url(http://myapp.com/assets/logo.png)`, that have their own unique parsing
   rules.
 - [The parent selector](../../style-rules/parent-selector), `&`.
