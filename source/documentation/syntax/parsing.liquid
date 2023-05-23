@@ -5,13 +5,13 @@ introduction: >
   parsed directly, without first being converted to a token stream.
 ---
 
-## Input Encoding
+{{ '## Input Encoding' | markdown }}
 
-{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, true, true %}
 Dart Sass currently _only_ supports the UTF-8 encoding. As such, it's safest to encode all Sass stylesheets as UTF-8.
 {% endcompatibility %}
 
+{% markdown %}
 It's often the case that a document is initially available only as a sequence of
 bytes, which must be decoded into Unicode. Sass performs this decoding as
 follows:
@@ -46,3 +46,4 @@ Node Sass's and Dart Sass's JS API you can access the [`file`, `line`, and
 
 [`SassException.span`]: https://pub.dartlang.org/documentation/sass/latest/sass/SassException/span.html
 [js error]: https://github.com/sass/node-sass#error-object
+{% endmarkdown %}

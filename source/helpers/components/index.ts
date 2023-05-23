@@ -18,12 +18,13 @@ export const funFact = async (contents: string) =>
   });
 
 /**
- * Returns HTML for a heads up warning related to the main
+ * Returns HTML for a heads-up warning related to the main
  * documentation.
  */
-export const headsUp = async (contents: string) =>
+export const headsUp = async (contents: string, useMarkdown = true) =>
   liquidEngine.renderFile('heads_up', {
     contents,
+    useMarkdown,
   });
 
 /**

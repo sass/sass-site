@@ -52,13 +52,14 @@ When a parent selector is used in an inner selector, it's replaced with the corr
 {% endcodeExample %}
 
 {% headsUp %}
-  {% markdown %}
-  Because the parent selector could be replaced by a type selector like `h1`, it's only allowed at the beginning of compound selectors where a type selector would also be allowed. For example, `span&` is not allowed.
+Because the parent selector could be replaced by a type selector like `h1`, it's
+only allowed at the beginning of compound selectors where a type selector would
+also be allowed. For example, `span&` is not allowed.
 
-  We're looking into loosening this restriction, though. If you'd like to help make that happen, check out [this GitHub issue][].
+We're looking into loosening this restriction, though. If you'd like to help
+make that happen, check out [this GitHub issue][].
 
-  [this GitHub issue]: https://github.com/sass/sass/issues/1425
-  {% endmarkdown %}
+[this GitHub issue]: https://github.com/sass/sass/issues/1425
 {% endheadsUp %}
 
 {% markdown %}
@@ -158,9 +159,11 @@ You can use `&` as a normal SassScript expression, which means you can pass it t
 {% render 'code-snippets/example-advanced-nesting' %}
 
 {% headsUp %}
-  {% markdown %}
-  When Sass is nesting selectors, it doesn't know what interpolation was used to generate them. This means it will automatically add the outer selector to the inner selector *even if* you used `&` as a SassScript expression. That's why you need to explicitly use the [`@at-root` rule][] to tell Sass not to include the outer selector.
+When Sass is nesting selectors, it doesn't know what interpolation was used to
+generate them. This means it will automatically add the outer selector to the
+inner selector *even if* you used `&` as a SassScript expression. That's why you
+need to explicitly use the [`@at-root` rule][] to tell Sass not to include the
+outer selector.
 
-  [`@at-root` rule]: ../../at-rules/at-root
-  {% endmarkdown %}
+[`@at-root` rule]: ../../at-rules/at-root
 {% endheadsUp %}

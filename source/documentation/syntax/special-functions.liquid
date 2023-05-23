@@ -18,6 +18,7 @@ complementary_content: |
 
   </nav>
 ---
+
 {% markdown %}
 ## `url()`
 
@@ -37,7 +38,6 @@ calls][]—it's parsed as a normal [plain CSS function call][].
 [variables]: ../../variables
 [function calls]: ../../at-rules/function
 [plain CSS function call]: ../../at-rules/function#plain-css-functions
-
 {% endmarkdown %}
 
 {% codeExample 'url' %}
@@ -95,10 +95,8 @@ $roboto-font-path: "../fonts/roboto"
   font-weight: 400
 {% endcodeExample %}
 
-{% markdown %}
-## `element()`, `progid:...()`, and `expression()`
+{{ '## `element()`, `progid:...()`, and `expression()`' | markdown }}
 
-{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
 {% compatibility "<1.40.0", false, false, "calc()" %}
 LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse `calc()` as special syntactic function like `element()`.
 
@@ -121,6 +119,7 @@ Dart Sass versions 1.40.0 and later parse `clamp()` as a [calculation].
 [calculation]: ../../values/calculations
 {% endcompatibility %}
 
+{% markdown %}
 The [`element()`] function is defined in the CSS spec, and because its IDs couldbe parsed as colors, they need special parsing.
 
 [`element()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/element
