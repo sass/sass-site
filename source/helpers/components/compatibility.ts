@@ -25,6 +25,7 @@ export const compatibility = async (
   details: string,
   dart: string | boolean | null = null,
   libsass: string | boolean | null = null,
+  node: string | boolean | null = null,
   ruby: string | boolean | null = null,
   feature: string | null = null,
 ) =>
@@ -32,6 +33,7 @@ export const compatibility = async (
     details,
     dart,
     libsass,
+    node,
     ruby,
     feature,
   });
