@@ -49,12 +49,25 @@ export const codeBlock = (contents: string, language: string, padding = 0) => {
   return `<pre class="${attr}"><code class="${attr}">${html}</code></pre>`;
 };
 
+type DocToc = {
+  [key: string]: string | DocToc[];
+};
+/**
+ * Returns `text` and `href` for a documentation table-of-contents section.
+ */
+export const getDocTocData = (data: DocToc) => {
+  const text = Object.keys(data).filter((key) => key !== ':children')[0];
+  const href = data[text] as string;
+  return { text, href };
+};
+
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,
                   @typescript-eslint/no-unsafe-call,
                   @typescript-eslint/no-explicit-any */
 export default function componentsPlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('implStatus', implStatus);
+  eleventyConfig.addLiquidFilter('getDocTocData', getDocTocData);
 
   // paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('code', codeBlock);
