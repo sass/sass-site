@@ -43,8 +43,8 @@ Anywhere behavior differs between versions or implementations, the documentation
 includes a compatibility indicator like this:
 {% endmarkdown %}
 
-{% compatibility true, '3.6.0', false, 'Feature Name' %}
-{% endcompatibility %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility true, '3.6.0', null, false, 'Feature Name' %}{% endcompatibility %}
 
 {% markdown %}
 Implementations with a "✓" fully support the feature in question, and
@@ -53,7 +53,8 @@ number started supporting the feature in question at that version.
 Implementations can also be marked as "partial":
 {% endmarkdown %}
 
-{% compatibility true, 'partial', false %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility true, 'partial', null, false %}
 Additional details go here.
 {% endcompatibility %}
 
