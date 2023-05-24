@@ -97,7 +97,8 @@ $roboto-font-path: "../fonts/roboto"
 
 {{ '## `element()`, `progid:...()`, and `expression()`' | markdown }}
 
-{% compatibility "<1.40.0", false, false, "calc()" %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility "<1.40.0", false, null, false, "calc()" %}
 LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse `calc()` as special syntactic function like `element()`.
 
 Dart Sass versions 1.40.0 and later parse `calc()` as a [calculation].
@@ -105,7 +106,8 @@ Dart Sass versions 1.40.0 and later parse `calc()` as a [calculation].
 [calculation]: /documentation/values/calculations
 {% endcompatibility %}
 
-{% compatibility ">=1.31.0 <1.40.0", false, false, "clamp()" %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility ">=1.31.0 <1.40.0", false, null, false, "clamp()" %}
 LibSass, Ruby Sass, and versions of Dart Sass prior to 1.31.0 parse `clamp()`
 as a [plain CSS function] rather than supporting special syntax within it.
 

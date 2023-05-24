@@ -146,8 +146,8 @@ $rounded-corners: false
 ## Custom Properties
 {% endmarkdown %}
 
-{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, '3.5.0', '3.5.0', 'SassScript Syntax' %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility true, '3.5.0', null, '3.5.0', 'SassScript Syntax' %}
 Older versions of LibSass and Ruby Sass parsed custom property declarations just like any other property declaration, allowing the full range of SassScript expressions as values. Even when using these versions, it's
 recommended that you use interpolation to inject SassScript values for
 forwards-compatibility.
