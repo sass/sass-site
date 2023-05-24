@@ -16,6 +16,7 @@ Thumbs.db
 /.yardoc
 /vendor/bundle/
 /source/documentation/js-api
+/.language/
 
 # Eleventy
 /_site/
