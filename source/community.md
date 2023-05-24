@@ -8,19 +8,19 @@ introduction: >
 complementary_content: |
   <nav class="sl-c-list-navigation-wrapper" aria-label="Resources">
 
-    ## Resources
+  <h2>Resources</h2>
 
-    ### [Jump Start Sass](https://amzn.to/2LKF0uR)
-    by Kitty Giraudel and Miriam Suzanne
+  ### [Jump Start Sass](https://amzn.to/2LKF0uR)
+  by Kitty Giraudel and Miriam Suzanne
 
-    ### [Pragmatic Guide to Sass 3: Tame the Modern Style Sheet](https://amzn.to/2LEwXiZ)
-    by Hampton Lintorn-Catlin and Michael Lintorn-Catlin
+  ### [Pragmatic Guide to Sass 3: Tame the Modern Style Sheet](https://amzn.to/2LEwXiZ)
+  by Hampton Lintorn-Catlin and Michael Lintorn-Catlin
 
-    ### [Sass for Web Designers](https://amzn.to/2RkIVU3)
-    by Dan Cederholm
+  ### [Sass for Web Designers](https://amzn.to/2RkIVU3)
+  by Dan Cederholm
 
-    ### [Sass and Compass in Action](https://amzn.to/2RjAQz7)
-    by Wynn Netherland, Natalie Weizenbaum, Chris Eppstein, Brandon Mathis
+  ### [Sass and Compass in Action](https://amzn.to/2RjAQz7)
+  by Wynn Netherland, Natalie Weizenbaum, Chris Eppstein, Brandon Mathis
 
   </nav>
 ---

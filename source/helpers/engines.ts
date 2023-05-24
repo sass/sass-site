@@ -1,3 +1,4 @@
+import slugify from '@sindresorhus/slugify';
 import { Liquid } from 'liquidjs';
 import markdown from 'markdown-it';
 import markdownAnchor from 'markdown-it-anchor';
@@ -23,6 +24,7 @@ export const markdownEngine = markdown({
   .use(markdownAnchor, {
     level: 2,
     permalink: renderPermalink,
+    slugify: (s) => slugify(s),
   });
 
 /**

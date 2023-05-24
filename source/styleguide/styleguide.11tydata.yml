@@ -2,7 +2,7 @@ layout: has_navigation
 navigation: |
   <nav class="sl-c-list-navigation-wrapper">
 
-  ### [Style Guide](/styleguide)
+  <h3><a href="/styleguide">Style Guide</a></h3>
 
   - [Brand](/styleguide/brand)
   - [Color](/styleguide/color)
