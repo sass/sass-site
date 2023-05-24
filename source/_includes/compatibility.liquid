@@ -27,10 +27,8 @@
     </div>
   {%- endif -%}
   {%- if details | strip -%}
-    <div>
-      {% # The no-op href here ensures that this toggle is focusable in browsers. %}
-      <a href="javascript:;">▶</a>
-    </div>
+    {%- # The no-op href here ensures that this toggle is focusable in browsers. -%}
+    <div><a href="javascript:;">▶</a></div>
   {%- endif -%}
 </dl>
 

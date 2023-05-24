@@ -2,12 +2,12 @@
 title: Property Declarations
 table_of_contents: true
 introduction: >
-  In Sass as in CSS, property declarations define how elements that match a selector are styled. But Sass adds extra features to make them easier to write and to automate. First and foremost, a declaration's value can be any [SassScript expression](../../syntax/structure#expressions), which will be
+  In Sass as in CSS, property declarations define how elements that match a selector are styled. But Sass adds extra features to make them easier to write and to automate. First and foremost, a declaration's value can be any [SassScript expression](/documentation/syntax/structure#expressions), which will be
   evaluated and included in the result.
 complementary_content: |
   <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
 
-  ### Page Sections{#page-sections}
+  <h3 id="page-sections">Page Sections</h3>
 
   - [Interpolation](#interpolation)
   - [Nesting](#nesting)
@@ -37,7 +37,7 @@ A property's name can include [interpolation][], which makes it possible to
 dynamically generate properties as needed. You can even interpolate the entire
 property name!
 
-[interpolation]: ../../interpolation
+[interpolation]: /documentation/interpolation
 {% endmarkdown %}
 
 {% codeExample 'interpolation' %}
@@ -123,8 +123,8 @@ Sometimes you only want a property declaration to show up some of the time. If a
 declaration's value is [`null`][] or an empty [unquoted string][], Sass won't
 compile that declaration to CSS at all.
 
-[`null`]: ../../values/null
-[unquoted string]: ../../values/strings#unquoted
+[`null`]: /documentation/values/null
+[unquoted string]: /documentation/values/strings#unquoted
 {% endmarkdown %}
 
 {% codeExample 'hidden-declarations' %}
@@ -154,7 +154,7 @@ forwards-compatibility.
 
 See [the breaking change page][] for more details.
 
-[the breaking change page]: ../../breaking-changes/css-vars
+[the breaking change page]: /documentation/breaking-changes/css-vars
 {% endcompatibility %}
 
 {% markdown %}
@@ -171,7 +171,7 @@ property declarations. All tokens, including those that look like SassScript,
 are passed through to CSS as-is. The only exception is [interpolation][], which
 is the only way to inject dynamic values into a custom property.
 
-[interpolation]: ../../interpolation
+[interpolation]: /documentation/interpolation
 {% endmarkdown %}
 
 {% codeExample 'custom-properties' %}
@@ -217,8 +217,8 @@ difficult to use quoted strings as values for custom properties when they come
 from Sass variables. As a workaround, you can use the [`meta.inspect()`
 function][] to preserve the quotes.
 
-[interpolation]: ../../interpolation
-[`meta.inspect()` function]: ../../modules/meta#inspect
+[interpolation]: /documentation/interpolation
+[`meta.inspect()` function]: /documentation/modules/meta#inspect
 {% endmarkdown %}
 
 {% codeExample 'custom-properties-strings-meta' %}

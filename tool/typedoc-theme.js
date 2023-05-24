@@ -1,9 +1,4 @@
-const {
-  DefaultTheme,
-  DefaultThemeRenderContext,
-  JSX,
-  UrlMapping,
-} = require('typedoc');
+const { DefaultTheme, DefaultThemeRenderContext, JSX } = require('typedoc');
 
 function bind(fn, first) {
   return (...r) => fn(first, ...r);
@@ -182,19 +177,6 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
   </div>
 </div>
 `;
-  }
-
-  getUrls(project) {
-    return super
-      .getUrls(project)
-      .map(
-        (mapping) =>
-          new UrlMapping(
-            `${mapping.url.replace(/\.html$/, '.md')}`,
-            mapping.model,
-            mapping.template,
-          ),
-      );
   }
 }
 

@@ -2,11 +2,11 @@
 title: Style Rules
 table_of_contents: true
 introduction: >
-  Style rules are the foundation of Sass, just like they are for CSS. And they work the same way: you choose which elements to style with a selector, and [declare properties](../style-rules/declarations) that affect how those elements look.
+  Style rules are the foundation of Sass, just like they are for CSS. And they work the same way: you choose which elements to style with a selector, and [declare properties](/documentation/style-rules/declarations) that affect how those elements look.
 complementary_content: |
   <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
 
-  ### Page Sections{#page-sections}
+  <h3 id="page-sections">Page Sections</h3>
 
   - [Nesting](#nesting){.section .open}
     - [Overview](#nesting)
@@ -160,7 +160,7 @@ If you want to do more with your nested style rules than just combine them in
 order with the descendant combinator (that is, a plain space) separating them,
 Sass has your back. See the [parent selector documentation][] for more details.
 
-[parent selector documentation]: ../style-rules/parent-selector
+[parent selector documentation]: /documentation/style-rules/parent-selector
 
 ## Interpolation
 
@@ -169,9 +169,9 @@ variables and function calls into your selectors. This is particularly useful
 when you're writing [mixins][], since it allows you to create selectors from
 parameters your users pass in.
 
-[interpolation]: ../interpolation
-[expressions]: ../syntax/structure#expressions
-[mixins]: ../at-rules/mixin
+[interpolation]: /documentation/interpolation
+[expressions]: /documentation/syntax/structure#expressions
+[mixins]: /documentation/at-rules/mixin
 {% endmarkdown %}
 
 {% codeExample 'interpolation'%}
@@ -205,7 +205,7 @@ parameters your users pass in.
 {% markdown %}
 You can combine interpolation with the parent selector `&`, the [`@at-root` rule][], and [selector functions][] to wield some serious power when dynamically generating selectors. For more information, see the [parent selector documentation][].
 
-[`@at-root` rule]: ../at-rules/at-root
-[selector functions]: ../modules/selector
-[parent selector documentation]: ../style-rules/parent-selector
+[`@at-root` rule]: /documentation/at-rules/at-root
+[selector functions]: /documentation/modules/selector
+[parent selector documentation]: /documentation/style-rules/parent-selector
 {% endmarkdown %}
