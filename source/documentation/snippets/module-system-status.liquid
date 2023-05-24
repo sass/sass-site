@@ -1,7 +1,7 @@
 {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby` %}
-{% compatibility '1.23.0', false, false %}
-Only Dart Sass currently supports `@use`. Users of other implementations must
-use the [`@import` rule][] instead.
+{% compatibility '1.23.0', false, null, false %}
+  Only Dart Sass currently supports `@use`. Users of other implementations must
+  use the [`@import` rule][] instead.
 
-[`@import` rule]: /documentation/at-rules/import
+  [`@import` rule]: /documentation/at-rules/import
 {% endcompatibility %}
