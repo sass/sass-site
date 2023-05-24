@@ -3,10 +3,10 @@ title: Special Functions
 introduction: >
   CSS defines many functions, and most of them work just fine with Sass’s normal
   function syntax. They’re parsed as function calls, resolved to [plain CSS
-  functions](../../at-rules/function#plain-css-functions), and compiled as-is to
+  functions](/documentation/at-rules/function#plain-css-functions), and compiled as-is to
   CSS. There are a few exceptions, though, which have special syntax that can’t
-  just be parsed as a [SassScript expression](../structure#expressions). All
-  special function calls return [unquoted strings](../../values/strings#unquoted).
+  just be parsed as a [SassScript expression](/documentation/syntax/structure#expressions). All
+  special function calls return [unquoted strings](/documentation/values/strings#unquoted).
 table_of_contents: true
 complementary_content: |
   <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
@@ -34,10 +34,10 @@ although [interpolation][] may also be used to inject SassScript values. If it's
 not a valid unquoted URL—for example, if it contains [variables][] or [function
 calls][]—it's parsed as a normal [plain CSS function call][].
 
-[interpolation]: ../../interpolation
-[variables]: ../../variables
-[function calls]: ../../at-rules/function
-[plain CSS function call]: ../../at-rules/function#plain-css-functions
+[interpolation]: /documentation/interpolation
+[variables]: /documentation/variables
+[function calls]: /documentation/at-rules/function
+[plain CSS function call]: /documentation/at-rules/function#plain-css-functions
 {% endmarkdown %}
 
 {% codeExample 'url' %}
@@ -102,21 +102,21 @@ LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse `calc()` as 
 
 Dart Sass versions 1.40.0 and later parse `calc()` as a [calculation].
 
-[calculation]: ../../values/calculations
+[calculation]: /documentation/values/calculations
 {% endcompatibility %}
 
 {% compatibility ">=1.31.0 <1.40.0", false, false, "clamp()" %}
 LibSass, Ruby Sass, and versions of Dart Sass prior to 1.31.0 parse `clamp()`
 as a [plain CSS function] rather than supporting special syntax within it.
 
-[plain CSS function]: ../../at-rules/function#plain-css-functions
+[plain CSS function]: /documentation/at-rules/function#plain-css-functions
 
 Dart Sass versions between 1.31.0 and 1.40.0 parse `clamp()` as special
 syntactic function like `element()`.
 
 Dart Sass versions 1.40.0 and later parse `clamp()` as a [calculation].
 
-[calculation]: ../../values/calculations
+[calculation]: /documentation/values/calculations
 {% endcompatibility %}
 
 {% markdown %}
@@ -136,7 +136,7 @@ Sass allows _any text_ in these function calls, including nested parentheses.
 Nothing is interpreted as a SassScript expression, with the exception that
 [interpolation][] can be used to inject dynamic values.
 
-[interpolation]: ../../interpolation
+[interpolation]: /documentation/interpolation
 
 {% endmarkdown %}
 
