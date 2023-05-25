@@ -1,8 +1,9 @@
 {% markdown %}
 For example, suppose you want to write a selector that matches the outer
-selector *and* an element selector. You could write a mixin like this one that uses the [`selector.unify()` function][] to combine `&` with a user's selector.
+selector *and* an element selector. You could write a mixin like this one that
+uses the [`selector.unify()` function][] to combine `&` with a user's selector.
 
-[`selector.unify()` function]: ../../modules/selector#unify
+[`selector.unify()` function]: /documentation/modules/selector#unify
 {% endmarkdown %}
 
 {% codeExample 'advanced-nesting' %}
@@ -28,6 +29,7 @@ selector *and* an element selector. You could write a mixin like this one that u
 @mixin unify-parent($child)
   @at-root #{selector.unify(&, $child)}
     @content
+
 
 
 .wrapper .field

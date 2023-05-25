@@ -2,7 +2,10 @@
 title: Style Rules
 table_of_contents: true
 introduction: >
-  Style rules are the foundation of Sass, just like they are for CSS. And they work the same way: you choose which elements to style with a selector, and [declare properties](/documentation/style-rules/declarations) that affect how those elements look.
+  Style rules are the foundation of Sass, just like they are for CSS. And they
+  work the same way: you choose which elements to style with a selector, and
+  [declare properties](/documentation/style-rules/declarations) that affect how
+  those elements look.
 ---
 
 {% codeExample 'style-rules' %}
@@ -28,38 +31,7 @@ selectors over and over again, you can write one style rules inside another.
 Sass will automatically combine the outer rule's selector with the inner rule's.
 {% endmarkdown %}
 
-{% codeExample 'nesting' %}
-nav {
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li { display: inline-block; }
-
-  a {
-    display: block;
-    padding: 6px 12px;
-    text-decoration: none;
-  }
-}
-===
-nav
-  ul
-    margin: 0
-    padding: 0
-    list-style: none
-
-  li
-    display: inline-block
-
-  a
-    display: block
-    padding: 6px 12px
-    text-decoration: none
-{% endcodeExample %}
-
+{% render 'code-snippets/example-nesting' %}
 
 {% headsUp %}
 Nested rules are super helpful, but they can also make it hard to visualize how
@@ -102,7 +74,7 @@ selector, or even all on its own in between the two.
 [combinators]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#Combinators#Combinators
 {% endmarkdown %}
 
-{% codeExample 'selector-combinators'%}
+{% codeExample 'selector-combinators' %}
 ul > {
   li {
     list-style-type: none;
@@ -162,7 +134,7 @@ parameters your users pass in.
 [mixins]: /documentation/at-rules/mixin
 {% endmarkdown %}
 
-{% codeExample 'interpolation'%}
+{% codeExample 'interpolation' %}
 @mixin define-emoji($name, $glyph) {
   span.emoji-#{$name} {
     font-family: IconFont;
@@ -187,11 +159,16 @@ parameters your users pass in.
 {% endcodeExample %}
 
 {% funFact %}
-  Sass only parses selectors *after* interpolation is resolved. This means you can safely use interpolation to generate any part of the selector without worrying that it won't parse.
+Sass only parses selectors *after* interpolation is resolved. This means you can
+safely use interpolation to generate any part of the selector without worrying
+that it won't parse.
 {% endfunFact %}
 
 {% markdown %}
-You can combine interpolation with the parent selector `&`, the [`@at-root` rule][], and [selector functions][] to wield some serious power when dynamically generating selectors. For more information, see the [parent selector documentation][].
+You can combine interpolation with the parent selector `&`, the [`@at-root`
+rule][], and [selector functions][] to wield some serious power when dynamically
+generating selectors. For more information, see the [parent selector
+documentation][].
 
 [`@at-root` rule]: /documentation/at-rules/at-root
 [selector functions]: /documentation/modules/selector

@@ -2,14 +2,16 @@
 title: Parent Selector
 introduction: >
   The parent selector, `&`, is a special selector invented by Sass that’s used
-  in [nested selectors](/documentation/style-rules#nesting) to refer to the outer selector.
-  It makes it possible to re-use the outer selector in more complex ways, like
-  adding a
+  in [nested selectors](/documentation/style-rules#nesting) to refer to the
+  outer selector. It makes it possible to re-use the outer selector in more
+  complex ways, like adding a
   [pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
   or adding a selector *before* the parent.
 ---
 
-When a parent selector is used in an inner selector, it's replaced with the corresponding outer selector. This happens instead of the normal nesting behavior.
+When a parent selector is used in an inner selector, it's replaced with the
+corresponding outer selector. This happens instead of the normal nesting
+behavior.
 
 {% codeExample 'parent-selector' %}
 .alert {
@@ -119,7 +121,10 @@ parent selector to append additional text.
 ## In SassScript
 
 The parent selector can also be used within SassScript. It's a special
-expression that returns the current parent selector in the same format used by [selector functions][]: a comma-separated list (the selector list) that contains space-separated lists (the complex selectors) that contain unquoted strings (the compound selectors).
+expression that returns the current parent selector in the same format used by
+[selector functions][]: a comma-separated list (the selector list) that contains
+space-separated lists (the complex selectors) that contain unquoted strings (the
+compound selectors).
 
 [selector functions]: /documentation/modules/selector#selector-values
 {% endmarkdown %}
@@ -140,7 +145,9 @@ expression that returns the current parent selector in the same format used by [
 {% endcodeExample %}
 
 {% markdown %}
-If the `&` expression is used outside any style rules, it returns `null`. Since `null` is [falsey][], this means you can easily use it to determine whether a mixin is being called in a style rule or not.
+If the `&` expression is used outside any style rules, it returns `null`. Since
+`null` is [falsey][], this means you can easily use it to determine whether a
+mixin is being called in a style rule or not.
 
 [falsey]: /documentation/at-rules/control/if#truthiness-and-falsiness
 {% endmarkdown %}
@@ -150,7 +157,10 @@ If the `&` expression is used outside any style rules, it returns `null`. Since 
 {% markdown %}
 ### Advanced Nesting
 
-You can use `&` as a normal SassScript expression, which means you can pass it to functions or include it in interpolation—even in other selectors! Using it in combination with [selector functions][] and the [`@at-root` rule][] allows you to nest selectors in very powerful ways.
+You can use `&` as a normal SassScript expression, which means you can pass it
+to functions or include it in interpolation—even in other selectors! Using it in
+combination with [selector functions][] and the [`@at-root` rule][] allows you
+to nest selectors in very powerful ways.
 
 [selector functions]: /documentation/modules/selector#selector-values
 [`@at-root` rule]: /documentation/at-rules/at-root

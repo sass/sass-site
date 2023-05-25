@@ -9,24 +9,26 @@ introduction: >
 
 {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, true, null, true %}
-Dart Sass currently _only_ supports the UTF-8 encoding. As such, it's safest to encode all Sass stylesheets as UTF-8.
+Dart Sass currently *only* supports the UTF-8 encoding. As such, it's safest to
+encode all Sass stylesheets as UTF-8.
 {% endcompatibility %}
 
 {% markdown %}
+
 It's often the case that a document is initially available only as a sequence of
 bytes, which must be decoded into Unicode. Sass performs this decoding as
 follows:
 
-- If the sequence of bytes begins with the UTF-8 or UTF-16 encoding of U+FEFF
+* If the sequence of bytes begins with the UTF-8 or UTF-16 encoding of U+FEFF
   BYTE ORDER MARK, the corresponding encoding is used.
 
-- If the sequence of bytes begins with the plain ASCII string `@charset`, Sass
+* If the sequence of bytes begins with the plain ASCII string `@charset`, Sass
   determines the encoding using step 2 of the CSS algorithm for
   [determining the fallback encoding][].
 
   [determining the fallback encoding]: https://drafts.csswg.org/css-syntax-3/#input-byte-stream
 
-- Otherwise, UTF-8 is used.
+* Otherwise, UTF-8 is used.
 
 ## Parse Errors
 
@@ -36,7 +38,7 @@ invalid syntax and the reason it was invalid.
 
 Note that this is different than CSS, which specifies how to recover from most
 errors rather than failing immediately. This is one of the few cases where SCSS
-isn't _strictly_ a superset of CSS. However, it's much more useful to Sass users
+isn't *strictly* a superset of CSS. However, it's much more useful to Sass users
 to see errors immediately, rather than having them passed through to the CSS
 output.
 
@@ -47,4 +49,5 @@ Node Sass's and Dart Sass's JS API you can access the [`file`, `line`, and
 
 [`SassException.span`]: https://pub.dartlang.org/documentation/sass/latest/sass/SassException/span.html
 [js error]: https://github.com/sass/node-sass#error-object
+
 {% endmarkdown %}

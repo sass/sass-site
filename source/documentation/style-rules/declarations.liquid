@@ -2,8 +2,11 @@
 title: Property Declarations
 table_of_contents: true
 introduction: >
-  In Sass as in CSS, property declarations define how elements that match a selector are styled. But Sass adds extra features to make them easier to write and to automate. First and foremost, a declaration's value can be any [SassScript expression](/documentation/syntax/structure#expressions), which will be
-  evaluated and included in the result.
+  In Sass as in CSS, property declarations define how elements that match a
+  selector are styled. But Sass adds extra features to make them easier to write
+  and to automate. First and foremost, a declaration's value can be any
+  [SassScript expression](/documentation/syntax/structure#expressions), which
+  will be evaluated and included in the result.
 ---
 
 {% codeExample 'declaration' %}
@@ -133,15 +136,14 @@ $rounded-corners: false
   border-radius: if($rounded-corners, 5px, null)
 {% endcodeExample %}
 
-{% markdown %}
-## Custom Properties
-{% endmarkdown %}
+{{ '## Custom Properties' | markdown }}
 
 {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility true, '3.5.0', null, '3.5.0', 'SassScript Syntax' %}
-Older versions of LibSass and Ruby Sass parsed custom property declarations just like any other property declaration, allowing the full range of SassScript expressions as values. Even when using these versions, it's
-recommended that you use interpolation to inject SassScript values for
-forwards-compatibility.
+Older versions of LibSass and Ruby Sass parsed custom property declarations just
+like any other property declaration, allowing the full range of SassScript
+expressions as values. Even when using these versions, it's recommended that you
+use interpolation to inject SassScript values for forwards-compatibility.
 
 See [the breaking change page][] for more details.
 
@@ -165,6 +167,7 @@ is the only way to inject dynamic values into a custom property.
 [interpolation]: /documentation/interpolation
 {% endmarkdown %}
 
+<!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
 {% codeExample 'custom-properties' %}
 $primary: #81899b;
 $accent: #302e24;
