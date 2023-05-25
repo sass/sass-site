@@ -266,9 +266,11 @@ const getCanSplit = (
   const exampleSourceLengths = [...scssExamples, ...sassExamples].flatMap(
     (source) => source.split('\n').map((line) => line.length),
   );
-  const cssSourceLengths = cssExamples.flatMap((source) =>
-    source.split('\n').map((line) => line.length),
-  );
+  const cssSourceLengths = cssExamples.length
+    ? cssExamples.flatMap((source) =>
+        source.split('\n').map((line) => line.length),
+      )
+    : [0];
 
   const maxSourceWidth = Math.max(...exampleSourceLengths);
   const maxCSSWidth = Math.max(...cssSourceLengths);
