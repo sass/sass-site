@@ -9,9 +9,20 @@ layout: base
     <div class="sl-l-medium-holy-grail__main">
       <div class="sl-l-large-holy-grail">
         <div class="sl-l-large-holy-grail__body">
-          {% if complementary_content %}
+          {% if complementary_content or table_of_contents %}
             <div class="sl-l-large-holy-grail__complementary{% if table_of_contents %} sl-l-large-holy-grail__complementary--contents{% endif %}">
-              {{ complementary_content | markdown }}
+              {% if complementary_content %}
+                {{ complementary_content | markdown }}
+              {% elsif table_of_contents %}
+                {% assign top_level_toc = documentation.toc | size %}
+                {% assign toc = content | getToc: top_level_toc %}
+                {% if toc | size %}
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    {% render 'documentation_toc', url: '', toc: toc %}
+                  </nav>
+                {% endif %}
+              {% endif %}
             </div>
           {% endif %}
 

@@ -50,6 +50,7 @@
     "@rollup/plugin-inject": "^5.0.3",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-terser": "^0.4.3",
+    "@sindresorhus/slugify": "^1.1.2",
     "@types/jquery": "^3.5.16",
     "@types/jqueryui": "^1.12.17",
     "@types/markdown-it": "^12.2.3",
@@ -58,6 +59,7 @@
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
+    "cheerio": "1.0.0-rc.12",
     "date-fns": "^2.30.0",
     "deep-equal": "^2.2.1",
     "eslint": "^8.41.0",
@@ -93,6 +95,7 @@
   },
   "yarn-upgrade-all": {
     "ignore": [
+      "@sindresorhus/slugify",
       "@types/node"
     ]
   }

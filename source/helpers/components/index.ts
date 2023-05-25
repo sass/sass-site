@@ -4,9 +4,11 @@ import PrismLoader from 'prismjs/components/index';
 import { liquidEngine } from '../engines';
 import { default as codeExample } from './codeExample';
 import { compatibility, implStatus } from './compatibility';
+import { getDocTocData, getToc } from './toc';
 
 export { codeExample };
 export { compatibility, implStatus };
+export { getDocTocData, getToc };
 
 /**
  * Returns HTML for a fun fact that's not directly relevant to the main
@@ -55,6 +57,8 @@ export const codeBlock = (contents: string, language: string, padding = 0) => {
 export default function componentsPlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('implStatus', implStatus);
+  eleventyConfig.addLiquidFilter('getDocTocData', getDocTocData);
+  eleventyConfig.addLiquidFilter('getToc', getToc);
 
   // paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('code', codeBlock);
