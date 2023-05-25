@@ -1,5 +1,5 @@
 ---
-title: "Breaking Change: Strict Unary Operators"
+title: 'Breaking Change: Strict Unary Operators'
 introduction: >
   Sass has historically allowed `-` and `+` to be used in ways that make it
   ambiguous whether the author intended them to be a binary or unary operator.
@@ -8,6 +8,7 @@ introduction: >
 
 How is this property compiled?
 
+<!-- prettier-ignore-start -->
 {% codeExample 1, false %}
 $size: 10px;
 
@@ -20,6 +21,7 @@ $size: 10px
 div
   margin: 15px -$size
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 Some users might say "the `-` is attached to `$size`, so it should be `margin:
 20px -10px`". Others might say "the `-` is between `20px` and `$size`, so it
@@ -32,14 +34,14 @@ That's why we're moving to make this an error. In the future, if you want to use
 a binary `-` or `+` operator (that is, one that subtracts or adds two numbers),
 you'll need to put whitespace on both sides or on neither side:
 
-* Valid: `15px - $size`
-* Valid: `(15px)-$size`
-* Invalid: `15px -$size`
+- Valid: `15px - $size`
+- Valid: `(15px)-$size`
+- Invalid: `15px -$size`
 
 If you want to use a unary `-` or `+` operator as part of a space-separated
 list, you'll (still) need to wrap it in parentheses:
 
-* Valid: `15px (-$size)`
+- Valid: `15px (-$size)`
 
 ## Transition Period
 

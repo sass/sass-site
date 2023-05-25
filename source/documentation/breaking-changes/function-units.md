@@ -1,5 +1,5 @@
 ---
-title: "Breaking Change: Strict Function Units"
+title: 'Breaking Change: Strict Function Units'
 introduction: >
   Various built-in functions will become stricter in which units they allow
   and will handle those units more consistently. This makes Sass more compatible
@@ -12,7 +12,7 @@ introduction: >
 
 When specifying a color's hue, CSS allows any [angle unit][] (`deg`, `grad`,
 `rad`, or `turn`). It also allows a unitless number, which is interpreted as
-`deg`. Historically, Sass has allowed *any* unit, and interpreted it as `deg`.
+`deg`. Historically, Sass has allowed _any_ unit, and interpreted it as `deg`.
 This is particularly problematic because it meant that the valid CSS expression
 `hsl(0.5turn, 100%, 50%)` would be allowed by Sass but interpreted entirely
 wrong.
@@ -57,7 +57,7 @@ a hue parameter with a non-angle unit. Unitless hues will still be allowed.
 
 When specifying an HSL color's saturation and lightness, CSS only allows `%`
 units. Even unitless numbers aren't allowed (unlike for the hue). Historically,
-Sass has allowed *any* unit, and interpreted it as `%`. You could even write
+Sass has allowed _any_ unit, and interpreted it as `%`. You could even write
 `hsl(0, 100px, 50s)` and Sass would return the color `red`.
 
 To fix this issue and bring Sass in line with the CSS spec, we're making changes
@@ -82,7 +82,7 @@ saturation or lightness parameter with no unit or a non-`%` unit.
 When specifying a color's alpha value, CSS (as of [Colors Level 4]) allows
 either unitless values between 0 and 1 or `%` values between `0%` and `100%`. In
 most cases Sass follows this behavior, but the functions `color.adjust()` and
-`color.change()` have historically allowed *any* unit, and interpreted it as
+`color.change()` have historically allowed _any_ unit, and interpreted it as
 unitless. You could even write `color.change(red, $alpha: 1%)` and Sass would
 return the opaque color `black`.
 
@@ -132,6 +132,7 @@ return a random integer with the same units.
 
 [The `math.random()` function]: /documentation/modules/math#random
 
+<!-- prettier-ignore-start -->
 {% codeExample 1, false %}
 // Future Sass, doesn't work yet!
 @debug math.random(100px); // 42px
@@ -139,6 +140,7 @@ return a random integer with the same units.
 // Future Sass, doesn't work yet!
 @debug math.random(100px) // 42px
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 ### Phase 1
 

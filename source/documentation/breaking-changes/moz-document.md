@@ -1,5 +1,5 @@
 ---
-title: "Breaking Change: -moz-document"
+title: 'Breaking Change: -moz-document'
 introduction: >
   Firefox used to have a @-moz-document rule requiring special parsing. As
   support is removed from Firefox, Sass is in the process of removing support
@@ -12,10 +12,10 @@ parsing and will treat it as an unknown at-rule.
 
 [Firefox dropped support for them]: https://web.archive.org/web/20200528221656/https://www.fxsitecompat.dev/en-CA/docs/2018/moz-document-support-has-been-dropped-except-for-empty-url-prefix/
 
-
 **There is one exception**: an empty url prefix function is still allowed, as
 that's used in a hack targetting Firefox.
 
+<!-- prettier-ignore-start -->
 {% codeExample 1 %}
 @-moz-document url-prefix() {
   .error {
@@ -27,6 +27,7 @@ that's used in a hack targetting Firefox.
   .error
     color: red
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 ## Transition Period
 

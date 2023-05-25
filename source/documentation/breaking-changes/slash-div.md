@@ -1,5 +1,5 @@
 ---
-title: "Breaking Change: Slash as Division"
+title: 'Breaking Change: Slash as Division'
 introduction: >
   Sass currently treats `/` as a division operation in some contexts and a
   separator in others. This makes it difficult for Sass users to tell what any
@@ -20,13 +20,14 @@ use `/` as a separator, this is becoming more and more painful to Sass users.
 [new `rgb()` and `hsl()` syntax]: https://drafts.csswg.org/css-color/#rgb-functions
 
 Because Sass is a CSS superset, we're matching CSS's syntax by redefining `/` to
-be *only* a separator. `/` will be treated as a new type of list separator,
+be _only_ a separator. `/` will be treated as a new type of list separator,
 similar to how `,` works today. Division will instead be written using the new
 `math.div()` function. This function will behave exactly the same as `/` does
 today.
 
 This deprecation does not affect uses of `/` inside `calc()` expressions.
 
+<!-- prettier-ignore-start -->
 {% codeExample 1 %}
 @use "sass:math";
 
@@ -47,6 +48,7 @@ This deprecation does not affect uses of `/` inside `calc()` expressions.
   grid-row: span 3 / 7;
 }
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 ## Transition Period
 
@@ -58,6 +60,7 @@ when it does so. Users should switch all division to use `math.div()` instead.
 
 {% render 'documentation/snippets/silence-deprecations' %}
 
+<!-- prettier-ignore-start -->
 {% codeExample 2, false %}
 @use "sass:math";
 
@@ -75,6 +78,7 @@ when it does so. Users should switch all division to use `math.div()` instead.
 // RIGHT, will work in future Sass versions.
 @debug math.div(12px, 4px) // 3
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 Slash-separated lists will also be available in the transition period. Because
 they can't be created with `/` yet, the `list.slash()` function will be added to
@@ -84,6 +88,7 @@ create them. You will also be able to pass `"slash"` as the `$separator` to the
 [`list.join()` function]: /documentation/modules/list#join
 [`list.append()` function]: /documentation/modules/list#append
 
+<!-- prettier-ignore-start -->
 {% codeExample 3 %}
 @use "sass:list";
 @use "sass:math";
@@ -104,12 +109,14 @@ create them. You will also be able to pass `"slash"` as the `$separator` to the
   grid-row: span 3 / 7;
 }
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 {% compatibility '1.40.0', false, null, false, 'First-class calc' %}{% endcompatibility %}
 
 Alternatively, users can wrap division operations inside a `calc()` expression,
 which Sass will simplify to a single number.
 
+<!-- prettier-ignore-start -->
 {% codeExample 4, false %}
 // WRONG, will not work in future Sass versions.
 @debug (12px/4px); // 3
@@ -123,6 +130,7 @@ which Sass will simplify to a single number.
 // RIGHT, will work in future Sass versions.
 @debug calc(12px / 4px) // 3
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 ## Automatic Migration
 

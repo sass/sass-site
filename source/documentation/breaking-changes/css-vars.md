@@ -1,5 +1,5 @@
 ---
-title: "Breaking Change: CSS Variable Syntax"
+title: 'Breaking Change: CSS Variable Syntax'
 introduction: >
   Older versions of LibSass and Ruby Sass parsed custom property declarations
   just like any other property declaration, allowing the full range of
@@ -17,6 +17,7 @@ For example, the [Polymer library][] used this to support plain-CSS mixins:
 
 [Polymer library]: https://polymer-library.polymer-project.org/3.0/docs/devguide/custom-css-properties#use-custom-css-mixins
 
+<!-- prettier-ignore-start -->
 {% codeExample 1, true, 'scss' %}
 :root {
   --flex-theme: {
@@ -36,12 +37,14 @@ For example, the [Polymer library][] used this to support plain-CSS mixins:
   };
 }
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 To provide maximum compatibility with plain CSS, more recent versions of Sass
 require SassScript expressions in custom property values to be written within
 [interpolation](/documentation/interpolation). Interpolation will also work for older Sass
 versions, and so is recommended for all stylesheets.
 
+<!-- prettier-ignore-start -->
 {% codeExample 2 %}
 $accent-color: #fbbc04;
 
@@ -67,6 +70,7 @@ $accent-color: #fbbc04
   --accent-color-right: #fbbc04;
 }
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 {% headsUp %}
 Because interpolation removes quotation marks from quoted strings, it may be
@@ -75,6 +79,7 @@ quotes.
 
 [`meta.inspect()` function]: /documentation/modules/meta#inspect
 
+<!-- prettier-ignore-start -->
 {% codeExample 3 %}
 @use "sass:meta";
 
@@ -95,4 +100,6 @@ $font-family-monospace: Menlo, Consolas, "Courier New", monospace
   --font-family-monospace: Menlo, Consolas, "Courier New", monospace;
 }
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
+
 {% endheadsUp %}

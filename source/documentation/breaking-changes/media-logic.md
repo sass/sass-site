@@ -1,5 +1,5 @@
 ---
-title: "Breaking Change: Media Queries Level 4"
+title: 'Breaking Change: Media Queries Level 4'
 introduction: >
   Sass has added support for the CSS Media Queries Level 4 specification. This
   originally conflicted with some Sass-specific syntax, so this syntax was
@@ -12,10 +12,10 @@ Because Sass supports almost any Sass expression in parenthesized media
 conditions, there were a few constructs whose meaning was changed by adding full
 support for Media Queries Level 4. Specifically:
 
-* `@media (not (foo))` was historically interpreted by Sass as meaning
+- `@media (not (foo))` was historically interpreted by Sass as meaning
   `@media (#{not (foo)})`, and so compiled to `@media (false)`.
 
-* `@media ((foo) and (bar))` and `@media ((foo) or (bar))` were similarly
+- `@media ((foo) and (bar))` and `@media ((foo) or (bar))` were similarly
   interpreted as SassScript's logical operators, compiling to `@media (bar)` and
   `@media (foo)` respectively.
 

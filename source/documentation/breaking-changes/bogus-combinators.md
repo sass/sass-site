@@ -1,5 +1,5 @@
 ---
-title: "Breaking Change: Invalid Combinators"
+title: 'Breaking Change: Invalid Combinators'
 introduction: >
   Sass has historically been very permissive about the use of leading, trailing,
   and repeated combinators in selectors. These combinators are being deprecated
@@ -8,11 +8,11 @@ introduction: >
 
 Sass has historically supported three invalid uses of combinators:
 
-* Leading combinators, as in `+ .error {color: red}`.
+- Leading combinators, as in `+ .error {color: red}`.
 
-* Trailing combinators, as in `.error + {color: red}`.
+- Trailing combinators, as in `.error + {color: red}`.
 
-* Repeated combinators, as in `div > > .error {color: red}`.
+- Repeated combinators, as in `div > > .error {color: red}`.
 
 None of these are valid CSS, and all of them will cause browsers to ignore the
 style rule in question. Supporting them added a substantial amount of complexity
@@ -26,6 +26,7 @@ for these uses.
 used for nesting purposes. For example, the following is still very much
 supported:
 
+<!-- prettier-ignore-start -->
 {% codeExample 1 %}
 .sidebar > {
   .error {
@@ -37,6 +38,7 @@ supported:
   .error
     color: red
 {% endcodeExample %}
+<!-- prettier-ignore-end -->
 
 Sass will only produce an error if a selector still has a leading or trailing
 combinator _after nesting is resolved_. Repeated combinators, on the other hand,
