@@ -6,43 +6,8 @@ introduction: >
   the latest and greatest version of the language. Each of its commands migrates
   a single feature, to give you as much control as possible over what you update
   and when.
-complementary_content: |
-  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
-  <h3>Page Sections</h3>
-
-  - [Usage](#usage)
-  - [Installation](#installation){.section}
-    - [Overview](#installation)
-    - [Standalone](#standalone)
-    - [npm](#npm)
-    - [Chocolatey](#chocolatey)
-    - [Homebrew](#homebrew)
-  - [Global Options](#global-options){.section}
-    - [Overview](#global-options)
-    - [`--migrate-deps`](#migrate-deps)
-    - [`--load-path`](#load-path)
-    - [`--dry-run`](#dry-run)
-        - [Overview](#dry-run)
-        - [`--no-unicode`](#no-unicode)
-    - [`--verbose`](#verbose)
-  - [Migrations](#migrations){.section}
-    - [Overview](#migrations)
-    - [Division](#division){.section}
-        - [Overview](#division)
-        - [`--pessimistic`](#pessimistic)
-    - [Module](#module){.section}
-        - [Overview](#module)
-        - [Loading Dependencies](#loading-dependencies)
-        - [`--remove-prefix`](#remove-prefix)
-        - [`--forward`](#forward)
-    - [Namespace](#namespace){.section}
-        - [Overview](#namespace)
-        - [`--rename`](#rename)
-        - [`--force`](#force)
-
-  </nav>
 ---
-{% markdown %}
+
 ## Usage
 
 To use the Sass migrator, tell it [which migration][] you want to run and what
@@ -68,7 +33,7 @@ see what changes will be made without actually saving them, you can pass
 [--dry-run]: #dry-run
 [--verbose]: #verbose
 
-{% include 'code-snippets/example-module-migrator' %}
+{% render 'code-snippets/example-module-migrator' %}
 
 ## Installation
 
@@ -213,7 +178,7 @@ contents.
 
 [`--dry-run` option]: #dry-run
 
-```
+```shellsession
 $ sass-migrator module --verbose --dry-run style.scss
 Dry run. Logging migrated files instead of overwriting...
 <==> style.scss
@@ -294,7 +259,7 @@ before, including:
   [`--migrate-deps` option]: #migrate-deps
 {% endheadsUp %}
 
-{% include 'code-snippets/example-module-migrator' %}
+{% render 'code-snippets/example-module-migrator' %}
 
 #### Loading Dependencies
 
@@ -487,5 +452,3 @@ pass `--force`.
 With `--force`, if any conflicts are encountered, the first `@use` rule will
 get its preferred namespace, while subsequent `@use` rules with the same
 preferred namespace will instead have a numerical suffix added to them.
-
-{% endmarkdown %}

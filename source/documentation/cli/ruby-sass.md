@@ -1,53 +1,8 @@
 ---
 title: Ruby Sass Command-Line Interface
 table_of_contents: true
-complementary_content: |
-  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
-  <h3>Page Sections</h3>
-
-  - [Usage](#usage){.section .open}
-    - [Overview](#usage)
-    - [One-to-One Mode](#one-to-one-mode)
-    - [Many-to-Many Mode](#many-to-many-mode)
-  - [Options](#options){.section .open}
-    - [Overview](#options)
-    - [Common](#common){.section}
-        - [Overview](#common)
-        - [`--load-path`](#load-path)
-        - [`--require`](#require)
-        - [`--compass`](#compass)
-        - [`--style`](#style)
-        - [`--help`](#help)
-        - [`--version`](#version)
-    - [Watching and Updating](#watching-and-updating){.section}
-        - [Overview](#watching-and-updating)
-        - [`--watch`](#watch)
-        - [`--poll`](#poll)
-        - [`--update`](#update)
-        - [`--force`](#force)
-        - [`--stop-on-error`](#stop-on-error)
-    - [Input and Output](#input-and-output){.section}
-        - [Overview](#input-and-output)
-        - [`--scss`](#scss)
-        - [`--sourcemap`](#sourcemap)
-        - [`--stdin`](#stdin)
-        - [`--default-encoding`](#default-encoding)
-        - [`--unix-newlines`](#unix-newlines)
-        - [`--debug-info`](#debug-info)
-        - [`--line-comments`](#line-comments)
-    - [Other Options](#other-options){.section}
-        - [Overview](#other-options)
-        - [`--interactive`](#interactive)
-        - [`--check`](#check)
-        - [`--precision`](#precision)
-        - [`--cache-location`](#cache-location)
-        - [`--no-cache`](#no-cache)
-        - [`--trace`](#trace)
-        - [`--quiet`](#quiet)
-
-  </nav>
 ---
-{% markdown %}
+
 {% headsUp %}
 [Ruby Sass has reached end of life][] and is now totally unmaintained. Please
 switch to [Dart Sass][] or [LibSass][] at your earliest convenience.
@@ -351,7 +306,7 @@ your Sass files in browsers. See instructions for using source maps in
 [`file:` URLs]: https://en.wikipedia.org/wiki/File_URI_scheme
 
 ```shellsession
-​# Generates a URL like "/documentation/sass/style.scss".
+​# Generates a URL like "../sass/style.scss".
 $ sass --sourcemap=auto sass/style.scss css/style.css
 
 ​# Generates a URL like "file:///home/style-wiz/sassy-app/sass/style.scss".
@@ -541,4 +496,3 @@ By default, Sass emits warnings when deprecated features are used or when the
 ```shellsession
 $ sass --quiet style.scss style.css
 ```
-{% endmarkdown %}

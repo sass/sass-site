@@ -1,50 +1,8 @@
 ---
 title: Dart Sass Command-Line Interface
 table_of_contents: true
-complementary_content: |
-  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
-  <h3>Page Sections</h3>
-
-  - [Usage](#usage){.section .open}
-    - [Overview](#usage)
-    - [One-to-One Mode](#one-to-one-mode)
-    - [Many-to-many Mode](#many-to-many-mode)
-  - [Options](#options){.section .open}
-    - [Overview](#options)
-    - [Input and Output](#input-and-output){.section}
-        - [Overview](#input-and-output)
-        - [`--stdin`](#stdin)
-        - [`--indented`](#indented)
-        - [`--load-path`](#load-path)
-        - [`--style`](#style)
-        - [`--no-charset`](#no-charset)
-        - [`--error-css`](#error-css)
-        - [`--update`](#update)
-    - [Source Maps](#source-maps){.section}
-        - [Overview](#source-maps)
-        - [`--no-source-map`](#no-source-map)
-        - [`--source-map-urls`](#source-map-urls)
-        - [`--embed-sources`](#embed-sources)
-        - [`--embed-source-map`](#embed-source-map)
-    - [Other Options](#other-options){.section}
-        - [Overview](#other-options)
-        - [`--watch`](#watch)
-        - [`--poll`](#poll)
-        - [`--stop-on-error`](#stop-on-error)
-        - [`--interactive`](#interactive)
-        - [`--color`](#color)
-        - [`--no-unicode`](#no-unicode)
-        - [`--quiet`](#quiet)
-        - [`--quiet-deps`](#quiet-deps)
-        - [`--fatal-deprecation`](#fatal-deprecation)
-        - [`--trace`](#trace)
-        - [`--help`](#help)
-        - [`--version`](#version)
-
-  </nav>
 ---
 
-{% markdown %}
 ## Usage
 
 The Dart Sass executable can be invoked in one of two modes.
@@ -76,7 +34,7 @@ SCSS unless the [`--indented` flag][] is passed.
 
 [standard input]: https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)
 
-### Many-to-many Mode
+### Many-to-Many Mode
 
 {% compatibility '1.4.0' %}{% endcompatibility %}
 
@@ -265,7 +223,7 @@ Compiled themes/light.scss to public/css/light.css.
 
 {% compatibility '1.3.0' %}{% endcompatibility %}
 
-{% include 'documentation/snippets/source-maps.liquid' %}
+{% render 'documentation/snippets/source-maps' %}
 
 Dart Sass generates source maps by default for every CSS file it emits.
 
@@ -293,7 +251,7 @@ of URLs:
 [`file:` URLs]: https://en.wikipedia.org/wiki/File_URI_scheme
 
 ```shellsession
-​# Generates a URL like /documentation/sass/style.scss".
+​# Generates a URL like "../sass/style.scss".
 $ sass --source-map-urls=relative sass/style.scss css/style.css
 
 ​# Generates a URL like "file:///home/style-wiz/sassy-app/sass/style.scss".
@@ -413,7 +371,7 @@ colors if it looks like it's being run on a terminal that supports them.
 
 [terminal colors]: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
 
-<pre class="highlight plaintext"><code>$ sass --color style.scss style.css
+<pre><code>$ sass --color style.scss style.css
 Error: Incompatible units em and px.
   <span style="color: blue">╷</span>
 <span style="color: blue">1 │</span> $width: <span style="color: crimson">15px + 2em</span>
@@ -609,8 +567,7 @@ $ sass --help
 Compile Sass to CSS.
 
 Usage: sass <input.scss> [output.css]
-       sass <input.scss>:<output.css>
-       <input/>:<output/>
+       sass <input.scss>:<output.css> <input/>:<output/>
 
 ...
 ```
@@ -623,4 +580,3 @@ This flag prints the current version of Sass.
 $ sass --version
 {{ releases['dart-sass'].version }}
 ```
-{% endmarkdown %}
