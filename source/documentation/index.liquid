@@ -10,6 +10,7 @@ introduction: >
   makes it easy to share design within and across projects.
 ---
 
+{% markdown %}
 - If you're looking for an introduction to Sass, check out [the
   tutorial](/guide).
 
@@ -40,18 +41,26 @@ may be some behavioral differences.
 
 Anywhere behavior differs between versions or implementations, the documentation
 includes a compatibility indicator like this:
+{% endmarkdown %}
 
-{% compatibility true, '3.6.0', false, 'Feature Name'%}{% endcompatibility %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility true, '3.6.0', null, false, 'Feature Name' %}{% endcompatibility %}
 
+{% markdown %}
 Implementations with a "✓" fully support the feature in question, and
 implementations with a "✗" don't support it all. Implementations with a version
 number started supporting the feature in question at that version.
 Implementations can also be marked as "partial":
+{% endmarkdown %}
 
-{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, 'partial', false%}Additional details go here.{% endcompatibility %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility true, 'partial', null, false %}
+Additional details go here.
+{% endcompatibility %}
 
+{% markdown %}
 This indicates that the implementation only supports some aspects of the
 feature. These compatibility indicators (and many others) have a "▶" button,
 which can be clicked to show more details about exactly how the implementations
 differ and which versions support which aspects of the feature in question.
+{% endmarkdown %}

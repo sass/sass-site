@@ -1,10 +1,7 @@
 ---
 title: Comments
 introduction: >
-  The way Sass comments work differs substantially between SCSS and the indented
-  syntax. Both syntaxes support two types of comments: comments defined using
-  `/* */` that are (usually) compiled to CSS, and comments defined using `//` that
-  are not.
+  The way Sass comments work differs substantially between SCSS and the indented syntax. Both syntaxes support two types of comments: comments defined using `/* */` that are (usually) compiled to CSS, and comments defined using `//` that are not.
 ---
 {% markdown %}
 ## In SCSS
@@ -25,9 +22,9 @@ By default, multi-line comments be stripped from the compiled CSS in [compressed
 mode][]. If a comment begins with `/*!`, though, it will always be included in
 the CSS output.
 
-[statement]: ../structure#statements
-[interpolation]: ../../interpolation
-[compressed mode]: ../../cli/dart-sass#style
+[statement]: /documentation/syntax/structure#statements
+[interpolation]: /documentation/interpolation
+[compressed mode]: /documentation/cli/dart-sass#style
 {% endmarkdown %}
 
 {% codeExample 'scss-comment', , true, 'scss'%}
@@ -45,7 +42,7 @@ p /* Multi-line comments can be written anywhere
   font: Helvetica, // So can single-line comments.
         sans-serif;
 }
-{% endcodeExample  %}
+{% endcodeExample %}
 
 {% markdown %}
 ## In Sass
@@ -64,7 +61,8 @@ stripped in compressed mode.
 Comments can also be used within [expressions][] in the indented syntax. In this
 case, they have exactly the same syntax as they do in SCSS.
 
-[expressions]: ../structure#expressions
+[interpolation]: /documentation/interpolation
+[expressions]: /documentation/syntax/structure#expressions
 {% endmarkdown %}
 
 {% codeExample 'sass-comment', , true, 'sass'%}
@@ -92,10 +90,10 @@ read by the [SassDoc][] tool, which uses them to generate beautiful
 documentation. Check out [the Susy grid engine][susy]'s documentation to see it
 in action!
 
-[mixins]: ../../at-rules/mixin
-[functions]: ../../at-rules/function
-[variables]: ../../variables
-[placeholder selectors]: ../../style-rules/placeholder-selectors
+[mixins]: /documentation/at-rules/mixin
+[functions]: /documentation/at-rules/function
+[variables]: /documentation/variables
+[placeholder selectors]: /documentation/style-rules/placeholder-selectors
 [SassDoc]: http://sassdoc.com
 [susy]: http://oddbird.net/susy/docs/index.html
 

@@ -14,17 +14,26 @@
       <dd>{{ libsass | implStatus }}</dd>
     </div>
   {%- endif -%}
+  {%- if node != null -%}
+    <div>
+      <dt>Node Sass</dt>
+      <dd>{{ node | implStatus }}</dd>
+    </div>
+  {%- endif -%}
   {%- if ruby != null -%}
     <div>
       <dt>Ruby Sass</dt>
       <dd>{{ ruby | implStatus }}</dd>
     </div>
   {%- endif -%}
-  {%- if details -%}
-    <div>{% # The no-op href here ensures that this toggle is focusable in browsers. %}<a href="javascript:;">▶</a></div>
+  {%- if details | strip -%}
+    {%- # The no-op href here ensures that this toggle is focusable in browsers. -%}
+    <div><a href="javascript:;">▶</a></div>
   {%- endif -%}
 </dl>
 
-{% if details %}
-  <div class="sl-c-callout sl-c-callout--impl-status">{{ details | markdown }}</div>
-{% endif %}
+{%- if details | strip -%}
+  <div class="sl-c-callout sl-c-callout--impl-status">
+    {{ details | markdown }}
+  </div>
+{%- endif -%}

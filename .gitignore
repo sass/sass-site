@@ -16,10 +16,11 @@ Thumbs.db
 /.yardoc
 /vendor/bundle/
 /source/documentation/js-api
+/.language/
 
 # Eleventy
 /_site/
-source/assets/dist/
+/source/assets/dist/
 
 # NPM/Yarn
 node_modules/

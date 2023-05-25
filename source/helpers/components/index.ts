@@ -18,12 +18,13 @@ export const funFact = async (contents: string) =>
   });
 
 /**
- * Returns HTML for a heads up warning related to the main
+ * Returns HTML for a heads-up warning related to the main
  * documentation.
  */
-export const headsUp = async (contents: string) =>
+export const headsUp = async (contents: string, useMarkdown = true) =>
   liquidEngine.renderFile('heads_up', {
     contents,
+    useMarkdown,
   });
 
 /**
@@ -61,7 +62,8 @@ export default function componentsPlugin(eleventyConfig: any) {
   // Ideally this could be used with named args, but that's not supported yet in
   // 11ty's implementation of LiquidJS:
   // https://github.com/11ty/eleventy/issues/2679
-  // In the meantime, the args are: `dart`, `libsass`, `ruby`, `feature`
+  // In the meantime, check the order in the function definition of
+  // `compatibility` in `source/helpers/components/compatibility.ts`.
   eleventyConfig.addPairedLiquidShortcode('compatibility', compatibility);
   eleventyConfig.addPairedLiquidShortcode('funFact', funFact);
   eleventyConfig.addPairedLiquidShortcode('headsUp', headsUp);

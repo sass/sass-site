@@ -1,12 +1,22 @@
-const {
-  DefaultTheme,
-  DefaultThemeRenderContext,
-  JSX,
-  UrlMapping,
-} = require('typedoc');
+const { DefaultTheme, DefaultThemeRenderContext, JSX } = require('typedoc');
 
 function bind(fn, first) {
   return (...r) => fn(first, ...r);
+}
+
+/**
+ * Take text `input` and convert it into a string of all arguments suitable for
+ * the `{% compatibility %}` tag.
+ */
+function parseCompatibility(input) {
+  const keyValueRegex = /(\w+):\s*([^,]+)/g;
+  const defaults = { dart: null, libsass: null, node: null, ruby: null };
+  const results = Object.fromEntries(
+    [...input.matchAll(keyValueRegex)].map(([, key, value]) => [key, value]),
+  );
+  return Object.values({ ...defaults, ...results })
+    .map(String)
+    .join(', ');
 }
 
 class SassSiteRenderContext extends DefaultThemeRenderContext {
@@ -50,19 +60,19 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
         // Compatibility tags should have a single text block.
         const text = compat.content[0].text;
 
-        // The first line is arguments to impl_status, anything after that is the
-        // contents of the block.
+        // The first line is arguments to `{% compatibility %}` tag, anything
+        // after that is the contents of the block.
         const lineBreak = text.indexOf('\n');
-        const firstLine =
-          lineBreak === -1 ? text : text.substring(0, lineBreak);
+        const compatibilityArgs = parseCompatibility(
+          lineBreak === -1 ? text : text.substring(0, lineBreak),
+        );
         const rest =
           lineBreak === -1 ? null : text.substring(lineBreak + 1).trim();
-
         return JSX.createElement(JSX.Raw, {
           html:
-            `<% impl_status(${firstLine}) ${rest ? 'do' : ''} %>` +
-            context.markdown(rest) +
-            (rest ? '<% end %>' : ''),
+            `{% compatibility ${compatibilityArgs} %}` +
+            (rest ? context.markdown(rest) : '') +
+            '{% endcompatibility %}',
         });
       }),
     );
@@ -79,11 +89,11 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
         .oldMarkdown(text)
         .replace(
           /<p><strong>Heads up!<\/strong>([^]*?)<\/p>/g,
-          '<% heads_up do %>$1<% end %>',
+          '{% headsUp %}$1{% endheadsUp %}',
         )
         .replace(
           /<p><strong>Fun fact!<\/strong>([^]*?)<\/p>/g,
-          '<% fun_fact do %>$1<% end %>',
+          '{% funFact %}$1{% endfunFact %}',
         ),
     this,
   );
@@ -167,15 +177,6 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
   </div>
 </div>
 `;
-  }
-
-  getUrls(project) {
-    return super
-      .getUrls(project)
-      .map(
-        (mapping) =>
-          new UrlMapping(`${mapping.url}.erb`, mapping.model, mapping.template),
-      );
   }
 }
 
