@@ -64,17 +64,17 @@ export const getToc = (html: string, topLevelTotal: number): TOCItem[] => {
   // Expand the table of contents to the deepest level possible without making
   // it longer than the most-collapsed-possible top-level documentation table of
   // contents.
-  let expandedLevel = 2;
-  let totalEntries = 0;
+  let expandedLevel = 3;
+  let totalEntries = byLevel[2].length;
   while (expandedLevel < 7) {
-    const entries = byLevel[expandedLevel];
-    totalEntries += entries.length;
+    const children = byLevel[expandedLevel];
+    totalEntries += children.length;
 
-    if (!entries.length || totalEntries > topLevelTotal) {
+    if (totalEntries > topLevelTotal) {
       break;
     }
 
-    for (const entry of entries) {
+    for (const entry of byLevel[expandedLevel - 1]) {
       entry[':expanded'] = true;
     }
 

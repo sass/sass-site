@@ -2,32 +2,17 @@
 title: "@use"
 table_of_contents: true
 eleventyComputed:
-  before_introduction: "{% render 'documentation/snippets/module-system-status' %}"
+  before_introduction: >
+    {% render 'documentation/snippets/module-system-status' %}
 introduction: >
-  The `@use` rule loads [mixins](/documentation/at-rules/mixin), [functions](/documentation/at-rules/function), and [variables](/documentation/variables) from other Sass stylesheets, and combines CSS from multiple stylesheets together. Stylesheets loaded by `@use` are called "modules". Sass also provides [built-in modules](/documentation/modules) full of useful functions.
-complementary_content: |
-  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
-
-  <h3 id="page-sections">Page Sections</h3>
-
-  - [Loading Members](#loading-members){.section .open}
-    - [Overview](#loading-members)
-    - [Choosing a Namespace](#choosing-a-namespace)
-    - [Private Members](#private-members)
-  - [Configuration](#configuration){.section .open}
-    - [Overview](#configuration)
-    - [With Mixins](#with-mixins)
-    - [Reassigning Variables](#reassigning-variables)
-  - [Finding the Module](#finding-the-module)
-    - [Overview](#finding-the-module)
-    - [Load Paths](#load-paths)
-    - [Partials](#partials)
-    - [Index Files](#index-files)
-  - [Loading CSS](#loading-css)
-  - [Differences From <code>@import</code>](#differences-from-import)
-
-  </nav>
+  The `@use` rule loads [mixins](/documentation/at-rules/mixin),
+  [functions](/documentation/at-rules/function), and
+  [variables](/documentation/variables) from other Sass stylesheets, and
+  combines CSS from multiple stylesheets together. Stylesheets loaded by `@use`
+  are called "modules". Sass also provides [built-in
+  modules](/documentation/modules) full of useful functions.
 ---
+
 {% markdown %}
 The simplest `@use` rule is written `@use "<url>"`, which loads the module at
 the given URL. Any styles loaded this way will be included exactly once in the
@@ -102,25 +87,29 @@ ul ul, ol ol {
 ## Loading Members
 
 You can access variables, functions, and mixins from another module by writing
-`<namespace>.<variable>`, `<namespace>.<function>()`, or `@include <namespace>.<mixin>()`. By default, the namespace is just the last component of
+`<namespace>.<variable>`, `<namespace>.<function>()`, or `@include
+<namespace>.<mixin>()`. By default, the namespace is just the last component of
 the module's URL.
 
-Members (variables, functions, and mixins) loaded with `@use` are only visible in the stylesheet that loads them. Other stylesheets will need to write their
-own `@use` rules if they also want to access them. This helps make it easy to figure out exactly where each member is coming from. If you want to load members
-from many files at once, you can use the [`@forward` rule][] to forward them all from one shared file.
+Members (variables, functions, and mixins) loaded with `@use` are only visible
+in the stylesheet that loads them. Other stylesheets will need to write their
+own `@use` rules if they also want to access them. This helps make it easy to
+figure out exactly where each member is coming from. If you want to load members
+from many files at once, you can use the [`@forward` rule][] to forward them all
+from one shared file.
 
 [`@forward` rule]: /documentation/at-rules/forward
+{% endmarkdown %}
 
 {% funFact %}
-Because `@use` adds namespaces to member names, it's safe to choose very
-simple names like `$radius` or `$width` when writing a stylesheet. This is
-different from the old [`@import` rule][], which encouraged that users write
-long names like `$mat-corner-radius` to avoid conflicts with other
-libraries, and it helps keep your stylesheets clear and easy to read!
+Because `@use` adds namespaces to member names, it's safe to choose very simple
+names like `$radius` or `$width` when writing a stylesheet. This is different
+from the old [`@import` rule][], which encouraged that users write long names
+like `$mat-corner-radius` to avoid conflicts with other libraries, and it helps
+keep your stylesheets clear and easy to read!
 
 [`@import` rule]: /documentation/at-rules/import
 {% endfunFact %}
-{% endmarkdown %}
 
 {% codeExample 'loading-members' %}
 // src/_corners.scss
@@ -208,7 +197,7 @@ We recommend you only do this for stylesheets written by you, though; otherwise,
 they may introduce new members that cause name conflicts!
 {% endmarkdown %}
 
-{% codeExample 'use-url'%}
+{% codeExample 'use-url' %}
 // src/_corners.scss
 $radius: 3px;
 
@@ -264,7 +253,7 @@ You can even [hide that member][] while forwarding the rest of its module!
 [hide that member]: /documentation/at-rules/forward#controlling-visibility
 {% endfunFact %}
 
-{% codeExample 'private-members', , false%}
+{% codeExample 'private-members', false %}
 // src/_corners.scss
 $-radius: 3px;
 
@@ -409,7 +398,7 @@ code {
 After loading a module, you can reassign its variables.
 {% endmarkdown %}
 
-{% codeExample 'reassigning-variables', , false %}
+{% codeExample 'reassigning-variables', false %}
 // _library.scss
 $color: red;
 ---
@@ -436,8 +425,10 @@ library.$color: blue
 {% endcodeExample %}
 
 {% markdown %}
-This even works if you import a module without a namespace using `as *`. Assigning to a variable name defined in that module will overwrite its value in
+This even works if you import a module without a namespace using `as *`.
+Assigning to a variable name defined in that module will overwrite its value in
 that module.
+{% endmarkdown %}
 
 {% headsUp %}
 Built-in module variables (such as [`math.$pi`]) cannot be reassigned.
@@ -445,6 +436,7 @@ Built-in module variables (such as [`math.$pi`]) cannot be reassigned.
 [`math.$pi`]: /documentation/modules/math#$pi
 {% endheadsUp %}
 
+{% markdown %}
 ## Finding the Module
 
 It wouldn't be any fun to write out absolute URLs for every stylesheet you load,
@@ -452,6 +444,7 @@ so Sass's algorithm for finding a module makes it a little easier. For starters,
 you don't have to explicitly write out the extension of the file you want to
 load; `@use "variables"` will automatically load `variables.scss`,
 `variables.sass`, or `variables.css`.
+{% endmarkdown %}
 
 {% headsUp %}
 To ensure that stylesheets work on every operating system, Sass loads files by
@@ -459,6 +452,7 @@ To ensure that stylesheets work on every operating system, Sass loads files by
 backslashes, even on Windows.
 {% endheadsUp %}
 
+{% markdown %}
 ### Load Paths
 
 All Sass implementations allow users to provide *load paths*: paths on the
@@ -470,12 +464,14 @@ Modules will always be loaded relative to the current file first, though. Load
 paths will only be used if no relative file exists that matches the module's
 URL. This ensures that you can't accidentally mess up your relative imports when
 you add a new library.
+{% endmarkdown %}
 
 {% funFact %}
-  Unlike some other languages, Sass doesn't require that you use `./` for
-  relative imports. Relative imports are always available.
+Unlike some other languages, Sass doesn't require that you use `./` for relative
+imports. Relative imports are always available.
 {% endfunFact %}
 
+{% markdown %}
 ### Partials
 
 As a convention, Sass files that are only meant to be loaded as modules, not
@@ -487,7 +483,6 @@ own. You can leave off the `_` when importing a partial.
 
 If you write an `_index.scss` or `_index.sass` in a folder, the index file will
 be loaded automatically when you load the URL for the folder itself.
-
 {% endmarkdown %}
 
 {% codeExample 'index-files' %}
@@ -580,6 +575,7 @@ code {
 code {
   padding: .25em;
   line-height: 0;
+}
 {% endcodeExample %}
 
 {% markdown %}
