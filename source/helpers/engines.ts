@@ -1,3 +1,4 @@
+import slugify from '@sindresorhus/slugify';
 import { Liquid } from 'liquidjs';
 import markdown from 'markdown-it';
 import markdownAnchor from 'markdown-it-anchor';
@@ -6,18 +7,6 @@ import markdownDefList from 'markdown-it-deflist';
 import path from 'path';
 
 import { renderPermalink } from './components/anchors';
-
-/**
- * Identical to `markdown-it-anchor`'s default slugify function, but removes
- * leading dashes to match the behavior of the old Ruby site.
- * @see https://github.com/valeriangalliat/markdown-it-anchor/blob/649582d58185b00cfb2ceee9b6b4cd6aafc645b7/index.js#L3
- */
-function slugify(s: string): string {
-  const slug = encodeURIComponent(
-    String(s).trim().toLowerCase().replace(/\s+/g, '-'),
-  );
-  return slug.replace(/^-+/, '');
-}
 
 /**
  * Returns Markdown engine with custom configuration and plugins.
@@ -36,7 +25,7 @@ export const markdownEngine = markdown({
   .use(markdownAnchor, {
     level: 2,
     permalink: renderPermalink,
-    slugify,
+    slugify: (s) => slugify(s),
   });
 
 /**

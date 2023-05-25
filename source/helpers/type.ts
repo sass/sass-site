@@ -59,6 +59,11 @@ export const typogr = (content: string) => typogrify(content);
 export const replaceInternalLinks = (content: string, url: string) =>
   content.replace(/href="#/g, `href="${url}#`);
 
+/**
+ * Checks if a given string starts with a comparison string.
+ */
+export const startsWith = (str: string, check: string) => str.startsWith(check);
+
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,
                   @typescript-eslint/no-unsafe-call,
                   @typescript-eslint/no-explicit-any */
@@ -69,6 +74,7 @@ export default function typePlugin(eleventyConfig: any) {
   eleventyConfig.addLiquidFilter('markdownInline', markdownInline);
   eleventyConfig.addLiquidFilter('typogr', typogr);
   eleventyConfig.addLiquidFilter('replaceInternalLinks', replaceInternalLinks);
+  eleventyConfig.addLiquidFilter('startsWith', startsWith);
 
   // shortcodes...
   eleventyConfig.addLiquidShortcode('lorem', getLorem);

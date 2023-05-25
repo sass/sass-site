@@ -1,48 +1,13 @@
 ---
-title: "Migrator"
+title: Migrator
 table_of_contents: true
 introduction: >
   The Sass migrator automatically updates your Sass files to help you move on to
   the latest and greatest version of the language. Each of its commands migrates
   a single feature, to give you as much control as possible over what you update
   and when.
-complementary_content: |
-  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
-  <h3>Page Sections</h3>
-
-  - [Usage](#usage)
-  - [Installation](#installation){.section}
-    - [Overview](#installation)
-    - [Standalone](#standalone)
-    - [npm](#npm)
-    - [Chocolatey](#chocolatey)
-    - [Homebrew](#homebrew)
-  - [Global Options](#global-options){.section}
-    - [Overview](#global-options)
-    - [`--migrate-deps`](#migrate-deps)
-    - [`--load-path`](#load-path)
-    - [`--dry-run`](#dry-run)
-        - [Overview](#dry-run)
-        - [`--no-unicode`](#no-unicode)
-    - [`--verbose`](#verbose)
-  - [Migrations](#migrations){.section}
-    - [Overview](#migrations)
-    - [Division](#division){.section}
-        - [Overview](#division)
-        - [`--pessimistic`](#pessimistic)
-    - [Module](#module){.section}
-        - [Overview](#module)
-        - [Loading Dependencies](#loading-dependencies)
-        - [`--remove-prefix`](#remove-prefix)
-        - [`--forward`](#forward)
-    - [Namespace](#namespace){.section}
-        - [Overview](#namespace)
-        - [`--rename`](#rename)
-        - [`--force`](#force)
-
-  </nav>
 ---
-{% markdown %}
+
 ## Usage
 
 To use the Sass migrator, tell it [which migration][] you want to run and what
@@ -68,7 +33,7 @@ see what changes will be made without actually saving them, you can pass
 [--dry-run]: #dry-run
 [--verbose]: #verbose
 
-{% include 'code-snippets/example-module-migrator' %}
+{% render 'code-snippets/example-module-migrator' %}
 
 ## Installation
 
@@ -139,14 +104,15 @@ Migrating _grid.scss
 ```
 
 {% headsUp %}
-  The [module migrator][] assumes that any stylesheet that is depended on using
-  a [`@use` rule][] or a [`@forward` rule][] has already been migrated to the
-  module system, so it won't attempt to migrate them, even when the
-  `--migrate-deps` option is passed.
+The [module migrator][] assumes that any stylesheet that is depended on using
+a [`@use` rule][] or a [`@forward` rule][] has already been migrated to the
+module system, so it won't attempt to migrate them, even when the
+`--migrate-deps` option is passed.
 
-  [module migrator]: #module
-  [`@use` rule]: /documentation/at-rules/use
-  [`@forward` rule]: /documentation/at-rules/forward
+[module migrator]: #module
+[`@use` rule]: /documentation/at-rules/use
+[`@forward` rule]: /documentation/at-rules/forward
+
 {% endheadsUp %}
 
 ### `--load-path`
@@ -213,7 +179,7 @@ contents.
 
 [`--dry-run` option]: #dry-run
 
-```
+```shellsession
 $ sass-migrator module --verbose --dry-run style.scss
 Dry run. Logging migrated files instead of overwriting...
 <==> style.scss
@@ -264,37 +230,38 @@ instead. It doesn't just naïvely change `@import`s to `@use`s—it updates
 stylesheets intelligently so that they keep working the same way they did
 before, including:
 
-* Adding namespaces to uses of members (variables, mixins, and functions) from
+- Adding namespaces to uses of members (variables, mixins, and functions) from
   other modules.
 
-* Adding new `@use` rules to stylesheets that were using members without
+- Adding new `@use` rules to stylesheets that were using members without
   importing them.
 
-* Converting overridden default variables to [`with` clauses][].
+- Converting overridden default variables to [`with` clauses][].
 
   [`with` clauses]: /documentation/at-rules/use#configuration
 
-* Automatically removing `-` and `_` prefixes from members that are used from
+- Automatically removing `-` and `_` prefixes from members that are used from
   other files (because otherwise they'd be considered [private][] and could only
   be used in the module they're declared).
 
   [private]: /documentation/at-rules/use#private-members
 
-* Converting [nested imports][] to use the [`meta.load-css()` mixin][] instead.
+- Converting [nested imports][] to use the [`meta.load-css()` mixin][] instead.
 
   [nested imports]: /documentation/at-rules/import#nesting
   [`meta.load-css()` mixin]: /documentation/modules/meta#load-css
 
 {% headsUp %}
-  Because the module migrator may need to modify both member definitions *and*
-  member names, it's important to either run it with the [`--migrate-deps`
-  option][] or ensure that you pass it all the stylesheets in your package or
-  application.
+Because the module migrator may need to modify both member definitions _and_
+member names, it's important to either run it with the [`--migrate-deps`
+option][] or ensure that you pass it all the stylesheets in your package or
+application.
 
-  [`--migrate-deps` option]: #migrate-deps
+[`--migrate-deps` option]: #migrate-deps
+
 {% endheadsUp %}
 
-{% include 'code-snippets/example-module-migrator' %}
+{% render 'code-snippets/example-module-migrator' %}
 
 #### Loading Dependencies
 
@@ -373,13 +340,13 @@ matches multiple prefixes, the longest matching prefix will be removed.
 This option tells the migrator which members to forward using the [`@forward`
 rule][]. It supports the following settings:
 
-* `none` (the default) doesn't forward any members.
+- `none` (the default) doesn't forward any members.
 
-* `all` forwards all members except those that started with `-` or `_` in the
+- `all` forwards all members except those that started with `-` or `_` in the
   original stylesheet, since that was commonly used to mark a package-private
   member before the module system was introduced.
 
-* `prefixed` forwards only members that begin with the prefix passed to the
+- `prefixed` forwards only members that begin with the prefix passed to the
   [`--remove-prefix` option][]. This option may only be used in conjunction with
   the `--remove-prefix` option.
 
@@ -432,9 +399,9 @@ However, you can also do this to accomplish more complicated renames. For
 instance, say that you previously had a stylesheet that looked like this:
 
 ```scss
-@import "components/button/lib/mixins";
-@import "components/input/lib/mixins";
-@import "components/table/lib/mixins";
+@import 'components/button/lib/mixins';
+@import 'components/input/lib/mixins';
+@import 'components/table/lib/mixins';
 // ...
 ```
 
@@ -442,9 +409,9 @@ Since all of these URLs would have the default namespace `mixins` when migrated
 to `@use` rules, the module migrator may end up generating something like this:
 
 ```scss
-@use "components/button/lib/mixins" as button-lib-mixins;
-@use "components/input/lib/mixins" as input-lib-mixins;
-@use "components/table/lib/mixins" as table-lib-mixins;
+@use 'components/button/lib/mixins' as button-lib-mixins;
+@use 'components/input/lib/mixins' as input-lib-mixins;
+@use 'components/table/lib/mixins' as table-lib-mixins;
 // ...
 ```
 
@@ -456,9 +423,9 @@ If we run the namespace migrator with
 `--rename 'url components/(\w+)/lib/mixins to \1'`, we'll end up with:
 
 ```scss
-@use "components/button/lib/mixins" as button;
-@use "components/input/lib/mixins" as input;
-@use "components/table/lib/mixins" as table;
+@use 'components/button/lib/mixins' as button;
+@use 'components/input/lib/mixins' as input;
+@use 'components/table/lib/mixins' as table;
 // ...
 ```
 
@@ -487,5 +454,3 @@ pass `--force`.
 With `--force`, if any conflicts are encountered, the first `@use` rule will
 get its preferred namespace, while subsequent `@use` rules with the same
 preferred namespace will instead have a numerical suffix added to them.
-
-{% endmarkdown %}
