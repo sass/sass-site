@@ -24,7 +24,7 @@ complementary_content: |
 
   </nav>
 ---
-
+{% markdown %}
 ## Statements
 
 A Sass stylesheet is made up of a series of _statements_, which are evaluated in
@@ -108,9 +108,11 @@ The simplest expressions just represent static values:
 ### Operations
 
 Sass defines syntax for a number of operations:
+{% endmarkdown %}
 
 {% render 'documentation/snippets/operator-list', parens:true %}
 
+{% markdown %}
 ### Other Expressions
 
 - [Variables](/documentation/variables), like `$var`.
@@ -122,3 +124,4 @@ Sass defines syntax for a number of operations:
   rules.
 - [The parent selector](/documentation/style-rules/parent-selector), `&`.
 - The value `!important`, which is parsed as an unquoted string.
+{% endmarkdown %}
