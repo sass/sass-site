@@ -96,9 +96,12 @@ const generateCodeExample = (
     if (sections.length !== 1) {
       throw new Error("Can't auto-generate CSS from more than one SCSS block.");
     }
-    cssContents = sass.compileString(sections[0], {
+    const css = sass.compileString(sections[0], {
       syntax: syntax === 'sass' ? 'indented' : 'scss',
     }).css;
+    if (css.trim()) {
+      cssContents = css;
+    }
   }
 
   const cssExamples =

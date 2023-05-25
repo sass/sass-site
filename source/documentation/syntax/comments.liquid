@@ -1,8 +1,12 @@
 ---
 title: Comments
 introduction: >
-  The way Sass comments work differs substantially between SCSS and the indented syntax. Both syntaxes support two types of comments: comments defined using `/* */` that are (usually) compiled to CSS, and comments defined using `//` that are not.
+  The way Sass comments work differs substantially between SCSS and the indented
+  syntax. Both syntaxes support two types of comments: comments defined using
+  `/* */` that are (usually) compiled to CSS, and comments defined using `//`
+  that are not.
 ---
+
 {% markdown %}
 ## In SCSS
 
@@ -18,27 +22,27 @@ compiled to a CSS comment. They're also called **loud comment**, by contrast
 with silent comments. A multi-line comment that's compiled to CSS may contain
 [interpolation][], which will be evaluated before the comment is compiled.
 
-By default, multi-line comments be stripped from the compiled CSS in [compressed
-mode][]. If a comment begins with `/*!`, though, it will always be included in
-the CSS output.
+By default, multi-line comments will be stripped from the compiled CSS in
+[compressed mode][]. If a comment begins with `/*!`, though, it will always be
+included in the CSS output.
 
 [statement]: /documentation/syntax/structure#statements
 [interpolation]: /documentation/interpolation
 [compressed mode]: /documentation/cli/dart-sass#style
 {% endmarkdown %}
 
-{% codeExample 'scss-comment', , true, 'scss'%}
- // This comment won't be included in the CSS.
+{% codeExample 'scss-comment', true, 'scss' %}
+// This comment won't be included in the CSS.
 
 /* But this comment will, except in compressed mode. */
 
 /* It can also contain interpolation:
-  * 1 + 1 = #{1 + 1} */
+ * 1 + 1 = #{1 + 1} */
 
 /*! This comment will be included even in compressed mode. */
 
 p /* Multi-line comments can be written anywhere
-    * whitespace is allowed. */ .sans {
+   * whitespace is allowed. */ .sans {
   font: Helvetica, // So can single-line comments.
         sans-serif;
 }
@@ -65,14 +69,14 @@ case, they have exactly the same syntax as they do in SCSS.
 [expressions]: /documentation/syntax/structure#expressions
 {% endmarkdown %}
 
-{% codeExample 'sass-comment', , true, 'sass'%}
+{% codeExample 'sass-comment', true, 'sass' %}
 // This comment won't be included in the CSS.
-    This is also commented out.
+   This is also commented out.
 
 /* But this comment will, except in compressed mode.
 
 /* It can also contain interpolation:
-    1 + 1 = #{1 + 1}
+   1 + 1 = #{1 + 1}
 
 /*! This comment will be included even in compressed mode.
 
@@ -85,10 +89,9 @@ p .sans
 
 When writing style libraries using Sass, you can use comments to document the
 [mixins][], [functions][], [variables][], and [placeholder selectors][] that
-your library provides, as well as the library itself. These are comments are
-read by the [SassDoc][] tool, which uses them to generate beautiful
-documentation. Check out [the Susy grid engine][susy]'s documentation to see it
-in action!
+your library provides, as well as the library itself. These comments are read by
+the [SassDoc][] tool, which uses them to generate beautiful documentation. Check
+out [the Susy grid engine][susy]'s documentation to see it in action!
 
 [mixins]: /documentation/at-rules/mixin
 [functions]: /documentation/at-rules/function
@@ -106,7 +109,7 @@ detail.
 [annotations]: http://sassdoc.com/annotations/
 {% endmarkdown %}
 
-{% codeExample 'documentation-comment', , false%}
+{% codeExample 'documentation-comment' %}
 /// Computes an exponent.
 ///
 /// @param {number} $base

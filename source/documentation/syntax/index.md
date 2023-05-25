@@ -53,9 +53,9 @@ indented syntax that are noted throughout the reference.
 
 {% headsUp %}
 The indented syntax currently doesn't support expressions that wrap across
-multiple lines. See [issue 216].
+multiple lines. See [issue #216].
 
-[issue 216]: https://github.com/sass/sass/issues/216
+[issue #216]: https://github.com/sass/sass/issues/216
 
 {% endheadsUp %}
 
