@@ -14,7 +14,8 @@ layout: base
               {% if complementary_content %}
                 {{ complementary_content | markdown }}
               {% elsif table_of_contents %}
-                {% assign toc = content | getToc %}
+                {% assign top_level_toc = documentation.toc | size %}
+                {% assign toc = content | getToc: top_level_toc %}
                 {% if toc | size %}
                   <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
                     <h3 id="page-sections">Page Sections</h3>

@@ -1,22 +1,25 @@
 import * as cheerio from 'cheerio';
 
 type TOCItem = {
-  [key: string]: string | TOCItem[];
+  [key: string]: string | boolean | TOCItem[];
 };
 
 /**
  * Returns `text` and `href` for a documentation table-of-contents section.
  */
 export const getDocTocData = (data: TOCItem) => {
-  const text = Object.keys(data).filter((key) => key !== ':children')[0];
+  const text = Object.keys(data).filter(
+    (key) => ![':children', ':expanded'].includes(key),
+  )[0];
   const href = data[text] as string;
-  return { text, href };
+  const expanded = Boolean(data[':expanded']);
+  return { text, href, expanded };
 };
 
 /**
  * Generates table of contents data for a documentation page.
  */
-export const getToc = (html: string): TOCItem[] => {
+export const getToc = (html: string, topLevelTotal: number): TOCItem[] => {
   const $ = cheerio.load(html);
   $('a.anchor').remove();
   const headings = $('h2, h3, h4, h5, h6').filter('[id]');
@@ -25,6 +28,13 @@ export const getToc = (html: string): TOCItem[] => {
   }
   const toc: TOCItem[] = [];
   let stack: TOCItem[] = [];
+  const byLevel: Record<number, TOCItem[]> = {
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+  };
 
   headings.each((index, element) => {
     const h = element as cheerio.TagElement;
@@ -32,6 +42,7 @@ export const getToc = (html: string): TOCItem[] => {
     const title = $(h).html() as string;
     const id = $(h).attr('id') as string;
     const tocItem: TOCItem = { [title]: `#${id}` };
+    byLevel[level].push(tocItem);
     if (level === 2) {
       toc.push(tocItem);
       stack = [tocItem];
@@ -49,5 +60,26 @@ export const getToc = (html: string): TOCItem[] => {
       }
     }
   });
+
+  // Expand the table of contents to the deepest level possible without making
+  // it longer than the most-collapsed-possible top-level documentation table of
+  // contents.
+  let expandedLevel = 2;
+  let totalEntries = 0;
+  while (expandedLevel < 7) {
+    const entries = byLevel[expandedLevel];
+    totalEntries += entries.length;
+
+    if (!entries.length || totalEntries > topLevelTotal) {
+      break;
+    }
+
+    for (const entry of entries) {
+      entry[':expanded'] = true;
+    }
+
+    expandedLevel += 1;
+  }
+
   return toc;
 };
