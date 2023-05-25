@@ -4,9 +4,11 @@ import PrismLoader from 'prismjs/components/index';
 import { liquidEngine } from '../engines';
 import { default as codeExample } from './codeExample';
 import { compatibility, implStatus } from './compatibility';
+import { getDocTocData, getToc } from './toc';
 
 export { codeExample };
 export { compatibility, implStatus };
+export { getDocTocData, getToc };
 
 /**
  * Returns HTML for a fun fact that's not directly relevant to the main
@@ -49,18 +51,6 @@ export const codeBlock = (contents: string, language: string, padding = 0) => {
   return `<pre class="${attr}"><code class="${attr}">${html}</code></pre>`;
 };
 
-type DocToc = {
-  [key: string]: string | DocToc[];
-};
-/**
- * Returns `text` and `href` for a documentation table-of-contents section.
- */
-export const getDocTocData = (data: DocToc) => {
-  const text = Object.keys(data).filter((key) => key !== ':children')[0];
-  const href = data[text] as string;
-  return { text, href };
-};
-
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,
                   @typescript-eslint/no-unsafe-call,
                   @typescript-eslint/no-explicit-any */
@@ -68,6 +58,7 @@ export default function componentsPlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('implStatus', implStatus);
   eleventyConfig.addLiquidFilter('getDocTocData', getDocTocData);
+  eleventyConfig.addLiquidFilter('getToc', getToc);
 
   // paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('code', codeBlock);

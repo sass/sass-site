@@ -8,7 +8,7 @@
     {%- assign link = section | getDocTocData -%}
     {%- assign children = section[':children'] -%}
     <li>
-      <a href="{{ link.href }}" class="{% if children %}section {% endif %}{% if url | startsWith: link.href %}open selected{% endif %}">{{ link.text }}</a>
+      <a href="{{ link.href }}" class="{% if children %}section {% endif %}{% if url | startsWith: link.href %}open selected{% elsif url == '' %}open{% endif %}">{{ link.text }}</a>
       {%- if children -%}
         {% render 'documentation_toc', url: url, toc: children, parent_href: link.href %}
       {%- endif -%}
