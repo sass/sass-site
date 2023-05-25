@@ -4,7 +4,7 @@ table_of_contents: true
 eleventyComputed:
   before_introduction: "{% render 'documentation/snippets/module-system-status' %}"
 introduction: >
-  The `@use` rule loads [mixins](../mixin), [functions](../function), and [variables](../../variables) from other Sass stylesheets, and combines CSS from multiple stylesheets together. Stylesheets loaded by `@use` are called "modules". Sass also provides [built-in modules](../../modules) full of useful functions.
+  The `@use` rule loads [mixins](/documentation/at-rules/mixin), [functions](/documentation/at-rules/function), and [variables](/documentation/variables) from other Sass stylesheets, and combines CSS from multiple stylesheets together. Stylesheets loaded by `@use` are called "modules". Sass also provides [built-in modules](/documentation/modules) full of useful functions.
 complementary_content: |
   <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
 
@@ -35,14 +35,12 @@ compiled CSS output, no matter how many times those styles are loaded.
 {% endmarkdown %}
 
 {% headsUp %}
-{% markdown %}
 A stylesheet's `@use` rules must come before any rules other than `@forward`,
 including [style rules][]. However, you can declare variables before `@use`
 rules to use when [configuring modules][].
 
-[style rules]: ../../style-rules
+[style rules]: /documentation/style-rules
 [configuring modules]: #configuration
-{% endmarkdown %}
 {% endheadsUp %}
 
 {% codeExample 'use' %}
@@ -111,7 +109,7 @@ Members (variables, functions, and mixins) loaded with `@use` are only visible i
 own `@use` rules if they also want to access them. This helps make it easy to figure out exactly where each member is coming from. If you want to load members
 from many files at once, you can use the [`@forward` rule][] to forward them all from one shared file.
 
-[`@forward` rule]: ../forward
+[`@forward` rule]: /documentation/at-rules/forward
 
 {% funFact %}
 Because `@use` adds namespaces to member names, it's safe to choose very
@@ -120,7 +118,7 @@ different from the old [`@import` rule][], which encouraged that users write
 long names like `$mat-corner-radius` to avoid conflicts with other
 libraries, and it helps keep your stylesheets clear and easy to read!
 
-[`@import` rule]: ../import
+[`@import` rule]: /documentation/at-rules/import
 {% endfunFact %}
 {% endmarkdown %}
 
@@ -262,8 +260,8 @@ single module, just don't [forward its module][] from any of your package's
 entrypoints (the stylesheets you tell your users to load to use your package).
 You can even [hide that member][] while forwarding the rest of its module!
 
-[forward its module]: ../forward
-[hide that member]: ../forward#controlling-visibility
+[forward its module]: /documentation/at-rules/forward
+[hide that member]: /documentation/at-rules/forward#controlling-visibility
 {% endfunFact %}
 
 {% codeExample 'private-members', , false%}
@@ -308,7 +306,7 @@ configurable. To load a module with configuration, write `@use <url> with
 (<variable>: <value>, <variable>: <value>)`. The configured values will override
 the variables' default values.
 
-[`!default` flag]: ../variables#default-values
+[`!default` flag]: /documentation/variables#default-values
 {% endmarkdown %}
 
 {% render 'code-snippets/example-use-with' %}
@@ -324,8 +322,8 @@ once, pass [maps][] as configuration, or update the configuration after the
 module is loaded, consider writing a mixin to set your variables instead and
 another mixin to inject your styles.
 
-[`@import` rule]: ../import
-[maps]: ../../values/maps
+[`@import` rule]: /documentation/at-rules/import
+[maps]: /documentation/values/maps
 {% endmarkdown %}
 
 {% codeExample 'with-mixins' %}
@@ -591,7 +589,7 @@ don't accidentally write Sass in their CSS, all Sass features that aren't also
 valid CSS will produce errors. Otherwise, the CSS will be rendered as-is. It can
 even be [extended][]!
 
-[extended]: ../extend
+[extended]: /documentation/at-rules/extend
 
 ## Differences From `@import`
 
@@ -614,6 +612,6 @@ between the two:
 
 * `@use` requires quotes around its URL, even when using the [indented syntax].
 
-[`@import` rule]: ../import
-[indented syntax]: ../../syntax#the-indented-syntax
+[`@import` rule]: /documentation/at-rules/import
+[indented syntax]: /documentation/syntax#the-indented-syntax
 {% endmarkdown %}

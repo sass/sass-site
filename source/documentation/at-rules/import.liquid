@@ -67,7 +67,6 @@ We've written a [migration tool][] that automatically converts most
 
 [migration tool]: /documentation/cli/migrator
 {% endheadsUp %}
-
 {% endmarkdown %}
 
 {% codeExample 'import' %}
@@ -159,11 +158,13 @@ Unlike some other languages, Sass doesn't require that you use `./` for relative
 As a convention, Sass files that are only meant to be imported, not compiled on their own, begin with `_` (as in `_code.scss`). These are called *partials*, and they tell Sass tools not to try to compile those files on their own. You can leave off the `_` when importing a partial.
 
 ### Index Files
+{% endmarkdown %}
 
-{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, '3.6.0', '3.6.0' %}{% endcompatibility %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility true, '3.6.0', null, '3.6.0' %}{% endcompatibility %}
+
+{% markdown %}
 If you write an `_index.scss` or `_index.sass` in a folder, when the folderitself is imported that file will be loaded in its place.
-
 {% endmarkdown %}
 
 {% codeExample 'index-files' %}
@@ -289,7 +290,7 @@ Nested imports are very useful for scoping third-party stylesheets, but if you'r
 [mixin]: /documentation/at-rules/mixin
 {% endfunFact %}
 
-{% headsUp %}
+{% headsUp, false %}
 {% markdown %}
 The CSS in nested imports is evaluated like a mixin, which means that any [parent selectors][] will refer to the selector in which the stylesheet is nested.
 
@@ -340,8 +341,7 @@ ul li
 {% markdown %}
 ## Importing CSS
 
-{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.11.0', 'partial', false %}
+{% compatibility '1.11.0', 'partial', null, false %}
 LibSass supports importing files with the extension `.css`, but contrary to
 the specification they're treated as SCSS files rather than being parsed as
 CSS. This behavior has been deprecated, and an update is in the works to
@@ -390,8 +390,7 @@ rendered as-is. It can even be [extended][]!
 
 ## Plain CSS `@import`s
 
-{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, 'partial', true %}
+{% compatibility true, 'partial', null, true %}
 By default, LibSass handles plain CSS imports correctly. However, any [custom importers][] will incorrectly apply to plain-CSS `@import` rules, making it possible for those rules to load Sass files.
 
 [custom importers]: /documentation/js-api/interfaces/LegacySharedOptions#importer
@@ -508,7 +507,7 @@ To make this easier, Sass also supports *import-only files*. If you name a file 
 {% markdown %}
 #### Configuring Modules Through Imports
 
-{% compatibility '1.24.0', false, false %}{% endcompatibility %}
+{% compatibility '1.24.0', false, null, false %}{% endcompatibility %}
 
 You can [configure modules][] that are loaded through an `@import` by defining global variables prior the `@import` that first loads that module.
 

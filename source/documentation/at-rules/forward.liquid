@@ -1,7 +1,7 @@
 ---
 title: "@forward"
 introduction: >
-  The `@forward` rule loads a Sass stylesheet and makes its [mixins](../mixin), [functions](../function), and [variables](../../variables) available when your stylesheet is loaded with the [`@use` rule](../use). It makes it possible to organize Sass libraries across many files, while allowing their users to load a single entrypoint file.
+  The `@forward` rule loads a Sass stylesheet and makes its [mixins](/documentation/at-rules/mixin), [functions](/documentation/at-rules/function), and [variables](/documentation/variables) available when your stylesheet is loaded with the [`@use` rule](/documentation/at-rules/use). It makes it possible to organize Sass libraries across many files, while allowing their users to load a single entrypoint file.
 ---
 {% markdown %}
 The rule is written `@forward "<url>"`. It loads the module at the given URL
@@ -11,19 +11,19 @@ module. Those members aren't available in your module, though—if you want that
 you'll need to write a `@use` rule as well. Don't worry, it'll only load the
 module once!
 
-[public]: ../use#private-members
+[public]: /documentation/at-rules/use#private-members
 
 If you *do* write both a `@forward` and a `@use` for the same module in the same
 file, it's always a good idea to write the `@forward` first. That way, if your
 users want to [configure the forwarded module][], that configuration will be
 applied to the `@forward` before your `@use` loads it without any configuration.
 
-[configure the forwarded module]: ../use#configuration
+[configure the forwarded module]: /documentation/at-rules/use#configuration
 
 {% funFact %}
 The `@forward` rule acts just like `@use` when it comes to a module's CSS. Styles from a forwarded module will be included in the compiled CSS output, and the module with the `@forward` can [extend][] it, even if it isn't also `@use`d.
 
-[extend]: ../extend
+[extend]: /documentation/at-rules/extend
 {% endfunFact %}
 {% endmarkdown %}
 
@@ -74,7 +74,7 @@ Because module members are usually used with [a namespace][], short and simple n
 
 This is written `@forward "<url>" as <prefix>-*`, and it adds the given prefix to the beginning of every mixin, function, and variable name forwarded by the module. For example, if the module defines a member named `reset` and it's forwarded `as list-*`, downstream stylesheets will refer to it as `list-reset`.
 
-[a namespace]: ../use#loading-members
+[a namespace]: /documentation/at-rules/use#loading-members
 {% endmarkdown %}
 
 {% codeExample 'prefix' %}
@@ -175,12 +175,12 @@ $horizontal-list-gap: 2em
 {% markdown %}
 ## Configuring Modules
 
-{% # Arguments are (in order): `dart`, `libsass`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.24.0', false, false %}{% endcompatibility %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+{% compatibility '1.24.0', false, null, false %}{% endcompatibility %}
 
 The `@forward` rule can also load a module with [configuration][]. This mostly works the same as it does for `@use`, with one addition: a `@forward` rule's configuration can use the `!default` flag in its configuration. This allows a module to change the defaults of an upstream stylesheet while still allowing downstream stylesheets to override them.
 
-[configuration]: ../use#configuration
+[configuration]: /documentation/at-rules/use#configuration
 {% endmarkdown %}
 
 {% codeExample 'configuration' %}
