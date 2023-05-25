@@ -14,6 +14,7 @@ import { renderPermalink } from './components/anchors';
  * @see https://github.com/markdown-it/markdown-it
  * @see https://github.com/markdown-it/markdown-it-deflist
  * @see https://github.com/arve0/markdown-it-attrs
+ * @see https://github.com/valeriangalliat/markdown-it-anchor
  */
 export const markdownEngine = markdown({
   html: true,
