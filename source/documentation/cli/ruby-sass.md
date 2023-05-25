@@ -10,6 +10,7 @@ switch to [Dart Sass][] or [LibSass][] at your earliest convenience.
 [Ruby Sass has reached end of life]: /blog/ruby-sass-is-unsupported
 [Dart Sass]: /dart-sass
 [LibSass]: /libsass
+
 {% endheadsUp %}
 
 ## Usage
@@ -24,7 +25,7 @@ sass [input.scss] [output.css]
 
 One-to-one mode compiles a single input file (`input.scss`) to a single output
 location (`output.css`). If no output location is passed, the compiled CSS is
-printed to the terminal. If no input *or* output is passed, the CSS is read from
+printed to the terminal. If no input _or_ output is passed, the CSS is read from
 [standard input][] and printed to the terminal.
 
 [standard input]: https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)
@@ -47,7 +48,7 @@ sass [<input.css>:<output.css>] [<input/>:<output/>] [input.css] [input/]...
 Many-to-many mode compiles one or more input files to one or more output files.
 The inputs are separated from the outputs with colons. It can also compile all
 Sass files in a directory to CSS files with the same names in another directory.
-Many-to-many mode is enabled when any argument contains a colon, *or* when the
+Many-to-many mode is enabled when any argument contains a colon, _or_ when the
 [`--update` flag][] or the [`--watch` flag][] is passed.
 
 [`--update` flag]: #update
@@ -139,11 +140,11 @@ $ sass --compass style.scss style.css
 This option (abbreviated `-t`) controls the output style of the resulting CSS.
 Ruby Sass supports four output styles:
 
-* `nested` (the default) indents CSS rules to match the nesting of the Sass
+- `nested` (the default) indents CSS rules to match the nesting of the Sass
   source.
-* `expanded` writes each selector and declaration on its own line.
-* `compact` puts each CSS rule on its own single line.
-* `compressed` removes as many extra characters as possible, and writes the
+- `expanded` writes each selector and declaration on its own line.
+- `compact` puts each CSS rule on its own single line.
+- `compressed` removes as many extra characters as possible, and writes the
   entire stylesheet on a single line.
 
 ```shellsession
@@ -245,7 +246,7 @@ $ sass --update style.scss
 #### `--force`
 
 This flag (abbreviated `-f`) may only be passed in [many-to-many mode][]. It
-causes Sass files to *always* be compiled to CSS files, instead of only being
+causes Sass files to _always_ be compiled to CSS files, instead of only being
 compiled when the source files are more up-to-date than the output.
 
 The `--force` flag may not be passed alongside the [`--watch` flag][].
@@ -296,12 +297,12 @@ your Sass files in browsers. See instructions for using source maps in
 [Chrome]: https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps
 [Firefox]: https://developer.mozilla.org/en-US/docs/Tools/Style_Editor#Source_map_support
 
-* `auto` (the default) uses relative URLs to link from the source map to the
+- `auto` (the default) uses relative URLs to link from the source map to the
   Sass stylesheets where possible, and absolute [`file:` URLs][] otherwise.
-* `file` always uses absolute absolute `file:` URLs to link from the source map
+- `file` always uses absolute absolute `file:` URLs to link from the source map
   to the Sass stylesheets.
-* `inline` includes the text of the Sass stylehseets in the source map directly.
-* `none` doesn't generate source maps at all.
+- `inline` includes the text of the Sass stylehseets in the source map directly.
+- `none` doesn't generate source maps at all.
 
 [`file:` URLs]: https://en.wikipedia.org/wiki/File_URI_scheme
 
@@ -484,6 +485,7 @@ Traceback (most recent call last):
          1: from /usr/share/gems/sass/lib/sass/scss/parser.rb:1305:in `expected'
 test.scss:1: Invalid CSS after "h1 {font-size: ": expected expression (e.g. 1px, bold), was "}" (Sass::SyntaxError)
 ```
+
 #### `--quiet`
 
 This flag (abbreviated `-q`) tells Sass not to emit any warnings when compiling.
