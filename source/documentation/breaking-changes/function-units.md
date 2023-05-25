@@ -6,7 +6,6 @@ introduction: >
   with the CSS spec and helps catch errors more quickly.
 ---
 
-{% markdown %}
 ## Hue
 
 {% compatibility '1.32.0', false, null, false %}{% endcompatibility %}
@@ -132,17 +131,15 @@ A future version of Sass will stop ignoring units for the `$limit` argument and
 return a random integer with the same units.
 
 [The `math.random()` function]: /documentation/modules/math#random
-{% endmarkdown %}
 
 {% codeExample 1, false %}
 // Future Sass, doesn't work yet!
 @debug math.random(100px); // 42px
 ===
 // Future Sass, doesn't work yet!
-@debug math.random(100px)  // 42px
+@debug math.random(100px) // 42px
 {% endcodeExample %}
 
-{% markdown %}
 ### Phase 1
 
 {% compatibility '1.54.5', false, null, false %}{% endcompatibility %}
@@ -210,4 +207,3 @@ units or with units other than `%` to `color.mix()` or `color.invert()`.
 
 In Dart Sass 2.0.0, `list.nth()` and `list.set-nth()` will throw errors if
 they're passed an index `$n` with a unit.
-{% endmarkdown %}

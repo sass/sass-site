@@ -6,7 +6,6 @@ introduction: >
   way `@extend` is meant to work.
 ---
 
-{% markdown %}
 {% compatibility true, false, null, false %}{% endcompatibility %}
 
 When one selector extends another, Sass styles all elements that match the
@@ -19,7 +18,6 @@ work like replacing `class="heads-up"` with `class="heads-up info message"`. But
 that's not how it works right now in LibSass and Ruby Sass--instead of adding
 `.heads-up` to every selector that has *either `.info` or `.message`*, it only
 adds it to selectors that have *`.info.message` together*.
-{% endmarkdown %}
 
 {% codeExample 1, false %}
 // These should both be extended, but they won't be.
@@ -46,12 +44,10 @@ adds it to selectors that have *`.info.message` together*.
   @extend .message.info
 {% endcodeExample %}
 
-{% markdown %}
 To fix this issue, avoid more confusion, and keep the implementation clean and
 efficient the ability to extend compound selectors is unsupported in Dart Sass
 and will be removed in a future version of LibSass. For compatibility, users
 should extend each simple selector separately instead:
-{% endmarkdown %}
 
 {% codeExample 2 %}
 .message {

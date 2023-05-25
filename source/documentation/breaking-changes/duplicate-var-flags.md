@@ -1,12 +1,11 @@
 ---
-title: "Breaking Change: Duplicate Variable Flags"
+title: 'Breaking Change: Duplicate Variable Flags'
 introduction: >
   Variables will only allow a single `!global` or `!default` flag. Duplicate
   flags never had any additional effect, this just ensures that stylesheets are
   more consistent.
 ---
 
-{% markdown %}
 ## Phase 1
 
 {% compatibility '2.0.0', false, null, false %}{% endcompatibility %}
@@ -22,4 +21,3 @@ each `!global` or `!default` flag, this will be a syntax error. This means that
 
 Until Dart Sass 2.0.0 is released, multiple copies of a flag just produce
 deprecation warnings.
-{% endmarkdown %}

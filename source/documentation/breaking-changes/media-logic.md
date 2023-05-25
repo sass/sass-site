@@ -8,7 +8,6 @@ introduction: >
 
 {% compatibility '1.56.0', false, null, false %}{% endcompatibility %}
 
-{% markdown %}
 Because Sass supports almost any Sass expression in parenthesized media
 conditions, there were a few constructs whose meaning was changed by adding full
 support for Media Queries Level 4. Specifically:
@@ -29,4 +28,3 @@ Fortunately, these came up very infrequently in practice.
 First, we emitted deprecation warnings for the previous ambiguous cases. These
 will have suggestions for how to preserve the existing behavior or how to use
 the new CSS syntax.
-{% endmarkdown %}

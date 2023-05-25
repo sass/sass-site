@@ -7,7 +7,6 @@ introduction: >
   wasn't compatible with CSS.
 ---
 
-{% markdown %}
 {% compatibility true, '3.5.0', null, '3.5.0' %}{% endcompatibility %}
 
 The CSS spec allows almost any string of characters to be used in a custom
@@ -17,7 +16,6 @@ SassScript values, syntax that would have been valid plain CSS failed to parse.
 For example, the [Polymer library][] used this to support plain-CSS mixins:
 
 [Polymer library]: https://polymer-library.polymer-project.org/3.0/docs/devguide/custom-css-properties#use-custom-css-mixins
-{% endmarkdown %}
 
 {% codeExample 1, true, 'scss' %}
 :root {
@@ -39,12 +37,10 @@ For example, the [Polymer library][] used this to support plain-CSS mixins:
 }
 {% endcodeExample %}
 
-{% markdown %}
 To provide maximum compatibility with plain CSS, more recent versions of Sass
 require SassScript expressions in custom property values to be written within
 [interpolation](/documentation/interpolation). Interpolation will also work for older Sass
 versions, and so is recommended for all stylesheets.
-{% endmarkdown %}
 
 {% codeExample 2 %}
 $accent-color: #fbbc04;

@@ -6,7 +6,6 @@ introduction: >
   for parsing them.
 ---
 
-{% markdown %}
 Sass has historically supported a special parsing for the `@-moz-document` rule.
 As [Firefox dropped support for them], Sass will also drop support for the special
 parsing and will treat it as an unknown at-rule.
@@ -16,7 +15,6 @@ parsing and will treat it as an unknown at-rule.
 
 **There is one exception**: an empty url prefix function is still allowed, as
 that's used in a hack targetting Firefox.
-{% endmarkdown %}
 
 {% codeExample 1 %}
 @-moz-document url-prefix() {
@@ -30,7 +28,6 @@ that's used in a hack targetting Firefox.
     color: red
 {% endcodeExample %}
 
-{% markdown %}
 ## Transition Period
 
 {% compatibility '1.7.2', false, null, false %}{% endcompatibility %}
@@ -39,4 +36,3 @@ First, we'll emit deprecation warnings for all usages of `@-moz-document`
 except for the empty url-prefix hack.
 
 In Dart Sass 2.0, `@-moz-document` will be treated as an unknown at-rule.
-{% endmarkdown %}

@@ -7,7 +7,6 @@ introduction: >
   `/` as a separator.
 ---
 
-{% markdown %}
 {% compatibility 'partial', false, null, false %}{% endcompatibility %}
 
 Today, Sass uses [complex heuristics][] to figure out whether a `/` should be
@@ -27,7 +26,6 @@ similar to how `,` works today. Division will instead be written using the new
 today.
 
 This deprecation does not affect uses of `/` inside `calc()` expressions.
-{% endmarkdown %}
 
 {% codeExample 1 %}
 @use "sass:math";
@@ -50,7 +48,6 @@ This deprecation does not affect uses of `/` inside `calc()` expressions.
 }
 {% endcodeExample %}
 
-{% markdown %}
 ## Transition Period
 
 {% compatibility '1.33.0', false, null, false, 'math.div() and list.slash()' %}{% endcompatibility %}
@@ -59,8 +56,7 @@ To ease the transition, we've begun by adding the `math.div()` function. The `/`
 operator still does division for now, but it also prints a deprecation warning
 when it does so. Users should switch all division to use `math.div()` instead.
 
-{% include 'documentation/snippets/silence-deprecations' %}
-{% endmarkdown %}
+{% render 'documentation/snippets/silence-deprecations' %}
 
 {% codeExample 2, false %}
 @use "sass:math";
@@ -80,7 +76,6 @@ when it does so. Users should switch all division to use `math.div()` instead.
 @debug math.div(12px, 4px) // 3
 {% endcodeExample %}
 
-{% markdown %}
 Slash-separated lists will also be available in the transition period. Because
 they can't be created with `/` yet, the `list.slash()` function will be added to
 create them. You will also be able to pass `"slash"` as the `$separator` to the
@@ -88,7 +83,6 @@ create them. You will also be able to pass `"slash"` as the `$separator` to the
 
 [`list.join()` function]: /documentation/modules/list#join
 [`list.append()` function]: /documentation/modules/list#append
-{% endmarkdown %}
 
 {% codeExample 3 %}
 @use "sass:list";
@@ -111,15 +105,12 @@ create them. You will also be able to pass `"slash"` as the `$separator` to the
 }
 {% endcodeExample %}
 
-{% markdown %}
 {% compatibility '1.40.0', false, null, false, 'First-class calc' %}{% endcompatibility %}
 
 Alternatively, users can wrap division operations inside a `calc()` expression,
 which Sass will simplify to a single number.
-{% endmarkdown %}
 
 {% codeExample 4, false %}
-<% example(autogen_css: false) do %>
 // WRONG, will not work in future Sass versions.
 @debug (12px/4px); // 3
 
@@ -133,7 +124,6 @@ which Sass will simplify to a single number.
 @debug calc(12px / 4px) // 3
 {% endcodeExample %}
 
-{% markdown %}
 ## Automatic Migration
 
 You can use [the Sass migrator][] to automatically update your stylesheets to
@@ -145,4 +135,3 @@ use `math.div()` and `list.slash()`.
 $ npm install -g sass-migrator
 $ sass-migrator division **/*.scss
 ```
-{% endmarkdown %}

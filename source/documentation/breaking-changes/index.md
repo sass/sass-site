@@ -7,7 +7,6 @@ introduction: >
 overview: true
 ---
 
-{% markdown %}
 Before each breaking change is released, Sass implementations will produce
 deprecation warnings for stylesheets whose behavior will change. Whenever
 possible, these warnings will include suggestions for how to update the
@@ -49,4 +48,3 @@ These breaking changes are coming soon or have recently been released:
 
 Dart Sass users can opt in to treat deprecations as errors early using the
 [`--fatal-deprecation` command line option](/documentation/cli/dart-sass#fatal-deprecation).
-{% endmarkdown %}

@@ -6,9 +6,7 @@ introduction: >
   This confusing syntax is being deprecated.
 ---
 
-{% markdown %}
 How is this property compiled?
-{% endmarkdown %}
 
 {% codeExample 1, false %}
 $size: 10px;
@@ -23,7 +21,6 @@ div
   margin: 15px -$size
 {% endcodeExample %}
 
-{% markdown %}
 Some users might say "the `-` is attached to `$size`, so it should be `margin:
 20px -10px`". Others might say "the `-` is between `20px` and `$size`, so it
 should be `margin: 5px`." Sass currently agrees with the latter opinion, but the
@@ -51,7 +48,7 @@ list, you'll (still) need to wrap it in parentheses:
 We'll make this an error in Dart Sass 2.0.0, but until then it'll just emit a
 deprecation warning.
 
-{% include 'documentation/snippets/silence-deprecations' %}
+{% render 'documentation/snippets/silence-deprecations' %}
 
 ## Automatic Migration
 
@@ -65,4 +62,3 @@ existing behavior of these stylesheets.
 $ npm install -g sass-migrator
 $ sass-migrator strict-unary **/*.scss
 ```
-{% endmarkdown %}
