@@ -1,5 +1,7 @@
 import * as cheerio from 'cheerio';
 
+import { markdownInline } from '../type';
+
 type TOCItem = {
   [key: string]: string | boolean | TOCItem[];
 };
@@ -13,7 +15,7 @@ export const getDocTocData = (data: TOCItem) => {
   )[0];
   const href = data[text] as string;
   const expanded = Boolean(data[':expanded']);
-  return { text, href, expanded };
+  return { text: markdownInline(text), href, expanded };
 };
 
 /**
