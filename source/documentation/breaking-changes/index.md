@@ -4,7 +4,6 @@ introduction: >
   New versions of Sass are as backwards-compatible as possible, but sometimes
   a breaking change is necessary. Sass needs to keep up with the evolving CSS
   specification, and old language design mistakes occasionally need to be fixed.
-overview: true
 ---
 
 Before each breaking change is released, Sass implementations will produce
@@ -24,27 +23,35 @@ time-sensitive, so they may be released with new minor version numbers instead.
 These breaking changes are coming soon or have recently been released:
 
 - [A variable may only have a single `!global` or `!default`
-  flag](/documentation/breaking-changes/duplicate-var-flags) beginning in Dart Sass 1.62.0.
+  flag](/documentation/breaking-changes/duplicate-var-flags) beginning in Dart
+  Sass 1.62.0.
 
 - [Selectors with invalid combinators are
-  invalid](/documentation/breaking-changes/bogus-combinators) beginning in Dart Sass 1.54.0.
+  invalid](/documentation/breaking-changes/bogus-combinators) beginning in Dart
+  Sass 1.54.0.
 
 - [`/` is changing from a division operation to a list
-  separator](/documentation/breaking-changes/slash-div) beginning in Dart Sass 1.33.0.
+  separator](/documentation/breaking-changes/slash-div) beginning in Dart Sass
+  1.33.0.
 
 - [Functions are stricter about which units they
-  allow](/documentation/breaking-changes/function-units) beginning in Dart Sass 1.32.0.
+  allow](/documentation/breaking-changes/function-units) beginning in Dart Sass
+  1.32.0.
 
 - [Parsing the special syntax of `@-moz-document` will be
-  invalid](/documentation/breaking-changes/moz-document) beginning in Dart Sass 1.7.2.
+  invalid](/documentation/breaking-changes/moz-document) beginning in Dart Sass
+  1.7.2.
 
-- [Compound selectors could not be extended](/documentation/breaking-changes/extend-compound)
-  in Dart Sass 1.0.0 and Ruby Sass 4.0.0.
+- [Compound selectors could not be
+  extended](/documentation/breaking-changes/extend-compound) in Dart Sass 1.0.0
+  and Ruby Sass 4.0.0.
 
-- [The syntax for CSS custom property values changed](/documentation/breaking-changes/css-vars)
-  in Dart Sass 1.0.0, LibSass 3.5.0, and Ruby Sass 3.5.0.
+- [The syntax for CSS custom property values
+  changed](/documentation/breaking-changes/css-vars) in Dart Sass 1.0.0, LibSass
+  3.5.0, and Ruby Sass 3.5.0.
 
 ## Early Opt-In
 
 Dart Sass users can opt in to treat deprecations as errors early using the
-[`--fatal-deprecation` command line option](/documentation/cli/dart-sass#fatal-deprecation).
+[`--fatal-deprecation` command line
+option](/documentation/cli/dart-sass#fatal-deprecation).

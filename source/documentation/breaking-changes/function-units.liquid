@@ -6,13 +6,15 @@ introduction: >
   with the CSS spec and helps catch errors more quickly.
 ---
 
+{% markdown %}
 ## Hue
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.32.0', false, null, false %}{% endcompatibility %}
 
 When specifying a color's hue, CSS allows any [angle unit][] (`deg`, `grad`,
 `rad`, or `turn`). It also allows a unitless number, which is interpreted as
-`deg`. Historically, Sass has allowed _any_ unit, and interpreted it as `deg`.
+`deg`. Historically, Sass has allowed *any* unit, and interpreted it as `deg`.
 This is particularly problematic because it meant that the valid CSS expression
 `hsl(0.5turn, 100%, 50%)` would be allowed by Sass but interpreted entirely
 wrong.
@@ -22,16 +24,18 @@ wrong.
 To fix this issue and bring Sass in line with the CSS spec, we're making changes
 in multiple phases:
 
-### Phase 1
+### Phase 1{#hue-phase-1}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.32.0', false, null, false %}{% endcompatibility %}
 
 At first, Sass just emitted a deprecation warning if you passed a number with a
 unit other than `deg` as a hue to any function. Passing a unitless number is
 still allowed.
 
-### Phase 2
+### Phase 2{#hue-phase-2}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.52.1', false, null, false %}{% endcompatibility %}
 
 Next, we changed the way angle units are handled for hue parameters to match the
@@ -46,8 +50,9 @@ interprets all valid CSS according to the CSS spec.
 
 [Dart Sass compatibility policy]: https://github.com/sass/dart-sass#compatibility-policy
 
-### Phase 3
+### Phase 3{#hue-phase-3}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, false, null, false %}{% endcompatibility %}
 
 Finally, in Dart Sass 2.0.0 color functions will throw errors if they're passed
@@ -57,21 +62,23 @@ a hue parameter with a non-angle unit. Unitless hues will still be allowed.
 
 When specifying an HSL color's saturation and lightness, CSS only allows `%`
 units. Even unitless numbers aren't allowed (unlike for the hue). Historically,
-Sass has allowed _any_ unit, and interpreted it as `%`. You could even write
+Sass has allowed *any* unit, and interpreted it as `%`. You could even write
 `hsl(0, 100px, 50s)` and Sass would return the color `red`.
 
 To fix this issue and bring Sass in line with the CSS spec, we're making changes
 in two phases:
 
-### Phase 1
+### Phase 1{#saturation-lightness-phase-1}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.32.0', false, null, false %}{% endcompatibility %}
 
 Currently, Sass just emits a deprecation warning if you pass a number with no
 unit or a unit other than `%` as a lightness or saturation to any function.
 
-### Phase 2
+### Phase 2{#saturation-lightness-phase-2}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, false, null, false %}{% endcompatibility %}
 
 In Dart Sass 2.0.0 color functions will throw errors if they're passed a
@@ -82,7 +89,7 @@ saturation or lightness parameter with no unit or a non-`%` unit.
 When specifying a color's alpha value, CSS (as of [Colors Level 4]) allows
 either unitless values between 0 and 1 or `%` values between `0%` and `100%`. In
 most cases Sass follows this behavior, but the functions `color.adjust()` and
-`color.change()` have historically allowed _any_ unit, and interpreted it as
+`color.change()` have historically allowed *any* unit, and interpreted it as
 unitless. You could even write `color.change(red, $alpha: 1%)` and Sass would
 return the opaque color `black`.
 
@@ -91,15 +98,17 @@ return the opaque color `black`.
 To fix this issue and bring Sass in line with the CSS spec, we're making changes
 in three phases:
 
-### Phase 1
+### Phase 1{#alpha-phase-1}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.56.0', false, null, false %}{% endcompatibility %}
 
 Currently, Sass just emits a deprecation warning if you pass a number with any
 unit, including `%`, as an alpha value to `color.change()` or `color.adjust()`.
 
-### Phase 2
+### Phase 2{#alpha-phase-2}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, false, null, false %}{% endcompatibility %}
 
 Next, we'll change the way `%` units are handled for the alpha argument to
@@ -113,8 +122,9 @@ their code and avoid the bug.
 
 [Dart Sass compatibility policy]: https://github.com/sass/dart-sass#compatibility-policy
 
-### Phase 3
+### Phase 3{#alpha-phase-3}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, false, null, false %}{% endcompatibility %}
 
 Finally, in Dart Sass 2.0.0 `color.change()` and `color.adjust()` will throw
@@ -131,32 +141,35 @@ A future version of Sass will stop ignoring units for the `$limit` argument and
 return a random integer with the same units.
 
 [The `math.random()` function]: /documentation/modules/math#random
+{% endmarkdown %}
 
-<!-- prettier-ignore-start -->
-{% codeExample 1, false %}
+{% codeExample 'function-units', false %}
 // Future Sass, doesn't work yet!
 @debug math.random(100px); // 42px
 ===
 // Future Sass, doesn't work yet!
-@debug math.random(100px) // 42px
+@debug math.random(100px)  // 42px
 {% endcodeExample %}
-<!-- prettier-ignore-end -->
 
-### Phase 1
+{% markdown %}
+### Phase 1{#math-random-phase-1}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.54.5', false, null, false %}{% endcompatibility %}
 
 Currently, Sass emits a deprecation warning if you pass a `$limit` with units to
 `math.random()`.
 
-### Phase 2
+### Phase 2{#math-random-phase-2}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, false, null, false %}{% endcompatibility %}
 
 In Dart Sass 2.0.0, passing a `$limit` number with units will be an error.
 
-### Phase 3
+### Phase 3{#math-random-phase-3}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, false, null, false %}{% endcompatibility %}
 
 In a minor release after Dart Sass 2.0.0, passing a `$limit` number with units
@@ -173,15 +186,17 @@ the unit `%`.
 [`color.mix()` function]: /documentation/modules/color#mix
 [`color.invert()` function]: /documentation/modules/color#invert
 
-### Phase 1
+### Phase 1{#weight-phase-1}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.56.0', false, null, false %}{% endcompatibility %}
 
 Currently, Sass emits a deprecation warning if you pass a `$weight` with no
 units or with units other than `%` to `color.mix()` or `color.invert()`.
 
-### Phase 2
+### Phase 2{#weight-phase-2}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, false, null, false %}{% endcompatibility %}
 
 In Dart Sass 2.0.0, `color.mix()` and `color.invert()` will throw errors if
@@ -196,16 +211,19 @@ will forbid any units.
 [`list.nth()` function]: /documentation/modules/list#nth
 [`list.set-nth()` function]: /documentation/modules/list#set-nth
 
-### Phase 1
+### Phase 1{#index-phase-1}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.56.0', false, null, false %}{% endcompatibility %}
 
 Currently, Sass emits a deprecation warning if you pass a `$weight` with no
 units or with units other than `%` to `color.mix()` or `color.invert()`.
 
-### Phase 2
+### Phase 2{#index-phase-2}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility false, false, null, false %}{% endcompatibility %}
 
 In Dart Sass 2.0.0, `list.nth()` and `list.set-nth()` will throw errors if
 they're passed an index `$n` with a unit.
+{% endmarkdown %}

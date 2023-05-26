@@ -6,13 +6,14 @@ introduction: >
   except where they're useful for nesting.
 ---
 
+{% markdown %}
 Sass has historically supported three invalid uses of combinators:
 
-- Leading combinators, as in `+ .error {color: red}`.
+* Leading combinators, as in `+ .error {color: red}`.
 
-- Trailing combinators, as in `.error + {color: red}`.
+* Trailing combinators, as in `.error + {color: red}`.
 
-- Repeated combinators, as in `div > > .error {color: red}`.
+* Repeated combinators, as in `div > > .error {color: red}`.
 
 None of these are valid CSS, and all of them will cause browsers to ignore the
 style rule in question. Supporting them added a substantial amount of complexity
@@ -25,9 +26,9 @@ for these uses.
 **There is one major exception**: leading and trailing combinators may still be
 used for nesting purposes. For example, the following is still very much
 supported:
+{% endmarkdown %}
 
-<!-- prettier-ignore-start -->
-{% codeExample 1 %}
+{% codeExample 'bogus-combinators' %}
 .sidebar > {
   .error {
     color: red;
@@ -38,8 +39,8 @@ supported:
   .error
     color: red
 {% endcodeExample %}
-<!-- prettier-ignore-end -->
 
+{% markdown %}
 Sass will only produce an error if a selector still has a leading or trailing
 combinator _after nesting is resolved_. Repeated combinators, on the other hand,
 will always be errors.
@@ -50,6 +51,7 @@ Dart Sass.
 
 ## Transition Period
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.54.0', false, null, false %}{% endcompatibility %}
 
 First, we'll emit deprecation warnings for all double combinators, as well as
@@ -63,3 +65,4 @@ invalid CSS from the compiled CSS, with one exception: we _won't_ omit selectors
 that begin with a leading combinator, since they may be used from a nested
 `@import` rule or `meta.load-css()` mixin. However, we don't encourage this
 pattern and will drop support for it in Dart Sass 2.0.0.
+{% endmarkdown %}
