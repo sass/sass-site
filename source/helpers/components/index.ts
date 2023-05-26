@@ -17,7 +17,7 @@ export { getDocTocData, getToc };
 export const funFact = async (contents: string, useMarkdown = true) =>
   liquidEngine.renderFile('fun_fact', {
     contents,
-    useMarkdown
+    useMarkdown,
   });
 
 /**
