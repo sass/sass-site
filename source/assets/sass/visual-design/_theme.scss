@@ -64,6 +64,6 @@ pre {
 }
 
 pre {
-  background: rgba(brand.$sl-color--midnight-blue, 0.0625);
+  background: var(--sl-color--code-background);
   border: var(--sl-border--small) solid #ebebeb;
 }
