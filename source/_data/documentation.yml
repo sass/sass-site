@@ -69,6 +69,7 @@ toc:
       - <code>-moz-document</code>: /documentation/breaking-changes/moz-document/
       - Extending Compound Selectors: /documentation/breaking-changes/extend-compound/
       - CSS Variable Syntax: /documentation/breaking-changes/css-vars/
+      - Duplicate Variable Flags: /documentation/breaking-changes/duplicate-var-flags/
   - Command Line: /documentation/cli/
     :children:
       - Dart Sass: /documentation/cli/dart-sass/
