@@ -26,13 +26,13 @@
       <dd>{{ ruby | implStatus }}</dd>
     </div>
   {%- endif -%}
-  {%- if details -%}
+  {%- if details | strip -%}
     {%- # The no-op href here ensures that this toggle is focusable in browsers. -%}
     <div><a href="javascript:;">▶</a></div>
   {%- endif -%}
 </dl>
 
-{%- if details -%}
+{%- if details | strip -%}
   <div class="sl-c-callout sl-c-callout--impl-status">
     {{ details | markdown }}
   </div>

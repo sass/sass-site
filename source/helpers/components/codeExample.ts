@@ -96,9 +96,12 @@ const generateCodeExample = (
     if (sections.length !== 1) {
       throw new Error("Can't auto-generate CSS from more than one SCSS block.");
     }
-    cssContents = sass.compileString(sections[0], {
+    const css = sass.compileString(sections[0], {
       syntax: syntax === 'sass' ? 'indented' : 'scss',
     }).css;
+    if (css.trim()) {
+      cssContents = css;
+    }
   }
 
   const cssExamples =
@@ -121,7 +124,7 @@ const generateCodeExample = (
       splitLocation = 0.5 * 100;
     } else {
       // Put the split exactly in between the two longest lines.
-      splitLocation = 0.5 + ((maxSourceWidth - maxCSSWidth) / 110.0 / 2) * 100;
+      splitLocation = (0.5 + (maxSourceWidth - maxCSSWidth) / 110.0 / 2) * 100;
     }
   }
 
@@ -263,9 +266,11 @@ const getCanSplit = (
   const exampleSourceLengths = [...scssExamples, ...sassExamples].flatMap(
     (source) => source.split('\n').map((line) => line.length),
   );
-  const cssSourceLengths = cssExamples.flatMap((source) =>
-    source.split('\n').map((line) => line.length),
-  );
+  const cssSourceLengths = cssExamples.length
+    ? cssExamples.flatMap((source) =>
+        source.split('\n').map((line) => line.length),
+      )
+    : [0];
 
   const maxSourceWidth = Math.max(...exampleSourceLengths);
   const maxCSSWidth = Math.max(...cssSourceLengths);

@@ -7,7 +7,7 @@ introduction: >
   lagging behind [Dart Sass](/dart-sass) in features and CSS compatibility.
   **LibSass is now deprecated**—new projects should use Dart Sass instead.
 navigation: |
-  ## Wrappers
+  <h2>Wrappers</h2>
 
   <nav class="sl-c-list-navigation-wrapper">
 
@@ -29,7 +29,7 @@ navigation: |
 
   </nav>
 complementary_content: |
-  ## Resources
+  <h2>Resources</h2>
 
   - [Lightning fast Sass compiling with libsass, Node-sass and
     Grunt-sass](https://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/)
@@ -61,13 +61,13 @@ recently-updated wrapper first.
   You must then setup an environment variable pointing to the LibSass folder,
   for example:
 
-  ```shell
+  ```shellsession
   export SASS_LIBSASS_PATH=/Users/hampton/path/libsass
   ```
 
   The executable will be in the bin folder. To run it, try something like:
 
-  ```shell
+  ```shellsession
   ./bin/sassc [input file] > output.css
   ```
 
