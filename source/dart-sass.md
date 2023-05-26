@@ -20,7 +20,7 @@ compile your stylesheets. To install Dart Sass on the command line, check out
 the [installation instructions](/install). Once you've got it running, you can
 use it compile files:
 
-```shell
+```shellsession
 sass source/index.scss css/index.css
 ```
 
@@ -62,7 +62,7 @@ void main(List<String> arguments) {
 
 5. You can now use this to compile files:
 
-```shell
+```shellsession
 dart compile-sass.dart styles.scss styles.css
 ```
 

@@ -61,13 +61,13 @@ recently-updated wrapper first.
   You must then setup an environment variable pointing to the LibSass folder,
   for example:
 
-  ```shell
+  ```shellsession
   export SASS_LIBSASS_PATH=/Users/hampton/path/libsass
   ```
 
   The executable will be in the bin folder. To run it, try something like:
 
-  ```shell
+  ```shellsession
   ./bin/sassc [input file] > output.css
   ```
 

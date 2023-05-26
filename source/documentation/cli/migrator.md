@@ -15,7 +15,7 @@ Sass files you want to migrate:
 
 [which migration]: #migrations
 
-```
+```shellsession
 sass-migrator <migration> <entrypoint.scss...>
 ```
 
@@ -56,7 +56,7 @@ running
 
 [npm]: https://www.npmjs.com
 
-```
+```shellsession
 npm install -g sass-migrator
 ```
 
@@ -67,7 +67,7 @@ Sass migrator by running
 
 [the Chocolatey package manager]: https://chocolatey.org
 
-```
+```shellsession
 choco install sass-migrator
 ```
 
@@ -78,7 +78,7 @@ Sass by running
 
 [the Homebrew package manager]: https://brew.sh
 
-```
+```shellsession
 brew install sass/sass/migrator
 ```
 

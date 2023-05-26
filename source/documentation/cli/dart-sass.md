@@ -9,7 +9,7 @@ The Dart Sass executable can be invoked in one of two modes.
 
 ### One-to-One Mode
 
-```
+```shellsession
 sass <input.scss> [output.css]
 ```
 
@@ -38,7 +38,7 @@ SCSS unless the [`--indented` flag][] is passed.
 
 {% compatibility '1.4.0' %}{% endcompatibility %}
 
-```
+```shellsession
 sass [<input.scss>:<output.css>] [<input/>:<output/>]...
 ```
 
@@ -371,7 +371,7 @@ colors if it looks like it's being run on a terminal that supports them.
 
 [terminal colors]: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
 
-<pre><code>$ sass --color style.scss style.css
+<pre class="language-plaintext"><code>$ sass --color style.scss style.css
 Error: Incompatible units em and px.
   <span style="color: blue">╷</span>
 <span style="color: blue">1 │</span> $width: <span style="color: crimson">15px + 2em</span>
