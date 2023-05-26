@@ -19,7 +19,7 @@ The Ruby Sass executable can be invoked in one of two modes.
 
 ### One-to-One Mode
 
-```
+```shellsession
 sass [input.scss] [output.css]
 ```
 
@@ -41,7 +41,7 @@ indented syntax by default. This can be controlled with the [`--scss` flag][].
 
 ### Many-to-Many Mode
 
-```
+```shellsession
 sass [<input.css>:<output.css>] [<input/>:<output/>] [input.css] [input/]...
 ```
 
