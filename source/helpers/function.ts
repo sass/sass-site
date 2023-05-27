@@ -47,6 +47,7 @@ export function _function(content: string, ...signatures: string[]) {
   // Highlight each signature
   const names: string[] = [];
   const highlightedSignatures = signatures.map((signature) => {
+    signature = signature.replace(/!!!/g, '\n'); // Hack to allow newlines in the signature
     const [name] = signature.split('(', 2);
     const nameWithoutNamespace = name.split('.').at(-1) || name;
     const html = codeBlock(`@function ${signature}`, 'scss');
@@ -68,12 +69,11 @@ export function _function(content: string, ...signatures: string[]) {
       .toArray()
       .map((el) => $.html(el))
       .join('')
-      .trim()
-      .replace(/\n/g, '&#x0000A');
+      .trim();
   });
 
   // Add the return type after the last signature
-  let mergedSignatures = highlightedSignatures.join('&#x0000A');
+  let mergedSignatures = highlightedSignatures.join('\n');
   if (returns) {
     mergedSignatures += ` <span class="token comment">//=> ${returnTypeLink(
       returns,
