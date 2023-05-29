@@ -1,0 +1,11 @@
+{% codeExample 'map-get', false %}
+$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+@debug map.get($font-weights, "medium"); // 500
+@debug map.get($font-weights, "extra-bold"); // null
+===
+$font-weights: ("regular": 400, "medium": 500, "bold": 700)
+
+@debug map.get($font-weights, "medium")  // 500
+@debug map.get($font-weights, "extra-bold")  // null
+{% endcodeExample %}
