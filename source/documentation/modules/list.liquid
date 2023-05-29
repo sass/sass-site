@@ -9,7 +9,7 @@ In Sass, every [map][] counts as a list that contains a two-element list for
 each key/value pair. For example, `(1: 2, 3: 4)` counts as `(1 2, 3 4)`. So
 all these functions work for maps as well!
 
-[map]: ../values/maps
+[map]: /documentation/values/maps
 
 Individual values also count as lists. All these functions treat `1px` as a
 list that contains the value `1px`.
@@ -23,7 +23,7 @@ comma-separated, space-separated, or slash-separated, respectively. If it's
 `auto` (the default), the returned list will use the same separator as `$list`
 (or `space` if `$list` doesn't have a separator). Other values aren't allowed.
 
-[separator]: ../values/lists
+[separator]: /documentation/values/lists
 
 Note that unlike [`list.join()`](#join), if `$val` is a list it's nested
 within the returned list rather than having all its elements added to the
@@ -47,13 +47,13 @@ returned list.
 {% function 'list.index($list, $value)', 'index($list, $value)', 'returns:number | null' %}
 Returns the [index][] of `$value` in `$list`.
 
-[index]: ../values/lists#indexes
+[index]: /documentation/values/lists#indexes
 
 If `$value` doesn't appear in `$list`, this returns [`null`][]. If `$value`
 appears multiple times in `$list`, this returns the index of its first
 appearance.
 
-[`null`]: ../values/null
+[`null`]: /documentation/values/null
 
 {% render 'code-snippets/example-list-index' %}
 {% endfunction %}
@@ -153,7 +153,7 @@ If `$list` doesn't have a separator, returns `space`.
 {% function 'list.nth($list, $n)', 'nth($list, $n)' %}
 Returns the element of `$list` at [index][] `$n`.
 
-[index]: ../values/lists#indexes
+[index]: /documentation/values/lists#indexes
 
 If `$n` is negative, it counts from the end of `$list`. Throws an error if
 there is no element at index `$n`.
@@ -165,7 +165,7 @@ there is no element at index `$n`.
 Returns a copy of `$list` with the element at [index][] `$n` replaced with
 `$value`.
 
-[index]: ../values/lists#indexes
+[index]: /documentation/values/lists#indexes
 
 If `$n` is negative, it counts from the end of `$list`. Throws an error if
 there is no existing element at index `$n`.
@@ -190,7 +190,7 @@ Eventually, they'll be written literally with slashes, as in
 `1px / 2px / solid`, but for the time being [slashes are used for division]
 so Sass can't use them for new syntax until the old syntax is removed.
 
-[slashes are used for division]: ../breaking-changes/slash-div
+[slashes are used for division]: /documentation/breaking-changes/slash-div
 {% endheadsUp %}
 
 {% codeExample 'list-slash', false %}
