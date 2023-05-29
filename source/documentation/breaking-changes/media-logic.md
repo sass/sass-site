@@ -6,6 +6,7 @@ introduction: >
   deprecated and is now interpreted according to the CSS standard.
 ---
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.56.0', false, null, false %}{% endcompatibility %}
 
 Because Sass supports almost any Sass expression in parenthesized media
@@ -23,6 +24,7 @@ Fortunately, these came up very infrequently in practice.
 
 ## Transition Period
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.54.0', false, null, false %}{% endcompatibility %}
 
 First, we emitted deprecation warnings for the previous ambiguous cases. These
