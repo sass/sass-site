@@ -1,0 +1,149 @@
+---
+title: "@if and @else"
+table_of_contents: true
+introduction: >
+  The `@if` rule is written `@if <expression> { ... }`, and it controls whether
+  or not its block gets evaluated (including emitting any styles as CSS). The
+  [expression](/documentation/syntax/structure#expressions) usually returns
+  either [`true` or `false`](/documentation/values/booleans)—if the expression
+  returns `true`, the block is evaluated, and if the expression returns `false`
+  it’s not.
+---
+
+{% render 'code-snippets/example-if' %}
+
+{% markdown %}
+## `@else`
+
+An `@if` rule can optionally be followed by an `@else` rule, written
+`@else { ... }`. This rule's block is evaluated if the `@if` expression returns
+`false`.
+{% endmarkdown %}
+
+{% codeExample 'if' %}
+$light-background: #f2ece4;
+$light-text: #036;
+$dark-background: #6b717f;
+$dark-text: #d2e1dd;
+
+@mixin theme-colors($light-theme: true) {
+  @if $light-theme {
+    background-color: $light-background;
+    color: $light-text;
+  } @else {
+    background-color: $dark-background;
+    color: $dark-text;
+  }
+}
+
+.banner {
+  @include theme-colors($light-theme: true);
+  body.dark & {
+    @include theme-colors($light-theme: false);
+  }
+}
+===
+$light-background: #f2ece4
+$light-text: #036
+$dark-background: #6b717f
+$dark-text: #d2e1dd
+
+@mixin theme-colors($light-theme: true)
+  @if $light-theme
+    background-color: $light-background
+    color: $light-text
+  @else
+    background-color: $dark-background
+    color: $dark-text
+
+
+
+.banner
+  @include theme-colors($light-theme: true)
+  body.dark &
+    @include theme-colors($light-theme: false)
+{% endcodeExample %}
+
+{% markdown %}
+Conditional expressions may contain [boolean operators][] (`and`, `or`, `not`).
+
+[boolean operators]: /documentation/operators/boolean
+
+### `@else if`
+
+You can also choose whether to evaluate an `@else` rule's block by writing it
+`@else if <expression> { ... }`. If you do, the block is evaluated only if the
+preceding `@if`'s expression returns `false` *and* the `@else if`'s expression
+returns `true`.
+
+In fact, you can chain as many `@else if`s as you want after an `@if`. The
+first block in the chain whose expression returns `true` will be evaluated, and
+no others. If there's a plain `@else` at the end of the chain, its block will be
+evaluated if every other block fails.
+{% endmarkdown %}
+
+{% codeExample 'else' %}
+@use "sass:math";
+
+@mixin triangle($size, $color, $direction) {
+  height: 0;
+  width: 0;
+
+  border-color: transparent;
+  border-style: solid;
+  border-width: math.div($size, 2);
+
+  @if $direction == up {
+    border-bottom-color: $color;
+  } @else if $direction == right {
+    border-left-color: $color;
+  } @else if $direction == down {
+    border-top-color: $color;
+  } @else if $direction == left {
+    border-right-color: $color;
+  } @else {
+    @error "Unknown direction #{$direction}.";
+  }
+}
+
+.next {
+  @include triangle(5px, black, right);
+}
+===
+@use "sass:math"
+
+@mixin triangle($size, $color, $direction)
+  height: 0
+  width: 0
+
+  border-color: transparent
+  border-style: solid
+  border-width: math.div($size, 2)
+
+  @if $direction == up
+    border-bottom-color: $color
+  @else if $direction == right
+    border-left-color: $color
+  @else if $direction == down
+    border-top-color: $color
+  @else if $direction == left
+    border-right-color: $color
+  @else
+    @error "Unknown direction #{$direction}."
+
+
+
+.next
+  @include triangle(5px, black, right)
+===
+.next {
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 2.5px;
+  border-left-color: black;
+}
+{% endcodeExample %}
+
+{% render 'documentation/snippets/truthiness-and-falsiness' %}
