@@ -8,48 +8,48 @@ introduction: >
 ---
 
 {% codeExample 'while' %}
-@use "sass:math";
+  @use "sass:math";
 
-/// Divides `$value` by `$ratio` until it's below `$base`.
-@function scale-below($value, $base, $ratio: 1.618) {
-  @while $value > $base {
-    $value: math.div($value, $ratio);
+  /// Divides `$value` by `$ratio` until it's below `$base`.
+  @function scale-below($value, $base, $ratio: 1.618) {
+    @while $value > $base {
+      $value: math.div($value, $ratio);
+    }
+    @return $value;
   }
-  @return $value;
-}
 
-$normal-font-size: 16px;
-sup {
-  font-size: scale-below(20px, 16px);
-}
-===
-@use "sass:math"
+  $normal-font-size: 16px;
+  sup {
+    font-size: scale-below(20px, 16px);
+  }
+  ===
+  @use "sass:math"
 
-/// Divides `$value` by `$ratio` until it's below `$base`.
-@function scale-below($value, $base, $ratio: 1.618)
-  @while $value > $base
-    $value: math.div($value, $ratio)
-  @return $value
+  /// Divides `$value` by `$ratio` until it's below `$base`.
+  @function scale-below($value, $base, $ratio: 1.618)
+    @while $value > $base
+      $value: math.div($value, $ratio)
+    @return $value
 
 
 
-$normal-font-size: 16px
-sup
-  font-size: scale-below(20px, 16px)
-===
-sup {
-  font-size: 12.36094px;
-}
+  $normal-font-size: 16px
+  sup
+    font-size: scale-below(20px, 16px)
+  ===
+  sup {
+    font-size: 12.36094px;
+  }
 {% endcodeExample %}
 
 {% headsUp %}
-Although `@while` is necessary for a few particularly complex stylesheets,
-you're usually better of using either [`@each`][] or [`@for`][] if either of
-them will work. They're clearer for the reader, and often faster to compile as
-well.
+  Although `@while` is necessary for a few particularly complex stylesheets,
+  you're usually better of using either [`@each`][] or [`@for`][] if either of
+  them will work. They're clearer for the reader, and often faster to compile as
+  well.
 
-[`@each`]: /documentation/at-rules/control/each
-[`@for`]: /documentation/at-rules/control/for
+  [`@each`]: /documentation/at-rules/control/each
+  [`@for`]: /documentation/at-rules/control/for
 {% endheadsUp %}
 
 {% render 'documentation/snippets/truthiness-and-falsiness' %}

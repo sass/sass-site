@@ -14,60 +14,61 @@ introduction: >
 {% render 'code-snippets/example-each-list' %}
 
 {% markdown %}
-## With Maps
+  ## With Maps
 
-You can also use `@each` to iterate over every key/value pair in a map by
-writing it `@each <variable>, <variable> in <expression> { ... }`. The key is
-assigned to the first variable name, and the element is assigned to the second.
+  You can also use `@each` to iterate over every key/value pair in a map by
+  writing it `@each <variable>, <variable> in <expression> { ... }`. The key is
+  assigned to the first variable name, and the element is assigned to the
+  second.
 {% endmarkdown %}
 
 {% render 'code-snippets/example-each-map' %}
 
 {% markdown %}
-## Destructuring
+  ## Destructuring
 
-If you have a list of lists, you can use `@each` to automatically assign
-variables to each of the values from the inner lists by writing it
-`@each <variable...> in <expression> { ... }`. This is known as *destructuring*,
-since the variables match the structure of the inner lists. Each variable name
-is assigned to the value at the corresponding position in the list, or
-[`null`][] if the list doesn't have enough values.
+  If you have a list of lists, you can use `@each` to automatically assign
+  variables to each of the values from the inner lists by writing it `@each
+  <variable...> in <expression> { ... }`. This is known as *destructuring*,
+  since the variables match the structure of the inner lists. Each variable name
+  is assigned to the value at the corresponding position in the list, or
+  [`null`][] if the list doesn't have enough values.
 
-[`null`]: /documentation/values/null
+  [`null`]: /documentation/values/null
 {% endmarkdown %}
 
 {% codeExample 'each' %}
-$icons:
-  "eye" "\f112" 12px,
-  "start" "\f12e" 16px,
-  "stop" "\f12f" 10px;
+  $icons:
+    "eye" "\f112" 12px,
+    "start" "\f12e" 16px,
+    "stop" "\f12f" 10px;
 
-@each $name, $glyph, $size in $icons {
-  .icon-#{$name}:before {
-    display: inline-block;
-    font-family: "Icon Font";
-    content: $glyph;
-    font-size: $size;
+  @each $name, $glyph, $size in $icons {
+    .icon-#{$name}:before {
+      display: inline-block;
+      font-family: "Icon Font";
+      content: $glyph;
+      font-size: $size;
+    }
   }
-}
-===
-$icons: "eye" "\f112" 12px, "start" "\f12e" 16px, "stop" "\f12f" 10px
+  ===
+  $icons: "eye" "\f112" 12px, "start" "\f12e" 16px, "stop" "\f12f" 10px
 
 
 
 
-@each $name, $glyph, $size in $icons
-  .icon-#{$name}:before
-    display: inline-block
-    font-family: "Icon Font"
-    content: $glyph
-    font-size: $size
+  @each $name, $glyph, $size in $icons
+    .icon-#{$name}:before
+      display: inline-block
+      font-family: "Icon Font"
+      content: $glyph
+      font-size: $size
 {% endcodeExample %}
 
 {% funFact %}
-Because `@each` supports destructuring and [maps count as lists of lists][],
-`@each`'s map support works without needing special support for maps in
-particular.
+  Because `@each` supports destructuring and [maps count as lists of lists][],
+  `@each`'s map support works without needing special support for maps in
+  particular.
 
-[maps count as lists of lists]: /documentation/values/maps
+  [maps count as lists of lists]: /documentation/values/maps
 {% endfunFact %}
