@@ -14,9 +14,10 @@ export { getDocTocData, getToc };
  * Returns HTML for a fun fact that's not directly relevant to the main
  * documentation.
  */
-export const funFact = async (contents: string) =>
+export const funFact = async (contents: string, useMarkdown = true) =>
   liquidEngine.renderFile('fun_fact', {
     contents,
+    useMarkdown,
   });
 
 /**
