@@ -32,17 +32,17 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  --sl-color--code-text: #656556;
+  --sl-color--code-text: var(--sl-color--code-muted);
   font-style: italic;
 }
 
 [class*='language-scss'] {
-  --sl-color--code-text: #006666;
+  --sl-color--code-text: var(--sl-color--code-base);
 }
 
 [class*='language-css'] {
   & .token.comment {
-    --sl-color--code-text: #006666;
+    --sl-color--code-text: var(--sl-color--code-base);
   }
 }
 
@@ -52,12 +52,12 @@ pre[class*="language-"] {
 
 .token.string,
 .token.attr-value {
-  --sl-color--code-text: #df1144;
+  --sl-color--code-text: var(--sl-color--code-bright);
 }
 
 .token.punctuation,
 .token.operator {
-  --sl-color--code-text: #393A34;
+  --sl-color--code-text: var(--sl-color--code-muted-dark);
   /* no highlight */
   font-weight: typography.$sl-font-weight--bold;
 }
@@ -71,29 +71,28 @@ pre[class*="language-"] {
 .token.property,
 .token.regex,
 .token.inserted {
-  --sl-color--code-text: #990000;
+  --sl-color--code-text: var(--sl-color--code-warm);
   font-weight: typography.$sl-font-weight--bold;
 }
-
 
 .token.atrule,
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
-  --sl-color--code-text: #000000;
+  --sl-color--code-text: var(--sl-color--code-dark);
   font-weight: typography.$sl-font-weight--bold;
 }
 
 .token.function,
 .token.deleted,
 .language-autohotkey .token.tag {
-  --sl-color--code-text: #9a050f;
+  --sl-color--code-text: var(--sl-color--code-bright-dark);
 }
 
 .token.tag,
 .token.selector,
 .language-autohotkey .token.keyword {
-  --sl-color--code-text: #445588;
+  --sl-color--code-text: var(--sl-color--code-cool);
   font-weight: typography.$sl-font-weight--bold;
 }
 
@@ -106,7 +105,7 @@ pre[class*="language-"] {
 [class*="language-shell"] {
   & .token.function {
     --sl-color--code-text: unset;
-    font-weight: normal;
+    font-weight: typography.$sl-font-weight--regular;
   }
 }
 
@@ -116,6 +115,6 @@ pre[class*="language-"] {
 
 .token.variable,
 .token[class*="placeholder"] {
-  --sl-color--code-text: #006666;
-  font-weight: normal;
+  --sl-color--code-text: var(--sl-color--code-base);
+  font-weight: typography.$sl-font-weight--regular;
 }
