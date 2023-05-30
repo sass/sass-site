@@ -120,7 +120,8 @@ either a unitless number between 0 and 1 (inclusive), or a percentage between
 
 [unitless]: values/numbers#units
 
-{% funFact %}
+{% funFact false %}
+{% markdown %}
 You can pass [special functions][] like `calc()` or `var()` in place of any
 argument to `hsl()`. You can even use `var()` in place of multiple
 arguments, since it might be replaced by multiple values! When a color
@@ -128,6 +129,7 @@ function is called this way, it returns an unquoted string using the same
 signature it was called with.
 
 [special functions]: /documentation/syntax/special-functions
+{% endmarkdown %}
 
 {% codeExample 'hsl-special', false %}
 @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
