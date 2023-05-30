@@ -6,7 +6,7 @@ title: sass:color
 
 {% function 'color.adjust($color,!!!  $red: null, $green: null, $blue: null,!!!  $hue: null, $saturation: null, $lightness: null,!!!  $whiteness: null, $blackness: null,!!!  $alpha: null)', 'adjust-color(...)', 'returns:color' %}
 {% compatibility '1.28.0' false, null, false, '$whiteness and $blackness' %}{% endcompatibility %}
-
+{% markdown %}
 Increases or decreases one or more properties of `$color` by fixed amounts.
 
 Adds the value passed for each keyword argument to the corresponding property
@@ -31,6 +31,7 @@ See also:
 
 * [`color.scale()`](#scale) for fluidly scaling a color's properties.
 * [`color.change()`](#change) for setting a color's properties.
+{% endmarkdown %}
 
 {% codeExample 'adjust-color', false %}
 @debug color.adjust(#6b717f, $red: 15); // #7a717f
@@ -44,6 +45,7 @@ See also:
 {% endfunction %}
 
 {% function 'adjust-hue($color, $degrees)', 'returns:color' %}
+{% markdown %}
 Increases or decreases `$color`'s hue.
 
 The `$hue` must be a number between `-360deg` and `360deg` (inclusive) to add
@@ -54,6 +56,7 @@ than `deg`.
 
 See also [`color.adjust()`](#adjust), which can adjust any property of a
 color.
+{% endmarkdown %}
 
 {% headsUp %}
 Because `adjust-hue()` is redundant with [`adjust()`](#adjust), it's not
@@ -84,6 +87,7 @@ included directly in the new module system. Instead of
 {% endfunction %}
 
 {% function 'color.alpha($color)', 'alpha($color)', 'opacity($color)', 'returns:number' %}
+{% markdown %}
 Returns the alpha channel of `$color` as a number between 0 and 1.
 
 As a special case, this supports the Internet Explorer syntax
@@ -99,6 +103,7 @@ See also:
 * [`color.hue()`](#hue) for getting a color's hue.
 * [`color.saturation()`](#saturation) for getting a color's saturation.
 * [`color.lightness()`](#lightness) for getting a color's lightness.
+{% endmarkdown %}
 
 {% codeExample 'color-alpha', false %}
 @debug color.alpha(#e1d7d2); // 1
@@ -113,7 +118,7 @@ See also:
 
 {% function 'color.blackness($color)', 'returns:number' %}
 {% compatibility '1.28.0', false, null, false %}{% endcompatibility %}
-
+{% markdown %}
 Returns the [HWB][] blackness of `$color` as a number between `0%` and `100%`.
 
 [HWB]: https://en.wikipedia.org/wiki/HWB_color_model
@@ -127,6 +132,7 @@ See also:
 * [`color.lightness()`](#lightness) for getting a color's lightness.
 * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
 * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+{% endmarkdown %}
 
 {% codeExample 'color-blackness', false %}
 @debug color.blackness(#e1d7d2); // 11.7647058824%
@@ -140,6 +146,7 @@ See also:
 {% endfunction %}
 
 {% function 'color.blue($color)', 'blue($color)', 'returns:number' %}
+{% markdown %}
 Returns the blue channel of `$color` as a number between 0 and 255.
 
 See also:
@@ -152,6 +159,7 @@ See also:
 * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
 * [`color.blackness()`](#blackness) for getting a color's blackness.
 * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+{% endmarkdown %}
 
 {% codeExample 'color-blue', false %}
 @debug color.blue(#e1d7d2); // 210
@@ -166,7 +174,7 @@ See also:
 
 {% function 'color.change($color,!!!  $red: null, $green: null, $blue: null,!!!  $hue: null, $saturation: null, $lightness: null,!!!  $whiteness: null, $blackness: null,!!!  $alpha: null)', 'change-color(...)', 'returns:color' %}
 {% compatibility '1.28.0', false, null, false, '$whiteness and $blackness' %}{% endcompatibility %}
-
+{% markdown %}
 Sets one or more properties of a color to new values.
 
 Uses the value passed for each keyword argument in place of the corresponding
@@ -192,6 +200,7 @@ See also:
 * [`color.scale()`](#scale) for fluidly scaling a color's properties.
 * [`color.adjust()`](#adjust) for adjusting a color's properties by fixed
 amounts.
+{% endmarkdown %}
 
 {% codeExample 'color-change', false %}
 @debug color.change(#6b717f, $red: 100); // #64717f
@@ -205,11 +214,13 @@ amounts.
 {% endfunction %}
 
 {% function 'color.complement($color)', 'complement($color)', 'returns:color' %}
+{% markdown %}
 Returns the RGB [complement][] of `$color`.
 
 This is identical to [`color.adjust($color, $hue: 180deg)`](#adjust).
 
 [complement]: https://en.wikipedia.org/wiki/Complementary_colors
+{% endmarkdown %}
 
 {% codeExample 'color-complement', false %}
 // Hue 222deg becomes 42deg.
@@ -233,12 +244,15 @@ This is identical to [`color.adjust($color, $hue: 180deg)`](#adjust).
 {% endfunction %}
 
 {% function 'darken($color, $amount)', 'returns:color' %}
+{% markdown %}
 Makes `$color` darker.
 
 The `$amount` must be a number between `0%` and `100%` (inclusive). Decreases
 the HSL lightness of `$color` by that amount.
+{% endmarkdown %}
 
-{% headsUp %}
+{% headsUp false %}
+{% markdown %}
 The `darken()` function decreases lightness by a fixed amount, which is often
 not the desired effect. To make a color a certain percentage darker than it was
 before, use [`color.scale()`](#scale) instead.
@@ -247,6 +261,7 @@ Because `darken()` is usually not the best way to make a color darker, it's
 not included directly in the new module system. However, if you have to
 preserve the existing behavior, `darken($color, $amount)` can be written
 [`color.adjust($color, $lightness: -$amount)`](#adjust).
+{% endmarkdown %}
 
 {% codeExample 'color-darken', false %}
 // #036 has lightness 20%, so when darken() subtracts 30% it just returns black.
@@ -285,12 +300,15 @@ preserve the existing behavior, `darken($color, $amount)` can be written
 {% endfunction %}
 
 {% function 'desaturate($color, $amount)', 'returns:color' %}
+{% markdown %}
 Makes `$color` less saturated.
 
 The `$amount` must be a number between `0%` and `100%` (inclusive). Decreases
 the HSL saturation of `$color` by that amount.
+{% endmarkdown %}
 
-{% headsUp %}
+{% headsUp false %}
+{% markdown %}
 The `desaturate()` function decreases saturation by a fixed amount, which is
 often not the desired effect. To make a color a certain percentage less
 saturated than it was before, use [`color.scale()`](#scale) instead.
@@ -299,6 +317,7 @@ Because `desaturate()` is usually not the best way to make a color less
 saturated, it's not included directly in the new module system. However, if
 you have to preserve the existing behavior, `desaturate($color, $amount)`
 can be written [`color.adjust($color, $saturation: -$amount)`](#adjust).
+{% endmarkdown %}
 
 {% codeExample 'color-desaturate', false %}
 // #d2e1dd has saturation 20%, so when desaturate() subtracts 30% it just
@@ -339,9 +358,11 @@ can be written [`color.adjust($color, $saturation: -$amount)`](#adjust).
 {% endfunction %}
 
 {% function 'color.grayscale($color)', 'grayscale($color)', 'returns:color' %}
+{% markdown %}
 Returns a gray color with the same lightness as `$color`.
 
 This is identical to [`color.change($color, $saturation: 0%)`](#change).
+{% endmarkdown %}
 
 {% codeExample 'color-grayscale', false %}
 @debug color.grayscale(#6b717f); // #757575
@@ -355,6 +376,7 @@ This is identical to [`color.change($color, $saturation: 0%)`](#change).
 {% endfunction %}
 
 {% function 'color.green($color)', 'green($color)', 'returns:number' %}
+{% markdown %}
 Returns the green channel of `$color` as a number between 0 and 255.
 
 See also:
@@ -367,6 +389,7 @@ See also:
 * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
 * [`color.blackness()`](#blackness) for getting a color's blackness.
 * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+{% endmarkdown %}
 
 {% codeExample 'color-green', false %}
 @debug color.green(#e1d7d2); // 215
@@ -380,6 +403,7 @@ See also:
 {% endfunction %}
 
 {% function 'color.hue($color)', 'hue($color)', 'returns:number' %}
+{% markdown %}
 Returns the hue of `$color` as a number between `0deg` and `360deg`.
 
 See also:
@@ -392,6 +416,7 @@ See also:
 * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
 * [`color.blackness()`](#blackness) for getting a color's blackness.
 * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+{% endmarkdown %}
 
 {% codeExample 'color-hue', false %}
 @debug color.hue(#e1d7d2); // 20deg
@@ -406,7 +431,7 @@ See also:
 
 {% function 'color.hwb($hue $whiteness $blackness)', 'color.hwb($hue $whiteness $blackness / $alpha)', 'color.hwb($hue, $whiteness, $blackness, $alpha: 1)', 'returns:color' %}
 {% compatibility '1.28.0', false, null, false %}{% endcompatibility %}
-
+{% markdown %}
 Returns a color with the given [hue, whiteness, and blackness][] and the given
 alpha channel.
 
@@ -419,6 +444,7 @@ channel can be specified as either a unitless number between 0 and 1
 (inclusive), or a percentage between `0%` and `100%` (inclusive).
 
 [unitless]: /documentation/values/numbers#units
+{% endmarkdown %}
 
 {% headsUp %}
 Sass's [special parsing rules][] for slash-separated values make it
@@ -441,10 +467,12 @@ difficult to pass variables for `$blackness` or `$alpha` when using the
 {% endfunction %}
 
 {% function 'color.ie-hex-str($color)', 'ie-hex-str($color)', 'returns:unquoted string' %}
+{% markdown %}
 Returns an unquoted string that represents `$color` in the `#AARRGGBB` format
 expected by Internet Explorer's [`-ms-filter`][] property.
 
 [`-ms-filter`]: https://developer.mozilla.org/en-US/docs/Web/CSS/-ms-filter
+{% endmarkdown %}
 
 {% codeExample 'color-ie-hex-str', false %}
 @debug color.ie-hex-str(#b37399); // #FFB37399
@@ -458,6 +486,7 @@ expected by Internet Explorer's [`-ms-filter`][] property.
 {% endfunction %}
 
 {% function 'color.invert($color, $weight: 100%)', 'invert($color, $weight: 100%)', 'returns:color' %}
+{% markdown %}
 Returns the inverse or [negative][] of `$color`.
 
 [negative]: https://en.wikipedia.org/wiki/Negative_(photography)
@@ -465,6 +494,7 @@ Returns the inverse or [negative][] of `$color`.
 The `$weight` must be a number between `0%` and `100%` (inclusive). A higher
 weight means the result will be closer to the negative, and a lower weight means
 it will be closer to `$color`. Weight `50%` will always produce `#808080`.
+{% endmarkdown %}
 
 {% codeExample 'color-invert', false %}
 @debug color.invert(#b37399); // #4c8c66
@@ -478,12 +508,15 @@ it will be closer to `$color`. Weight `50%` will always produce `#808080`.
 {% endfunction %}
 
 {% function 'lighten($color, $amount)', 'returns:color' %}
+{% markdown %}
 Makes `$color` lighter.
 
 The `$amount` must be a number between `0%` and `100%` (inclusive). Increases
 the HSL lightness of `$color` by that amount.
+{% endmarkdown %}
 
-{% headsUp %}
+{% headsUp false %}
+{% markdown %}
 The `lighten()` function increases lightness by a fixed amount, which is often
 not the desired effect. To make a color a certain percentage lighter than it was
 before, use [`scale()`](#scale) instead.
@@ -492,6 +525,7 @@ Because `lighten()` is usually not the best way to make a color lighter,
 it's not included directly in the new module system. However, if you have to
 preserve the existing behavior, `lighten($color, $amount)` can be written
 [`adjust($color, $lightness: $amount)`](#adjust).
+{% endmarkdown %}
 
 {% codeExample 'color-lighten', false %}
 // #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
@@ -530,6 +564,7 @@ preserve the existing behavior, `lighten($color, $amount)` can be written
 {% endfunction %}
 
 {% function 'color.lightness($color)', 'lightness($color)', 'returns:number' %}
+{% markdown %}
 Returns the HSL lightness of `$color` as a number between `0%` and `100%`.
 
 See also:
@@ -542,6 +577,7 @@ See also:
 * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
 * [`color.blackness()`](#blackness) for getting a color's blackness.
 * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+{% endmarkdown %}
 
 {% codeExample 'color-lightness', false %}
 @debug color.lightness(#e1d7d2); // 85.2941176471%
@@ -555,12 +591,14 @@ See also:
 {% endfunction %}
 
 {% function 'color.mix($color1, $color2, $weight: 50%)', 'mix($color1, $color2, $weight: 50%)', 'returns:color' %}
+{% markdown %}
 Returns a color that's a mixture of `$color1` and `$color2`.
 
 Both the `$weight` and the relative opacity of each color determines how much of
 each color is in the result. The `$weight` must be a number between `0%` and
 `100%` (inclusive). A larger weight indicates that more of `$color1` should be
 used, and a smaller weight indicates that more of `$color2` should be used.
+{% endmarkdown %}
 
 {% codeExample 'color-mix', false %}
 @debug color.mix(#036, #d2e1dd); // #698aa2
@@ -576,12 +614,15 @@ used, and a smaller weight indicates that more of `$color2` should be used.
 {% endfunction %}
 
 {% function 'opacify($color, $amount)', 'fade-in($color, $amount)', 'returns:color' %}
+{% markdown %}
 Makes `$color` more opaque.
 
 The `$amount` must be a number between `0` and `1` (inclusive). Increases the
 alpha channel of `$color` by that amount.
+{% endmarkdown %}
 
-{% headsUp %}
+{% headsUp false %}
+{% markdown %}
 The `opacify()` function increases the alpha channel by a fixed amount, which is often
 not the desired effect. To make a color a certain percentage more opaque than it was
 before, use [`scale()`](#scale) instead.
@@ -590,6 +631,7 @@ Because `opacify()` is usually not the best way to make a color more opaque,
 it's not included directly in the new module system. However, if you have to
 preserve the existing behavior, `opacify($color, $amount)` can be written
 [`adjust($color, $alpha: -$amount)`](#adjust).
+{% endmarkdown %}
 
 {% codeExample 'color-opacify', false %}
 // rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully
@@ -620,6 +662,7 @@ preserve the existing behavior, `opacify($color, $amount)` can be written
 {% endfunction %}
 
 {% function 'color.red($color)', 'red($color)', 'returns:number' %}
+{% markdown %}
 Returns the red channel of `$color` as a number between 0 and 255.
 
 See also:
@@ -632,6 +675,7 @@ See also:
 * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
 * [`color.blackness()`](#blackness) for getting a color's blackness.
 * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+{% endmarkdown %}
 
 {% codeExample 'color-red', false %}
 @debug color.red(#e1d7d2); // 225
@@ -645,12 +689,15 @@ See also:
 {% endfunction %}
 
 {% function 'color.saturate($color, $amount)', 'saturate($color, $amount)', 'returns:color' %}
+{% markdown %}
 Makes `$color` more saturated.
 
 The `$amount` must be a number between `0%` and `100%` (inclusive). Increases
 the HSL saturation of `$color` by that amount.
+{% endmarkdown %}
 
-{% headsUp %}
+{% headsUp false %}
+{% markdown %}
 The `saturate()` function increases saturation by a fixed amount, which is often
 not the desired effect. To make a color a certain percentage more saturated than
 it was before, use [`scale()`](#scale) instead.
@@ -659,6 +706,7 @@ Because `saturate()` is usually not the best way to make a color more
 saturated, it's not included directly in the new module system. However, if
 you have to preserve the existing behavior, `saturate($color, $amount)` can
 be written [`adjust($color, $saturation: $amount)`](#adjust).
+{% endmarkdown %}
 
 {% codeExample 'color-saturate', false %}
 // #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes
@@ -699,6 +747,7 @@ be written [`adjust($color, $saturation: $amount)`](#adjust).
 {% endfunction %}
 
 {% function 'color.saturation($color)', 'saturation($color)', 'returns:number' %}
+{% markdown %}
 Returns the HSL saturation of `$color` as a number between `0%` and `100%`.
 
 See also:
@@ -711,6 +760,7 @@ See also:
 * [`color.whiteness()`](#whiteness) for getting a color's whiteness.
 * [`color.blackness()`](#blackness) for getting a color's blackness.
 * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+{% endmarkdown %}
 
 {% codeExample 'color-saturation', false %}
 @debug color.saturation(#e1d7d2); // 20%
@@ -723,10 +773,9 @@ See also:
 {% endcodeExample %}
 {% endfunction %}
 
-
 {% function 'color.scale($color,!!!  $red: null, $green: null, $blue: null,!!!  $saturation: null, $lightness: null,!!!  $whiteness: null, $blackness: null,!!!  $alpha: null)', 'scale-color(...)', 'returns:color' %}
 {% compatibility '1.28.0', false, null, false, '$whiteness and $blackness' %}{% endcompatibility %}
-
+{% markdown %}
 Fluidly scales one or more properties of `$color`.
 
 Each keyword argument must be a number between `-100%` and `100%` (inclusive).
@@ -748,6 +797,7 @@ See also:
 * [`color.adjust()`](#adjust) for changing a color's properties by fixed
   amounts.
 * [`color.change()`](#change) for setting a color's properties.
+{% endmarkdown %}
 
 {% codeExample 'color-scale', false %}
 @debug color.scale(#6b717f, $red: 15%); // #81717f
@@ -761,12 +811,15 @@ See also:
 {% endfunction %}
 
 {% function 'transparentize($color, $amount)', 'fade-out($color, $amount)', 'returns:color' %}
+{% markdown %}
 Makes `$color` more transparent.
 
 The `$amount` must be a number between `0` and `1` (inclusive). Decreases the
 alpha channel of `$color` by that amount.
+{% endmarkdown %}
 
-{% headsUp %}
+{% headsUp false %}
+{% markdown %}
 The `transparentize()` function decreases the alpha channel by a fixed amount,
 which is often not the desired effect. To make a color a certain percentage more
 transparent than it was before, use [`color.scale()`](#scale) instead.
@@ -776,6 +829,7 @@ transparent, it's not included directly in the new module system. However,
 if you have to preserve the existing behavior,
 `transparentize($color, $amount)` can be written
 [`color.adjust($color, $alpha: -$amount)`](#adjust).
+{% endmarkdown %}
 
 {% codeExample 'transparentize', false %}
 // rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it
@@ -807,7 +861,7 @@ if you have to preserve the existing behavior,
 
 {% function 'color.whiteness($color)', 'returns:number' %}
 {% compatibility '1.28.0', false, null, false %}{% endcompatibility %}
-
+{% markdown %}
 Returns the [HWB][] whiteness of `$color` as a number between `0%` and `100%`.
 
 [HWB]: https://en.wikipedia.org/wiki/HWB_color_model
@@ -821,6 +875,7 @@ See also:
 * [`color.lightness()`](#lightness) for getting a color's lightness.
 * [`color.blackness()`](#blackness) for getting a color's blackness.
 * [`color.alpha()`](#alpha) for getting a color's alpha channel.
+{% endmarkdown %}
 
 {% codeExample 'color-whiteness', false %}
 @debug color.whiteness(#e1d7d2); // 82.3529411765%

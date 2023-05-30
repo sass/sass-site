@@ -1,7 +1,6 @@
 import * as cheerio from 'cheerio';
 
 import { codeBlock } from './components';
-import { markdown } from './type';
 
 const links: Record<string, string> = {
   number: '/documentation/values/numbers',
@@ -91,7 +90,7 @@ export function _function(content: string, ...signatures: string[]) {
     .addClass('language-scss')
     .html(mergedSignatures);
   pre.append(anchor).append(code);
-  div.append(pre).append(markdown(content));
+  div.append(pre).append(content);
   $('body').append(div);
   names.slice(1).forEach((name) => {
     const div = $('<div></div>').attr('id', name);
