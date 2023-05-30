@@ -2,9 +2,9 @@
 title: "@while"
 introduction: >
   The `@while` rule, written `@while <expression> { ... }`, evaluates its block
-  if its [expression](/documentation/syntax/structure#expressions) returns `true`. Then,
-  if its expression still returns `true`, it evaluates its block again. This
-  continues until the expression finally returns `false`.
+  if its [expression](/documentation/syntax/structure#expressions) returns
+  `true`. Then, if its expression still returns `true`, it evaluates its block
+  again. This continues until the expression finally returns `false`.
 ---
 
 {% codeExample 'while' %}
@@ -31,6 +31,8 @@ sup {
     $value: math.div($value, $ratio)
   @return $value
 
+
+
 $normal-font-size: 16px
 sup
   font-size: scale-below(20px, 16px)
@@ -41,12 +43,13 @@ sup {
 {% endcodeExample %}
 
 {% headsUp %}
-  Although `@while` is necessary for a few particularly complex stylesheets, you're
-  usually better of using either [`@each`][] or [`@for`][] if either of them will
-  work. They're clearer for the reader, and often faster to compile as well.
+Although `@while` is necessary for a few particularly complex stylesheets,
+you're usually better of using either [`@each`][] or [`@for`][] if either of
+them will work. They're clearer for the reader, and often faster to compile as
+well.
 
-  [`@each`]: /documentation/at-rules/control/each
-  [`@for`]: /documentation/at-rules/control/for
+[`@each`]: /documentation/at-rules/control/each
+[`@for`]: /documentation/at-rules/control/for
 {% endheadsUp %}
 
 {% render 'documentation/snippets/truthiness-and-falsiness' %}

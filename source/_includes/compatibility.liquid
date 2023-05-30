@@ -34,10 +34,6 @@
 
 {%- if details | strip -%}
   <div class="sl-c-callout sl-c-callout--impl-status">
-    {% if codeExampleDetails %}
-      {{ details }}
-    {% else %}
-      {{ details | markdown }}
-    {% endif %}
+    {% if useMarkdown %}{{ details | markdown }}{% else %}{{ details }}{% endif %}
   </div>
 {%- endif -%}
