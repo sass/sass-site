@@ -1,4 +1,5 @@
 @use '../functions';
+@use '../visual-design/typography';
 
 /**
  * Based on the GHColors theme by Avi Aryan (http://aviaryan.in)
@@ -35,7 +36,11 @@ pre[class*="language-"] {
   font-style: italic;
 }
 
-[class*="language-css"] {
+[class*='language-scss'] {
+  --sl-color--code-text: #006666;
+}
+
+[class*='language-css'] {
   & .token.comment {
     --sl-color--code-text: #006666;
   }
@@ -54,7 +59,7 @@ pre[class*="language-"] {
 .token.operator {
   --sl-color--code-text: #393A34;
   /* no highlight */
-  font-weight: bold;
+  font-weight: typography.$sl-font-weight--bold;
 }
 
 .token.entity,
@@ -67,7 +72,7 @@ pre[class*="language-"] {
 .token.regex,
 .token.inserted {
   --sl-color--code-text: #990000;
-  font-weight: bold;
+  font-weight: typography.$sl-font-weight--bold;
 }
 
 
@@ -76,7 +81,7 @@ pre[class*="language-"] {
 .token.attr-name,
 .language-autohotkey .token.selector {
   --sl-color--code-text: #000000;
-  font-weight: bold;
+  font-weight: typography.$sl-font-weight--bold;
 }
 
 .token.function,
@@ -89,13 +94,13 @@ pre[class*="language-"] {
 .token.selector,
 .language-autohotkey .token.keyword {
   --sl-color--code-text: #445588;
-  font-weight: bold;
+  font-weight: typography.$sl-font-weight--bold;
 }
 
 .token.important,
 .token.function,
 .token.bold {
-  font-weight: bold;
+  font-weight: typography.$sl-font-weight--bold;
 }
 
 [class*="language-shell"] {
