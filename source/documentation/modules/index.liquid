@@ -5,11 +5,11 @@ eleventyComputed:
     {% render 'documentation/snippets/built-in-module-status' %}
 introduction: >
   Sass provides many built-in modules which contain useful functions (and the
-  occasional mixin). These modules can be loaded with the
-  [`@use` rule](/documentation/at-rules/use) like any user-defined stylesheet, and their
+  occasional mixin). These modules can be loaded with the [`@use`
+  rule](/documentation/at-rules/use) like any user-defined stylesheet, and their
   functions can be called [like any other module
-  member](/documentation/at-rules/use#loading-members). All built-in module URLs begin with
-  `sass:` to indicate that they're part of Sass itself.
+  member](/documentation/at-rules/use#loading-members). All built-in module URLs
+  begin with `sass:` to indicate that they're part of Sass itself.
 ---
 
 {% headsUp %}
@@ -91,6 +91,7 @@ Sass provides the following built-in modules:
 {% endmarkdown %}
 
 {% function 'hsl($hue $saturation $lightness)', 'hsl($hue $saturation $lightness / $alpha)', 'hsl($hue, $saturation, $lightness, $alpha: 1)', 'hsla($hue $saturation $lightness)', 'hsla($hue $saturation $lightness / $alpha)', 'hsla($hue, $saturation, $lightness, $alpha: 1)', 'returns:color' %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.15.0', false, null, false, 'Level 4 Syntax' %}
 LibSass and Ruby Sass only support the following signatures:
 
@@ -102,6 +103,7 @@ the function name `hsla()` is used, and *forbidden* if the function name
 `hsl()` is used.
 {% endcompatibility %}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility true, false, null, '3.7.0', 'Percent Alpha' %}
 LibSass and older versions of Ruby Sass don't support alpha values specified as
 percentages.
@@ -183,6 +185,7 @@ error.
 {% endfunction %}
 
 {% function 'rgb($red $green $blue)', 'rgb($red $green $blue / $alpha)', 'rgb($red, $green, $blue, $alpha: 1)', 'rgb($color, $alpha)', 'rgba($red $green $blue)', 'rgba($red $green $blue / $alpha)', 'rgba($red, $green, $blue, $alpha: 1)', 'rgba($color, $alpha)', 'returns:color' %}
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.15.0', false, null, false, 'Level 4 Syntax' %}
 LibSass and Ruby Sass only support the following signatures:
 
@@ -195,6 +198,7 @@ the function name `rgba()` is used, and *forbidden* if the function name
 `rgb()` is used.
 {% endcompatibility %}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility true, false, null, '3.7.0', 'Percent Alpha' %}
 LibSass and older versions of Ruby Sass don't support alpha values specified
 as percentages.
@@ -210,7 +214,8 @@ alpha channel can be specified as either a unitless number between 0 and 1
 
 [unitless]: /documentation/values/numbers#units
 
-{% funFact %}
+{% funFact false %}
+{% markdown %}
 You can pass [special functions][] like `calc()` or `var()` in place of any
 argument to `rgb()`. You can even use `var()` in place of multiple
 arguments, since it might be replaced by multiple values! When a color
@@ -218,6 +223,7 @@ function is called this way, it returns an unquoted string using the same
 signature it was called with.
 
 [special functions]: /documentation/syntax/special-functions
+{% endmarkdown %}
 
 {% codeExample 'rgb-special', false %}
 @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
