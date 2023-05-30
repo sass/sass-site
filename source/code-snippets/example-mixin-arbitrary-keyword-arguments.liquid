@@ -1,5 +1,6 @@
 {% codeExample 'mixin-arbitrary-keyword' %}
 @use "sass:meta";
+
 @mixin syntax-colors($args...) {
   @debug meta.keywords($args);
   // (string: #080, comment: #800, variable: #60b)

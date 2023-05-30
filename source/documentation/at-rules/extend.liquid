@@ -9,6 +9,7 @@ introduction: >
   cluttered HTML, it's prone to errors from forgetting to include both classes,
   and it can bring non-semantic style concerns into your markup.
 ---
+
 <!-- TODO(jina): I think these code blocks should be side-by-side -->
 {% markdown %}
 ```html
@@ -16,6 +17,7 @@ introduction: >
   Oh no! You've been hacked!
 </div>
 ```
+
 ```css
 .error {
   border: 1px #f00;
@@ -26,6 +28,7 @@ introduction: >
   border-width: 3px;
 }
 ```
+
 Sass's `@extend` rule solves this. It's written `@extend <selector>`, and it
 tells Sass that one selector should inherit the styles of another.
 {% endmarkdown %}
@@ -42,10 +45,10 @@ tells Sass that one selector should inherit the styles of another.
 }
 ===
 .error
-border: 1px #f00
-background-color: #fdd
+  border: 1px #f00
+  background-color: #fdd
 
-&--serious
+  &--serious
     @extend .error
     border-width: 3px
 {% endcodeExample %}
@@ -85,9 +88,9 @@ styled exactly as if they matched the extended selector.
 {% headsUp %}
 Extends are resolved after the rest of your stylesheet is compiled. In
 particular, it happens after [parent selectors][] are resolved. This means that
-if you `@extend .error`, it won't affect the inner selector in
-`.error { &__icon { ... } }`. It also means that [parent selectors in
-SassScript][] can't see the results of extend.
+if you `@extend .error`, it won't affect the inner selector in `.error { &__icon
+{ ... } }`. It also means that [parent selectors in SassScript][] can't see the
+results of extend.
 
 [parent selectors]: /documentation/style-rules/parent-selector
 [parent selectors in SassScript]: /documentation/style-rules/parent-selector#in-sassscript
@@ -168,28 +171,28 @@ main.content .info
   font-size: 0.8em
 {% endcodeExample %}
 
-{% markdown %}
 {% funFact %}
-  You can directly access Sass's intelligent unification using [selector
-  functions][]! The [`selector.unify()` function][] returns a selector that
-  matches the intersection of two selectors, while the [`selector.extend()`
-  function][] works just like `@extend`, but on a single selector.
+You can directly access Sass's intelligent unification using [selector
+functions][]! The [`selector.unify()` function][] returns a selector that
+matches the intersection of two selectors, while the [`selector.extend()`
+function][] works just like `@extend`, but on a single selector.
 
-  [selector functions]: /documentation/modules/selector
-  [`selector.unify()` function]: /documentation/modules/selector#unify
-  [`selector.extend()` function]: /documentation/modules/selector#extend
+[selector functions]: /documentation/modules/selector
+[`selector.unify()` function]: /documentation/modules/selector#unify
+[`selector.extend()` function]: /documentation/modules/selector#extend
 {% endfunFact %}
 
 {% headsUp %}
-  Because `@extend` updates style rules that contain the extended selector, their
-  styles have precedence in [the cascade][] based on where the extended selector's
-  style rules appear, *not* based on where the `@extend` appears. This can be
-  confusing, but just remember: this is the same precedence those rules would have
-  if you added the extended class to your HTML!
+Because `@extend` updates style rules that contain the extended selector, their
+styles have precedence in [the cascade][] based on where the extended selector's
+style rules appear, *not* based on where the `@extend` appears. This can be
+confusing, but just remember: this is the same precedence those rules would have
+if you added the extended class to your HTML!
 
-  [the cascade]: https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade
+[the cascade]: https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade
 {% endheadsUp %}
 
+{% markdown %}
 ## Placeholder Selectors
 
 Sometimes you want to write a style rule that's *only* intended to be extended.
@@ -200,7 +203,9 @@ are.
 
 [placeholder selectors]: /documentation/style-rules/placeholder-selectors
 {% endmarkdown %}
+
 {% render 'code-snippets/example-placeholder' %}
+
 {% markdown %}
 ### Private Placeholders
 
@@ -273,13 +278,14 @@ avoid cascade headaches and make it easier to configure down the line.
 ### Disallowed Selectors
 {% endmarkdown %}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility true, false, null, false, "No Compound Extensions" %}
-LibSass and Ruby Sass currently allow compound selectors like `.message.info`
-to be extended. However, this behavior doesn't match the definition of
-`@extend`: instead of styling elements that match the extending selector as
-though it had `class="message info"`, which would be affected by style rules
-that included either `.message` *or* `.info`, it only styled them with rules
-that included both `.message` *and* `info`.
+LibSass and Ruby Sass currently allow compound selectors like `.message.info` to
+be extended. However, this behavior doesn't match the definition of `@extend`:
+instead of styling elements that match the extending selector as though it had
+`class="message info"`, which would be affected by style rules that included
+either `.message` *or* `.info`, it only styled them with rules that included
+both `.message` *and* `info`.
 
 In order to keep the definition of `@extend` straightforward and
 understandable, and to keep the implementation clean and efficient, that
@@ -395,3 +401,30 @@ duplicating the entire style rule.
 
 [`@media` and other CSS at-rules]: /documentation/at-rules/css
 {% endmarkdown %}
+
+{% codeExample 'extend-media', false %}
+@media screen and (max-width: 600px) {
+  .error--serious {
+    @extend .error;
+    //      ^^^^^^
+    // Error: ".error" was extended in @media, but used outside it.
+  }
+}
+
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+===
+@media screen and (max-width: 600px)
+  .error--serious
+    @extend .error
+    //      ^^^^^^
+    // Error: ".error" was extended in @media, but used outside it.
+
+
+
+.error
+  border: 1px #f00
+  background-color: #fdd
+{% endcodeExample %}
