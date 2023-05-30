@@ -28,6 +28,7 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
 {% endmarkdown %}
 
 {% function 'selector.is-superselector($super, $sub)', 'is-superselector($super, $sub)', 'returns:boolean' %}
+{% markdown %}
 Returns whether the selector `$super` matches all the elements that the
 selector `$sub` matches.
 
@@ -38,6 +39,7 @@ not [parent selectors][].
 
 [placeholder selectors]: /documentation/style-rules/placeholder-selectors
 [parent selectors]: /documentation/style-rules/parent-selector
+{% endmarkdown %}
 
 {% codeExample 'is-superselector', false %}
 @debug selector.is-superselector("a", "a.disabled"); // true
@@ -55,6 +57,7 @@ not [parent selectors][].
 {% endfunction %}
 
 {% function 'selector.append($selectors...)', 'selector-append($selectors...)', 'returns:selector' %}
+{% markdown %}
 Combines `$selectors` without [descendant combinators][]—that is, without
 whitespace between them.
 
@@ -70,6 +73,7 @@ selectors][].
 [parent selectors]: /documentation/style-rules/parent-selector
 
 See also [`selector.nest()`](#nest).
+{% endmarkdown %}
 
 {% codeExample 'append', false %}
 @debug selector.append("a", ".disabled"); // a.disabled
@@ -85,6 +89,7 @@ See also [`selector.nest()`](#nest).
 {% endfunction %}
 
 {% function 'selector.extend($selector, $extendee, $extender)', 'selector-extend($selector, $extendee, $extender)', 'returns:selector' %}
+{% markdown %}
 Extends `$selector` as with the [`@extend` rule][].
 
 [`@extend` rule]: /documentation/at-rules/extend
@@ -108,6 +113,7 @@ The `$selector`, `$extendee`, and `$extender` selectors may contain
 [parent selectors]: /documentation/style-rules/parent-selector
 
 See also [`selector.replace()`](#replace).
+{% endmarkdown %}
 
 {% codeExample 'extend', false %}
 @debug selector.extend("a.disabled", "a", ".link"); // a.disabled, .link.disabled
@@ -123,6 +129,7 @@ See also [`selector.replace()`](#replace).
 {% endfunction %}
 
 {% function 'selector.nest($selectors...)', 'selector-nest($selectors...)', 'returns:selector' %}
+{% markdown %}
 Combines `$selectors` as though they were nested within one another in the
 stylesheet.
 
@@ -133,6 +140,7 @@ functions, all of them except the first may also contain [parent selectors][].
 [parent selectors]: /documentation/style-rules/parent-selector
 
 See also [`selector.append()`](#append).
+{% endmarkdown %}
 
 {% codeExample 'nest', false %}
 @debug selector.nest("ul", "li"); // ul li
@@ -148,7 +156,9 @@ See also [`selector.append()`](#append).
 {% endfunction %}
 
 {% function 'selector.parse($selector)', 'selector-parse($selector)', 'returns:selector' %}
+{% markdown %}
 Returns `$selector` in the [selector value](#selector-values) format.
+{% endmarkdown %}
 
 {% codeExample 'parse', false %}
 @debug selector.parse(".main aside:hover, .sidebar p");
@@ -162,6 +172,7 @@ Returns `$selector` in the [selector value](#selector-values) format.
 {% endfunction %}
 
 {% function 'selector.replace($selector, $original, $replacement)', 'selector-replace($selector, $original, $replacement)', 'returns:selector' %}
+{% markdown %}
 Returns a copy of `$selector` with all instances of `$original` replaced by
 `$replacement`.
 
@@ -179,6 +190,7 @@ The `$selector`, `$original`, and `$replacement` selectors may contain
 [parent selectors]: /documentation/style-rules/parent-selector
 
 See also [`selector.extend()`](#extend).
+{% endmarkdown %}
 
 {% codeExample 'replace', false %}
 @debug selector.replace("a.disabled", "a", ".link"); // .link.disabled
@@ -194,6 +206,7 @@ See also [`selector.extend()`](#extend).
 {% endfunction %}
 
 {% function 'selector.unify($selector1, $selector2)', 'selector-unify($selector1, $selector2)', 'returns:selector | null' %}
+{% markdown %}
 Returns a selector that matches only elements matched by *both* `$selector1`
 and `$selector2`.
 
@@ -205,6 +218,7 @@ isn't guaranteed to match *all* the elements matched by both `$selector1` and
 `$selector2` if they're both complex selectors.
 
 [`@extend` rule]: /documentation/at-rules/extend#html-heuristics
+{% endmarkdown %}
 
 {% codeExample 'unify', false %}
 @debug selector.unify("a", ".disabled"); // a.disabled
@@ -220,6 +234,7 @@ isn't guaranteed to match *all* the elements matched by both `$selector1` and
 {% endfunction %}
 
 {% function 'selector.simple-selectors($selector)', 'simple-selectors($selector)', 'returns:list' %}
+{% markdown %}
 Returns a list of simple selectors in `$selector`.
 
 The `$selector` must be a single string that contains a compound selector.
@@ -227,6 +242,7 @@ This means it may not contain combinators (including spaces) or commas.
 
 The returned list is comma-separated, and the simple selectors are unquoted
 strings.
+{% endmarkdown %}
 
 {% codeExample 'simple-selectors', false %}
 @debug selector.simple-selectors("a.disabled"); // a, .disabled

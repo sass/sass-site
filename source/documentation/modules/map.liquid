@@ -4,7 +4,8 @@ title: sass:map
 
 {% render 'documentation/snippets/built-in-module-status' %}
 
-{% funFact %}
+{% funFact false %}
+{% markdown %}
 Sass libraries and design systems tend to share and override configurations
 that are represented as nested maps (maps that contain maps that contain
 maps).
@@ -12,6 +13,7 @@ maps).
 To help you work with nested maps, some map functions support deep
 operations. For example, if you pass multiple keys to `map.get()`, it will
 follow those keys to find the desired nested map:
+{% endmarkdown %}
 
 {% codeExample 'map', false %}
 $config: (a: (b: (c: d)));
@@ -24,9 +26,10 @@ $config: (a: (b: (c: d)))
 
 {% function 'map.deep-merge($map1, $map2)', 'returns:map' %}
 {% compatibility '1.27.0', false, null, false %}{% endcompatibility %}
-
+{% markdown %}
 Identical to [`map.merge()`](#merge), except that nested map values are *also*
 recursively merged.
+{% endmarkdown %}
 
 {% codeExample 'map-deep-merge', false %}
 $helvetica-light: (
@@ -83,9 +86,10 @@ $helvetica-heavy: ("weights": ("medium": 500, "bold": 700))
 
 {% function 'map.deep-remove($map, $key, $keys...)', 'returns:map' %}
 {% compatibility '1.27.0', false, null, false %}{% endcompatibility %}
-
+{% markdown %}
 If `$keys` is empty, returns a copy of `$map` without a value associated with
 `$key`.
+{% endmarkdown %}
 
 {% codeExample 'map-deep-remove', false %}
 $font-weights: ("regular": 400, "medium": 500, "bold": 700);
@@ -99,6 +103,7 @@ $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 // ("medium": 500, "bold": 700)
 {% endcodeExample %}
 
+{% markdown %}
 ---
 
 If `$keys` is not empty, follows the set of keys including `$key` and
@@ -107,6 +112,7 @@ targeted for updating.
 
 Returns a copy of `$map` where the targeted map does not have a value
 associated with the last key in `$keys`.
+{% endmarkdown %}
 
 {% codeExample 'map-deep-remove-2', false %}
 $fonts: (
@@ -144,12 +150,17 @@ $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 {% endfunction %}
 
 {% function 'map.get($map, $key, $keys...)', 'map-get($map, $key, $keys...)' %}
+{% markdown %}
 If `$keys` is empty, returns the value in `$map` associated with `$key`.
 
 If `$map` doesn't have a value associated with `$key`, returns [`null`][].
 
+[`null`]: /documentation/values/null
+{% endmarkdown %}
+
 {% render 'code-snippets/example-map-get' %}
 
+{% markdown %}
 ---
 
 {% compatibility '1.27.0', false, null, false %}
@@ -165,6 +176,9 @@ Returns the value in the targeted map associated with the last key in `$keys`.
 Returns [`null`][] if the map does not have a value associated with the key,
 or if any key in `$keys` is missing from a map or references a value that is
 not a map.
+
+[`null`]: /documentation/values/null
+{% endmarkdown %}
 
 {% codeExample 'map-deep-remove-2', false %}
 $fonts: (
@@ -185,13 +199,13 @@ $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 @debug map.get($fonts, "Helvetica", "weights", "regular") // 400
 @debug map.get($fonts, "Helvetica", "colors") // null
 {% endcodeExample %}
-
-[`null`]: /documentation/values/null
 {% endfunction %}
 
 {% function 'map.has-key($map, $key, $keys...)', 'map-has-key($map, $key, $keys...)', 'returns:boolean' %}
+{% markdown %}
 If `$keys` is empty, returns whether `$map` contains a value associated with
 `$key`.
+{% endmarkdown %}
 
 {% codeExample 'map-has-key', false %}
 $font-weights: ("regular": 400, "medium": 500, "bold": 700);
@@ -205,6 +219,7 @@ $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 @debug map.has-key($font-weights, "bolder") // false
 {% endcodeExample %}
 
+{% markdown %}
 ---
 
 {% compatibility '1.27.0', false, null, false %}
@@ -220,6 +235,7 @@ in `$keys`.
 
 Returns false if it does not, or if any key in `$keys` is missing from a map
 or references a value that is not a map.
+{% endmarkdown %}
 
 {% codeExample 'map-has-key-2', false %}
 $fonts: (
@@ -243,7 +259,9 @@ $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 {% endfunction %}
 
 {% function 'map.keys($map)', 'map-keys($map)', 'returns:list' %}
+{% markdown %}
 Returns a comma-separated list of all the keys in `$map`.
+{% endmarkdown %}
 
 {% codeExample 'map-keys', false %}
 $font-weights: ("regular": 400, "medium": 500, "bold": 700);
@@ -263,6 +281,7 @@ are passed as `map.merge($map1, $args...)`. They are described here as `$map1,
 $keys..., $map2` for explanation purposes only.
 {% endheadsUp %}
 
+{% markdown %}
 If no `$keys` are passed, returns a new map with all the keys and values from
 both `$map1` and `$map2`.
 
@@ -271,6 +290,7 @@ precedence.
 
 All keys in the returned map that also appear in `$map1` have the same order
 as in `$map1`. New keys from `$map2` appear at the end of the map.
+{% endmarkdown %}
 
 {% codeExample 'map-merge', false %}
 $light-weights: ("lightest": 100, "light": 300);
@@ -286,6 +306,7 @@ $heavy-weights: ("medium": 500, "bold": 700)
 // ("lightest": 100, "light": 300, "medium": 500, "bold": 700)
 {% endcodeExample %}
 
+{% markdown %}
 ---
 
 {% compatibility '1.27.0', false, null, false %}
@@ -298,6 +319,7 @@ that is not a map, sets the value at that key to an empty map.
 
 Returns a copy of `$map1` where the targeted map is replaced by a new map that
 contains all the keys and values from both the targeted map and `$map2`.
+{% endmarkdown %}
 
 {% codeExample 'map-merge-2', false %}
 $fonts: (
@@ -340,9 +362,11 @@ $heavy-weights: ("medium": 500, "bold": 700)
 {% endfunction %}
 
 {% function 'map.remove($map, $keys...)', 'map-remove($map, $keys...)', 'returns:map' %}
+{% markdown %}
 Returns a copy of `$map` without any values associated with `$keys`.
 
 If a key in `$keys` doesn't have an associated value in `$map`, it's ignored.
+{% endmarkdown %}
 
 {% codeExample 'map-remove', false %}
 $font-weights: ("regular": 400, "medium": 500, "bold": 700);
@@ -368,8 +392,10 @@ are passed as `map.set($map, $args...)`. They are described here as `$map,
 $keys..., $key, $value` for explanation purposes only.
 {% endheadsUp %}
 
+{% markdown %}
 If `$keys` are not passed, returns a copy of `$map` with the value at `$key`
 set to `$value`.
+{% endmarkdown %}
 
 {% codeExample 'map-set', false %}
 $font-weights: ("regular": 400, "medium": 500, "bold": 700);
@@ -383,6 +409,7 @@ $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 // ("regular": 300, "medium": 500, "bold": 700)
 {% endcodeExample %}
 
+{% markdown %}
 ---
 
 {% compatibility '1.27.0', false, null, false %}
@@ -395,6 +422,7 @@ that is not a map, sets the value at that key to an empty map.
 
 Returns a copy of `$map` with the targeted map's value at `$key` set to
 `$value`.
+{% endmarkdown %}
 
 {% codeExample 'map-set-2', false %}
 $fonts: (
@@ -434,7 +462,9 @@ $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 {% endfunction %}
 
 {% function 'map.values($map)', 'map-values($map)', 'returns:list' %}
+{% markdown %}
 Returns a comma-separated list of all the values in `$map`.
+{% endmarkdown %}
 
 {% codeExample 'map-values', false %}
 $font-weights: ("regular": 400, "medium": 500, "bold": 700);
