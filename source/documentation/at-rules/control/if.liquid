@@ -4,9 +4,10 @@ table_of_contents: true
 introduction: >
   The `@if` rule is written `@if <expression> { ... }`, and it controls whether
   or not its block gets evaluated (including emitting any styles as CSS). The
-  [expression](/documentation/syntax/structure#expressions) usually returns either
-  [`true` or `false`](/documentation/values/booleans)—if the expression returns `true`,
-  the block is evaluated, and if the expression returns `false` it’s not.
+  [expression](/documentation/syntax/structure#expressions) usually returns
+  either [`true` or `false`](/documentation/values/booleans)—if the expression
+  returns `true`, the block is evaluated, and if the expression returns `false`
+  it’s not.
 ---
 
 {% render 'code-snippets/example-if' %}
@@ -54,6 +55,8 @@ $dark-text: #d2e1dd
   @else
     background-color: $dark-background
     color: $dark-text
+
+
 
 .banner
   @include theme-colors($light-theme: true)
@@ -128,6 +131,8 @@ evaluated if every other block fails.
   @else
     @error "Unknown direction #{$direction}."
 
+
+
 .next
   @include triangle(5px, black, right)
 ===
@@ -141,4 +146,4 @@ evaluated if every other block fails.
 }
 {% endcodeExample %}
 
-{% render  'documentation/snippets/truthiness-and-falsiness' %}
+{% render 'documentation/snippets/truthiness-and-falsiness' %}
