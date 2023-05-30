@@ -85,7 +85,7 @@ export function _function(content: string, ...signatures: string[]) {
   const div = $('<div></div>')
     .addClass('sl-c-callout sl-c-callout--function')
     .attr('id', names[0]);
-  const pre = $('<pre></pre>').addClass('language-scss');
+  const pre = $('<pre></pre>').addClass('signature language-scss');
   const anchor = $('<a></a>').addClass('anchor').attr('href', `#${names[0]}`);
   const code = $('<code></code>')
     .addClass('language-scss')
