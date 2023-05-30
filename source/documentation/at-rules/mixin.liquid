@@ -6,6 +6,7 @@ introduction: >
   stylesheet. They make it easy to avoid using non-semantic classes like
   `.float-left`, and to distribute collections of styles in libraries.
 ---
+
 {% markdown %}
 Mixins are defined using the `@mixin` at-rule, which is written
 `@mixin <name> { ... }` or `@mixin name(<arguments...>) { ... }`. A mixin's name
@@ -62,25 +63,30 @@ nav ul {
       left: -2px
       right: 2em
 
+
+
+
 nav ul
   @include horizontal-list
 {% endcodeExample %}
 
 {% funFact %}
 Mixin names, like all Sass identifiers, treat hyphens and underscores as
-identical. This means that `reset-list` and `reset_list` both refer to the
-same mixin. This is a historical holdover from the very early days of Sass,
-when it *only* allowed underscores in identifier names. Once Sass added
-support for hyphens to match CSS's syntax, the two were made equivalent to
-make migration easier.
+identical. This means that `reset-list` and `reset_list` both refer to the same
+mixin. This is a historical holdover from the very early days of Sass, when it
+*only* allowed underscores in identifier names. Once Sass added support for
+hyphens to match CSS's syntax, the two were made equivalent to make migration
+easier.
 {% endfunFact %}
 
 {% markdown %}
 ## Arguments
+
 {% comment %}
 When changing this section, don't forget to change the function arguments
 section as well!
 {% endcomment %}
+
 Mixins can also take arguments, which allows their behavior to be customized
 each time they're called. The arguments are specified in the `@mixin` rule after
 the mixin's name, as a list of variable names surrounded by parentheses. The
@@ -110,13 +116,15 @@ the mixin's body as the corresponding variables.
   [dir=rtl] &
     #{$property}: $rtl-value
 
+
+
 .sidebar
   @include rtl(float, left, right)
 {% endcodeExample %}
 
 {% funFact %}
-Argument lists can also have trailing commas! This makes it easier to
-avoid syntax errors when refactoring your stylesheets.
+Argument lists can also have trailing commas! This makes it easier to avoid
+syntax errors when refactoring your stylesheets.
 {% endfunFact %}
 
 {% markdown %}
@@ -165,7 +173,8 @@ APIs that can be used in simple or complex ways.
 {% endcodeExample %}
 
 {% funFact %}
-Default values can be any SassScript expression, and they can even refer to earlier arguments!
+Default values can be any SassScript expression, and they can even refer to
+earlier arguments!
 {% endfunFact %}
 
 {% markdown %}
@@ -203,14 +212,17 @@ the same syntax as [variable declarations][] and [optional arguments][].
   @if $radius != 0
     border-radius: $radius
 
+
+
 .avatar
   @include square(100px, $radius: 4px)
 {% endcodeExample %}
 
 {% headsUp %}
-Because *any* argument can be passed by name, be careful when renaming a mixin's arguments... it might break your users! It can be helpful to keep the
-old name around as an [optional argument][] for a while and printing a
-[warning][] if anyone passes it, so they know to migrate to the new argument.
+Because *any* argument can be passed by name, be careful when renaming a mixin's
+arguments... it might break your users! It can be helpful to keep the old name
+around as an [optional argument][] for a while and printing a [warning][] if
+anyone passes it, so they know to migrate to the new argument.
 
 [optional argument]: #optional-arguments
 [warning]: /documentation/at-rules/warn
@@ -269,13 +281,12 @@ including `$`) to those arguments' values.
 <!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
 {% endmarkdown %}
 
-{% render  'code-snippets/example-mixin-arbitrary-keyword-arguments' %}
+{% render 'code-snippets/example-mixin-arbitrary-keyword-arguments' %}
 
 {% funFact %}
 If you don't ever pass an argument list to the [`meta.keywords()` function][],
 that argument list won't allow extra keyword arguments. This helps callers of
-your mixin make sure they haven't accidentally misspelled any argument
-names.
+your mixin make sure they haven't accidentally misspelled any argument names.
 
 [`meta.keywords()` function]: /documentation/modules/meta#keywords
 {% endfunFact %}
@@ -301,11 +312,11 @@ $form-selectors: "input.name", "input.address", "input.zip" !default
 @include order(150px, $form-selectors...)
 {% endcodeExample %}
 
-{% funFact, false %}
+{% funFact false %}
 {% markdown %}
 Because an [argument list][] keeps track of both positional and keyword
-arguments, you use it to pass both at once to another mixin. That makes it
-super easy to define an alias for a mixin!
+arguments, you use it to pass both at once to another mixin. That makes it super
+easy to define an alias for a mixin!
 
 [argument list]: /documentation/values/lists#argument-lists
 {% endmarkdown %}
@@ -359,38 +370,38 @@ the `@content` rule.
 {% endcodeExample %}
 
 {% funFact %}
-A mixin can include multiple `@content` at-rules. If it does, the content
-block will be included separately for each `@content`.
+A mixin can include multiple `@content` at-rules. If it does, the content block
+will be included separately for each `@content`.
 {% endfunFact %}
 
 {% headsUp %}
 A content block is *lexically scoped*, which means it can only see [local
 variables][] in the scope where the mixin is included. It can't see any
-variables that are defined in the mixin it's passed to, even if they're
-defined before the content block is invoked.
+variables that are defined in the mixin it's passed to, even if they're defined
+before the content block is invoked.
 
 [local variables]: /documentation/variables#scope
 {% endheadsUp %}
 
-
 {{ '### Passing Arguments to Content Blocks' | markdown }}
 
+{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility '1.15.0', false, null, false %}{% endcompatibility %}
 
 {% markdown %}
 A mixin can pass arguments to its content block the same way it would pass
 arguments to another mixin by writing `@content(<arguments...>)`. The user
-writing the content block can accept arguments by writing
-`@include <name> using (<arguments...>)`. The argument list for a content block
-works just like a mixin's argument list, and the arguments passed to it by
-`@content` work just like passing arguments to a mixin.
+writing the content block can accept arguments by writing `@include <name> using
+(<arguments...>)`. The argument list for a content block works just like a
+mixin's argument list, and the arguments passed to it by `@content` work just
+like passing arguments to a mixin.
 {% endmarkdown %}
 
 {% headsUp %}
 If a mixin passes arguments to its content block, that content block *must*
 declare that it accepts those arguments. This means that it's a good idea to
-only pass arguments by position (rather than by name), and it means that
-passing more arguments is a breaking change.
+only pass arguments by position (rather than by name), and it means that passing
+more arguments is a breaking change.
 
 If you want to be flexible in what information you pass to a content block,
 consider passing it a [map][] that contains information it may need!
