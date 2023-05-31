@@ -60,7 +60,7 @@
 
     {% typogr -%}
       {%- if is_playground -%}
-        {% render 'playground_header', title: title %}
+        {% render 'playground/playground_header', title: title %}
       {%- else -%}
         {% render 'header', alerts: alerts %}
       {%- endif -%}
