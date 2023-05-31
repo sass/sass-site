@@ -58,12 +58,17 @@
     </p>
     <![endif]-->
 
-    {%- unless is_playground -%}
-      {% typogr %}{% render 'header', alerts: alerts %}{% endtypogr %}
-    {%- endunless -%}
+    {% typogr -%}
+      {%- if is_playground -%}
+        {% render 'playground_header', title: title %}
+      {%- else -%}
+        {% render 'header', alerts: alerts %}
+      {%- endif -%}
+    {%- endtypogr %}
 
     <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
-      {% unless (page | isTypedoc) || is_playground %}
+      {% assign is_typedoc = page | isTypedoc %}
+      {% unless is_typedoc or is_playground %}
         <h1 class="sl-l-container">
           {%- if h1 -%}
             {{ h1 | typogr }}
@@ -71,8 +76,6 @@
             {{ title | typogr }}
           {%- endif -%}
         </h1>
-      {% elsif is_playground %}
-        {% render 'playground_header', title: title %}
       {% endunless %}
 
       <div class="sl-l-container sl-color--white-background{% unless is_home %} sl-l-section{% endunless %}{% if is_playground %} sl-l-section-playground{% endif %}">
