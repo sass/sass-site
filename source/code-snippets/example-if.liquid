@@ -17,6 +17,8 @@
     @include avatar(100px, $circle: true);
   }
   ===
+  @use "sass:math"
+
   @mixin avatar($size, $circle: false)
     width: $size
     height: $size
