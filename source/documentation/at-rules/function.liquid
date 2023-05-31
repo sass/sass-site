@@ -80,14 +80,12 @@ introduction: >
   function's body as the corresponding variables.
 
   [SassScript expressions]: /documentation/syntax/structure#expressions
-{% endmarkdown %}
 
-{% funFact %}
-  Argument lists can also have trailing commas! This makes it easier to avoid
-  syntax errors when refactoring your stylesheets.
-{% endfunFact %}
+  {% funFact %}
+    Argument lists can also have trailing commas! This makes it easier to avoid
+    syntax errors when refactoring your stylesheets.
+  {% endfunFact %}
 
-{% markdown %}
   ### Optional Arguments
 
   Normally, every argument a function declares must be passed when that function
@@ -212,18 +210,16 @@ introduction: >
 
   [`meta.keywords()` function]: /documentation/modules/meta#keywords
   [map]: /documentation/values/maps
-{% endmarkdown %}
 
-{% funFact %}
-  If you don't ever pass an argument list to the [`meta.keywords()` function][],
-  that argument list won't allow extra keyword arguments. This helps callers of
-  your function make sure they haven't accidentally misspelled any argument
-  names.
+  {% funFact %}
+    If you don't ever pass an argument list to the [`meta.keywords()`
+    function][], that argument list won't allow extra keyword arguments. This
+    helps callers of your function make sure they haven't accidentally
+    misspelled any argument names.
 
-  [`meta.keywords()` function]: /documentation/modules/meta#keywords
-{% endfunFact %}
+    [`meta.keywords()` function]: /documentation/modules/meta#keywords
+  {% endfunFact %}
 
-{% markdown %}
   #### Passing Arbitrary Arguments
 
   Just like argument lists allow functions to take arbitrary positional or

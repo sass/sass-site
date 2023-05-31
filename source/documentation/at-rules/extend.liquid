@@ -279,27 +279,25 @@ introduction: >
   ## Limitations
 
   ### Disallowed Selectors
-{% endmarkdown %}
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, false, null, false, "No Compound Extensions" %}
-  LibSass and Ruby Sass currently allow compound selectors like `.message.info`
-  to be extended. However, this behavior doesn't match the definition of
-  `@extend`: instead of styling elements that match the extending selector as
-  though it had `class="message info"`, which would be affected by style rules
-  that included either `.message` *or* `.info`, it only styled them with rules
-  that included both `.message` *and* `info`.
+  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+  {% compatibility true, false, null, false, "No Compound Extensions" %}
+    LibSass and Ruby Sass currently allow compound selectors like
+    `.message.info` to be extended. However, this behavior doesn't match the
+    definition of `@extend`: instead of styling elements that match the
+    extending selector as though it had `class="message info"`, which would be
+    affected by style rules that included either `.message` *or* `.info`, it
+    only styled them with rules that included both `.message` *and* `info`.
 
-  In order to keep the definition of `@extend` straightforward and
-  understandable, and to keep the implementation clean and efficient, that
-  behavior is now deprecated and will be removed from future versions.
+    In order to keep the definition of `@extend` straightforward and
+    understandable, and to keep the implementation clean and efficient, that
+    behavior is now deprecated and will be removed from future versions.
 
-  See [the breaking change page][] for more details.
+    See [the breaking change page][] for more details.
 
-  [the breaking change page]: /documentation/breaking-changes/extend-compound
-{% endcompatibility %}
+    [the breaking change page]: /documentation/breaking-changes/extend-compound
+  {% endcompatibility %}
 
-{% markdown %}
   Only *simple selectors*—individual selectors like `.info` or `a`—can be
   extended. If `.message.info` could be extended, the definition of `@extend`
   says that elements matching the extender would be styled as though they

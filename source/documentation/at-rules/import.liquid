@@ -129,16 +129,14 @@ introduction: >
   [mixins]: /documentation/at-rules/mixin
   [functions]: /documentation/at-rules/function
   [variables]: /documentation/variables
-{% endmarkdown %}
 
-{% headsUp %}
-  If the same stylesheet is imported more than once, it will be evaluated again
-  each time. If it just defines functions and mixins, this usually isn't a big
-  deal, but if it contains style rules they'll be compiled to CSS more than
-  once.
-{% endheadsUp %}
+  {% headsUp %}
+    If the same stylesheet is imported more than once, it will be evaluated
+    again each time. If it just defines functions and mixins, this usually isn't
+    a big deal, but if it contains style rules they'll be compiled to CSS more
+    than once.
+  {% endheadsUp %}
 
-{% markdown %}
   ## Finding the File
 
   It wouldn't be any fun to write out absolute URLs for every stylesheet you
@@ -146,15 +144,13 @@ introduction: >
   easier. For starters, you don't have to explicitly write out the extension of
   the file you want to import; `@import "variables"` will automatically load
   `variables.scss`, `variables.sass`, or `variables.css`.
-{% endmarkdown %}
 
-{% headsUp %}
-  To ensure that stylesheets work on every operating system, Sass imports files
-  by *URL*, not by *file path*. This means you need to use forward slashes, not
-  backslashes, even when you're on Windows.
-{% endheadsUp %}
+  {% headsUp %}
+    To ensure that stylesheets work on every operating system, Sass imports
+    files by *URL*, not by *file path*. This means you need to use forward
+    slashes, not backslashes, even when you're on Windows.
+  {% endheadsUp %}
 
-{% markdown %}
   ### Load Paths
 
   All Sass implementations allow users to provide *load paths*: paths on the
@@ -166,28 +162,24 @@ introduction: >
   Load paths will only be used if no relative file exists that matches the
   import. This ensures that you can't accidentally mess up your relative imports
   when you add a new library.
-{% endmarkdown %}
 
-{% funFact %}
-  Unlike some other languages, Sass doesn't require that you use `./` for
-  relative imports. Relative imports are always available.
-{% endfunFact %}
+  {% funFact %}
+    Unlike some other languages, Sass doesn't require that you use `./` for
+    relative imports. Relative imports are always available.
+  {% endfunFact %}
 
-{% markdown %}
   ### Partials
 
   As a convention, Sass files that are only meant to be imported, not compiled
   on their own, begin with `_` (as in `_code.scss`). These are called
   *partials*, and they tell Sass tools not to try to compile those files on
   their own. You can leave off the `_` when importing a partial.
-{% endmarkdown %}
 
-{{ '### Index Files' | markdown }}
+  ### Index Files
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, '3.6.0', null, '3.6.0' %}{% endcompatibility %}
+  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+  {% compatibility true, '3.6.0', null, '3.6.0' %}{% endcompatibility %}
 
-{% markdown %}
   If you write an `_index.scss` or `_index.sass` in a folder, when the folder
   itself is imported that file will be loaded in its place.
 {% endmarkdown %}
@@ -377,17 +369,17 @@ introduction: >
   {% endcodeExample %}
 {% endheadsUp %}
 
-{{ '## Importing CSS' | markdown }}
-
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.11.0', 'partial', null, false %}
-  LibSass supports importing files with the extension `.css`, but contrary to
-  the specification they're treated as SCSS files rather than being parsed as
-  CSS. This behavior has been deprecated, and an update is in the works to
-  support the behavior described below.
-{% endcompatibility %}
-
 {% markdown %}
+  ## Importing CSS
+
+  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+  {% compatibility '1.11.0', 'partial', null, false %}
+    LibSass supports importing files with the extension `.css`, but contrary to
+    the specification they're treated as SCSS files rather than being parsed as
+    CSS. This behavior has been deprecated, and an update is in the works to
+    support the behavior described below.
+  {% endcompatibility %}
+
   In addition to importing `.sass` and `.scss` files, Sass can import plain old
   `.css` files. The only rule is that the import *must not* explicitly include
   the `.css` extension, because that's used to indicate a [plain CSS
@@ -428,20 +420,18 @@ introduction: >
   will be rendered as-is. It can even be [extended][]!
 
   [extended]: /documentation/at-rules/extend
-{% endmarkdown %}
 
-{{ '## Plain CSS `@import`s' | markdown }}
+  ## Plain CSS `@import`s
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, 'partial', null, true %}
-  By default, LibSass handles plain CSS imports correctly. However, any [custom
-  importers][] will incorrectly apply to plain-CSS `@import` rules, making it
-  possible for those rules to load Sass files.
+  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+  {% compatibility true, 'partial', null, true %}
+    By default, LibSass handles plain CSS imports correctly. However, any
+    [custom importers][] will incorrectly apply to plain-CSS `@import` rules,
+    making it possible for those rules to load Sass files.
 
-  [custom importers]: /documentation/js-api/interfaces/LegacySharedOptions#importer
-{% endcompatibility %}
+    [custom importers]: /documentation/js-api/interfaces/LegacySharedOptions#importer
+  {% endcompatibility %}
 
-{% markdown %}
   Because `@import` is also defined in CSS, Sass needs a way of compiling plain
   CSS `@import`s without trying to import the files at compile time. To
   accomplish this, and to ensure SCSS is as much of a superset of CSS as
@@ -494,11 +484,11 @@ introduction: >
   @include google-font("Droid Sans")
 {% endcodeExample %}
 
-{{ '## Import and Modules' | markdown }}
-
-{% render 'documentation/snippets/module-system-status' %}
-
 {% markdown %}
+  ## Import and Modules
+
+  {% render 'documentation/snippets/module-system-status' %}
+
   Sass's [module system][] integrates seamlessly with `@import`, whether you're
   importing a file that contains `@use` rules or loading a file that contains
   imports as a module. We want to make the transition from `@import` to `@use`
@@ -516,16 +506,14 @@ introduction: >
   to be used with the module system.
 
   [`@forward` rules]: /documentation/at-rules/forward
-{% endmarkdown %}
 
-{% headsUp %}
-  When a file with `@use` rules is imported, all the CSS transitively loaded by
-  those is included in the resulting stylesheet, even if it's already been
-  included by another import. If you're not careful, this can result in bloated
-  CSS output!
-{% endheadsUp %}
+  {% headsUp %}
+    When a file with `@use` rules is imported, all the CSS transitively loaded
+    by those is included in the resulting stylesheet, even if it's already been
+    included by another import. If you're not careful, this can result in
+    bloated CSS output!
+  {% endheadsUp %}
 
-{% markdown %}
   #### Import-Only Files
 
   An API that makes sense for `@use` might not make sense for `@import`. For
@@ -572,12 +560,12 @@ introduction: >
   @forward "reset" as reset-*
 {% endcodeExample %}
 
-{{ '#### Configuring Modules Through Imports' | markdown }}
-
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.24.0', false, null, false %}{% endcompatibility %}
-
 {% markdown %}
+  #### Configuring Modules Through Imports
+
+  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+  {% compatibility '1.24.0', false, null, false %}{% endcompatibility %}
+
   You can [configure modules][] that are loaded through an `@import` by defining
   global variables prior the `@import` that first loads that module.
 

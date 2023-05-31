@@ -383,12 +383,12 @@ introduction: >
   [local variables]: /documentation/variables#scope
 {% endheadsUp %}
 
-{{ '### Passing Arguments to Content Blocks' | markdown }}
-
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.15.0', false, null, false %}{% endcompatibility %}
-
 {% markdown %}
+  ### Passing Arguments to Content Blocks
+
+  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+  {% compatibility '1.15.0', false, null, false %}{% endcompatibility %}
+
   A mixin can pass arguments to its content block the same way it would pass
   arguments to another mixin by writing `@content(<arguments...>)`. The user
   writing the content block can accept arguments by writing `@include <name>

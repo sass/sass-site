@@ -197,12 +197,12 @@ introduction: >
   @forward "src/list" hide list-reset, $horizontal-list-gap
 {% endcodeExample %}
 
-{{ '## Configuring Modules' | markdown }}
-
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.24.0', false, null, false %}{% endcompatibility %}
-
 {% markdown %}
+  ## Configuring Modules
+
+  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
+  {% compatibility '1.24.0', false, null, false %}{% endcompatibility %}
+
   The `@forward` rule can also load a module with [configuration][]. This mostly
   works the same as it does for `@use`, with one addition: a `@forward` rule's
   configuration can use the `!default` flag in its configuration. This allows a

@@ -428,15 +428,13 @@ introduction: >
   This even works if you import a module without a namespace using `as *`.
   Assigning to a variable name defined in that module will overwrite its value
   in that module.
-{% endmarkdown %}
 
-{% headsUp %}
-  Built-in module variables (such as [`math.$pi`]) cannot be reassigned.
+  {% headsUp %}
+    Built-in module variables (such as [`math.$pi`]) cannot be reassigned.
 
-  [`math.$pi`]: /documentation/modules/math#$pi
-{% endheadsUp %}
+    [`math.$pi`]: /documentation/modules/math#$pi
+  {% endheadsUp %}
 
-{% markdown %}
   ## Finding the Module
 
   It wouldn't be any fun to write out absolute URLs for every stylesheet you
@@ -444,15 +442,13 @@ introduction: >
   starters, you don't have to explicitly write out the extension of the file you
   want to load; `@use "variables"` will automatically load `variables.scss`,
   `variables.sass`, or `variables.css`.
-{% endmarkdown %}
 
-{% headsUp %}
-  To ensure that stylesheets work on every operating system, Sass loads files by
-  *URL*, not by *file path*. This means you need to use forward slashes, not
-  backslashes, even on Windows.
-{% endheadsUp %}
+  {% headsUp %}
+    To ensure that stylesheets work on every operating system, Sass loads files
+    by *URL*, not by *file path*. This means you need to use forward slashes,
+    not backslashes, even on Windows.
+  {% endheadsUp %}
 
-{% markdown %}
   ### Load Paths
 
   All Sass implementations allow users to provide *load paths*: paths on the
@@ -464,14 +460,12 @@ introduction: >
   paths will only be used if no relative file exists that matches the module's
   URL. This ensures that you can't accidentally mess up your relative imports
   when you add a new library.
-{% endmarkdown %}
 
-{% funFact %}
-  Unlike some other languages, Sass doesn't require that you use `./` for
-  relative imports. Relative imports are always available.
-{% endfunFact %}
+  {% funFact %}
+    Unlike some other languages, Sass doesn't require that you use `./` for
+    relative imports. Relative imports are always available.
+  {% endfunFact %}
 
-{% markdown %}
   ### Partials
 
   As a convention, Sass files that are only meant to be loaded as modules, not

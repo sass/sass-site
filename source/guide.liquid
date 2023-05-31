@@ -204,11 +204,11 @@ navigation: |
 {% # retain older link %}
 <span id="topic-5"></span>
 
-{{ '## Modules' | markdown }}
-
-{% render 'documentation/snippets/module-system-status' %}
-
 {% markdown %}
+  ## Modules
+
+  {% render 'documentation/snippets/module-system-status' %}
+
   You don't have to write all your Sass in a single file. You can split it up
   however you want with the `@use` rule. This rule loads another Sass file as
   a *module*, which means you can refer to its variables, [mixins][], and
