@@ -4,7 +4,8 @@
   padding-bottom: var(--sl-gutter--triple);
   padding-top: var(--sl-gutter--triple);
 
-  &:first-child {
+  &:first-child,
+  &.sl-l-section-playground {
     --section-top-margin: 0;
   }
 
