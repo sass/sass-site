@@ -53,6 +53,12 @@ introduction: >
   .tilt
     // Oops, we typo'd "webkit" as "wekbit"!
     @include prefix(transform, rotate(15deg), wekbit ms)
+  ===
+  .tilt {
+    -wekbit-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
 {% endcodeExample %}
 
 {% markdown %}
