@@ -104,15 +104,14 @@ Migrating _grid.scss
 ```
 
 {% headsUp %}
-The [module migrator][] assumes that any stylesheet that is depended on using
-a [`@use` rule][] or a [`@forward` rule][] has already been migrated to the
-module system, so it won't attempt to migrate them, even when the
-`--migrate-deps` option is passed.
+  The [module migrator][] assumes that any stylesheet that is depended on using
+  a [`@use` rule][] or a [`@forward` rule][] has already been migrated to the
+  module system, so it won't attempt to migrate them, even when the
+  `--migrate-deps` option is passed.
 
-[module migrator]: #module
-[`@use` rule]: /documentation/at-rules/use
-[`@forward` rule]: /documentation/at-rules/forward
-
+  [module migrator]: #module
+  [`@use` rule]: /documentation/at-rules/use
+  [`@forward` rule]: /documentation/at-rules/forward
 {% endheadsUp %}
 
 ### `--load-path`
@@ -252,13 +251,12 @@ before, including:
   [`meta.load-css()` mixin]: /documentation/modules/meta#load-css
 
 {% headsUp %}
-Because the module migrator may need to modify both member definitions _and_
-member names, it's important to either run it with the [`--migrate-deps`
-option][] or ensure that you pass it all the stylesheets in your package or
-application.
+  Because the module migrator may need to modify both member definitions _and_
+  member names, it's important to either run it with the [`--migrate-deps`
+  option][] or ensure that you pass it all the stylesheets in your package or
+  application.
 
-[`--migrate-deps` option]: #migrate-deps
-
+  [`--migrate-deps` option]: #migrate-deps
 {% endheadsUp %}
 
 {% render 'code-snippets/example-module-migrator' %}
