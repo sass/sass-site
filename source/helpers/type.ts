@@ -1,4 +1,5 @@
 import { LoremIpsum } from 'lorem-ipsum';
+import stripIndent from 'strip-indent';
 import truncate from 'truncate-html';
 import { typogrify } from 'typogr';
 
@@ -37,7 +38,8 @@ export const truncateHTML = (html: string, words = 170) =>
 /**
  * Renders block of Markdown into HTML.
  */
-export const markdown = (content: string) => markdownEngine.render(content);
+export const markdown = (content: string) =>
+  markdownEngine.render(stripIndent(content));
 
 /**
  * Renders single line of Markdown into HTML, without wrapping `<p>`.
@@ -81,6 +83,5 @@ export default function typePlugin(eleventyConfig: any) {
 
   // paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', markdown);
-  eleventyConfig.addPairedLiquidShortcode('markdownInline', markdownInline);
   eleventyConfig.addPairedLiquidShortcode('typogr', typogr);
 }

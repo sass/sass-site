@@ -1,3 +1,5 @@
+import stripIndent from 'strip-indent';
+
 import { liquidEngine } from '../engines';
 
 /**
@@ -31,7 +33,7 @@ export const compatibility = async (
   useMarkdown = true,
 ) =>
   liquidEngine.renderFile('compatibility', {
-    details,
+    details: stripIndent(details),
     dart,
     libsass,
     node,
