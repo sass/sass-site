@@ -28,6 +28,7 @@ export const compatibility = async (
   node: string | boolean | null = null,
   ruby: string | boolean | null = null,
   feature: string | null = null,
+  useMarkdown = true,
 ) =>
   liquidEngine.renderFile('compatibility', {
     details,
@@ -36,6 +37,7 @@ export const compatibility = async (
     node,
     ruby,
     feature,
+    useMarkdown,
   });
 
 /**
