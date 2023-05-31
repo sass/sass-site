@@ -72,7 +72,7 @@
           {%- endif -%}
         </h1>
       {% elsif is_playground %}
-        {% render 'playground_header' %}
+        {% render 'playground_header', title: title %}
       {% endunless %}
 
       <div class="sl-l-container sl-color--white-background{% unless is_home %} sl-l-section{% endunless %}{% if is_playground %} sl-l-section-playground{% endif %}">
