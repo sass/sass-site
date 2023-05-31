@@ -10,7 +10,6 @@ introduction: >
   makes it easy to share design within and across projects.
 ---
 
-{% markdown %}
 - If you're looking for an introduction to Sass, check out [the
   tutorial](/guide).
 
@@ -30,10 +29,10 @@ introduction: >
 ## Older Versions
 
 This documentation is written for the most recent version of the Sass language.
-If you're using [Dart Sass] {{ releases['dart-sass'].version }}, you'll have access to
-all the features described here. But if you're using an older version of Dart
-Sass or a deprecated Sass implementation like [LibSass] or [Ruby Sass], there
-may be some behavioral differences.
+If you're using [Dart Sass] {{ releases['dart-sass'].version }}, you'll have
+access to all the features described here. But if you're using an older version
+of Dart Sass or a deprecated Sass implementation like [LibSass] or [Ruby Sass],
+there may be some behavioral differences.
 
 [Dart Sass]: /dart-sass
 [LibSass]: /libsass
@@ -41,26 +40,21 @@ may be some behavioral differences.
 
 Anywhere behavior differs between versions or implementations, the documentation
 includes a compatibility indicator like this:
-{% endmarkdown %}
 
 {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility true, '3.6.0', null, false, 'Feature Name' %}{% endcompatibility %}
 
-{% markdown %}
 Implementations with a "✓" fully support the feature in question, and
 implementations with a "✗" don't support it all. Implementations with a version
 number started supporting the feature in question at that version.
 Implementations can also be marked as "partial":
-{% endmarkdown %}
 
 {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
 {% compatibility true, 'partial', null, false %}
-Additional details go here.
+  Additional details go here.
 {% endcompatibility %}
 
-{% markdown %}
 This indicates that the implementation only supports some aspects of the
 feature. These compatibility indicators (and many others) have a "▶" button,
 which can be clicked to show more details about exactly how the implementations
 differ and which versions support which aspects of the feature in question.
-{% endmarkdown %}
