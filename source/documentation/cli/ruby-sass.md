@@ -4,13 +4,12 @@ table_of_contents: true
 ---
 
 {% headsUp %}
-[Ruby Sass has reached end of life][] and is now totally unmaintained. Please
-switch to [Dart Sass][] or [LibSass][] at your earliest convenience.
+  [Ruby Sass has reached end of life][] and is now totally unmaintained. Please
+  switch to [Dart Sass][] or [LibSass][] at your earliest convenience.
 
-[Ruby Sass has reached end of life]: /blog/ruby-sass-is-unsupported
-[Dart Sass]: /dart-sass
-[LibSass]: /libsass
-
+  [Ruby Sass has reached end of life]: /blog/ruby-sass-is-unsupported
+  [Dart Sass]: /dart-sass
+  [LibSass]: /libsass
 {% endheadsUp %}
 
 ## Usage
@@ -364,8 +363,8 @@ This flag (abbreviated `-g`) causes Sass to emit dummy `@media` queries that
 indicate where each style rule was defined in the source stylehseet.
 
 {% headsUp %}
-This flag only exists for backwards-compatibility. Source maps are now the
-recommended way of mapping CSS back to the Sass that generated it.
+  This flag only exists for backwards-compatibility. Source maps are now the
+  recommended way of mapping CSS back to the Sass that generated it.
 {% endheadsUp %}
 
 ```shellsession

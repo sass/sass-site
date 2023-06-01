@@ -1,4 +1,5 @@
 import sass from 'sass';
+import stripIndent from 'strip-indent';
 
 import { liquidEngine } from '../engines';
 
@@ -60,10 +61,11 @@ export default async function codeExample(
 }
 
 const generateCodeExample = (
-  contents: string,
+  text: string,
   autogenCSS: boolean,
   syntax: 'sass' | 'scss' | null,
 ) => {
+  const contents = stripIndent(text);
   const splitContents = contents.split('\n===\n');
 
   let scssContents, sassContents, cssContents;
