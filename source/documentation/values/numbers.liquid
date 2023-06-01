@@ -1,0 +1,93 @@
+---
+title: Numbers
+introduction: >
+  Numbers in Sass have two components: the number itself, and its units. For
+  example, in `16px` the number is `16` and the unit is `px`. Numbers can have
+  no units, and they can have complex units. See [Units](#units) below for more
+  details.
+---
+
+{% codeExample 'numbers', false %}
+  @debug 100; // 100
+  @debug 0.8; // 0.8
+  @debug 16px; // 16px
+  @debug 5px * 2px; // 10px*px (read "square pixels")
+  ===
+  @debug 100  // 100
+  @debug 0.8  // 0.8
+  @debug 16px  // 16px
+  @debug 5px * 2px  // 10px*px (read "square pixels")
+{% endcodeExample %}
+
+{% markdown %}
+  Sass numbers support the same formats as CSS numbers, including [scientific
+  notation][], which is written with an `e` between the number and its power
+  of 10. Because support for scientific notation in browsers has historically
+  been spotty, Sass always compiles it to fully expanded numbers.
+
+  [scientific notation]: https://en.wikipedia.org/wiki/Scientific_notation
+{% endmarkdown %}
+
+{% codeExample 'scientific-notation', false %}
+  @debug 5.2e3; // 5200
+  @debug 6e-2; // 0.06
+  ===
+  @debug 5.2e3  // 5200
+  @debug 6e-2  // 0.06
+{% endcodeExample %}
+
+{% headsUp %}
+  Sass doesn't distinguish between whole numbers and decimals, so for example
+  `math.div(5, 2)` returns `2.5` rather than `2`. This is the same behavior as
+  JavaScript, but different than many other programming languages.
+{% endheadsUp %}
+
+{% render 'documentation/snippets/number-units' %}
+
+{{ "## Precision" | markdown  }}
+
+{% compatibility true, false, null, '3.5.0', '10 Digit Default' %}
+  LibSass and older versions of Ruby Sass default to 5 digits of numeric
+  precision, but can be configured to use a different number. It's recommended
+  that users configure them for 10 digits for greater accuracy and
+  forwards-compatibility.
+{% endcompatibility %}
+
+{% markdown %}
+  Sass numbers are represented internally as 64-bit floating point values. They
+  support up to 10 digits of precision after the decimal point when serialized to
+  CSS and for the purposes of equality. This means a few different things:
+
+- Only the first ten digits of a number after the decimal point will be included
+  in the generated CSS.
+
+- Operations like [`==`][] and [`>=`][] will consider two numbers equivalent if
+  they're the same up to the tenth digit after the decimal point.
+
+- If a number is less than `0.0000000001` away from an integer, it's considered
+  to be an integer for the purposes of functions like [`list.nth()`][] that require
+  integer arguments.
+
+[`==`]: /documentation/operators/equality
+[`>=`]: /documentation/operators/relational
+[`list.nth()`]: /documentation/modules/list#nth
+{% endmarkdown %}
+
+{% codeExample 'precision', false %}
+@debug 0.012345678912345; // 0.0123456789
+@debug 0.01234567891 == 0.01234567899; // true
+@debug 1.00000000009; // 1
+@debug 0.99999999991; // 1
+===
+@debug 0.012345678912345  // 0.0123456789
+@debug 0.01234567891 == 0.01234567899  // true
+@debug 1.00000000009  // 1
+@debug 0.99999999991  // 1
+{% endcodeExample %}
+
+{% funFact %}
+Numbers are rounded to 10 digits of precision *lazily* when they're used in a
+place where precision is relevant. This means that math functions will work
+with the full number value internally to avoid accumulating extra rounding
+errors.
+{% endfunFact %}
