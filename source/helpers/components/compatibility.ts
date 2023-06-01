@@ -52,7 +52,7 @@ const extend = <
 };
 
 /**
- * Take text `inputs` list and convert it into an object of all arguments
+ * Take text `inputs` list and converts it into an object of all arguments
  * suitable for the `compatibility.liquid` template.
  */
 const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
