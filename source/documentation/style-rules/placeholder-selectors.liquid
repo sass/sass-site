@@ -11,56 +11,56 @@ introduction: >
 {% render 'code-snippets/example-placeholder' %}
 
 {% markdown %}
-What's the use of a selector that isn't emitted? It can still be [extended][]!
-Unlike class selectors, placeholders don't clutter up the CSS if they aren't
-extended and they don't mandate that users of a library use specific class names
-for their HTML.
+  What's the use of a selector that isn't emitted? It can still be [extended][]!
+  Unlike class selectors, placeholders don't clutter up the CSS if they aren't
+  extended and they don't mandate that users of a library use specific class
+  names for their HTML.
 
-[extended]: /documentation/at-rules/extend
+  [extended]: /documentation/at-rules/extend
 {% endmarkdown %}
 
 {% codeExample 'extended-selector' %}
-%toolbelt {
-  box-sizing: border-box;
-  border-top: 1px rgba(#000, .12) solid;
-  padding: 16px 0;
-  width: 100%;
+  %toolbelt {
+    box-sizing: border-box;
+    border-top: 1px rgba(#000, .12) solid;
+    padding: 16px 0;
+    width: 100%;
 
-  &:hover { border: 2px rgba(#000, .5) solid; }
-}
+    &:hover { border: 2px rgba(#000, .5) solid; }
+  }
 
-.action-buttons {
-  @extend %toolbelt;
-  color: #4285f4;
-}
+  .action-buttons {
+    @extend %toolbelt;
+    color: #4285f4;
+  }
 
-.reset-buttons {
-  @extend %toolbelt;
-  color: #cddc39;
-}
-===
-%toolbelt
-  box-sizing: border-box
-  border-top: 1px rgba(#000, .12) solid
-  padding: 16px 0
-  width: 100%
+  .reset-buttons {
+    @extend %toolbelt;
+    color: #cddc39;
+  }
+  ===
+  %toolbelt
+    box-sizing: border-box
+    border-top: 1px rgba(#000, .12) solid
+    padding: 16px 0
+    width: 100%
 
-  &:hover
-    border: 2px rgba(#000, .5) solid
+    &:hover
+      border: 2px rgba(#000, .5) solid
 
-.action-buttons
-  @extend %toolbelt
-  color: #4285f4
+  .action-buttons
+    @extend %toolbelt
+    color: #4285f4
 
 
-.reset-buttons
-  @extend %toolbelt
-  color: #cddc39
+  .reset-buttons
+    @extend %toolbelt
+    color: #cddc39
 {% endcodeExample %}
 
 {% markdown %}
-Placeholder selectors are useful when writing a Sass library where each style
-rule may or may not be used. As a rule of thumb, if you're writing a stylesheet
-just for your own app, it's often better to just extend a class selector if one
-is available.
+  Placeholder selectors are useful when writing a Sass library where each style
+  rule may or may not be used. As a rule of thumb, if you're writing a
+  stylesheet just for your own app, it's often better to just extend a class
+  selector if one is available.
 {% endmarkdown %}

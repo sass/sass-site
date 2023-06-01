@@ -52,11 +52,10 @@ counts as a semicolon. There are also a few additional differences in the
 indented syntax that are noted throughout the reference.
 
 {% headsUp %}
-The indented syntax currently doesn't support expressions that wrap across
-multiple lines. See [issue #216].
+  The indented syntax currently doesn't support expressions that wrap across
+  multiple lines. See [issue #216].
 
-[issue #216]: https://github.com/sass/sass/issues/216
-
+  [issue #216]: https://github.com/sass/sass/issues/216
 {% endheadsUp %}
 
 The indented syntax looks like this:

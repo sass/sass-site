@@ -1,29 +1,36 @@
 {% codeExample 'example-if' %}
-@mixin avatar($size, $circle: false) {
-  width: $size;
-  height: $size;
+  @use "sass:math";
 
-  @if $circle {
-    border-radius: $size / 2;
+  @mixin avatar($size, $circle: false) {
+    width: $size;
+    height: $size;
+
+    @if $circle {
+      border-radius: math.div($size, 2);
+    }
   }
-}
 
-.square-av {
-  @include avatar(100px, $circle: false);
-}
-.circle-av {
-  @include avatar(100px, $circle: true);
-}
-===
-@mixin avatar($size, $circle: false)
-  width: $size
-  height: $size
+  .square-av {
+    @include avatar(100px, $circle: false);
+  }
+  .circle-av {
+    @include avatar(100px, $circle: true);
+  }
+  ===
+  @use "sass:math"
 
-  @if $circle
-    border-radius: $size / 2
+  @mixin avatar($size, $circle: false)
+    width: $size
+    height: $size
 
-.square-av
-  @include avatar(100px, $circle: false)
-.circle-av
-  @include avatar(100px, $circle: true)
+    @if $circle
+      border-radius: math.div($size, 2)
+
+
+
+  .square-av
+    @include avatar(100px, $circle: false)
+
+  .circle-av
+    @include avatar(100px, $circle: true)
 {% endcodeExample %}
