@@ -7,7 +7,7 @@ introduction: >
   `/` as a separator.
 ---
 
-{% compatibility 'dart: partial', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+{% compatibility 'dart: "partial"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
 {% markdown %}
   Today, Sass uses [complex heuristics][] to figure out whether a `/` should be
@@ -53,7 +53,7 @@ introduction: >
 {% markdown %}
   ## Transition Period
 
-  {% compatibility 'dart: 1.33.0', 'libsass: false', 'ruby: false', 'feature: math.div() and list.slash()' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.33.0"', 'libsass: false', 'ruby: false', 'feature: "math.div() and list.slash()"' %}{% endcompatibility %}
 
   To ease the transition, we've begun by adding the `math.div()` function. The
   `/` operator still does division for now, but it also prints a deprecation
@@ -112,7 +112,7 @@ introduction: >
   }
 {% endcodeExample %}
 
-{% compatibility 'dart: 1.40.0', 'libsass: false', 'ruby: false', 'feature: First-class calc' %}{% endcompatibility %}
+{% compatibility 'dart: "1.40.0"', 'libsass: false', 'ruby: false', 'feature: "First-class calc"' %}{% endcompatibility %}
 
 {% markdown %}
   Alternatively, users can wrap division operations inside a `calc()`

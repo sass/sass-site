@@ -56,8 +56,7 @@ const extend = <
  * suitable for the `compatibility.liquid` template.
  */
 const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
-  const keyValueRegex = /(\w+):(.*)/;
-  const defaults = {
+  const opts = {
     dart: null,
     libsass: null,
     node: null,
@@ -65,41 +64,42 @@ const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
     feature: null,
     useMarkdown: true,
   };
-  for (const input of args) {
-    if (typeof input !== 'string') {
+  const keyValueRegex = /(.*?):(.*)/;
+  for (const arg of args) {
+    if (typeof arg !== 'string') {
       throw new Error(
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        `Received non-string argument to {% compatibility %} tag:\n${input}`,
+        `Received non-string argument to {% compatibility %} tag: ${arg}`,
       );
     }
-    let [, key, value] = input.match(keyValueRegex) || [];
-    key = key?.trim();
-    value = value?.trim();
-    if (key && value && Object.hasOwn(defaults, key)) {
-      switch (value) {
-        case 'true':
-          (value as CompatibilityOptions[keyof CompatibilityOptions]) = true;
-          break;
-        case 'false':
-          (value as CompatibilityOptions[keyof CompatibilityOptions]) = false;
-          break;
-        case 'null':
-          (value as CompatibilityOptions[keyof CompatibilityOptions]) = null;
-          break;
-      }
-      extend(
-        value as CompatibilityOptions[keyof CompatibilityOptions],
-        defaults,
-        key as keyof CompatibilityOptions,
+    const match = arg.match(keyValueRegex);
+    if (!match) {
+      throw new Error(
+        `Arguments should be in the format 'key:value'; received ${arg}.`,
       );
+    }
+    const key: string = match[1].trim();
+    let value: string | boolean | null = match[2].trim();
+    try {
+      // handles true, false, null, numbers, strings...
+      value = JSON.parse(value) as string | boolean | null;
+    } catch (e) {
+      throw new Error(
+        `Unable to parse argument ${key} with value ${
+          value as string
+        }. Try wrapping it in double quotes: ${key}:"${value as string}"`,
+      );
+    }
+    if (key && Object.hasOwn(opts, key)) {
+      extend(value, opts, key as keyof CompatibilityOptions);
     } else {
       throw new Error(
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        `Received unexpected argument to {% compatibility %} tag:\n${input}`,
+        `Received unexpected argument to {% compatibility %} tag: ${arg}`,
       );
     }
   }
-  return defaults;
+  return opts;
 };
 
 /**

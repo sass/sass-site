@@ -9,18 +9,10 @@ function bind(fn, first) {
  * the `{% compatibility %}` tag.
  */
 function parseCompatibility(input) {
-  const keyValueRegex = /(\w+):\s*([^,]+)/g;
-  const results = [...input.matchAll(keyValueRegex)].map(([, key, value]) => {
-    value = value.trim();
-    if (
-      (value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.substring(1, value.length - 1);
-    }
-    return [key.trim(), value];
-  });
-  return results.map((args) => `'${args.join(': ')}'`).join(', ');
+  return input
+    .split(',')
+    .map((arg) => `'${arg.trim()}'`)
+    .join(', ');
 }
 
 class SassSiteRenderContext extends DefaultThemeRenderContext {

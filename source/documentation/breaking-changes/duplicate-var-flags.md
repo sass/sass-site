@@ -8,7 +8,7 @@ introduction: >
 
 ## Phase 1
 
-{% compatibility 'dart: 2.0.0', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
 Starting in Dart Sass 2.0.0, if a single variable declaration has more than one
 each `!global` or `!default` flag, this will be a syntax error. This means that
@@ -17,7 +17,7 @@ each `!global` or `!default` flag, this will be a syntax error. This means that
 
 ## Transition Period
 
-{% compatibility 'dart: 1.62.0', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+{% compatibility 'dart: "1.62.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
 Until Dart Sass 2.0.0 is released, multiple copies of a flag just produce
 deprecation warnings.

@@ -6,7 +6,7 @@ introduction: >
   deprecated and is now interpreted according to the CSS standard.
 ---
 
-{% compatibility 'dart: 1.56.0', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+{% compatibility 'dart: "1.56.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
 Because Sass supports almost any Sass expression in parenthesized media
 conditions, there were a few constructs whose meaning was changed by adding full
@@ -23,7 +23,7 @@ Fortunately, these came up very infrequently in practice.
 
 ## Transition Period
 
-{% compatibility 'dart: 1.54.0', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+{% compatibility 'dart: "1.54.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
 First, we emitted deprecation warnings for the previous ambiguous cases. These
 will have suggestions for how to preserve the existing behavior or how to use
