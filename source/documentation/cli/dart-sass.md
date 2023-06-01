@@ -36,7 +36,7 @@ SCSS unless the [`--indented` flag][] is passed.
 
 ### Many-to-Many Mode
 
-{% compatibility '1.4.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.4.0' %}{% endcompatibility %}
 
 ```shellsession
 sass [<input.scss>:<output.css>] [<input/>:<output/>]...
@@ -140,7 +140,7 @@ h1{font-size:40px}
 
 #### `--no-charset`
 
-{% compatibility '1.19.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.19.0' %}{% endcompatibility %}
 
 This flag tells Sass never to emit a `@charset` declaration or a UTF-8
 [byte-order mark][]. By default, or if `--charset` is passed, Sass will insert
@@ -164,7 +164,7 @@ h1::before {
 
 #### `--error-css`
 
-{% compatibility '1.20.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.20.0' %}{% endcompatibility %}
 
 This flag tells Sass whether to emit a CSS file when an error occurs during
 compilation. This CSS file describes the error in a comment _and_ in the
@@ -208,7 +208,7 @@ Error: Incompatible units em and px.
 
 #### `--update`
 
-{% compatibility '1.4.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.4.0' %}{% endcompatibility %}
 
 If the `--update` flag is passed, Sass will only compile stylesheets whose
 dependencies have been modified more recently than the corresponding CSS file
@@ -221,7 +221,7 @@ Compiled themes/light.scss to public/css/light.css.
 
 ### Source Maps
 
-{% compatibility '1.3.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.3.0' %}{% endcompatibility %}
 
 {% render 'documentation/snippets/source-maps' %}
 
@@ -283,7 +283,7 @@ $ sass --embed-source-map sass/style.scss css.style.css
 
 #### `--watch`
 
-{% compatibility '1.6.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.6.0' %}{% endcompatibility %}
 
 This flag (abbreviated `-w`) acts like the [`--update` flag][], but after the
 first round compilation is done Sass stays open and continues compiling
@@ -306,7 +306,7 @@ Compiled themes/dark.scss to public/css/dark.css.
 
 #### `--poll`
 
-{% compatibility '1.8.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.8.0' %}{% endcompatibility %}
 
 This flag, which may only be passed along with `--watch`, tells Sass to manually
 check for changes to the source files every so often instead of relying on the
@@ -324,7 +324,7 @@ Compiled themes/dark.scss to public/css/dark.css.
 
 #### `--stop-on-error`
 
-{% compatibility '1.8.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.8.0' %}{% endcompatibility %}
 
 This flag tells Sass to stop compiling immediately when an error is detected,
 rather than trying to compile other Sass files that may not contain errors. It's
@@ -342,7 +342,7 @@ Error: Expected expression.
 
 #### `--interactive`
 
-{% compatibility '1.5.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.5.0' %}{% endcompatibility %}
 
 This flag (abbreviated `-i`) tells Sass to run in interactive mode, where you
 can write [SassScript expressions][] and see their results. Interactive mode
@@ -389,7 +389,7 @@ Error: Incompatible units em and px.
 
 #### `--no-unicode`
 
-{% compatibility '1.17.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.17.0' %}{% endcompatibility %}
 
 This flag tells Sass only to emit ASCII characters to the terminal as part of
 error messages. By default, or if `--unicode` is passed, Sass will emit non-ASCII
@@ -439,7 +439,7 @@ $ sass --load-path=node_modules --quiet-deps style.scss style.css
 
 #### `--fatal-deprecation`
 
-{% compatibility '1.59.0' %}{% endcompatibility %}
+{% compatibility 'dart: 1.59.0' %}{% endcompatibility %}
 
 This option tells Sass to treat a particular type of deprecation warning as
 an error. For example, this command tells Sass to treat deprecation

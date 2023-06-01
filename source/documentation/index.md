@@ -41,16 +41,14 @@ there may be some behavioral differences.
 Anywhere behavior differs between versions or implementations, the documentation
 includes a compatibility indicator like this:
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, '3.6.0', null, false, 'Feature Name' %}{% endcompatibility %}
+{% compatibility 'dart: true', 'libsass: 3.6.0', 'ruby: false', 'feature: Feature Name' %}{% endcompatibility %}
 
 Implementations with a "✓" fully support the feature in question, and
 implementations with a "✗" don't support it all. Implementations with a version
 number started supporting the feature in question at that version.
 Implementations can also be marked as "partial":
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, 'partial', null, false %}
+{% compatibility 'dart: true', 'libsass: partial', 'ruby: false' %}
   Additional details go here.
 {% endcompatibility %}
 

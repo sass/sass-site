@@ -3,8 +3,7 @@ title: CSS At-Rules
 table_of_contents: true
 ---
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.15.0', false, null, false, "Name Interpolation" %}
+{% compatibility 'dart: 1.15.0', 'libsass: false', 'ruby: false', 'feature: Name Interpolation' %}
   LibSass, Ruby Sass, and older versions of Dart Sass don't support
   [interpolation][] in at-rule names. They do support interpolation in values.
 
@@ -69,8 +68,7 @@ table_of_contents: true
 
 {{ '## `@media`' | markdown }}
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, `useMarkdown` boolean, additional details within %}
-{% compatibility '1.11.0', false, null, '3.7.0', 'Range Syntax', false %}
+{% compatibility 'dart: 1.11.0', 'libsass: false', 'ruby: 3.7.0', 'feature: Range Syntax', 'useMarkdown: false' %}
   {% markdown %}
     LibSass and older versions of Dart Sass and Ruby Sass don't support media
     queries with features written in a [range context][]. They do support other
@@ -79,7 +77,7 @@ table_of_contents: true
     [range context]: https://www.w3.org/TR/mediaqueries-4/#mq-range-context
   {% endmarkdown %}
 
-  {% codeExample 'range-syntax', false %}
+  {% codeExample 'range-syntax', 'libsass: false' %}
     @media (width <= 700px) {
       body {
         background: green;

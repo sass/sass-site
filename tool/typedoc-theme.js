@@ -10,13 +10,17 @@ function bind(fn, first) {
  */
 function parseCompatibility(input) {
   const keyValueRegex = /(\w+):\s*([^,]+)/g;
-  const defaults = { dart: null, libsass: null, node: null, ruby: null };
-  const results = Object.fromEntries(
-    [...input.matchAll(keyValueRegex)].map(([, key, value]) => [key, value]),
-  );
-  return Object.values({ ...defaults, ...results })
-    .map(String)
-    .join(', ');
+  const results = [...input.matchAll(keyValueRegex)].map(([, key, value]) => {
+    value = value.trim();
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.substring(1, value.length - 1);
+    }
+    return [key.trim(), value];
+  });
+  return results.map((args) => `'${args.join(': ')}'`).join(', ');
 }
 
 class SassSiteRenderContext extends DefaultThemeRenderContext {

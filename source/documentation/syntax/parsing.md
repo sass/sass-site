@@ -7,8 +7,7 @@ introduction: >
 
 ## Input Encoding
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility false, true, null, true %}
+{% compatibility 'dart: false', 'libsass: true', 'ruby: true' %}
   Dart Sass currently *only* supports the UTF-8 encoding. As such, it's safest
   to encode all Sass stylesheets as UTF-8.
 {% endcompatibility %}

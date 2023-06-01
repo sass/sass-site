@@ -139,8 +139,7 @@ introduction: >
 {% markdown %}
   ## Custom Properties
 
-  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-  {% compatibility true, '3.5.0', null, '3.5.0', 'SassScript Syntax' %}
+  {% compatibility 'dart: true', 'libsass: 3.5.0', 'ruby: 3.5.0', 'feature: SassScript Syntax' %}
     Older versions of LibSass and Ruby Sass parsed custom property declarations
     just like any other property declaration, allowing the full range of
     SassScript expressions as values. Even when using these versions, it's
