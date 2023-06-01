@@ -280,8 +280,7 @@ introduction: >
 
   ### Disallowed Selectors
 
-  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-  {% compatibility true, false, null, false, "No Compound Extensions" %}
+  {% compatibility 'dart: true', 'libsass: false', 'ruby: false', 'feature: "No Compound Extensions"' %}
     LibSass and Ruby Sass currently allow compound selectors like
     `.message.info` to be extended. However, this behavior doesn't match the
     definition of `@extend`: instead of styling elements that match the

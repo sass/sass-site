@@ -51,8 +51,7 @@ introduction: >
 
   ## Transition Period
 
-  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-  {% compatibility '1.54.0', false, null, false %}{% endcompatibility %}
+  {% compatibility 'dart: "1.54.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
   First, we'll emit deprecation warnings for all double combinators, as well as
   leading or trailing combinators that end up in selectors after nesting is

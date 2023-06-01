@@ -46,8 +46,7 @@ introduction: >
 
   ## Transition Period
 
-  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-  {% compatibility '1.55.0', false, null, false %}{% endcompatibility %}
+  {% compatibility 'dart: "1.55.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
   We'll make this an error in Dart Sass 2.0.0, but until then it'll just emit a
   deprecation warning.

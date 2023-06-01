@@ -90,8 +90,7 @@ introduction: >
 {% markdown %}
   ## `element()`, `progid:...()`, and `expression()`
 
-  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-  {% compatibility "<1.40.0", false, null, false, "calc()" %}
+  {% compatibility 'dart: "<1.40.0"', 'libsass: false', 'ruby: false', 'feature: "calc()"' %}
     LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse `calc()`
     as special syntactic function like `element()`.
 
@@ -100,8 +99,7 @@ introduction: >
     [calculation]: /documentation/values/calculations
   {% endcompatibility %}
 
-  {% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-  {% compatibility ">=1.31.0 <1.40.0", false, null, false, "clamp()" %}
+  {% compatibility 'dart: ">=1.31.0 <1.40.0"', 'libsass: false', 'ruby: false', 'feature: "clamp()"' %}
     LibSass, Ruby Sass, and versions of Dart Sass prior to 1.31.0 parse
     `clamp()` as a [plain CSS function] rather than supporting special syntax
     within it.
