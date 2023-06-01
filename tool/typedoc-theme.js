@@ -5,7 +5,7 @@ function bind(fn, first) {
 }
 
 /**
- * Take text `input` and convert it into a string of all arguments suitable for
+ * Take text `input` and converts it into a string of all arguments suitable for
  * the `{% compatibility %}` tag.
  */
 function parseCompatibility(input) {

@@ -9,7 +9,7 @@ import { liquidEngine } from '../engines';
  *
  * - `true`, indicating that that implementation fully supports the feature;
  * - `false`, indicating that it does not yet support the feature at all;
- * - `'partial'`, indicating that it has limited or incorrect support for the
+ * - `"partial"`, indicating that it has limited or incorrect support for the
  *   feature;
  * - or a string, indicating the version it started supporting the feature.
  *
@@ -52,7 +52,7 @@ const extend = <
 };
 
 /**
- * Take text `inputs` list and converts it into an object of all arguments
+ * Take a list of string `args` and converts it into an object of all arguments
  * suitable for the `compatibility.liquid` template.
  */
 const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
