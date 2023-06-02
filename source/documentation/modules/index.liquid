@@ -255,9 +255,9 @@ introduction: >
     @debug rgba(95%, 92.5%, 89.5%, 0.2)  // rgba(242, 236, 228, 0.2)
   {% endcodeExample %}
 
-  {% markdown %}
-    ---
+  {{ '---' | markdown }}
 
+  {% markdown %}
     If `$color` and `$alpha` are passed, this returns `$color` with the given
     `$alpha` channel instead of its original alpha channel.
   {% endmarkdown %}

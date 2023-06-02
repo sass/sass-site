@@ -81,17 +81,19 @@ title: sass:list
   {% markdown %}
     Returns a new list containing the elements of `$list1` followed by the
     elements of `$list2`.
+  {% endmarkdown %}
 
-    {% headsUp %}
-      Because individual values count as single-element lists, it's possible to
-      use `list.join()` to add a value to the end of a list. However, *this is
-      not recommended*, since if that value is a list it will be concatenated,
-      which is probably not what you're expecting.
+  {% headsUp %}
+    Because individual values count as single-element lists, it's possible to
+    use `list.join()` to add a value to the end of a list. However, *this is not
+    recommended*, since if that value is a list it will be concatenated, which
+    is probably not what you're expecting.
 
-      Use [`list.append()`](#append) instead to add a single value to a list.
-      Only use `list.join()` to combine two lists together into one.
-    {% endheadsUp %}
+    Use [`list.append()`](#append) instead to add a single value to a list. Only
+    use `list.join()` to combine two lists together into one.
+  {% endheadsUp %}
 
+  {% markdown %}
     If `$separator` is `comma`, `space`, or `slash`, the returned list is
     comma-separated, space-separated, or slash-separated, respectively. If it's
     `auto` (the default), the returned list will use the same separator as
