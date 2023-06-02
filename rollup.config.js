@@ -42,5 +42,5 @@ module.exports = defineConfig([
       sourcemap: !prod,
     },
     plugins,
-  }
+  },
 ]);

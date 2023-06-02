@@ -2,9 +2,11 @@
 layout: has_no_sidebars
 title: 'Playground'
 is_playground: true
+no_container: true
 ---
-
-<div id="editor" style="height:100pt"></div>
-<div id="css-view" style="height:100pt"></div>
+<div class="playground-wrapper">
+  <div id="editor"></div>
+  <div id="css-view"></div>
+</div>
 
 <script type="module" src="/assets/dist/js/playground.js"></script>

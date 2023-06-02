@@ -1,4 +1,6 @@
+@use 'sass:color';
 @use '../breakpoints';
+@use '../config/color/brand';
 
 // Use h2 sizes for condensed header
 .sl-r-banner-playground h1 {
@@ -8,5 +10,17 @@
 
   @include breakpoints.sl-breakpoint--large {
     --h1-size: var(--sl-font-size--xxx-large);
+  }
+}
+
+.playground-wrapper {
+  display: flex;
+  gap: var(--sl-gutter);
+
+  > div {
+    // Duplicated from fun fact- should this be defined elsewhere?
+    border: var(--sl-border--small) solid
+      color.adjust(brand.$sl-color--patina, $lightness: 32%);
+    flex: 50%;
   }
 }

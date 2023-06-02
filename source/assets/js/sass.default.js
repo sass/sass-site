@@ -1,10 +1,10 @@
-import * as immutable from "immutable"
-import "./sass.dart.js";
+import * as immutable from 'immutable';
+import './sass.dart.js';
 
 const _cliPkgLibrary = globalThis._cliPkgExports.pop();
 if (globalThis._cliPkgExports.length === 0) delete globalThis._cliPkgExports;
 const _cliPkgExports = {};
-_cliPkgLibrary.load({immutable}, _cliPkgExports);
+_cliPkgLibrary.load({ immutable }, _cliPkgExports);
 
 export const compile = _cliPkgExports.compile;
 export const compileAsync = _cliPkgExports.compileAsync;

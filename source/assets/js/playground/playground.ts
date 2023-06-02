@@ -3,13 +3,15 @@ import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 
 import { compileString } from '../sass.default.js';
-import { editorSetup } from './editor-setup.js';
+import { editorSetup, outputSetup } from './editor-setup.js';
+import { playgroundTheme } from './theme.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
 const editor = new EditorView({
   extensions: [
     editorSetup,
     langSass(),
+    playgroundTheme,
     EditorView.updateListener.of((v) => {
       if (v.docChanged) {
         updateCSS(v.state.doc.toString());
@@ -19,7 +21,7 @@ const editor = new EditorView({
   parent: document.getElementById('editor') || document.body,
 });
 const viewer = new EditorView({
-  extensions: [editorSetup, langSass()],
+  extensions: [outputSetup, langSass(), playgroundTheme],
   parent: document.getElementById('css-view') || document.body,
 });
 

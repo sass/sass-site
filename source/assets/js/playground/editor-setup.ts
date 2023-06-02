@@ -16,6 +16,7 @@ import {
 } from '@codemirror/language';
 import { lintKeymap } from '@codemirror/lint';
 import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
+import { EditorState } from '@codemirror/state';
 import {
   crosshairCursor,
   drawSelection,
@@ -28,12 +29,12 @@ import {
   rectangularSelection,
 } from '@codemirror/view';
 
-const editorSetup = /*@__PURE__*/ (() => [
+const editorSetup = (() => [
   lineNumbers(),
   highlightActiveLineGutter(),
   highlightSpecialChars(),
   history(),
-  foldGutter(),
+  // foldGutter(),
   // drawSelection(),
   dropCursor(),
   // EditorState.allowMultipleSelections.of(true),
@@ -56,4 +57,14 @@ const editorSetup = /*@__PURE__*/ (() => [
     ...lintKeymap,
   ]),
 ])();
-export { editorSetup };
+
+const outputSetup = (() => [
+  lineNumbers(),
+  highlightSpecialChars(),
+  // foldGutter(),
+  syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+  highlightActiveLine(),
+  EditorState.readOnly.of(true),
+])();
+
+export { editorSetup, outputSetup };
