@@ -1,5 +1,6 @@
 import { highlight, languages } from 'prismjs';
 import PrismLoader from 'prismjs/components/index';
+import stripIndent from 'strip-indent';
 
 import { liquidEngine } from '../engines';
 import { default as codeExample } from './codeExample';
@@ -16,7 +17,7 @@ export { getDocTocData, getToc };
  */
 export const funFact = async (contents: string, useMarkdown = true) =>
   liquidEngine.renderFile('fun_fact', {
-    contents,
+    contents: stripIndent(contents),
     useMarkdown,
   });
 
@@ -26,7 +27,7 @@ export const funFact = async (contents: string, useMarkdown = true) =>
  */
 export const headsUp = async (contents: string, useMarkdown = true) =>
   liquidEngine.renderFile('heads_up', {
-    contents,
+    contents: stripIndent(contents),
     useMarkdown,
   });
 

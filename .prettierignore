@@ -4,6 +4,7 @@
 .yarn/
 .yarnrc
 .yarnrc.yml
+/**/*.md
 /.language/
 /_site/
 /old_data/
@@ -12,7 +13,6 @@
 /source/assets/dist/
 /source/assets/js/vendor/**
 /source/assets/sass/vendor/
-/source/blog/*.md
 /source/documentation/js-api
 coverage/
 node_modules/

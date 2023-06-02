@@ -1,3 +1,5 @@
+import stripIndent from 'strip-indent';
+
 import { liquidEngine } from '../engines';
 
 /**
@@ -7,7 +9,7 @@ import { liquidEngine } from '../engines';
  *
  * - `true`, indicating that that implementation fully supports the feature;
  * - `false`, indicating that it does not yet support the feature at all;
- * - `'partial'`, indicating that it has limited or incorrect support for the
+ * - `"partial"`, indicating that it has limited or incorrect support for the
  *   feature;
  * - or a string, indicating the version it started supporting the feature.
  *
@@ -21,24 +23,84 @@ import { liquidEngine } from '../engines';
  * This takes an optional Markdown block (`details`) that should provide more
  * information about the implementation differences or the old behavior.
  */
-export const compatibility = async (
-  details: string,
-  dart: string | boolean | null = null,
-  libsass: string | boolean | null = null,
-  node: string | boolean | null = null,
-  ruby: string | boolean | null = null,
-  feature: string | null = null,
-  useMarkdown = true,
-) =>
-  liquidEngine.renderFile('compatibility', {
-    details,
-    dart,
-    libsass,
-    node,
-    ruby,
-    feature,
-    useMarkdown,
+export const compatibility = async (details: string, ...opts: string[]) => {
+  const options = parseCompatibilityOpts(...opts);
+  return liquidEngine.renderFile('compatibility', {
+    details: stripIndent(details),
+    ...options,
   });
+};
+
+interface CompatibilityOptions {
+  dart: string | boolean | null;
+  libsass: string | boolean | null;
+  node: string | boolean | null;
+  ruby: string | boolean | null;
+  feature: string | null;
+  useMarkdown: boolean;
+}
+
+const extend = <
+  K extends keyof CompatibilityOptions,
+  V extends CompatibilityOptions[K],
+>(
+  value: V,
+  obj: CompatibilityOptions,
+  key: K,
+) => {
+  obj[key] = value;
+};
+
+/**
+ * Take a list of string `args` and converts it into an object of all arguments
+ * suitable for the `compatibility.liquid` template.
+ */
+const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
+  const opts = {
+    dart: null,
+    libsass: null,
+    node: null,
+    ruby: null,
+    feature: null,
+    useMarkdown: true,
+  };
+  const keyValueRegex = /(.*?):(.*)/;
+  for (const arg of args) {
+    if (typeof arg !== 'string') {
+      throw new Error(
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        `Received non-string argument to {% compatibility %} tag: ${arg}`,
+      );
+    }
+    const match = arg.match(keyValueRegex);
+    if (!match) {
+      throw new Error(
+        `Arguments should be in the format 'key:value'; received ${arg}.`,
+      );
+    }
+    const key: string = match[1].trim();
+    let value: string | boolean | null = match[2].trim();
+    try {
+      // handles true, false, null, numbers, strings...
+      value = JSON.parse(value) as string | boolean | null;
+    } catch (e) {
+      throw new Error(
+        `Unable to parse argument ${key} with value ${
+          value as string
+        }. Try wrapping it in double quotes: ${key}:"${value as string}"`,
+      );
+    }
+    if (key && Object.hasOwn(opts, key)) {
+      extend(value, opts, key as keyof CompatibilityOptions);
+    } else {
+      throw new Error(
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        `Received unexpected argument to {% compatibility %} tag: ${arg}`,
+      );
+    }
+  }
+  return opts;
+};
 
 /**
  * Renders a single row for `compatibility`.

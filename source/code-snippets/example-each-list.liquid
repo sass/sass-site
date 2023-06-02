@@ -1,19 +1,19 @@
 {% codeExample 'each-list' %}
-$sizes: 40px, 50px, 80px;
+  $sizes: 40px, 50px, 80px;
 
-@each $size in $sizes {
-  .icon-#{$size} {
-    font-size: $size;
-    height: $size;
-    width: $size;
+  @each $size in $sizes {
+    .icon-#{$size} {
+      font-size: $size;
+      height: $size;
+      width: $size;
+    }
   }
-}
-===
-$sizes: 40px, 50px, 80px
+  ===
+  $sizes: 40px, 50px, 80px
 
-@each $size in $sizes
-  .icon-#{$size}
-    font-size: $size
-    height: $size
-    width: $size
+  @each $size in $sizes
+    .icon-#{$size}
+      font-size: $size
+      height: $size
+      width: $size
 {% endcodeExample %}
