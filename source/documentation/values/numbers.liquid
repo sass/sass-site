@@ -46,7 +46,7 @@ introduction: >
 
 {{ "## Precision" | markdown  }}
 
-{% compatibility true, false, null, '3.5.0', '10 Digit Default' %}
+{% compatibility 'dart: true', 'libsass: false', 'ruby: "3.5.0"', 'feature: "10 Digit Default"' %}
   LibSass and older versions of Ruby Sass default to 5 digits of numeric
   precision, but can be configured to use a different number. It's recommended
   that users configure them for 10 digits for greater accuracy and

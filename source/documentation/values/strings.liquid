@@ -175,7 +175,7 @@ introduction: >
 
 {{  '### Escapes in Unquoted Strings' | markdown }}
 
-{% compatibility '1.11.0', false, null, false, 'Normalization' %}
+{% compatibility 'dart: "1.11.0"', 'libsass: false', 'ruby: false', 'feature: "Normalization"' %}
   LibSass, Ruby Sass, and older versions of Dart Sass don't normalize escapes in
   identifiers. Instead, the text in the unquoted string is the exact text the
   user wrote. For example, `\1F46D` and `👭` are not considered equivalent.
