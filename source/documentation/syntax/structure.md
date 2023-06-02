@@ -95,7 +95,7 @@ The simplest expressions just represent static values:
 
 Sass defines syntax for a number of operations:
 
-{% render 'documentation/snippets/operator-list', parens: true %}
+{% render 'doc_snippets/operator-list', parens: true %}
 
 ### Other Expressions
 

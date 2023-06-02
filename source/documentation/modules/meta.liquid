@@ -2,7 +2,7 @@
 title: sass:meta
 ---
 
-{% render 'documentation/snippets/built-in-module-status' %}
+{% render 'doc_snippets/built-in-module-status' %}
 
 {{ '## Mixins' | markdown }}
 
@@ -139,7 +139,7 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.call($function, $args...)', 'call($function, $args...)' %}
-  {% render 'documentation/snippets/call-impl-status' %}
+  {% render 'doc_snippets/call-impl-status' %}
 
   {% markdown %}
     Invokes `$function` with `$args` and returns the result.
@@ -151,7 +151,7 @@ title: sass:meta
     [`meta.get-function()`]: #get-function
   {% endmarkdown %}
 
-  {% render 'code-snippets/example-first-class-function' %}
+  {% render 'code_snippets/example-first-class-function' %}
 {% endfunction %}
 
 {% function 'meta.content-exists()', 'content-exists()', 'returns:boolean' %}
@@ -282,7 +282,7 @@ title: sass:meta
     The returned function can be called using [`meta.call()`](#call).
   {% endmarkdown %}
 
-  {% render 'code-snippets/example-first-class-function' %}
+  {% render 'code_snippets/example-first-class-function' %}
 {% endfunction %}
 
 {% function 'meta.global-variable-exists($name, $module: null)', 'global-variable-exists($name, $module: null)', 'returns:boolean' %}
@@ -365,7 +365,7 @@ title: sass:meta
     (not including `$`) to the values of those arguments.
   {% endmarkdown %}
 
-  {% render 'code-snippets/example-mixin-arbitrary-keyword-arguments' %}
+  {% render 'code_snippets/example-mixin-arbitrary-keyword-arguments' %}
 {% endfunction %}
 
 {% function 'meta.mixin-exists($name, $module: null)', 'mixin-exists($name, $module: null)', 'returns:boolean' %}
@@ -402,7 +402,7 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.module-functions($module)', 'returns:map' %}
-  {% render 'documentation/snippets/module-system-function-status' %}
+  {% render 'doc_snippets/module-system-function-status' %}
 
   {% markdown %}
     Returns all the functions defined in a module, as a map from function names
@@ -455,7 +455,7 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.module-variables($module)', 'returns:map' %}
-  {% render 'documentation/snippets/module-system-function-status' %}
+  {% render 'doc_snippets/module-system-function-status' %}
 
   {% markdown %}
     Returns all the variables defined in a module, as a map from variable names
