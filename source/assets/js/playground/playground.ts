@@ -20,12 +20,52 @@ const editor = new EditorView({
   ],
   parent: document.getElementById('editor') || document.body,
 });
+
+// Setup CSS view
 const viewer = new EditorView({
+  // TODO: Confirm lang sass is good for CSS.
   extensions: [outputSetup, langSass(), playgroundTheme],
   parent: document.getElementById('css-view') || document.body,
 });
 
-function updateCSS(val: string) {
+function getSettingsFromDOM(): {
+  'input-format': string;
+  'output-format': string;
+} {
+  const options = document.querySelectorAll('[data-active]');
+  const settings = Array.from(options).reduce((acc, option) => {
+    acc[option.dataset.setting] = option.dataset.active;
+    return acc;
+  }, {});
+  return settings;
+}
+type TabbarItemDataset = {
+  value: string;
+  setting: string;
+};
+function attachListeners() {
+  const options = document.querySelectorAll('[data-value]');
+
+  function clickHandler(event) {
+    const settings = event.currentTarget.dataset as TabbarItemDataset;
+
+    const tabbar = document.querySelector(
+      `[data-active][data-setting="${settings.setting}"]`,
+    );
+    const currentValue = tabbar?.dataset.active;
+    if (currentValue !== settings.value) {
+      tabbar.dataset.active = settings.value;
+
+      updateCSS();
+    }
+  }
+  Array.from(options).forEach((option) => {
+    option.addEventListener('click', clickHandler);
+  });
+}
+
+function updateCSS() {
+  const val = editor.state.doc.toString();
   const css = parse(val);
   const text = Text.of(css.split('\n'));
   viewer.dispatch({
@@ -38,12 +78,18 @@ function updateCSS(val: string) {
 }
 
 function parse(css: string): string {
-  let result;
+  const settings = getSettingsFromDOM();
+  let result = '';
   try {
-    result = compileString(css, { syntax: 'scss' }).css;
+    result = compileString(css, {
+      syntax: settings['input-format'],
+      style: settings['output-format'],
+    }).css;
   } catch (error) {
-    result = error?.toString();
+    result = error?.toString() || '';
   }
 
   return result;
 }
+
+attachListeners();

@@ -5,8 +5,40 @@ is_playground: true
 no_container: true
 ---
 <div class="playground-wrapper">
-  <div id="editor"></div>
-  <div id="css-view"></div>
+  <div class="code-editor-wrapper">
+    <div
+      class="code-editor-tabbar"
+      data-active="scss"
+      data-setting="input-format">
+      <button
+        type="button"
+        data-value="scss"
+        data-setting="input-format">SCSS</button>
+      <button
+        type="button"
+        data-value="indented"
+        data-setting="input-format">Sass</button>
+    </div>
+    <div id="editor"></div>
+  </div>
+  <div class="code-editor-wrapper">
+    <div
+      class="code-editor-tabbar"
+      data-active="expanded"
+      data-setting="output-format">
+      <strong>CSS</strong>
+      (Compiled)
+      <button
+        type="button"
+        data-value="expanded"
+        data-setting="output-format">Expanded</button>
+      <button
+        type="button"
+        data-value="compressed"
+        data-setting="output-format">Compressed</button>
+    </div>
+    <div id="css-view"></div>
+  </div>
 </div>
 
 <script type="module" src="/assets/dist/js/playground.js"></script>

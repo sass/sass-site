@@ -23,4 +23,24 @@
       color.adjust(brand.$sl-color--patina, $lightness: 32%);
     flex: 50%;
   }
+
+  .code-editor-tabbar {
+    background-color: color.adjust(brand.$sl-color--patina, $lightness: 32%);
+
+    button {
+      background-color: color.adjust(brand.$sl-color--patina, $lightness: 32%);
+      font-weight: bold;
+      color: var(--text, var(--sl-color--pale-sky));
+      padding: var(--sl-gutter--half);
+      border: 0;
+    }
+
+    $options: 'scss', 'indented', 'expanded', 'compressed';
+
+    @each $option in $options {
+      &[data-active='#{$option}'] [data-value='#{$option}'] {
+        background-color: var(--sl-color--code-background);
+      }
+    }
+  }
 }
