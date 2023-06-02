@@ -5,17 +5,13 @@ function bind(fn, first) {
 }
 
 /**
- * Take text `input` and convert it into a string of all arguments suitable for
+ * Take text `input` and converts it into a string of all arguments suitable for
  * the `{% compatibility %}` tag.
  */
 function parseCompatibility(input) {
-  const keyValueRegex = /(\w+):\s*([^,]+)/g;
-  const defaults = { dart: null, libsass: null, node: null, ruby: null };
-  const results = Object.fromEntries(
-    [...input.matchAll(keyValueRegex)].map(([, key, value]) => [key, value]),
-  );
-  return Object.values({ ...defaults, ...results })
-    .map(String)
+  return input
+    .split(',')
+    .map((arg) => `'${arg.trim()}'`)
     .join(', ');
 }
 

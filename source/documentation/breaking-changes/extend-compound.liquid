@@ -6,8 +6,7 @@ introduction: >
   doesn't match the way `@extend` is meant to work.
 ---
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, false, null, false %}{% endcompatibility %}
+{% compatibility 'dart: true', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
 {% markdown %}
   When one selector extends another, Sass styles all elements that match the
