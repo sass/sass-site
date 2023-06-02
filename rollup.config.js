@@ -24,12 +24,23 @@ if (prod) {
   plugins.push(terser());
 }
 
-module.exports = defineConfig({
-  input: 'source/assets/js/sass.ts',
-  output: {
-    file: 'source/assets/dist/js/sass.js',
-    format: 'iife',
-    sourcemap: !prod,
+module.exports = defineConfig([
+  {
+    input: 'source/assets/js/sass.ts',
+    output: {
+      file: 'source/assets/dist/js/sass.js',
+      format: 'iife',
+      sourcemap: !prod,
+    },
+    plugins,
   },
-  plugins,
-});
+  {
+    input: 'source/assets/js/playground/playground.ts',
+    output: {
+      file: 'source/assets/dist/js/playground.js',
+      format: 'iife',
+      sourcemap: !prod,
+    },
+    plugins,
+  }
+]);
