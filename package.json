@@ -83,6 +83,7 @@
     "rollup": "^3.23.0",
     "sass": "^1.62.1",
     "semver-parser": "^4.1.4",
+    "strip-indent": "^3.0.0",
     "stylelint": "^15.6.2",
     "stylelint-config-standard-scss": "^9.0.0",
     "truncate-html": "^1.0.4",
@@ -96,7 +97,8 @@
   "yarn-upgrade-all": {
     "ignore": [
       "@sindresorhus/slugify",
-      "@types/node"
+      "@types/node",
+      "strip-indent"
     ]
   }
 }

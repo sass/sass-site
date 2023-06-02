@@ -32,239 +32,241 @@ introduction: >
 {% endheadsUp %}
 
 {% codeExample 'modules' %}
-@use "sass:color";
+  @use "sass:color";
 
-.button {
-  $primary-color: #6b717f;
-  color: $primary-color;
-  border: 1px solid color.scale($primary-color, $lightness: 20%);
-}
-===
-@use "sass:color"
+  .button {
+    $primary-color: #6b717f;
+    color: $primary-color;
+    border: 1px solid color.scale($primary-color, $lightness: 20%);
+  }
+  ===
+  @use "sass:color"
 
-.button
-  $primary-color: #6b717f
-  color: $primary-color
-  border: 1px solid color.scale($primary-color, $lightness: 20%)
-===
-.button {
-  color: #6b717f;
-  border: 1px solid #878d9a;
-}
+  .button
+    $primary-color: #6b717f
+    color: $primary-color
+    border: 1px solid color.scale($primary-color, $lightness: 20%)
+  ===
+  .button {
+    color: #6b717f;
+    border: 1px solid #878d9a;
+  }
 {% endcodeExample %}
 
 {% markdown %}
-Sass provides the following built-in modules:
+  Sass provides the following built-in modules:
 
-* The [`sass:math` module][] provides functions that operate on [numbers][].
+  * The [`sass:math` module][] provides functions that operate on [numbers][].
 
-* The [`sass:string` module][] makes it easy to combine, search, or split apart
-  [strings][].
+  * The [`sass:string` module][] makes it easy to combine, search, or split
+    apart [strings][].
 
-* The [`sass:color` module][] generates new [colors][] based on existing ones,
-  making it easy to build color themes.
+  * The [`sass:color` module][] generates new [colors][] based on existing ones,
+    making it easy to build color themes.
 
-* The [`sass:list` module][] lets you access and modify values in [lists][].
+  * The [`sass:list` module][] lets you access and modify values in [lists][].
 
-* The [`sass:map` module][] makes it possible to look up the value associated
-  with a key in a [map][], and much more.
+  * The [`sass:map` module][] makes it possible to look up the value associated
+    with a key in a [map][], and much more.
 
-* The [`sass:selector` module][] provides access to Sass's powerful selector
-  engine.
+  * The [`sass:selector` module][] provides access to Sass's powerful selector
+    engine.
 
-* The [`sass:meta` module][] exposes the details of Sass's inner workings.
+  * The [`sass:meta` module][] exposes the details of Sass's inner workings.
 
-[`sass:math` module]: /documentation/modules/math
-[numbers]: /documentation/values/numbers
-[`sass:string` module]: /documentation/modules/string
-[strings]: /documentation/values/strings
-[`sass:color` module]: /documentation/modules/color
-[colors]: /documentation/values/colors
-[`sass:list` module]: /documentation/modules/list
-[lists]: /documentation/values/lists
-[`sass:map` module]: /documentation/modules/map
-[map]: /documentation/values/maps
-[`sass:selector` module]: /documentation/modules/selector
-[`sass:meta` module]: /documentation/modules/meta
+  [`sass:math` module]: /documentation/modules/math
+  [numbers]: /documentation/values/numbers
+  [`sass:string` module]: /documentation/modules/string
+  [strings]: /documentation/values/strings
+  [`sass:color` module]: /documentation/modules/color
+  [colors]: /documentation/values/colors
+  [`sass:list` module]: /documentation/modules/list
+  [lists]: /documentation/values/lists
+  [`sass:map` module]: /documentation/modules/map
+  [map]: /documentation/values/maps
+  [`sass:selector` module]: /documentation/modules/selector
+  [`sass:meta` module]: /documentation/modules/meta
 
-## Global Functions
+  ## Global Functions
 {% endmarkdown %}
 
 {% function 'hsl($hue $saturation $lightness)', 'hsl($hue $saturation $lightness / $alpha)', 'hsl($hue, $saturation, $lightness, $alpha: 1)', 'hsla($hue $saturation $lightness)', 'hsla($hue $saturation $lightness / $alpha)', 'hsla($hue, $saturation, $lightness, $alpha: 1)', 'returns:color' %}
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.15.0', false, null, false, 'Level 4 Syntax' %}
-LibSass and Ruby Sass only support the following signatures:
+  {% compatibility 'dart: "1.15.0"', 'libsass: false', 'ruby: false', 'feature: "Level 4 Syntax"' %}
+    LibSass and Ruby Sass only support the following signatures:
 
-* `hsl($hue, $saturation, $lightness)`
-* `hsla($hue, $saturation, $lightness, $alpha)`
+    * `hsl($hue, $saturation, $lightness)`
+    * `hsla($hue, $saturation, $lightness, $alpha)`
 
-Note that for these implementations, the `$alpha` argument is *required* if
-the function name `hsla()` is used, and *forbidden* if the function name
-`hsl()` is used.
-{% endcompatibility %}
+    Note that for these implementations, the `$alpha` argument is *required* if
+    the function name `hsla()` is used, and *forbidden* if the function name
+    `hsl()` is used.
+  {% endcompatibility %}
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, false, null, '3.7.0', 'Percent Alpha' %}
-LibSass and older versions of Ruby Sass don't support alpha values specified as
-percentages.
-{% endcompatibility %}
+  {% compatibility 'dart: true', 'libsass: false', 'ruby: "3.7.0"', 'feature: "Percent Alpha"' %}
+    LibSass and older versions of Ruby Sass don't support alpha values specified
+    as percentages.
+  {% endcompatibility %}
 
-Returns a color with the given [hue, saturation, and lightness][] and the given
-alpha channel.
+  {% markdown %}
+    Returns a color with the given [hue, saturation, and lightness][] and the
+    given alpha channel.
 
-[hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
+    [hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
 
-The hue is a number between `0deg` and `360deg` (inclusive) and may be
-unitless. The saturation and lightness are numbers between `0%` and `100%`
-(inclusive) and may *not* be unitless. The alpha channel can be specified as
-either a unitless number between 0 and 1 (inclusive), or a percentage between
-`0%` and `100%` (inclusive).
+    The hue is a number between `0deg` and `360deg` (inclusive) and may be
+    unitless. The saturation and lightness are numbers between `0%` and `100%`
+    (inclusive) and may *not* be unitless. The alpha channel can be specified as
+    either a unitless number between 0 and 1 (inclusive), or a percentage
+    between `0%` and `100%` (inclusive).
+  {% endmarkdown %}
 
-[unitless]: values/numbers#units
+  {% funFact false %}
+    {% markdown %}
+      You can pass [special functions][] like `calc()` or `var()` in place of
+      any argument to `hsl()`. You can even use `var()` in place of multiple
+      arguments, since it might be replaced by multiple values! When a color
+      function is called this way, it returns an unquoted string using the same
+      signature it was called with.
 
-{% funFact false %}
-{% markdown %}
-You can pass [special functions][] like `calc()` or `var()` in place of any
-argument to `hsl()`. You can even use `var()` in place of multiple
-arguments, since it might be replaced by multiple values! When a color
-function is called this way, it returns an unquoted string using the same
-signature it was called with.
+      [special functions]: /documentation/syntax/special-functions
+    {% endmarkdown %}
 
-[special functions]: /documentation/syntax/special-functions
-{% endmarkdown %}
+    {% codeExample 'hsl-special', false %}
+      @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
+      @debug hsla(var(--peach), 20%); // hsla(var(--peach), 20%)
+      ===
+      @debug hsl(210deg 100% 20% / var(--opacity))  // hsl(210deg 100% 20% / var(--opacity))
+      @debug hsla(var(--peach), 20%)  // hsla(var(--peach), 20%)
+    {% endcodeExample %}
+  {% endfunFact %}
 
-{% codeExample 'hsl-special', false %}
-@debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
-@debug hsla(var(--peach), 20%); // hsla(var(--peach), 20%)
-===
-@debug hsl(210deg 100% 20% / var(--opacity))  // hsl(210deg 100% 20% / var(--opacity))
-@debug hsla(var(--peach), 20%)  // hsla(var(--peach), 20%)
-{% endcodeExample %}
-{% endfunFact %}
+  {% headsUp %}
+    Sass's [special parsing rules][] for slash-separated values make it
+    difficult to pass variables for `$lightness` or `$alpha` when using the
+    `hsl($hue $saturation $lightness / $alpha)` signature. Consider using
+    `hsl($hue, $saturation, $lightness, $alpha)` instead.
 
-{% headsUp %}
-Sass's [special parsing rules][] for slash-separated values make it
-difficult to pass variables for `$lightness` or `$alpha` when using the
-`hsl($hue $saturation $lightness / $alpha)` signature. Consider using
-`hsl($hue, $saturation, $lightness, $alpha)` instead.
+    [special parsing rules]: /documentation/operators/numeric#slash-separated-values
+  {% endheadsUp %}
 
-[special parsing rules]: /documentation/operators/numeric#slash-separated-values
-{% endheadsUp %}
-
-{% codeExample 'hsl', false %}
-@debug hsl(210deg 100% 20%); // #036
-@debug hsl(34, 35%, 92%); // #f2ece4
-@debug hsl(210deg 100% 20% / 50%); // rgba(0, 51, 102, 0.5)
-@debug hsla(34, 35%, 92%, 0.2); // rgba(242, 236, 228, 0.2)
-===
-@debug hsl(210deg 100% 20%) // #036
-@debug hsl(34, 35%, 92%) // #f2ece4
-@debug hsl(210deg 100% 20% / 50%)  // rgba(0, 51, 102, 0.5)
-@debug hsla(34, 35%, 92%, 0.2)  // rgba(242, 236, 228, 0.2)
-{% endcodeExample %}
+  {% codeExample 'hsl', false %}
+    @debug hsl(210deg 100% 20%); // #036
+    @debug hsl(34, 35%, 92%); // #f2ece4
+    @debug hsl(210deg 100% 20% / 50%); // rgba(0, 51, 102, 0.5)
+    @debug hsla(34, 35%, 92%, 0.2); // rgba(242, 236, 228, 0.2)
+    ===
+    @debug hsl(210deg 100% 20%) // #036
+    @debug hsl(34, 35%, 92%) // #f2ece4
+    @debug hsl(210deg 100% 20% / 50%)  // rgba(0, 51, 102, 0.5)
+    @debug hsla(34, 35%, 92%, 0.2)  // rgba(242, 236, 228, 0.2)
+  {% endcodeExample %}
 {% endfunction %}
 
 {% function 'if($condition, $if-true, $if-false)' %}
-Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
+  {% markdown %}
+    Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
 
-This function is special in that it doesn't even evaluate the argument that
-isn't returned, so it's safe to call even if the unused argument would throw an
-error.
+    This function is special in that it doesn't even evaluate the argument that
+    isn't returned, so it's safe to call even if the unused argument would throw
+    an error.
 
-[truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
+    [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
+  {% endmarkdown %}
 
-{% codeExample 'debug', false %}
-@debug if(true, 10px, 15px); // 10px
-@debug if(false, 10px, 15px); // 15px
-@debug if(variable-defined($var), $var, null); // null
-===
-@debug if(true, 10px, 15px)  // 10px
-@debug if(false, 10px, 15px)  // 15px
-@debug if(variable-defined($var), $var, null)  // null
-{% endcodeExample %}
+  {% codeExample 'debug', false %}
+    @debug if(true, 10px, 15px); // 10px
+    @debug if(false, 10px, 15px); // 15px
+    @debug if(variable-defined($var), $var, null); // null
+    ===
+    @debug if(true, 10px, 15px)  // 10px
+    @debug if(false, 10px, 15px)  // 15px
+    @debug if(variable-defined($var), $var, null)  // null
+  {% endcodeExample %}
 {% endfunction %}
 
 {% function 'rgb($red $green $blue)', 'rgb($red $green $blue / $alpha)', 'rgb($red, $green, $blue, $alpha: 1)', 'rgb($color, $alpha)', 'rgba($red $green $blue)', 'rgba($red $green $blue / $alpha)', 'rgba($red, $green, $blue, $alpha: 1)', 'rgba($color, $alpha)', 'returns:color' %}
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility '1.15.0', false, null, false, 'Level 4 Syntax' %}
-LibSass and Ruby Sass only support the following signatures:
+  {% compatibility 'dart: "1.15.0"', 'libsass: false', 'ruby: false', 'feature: "Level 4 Syntax"' %}
+    LibSass and Ruby Sass only support the following signatures:
 
-* `rgb($red, $green, $blue)`
-* `rgba($red, $green, $blue, $alpha)`
-* `rgba($color, $alpha)`
+    * `rgb($red, $green, $blue)`
+    * `rgba($red, $green, $blue, $alpha)`
+    * `rgba($color, $alpha)`
 
-Note that for these implementations, the `$alpha` argument is *required* if
-the function name `rgba()` is used, and *forbidden* if the function name
-`rgb()` is used.
-{% endcompatibility %}
+    Note that for these implementations, the `$alpha` argument is *required* if
+    the function name `rgba()` is used, and *forbidden* if the function name
+    `rgb()` is used.
+  {% endcompatibility %}
 
-{% # Arguments are (in order): `dart`, `libsass`, `node`, `ruby`, optional feature name, additional details within %}
-{% compatibility true, false, null, '3.7.0', 'Percent Alpha' %}
-LibSass and older versions of Ruby Sass don't support alpha values specified
-as percentages.
-{% endcompatibility %}
+  {% compatibility 'dart: true', 'libsass: false', 'ruby: "3.7.0"', 'feature: "Percent Alpha"' %}
+    LibSass and older versions of Ruby Sass don't support alpha values specified
+    as percentages.
+  {% endcompatibility %}
 
-If `$red`, `$green`, `$blue`, and optionally `$alpha` are passed, returns a
-color with the given red, green, blue, and alpha channels.
+  {% markdown %}
+    If `$red`, `$green`, `$blue`, and optionally `$alpha` are passed, returns a
+    color with the given red, green, blue, and alpha channels.
 
-Each channel can be specified as either a [unitless][] number between 0 and
-255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
-alpha channel can be specified as either a unitless number between 0 and 1
-(inclusive), or a percentage between `0%` and `100%` (inclusive).
+    Each channel can be specified as either a [unitless][] number between 0 and
+    255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
+    alpha channel can be specified as either a unitless number between 0 and 1
+    (inclusive), or a percentage between `0%` and `100%` (inclusive).
 
-[unitless]: /documentation/values/numbers#units
+    [unitless]: /documentation/values/numbers#units
+  {% endmarkdown %}
 
-{% funFact false %}
-{% markdown %}
-You can pass [special functions][] like `calc()` or `var()` in place of any
-argument to `rgb()`. You can even use `var()` in place of multiple
-arguments, since it might be replaced by multiple values! When a color
-function is called this way, it returns an unquoted string using the same
-signature it was called with.
+  {% funFact false %}
+    {% markdown %}
+      You can pass [special functions][] like `calc()` or `var()` in place of
+      any argument to `rgb()`. You can even use `var()` in place of multiple
+      arguments, since it might be replaced by multiple values! When a color
+      function is called this way, it returns an unquoted string using the same
+      signature it was called with.
 
-[special functions]: /documentation/syntax/special-functions
-{% endmarkdown %}
+      [special functions]: /documentation/syntax/special-functions
+    {% endmarkdown %}
 
-{% codeExample 'rgb-special', false %}
-@debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
-@debug rgba(var(--peach), 0.2); // rgba(var(--peach), 0.2)
-===
-@debug rgb(0 51 102 / var(--opacity))  // rgb(0 51 102 / var(--opacity))
-@debug rgba(var(--peach), 0.2)  // rgba(var(--peach), 0.2)
-{% endcodeExample %}
-{% endfunFact %}
+    {% codeExample 'rgb-special', false %}
+      @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
+      @debug rgba(var(--peach), 0.2); // rgba(var(--peach), 0.2)
+      ===
+      @debug rgb(0 51 102 / var(--opacity))  // rgb(0 51 102 / var(--opacity))
+      @debug rgba(var(--peach), 0.2)  // rgba(var(--peach), 0.2)
+    {% endcodeExample %}
+  {% endfunFact %}
 
-{% headsUp %}
-Sass's [special parsing rules][] for slash-separated values make it
-difficult to pass variables for `$blue` or `$alpha` when using the
-`rgb($red $green $blue / $alpha)` signature. Consider using
-`rgb($red, $green, $blue, $alpha)` instead.
+  {% headsUp %}
+    Sass's [special parsing rules][] for slash-separated values make it
+    difficult to pass variables for `$blue` or `$alpha` when using the
+    `rgb($red $green $blue / $alpha)` signature. Consider using
+    `rgb($red, $green, $blue, $alpha)` instead.
 
-[special parsing rules]: /documentation/operators/numeric#slash-separated-values
-{% endheadsUp %}
+    [special parsing rules]: /documentation/operators/numeric#slash-separated-values
+  {% endheadsUp %}
 
-{% codeExample 'rgb', false %}
-@debug rgb(0 51 102); // #036
-@debug rgb(95%, 92.5%, 89.5%); // #f2ece4
-@debug rgb(0 51 102 / 50%); // rgba(0, 51, 102, 0.5)
-@debug rgba(95%, 92.5%, 89.5%, 0.2); // rgba(242, 236, 228, 0.2)
-===
-@debug rgb(0 51 102)  // #036
-@debug rgb(95%, 92.5%, 89.5%)  // #f2ece4
-@debug rgb(0 51 102 / 50%)  // rgba(0, 51, 102, 0.5)
-@debug rgba(95%, 92.5%, 89.5%, 0.2)  // rgba(242, 236, 228, 0.2)
-{% endcodeExample %}
+  {% codeExample 'rgb', false %}
+    @debug rgb(0 51 102); // #036
+    @debug rgb(95%, 92.5%, 89.5%); // #f2ece4
+    @debug rgb(0 51 102 / 50%); // rgba(0, 51, 102, 0.5)
+    @debug rgba(95%, 92.5%, 89.5%, 0.2); // rgba(242, 236, 228, 0.2)
+    ===
+    @debug rgb(0 51 102)  // #036
+    @debug rgb(95%, 92.5%, 89.5%)  // #f2ece4
+    @debug rgb(0 51 102 / 50%)  // rgba(0, 51, 102, 0.5)
+    @debug rgba(95%, 92.5%, 89.5%, 0.2)  // rgba(242, 236, 228, 0.2)
+  {% endcodeExample %}
 
----
+  {% markdown %}
+    ---
 
-If `$color` and `$alpha` are passed, this returns `$color` with the given
-`$alpha` channel instead of its original alpha channel.
+    If `$color` and `$alpha` are passed, this returns `$color` with the given
+    `$alpha` channel instead of its original alpha channel.
+  {% endmarkdown %}
 
-{% codeExample 'color-and-alpha', false %}
-@debug rgb(#f2ece4, 50%); // rgba(242, 236, 228, 0.5);
-@debug rgba(rgba(0, 51, 102, 0.5), 1); // #003366
-===
-@debug rgb(#f2ece4, 50%)  // rgba(242, 236, 228, 0.5)
-@debug rgba(rgba(0, 51, 102, 0.5), 1)  // #003366
-{% endcodeExample %}
+  {% codeExample 'color-and-alpha', false %}
+    @debug rgb(#f2ece4, 50%); // rgba(242, 236, 228, 0.5);
+    @debug rgba(rgba(0, 51, 102, 0.5), 1); // #003366
+    ===
+    @debug rgb(#f2ece4, 50%)  // rgba(242, 236, 228, 0.5)
+    @debug rgba(rgba(0, 51, 102, 0.5), 1)  // #003366
+  {% endcodeExample %}
 {% endfunction %}
