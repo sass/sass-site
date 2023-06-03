@@ -45,12 +45,17 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
       const lineBreak = text.indexOf("\n");
       const firstLine =
           lineBreak === -1 ? text : text.substring(0, lineBreak);
-      const rest =
+      const restOfFirst =
           lineBreak === -1 ? null : text.substring(lineBreak + 1).trim();
+
+      const rest = [
+        ...(restOfFirst ? [{kind: 'text', text: restOfFirst}] : []),
+        ...compat.content.slice(1)
+      ];
 
       return JSX.createElement(JSX.Raw, {
         html: `<% impl_status(${firstLine}) ${rest ? 'do' : ''} %>` +
-            context.markdown(rest) +
+            (rest ? context.markdown(rest) : '') +
             (rest ? '<% end %>' : '')
       });
     }));
