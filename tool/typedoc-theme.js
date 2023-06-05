@@ -63,7 +63,7 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
           lineBreak === -1 ? text : text.substring(0, lineBreak),
         );
         const restOfFirst =
-          lineBreak === -1 ? null : text.substring(lineBreak + 1).trim();
+          lineBreak === -1 ? null : text.substring(lineBreak + 1);
 
         const rest = [
           ...(restOfFirst ? [{ kind: 'text', text: restOfFirst }] : []),
