@@ -62,8 +62,14 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
         const compatibilityArgs = parseCompatibility(
           lineBreak === -1 ? text : text.substring(0, lineBreak),
         );
-        const rest =
+        const restOfFirst =
           lineBreak === -1 ? null : text.substring(lineBreak + 1).trim();
+
+        const rest = [
+          ...(restOfFirst ? [{ kind: 'text', text: restOfFirst }] : []),
+          ...compat.content.slice(1),
+        ];
+
         return JSX.createElement(JSX.Raw, {
           html:
             `{% compatibility ${compatibilityArgs} %}` +
