@@ -6,6 +6,8 @@ import {
   completionKeymap,
 } from '@codemirror/autocomplete';
 import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
+import { css as langCss } from '@codemirror/lang-css';
+import { sass as langSass } from '@codemirror/lang-sass';
 import {
   bracketMatching,
   defaultHighlightStyle,
@@ -29,42 +31,54 @@ import {
   rectangularSelection,
 } from '@codemirror/view';
 
+import { playgroundHighlightStyle, playgroundTheme } from './theme.js';
+
 const editorSetup = (() => [
-  lineNumbers(),
-  highlightActiveLineGutter(),
-  highlightSpecialChars(),
-  history(),
-  // foldGutter(),
-  // drawSelection(),
-  dropCursor(),
-  // EditorState.allowMultipleSelections.of(true),
-  indentOnInput(),
-  syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
-  bracketMatching(),
-  closeBrackets(),
-  autocompletion(),
-  // rectangularSelection(),
-  // crosshairCursor(),
-  highlightActiveLine(),
-  highlightSelectionMatches(),
-  keymap.of([
-    ...closeBracketsKeymap,
-    ...defaultKeymap,
-    ...searchKeymap,
-    ...historyKeymap,
-    ...foldKeymap,
-    ...completionKeymap,
-    ...lintKeymap,
-  ]),
+  [
+    lineNumbers(),
+    highlightActiveLineGutter(),
+    highlightSpecialChars(),
+    history(),
+    // foldGutter(),
+    // drawSelection(),
+    dropCursor(),
+    // EditorState.allowMultipleSelections.of(true),
+    indentOnInput(),
+    syntaxHighlighting(playgroundHighlightStyle),
+    syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+    bracketMatching(),
+    closeBrackets(),
+    autocompletion(),
+    // rectangularSelection(),
+    // crosshairCursor(),
+    highlightActiveLine(),
+    highlightSelectionMatches(),
+    keymap.of([
+      ...closeBracketsKeymap,
+      ...defaultKeymap,
+      ...searchKeymap,
+      ...historyKeymap,
+      ...foldKeymap,
+      ...completionKeymap,
+      ...lintKeymap,
+    ]),
+  ],
+  langSass(),
+  playgroundTheme,
 ])();
 
 const outputSetup = (() => [
-  lineNumbers(),
-  highlightSpecialChars(),
-  // foldGutter(),
-  syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
-  highlightActiveLine(),
-  EditorState.readOnly.of(true),
+  [
+    lineNumbers(),
+    highlightSpecialChars(),
+    // foldGutter(),
+    syntaxHighlighting(playgroundHighlightStyle),
+    syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+    highlightActiveLine(),
+    EditorState.readOnly.of(true),
+  ],
+  langCss(),
+  playgroundTheme,
 ])();
 
 export { editorSetup, outputSetup };

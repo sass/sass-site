@@ -1,18 +1,14 @@
-import { sass as langSass } from '@codemirror/lang-sass';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 
 import { compileString } from '../sass.default.js';
 import { editorSetup, outputSetup } from './editor-setup.js';
-import { playgroundTheme } from './theme.js';
 
 function setupPlayground() {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const editor = new EditorView({
     extensions: [
-      editorSetup,
-      langSass(),
-      playgroundTheme,
+      ...editorSetup,
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
           updateCSS();
@@ -24,8 +20,7 @@ function setupPlayground() {
 
   // Setup CSS view
   const viewer = new EditorView({
-    // TODO: Confirm lang sass is good for CSS.
-    extensions: [outputSetup, langSass(), playgroundTheme],
+    extensions: [...outputSetup],
     parent: document.getElementById('css-view') || document.body,
   });
 
