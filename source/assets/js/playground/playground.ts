@@ -1,3 +1,4 @@
+import { Diagnostic, setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 
@@ -63,30 +64,47 @@ function setupPlayground() {
 
   function updateCSS() {
     const val = editor.state.doc.toString();
-    const css = parse(val);
-    const text = Text.of(css.split('\n'));
-    viewer.dispatch({
-      changes: {
-        from: 0,
-        to: viewer.state.doc.toString().length,
-        insert: text,
-      },
-    });
+    const result = parse(val);
+    if (result.css) {
+      const text = Text.of(result.css.split('\n'));
+      viewer.dispatch({
+        changes: {
+          from: 0,
+          to: viewer.state.doc.toString().length,
+          insert: text,
+        },
+      });
+    } else {
+      const diagnostic = errorToDiagnostic(result.error);
+      const transaction = setDiagnostics(editor.state, [diagnostic]);
+      editor.dispatch(transaction);
+    }
   }
 
-  function parse(css: string): string {
+  type ParseResultSuccess = { css: string };
+  type ParseResultError = { error: string };
+  type ParseResult = ParseResultSuccess | ParseResultError;
+
+  function parse(css: string): ParseResult {
     const settings = getSettingsFromDOM();
-    let result = '';
     try {
-      result = compileString(css, {
+      const result = compileString(css, {
         syntax: settings['input-format'],
         style: settings['output-format'],
-      }).css;
+      });
+      return { css: result.css };
     } catch (error) {
-      result = error?.toString() || '';
+      return { error };
     }
+  }
 
-    return result;
+  function errorToDiagnostic(error): Diagnostic {
+    return {
+      from: error.span.start.offset,
+      to: error.span.end.offset,
+      severity: 'error',
+      message: error?.toString() || 'Compilation error',
+    };
   }
 
   attachListeners();
