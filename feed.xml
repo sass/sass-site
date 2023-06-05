@@ -10,7 +10,7 @@
     <link href="https://sass-lang.com/blog/rfc-embedded-protocol-2" rel="alternate"/>
     <id>https://sass-lang.com/blog/rfc-embedded-protocol-2</id>
     <published>2023-05-20T00:00:00+00:00</published>
-    <updated>2023-05-22T21:44:45+00:00</updated>
+    <updated>2023-06-05T20:49:21+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -90,7 +90,7 @@ help ensure that large compilations happen as fast as possible.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/sass-and-native-nesting" rel="alternate"/>
     <id>https://sass-lang.com/blog/sass-and-native-nesting</id>
     <published>2023-03-29T22:30:00+00:00</published>
-    <updated>2023-05-22T21:44:45+00:00</updated>
+    <updated>2023-06-05T20:49:21+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -184,7 +184,7 @@ plain CSS version is not strong enough to override that.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/security-alert-tar-permissions" rel="alternate"/>
     <id>https://sass-lang.com/blog/security-alert-tar-permissions</id>
     <published>2022-12-10T00:00:00+00:00</published>
-    <updated>2023-05-22T21:44:45+00:00</updated>
+    <updated>2023-06-05T20:49:21+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -298,7 +298,7 @@ only the owner of the files. We&amp;rsquo;re announcing the vulnerability here a
     <link href="https://sass-lang.com/blog/request-for-comments-color-spaces" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-color-spaces</id>
     <published>2022-09-21T21:00:00+00:00</published>
-    <updated>2023-05-22T21:44:45+00:00</updated>
+    <updated>2023-06-05T20:49:21+00:00</updated>
     <author>
       <name>Miriam Suzanne and Natalie Weizenbaum</name>
     </author>
@@ -571,7 +571,7 @@ thoughts or concerns you may have.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators" rel="alternate"/>
     <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators</id>
     <published>2022-06-15T23:30:00+00:00</published>
-    <updated>2023-05-22T21:44:45+00:00</updated>
+    <updated>2023-06-05T20:49:21+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
@@ -661,7 +661,7 @@ implementing it.&lt;/p&gt;
     <link href="https://sass-lang.com/blog/embedded-sass-is-live" rel="alternate"/>
     <id>https://sass-lang.com/blog/embedded-sass-is-live</id>
     <published>2022-02-01T10:00:00+00:00</published>
-    <updated>2023-05-22T21:44:45+00:00</updated>
+    <updated>2023-06-05T20:49:21+00:00</updated>
     <author>
       <name>Natalie Weizenbaum</name>
     </author>
