@@ -18,7 +18,7 @@ const playgroundTheme = EditorView.baseTheme({
   '.cm-content': {
     // Pull from _typography?
     'font-family':
-      "'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono', 'Droid Sans Mono', monospace, monospace;",
+      "'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono', 'Droid Sans Mono', monospace;",
   },
   '.cm-scroller': {
     overflow: 'auto',

@@ -15,7 +15,12 @@
 
 .playground-wrapper {
   display: flex;
+  flex-flow: column wrap;
   gap: var(--sl-gutter);
+
+  @include breakpoints.sl-breakpoint--medium {
+    flex-flow: nowrap;
+  }
 
   > div {
     // Duplicated from fun fact- should this be defined elsewhere?
