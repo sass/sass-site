@@ -4,7 +4,7 @@ title: 'Playground'
 is_playground: true
 no_container: true
 ---
-<div class="playground-wrapper">
+<div class="playground-wrapper" data-compiler-has-error="false">
   <div class="code-editor-wrapper">
     <div
       class="code-editor-tabbar"
@@ -37,6 +37,7 @@ no_container: true
         data-value="compressed"
         data-setting="output-format">Compressed</button>
     </div>
+    <div id="code-editor-error-alert">Please resolve error to view compiled CSS.</div>
     <div id="css-view"></div>
   </div>
 </div>

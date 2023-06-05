@@ -43,4 +43,26 @@
       }
     }
   }
+
+  #code-editor-error-alert {
+    display: none;
+
+    // From warning callout
+    background: color.adjust(brand.$sl-color--hopbush, $lightness: 38%);
+    border: var(--sl-border--small) solid
+      color.adjust(brand.$sl-color--hopbush, $lightness: 27%);
+    font-family: 'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono',
+      'Droid Sans Mono', monospace;
+    font-size: var(--sl-font-size--x-small);
+    padding: var(--sl-gutter--half);
+
+    // TODO Font weight bold not imported from Google Fonts
+    font-weight: bold;
+  }
+
+  &[data-compiler-has-error='true'] {
+    #code-editor-error-alert {
+      display: block;
+    }
+  }
 }

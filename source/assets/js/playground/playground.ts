@@ -65,7 +65,7 @@ function setupPlayground() {
   function updateCSS() {
     const val = editor.state.doc.toString();
     const result = parse(val);
-    if (result.css) {
+    if ('css' in result) {
       const text = Text.of(result.css.split('\n'));
       viewer.dispatch({
         changes: {
@@ -74,11 +74,19 @@ function setupPlayground() {
           insert: text,
         },
       });
+      editor.dispatch(setDiagnostics(editor.state, []));
+      setCompilerHasError(false);
     } else {
       const diagnostic = errorToDiagnostic(result.error);
       const transaction = setDiagnostics(editor.state, [diagnostic]);
       editor.dispatch(transaction);
+      setCompilerHasError(true);
     }
+  }
+
+  function setCompilerHasError(value: boolean) {
+    const editorWrapper = document.querySelector('[data-compiler-has-error]');
+    editorWrapper.dataset.compilerHasError = value.toString();
   }
 
   type ParseResultSuccess = { css: string };
