@@ -1017,88 +1017,6 @@ img {
     border: 0.25rem solid var(--color-icon-background);
 }
 
-/* mobile */
-@media (max-width: 769px) {
-    .tsd-widget.options,
-    .tsd-widget.menu {
-        display: inline-block;
-    }
-
-    .container-main {
-        display: flex;
-    }
-    html .col-content {
-        float: none;
-        max-width: 100%;
-        width: 100%;
-    }
-    html .col-sidebar {
-        position: fixed !important;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        z-index: 1024;
-        top: 0 !important;
-        bottom: 0 !important;
-        left: auto !important;
-        right: 0 !important;
-        padding: 1.5rem 1.5rem 0 0;
-        width: 75vw;
-        visibility: hidden;
-        background-color: var(--color-background);
-        transform: translate(100%, 0);
-    }
-    html .col-sidebar > *:last-child {
-        padding-bottom: 20px;
-    }
-    html .overlay {
-        content: "";
-        display: block;
-        position: fixed;
-        z-index: 1023;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.75);
-        visibility: hidden;
-    }
-
-    .to-has-menu .overlay {
-        animation: fade-in 0.4s;
-    }
-
-    .to-has-menu .col-sidebar {
-        animation: pop-in-from-right 0.4s;
-    }
-
-    .from-has-menu .overlay {
-        animation: fade-out 0.4s;
-    }
-
-    .from-has-menu .col-sidebar {
-        animation: pop-out-to-right 0.4s;
-    }
-
-    .has-menu body {
-        overflow: hidden;
-    }
-    .has-menu .overlay {
-        visibility: visible;
-    }
-    .has-menu .col-sidebar {
-        visibility: visible;
-        transform: translate(0, 0);
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        max-height: 100vh;
-        padding: 1rem 2rem;
-    }
-    .has-menu .tsd-navigation {
-        max-height: 100%;
-    }
-}
-
 /* one sidebar */
 @media (min-width: 770px) {
     .container-main {
@@ -1174,13 +1092,13 @@ img {
 // Don't include a table of contents, just a sidebar to the right of the
 // content.
 .container-main {
-    // one sidebar
-    @media (min-width: 770px) {
-        grid-template-areas: "content sidebar";
+    // In mobile mode, put the sidebar above the content.
+    @media (max-width: 769px) {
+        display: flex;
+        flex-direction: column-reverse;
     }
 
-    /* two sidebars */
-    @media (min-width: 1200px) {
+    @media (min-width: 770px) {
         grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
         grid-template-areas: "content sidebar";
     }
