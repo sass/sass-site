@@ -2,8 +2,15 @@ import { Diagnostic, setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 
-import { compileString } from '../vendor/playground';
+import { compileString, OutputStyle, Syntax } from '../vendor/playground';
 import { editorSetup, outputSetup } from './editor-setup.js';
+
+type PlaygroundState = {
+  inputFormat: Syntax;
+  outputFormat: OutputStyle;
+  inputValue: string;
+  compilerHasError: boolean;
+};
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function debounce(func: Function, timeout = 200) {
@@ -18,12 +25,19 @@ function debounce(func: Function, timeout = 200) {
 }
 
 function setupPlayground() {
+  const playgroundState: PlaygroundState = {
+    inputFormat: 'scss',
+    outputFormat: 'expanded',
+    compilerHasError: false,
+    inputValue: '',
+  };
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const editor = new EditorView({
     extensions: [
       ...editorSetup,
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
+          playgroundState.inputValue = editor.state.doc.toString();
           debouncedUpdateCSS();
         }
       }),
@@ -37,52 +51,45 @@ function setupPlayground() {
     parent: document.getElementById('css-view') || document.body,
   });
 
-  function getSettingsFromDOM(): {
-    'input-format': string;
-    'output-format': string;
-  } {
-    const options = document.querySelectorAll('[data-active]');
-    const settings = Array.from(options).reduce((acc, option) => {
-      acc[option.dataset.setting] = option.dataset.active as string;
-      return acc;
-    }, {});
-    return settings;
-  }
-  function setCompilerHasError(value: boolean) {
-    const editorWrapper = document.querySelector(
-      '[data-compiler-has-error]',
-    ) as HTMLDivElement;
-    editorWrapper.dataset.compilerHasError = value.toString();
-  }
-
   type TabbarItemDataset = {
     value: string;
     setting: string;
   };
   function attachListeners() {
-    const options = document.querySelectorAll('[data-value]');
-
     function clickHandler(event) {
       const settings = event.currentTarget.dataset as TabbarItemDataset;
 
-      const tabbar = document.querySelector(
-        `[data-active][data-setting="${settings.setting}"]`,
-      );
-      const currentValue = tabbar?.dataset.active;
-      if (currentValue !== settings.value) {
-        tabbar.dataset.active = settings.value;
-
-        debouncedUpdateCSS();
-      }
+      playgroundState[settings.setting] = settings.value;
+      updateButtonState();
+      debouncedUpdateCSS();
     }
+    const options = document.querySelectorAll('[data-value]');
     Array.from(options).forEach((option) => {
       option.addEventListener('click', clickHandler);
     });
   }
 
+  function updateButtonState() {
+    const inputFormatTab = document.querySelector(
+      '[data-setting="inputFormat"]',
+    ) as HTMLDivElement;
+    inputFormatTab.dataset.active = playgroundState.inputFormat;
+
+    const outputFormatTab = document.querySelector(
+      '[data-setting="outputFormat"]',
+    ) as HTMLDivElement;
+    outputFormatTab.dataset.active = playgroundState.outputFormat;
+  }
+  function updateErrorState() {
+    const editorWrapper = document.querySelector(
+      '[data-compiler-has-error]',
+    ) as HTMLDivElement;
+    editorWrapper.dataset.compilerHasError =
+      playgroundState.compilerHasError.toString();
+  }
+
   function updateCSS() {
-    const val = editor.state.doc.toString();
-    const result = parse(val);
+    const result = parse(playgroundState.inputValue);
     if ('css' in result) {
       const text = Text.of(result.css.split('\n'));
       viewer.dispatch({
@@ -93,26 +100,26 @@ function setupPlayground() {
         },
       });
       editor.dispatch(setDiagnostics(editor.state, []));
-      setCompilerHasError(false);
+      playgroundState.compilerHasError = false;
     } else {
       const diagnostic = errorToDiagnostic(result.error);
       const transaction = setDiagnostics(editor.state, [diagnostic]);
       editor.dispatch(transaction);
-      setCompilerHasError(true);
+      playgroundState.compilerHasError = true;
     }
+    updateErrorState();
   }
   const debouncedUpdateCSS = debounce(updateCSS);
 
   type ParseResultSuccess = { css: string };
-  type ParseResultError = { error: string };
+  type ParseResultError = { error: unknown };
   type ParseResult = ParseResultSuccess | ParseResultError;
 
   function parse(css: string): ParseResult {
-    const settings = getSettingsFromDOM();
     try {
       const result = compileString(css, {
-        syntax: settings['input-format'],
-        style: settings['output-format'],
+        syntax: playgroundState.inputFormat,
+        style: playgroundState.outputFormat,
       });
       return { css: result.css };
     } catch (error) {
@@ -120,7 +127,7 @@ function setupPlayground() {
     }
   }
 
-  function errorToDiagnostic(error): Diagnostic {
+  function errorToDiagnostic(error: unknown): Diagnostic {
     return {
       from: error.span.start.offset,
       to: error.span.end.offset,
