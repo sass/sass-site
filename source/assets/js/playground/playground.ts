@@ -5,6 +5,18 @@ import { EditorView } from 'codemirror';
 import { compileString } from '../sass.default.js';
 import { editorSetup, outputSetup } from './editor-setup.js';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
+function debounce(func: Function, timeout = 200) {
+  let timer: number;
+  return function (this: unknown, ...args: unknown[]) {
+    clearTimeout(timer);
+    // Call window.setTimeout, as this is run in the browser, and not in the NodeJS context as the rest of the project
+    timer = window.setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
 function setupPlayground() {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const editor = new EditorView({
@@ -12,7 +24,7 @@ function setupPlayground() {
       ...editorSetup,
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
-          updateCSS();
+          debouncedUpdateCSS();
         }
       }),
     ],
@@ -36,6 +48,12 @@ function setupPlayground() {
     }, {});
     return settings;
   }
+  function setCompilerHasError(value: boolean) {
+    const editorWrapper = document.querySelector(
+      '[data-compiler-has-error]',
+    ) as HTMLDivElement;
+    editorWrapper.dataset.compilerHasError = value.toString();
+  }
 
   type TabbarItemDataset = {
     value: string;
@@ -54,7 +72,7 @@ function setupPlayground() {
       if (currentValue !== settings.value) {
         tabbar.dataset.active = settings.value;
 
-        updateCSS();
+        debouncedUpdateCSS();
       }
     }
     Array.from(options).forEach((option) => {
@@ -83,11 +101,7 @@ function setupPlayground() {
       setCompilerHasError(true);
     }
   }
-
-  function setCompilerHasError(value: boolean) {
-    const editorWrapper = document.querySelector('[data-compiler-has-error]');
-    editorWrapper.dataset.compilerHasError = value.toString();
-  }
+  const debouncedUpdateCSS = debounce(updateCSS);
 
   type ParseResultSuccess = { css: string };
   type ParseResultError = { error: string };
