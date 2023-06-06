@@ -5,7 +5,12 @@ import {
   closeBracketsKeymap,
   completionKeymap,
 } from '@codemirror/autocomplete';
-import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
+import {
+  defaultKeymap,
+  history,
+  historyKeymap,
+  indentWithTab,
+} from '@codemirror/commands';
 import { css as langCss } from '@codemirror/lang-css';
 import { sass as langSass } from '@codemirror/lang-sass';
 import {
@@ -61,6 +66,7 @@ const editorSetup = (() => [
       ...foldKeymap,
       ...completionKeymap,
       ...lintKeymap,
+      indentWithTab,
     ]),
   ],
   langSass(),

@@ -101,7 +101,7 @@ function setupPlayground() {
       setCompilerHasError(true);
     }
   }
-  const debouncedUpdateCSS = debounce(updateCSS);
+  const debouncedUpdateCSS = updateCSS;
 
   type ParseResultSuccess = { css: string };
   type ParseResultError = { error: string };
