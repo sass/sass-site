@@ -23,6 +23,10 @@ const playgroundTheme = EditorView.baseTheme({
   '.cm-scroller': {
     overflow: 'auto',
   },
+  '.cm-tooltip-lint': {
+    'font-family':
+      "'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono', 'Droid Sans Mono', monospace;",
+  },
 });
 
 const playgroundHighlightStyle = HighlightStyle.define([
