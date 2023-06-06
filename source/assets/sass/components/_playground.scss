@@ -29,6 +29,10 @@
     flex: 50%;
   }
 
+  #editor {
+    cursor: text;
+  }
+
   .code-editor-tabbar {
     background-color: color.adjust(brand.$sl-color--patina, $lightness: 32%);
 
@@ -38,6 +42,11 @@
       color: var(--text, var(--sl-color--pale-sky));
       padding: var(--sl-gutter--half);
       border: 0;
+      cursor: pointer;
+
+      &:hover {
+        // TODO- add hover styles
+      }
     }
 
     $options: 'scss', 'indented', 'expanded', 'compressed';
