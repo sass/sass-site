@@ -109,25 +109,26 @@
     </main>
 
     {% typogr %}{% render 'footer' %}{% endtypogr %}
-
-    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
-    <script>
-      docsearch({
-        container: '#docsearch',
-        appId: 'Q9MULQONSV',
-        indexName: 'sass-lang',
-        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
-        transformItems: function(hits) {
-          var domain = window.location.origin + "/";
-          hits.forEach(function(hit) {
-            if (! hit.url.startsWith(domain)) {
-              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
-            }
-          });
-          return hits;
-        }
-      });
-    </script>
+    {%- unless is_playground -%}
+      <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+      <script>
+        docsearch({
+          container: '#docsearch',
+          appId: 'Q9MULQONSV',
+          indexName: 'sass-lang',
+          apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+          transformItems: function(hits) {
+            var domain = window.location.origin + "/";
+            hits.forEach(function(hit) {
+              if (! hit.url.startsWith(domain)) {
+                hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+              }
+            });
+            return hits;
+          }
+        });
+      </script>
+    {%- endunless -%}
     <script>
       !function(d, s, id) {
         var js,
