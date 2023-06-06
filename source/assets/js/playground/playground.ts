@@ -2,7 +2,7 @@ import { Diagnostic, setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 
-import { compileString } from '../sass.default.js';
+import { compileString } from '../vendor/playground';
 import { editorSetup, outputSetup } from './editor-setup.js';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
