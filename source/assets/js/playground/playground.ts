@@ -52,7 +52,7 @@ function setupPlayground() {
       return set;
     },
   });
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
   const editor = new EditorView({
     extensions: [
       ...editorSetup,

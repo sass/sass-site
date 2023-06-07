@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import {
   autocompletion,
   closeBrackets,
@@ -25,15 +24,12 @@ import { lintKeymap } from '@codemirror/lint';
 import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
 import { EditorState } from '@codemirror/state';
 import {
-  crosshairCursor,
-  drawSelection,
   dropCursor,
   highlightActiveLine,
   highlightActiveLineGutter,
   highlightSpecialChars,
   keymap,
   lineNumbers,
-  rectangularSelection,
 } from '@codemirror/view';
 
 import { playgroundHighlightStyle, playgroundTheme } from './theme.js';
@@ -44,18 +40,14 @@ const editorSetup = (() => [
     highlightActiveLineGutter(),
     highlightSpecialChars(),
     history(),
-    // foldGutter(),
-    // drawSelection(),
+    foldGutter(),
     dropCursor(),
-    // EditorState.allowMultipleSelections.of(true),
     indentOnInput(),
     syntaxHighlighting(playgroundHighlightStyle),
     syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
     bracketMatching(),
     closeBrackets(),
     autocompletion(),
-    // rectangularSelection(),
-    // crosshairCursor(),
     highlightActiveLine(),
     highlightSelectionMatches(),
     keymap.of([
@@ -77,7 +69,7 @@ const outputSetup = (() => [
   [
     lineNumbers(),
     highlightSpecialChars(),
-    // foldGutter(),
+    foldGutter(),
     syntaxHighlighting(playgroundHighlightStyle),
     syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
     highlightActiveLine(),
