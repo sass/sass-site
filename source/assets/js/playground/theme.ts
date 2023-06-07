@@ -5,18 +5,17 @@ import { EditorView } from 'codemirror';
 // TODO: Consider moving to vendor scss
 const playgroundTheme = EditorView.baseTheme({
   '&': {
-    // TODO: Make dynamic
     height: '500px',
     'font-size': 'var(--sl-font-size--x-small)',
-    'background-color': 'var(--sl-color--code-background)',
+    'background-color': 'var(--sl-color-editor-background)',
     color: 'var(--sl-color--code-text)',
   },
   '.cm-gutters': {
-    'background-color': 'var(--sl-color--code-background)',
+    'background-color': 'var(--sl-color-editor-background)',
     'border-right': 'none',
   },
   '.cm-content': {
-    // Pull from _typography?
+    // Todo - Pull from _typography?
     'font-family':
       "'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono', 'Droid Sans Mono', monospace;",
   },

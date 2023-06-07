@@ -15,22 +15,25 @@
 
 .playground-wrapper {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   gap: var(--sl-gutter);
-
-  @include breakpoints.sl-breakpoint--medium {
-    flex-flow: nowrap;
-  }
 
   > div {
     // Duplicated from fun fact- should this be defined elsewhere?
     border: var(--sl-border--small) solid
       color.adjust(brand.$sl-color--patina, $lightness: 32%);
-    flex: 50%;
+    flex-grow: 1;
+    min-width: calc((100% - var(--sl-gutter)) / 2);
   }
 
   #editor {
+    --sl-color-editor-background: white;
+
     cursor: text;
+  }
+
+  #css-view {
+    --sl-color-editor-background: var(--sl-color--code-background);
   }
 
   .code-editor-tabbar {
