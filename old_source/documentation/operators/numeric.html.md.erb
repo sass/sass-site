@@ -139,10 +139,13 @@ is met:
 * The operation is surrounded by parentheses, unless those parentheses are
   outside a list that contains the operation.
 * The result is used as part of another operation (other than `/`).
+* The result is returned by a [calculation].
+
+[calculation]: https://sass-lang.com/documentation/values/calculations
 
 You can use [`list.slash()`] to force `/` to be used as a separator.
 
-[`list.slash`]: ../modules/list#slash
+[`list.slash()`]: ../modules/list#slash
 
 <% example(autogen_css: false) do %>
   @use "sass:list";
