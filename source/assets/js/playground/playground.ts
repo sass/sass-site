@@ -30,12 +30,28 @@ function debounce(func: Function, timeout = 200) {
 }
 
 function setupPlayground() {
-  const playgroundState: PlaygroundState = {
+  const initialState: PlaygroundState = {
     inputFormat: 'scss',
     outputFormat: 'expanded',
     compilerHasError: false,
     inputValue: '',
   };
+
+  const playgroundState = new Proxy(initialState, {
+    set(state: PlaygroundState, prop: keyof PlaygroundState, ...rest) {
+      // Set state first so called functions have access
+      const set = Reflect.set(state, prop, ...rest);
+      if (['inputFormat', 'outputFormat'].includes(prop)) {
+        updateButtonState();
+        debouncedUpdateCSS();
+      } else if (prop === 'compilerHasError') {
+        updateErrorState();
+      } else if (prop === 'inputValue') {
+        debouncedUpdateCSS();
+      }
+      return set;
+    },
+  });
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const editor = new EditorView({
     extensions: [
@@ -43,7 +59,6 @@ function setupPlayground() {
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
           playgroundState.inputValue = editor.state.doc.toString();
-          debouncedUpdateCSS();
         }
       }),
     ],
@@ -74,9 +89,6 @@ function setupPlayground() {
         } else {
           playgroundState.outputFormat = settings.value;
         }
-
-        updateButtonState();
-        debouncedUpdateCSS();
       }
     }
     const options = document.querySelectorAll('[data-value]');
@@ -84,7 +96,11 @@ function setupPlayground() {
       option.addEventListener('click', clickHandler);
     });
   }
-
+  /**
+   * updateButtonState
+   * Applies playgroundState to the buttons
+   * Called by state's proxy setter
+   */
   function updateButtonState() {
     const inputFormatTab = document.querySelector(
       '[data-setting="inputFormat"]',
@@ -96,6 +112,12 @@ function setupPlayground() {
     ) as HTMLDivElement;
     outputFormatTab.dataset.active = playgroundState.outputFormat;
   }
+
+  /**
+   * updateErrorState
+   * Applies error state
+   * Called by state's proxy setter
+   */
   function updateErrorState() {
     const editorWrapper = document.querySelector(
       '[data-compiler-has-error]',
@@ -123,7 +145,6 @@ function setupPlayground() {
       editor.dispatch(transaction);
       playgroundState.compilerHasError = true;
     }
-    updateErrorState();
   }
   const debouncedUpdateCSS = debounce(updateCSS);
 
