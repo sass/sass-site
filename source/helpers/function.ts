@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import stripIndent from 'strip-indent';
 
 import { codeBlock } from './components';
 
@@ -41,12 +42,14 @@ const returnTypeLink = (returnType: string) =>
 export function _function(content: string, ...signatures: string[]) {
   // Parse the last argument as the return type, if it's present
   const returns = signatures.at(-1)?.match(/returns?:\s*(.*)/)?.[1];
-  if (returns) signatures.pop();
+  if (returns) {
+    signatures.pop();
+  }
 
   // Highlight each signature
   const names: string[] = [];
   const highlightedSignatures = signatures.map((signature) => {
-    signature = signature.replace(/!!!/g, '\n'); // Hack to allow newlines in the signature
+    signature = stripIndent(signature).trim();
     const [name] = signature.split('(', 2);
     const nameWithoutNamespace = name.split('.').at(-1) || name;
     const html = codeBlock(`@function ${signature}`, 'scss');
@@ -54,6 +57,7 @@ export function _function(content: string, ...signatures: string[]) {
     const signatureElements = $('pre code')
       .contents()
       .filter((index, element) => $(element).text() !== '@function');
+    // Add a class to make it easier to index function documentation.
     if (!names.includes(nameWithoutNamespace)) {
       names.push(nameWithoutNamespace);
       const nameEl = signatureElements

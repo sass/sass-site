@@ -66,6 +66,13 @@ export const replaceInternalLinks = (content: string, url: string) =>
  */
 export const startsWith = (str: string, check: string) => str.startsWith(check);
 
+/**
+ * Strips leading whitespace from each line in a string.
+ *
+ * @see https://github.com/sindresorhus/strip-indent
+ */
+export const stripInd = (str: string) => stripIndent(str);
+
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,
                   @typescript-eslint/no-unsafe-call,
                   @typescript-eslint/no-explicit-any */
@@ -77,6 +84,7 @@ export default function typePlugin(eleventyConfig: any) {
   eleventyConfig.addLiquidFilter('typogr', typogr);
   eleventyConfig.addLiquidFilter('replaceInternalLinks', replaceInternalLinks);
   eleventyConfig.addLiquidFilter('startsWith', startsWith);
+  eleventyConfig.addLiquidFilter('stripIndent', stripInd);
 
   // shortcodes...
   eleventyConfig.addLiquidShortcode('lorem', getLorem);

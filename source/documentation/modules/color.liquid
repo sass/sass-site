@@ -4,7 +4,15 @@ title: sass:color
 
 {% render 'doc_snippets/built-in-module-status' %}
 
-{% function 'color.adjust($color,!!!  $red: null, $green: null, $blue: null,!!!  $hue: null, $saturation: null, $lightness: null,!!!  $whiteness: null, $blackness: null,!!!  $alpha: null)', 'adjust-color(...)', 'returns:color' %}
+{% capture color_adjust %}
+  color.adjust($color,
+    $red: null, $green: null, $blue: null,
+    $hue: null, $saturation: null, $lightness: null,
+    $whiteness: null, $blackness: null,
+    $alpha: null)
+{% endcapture %}
+
+{% function color_adjust, 'adjust-color(...)', 'returns:color' %}
   {% compatibility 'dart: "1.28.0"', 'libsass: false', 'ruby: false', 'feature: "$whiteness and $blackness"' %}{% endcompatibility %}
 
   {% markdown %}
@@ -174,7 +182,15 @@ title: sass:color
   {% endcodeExample %}
 {% endfunction %}
 
-{% function 'color.change($color,!!!  $red: null, $green: null, $blue: null,!!!  $hue: null, $saturation: null, $lightness: null,!!!  $whiteness: null, $blackness: null,!!!  $alpha: null)', 'change-color(...)', 'returns:color' %}
+{% capture color_change %}
+  color.change($color,
+    $red: null, $green: null, $blue: null,
+    $hue: null, $saturation: null, $lightness: null,
+    $whiteness: null, $blackness: null,
+    $alpha: null)
+{% endcapture %}
+
+{% function color_change, 'change-color(...)', 'returns:color' %}
   {% compatibility 'dart: "1.28.0"', 'libsass: false', 'ruby: false', 'feature: "$whiteness and $blackness"' %}{% endcompatibility %}
 
   {% markdown %}
@@ -781,7 +797,15 @@ title: sass:color
   {% endcodeExample %}
 {% endfunction %}
 
-{% function 'color.scale($color,!!!  $red: null, $green: null, $blue: null,!!!  $saturation: null, $lightness: null,!!!  $whiteness: null, $blackness: null,!!!  $alpha: null)', 'scale-color(...)', 'returns:color' %}
+{% capture color_scale %}
+  color.scale($color,
+    $red: null, $green: null, $blue: null,
+    $saturation: null, $lightness: null,
+    $whiteness: null, $blackness: null,
+    $alpha: null)
+{% endcapture %}
+
+{% function color_scale, 'scale-color(...)', 'returns:color' %}
   {% compatibility 'dart: "1.28.0"', 'libsass: false', 'ruby: false', 'feature: "$whiteness and $blackness"' %}{% endcompatibility %}
 
   {% markdown %}
