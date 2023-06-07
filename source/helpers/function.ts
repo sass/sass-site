@@ -2,6 +2,7 @@ import * as cheerio from 'cheerio';
 import stripIndent from 'strip-indent';
 
 import { codeBlock } from './components';
+import { liquidEngine } from './engines';
 
 const links: Record<string, string> = {
   number: '/documentation/values/numbers',
@@ -33,7 +34,7 @@ const returnTypeLink = (returnType: string) =>
 /** Renders API docs for a Sass function (or mixin).
  *
  * The function's name is parsed from the signature. The API description is
- * passed as a Markdown block. If `returns:type` is passed as the last argument,
+ * passed as an HTML block. If `returns:type` is passed as the last argument,
  * it's included as the function's return type.
  *
  * Multiple signatures may be passed, in which case they're all included in
@@ -75,32 +76,13 @@ export function _function(content: string, ...signatures: string[]) {
       .trim();
   });
 
-  // Add the return type after the last signature
-  let mergedSignatures = highlightedSignatures.join('\n');
-  if (returns) {
-    mergedSignatures += ` <span class="token comment">//=> ${returnTypeLink(
-      returns,
-    )}</span>`;
-  }
-
-  // Assemble the final HTML
-  const $ = cheerio.load('');
-  const div = $('<div></div>')
-    .addClass('sl-c-callout sl-c-callout--function')
-    .attr('id', names[0]);
-  const pre = $('<pre></pre>').addClass('signature language-scss');
-  const anchor = $('<a></a>').addClass('anchor').attr('href', `#${names[0]}`);
-  const code = $('<code></code>')
-    .addClass('language-scss')
-    .html(mergedSignatures);
-  pre.append(anchor).append(code);
-  div.append(pre).append(content);
-  $('body').append(div);
-  names.slice(1).forEach((name) => {
-    const div = $('<div></div>').attr('id', name);
-    $('body').append(div);
+  // Render the final HTML
+  return liquidEngine.renderFile('function', {
+    names,
+    signatures: highlightedSignatures.join('\n'),
+    content,
+    returns: returns ? returnTypeLink(returns) : null,
   });
-  return $('body').html() || '';
 }
 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,
