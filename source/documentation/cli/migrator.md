@@ -33,7 +33,7 @@ see what changes will be made without actually saving them, you can pass
 [--dry-run]: #dry-run
 [--verbose]: #verbose
 
-{% render 'code-snippets/example-module-migrator' %}
+{% render 'code_snippets/example-module-migrator' %}
 
 ## Installation
 
@@ -259,7 +259,7 @@ before, including:
   [`--migrate-deps` option]: #migrate-deps
 {% endheadsUp %}
 
-{% render 'code-snippets/example-module-migrator' %}
+{% render 'code_snippets/example-module-migrator' %}
 
 #### Loading Dependencies
 
