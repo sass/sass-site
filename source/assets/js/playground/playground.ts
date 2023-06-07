@@ -2,7 +2,12 @@ import { Diagnostic, setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 
-import { compileString, OutputStyle, Syntax } from '../vendor/playground';
+import {
+  compileString,
+  Exception,
+  OutputStyle,
+  Syntax,
+} from '../vendor/playground';
 import { editorSetup, outputSetup } from './editor-setup.js';
 
 type PlaygroundState = {
@@ -51,17 +56,28 @@ function setupPlayground() {
     parent: document.getElementById('css-view') || document.body,
   });
 
-  type TabbarItemDataset = {
-    value: string;
-    setting: string;
-  };
+  type TabbarItemDataset =
+    | {
+        value: Syntax;
+        setting: 'inputFormat';
+      }
+    | {
+        value: OutputStyle;
+        setting: 'outputFormat';
+      };
   function attachListeners() {
-    function clickHandler(event) {
-      const settings = event.currentTarget.dataset as TabbarItemDataset;
+    function clickHandler(event: Event) {
+      if (event.currentTarget instanceof HTMLElement) {
+        const settings = event.currentTarget.dataset as TabbarItemDataset;
+        if (settings.setting === 'inputFormat') {
+          playgroundState.inputFormat = settings.value;
+        } else {
+          playgroundState.outputFormat = settings.value;
+        }
 
-      playgroundState[settings.setting] = settings.value;
-      updateButtonState();
-      debouncedUpdateCSS();
+        updateButtonState();
+        debouncedUpdateCSS();
+      }
     }
     const options = document.querySelectorAll('[data-value]');
     Array.from(options).forEach((option) => {
@@ -112,7 +128,7 @@ function setupPlayground() {
   const debouncedUpdateCSS = debounce(updateCSS);
 
   type ParseResultSuccess = { css: string };
-  type ParseResultError = { error: unknown };
+  type ParseResultError = { error: Exception | unknown };
   type ParseResult = ParseResultSuccess | ParseResultError;
 
   function parse(css: string): ParseResult {
@@ -127,13 +143,26 @@ function setupPlayground() {
     }
   }
 
-  function errorToDiagnostic(error: unknown): Diagnostic {
-    return {
-      from: error.span.start.offset,
-      to: error.span.end.offset,
-      severity: 'error',
-      message: error?.toString() || 'Compilation error',
-    };
+  function errorToDiagnostic(error: Exception | unknown): Diagnostic {
+    if (error instanceof Exception) {
+      return {
+        from: error.span.start.offset,
+        to: error.span.end.offset,
+        severity: 'error',
+        message: error.toString(),
+      };
+    } else {
+      let errorString = 'Unknown compilation error';
+      if (typeof error === 'string') errorString = error;
+      else if (typeof error?.toString() === 'string')
+        errorString = error.toString();
+      return {
+        from: 0,
+        to: 0,
+        severity: 'error',
+        message: errorString,
+      };
+    }
   }
 
   attachListeners();
