@@ -33,6 +33,31 @@
     cursor: text;
   }
 
+  .console {
+    font-family: 'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono',
+      'Droid Sans Mono', monospace;
+    min-height: 2em;
+    max-height: 500px;
+    margin: 0;
+
+    hr,
+    p {
+      margin: 0;
+    }
+
+    $console-type-colors: (
+      'error': red,
+      'warn': orange,
+      'debug': green,
+    );
+
+    @each $name, $color in $console-type-colors {
+      .console-type-#{$name} {
+        color: $color;
+      }
+    }
+  }
+
   .code-editor-tabbar {
     background-color: color.adjust(brand.$sl-color--patina, $lightness: 32%);
 

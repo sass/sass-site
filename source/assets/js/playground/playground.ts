@@ -5,16 +5,42 @@ import { EditorView } from 'codemirror';
 import {
   compileString,
   Exception,
+  Logger,
   OutputStyle,
+  SourceSpan,
   Syntax,
 } from '../vendor/playground';
 import { editorSetup, outputSetup } from './editor-setup.js';
+
+type ConsoleLogDebug = {
+  options: {
+    span: SourceSpan;
+  };
+  message: string;
+  type: 'debug';
+};
+
+type ConsoleLogWarning = {
+  options: {
+    deprecation: boolean;
+    span?: SourceSpan | undefined;
+    stack?: string | undefined;
+  };
+  message: string;
+  type: 'warn';
+};
+type ConsoleLogError = {
+  type: 'error';
+  error: Exception | unknown;
+};
+type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
 
 type PlaygroundState = {
   inputFormat: Syntax;
   outputFormat: OutputStyle;
   inputValue: string;
   compilerHasError: boolean;
+  debugOutput: ConsoleLog[];
 };
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -35,6 +61,7 @@ function setupPlayground() {
     outputFormat: 'expanded',
     compilerHasError: false,
     inputValue: '',
+    debugOutput: [],
   };
 
   const playgroundState = new Proxy(initialState, {
@@ -126,7 +153,41 @@ function setupPlayground() {
       playgroundState.compilerHasError.toString();
   }
 
+  function updateDebugOutput() {
+    const console = document.querySelector('.console') as HTMLDivElement;
+    console.innerHTML = playgroundState.debugOutput
+      .map(displayForConsoleLog)
+      .join('\n');
+  }
+
+  function lineNumberFormatter(number?: number): string {
+    if (!number) return '';
+    number = number + 1;
+    return `${number} `;
+  }
+
+  // TODO: escape messages to prevent XSS
+  // Example vector:
+  // @debug <button onmouseover="alert('heck')">Test</button>
+  function displayForConsoleLog(item: ConsoleLog): string {
+    if (item.type === 'error') {
+      let lineNumber;
+      if (item.error instanceof Exception) {
+        lineNumber = item.error.span.start.line;
+      }
+      return `<p><span class="console-type console-type-error">@error</span>:${lineNumberFormatter(
+        lineNumber,
+      )} ${item.error?.toString() || ''}</p>`;
+    } else if (['debug', 'warn'].includes(item.type)) {
+      const lineNumber = item.options.span?.start?.line;
+      return `<p><span class="console-type console-type-${item.type}">@${
+        item.type
+      }</span>:${lineNumberFormatter(lineNumber)} ${item.message}</p>`;
+    } else return '';
+  }
+
   function updateCSS() {
+    playgroundState.debugOutput = [];
     const result = parse(playgroundState.inputValue);
     if ('css' in result) {
       const text = Text.of(result.css.split('\n'));
@@ -144,9 +205,29 @@ function setupPlayground() {
       const transaction = setDiagnostics(editor.state, [diagnostic]);
       editor.dispatch(transaction);
       playgroundState.compilerHasError = true;
+      playgroundState.debugOutput = [
+        ...playgroundState.debugOutput,
+        { type: 'error', error: result.error },
+      ];
     }
+    updateDebugOutput();
   }
   const debouncedUpdateCSS = debounce(updateCSS);
+
+  const logger: Logger = {
+    warn(message, options) {
+      playgroundState.debugOutput = [
+        ...playgroundState.debugOutput,
+        { message, options, type: 'warn' },
+      ];
+    },
+    debug(message, options) {
+      playgroundState.debugOutput = [
+        ...playgroundState.debugOutput,
+        { message, options, type: 'debug' },
+      ];
+    },
+  };
 
   type ParseResultSuccess = { css: string };
   type ParseResultError = { error: Exception | unknown };
@@ -157,6 +238,7 @@ function setupPlayground() {
       const result = compileString(css, {
         syntax: playgroundState.inputFormat,
         style: playgroundState.outputFormat,
+        logger: logger,
       });
       return { css: result.css };
     } catch (error) {
