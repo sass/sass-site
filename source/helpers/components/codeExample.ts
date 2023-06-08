@@ -53,6 +53,9 @@ export default async function codeExample(
   autogenCSS = true,
   syntax: 'sass' | 'scss' | null = null,
 ) {
+  if (!exampleName) {
+    throw new Error('`{% codeExample %}` tags require a unique name.');
+  }
   const code = generateCodeExample(contents, autogenCSS, syntax);
   return liquidEngine.renderFile('code_examples/code_example', {
     code,
