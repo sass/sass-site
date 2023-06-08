@@ -223,7 +223,7 @@ Compiled themes/light.scss to public/css/light.css.
 
 {% compatibility 'dart: "1.3.0"' %}{% endcompatibility %}
 
-{% render 'documentation/snippets/source-maps' %}
+{% render 'doc_snippets/source-maps' %}
 
 Dart Sass generates source maps by default for every CSS file it emits.
 

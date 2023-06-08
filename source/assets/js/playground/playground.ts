@@ -1,6 +1,7 @@
 import { Diagnostic, setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
+import debounce from 'lodash.debounce';
 
 import {
   compileString,
@@ -43,17 +44,6 @@ type PlaygroundState = {
   debugOutput: ConsoleLog[];
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-function debounce(func: Function, timeout = 200) {
-  let timer: number;
-  return function (this: unknown, ...args: unknown[]) {
-    clearTimeout(timer);
-    // Call window.setTimeout, as this is run in the browser, and not in the NodeJS context as the rest of the project
-    timer = window.setTimeout(() => {
-      func.apply(this, args);
-    }, timeout);
-  };
-}
 /**
  * Encode the HTML in a user-submitted string to print safely using innerHTML
  * Adapted from https://vanillajstoolkit.com/helpers/encodehtml/
@@ -231,7 +221,7 @@ function setupPlayground() {
     }
     updateDebugOutput();
   }
-  const debouncedUpdateCSS = debounce(updateCSS);
+  const debouncedUpdateCSS = debounce(updateCSS, 200);
 
   const logger: Logger = {
     warn(message, options) {
