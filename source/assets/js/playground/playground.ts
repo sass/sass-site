@@ -54,6 +54,17 @@ function debounce(func: Function, timeout = 200) {
     }, timeout);
   };
 }
+/**
+ * Encode the HTML in a user-submitted string to print safely using innerHTML
+ * Adapted from https://vanillajstoolkit.com/helpers/encodehtml/
+ * @param  {string} str  The user-submitted string
+ * @return {string} The sanitized string
+ */
+function encodeHTML(str: string): string {
+  return str.replace(/[^\w-_. ]/gi, function (c) {
+    return `&#${c.charCodeAt(0)};`;
+  });
+}
 
 function setupPlayground() {
   const initialState: PlaygroundState = {
@@ -161,14 +172,11 @@ function setupPlayground() {
   }
 
   function lineNumberFormatter(number?: number): string {
-    if (!number) return '';
+    if (typeof number === 'undefined') return '';
     number = number + 1;
     return `${number} `;
   }
 
-  // TODO: escape messages to prevent XSS
-  // Example vector:
-  // @debug <button onmouseover="alert('heck')">Test</button>
   function displayForConsoleLog(item: ConsoleLog): string {
     if (item.type === 'error') {
       let lineNumber;
@@ -177,12 +185,23 @@ function setupPlayground() {
       }
       return `<p><span class="console-type console-type-error">@error</span>:${lineNumberFormatter(
         lineNumber,
-      )} ${item.error?.toString() || ''}</p>`;
+      )} ${encodeHTML(item.error?.toString() || '') || ''}</p>`;
     } else if (['debug', 'warn'].includes(item.type)) {
-      const lineNumber = item.options.span?.start?.line;
+      let lineNumber = item.options.span?.start?.line;
+      if (typeof lineNumber === 'undefined') {
+        const stack = 'stack' in item.options ? item.options.stack : '';
+        const needleFromStackRegex = /^- (\d+):/;
+        const match = stack?.match(needleFromStackRegex);
+        if (match && match[1]) {
+          // Stack trace starts at 1, all others come from span, which starts at 0, so adjust before formatting.
+          lineNumber = parseInt(match[1]) - 1;
+        }
+      }
       return `<p><span class="console-type console-type-${item.type}">@${
         item.type
-      }</span>:${lineNumberFormatter(lineNumber)} ${item.message}</p>`;
+      }</span>:${lineNumberFormatter(lineNumber)} ${encodeHTML(
+        item.message,
+      )}</p>`;
     } else return '';
   }
 
