@@ -37,7 +37,7 @@ introduction: >
   Unitless numbers can be used with numbers of any unit.
 {% endmarkdown %}
 
-{% codeExample 'unitless-numbers', false  %}
+{% codeExample 'unitless-numbers', false %}
   @debug 100px + 50; // 150px
   @debug 4s * 10; // 40s
   ===
@@ -50,7 +50,7 @@ introduction: >
   modulo.
 {% endmarkdown %}
 
-{% codeExample 'incompatible-units', false  %}
+{% codeExample 'incompatible-units', false %}
   @debug 100px + 10s;
   //     ^^^^^^^^^^^
   // Error: Incompatible units px and s.
@@ -69,7 +69,7 @@ introduction: >
   - `-<expression>` returns the negative version of the expression's value.
 {% endmarkdown %}
 
-{% codeExample 'unary-operators', false  %}
+{% codeExample 'unary-operators', false %}
   @debug +(5s + 7s); // 12s
   @debug -(50px + 30px); // -80px
   @debug -(10px - 15px); // 5px
@@ -123,7 +123,7 @@ introduction: >
 {% endheadsUp %}
 
 
-{{  '## Division' | markdown }}
+{{ '## Division' | markdown }}
 
 {% compatibility 'dart: "1.33.0"', 'libsass: false', 'ruby: false', 'feature: "math.div()"' %}{% endcompatibility %}
 
@@ -197,4 +197,4 @@ introduction: >
   @debug 15px/30px + 1  // 1.5
 {% endcodeExample %}
 
-{% render 'documentation/snippets/number-units' %}
+{% render 'doc_snippets/number-units' %}

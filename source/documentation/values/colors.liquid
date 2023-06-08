@@ -10,12 +10,12 @@ title: Colors
 {% endcompatibility %}
 
 {% markdown %}
-  Sass has built-in support for color values. Just like CSS colors, they represent
-  points in the [sRGB color space][], although many Sass [color functions][]
-  operate using [HSL coordinates][] (which are just another way of expressing sRGB
-  colors). Sass colors can be written as hex codes (`#f2ece4` or `#b37399aa`),
-  [CSS color names][] (`midnightblue`, `transparent`), or the functions
-  [`rgb()`][], [`rgba()`][], [`hsl()`][], and [`hsla()`][].
+  Sass has built-in support for color values. Just like CSS colors, they
+  represent points in the [sRGB color space][], although many Sass [color
+  functions][] operate using [HSL coordinates][] (which are just another way of
+  expressing sRGB colors). Sass colors can be written as hex codes (`#f2ece4` or
+  `#b37399aa`), [CSS color names][] (`midnightblue`, `transparent`), or the
+  functions [`rgb()`][], [`rgba()`][], [`hsl()`][], and [`hsla()`][].
 
   [sRGB color space]: https://en.wikipedia.org/wiki/SRGB
   [color functions]: /documentation/modules/color
@@ -68,7 +68,7 @@ title: Colors
   [scaling their hue, saturation, or lightness]: /documentation/modules/color#scale
 {% endmarkdown %}
 
-{% codeExample 'color-formats', false  %}
+{% codeExample 'color-formats', false %}
   $venus: #998099;
 
   @debug scale-color($venus, $lightness: +15%); // #a893a8

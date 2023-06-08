@@ -10,12 +10,12 @@ table_of_contents: true
 
 {% markdown %}
   Lists contain a sequence of other values. In Sass, elements in lists can be
-  separated by commas (`Helvetica, Arial, sans-serif`), spaces (`10px 15px 0 0`),
-  or [slashes] as long as it's consistent within the list. Unlike most other
-  languages, lists in Sass don't require special brackets; any [expressions]
-  separated with spaces or commas count as a list. However, you're allowed to
-  write lists with square brackets (`[line1 line2]`), which is useful when using
-  [`grid-template-columns`].
+  separated by commas (`Helvetica, Arial, sans-serif`), spaces (`10px 15px 0
+  0`), or [slashes] as long as it's consistent within the list. Unlike most
+  other languages, lists in Sass don't require special brackets; any
+  [expressions] separated with spaces or commas count as a list. However, you're
+  allowed to write lists with square brackets (`[line1 line2]`), which is useful
+  when using [`grid-template-columns`].
 
   [slashes]: #slash-separated-lists
   [expressions]: /documentation/syntax/structure#expressions
@@ -28,14 +28,12 @@ table_of_contents: true
   value, which means you rarely need to explicitly create single-element lists.
 
   [list functions]: /documentation/modules/list
-{% endmarkdown %}
 
-{% headsUp %}
-  Empty lists without brackets aren't valid CSS, so Sass won't let you use one
-  in a property value.
-{% endheadsUp %}
+  {% headsUp %}
+    Empty lists without brackets aren't valid CSS, so Sass won't let you use one
+    in a property value.
+  {% endheadsUp %}
 
-{% markdown %}
   ## Slash-Separated Lists
 
   Lists in Sass can be separated by slashes, to represent values like the `font:
@@ -43,8 +41,8 @@ table_of_contents: true
   100% 50% / 0.5)` syntax for creating a color with a given opacity value.
   However, **slash-separated lists can't currently be written literally.** Sass
   historically used the `/` character to indicate division, so while existing
-  stylesheets transition to using [`math.div()`] slash-separated lists can only be
-  written using [`list.slash()`].
+  stylesheets transition to using [`math.div()`] slash-separated lists can only
+  be written using [`list.slash()`].
 
   [`math.div()`]: /documentation/modules/math#div
   [`list.slash()`]: /documentation/modules/list#slash
@@ -63,18 +61,19 @@ table_of_contents: true
 
   ### Indexes
 
-  Many of these functions take or return numbers, called *indexes*, that refer to
-  the elements in a list. The index 1 indicates the first element of the list.
-  Note that this is different than many programming languages where indexes start
-  at 0! Sass also makes it easy to refer to the end of a list. The index -1 refers
-  to the last element in a list, -2 refers to the second-to-last, and so on.
+  Many of these functions take or return numbers, called *indexes*, that refer
+  to the elements in a list. The index 1 indicates the first element of the
+  list. Note that this is different than many programming languages where
+  indexes start at 0! Sass also makes it easy to refer to the end of a list. The
+  index -1 refers to the last element in a list, -2 refers to the
+  second-to-last, and so on.
 
   ### Access an Element
 
   Lists aren't much use if you can't get values out of them. You can use the
   [`list.nth($list, $n)` function][] to get the element at a given index in a
-  list. The first argument is the list itself, and the second is the index of the
-  value you want to get out.
+  list. The first argument is the list itself, and the second is the index of
+  the value you want to get out.
 
   [`list.nth($list, $n)` function]: /documentation/modules/list#nth
 {% endmarkdown %}
@@ -84,9 +83,9 @@ table_of_contents: true
 {% markdown %}
   ### Do Something for Every Element
 
-  This doesn't actually use a function, but it's still one of the most common ways
-  to use lists. The [`@each` rule][] evaluates a block of styles for each element
-  in a list, and assigns that element to a variable.
+  This doesn't actually use a function, but it's still one of the most common
+  ways to use lists. The [`@each` rule][] evaluates a block of styles for each
+  element in a list, and assigns that element to a variable.
 
   [`@each` rule]: /documentation/at-rules/control/each
 {% endmarkdown %}
@@ -97,9 +96,9 @@ table_of_contents: true
   ### Add to a List
 
   It's also useful to add elements to a list. The [`list.append($list, $val)`
-  function][] takes a list and a value, and returns a copy of the list with the value
-  added to the end. Note that because Sass lists are [immutable][], it doesn't
-  modify the original list.
+  function][] takes a list and a value, and returns a copy of the list with the
+  value added to the end. Note that because Sass lists are [immutable][], it
+  doesn't modify the original list.
 
   [`list.append($list, $val)` function]: /documentation/modules/list#append
   [immutable]: #immutability
@@ -117,8 +116,8 @@ table_of_contents: true
   ### Find an Element in a List
 
   If you need to check if an element is in a list or figure out what index it's
-  at, use the [`list.index($list, $value)` function][]. This takes a list and a value
-  to locate in that list, and returns the index of that value.
+  at, use the [`list.index($list, $value)` function][]. This takes a list and a
+  value to locate in that list, and returns the index of that value.
 
   [`list.index($list, $value)` function]: /documentation/modules/list#index
 {% endmarkdown %}
@@ -126,9 +125,9 @@ table_of_contents: true
 {% render 'code_snippets/example-list-index' %}
 
 {% markdown %}
-  If the value isn't in the list at all, `list.index()` returns [`null`][]. Because
-  `null` is [falsey][], you can use `list.index()` with [`@if`][] or [`if()`][] to
-  check whether a list does or doesn't contain a given value.
+  If the value isn't in the list at all, `list.index()` returns [`null`][].
+  Because `null` is [falsey][], you can use `list.index()` with [`@if`][] or
+  [`if()`][] to check whether a list does or doesn't contain a given value.
 
   [`null`]: /documentation/values/null
   [falsey]: /documentation/at-rules/control/if#truthiness-and-falsiness
@@ -165,13 +164,14 @@ table_of_contents: true
   ## Immutability
 
   Lists in Sass are *immutable*, which means that the contents of a list value
-  never changes. Sass's list functions all return new lists rather than modifying
-  the originals. Immutability helps avoid lots of sneaky bugs that can creep in
-  when the same list is shared across different parts of the stylesheet.
+  never changes. Sass's list functions all return new lists rather than
+  modifying the originals. Immutability helps avoid lots of sneaky bugs that can
+  creep in when the same list is shared across different parts of the
+  stylesheet.
 
   You can still update your state over time by assigning new lists to the same
-  variable, though. This is often used in functions and mixins to collect a bunch
-  of values into one list.
+  variable, though. This is often used in functions and mixins to collect a
+  bunch of values into one list.
 {% endmarkdown %}
 
 {% codeExample 'immutability', false %}
@@ -210,10 +210,10 @@ table_of_contents: true
   ## Argument Lists
 
   When you declare a mixin or function that takes [arbitrary arguments][], the
-  value you get is a special list known as an *argument list*. It acts just like a
-  list that contains all the arguments passed to the mixin or function, with one
-  extra feature: if the user passed keyword arguments, they can be accessed as a
-  map by passing the argument list to the [`meta.keywords()` function][].
+  value you get is a special list known as an *argument list*. It acts just like
+  a list that contains all the arguments passed to the mixin or function, with
+  one extra feature: if the user passed keyword arguments, they can be accessed
+  as a map by passing the argument list to the [`meta.keywords()` function][].
 
   [arbitrary arguments]: /documentation/at-rules/mixin#taking-arbitrary-arguments
   [`meta.keywords()` function]: /documentation/modules/meta#keywords
