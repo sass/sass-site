@@ -1,6 +1,7 @@
 import { Diagnostic, setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
+import debounce from 'lodash.debounce';
 
 import {
   compileString,
@@ -16,18 +17,6 @@ type PlaygroundState = {
   inputValue: string;
   compilerHasError: boolean;
 };
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-function debounce(func: Function, timeout = 200) {
-  let timer: number;
-  return function (this: unknown, ...args: unknown[]) {
-    clearTimeout(timer);
-    // Call window.setTimeout, as this is run in the browser, and not in the NodeJS context as the rest of the project
-    timer = window.setTimeout(() => {
-      func.apply(this, args);
-    }, timeout);
-  };
-}
 
 function setupPlayground() {
   const initialState: PlaygroundState = {
@@ -146,7 +135,7 @@ function setupPlayground() {
       playgroundState.compilerHasError = true;
     }
   }
-  const debouncedUpdateCSS = debounce(updateCSS);
+  const debouncedUpdateCSS = debounce(updateCSS, 200);
 
   type ParseResultSuccess = { css: string };
   type ParseResultError = { error: Exception | unknown };
