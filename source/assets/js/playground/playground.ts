@@ -168,15 +168,18 @@ function setupPlayground() {
   }
 
   function displayForConsoleLog(item: ConsoleLog): string {
+    const data: { type: string; lineNumber?: number; message: string } = {
+      type: item.type,
+      lineNumber: undefined,
+      message: '',
+    };
     if (item.type === 'error') {
-      let lineNumber;
       if (item.error instanceof Exception) {
-        lineNumber = item.error.span.start.line;
+        data.lineNumber = item.error.span.start.line;
       }
-      return `<p><span class="console-type console-type-error">@error</span>:${lineNumberFormatter(
-        lineNumber,
-      )} ${encodeHTML(item.error?.toString() || '') || ''}</p>`;
+      data.message = item.error?.toString() || '';
     } else if (['debug', 'warn'].includes(item.type)) {
+      data.message = item.message;
       let lineNumber = item.options.span?.start?.line;
       if (typeof lineNumber === 'undefined') {
         const stack = 'stack' in item.options ? item.options.stack : '';
@@ -187,12 +190,14 @@ function setupPlayground() {
           lineNumber = parseInt(match[1]) - 1;
         }
       }
-      return `<p><span class="console-type console-type-${item.type}">@${
-        item.type
-      }</span>:${lineNumberFormatter(lineNumber)} ${encodeHTML(
-        item.message,
-      )}</p>`;
-    } else return '';
+      data.lineNumber = lineNumber;
+    }
+
+    return `<p><span class="console-type console-type-${data.type}">@${
+      data.type
+    }</span>:${lineNumberFormatter(data.lineNumber)} ${encodeHTML(
+      data.message,
+    )}</p>`;
   }
 
   function updateCSS() {
