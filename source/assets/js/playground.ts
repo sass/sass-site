@@ -2,14 +2,9 @@ import { Diagnostic, setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 import debounce from 'lodash.debounce';
+import { compileString, Exception, OutputStyle, Syntax } from 'sass';
 
-import {
-  compileString,
-  Exception,
-  OutputStyle,
-  Syntax,
-} from '../vendor/playground';
-import { editorSetup, outputSetup } from './editor-setup.js';
+import { editorSetup, outputSetup } from './playground/editor-setup.js';
 
 type PlaygroundState = {
   inputFormat: Syntax;

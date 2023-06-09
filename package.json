@@ -86,7 +86,7 @@
     "prettier": "^2.8.8",
     "prismjs": "^1.29.0",
     "rollup": "^3.23.1",
-    "sass": "^1.62.1",
+    "sass": "^1.63.3",
     "semver-parser": "^4.1.4",
     "strip-indent": "^3.0.0",
     "stylelint": "^15.7.0",

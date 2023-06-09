@@ -35,7 +35,7 @@ module.exports = defineConfig([
     plugins,
   },
   {
-    input: 'source/assets/js/playground/playground.ts',
+    input: 'source/assets/js/playground.ts',
     output: {
       file: 'source/assets/dist/js/playground.js',
       format: 'iife',
