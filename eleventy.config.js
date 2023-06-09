@@ -24,7 +24,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('source/assets/img');
   eleventyConfig.addPassthroughCopy('source/favicon.ico');
   eleventyConfig.addPassthroughCopy('source/icon.png');
-  eleventyConfig.addPassthroughCopy('source/_redirects');
   eleventyConfig.addPassthroughCopy('source/browserconfig.xml');
   eleventyConfig.addPassthroughCopy('source/tile.png');
   eleventyConfig.addPassthroughCopy('source/tile-wide.png');
