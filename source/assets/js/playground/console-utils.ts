@@ -23,15 +23,15 @@ type ConsoleLogError = {
 export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
 
 /**
- * Encode the HTML in a user-submitted string to print safely using innerHTML
- * Adapted from https://vanillajstoolkit.com/helpers/encodehtml/
- * @param  {string} str  The user-submitted string
+ * message is untrusted
+ * Write with innerText and then retrieve using innerHTML to encode message for safe display
+ * @param  {string} message  The user-submitted string
  * @return {string} The sanitized string
  */
-function encodeHTML(str: string): string {
-  return str.replace(/[^\w-_. ]/gi, function (c) {
-    return `&#${c.charCodeAt(0)};`;
-  });
+function encodeHTML(message: string): string {
+  const el = document.createElement('div');
+  el.innerText = message;
+  return el.innerHTML;
 }
 
 function lineNumberFormatter(number?: number): string {
@@ -66,9 +66,11 @@ export function displayForConsoleLog(item: ConsoleLog): string {
     data.lineNumber = lineNumber;
   }
 
-  return `<p><span class="console-type console-type-${data.type}">@${
+  return `<div class="console-line"><div class="console-location"><span class="console-type console-type-${
     data.type
-  }</span>:${lineNumberFormatter(data.lineNumber)} ${encodeHTML(
+  }">@${data.type}</span>:${lineNumberFormatter(
+    data.lineNumber,
+  )} </div><div class="console-message">${encodeHTML(
     data.message,
-  )}</p>`;
+  )}</div></div>`;
 }
