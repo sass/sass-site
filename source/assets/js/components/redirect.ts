@@ -2,7 +2,7 @@
 // that refers to a more specific piece of documentation. If so, forward the
 // user to that documentation.
 if (window.location.hash) {
-  if (window.location.pathname == '/documentation') {
+  if (window.location.pathname == '/documentation/') {
     const redirects: Record<string, string> = {
       '#syntax': '/documentation/syntax',
       '#using_sass': '/install',
@@ -113,7 +113,7 @@ if (window.location.hash) {
     if (redirect) {
       window.location.href = redirect;
     }
-  } else if (window.location.pathname == '/documentation/modules') {
+  } else if (window.location.pathname == '/documentation/modules/') {
     const redirects: Record<string, string> = {
       '#declare-class_method': '/ruby-sass',
       '#random_number_generator-class_method': '/ruby-sass',
@@ -224,7 +224,7 @@ if (window.location.hash) {
     if (redirect) {
       window.location.href = redirect;
     }
-  } else if (window.location.pathname == '/documentation/modules/color') {
+  } else if (window.location.pathname == '/documentation/modules/color/') {
     const redirects: Record<string, string> = {
       '#rgb': '/documentation/modules#rgb',
       '#rgba': '/documentation/modules#rgba',
@@ -236,7 +236,7 @@ if (window.location.hash) {
     if (redirect) {
       window.location.href = redirect;
     }
-  } else if (window.location.pathname == '/documentation/modules/map') {
+  } else if (window.location.pathname == '/documentation/modules/map/') {
     const redirects: Record<string, string> = {
       '#keywords': '/documentation/modules/meta#keywords',
     };
@@ -245,7 +245,7 @@ if (window.location.hash) {
     if (redirect) {
       window.location.href = redirect;
     }
-  } else if (window.location.pathname == '/documentation/at-rules/use') {
+  } else if (window.location.pathname == '/documentation/at-rules/use/') {
     const redirects: Record<string, string> = {
       '#configuring-modules': '/documentation/at-rules/use#configuration',
     };
@@ -255,7 +255,7 @@ if (window.location.hash) {
       window.location.href = redirect;
     }
   } else if (
-    window.location.pathname == '/documentation/syntax/special-functions'
+    window.location.pathname == '/documentation/syntax/special-functions/'
   ) {
     const redirects: Record<string, string> = {
       '#calc-clamp-element-progid-and-expression':
@@ -267,7 +267,7 @@ if (window.location.hash) {
     if (redirect) {
       window.location.href = redirect;
     }
-  } else if (window.location.pathname == '/documentation/js-api') {
+  } else if (window.location.pathname == '/documentation/js-api/') {
     const redirects: Record<string, string> = {
       '#rendersync': '/documentation/js-api/modules#renderSync',
       '#render': '/documentation/js-api/modules#render',
