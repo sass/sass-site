@@ -51,7 +51,7 @@ quite difficult:
 * All of the asynchronous functions were callback-based rather than
   promise-based.
 
-[module system]: https://sass-lang.com/blog/the-module-system-is-launched
+[module system]: /blog/the-module-system-is-launched
 
 The new API addresses these issues and more with a modern, idiomatic API that
 will make working with Sass from JS a breeze.

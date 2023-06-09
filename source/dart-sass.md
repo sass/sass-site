@@ -101,8 +101,8 @@ as a [legacy API] that's fully compatible with the old Node Sass API. Note that
 when using the `sass` package, the synchronous API functions are more than twice
 as fast as the asynchronous API, due to the overhead of asynchronous callbacks.
 
-[brand new JavaScript API]: https://sass-lang.com/documentation/js-api/
-[legacy API]: https://sass-lang.com/documentation/js-api/#legacy-api
+[brand new JavaScript API]: /documentation/js-api/
+[legacy API]: /documentation/js-api/#md:legacy-api
 
   </div>
 </div>

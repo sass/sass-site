@@ -27,8 +27,8 @@ plugins and libraries. Note that `sass-embedded` is a bit faster in
 was faster in synchronous mode). For substantial Sass files, running
 `sass-embedded` in either mode will generally be much faster than `sass`.
 
-[new JS API]: https://sass-lang.com/documentation/js-api#usage
-[legacy API]: https://sass-lang.com/documentation/js-api#legacy-api
+[new JS API]: /documentation/js-api/#md:usage
+[legacy API]: /documentation/js-api/#md:legacy-api
 
 In order to limit the confusion about which version of which package supports
 which feature, the `sass-embedded` package will always have the same version as
@@ -71,6 +71,6 @@ hope that community members will use this protocol to implement embedded hosts
 for many other popular frontend languages. If you end up doing so, message us
 [on Twitter] or [Gitter] and we'll link it on this site!
 
-[LibSass]: https://sass-lang.com/libsass
+[LibSass]: /libsass
 [on Twitter]: https://twitter.com/SassCSS
 [Gitter]: https://gitter.im/sass/sass
