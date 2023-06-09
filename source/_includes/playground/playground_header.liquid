@@ -14,8 +14,10 @@
             src="/assets/img/logos/logo.svg"></a>
       </p>
       <h1 class="sl-l-grid__column">{{ title }}</h1>
-      <!-- Placeholder for click to copy -->
-      <div class="sl-l-grid__column" />
+      <div class="sl-l-grid__column">
+        <button type="button" id="playground-copy-url">Copy URL</button>
+        <div class="alert" id="playground-copied-alert">URL copied to clipboard</div>
+      </div>
     </div>
   </>
 </header>

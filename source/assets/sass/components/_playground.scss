@@ -3,13 +3,29 @@
 @use '../config/color/brand';
 
 // Use h2 sizes for condensed header
-.sl-r-banner-playground h1 {
-  @include breakpoints.sl-breakpoint--medium {
-    --h1-size: var(--sl-font-size--xx-large);
+.sl-r-banner-playground {
+  h1 {
+    @include breakpoints.sl-breakpoint--medium {
+      --h1-size: var(--sl-font-size--xx-large);
+    }
+
+    @include breakpoints.sl-breakpoint--large {
+      --h1-size: var(--sl-font-size--xxx-large);
+    }
   }
 
-  @include breakpoints.sl-breakpoint--large {
-    --h1-size: var(--sl-font-size--xxx-large);
+  button#playground-copy-url {
+    float: right;
+  }
+
+  #playground-copied-alert {
+    opacity: 0;
+    float: right;
+    transition: opacity 0.3s linear;
+
+    &.show {
+      opacity: 1;
+    }
   }
 }
 
@@ -34,6 +50,31 @@
 
   #css-view {
     --sl-color-editor-background: var(--sl-color--code-background);
+  }
+
+  .console {
+    font-family: 'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono',
+      'Droid Sans Mono', monospace;
+    min-height: 2em;
+    max-height: 500px;
+    margin: 0;
+
+    hr,
+    p {
+      margin: 0;
+    }
+
+    $console-type-colors: (
+      'error': red,
+      'warn': orange,
+      'debug': green,
+    );
+
+    @each $name, $color in $console-type-colors {
+      .console-type-#{$name} {
+        color: $color;
+      }
+    }
   }
 
   .code-editor-tabbar {
