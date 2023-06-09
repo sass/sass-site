@@ -215,9 +215,9 @@ const redirects: Record<string, Record<string, string>> = {
     '#min-and-max': '/documentation/values/calculations#min-and-max',
   },
   '/documentation/js-api/': {
-    '#rendersync': '/documentation/js-api/modules#renderSync',
-    '#render': '/documentation/js-api/modules#render',
-    '#info': '/documentation/js-api/modules#info',
+    '#rendersync': '/documentation/js-api/functions/rendersync/',
+    '#render': '/documentation/js-api/functions/render/',
+    '#info': '/documentation/js-api/variables/info/',
     '#result-css': '/documentation/js-api/interfaces/LegacyResult#css',
     '#result-map': '/documentation/js-api/interfaces/LegacyResult#map',
     '#result-stats-includedfiles':
