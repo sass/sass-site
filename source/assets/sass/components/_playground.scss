@@ -3,13 +3,29 @@
 @use '../config/color/brand';
 
 // Use h2 sizes for condensed header
-.sl-r-banner-playground h1 {
-  @include breakpoints.sl-breakpoint--medium {
-    --h1-size: var(--sl-font-size--xx-large);
+.sl-r-banner-playground {
+  h1 {
+    @include breakpoints.sl-breakpoint--medium {
+      --h1-size: var(--sl-font-size--xx-large);
+    }
+
+    @include breakpoints.sl-breakpoint--large {
+      --h1-size: var(--sl-font-size--xxx-large);
+    }
   }
 
-  @include breakpoints.sl-breakpoint--large {
-    --h1-size: var(--sl-font-size--xxx-large);
+  button#playground-copy-url {
+    float: right;
+  }
+
+  #playground-copied-alert {
+    opacity: 0;
+    float: right;
+    transition: opacity 0.3s linear;
+
+    &.show {
+      opacity: 1;
+    }
   }
 }
 

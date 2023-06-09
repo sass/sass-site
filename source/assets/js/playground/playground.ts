@@ -57,11 +57,13 @@ function encodeHTML(str: string): string {
 }
 
 function setupPlayground() {
+  const hashState = base64ToState(location.hash);
+
   const initialState: PlaygroundState = {
-    inputFormat: 'scss',
-    outputFormat: 'expanded',
+    inputFormat: hashState.inputFormat || 'scss',
+    outputFormat: hashState.outputFormat || 'expanded',
     compilerHasError: false,
-    inputValue: '',
+    inputValue: hashState.inputValue || '',
     debugOutput: [],
   };
 
@@ -77,11 +79,15 @@ function setupPlayground() {
       } else if (prop === 'inputValue') {
         debouncedUpdateCSS();
       }
+      if (['inputFormat', 'outputFormat', 'inputValue'].includes(prop)) {
+        updateURL();
+      }
       return set;
     },
   });
 
   const editor = new EditorView({
+    doc: playgroundState.inputValue,
     extensions: [
       ...editorSetup,
       EditorView.updateListener.of((v) => {
@@ -98,6 +104,13 @@ function setupPlayground() {
     extensions: [...outputSetup],
     parent: document.getElementById('css-view') || document.body,
   });
+
+  // Apply initial state to dom
+  function applyInitialState() {
+    updateButtonState();
+    debouncedUpdateCSS();
+    updateErrorState();
+  }
 
   type TabbarItemDataset =
     | {
@@ -122,6 +135,20 @@ function setupPlayground() {
     const options = document.querySelectorAll('[data-value]');
     Array.from(options).forEach((option) => {
       option.addEventListener('click', clickHandler);
+    });
+
+    const copyURLButton = document.getElementById('playground-copy-url');
+    const copiedAlert = document.getElementById('playground-copied-alert');
+
+    let timer: undefined | number;
+
+    copyURLButton?.addEventListener('click', () => {
+      void navigator.clipboard.writeText(location.href);
+      copiedAlert?.classList.add('show');
+      if (timer) clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        copiedAlert?.classList.remove('show');
+      }, 3000);
     });
   }
   /**
@@ -282,7 +309,37 @@ function setupPlayground() {
     }
   }
 
+  function updateURL() {
+    const hash = stateToBase64(playgroundState);
+    history.replaceState('playground', '', `#${hash}`);
+  }
+
+  // State is persisted to the URL's hash format in the following format:
+  // [inputFormat, outputFormat, ...inputValue] = hash;
+  // inputFormat: 0=indented 1=scss
+  // outputFormat: 0=compressed 1=expanded
+  function stateToBase64(state: PlaygroundState): string {
+    const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
+    const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
+    const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
+    return btoa(encodeURIComponent(persistedState));
+  }
+
+  function base64ToState(string: string): Partial<PlaygroundState> {
+    const state: Partial<PlaygroundState> = {};
+    // Remove hash
+    const decoded = decodeURIComponent(atob(string.slice(1)));
+
+    if (!/\d\d.*/.test(decoded)) return {};
+    state.inputFormat = decoded.charAt(0) === '1' ? 'scss' : 'indented';
+    state.outputFormat = decoded.charAt(1) === '1' ? 'expanded' : 'compressed';
+    state.inputValue = decoded.slice(2);
+
+    return state;
+  }
+
   attachListeners();
+  applyInitialState();
 }
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', setupPlayground);
