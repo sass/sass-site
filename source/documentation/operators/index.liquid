@@ -5,6 +5,7 @@ introduction: >
   values. These include the standard mathematical operators like `+` and `*`, as
   well as operators for various other types:
 ---
+
 {% markdown %}
   {% render 'doc_snippets/operator-list', parens: false %}
 {% endmarkdown %}
@@ -67,8 +68,8 @@ introduction: >
 
   You can explicitly control the order of operations using parentheses. An
   operation inside parentheses is always evaluated before any operations outside
-  of them. Parentheses can even be nested, in which case the innermost parentheses
-  will be evaluated first.
+  of them. Parentheses can even be nested, in which case the innermost
+  parentheses will be evaluated first.
 {% endmarkdown %}
 
 {% codeExample 'parentheses', false %}
@@ -82,9 +83,10 @@ introduction: >
 {% markdown %}
   ## Single Equals
 
-  Sass supports a special `=` operator that's only allowed in function arguments,
-  which just creates an [unquoted string][] with its two operands separated by
-  `=`. This exists for backwards-compatibility with very old IE-only syntax.
+  Sass supports a special `=` operator that's only allowed in function
+  arguments, which just creates an [unquoted string][] with its two operands
+  separated by `=`. This exists for backwards-compatibility with very old
+  IE-only syntax.
 
   [unquoted string]: /documentation/values/strings#unquoted
 {% endmarkdown %}

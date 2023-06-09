@@ -1,14 +1,16 @@
 ---
 title: String Operators
 introduction: >
-  Sass supports a few operators that generate [strings](/documentation/values/strings):
+  Sass supports a few operators that generate
+  [strings](/documentation/values/strings):
 ---
-{% markdown %}
-  - `<expression> + <expression>` returns a string that contains both expressions'
-    values. If the either value is a [quoted string][], the result will be quoted;
-    otherwise, it will be unquoted.
 
-  - `<expression> - <expression>` returns an unquoted string that contains both
+{% markdown %}
+  * `<expression> + <expression>` returns a string that contains both
+    expressions' values. If the either value is a [quoted string][], the result
+    will be quoted; otherwise, it will be unquoted.
+
+  * `<expression> - <expression>` returns an unquoted string that contains both
     expressions' values, separated by `-`. This is a legacy operator, and
     [interpolation][] should generally be used instead.
 
@@ -30,10 +32,10 @@ introduction: >
   These operators don't just work for strings! They can be used with any values
   that can be written to CSS, with a few exceptions:
 
-  - Numbers can't be used as the left-hand value, because they have [their own
+  * Numbers can't be used as the left-hand value, because they have [their own
     operators][numeric].
-  - Colors can't be used as the left-hand value, because they used to have [their
-    own operators][color].
+  * Colors can't be used as the left-hand value, because they used to have
+    [their own operators][color].
 
   [numeric]: /documentation/operators/numeric
   [color]: /documentation/operators
@@ -60,9 +62,9 @@ introduction: >
   For historical reasons, Sass also supports `/` and `-` as a unary operators
   which take only one value:
 
-  - `/<expression>` returns an unquoted string starting with `/` and followed by
+  * `/<expression>` returns an unquoted string starting with `/` and followed by
     the expression's value.
-  - `-<expression>` returns an unquoted string starting with `-` and followed by
+  * `-<expression>` returns an unquoted string starting with `-` and followed by
     the expression's value.
 {% endmarkdown %}
 
