@@ -1,60 +1,18 @@
-import { Diagnostic, setDiagnostics } from '@codemirror/lint';
+import { setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 import debounce from 'lodash.debounce';
-import {
-  compileString,
-  Exception,
-  Logger,
-  OutputStyle,
-  SourceSpan,
-  Syntax,
-} from 'sass';
+import { compileString, Logger, OutputStyle, Syntax } from 'sass';
 
+import { displayForConsoleLog } from './playground/console-utils.js';
 import { editorSetup, outputSetup } from './playground/editor-setup.js';
-
-type ConsoleLogDebug = {
-  options: {
-    span: SourceSpan;
-  };
-  message: string;
-  type: 'debug';
-};
-
-type ConsoleLogWarning = {
-  options: {
-    deprecation: boolean;
-    span?: SourceSpan | undefined;
-    stack?: string | undefined;
-  };
-  message: string;
-  type: 'warn';
-};
-type ConsoleLogError = {
-  type: 'error';
-  error: Exception | unknown;
-};
-type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
-
-type PlaygroundState = {
-  inputFormat: Syntax;
-  outputFormat: OutputStyle;
-  inputValue: string;
-  compilerHasError: boolean;
-  debugOutput: ConsoleLog[];
-};
-
-/**
- * Encode the HTML in a user-submitted string to print safely using innerHTML
- * Adapted from https://vanillajstoolkit.com/helpers/encodehtml/
- * @param  {string} str  The user-submitted string
- * @return {string} The sanitized string
- */
-function encodeHTML(str: string): string {
-  return str.replace(/[^\w-_. ]/gi, function (c) {
-    return `&#${c.charCodeAt(0)};`;
-  });
-}
+import {
+  base64ToState,
+  errorToDiagnostic,
+  ParseResult,
+  PlaygroundState,
+  stateToBase64,
+} from './playground/utils.js';
 
 function setupPlayground() {
   const hashState = base64ToState(location.hash);
@@ -67,6 +25,7 @@ function setupPlayground() {
     debugOutput: [],
   };
 
+  // Proxy intercepts setters and triggers side effects
   const playgroundState = new Proxy(initialState, {
     set(state: PlaygroundState, prop: keyof PlaygroundState, ...rest) {
       // Set state first so called functions have access
@@ -86,6 +45,7 @@ function setupPlayground() {
     },
   });
 
+  // Setup input sass view
   const editor = new EditorView({
     doc: playgroundState.inputValue,
     extensions: [
@@ -122,6 +82,7 @@ function setupPlayground() {
         setting: 'outputFormat';
       };
   function attachListeners() {
+    // Settings buttons handlers
     function clickHandler(event: Event) {
       if (event.currentTarget instanceof HTMLElement) {
         const settings = event.currentTarget.dataset as TabbarItemDataset;
@@ -137,6 +98,7 @@ function setupPlayground() {
       option.addEventListener('click', clickHandler);
     });
 
+    // Copy URL handlers
     const copyURLButton = document.getElementById('playground-copy-url');
     const copiedAlert = document.getElementById('playground-copied-alert');
 
@@ -181,50 +143,18 @@ function setupPlayground() {
       playgroundState.compilerHasError.toString();
   }
 
+  /**
+   * updateDebugOutput
+   * Applies debug output state
+   * Called at end of updateCSS, and not by a debugOutput setter
+   * debugOutput may be updated multiple times during the sass compilation,
+   * so the output is collected through the compilation and the display updated just once.
+   */
   function updateDebugOutput() {
     const console = document.querySelector('.console') as HTMLDivElement;
     console.innerHTML = playgroundState.debugOutput
       .map(displayForConsoleLog)
       .join('\n');
-  }
-
-  function lineNumberFormatter(number?: number): string {
-    if (typeof number === 'undefined') return '';
-    number = number + 1;
-    return `${number} `;
-  }
-
-  function displayForConsoleLog(item: ConsoleLog): string {
-    const data: { type: string; lineNumber?: number; message: string } = {
-      type: item.type,
-      lineNumber: undefined,
-      message: '',
-    };
-    if (item.type === 'error') {
-      if (item.error instanceof Exception) {
-        data.lineNumber = item.error.span.start.line;
-      }
-      data.message = item.error?.toString() || '';
-    } else if (['debug', 'warn'].includes(item.type)) {
-      data.message = item.message;
-      let lineNumber = item.options.span?.start?.line;
-      if (typeof lineNumber === 'undefined') {
-        const stack = 'stack' in item.options ? item.options.stack : '';
-        const needleFromStackRegex = /^- (\d+):/;
-        const match = stack?.match(needleFromStackRegex);
-        if (match && match[1]) {
-          // Stack trace starts at 1, all others come from span, which starts at 0, so adjust before formatting.
-          lineNumber = parseInt(match[1]) - 1;
-        }
-      }
-      data.lineNumber = lineNumber;
-    }
-
-    return `<p><span class="console-type console-type-${data.type}">@${
-      data.type
-    }</span>:${lineNumberFormatter(data.lineNumber)} ${encodeHTML(
-      data.message,
-    )}</p>`;
   }
 
   function updateCSS() {
@@ -270,10 +200,6 @@ function setupPlayground() {
     },
   };
 
-  type ParseResultSuccess = { css: string };
-  type ParseResultError = { error: Exception | unknown };
-  type ParseResult = ParseResultSuccess | ParseResultError;
-
   function parse(css: string): ParseResult {
     try {
       const result = compileString(css, {
@@ -287,55 +213,9 @@ function setupPlayground() {
     }
   }
 
-  function errorToDiagnostic(error: Exception | unknown): Diagnostic {
-    if (error instanceof Exception) {
-      return {
-        from: error.span.start.offset,
-        to: error.span.end.offset,
-        severity: 'error',
-        message: error.toString(),
-      };
-    } else {
-      let errorString = 'Unknown compilation error';
-      if (typeof error === 'string') errorString = error;
-      else if (typeof error?.toString() === 'string')
-        errorString = error.toString();
-      return {
-        from: 0,
-        to: 0,
-        severity: 'error',
-        message: errorString,
-      };
-    }
-  }
-
   function updateURL() {
     const hash = stateToBase64(playgroundState);
     history.replaceState('playground', '', `#${hash}`);
-  }
-
-  // State is persisted to the URL's hash format in the following format:
-  // [inputFormat, outputFormat, ...inputValue] = hash;
-  // inputFormat: 0=indented 1=scss
-  // outputFormat: 0=compressed 1=expanded
-  function stateToBase64(state: PlaygroundState): string {
-    const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
-    const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
-    const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
-    return btoa(encodeURIComponent(persistedState));
-  }
-
-  function base64ToState(string: string): Partial<PlaygroundState> {
-    const state: Partial<PlaygroundState> = {};
-    // Remove hash
-    const decoded = decodeURIComponent(atob(string.slice(1)));
-
-    if (!/\d\d.*/.test(decoded)) return {};
-    state.inputFormat = decoded.charAt(0) === '1' ? 'scss' : 'indented';
-    state.outputFormat = decoded.charAt(1) === '1' ? 'expanded' : 'compressed';
-    state.inputValue = decoded.slice(2);
-
-    return state;
   }
 
   attachListeners();
