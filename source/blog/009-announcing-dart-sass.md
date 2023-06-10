@@ -41,10 +41,10 @@ install. Where Ruby Sass is easy to iterate on, LibSass's low-level language
 makes it substantially harder to add new features. A complementary relationship
 can be healthy, but it can also mean that neither solution is as good as it
 needs to be. That's what we found when, in May, [Marcel officially left the
-LibSass team](http://blog.sass-lang.com/posts/734390-thank-you-marcel)[^1].
+LibSass team](/blog/thank-you-marcel/)[^1].
 
 [^1]: I say "officially" because he's still contributing to the project when he
-    can, just not in an official maintainer capacity.
+      can, just not in an official maintainer capacity.
 
 Without two people's worth of effort, we were no longer sure that LibSass could
 keep pace with the speed Chris and I wanted to introduce changes into the
@@ -99,7 +99,7 @@ little friction as possible.
 
 Nothing's changing about LibSass's development. Michael's hard at work adding
 features from [Sass
-3.5](http://blog.sass-lang.com/posts/809572-sass-35-release-candidate), and we
+3.5](/blog/sass-35-release-candidate/), and we
 expect that process to continue as new language features are added. The only
 difference is that LibSass will no longer be required to be strictly compatible
 with the latest version of the language in order for that version to launch,
@@ -162,7 +162,7 @@ but those aren't blocking the initial release.
 
 The next couple months will see a lot of work go into getting Dart Sass stable
 and compatible, and getting [Sass 3.5
-features](http://blog.sass-lang.com/posts/809572-sass-35-release-candidate) into
+features](/blog/sass-35-release-candidate/) into
 LibSass. I think it's likely that early 2017 will see a stable release of Dart
 Sass and a 3.5 release of LibSass. At that point we'll set our sight on the big
 features and start working towards Sass 4.0 and its brand new module system.

@@ -20,7 +20,7 @@ place of values; they have to [interpolate] variables explicitly. And once a
 `calc()` expression has been created, there's no way to manipulate it with Sass
 the way you can manipulate a plain number.
 
-[interpolate]: https://sass-lang.com/documentation/interpolation
+[interpolate]: /documentation/interpolation
 
 We're looking to change that with a new proposal we call "First-Class Calc".
 This proposal changes `calc()` (and other supported mathematical functions) from

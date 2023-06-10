@@ -46,6 +46,10 @@ import { liquidEngine } from '../engines';
  * If `syntax` is either `sass` or `scss`, the first section will be
  * interpreted as that syntax and the second will be interpreted (or
  * auto-generated) as the CSS output.
+ *
+ * Note that this template includes whitespace that renders unwanted extra `<p>`
+ * tags when parsed as Markdown. To avoid this, ensure that any usage of
+ * `{% codeExample %}` is *not* within a Markdown file or block.
  */
 export default async function codeExample(
   contents: string,

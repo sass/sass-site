@@ -15,7 +15,7 @@ candidate in Dart Sass 1.45.0-rc.1. Download it, try it out, and let us know
 what you think by [filing issues] or [sending us a tweet]. Unless major changes
 are necessary, we plan to make a stable release some time next week.
 
-[announced a few months ago]: https://sass-lang.com/blog/request-for-comments-new-js-api
+[announced a few months ago]: /blog/request-for-comments-new-js-api
 [filing issues]: https://github.com/sass/sass/issues/new
 [sending us a tweet]: https://twitter.com/SassCSS
 

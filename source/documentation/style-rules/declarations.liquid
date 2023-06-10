@@ -168,9 +168,6 @@ introduction: >
   [interpolation]: /documentation/interpolation
 {% endmarkdown %}
 
-{% comment -%}
-  TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass
-{%- endcomment -%}
 {% codeExample 'custom-properties' %}
   $primary: #81899b;
   $accent: #302e24;
@@ -198,13 +195,6 @@ introduction: >
     // Even though this looks like a Sass variable, it's valid CSS so it's not
     // evaluated.
     --consumed-by-js: $primary
-  ===
-  :root {
-    --primary: #81899b;
-    --accent: #302e24;
-    --warn: #dfa612;
-    --consumed-by-js: $primary;
-  }
 {% endcodeExample %}
 
 {% headsUp false %}
