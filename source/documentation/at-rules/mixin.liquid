@@ -277,11 +277,9 @@ introduction: >
 
   [`meta.keywords()` function]: /documentation/modules/meta#keywords
   [map]: /documentation/values/maps
-
-  <!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
 {% endmarkdown %}
 
-{% render 'code-snippets/example-mixin-arbitrary-keyword-arguments' %}
+{% render 'code_snippets/example-mixin-arbitrary-keyword-arguments' %}
 
 {% funFact %}
   If you don't ever pass an argument list to the [`meta.keywords()` function][],
@@ -408,8 +406,7 @@ introduction: >
   [map]: /documentation/values/maps
 {% endheadsUp %}
 
-<!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
-{% codeExample 'passing-arguments-to-content-blocks', false %}
+{% codeExample 'passing-arguments-to-content-blocks' %}
   @mixin media($types...) {
     @each $type in $types {
       @media #{$type} {
@@ -440,18 +437,6 @@ introduction: >
       font-size: 40px
       @if $type == print
         font-family: Calluna
-  ===
-  @media screen {
-    h1 {
-      font-size: 40px;
-    }
-  }
-  @media print {
-    h1 {
-      font-size: 40px;
-      font-family: Calluna;
-    }
-  }
 {% endcodeExample %}
 
 {% markdown %}

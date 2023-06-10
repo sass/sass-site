@@ -4,6 +4,7 @@ import markdown from 'markdown-it';
 import markdownAnchor from 'markdown-it-anchor';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownDefList from 'markdown-it-deflist';
+import markdownItFootnote from 'markdown-it-footnote';
 import path from 'path';
 
 import { renderPermalink } from './components/anchors';
@@ -22,6 +23,7 @@ export const markdownEngine = markdown({
 })
   .use(markdownDefList)
   .use(markdownItAttrs)
+  .use(markdownItFootnote)
   .use(markdownAnchor, {
     level: 2,
     permalink: renderPermalink,

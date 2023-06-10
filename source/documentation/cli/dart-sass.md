@@ -223,7 +223,7 @@ Compiled themes/light.scss to public/css/light.css.
 
 {% compatibility 'dart: "1.3.0"' %}{% endcompatibility %}
 
-{% render 'documentation/snippets/source-maps' %}
+{% render 'doc_snippets/source-maps' %}
 
 Dart Sass generates source maps by default for every CSS file it emits.
 
@@ -451,7 +451,7 @@ Error: Using / for division outside of calc() is deprecated and will be removed 
 
 Recommendation: math.div(4, 2) or calc(4 / 2)
 
-More info and automated migrator: https://sass-lang.com/d/slash-div
+More info and automated migrator: /documentation/breaking-changes/slash-div
 
 This is only an error because you've set the slash-div deprecation to be fatal.
 Remove this setting if you need to keep using this feature.

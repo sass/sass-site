@@ -16,6 +16,7 @@ const datesPlugin = require('./source/helpers/dates.ts').default;
 const { liquidEngine, markdownEngine } = require('./source/helpers/engines.ts');
 const pagesPlugin = require('./source/helpers/pages.ts').default;
 const typePlugin = require('./source/helpers/type.ts').default;
+const functionPlugin = require('./source/helpers/function.ts').default;
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
@@ -23,7 +24,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('source/assets/img');
   eleventyConfig.addPassthroughCopy('source/favicon.ico');
   eleventyConfig.addPassthroughCopy('source/icon.png');
-  eleventyConfig.addPassthroughCopy('source/_redirects');
   eleventyConfig.addPassthroughCopy('source/browserconfig.xml');
   eleventyConfig.addPassthroughCopy('source/tile.png');
   eleventyConfig.addPassthroughCopy('source/tile-wide.png');
@@ -43,6 +43,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(datesPlugin);
   eleventyConfig.addPlugin(pagesPlugin);
   eleventyConfig.addPlugin(typePlugin);
+  eleventyConfig.addPlugin(functionPlugin);
 
   // rss plugin
   eleventyConfig.addLiquidFilter('absoluteUrl', absoluteUrl);
