@@ -1,4 +1,5 @@
 import { Exception, SourceSpan } from 'sass';
+
 type ConsoleLogDebug = {
   options: {
     span: SourceSpan;
@@ -16,16 +17,20 @@ type ConsoleLogWarning = {
   message: string;
   type: 'warn';
 };
+
 type ConsoleLogError = {
   type: 'error';
   error: Exception | unknown;
 };
+
 export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
 
 /**
- * message is untrusted
- * Write with innerText and then retrieve using innerHTML to encode message for safe display
- * @param  {string} message  The user-submitted string
+ * `message` is untrusted.
+ *
+ * Write with `innerText` and then retrieve using `innerHTML` to encode message
+ * for safe display.
+ * @param  {string} message The user-submitted string
  * @return {string} The sanitized string
  */
 function encodeHTML(message: string): string {
@@ -37,7 +42,7 @@ function encodeHTML(message: string): string {
 function lineNumberFormatter(number?: number): string {
   if (typeof number === 'undefined') return '';
   number = number + 1;
-  return `${number} `;
+  return `${number}`;
 }
 
 export function displayForConsoleLog(item: ConsoleLog): string {
@@ -58,8 +63,9 @@ export function displayForConsoleLog(item: ConsoleLog): string {
       const stack = 'stack' in item.options ? item.options.stack : '';
       const needleFromStackRegex = /^- (\d+):/;
       const match = stack?.match(needleFromStackRegex);
-      if (match && match[1]) {
-        // Stack trace starts at 1, all others come from span, which starts at 0, so adjust before formatting.
+      if (match?.[1]) {
+        // Stack trace starts at 1, all others come from span, which starts at
+        // 0, so adjust before formatting.
         lineNumber = parseInt(match[1]) - 1;
       }
     }
@@ -70,7 +76,5 @@ export function displayForConsoleLog(item: ConsoleLog): string {
     data.type
   }">@${data.type}</span>:${lineNumberFormatter(
     data.lineNumber,
-  )} </div><div class="console-message">${encodeHTML(
-    data.message,
-  )}</div></div>`;
+  )}</div><div class="console-message">${encodeHTML(data.message)}</div></div>`;
 }

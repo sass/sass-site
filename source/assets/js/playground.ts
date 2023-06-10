@@ -1,7 +1,7 @@
 import { setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import { compileString, Logger, OutputStyle, Syntax } from 'sass';
 
 import { displayForConsoleLog } from './playground/console-utils.js';
@@ -221,6 +221,7 @@ function setupPlayground() {
   attachListeners();
   applyInitialState();
 }
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', setupPlayground);
 } else {

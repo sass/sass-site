@@ -2,6 +2,7 @@ import { Diagnostic } from '@codemirror/lint';
 import { Exception, OutputStyle, Syntax } from 'sass';
 
 import { ConsoleLog } from './console-utils';
+
 export type PlaygroundState = {
   inputFormat: Syntax;
   outputFormat: OutputStyle;
