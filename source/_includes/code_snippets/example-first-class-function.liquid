@@ -1,6 +1,3 @@
-{% comment -%}
-  TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass
-{%- endcomment -%}
 {% codeExample 'first-class-function' %}
   @use "sass:list";
   @use "sass:meta";
@@ -21,7 +18,7 @@
 
   $fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  content {
+  .content {
     @function contains-helvetica($string) {
       @return string.index($string, "Helvetica");
     }
@@ -52,8 +49,4 @@
       @return string.index($string, "Helvetica")
 
     font-family: remove-where($fonts, meta.get-function("contains-helvetica"))
-  ===
-  .content {
-    font-family: Tahoma, Geneva, Arial, sans-serif;
-  }
 {% endcodeExample %}

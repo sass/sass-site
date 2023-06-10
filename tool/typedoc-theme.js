@@ -182,9 +182,6 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
   }
 }
 
-// TODO: See if there's a graceful way to support "Heads up!" and Compatibility
-// annotations as @-tags rather than needing to write out the HTML by hand.
-
 exports.load = (app) => {
   app.converter.addUnknownSymbolResolver((ref, refl, part, symbolId) => {
     if (!symbolId) return;

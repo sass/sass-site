@@ -78,11 +78,9 @@
   transition covers to get the time it should take.
 {% endmarkdown %}
 
-{% comment -%}
-  TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass
-{%- endcomment -%}
-
 {% codeExample 'transition' %}
+  @use 'sass:math';
+
   $transition-speed: math.div(1s, 50px);
 
   @mixin move($left-start, $left-stop) {
@@ -99,6 +97,8 @@
     @include move(10px, 120px);
   }
   ===
+  @use 'sass:math'
+
   $transition-speed: math.div(1s, 50px)
 
   @mixin move($left-start, $left-stop)
@@ -113,15 +113,6 @@
 
   .slider
     @include move(10px, 120px)
-  ===
-  .slider {
-    position: absolute;
-    left: 10px;
-    transition: left 2.2s;
-  }
-  .slider:hover {
-    left: 120px;
-  }
 {% endcodeExample %}
 
 {% headsUp %}
