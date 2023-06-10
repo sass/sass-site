@@ -14,7 +14,7 @@
     "node": "^16",
     "yarn": "^3"
   },
-  "packageManager": "yarn@3.3.1",
+  "packageManager": "yarn@3.6.0",
   "scripts": {
     "serve": "run-p 'watch:**'",
     "build": "REBUILD_VERSION_CACHE=true run-s build-dev:scripts 'build:**'",
