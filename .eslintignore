@@ -6,8 +6,6 @@
 .yarnrc.yml
 /.language/
 /_site/
-/old_data/
-/old_source/
 /source/_data/versionCache.json
 /source/assets/dist/
 /source/assets/js/vendor/**
