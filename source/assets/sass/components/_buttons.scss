@@ -1,9 +1,10 @@
 @use 'sass:color';
+@use '../visual-design/typography';
 
 .sl-c-button {
   align-items: center;
   border: 0;
-  border-radius: var(--sl-border-radius--large);
+  border-radius: var(--radius-button, var(--sl-border-radius--large));
   background: var(--color-button-bg, var(--sl-color--iron));
   box-shadow: 0 2px 1px var(--sl-color--shadow);
   color: var(--color-button-text, var(--sl-color--highlight));
@@ -41,6 +42,14 @@
     &:active {
       --color-button-bg: var(--sl-color--active);
     }
+  }
+
+  &--tab {
+    --color-button-bg: var(--color-tab-bg, --sl-color--code-background);
+    --color-button-text: var(--text, var(--sl-color--pale-sky));
+    --radius-button: 0;
+    box-shadow: none;
+    font-weight: typography.$sl-font-weight--bold;
   }
 
   &:has(.caps) {

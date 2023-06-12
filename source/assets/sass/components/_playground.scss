@@ -3,26 +3,48 @@
 @use '../config/color/brand';
 @use '../visual-design/typography';
 
+.playground {
+  display: grid;
+  grid-template:
+    'header' auto
+    'main' 1fr
+    'footer' auto / 100%;
+  min-height: 100vh;
+
+  #main-content {
+    display: grid;
+    grid-template:
+    'editor' 1fr
+    'alert' min-content;
+  }
+}
+
 // Use smaller sizes for condensed header
 .sl-r-banner-playground {
   --h1-size: var(--sl-font-size--xx-large);
   --h1-size-lg: var(--sl-playground-heading);
 }
 
+.sl-l-section-playground {
+  display: grid;
+  width: 100%;
+}
 
-  button#playground-copy-url {
-    float: right;
+.playground-actions {
+  flex-direction: row-reverse;
+}
+
+#playground-copied-alert {
+  opacity: 0;
+  transition: opacity 0.3s linear;
+
+  &.show {
+    opacity: 1;
   }
+}
 
-  #playground-copied-alert {
-    opacity: 0;
-    float: right;
-    transition: opacity 0.3s linear;
-
-    &.show {
-      opacity: 1;
-    }
-  }
+.playground-actions {
+  gap: var(--sl-gutter--double);
 }
 
 .playground-alert {
@@ -30,98 +52,107 @@
   padding-right: var(--sl-gutter);
 }
 
-.code-editor-wrapper {
-  // Duplicated from fun fact- should this be defined elsewhere?
-  border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
-.playground-wrapper {
-  display: flex;
-  flex-flow: row wrap;
+
+// Playground Editor area
+.sl-c-playground {
+  --sl-c-callout--block-margin: 0;
+  display: grid;
   gap: var(--sl-gutter);
 
-    flex-grow: 1;
-    min-width: calc((100% - var(--sl-gutter)) / 2);
+  @include breakpoints.sl-breakpoint--medium {
+    grid-template:
+      'sass  css' 1fr
+      'debug debug' minmax(0, auto) / 50% 50%;
+  }
+}
+
+// Precompiled and Compiled code container
+.sl-c-playground__code-editor-wrapper {
+  background-color: var(--sl-color-editor-background);
+  border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
+  display: grid;
+}
+
+.sl-c-playground__console-wrapper {
+  grid-area: debug;
+  min-width: calc((100% - var(--sl-gutter)) / 2);
+}
+
+[data-code='precompiled'] {
+  --sl-color-editor-background: var(--sl-color--white);
+  grid-template-rows: min-content 1fr;
+}
+
+[data-code='compiled']  {
+  --sl-color-editor-background: var(--sl-color--code-background);
+  grid-template-rows: min-content minmax(0, auto) 1fr;
+}
+
+
+  .ͼ1 {
+    height: 100%;
   }
 
-  #editor {
-    --sl-color-editor-background: var(--sl-color--white);
+#editor {
+  cursor: text;
 
-    cursor: text;
-  }
+}
 
-  #css-view {
-    --sl-color-editor-background: var(--sl-color--code-background);
-  }
+.console {
+  font-family: 'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono',
+    'Droid Sans Mono', monospace;
+  min-height: 2em;
+  max-height: 500px;
+  margin: 0;
 
-  .console {
-    font-family: 'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono',
-      'Droid Sans Mono', monospace;
-    min-height: 2em;
-    max-height: 500px;
+  hr,
+  p {
     margin: 0;
+  }
 
-    hr,
-    p {
-      margin: 0;
-    }
+  $console-type-colors: (
+    'error': red,
+    'warn': orange,
+    'debug': green,
+  );
 
-    $console-type-colors: (
-      'error': red,
-      'warn': orange,
-      'debug': green,
-    );
-
-    @each $name, $color in $console-type-colors {
-      .console-type-#{$name} {
-        color: $color;
-      }
+  @each $name, $color in $console-type-colors {
+    .console-type-#{$name} {
+      color: $color;
     }
   }
 }
 
 
-.code-editor-tabbar {
+
+.sl-c-playground__editor-tabbar {
   background-color: var(--sl-color--code-background-darker);
 
-  button {
-    background-color: var(--sl-color--tab-bg, --sl-color--code-background);
-    border: 0;
-    color: var(--text, var(--sl-color--pale-sky));
-    cursor: pointer;
-    font-weight: typography.$sl-font-weight--bold;
-    padding: var(--sl-gutter--half);
-
-    &:hover {
-      // TODO- add hover styles
-    }
-  }
-
   $sassoptions: 'scss', 'indented';
-
   @each $option in $sassoptions {
     &[data-active='#{$option}'] [data-value='#{$option}'] {
-      --sl-color--tab-bg: var(--sl-color--white);
+      --color-tab-bg: var(--sl-color--white);
+      --color-button-text: var(--text, var(--sl-color--pale-sky));
+
+      &:hover,
+      &:focus {
+        --color-tab-bg: var(--sl-color--white);
+        --color-button-text: var(--text, var(--sl-color--pale-sky));
+      }
     }
   }
 
   $cssoptions: 'expanded', 'compressed';
   @each $option in $cssoptions {
     &[data-active='#{$option}'] [data-value='#{$option}'] {
-      --sl-color--tab-bg: var(--sl-color--code-background);
+      --color-tab-bg: var(--sl-color--code-background);
+      --color-button-text: var(--text, var(--sl-color--pale-sky));
     }
   }
 }
 
 #code-editor-error-alert {
   display: none;
-
-  // From warning callout
-  background: color.adjust(brand.$sl-color--hopbush, $lightness: 38%);
-  border: var(--sl-border--small) solid
-  var(--sl-color--code-background);
-  font-family: typography.$sl-font-family--code;
-
-
-  // TODO Font weight bold not imported from Google Fonts
   font-weight: typography.$sl-font-weight--bold;
 }
 

@@ -6,17 +6,19 @@
 
   <div class="sl-c-pop-stripe"></div>
   <div class="sl-l-container">
-    <div class="sl-l-grid sl-l-grid--full sl-l-small-grid--fit sl-l-small-grid--center sl-l-small-grid--gutters">
+    <div class="sl-l-grid sl-l-grid--full sl-l-small-grid--fit sl-l-large-grid--center sl-l-small-grid--justify-space-between sl-l-small-grid--gutters">
       <p class="sl-l-grid__column sl-r-banner__brand">
         <a href="/"><img
             height="24"
             alt="Sass"
             src="/assets/img/logos/logo.svg"></a>
       </p>
-      <h1 class="sl-l-grid__column">{{ title }}</h1>
-      <div class="sl-l-grid__column">
-        <button type="button" id="playground-copy-url">Copy URL</button>
-        <div class="alert" id="playground-copied-alert">URL copied to clipboard</div>
+      <h1 class="sl-l-grid__column sl-l-large-grid--center">{{ title }}</h1>
+      <div class="sl-l-grid sl-l-grid__column sl-l-large-grid--center  playground-actions">
+        <button type="button" id="playground-copy-url" class="sl-c-button">Copy URL</button>
+        <div class="sl-c-alert playground-alert" id="playground-copied-alert">
+          URL copied to clipboard
+        </div>
       </div>
     </div>
   </>

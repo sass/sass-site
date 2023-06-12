@@ -3,29 +3,30 @@ layout: base
 title: 'Playground'
 is_playground: true
 ---
-<div id="docsearch"></div>
-<div class="playground-wrapper" data-compiler-has-error="false">
-  <div class="code-editor-wrapper">
+<div class="sl-c-playground" data-compiler-has-error="false">
+  <div class="sl-c-playground__code-editor-wrapper" data-code="precompiled">
     <div
-      class="code-editor-tabbar playground-precompiled"
+      class="sl-c-playground__editor-tabbar"
       data-active="scss"
       data-setting="inputFormat">
       <button
         type="button"
         data-value="scss"
         data-tabbar="item"
+        class="sl-c-button sl-c-button--tab"
         data-setting="inputFormat">SCSS</button>
       <button
         type="button"
         data-value="indented"
         data-tabbar="item"
+        class="sl-c-button sl-c-button--tab"
         data-setting="inputFormat">Sass</button>
     </div>
     <div id="editor"></div>
   </div>
-  <div class="code-editor-wrapper">
+  <div class="sl-c-playground__code-editor-wrapper" data-code="compiled">
     <div
-      class="code-editor-tabbar"
+      class="sl-c-playground__editor-tabbar"
       data-active="expanded"
       data-setting="outputFormat">
       <span data-tabbar="item">
@@ -36,20 +37,22 @@ is_playground: true
         type="button"
         data-value="expanded"
         data-tabbar="item"
+        class="sl-c-button sl-c-button--tab"
         data-setting="outputFormat">Expanded</button>
       <button
         type="button"
         data-value="compressed"
         data-tabbar="item"
+        class="sl-c-button sl-c-button--tab"
         data-setting="outputFormat">Compressed</button>
     </div>
-    <div id="code-editor-error-alert">Please resolve error to view compiled CSS.</div>
-    <div id="css-view"></div>
+    <div id="code-editor-error-alert" class="sl-c-callout sl-c-callout--warning">Please resolve error to view compiled CSS.</div>
+    <div id="css-view" class="is-compiled"></div>
   </div>
-  <div class="console-wrapper">
-    <div class="code-editor-tabbar">
+  <div class="sl-c-playground__console-wrapper">
+    <div class="sl-c-playground__editor-tabbar">
       <span data-tabbar="item">
-        Debug Console
+        Console
       </span>
     </div>
     <pre class="console"></pre>
