@@ -8,7 +8,7 @@
   box-shadow: 0 2px 1px var(--sl-color--shadow);
   color: var(--color-button-text, var(--sl-color--highlight));
   cursor: pointer;
-  display: inline-flex;
+  display: var(--display-btn, inline-flex);
   justify-content: center;
   margin: 0;
   padding: var(--sl-gutter--minus) var(--sl-gutter);
@@ -41,5 +41,9 @@
     &:active {
       --color-button-bg: var(--sl-color--active);
     }
+  }
+
+  &:has(.caps) {
+    --display-btn: inline;
   }
 }

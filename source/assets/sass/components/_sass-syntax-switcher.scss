@@ -29,14 +29,14 @@
 
   &::after {
     border-color: transparent;
-    border-bottom-color: #f8f8f8;
+    border-bottom-color: var(--sl-color--code-background);
     border-width: var(--tab-point);
     margin-left: calc(var(--tab-point) * -1);
   }
 
   &::before {
     border-color: transparent;
-    border-bottom-color: #ebebeb;
+    border-bottom-color: var(--sl-color--code-background-darker);
     border-width: calc(var(--tab-point) + 1px);
     margin-left: calc((var(--tab-point) + 1px) * -1);
   }

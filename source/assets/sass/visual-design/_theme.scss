@@ -65,5 +65,5 @@ pre {
 
 pre {
   background: var(--sl-color--code-background);
-  border: var(--sl-border--small) solid #ebebeb;
+  border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
 }

@@ -25,21 +25,25 @@
   }
 }
 
+.playground-alert {
+  padding-left: var(--sl-gutter);
+  padding-right: var(--sl-gutter);
+}
+
+.code-editor-wrapper {
+  // Duplicated from fun fact- should this be defined elsewhere?
+  border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
 .playground-wrapper {
   display: flex;
   flex-flow: row wrap;
   gap: var(--sl-gutter);
 
-  > div {
-    // Duplicated from fun fact- should this be defined elsewhere?
-    border: var(--sl-border--small) solid
-      color.adjust(brand.$sl-color--patina, $lightness: 32%);
     flex-grow: 1;
     min-width: calc((100% - var(--sl-gutter)) / 2);
   }
 
   #editor {
-    --sl-color-editor-background: white;
+    --sl-color-editor-background: var(--sl-color--white);
 
     cursor: text;
   }
@@ -72,51 +76,61 @@
       }
     }
   }
+}
 
-  .code-editor-tabbar {
-    background-color: color.adjust(brand.$sl-color--patina, $lightness: 32%);
 
-    button {
-      background-color: color.adjust(brand.$sl-color--patina, $lightness: 32%);
-      font-weight: bold;
-      color: var(--text, var(--sl-color--pale-sky));
-      padding: var(--sl-gutter--half);
-      border: 0;
-      cursor: pointer;
+.code-editor-tabbar {
+  background-color: var(--sl-color--code-background-darker);
 
-      &:hover {
-        // TODO- add hover styles
-      }
-    }
-
-    $options: 'scss', 'indented', 'expanded', 'compressed';
-
-    @each $option in $options {
-      &[data-active='#{$option}'] [data-value='#{$option}'] {
-        background-color: var(--sl-color--code-background);
-      }
-    }
-  }
-
-  #code-editor-error-alert {
-    display: none;
-
-    // From warning callout
-    background: color.adjust(brand.$sl-color--hopbush, $lightness: 38%);
-    border: var(--sl-border--small) solid
-      color.adjust(brand.$sl-color--hopbush, $lightness: 27%);
-    font-family: 'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono',
-      'Droid Sans Mono', monospace;
-    font-size: var(--sl-font-size--x-small);
+  button {
+    background-color: var(--sl-color--tab-bg, --sl-color--code-background);
+    border: 0;
+    color: var(--text, var(--sl-color--pale-sky));
+    cursor: pointer;
+    font-weight: typography.$sl-font-weight--bold;
     padding: var(--sl-gutter--half);
 
-    // TODO Font weight bold not imported from Google Fonts
-    font-weight: bold;
-  }
-
-  &[data-compiler-has-error='true'] {
-    #code-editor-error-alert {
-      display: block;
+    &:hover {
+      // TODO- add hover styles
     }
   }
+
+  $sassoptions: 'scss', 'indented';
+
+  @each $option in $sassoptions {
+    &[data-active='#{$option}'] [data-value='#{$option}'] {
+      --sl-color--tab-bg: var(--sl-color--white);
+    }
+  }
+
+  $cssoptions: 'expanded', 'compressed';
+  @each $option in $cssoptions {
+    &[data-active='#{$option}'] [data-value='#{$option}'] {
+      --sl-color--tab-bg: var(--sl-color--code-background);
+    }
+  }
+}
+
+#code-editor-error-alert {
+  display: none;
+
+  // From warning callout
+  background: color.adjust(brand.$sl-color--hopbush, $lightness: 38%);
+  border: var(--sl-border--small) solid
+  var(--sl-color--code-background);
+  font-family: typography.$sl-font-family--code;
+
+
+  // TODO Font weight bold not imported from Google Fonts
+  font-weight: typography.$sl-font-weight--bold;
+}
+
+[data-compiler-has-error='true'] {
+  #code-editor-error-alert {
+    display: block;
+  }
+}
+
+[data-tabbar~='item'] {
+  padding: var(--sl-gutter--half);
 }
