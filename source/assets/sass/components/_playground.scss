@@ -1,18 +1,14 @@
 @use 'sass:color';
 @use '../breakpoints';
 @use '../config/color/brand';
+@use '../visual-design/typography';
 
-// Use h2 sizes for condensed header
+// Use smaller sizes for condensed header
 .sl-r-banner-playground {
-  h1 {
-    @include breakpoints.sl-breakpoint--medium {
-      --h1-size: var(--sl-font-size--xx-large);
-    }
+  --h1-size: var(--sl-font-size--xx-large);
+  --h1-size-lg: var(--sl-playground-heading);
+}
 
-    @include breakpoints.sl-breakpoint--large {
-      --h1-size: var(--sl-font-size--xxx-large);
-    }
-  }
 
   button#playground-copy-url {
     float: right;
