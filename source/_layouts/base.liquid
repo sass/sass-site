@@ -60,7 +60,7 @@
 
     {% typogr -%}
       {%- if is_playground -%}
-        {% render 'playground/playground_header', title: title %}
+        {% render 'playground/header', title: title %}
       {%- else -%}
         {% render 'header', alerts: alerts %}
       {%- endif -%}
@@ -109,7 +109,8 @@
     </main>
 
     {% typogr %}{% render 'footer' %}{% endtypogr %}
-    {%- unless is_playground -%}
+
+    {% unless is_playground %}
       <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
       <script>
         docsearch({
@@ -128,7 +129,8 @@
           }
         });
       </script>
-    {%- endunless -%}
+    {% endunless %}
+
     <script>
       !function(d, s, id) {
         var js,

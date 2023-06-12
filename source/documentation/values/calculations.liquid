@@ -224,10 +224,6 @@ introduction: >
   calculation.
 {% endheadsUp %}
 
-{% comment -%}
-  TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass
-{%- endcomment -%}
-
 {% codeExample 'min-max' %}
   $padding: 12px;
 
@@ -259,14 +255,4 @@ introduction: >
     // SassScript function calls.
     padding-left: max($padding % 10, 20px)
     padding-right: max($padding % 10, 20px)
-  ===
-  .post {
-    padding-left: max(12px, env(safe-area-inset-left));
-    padding-right: max(12px, env(safe-area-inset-right));
-  }
-
-  .sidebar {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 {% endcodeExample %}

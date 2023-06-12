@@ -54,6 +54,9 @@ const extend = <
 /**
  * Take a list of string `args` and converts it into an object of all arguments
  * suitable for the `compatibility.liquid` template.
+ *
+ * This can be removed once 11ty adds support for named Liquid arguments.
+ * @see https://github.com/11ty/eleventy/issues/2679
  */
 const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
   const opts = {

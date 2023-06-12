@@ -21,7 +21,6 @@ import {
   syntaxHighlighting,
 } from '@codemirror/language';
 import { lintKeymap } from '@codemirror/lint';
-import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
 import { EditorState } from '@codemirror/state';
 import {
   dropCursor,
@@ -49,11 +48,9 @@ const editorSetup = (() => [
     closeBrackets(),
     autocompletion(),
     highlightActiveLine(),
-    highlightSelectionMatches(),
     keymap.of([
       ...closeBracketsKeymap,
       ...defaultKeymap,
-      ...searchKeymap,
       ...historyKeymap,
       ...foldKeymap,
       ...completionKeymap,

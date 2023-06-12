@@ -2126,16 +2126,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash.debounce@npm:^4.0.7":
-  version: 4.0.7
-  resolution: "@types/lodash.debounce@npm:4.0.7"
-  dependencies:
-    "@types/lodash": "*"
-  checksum: e873b2d77f89010876baba3437ef826b17221b98948e00b5590828334a481dea1c8f9d28543210e564adc53199584f42c3cb171f8b6c3614fefc0b4e0888679c
-  languageName: node
-  linkType: hard
-
-"@types/lodash@npm:*":
+"@types/lodash@npm:^4.14.195":
   version: 4.14.195
   resolution: "@types/lodash@npm:4.14.195"
   checksum: 39b75ca635b3fa943d17d3d3aabc750babe4c8212485a4df166fe0516e39288e14b0c60afc6e21913cc0e5a84734633c71e617e2bd14eaa1cf51b8d7799c432e
@@ -2148,6 +2139,15 @@ __metadata:
   dependencies:
     "@types/markdown-it": "*"
   checksum: a8bc1f8176ddeea8ac3f66958683a02bd84ba46ccb47fc941d10b83ac52e83595a03ff39efdf594c6614ae3f71f63b88fc62f706681c48630ec5ac9fc411b387
+  languageName: node
+  linkType: hard
+
+"@types/markdown-it-footnote@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/markdown-it-footnote@npm:3.0.0"
+  dependencies:
+    "@types/markdown-it": "*"
+  checksum: 9d45afdc76952b79922f68ab1904d3fe9b4833e3ffb7848e1d6c06b9b828e4d2cefdc2cc89ebed5099a5ccbbe33371c5cc720aadbe9413710afc94baa048fd76
   languageName: node
   linkType: hard
 
@@ -5665,6 +5665,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
+  languageName: node
+  linkType: hard
+
 "lorem-ipsum@npm:^2.0.8":
   version: 2.0.8
   resolution: "lorem-ipsum@npm:2.0.8"
@@ -5785,6 +5792,13 @@ __metadata:
   version: 2.1.0
   resolution: "markdown-it-deflist@npm:2.1.0"
   checksum: 6d5b0cc8c0e729cb8d0add4cbfa98cc39bf3cbc8aa33a8bd7dab50da10273aac834b5fc85a36985235ff945048a246ec3688ecaf5469e64668e94b4449f79531
+  languageName: node
+  linkType: hard
+
+"markdown-it-footnote@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "markdown-it-footnote@npm:3.0.3"
+  checksum: 3657f943f938603ec74e86a41883bfac5564eec7733b8d74e00894cb2b2b73f823c072bccd8aa07c418ae1e017a4f5d22c6309627dfc2800100fcb2c6c71e24b
   languageName: node
   linkType: hard
 
@@ -7301,9 +7315,10 @@ __metadata:
     "@sindresorhus/slugify": ^1.1.2
     "@types/jquery": ^3.5.16
     "@types/jqueryui": ^1.12.17
-    "@types/lodash.debounce": ^4.0.7
+    "@types/lodash": ^4.14.195
     "@types/markdown-it": ^12.2.3
     "@types/markdown-it-attrs": ^4.1.0
+    "@types/markdown-it-footnote": ^3.0.0
     "@types/node": ^16
     "@types/prismjs": ^1.26.0
     "@typescript-eslint/eslint-plugin": ^5.59.9
@@ -7322,12 +7337,13 @@ __metadata:
     jquery-ui: ^1.13.2
     js-yaml: ^4.1.0
     kleur: ^4.1.5
-    lodash.debounce: ^4.0.8
+    lodash: ^4.17.21
     lorem-ipsum: ^2.0.8
     markdown-it: ^13.0.1
     markdown-it-anchor: ^8.6.7
     markdown-it-attrs: ^4.1.6
     markdown-it-deflist: ^2.1.0
+    markdown-it-footnote: ^3.0.3
     netlify-plugin-11ty: ^1.3.0
     npm-run-all: ^4.1.5
     prettier: ^2.8.8
@@ -8196,11 +8212,11 @@ __metadata:
 
 "typescript@patch:typescript@^5.1.3#~builtin<compat/typescript>":
   version: 5.1.3
-  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=ad5954"
+  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=5da071"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 32a25b2e128a4616f999d4ee502aabb1525d5647bc8955e6edf05d7fbc53af8aa98252e2f6ba80bcedfc0260c982b885f3c09cfac8bb65d2924f3133ad1e1e62
+  checksum: 6f0a9dca6bf4ce9dcaf4e282aade55ef4c56ecb5fb98d0a4a5c0113398815aea66d871b5611e83353e5953a19ed9ef103cf5a76ac0f276d550d1e7cd5344f61e
   languageName: node
   linkType: hard
 

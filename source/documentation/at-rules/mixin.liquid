@@ -279,9 +279,6 @@ introduction: >
   [map]: /documentation/values/maps
 {% endmarkdown %}
 
-{% comment -%}
-  TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass
-{%- endcomment -%}
 {% render 'code_snippets/example-mixin-arbitrary-keyword-arguments' %}
 
 {% funFact %}
@@ -409,10 +406,7 @@ introduction: >
   [map]: /documentation/values/maps
 {% endheadsUp %}
 
-{% comment -%}
-  TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass
-{%- endcomment -%}
-{% codeExample 'passing-arguments-to-content-blocks', false %}
+{% codeExample 'passing-arguments-to-content-blocks' %}
   @mixin media($types...) {
     @each $type in $types {
       @media #{$type} {
@@ -443,18 +437,6 @@ introduction: >
       font-size: 40px
       @if $type == print
         font-family: Calluna
-  ===
-  @media screen {
-    h1 {
-      font-size: 40px;
-    }
-  }
-  @media print {
-    h1 {
-      font-size: 40px;
-      font-family: Calluna;
-    }
-  }
 {% endcodeExample %}
 
 {% markdown %}

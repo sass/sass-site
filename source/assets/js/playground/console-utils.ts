@@ -1,4 +1,5 @@
 import { Exception, SourceSpan } from 'sass';
+
 type ConsoleLogDebug = {
   options: {
     span: SourceSpan;
@@ -16,28 +17,32 @@ type ConsoleLogWarning = {
   message: string;
   type: 'warn';
 };
+
 type ConsoleLogError = {
   type: 'error';
   error: Exception | unknown;
 };
+
 export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
 
 /**
- * Encode the HTML in a user-submitted string to print safely using innerHTML
- * Adapted from https://vanillajstoolkit.com/helpers/encodehtml/
- * @param  {string} str  The user-submitted string
+ * `message` is untrusted.
+ *
+ * Write with `innerText` and then retrieve using `innerHTML` to encode message
+ * for safe display.
+ * @param  {string} message The user-submitted string
  * @return {string} The sanitized string
  */
-function encodeHTML(str: string): string {
-  return str.replace(/[^\w-_. ]/gi, function (c) {
-    return `&#${c.charCodeAt(0)};`;
-  });
+function encodeHTML(message: string): string {
+  const el = document.createElement('div');
+  el.innerText = message;
+  return el.innerHTML;
 }
 
 function lineNumberFormatter(number?: number): string {
   if (typeof number === 'undefined') return '';
   number = number + 1;
-  return `${number} `;
+  return `${number}`;
 }
 
 export function displayForConsoleLog(item: ConsoleLog): string {
@@ -58,17 +63,18 @@ export function displayForConsoleLog(item: ConsoleLog): string {
       const stack = 'stack' in item.options ? item.options.stack : '';
       const needleFromStackRegex = /^- (\d+):/;
       const match = stack?.match(needleFromStackRegex);
-      if (match && match[1]) {
-        // Stack trace starts at 1, all others come from span, which starts at 0, so adjust before formatting.
+      if (match?.[1]) {
+        // Stack trace starts at 1, all others come from span, which starts at
+        // 0, so adjust before formatting.
         lineNumber = parseInt(match[1]) - 1;
       }
     }
     data.lineNumber = lineNumber;
   }
 
-  return `<p><span class="console-type console-type-${data.type}">@${
+  return `<div class="console-line"><div class="console-location"><span class="console-type console-type-${
     data.type
-  }</span>:${lineNumberFormatter(data.lineNumber)} ${encodeHTML(
-    data.message,
-  )}</p>`;
+  }">@${data.type}</span>:${lineNumberFormatter(
+    data.lineNumber,
+  )}</div><div class="console-message">${encodeHTML(data.message)}</div></div>`;
 }

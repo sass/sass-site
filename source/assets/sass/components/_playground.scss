@@ -121,6 +121,14 @@
       color: $color;
     }
   }
+
+  > div {
+    display: flex;
+  }
+
+  .console-location {
+    min-width: 7em;
+  }
 }
 
 

@@ -451,7 +451,7 @@ Error: Using / for division outside of calc() is deprecated and will be removed 
 
 Recommendation: math.div(4, 2) or calc(4 / 2)
 
-More info and automated migrator: https://sass-lang.com/d/slash-div
+More info and automated migrator: /documentation/breaking-changes/slash-div
 
 This is only an error because you've set the slash-div deprecation to be fatal.
 Remove this setting if you need to keep using this feature.

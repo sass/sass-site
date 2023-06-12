@@ -18,7 +18,7 @@ depending which you intend. We'll also provide a [Sass migrator] migration to
 automatically update your stylesheets.
 
 [strict unary operators]: https://github.com/sass/sass/blob/main/proposal/strict-unary.md
-[Sass migrator]: https://sass-lang.com/documentation/cli/migrator
+[Sass migrator]: /documentation/cli/migrator
 
 **Deprecated:**
 
@@ -39,8 +39,8 @@ deprecation warning and continue to support older Sass versions. In addition,
 you can always use the [`--quiet-deps` command-line flag] or the [`quietDeps` JS
 API option] to silence warnings from dependencies you don't control.
 
-[`--quiet-deps` command-line flag]: https://sass-lang.com/documentation/cli/dart-sass#quiet-deps
-[`quietDeps` JS API option]: https://sass-lang.com/documentation/js-api/interfaces/Options#quietDeps
+[`--quiet-deps` command-line flag]: /documentation/cli/dart-sass#quiet-deps
+[`quietDeps` JS API option]: /documentation/js-api/interfaces/Options#quietDeps
 
 ## Why does it work this way?
 
