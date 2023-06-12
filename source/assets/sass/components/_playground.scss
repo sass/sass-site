@@ -99,8 +99,7 @@
 }
 
 .console {
-  font-family: 'Source Code Pro', 'SF Mono', monaco, inconsolata, 'Fira Mono',
-    'Droid Sans Mono', monospace;
+  font-family: typography.$sl-font-family--code;
   min-height: 2em;
   max-height: 500px;
   margin: 0;
