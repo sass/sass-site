@@ -4,6 +4,7 @@
 @use '../visual-design/typography';
 
 .playground {
+  --sl-container-max-width: 100vw;
   display: grid;
   grid-template:
     'header' auto
@@ -19,50 +20,70 @@
   }
 }
 
-// Use smaller sizes for condensed header
-.sl-r-banner-playground {
+.sl-r-banner__playground-title {
+  // Use smaller sizes for condensed header
   --h1-size: var(--sl-font-size--xx-large);
   --h1-size-lg: var(--sl-playground-heading);
+  margin-bottom: 0;
+  flex: 1;
 }
 
-.sl-l-section-playground {
-  display: grid;
-  width: 100%;
-}
 
-.playground-actions {
+// Playground banner actions area
+.sl-r-banner__playground-actions {
   flex-direction: row-reverse;
+  gap: var(--sl-gutter);
+}
+
+// Playground banner actions alert message
+.sl-r-banner__playground-alert {
+  padding-left: var(--sl-gutter);
+  padding-right: var(--sl-gutter);
+  position:  var(--playground-alert-position, absolute);
+  right: var(--playground-alert-right, 0);
+  top: -50%;
+
+  &.show {
+    top: auto;
+    right: auto;
+  }
+
+  @media screen and (width >= 1065px) {
+    &.show {
+      --playground-alert-position: relative;
+    }
+  }
 }
 
 #playground-copied-alert {
   opacity: 0;
-  transition: opacity 0.3s linear;
+  transition: opacity 0.3s;
 
   &.show {
     opacity: 1;
   }
 }
 
-.playground-actions {
-  gap: var(--sl-gutter--double);
+.sl-l-section--playground {
+  display: grid;
+  width: 100%;
 }
-
-.playground-alert {
-  padding-left: var(--sl-gutter);
-  padding-right: var(--sl-gutter);
-}
-
 
 // Playground Editor area
 .sl-c-playground {
   --sl-c-callout--block-margin: 0;
+  --sl-c-callout--block-padding: var(--sl-gutter--quarter);
   display: grid;
   gap: var(--sl-gutter);
+  grid-template:
+    'sass' 1fr
+    'css' auto
+    'debug' auto / 100%;
 
-  @include breakpoints.sl-breakpoint--medium {
+  @include breakpoints.sl-breakpoint--large {
     grid-template:
       'sass  css' 1fr
-      'debug debug' minmax(0, auto) / 50% 50%;
+      'debug debug' minmax(0, auto) / 1fr 1fr;
   }
 }
 
@@ -88,10 +109,9 @@
   grid-template-rows: min-content minmax(0, auto) 1fr;
 }
 
-
-  .ͼ1 {
-    height: 100%;
-  }
+.ͼ1 {
+  height: 100%;
+}
 
 #editor {
   cursor: text;
@@ -130,29 +150,22 @@
   }
 }
 
-
-
 .sl-c-playground__editor-tabbar {
   background-color: var(--sl-color--code-background-darker);
+  display: flex;
 
   $sassoptions: 'scss', 'indented';
   @each $option in $sassoptions {
     &[data-active='#{$option}'] [data-value='#{$option}'] {
-      --color-tab-bg: var(--sl-color--white);
+      --color-tab-background: var(--sl-color--white);
       --color-button-text: var(--text, var(--sl-color--pale-sky));
-
-      &:hover,
-      &:focus {
-        --color-tab-bg: var(--sl-color--white);
-        --color-button-text: var(--text, var(--sl-color--pale-sky));
-      }
     }
   }
 
   $cssoptions: 'expanded', 'compressed';
   @each $option in $cssoptions {
     &[data-active='#{$option}'] [data-value='#{$option}'] {
-      --color-tab-bg: var(--sl-color--code-background);
+      --color-tab-background: var(--sl-color--code-background);
       --color-button-text: var(--text, var(--sl-color--pale-sky));
     }
   }
@@ -161,14 +174,28 @@
 #code-editor-error-alert {
   display: none;
   font-weight: typography.$sl-font-weight--bold;
-}
 
-[data-compiler-has-error='true'] {
-  #code-editor-error-alert {
+  [data-compiler-has-error='true'] & {
     display: block;
   }
 }
 
+// Make sure all tab bar buttons and text get the same padding
 [data-tabbar~='item'] {
   padding: var(--sl-gutter--half);
+}
+
+.sl-c-playground__tabbar-title {
+  text-transform: uppercase;
+
+  // For nested caps in tab title, reset a few styles
+  .caps {
+    --sl-font-size--caps: var(--sl-font-size--medium);
+    letter-spacing: 0;
+  }
+
+  [data-code='compiled'] &:last-child {
+    margin-left: auto;
+    text-align: right;
+  }
 }

@@ -29,10 +29,6 @@ is_playground: true
       class="sl-c-playground__editor-tabbar"
       data-active="expanded"
       data-setting="outputFormat">
-      <span data-tabbar="item">
-        <strong>CSS</strong>
-        (Compiled)
-      </span>
       <button
         type="button"
         data-value="expanded"
@@ -45,13 +41,17 @@ is_playground: true
         data-tabbar="item"
         class="sl-c-button sl-c-button--tab"
         data-setting="outputFormat">Compressed</button>
+      <span data-tabbar="item" class="sl-c-playground__tabbar-title tabbar-title">
+        <strong>CSS</strong>
+        (Compiled)
+      </span>
     </div>
     <div id="code-editor-error-alert" class="sl-c-callout sl-c-callout--warning">Please resolve error to view compiled CSS.</div>
-    <div id="css-view" class="is-compiled"></div>
+    <div id="css-view" class="sl-code-is-compiled"></div>
   </div>
   <div class="sl-c-playground__console-wrapper">
     <div class="sl-c-playground__editor-tabbar">
-      <span data-tabbar="item">
+      <span data-tabbar="item" class="sl-c-playground__tabbar-title">
         Console
       </span>
     </div>

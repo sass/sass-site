@@ -172,8 +172,8 @@ footer {
 }
 
 .caps {
-  font-size: var(--sl-font-size--smaller);
-  letter-spacing: 0.0625em;
+  font-size: var(--sl-font-size--caps, var(--sl-font-size--smaller));
+  letter-spacing: var(--sl-letter-spacing--caps, 0.0625em);
   line-height: 0;
   text-transform: uppercase;
 }

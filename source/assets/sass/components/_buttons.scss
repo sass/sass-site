@@ -5,11 +5,11 @@
   align-items: center;
   border: 0;
   border-radius: var(--radius-button, var(--sl-border-radius--large));
-  background: var(--color-button-bg, var(--sl-color--iron));
+  background: var(--color-button-background, var(--sl-color--iron));
   box-shadow: 0 2px 1px var(--sl-color--shadow);
   color: var(--color-button-text, var(--sl-color--highlight));
   cursor: pointer;
-  display: var(--display-btn, inline-flex);
+  display: var(--display-button, inline-flex);
   justify-content: center;
   margin: 0;
   padding: var(--sl-gutter--minus) var(--sl-gutter);
@@ -17,7 +17,7 @@
   &:hover,
   &:focus {
     --color-button-text: var(--sl-color--action);
-    --color-button-bg: var(--sl-color--link-action);
+    --color-button-background: var(--sl-color--link-action);
   }
 
   &:active {
@@ -25,7 +25,7 @@
   }
 
   &--primary {
-    --color-button-bg: var(--sl-color--highlight);
+    --color-button-background: var(--sl-color--highlight);
 
     &,
     &:hover,
@@ -36,23 +36,31 @@
 
     &:hover,
     &:focus {
-      --color-button-bg: var(--sl-color--action);
+      --color-button-background: var(--sl-color--action);
     }
 
     &:active {
-      --color-button-bg: var(--sl-color--active);
+      --color-button-background: var(--sl-color--active);
     }
   }
 
   &--tab {
-    --color-button-bg: var(--color-tab-bg, --sl-color--code-background);
+    --color-button-background: var(--color-tab-background, --sl-color--code-background);
     --color-button-text: var(--text, var(--sl-color--pale-sky));
     --radius-button: 0;
     box-shadow: none;
     font-weight: typography.$sl-font-weight--bold;
+
+    &:hover {
+      --color-button-background: var(--sl-color--tab-action);
+    }
+
+    &:focus {
+      --color-button-background: var(--color-tab-background, --sl-color--code-background);
+    }
   }
 
   &:has(.caps) {
-    --display-btn: inline;
+    --display-button: inline;
   }
 }

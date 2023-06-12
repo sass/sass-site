@@ -27,16 +27,17 @@
     }
   }
 
-  &.sl-r-banner-playground {
+  &--playground {
     padding-bottom: 0;
 
     img {
       height: functions.sl-px-to-rem(48px);
     }
 
-    h2 {
-      text-align: center;
-      margin: 0;
+    .sl-r-banner__brand {
+      @include breakpoints.sl-breakpoint--medium-max {
+        flex: 0 1 auto;
+      }
     }
   }
 
