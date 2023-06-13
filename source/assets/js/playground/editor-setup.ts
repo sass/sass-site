@@ -31,7 +31,7 @@ import {
   lineNumbers,
 } from '@codemirror/view';
 
-import { playgroundHighlightStyle, playgroundTheme } from './theme.js';
+import { playgroundHighlightStyle } from './theme.js';
 
 const editorSetup = (() => [
   [
@@ -59,7 +59,6 @@ const editorSetup = (() => [
     ]),
   ],
   langSass(),
-  playgroundTheme,
 ])();
 
 const outputSetup = (() => [
@@ -73,7 +72,6 @@ const outputSetup = (() => [
     EditorState.readOnly.of(true),
   ],
   langCss(),
-  playgroundTheme,
 ])();
 
 export { editorSetup, outputSetup };

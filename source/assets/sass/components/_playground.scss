@@ -113,8 +113,38 @@
   grid-template-rows: min-content minmax(0, auto) 1fr;
 }
 
-.ͼ1 {
+// Codemirror overrides
+.cm-editor {
   height: 100%;
+  font-size: var(--sl-font-size--x-small);
+  background-color: var(--sl-color-editor-background);
+  color: var(--sl-color--code-text);
+
+  &.cm-focused {
+    // override focus style
+  }
+
+  .cm-gutters {
+    background-color: var(--sl-color-editor-background);
+    border-right: none;
+  }
+
+  .cm-content,
+  .cm-tooltip-lint {
+    font-family: typography.$sl-font-family--code;
+  }
+
+  .cm-scroller {
+    overflow: auto;
+  }
+
+  .cm-activeLine {
+    background-color: #cef4;
+  }
+
+  .cm-activeLineGutter {
+    background-color: #e2f2ff;
+  }
 }
 
 #editor {
