@@ -45,9 +45,13 @@
   }
 
   &--tab {
-    --color-button-background: var(--color-tab-background, --sl-color--code-background);
+    --color-button-background: var(
+      --color-tab-background,
+      --sl-color--code-background
+    );
     --color-button-text: var(--text, var(--sl-color--pale-sky));
     --radius-button: 0;
+
     box-shadow: none;
     font-weight: typography.$sl-font-weight--bold;
 
@@ -56,7 +60,10 @@
     }
 
     &:focus {
-      --color-button-background: var(--color-tab-background, --sl-color--code-background);
+      --color-button-background: var(
+        --color-tab-background,
+        --sl-color--code-background
+      );
     }
   }
 

@@ -132,11 +132,17 @@ h1 {
   text-align: center;
 
   @include breakpoints.sl-breakpoint--medium {
-    font-size: var(--h1-size-md, var(--h1-size, var(--sl-font-size--xxx-large)));
+    font-size: var(
+      --h1-size-md,
+      var(--h1-size, var(--sl-font-size--xxx-large))
+    );
   }
 
   @include breakpoints.sl-breakpoint--large {
-    font-size: var(--h1-size-lg, var(--h1-size, var(--sl-font-size--xxxx-large)));
+    font-size: var(
+      --h1-size-lg,
+      var(--h1-size, var(--sl-font-size--xxxx-large))
+    );
   }
 }
 

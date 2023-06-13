@@ -5,6 +5,7 @@
 
 .playground {
   --sl-container-max-width: 100vw;
+
   display: grid;
   grid-template:
     'header' auto
@@ -15,8 +16,8 @@
   #main-content {
     display: grid;
     grid-template:
-    'editor' 1fr
-    'alert' min-content;
+      'editor' 1fr
+      'alert' min-content;
   }
 }
 
@@ -24,10 +25,10 @@
   // Use smaller sizes for condensed header
   --h1-size: var(--sl-font-size--xx-large);
   --h1-size-lg: var(--sl-playground-heading);
+
   margin-bottom: 0;
   flex: 1;
 }
-
 
 // Playground banner actions area
 .sl-r-banner__playground-actions {
@@ -39,7 +40,7 @@
 .sl-r-banner__playground-alert {
   padding-left: var(--sl-gutter);
   padding-right: var(--sl-gutter);
-  position:  var(--playground-alert-position, absolute);
+  position: var(--playground-alert-position, absolute);
   right: var(--playground-alert-right, 0);
   top: -50%;
 
@@ -73,6 +74,7 @@
 .sl-c-playground {
   --sl-c-callout--block-margin: 0;
   --sl-c-callout--block-padding: var(--sl-gutter--quarter);
+
   display: grid;
   gap: var(--sl-gutter);
   grid-template:
@@ -101,11 +103,13 @@
 
 [data-code='precompiled'] {
   --sl-color-editor-background: var(--sl-color--white);
+
   grid-template-rows: min-content 1fr;
 }
 
-[data-code='compiled']  {
+[data-code='compiled'] {
   --sl-color-editor-background: var(--sl-color--code-background);
+
   grid-template-rows: min-content minmax(0, auto) 1fr;
 }
 
@@ -115,7 +119,6 @@
 
 #editor {
   cursor: text;
-
 }
 
 .console {
@@ -155,6 +158,7 @@
   display: flex;
 
   $sassoptions: 'scss', 'indented';
+
   @each $option in $sassoptions {
     &[data-active='#{$option}'] [data-value='#{$option}'] {
       --color-tab-background: var(--sl-color--white);
@@ -163,6 +167,7 @@
   }
 
   $cssoptions: 'expanded', 'compressed';
+
   @each $option in $cssoptions {
     &[data-active='#{$option}'] [data-value='#{$option}'] {
       --color-tab-background: var(--sl-color--code-background);
@@ -191,6 +196,7 @@
   // For nested caps in tab title, reset a few styles
   .caps {
     --sl-font-size--caps: var(--sl-font-size--medium);
+
     letter-spacing: 0;
   }
 

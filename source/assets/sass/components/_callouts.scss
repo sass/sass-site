@@ -4,7 +4,8 @@
 
 .sl-c-callout {
   margin: var(--sl-c-callout--block-margin, var(--sl-gutter--sesqui)) 0;
-  padding: var(--sl-c-callout--block-padding, var(--sl-gutter--sesqui)) var(--sl-gutter);
+  padding: var(--sl-c-callout--block-padding, var(--sl-gutter--sesqui))
+    var(--sl-gutter);
   background: color.adjust(brand.$sl-color--pale-sky, $lightness: 60%);
   border-radius: var(--sl-border-radius--small);
 
