@@ -4,12 +4,28 @@ import { tags } from '@lezer/highlight';
 const playgroundHighlightStyle = HighlightStyle.define([
   {
     tag: [tags.special(tags.variableName), tags.tagName],
-    color: '#445588',
-    fontWeight: '600',
+    color: 'var(--sl-color--code-base)'
   },
-  { tag: tags.definitionKeyword, fontWeight: '600' },
-  { tag: tags.comment, color: '#006666', fontStyle: 'italic' },
-  { tag: tags.propertyName, color: '#990000' },
+  { tag: tags.keyword,
+    color: 'var(--sl-color--code-bright-dark)',
+    fontWeight: '600'
+  },
+  { tag: tags.definitionKeyword,
+    color: 'var(--sl-color--code-dark)',
+    fontWeight: '600'
+  },
+  { tag: tags.comment,
+    color: 'var(--sl-color--code-muted)',
+    fontStyle: 'italic'
+  },
+  { tag: tags.propertyName,
+    color: 'var(--sl-color--code-warm)',
+    fontWeight: '600'
+  },
+  { tag: tags.className,
+    color: 'var(--sl-color--code-cool)',
+    fontWeight: '600'
+  },
 ]);
 
 export { playgroundHighlightStyle };

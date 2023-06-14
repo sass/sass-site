@@ -118,7 +118,7 @@
   height: 100%;
   font-size: var(--sl-font-size--x-small);
   background-color: var(--sl-color-editor-background);
-  color: var(--sl-color--code-text);
+  color: var(--sl-color--code-base, var(--sl-color--code-text));
 
   &.cm-focused {
     // override focus style
@@ -221,12 +221,10 @@
 }
 
 .sl-c-playground__tabbar-title {
-  text-transform: uppercase;
-
   // For nested caps in tab title, reset a few styles
   .caps {
     --sl-font-size--caps: var(--sl-font-size--medium);
-
+    font-weight: normal;
     letter-spacing: 0;
   }
 
