@@ -17,3 +17,8 @@ $sl-color--code-muted: #656556;
 $sl-color--code-base: #066;
 $sl-color--code-cool: #458;
 $sl-color--code-dark: black;
+$sl-color--border-blush: color.adjust(brand.$sl-color--hopbush, $lightness: 27%);
+$sl-color--highlight-blush: rgba($sl-color--border-blush, 0.2);
+$sl-color--error: #CF0254;
+$sl-color--warn: #c14e00;
+$sl-color--success: #168073;

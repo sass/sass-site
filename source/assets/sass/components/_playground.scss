@@ -138,12 +138,23 @@
     overflow: auto;
   }
 
+  .cm-activeLineGutter,
   .cm-activeLine {
-    background-color: #cef4;
+    background-color: var(--sl-color--highlight-blush);
+
+    [data-code='compiled'] & {
+      background-color: var(--sl-color--code-background);
+    }
   }
 
-  .cm-activeLineGutter {
-    background-color: #e2f2ff;
+  &.cm-focused {
+    [data-code='precompiled'] & {
+      outline: 1px solid var(--sl-color--border-blush);
+    }
+
+    [data-code='compiled'] & {
+      outline: 0;
+    }
   }
 }
 
@@ -163,9 +174,9 @@
   }
 
   $console-type-colors: (
-    'error': red,
-    'warn': orange,
-    'debug': green,
+    'error': var(--sl-color--error),
+    'warn': var(--sl-color--warn),
+    'debug': var(--sl-color--success),
   );
 
   @each $name, $color in $console-type-colors {
@@ -194,6 +205,7 @@
       --color-button-tab-active: var(--text, var(--sl-color--pale-sky));
       --color-tab-background: var(--sl-color--white);
       --color-tab-background-hover: var(--sl-color--white);
+      --color-tab-focus: var(--color-button-tab-active);
     }
   }
 
@@ -204,6 +216,7 @@
       --color-button-tab-active: var(--text, var(--sl-color--pale-sky));
       --color-tab-background: var(--sl-color--code-background);
       --color-tab-background-hover: var(--sl-color--code-background);
+      --color-tab-focus: var(--color-button-tab-active);
     }
   }
 }

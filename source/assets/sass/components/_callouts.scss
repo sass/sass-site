@@ -11,8 +11,7 @@
 
   &--warning {
     background: color.adjust(brand.$sl-color--hopbush, $lightness: 38%);
-    border: var(--sl-border--small) solid
-      color.adjust(brand.$sl-color--hopbush, $lightness: 27%);
+    border: var(--sl-border--small) solid var(--sl-color--border-blush);
   }
 
   &--fun-fact {
