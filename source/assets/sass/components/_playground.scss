@@ -110,7 +110,14 @@
 [data-code='compiled'] {
   --sl-color-editor-background: var(--sl-color--code-background);
 
-  grid-template-rows: min-content minmax(0, auto) 1fr;
+  grid-template:
+    'editor-tabbar' min-content
+    'editor-error' min-content
+    'editor-code' 1fr / 1fr;
+}
+
+.sl-code-is-compiled {
+  grid-area: editor-code;
 }
 
 // Codemirror overrides
@@ -119,10 +126,6 @@
   font-size: var(--sl-font-size--x-small);
   background-color: var(--sl-color-editor-background);
   color: var(--sl-color--code-base, var(--sl-color--code-text));
-
-  &.cm-focused {
-    // override focus style
-  }
 
   .cm-gutters {
     background-color: var(--sl-color-editor-background);
@@ -164,13 +167,19 @@
 
 .console {
   font-family: typography.$sl-font-family--code;
-  min-height: 2em;
   max-height: 500px;
   margin: 0;
+  min-height: 2em;
 
-  hr,
-  p {
-    margin: 0;
+  .console-line {
+    display: grid;
+    gap: var(--sl-gutter);
+    grid-template: 
+      'location message' auto / 10ch 1fr;
+  }
+
+  .console-message {
+    display: grid;
   }
 
   $console-type-colors: (
@@ -183,14 +192,6 @@
     .console-type-#{$name} {
       color: $color;
     }
-  }
-
-  > div {
-    display: flex;
-  }
-
-  .console-location {
-    min-width: 7em;
   }
 }
 
