@@ -30,9 +30,11 @@ in these places and then run `nvm install` to upgrade:
 
 - `package.json` (`engines.node` field)
 - `.nvmrc`
+- `netlify.toml`
 
 To upgrade the yarn version, run `yarn set version latest`, then update the
-version number in `package.json` (`engines.yarn` field) if necessary.
+version number in `netlify.toml` and `package.json` (`engines.yarn` field) if
+necessary.
 
 ### Install dependencies
 
@@ -82,12 +84,15 @@ yarn lint
       while `render` always parses the partial as a LiquidJS template.
 - `.md` files are parsed both as Markdown _and_ as LiquidJS templates.
 - When using Markdown, remember that _indentation and whitespace (e.g newlines)
-  matter_.
+  matter_. Use Markdown selectively, especially in files that include other
+  non-Markdown partials.
+    - For example, the `{% codeExample %}` tag renders whitespace that results
+      in unwanted `<p>` tags when parsed as Markdown.
 
 ## Deploying
 
 Every time a new commit is pushed to `main`, it will automatically be deployed
-to sass-lang.com. Easy as that!
+to sass-lang.com via [Netlify][]. Easy as that!
 
 Thanks!
 
@@ -95,3 +100,4 @@ Thanks!
 
 [ig]: https://sass-lang.com/implementation
 [sg]: https://sass-lang.com/styleguide
+[Netlify]: https://www.netlify.com/
