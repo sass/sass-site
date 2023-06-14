@@ -191,8 +191,9 @@
 
   @each $option in $sassoptions {
     &[data-active='#{$option}'] [data-value='#{$option}'] {
+      --color-button-tab-active: var(--text, var(--sl-color--pale-sky));
       --color-tab-background: var(--sl-color--white);
-      --color-button-text: var(--text, var(--sl-color--pale-sky));
+      --color-tab-background-hover: var(--sl-color--white);
     }
   }
 
@@ -200,8 +201,9 @@
 
   @each $option in $cssoptions {
     &[data-active='#{$option}'] [data-value='#{$option}'] {
+      --color-button-tab-active: var(--text, var(--sl-color--pale-sky));
       --color-tab-background: var(--sl-color--code-background);
-      --color-button-text: var(--text, var(--sl-color--pale-sky));
+      --color-tab-background-hover: var(--sl-color--code-background);
     }
   }
 }
