@@ -81,7 +81,7 @@
       <div class="sl-l-container sl-color--white-background{% unless is_home %} sl-l-section{% endunless %}{% if is_playground %} sl-l-section--playground{% endif %}">
         {{ content | typogr }}
       </div>
-
+      {% unless is_playground %}
       <div class="sl-c-alert">
         <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
           <ul class="sl-l-grid--justify-center">
@@ -93,6 +93,7 @@
           </ul>
         </div>
       </div>
+    {% endunless %}
 
       {% if section_bottom %}
         <section class="sl-color--white-background sl-l-container">
