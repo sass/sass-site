@@ -159,13 +159,13 @@
       outline: 0;
     }
   }
+
+  .sl-code-is-precompiled & {
+    cursor: text;
+  }
 }
 
-#editor {
-  cursor: text;
-}
-
-.console {
+.sl-c-playground__console {
   font-family: typography.$sl-font-family--code;
   max-height: 500px;
   margin: 0;
@@ -174,8 +174,7 @@
   .console-line {
     display: grid;
     gap: var(--sl-gutter);
-    grid-template:
-      'location message' auto / 10ch 1fr;
+    grid-template: 'location message' auto / 10ch 1fr;
   }
 
   .console-message {
@@ -219,7 +218,7 @@
   }
 }
 
-#code-editor-error-alert {
+.sl-c-playground__error {
   display: none;
   font-weight: typography.$sl-font-weight--bold;
 

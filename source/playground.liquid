@@ -22,7 +22,7 @@ is_playground: true
         class="sl-c-button sl-c-button--tab"
         data-setting="inputFormat">Sass</button>
     </div>
-    <div id="editor"></div>
+    <div class="sl-code-is-precompiled"></div>
   </div>
   <div class="sl-c-playground__code-editor-wrapper" data-code="compiled">
     <div class="sl-c-playground__editor-tabbar" data-setting="outputFormat">
@@ -45,8 +45,8 @@ is_playground: true
         (Compiled)
       </span>
     </div>
-    <div id="code-editor-error-alert" class="sl-c-callout sl-c-callout--warning">Please resolve error to view compiled CSS.</div>
-    <div id="css-view" class="sl-code-is-compiled"></div>
+    <div class="sl-c-callout sl-c-callout--warning sl-c-playground__error">Please resolve error to view compiled CSS.</div>
+    <div class="sl-code-is-compiled"></div>
   </div>
   <div class="sl-c-playground__console-wrapper">
     <div class="sl-c-playground__editor-tabbar">
@@ -54,7 +54,7 @@ is_playground: true
         Console
       </span>
     </div>
-    <pre class="console"></pre>
+    <pre class="sl-c-playground__console"></pre>
   </div>
 </div>
 

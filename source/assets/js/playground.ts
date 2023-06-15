@@ -56,13 +56,13 @@ function setupPlayground() {
         }
       }),
     ],
-    parent: document.getElementById('editor') || document.body,
+    parent: document.querySelector('.sl-code-is-precompiled') || undefined,
   });
 
   // Setup CSS view
   const viewer = new EditorView({
     extensions: [...outputSetup],
-    parent: document.getElementById('css-view') || document.body,
+    parent: document.querySelector('.sl-code-is-compiled') || undefined,
   });
 
   // Apply initial state to dom
@@ -163,7 +163,9 @@ function setupPlayground() {
    * so the output is collected through the compilation and the display updated just once.
    */
   function updateDebugOutput() {
-    const console = document.querySelector('.console') as HTMLDivElement;
+    const console = document.querySelector(
+      '.sl-c-playground__console',
+    ) as HTMLDivElement;
     console.innerHTML = playgroundState.debugOutput
       .map(displayForConsoleLog)
       .join('\n');
