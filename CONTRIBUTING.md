@@ -31,6 +31,7 @@ in these places and then run `nvm install` to upgrade:
 - `package.json` (`engines.node` field)
 - `.nvmrc`
 - `netlify.toml`
+- `Dockerfile`
 
 To upgrade the yarn version, run `yarn set version latest`, then update the
 version number in `netlify.toml` and `package.json` (`engines.yarn` field) if
