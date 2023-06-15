@@ -2,7 +2,7 @@ const { spawn: nodeSpawn } = require('node:child_process');
 const fs = require('node:fs/promises');
 
 const deepEqual = require('deep-equal');
-const chalk = require('kleur');
+const kleur = require('kleur');
 
 const VERSION_CACHE_PATH = './source/_data/versionCache.json';
 
@@ -56,7 +56,7 @@ const getCacheFile = async () => {
  */
 const writeCacheFile = async (cache) => {
   // eslint-disable-next-line no-console
-  console.info(chalk.green(`[11ty] Writing version cache file...`));
+  console.info(kleur.green(`[11ty] Writing version cache file...`));
   await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(cache));
 };
 
@@ -65,7 +65,7 @@ const writeCacheFile = async (cache) => {
  */
 const getLatestVersion = async (repo) => {
   // eslint-disable-next-line no-console
-  console.info(chalk.cyan(`[11ty] Fetching version information for ${repo}`));
+  console.info(kleur.cyan(`[11ty] Fetching version information for ${repo}`));
   const { parseSemVer, compareSemVer } = await import('semver-parser');
   let stdout;
   try {
@@ -76,7 +76,7 @@ const getLatestVersion = async (repo) => {
     );
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.error(chalk.red(`[11ty] Failed to fetch git tags for ${repo}`));
+    console.error(kleur.red(`[11ty] Failed to fetch git tags for ${repo}`));
     throw err;
   }
   const isNotPreRelease = (version) => {

@@ -6,12 +6,9 @@ $(function () {
       active: 0,
       beforeActivate: function (event, ui) {
         // If multiple panels are visible, the CSS tab shouldn't be clickable.
-        if (
-          ui.newPanel.hasClass('css') &&
-          allPanels.filter(':visible').length > 1
-        ) {
-          return false;
-        }
+        return !(
+          ui.newPanel.hasClass('css') && allPanels.filter(':visible').length > 1
+        );
       },
       activate: function (event, ui) {
         if (ui.newPanel.hasClass('css')) {
