@@ -58,4 +58,4 @@ These breaking changes are coming soon or have recently been released:
 
 Dart Sass users can opt in to treat deprecations as errors early using the
 [`--fatal-deprecation` command line
-option](/documentation/cli/dart-sass#fatal-deprecation).
+option](/documentation/cli/dart-sass/#fatal-deprecation).
