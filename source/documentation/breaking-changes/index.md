@@ -22,31 +22,35 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
-- [A variable may only have a single `!global` or `!default`
+* [Loading Sass as a default export in JS is no longer
+  allowed](/documentation/breaking-changes/default-export) beginning in Dart
+  Sass 1.63.0.
+
+* [A variable may only have a single `!global` or `!default`
   flag](/documentation/breaking-changes/duplicate-var-flags) beginning in Dart
   Sass 1.62.0.
 
-- [Selectors with invalid combinators are
+* [Selectors with invalid combinators are
   invalid](/documentation/breaking-changes/bogus-combinators) beginning in Dart
   Sass 1.54.0.
 
-- [`/` is changing from a division operation to a list
+* [`/` is changing from a division operation to a list
   separator](/documentation/breaking-changes/slash-div) beginning in Dart Sass
   1.33.0.
 
-- [Functions are stricter about which units they
+* [Functions are stricter about which units they
   allow](/documentation/breaking-changes/function-units) beginning in Dart Sass
   1.32.0.
 
-- [Parsing the special syntax of `@-moz-document` will be
+* [Parsing the special syntax of `@-moz-document` will be
   invalid](/documentation/breaking-changes/moz-document) beginning in Dart Sass
   1.7.2.
 
-- [Compound selectors could not be
+* [Compound selectors could not be
   extended](/documentation/breaking-changes/extend-compound) in Dart Sass 1.0.0
   and Ruby Sass 4.0.0.
 
-- [The syntax for CSS custom property values
+* [The syntax for CSS custom property values
   changed](/documentation/breaking-changes/css-vars) in Dart Sass 1.0.0, LibSass
   3.5.0, and Ruby Sass 3.5.0.
 
