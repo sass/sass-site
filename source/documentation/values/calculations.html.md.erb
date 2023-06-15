@@ -2,7 +2,7 @@
 title: Calculations
 introduction: >
   Calculations are how Sass represents the `calc()` function, as well as similar
-  functions like `clamp()`, `min()`, and `max()`. Sass will simplify these as
+  functions like `min()`, `max()`, `abs()`, and `round()`. Sass will simplify these as
   much as possible, even if they're combined with one another.
 ---
 
@@ -161,8 +161,42 @@ CSS to unitless numbers:
   @debug calc(-infinity) < math.$min-number  // true
 <% end %>
 
-## `min()` and `max()`
+## Calculation Functions
 
+CSS added support for [calculation functions] in Values and Units Level
+4, from where they were quickly adopted by Safari [to support the iPhoneX]. But
+Sass supported its own [math functions] long before this, and
+it needed to be backwards-compatible with all those existing stylesheets. This
+led to the need for extra-special syntactic cleverness.
+
+[calculation functions]: https://drafts.csswg.org/css-values-4/#calc-notation
+[to support the iPhoneX]: https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+[math functions]: ../modules/math
+
+If a calculation function call is a valid calculation expression, it will
+be parsed as a calculation. But as soon as any part of the call contains a
+SassScript feature that isn't supported in a calculation, like the [modulo
+operator], it's parsed as a call to Sass's core calculation function
+instead.
+
+Since calculations are simplified to numbers when possible anyway, the only
+substantive difference is that the Sass functions only support units that can be
+combined at build time, so `min(12px % 10, 10%)` will throw an error.
+
+[modulo operator]: ../operators/numeric
+
+<% heads_up do %>
+  Other calculations don't allow unitless numbers to be added to, subtracted
+  from, or compared to numbers with units. `round()`, `abs()`, `min()`, and `max()` are different,
+  though: for backwards-compatibility with the global Sass `round()`, `abs()`, `min()`, and `max()`
+  functions which allow unit/unitless mixing for historical reasons, these units
+  can be mixed as long as they're contained directly within a `round()`, `abs()`, `min()`, or `max()`
+  calculation.
+<% end %>
+
+<!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
+
+### [`min()`] and [`max()`]
 <% impl_status dart: ">=1.11.0 <1.42.0", libsass: false, ruby: false, feature: "Special function syntax" do %>
   LibSass, Ruby Sass, and versions of Dart Sass prior to 1.11.0 *always* parse
   `min()` and `max()` as Sass functions. To create a plain CSS `min()` or
@@ -181,40 +215,6 @@ CSS to unitless numbers:
 
   [special functions]: ../syntax/special-functions
 <% end %>
-
-CSS added support for [`min()` and `max()` functions] in Values and Units Level
-4, from where they were quickly adopted by Safari [to support the iPhoneX]. But
-Sass supported its own [`min()`] and [`max()`] functions long before this, and
-it needed to be backwards-compatible with all those existing stylesheets. This
-led to the need for extra-special syntactic cleverness.
-
-[`min()` and `max()` functions]: https://drafts.csswg.org/css-values-4/#calc-notation
-[to support the iPhoneX]: https://webkit.org/blog/7929/designing-websites-for-iphone-x/
-[`min()`]: ../modules/math#min
-[`max()`]: ../modules/math#max
-
-If a `min()` or `max()` function call is a valid calculation expression, it will
-be parsed as a calculation. But as soon as any part of the call contains a
-SassScript feature that isn't supported in a calculation, like the [modulo
-operator], it's parsed as a call to Sass's core `min()` or `max()` function
-instead.
-
-Since calculations are simplified to numbers when possible anyway, the only
-substantive difference is that the Sass functions only support units that can be
-combined at build time, so `min(12px % 10, 10%)` will throw an error.
-
-[modulo operator]: ../operators/numeric
-
-<% heads_up do %>
-  Other calculations don't allow unitless numbers to be added to, subtracted
-  from, or compared to numbers with units. `min()` and `max()` are different,
-  though: for backwards-compatibility with the global Sass `min()` and `max()`
-  functions which allow unit/unitless mixing for historical reasons, these units
-  can be mixed as long as they're contained directly within a `min()` or `max()`
-  calculation.
-<% end %>
-
-<!-- TODO(nweiz): auto-generate this CSS once we're compiling with Dart Sass -->
 
 <% example do %>
   $padding: 12px;
@@ -258,3 +258,117 @@ combined at build time, so `min(12px % 10, 10%)` will throw an error.
     padding-right: 20px;
   }
 <% end %>
+
+### [`round()`]
+<% impl_status dart: "1.64.0", libsass: false, ruby: false, feature: "Special function syntax" do %>
+  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.64.0 *always* parse
+  `round()` a as Sass function. To create a plain CSS calculation function
+  call for those implementations, you can write something like
+  `unquote("round(#{$number})")` instead.
+
+  [special functions]: ../syntax/special-functions
+<% end %>
+
+The `round(<strategy>, value, step)` function accepts an optionl rounding strategy, 
+a value to be rounded and a rounding interval `step`. 
+`strategy` should be `nearest`, `up`, `down`, or `to-zero`.
+`round(value)` is also supported for backwards compatibility.
+
+<% example do %>
+  $number: 12.5px;
+  $step: 15px;
+
+  .post {
+    // Since these round() calls are valid calculation expressions, they're
+    // parsed as calculations.
+    padding-left: round(nearest, $number, $step);
+    padding-right: round($number + 10px);
+    padding-bottom: round($number + 10px, $step + 10%);
+  }
+
+  ===
+  $number: 12.5px;
+  $step: 15px;
+
+  .post
+    // Since these round() calls are valid calculation expressions, they're
+    // parsed as calculations.
+    padding-left: round(nearest, $number, $step)
+    padding-right: round($number + 10px)
+    padding-bottom: round($number + 10px, $step + 10%)
+
+  ===
+  .post {
+    padding-left: 15px;
+    padding-right: 23px;
+    padding-bottom: round(22.5px, 15px + 10%);
+  }
+<% end %>
+
+### [`abs()`]
+<% impl_status dart: "1.64.0", libsass: false, ruby: false, feature: "Special function syntax" do %>
+  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.64.0 *always* parse
+  `abs()` a as Sass function. To create a plain CSS calculation function
+  call for those implementations, you can write something like
+  `unquote("abs(#{$number})")` instead.
+
+  [special functions]: ../syntax/special-functions
+<% end %>
+
+Given that CSS resolves percentages before calculations, 
+the global `abs(value)` function compatibiliy with % unit parameters is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+
+<% example do %>
+  .post {
+    padding-left: abs(-10px);
+    padding-right: math.abs(-7.5%);
+  }
+
+  ===
+  .post
+    padding-left: abs(-10px)
+    padding-right: math.abs(-7.5%)
+
+  ===
+  .post {
+    padding-left: 10px;
+    padding-right: 7.5%;
+  }
+<% end %>
+
+### Other math functions
+<% impl_status dart: "1.64.0", libsass: false, ruby: false, feature: "Special function syntax" do %>
+  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.64.0 *always* parse
+  the following functions as Sass functions. To create a plain CSS calculation function
+  call for those implementations, you can write something like
+  `unquote("sqrt(#{$number})")` instead.
+
+  [special functions]: ../syntax/special-functions
+<% end %>
+
+* Stepped Value Functions: [`round()`], [`mod()`], and [`rem()`].
+* Trigonometric Functions: [`sin()`], [`cos()`], [`tan()`], [`asin()`], [`acos()`], [`atan()`], and [`atan2()`].
+* Exponential Functions: [`pow()`], [`sqrt()`], [`hypot()`], [`log()`], and [`exp()`].
+* Sign-Related Functions: [`abs()`] and [`sign()`].
+
+[`min()`]: ../modules/math#min
+[`max()`]: ../modules/math#max
+[`clamp()`]: ../modules/math#clamp
+[`round()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/round
+[`sin()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/sin
+[`cos()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/cos
+[`tan()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/tan
+[`asin()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/asin
+[`acos()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/acos
+[`atan()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/atan
+[`atan2()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/atan2
+[`pow()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/pow
+[`sqrt()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/sqrt
+[`hypot()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/hypot
+[`log()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/log
+[`abs()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/abs
+[`exp()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/exp
+[`mod()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/mod
+[`rem()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/rem
+[`sign()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/sign
