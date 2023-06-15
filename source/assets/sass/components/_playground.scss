@@ -174,7 +174,7 @@
   .console-line {
     display: grid;
     gap: var(--sl-gutter);
-    grid-template: 
+    grid-template:
       'location message' auto / 10ch 1fr;
   }
 
@@ -199,25 +199,22 @@
   background-color: var(--sl-color--code-background-darker);
   display: flex;
 
-  $sassoptions: 'scss', 'indented';
+  [data-active='true'] {
+    --color-button-tab-active: var(--text, var(--sl-color--pale-sky));
+    --color-tab-focus: var(--color-button-tab-active);
+  }
 
-  @each $option in $sassoptions {
-    &[data-active='#{$option}'] [data-value='#{$option}'] {
-      --color-button-tab-active: var(--text, var(--sl-color--pale-sky));
+  [data-code='precompiled'] & {
+    [data-active='true'] {
       --color-tab-background: var(--sl-color--white);
       --color-tab-background-hover: var(--sl-color--white);
-      --color-tab-focus: var(--color-button-tab-active);
     }
   }
 
-  $cssoptions: 'expanded', 'compressed';
-
-  @each $option in $cssoptions {
-    &[data-active='#{$option}'] [data-value='#{$option}'] {
-      --color-button-tab-active: var(--text, var(--sl-color--pale-sky));
+  [data-code='compiled'] & {
+    [data-active='true'] {
       --color-tab-background: var(--sl-color--code-background);
       --color-tab-background-hover: var(--sl-color--code-background);
-      --color-tab-focus: var(--color-button-tab-active);
     }
   }
 }
@@ -240,6 +237,7 @@
   // For nested caps in tab title, reset a few styles
   .caps {
     --sl-font-size--caps: var(--sl-font-size--medium);
+
     font-weight: normal;
     letter-spacing: 0;
   }

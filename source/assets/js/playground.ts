@@ -122,12 +122,24 @@ function setupPlayground() {
     const inputFormatTab = document.querySelector(
       '[data-setting="inputFormat"]',
     ) as HTMLDivElement;
-    inputFormatTab.dataset.active = playgroundState.inputFormat;
+    const inputButtons = inputFormatTab.querySelectorAll('[data-value]');
+    inputButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      button.dataset.active = String(
+        button.dataset.value === playgroundState.inputFormat,
+      );
+    });
 
     const outputFormatTab = document.querySelector(
       '[data-setting="outputFormat"]',
     ) as HTMLDivElement;
-    outputFormatTab.dataset.active = playgroundState.outputFormat;
+    const outputButtons = outputFormatTab.querySelectorAll('[data-value]');
+    outputButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      button.dataset.active = String(
+        button.dataset.value === playgroundState.outputFormat,
+      );
+    });
   }
 
   /**
