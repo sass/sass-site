@@ -109,7 +109,7 @@
       {% endif %}
     </main>
 
-    {% typogr %}{% render 'footer' %}{% endtypogr %}
+    {% typogr %}{% render 'footer', is_playground: is_playground %}{% endtypogr %}
 
     {% unless is_playground %}
       <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
