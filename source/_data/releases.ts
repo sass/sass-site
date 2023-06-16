@@ -45,9 +45,6 @@ const spawn = (
  * Retrieves cached version object from cache file.
  */
 const getCacheFile = async () => {
-  if (process.env.NETLIFY || process.env.REBUILD_VERSION_CACHE) {
-    return {};
-  }
   let versionCache;
   try {
     const versionFile = await fs.readFile(VERSION_CACHE_PATH);
