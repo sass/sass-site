@@ -1,8 +1,8 @@
 .sl-l-section {
   margin-bottom: var(--section-bottom-margin, var(--sl-gutter--triple));
   margin-top: var(--section-top-margin, var(--sl-gutter--triple));
-  padding-bottom: var(--sl-gutter--triple);
-  padding-top: var(--sl-gutter--triple);
+  padding-bottom: var(--section-bottom-padding, var(--sl-gutter--triple));
+  padding-top: var(--section-top-padding, var(--sl-gutter--triple));
 
   &:first-child,
   &.sl-l-section--playground {
@@ -11,5 +11,10 @@
 
   &:last-child {
     --section-bottom-margin: 0;
+  }
+
+  .playground & {
+    --section-bottom-padding: 0;
+    --section-top-padding: var(--sl-gutter);
   }
 }
