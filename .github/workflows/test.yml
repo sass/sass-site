@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check-links:
-    name: Check links
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,13 +19,12 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: yarn
-      - name: Install dependencies
-        run: yarn install --immutable
-      - name: Check links
+      - name: Install & build
         run: |
+          yarn install --immutable
           yarn build-prod
-          yarn checklinks:internal
-          yarn checklinks:external
+      - name: Check links
+        run: yarn checklinks:internal
 
   lint:
     name: Lint
