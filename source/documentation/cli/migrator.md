@@ -247,7 +247,7 @@ before, including:
 
 - Converting [nested imports][] to use the [`meta.load-css()` mixin][] instead.
 
-  [nested imports]: /documentation/at-rules/import#nesting
+  [nested imports]: /documentation/at-rules/import/#nesting
   [`meta.load-css()` mixin]: /documentation/modules/meta#load-css
 
 {% headsUp %}
@@ -326,7 +326,7 @@ When you pass this option, the migrator will also generate an [import-only
 stylesheet][] that [forwards][] all the members with the prefix added back, to
 preserve backwards-compatibility for users who were importing the library.
 
-[import-only stylesheet]: /documentation/at-rules/import#import-only-files
+[import-only stylesheet]: /documentation/at-rules/import/#import-only-files
 [forwards]: /documentation/at-rules/forward
 
 This option may be passed multiple times, or with multiple values separated by

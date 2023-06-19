@@ -36,12 +36,12 @@ otherwise.
     - `l-` is for **layouts**. Example: `sl-l-grid`.
     - `is-` and `has-` for states. Example: `sl-is-active`.
     - `js-` is for classes specifically created for JavaScript targeting.
-      Exampe: `sl-js-toggle-navigation`
+      Example: `sl-js-toggle-navigation`.
   - Use the [BEM][] syntax.
     - **Block** -- the overall component object. Example: `sl-c-card`.
     - **Element** -- any child of the block. Example: `sl-c-card__header`.
     - **Modifier** -- any variation. This can be put on a block. Example:
-      `sl-c-card--primary`. It can also be put on an element Example:
+      `sl-c-card--primary`. It can also be put on an element. Example:
       `sl-c-card__header--large`.
 - Keep classes as flat as possible, and avoid nesting too deep.
 - Avoid using element selectors **unless** you're using a wrapper utility to

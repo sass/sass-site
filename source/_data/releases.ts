@@ -1,8 +1,14 @@
-const { spawn: nodeSpawn } = require('node:child_process');
-const fs = require('node:fs/promises');
+import {
+  spawn as nodeSpawn,
+  SpawnOptionsWithoutStdio,
+} from 'node:child_process';
+import fs from 'node:fs/promises';
 
-const deepEqual = require('deep-equal');
-const kleur = require('kleur');
+import deepEqual from 'deep-equal';
+import kleur from 'kleur';
+import { compare, parse } from 'semver';
+
+type VersionCache = Record<string, string>;
 
 const VERSION_CACHE_PATH = './source/_data/versionCache.json';
 
@@ -10,15 +16,19 @@ const VERSION_CACHE_PATH = './source/_data/versionCache.json';
  * Promise version of `spawn` to avoid blocking the main thread while waiting
  * for the child processes.
  */
-const spawn = (cmd, args, options) => {
+const spawn = (
+  cmd: string,
+  args: string[],
+  options: SpawnOptionsWithoutStdio,
+) => {
   return new Promise((resolve, reject) => {
     const child = nodeSpawn(cmd, args, options);
-    const stderr = [];
-    const stdout = [];
-    child.stdout.on('data', (data) => {
+    const stderr: string[] = [];
+    const stdout: string[] = [];
+    child.stdout.on('data', (data: Buffer) => {
       stdout.push(data.toString());
     });
-    child.on('error', (e) => {
+    child.on('error', (e: Error) => {
       stderr.push(e.toString());
     });
     child.on('close', () => {
@@ -35,14 +45,12 @@ const spawn = (cmd, args, options) => {
  * Retrieves cached version object from cache file.
  */
 const getCacheFile = async () => {
-  if (process.env.NETLIFY || process.env.REBUILD_VERSION_CACHE) {
-    return {};
-  }
   let versionCache;
   try {
-    versionCache = JSON.parse(await fs.readFile(VERSION_CACHE_PATH));
+    const versionFile = await fs.readFile(VERSION_CACHE_PATH);
+    versionCache = JSON.parse(versionFile.toString()) as VersionCache;
   } catch (err) {
-    if (err.code === 'ENOENT') {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
       versionCache = {}; // Cache is missing and needs to be created
     } else {
       throw err;
@@ -54,7 +62,7 @@ const getCacheFile = async () => {
 /**
  * Writes version object to cache file.
  */
-const writeCacheFile = async (cache) => {
+const writeCacheFile = async (cache: VersionCache) => {
   // eslint-disable-next-line no-console
   console.info(kleur.green(`[11ty] Writing version cache file...`));
   await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(cache));
@@ -63,39 +71,37 @@ const writeCacheFile = async (cache) => {
 /**
  * Retrieves the highest stable version of `repo`, based on its git tags.
  */
-const getLatestVersion = async (repo) => {
+const getLatestVersion = async (repo: string) => {
   // eslint-disable-next-line no-console
   console.info(kleur.cyan(`[11ty] Fetching version information for ${repo}`));
-  const { parseSemVer, compareSemVer } = await import('semver-parser');
   let stdout;
   try {
-    stdout = await spawn(
+    stdout = (await spawn(
       'git',
       ['ls-remote', '--tags', '--refs', `https://github.com/${repo}`],
-      { env: { ...process.env, GIT_TERMINAL_PROMPT: 0 } },
-    );
+      { env: { ...process.env, GIT_TERMINAL_PROMPT: '0' } },
+    )) as string;
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(kleur.red(`[11ty] Failed to fetch git tags for ${repo}`));
     throw err;
   }
-  const isNotPreRelease = (version) => {
-    const parsed = parseSemVer(version);
-    return parsed.matches && !parsed.pre;
+  const isNotPreRelease = (version: string) => {
+    const parsed = parse(version);
+    return parsed && parsed.prerelease.length === 0;
   };
   const version = stdout
     .split('\n')
-    .map((line) => line.split('refs/tags/').at(-1))
+    .map((line) => line.split('refs/tags/').at(-1) ?? '')
     .filter(isNotPreRelease)
-    .sort(compareSemVer)
+    .sort(compare)
     .at(-1);
 
-  return version;
+  return version ?? '';
 };
 
 /**
- * Returns the version and URL for the latest release of the given
- * implementation.
+ * Returns the version and URL for the latest release of all implementations.
  */
 module.exports = async () => {
   const repos = ['sass/libsass', 'sass/dart-sass', 'sass/migrator'];
@@ -114,7 +120,7 @@ module.exports = async () => {
     ]),
   );
 
-  const nextCache = Object.fromEntries(versions);
+  const nextCache = Object.fromEntries(versions) as VersionCache;
   if (!deepEqual(cache, nextCache)) {
     await writeCacheFile(nextCache);
   }

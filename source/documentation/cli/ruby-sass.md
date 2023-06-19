@@ -79,7 +79,7 @@ When compiling whole directories, Sass will ignore [partial files][] whose names
 begin with `_`. You can use partials to separate out your stylesheets without
 creating a bunch of unnecessary output files.
 
-[partial files]: /documentation/at-rules/use#partials
+[partial files]: /documentation/at-rules/use/#partials
 
 Many-to-many mode will only compile stylesheets whose dependencies have been
 modified more recently than the corresponding CSS file was generated. It will
