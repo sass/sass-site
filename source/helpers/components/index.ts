@@ -1,15 +1,15 @@
-import { highlight, languages } from 'prismjs';
+import {highlight, languages} from 'prismjs';
 import PrismLoader from 'prismjs/components/index';
 import stripIndent from 'strip-indent';
 
-import { liquidEngine } from '../engines';
-import { default as codeExample } from './codeExample';
-import { compatibility, implStatus } from './compatibility';
-import { getDocTocData, getToc } from './toc';
+import {liquidEngine} from '../engines';
+import {default as codeExample} from './codeExample';
+import {compatibility, implStatus} from './compatibility';
+import {getDocTocData, getToc} from './toc';
 
-export { codeExample };
-export { compatibility, implStatus };
-export { getDocTocData, getToc };
+export {codeExample};
+export {compatibility, implStatus};
+export {getDocTocData, getToc};
 
 /**
  * Returns HTML for a fun fact that's not directly relevant to the main

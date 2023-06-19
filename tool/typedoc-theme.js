@@ -1,4 +1,5 @@
-const { DefaultTheme, DefaultThemeRenderContext, JSX } = require('typedoc');
+// eslint-disable-next-line node/no-missing-require
+const {DefaultTheme, DefaultThemeRenderContext, JSX} = require('typedoc');
 
 function bind(fn, first) {
   return (...r) => fn(first, ...r);
@@ -11,7 +12,7 @@ function bind(fn, first) {
 function parseCompatibility(input) {
   return input
     .split(',')
-    .map((arg) => `'${arg.trim()}'`)
+    .map(arg => `'${arg.trim()}'`)
     .join(', ');
 }
 
@@ -21,16 +22,16 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
   // doesn't work. Instead, we emit each overload as a separate entry with its
   // own panel.
   oldMember = this.member;
-  member = bind(function (context, props) {
+  member = bind((context, props) => {
     const signatures = props?.signatures;
     if (signatures && signatures.length > 1) {
       const element = JSX.createElement(
         JSX.Fragment,
         null,
-        ...signatures.map((signature) => {
+        ...signatures.map(signature => {
           props.signatures = [signature];
           return context.oldMember(props);
-        }),
+        })
       );
       props.signatures = signatures;
       return element;
@@ -44,7 +45,7 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
   comment = bind((context, props) => {
     if (!props.comment) return;
     const compatibilityTags = props.comment.blockTags.filter(
-      (tag) => tag.tag === '@compatibility',
+      tag => tag.tag === '@compatibility'
     );
     props.comment.removeTags('@compatibility');
 
@@ -52,7 +53,7 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
     if (!parent) return;
 
     parent.children.unshift(
-      ...compatibilityTags.map((compat) => {
+      ...compatibilityTags.map(compat => {
         // Compatibility tags should have a single text block.
         const text = compat.content[0].text;
 
@@ -60,13 +61,13 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
         // after that is the contents of the block.
         const lineBreak = text.indexOf('\n');
         const compatibilityArgs = parseCompatibility(
-          lineBreak === -1 ? text : text.substring(0, lineBreak),
+          lineBreak === -1 ? text : text.substring(0, lineBreak)
         );
         const restOfFirst =
           lineBreak === -1 ? null : text.substring(lineBreak + 1);
 
         const rest = [
-          ...(restOfFirst ? [{ kind: 'text', text: restOfFirst }] : []),
+          ...(restOfFirst ? [{kind: 'text', text: restOfFirst}] : []),
           ...compat.content.slice(1),
         ];
 
@@ -76,7 +77,7 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
             (rest ? context.markdown(rest) : '') +
             '{% endcompatibility %}',
         });
-      }),
+      })
     );
 
     return parent;
@@ -91,25 +92,25 @@ class SassSiteRenderContext extends DefaultThemeRenderContext {
         .oldMarkdown(text)
         .replace(
           /<p><strong>Heads up!<\/strong>([^]*?)<\/p>/g,
-          '{% headsUp %}$1{% endheadsUp %}',
+          '{% headsUp %}$1{% endheadsUp %}'
         )
         .replace(
           /<p><strong>Fun fact!<\/strong>([^]*?)<\/p>/g,
-          '{% funFact %}$1{% endfunFact %}',
+          '{% funFact %}$1{% endfunFact %}'
         ),
-    this,
+    this
   );
 
   // Relative URLs don't work well for index pages since they can be rendered at
   // different directory levels, so we just convert all URLs to absolute to be
   // safe.
   oldUrlTo = this.urlTo;
-  urlTo = bind(function (context, reflection) {
+  urlTo = bind((context, reflection) => {
     const relative = context.oldUrlTo(reflection);
 
     const absolute = new URL(
       relative,
-      `relative:///documentation/js-api/${context.theme.markedPlugin.location}`,
+      `relative:///documentation/js-api/${context.theme.markedPlugin.location}`
     );
     absolute.pathname = absolute.pathname
       .replace(/\.html$/, '')
@@ -123,7 +124,7 @@ class SassSiteTheme extends DefaultTheme {
     this.contextCache ??= new SassSiteRenderContext(
       this,
       page,
-      this.application.options,
+      this.application.options
     );
     return this.contextCache;
   }
@@ -135,7 +136,7 @@ class SassSiteTheme extends DefaultTheme {
     // render title on its own.
     const breadcrumb = page.model.parent
       ? `<ul class="tsd-breadcrumb">${JSX.renderElement(
-          context.breadcrumb(page.model),
+          context.breadcrumb(page.model)
         )}</ul>`
       : '';
     const heading =
@@ -145,7 +146,7 @@ class SassSiteTheme extends DefaultTheme {
       page.model.name +
       (page.model.typeParameters
         ? `&lt;${page.model.typeParameters
-            .map((item) => item.name)
+            .map(item => item.name)
             .join(', ')}&gt;`
         : '');
 
@@ -182,7 +183,7 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
   }
 }
 
-exports.load = (app) => {
+exports.load = app => {
   app.converter.addUnknownSymbolResolver((ref, refl, part, symbolId) => {
     if (!symbolId) return;
     const name = symbolId.qualifiedName;

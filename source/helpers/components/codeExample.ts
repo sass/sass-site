@@ -1,7 +1,7 @@
 import sass from 'sass';
 import stripIndent from 'strip-indent';
 
-import { liquidEngine } from '../engines';
+import {liquidEngine} from '../engines';
 
 /**
  * Renders a code example.
@@ -55,7 +55,7 @@ export default async function codeExample(
   contents: string,
   exampleName: string,
   autogenCSS = true,
-  syntax: 'sass' | 'scss' | null = null,
+  syntax: 'sass' | 'scss' | null = null
 ) {
   if (!exampleName) {
     throw new Error('`{% codeExample %}` tags require a unique name.');
@@ -70,7 +70,7 @@ export default async function codeExample(
 const generateCodeExample = (
   text: string,
   autogenCSS: boolean,
-  syntax: 'sass' | 'scss' | null,
+  syntax: 'sass' | 'scss' | null
 ) => {
   const contents = stripIndent(text);
   const splitContents = contents.split('\n===\n');
@@ -96,9 +96,9 @@ const generateCodeExample = (
   }
 
   const scssExamples =
-    scssContents?.split('\n---\n').map((str) => str.trim()) ?? [];
+    scssContents?.split('\n---\n').map(str => str.trim()) ?? [];
   const sassExamples =
-    sassContents?.split('\n---\n').map((str) => str.trim()) ?? [];
+    sassContents?.split('\n---\n').map(str => str.trim()) ?? [];
 
   if (!cssContents && autogenCSS) {
     const sections = scssContents ? scssExamples : sassExamples;
@@ -114,18 +114,18 @@ const generateCodeExample = (
   }
 
   const cssExamples =
-    cssContents?.split('\n---\n').map((str) => str.trim()) ?? [];
+    cssContents?.split('\n---\n').map(str => str.trim()) ?? [];
 
-  const { scssPaddings, sassPaddings, cssPaddings } = getPaddings(
+  const {scssPaddings, sassPaddings, cssPaddings} = getPaddings(
     scssExamples,
     sassExamples,
-    cssExamples,
+    cssExamples
   );
 
-  const { canSplit, maxSourceWidth, maxCSSWidth } = getCanSplit(
+  const {canSplit, maxSourceWidth, maxCSSWidth} = getCanSplit(
     scssExamples,
     sassExamples,
-    cssExamples,
+    cssExamples
   );
   let splitLocation: number | null = null;
   if (canSplit) {
@@ -156,7 +156,7 @@ const generateCodeExample = (
 const getPaddings = (
   scssExamples: string[],
   sassExamples: string[],
-  cssExamples: string[],
+  cssExamples: string[]
 ) => {
   const scssPaddings: number[] = [];
   const sassPaddings: number[] = [];
@@ -164,9 +164,9 @@ const getPaddings = (
   const maxSections = Math.max(
     scssExamples.length,
     sassExamples.length,
-    cssExamples.length,
+    cssExamples.length
   );
-  Array.from({ length: maxSections }).forEach((_, i) => {
+  Array.from({length: maxSections}).forEach((_, i) => {
     const scssLines = (scssExamples[i] || '').split('\n').length;
     const sassLines = (sassExamples[i] || '').split('\n').length;
     const cssLines = (cssExamples[i] || '').split('\n').length;
@@ -181,7 +181,7 @@ const getPaddings = (
     const maxLines = Math.max(
       isLastScssSection ? 0 : scssLines,
       isLastSassSection ? 0 : sassLines,
-      isLastCssSection ? 0 : cssLines,
+      isLastCssSection ? 0 : cssLines
     );
 
     scssPaddings.push(
@@ -191,7 +191,7 @@ const getPaddings = (
         comparisonB: cssExamples.slice(i),
         lines: scssLines,
         maxLines,
-      }),
+      })
     );
 
     sassPaddings.push(
@@ -201,7 +201,7 @@ const getPaddings = (
         comparisonB: cssExamples.slice(i),
         lines: sassLines,
         maxLines,
-      }),
+      })
     );
 
     cssPaddings.push(
@@ -211,11 +211,11 @@ const getPaddings = (
         comparisonB: sassExamples.slice(i),
         lines: cssLines,
         maxLines,
-      }),
+      })
     );
   });
 
-  return { scssPaddings, sassPaddings, cssPaddings };
+  return {scssPaddings, sassPaddings, cssPaddings};
 };
 
 /**
@@ -260,7 +260,7 @@ const getTotalPadding = (sections1: string[], sections2: string[]) => {
       sum +
       Math.max(
         (sections1[i] || '').split('\n').length,
-        (sections2[i] || '').split('\n').length,
+        (sections2[i] || '').split('\n').length
       ) +
       2
     );
@@ -270,15 +270,13 @@ const getTotalPadding = (sections1: string[], sections2: string[]) => {
 const getCanSplit = (
   scssExamples: string[],
   sassExamples: string[],
-  cssExamples: string[],
+  cssExamples: string[]
 ) => {
   const exampleSourceLengths = [...scssExamples, ...sassExamples].flatMap(
-    (source) => source.split('\n').map((line) => line.length),
+    source => source.split('\n').map(line => line.length)
   );
   const cssSourceLengths = cssExamples.length
-    ? cssExamples.flatMap((source) =>
-        source.split('\n').map((line) => line.length),
-      )
+    ? cssExamples.flatMap(source => source.split('\n').map(line => line.length))
     : [0];
 
   const maxSourceWidth = Math.max(...exampleSourceLengths);

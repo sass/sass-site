@@ -1,5 +1,5 @@
 // Documentation Nav Scroll
-$(function () {
+$(() => {
   // Vars
   const nav = $('.sl-c-list-navigation-wrapper');
   const sticky = nav.offset();
@@ -18,7 +18,7 @@ $(function () {
   };
 
   // When scrolling the page, execute stickyNav
-  $(window).on('scroll', function () {
+  $(window).on('scroll', () => {
     stickyNav();
   });
 

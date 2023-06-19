@@ -1,8 +1,8 @@
 import * as cheerio from 'cheerio';
 import stripIndent from 'strip-indent';
 
-import { codeBlock } from './components';
-import { liquidEngine } from './engines';
+import {codeBlock} from './components';
+import {liquidEngine} from './engines';
 
 const links: Record<string, string> = {
   number: '/documentation/values/numbers',
@@ -21,7 +21,7 @@ const links: Record<string, string> = {
 const returnTypeLink = (returnType: string) =>
   returnType
     .split('|')
-    .map((type) => {
+    .map(type => {
       type = type.trim();
       const link = links[type];
       if (!link) {
@@ -49,7 +49,7 @@ export function _function(content: string, ...signatures: string[]) {
 
   // Highlight each signature
   const names: string[] = [];
-  const highlightedSignatures = signatures.map((signature) => {
+  const highlightedSignatures = signatures.map(signature => {
     signature = stripIndent(signature).trim();
     const [name] = signature.split('(', 2);
     const nameWithoutNamespace = name.split('.').at(-1) || name;
@@ -63,7 +63,7 @@ export function _function(content: string, ...signatures: string[]) {
       names.push(nameWithoutNamespace);
       const nameEl = signatureElements
         .filter((index, element) => {
-          return $(element).text() == nameWithoutNamespace;
+          return $(element).text() === nameWithoutNamespace;
         })
         .eq(0);
       nameEl.addClass('docSearch-function');
@@ -71,7 +71,7 @@ export function _function(content: string, ...signatures: string[]) {
     }
     return signatureElements
       .toArray()
-      .map((el) => $.html(el))
+      .map(el => $.html(el))
       .join('')
       .trim();
   });

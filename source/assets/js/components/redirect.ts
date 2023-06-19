@@ -339,7 +339,7 @@ const redirects: Record<string, Record<string, string>> = {
   },
 };
 
-const { pathname, hash } = window.location;
+const {pathname, hash} = window.location;
 const match = redirects[pathname]?.[hash];
 if (match) {
   window.location.href = match;

@@ -1,9 +1,9 @@
-import { LoremIpsum } from 'lorem-ipsum';
+import {LoremIpsum} from 'lorem-ipsum';
 import stripIndent from 'strip-indent';
 import truncate from 'truncate-html';
-import { typogrify } from 'typogr';
+import {typogrify} from 'typogr';
 
-import { markdownEngine } from './engines';
+import {markdownEngine} from './engines';
 
 const lorem = new LoremIpsum();
 
@@ -33,7 +33,7 @@ export const getLorem = (type: string, number = 1) => {
  * @see https://github.com/oe/truncate-html
  */
 export const truncateHTML = (html: string, words = 170) =>
-  truncate(html, words, { byWords: true, keepWhitespaces: true });
+  truncate(html, words, {byWords: true, keepWhitespaces: true});
 
 /**
  * Renders block of Markdown into HTML.

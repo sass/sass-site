@@ -1,12 +1,9 @@
-import {
-  spawn as nodeSpawn,
-  SpawnOptionsWithoutStdio,
-} from 'node:child_process';
+import {spawn as nodeSpawn, SpawnOptionsWithoutStdio} from 'node:child_process';
 import fs from 'node:fs/promises';
 
 import deepEqual from 'deep-equal';
 import kleur from 'kleur';
-import { compare, parse } from 'semver';
+import {compare, parse} from 'semver';
 
 type VersionCache = Record<string, string>;
 
@@ -19,7 +16,7 @@ const VERSION_CACHE_PATH = './source/_data/versionCache.json';
 const spawn = (
   cmd: string,
   args: string[],
-  options: SpawnOptionsWithoutStdio,
+  options: SpawnOptionsWithoutStdio
 ) => {
   return new Promise((resolve, reject) => {
     const child = nodeSpawn(cmd, args, options);
@@ -64,7 +61,7 @@ const getCacheFile = async () => {
  */
 const writeCacheFile = async (cache: VersionCache) => {
   // eslint-disable-next-line no-console
-  console.info(kleur.green(`[11ty] Writing version cache file...`));
+  console.info(kleur.green('[11ty] Writing version cache file...'));
   await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(cache));
 };
 
@@ -79,7 +76,7 @@ const getLatestVersion = async (repo: string) => {
     stdout = (await spawn(
       'git',
       ['ls-remote', '--tags', '--refs', `https://github.com/${repo}`],
-      { env: { ...process.env, GIT_TERMINAL_PROMPT: '0' } },
+      {env: {...process.env, GIT_TERMINAL_PROMPT: '0'}}
     )) as string;
   } catch (err) {
     // eslint-disable-next-line no-console
@@ -92,7 +89,7 @@ const getLatestVersion = async (repo: string) => {
   };
   const version = stdout
     .split('\n')
-    .map((line) => line.split('refs/tags/').at(-1) ?? '')
+    .map(line => line.split('refs/tags/').at(-1) ?? '')
     .filter(isNotPreRelease)
     .sort(compare)
     .at(-1);
@@ -108,16 +105,16 @@ module.exports = async () => {
   const cache = await getCacheFile();
 
   const versions = await Promise.all(
-    repos.map(async (repo) => [
+    repos.map(async repo => [
       repo,
       cache[repo] ?? (await getLatestVersion(repo)),
-    ]),
+    ])
   );
   const data = Object.fromEntries(
     versions.map(([repo, version]) => [
       repo.replace('sass/', ''),
-      { version, url: `https://github.com/${repo}/releases/tag/${version}` },
-    ]),
+      {version, url: `https://github.com/${repo}/releases/tag/${version}`},
+    ])
   );
 
   const nextCache = Object.fromEntries(versions) as VersionCache;

@@ -62,21 +62,16 @@
     "@types/markdown-it-footnote": "^3.0.0",
     "@types/node": "^16",
     "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.60.0",
-    "@typescript-eslint/parser": "^5.60.0",
+    "@types/semver": "^7.5.0",
     "cheerio": "^1.0.0-rc.12",
     "date-fns": "^2.30.0",
     "deep-equal": "^2.2.1",
-    "eslint": "^8.43.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
     "gts": "^3.1.1",
     "jquery": "^3.7.0",
     "jquery-ui": "^1.13.2",
     "js-yaml": "^4.1.0",
     "kleur": "^4.1.5",
+    "liquidjs": "^10.8.3",
     "lorem-ipsum": "^2.0.8",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.7",
@@ -100,12 +95,5 @@
   },
   "resolutions": {
     "tslib": ">=2"
-  },
-  "yarn-upgrade-all": {
-    "ignore": [
-      "@sindresorhus/slugify",
-      "@types/node",
-      "strip-indent"
-    ]
   }
 }
