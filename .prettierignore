@@ -14,5 +14,6 @@
 /source/documentation/js-api
 coverage/
 node_modules/
+package-lock.json
 
 !/source/assets/js/vendor/index.ts

@@ -11,10 +11,8 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "^16",
-    "yarn": "^3"
+    "node": "^16"
   },
-  "packageManager": "yarn@3.6.0",
   "scripts": {
     "serve": "run-p 'watch:**'",
     "build": "run-s clean-version-cache build-dev:scripts 'build:**'",
@@ -27,7 +25,7 @@
     "watch:scripts": "npm run build-dev:scripts -- -w",
     "build:typedoc": "./tool/typedoc-build.sh",
     "build:11ty": "NODE_OPTIONS='-r ts-node/register' eleventy",
-    "watch:11ty": "yarn build:11ty --serve --incremental",
+    "watch:11ty": "npm run build:11ty --serve --incremental",
     "tsc": "tsc",
     "gts": "gts fix",
     "gts:ci": "gts lint",

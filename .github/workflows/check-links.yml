@@ -15,12 +15,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-          cache: yarn
+          cache: npm
       - name: Install dependencies
-        run: yarn install --immutable
+        run: npm ci
       - name: Build site
-        run: yarn build-prod
+        run: npm run build-prod
       - name: Check for broken internal links
-        run: yarn checklinks:internal
+        run: npm run checklinks:internal
       - name: Check for broken external links
-        run: yarn checklinks:external
+        run: npm run checklinks:external

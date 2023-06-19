@@ -82,7 +82,8 @@
           "assets/dist/": true,
           "yarn-debug.log": true,
           "yarn-error.log": true,
-          "yarn.lock": true
+          "yarn.lock": true,
+          "package-lock.json": true
         }
       }
     }

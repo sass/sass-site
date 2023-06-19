@@ -18,13 +18,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-          cache: yarn
+          cache: npm
       - name: Install & build
         run: |
-          yarn install --immutable
-          yarn build-prod
+          npm ci
+          npm run build-prod
       - name: Check links
-        run: yarn checklinks:internal
+        run: npm run checklinks:internal
 
   lint:
     name: Lint
@@ -34,8 +34,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-          cache: yarn
+          cache: npm
       - name: Install dependencies
-        run: yarn install --immutable
+        run: npm ci
       - name: Lint
-        run: yarn lint:ci
+        run: npm run lint:ci
