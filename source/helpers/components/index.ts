@@ -52,7 +52,7 @@ export const codeBlock = (contents: string, language: string, padding = 0) => {
   const attr = `language-${language}`;
   return `<pre class="${attr}"><code class="${attr}">${html.replaceAll(
     '\n',
-    '<br />'
+    '&#10;'
   )}</code></pre>`;
 };
 
