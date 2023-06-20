@@ -282,6 +282,9 @@
   grid-template-columns: minmax(var(--twitter-link-width), auto) 1fr;
 
   @include breakpoints.sl-breakpoint--large {
-    grid-template-columns: minmax(var(--twitter-link-width), auto) minmax(var(--mac-stadium-icon-width), auto);
+    grid-template-columns: minmax(var(--twitter-link-width), auto) minmax(
+        var(--mac-stadium-icon-width),
+        auto
+      );
   }
 }

@@ -9,8 +9,14 @@
   padding-right: var(--container-inline-padding, var(--sl-gutter));
 
   @include breakpoints.sl-breakpoint--small {
-    padding-left: var(--container-inline-padding-large, var(--sl-gutter--double));
-    padding-right: var(--container-inline-padding-large, var(--sl-gutter--double));
+    padding-left: var(
+      --container-inline-padding-large,
+      var(--sl-gutter--double)
+    );
+    padding-right: var(
+      --container-inline-padding-large,
+      var(--sl-gutter--double)
+    );
   }
 
   &--small {
