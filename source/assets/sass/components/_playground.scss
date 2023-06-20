@@ -8,17 +8,32 @@
 
   display: grid;
   grid-template:
-    'header' auto
+    'header' min-content
     'main' 1fr
-    'footer' auto / 100%;
-  min-height: 100vh;
+    'footer' min-content / 100%;
+  max-height: 100vh;
+  overflow: hidden;
 
   #main-content {
-    display: grid;
-    grid-template:
-      'editor' 1fr
-      'alert' min-content;
+    display: inherit;
+    overflow: inherit;
   }
+
+  .site-footer {
+    --sl-type-margin-block: var(--sl-gutter--quarter);
+
+    p {
+      padding-top: var(--sl-gutter--minus);
+    }
+  }
+}
+
+.sl-l-section--playground {
+  --container-inline-padding: 0;
+  --container-inline-padding-large: 0;
+  display: inherit;
+  overflow: inherit;
+  width: 100%;
 }
 
 .sl-r-banner__playground-title {
@@ -45,8 +60,8 @@
   top: -50%;
 
   &.show {
-    top: auto;
     right: auto;
+    top: auto;
   }
 
   @media screen and (width >= 1065px) {
@@ -65,11 +80,6 @@
   }
 }
 
-.sl-l-section--playground {
-  display: grid;
-  width: 100%;
-}
-
 // Playground Editor area
 .sl-c-playground {
   --sl-c-callout--block-margin: 0;
@@ -81,6 +91,7 @@
     'sass' 1fr
     'css' auto
     'debug' auto / 100%;
+  overflow: inherit;
 
   @include breakpoints.sl-breakpoint--large {
     grid-template:
@@ -94,11 +105,7 @@
   background-color: var(--sl-color-editor-background);
   border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
   display: grid;
-}
-
-.sl-c-playground__console-wrapper {
-  grid-area: debug;
-  min-width: calc((100% - var(--sl-gutter)) / 2);
+  overflow: inherit;
 }
 
 [data-code='precompiled'] {
@@ -122,14 +129,20 @@
 
 // Codemirror overrides
 .cm-editor {
-  height: 100%;
-  font-size: var(--sl-font-size--x-small);
   background-color: var(--sl-color-editor-background);
   color: var(--sl-color--code-base, var(--sl-color--code-text));
+  font-size: var(--sl-font-size--x-small);
+  height: auto;
+  overflow-x: auto;
+  overflow-y: inherit;
 
   .cm-gutters {
     background-color: var(--sl-color-editor-background);
     border-right: none;
+  }
+
+  .cm-lineNumbers .cm-gutterElement {
+    min-width: var(--sl-gutter--double);
   }
 
   .cm-content,
@@ -138,7 +151,11 @@
   }
 
   .cm-scroller {
-    overflow: auto;
+    overflow: unset;
+  }
+
+  .cm-line {
+    padding-left: var(--sl-gutter);
   }
 
   .cm-activeLineGutter,
@@ -165,10 +182,29 @@
   }
 }
 
+.sl-code-is-precompiled {
+  overflow: hidden auto;
+}
+
+// Compiled CSS error
+.sl-c-playground__error {
+  display: none;
+  font-weight: typography.$sl-font-weight--bold;
+
+  [data-compiler-has-error='true'] & {
+    display: block;
+  }
+}
+
+// Console specific styles
+.sl-c-playground__console-wrapper {
+  grid-area: debug;
+}
+
 .sl-c-playground__console {
   font-family: typography.$sl-font-family--code;
-  max-height: 500px;
   margin: 0;
+  max-height: 500px;
   min-height: 2em;
 
   .console-line {
@@ -194,6 +230,7 @@
   }
 }
 
+// Playground Tab Bar & Buttons
 .sl-c-playground__editor-tabbar {
   background-color: var(--sl-color--code-background-darker);
   display: flex;
@@ -218,18 +255,9 @@
   }
 }
 
-.sl-c-playground__error {
-  display: none;
-  font-weight: typography.$sl-font-weight--bold;
-
-  [data-compiler-has-error='true'] & {
-    display: block;
-  }
-}
-
 // Make sure all tab bar buttons and text get the same padding
 [data-tabbar~='item'] {
-  padding: var(--sl-gutter--half);
+  padding: var(--sl-gutter--half) var(--sl-gutter);
 }
 
 .sl-c-playground__tabbar-title {
@@ -244,5 +272,16 @@
   [data-code='compiled'] &:last-child {
     margin-left: auto;
     text-align: right;
+  }
+}
+
+.sl-c-footer-link-grid {
+  align-items: center;
+  display: grid;
+  gap: var(--sl-gutter);
+  grid-template-columns: minmax(var(--twitter-link-width), auto) 1fr;
+
+  @include breakpoints.sl-breakpoint--large {
+    grid-template-columns: minmax(var(--twitter-link-width), auto) minmax(var(--mac-stadium-icon-width), auto);
   }
 }

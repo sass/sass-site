@@ -37,8 +37,8 @@ body {
 
 a {
   background: var(--color-link-bg, transparent);
-  border-bottom: var(--sl-border--small) solid
-    var(--link--underline-color, rgba(brand.$sl-color--iron, 0.5));
+  border-bottom: var(--sl-border-width--link, var(--sl-border--small)) solid
+    var(--sl-border-color--link, rgba(brand.$sl-color--iron, 0.5));
   color: var(--sl-color--midnight-blue);
 
   .c1 & {
@@ -47,13 +47,21 @@ a {
 
   &:hover,
   &:focus {
-    --color-link-bg: var(--sl-color--link-action);
-    --link--underline-color: rgba(brand.$sl-color--iron, 0.75);
+    background: var(--sl-color-bg--link-hover, var(--sl-color--link-action, var(--color-link-bg)));
+    border-bottom-color: var(--sl-border-color--link-hover, var(--sl-border-color--link, rgba(brand.$sl-color--iron, 0.75)));
+    border-bottom-width: var(--sl-border-width--link-hover, var(--sl-border-width--link, var(--sl-border--small)));
   }
 
   &:active {
-    --link--underline-color: var(--sl-color--iron);
+    border-bottom-color: var(--sl-border-color--link-active, var(--sl-border-color--link, var(--sl-color--iron)));
+    border-bottom-width: var(--sl-border-width--link-active, var(--sl-border-width--link, var(--sl-border--small)));
   }
+}
+
+.sl-image-link {
+  --sl-color-bg--link-hover: transparent
+  --sl-border-color--link-hover: transparent;
+  --sl-border-width--link: 0;
 }
 
 code,

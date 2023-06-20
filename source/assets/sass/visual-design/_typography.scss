@@ -80,7 +80,7 @@ ol,
 dl,
 figure,
 details {
-  margin: var(--sl-gutter) 0;
+  margin: var(--sl-type-margin-block, var(--sl-gutter)) 0;
   padding: 0;
 }
 
