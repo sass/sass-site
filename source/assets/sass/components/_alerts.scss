@@ -32,7 +32,11 @@
   a {
     --sl-color-text--link: var(--sl-color--white);
     --sl-color-background--link-state: rgba(0, 0, 0, 6.25%);
-    --sl-border-color--link: #{rgba(brand.$sl-color--white, var(--opacity-border, 0.5))};
+    --sl-border-color--link: #{rgba(
+        brand.$sl-color--white,
+        var(--opacity-border, 0.5)
+      )};
+
     font-weight: typography.$sl-font-weight--bold;
 
     &:hover,

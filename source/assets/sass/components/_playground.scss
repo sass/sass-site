@@ -36,6 +36,7 @@
 .sl-l-section--playground {
   --container-inline-padding: 0;
   --container-inline-padding-large: 0;
+
   border-bottom: 1px solid var(--sl-color--iron);
   display: inherit;
   overflow: inherit;
@@ -102,7 +103,7 @@
     // magic numbers, the layout is well balanced with these proportions
     grid-template:
       'sass css' minmax(20ex, 1fr)
-      'sass debug'  minmax(0, 40%) / 1fr 1fr;
+      'sass debug' minmax(0, 40%) / 1fr 1fr;
     height: 100%;
     overflow: inherit;
   }
@@ -292,8 +293,8 @@
 
   @include breakpoints.sl-breakpoint--large {
     grid-template-columns: minmax(var(--twitter-link-width), auto) minmax(
-      var(--mac-stadium-icon-width),
-      auto
-    );
+        var(--mac-stadium-icon-width),
+        auto
+      );
   }
 }

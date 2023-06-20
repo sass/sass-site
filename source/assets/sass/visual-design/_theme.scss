@@ -38,6 +38,7 @@ body {
 a {
   --sl-color-text--link: var(--sl-color--midnight-blue);
   --sl-color-background--link: transparent;
+
   background: var(--sl-color-background--link);
   border-bottom: var(--sl-border-width--link, var(--sl-border--small)) solid
     var(--sl-border-color--link, rgba(brand.$sl-color--iron, 0.5));
@@ -49,22 +50,40 @@ a {
 
   &:hover,
   &:focus {
-    background: var(--sl-color-background--link-state, var(--sl-color--link-action, var(--sl-color-background--link)));
-    border-bottom-color: var(--sl-border-color--link-state, var(--sl-border-color--link, rgba(brand.$sl-color--iron, 0.75)));
-    border-bottom-width: var(--sl-border-width--link-state, var(--sl-border-width--link, var(--sl-border--small)));
+    background: var(
+      --sl-color-background--link-state,
+      var(--sl-color--link-action, var(--sl-color-background--link))
+    );
+    border-bottom-color: var(
+      --sl-border-color--link-state,
+      var(--sl-border-color--link, rgba(brand.$sl-color--iron, 0.75))
+    );
+    border-bottom-width: var(
+      --sl-border-width--link-state,
+      var(--sl-border-width--link, var(--sl-border--small))
+    );
     color: var(--sl-color-text--link-state, var(--sl-color-text--link));
   }
 
   &:active {
-    background: var(--sl-color-background--link-active, var(--sl-color-background--link));
-    border-bottom-color: var(--sl-border-color--link-active, var(--sl-border-color--link, var(--sl-color--iron)));
-    border-bottom-width: var(--sl-border-width--link-active, var(--sl-border-width--link, var(--sl-border--small)));
+    background: var(
+      --sl-color-background--link-active,
+      var(--sl-color-background--link)
+    );
+    border-bottom-color: var(
+      --sl-border-color--link-active,
+      var(--sl-border-color--link, var(--sl-color--iron))
+    );
+    border-bottom-width: var(
+      --sl-border-width--link-active,
+      var(--sl-border-width--link, var(--sl-border--small))
+    );
     color: var(--sl-color-text--link-active, var(--sl-color-text--link));
   }
 }
 
 .sl-image-link {
-  --sl-color-background--link-state: transparent
+  --sl-color-background--link-state: transparent;
   --sl-border-color--link-state: transparent;
   --sl-border-width--link: 0;
 }
