@@ -19,9 +19,7 @@ export const getBlogSlug = (page: Page) => page.fileSlug.replace(/^(\d*-)/, '');
 export const isTypedoc = (page: Page) =>
   page.url ? page.url.startsWith('/documentation/js-api/') : false;
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,
-                  @typescript-eslint/no-unsafe-call,
-                  @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function pagesPlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('getBlogSlug', getBlogSlug);

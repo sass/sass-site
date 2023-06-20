@@ -73,9 +73,7 @@ export const startsWith = (str: string, check: string) => str.startsWith(check);
  */
 export const stripInd = (str: string) => stripIndent(str);
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,
-                  @typescript-eslint/no-unsafe-call,
-                  @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function typePlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('truncateHTML', truncateHTML);

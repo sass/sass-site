@@ -71,7 +71,6 @@ const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
   for (const arg of args) {
     if (typeof arg !== 'string') {
       throw new Error(
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         `Received non-string argument to {% compatibility %} tag: ${arg}`
       );
     }
@@ -97,7 +96,6 @@ const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
       extend(value, opts, key as keyof CompatibilityOptions);
     } else {
       throw new Error(
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         `Received unexpected argument to {% compatibility %} tag: ${arg}`
       );
     }

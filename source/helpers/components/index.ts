@@ -53,9 +53,7 @@ export const codeBlock = (contents: string, language: string, padding = 0) => {
   return `<pre class="${attr}"><code class="${attr}">${html}</code></pre>`;
 };
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,
-                  @typescript-eslint/no-unsafe-call,
-                  @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function componentsPlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('implStatus', implStatus);

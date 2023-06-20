@@ -60,7 +60,6 @@ const getCacheFile = async () => {
  * Writes version object to cache file.
  */
 const writeCacheFile = async (cache: VersionCache) => {
-  // eslint-disable-next-line no-console
   console.info(kleur.green('[11ty] Writing version cache file...'));
   await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(cache));
 };
@@ -69,7 +68,6 @@ const writeCacheFile = async (cache: VersionCache) => {
  * Retrieves the highest stable version of `repo`, based on its git tags.
  */
 const getLatestVersion = async (repo: string) => {
-  // eslint-disable-next-line no-console
   console.info(kleur.cyan(`[11ty] Fetching version information for ${repo}`));
   let stdout;
   try {
@@ -79,7 +77,6 @@ const getLatestVersion = async (repo: string) => {
       {env: {...process.env, GIT_TERMINAL_PROMPT: '0'}}
     )) as string;
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(kleur.red(`[11ty] Failed to fetch git tags for ${repo}`));
     throw err;
   }
