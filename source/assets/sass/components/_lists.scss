@@ -56,6 +56,7 @@
       }
 
       a {
+        --sl-color-background--link-state: var(--sl-color--dawn-pink);
         border: none;
         cursor: pointer;
         display: block;
@@ -63,9 +64,6 @@
         padding: 0.3rem;
         width: 100%;
 
-        &:hover {
-          background-color: var(--sl-color--dawn-pink);
-        }
       }
 
       li.overview a {
@@ -83,7 +81,7 @@
             float: right;
             font-size: 0.5em;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 1px;
             transition: transform 0.1s;
             width: var(--sl-gutter--plus);
           }

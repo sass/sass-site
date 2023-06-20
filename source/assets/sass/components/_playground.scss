@@ -11,8 +11,13 @@
     'header' min-content
     'main' 1fr
     'footer' min-content / 100%;
-  max-height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow: hidden auto;
+
+  @include breakpoints.sl-breakpoint--large {
+    height: 100vh;
+    overflow: hidden;
+  }
 
   #main-content {
     display: inherit;
@@ -31,6 +36,7 @@
 .sl-l-section--playground {
   --container-inline-padding: 0;
   --container-inline-padding-large: 0;
+  border-bottom: 1px solid var(--sl-color--iron);
   display: inherit;
   overflow: inherit;
   width: 100%;
@@ -91,40 +97,45 @@
     'sass' 1fr
     'css' auto
     'debug' auto / 100%;
-  overflow: inherit;
 
   @include breakpoints.sl-breakpoint--large {
+    // magic numbers, the layout is well balanced with these proportions
     grid-template:
-      'sass  css' 1fr
-      'debug debug' minmax(0, auto) / 1fr 1fr;
+      'sass css' minmax(20ex, 1fr)
+      'sass debug'  minmax(0, 40%) / 1fr 1fr;
+    height: 100%;
+    overflow: inherit;
   }
 }
 
-// Precompiled and Compiled code container
-.sl-c-playground__code-editor-wrapper {
-  background-color: var(--sl-color-editor-background);
-  border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
+.sl-c-playground__panel {
   display: grid;
   overflow: inherit;
-}
-
-[data-code='precompiled'] {
-  --sl-color-editor-background: var(--sl-color--white);
-
-  grid-template-rows: min-content 1fr;
-}
-
-[data-code='compiled'] {
-  --sl-color-editor-background: var(--sl-color--code-background);
-
   grid-template:
     'editor-tabbar' min-content
     'editor-error' min-content
     'editor-code' 1fr / 1fr;
 }
 
-.sl-code-is-compiled {
+.sl-c-playground__panel-content {
   grid-area: editor-code;
+  overflow: hidden auto;
+}
+
+// Precompiled and Compiled code container
+.sl-c-playground__code-editor-wrapper {
+  background-color: var(--sl-color-editor-background);
+  border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
+}
+
+[data-code='precompiled'] {
+  --sl-color-editor-background: var(--sl-color--white);
+
+  grid-area: sass;
+}
+
+[data-code='compiled'] {
+  --sl-color-editor-background: var(--sl-color--code-background);
 }
 
 // Codemirror overrides
@@ -132,7 +143,7 @@
   background-color: var(--sl-color-editor-background);
   color: var(--sl-color--code-base, var(--sl-color--code-text));
   font-size: var(--sl-font-size--x-small);
-  height: auto;
+  height: 100%;
   overflow-x: auto;
   overflow-y: inherit;
 
@@ -182,14 +193,11 @@
   }
 }
 
-.sl-code-is-precompiled {
-  overflow: hidden auto;
-}
-
 // Compiled CSS error
 .sl-c-playground__error {
   display: none;
   font-weight: typography.$sl-font-weight--bold;
+  grid-area: editor-error;
 
   [data-compiler-has-error='true'] & {
     display: block;
@@ -203,9 +211,8 @@
 
 .sl-c-playground__console {
   font-family: typography.$sl-font-family--code;
+  height: 100%;
   margin: 0;
-  max-height: 500px;
-  min-height: 2em;
 
   .console-line {
     display: grid;
@@ -234,23 +241,24 @@
 .sl-c-playground__editor-tabbar {
   background-color: var(--sl-color--code-background-darker);
   display: flex;
+  grid-area: editor-tabbar;
 
   [data-active='true'] {
-    --color-button-tab-active: var(--text, var(--sl-color--pale-sky));
-    --color-tab-focus: var(--color-button-tab-active);
+    --color-button-text-focus: var(--color-button-tab-active);
+    --color-button-text: var(--sl-color--pale-sky);
   }
 
   [data-code='precompiled'] & {
     [data-active='true'] {
-      --color-tab-background: var(--sl-color--white);
-      --color-tab-background-hover: var(--sl-color--white);
+      --color-button-background: var(--sl-color--white);
+      --color-button-background-state: var(--sl-color--white);
     }
   }
 
   [data-code='compiled'] & {
     [data-active='true'] {
-      --color-tab-background: var(--sl-color--code-background);
-      --color-tab-background-hover: var(--sl-color--code-background);
+      --color-button-background: var(--sl-color--code-background);
+      --color-button-background-state: var(--sl-color--code-background);
     }
   }
 }
@@ -269,6 +277,7 @@
     letter-spacing: 0;
   }
 
+  // align the CSS Compiled title to the right of the panel header area
   [data-code='compiled'] &:last-child {
     margin-left: auto;
     text-align: right;
@@ -283,8 +292,8 @@
 
   @include breakpoints.sl-breakpoint--large {
     grid-template-columns: minmax(var(--twitter-link-width), auto) minmax(
-        var(--mac-stadium-icon-width),
-        auto
-      );
+      var(--mac-stadium-icon-width),
+      auto
+    );
   }
 }

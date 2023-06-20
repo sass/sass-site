@@ -9,7 +9,7 @@
   box-shadow: 0 2px 1px var(--sl-color--shadow);
   color: var(--color-button-text, var(--sl-color--highlight));
   cursor: pointer;
-  display: var(--display-button, inline-flex);
+  display: var(--display-button, inline-block);
   font-weight: var(--font-weight-button);
   justify-content: center;
   margin: 0;
@@ -17,68 +17,35 @@
 
   &:hover,
   &:focus {
+    background: var(--color-button-background-state, var(--color-button-background, var(--sl-color--link-action)));
     --color-button-text: var(--sl-color--action);
-    --color-button-background: var(--sl-color--link-action);
+    color: var(--color-button-text-state, var(--color-button-text));
   }
 
   &:active {
-    --color-button-text: var(--sl-color--active);
+    background: var(--color-button-background-active, var(--color-button-text, var(--sl-color--active)));
+    color: var(--color-button-text-active, var(--color-button-text, var(--sl-color--highlight)));
   }
 
   &--primary {
     --color-button-background: var(--sl-color--highlight);
-
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-      --color-button-text: var(--sl-color--white);
-    }
-
-    &:hover,
-    &:focus {
-      --color-button-background: var(--sl-color--action);
-    }
-
-    &:active {
-      --color-button-background: var(--sl-color--active);
-    }
+    --color-button-background-active: var(--sl-color--active);
+    --color-button-background-state: var(--sl-color--action);
+    --color-button-text: var(--sl-color--white);
+    --color-button-text-active: var(--sl-color--white);
+    --color-button-text-state: var(--sl-color--white);
   }
 
   &--tab {
-    --color-button-background: var(
-      --color-tab-background,
-      var(--sl-color--code-background-darker)
-    );
-    --color-button-text: var(
-      --color-button-tab-active,
-      var(--sl-color--highlight)
-    );
+    --color-button-background: var(--sl-color--code-background-darker);
+    --color-button-background-active: var(--color-button-background-state);
+    --color-button-background-state: transparent;
+    --color-button-text: var(--sl-color--highlight);
+    --color-button-text-active: inherit;
+    --color-button-text-state: var(--sl-color--midnight-blue);
     --font-weight-button: #{typography.$sl-font-weight--bold};
     --radius-button: 0;
 
     box-shadow: none;
-
-    &:hover {
-      background: var(--color-tab-background-hover, transparent);
-
-      --color-button-text: var(
-        --color-tab-hover,
-        var(--sl-color--midnight-blue)
-      );
-    }
-
-    &:focus {
-      --color-button-background: var(
-        --color-tab-background,
-        --sl-color--code-background
-      );
-
-      color: var(--color-tab-focus, var(--sl-color--highlight));
-    }
-  }
-
-  &:has(.caps) {
-    --display-button: inline;
   }
 }

@@ -5,7 +5,7 @@ is_playground: true
 ---
 
 <div class="sl-c-playground" data-compiler-has-error="false">
-  <div class="sl-c-playground__code-editor-wrapper" data-code="precompiled">
+  <div class="sl-c-playground__code-editor-wrapper sl-c-playground__panel" data-code="precompiled">
     <div class="sl-c-playground__editor-tabbar" data-setting="inputFormat">
       <button
         type="button"
@@ -22,9 +22,9 @@ is_playground: true
         class="sl-c-button sl-c-button--tab"
         data-setting="inputFormat">Sass</button>
     </div>
-    <div class="sl-code-is-precompiled"></div>
+    <div class="sl-c-playground__panel-content sl-code-is-precompiled"></div>
   </div>
-  <div class="sl-c-playground__code-editor-wrapper" data-code="compiled">
+  <div class="sl-c-playground__code-editor-wrapper sl-c-playground__panel" data-code="compiled">
     <div class="sl-c-playground__editor-tabbar" data-setting="outputFormat">
       <button
         type="button"
@@ -46,15 +46,15 @@ is_playground: true
       </span>
     </div>
     <div class="sl-c-callout sl-c-callout--warning sl-c-playground__error">Please resolve error to view compiled CSS.</div>
-    <div class="sl-code-is-compiled"></div>
+    <div class="sl-c-playground__panel-content sl-code-is-compiled"></div>
   </div>
-  <div class="sl-c-playground__console-wrapper">
+  <div class="sl-c-playground__console-wrapper sl-c-playground__panel">
     <div class="sl-c-playground__editor-tabbar">
       <span data-tabbar="item" class="sl-c-playground__tabbar-title">
         Console
       </span>
     </div>
-    <pre class="sl-c-playground__console"></pre>
+    <pre class="sl-c-playground__console sl-c-playground__panel-content"></pre>
   </div>
 </div>
 
