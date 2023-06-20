@@ -25,7 +25,7 @@
     "watch:scripts": "npm run build-dev:scripts -- -w",
     "build:typedoc": "./tool/typedoc-build.sh",
     "build:11ty": "NODE_OPTIONS='-r ts-node/register' eleventy",
-    "watch:11ty": "npm run build:11ty --serve --incremental",
+    "watch:11ty": "npm run build:11ty -- --serve --incremental",
     "tsc": "tsc",
     "gts": "gts fix",
     "gts:ci": "gts lint",
