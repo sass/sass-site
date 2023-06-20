@@ -5,24 +5,25 @@
   role="banner">
 
   <div class="sl-c-pop-stripe"></div>
-  <div class="sl-l-container">
-    <div class="sl-l-grid sl-l-grid--full sl-l-small-grid--fit sl-l-grid--center sl-l-grid--justify-space-between sl-l-grid--gutters">
-      <p class="sl-l-grid__column sl-r-banner__brand">
-        <a href="/"><img
-            height="24"
-            alt="Sass"
-            src="/assets/img/logos/logo.svg"></a>
-      </p>
-      <h1 class="sl-l-grid__column sl-l-grid--center sl-r-banner__playground-title">{{ title }}</h1>
-      <div class="sl-l-grid sl-l-grid__column sl-l-grid--center  sl-r-banner__playground-actions">
+  <div class="sl-r-banner--playground-grid">
+    <p class="sl-r-banner--playground__brand sl-r-banner__brand">
+      <a href="/"><img
+          height="24"
+          alt="Sass"
+          src="/assets/img/logos/logo.svg"></a>
+    </p>
+    <h1 class="sl-r-banner__playground-title">{{ title }}</h1>
+    <div class="sl-r-banner__playground-actions">
+      <div class="sl-r-banner__playground-button">
         <button
           type="button"
           id="playground-copy-url"
           class="sl-c-button">Copy URL</button>
-        <div class="sl-c-alert sl-r-banner__playground-alert" id="playground-copied-alert">
-          URL copied to clipboard
-        </div>
+      </div>
+      <div class="sl-c-alert sl-r-banner__playground-alert" id="playground-copied-alert">
+        URL copied to clipboard
       </div>
     </div>
+  </div>
   </>
 </header>

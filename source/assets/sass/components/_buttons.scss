@@ -30,12 +30,9 @@
   &:active {
     background: var(
       --color-button-background-active,
-      var(--color-button-text, var(--sl-color--active))
+      var(--sl-color--link-action)
     );
-    color: var(
-      --color-button-text-active,
-      var(--color-button-text, var(--sl-color--highlight))
-    );
+    color: var(--color-button-text-active, var(--sl-color--highlight));
   }
 
   &--primary {

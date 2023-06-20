@@ -33,6 +33,27 @@
   }
 }
 
+.sl-r-banner--playground-grid {
+  align-items: center;
+  display: grid;
+  grid-template:
+    'logo title copy' auto
+    'alert alert alert' minmax(0, auto) / 1fr 1fr 1fr;
+
+  @include breakpoints.sl-breakpoint--large {
+    grid-template: 'logo title copy' auto / 1fr 1fr 1fr;
+  }
+}
+
+// add padding to items in order for alert to be full width
+.sl-r-banner--playground__brand {
+  padding-left: var(--sl-gutter);
+
+  @include breakpoints.sl-breakpoint--small {
+    padding-left: var(--sl-gutter--double);
+  }
+}
+
 .sl-l-section--playground {
   --container-inline-padding: 0;
   --container-inline-padding-large: 0;
@@ -49,41 +70,47 @@
   --h1-size-lg: var(--sl-playground-heading);
 
   margin-bottom: 0;
-  flex: 1;
 }
 
 // Playground banner actions area
 .sl-r-banner__playground-actions {
-  flex-direction: row-reverse;
   gap: var(--sl-gutter);
+  display: contents;
+
+  @include breakpoints.sl-breakpoint--large {
+    display: grid;
+    grid-template: 'alert copy' auto / minmax(0, auto) max-content;
+  }
+}
+
+.sl-r-banner__playground-button {
+  grid-area: copy;
+  padding-right: var(--sl-gutter);
+  text-align: right;
+
+  @include breakpoints.sl-breakpoint--small {
+    padding-right: var(--sl-gutter--double);
+  }
 }
 
 // Playground banner actions alert message
 .sl-r-banner__playground-alert {
-  padding-left: var(--sl-gutter);
-  padding-right: var(--sl-gutter);
-  position: var(--playground-alert-position, absolute);
-  right: var(--playground-alert-right, 0);
-  top: -50%;
+  --alert-padding-block: 0;
 
-  &.show {
-    right: auto;
-    top: auto;
-  }
-
-  @media screen and (width >= 1065px) {
-    &.show {
-      --playground-alert-position: relative;
-    }
-  }
-}
-
-#playground-copied-alert {
+  grid-area: alert;
+  height: 0;
   opacity: 0;
-  transition: opacity 0.3s;
+  padding-left: var(--sl-gutter--half);
+  padding-right: var(--sl-gutter--half);
+  transition: opacity 0.3s 0.05s, visibility 0.3s;
+  visibility: hidden;
 
   &.show {
+    --alert-padding-block: var(--sl-gutter--minus);
+
+    height: 100%;
     opacity: 1;
+    visibility: visible;
   }
 }
 
