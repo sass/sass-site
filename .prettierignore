@@ -1,9 +1,6 @@
 !.*
 .git/
 .vscode/
-.yarn/
-.yarnrc
-.yarnrc.yml
 /**/*.md
 /.language/
 /_site/
