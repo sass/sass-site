@@ -40,7 +40,7 @@ you can always use the [`--quiet-deps` command-line flag] or the [`quietDeps` JS
 API option] to silence warnings from dependencies you don't control.
 
 [`--quiet-deps` command-line flag]: /documentation/cli/dart-sass/#quiet-deps
-[`quietDeps` JS API option]: /documentation/js-api/interfaces/Options#quietDeps
+[`quietDeps` JS API option]: /documentation/js-api/interfaces/Options/#quietDeps
 
 ## Why does it work this way?
 
