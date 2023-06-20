@@ -50,7 +50,10 @@ export const codeBlock = (contents: string, language: string, padding = 0) => {
   const code = `${contents}${'\n'.repeat(padding + 1)}`;
   const html = highlight(code, languages[language], language);
   const attr = `language-${language}`;
-  return `<pre class="${attr}"><code class="${attr}">${html}</code></pre>`;
+  return `<pre class="${attr}"><code class="${attr}">${html.replaceAll(
+    '\n',
+    '<br />'
+  )}</code></pre>`;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

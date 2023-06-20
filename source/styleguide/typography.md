@@ -2,7 +2,7 @@
 title: Typography
 ---
 
-{{ '## Families' | markdown }}
+## Families
 
 {% for font_family in font_families %}
   <dl class="guide-description-list">

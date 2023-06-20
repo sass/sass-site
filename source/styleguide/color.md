@@ -2,7 +2,7 @@
 title: Color & Theming
 ---
 
-{{ '## Brand Colors' | markdown }}
+## Brand Colors
 
 <ul class="sl-l-grid sl-l-grid--full sl-l-large-grid--divide-by-3 sl-l-large-grid--gutters">
   {% for swatch in colors %}

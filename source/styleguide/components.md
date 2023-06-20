@@ -2,7 +2,7 @@
 title: Components
 ---
 
-{{ '## Closed' | markdown }}
+## Closed
 
 <dl class="sl-c-description-list sl-c-description-list--horizontal">
   <div>
@@ -16,7 +16,7 @@ title: Components
   <div><a href="#">▶︎</a></div>
 </dl>
 
-{{ '## Open' | markdown }}
+## Open
 
 <dl class="sl-c-description-list sl-c-description-list--horizontal">
   <div>
@@ -34,7 +34,7 @@ title: Components
   <p>{% lorem 'paragraph' %}</p>
 </div>
 
-{{ '## Alerts' | markdown }}
+## Alerts
 
 <div class="sl-c-alert">
   <div class="sl-l-container">
@@ -54,7 +54,7 @@ title: Components
   </div>
 </div>
 
-{{ '## Buttons' | markdown }}
+## Buttons
 
 <a href="#" class="sl-c-button">Link</a>
 <button class="sl-c-button" type="button">Button</button>
@@ -62,24 +62,30 @@ title: Components
 <a href="#" class="sl-c-button sl-c-button--primary">Link</a>
 <button class="sl-c-button sl-c-button--primary" type="button">Button</button>
 
-{{ '## Callouts' | markdown }}
+## Callouts
 
 <div class="sl-c-callout">
-  {{ '### Callout' | markdown }}
-  <p>{% lorem 'paragraph' %}</p>
+
+  ### Callout
+
+  {% lorem 'paragraph' %}
 </div>
 
 <div class="sl-c-callout sl-c-callout--warning">
-  {{ '### Warning' | markdown }}
-  <p>{% lorem 'paragraph' %}</p>
+
+  ### Warning
+
+  {% lorem 'paragraph' %}
 </div>
 
 <div class="sl-c-callout sl-c-callout--fun-fact">
-  {{ '### Fun Fact' | markdown }}
-  <p>{% lorem 'paragraph' %}</p>
+
+  ### Fun Fact
+
+  {% lorem 'paragraph' %}
 </div>
 
-{{ '## Introduction' | markdown }}
+## Introduction
 
 <p class="sl-c-introduction">
   {% lorem 'paragraph' %}
@@ -89,35 +95,35 @@ title: Components
   <p>{% lorem 'paragraph' %}</p>
 </div>
 
-{{ '## Link Headers' | markdown }}
+## Link Headers
 
-{{ '## Link Header 2' | markdown }}
-{{ '### Link Header 3' | markdown }}
-{{ '#### Link Header 4' | markdown }}
+## Link Header 2
+### Link Header 3
+#### Link Header 4
 
-{{ '## Lists' | markdown }}
+## Lists
 
 <div class="sl-c-list-navigation-wrapper" style="height: unset; position: unset">
-  {% markdown %}
-    - [Vertical](#)
-    - [Navigation](#)
-    - [List](#)
-  {% endmarkdown %}
+
+  - [Vertical](#)
+  - [Navigation](#)
+  - [List](#)
+
 </div>
 
 <div class="sl-c-list-horizontal-wrapper">
-  {% markdown %}
-    - [Horizontal](#)
-    - [Navigation](#)
-    - [List](#)
-  {% endmarkdown %}
+
+  - [Horizontal](#)
+  - [Navigation](#)
+  - [List](#)
+
 </div>
 
-{{ '## Pop Stripe' | markdown }}
+## Pop Stripe
 
 <div class="sl-c-pop-stripe"></div>
 
-{{ '## Tables' | markdown }}
+## Tables
 
 <table class="sl-c-table">
   <tr>
