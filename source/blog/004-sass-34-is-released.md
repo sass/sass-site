@@ -10,8 +10,8 @@ succeeded. A mere five months after the release of [Sass
 codename Selective Steve. Faster releases mean fewer major features per release,
 so there are only two big new things to talk about (although there are plenty of
 little improvements you can read about in [the
-changelog](/documentation/file.SASS_CHANGELOG.html)). As the version name
-suggests, both of these features have to do with selectors.
+changelog](https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md)).
+As the version name suggests, both of these features have to do with selectors.
 
 ## Using `&` in SassScript
 
@@ -53,11 +53,11 @@ uses,but they're very liberal in what they accept: anything from nested lists to
 plain old strings.
 
 If you want to see every selector function we thought up, check out [the
-changelog](/documentation/file.SASS_CHANGELOG.html). I do want to highlight a
-few that I'm particularly fond of, though. You've already seen
-`selector-nest()`, and **`selector-append()`** is a close relative. The
-difference between them is whitespace: `selector-nest()` adds a space between
-its selectors, where `selector-append()` doesn't. This means that
+changelog](https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md).
+I do want to highlight a few that I'm particularly fond of, though. You've
+already seen `selector-nest()`, and **`selector-append()`** is a close relative.
+The difference between them is whitespace: `selector-nest()` adds a space
+between its selectors, where `selector-append()` doesn't. This means that
 `selector-append(".foo, .bar", "-suffix")` returns `.foo-suffix, .bar-suffix`.
 
 Another function I like a lot is **`selector-replace()`**. This does a

@@ -8,3 +8,13 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    ignore:
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      # Major version bumps for the following dependencies require pure ESM,
+      # which 11ty does not yet support.
+      # See: https://github.com/11ty/eleventy/issues/836
+      - dependency-name: '@sindresorhus/slugify'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'strip-indent'
+        update-types: ['version-update:semver-major']

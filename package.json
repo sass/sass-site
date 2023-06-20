@@ -16,8 +16,8 @@
   "scripts": {
     "serve": "run-p 'watch:**'",
     "build": "run-s clean-version-cache build-dev:scripts 'build:**'",
+    "build-prod": "run-s clean-version-cache build-prod:scripts 'build:**'",
     "clean-version-cache": "rm -f source/_data/versionCache.json",
-    "build-prod": "NETLIFY=true run-s clean-version-cache build-prod:scripts 'build:**'",
     "build:sass": "sass --style=compressed ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
     "watch:sass": "sass --watch ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
     "build-dev:scripts": "rollup -c",
@@ -36,7 +36,7 @@
     "lint": "run-s prettier gts stylelint tsc",
     "lint:ci": "run-s prettier:ci gts:ci stylelint:ci tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "checklinks:internal": "npx --yes --package=hyperlink --package=tap-spot -- 'hyperlink --canonicalroot https://sass-lang.com/ --root _site/ -r -p -i --skip \".css.map\" --skip \".js.map\" --skip \".svg\" --skip \"feed.atom\" --skip \"/documentation/js-api/\" --skip \"/blog/\" _site/index.html | tap-spot'",
+    "checklinks:internal": "npx --yes --package=hyperlink --package=tap-spot -- 'hyperlink --canonicalroot https://sass-lang.com/ --root _site/ -r -p -i --skip \".css.map\" --skip \".js.map\" --skip \".svg\" --skip \"feed.atom\" --skip \"/documentation/js-api/\" _site/index.html | tap-spot'",
     "checklinks:external": "npx --yes --package=broken-link-checker -- 'blc -ro --exclude=localhost:8080 --exclude=codepen.io --exclude=linkedin.com --exclude=docs.github.com --exclude=twitter.com https://sass-lang.com'"
   },
   "devDependencies": {

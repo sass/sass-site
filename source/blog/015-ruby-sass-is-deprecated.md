@@ -78,7 +78,7 @@ feature specifications that have historically just been scattered around issue
 comments.
 
 Leading up to the end of life, we'll be migrating the user-focused [reference
-documentation](/documentation/file.SASS_REFERENCE.html) from the Ruby Sass
+documentation](/documentation/) from the Ruby Sass
 repository to the Sass website. We could use some help doing the migration and
 touching up the documentation, so if you're interested please [chime in on the
 tracking issue](https://github.com/sass/sass-site/issues/205)!

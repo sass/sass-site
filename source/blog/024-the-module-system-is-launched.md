@@ -250,7 +250,7 @@ the problems that would arise if new members could be loaded dynamically.
 
 The Sass ecosystem won't switch to `@use` overnight, so in the meantime it needs
 to [interoperate well with
-`@import`](/documentation/at-rules/import#import-and-modules).
+`@import`](/documentation/at-rules/import/#import-and-modules).
 This is supported in both directions:
 
 * When a file that contains `@import`s is `@use`d, everything in its global
@@ -272,25 +272,26 @@ files that are only visible to `@import`, not to `@use`. They're written
 Concurrent with the launch of the new module system, we're launching a new
 [automated Sass migrator](/documentation/cli/migrator). This tool makes it easy
 to migrate most stylesheets to use the new module system automatically. Follow
-the instructions on [the Sass website](/documentation/cli/migrator#installation)
-to install it, then run it on your application:
+the instructions on [the Sass
+website](/documentation/cli/migrator/#installation) to install it, then run it
+on your application:
 
 ```shellsession
 $ sass-migrator module --migrate-deps <path/to/style.scss>
 ```
 
-The [`--migrate-deps` flag](/documentation/cli/migrator#migrate-deps) tells the
+The [`--migrate-deps` flag](/documentation/cli/migrator/#migrate-deps) tells the
 migrator to migrate not only the file you pass, but anything it imports as well.
 The migrator will automatically pick up files imported through [Webpack's
 `node_modules`
 syntax](https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules),
 but you can also pass explicit load paths with the [`--load-path`
-flag](/documentation/cli/migrator#load-path).
+flag](/documentation/cli/migrator/#load-path).
 
 If you want the migrator to tell you what changes it would make without actually
 making them, pass both the [`--dry-run`
-flag](/documentation/cli/migrator#dry-run) and the [`--verbose`
-flag](/documentation/cli/migrator#verbose) to tell it to just print out the
+flag](/documentation/cli/migrator/#dry-run) and the [`--verbose`
+flag](/documentation/cli/migrator/#verbose) to tell it to just print out the
 changes it would make without saving them to disk.
 
 ### Migrating a Library
@@ -302,14 +303,14 @@ and use, run:
 $ sass-migrator module --migrate-deps --forward=all <path/to/index.scss>
 ```
 
-The [`--forward` flag](/documentation/cli/migrator#forward) tells the migrator
+The [`--forward` flag](/documentation/cli/migrator/#forward) tells the migrator
 to add [`@forward` rules](/documentation/at-rules/forward) so that users can
 still load all the mixins, variables, and functions your library defines with a
 single `@use`.
 
 If you added a manual namespace to your library to avoid name conflicts, the
 migrator will remove it for you if you pass the [`--remove-prefix`
-flag](/documentation/cli/migrator#remove-prefix). You can even choose to only
+flag](/documentation/cli/migrator/#remove-prefix). You can even choose to only
 forward members that originally had that prefix by passing `--forward=prefixed`.
 
 ### Filing Issues

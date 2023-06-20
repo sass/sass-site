@@ -14,7 +14,7 @@ and we intend to continue that pattern moving forward!
 ### `@content` Arguments
 
 Mixins that take [`@content`
-blocks](/documentation/file.SASS_REFERENCE.html#mixin-content) can now pass
+blocks](/documentation/at-rules/mixin/#content-blocks) can now pass
 arguments to those blocks. This is written `@content(<arguments...>)`. If a
 mixin passes arguments to its content block, users of that mixin must accept
 those arguments by writing `@include <name> using (<arguments...>)`. The
@@ -78,7 +78,7 @@ blue channel or lightness (respectively) and the second as the alpha channel.
 
 **Be aware though** that the normal rules for [disambiguating between division
 and `/` as a
-separator](/documentation/file.SASS_REFERENCE.html#division-and-slash) still
+separator](/documentation/breaking-changes/slash-div/) still
 apply! So if you want to pass a variable for the alpha value, you'll need to use
 the old `rgba()` syntax. We're [considering possible long-term
 solutions](https://github.com/sass/sass/issues/2565) for this problem as `/` is

@@ -111,7 +111,7 @@ these brackets as well. Here's what they look like in CSS:
 ```
 
 The solution was clear: Sass already has a [list data
-type](/documentation/file.SASS_REFERENCE.html#lists), so we'd just allow lists
+type](/documentation/values/lists/), so we'd just allow lists
 to have square brackets. So `[first]` is just a list containing the unquoted
 string `first`. Like all Sass lists, bracketed lists can either be
 space-separated or comma-separated: `[foo bar baz]` and `[foo, bar, baz]` are

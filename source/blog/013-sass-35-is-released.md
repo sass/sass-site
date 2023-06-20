@@ -64,8 +64,7 @@ Sass:
 
 * Color arithmetic is deprecated. Channel-by-channel arithmetic doesn't
   correspond closely to intuitive understandings of color. Sass's suite of
-  [color
-  functions](/documentation/Sass/Script/Functions.html#other_color_functions)
+  [color functions](/documentation/modules/color/)
   are a much cleaner and more comprehensible way of manipulating colors
   dynamically.
 

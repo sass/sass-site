@@ -35,7 +35,10 @@ module.exports = eleventyConfig => {
   eleventyConfig.setLibrary('liquid', liquidEngine);
   eleventyConfig.setLibrary('md', markdownEngine);
   eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
-  eleventyConfig.addDataExtension('ts', (_, filepath) => require(filepath));
+  eleventyConfig.addDataExtension('ts', {
+    parser: filepath => require(filepath),
+    read: false,
+  });
 
   // register filters and shortcodes
   eleventyConfig.addPlugin(componentsPlugin);
