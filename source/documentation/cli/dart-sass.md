@@ -25,7 +25,7 @@ controlled with the [`--indented` flag][].
 
 [SCSS]: /documentation/syntax#scss
 [indented syntax]: /documentation/syntax#the-indented-syntax
-[plain CSS]: /documentation/at-rules/import#importing-css
+[plain CSS]: /documentation/at-rules/import/#importing-css
 [`--indented` flag]: #indented
 
 The special string `-` can be passed in place of the input file to tell Sass to
@@ -61,7 +61,7 @@ When compiling whole directories, Sass will ignore [partial files][] whose names
 begin with `_`. You can use partials to separate out your stylesheets without
 creating a bunch of unnecessary output files.
 
-[partial files]: /documentation/at-rules/import#partials
+[partial files]: /documentation/at-rules/import/#partials
 
 ## Options
 

@@ -61,7 +61,7 @@ toc:
   - Breaking Changes: /documentation/breaking-changes/
     :children:
       - Strict Unary Operators: /documentation/breaking-changes/strict-unary/
-      - Random With Units: /documentation/breaking-changes/random-with-units/
+      - Random With Units: /documentation/breaking-changes/function-units/
       - Invalid Combinators: /documentation/breaking-changes/bogus-combinators/
       - Media Queries Level 4: /documentation/breaking-changes/media-logic/
       - <code>/</code> as Division: /documentation/breaking-changes/slash-div/

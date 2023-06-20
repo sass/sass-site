@@ -11,6 +11,7 @@
  * To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=&folderName=sl-js&bgImgOpacityError=&bgImgOpacityHighlight=&bgImgOpacityActive=&bgImgOpacityHover=&bgImgOpacityDefault=&bgImgOpacityContent=&bgImgOpacityHeader=&cornerRadiusShadow=0&offsetLeftShadow=0&offsetTopShadow=0&thicknessShadow=.5rem&opacityShadow=30&bgImgOpacityShadow=0&bgTextureShadow=flat&bgColorShadow=%23036&opacityOverlay=50&bgImgOpacityOverlay=0&bgTextureOverlay=flat&bgColorOverlay=%23036&iconColorError=%23fff&fcError=%23fff&borderColorError=%23c69&bgTextureError=flat&bgColorError=%23c69&iconColorHighlight=%23484c55&fcHighlight=%23484c55&borderColorHighlight=%23f2ece4&bgTextureHighlight=flat&bgColorHighlight=%23f2ece4&iconColorActive=%23036&fcActive=%23036&borderColorActive=%23d2e1dd&bgTextureActive=flat&bgColorActive=%23d2e1dd&iconColorHover=%23036&fcHover=%23036&borderColorHover=%23dadbdf&bgTextureHover=flat&bgColorHover=%23dadbdf&iconColorDefault=%23bf4080&fcDefault=%23bf4080&borderColorDefault=%23ffffff&bgTextureDefault=flat&bgColorDefault=%23ffffff&iconColorContent=%23484c55&fcContent=%23484c55&borderColorContent=%23fff&bgTextureContent=flat&bgColorContent=%23fff&iconColorHeader=%23484c55&fcHeader=%23484c55&borderColorHeader=%23fff&bgTextureHeader=flat&bgColorHeader=%23fff&cornerRadius=0&fwDefault=normal&fsDefault=1rem&ffDefault='Source%20Sans%20Pro'%2C%20system-ui%2C%20-apple-system%2C%20'Segoe%20UI'%2C%20Roboto%2C%20Ubuntu%2C%20Cantarell%2C%20'Noto%20Sans'%2C%20sans-serif%2C%20'Apple%20Color%20Emoji'%2C%20'Segoe%20UI%20Emoji'%2C%20'Segoe%20UI%20Symbol'%2C%20'Noto%20Color%20Emoji'
  */
 
+@use 'jquery-ui';
 
 /* Component containers
 ----------------------------------*/
@@ -196,31 +197,31 @@ a.ui-button:active,
 }
 .ui-icon,
 .ui-widget-content .ui-icon {
-  background-image: url("images/ui-icons_484c55_256x240.png");
+  background-image: url("#{jquery-ui.$imgpath}/ui-icons_484c55_256x240.png");
 }
 .ui-widget-header .ui-icon {
-  background-image: url("images/ui-icons_484c55_256x240.png");
+  background-image: url("#{jquery-ui.$imgpath}/ui-icons_484c55_256x240.png");
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon,
 .ui-button:hover .ui-icon,
 .ui-button:focus .ui-icon {
-  background-image: url("images/ui-icons_036_256x240.png");
+  background-image: url("#{jquery-ui.$imgpath}/ui-icons_036_256x240.png");
 }
 .ui-state-active .ui-icon,
 .ui-button:active .ui-icon {
-  background-image: url("images/ui-icons_036_256x240.png");
+  background-image: url("#{jquery-ui.$imgpath}/ui-icons_036_256x240.png");
 }
 .ui-state-highlight .ui-icon,
 .ui-button .ui-state-highlight.ui-icon {
-  background-image: url("images/ui-icons_484c55_256x240.png");
+  background-image: url("#{jquery-ui.$imgpath}/ui-icons_484c55_256x240.png");
 }
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-  background-image: url("images/ui-icons_fff_256x240.png");
+  background-image: url("#{jquery-ui.$imgpath}/ui-icons_fff_256x240.png");
 }
 .ui-button .ui-icon {
-  background-image: url("images/ui-icons_bf4080_256x240.png");
+  background-image: url("#{jquery-ui.$imgpath}/ui-icons_bf4080_256x240.png");
 }
 
 /* positioning */

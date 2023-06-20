@@ -37,6 +37,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addDataExtension('yml, yaml', (contents) =>
     yaml.load(contents),
   );
+  eleventyConfig.addDataExtension('ts', (_, filepath) => require(filepath));
 
   // register filters and shortcodes
   eleventyConfig.addPlugin(componentsPlugin);
