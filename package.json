@@ -36,7 +36,7 @@
     "lint": "run-s prettier gts stylelint tsc",
     "lint:ci": "run-s prettier:ci gts:ci stylelint:ci tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "checklinks:internal": "npx --yes --package=hyperlink --package=tap-spot -- 'hyperlink --canonicalroot https://sass-lang.com/ --root _site/ -r -p -i -c 5 --skip \"fragment-redirect\" --skip \"types.Map\" _site/index.html | tap-spot'",
+    "checklinks:internal": "npx --yes --package=hyperlink --package=tap-spot -- 'hyperlink --canonicalroot https://sass-lang.com/ --root _site/ -r -p -i --skip \"fragment-redirect\" --skip \".css.map\" --skip \".js.map\" --skip \".svg\" --skip \"types.Map\" _site/index.html | tap-spot'",
     "checklinks:external": "npx --yes --package=broken-link-checker -- 'blc -ro --exclude=twitter.com --exclude=mvnrepository.com --exclude=drupal.org --exclude=web.archive.org https://sass-lang.com'"
   },
   "devDependencies": {
