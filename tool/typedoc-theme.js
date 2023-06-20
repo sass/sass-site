@@ -186,10 +186,13 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
 exports.load = app => {
   app.converter.addUnknownSymbolResolver((ref, refl, part, symbolId) => {
     if (!symbolId) return;
-    const name = symbolId.qualifiedName;
+    let name = symbolId.qualifiedName;
 
     switch (ref.moduleSource) {
       case 'immutable':
+        if (name.startsWith('Immutable.')) {
+          name = name.substring('Immutable.'.length);
+        }
         return `https://immutable-js.com/docs/latest@main/${name}/`;
       case 'source-map-js':
         if (name === 'RawSourceMap') {

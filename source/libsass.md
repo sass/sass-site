@@ -34,9 +34,6 @@ complementary_content: |
   - [Lightning fast Sass compiling with libsass, Node-sass and
     Grunt-sass](https://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/)
     --- by Ben Frain, August 2013
-  - [Node, Express and
-    libSass](https://anotheruiguy.gitbooks.io/nodeexpreslibsass_from-scratch/content/index.html)
-    --- Node, Express and libSass: a project from scratch workshop
 ---
 
 ## Wrappers

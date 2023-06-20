@@ -17,7 +17,7 @@ be fairly painless as they go: you can simply write `$a - $b` or `$a (-$b)`,
 depending which you intend. We'll also provide a [Sass migrator] migration to
 automatically update your stylesheets.
 
-[strict unary operators]: https://github.com/sass/sass/blob/main/proposal/strict-unary.md
+[strict unary operators]: https://github.com/sass/sass/blob/main/accepted/strict-unary.md
 [Sass migrator]: /documentation/cli/migrator
 
 **Deprecated:**
@@ -83,5 +83,5 @@ proposal] and then [file an issue] with your feedback. We'll be leaving this
 open to comments for a month, after which we'll finalize the proposal and start
 implementing it.
 
-[the full proposal]: https://github.com/sass/sass/blob/main/proposal/strict-unary.md
+[the full proposal]: https://github.com/sass/sass/blob/main/accepted/strict-unary.md
 [file an issue]: https://github.com/sass/sass/issues/new
