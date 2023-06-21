@@ -7,23 +7,21 @@ introduction: >
   `.float-left`, and to distribute collections of styles in libraries.
 ---
 
-{% markdown %}
-  Mixins are defined using the `@mixin` at-rule, which is written `@mixin <name>
-  { ... }` or `@mixin name(<arguments...>) { ... }`. A mixin's name can be any
-  Sass identifier, and it can contain any [statement][] other than [top-level
-  statements][]. They can be used to encapsulate styles that can be dropped into
-  a single [style rule][]; they can contain style rules of their own that can be
-  nested in other rules or included at the top level of the stylesheet; or they
-  can just serve to modify variables.
+Mixins are defined using the `@mixin` at-rule, which is written `@mixin <name> {
+... }` or `@mixin name(<arguments...>) { ... }`. A mixin's name can be any Sass
+identifier, and it can contain any [statement][] other than [top-level
+statements][]. They can be used to encapsulate styles that can be dropped into a
+single [style rule][]; they can contain style rules of their own that can be
+nested in other rules or included at the top level of the stylesheet; or they
+can just serve to modify variables.
 
-  [statement]: /documentation/syntax/structure#statements
-  [top-level statements]: /documentation/syntax/structure#top-level-statements
-  [style rule]: /documentation/style-rules
+[statement]: /documentation/syntax/structure#statements
+[top-level statements]: /documentation/syntax/structure#top-level-statements
+[style rule]: /documentation/style-rules
 
-  Mixins are included into the current context using the `@include` at-rule,
-  which is written `@include <name>` or `@include <name>(<arguments...>)`, with
-  the name of the mixin being included.
-{% endmarkdown %}
+Mixins are included into the current context using the `@include` at-rule, which
+is written `@include <name>` or `@include <name>(<arguments...>)`, with the name
+of the mixin being included.
 
 {% codeExample 'mixin-include' %}
   @mixin reset-list {
@@ -79,23 +77,21 @@ introduction: >
   make migration easier.
 {% endfunFact %}
 
-{% markdown %}
-  ## Arguments
+## Arguments
 
-  {% comment %}
-    When changing this section, don't forget to change the function arguments
-    section as well!
-  {% endcomment %}
+{% comment %}
+  When changing this section, don't forget to change the function arguments
+  section as well!
+{% endcomment %}
 
-  Mixins can also take arguments, which allows their behavior to be customized
-  each time they're called. The arguments are specified in the `@mixin` rule
-  after the mixin's name, as a list of variable names surrounded by parentheses.
-  The mixin must then be included with the same number of arguments in the form
-  of [SassScript expressions][]. The values of these expression are available
-  within the mixin's body as the corresponding variables.
+Mixins can also take arguments, which allows their behavior to be customized
+each time they're called. The arguments are specified in the `@mixin` rule after
+the mixin's name, as a list of variable names surrounded by parentheses. The
+mixin must then be included with the same number of arguments in the form of
+[SassScript expressions][]. The values of these expression are available within
+the mixin's body as the corresponding variables.
 
-  [SassScript expressions]: /documentation/syntax/structure#expressions
-{% endmarkdown %}
+[SassScript expressions]: /documentation/syntax/structure#expressions
 
 {% codeExample 'mixin-arguments' %}
   @mixin rtl($property, $ltr-value, $rtl-value) {
@@ -127,19 +123,17 @@ introduction: >
   syntax errors when refactoring your stylesheets.
 {% endfunFact %}
 
-{% markdown %}
-  ### Optional Arguments
+### Optional Arguments
 
-  Normally, every argument a mixin declares must be passed when that mixin is
-  included. However, you can make an argument optional by defining a *default
-  value* which will be used if that argument isn't passed. Default values use
-  the same syntax as [variable declarations][]: the variable name, followed by a
-  colon and a [SassScript expression][]. This makes it easy to define flexible
-  mixin APIs that can be used in simple or complex ways.
+Normally, every argument a mixin declares must be passed when that mixin is
+included. However, you can make an argument optional by defining a *default
+value* which will be used if that argument isn't passed. Default values use the
+same syntax as [variable declarations][]: the variable name, followed by a colon
+and a [SassScript expression][]. This makes it easy to define flexible mixin
+APIs that can be used in simple or complex ways.
 
-  [variable declarations]: /documentation/variables
-  [SassScript expression]: /documentation/syntax/structure#expressions
-{% endmarkdown %}
+[variable declarations]: /documentation/variables
+[SassScript expression]: /documentation/syntax/structure#expressions
 
 {% codeExample 'optional-arguments' %}
   @mixin replace-text($image, $x: 50%, $y: 50%) {
@@ -177,20 +171,17 @@ introduction: >
   earlier arguments!
 {% endfunFact %}
 
-{% markdown %}
-  ### Keyword Arguments
+### Keyword Arguments
 
-  When a mixin is included, arguments can be passed by name in addition to
-  passing them by their position in the argument list. This is especially useful
-  for mixins with multiple optional arguments, or with [boolean][] arguments
-  whose meanings aren't obvious without a name to go with them. Keyword
-  arguments use the same syntax as [variable declarations][] and [optional
-  arguments][].
+When a mixin is included, arguments can be passed by name in addition to passing
+them by their position in the argument list. This is especially useful for
+mixins with multiple optional arguments, or with [boolean][] arguments whose
+meanings aren't obvious without a name to go with them. Keyword arguments use
+the same syntax as [variable declarations][] and [optional arguments][].
 
-  [variable declarations]: /documentation/variables
-  [boolean]: /documentation/values/booleans
-  [optional arguments]: #optional-arguments
-{% endmarkdown %}
+[variable declarations]: /documentation/variables
+[boolean]: /documentation/values/booleans
+[optional arguments]: #optional-arguments
 
 {% codeExample 'keyword-arguments' %}
   @mixin square($size, $radius: 0) {
@@ -229,17 +220,15 @@ introduction: >
   [warning]: /documentation/at-rules/warn
 {% endheadsUp %}
 
-{% markdown %}
-  ### Taking Arbitrary Arguments
+### Taking Arbitrary Arguments
 
-  Sometimes it's useful for a mixin to be able to take any number of arguments.
-  If the last argument in a `@mixin` declaration ends in `...`, then all extra
-  arguments to that mixin are passed to that argument as a [list][]. This
-  argument is known as an [argument list][].
+Sometimes it's useful for a mixin to be able to take any number of arguments. If
+the last argument in a `@mixin` declaration ends in `...`, then all extra
+arguments to that mixin are passed to that argument as a [list][]. This argument
+is known as an [argument list][].
 
-  [list]: /documentation/values/lists
-  [argument list]: /documentation/values/lists#argument-lists
-{% endmarkdown %}
+[list]: /documentation/values/lists
+[argument list]: /documentation/values/lists#argument-lists
 
 {% codeExample 'arbitrary-arguments' %}
   @mixin order($height, $selectors...) {
@@ -267,17 +256,15 @@ introduction: >
   @include order(150px, "input.name", "input.address", "input.zip")
 {% endcodeExample %}
 
-{% markdown %}
-  #### Taking Arbitrary Keyword Arguments
+#### Taking Arbitrary Keyword Arguments
 
-  Argument lists can also be used to take arbitrary keyword arguments. The
-  [`meta.keywords()` function][] takes an argument list and returns any extra
-  keywords that were passed to the mixin as a [map][] from argument names (not
-  including `$`) to those arguments' values.
+Argument lists can also be used to take arbitrary keyword arguments. The
+[`meta.keywords()` function][] takes an argument list and returns any extra
+keywords that were passed to the mixin as a [map][] from argument names (not
+including `$`) to those arguments' values.
 
-  [`meta.keywords()` function]: /documentation/modules/meta#keywords
-  [map]: /documentation/values/maps
-{% endmarkdown %}
+[`meta.keywords()` function]: /documentation/modules/meta#keywords
+[map]: /documentation/values/maps
 
 {% render 'code_snippets/example-mixin-arbitrary-keyword-arguments' %}
 
@@ -289,16 +276,14 @@ introduction: >
   [`meta.keywords()` function]: /documentation/modules/meta#keywords
 {% endfunFact %}
 
-{% markdown %}
-  #### Passing Arbitrary Arguments
+#### Passing Arbitrary Arguments
 
-  Just like argument lists allow mixins to take arbitrary positional or keyword
-  arguments, the same syntax can be used to *pass* positional and keyword
-  arguments to a mixin. If you pass a list followed by `...` as the last
-  argument of an include, its elements will be treated as additional positional
-  arguments. Similarly, a map followed by `...` will be treated as additional
-  keyword arguments. You can even pass both at once!
-{% endmarkdown %}
+Just like argument lists allow mixins to take arbitrary positional or keyword
+arguments, the same syntax can be used to *pass* positional and keyword
+arguments to a mixin. If you pass a list followed by `...` as the last argument
+of an include, its elements will be treated as additional positional arguments.
+Similarly, a map followed by `...` will be treated as additional keyword
+arguments. You can even pass both at once!
 
 {% codeExample 'passing-arbitrary-arguments', false %}
   $form-selectors: "input.name", "input.address", "input.zip" !default;
@@ -310,14 +295,12 @@ introduction: >
   @include order(150px, $form-selectors...)
 {% endcodeExample %}
 
-{% funFact false %}
-  {% markdown %}
-    Because an [argument list][] keeps track of both positional and keyword
-    arguments, you use it to pass both at once to another mixin. That makes it
-    super easy to define an alias for a mixin!
+{% funFact %}
+  Because an [argument list][] keeps track of both positional and keyword
+  arguments, you use it to pass both at once to another mixin. That makes it
+  super easy to define an alias for a mixin!
 
-    [argument list]: /documentation/values/lists#argument-lists
-  {% endmarkdown %}
+  [argument list]: /documentation/values/lists#argument-lists
 
   {% codeExample 'passing-arbitrary-arguments-fun-fact' %}
     @mixin btn($args...) {
@@ -331,15 +314,13 @@ introduction: >
   {% endcodeExample %}
 {% endfunFact %}
 
-{% markdown %}
-  ## Content Blocks
+## Content Blocks
 
-  In addition to taking arguments, a mixin can take an entire block of styles,
-  known as a *content block*. A mixin can declare that it takes a content block
-  by including the `@content` at-rule in its body. The content block is passed
-  in using curly braces like any other block in Sass, and it's injected in place
-  of the `@content` rule.
-{% endmarkdown %}
+In addition to taking arguments, a mixin can take an entire block of styles,
+known as a *content block*. A mixin can declare that it takes a content block by
+including the `@content` at-rule in its body. The content block is passed in
+using curly braces like any other block in Sass, and it's injected in place of
+the `@content` rule.
 
 {% codeExample 'content-blocks' %}
   @mixin hover {
@@ -381,18 +362,16 @@ introduction: >
   [local variables]: /documentation/variables#scope
 {% endheadsUp %}
 
-{% markdown %}
-  ### Passing Arguments to Content Blocks
+### Passing Arguments to Content Blocks
 
-  {% compatibility 'dart: "1.15.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+{% compatibility 'dart: "1.15.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  A mixin can pass arguments to its content block the same way it would pass
-  arguments to another mixin by writing `@content(<arguments...>)`. The user
-  writing the content block can accept arguments by writing `@include <name>
-  using (<arguments...>)`. The argument list for a content block works just like
-  a mixin's argument list, and the arguments passed to it by `@content` work
-  just like passing arguments to a mixin.
-{% endmarkdown %}
+A mixin can pass arguments to its content block the same way it would pass
+arguments to another mixin by writing `@content(<arguments...>)`. The user
+writing the content block can accept arguments by writing `@include <name> using
+(<arguments...>)`. The argument list for a content block works just like a
+mixin's argument list, and the arguments passed to it by `@content` work just
+like passing arguments to a mixin.
 
 {% headsUp %}
   If a mixin passes arguments to its content block, that content block *must*
@@ -439,17 +418,14 @@ introduction: >
         font-family: Calluna
 {% endcodeExample %}
 
-{% markdown %}
-  ## Indented Mixin Syntax
+## Indented Mixin Syntax
 
-  The [indented syntax][] has a special syntax for defining and using mixins, in
-  addition to the standard `@mixin` and `@include`. Mixins are defined using the
-  character `=`, and they're included using `+`. Although this syntax is terser,
-  it's also harder to understand at a glance and users are encouraged to avoid
-  it.
+The [indented syntax][] has a special syntax for defining and using mixins, in
+addition to the standard `@mixin` and `@include`. Mixins are defined using the
+character `=`, and they're included using `+`. Although this syntax is terser,
+it's also harder to understand at a glance and users are encouraged to avoid it.
 
-  [indented syntax]: /documentation/syntax#the-indented-syntax
-{% endmarkdown %}
+[indented syntax]: /documentation/syntax#the-indented-syntax
 
 {% codeExample 'indented-syntax', true, 'sass' %}
   =reset-list

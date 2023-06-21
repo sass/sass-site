@@ -8,18 +8,16 @@ introduction: >
   Just wrap an expression in `#{}` in any of the following places:
 ---
 
-{% markdown %}
-  * [Selectors in style rules](/documentation/style-rules#interpolation)
-  * [Property names in declarations](/documentation/style-rules/declarations#interpolation)
-  * [Custom property values](/documentation/style-rules/declarations#custom-properties)
-  * [CSS at-rules](/documentation/at-rules/css)
-  * [`@extend`s](/documentation/at-rules/extend)
-  * [Plain CSS `@import`s](/documentation/at-rules/import/#plain-css-imports)
-  * [Quoted or unquoted strings](/documentation/values/strings)
-  * [Special functions](/documentation/syntax/special-functions)
-  * [Plain CSS function names](/documentation/at-rules/function/#plain-css-functions)
-  * [Loud comments](/documentation/syntax/comments)
-{% endmarkdown %}
+* [Selectors in style rules](/documentation/style-rules#interpolation)
+* [Property names in declarations](/documentation/style-rules/declarations#interpolation)
+* [Custom property values](/documentation/style-rules/declarations#custom-properties)
+* [CSS at-rules](/documentation/at-rules/css)
+* [`@extend`s](/documentation/at-rules/extend)
+* [Plain CSS `@import`s](/documentation/at-rules/import/#plain-css-imports)
+* [Quoted or unquoted strings](/documentation/values/strings)
+* [Special functions](/documentation/syntax/special-functions)
+* [Plain CSS function names](/documentation/at-rules/function/#plain-css-functions)
+* [Loud comments](/documentation/syntax/comments)
 
 {% codeExample 'interpolation' %}
   @mixin corner-icon($name, $top-or-bottom, $left-or-right) {
@@ -45,27 +43,25 @@ introduction: >
   @include corner-icon("mail", top, left)
 {% endcodeExample %}
 
-{% markdown %}
-  ## In SassScript
+## In SassScript
 
-  {% compatibility 'dart: true', 'libsass: false', 'ruby: "4.0.0 (unreleased)"', 'feature: "Modern Syntax"' %}
-    LibSass and Ruby Sass currently use an older syntax for parsing
-    interpolation in SassScript. For most practical purposes it works the same,
-    but it can behave strangely around [operators][]. See [this document][] for
-    details.
+{% compatibility 'dart: true', 'libsass: false', 'ruby: "4.0.0 (unreleased)"', 'feature: "Modern Syntax"' %}
+  LibSass and Ruby Sass currently use an older syntax for parsing
+  interpolation in SassScript. For most practical purposes it works the same,
+  but it can behave strangely around [operators][]. See [this document][] for
+  details.
 
-    [operators]: /documentation/operators
-    [this document]: https://github.com/sass/sass/blob/main/accepted/free-interpolation.md#old-interpolation-rules
-  {% endcompatibility %}
+  [operators]: /documentation/operators
+  [this document]: https://github.com/sass/sass/blob/main/accepted/free-interpolation.md#old-interpolation-rules
+{% endcompatibility %}
 
-  Interpolation can be used in SassScript to inject SassScript into [unquoted
-  strings][]. This is particularly useful when dynamically generating names (for
-  example for animations), or when using [slash-separated values][]. Note that
-  interpolation in SassScript always returns an unquoted string.
+Interpolation can be used in SassScript to inject SassScript into [unquoted
+strings][]. This is particularly useful when dynamically generating names (for
+example for animations), or when using [slash-separated values][]. Note that
+interpolation in SassScript always returns an unquoted string.
 
-  [unquoted strings]: /documentation/values/strings#unquoted
-  [slash-separated values]: /documentation/operators/numeric#slash-separated-values
-{% endmarkdown %}
+[unquoted strings]: /documentation/values/strings#unquoted
+[slash-separated values]: /documentation/operators/numeric#slash-separated-values
 
 {% codeExample 'interpolation-sass-script' %}
   @mixin inline-animation($duration) {
@@ -128,18 +124,16 @@ introduction: >
   [unit arithmetic]: /documentation/values/numbers#units
 {% endheadsUp %}
 
-{% markdown %}
-  ## Quoted Strings
+## Quoted Strings
 
-  In most cases, interpolation injects the exact same text that would be used if
-  the expression were used as a [property value][]. But there is one exception:
-  the quotation marks around quoted strings are removed (even if those quoted
-  strings are in lists). This makes it possible to write quoted strings that
-  contain syntax that's not allowed in SassScript (like selectors) and
-  interpolate them into style rules.
+In most cases, interpolation injects the exact same text that would be used if
+the expression were used as a [property value][]. But there is one exception:
+the quotation marks around quoted strings are removed (even if those quoted
+strings are in lists). This makes it possible to write quoted strings that
+contain syntax that's not allowed in SassScript (like selectors) and interpolate
+them into style rules.
 
-  [property value]: /documentation/style-rules/declarations
-{% endmarkdown %}
+[property value]: /documentation/style-rules/declarations
 
 {% codeExample 'quoted-strings' %}
   .example {

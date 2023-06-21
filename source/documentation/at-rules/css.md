@@ -10,16 +10,14 @@ table_of_contents: true
   [interpolation]: /documentation/interpolation
 {% endcompatibility %}
 
-{% markdown %}
-  Sass supports all the at-rules that are part of CSS proper. To stay flexible and
-  forwards-compatible with future versions of CSS, Sass has general support that
-  covers almost all at-rules by default. A CSS at-rule is written
-  `@<name> <value>`, `@<name> { ... }`, or `@<name> <value> { ... }`. The name
-  must be an identifier, and the value (if one exists) can be pretty much
-  anything. Both the name and the value can contain [interpolation][].
+Sass supports all the at-rules that are part of CSS proper. To stay flexible and
+forwards-compatible with future versions of CSS, Sass has general support that
+covers almost all at-rules by default. A CSS at-rule is written `@<name>
+<value>`, `@<name> { ... }`, or `@<name> <value> { ... }`. The name must be an
+identifier, and the value (if one exists) can be pretty much anything. Both the
+name and the value can contain [interpolation][].
 
-  [interpolation]: /documentation/interpolation
-{% endmarkdown %}
+[interpolation]: /documentation/interpolation
 
 {% codeExample 'css' %}
   @namespace svg url(http://www.w3.org/2000/svg);
@@ -45,12 +43,10 @@ table_of_contents: true
     symbols: "\1F44D"
 {% endcodeExample %}
 
-{% markdown %}
-  If a CSS at-rule is nested within a style rule, the two automatically swap
-  positions so that the at-rule is at the top level of the CSS output and the
-  style rule is within it. This makes it easy to add conditional styling without
-  having to rewrite the style rule's selector.
-{% endmarkdown %}
+If a CSS at-rule is nested within a style rule, the two automatically swap
+positions so that the at-rule is at the top level of the CSS output and the
+style rule is within it. This makes it easy to add conditional styling without
+having to rewrite the style rule's selector.
 
 {% codeExample 'nested-css-at-rule' %}
   .print-only {
@@ -66,16 +62,14 @@ table_of_contents: true
       display: block
 {% endcodeExample %}
 
-{{ '## `@media`' | markdown }}
+## `@media`
 
-{% compatibility 'dart: "1.11.0"', 'libsass: false', 'ruby: "3.7.0"', 'feature: "Range Syntax"', 'useMarkdown: false' %}
-  {% markdown %}
-    LibSass and older versions of Dart Sass and Ruby Sass don't support media
-    queries with features written in a [range context][]. They do support other
-    standard media queries.
+{% compatibility 'dart: "1.11.0"', 'libsass: false', 'ruby: "3.7.0"', 'feature: "Range Syntax"' %}
+  LibSass and older versions of Dart Sass and Ruby Sass don't support media
+  queries with features written in a [range context][]. They do support other
+  standard media queries.
 
-    [range context]: https://www.w3.org/TR/mediaqueries-4/#mq-range-context
-  {% endmarkdown %}
+  [range context]: https://www.w3.org/TR/mediaqueries-4/#mq-range-context
 
   {% codeExample 'range-syntax', false %}
     @media (width <= 700px) {
@@ -96,15 +90,13 @@ table_of_contents: true
   {% endcodeExample %}
 {% endcompatibility %}
 
-{% markdown %}
-  The [`@media` rule][] does all of the above and more. In addition to allowing
-  interpolation, it allows [SassScript expressions][] to be used directly in the
-  [feature queries][].
+The [`@media` rule][] does all of the above and more. In addition to allowing
+interpolation, it allows [SassScript expressions][] to be used directly in the
+[feature queries][].
 
-  [`@media` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
-  [SassScript expressions]: /documentation/syntax/structure#expressions
-  [feature queries]: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Targeting_media_features
-{% endmarkdown %}
+[`@media` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+[SassScript expressions]: /documentation/syntax/structure#expressions
+[feature queries]: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Targeting_media_features
 
 {% codeExample 'media-rule' %}
   $layout-breakpoint-small: 960px;
@@ -122,11 +114,9 @@ table_of_contents: true
       display: none
 {% endcodeExample %}
 
-{% markdown %}
-  When possible, Sass will also merge media queries that are nested within one
-  another to make it easier to support browsers that don't yet natively support
-  nested `@media` rules.
-{% endmarkdown %}
+When possible, Sass will also merge media queries that are nested within one
+another to make it easier to support browsers that don't yet natively support
+nested `@media` rules.
 
 {% codeExample 'merge-media-queries' %}
   @media (hover: hover) {
@@ -147,15 +137,13 @@ table_of_contents: true
         border-color: #036
 {% endcodeExample %}
 
-{% markdown %}
-  ## `@supports`
+## `@supports`
 
-  The [`@supports` rule][] also allows [SassScript expressions][] to be used in
-  the declaration queries.
+The [`@supports` rule][] also allows [SassScript expressions][] to be used in
+the declaration queries.
 
-  [SassScript expressions]: /documentation/syntax/structure#expressions
-  [`@supports` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
-{% endmarkdown %}
+[SassScript expressions]: /documentation/syntax/structure#expressions
+[`@supports` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
 
 {% codeExample 'support-at-rule' %}
   @mixin sticky-position {
@@ -180,15 +168,13 @@ table_of_contents: true
     @include sticky-position
 {% endcodeExample %}
 
-{% markdown %}
-  ## `@keyframes`
+## `@keyframes`
 
-  The [`@keyframes` rule][] works just like a general at-rule, except that its
-  child rules must be valid keyframe rules (`<number>%`, `from`, or `to`) rather
-  than normal selectors.
+The [`@keyframes` rule][] works just like a general at-rule, except that its
+child rules must be valid keyframe rules (`<number>%`, `from`, or `to`) rather
+than normal selectors.
 
-  [`@keyframes` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
-{% endmarkdown %}
+[`@keyframes` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
 
 {% codeExample 'keyframes' %}
   @keyframes slide-in {

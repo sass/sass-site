@@ -9,14 +9,12 @@ introduction: >
   configure libraries, and much more.
 ---
 
-{% markdown %}
-  A variable declaration looks a lot like a [property declaration][]: it's
-  written `<variable>: <expression>`. Unlike a property, which can only be
-  declared in a style rule or at-rule, variables can be declared anywhere you
-  want. To use a variable, just include it in a value.
+A variable declaration looks a lot like a [property declaration][]: it's written
+`<variable>: <expression>`. Unlike a property, which can only be declared in a
+style rule or at-rule, variables can be declared anywhere you want. To use a
+variable, just include it in a value.
 
-  [property declaration]: /documentation/style-rules/declarations
-{% endmarkdown %}
+[property declaration]: /documentation/style-rules/declarations
 
 {% codeExample 'variable' %}
   $base-color: #c6538c;
@@ -33,24 +31,22 @@ introduction: >
     border: 1px solid $border-dark
 {% endcodeExample %}
 
-{% headsUp false %}
-  {% markdown %}
-    CSS has [variables of its own][], which are totally different than Sass
-    variables. Know the differences!
+{% headsUp %}
+  CSS has [variables of its own][], which are totally different than Sass
+  variables. Know the differences!
 
-    [variables of its own]: /documentation/style-rules/declarations#custom-properties
+  [variables of its own]: /documentation/style-rules/declarations#custom-properties
 
-    * Sass variables are all compiled away by Sass. CSS variables are included
-      in the CSS output.
+  * Sass variables are all compiled away by Sass. CSS variables are included
+    in the CSS output.
 
-    * CSS variables can have different values for different elements, but Sass
-      variables only have one value at a time.
+  * CSS variables can have different values for different elements, but Sass
+    variables only have one value at a time.
 
-    * Sass variables are *imperative*, which means if you use a variable and
-      then change its value, the earlier use will stay the same. CSS variables
-      are *declarative*, which means if you change the value, it'll affect both
-      earlier uses and later uses.
-  {% endmarkdown %}
+  * Sass variables are *imperative*, which means if you use a variable and
+    then change its value, the earlier use will stay the same. CSS variables are
+    *declarative*, which means if you change the value, it'll affect both
+    earlier uses and later uses.
 
   {% codeExample 'variable-heads-up' %}
     $variable: value 1;
@@ -83,45 +79,41 @@ introduction: >
   make migration easier.
 {% endfunFact %}
 
-{% markdown %}
-  ## Default Values
+## Default Values
 
-  Normally when you assign a value to a variable, if that variable already had a
-  value, its old value is overwritten. But if you're writing a Sass library, you
-  might want to allow your users to configure your library's variables before
-  you use them to generate CSS.
+Normally when you assign a value to a variable, if that variable already had a
+value, its old value is overwritten. But if you're writing a Sass library, you
+might want to allow your users to configure your library's variables before you
+use them to generate CSS.
 
-  To make this possible, Sass provides the `!default` flag. This assigns a value
-  to a variable *only if* that variable isn't defined or its value is
-  [`null`][]. Otherwise, the existing value will be used.
+To make this possible, Sass provides the `!default` flag. This assigns a value
+to a variable *only if* that variable isn't defined or its value is [`null`][].
+Otherwise, the existing value will be used.
 
-  [`null`]: /documentation/values/null
+[`null`]: /documentation/values/null
 
-  ### Configuring Modules
+### Configuring Modules
 
-  {% render 'doc_snippets/module-system-status' %}
+{% render 'doc_snippets/module-system-status' %}
 
-  Variables defined with `!default` can be configured when loading a module with
-  the [`@use` rule][]. Sass libraries often use `!default` variables to allow
-  their users to configure the library's CSS.
+Variables defined with `!default` can be configured when loading a module with
+the [`@use` rule][]. Sass libraries often use `!default` variables to allow
+their users to configure the library's CSS.
 
-  [`@use` rule]: /documentation/at-rules/use
+[`@use` rule]: /documentation/at-rules/use
 
-  To load a module with configuration, write `@use <url> with (<variable>:
-  <value>, <variable>: <value>)`. The configured values will override the
-  variables' default values. Only variables written at the top level of the
-  stylesheet with a `!default` flag can be configured.
-{% endmarkdown %}
+To load a module with configuration, write `@use <url> with (<variable>:
+<value>, <variable>: <value>)`. The configured values will override the
+variables' default values. Only variables written at the top level of the
+stylesheet with a `!default` flag can be configured.
 
 {% render 'code_snippets/example-use-with' %}
 
-{% markdown %}
-  ## Built-in Variables
+## Built-in Variables
 
-  Variables that are defined by a [built-in module] cannot be modified.
+Variables that are defined by a [built-in module] cannot be modified.
 
-  [built-in module]: /documentation/modules
-{% endmarkdown %}
+[built-in module]: /documentation/modules
 
 {% codeExample 'built-in-variables', false %}
   @use "sass:math" as math;
@@ -135,15 +127,13 @@ introduction: >
   math.$pi: 0
 {% endcodeExample %}
 
-{% markdown %}
-  ## Scope
+## Scope
 
-  Variables declared at the top level of a stylesheet are *global*. This means
-  that they can be accessed anywhere in their module after they've been
-  declared. But that's not true for all variables. Those declared in blocks
-  (curly braces in SCSS or indented code in Sass) are usually *local*, and can
-  only be accessed within the block they were declared.
-{% endmarkdown %}
+Variables declared at the top level of a stylesheet are *global*. This means
+that they can be accessed anywhere in their module after they've been declared.
+But that's not true for all variables. Those declared in blocks (curly braces in
+SCSS or indented code in Sass) are usually *local*, and can only be accessed
+within the block they were declared.
 
 {% codeExample 'scope' %}
   $global-variable: global value;
@@ -176,15 +166,13 @@ introduction: >
     // local: $local-variable
 {% endcodeExample %}
 
-{% markdown %}
-  ### Shadowing
+### Shadowing
 
-  Local variables can even be declared with the same name as a global variable.
-  If this happens, there are actually two different variables with the same
-  name: one local and one global. This helps ensure that an author writing a
-  local variable doesn't accidentally change the value of a global variable they
-  aren't even aware of.
-{% endmarkdown %}
+Local variables can even be declared with the same name as a global variable. If
+this happens, there are actually two different variables with the same name: one
+local and one global. This helps ensure that an author writing a local variable
+doesn't accidentally change the value of a global variable they aren't even
+aware of.
 
 {% codeExample 'shadowing' %}
   $variable: global value;
@@ -209,11 +197,9 @@ introduction: >
     value: $variable
 {% endcodeExample %}
 
-{% markdown %}
-  If you need to set a global variable's value from within a local scope (such
-  as in a mixin), you can use the `!global` flag. A variable declaration flagged
-  as `!global` will *always* assign to the global scope.
-{% endmarkdown %}
+If you need to set a global variable's value from within a local scope (such as
+in a mixin), you can use the `!global` flag. A variable declaration flagged as
+`!global` will *always* assign to the global scope.
 
 {% codeExample 'global-variable' %}
   $variable: first global value;
@@ -250,17 +236,14 @@ introduction: >
   variable.
 {% endheadsUp %}
 
-{% markdown %}
-  ### Flow Control Scope
+### Flow Control Scope
 
-  Variables declared in [flow control rules][] have special scoping rules: they
-  don't shadow variables at the same level as the flow control rule. Instead,
-  they just assign to those variables. This makes it much easier to
-  conditionally assign a value to a variable, or build up a value as part of a
-  loop.
+Variables declared in [flow control rules][] have special scoping rules: they
+don't shadow variables at the same level as the flow control rule. Instead, they
+just assign to those variables. This makes it much easier to conditionally
+assign a value to a variable, or build up a value as part of a loop.
 
-  [flow control rules]: /documentation/at-rules/control
-{% endmarkdown %}
+[flow control rules]: /documentation/at-rules/control
 
 {% codeExample 'flow-control' %}
   $dark-theme: true !default;
@@ -300,29 +283,25 @@ introduction: >
   to it, even if you need to declare it as `null`.
 {% endheadsUp %}
 
-{% markdown %}
-  ## Advanced Variable Functions
+## Advanced Variable Functions
 
-  The Sass core library provides a couple advanced functions for working with
-  variables. The [`meta.variable-exists()` function][] returns whether a
-  variable with the given name exists in the current scope, and the
-  [`meta.global-variable-exists()` function][] does the same but only for the
-  global scope.
+The Sass core library provides a couple advanced functions for working with
+variables. The [`meta.variable-exists()` function][] returns whether a variable
+with the given name exists in the current scope, and the
+[`meta.global-variable-exists()` function][] does the same but only for the
+global scope.
 
-  [`meta.variable-exists()` function]: /documentation/modules/meta#variable-exists
-  [`meta.global-variable-exists()` function]: /documentation/modules/meta#global-variable-exists
-{% endmarkdown %}
+[`meta.variable-exists()` function]: /documentation/modules/meta#variable-exists
+[`meta.global-variable-exists()` function]: /documentation/modules/meta#global-variable-exists
 
-{% headsUp false %}
-  {% markdown %}
-    Users occasionally want to use interpolation to define a variable name based
-    on another variable. Sass doesn't allow this, because it makes it much
-    harder to tell at a glance which variables are defined where. What you *can*
-    do, though, is define a [map][] from names to values that you can then
-    access using variables.
+{% headsUp %}
+  Users occasionally want to use interpolation to define a variable name based
+  on another variable. Sass doesn't allow this, because it makes it much harder
+  to tell at a glance which variables are defined where. What you *can* do,
+  though, is define a [map][] from names to values that you can then access
+  using variables.
 
-    [map]: /documentation/values/maps
-  {% endmarkdown %}
+  [map]: /documentation/values/maps
 
   {% codeExample 'advanced-variable-functions' %}
     @use "sass:map";

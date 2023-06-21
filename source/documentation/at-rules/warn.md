@@ -8,15 +8,13 @@ introduction: >
   way that’s not quite optimal.
 ---
 
-{% markdown %}
-  The `@warn` rule is designed just for that. It's written `@warn <expression>`
-  and it prints the value of the [expression][] (usually a string) for the user,
-  along with a stack trace indicating how the current mixin or function was
-  called. Unlike the [`@error` rule][], though, it doesn't stop Sass entirely.
+The `@warn` rule is designed just for that. It's written `@warn <expression>`
+and it prints the value of the [expression][] (usually a string) for the user,
+along with a stack trace indicating how the current mixin or function was
+called. Unlike the [`@error` rule][], though, it doesn't stop Sass entirely.
 
-  [expression]: /documentation/syntax/structure#expressions
-  [`@error` rule]: /documentation/at-rules/error
-{% endmarkdown %}
+[expression]: /documentation/syntax/structure#expressions
+[`@error` rule]: /documentation/at-rules/error
 
 {% codeExample 'warn' %}
   $known-prefixes: webkit, moz, ms, o;
@@ -61,13 +59,11 @@ introduction: >
   }
 {% endcodeExample %}
 
-{% markdown %}
-  The exact format of the warning and stack trace varies from implementation to
-  implementation. This is what it looks like in Dart Sass:
+The exact format of the warning and stack trace varies from implementation to
+implementation. This is what it looks like in Dart Sass:
 
-  ```
-  Warning: Unknown prefix wekbit.
-      example.scss 6:7   prefix()
-      example.scss 16:3  root stylesheet
-  ```
-{% endmarkdown %}
+```
+Warning: Unknown prefix wekbit.
+    example.scss 6:7   prefix()
+    example.scss 16:3  root stylesheet
+```

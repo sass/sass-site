@@ -26,14 +26,12 @@ introduction: >
     width: calc(100% - #{$divider-offset})
 {% endcodeExample %}
 
-{% markdown %}
-  The exact format of the debug message varies from implementation to
-  implementation. This is what it looks like in Dart Sass:
+The exact format of the debug message varies from implementation to
+implementation. This is what it looks like in Dart Sass:
 
-  ```
-  test.scss:3 Debug: divider offset: 132px
-  ```
-{% endmarkdown %}
+```
+test.scss:3 Debug: divider offset: 132px
+```
 
 {% funFact %}
   You can pass any value to `@debug`, not just a string! It prints the same

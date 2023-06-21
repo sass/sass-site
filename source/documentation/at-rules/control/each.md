@@ -13,29 +13,24 @@ introduction: >
 
 {% render 'code_snippets/example-each-list' %}
 
-{% markdown %}
-  ## With Maps
+## With Maps
 
-  You can also use `@each` to iterate over every key/value pair in a map by
-  writing it `@each <variable>, <variable> in <expression> { ... }`. The key is
-  assigned to the first variable name, and the element is assigned to the
-  second.
-{% endmarkdown %}
+You can also use `@each` to iterate over every key/value pair in a map by
+writing it `@each <variable>, <variable> in <expression> { ... }`. The key is
+assigned to the first variable name, and the element is assigned to the second.
 
 {% render 'code_snippets/example-each-map' %}
 
-{% markdown %}
-  ## Destructuring
+## Destructuring
 
-  If you have a list of lists, you can use `@each` to automatically assign
-  variables to each of the values from the inner lists by writing it `@each
-  <variable...> in <expression> { ... }`. This is known as *destructuring*,
-  since the variables match the structure of the inner lists. Each variable name
-  is assigned to the value at the corresponding position in the list, or
-  [`null`][] if the list doesn't have enough values.
+If you have a list of lists, you can use `@each` to automatically assign
+variables to each of the values from the inner lists by writing it `@each
+<variable...> in <expression> { ... }`. This is known as *destructuring*, since
+the variables match the structure of the inner lists. Each variable name is
+assigned to the value at the corresponding position in the list, or [`null`][]
+if the list doesn't have enough values.
 
-  [`null`]: /documentation/values/null
-{% endmarkdown %}
+[`null`]: /documentation/values/null
 
 {% codeExample 'each' %}
   $icons:

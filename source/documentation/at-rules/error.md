@@ -8,15 +8,13 @@ introduction: >
   needs to stop running.
 ---
 
-{% markdown %}
-  Sass makes this easy with the `@error` rule, which is written `@error
-  <expression>`. It prints the value of the [expression][] (usually a string)
-  along with a stack trace indicating how the current mixin or function was
-  called. Once the error is printed, Sass stops compiling the stylesheet and
-  tells whatever system is running it that an error occurred.
+Sass makes this easy with the `@error` rule, which is written `@error
+<expression>`. It prints the value of the [expression][] (usually a string)
+along with a stack trace indicating how the current mixin or function was
+called. Once the error is printed, Sass stops compiling the stylesheet and tells
+whatever system is running it that an error occurred.
 
-  [expression]: /documentation/syntax/structure#expressions
-{% endmarkdown %}
+[expression]: /documentation/syntax/structure#expressions
 
 {% codeExample 'error', false %}
   @mixin reflexive-position($property, $value) {
@@ -63,18 +61,16 @@ introduction: >
     // Error: Property top must be either left or right.
 {% endcodeExample %}
 
-{% markdown %}
-  The exact format of the error and stack trace varies from implementation to
-  implementation, and can also depend on your build system. This is what it
-  looks like in Dart Sass when run from the command line:
+The exact format of the error and stack trace varies from implementation to
+implementation, and can also depend on your build system. This is what it looks
+like in Dart Sass when run from the command line:
 
-  ```
-  Error: "Property top must be either left or right."
-    ╷
-  3 │     @error "Property #{$property} must be either left or right.";
-    │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ╵
-    example.scss 3:5   reflexive-position()
-    example.scss 19:3  root stylesheet
-  ```
-{% endmarkdown %}
+```
+Error: "Property top must be either left or right."
+  ╷
+3 │     @error "Property #{$property} must be either left or right.";
+  │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+  example.scss 3:5   reflexive-position()
+  example.scss 19:3  root stylesheet
+```

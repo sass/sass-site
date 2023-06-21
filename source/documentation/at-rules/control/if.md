@@ -12,13 +12,10 @@ introduction: >
 
 {% render 'code_snippets/example-if' %}
 
-{% markdown %}
-  ## `@else`
+## `@else`
 
-  An `@if` rule can optionally be followed by an `@else` rule, written `@else {
-  ... }`. This rule's block is evaluated if the `@if` expression returns
-  `false`.
-{% endmarkdown %}
+An `@if` rule can optionally be followed by an `@else` rule, written `@else {
+... }`. This rule's block is evaluated if the `@if` expression returns `false`.
 
 {% codeExample 'if' %}
   $light-background: #f2ece4;
@@ -64,23 +61,21 @@ introduction: >
       @include theme-colors($light-theme: false)
 {% endcodeExample %}
 
-{% markdown %}
-  Conditional expressions may contain [boolean operators][] (`and`, `or`, `not`).
+Conditional expressions may contain [boolean operators][] (`and`, `or`, `not`).
 
-  [boolean operators]: /documentation/operators/boolean
+[boolean operators]: /documentation/operators/boolean
 
-  ### `@else if`
+### `@else if`
 
-  You can also choose whether to evaluate an `@else` rule's block by writing it
-  `@else if <expression> { ... }`. If you do, the block is evaluated only if the
-  preceding `@if`'s expression returns `false` *and* the `@else if`'s expression
-  returns `true`.
+You can also choose whether to evaluate an `@else` rule's block by writing it
+`@else if <expression> { ... }`. If you do, the block is evaluated only if the
+preceding `@if`'s expression returns `false` *and* the `@else if`'s expression
+returns `true`.
 
-  In fact, you can chain as many `@else if`s as you want after an `@if`. The
-  first block in the chain whose expression returns `true` will be evaluated, and
-  no others. If there's a plain `@else` at the end of the chain, its block will be
-  evaluated if every other block fails.
-{% endmarkdown %}
+In fact, you can chain as many `@else if`s as you want after an `@if`. The first
+block in the chain whose expression returns `true` will be evaluated, and no
+others. If there's a plain `@else` at the end of the chain, its block will be
+evaluated if every other block fails.
 
 {% codeExample 'else' %}
   @use "sass:math";
