@@ -23,14 +23,6 @@
     display: inherit;
     overflow: inherit;
   }
-
-  .site-footer {
-    --sl-type-margin-block: var(--sl-gutter--quarter);
-
-    p {
-      padding-top: var(--sl-gutter--minus);
-    }
-  }
 }
 
 .sl-r-banner--playground-grid {
