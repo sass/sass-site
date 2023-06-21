@@ -1,10 +1,4 @@
 .mac-stadium-icon {
-  margin-top: var(--mac-stadium-margin-top, var(--sl-gutter));
+  margin-block: 0;
   width: var(--mac-stadium-icon-width);
-
-  .playground & {
-    --mac-stadium-margin-top: 0;
-
-    margin-block: 0;
-  }
 }

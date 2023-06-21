@@ -1,6 +1,11 @@
+@use '../breakpoints';
 
 .site-footer {
   --sl-type-margin-block: var(--sl-gutter--quarter);
-  padding-bottom: var(--sl-gutter--half);
+  padding-bottom: var(--padding-footer-bottom, var(--sl-gutter));
   padding-top: var(--sl-gutter);
+
+  @include breakpoints.sl-breakpoint--large {
+    --padding-footer-bottom: var(--sl-gutter--half);
+  }
 }
