@@ -320,16 +320,3 @@
   }
 }
 
-.sl-c-footer-link-grid {
-  align-items: center;
-  display: grid;
-  gap: var(--sl-gutter);
-  grid-template-columns: minmax(var(--sl-width--twitter-link), auto) 1fr;
-
-  @include breakpoints.sl-breakpoint--large {
-    grid-template-columns: minmax(var(--sl-width--twitter-link), auto) minmax(
-        var(--sl-width--mac-stadium-icon),
-        auto
-      );
-  }
-}
