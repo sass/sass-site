@@ -61,10 +61,11 @@ export default async function codeExample(
     throw new Error('`{% codeExample %}` tags require a unique name.');
   }
   const code = generateCodeExample(contents, autogenCSS, syntax);
-  return liquidEngine.renderFile('code_examples/code_example', {
+  const html = await liquidEngine.renderFile('code_examples/code_example', {
     code,
     exampleName,
   });
+  return html.trim();
 }
 
 const generateCodeExample = (

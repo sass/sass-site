@@ -1,7 +1,4 @@
-<div
-  class="code-example ui-tabs{% if code.canSplit %} can-split{% endif %}"{% if code.splitLocation %}
-  style="--split-location: {{ code.splitLocation }}%"{% endif %}
->
+<div class="code-example ui-tabs{% if code.canSplit %} can-split{% endif %}"{% if code.splitLocation %} style="--split-location: {{ code.splitLocation }}%"{% endif %}>
   <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix">
     {%- if code.scss.size -%}
       {%- render 'code_examples/tab', name: 'SCSS', syntax: 'scss', id: exampleName, enabled: true -%}

@@ -90,4 +90,5 @@ export default function typePlugin(eleventyConfig: any) {
   // paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', markdown);
   eleventyConfig.addPairedLiquidShortcode('typogr', typogr);
+  eleventyConfig.addPairedLiquidShortcode('stripIndent', stripInd);
 }

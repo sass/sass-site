@@ -40,7 +40,7 @@ const returnTypeLink = (returnType: string) =>
  * Multiple signatures may be passed, in which case they're all included in
  * sequence.
  */
-export function _function(content: string, ...signatures: string[]) {
+export async function _function(content: string, ...signatures: string[]) {
   // Parse the last argument as the return type, if it's present
   const returns = signatures.at(-1)?.match(/returns?:\s*(.*)/)?.[1];
   if (returns) {
@@ -77,12 +77,13 @@ export function _function(content: string, ...signatures: string[]) {
   });
 
   // Render the final HTML
-  return liquidEngine.renderFile('function', {
+  const html = await liquidEngine.renderFile('function', {
     names,
     signatures: highlightedSignatures.join('\n'),
     content,
     returns: returns ? returnTypeLink(returns) : null,
   });
+  return html.trim();
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
