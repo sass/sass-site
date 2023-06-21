@@ -229,7 +229,7 @@ function setupPlayground() {
 
   function updateURL() {
     const hash = stateToBase64(playgroundState);
-    history.replaceState('playground', '', `#${hash}`);
+    history.replaceState('playground', '', `?#${hash}`);
   }
 
   attachListeners();
