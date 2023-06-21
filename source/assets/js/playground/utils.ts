@@ -24,8 +24,13 @@ export function stateToBase64(state: PlaygroundState): string {
 
 export function base64ToState(string: string): Partial<PlaygroundState> {
   const state: Partial<PlaygroundState> = {};
-  // Remove hash
-  const decoded = decodeURIComponent(atob(string.slice(1)));
+  let decoded;
+  try {
+    // Remove hash
+    decoded = decodeURIComponent(atob(string.slice(1)));
+  } catch (error) {
+    return {}
+  }
 
   if (!/\d\d.*/.test(decoded)) return {};
   state.inputFormat = decoded.charAt(0) === '1' ? 'scss' : 'indented';
