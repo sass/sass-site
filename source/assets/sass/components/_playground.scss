@@ -306,7 +306,8 @@
   }
 
   // align the CSS Compiled title to the right of the panel header area
-  [data-code='compiled'] &:last-child {
+  [data-code='compiled'] &:last-child,
+  [data-code='precompiled'] &:last-child {
     margin-left: auto;
     text-align: right;
   }

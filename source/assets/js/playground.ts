@@ -2,7 +2,7 @@ import { setDiagnostics } from '@codemirror/lint';
 import { Text } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 import debounce from 'lodash/debounce';
-import { compileString, Logger, OutputStyle, Syntax } from 'sass';
+import { compileString, info, Logger, OutputStyle, Syntax } from 'sass';
 
 import { displayForConsoleLog } from './playground/console-utils.js';
 import { editorSetup, outputSetup } from './playground/editor-setup.js';
@@ -232,8 +232,17 @@ function setupPlayground() {
     history.replaceState('playground', '', `?#${hash}`);
   }
 
+  function updateSassVersion() {
+    const version = info.split('\t')[1];
+    const versionSpan = document.querySelector(
+      '.sl-c-playground__tabbar-version',
+    ) as HTMLSpanElement;
+    versionSpan.innerText = `v${version}`;
+  }
+
   attachListeners();
   applyInitialState();
+  updateSassVersion();
 }
 
 if (document.readyState === 'loading') {
