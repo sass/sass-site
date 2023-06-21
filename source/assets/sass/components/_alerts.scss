@@ -34,18 +34,18 @@
     --sl-background--link-state: rgba(0, 0, 0, 6.25%);
     --sl-border-color--link: #{rgba(
         brand.$sl-color--white,
-        var(--opacity-border, 0.5)
+        var(--sl-border-opacity--link, 0.5)
       )};
 
     font-weight: typography.$sl-font-weight--bold;
 
     &:hover,
     &:focus {
-      --opacity-border: 0.75;
+      --sl-border-opacity--link: 0.75;
     }
 
     &:active {
-      --opacity-border: 1;
+      --sl-border-opacity--link: 1;
     }
   }
 }
