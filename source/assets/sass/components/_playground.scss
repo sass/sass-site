@@ -305,9 +305,8 @@
     letter-spacing: 0;
   }
 
-  // align the CSS Compiled title to the right of the panel header area
-  [data-code='compiled'] &:last-child,
-  [data-code='precompiled'] &:last-child {
+  // align the code editor titles to the right of the panel header area
+  .sl-c-playground__code-editor-wrapper & {
     margin-left: auto;
     text-align: right;
   }
