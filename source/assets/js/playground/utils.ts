@@ -29,7 +29,7 @@ export function base64ToState(string: string): Partial<PlaygroundState> {
     // Remove hash
     decoded = decodeURIComponent(atob(string.slice(1)));
   } catch (error) {
-    return {}
+    return {};
   }
 
   if (!/\d\d.*/.test(decoded)) return {};
