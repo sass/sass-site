@@ -4,17 +4,17 @@
 .sl-l-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: var(--sl-container-max-width, functions.sl-px-to-rem(1920px));
-  padding-left: var(--container-inline-padding, var(--sl-gutter));
-  padding-right: var(--container-inline-padding, var(--sl-gutter));
+  max-width: var(--sl-max-width--container, functions.sl-px-to-rem(1920px));
+  padding-left: var(--sl-inline-padding--container, var(--sl-gutter));
+  padding-right: var(--sl-inline-padding--container, var(--sl-gutter));
 
   @include breakpoints.sl-breakpoint--small {
     padding-left: var(
-      --container-inline-padding-large,
+      --sl-inline-padding--container-large,
       var(--sl-gutter--double)
     );
     padding-right: var(
-      --container-inline-padding-large,
+      --sl-inline-padding--container-large,
       var(--sl-gutter--double)
     );
   }

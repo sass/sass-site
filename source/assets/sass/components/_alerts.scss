@@ -4,12 +4,12 @@
 @use '../visual-design/typography';
 
 .sl-c-alert {
-  background: var(--alert-bg, var(--sl-color--highlight));
+  background: var(--sl-background--alert, var(--sl-color--highlight));
   color: var(--sl-color--white);
   font-size: var(--sl-font-size--small);
-  padding-bottom: var(--alert-padding-block, var(--sl-gutter--minus));
-  padding-top: var(--alert-padding-block, var(--sl-gutter--minus));
-  text-align: var(--alert-align, center);
+  padding-bottom: var(--sl-padding-block--alert, var(--sl-gutter--minus));
+  padding-top: var(--sl-padding-block--alert, var(--sl-gutter--minus));
+  text-align: var(--sl-align--alert, center);
 
   p,
   ul,
@@ -30,8 +30,8 @@
   }
 
   a {
-    --sl-color-text--link: var(--sl-color--white);
-    --sl-color-background--link-state: rgba(0, 0, 0, 6.25%);
+    --sl-color--link: var(--sl-color--white);
+    --sl-background--link-state: rgba(0, 0, 0, 6.25%);
     --sl-border-color--link: #{rgba(
         brand.$sl-color--white,
         var(--opacity-border, 0.5)
@@ -51,13 +51,13 @@
 }
 
 .sl-c-alert--info {
-  --alert-bg: var(--sl-color--midnight-blue);
+  --sl-background--alert: var(--sl-color--midnight-blue);
 }
 
 .sl-c-alert--special {
-  --alert-align: left;
-  --alert-bg: black;
-  --alert-padding-block: var(--sl-gutter--triple);
+  --sl-align--alert: left;
+  --sl-background--alert: black;
+  --sl-padding-block--alert: var(--sl-gutter--triple);
 }
 
 .sl-c-alert-title {

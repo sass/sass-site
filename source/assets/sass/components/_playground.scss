@@ -4,7 +4,7 @@
 @use '../visual-design/typography';
 
 .playground {
-  --sl-container-max-width: 100vw;
+  --sl-max-width--container: 100vw;
 
   display: grid;
   grid-template:
@@ -47,8 +47,8 @@
 }
 
 .sl-l-section--playground {
-  --container-inline-padding: 0;
-  --container-inline-padding-large: 0;
+  --sl-inline-padding--container: 0;
+  --sl-inline-padding--container-large: 0;
 
   border-bottom: 1px solid var(--sl-color--iron);
   display: inherit;
@@ -87,7 +87,7 @@
 
 // Playground banner actions alert message
 .sl-r-banner__playground-alert {
-  --alert-padding-block: 0;
+  --sl-padding-block--alert: 0;
 
   grid-area: alert;
   height: 0;
@@ -98,7 +98,7 @@
   visibility: hidden;
 
   &.show {
-    --alert-padding-block: var(--sl-gutter--minus);
+    --sl-padding-block--alert: var(--sl-gutter--minus);
 
     height: 100%;
     opacity: 1;
@@ -108,8 +108,8 @@
 
 // Playground Editor area
 .sl-c-playground {
-  --sl-c-callout--block-margin: 0;
-  --sl-c-callout--block-padding: var(--sl-gutter--quarter);
+  --sl-block-margin--callout: 0;
+  --sl-block-padding--callout: var(--sl-gutter--quarter);
 
   display: grid;
   gap: var(--sl-gutter);
@@ -144,23 +144,23 @@
 
 // Precompiled and Compiled code container
 .sl-c-playground__code-editor-wrapper {
-  background-color: var(--sl-color-editor-background);
+  background-color: var(--sl-background--editor);
   border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
 }
 
 [data-code='precompiled'] {
-  --sl-color-editor-background: var(--sl-color--white);
+  --sl-background--editor: var(--sl-color--white);
 
   grid-area: sass;
 }
 
 [data-code='compiled'] {
-  --sl-color-editor-background: var(--sl-color--code-background);
+  --sl-background--editor: var(--sl-color--code-background);
 }
 
 // Codemirror overrides
 .cm-editor {
-  background-color: var(--sl-color-editor-background);
+  background-color: var(--sl-background--editor);
   color: var(--sl-color--code-base, var(--sl-color--code-text));
   font-size: var(--sl-font-size--x-small);
   height: 100%;
@@ -168,7 +168,7 @@
   overflow-y: inherit;
 
   .cm-gutters {
-    background-color: var(--sl-color-editor-background);
+    background-color: var(--sl-background--editor);
     border-right: none;
   }
 
@@ -191,7 +191,7 @@
 
   .cm-activeLineGutter,
   .cm-activeLine {
-    background-color: var(--sl-color--highlight-blush);
+    background-color: var(--sl-color--warning-highlight);
 
     [data-code='compiled'] & {
       background-color: var(--sl-color--code-background);
@@ -200,12 +200,29 @@
 
   &.cm-focused {
     [data-code='precompiled'] & {
-      outline: 1px solid var(--sl-color--border-blush);
+      outline: 1px solid var(--sl-color--warning-light);
     }
 
     [data-code='compiled'] & {
       outline: 0;
     }
+  }
+
+  .cm-diagnostic {
+    color: var(--sl-color--code-text);
+    background: var(--sl-color--code-background-darker);
+  }
+
+  .cm-diagnostic-error {
+    border-color: var(--sl-color--error);
+  }
+
+  .cm-diagnostic-warning {
+    border-color: var(--sl-color--warn);
+  }
+
+  .cm-diagnostic-info {
+    border-color: var(--sl-color--success);
   }
 
   .sl-code-is-precompiled & {
@@ -264,21 +281,20 @@
   grid-area: editor-tabbar;
 
   [data-active='true'] {
-    --color-button-text-focus: var(--color-button-tab-active);
-    --color-button-text: var(--sl-color--pale-sky);
+    --sl-color--button: var(--sl-color--pale-sky);
   }
 
   [data-code='precompiled'] & {
     [data-active='true'] {
-      --color-button-background: var(--sl-color--white);
-      --color-button-background-state: var(--sl-color--white);
+      --sl-background--button: var(--sl-color--white);
+      --sl-background--button-state: var(--sl-color--white);
     }
   }
 
   [data-code='compiled'] & {
     [data-active='true'] {
-      --color-button-background: var(--sl-color--code-background);
-      --color-button-background-state: var(--sl-color--code-background);
+      --sl-background--button: var(--sl-color--code-background);
+      --sl-background--button-state: var(--sl-color--code-background);
     }
   }
 }
@@ -308,11 +324,11 @@
   align-items: center;
   display: grid;
   gap: var(--sl-gutter);
-  grid-template-columns: minmax(var(--twitter-link-width), auto) 1fr;
+  grid-template-columns: minmax(var(--sl-width--twitter-link), auto) 1fr;
 
   @include breakpoints.sl-breakpoint--large {
-    grid-template-columns: minmax(var(--twitter-link-width), auto) minmax(
-        var(--mac-stadium-icon-width),
+    grid-template-columns: minmax(var(--sl-width--twitter-link), auto) minmax(
+        var(--sl-width--mac-stadium-icon),
         auto
       );
   }

@@ -36,13 +36,13 @@ body {
 }
 
 a {
-  --sl-color-text--link: var(--sl-color--midnight-blue);
-  --sl-color-background--link: transparent;
+  --sl-color--link: var(--sl-color--midnight-blue);
+  --sl-background--link: transparent;
 
-  background: var(--sl-color-background--link);
+  background: var(--sl-background--link);
   border-bottom: var(--sl-border-width--link, var(--sl-border--small)) solid
     var(--sl-border-color--link, rgba(brand.$sl-color--iron, 0.5));
-  color: var(--sl-color-text--link);
+  color: var(--sl-color--link);
 
   .c1 & {
     color: inherit;
@@ -51,8 +51,8 @@ a {
   &:hover,
   &:focus {
     background: var(
-      --sl-color-background--link-state,
-      var(--sl-color--link-action, var(--sl-color-background--link))
+      --sl-background--link-state,
+      var(--sl-color--link-action, var(--sl-background--link))
     );
     border-bottom-color: var(
       --sl-border-color--link-state,
@@ -62,13 +62,13 @@ a {
       --sl-border-width--link-state,
       var(--sl-border-width--link, var(--sl-border--small))
     );
-    color: var(--sl-color-text--link-state, var(--sl-color-text--link));
+    color: var(--sl-color--link-state, var(--sl-color--link));
   }
 
   &:active {
     background: var(
-      --sl-color-background--link-active,
-      var(--sl-color-background--link)
+      --sl-background--link-active,
+      var(--sl-background--link)
     );
     border-bottom-color: var(
       --sl-border-color--link-active,
@@ -78,12 +78,12 @@ a {
       --sl-border-width--link-active,
       var(--sl-border-width--link, var(--sl-border--small))
     );
-    color: var(--sl-color-text--link-active, var(--sl-color-text--link));
+    color: var(--sl-color--link-active, var(--sl-color--link));
   }
 }
 
 .sl-image-link {
-  --sl-color-background--link-state: transparent;
+  --sl-background--link-state: transparent;
   --sl-border-color--link-state: transparent;
   --sl-border-width--link: 0;
 }
