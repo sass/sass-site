@@ -130,15 +130,6 @@ evaluated if every other block fails.
 
   .next
     @include triangle(5px, black, right)
-  ===
-  .next {
-    height: 0;
-    width: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 2.5px;
-    border-left-color: black;
-  }
 {% endcodeExample %}
 
 {% render 'doc_snippets/truthiness-and-falsiness' %}

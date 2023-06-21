@@ -324,9 +324,5 @@ global scope.
     .alert
       // Instead of $theme-color-#{warning}
       background-color: map.get($theme-colors, "warning")
-    ===
-    .alert {
-      background-color: #ffc107;
-    }
   {% endcodeExample %}
 {% endheadsUp %}

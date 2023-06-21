@@ -436,19 +436,6 @@ to do some simple math to calculate widths for an `article` and `aside`.
   aside[role="complementary"]
     width: math.div(300px, 960px) * 100%
     margin-left: auto
-  ===
-  .container {
-    display: flex;
-  }
-
-  article[role="main"] {
-    width: 62.5%;
-  }
-
-  aside[role="complementary"] {
-    width: 31.25%;
-    margin-left: auto;
-  }
 {% endcodeExample %}
 
 We've created a very simple fluid grid, based on 960px. Operations in Sass let

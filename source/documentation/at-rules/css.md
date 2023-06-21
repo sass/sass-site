@@ -71,7 +71,7 @@ having to rewrite the style rule's selector.
 
   [range context]: https://www.w3.org/TR/mediaqueries-4/#mq-range-context
 
-  {% codeExample 'range-syntax', false %}
+  {% codeExample 'range-syntax' %}
     @media (width <= 700px) {
       body {
         background: green;
@@ -81,12 +81,6 @@ having to rewrite the style rule's selector.
     @media (width <= 700px)
       body
         background: green
-    ===
-    @media (width <= 700px) {
-      body {
-        background: green;
-      }
-    }
   {% endcodeExample %}
 {% endcompatibility %}
 

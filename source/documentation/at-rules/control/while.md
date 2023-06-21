@@ -36,10 +36,6 @@ introduction: >
   $normal-font-size: 16px
   sup
     font-size: scale-below(20px, 16px)
-  ===
-  sup {
-    font-size: 12.36094px;
-  }
 {% endcodeExample %}
 
 {% headsUp %}
