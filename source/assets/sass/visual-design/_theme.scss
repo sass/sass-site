@@ -66,10 +66,7 @@ a {
   }
 
   &:active {
-    background: var(
-      --sl-background--link-active,
-      var(--sl-background--link)
-    );
+    background: var(--sl-background--link-active, var(--sl-background--link));
     border-bottom-color: var(
       --sl-border-color--link-active,
       var(--sl-border-color--link, var(--sl-color--iron))
