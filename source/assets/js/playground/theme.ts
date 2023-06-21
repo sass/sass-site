@@ -31,7 +31,6 @@ const playgroundHighlightStyle = HighlightStyle.define([
     color: 'var(--sl-color--code-dark)',
     fontWeight: '600',
   },
-  { tag: tags.moduleKeyword, color: 'green' },
   {
     tag: tags.operator,
     color: 'var(--sl-color--code-muted-dark)',
