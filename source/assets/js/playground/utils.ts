@@ -1,7 +1,8 @@
-import { Diagnostic } from '@codemirror/lint';
-import { Exception, OutputStyle, Syntax } from 'sass';
+/* eslint-disable node/no-extraneous-import */
+import {Diagnostic} from '@codemirror/lint';
+import {Exception, OutputStyle, Syntax} from 'sass';
 
-import { ConsoleLog } from './console-utils';
+import {ConsoleLog} from './console-utils';
 
 export type PlaygroundState = {
   inputFormat: Syntax;
@@ -40,8 +41,8 @@ export function base64ToState(string: string): Partial<PlaygroundState> {
   return state;
 }
 
-type ParseResultSuccess = { css: string };
-type ParseResultError = { error: Exception | unknown };
+type ParseResultSuccess = {css: string};
+type ParseResultError = {error: Exception | unknown};
 export type ParseResult = ParseResultSuccess | ParseResultError;
 
 export function errorToDiagnostic(error: Exception | unknown): Diagnostic {

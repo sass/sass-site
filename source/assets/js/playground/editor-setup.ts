@@ -1,3 +1,4 @@
+/* eslint-disable node/no-extraneous-import */
 import {
   autocompletion,
   closeBrackets,
@@ -10,8 +11,8 @@ import {
   historyKeymap,
   indentWithTab,
 } from '@codemirror/commands';
-import { css as langCss } from '@codemirror/lang-css';
-import { sass as langSass } from '@codemirror/lang-sass';
+import {css as langCss} from '@codemirror/lang-css';
+import {sass as langSass} from '@codemirror/lang-sass';
 import {
   bracketMatching,
   defaultHighlightStyle,
@@ -20,8 +21,8 @@ import {
   indentOnInput,
   syntaxHighlighting,
 } from '@codemirror/language';
-import { lintKeymap } from '@codemirror/lint';
-import { EditorState } from '@codemirror/state';
+import {lintKeymap} from '@codemirror/lint';
+import {EditorState} from '@codemirror/state';
 import {
   dropCursor,
   highlightActiveLine,
@@ -31,7 +32,7 @@ import {
   lineNumbers,
 } from '@codemirror/view';
 
-import { playgroundHighlightStyle } from './theme.js';
+import {playgroundHighlightStyle} from './theme.js';
 
 const editorSetup = (() => [
   [
@@ -43,7 +44,7 @@ const editorSetup = (() => [
     dropCursor(),
     indentOnInput(),
     syntaxHighlighting(playgroundHighlightStyle),
-    syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+    syntaxHighlighting(defaultHighlightStyle, {fallback: true}),
     bracketMatching(),
     closeBrackets(),
     autocompletion(),
@@ -67,11 +68,11 @@ const outputSetup = (() => [
     highlightSpecialChars(),
     foldGutter(),
     syntaxHighlighting(playgroundHighlightStyle),
-    syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+    syntaxHighlighting(defaultHighlightStyle, {fallback: true}),
     highlightActiveLine(),
     EditorState.readOnly.of(true),
   ],
   langCss(),
 ])();
 
-export { editorSetup, outputSetup };
+export {editorSetup, outputSetup};

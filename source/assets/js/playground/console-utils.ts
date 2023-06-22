@@ -1,4 +1,4 @@
-import { Exception, SourceSpan } from 'sass';
+import {Exception, SourceSpan} from 'sass';
 
 type ConsoleLogDebug = {
   options: {
@@ -46,7 +46,7 @@ function lineNumberFormatter(number?: number): string {
 }
 
 export function displayForConsoleLog(item: ConsoleLog): string {
-  const data: { type: string; lineNumber?: number; message: string } = {
+  const data: {type: string; lineNumber?: number; message: string} = {
     type: item.type,
     lineNumber: undefined,
     message: '',
@@ -75,6 +75,6 @@ export function displayForConsoleLog(item: ConsoleLog): string {
   return `<div class="console-line"><div class="console-location"><span class="console-type console-type-${
     data.type
   }">@${data.type}</span>:${lineNumberFormatter(
-    data.lineNumber,
+    data.lineNumber
   )}</div><div class="console-message">${encodeHTML(data.message)}</div></div>`;
 }

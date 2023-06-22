@@ -1,11 +1,12 @@
-import { setDiagnostics } from '@codemirror/lint';
-import { Text } from '@codemirror/state';
-import { EditorView } from 'codemirror';
+/* eslint-disable node/no-extraneous-import */
+import {setDiagnostics} from '@codemirror/lint';
+import {Text} from '@codemirror/state';
+import {EditorView} from 'codemirror';
 import debounce from 'lodash/debounce';
-import { compileString, info, Logger, OutputStyle, Syntax } from 'sass';
+import {compileString, info, Logger, OutputStyle, Syntax} from 'sass';
 
-import { displayForConsoleLog } from './playground/console-utils.js';
-import { editorSetup, outputSetup } from './playground/editor-setup.js';
+import {displayForConsoleLog} from './playground/console-utils.js';
+import {editorSetup, outputSetup} from './playground/editor-setup.js';
 import {
   base64ToState,
   errorToDiagnostic,
@@ -50,7 +51,7 @@ function setupPlayground() {
     doc: playgroundState.inputValue,
     extensions: [
       ...editorSetup,
-      EditorView.updateListener.of((v) => {
+      EditorView.updateListener.of(v => {
         if (v.docChanged) {
           playgroundState.inputValue = editor.state.doc.toString();
         }
@@ -94,7 +95,7 @@ function setupPlayground() {
       }
     }
     const options = document.querySelectorAll('[data-value]');
-    Array.from(options).forEach((option) => {
+    Array.from(options).forEach(option => {
       option.addEventListener('click', clickHandler);
     });
 
@@ -120,24 +121,24 @@ function setupPlayground() {
    */
   function updateButtonState() {
     const inputFormatTab = document.querySelector(
-      '[data-setting="inputFormat"]',
+      '[data-setting="inputFormat"]'
     ) as HTMLDivElement;
     const inputButtons = inputFormatTab.querySelectorAll('[data-value]');
-    inputButtons.forEach((button) => {
+    inputButtons.forEach(button => {
       if (!(button instanceof HTMLButtonElement)) return;
       button.dataset.active = String(
-        button.dataset.value === playgroundState.inputFormat,
+        button.dataset.value === playgroundState.inputFormat
       );
     });
 
     const outputFormatTab = document.querySelector(
-      '[data-setting="outputFormat"]',
+      '[data-setting="outputFormat"]'
     ) as HTMLDivElement;
     const outputButtons = outputFormatTab.querySelectorAll('[data-value]');
-    outputButtons.forEach((button) => {
+    outputButtons.forEach(button => {
       if (!(button instanceof HTMLButtonElement)) return;
       button.dataset.active = String(
-        button.dataset.value === playgroundState.outputFormat,
+        button.dataset.value === playgroundState.outputFormat
       );
     });
   }
@@ -149,7 +150,7 @@ function setupPlayground() {
    */
   function updateErrorState() {
     const editorWrapper = document.querySelector(
-      '[data-compiler-has-error]',
+      '[data-compiler-has-error]'
     ) as HTMLDivElement;
     editorWrapper.dataset.compilerHasError =
       playgroundState.compilerHasError.toString();
@@ -164,7 +165,7 @@ function setupPlayground() {
    */
   function updateDebugOutput() {
     const console = document.querySelector(
-      '.sl-c-playground__console',
+      '.sl-c-playground__console'
     ) as HTMLDivElement;
     console.innerHTML = playgroundState.debugOutput
       .map(displayForConsoleLog)
@@ -192,7 +193,7 @@ function setupPlayground() {
       playgroundState.compilerHasError = true;
       playgroundState.debugOutput = [
         ...playgroundState.debugOutput,
-        { type: 'error', error: result.error },
+        {type: 'error', error: result.error},
       ];
     }
     updateDebugOutput();
@@ -203,13 +204,13 @@ function setupPlayground() {
     warn(message, options) {
       playgroundState.debugOutput = [
         ...playgroundState.debugOutput,
-        { message, options, type: 'warn' },
+        {message, options, type: 'warn'},
       ];
     },
     debug(message, options) {
       playgroundState.debugOutput = [
         ...playgroundState.debugOutput,
-        { message, options, type: 'debug' },
+        {message, options, type: 'debug'},
       ];
     },
   };
@@ -221,9 +222,9 @@ function setupPlayground() {
         style: playgroundState.outputFormat,
         logger: logger,
       });
-      return { css: result.css };
+      return {css: result.css};
     } catch (error) {
-      return { error };
+      return {error};
     }
   }
 
@@ -235,7 +236,7 @@ function setupPlayground() {
   function updateSassVersion() {
     const version = info.split('\t')[1];
     const versionSpan = document.querySelector(
-      '.sl-c-playground__tabbar-version',
+      '.sl-c-playground__tabbar-version'
     ) as HTMLSpanElement;
     versionSpan.innerText = `v${version}`;
   }

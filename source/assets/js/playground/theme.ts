@@ -1,5 +1,6 @@
-import { HighlightStyle } from '@codemirror/language';
-import { tags } from '@lezer/highlight';
+/* eslint-disable node/no-extraneous-import */
+import {HighlightStyle} from '@codemirror/language';
+import {tags} from '@lezer/highlight';
 
 const playgroundHighlightStyle = HighlightStyle.define([
   {
@@ -41,14 +42,14 @@ const playgroundHighlightStyle = HighlightStyle.define([
     color: 'var(--sl-color--code-warm)',
     fontWeight: '600',
   },
-  { tag: tags.punctuation, color: 'var(--sl-color--code-muted-dark)' },
-  { tag: tags.string, color: 'var(--sl-color--code-bright)' },
-  { tag: tags.unit, color: 'var(--sl-color--code-base)' },
-  { tag: tags.atom, color: 'var(--sl-color--code-base)' },
+  {tag: tags.punctuation, color: 'var(--sl-color--code-muted-dark)'},
+  {tag: tags.string, color: 'var(--sl-color--code-bright)'},
+  {tag: tags.unit, color: 'var(--sl-color--code-base)'},
+  {tag: tags.atom, color: 'var(--sl-color--code-base)'},
   {
     tag: tags.labelName,
     color: 'var(--sl-color--code-dark)',
     fontWeight: '600',
   },
 ]);
-export { playgroundHighlightStyle };
+export {playgroundHighlightStyle};
