@@ -4,49 +4,47 @@ title: sass:meta
 
 {% render 'doc_snippets/built-in-module-status' %}
 
-{{ '## Mixins' | markdown }}
+## Mixins
 
 {% function 'meta.load-css($url, $with: null)' %}
   {% compatibility 'dart: "1.23.0"', 'libsass: false', 'ruby: false' %}
     Only Dart Sass currently supports this mixin.
   {% endcompatibility %}
 
-  {% markdown %}
-    Loads the [module][] at `$url` and includes its CSS as though it were
-    written as the contents of this mixin. The `$with` parameter provides
-    [configuration][] for the modules; if it's passed, it must be a map from
-    variable names (without `$`) to the values of those variables to use in the
-    loaded module.
+  Loads the [module][] at `$url` and includes its CSS as though it were written
+  as the contents of this mixin. The `$with` parameter provides
+  [configuration][] for the modules; if it's passed, it must be a map from
+  variable names (without `$`) to the values of those variables to use in the
+  loaded module.
 
-    [module]: /documentation/at-rules/use
-    [configuration]: /documentation/at-rules/use#configuration
+  [module]: /documentation/at-rules/use
+  [configuration]: /documentation/at-rules/use#configuration
 
-    If `$url` is relative, it's interpreted as relative to the file in which
-    `meta.load-css()` is included.
+  If `$url` is relative, it's interpreted as relative to the file in which
+  `meta.load-css()` is included.
 
-    **Like the [`@use` rule][]**:
+  **Like the [`@use` rule][]**:
 
-    [`@use` rule]: /documentation/at-rules/use
+  [`@use` rule]: /documentation/at-rules/use
 
-    * This will only evaluate the given module once, even if it's loaded
-      multiple times in different ways.
+  * This will only evaluate the given module once, even if it's loaded multiple
+    times in different ways.
 
-    * This cannot provide configuration to a module that's already been loaded,
-      whether or not it was already loaded with configuration.
+  * This cannot provide configuration to a module that's already been loaded,
+    whether or not it was already loaded with configuration.
 
-    **Unlike the [`@use` rule][]**:
+  **Unlike the [`@use` rule][]**:
 
-    * This doesn't make any members from the loaded module available in the
-      current module.
+  * This doesn't make any members from the loaded module available in the
+    current module.
 
-    * This can be used anywhere in a stylesheet. It can even be nested within
-      style rules to create nested styles!
+  * This can be used anywhere in a stylesheet. It can even be nested within
+    style rules to create nested styles!
 
-    * The module URL being loaded can come from a variable and include
-      [interpolation][].
+  * The module URL being loaded can come from a variable and include
+    [interpolation][].
 
-      [interpolation]: /documentation/interpolation
-  {% endmarkdown %}
+    [interpolation]: /documentation/interpolation
 
   {% headsUp %}
     The `$url` parameter should be a string containing a URL like you'd pass to
@@ -97,19 +95,17 @@ title: sass:meta
   {% endcodeExample %}
 {% endfunction %}
 
-{{ '## Functions' | markdown }}
+## Functions
 
 {% function 'meta.calc-args($calc)', 'returns:list' %}
   {% compatibility 'dart: "1.40.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the arguments for the given [calculation].
+  Returns the arguments for the given [calculation].
 
-    [calculation]: /documentation/values/calculations
+  [calculation]: /documentation/values/calculations
 
-    If an argument is a number or a nested calculation, it's returned as that
-    type. Otherwise, it's returned as an unquoted string.
-  {% endmarkdown %}
+  If an argument is a number or a nested calculation, it's returned as that
+  type. Otherwise, it's returned as an unquoted string.
 
   {% codeExample 'calc-args', false %}
     @debug meta.calc-args(calc(100px + 10%)); // unquote("100px + 10%")
@@ -123,11 +119,9 @@ title: sass:meta
 {% function 'meta.calc-name($calc)', 'returns:quoted string' %}
   {% compatibility 'dart: "1.40.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the name of the given [calculation].
+  Returns the name of the given [calculation].
 
-    [calculation]: /documentation/values/calculations
-  {% endmarkdown %}
+  [calculation]: /documentation/values/calculations
 
   {% codeExample 'calc-name', false %}
     @debug meta.calc-name(calc(100px + 10%)); // "calc"
@@ -141,27 +135,23 @@ title: sass:meta
 {% function 'meta.call($function, $args...)', 'call($function, $args...)' %}
   {% render 'doc_snippets/call-impl-status' %}
 
-  {% markdown %}
-    Invokes `$function` with `$args` and returns the result.
+  Invokes `$function` with `$args` and returns the result.
 
-    The `$function` should be a [function][] returned by
-    [`meta.get-function()`][].
+  The `$function` should be a [function][] returned by
+  [`meta.get-function()`][].
 
-    [function]: /documentation/values/functions
-    [`meta.get-function()`]: #get-function
-  {% endmarkdown %}
+  [function]: /documentation/values/functions
+  [`meta.get-function()`]: #get-function
 
   {% render 'code_snippets/example-first-class-function' %}
 {% endfunction %}
 
 {% function 'meta.content-exists()', 'content-exists()', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether the current mixin was passed a [`@content` block][].
+  Returns whether the current mixin was passed a [`@content` block][].
 
-    [`@content` block]: /documentation/at-rules/mixin#content-blocks
+  [`@content` block]: /documentation/at-rules/mixin#content-blocks
 
-    Throws an error if called outside of a mixin.
-  {% endmarkdown %}
+  Throws an error if called outside of a mixin.
 
   {% codeExample 'content-exists', false %}
     @mixin debug-content-exists {
@@ -186,32 +176,30 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.feature-exists($feature)', 'feature-exists($feature)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether the current Sass implementation supports `$feature`.
+  Returns whether the current Sass implementation supports `$feature`.
 
-    The `$feature` must be a string. The currently recognized features are:
+  The `$feature` must be a string. The currently recognized features are:
 
-    * `global-variable-shadowing`, which means that a local variable will
-      [shadow][] a global variable unless it has the `!global` flag.
-    * `extend-selector-pseudoclass`, which means that the [`@extend` rule][]
-      will affect selectors nested in pseudo-classes like `:not()`.
-    * `units-level3`, which means that [unit arithmetic][] supports units
-      defined in [CSS Values and Units Level 3][].
-    * `at-error`, which means that the [`@error` rule][] is supported.
-    * `custom-property`, which means that [custom property declaration][] values
-      don't support any [expressions][] other than [interpolation][].
+  * `global-variable-shadowing`, which means that a local variable will
+    [shadow][] a global variable unless it has the `!global` flag.
+  * `extend-selector-pseudoclass`, which means that the [`@extend` rule][] will
+    affect selectors nested in pseudo-classes like `:not()`.
+  * `units-level3`, which means that [unit arithmetic][] supports units defined
+    in [CSS Values and Units Level 3][].
+  * `at-error`, which means that the [`@error` rule][] is supported.
+  * `custom-property`, which means that [custom property declaration][] values
+    don't support any [expressions][] other than [interpolation][].
 
-    [shadow]: /documentation/variables#shadowing
-    [`@extend` rule]: /documentation/at-rules/extend
-    [unit arithmetic]: /documentation/values/numbers#units
-    [CSS Values and Units Level 3]: http://www.w3.org/TR/css3-values
-    [`@error` rule]: /documentation/at-rules/error
-    [custom property declaration]: /documentation/style-rules/declarations#custom-properties
-    [expressions]: /documentation/syntax/structure#expressions
-    [interpolation]: /documentation/interpolation
+  [shadow]: /documentation/variables#shadowing
+  [`@extend` rule]: /documentation/at-rules/extend
+  [unit arithmetic]: /documentation/values/numbers#units
+  [CSS Values and Units Level 3]: http://www.w3.org/TR/css3-values
+  [`@error` rule]: /documentation/at-rules/error
+  [custom property declaration]: /documentation/style-rules/declarations#custom-properties
+  [expressions]: /documentation/syntax/structure#expressions
+  [interpolation]: /documentation/interpolation
 
-    Returns `false` for any unrecognized `$feature`.
-  {% endmarkdown %}
+  Returns `false` for any unrecognized `$feature`.
 
   {% codeExample 'feature-exists', false %}
     @debug meta.feature-exists("at-error"); // true
@@ -223,16 +211,14 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.function-exists($name, $module: null)', 'function-exists($name)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether a function named `$name` is defined, either as a built-in
-    function or a user-defined function.
+  Returns whether a function named `$name` is defined, either as a built-in
+  function or a user-defined function.
 
-    If `$module` is passed, this also checks the module named `$module` for the
-    function definition. `$module` must be a string matching the namespace of a
-    [`@use` rule][] in the current file.
+  If `$module` is passed, this also checks the module named `$module` for the
+  function definition. `$module` must be a string matching the namespace of a
+  [`@use` rule][] in the current file.
 
-    [`@use` rule]: /documentation/at-rules/use
-  {% endmarkdown %}
+  [`@use` rule]: /documentation/at-rules/use
 
   {% codeExample 'function-exists', false %}
     @use "sass:math";
@@ -260,47 +246,42 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.get-function($name, $css: false, $module: null)', 'get-function($name, $css: false, $module: null)', 'returns:function' %}
-  {% markdown %}
-    Returns the [function][] named `$name`.
+  Returns the [function][] named `$name`.
 
-    [function]: /documentation/values/functions
+  [function]: /documentation/values/functions
 
-    If `$module` is `null`, this returns the function named `$name` without a
-    namespace (including [global built-in functions][]). Otherwise, `$module`
-    must be a string matching the namespace of a [`@use` rule][] in the current
-    file, in which case this returns the function in that module named `$name`.
+  If `$module` is `null`, this returns the function named `$name` without a
+  namespace (including [global built-in functions][]). Otherwise, `$module` must
+  be a string matching the namespace of a [`@use` rule][] in the current file,
+  in which case this returns the function in that module named `$name`.
 
-    [global built-in functions]: /documentation/modules#global-functions
-    [`@use` rule]: /documentation/at-rules/use
+  [global built-in functions]: /documentation/modules#global-functions
+  [`@use` rule]: /documentation/at-rules/use
 
-    By default, this throws an error if `$name` doesn't refer to Sass function.
-    However, if `$css` is `true`, it instead returns a [plain CSS function][].
+  By default, this throws an error if `$name` doesn't refer to Sass function.
+  However, if `$css` is `true`, it instead returns a [plain CSS function][].
 
-    [user-defined]: /documentation/at-rules/function
-    [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
+  [user-defined]: /documentation/at-rules/function
+  [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
 
-    The returned function can be called using [`meta.call()`](#call).
-  {% endmarkdown %}
+  The returned function can be called using [`meta.call()`](#call).
 
   {% render 'code_snippets/example-first-class-function' %}
 {% endfunction %}
 
 {% function 'meta.global-variable-exists($name, $module: null)', 'global-variable-exists($name, $module: null)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether a [global variable][] named `$name` (without the `$`)
-    exists.
+  Returns whether a [global variable][] named `$name` (without the `$`) exists.
 
-    [global variable]: /documentation/variables#scope
+  [global variable]: /documentation/variables#scope
 
-    If `$module` is `null`, this returns whether a variable named `$name`
-    without a namespace exists. Otherwise, `$module` must be a string matching
-    the namespace of a [`@use` rule][] in the current file, in which case this
-    returns whether that module has a variable named `$name`.
+  If `$module` is `null`, this returns whether a variable named `$name` without
+  a namespace exists. Otherwise, `$module` must be a string matching the
+  namespace of a [`@use` rule][] in the current file, in which case this returns
+  whether that module has a variable named `$name`.
 
-    [`@use` rule]: /documentation/at-rules/use
+  [`@use` rule]: /documentation/at-rules/use
 
-    See also [`meta.variable-exists()`](#variable-exists).
-  {% endmarkdown %}
+  See also [`meta.variable-exists()`](#variable-exists).
 
   {% codeExample 'global-variable-exists', false %}
     @debug meta.global-variable-exists("var1"); // false
@@ -327,13 +308,11 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.inspect($value)', 'inspect($value)', 'returns:unquoted string' %}
-  {% markdown %}
-    Returns a string representation of `$value`.
+  Returns a string representation of `$value`.
 
-    Returns a representation of *any* Sass value, not just those that can be
-    represented in CSS. As such, its return value is not guaranteed to be valid
-    CSS.
-  {% endmarkdown %}
+  Returns a representation of *any* Sass value, not just those that can be
+  represented in CSS. As such, its return value is not guaranteed to be valid
+  CSS.
 
   {% headsUp %}
     This function is intended for debugging; its output format is not guaranteed
@@ -354,33 +333,29 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.keywords($args)', 'keywords($args)', 'returns:map' %}
-  {% markdown %}
-    Returns the keywords passed to a mixin or function that takes [arbitrary
-    arguments][]. The `$args` argument must be an [argument list][].
+  Returns the keywords passed to a mixin or function that takes [arbitrary
+  arguments][]. The `$args` argument must be an [argument list][].
 
-    [arbitrary arguments]: /documentation/at-rules/mixin#taking-arbitrary-arguments
-    [argument list]: /documentation/values/lists#argument-lists
+  [arbitrary arguments]: /documentation/at-rules/mixin#taking-arbitrary-arguments
+  [argument list]: /documentation/values/lists#argument-lists
 
-    The keywords are returned as a map from argument names as unquoted strings
-    (not including `$`) to the values of those arguments.
-  {% endmarkdown %}
+  The keywords are returned as a map from argument names as unquoted strings
+  (not including `$`) to the values of those arguments.
 
   {% render 'code_snippets/example-mixin-arbitrary-keyword-arguments' %}
 {% endfunction %}
 
 {% function 'meta.mixin-exists($name, $module: null)', 'mixin-exists($name, $module: null)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether a [mixin][] named `$name` exists.
+  Returns whether a [mixin][] named `$name` exists.
 
-    [mixin]: /documentation/at-rules/mixin
+  [mixin]: /documentation/at-rules/mixin
 
-    If `$module` is `null`, this returns whether a mixin named `$name` without a
-    namespace exists. Otherwise, `$module` must be a string matching the
-    namespace of a [`@use` rule][] in the current file, in which case this
-    returns whether that module has a mixin named `$name`.
+  If `$module` is `null`, this returns whether a mixin named `$name` without a
+  namespace exists. Otherwise, `$module` must be a string matching the namespace
+  of a [`@use` rule][] in the current file, in which case this returns whether
+  that module has a mixin named `$name`.
 
-    [`@use` rule]: /documentation/at-rules/use
-  {% endmarkdown %}
+  [`@use` rule]: /documentation/at-rules/use
 
   {% codeExample 'mixin-exists', false %}
     @debug meta.mixin-exists("shadow-none"); // false
@@ -404,17 +379,15 @@ title: sass:meta
 {% function 'meta.module-functions($module)', 'returns:map' %}
   {% render 'doc_snippets/module-system-function-status' %}
 
-  {% markdown %}
-    Returns all the functions defined in a module, as a map from function names
-    to [function values][].
+  Returns all the functions defined in a module, as a map from function names to
+  [function values][].
 
-    [function values]: /documentation/values/functions
+  [function values]: /documentation/values/functions
 
-    The `$module` parameter must be a string matching the namespace of a [`@use`
-    rule][] in the current file.
+  The `$module` parameter must be a string matching the namespace of a [`@use`
+  rule][] in the current file.
 
-    [`@use` rule]: /documentation/at-rules/use
-  {% endmarkdown %}
+  [`@use` rule]: /documentation/at-rules/use
 
   {% codeExample 'module-functions', false %}
     // _functions.scss
@@ -457,15 +430,13 @@ title: sass:meta
 {% function 'meta.module-variables($module)', 'returns:map' %}
   {% render 'doc_snippets/module-system-function-status' %}
 
-  {% markdown %}
-    Returns all the variables defined in a module, as a map from variable names
-    (without `$`) to the values of those variables.
+  Returns all the variables defined in a module, as a map from variable names
+  (without `$`) to the values of those variables.
 
-    The `$module` parameter must be a string matching the namespace of a [`@use`
-    rule][] in the current file.
+  The `$module` parameter must be a string matching the namespace of a [`@use`
+  rule][] in the current file.
 
-    [`@use` rule]: /documentation/at-rules/use
-  {% endmarkdown %}
+  [`@use` rule]: /documentation/at-rules/use
 
   {% codeExample 'module-variables', false %}
     // _variables.scss
@@ -503,28 +474,26 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.type-of($value)', 'type-of($value)', 'returns:unquoted string' %}
-  {% markdown %}
-    Returns the type of `$value`.
+  Returns the type of `$value`.
 
-    This can return the following values:
+  This can return the following values:
 
-    * [`number`](/documentation/values/numbers)
-    * [`string`](/documentation/values/strings)
-    * [`color`](/documentation/values/colors)
-    * [`list`](/documentation/values/lists)
-    * [`map`](/documentation/values/maps)
-    * [`calculation`](/documentation/values/calculations)
-    * [`bool`](/documentation/values/booleans)
-    * [`null`](/documentation/values/null)
-    * [`function`](/documentation/values/functions)
-    * [`arglist`](/documentation/values/lists#argument-lists)
+  * [`number`](/documentation/values/numbers)
+  * [`string`](/documentation/values/strings)
+  * [`color`](/documentation/values/colors)
+  * [`list`](/documentation/values/lists)
+  * [`map`](/documentation/values/maps)
+  * [`calculation`](/documentation/values/calculations)
+  * [`bool`](/documentation/values/booleans)
+  * [`null`](/documentation/values/null)
+  * [`function`](/documentation/values/functions)
+  * [`arglist`](/documentation/values/lists#argument-lists)
 
-    New possible values may be added in the future. It may return either `list`
-    or `map` for `()`, depending on whether or not it was returned by a [map
-    function][].
+  New possible values may be added in the future. It may return either `list` or
+  `map` for `()`, depending on whether or not it was returned by a [map
+  function][].
 
-    [map function]: /documentation/modules/map
-  {% endmarkdown %}
+  [map function]: /documentation/modules/map
 
   {% codeExample 'type-of', false %}
     @debug meta.type-of(10px); // number
@@ -538,14 +507,12 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.variable-exists($name)', 'variable-exists($name)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether a variable named `$name` (without the `$`) exists in the
-    current [scope][].
+  Returns whether a variable named `$name` (without the `$`) exists in the
+  current [scope][].
 
-    [scope]: /documentation/variables#scope
+  [scope]: /documentation/variables#scope
 
-    See also [`meta.global-variable-exists()`](#global-variable-exists).
-  {% endmarkdown %}
+  See also [`meta.global-variable-exists()`](#global-variable-exists).
 
   {% codeExample 'variable-exists', false %}
     @debug meta.variable-exists("var1"); // false

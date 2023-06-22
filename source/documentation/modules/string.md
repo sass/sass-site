@@ -5,9 +5,7 @@ title: sass:string
 {% render 'doc_snippets/built-in-module-status' %}
 
 {% function 'string.quote($string)', 'quote($string)', 'returns:string' %}
-  {% markdown %}
-    Returns `$string` as a quoted string.
-  {% endmarkdown %}
+  Returns `$string` as a quoted string.
 
   {% codeExample 'quote', false %}
     @debug string.quote(Helvetica); // "Helvetica"
@@ -19,12 +17,10 @@ title: sass:string
 {% endfunction %}
 
 {% function 'string.index($string, $substring)', 'str-index($string, $substring)', 'returns:number' %}
-  {% markdown %}
-    Returns the first [index][] of `$substring` in `$string`, or `null` if
-    `$string` doesn't contain `$substring`.
+  Returns the first [index][] of `$substring` in `$string`, or `null` if
+  `$string` doesn't contain `$substring`.
 
-    [index]: /documentation/values/strings#string-indexes
-  {% endmarkdown %}
+  [index]: /documentation/values/strings#string-indexes
 
   {% codeExample 'index', false %}
     @debug string.index("Helvetica Neue", "Helvetica"); // 1
@@ -36,11 +32,9 @@ title: sass:string
 {% endfunction %}
 
 {% function 'string.insert($string, $insert, $index)', 'str-insert($string, $insert, $index)', 'returns:string' %}
-  {% markdown %}
-    Returns a copy of `$string` with `$insert` inserted at [`$index`][].
+  Returns a copy of `$string` with `$insert` inserted at [`$index`][].
 
-    [`$index`]: /documentation/values/strings#string-indexes
-  {% endmarkdown %}
+  [`$index`]: /documentation/values/strings#string-indexes
 
   {% codeExample 'insert', false %}
     @debug string.insert("Roboto Bold", " Mono", 7); // "Roboto Mono Bold"
@@ -50,11 +44,9 @@ title: sass:string
     @debug string.insert("Roboto Bold", " Mono", -6)  // "Roboto Mono Bold"
   {% endcodeExample %}
 
-  {% markdown %}
-    If `$index` is higher than the length of `$string`, `$insert` is added to
-    the end. If `$index` is smaller than the negative length of the string,
-    `$insert` is added to the beginning.
-  {% endmarkdown %}
+  If `$index` is higher than the length of `$string`, `$insert` is added to the
+  end. If `$index` is smaller than the negative length of the string, `$insert`
+  is added to the beginning.
 
   {% codeExample 'insert-2', false %}
     @debug string.insert("Roboto", " Bold", 100); // "Roboto Bold"
@@ -66,9 +58,7 @@ title: sass:string
 {% endfunction %}
 
 {% function 'string.length($string)', 'str-length($string)', 'returns:number' %}
-  {% markdown %}
-    Returns the number of characters in `$string`.
-  {% endmarkdown %}
+  Returns the number of characters in `$string`.
 
   {% codeExample 'length', false %}
     @debug string.length("Helvetica Neue"); // 14
@@ -82,12 +72,10 @@ title: sass:string
 {% endfunction %}
 
 {% function 'string.slice($string, $start-at, $end-at: -1)', 'str-slice($string, $start-at, $end-at: -1)', 'returns:string' %}
-  {% markdown %}
-    Returns the slice of `$string` starting at [index][] `$start-at` and ending
-    at index `$end-at` (both inclusive).
+  Returns the slice of `$string` starting at [index][] `$start-at` and ending at
+  index `$end-at` (both inclusive).
 
-    [index]: /documentation/values/strings#string-indexes
-  {% endmarkdown %}
+  [index]: /documentation/values/strings#string-indexes
 
   {% codeExample 'slice', false %}
     @debug string.slice("Helvetica Neue", 11); // "Neue"
@@ -103,16 +91,14 @@ title: sass:string
 {% function 'string.split($string, $separator, $limit: null)', 'returns:list' %}
   {% compatibility 'dart: "1.57.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns a bracketed, comma-separated list of substrings of `$string` that
-    are separated by `$separator`. The `$separator`s aren't included in these
-    substrings.
+  Returns a bracketed, comma-separated list of substrings of `$string` that are
+  separated by `$separator`. The `$separator`s aren't included in these
+  substrings.
 
-    If `$limit` is a number `1` or higher, this splits on at most that many
-    `$separator`s (and so returns at most `$limit + 1` strings). The last
-    substring contains the rest of the string, including any remaining
-    `$separator`s.
-  {% endmarkdown %}
+  If `$limit` is a number `1` or higher, this splits on at most that many
+  `$separator`s (and so returns at most `$limit + 1` strings). The last
+  substring contains the rest of the string, including any remaining
+  `$separator`s.
 
   {% codeExample 'split', false %}
     @debug string.split("Segoe UI Emoji", " "); // ["Segoe", "UI", "Emoji"]
@@ -124,12 +110,10 @@ title: sass:string
 {% endfunction %}
 
 {% function 'string.to-upper-case($string)', 'to-upper-case($string)', 'returns:string' %}
-  {% markdown %}
-    Returns a copy of `$string` with the [ASCII][] letters converted to upper
-    case.
+  Returns a copy of `$string` with the [ASCII][] letters converted to upper
+  case.
 
-    [ASCII]: https://en.wikipedia.org/wiki/ASCII
-  {% endmarkdown %}
+  [ASCII]: https://en.wikipedia.org/wiki/ASCII
 
   {% codeExample 'to-upper-case', false %}
     @debug string.to-upper-case("Bold"); // "BOLD"
@@ -141,12 +125,10 @@ title: sass:string
 {% endfunction %}
 
 {% function 'string.to-lower-case($string)', 'to-lower-case($string)', 'returns:string' %}
-  {% markdown %}
-    Returns a copy of `$string` with the [ASCII][] letters converted to lower
-    case.
+  Returns a copy of `$string` with the [ASCII][] letters converted to lower
+  case.
 
-    [ASCII]: https://en.wikipedia.org/wiki/ASCII
-  {% endmarkdown %}
+  [ASCII]: https://en.wikipedia.org/wiki/ASCII
 
   {% codeExample 'to-lower-case', false %}
     @debug string.to-lower-case("Bold"); // "bold"
@@ -158,10 +140,8 @@ title: sass:string
 {% endfunction %}
 
 {% function 'string.unique-id()', 'unique-id()', 'returns:string' %}
-  {% markdown %}
-    Returns a randomly-generated unquoted string that's guaranteed to be a valid
-    CSS identifier and to be unique within the current Sass compilation.
-  {% endmarkdown %}
+  Returns a randomly-generated unquoted string that's guaranteed to be a valid
+  CSS identifier and to be unique within the current Sass compilation.
 
   {% codeExample 'unique-id', false %}
     @debug string.unique-id(); // uabtrnzug
@@ -173,10 +153,8 @@ title: sass:string
 {% endfunction %}
 
 {% function 'string.unquote($string)', 'unquote($string)', 'returns:string' %}
-  {% markdown %}
-    Returns `$string` as an unquoted string. This can produce strings that
-    aren't valid CSS, so use with caution.
-  {% endmarkdown %}
+  Returns `$string` as an unquoted string. This can produce strings that aren't
+  valid CSS, so use with caution.
 
   {% codeExample 'unquote', false %}
     @debug string.unquote("Helvetica"); // Helvetica

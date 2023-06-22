@@ -4,17 +4,15 @@ title: sass:math
 
 {% render 'doc_snippets/built-in-module-status' %}
 
-{{ '## Variables' | markdown }}
+## Variables
 
 {% function 'math.$e' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    The closest 64-bit floating point approximation of the [mathematical
-    constant *e*][].
+  The closest 64-bit floating point approximation of the [mathematical constant
+  *e*][].
 
-    [mathematical constant *e*]: https://en.wikipedia.org/wiki/E_(mathematical_constant)
-  {% endmarkdown %}
+  [mathematical constant *e*]: https://en.wikipedia.org/wiki/E_(mathematical_constant)
 
   {% codeExample 'math-e', false %}
     @debug math.$e; // 2.7182818285
@@ -26,21 +24,17 @@ title: sass:math
 {% function 'math.$epsilon' %}
   {% compatibility 'dart: "1.55.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    The difference between 1 and the smallest 64-bit floating point number
-    greater than 1 according to floating-point comparisons. Because of Sass
-    numbers' [10 digits of precision](/documentation/values/numbers), in many
-    cases this will appear to be 0.
-  {% endmarkdown %}
+  The difference between 1 and the smallest 64-bit floating point number greater
+  than 1 according to floating-point comparisons. Because of Sass numbers' [10
+  digits of precision](/documentation/values/numbers), in many cases this will
+  appear to be 0.
 {% endfunction %}
 
 {% function 'math.$max-number' %}
   {% compatibility 'dart: "1.55.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    The maximum finite number that can be represented as a 64-bit floating point
-    number.
-  {% endmarkdown %}
+  The maximum finite number that can be represented as a 64-bit floating point
+  number.
 
   {% codeExample 'math-max-number', false %}
     @debug math.$max-number; // 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -52,10 +46,8 @@ title: sass:math
 {% function 'math.$max-safe-integer' %}
   {% compatibility 'dart: "1.55.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    The maximum integer `n` such that both `n` and `n + 1` can be precisely
-    represented as a 64-bit floating-point number.
-  {% endmarkdown %}
+  The maximum integer `n` such that both `n` and `n + 1` can be precisely
+  represented as a 64-bit floating-point number.
 
   {% codeExample 'math-max-safe-integer', false %}
     @debug math.$max-safe-integer; // 9007199254740991
@@ -67,21 +59,17 @@ title: sass:math
 {% function 'math.$min-number' %}
   {% compatibility 'dart: "1.55.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    The smallest positive number that can be represented as a 64-bit floating
-    point number. Because of Sass numbers' [10 digits of
-    precision](/documentation/values/numbers), in many cases this will appear to
-    be 0.
-  {% endmarkdown %}
+  The smallest positive number that can be represented as a 64-bit floating
+  point number. Because of Sass numbers' [10 digits of
+  precision](/documentation/values/numbers), in many cases this will appear to
+  be 0.
 {% endfunction %}
 
 {% function 'math.$min-safe-integer' %}
   {% compatibility 'dart: "1.55.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    The minimum integer `n` such that both `n` and `n - 1` can be precisely
-    represented as a 64-bit floating-point number.
-  {% endmarkdown %}
+  The minimum integer `n` such that both `n` and `n - 1` can be precisely
+  represented as a 64-bit floating-point number.
 
   {% codeExample 'math-min-safe-integer', false %}
     @debug math.$min-safe-integer; // -9007199254740991
@@ -93,12 +81,10 @@ title: sass:math
 {% function 'math.$pi' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    The closest 64-bit floating point approximation of the [mathematical
-    constant *π*][].
+  The closest 64-bit floating point approximation of the [mathematical constant
+  *π*][].
 
-    [mathematical constant *π*]: https://en.wikipedia.org/wiki/Pi
-  {% endmarkdown %}
+  [mathematical constant *π*]: https://en.wikipedia.org/wiki/Pi
 
   {% codeExample 'math-pi', false %}
     @debug math.$pi; // 3.1415926536
@@ -107,12 +93,10 @@ title: sass:math
   {% endcodeExample %}
 {% endfunction %}
 
-{{ '## Bounding Functions' | markdown }}
+## Bounding Functions
 
 {% function 'math.ceil($number)', 'ceil($number)', 'returns:number' %}
-  {% markdown %}
-    Rounds `$number` up to the next highest whole number.
-  {% endmarkdown %}
+  Rounds `$number` up to the next highest whole number.
 
   {% codeExample 'math-ceil', false %}
     @debug math.ceil(4); // 4
@@ -128,14 +112,11 @@ title: sass:math
 {% function 'math.clamp($min, $number, $max)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Restricts `$number` to the range between `$min` and `$max`. If `$number` is
-    less than `$min` this returns `$min`, and if it's greater than `$max` this
-    returns `$max`.
+  Restricts `$number` to the range between `$min` and `$max`. If `$number` is
+  less than `$min` this returns `$min`, and if it's greater than `$max` this
+  returns `$max`.
 
-    `$min`, `$number`, and `$max` must have compatible units, or all be
-    unitless.
-  {% endmarkdown %}
+  `$min`, `$number`, and `$max` must have compatible units, or all be unitless.
 
   {% codeExample 'math-clamp', false %}
     @debug math.clamp(-1, 0, 1); // 0
@@ -149,9 +130,7 @@ title: sass:math
 {% endfunction %}
 
 {% function 'math.floor($number)', 'floor($number)', 'returns:number' %}
-  {% markdown %}
-    Rounds `$number` down to the next lowest whole number.
-  {% endmarkdown %}
+  Rounds `$number` down to the next lowest whole number.
 
   {% codeExample 'math-floor', false %}
     @debug math.floor(4); // 4
@@ -165,9 +144,7 @@ title: sass:math
 {% endfunction %}
 
 {% function 'math.max($number...)', 'max($number...)', 'returns:number' %}
-  {% markdown %}
-    Returns the highest of one or more numbers.
-  {% endmarkdown %}
+  Returns the highest of one or more numbers.
 
   {% codeExample 'math-max', false %}
     @debug math.max(1px, 4px); // 4px
@@ -183,9 +160,7 @@ title: sass:math
 {% endfunction %}
 
 {% function 'math.min($number...)', 'min($number...)', 'returns:number' %}
-  {% markdown %}
-    Returns the lowest of one or more numbers.
-  {% endmarkdown %}
+  Returns the lowest of one or more numbers.
 
   {% codeExample 'math-min', false %}
     @debug math.min(1px, 4px); // 1px
@@ -201,9 +176,7 @@ title: sass:math
 {% endfunction %}
 
 {% function 'math.round($number)', 'round($number)', 'returns:number' %}
-  {% markdown %}
-    Rounds `$number` to the nearest whole number.
-  {% endmarkdown %}
+  Rounds `$number` to the nearest whole number.
 
   {% codeExample 'math-round', false %}
     @debug math.round(4); // 4
@@ -216,16 +189,13 @@ title: sass:math
   {% endcodeExample %}
 {% endfunction %}
 
-{{ '## Distance Functions' | markdown }}
+## Distance Functions
 
 {% function 'math.abs($number)', 'abs($number)', 'returns:number' %}
-  {% markdown %}
-    Returns the [absolute value][] of `$number`. If `$number` is negative, this
-    returns `-$number`, and if `$number` is positive, it returns `$number`
-    as-is.
+  Returns the [absolute value][] of `$number`. If `$number` is negative, this
+  returns `-$number`, and if `$number` is positive, it returns `$number` as-is.
 
-    [absolute value]: https://en.wikipedia.org/wiki/Absolute_value
-  {% endmarkdown %}
+  [absolute value]: https://en.wikipedia.org/wiki/Absolute_value
 
   {% codeExample 'math-abs', false %}
     @debug math.abs(10px); // 10px
@@ -239,17 +209,15 @@ title: sass:math
 {% function 'math.hypot($number...)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the length of the *n*-dimensional [vector][] that has components
-    equal to each `$number`. For example, for three numbers *a*, *b*, and *c*,
-    this returns the square root of *a² + b² + c²*.
+  Returns the length of the *n*-dimensional [vector][] that has components equal
+  to each `$number`. For example, for three numbers *a*, *b*, and *c*, this
+  returns the square root of *a² + b² + c²*.
 
-    The numbers must either all have compatible units, or all be unitless. And
-    since the numbers' units may differ, the output takes the unit of the first
-    number.
+  The numbers must either all have compatible units, or all be unitless. And
+  since the numbers' units may differ, the output takes the unit of the first
+  number.
 
-    [vector]: https://en.wikipedia.org/wiki/Euclidean_vector
-  {% endmarkdown %}
+  [vector]: https://en.wikipedia.org/wiki/Euclidean_vector
 
   {% codeExample 'math-hypot', false %}
     @debug math.hypot(3, 4); // 5
@@ -264,20 +232,18 @@ title: sass:math
   {% endcodeExample %}
 {% endfunction %}
 
-{{ '## Exponential Functions' | markdown }}
+## Exponential Functions
 
 {% function 'math.log($number, $base: null)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [logarithm][] of `$number` with respect to `$base`. If `$base`
-    is `null`, the [natural log][] is calculated.
+  Returns the [logarithm][] of `$number` with respect to `$base`. If `$base` is
+  `null`, the [natural log][] is calculated.
 
-    `$number` and `$base` must be unitless.
+  `$number` and `$base` must be unitless.
 
-    [logarithm]: https://en.wikipedia.org/wiki/Logarithm
-    [natural log]: https://en.wikipedia.org/wiki/Natural_logarithm
-  {% endmarkdown %}
+  [logarithm]: https://en.wikipedia.org/wiki/Logarithm
+  [natural log]: https://en.wikipedia.org/wiki/Natural_logarithm
 
   {% codeExample 'math-log', false %}
     @debug math.log(10); // 2.302585093
@@ -291,13 +257,11 @@ title: sass:math
 {% function 'math.pow($base, $exponent)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Raises `$base` [to the power of][] `$exponent`.
+  Raises `$base` [to the power of][] `$exponent`.
 
-    `$base` and `$exponent` must be unitless.
+  `$base` and `$exponent` must be unitless.
 
-    [to the power of]: https://en.wikipedia.org/wiki/Exponentiation
-  {% endmarkdown %}
+  [to the power of]: https://en.wikipedia.org/wiki/Exponentiation
 
   {% codeExample 'math-pow', false %}
     @debug math.pow(10, 2); // 100
@@ -313,13 +277,11 @@ title: sass:math
 {% function 'math.sqrt($number)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [square root][] of `$number`.
+  Returns the [square root][] of `$number`.
 
-    `$number` must be unitless.
+  `$number` must be unitless.
 
-    [square root]: https://en.wikipedia.org/wiki/Square_root
-  {% endmarkdown %}
+  [square root]: https://en.wikipedia.org/wiki/Square_root
 
   {% codeExample 'math-sqrt', false %}
     @debug math.sqrt(100); // 10
@@ -332,19 +294,17 @@ title: sass:math
   {% endcodeExample %}
 {% endfunction %}
 
-{{ '## Trigonometric Functions' | markdown }}
+## Trigonometric Functions
 
 {% function 'math.cos($number)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [cosine][] of `$number`.
+  Returns the [cosine][] of `$number`.
 
-    `$number` must be an angle (its units must be compatible with `deg`) or
-    unitless. If `$number` has no units, it is assumed to be in `rad`.
+  `$number` must be an angle (its units must be compatible with `deg`) or
+  unitless. If `$number` has no units, it is assumed to be in `rad`.
 
-    [cosine]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
-  {% endmarkdown %}
+  [cosine]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
   {% codeExample 'math-cos', false %}
     @debug math.cos(100deg); // -0.1736481777
@@ -360,14 +320,12 @@ title: sass:math
 {% function 'math.sin($number)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [sine][] of `$number`.
+  Returns the [sine][] of `$number`.
 
-    `$number` must be an angle (its units must be compatible with `deg`) or
-    unitless. If `$number` has no units, it is assumed to be in `rad`.
+  `$number` must be an angle (its units must be compatible with `deg`) or
+  unitless. If `$number` has no units, it is assumed to be in `rad`.
 
-    [sine]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
-  {% endmarkdown %}
+  [sine]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
   {% codeExample 'math-sin', false %}
     @debug math.sin(100deg); // 0.984807753
@@ -383,14 +341,12 @@ title: sass:math
 {% function 'math.tan($number)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [tangent][] of `$number`.
+  Returns the [tangent][] of `$number`.
 
-    `$number` must be an angle (its units must be compatible with `deg`) or
-    unitless. If `$number` has no units, it is assumed to be in `rad`.
+  `$number` must be an angle (its units must be compatible with `deg`) or
+  unitless. If `$number` has no units, it is assumed to be in `rad`.
 
-    [tangent]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
-  {% endmarkdown %}
+  [tangent]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
   {% codeExample 'math-tan', false %}
     @debug math.tan(100deg); // -5.6712818196
@@ -406,13 +362,11 @@ title: sass:math
 {% function 'math.acos($number)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [arccosine][] of `$number` in `deg`.
+  Returns the [arccosine][] of `$number` in `deg`.
 
-    `$number` must be unitless.
+  `$number` must be unitless.
 
-    [arccosine]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
-  {% endmarkdown %}
+  [arccosine]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
 
   {% codeExample 'math-acos', false %}
     @debug math.acos(0.5); // 60deg
@@ -426,13 +380,11 @@ title: sass:math
 {% function 'math.asin($number)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [arcsine][] of `$number` in `deg`.
+  Returns the [arcsine][] of `$number` in `deg`.
 
-    `$number` must be unitless.
+  `$number` must be unitless.
 
-    [arcsine]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
-  {% endmarkdown %}
+  [arcsine]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
 
   {% codeExample 'math-asin', false %}
     @debug math.asin(0.5); // 30deg
@@ -446,13 +398,11 @@ title: sass:math
 {% function 'math.atan($number)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [arctangent][] of `$number` in `deg`.
+  Returns the [arctangent][] of `$number` in `deg`.
 
-    `$number` must be unitless.
+  `$number` must be unitless.
 
-    [arctangent]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
-  {% endmarkdown %}
+  [arctangent]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
 
   {% codeExample 'math-atan', false %}
     @debug math.atan(10); // 84.2894068625deg
@@ -464,13 +414,11 @@ title: sass:math
 {% function 'math.atan2($y, $x)', 'returns:number' %}
   {% compatibility 'dart: "1.25.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the [2-argument arctangent][] of `$y` and `$x` in `deg`.
+  Returns the [2-argument arctangent][] of `$y` and `$x` in `deg`.
 
-    `$y` and `$x` must have compatible units or be unitless.
+  `$y` and `$x` must have compatible units or be unitless.
 
-    [2-argument arctangent]: https://en.wikipedia.org/wiki/Atan2
-  {% endmarkdown %}
+  [2-argument arctangent]: https://en.wikipedia.org/wiki/Atan2
 
   {% funFact %}
     `math.atan2($y, $x)` is distinct from `atan(math.div($y, $x))` because it
@@ -487,19 +435,17 @@ title: sass:math
   {% endcodeExample %}
 {% endfunction %}
 
-{{ '## Unit Functions' | markdown }}
+## Unit Functions
 
 {% function 'math.compatible($number1, $number2)', 'comparable($number1, $number2)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether `$number1` and `$number2` have compatible units.
+  Returns whether `$number1` and `$number2` have compatible units.
 
-    If this returns `true`, `$number1` and `$number2` can safely be [added][],
-    [subtracted][], and [compared][]. Otherwise, doing so will produce errors.
+  If this returns `true`, `$number1` and `$number2` can safely be [added][],
+  [subtracted][], and [compared][]. Otherwise, doing so will produce errors.
 
-    [added]: /documentation/operators/numeric
-    [subtracted]: /documentation/operators/numeric
-    [compared]: /documentation/operators/relational
-  {% endmarkdown %}
+  [added]: /documentation/operators/numeric
+  [subtracted]: /documentation/operators/numeric
+  [compared]: /documentation/operators/relational
 
   {% headsUp %}
     The global name of this function is
@@ -521,9 +467,7 @@ title: sass:math
 {% endfunction %}
 
 {% function 'math.is-unitless($number)', 'unitless($number)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether `$number` has no units.
-  {% endmarkdown %}
+  Returns whether `$number` has no units.
 
   {% codeExample 'math-is-unitless', false %}
     @debug math.is-unitless(100); // true
@@ -535,9 +479,7 @@ title: sass:math
 {% endfunction %}
 
 {% function 'math.unit($number)', 'unit($number)', 'returns:quoted string' %}
-  {% markdown %}
-    Returns a string representation of `$number`'s units.
-  {% endmarkdown %}
+  Returns a string representation of `$number`'s units.
 
   {% headsUp %}
     This function is intended for debugging; its output format is not guaranteed
@@ -557,19 +499,16 @@ title: sass:math
   {% endcodeExample %}
 {% endfunction %}
 
-{{ '## Other Functions' | markdown }}
+## Other Functions
 
 {% function 'math.div($number1, $number2)', 'returns:number' %}
   {% compatibility 'dart: "1.33.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  {% markdown %}
-    Returns the result of dividing `$number1` by `$number2`.
+  Returns the result of dividing `$number1` by `$number2`.
 
-    Any units shared by both numbers will be canceled out. Units in `$number1`
-    that aren't in `$number2` will end up in the return value's numerator, and
-    units in `$number2` that aren't in `$number1` will end up in its
-    denominator.
-  {% endmarkdown %}
+  Any units shared by both numbers will be canceled out. Units in `$number1`
+  that aren't in `$number2` will end up in the return value's numerator, and
+  units in `$number2` that aren't in `$number1` will end up in its denominator.
 
   {% headsUp %}
     For backwards-compatibility purposes, this returns the *exact same result*
@@ -594,10 +533,8 @@ title: sass:math
 {% endfunction %}
 
 {% function 'math.percentage($number)', 'percentage($number)', 'returns:number' %}
-  {% markdown %}
-    Converts a unitless `$number` (usually a decimal between 0 and 1) to a
-    percentage.
-  {% endmarkdown %}
+  Converts a unitless `$number` (usually a decimal between 0 and 1) to a
+  percentage.
 
   {% funFact %}
     This function is identical to `$number * 100%`.
@@ -613,9 +550,7 @@ title: sass:math
 {% endfunction %}
 
 {% function 'math.random($limit: null)', 'random($limit: null)', 'returns:number' %}
-  {% markdown %}
-    If `$limit` is `null`, returns a random decimal number between 0 and 1.
-  {% endmarkdown %}
+  If `$limit` is `null`, returns a random decimal number between 0 and 1.
 
   {% codeExample 'math-random', false %}
     @debug math.random(); // 0.2821251858
@@ -625,21 +560,17 @@ title: sass:math
     @debug math.random()  // 0.6221325814
   {% endcodeExample %}
 
-  {% markdown %}
-    * * *
+  * * *
 
-    If `$limit` is a number greater than or equal to 1, returns a random whole
-    number between 1 and `$limit`.
-  {% endmarkdown %}
+  If `$limit` is a number greater than or equal to 1, returns a random whole
+  number between 1 and `$limit`.
 
-  {% headsUp false %}
-    {% markdown %}
-      `random()` ignores units in `$limit`. [This behavior is deprecated] and
-      `random($limit)` will return a random integer with the same units as the
-      `$limit` argument.
+  {% headsUp %}
+    `random()` ignores units in `$limit`. [This behavior is deprecated] and
+    `random($limit)` will return a random integer with the same units as the
+    `$limit` argument.
 
-      [This behavior is deprecated]: /documentation/breaking-changes/function-units
-    {% endmarkdown %}
+    [This behavior is deprecated]: /documentation/breaking-changes/function-units
 
     {% codeExample 'math-random-warning', false %}
       @debug math.random(100px); // 42

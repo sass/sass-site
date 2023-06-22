@@ -4,42 +4,38 @@ title: sass:selector
 
 {% render 'doc_snippets/built-in-module-status' %}
 
-{% markdown %}
-  ## Selector Values
+## Selector Values
 
-  The functions in this module inspect and manipulate selectors. Whenever they
-  return a selector, it's always a comma-separated [list][] (the selector list)
-  that contains space-separated lists (the complex selectors) that contain
-  [unquoted strings][] (the compound selectors). For example, the selector
-  `.main aside:hover, .sidebar p` would be returned as:
+The functions in this module inspect and manipulate selectors. Whenever they
+return a selector, it's always a comma-separated [list][] (the selector list)
+that contains space-separated lists (the complex selectors) that contain
+[unquoted strings][] (the compound selectors). For example, the selector `.main
+aside:hover, .sidebar p` would be returned as:
 
-  [list]: /documentation/values/lists
-  [unquoted strings]: /documentation/values/strings#unquoted
+[list]: /documentation/values/lists
+[unquoted strings]: /documentation/values/strings#unquoted
 
-  ```scss
-  @debug ((unquote(".main") unquote("aside:hover")),
-          (unquote(".sidebar") unquote("p")));
-  // .main aside:hover, .sidebar p
-  ```
+```scss
+@debug ((unquote(".main") unquote("aside:hover")),
+        (unquote(".sidebar") unquote("p")));
+// .main aside:hover, .sidebar p
+```
 
-  Selector arguments to these functions may be in the same format, but they can
-  also just be normal strings (quoted or unquoted), or a combination. For
-  example, `".main aside:hover, .sidebar p"` is a valid selector argument.
-{% endmarkdown %}
+Selector arguments to these functions may be in the same format, but they can
+also just be normal strings (quoted or unquoted), or a combination. For example,
+`".main aside:hover, .sidebar p"` is a valid selector argument.
 
 {% function 'selector.is-superselector($super, $sub)', 'is-superselector($super, $sub)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether the selector `$super` matches all the elements that the
-    selector `$sub` matches.
+  Returns whether the selector `$super` matches all the elements that the
+  selector `$sub` matches.
 
-    Still returns true even if `$super` matches *more* elements than `$sub`.
+  Still returns true even if `$super` matches *more* elements than `$sub`.
 
-    The `$super` and `$sub` selectors may contain [placeholder selectors][], but
-    not [parent selectors][].
+  The `$super` and `$sub` selectors may contain [placeholder selectors][], but
+  not [parent selectors][].
 
-    [placeholder selectors]: /documentation/style-rules/placeholder-selectors
-    [parent selectors]: /documentation/style-rules/parent-selector
-  {% endmarkdown %}
+  [placeholder selectors]: /documentation/style-rules/placeholder-selectors
+  [parent selectors]: /documentation/style-rules/parent-selector
 
   {% codeExample 'is-superselector', false %}
     @debug selector.is-superselector("a", "a.disabled"); // true
@@ -57,23 +53,21 @@ title: sass:selector
 {% endfunction %}
 
 {% function 'selector.append($selectors...)', 'selector-append($selectors...)', 'returns:selector' %}
-  {% markdown %}
-    Combines `$selectors` without [descendant combinators][]—that is, without
-    whitespace between them.
+  Combines `$selectors` without [descendant combinators][]—that is, without
+  whitespace between them.
 
-    [descendant combinators]: https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_selectors
+  [descendant combinators]: https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_selectors
 
-    If any selector in `$selectors` is a selector list, each complex selector is
-    combined separately.
+  If any selector in `$selectors` is a selector list, each complex selector is
+  combined separately.
 
-    The `$selectors` may contain [placeholder selectors][], but not [parent
-    selectors][].
+  The `$selectors` may contain [placeholder selectors][], but not [parent
+  selectors][].
 
-    [placeholder selectors]: /documentation/style-rules/placeholder-selectors
-    [parent selectors]: /documentation/style-rules/parent-selector
+  [placeholder selectors]: /documentation/style-rules/placeholder-selectors
+  [parent selectors]: /documentation/style-rules/parent-selector
 
-    See also [`selector.nest()`](#nest).
-  {% endmarkdown %}
+  See also [`selector.nest()`](#nest).
 
   {% codeExample 'append', false %}
     @debug selector.append("a", ".disabled"); // a.disabled
@@ -89,31 +83,29 @@ title: sass:selector
 {% endfunction %}
 
 {% function 'selector.extend($selector, $extendee, $extender)', 'selector-extend($selector, $extendee, $extender)', 'returns:selector' %}
-  {% markdown %}
-    Extends `$selector` as with the [`@extend` rule][].
+  Extends `$selector` as with the [`@extend` rule][].
 
-    [`@extend` rule]: /documentation/at-rules/extend
+  [`@extend` rule]: /documentation/at-rules/extend
 
-    Returns a copy of `$selector` modified with the following `@extend` rule:
+  Returns a copy of `$selector` modified with the following `@extend` rule:
 
-    ```scss
-    #{$extender} {
-      @extend #{$extendee};
-    }
-    ```
+  ```scss
+  #{$extender} {
+    @extend #{$extendee};
+  }
+  ```
 
-    In other words, replaces all instances of `$extendee` in `$selector` with
-    `$extendee, $extender`. If `$selector` doesn't contain `$extendee`, returns
-    it as-is.
+  In other words, replaces all instances of `$extendee` in `$selector` with
+  `$extendee, $extender`. If `$selector` doesn't contain `$extendee`, returns it
+  as-is.
 
-    The `$selector`, `$extendee`, and `$extender` selectors may contain
-    [placeholder selectors][], but not [parent selectors][].
+  The `$selector`, `$extendee`, and `$extender` selectors may contain
+  [placeholder selectors][], but not [parent selectors][].
 
-    [placeholder selectors]: /documentation/style-rules/placeholder-selectors
-    [parent selectors]: /documentation/style-rules/parent-selector
+  [placeholder selectors]: /documentation/style-rules/placeholder-selectors
+  [parent selectors]: /documentation/style-rules/parent-selector
 
-    See also [`selector.replace()`](#replace).
-  {% endmarkdown %}
+  See also [`selector.replace()`](#replace).
 
   {% codeExample 'extend', false %}
     @debug selector.extend("a.disabled", "a", ".link"); // a.disabled, .link.disabled
@@ -129,19 +121,16 @@ title: sass:selector
 {% endfunction %}
 
 {% function 'selector.nest($selectors...)', 'selector-nest($selectors...)', 'returns:selector' %}
-  {% markdown %}
-    Combines `$selectors` as though they were nested within one another in the
-    stylesheet.
+  Combines `$selectors` as though they were nested within one another in the
+  stylesheet.
 
-    The `$selectors` may contain [placeholder selectors][]. Unlike other
-    selector functions, all of them except the first may also contain [parent
-    selectors][].
+  The `$selectors` may contain [placeholder selectors][]. Unlike other selector
+  functions, all of them except the first may also contain [parent selectors][].
 
-    [placeholder selectors]: /documentation/style-rules/placeholder-selectors
-    [parent selectors]: /documentation/style-rules/parent-selector
+  [placeholder selectors]: /documentation/style-rules/placeholder-selectors
+  [parent selectors]: /documentation/style-rules/parent-selector
 
-    See also [`selector.append()`](#append).
-  {% endmarkdown %}
+  See also [`selector.append()`](#append).
 
   {% codeExample 'nest', false %}
     @debug selector.nest("ul", "li"); // ul li
@@ -157,9 +146,7 @@ title: sass:selector
 {% endfunction %}
 
 {% function 'selector.parse($selector)', 'selector-parse($selector)', 'returns:selector' %}
-  {% markdown %}
-    Returns `$selector` in the [selector value](#selector-values) format.
-  {% endmarkdown %}
+  Returns `$selector` in the [selector value](#selector-values) format.
 
   {% codeExample 'parse', false %}
     @debug selector.parse(".main aside:hover, .sidebar p");
@@ -173,25 +160,23 @@ title: sass:selector
 {% endfunction %}
 
 {% function 'selector.replace($selector, $original, $replacement)', 'selector-replace($selector, $original, $replacement)', 'returns:selector' %}
-  {% markdown %}
-    Returns a copy of `$selector` with all instances of `$original` replaced by
-    `$replacement`.
+  Returns a copy of `$selector` with all instances of `$original` replaced by
+  `$replacement`.
 
-    This uses the [`@extend` rule][]'s [intelligent unification][] to make sure
-    `$replacement` is seamlessly integrated into `$selector`. If `$selector`
-    doesn't contain `$original`, returns it as-is.
+  This uses the [`@extend` rule][]'s [intelligent unification][] to make sure
+  `$replacement` is seamlessly integrated into `$selector`. If `$selector`
+  doesn't contain `$original`, returns it as-is.
 
-    [`@extend` rule]: /documentation/at-rules/extend
-    [intelligent unification]: /documentation/at-rules/extend#how-it-works
+  [`@extend` rule]: /documentation/at-rules/extend
+  [intelligent unification]: /documentation/at-rules/extend#how-it-works
 
-    The `$selector`, `$original`, and `$replacement` selectors may contain
-    [placeholder selectors][], but not [parent selectors][].
+  The `$selector`, `$original`, and `$replacement` selectors may contain
+  [placeholder selectors][], but not [parent selectors][].
 
-    [placeholder selectors]: /documentation/style-rules/placeholder-selectors
-    [parent selectors]: /documentation/style-rules/parent-selector
+  [placeholder selectors]: /documentation/style-rules/placeholder-selectors
+  [parent selectors]: /documentation/style-rules/parent-selector
 
-    See also [`selector.extend()`](#extend).
-  {% endmarkdown %}
+  See also [`selector.extend()`](#extend).
 
   {% codeExample 'replace', false %}
     @debug selector.replace("a.disabled", "a", ".link"); // .link.disabled
@@ -207,19 +192,17 @@ title: sass:selector
 {% endfunction %}
 
 {% function 'selector.unify($selector1, $selector2)', 'selector-unify($selector1, $selector2)', 'returns:selector | null' %}
-  {% markdown %}
-    Returns a selector that matches only elements matched by *both* `$selector1`
-    and `$selector2`.
+  Returns a selector that matches only elements matched by *both* `$selector1`
+  and `$selector2`.
 
-    Returns `null` if `$selector1` and `$selector2` don't match any of the same
-    elements, or if there's no selector that can express their overlap.
+  Returns `null` if `$selector1` and `$selector2` don't match any of the same
+  elements, or if there's no selector that can express their overlap.
 
-    Like selectors generated by the [`@extend` rule][], the returned selector
-    isn't guaranteed to match *all* the elements matched by both `$selector1`
-    and `$selector2` if they're both complex selectors.
+  Like selectors generated by the [`@extend` rule][], the returned selector
+  isn't guaranteed to match *all* the elements matched by both `$selector1` and
+  `$selector2` if they're both complex selectors.
 
-    [`@extend` rule]: /documentation/at-rules/extend#html-heuristics
-  {% endmarkdown %}
+  [`@extend` rule]: /documentation/at-rules/extend#html-heuristics
 
   {% codeExample 'unify', false %}
     @debug selector.unify("a", ".disabled"); // a.disabled
@@ -235,15 +218,13 @@ title: sass:selector
 {% endfunction %}
 
 {% function 'selector.simple-selectors($selector)', 'simple-selectors($selector)', 'returns:list' %}
-  {% markdown %}
-    Returns a list of simple selectors in `$selector`.
+  Returns a list of simple selectors in `$selector`.
 
-    The `$selector` must be a single string that contains a compound selector.
-    This means it may not contain combinators (including spaces) or commas.
+  The `$selector` must be a single string that contains a compound selector.
+  This means it may not contain combinators (including spaces) or commas.
 
-    The returned list is comma-separated, and the simple selectors are unquoted
-    strings.
-  {% endmarkdown %}
+  The returned list is comma-separated, and the simple selectors are unquoted
+  strings.
 
   {% codeExample 'simple-selectors', false %}
     @debug selector.simple-selectors("a.disabled"); // a, .disabled

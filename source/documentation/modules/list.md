@@ -16,21 +16,18 @@ title: sass:list
 {% endfunFact %}
 
 {% function 'list.append($list, $val, $separator: auto)', 'append($list, $val, $separator: auto)',  'returns:list' %}
-  {% markdown %}
-    Returns a copy of `$list` with `$val` added to the end.
+  Returns a copy of `$list` with `$val` added to the end.
 
-    If `$separator` is `comma`, `space`, or `slash`, the returned list is
-    comma-separated, space-separated, or slash-separated, respectively. If it's
-    `auto` (the default), the returned list will use the same separator as
-    `$list` (or `space` if `$list` doesn't have a separator). Other values
-    aren't allowed.
+  If `$separator` is `comma`, `space`, or `slash`, the returned list is
+  comma-separated, space-separated, or slash-separated, respectively. If it's
+  `auto` (the default), the returned list will use the same separator as `$list`
+  (or `space` if `$list` doesn't have a separator). Other values aren't allowed.
 
-    [separator]: /documentation/values/lists
+  [separator]: /documentation/values/lists
 
-    Note that unlike [`list.join()`](#join), if `$val` is a list it's nested
-    within the returned list rather than having all its elements added to the
-    returned list.
-  {% endmarkdown %}
+  Note that unlike [`list.join()`](#join), if `$val` is a list it's nested
+  within the returned list rather than having all its elements added to the
+  returned list.
 
   {% codeExample 'list-append', false %}
     @debug list.append(10px 20px, 30px); // 10px 20px 30px
@@ -48,25 +45,21 @@ title: sass:list
 {% endfunction %}
 
 {% function 'list.index($list, $value)', 'index($list, $value)', 'returns:number | null' %}
-  {% markdown %}
-    Returns the [index][] of `$value` in `$list`.
+  Returns the [index][] of `$value` in `$list`.
 
-    [index]: /documentation/values/lists#indexes
+  [index]: /documentation/values/lists#indexes
 
-    If `$value` doesn't appear in `$list`, this returns [`null`][]. If `$value`
-    appears multiple times in `$list`, this returns the index of its first
-    appearance.
+  If `$value` doesn't appear in `$list`, this returns [`null`][]. If `$value`
+  appears multiple times in `$list`, this returns the index of its first
+  appearance.
 
-    [`null`]: /documentation/values/null
-  {% endmarkdown %}
+  [`null`]: /documentation/values/null
 
   {% render 'code_snippets/example-list-index' %}
 {% endfunction %}
 
 {% function 'list.is-bracketed($list)', 'is-bracketed($list)', 'returns:boolean' %}
-  {% markdown %}
-    Returns whether `$list` has square brackets.
-  {% endmarkdown %}
+  Returns whether `$list` has square brackets.
 
   {% codeExample 'list-is-bracketed', false %}
     @debug list.is-bracketed(1px 2px 3px); // false
@@ -78,10 +71,8 @@ title: sass:list
 {% endfunction %}
 
 {% function 'list.join($list1, $list2, $separator: auto, $bracketed: auto)', 'join($list1, $list2, $separator: auto, $bracketed: auto)', 'returns:list' %}
-  {% markdown %}
-    Returns a new list containing the elements of `$list1` followed by the
-    elements of `$list2`.
-  {% endmarkdown %}
+  Returns a new list containing the elements of `$list1` followed by the
+  elements of `$list2`.
 
   {% headsUp %}
     Because individual values count as single-element lists, it's possible to
@@ -93,19 +84,17 @@ title: sass:list
     use `list.join()` to combine two lists together into one.
   {% endheadsUp %}
 
-  {% markdown %}
-    If `$separator` is `comma`, `space`, or `slash`, the returned list is
-    comma-separated, space-separated, or slash-separated, respectively. If it's
-    `auto` (the default), the returned list will use the same separator as
-    `$list1` if it has a separator, or else `$list2` if it has a separator, or
-    else `space`. Other values aren't allowed.
+  If `$separator` is `comma`, `space`, or `slash`, the returned list is
+  comma-separated, space-separated, or slash-separated, respectively. If it's
+  `auto` (the default), the returned list will use the same separator as
+  `$list1` if it has a separator, or else `$list2` if it has a separator, or
+  else `space`. Other values aren't allowed.
 
-    If `$bracketed` is `auto` (the default), the returned list will be bracketed
-    if `$list1` is. Otherwise, the returned list will have square brackets if
-    `$bracketed` is [truthy] and no brackets if `$bracketed` is falsey.
+  If `$bracketed` is `auto` (the default), the returned list will be bracketed
+  if `$list1` is. Otherwise, the returned list will have square brackets if
+  `$bracketed` is [truthy] and no brackets if `$bracketed` is falsey.
 
-    [truthy]: /documentation/values/booleans#truthiness-and-falsiness
-  {% endmarkdown %}
+  [truthy]: /documentation/values/booleans#truthiness-and-falsiness
 
   {% codeExample 'list-join', false %}
     @debug list.join(10px 20px, 30px 40px); // 10px 20px 30px 40px
@@ -127,11 +116,9 @@ title: sass:list
 {% endfunction %}
 
 {% function 'list.length($list)', 'length($list)', 'returns:number' %}
-  {% markdown %}
-    Returns the length of `$list`.
+  Returns the length of `$list`.
 
-    This can also return the number of pairs in a map.
-  {% endmarkdown %}
+  This can also return the number of pairs in a map.
 
   {% codeExample 'list-length', false %}
     @debug list.length(10px); // 1
@@ -145,12 +132,10 @@ title: sass:list
 {% endfunction %}
 
 {% function 'list.separator($list)', 'list-separator($list)', 'returns:unquoted string' %}
-  {% markdown %}
-    Returns the name of the separator used by `$list`, either `space`, `comma`,
-    or `slash`.
+  Returns the name of the separator used by `$list`, either `space`, `comma`, or
+  `slash`.
 
-    If `$list` doesn't have a separator, returns `space`.
-  {% endmarkdown %}
+  If `$list` doesn't have a separator, returns `space`.
 
   {% codeExample 'list-separator', false %}
     @debug list.separator(1px 2px 3px); // space
@@ -166,28 +151,24 @@ title: sass:list
 {% endfunction %}
 
 {% function 'list.nth($list, $n)', 'nth($list, $n)' %}
-  {% markdown %}
-    Returns the element of `$list` at [index][] `$n`.
+  Returns the element of `$list` at [index][] `$n`.
 
-    [index]: /documentation/values/lists#indexes
+  [index]: /documentation/values/lists#indexes
 
-    If `$n` is negative, it counts from the end of `$list`. Throws an error if
-    there is no element at index `$n`.
-  {% endmarkdown %}
+  If `$n` is negative, it counts from the end of `$list`. Throws an error if
+  there is no element at index `$n`.
 
   {% render 'code_snippets/example-list-nth' %}
 {% endfunction %}
 
 {% function 'list.set-nth($list, $n, $value)', 'set-nth($list, $n, $value)', 'returns:list' %}
-  {% markdown %}
-    Returns a copy of `$list` with the element at [index][] `$n` replaced with
-    `$value`.
+  Returns a copy of `$list` with the element at [index][] `$n` replaced with
+  `$value`.
 
-    [index]: /documentation/values/lists#indexes
+  [index]: /documentation/values/lists#indexes
 
-    If `$n` is negative, it counts from the end of `$list`. Throws an error if
-    there is no existing element at index `$n`.
-  {% endmarkdown %}
+  If `$n` is negative, it counts from the end of `$list`. Throws an error if
+  there is no existing element at index `$n`.
 
   {% codeExample 'list-set-nth', false %}
     @debug list.set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
@@ -201,9 +182,7 @@ title: sass:list
 {% endfunction %}
 
 {% function 'list.slash($elements...)', 'returns:list' %}
-  {% markdown %}
-    Returns a slash-separated list that contains `$elements`.
-  {% endmarkdown %}
+  Returns a slash-separated list that contains `$elements`.
 
   {% headsUp %}
     This function is a temporary solution for creating slash-separated lists.
@@ -222,15 +201,13 @@ title: sass:list
 {% endfunction %}
 
 {% function 'list.zip($lists...)', 'zip($lists...)', 'returns:list' %}
-  {% markdown %}
-    Combines every list in `$lists` into a single list of sub-lists.
+  Combines every list in `$lists` into a single list of sub-lists.
 
-    Each element in the returned list contains all the elements at that position
-    in `$lists`. The returned list is as long as the shortest list in `$lists`.
+  Each element in the returned list contains all the elements at that position
+  in `$lists`. The returned list is as long as the shortest list in `$lists`.
 
-    The returned list is always comma-separated and the sub-lists are always
-    space-separated.
-  {% endmarkdown %}
+  The returned list is always comma-separated and the sub-lists are always
+  space-separated.
 
   {% codeExample 'list-zip', false %}
     @debug list.zip(10px 50px 100px, short mid long); // 10px short, 50px mid, 100px long
