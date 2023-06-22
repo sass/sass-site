@@ -48,42 +48,40 @@ introduction: >
     border: 1px solid color.scale($primary-color, $lightness: 20%)
 {% endcodeExample %}
 
-{% markdown %}
-  Sass provides the following built-in modules:
+Sass provides the following built-in modules:
 
-  * The [`sass:math` module][] provides functions that operate on [numbers][].
+* The [`sass:math` module][] provides functions that operate on [numbers][].
 
-  * The [`sass:string` module][] makes it easy to combine, search, or split
-    apart [strings][].
+* The [`sass:string` module][] makes it easy to combine, search, or split apart
+  [strings][].
 
-  * The [`sass:color` module][] generates new [colors][] based on existing ones,
-    making it easy to build color themes.
+* The [`sass:color` module][] generates new [colors][] based on existing ones,
+  making it easy to build color themes.
 
-  * The [`sass:list` module][] lets you access and modify values in [lists][].
+* The [`sass:list` module][] lets you access and modify values in [lists][].
 
-  * The [`sass:map` module][] makes it possible to look up the value associated
-    with a key in a [map][], and much more.
+* The [`sass:map` module][] makes it possible to look up the value associated
+  with a key in a [map][], and much more.
 
-  * The [`sass:selector` module][] provides access to Sass's powerful selector
-    engine.
+* The [`sass:selector` module][] provides access to Sass's powerful selector
+  engine.
 
-  * The [`sass:meta` module][] exposes the details of Sass's inner workings.
+* The [`sass:meta` module][] exposes the details of Sass's inner workings.
 
-  [`sass:math` module]: /documentation/modules/math
-  [numbers]: /documentation/values/numbers
-  [`sass:string` module]: /documentation/modules/string
-  [strings]: /documentation/values/strings
-  [`sass:color` module]: /documentation/modules/color
-  [colors]: /documentation/values/colors
-  [`sass:list` module]: /documentation/modules/list
-  [lists]: /documentation/values/lists
-  [`sass:map` module]: /documentation/modules/map
-  [map]: /documentation/values/maps
-  [`sass:selector` module]: /documentation/modules/selector
-  [`sass:meta` module]: /documentation/modules/meta
+[`sass:math` module]: /documentation/modules/math
+[numbers]: /documentation/values/numbers
+[`sass:string` module]: /documentation/modules/string
+[strings]: /documentation/values/strings
+[`sass:color` module]: /documentation/modules/color
+[colors]: /documentation/values/colors
+[`sass:list` module]: /documentation/modules/list
+[lists]: /documentation/values/lists
+[`sass:map` module]: /documentation/modules/map
+[map]: /documentation/values/maps
+[`sass:selector` module]: /documentation/modules/selector
+[`sass:meta` module]: /documentation/modules/meta
 
-  ## Global Functions
-{% endmarkdown %}
+## Global Functions
 
 {% function 'hsl($hue $saturation $lightness)', 'hsl($hue $saturation $lightness / $alpha)', 'hsl($hue, $saturation, $lightness, $alpha: 1)', 'hsla($hue $saturation $lightness)', 'hsla($hue $saturation $lightness / $alpha)', 'hsla($hue, $saturation, $lightness, $alpha: 1)', 'returns:color' %}
   {% compatibility 'dart: "1.15.0"', 'libsass: false', 'ruby: false', 'feature: "Level 4 Syntax"' %}
@@ -102,21 +100,19 @@ introduction: >
     as percentages.
   {% endcompatibility %}
 
-  {% markdown %}
-    Returns a color with the given [hue, saturation, and lightness][] and the
-    given alpha channel.
+  Returns a color with the given [hue, saturation, and lightness][] and the
+  given alpha channel.
 
-    [hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
+  [hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
 
-    The hue is a number between `0deg` and `360deg` (inclusive) and may be
-    unitless. The saturation and lightness are numbers between `0%` and `100%`
-    (inclusive) and may *not* be unitless. The alpha channel can be specified as
-    either a unitless number between 0 and 1 (inclusive), or a percentage
-    between `0%` and `100%` (inclusive).
-  {% endmarkdown %}
+  The hue is a number between `0deg` and `360deg` (inclusive) and may be
+  unitless. The saturation and lightness are numbers between `0%` and `100%`
+  (inclusive) and may *not* be unitless. The alpha channel can be specified as
+  either a unitless number between 0 and 1 (inclusive), or a percentage between
+  `0%` and `100%` (inclusive).
 
-  {% funFact false %}
-    {% markdown %}
+  {% funFact %}
+    {% stripIndent %}
       You can pass [special functions][] like `calc()` or `var()` in place of
       any argument to `hsl()`. You can even use `var()` in place of multiple
       arguments, since it might be replaced by multiple values! When a color
@@ -124,7 +120,7 @@ introduction: >
       signature it was called with.
 
       [special functions]: /documentation/syntax/special-functions
-    {% endmarkdown %}
+    {% endstripIndent %}
 
     {% codeExample 'hsl-special', false %}
       @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
@@ -158,15 +154,13 @@ introduction: >
 {% endfunction %}
 
 {% function 'if($condition, $if-true, $if-false)' %}
-  {% markdown %}
-    Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
+  Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
 
-    This function is special in that it doesn't even evaluate the argument that
-    isn't returned, so it's safe to call even if the unused argument would throw
-    an error.
+  This function is special in that it doesn't even evaluate the argument that
+  isn't returned, so it's safe to call even if the unused argument would throw
+  an error.
 
-    [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
-  {% endmarkdown %}
+  [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
 
   {% codeExample 'debug', false %}
     @debug if(true, 10px, 15px); // 10px
@@ -197,20 +191,18 @@ introduction: >
     as percentages.
   {% endcompatibility %}
 
-  {% markdown %}
-    If `$red`, `$green`, `$blue`, and optionally `$alpha` are passed, returns a
-    color with the given red, green, blue, and alpha channels.
+  If `$red`, `$green`, `$blue`, and optionally `$alpha` are passed, returns a
+  color with the given red, green, blue, and alpha channels.
 
-    Each channel can be specified as either a [unitless][] number between 0 and
-    255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
-    alpha channel can be specified as either a unitless number between 0 and 1
-    (inclusive), or a percentage between `0%` and `100%` (inclusive).
+  Each channel can be specified as either a [unitless][] number between 0 and
+  255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
+  alpha channel can be specified as either a unitless number between 0 and 1
+  (inclusive), or a percentage between `0%` and `100%` (inclusive).
 
-    [unitless]: /documentation/values/numbers#units
-  {% endmarkdown %}
+  [unitless]: /documentation/values/numbers#units
 
-  {% funFact false %}
-    {% markdown %}
+  {% funFact %}
+    {% stripIndent %}
       You can pass [special functions][] like `calc()` or `var()` in place of
       any argument to `rgb()`. You can even use `var()` in place of multiple
       arguments, since it might be replaced by multiple values! When a color
@@ -218,7 +210,7 @@ introduction: >
       signature it was called with.
 
       [special functions]: /documentation/syntax/special-functions
-    {% endmarkdown %}
+    {% endstripIndent %}
 
     {% codeExample 'rgb-special', false %}
       @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
@@ -250,12 +242,10 @@ introduction: >
     @debug rgba(95%, 92.5%, 89.5%, 0.2)  // rgba(242, 236, 228, 0.2)
   {% endcodeExample %}
 
-  {{ '---' | markdown }}
+  ---
 
-  {% markdown %}
-    If `$color` and `$alpha` are passed, this returns `$color` with the given
-    `$alpha` channel instead of its original alpha channel.
-  {% endmarkdown %}
+  If `$color` and `$alpha` are passed, this returns `$color` with the given
+  `$alpha` channel instead of its original alpha channel.
 
   {% codeExample 'color-and-alpha', false %}
     @debug rgb(#f2ece4, 50%); // rgba(242, 236, 228, 0.5);

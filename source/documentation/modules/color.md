@@ -254,14 +254,16 @@ title: sass:color
   the HSL lightness of `$color` by that amount.
 
   {% headsUp %}
-    The `darken()` function decreases lightness by a fixed amount, which is
-    often not the desired effect. To make a color a certain percentage darker
-    than it was before, use [`color.scale()`](#scale) instead.
+    {% stripIndent %}
+      The `darken()` function decreases lightness by a fixed amount, which is
+      often not the desired effect. To make a color a certain percentage darker
+      than it was before, use [`color.scale()`](#scale) instead.
 
-    Because `darken()` is usually not the best way to make a color darker, it's
-    not included directly in the new module system. However, if you have to
-    preserve the existing behavior, `darken($color, $amount)` can be written
-    [`color.adjust($color, $lightness: -$amount)`](#adjust).
+      Because `darken()` is usually not the best way to make a color darker,
+      it's not included directly in the new module system. However, if you have
+      to preserve the existing behavior, `darken($color, $amount)` can be
+      written [`color.adjust($color, $lightness: -$amount)`](#adjust).
+    {% endstripIndent %}
 
     {% codeExample 'color-darken', false %}
       // #036 has lightness 20%, so when darken() subtracts 30% it just returns black.
@@ -306,14 +308,17 @@ title: sass:color
   the HSL saturation of `$color` by that amount.
 
   {% headsUp %}
-    The `desaturate()` function decreases saturation by a fixed amount, which is
-    often not the desired effect. To make a color a certain percentage less
-    saturated than it was before, use [`color.scale()`](#scale) instead.
+    {% stripIndent %}
+      The `desaturate()` function decreases saturation by a fixed amount, which
+      is often not the desired effect. To make a color a certain percentage less
+      saturated than it was before, use [`color.scale()`](#scale) instead.
 
-    Because `desaturate()` is usually not the best way to make a color less
-    saturated, it's not included directly in the new module system. However, if
-    you have to preserve the existing behavior, `desaturate($color, $amount)`
-    can be written [`color.adjust($color, $saturation: -$amount)`](#adjust).
+      Because `desaturate()` is usually not the best way to make a color less
+      saturated, it's not included directly in the new module system. However,
+      if you have to preserve the existing behavior, `desaturate($color,
+      $amount)` can be written [`color.adjust($color, $saturation:
+      -$amount)`](#adjust).
+    {% endstripIndent %}
 
     {% codeExample 'color-desaturate', false %}
       // #d2e1dd has saturation 20%, so when desaturate() subtracts 30% it just
@@ -500,14 +505,16 @@ title: sass:color
   the HSL lightness of `$color` by that amount.
 
   {% headsUp %}
-    The `lighten()` function increases lightness by a fixed amount, which is
-    often not the desired effect. To make a color a certain percentage lighter
-    than it was before, use [`scale()`](#scale) instead.
+    {% stripIndent %}
+      The `lighten()` function increases lightness by a fixed amount, which is
+      often not the desired effect. To make a color a certain percentage lighter
+      than it was before, use [`scale()`](#scale) instead.
 
-    Because `lighten()` is usually not the best way to make a color lighter,
-    it's not included directly in the new module system. However, if you have to
-    preserve the existing behavior, `lighten($color, $amount)` can be written
-    [`adjust($color, $lightness: $amount)`](#adjust).
+      Because `lighten()` is usually not the best way to make a color lighter,
+      it's not included directly in the new module system. However, if you have
+      to preserve the existing behavior, `lighten($color, $amount)` can be
+      written [`adjust($color, $lightness: $amount)`](#adjust).
+    {% endstripIndent %}
 
     {% codeExample 'color-lighten', false %}
       // #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
@@ -599,14 +606,17 @@ title: sass:color
   alpha channel of `$color` by that amount.
 
   {% headsUp %}
-    The `opacify()` function increases the alpha channel by a fixed amount,
-    which is often not the desired effect. To make a color a certain percentage
-    more opaque than it was before, use [`scale()`](#scale) instead.
+    {% stripIndent %}
+      The `opacify()` function increases the alpha channel by a fixed amount,
+      which is often not the desired effect. To make a color a certain
+      percentage more opaque than it was before, use [`scale()`](#scale)
+      instead.
 
-    Because `opacify()` is usually not the best way to make a color more opaque,
-    it's not included directly in the new module system. However, if you have to
-    preserve the existing behavior, `opacify($color, $amount)` can be written
-    [`adjust($color, $alpha: -$amount)`](#adjust).
+      Because `opacify()` is usually not the best way to make a color more
+      opaque, it's not included directly in the new module system. However, if
+      you have to preserve the existing behavior, `opacify($color, $amount)` can
+      be written [`adjust($color, $alpha: -$amount)`](#adjust).
+    {% endstripIndent %}
 
     {% codeExample 'color-opacify', false %}
       // rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully
@@ -668,14 +678,16 @@ title: sass:color
   the HSL saturation of `$color` by that amount.
 
   {% headsUp %}
-    The `saturate()` function increases saturation by a fixed amount, which is
-    often not the desired effect. To make a color a certain percentage more
-    saturated than it was before, use [`scale()`](#scale) instead.
+    {% stripIndent %}
+      The `saturate()` function increases saturation by a fixed amount, which is
+      often not the desired effect. To make a color a certain percentage more
+      saturated than it was before, use [`scale()`](#scale) instead.
 
-    Because `saturate()` is usually not the best way to make a color more
-    saturated, it's not included directly in the new module system. However, if
-    you have to preserve the existing behavior, `saturate($color, $amount)` can
-    be written [`adjust($color, $saturation: $amount)`](#adjust).
+      Because `saturate()` is usually not the best way to make a color more
+      saturated, it's not included directly in the new module system. However,
+      if you have to preserve the existing behavior, `saturate($color, $amount)`
+      can be written [`adjust($color, $saturation: $amount)`](#adjust).
+    {% endstripIndent %}
 
     {% codeExample 'color-saturate', false %}
       // #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes
@@ -791,16 +803,18 @@ title: sass:color
   alpha channel of `$color` by that amount.
 
   {% headsUp %}
-    The `transparentize()` function decreases the alpha channel by a fixed
-    amount, which is often not the desired effect. To make a color a certain
-    percentage more transparent than it was before, use
-    [`color.scale()`](#scale) instead.
+    {% stripIndent %}
+      The `transparentize()` function decreases the alpha channel by a fixed
+      amount, which is often not the desired effect. To make a color a certain
+      percentage more transparent than it was before, use
+      [`color.scale()`](#scale) instead.
 
-    Because `transparentize()` is usually not the best way to make a color more
-    transparent, it's not included directly in the new module system. However,
-    if you have to preserve the existing behavior, `transparentize($color,
-    $amount)` can be written [`color.adjust($color, $alpha:
-    -$amount)`](#adjust).
+      Because `transparentize()` is usually not the best way to make a color
+      more transparent, it's not included directly in the new module system.
+      However, if you have to preserve the existing behavior,
+      `transparentize($color, $amount)` can be written [`color.adjust($color,
+      $alpha: -$amount)`](#adjust).
+    {% endstripIndent %}
 
     {% codeExample 'transparentize', false %}
       // rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it
