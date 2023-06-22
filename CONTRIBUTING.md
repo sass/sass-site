@@ -79,8 +79,9 @@ npm run lint
 - `.md` files are parsed both as Markdown _and_ as LiquidJS templates.
 - When using Markdown, remember that _indentation and whitespace (e.g newlines)
   matter_. Custom tags attempt to strip leading whitespace from text contents
-  (based on the whitespace of the first line) to allow for indented code blocks
-  -- see the `stripIndent` function in `source/helpers/type.ts` for details.
+  (based on the whitespace of the first line of text) to allow for more readable
+  indentation between tags -- see the `stripIndent` function in
+  `source/helpers/type.ts` for details.
 
 ## Deploying
 
