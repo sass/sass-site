@@ -54,11 +54,13 @@ jobs:
           cd shadow-repo
           rm -rf ./*
           cp -rT ../_site .
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add -A
-          git commit --allow-empty -m "Update from https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
-          git push origin
+      - uses: EndBug/add-and-commit@v9
+        with:
+          cwd: shadow-repo
+          author_name: Sass Bot
+          author_email: sass.bot.beep.boop@gmail.com
+          message: Update from https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+          commit: --allow-empty
 
   diff-link:
     name: Create comment to diff link
