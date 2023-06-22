@@ -1,6 +1,5 @@
-import stripIndent from 'strip-indent';
-
 import {liquidEngine} from '../engines';
+import {stripIndent} from '../type';
 
 /**
  * Renders a status dashboard for each implementation's support for a feature.

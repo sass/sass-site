@@ -112,15 +112,13 @@ Sass provides the following built-in modules:
   `0%` and `100%` (inclusive).
 
   {% funFact %}
-    {% stripIndent %}
-      You can pass [special functions][] like `calc()` or `var()` in place of
-      any argument to `hsl()`. You can even use `var()` in place of multiple
-      arguments, since it might be replaced by multiple values! When a color
-      function is called this way, it returns an unquoted string using the same
-      signature it was called with.
+    You can pass [special functions][] like `calc()` or `var()` in place of any
+    argument to `hsl()`. You can even use `var()` in place of multiple
+    arguments, since it might be replaced by multiple values! When a color
+    function is called this way, it returns an unquoted string using the same
+    signature it was called with.
 
-      [special functions]: /documentation/syntax/special-functions
-    {% endstripIndent %}
+    [special functions]: /documentation/syntax/special-functions
 
     {% codeExample 'hsl-special', false %}
       @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
@@ -202,15 +200,13 @@ Sass provides the following built-in modules:
   [unitless]: /documentation/values/numbers#units
 
   {% funFact %}
-    {% stripIndent %}
-      You can pass [special functions][] like `calc()` or `var()` in place of
-      any argument to `rgb()`. You can even use `var()` in place of multiple
-      arguments, since it might be replaced by multiple values! When a color
-      function is called this way, it returns an unquoted string using the same
-      signature it was called with.
+    You can pass [special functions][] like `calc()` or `var()` in place of any
+    argument to `rgb()`. You can even use `var()` in place of multiple
+    arguments, since it might be replaced by multiple values! When a color
+    function is called this way, it returns an unquoted string using the same
+    signature it was called with.
 
-      [special functions]: /documentation/syntax/special-functions
-    {% endstripIndent %}
+    [special functions]: /documentation/syntax/special-functions
 
     {% codeExample 'rgb-special', false %}
       @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))

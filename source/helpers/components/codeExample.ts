@@ -1,7 +1,7 @@
 import sass from 'sass';
-import stripIndent from 'strip-indent';
 
 import {liquidEngine} from '../engines';
+import {stripIndent} from '../type';
 
 /**
  * Renders a code example.
@@ -61,11 +61,10 @@ export default async function codeExample(
     throw new Error('`{% codeExample %}` tags require a unique name.');
   }
   const code = generateCodeExample(contents, autogenCSS, syntax);
-  const html = await liquidEngine.renderFile('code_examples/code_example', {
+  return liquidEngine.renderFile('code_examples/code_example', {
     code,
     exampleName,
   });
-  return html.trim();
 }
 
 const generateCodeExample = (

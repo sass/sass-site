@@ -1,8 +1,8 @@
 import * as cheerio from 'cheerio';
-import stripIndent from 'strip-indent';
 
 import {codeBlock} from './components';
 import {liquidEngine} from './engines';
+import {stripIndent} from './type';
 
 const links: Record<string, string> = {
   number: '/documentation/values/numbers',
@@ -77,13 +77,12 @@ export async function _function(content: string, ...signatures: string[]) {
   });
 
   // Render the final HTML
-  const html = await liquidEngine.renderFile('function', {
+  return liquidEngine.renderFile('function', {
     names,
     signatures: highlightedSignatures.join('\n'),
     content,
     returns: returns ? returnTypeLink(returns) : null,
   });
-  return html.trim();
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

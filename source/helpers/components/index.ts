@@ -1,8 +1,8 @@
 import {highlight, languages} from 'prismjs';
 import PrismLoader from 'prismjs/components/index';
-import stripIndent from 'strip-indent';
 
 import {liquidEngine} from '../engines';
+import {stripIndent} from '../type';
 import {default as codeExample} from './codeExample';
 import {compatibility, implStatus} from './compatibility';
 import {getDocTocData, getToc} from './toc';
@@ -16,12 +16,10 @@ export {getDocTocData, getToc};
  * documentation.
  */
 export const funFact = async (contents: string, useMarkdown = true) => {
-  const html = await liquidEngine.renderFile('fun_fact', {
-    // Un-indent nested markup to prevent unwanted `<p>` tags.
-    contents: stripIndent(contents).replaceAll(/^ +</gm, '<'),
+  return liquidEngine.renderFile('fun_fact', {
+    contents: stripIndent(contents),
     useMarkdown,
   });
-  return html.trim();
 };
 
 /**
@@ -29,12 +27,10 @@ export const funFact = async (contents: string, useMarkdown = true) => {
  * documentation.
  */
 export const headsUp = async (contents: string, useMarkdown = true) => {
-  const html = await liquidEngine.renderFile('heads_up', {
-    // Un-indent nested markup to prevent unwanted `<p>` tags.
-    contents: stripIndent(contents).replaceAll(/^ +</gm, '<'),
+  return liquidEngine.renderFile('heads_up', {
+    contents: stripIndent(contents),
     useMarkdown,
   });
-  return html.trim();
 };
 
 /**

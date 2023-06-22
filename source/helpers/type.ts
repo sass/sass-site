@@ -1,5 +1,5 @@
 import {LoremIpsum} from 'lorem-ipsum';
-import stripIndent from 'strip-indent';
+import stripInd from 'strip-indent';
 import truncate from 'truncate-html';
 import {typogrify} from 'typogr';
 
@@ -25,6 +25,25 @@ export const getLorem = (type: string, number = 1) => {
       return lorem.generateWords(number);
   }
   return '';
+};
+
+/**
+ * Strips leading whitespace from each line of a string.
+ * First strips based on the line with the least amount of leading whitespace,
+ * then strips based on the whitespace of the first line.
+ *
+ * @see https://github.com/sindresorhus/strip-indent
+ */
+export const stripIndent = (contents: string) => {
+  // Strip leading whitespace based on line with least leading whitespace
+  let text = stripInd(contents);
+  // Find leading whitespace of first line (ignoring initial newlines)
+  const match = text.replace(/^[\n\r]/, '').match(/^[ \t]*(?=\S)/g);
+  if (match?.[0]?.length) {
+    // Strip leading whitespace based on first line
+    text = text.replaceAll(new RegExp(`^[ \\t]{${match[0].length}}`, 'gm'), '');
+  }
+  return text;
 };
 
 /**
@@ -66,13 +85,6 @@ export const replaceInternalLinks = (content: string, url: string) =>
  */
 export const startsWith = (str: string, check: string) => str.startsWith(check);
 
-/**
- * Strips leading whitespace from each line in a string.
- *
- * @see https://github.com/sindresorhus/strip-indent
- */
-export const stripInd = (str: string) => stripIndent(str);
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function typePlugin(eleventyConfig: any) {
   // filters...
@@ -82,7 +94,6 @@ export default function typePlugin(eleventyConfig: any) {
   eleventyConfig.addLiquidFilter('typogr', typogr);
   eleventyConfig.addLiquidFilter('replaceInternalLinks', replaceInternalLinks);
   eleventyConfig.addLiquidFilter('startsWith', startsWith);
-  eleventyConfig.addLiquidFilter('stripIndent', stripInd);
 
   // shortcodes...
   eleventyConfig.addLiquidShortcode('lorem', getLorem);
@@ -90,5 +101,4 @@ export default function typePlugin(eleventyConfig: any) {
   // paired shortcodes...
   eleventyConfig.addPairedLiquidShortcode('markdown', markdown);
   eleventyConfig.addPairedLiquidShortcode('typogr', typogr);
-  eleventyConfig.addPairedLiquidShortcode('stripIndent', stripInd);
 }
