@@ -70,6 +70,7 @@ toc:
       - Extending Compound Selectors: /documentation/breaking-changes/extend-compound/
       - CSS Variable Syntax: /documentation/breaking-changes/css-vars/
       - Duplicate Variable Flags: /documentation/breaking-changes/duplicate-var-flags/
+      - Default Exports: /documentation/breaking-changes/default-export/
   - Command Line: /documentation/cli/
     :children:
       - Dart Sass: /documentation/cli/dart-sass/

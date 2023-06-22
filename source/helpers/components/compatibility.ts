@@ -1,6 +1,5 @@
-import stripIndent from 'strip-indent';
-
-import { liquidEngine } from '../engines';
+import {liquidEngine} from '../engines';
+import {stripIndent} from '../type';
 
 /**
  * Renders a status dashboard for each implementation's support for a feature.
@@ -37,16 +36,15 @@ interface CompatibilityOptions {
   node: string | boolean | null;
   ruby: string | boolean | null;
   feature: string | null;
-  useMarkdown: boolean;
 }
 
 const extend = <
   K extends keyof CompatibilityOptions,
-  V extends CompatibilityOptions[K],
+  V extends CompatibilityOptions[K]
 >(
   value: V,
   obj: CompatibilityOptions,
-  key: K,
+  key: K
 ) => {
   obj[key] = value;
 };
@@ -65,20 +63,18 @@ const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
     node: null,
     ruby: null,
     feature: null,
-    useMarkdown: true,
   };
   const keyValueRegex = /(.*?):(.*)/;
   for (const arg of args) {
     if (typeof arg !== 'string') {
       throw new Error(
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        `Received non-string argument to {% compatibility %} tag: ${arg}`,
+        `Received non-string argument to {% compatibility %} tag: ${arg}`
       );
     }
     const match = arg.match(keyValueRegex);
     if (!match) {
       throw new Error(
-        `Arguments should be in the format 'key:value'; received ${arg}.`,
+        `Arguments should be in the format 'key:value'; received ${arg}.`
       );
     }
     const key: string = match[1].trim();
@@ -90,15 +86,14 @@ const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
       throw new Error(
         `Unable to parse argument ${key} with value ${
           value as string
-        }. Try wrapping it in double quotes: ${key}:"${value as string}"`,
+        }. Try wrapping it in double quotes: ${key}:"${value as string}"`
       );
     }
     if (key && Object.hasOwn(opts, key)) {
       extend(value, opts, key as keyof CompatibilityOptions);
     } else {
       throw new Error(
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        `Received unexpected argument to {% compatibility %} tag: ${arg}`,
+        `Received unexpected argument to {% compatibility %} tag: ${arg}`
       );
     }
   }

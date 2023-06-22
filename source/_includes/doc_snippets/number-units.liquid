@@ -1,15 +1,12 @@
-{% markdown %}
-  ## Units
+## Units
 
-  Sass has powerful support for manipulating units based on how [real-world unit
-  calculations][] work. When two numbers are multiplied, their units are
-  multiplied as well. When one number is divided by another, the result takes
-  its numerator units from the first number and its denominator units from the
-  second. A number can have any number of units in the numerator and/or
-  denominator.
+Sass has powerful support for manipulating units based on how [real-world unit
+calculations][] work. When two numbers are multiplied, their units are
+multiplied as well. When one number is divided by another, the result takes its
+numerator units from the first number and its denominator units from the second.
+A number can have any number of units in the numerator and/or denominator.
 
-  [real-world unit calculations]: https://en.wikipedia.org/wiki/Unit_of_measurement#Calculations_with_units_of_measurement
-{% endmarkdown %}
+[real-world unit calculations]: https://en.wikipedia.org/wiki/Unit_of_measurement#Calculations_with_units_of_measurement
 
 {% codeExample 'number-units', false %}
   @debug 4px * 6px; // 24px*px (read "square pixels")
@@ -46,12 +43,10 @@
   [expression]: /documentation/syntax/structure#expressions
 {% endheadsUp %}
 
-{% markdown %}
-  Sass will automatically convert between compatible units, although which unit
-  it will choose for the result depends on which implementation of Sass you're
-  using. If you try to combine incompatible units, like `1in + 1em`, Sass will
-  throw an error.
-{% endmarkdown %}
+Sass will automatically convert between compatible units, although which unit it
+will choose for the result depends on which implementation of Sass you're using.
+If you try to combine incompatible units, like `1in + 1em`, Sass will throw an
+error.
 
 {% codeExample 'compatible-units', false %}
   // CSS defines one inch as 96 pixels.
@@ -69,14 +64,12 @@
   // Error: Incompatible units s and in.
 {% endcodeExample %}
 
-{% markdown %}
-  As in real-world unit calculations, if the numerator contains units that are
-  compatible with units in the denominator (like `math.div(96px, 1in)`), they'll
-  cancel out. This makes it easy to define a ratio that you can use for
-  converting between units. In the example below, we set the desired speed to
-  one second per 50 pixels, and then multiply that by the number of pixels the
-  transition covers to get the time it should take.
-{% endmarkdown %}
+As in real-world unit calculations, if the numerator contains units that are
+compatible with units in the denominator (like `math.div(96px, 1in)`), they'll
+cancel out. This makes it easy to define a ratio that you can use for converting
+between units. In the example below, we set the desired speed to one second per
+50 pixels, and then multiply that by the number of pixels the transition covers
+to get the time it should take.
 
 {% codeExample 'transition' %}
   @use 'sass:math';

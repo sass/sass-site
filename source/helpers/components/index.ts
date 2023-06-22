@@ -1,34 +1,31 @@
-import { highlight, languages } from 'prismjs';
+import {highlight, languages} from 'prismjs';
 import PrismLoader from 'prismjs/components/index';
-import stripIndent from 'strip-indent';
 
-import { liquidEngine } from '../engines';
-import { default as codeExample } from './codeExample';
-import { compatibility, implStatus } from './compatibility';
-import { getDocTocData, getToc } from './toc';
+import {liquidEngine} from '../engines';
+import {stripIndent} from '../type';
+import {default as codeExample} from './codeExample';
+import {compatibility, implStatus} from './compatibility';
+import {getDocTocData, getToc} from './toc';
 
-export { codeExample };
-export { compatibility, implStatus };
-export { getDocTocData, getToc };
+export {codeExample};
+export {compatibility, implStatus};
+export {getDocTocData, getToc};
 
 /**
  * Returns HTML for a fun fact that's not directly relevant to the main
  * documentation.
  */
-export const funFact = async (contents: string, useMarkdown = true) =>
+export const funFact = async (contents: string) =>
   liquidEngine.renderFile('fun_fact', {
     contents: stripIndent(contents),
-    useMarkdown,
   });
 
 /**
- * Returns HTML for a heads-up warning related to the main
- * documentation.
+ * Returns HTML for a heads-up warning related to the main documentation.
  */
-export const headsUp = async (contents: string, useMarkdown = true) =>
+export const headsUp = async (contents: string) =>
   liquidEngine.renderFile('heads_up', {
     contents: stripIndent(contents),
-    useMarkdown,
   });
 
 /**
@@ -50,12 +47,13 @@ export const codeBlock = (contents: string, language: string, padding = 0) => {
   const code = `${contents}${'\n'.repeat(padding + 1)}`;
   const html = highlight(code, languages[language], language);
   const attr = `language-${language}`;
-  return `<pre class="${attr}"><code class="${attr}">${html}</code></pre>`;
+  return `<pre class="${attr}"><code class="${attr}">${html.replaceAll(
+    '\n',
+    '&#10;'
+  )}</code></pre>`;
 };
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,
-                  @typescript-eslint/no-unsafe-call,
-                  @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function componentsPlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('implStatus', implStatus);

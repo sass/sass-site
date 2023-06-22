@@ -11,12 +11,12 @@ export const renderPermalink: anchor.PermalinkGenerator = (
   slug,
   opts: anchor.LinkInsideHeaderPermalinkOptions,
   state,
-  idx,
+  idx
 ) => {
   // https://github.com/valeriangalliat/markdown-it-anchor/blob/649582d58185b00cfb2ceee9b6b4cd6aafc645b7/permalink.js#L148-L151
   const title = state.tokens[idx + 1]?.children
     ?.filter(
-      (token: Token) => token.type === 'text' || token.type === 'code_inline',
+      (token: Token) => token.type === 'text' || token.type === 'code_inline'
     )
     .reduce((acc, t) => acc + t.content, '');
 
@@ -37,7 +37,7 @@ export const renderPermalink: anchor.PermalinkGenerator = (
     }),
     Object.assign(new state.Token('html_inline', '', 0), {
       content: opts.symbol,
-      meta: { isPermalinkSymbol: true },
+      meta: {isPermalinkSymbol: true},
     }),
     new state.Token('link_close', 'a', -1),
   ];

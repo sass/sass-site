@@ -1,9 +1,8 @@
-import { LoremIpsum } from 'lorem-ipsum';
-import stripIndent from 'strip-indent';
+import {LoremIpsum} from 'lorem-ipsum';
 import truncate from 'truncate-html';
-import { typogrify } from 'typogr';
+import {typogrify} from 'typogr';
 
-import { markdownEngine } from './engines';
+import {markdownEngine} from './engines';
 
 const lorem = new LoremIpsum();
 
@@ -28,12 +27,32 @@ export const getLorem = (type: string, number = 1) => {
 };
 
 /**
+ * Strips leading whitespace from each line of a string,
+ * based on the whitespace of the first line.
+ *
+ * @see https://github.com/sindresorhus/strip-indent
+ * @see https://github.com/jamiebuilds/min-indent
+ */
+export const stripIndent = (contents: string) => {
+  // Find leading whitespace of first line (ignoring initial newlines)
+  const match = /^[\n\r]*([ \t]*)(?=\S)/.exec(contents);
+  if (match?.[1]?.length) {
+    // Strip leading whitespace based on first line
+    return contents.replaceAll(
+      new RegExp(`^[ \\t]{${match[1].length}}`, 'gm'),
+      ''
+    );
+  }
+  return contents;
+};
+
+/**
  * Truncates an HTML string without breaking tags.
  *
  * @see https://github.com/oe/truncate-html
  */
 export const truncateHTML = (html: string, words = 170) =>
-  truncate(html, words, { byWords: true, keepWhitespaces: true });
+  truncate(html, words, {byWords: true, keepWhitespaces: true});
 
 /**
  * Renders block of Markdown into HTML.
@@ -66,16 +85,7 @@ export const replaceInternalLinks = (content: string, url: string) =>
  */
 export const startsWith = (str: string, check: string) => str.startsWith(check);
 
-/**
- * Strips leading whitespace from each line in a string.
- *
- * @see https://github.com/sindresorhus/strip-indent
- */
-export const stripInd = (str: string) => stripIndent(str);
-
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,
-                  @typescript-eslint/no-unsafe-call,
-                  @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function typePlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('truncateHTML', truncateHTML);
@@ -84,7 +94,6 @@ export default function typePlugin(eleventyConfig: any) {
   eleventyConfig.addLiquidFilter('typogr', typogr);
   eleventyConfig.addLiquidFilter('replaceInternalLinks', replaceInternalLinks);
   eleventyConfig.addLiquidFilter('startsWith', startsWith);
-  eleventyConfig.addLiquidFilter('stripIndent', stripInd);
 
   // shortcodes...
   eleventyConfig.addLiquidShortcode('lorem', getLorem);

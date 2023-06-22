@@ -19,9 +19,7 @@ export const format = (date: string, pattern = 'd MMMM yyyy') =>
 export const formatDistanceToNow = (date: string) =>
   formatDistanceBase(new Date(date));
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,
-                  @typescript-eslint/no-unsafe-call,
-                  @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function datesPlugin(eleventyConfig: any) {
   // filters...
   eleventyConfig.addLiquidFilter('format', format);

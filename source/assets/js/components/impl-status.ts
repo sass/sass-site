@@ -1,7 +1,8 @@
-$(function () {
+$(() => {
   $('.impl-status').each(function () {
     const statusBar = $(this);
     const expandLink = statusBar.find('a');
+    // eslint-disable-next-line eqeqeq
     if (expandLink == null) {
       return;
     }
@@ -12,7 +13,7 @@ $(function () {
     }
 
     details.hide();
-    expandLink.on('click', function () {
+    expandLink.on('click', () => {
       details.toggle();
       expandLink.toggleClass('expanded');
     });

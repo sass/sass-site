@@ -7,8 +7,9 @@ date: 2014-03-07 16:40:00 -8
 After ironing out a bunch of bugs in numerous release candidates, we're finally
 ready to release Sass 3.3.0, codename Maptastic Maple, for public consumption.
 This release has a lot of exciting new features that you can read about in full
-in [the changelog](/documentation/file.SASS_CHANGELOG.html), but there are three
-that I want to draw your attention to in particular.
+in [the
+changelog](https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md),
+but there are three that I want to draw your attention to in particular.
 
 ## Maps in SassScript
 
@@ -40,9 +41,8 @@ previously referred to an empty list, now _also_ refers to an empty map; both
 list and map operations will work on it.
 
 Maps can't be used as CSS values, since they aren't valid CSS syntax. However,
-there are a number of [new built-in
-functions](/documentation/Sass/Script/Functions.html#map_functions) that allow
-user-defined mixins and functions to use them. Here are a few particularly
+there are a number of [new built-in functions](/documentation/modules/map/) that
+allow user-defined mixins and functions to use them. Here are a few particularly
 useful ones:
 
 * `map-get($map, $key)` looks up a value in a map using its key. For example,
@@ -150,9 +150,10 @@ release it will work as I described above.
 
 Actually, there's a lot more, but that's all I have room for in this post. If
 you want to see the full assortment of new features, check out [the
-changelog](/documentation/file.SASS_CHANGELOG.html#330_7_March_2014). You can
-also play with the new features on [SassMeister](http://sassmeister.com/) or on
-your own computer by running `gem update sass`. Enjoy!
+changelog](https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md#330-7-march-2014).
+You can also play with the new features on
+[SassMeister](http://sassmeister.com/) or on your own computer by running `gem
+update sass`. Enjoy!
 
 [^1]: Some languages call them "hashes", "dictionaries", or "associative
     arrays". JavaScript calls them "objects" for weird historical reasons.

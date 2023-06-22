@@ -171,7 +171,7 @@ The `debug` function handles only `@debug` rules, and is just passed the message
 and the rule's span. For more information on the `SourceSpan` type, see [the
 Logger proposal].
 
-[the Logger proposal]: https://github.com/sass/sass/tree/main/proposal/js-logger.d.ts
+[the Logger proposal]: https://github.com/sass/sass/blob/main/accepted/js-logger.d.ts
 
 Sass will also provide a built-in logger, `Logger.silent`, that never emits any
 messages. This will allow you to easily run Sass in "quiet mode" where no
@@ -800,10 +800,10 @@ class SassFunction extends Value {
 If you want to know more about these proposals and see their most up-to-date
 forms, they're available on GitHub to view in full:
 
-* [Compile API proposal](https://github.com/sass/sass/tree/main/proposal/new-js-api.d.ts)
-* [Logger proposal](https://github.com/sass/sass/blob/main/proposal/js-logger.d.ts)
-* [Importer proposal](https://github.com/sass/sass/blob/main/proposal/new-js-importer.d.ts)
-* [Functions and values proposal](https://github.com/sass/sass/blob/main/proposal/new-function-and-values-api.d.ts)
+* [Compile API proposal](https://github.com/sass/sass/blob/main/accepted/new-js-api.d.ts)
+* [Logger proposal](https://github.com/sass/sass/blob/main/accepted/js-logger.d.ts)
+* [Importer proposal](https://github.com/sass/sass/blob/main/accepted/new-js-importer.d.ts)
+* [Functions and values proposal](https://github.com/sass/sass/blob/main/accepted/new-function-and-values-api.d.ts)
 
 We're eager for feedback, so please [let us know what you think]! The proposals
 in question will be open for at least a month after this blog post goes live,

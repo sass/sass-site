@@ -17,7 +17,7 @@ page](https://github.com/sass/dart-sass/releases). But finding, downloading, and
 opening an archive and adding it to the command-line path is still a barrier to
 entry that we'd like to avoid where possible. Today we're taking a step in that
 direction by releasing [a Dart Sass
-package](https://chocolatey.org/packages/sass) on
+package](https://community.chocolatey.org/packages/sass) on
 [Chocolatey](https://chocolatey.org/), the Windows package manager. You can
 install it now using:
 

@@ -18,7 +18,7 @@ it leaves out numerous details that will be important if full Sass compatibility
 is desired. This should be considered an explication of the groundwork for
 `@extend`, upon which full support can be built. For a complete understanding of
 `@extend`, there's no substitute for consulting the [Ruby Sass
-code](http://github.com/sass/ruby-sass/tree/master/lib/sass) and [its
+code](https://github.com/sass/ruby-sass/tree/master/lib/sass) and [its
 tests](https://github.com/sass/ruby-sass/blob/master/test/sass/extend_test.rb).
 
 This document assumes familiarity with the selector terminology defined in the

@@ -1,8 +1,8 @@
 import * as cheerio from 'cheerio';
-import stripIndent from 'strip-indent';
 
-import { codeBlock } from './components';
-import { liquidEngine } from './engines';
+import {codeBlock} from './components';
+import {liquidEngine} from './engines';
+import {stripIndent} from './type';
 
 const links: Record<string, string> = {
   number: '/documentation/values/numbers',
@@ -21,7 +21,7 @@ const links: Record<string, string> = {
 const returnTypeLink = (returnType: string) =>
   returnType
     .split('|')
-    .map((type) => {
+    .map(type => {
       type = type.trim();
       const link = links[type];
       if (!link) {
@@ -40,7 +40,7 @@ const returnTypeLink = (returnType: string) =>
  * Multiple signatures may be passed, in which case they're all included in
  * sequence.
  */
-export function _function(content: string, ...signatures: string[]) {
+export async function _function(content: string, ...signatures: string[]) {
   // Parse the last argument as the return type, if it's present
   const returns = signatures.at(-1)?.match(/returns?:\s*(.*)/)?.[1];
   if (returns) {
@@ -49,7 +49,7 @@ export function _function(content: string, ...signatures: string[]) {
 
   // Highlight each signature
   const names: string[] = [];
-  const highlightedSignatures = signatures.map((signature) => {
+  const highlightedSignatures = signatures.map(signature => {
     signature = stripIndent(signature).trim();
     const [name] = signature.split('(', 2);
     const nameWithoutNamespace = name.split('.').at(-1) || name;
@@ -63,7 +63,7 @@ export function _function(content: string, ...signatures: string[]) {
       names.push(nameWithoutNamespace);
       const nameEl = signatureElements
         .filter((index, element) => {
-          return $(element).text() == nameWithoutNamespace;
+          return $(element).text() === nameWithoutNamespace;
         })
         .eq(0);
       nameEl.addClass('docSearch-function');
@@ -71,7 +71,7 @@ export function _function(content: string, ...signatures: string[]) {
     }
     return signatureElements
       .toArray()
-      .map((el) => $.html(el))
+      .map(el => $.html(el))
       .join('')
       .trim();
   });
@@ -85,9 +85,7 @@ export function _function(content: string, ...signatures: string[]) {
   });
 }
 
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,
-                  @typescript-eslint/no-unsafe-call,
-                  @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function typePlugin(eleventyConfig: any) {
   eleventyConfig.addPairedLiquidShortcode('function', _function);
 }

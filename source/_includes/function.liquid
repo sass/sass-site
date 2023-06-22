@@ -1,5 +1,5 @@
-{% for name in names offset: 1 %}<div id="{{ name }}">{% endfor -%}
-  <div class="sl-c-callout sl-c-callout--function" id="{{ names[0] }}"><pre class="signature language-scss"><a class="anchor" href="#{{ names[0] }}"></a><code class="language-scss">{{ signatures }}{% if returns %} <span class="token comment">//=&gt; {{ returns }}</span>{% endif %}</code></pre>
-    {{ content }}
-  </div>
-{%- for name in names offset: 1 %}</div>{% endfor %}
+{% for name in names offset: 1 %}<div id="{{ name }}">{% endfor %}
+<div class="sl-c-callout sl-c-callout--function" id="{{ names[0] }}"><pre class="signature language-scss"><a class="anchor" href="#{{ names[0] }}"></a><code class="language-scss">{{ signatures }}{% if returns %} <span class="token comment">//=&gt; {{ returns }}</span>{% endif %}</code></pre>
+  {{ content }}
+</div>
+{% for name in names offset: 1 %}</div>{% endfor %}
