@@ -78,10 +78,9 @@ npm run lint
       while `render` always parses the partial as a LiquidJS template.
 - `.md` files are parsed both as Markdown _and_ as LiquidJS templates.
 - When using Markdown, remember that _indentation and whitespace (e.g newlines)
-  matter_. Use Markdown selectively, especially in files that include other
-  non-Markdown partials.
-    - For example, the `{% codeExample %}` tag renders whitespace that results
-      in unwanted `<p>` tags when parsed as Markdown.
+  matter_. Custom tags attempt to strip leading whitespace from text contents
+  (based on the whitespace of the first line) to allow for indented code blocks
+  -- see the `stripIndent` function in `source/helpers/type.ts` for details.
 
 ## Deploying
 

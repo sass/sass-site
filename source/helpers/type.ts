@@ -34,15 +34,16 @@ export const getLorem = (type: string, number = 1) => {
  * @see https://github.com/jamiebuilds/min-indent
  */
 export const stripIndent = (contents: string) => {
-  // Strip leading whitespace based on line with least leading whitespace
-  let text = contents;
   // Find leading whitespace of first line (ignoring initial newlines)
-  const match = /^[\n\r]*([ \t]*)(?=\S)/.exec(text);
+  const match = /^[\n\r]*([ \t]*)(?=\S)/.exec(contents);
   if (match?.[1]?.length) {
     // Strip leading whitespace based on first line
-    text = text.replaceAll(new RegExp(`^[ \\t]{${match[1].length}}`, 'gm'), '');
+    return contents.replaceAll(
+      new RegExp(`^[ \\t]{${match[1].length}}`, 'gm'),
+      ''
+    );
   }
-  return text;
+  return contents;
 };
 
 /**
