@@ -19,14 +19,12 @@ introduction: >
   @debug 5px * 2px  // 10px*px (read "square pixels")
 {% endcodeExample %}
 
-{% markdown %}
-  Sass numbers support the same formats as CSS numbers, including [scientific
-  notation][], which is written with an `e` between the number and its power
-  of 10. Because support for scientific notation in browsers has historically
-  been spotty, Sass always compiles it to fully expanded numbers.
+Sass numbers support the same formats as CSS numbers, including [scientific
+notation][], which is written with an `e` between the number and its power of
+10. Because support for scientific notation in browsers has historically been
+spotty, Sass always compiles it to fully expanded numbers.
 
-  [scientific notation]: https://en.wikipedia.org/wiki/Scientific_notation
-{% endmarkdown %}
+[scientific notation]: https://en.wikipedia.org/wiki/Scientific_notation
 
 {% codeExample 'scientific-notation', false %}
   @debug 5.2e3; // 5200
@@ -44,34 +42,32 @@ introduction: >
 
 {% render 'doc_snippets/number-units' %}
 
-{% markdown %}
-  ## Precision
+## Precision
 
-  {% compatibility 'dart: true', 'libsass: false', 'ruby: "3.5.0"', 'feature: "10 Digit Default"' %}
-    LibSass and older versions of Ruby Sass default to 5 digits of numeric
-    precision, but can be configured to use a different number. It's recommended
-    that users configure them for 10 digits for greater accuracy and
-    forwards-compatibility.
-  {% endcompatibility %}
+{% compatibility 'dart: true', 'libsass: false', 'ruby: "3.5.0"', 'feature: "10 Digit Default"' %}
+  LibSass and older versions of Ruby Sass default to 5 digits of numeric
+  precision, but can be configured to use a different number. It's recommended
+  that users configure them for 10 digits for greater accuracy and
+  forwards-compatibility.
+{% endcompatibility %}
 
-  Sass numbers are represented internally as 64-bit floating point values. They
-  support up to 10 digits of precision after the decimal point when serialized
-  to CSS and for the purposes of equality. This means a few different things:
+Sass numbers are represented internally as 64-bit floating point values. They
+support up to 10 digits of precision after the decimal point when serialized to
+CSS and for the purposes of equality. This means a few different things:
 
-  * Only the first ten digits of a number after the decimal point will be
-    included in the generated CSS.
+* Only the first ten digits of a number after the decimal point will be included
+  in the generated CSS.
 
-  * Operations like [`==`][] and [`>=`][] will consider two numbers equivalent
-    if they're the same up to the tenth digit after the decimal point.
+* Operations like [`==`][] and [`>=`][] will consider two numbers equivalent if
+  they're the same up to the tenth digit after the decimal point.
 
-  * If a number is less than `0.0000000001` away from an integer, it's
-    considered to be an integer for the purposes of functions like
-    [`list.nth()`][] that require integer arguments.
+* If a number is less than `0.0000000001` away from an integer, it's considered
+  to be an integer for the purposes of functions like [`list.nth()`][] that
+  require integer arguments.
 
-  [`==`]: /documentation/operators/equality
-  [`>=`]: /documentation/operators/relational
-  [`list.nth()`]: /documentation/modules/list#nth
-{% endmarkdown %}
+[`==`]: /documentation/operators/equality
+[`>=`]: /documentation/operators/relational
+[`list.nth()`]: /documentation/modules/list#nth
 
 {% codeExample 'precision', false %}
   @debug 0.012345678912345; // 0.0123456789

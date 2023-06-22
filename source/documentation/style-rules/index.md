@@ -23,14 +23,11 @@ introduction: >
     border: 1px solid #e1e4e8
 {% endcodeExample %}
 
-{% markdown %}
-  ## Nesting
+## Nesting
 
-  But Sass wants to make your life easier. Rather than repeating the same
-  selectors over and over again, you can write one style rules inside another.
-  Sass will automatically combine the outer rule's selector with the inner
-  rule's.
-{% endmarkdown %}
+But Sass wants to make your life easier. Rather than repeating the same
+selectors over and over again, you can write one style rules inside another.
+Sass will automatically combine the outer rule's selector with the inner rule's.
 
 {% render 'code_snippets/example-nesting' %}
 
@@ -41,14 +38,11 @@ introduction: >
   render it. Keep those selectors shallow!
 {% endheadsUp %}
 
-{% markdown %}
-  ### Selector Lists
+### Selector Lists
 
-  Nested rules are clever about handling selector lists (that is,
-  comma-separated selectors). Each complex selector (the ones between the
-  commas) is nested separately, and then they're combined back into a selector
-  list.
-{% endmarkdown %}
+Nested rules are clever about handling selector lists (that is, comma-separated
+selectors). Each complex selector (the ones between the commas) is nested
+separately, and then they're combined back into a selector list.
 
 {% codeExample 'selector-lists' %}
   .alert, .warning {
@@ -66,15 +60,13 @@ introduction: >
       padding-bottom: 0
 {% endcodeExample %}
 
-{% markdown %}
-  ### Selector Combinators
+### Selector Combinators
 
-  You can nest selectors that use [combinators][] as well. You can put the
-  combinator at the end of the outer selector, at the beginning of the inner
-  selector, or even all on its own in between the two.
+You can nest selectors that use [combinators][] as well. You can put the
+combinator at the end of the outer selector, at the beginning of the inner
+selector, or even all on its own in between the two.
 
-  [combinators]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#Combinators#Combinators
-{% endmarkdown %}
+[combinators]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#Combinators#Combinators
 
 {% codeExample 'selector-combinators' %}
   ul > {
@@ -115,27 +107,24 @@ introduction: >
         opacity: 0.8
 {% endcodeExample %}
 
-{% markdown %}
-  ### Advanced Nesting
+### Advanced Nesting
 
-  If you want to do more with your nested style rules than just combine them in
-  order with the descendant combinator (that is, a plain space) separating them,
-  Sass has your back. See the [parent selector documentation][] for more
-  details.
+If you want to do more with your nested style rules than just combine them in
+order with the descendant combinator (that is, a plain space) separating them,
+Sass has your back. See the [parent selector documentation][] for more details.
 
-  [parent selector documentation]: /documentation/style-rules/parent-selector
+[parent selector documentation]: /documentation/style-rules/parent-selector
 
-  ## Interpolation
+## Interpolation
 
-  You can use [interpolation][] to inject values from [expressions][] like
-  variables and function calls into your selectors. This is particularly useful
-  when you're writing [mixins][], since it allows you to create selectors from
-  parameters your users pass in.
+You can use [interpolation][] to inject values from [expressions][] like
+variables and function calls into your selectors. This is particularly useful
+when you're writing [mixins][], since it allows you to create selectors from
+parameters your users pass in.
 
-  [interpolation]: /documentation/interpolation
-  [expressions]: /documentation/syntax/structure#expressions
-  [mixins]: /documentation/at-rules/mixin
-{% endmarkdown %}
+[interpolation]: /documentation/interpolation
+[expressions]: /documentation/syntax/structure#expressions
+[mixins]: /documentation/at-rules/mixin
 
 {% codeExample 'interpolation' %}
   @mixin define-emoji($name, $glyph) {
@@ -167,13 +156,11 @@ introduction: >
   worrying that it won't parse.
 {% endfunFact %}
 
-{% markdown %}
-  You can combine interpolation with the parent selector `&`, the [`@at-root`
-  rule][], and [selector functions][] to wield some serious power when
-  dynamically generating selectors. For more information, see the [parent
-  selector documentation][].
+You can combine interpolation with the parent selector `&`, the [`@at-root`
+rule][], and [selector functions][] to wield some serious power when dynamically
+generating selectors. For more information, see the [parent selector
+documentation][].
 
-  [`@at-root` rule]: /documentation/at-rules/at-root
-  [selector functions]: /documentation/modules/selector
-  [parent selector documentation]: /documentation/style-rules/parent-selector
-{% endmarkdown %}
+[`@at-root` rule]: /documentation/at-rules/at-root
+[selector functions]: /documentation/modules/selector
+[parent selector documentation]: /documentation/style-rules/parent-selector

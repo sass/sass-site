@@ -25,14 +25,12 @@ introduction: >
   @debug math.comparable(100px, 3in)  // true
 {% endcodeExample %}
 
-{% markdown %}
-  You can work with booleans using [boolean operators][]. The `and` operator
-  returns `true` if *both* sides are `true`, and the `or` operator returns
-  `true` if *either* side is `true`. The `not` operator returns the opposite of
-  a single boolean value.
+You can work with booleans using [boolean operators][]. The `and` operator
+returns `true` if *both* sides are `true`, and the `or` operator returns `true`
+if *either* side is `true`. The `not` operator returns the opposite of a single
+boolean value.
 
-  [boolean operators]: /documentation/operators/boolean
-{% endmarkdown %}
+[boolean operators]: /documentation/operators/boolean
 
 {% codeExample 'boolean-operators', false %}
   @debug true and true; // true
@@ -54,23 +52,19 @@ introduction: >
   @debug not false  // true
 {% endcodeExample %}
 
-{% markdown %}
-  ## Using Booleans
+## Using Booleans
 
-  You can use booleans to choose whether or not to do various things in Sass.
-  The [`@if` rule][] evaluates a block of styles if its argument is `true`:
+You can use booleans to choose whether or not to do various things in Sass. The
+[`@if` rule][] evaluates a block of styles if its argument is `true`:
 
-  [`@if` rule]: /documentation/at-rules/control/if
-{% endmarkdown %}
+[`@if` rule]: /documentation/at-rules/control/if
 
 {% render 'code_snippets/example-if' %}
 
-{% markdown %}
-  The [`if()` function][] returns one value if its argument is `true` and
-  another if its argument is `false`:
+The [`if()` function][] returns one value if its argument is `true` and another
+if its argument is `false`:
 
-  [`if()` function]: /documentation/modules#if
-{% endmarkdown %}
+[`if()` function]: /documentation/modules#if
 
 {% codeExample 'if-function', false %}
   @debug if(true, 10px, 30px); // 10px

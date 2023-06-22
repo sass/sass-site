@@ -10,15 +10,13 @@ introduction: >
   these cover the different kinds of text that appear in CSS.
 ---
 
-{% funFact false %}
-  {% markdown %}
-    You can convert a quoted string to an unquoted string using the
-    [`string.unquote()` function][], and you can convert an unquoted string to a
-    quoted string using the [`string.quote()` function][].
+{% funFact %}
+  You can convert a quoted string to an unquoted string using the
+  [`string.unquote()` function][], and you can convert an unquoted string to a
+  quoted string using the [`string.quote()` function][].
 
-    [`string.unquote()` function]: /documentation/modules/string#unquote
-    [`string.quote()` function]: /documentation/modules/string#quote
-  {% endmarkdown %}
+  [`string.unquote()` function]: /documentation/modules/string#unquote
+  [`string.quote()` function]: /documentation/modules/string#quote
 
   {% codeExample 'fun-fact-strings', false %}
     @use "sass:string";
@@ -33,25 +31,22 @@ introduction: >
   {% endcodeExample %}
 {% endfunFact %}
 
-{% markdown %}
-  ## Escapes
+## Escapes
 
-  All Sass strings support the standard CSS [escape codes][]:
+All Sass strings support the standard CSS [escape codes][]:
 
-  [escape codes]: https://developer.mozilla.org/en-US/docs/Web/CSS/string#Syntax
+[escape codes]: https://developer.mozilla.org/en-US/docs/Web/CSS/string#Syntax
 
-  * Any character other than a letter from A to F or a number from 0 to 9 (even
-    a newline!) can be included as part of a string by writing `\` in front of
-    it.
+* Any character other than a letter from A to F or a number from 0 to 9 (even a
+  newline!) can be included as part of a string by writing `\` in front of it.
 
-  * Any character can be included as part of a string by writing `\` followed by
-    its [Unicode code point number][] written in [hexadecimal][]. You can
-    optionally include a space after the code point number to indicate where the
-    Unicode number ends.
+* Any character can be included as part of a string by writing `\` followed by
+  its [Unicode code point number][] written in [hexadecimal][]. You can
+  optionally include a space after the code point number to indicate where the
+  Unicode number ends.
 
-    [Unicode code point number]: https://en.wikipedia.org/wiki/List_of_Unicode_characters
-    [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
-{% endmarkdown %}
+  [Unicode code point number]: https://en.wikipedia.org/wiki/List_of_Unicode_characters
+  [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 
 {% codeExample 'escapes', false %}
   @debug "\""; // '"'
@@ -72,29 +67,27 @@ introduction: >
   escape produces exactly the same string as writing the character itself.
 {% endfunFact %}
 
-{% markdown %}
-  ## Quoted
+## Quoted
 
-  Quoted strings are written between either single or double quotes, as in
-  `"Helvetica Neue"`. They can contain [interpolation][], as well as any
-  unescaped character except for:
+Quoted strings are written between either single or double quotes, as in
+`"Helvetica Neue"`. They can contain [interpolation][], as well as any unescaped
+character except for:
 
-  [interpolation]: /documentation/interpolation
+[interpolation]: /documentation/interpolation
 
-  * `\`, which can be escaped as `\\`;
-  * `'` or `"`, whichever was used to define that string, which can be escaped
-    as `\'` or `\"`;
-  * newlines, which can be escaped as `\a ` (including a trailing space).
+* `\`, which can be escaped as `\\`;
+* `'` or `"`, whichever was used to define that string, which can be escaped as
+  `\'` or `\"`;
+* newlines, which can be escaped as `\a ` (including a trailing space).
 
-  Quoted strings are guaranteed to be compiled to CSS strings that have the same
-  contents as the original Sass strings. The exact format may vary based on the
-  implementation or configuration—a string containing a double quote may be
-  compiled to `"\""` or `'"'`, and a non-[ASCII][] character may or may not be
-  escaped. But that should be parsed the same in any standards-compliant CSS
-  implementation, including all browsers.
+Quoted strings are guaranteed to be compiled to CSS strings that have the same
+contents as the original Sass strings. The exact format may vary based on the
+implementation or configuration—a string containing a double quote may be
+compiled to `"\""` or `'"'`, and a non-[ASCII][] character may or may not be
+escaped. But that should be parsed the same in any standards-compliant CSS
+implementation, including all browsers.
 
-  [ASCII]: https://en.wikipedia.org/wiki/ASCII
-{% endmarkdown %}
+[ASCII]: https://en.wikipedia.org/wiki/ASCII
 
 {% codeExample 'quoted', false %}
   @debug "Helvetica Neue"; // "Helvetica Neue"
@@ -123,15 +116,13 @@ introduction: >
   [its quotes are removed]: /documentation/interpolation#quoted-strings
 {% endfunFact %}
 
-{% markdown %}
-  ## Unquoted
+## Unquoted
 
-  Unquoted strings are written as CSS [identifiers][], following the syntax
-  diagram below. They may include [interpolation][] anywhere.
+Unquoted strings are written as CSS [identifiers][], following the syntax
+diagram below. They may include [interpolation][] anywhere.
 
-  [identifiers]: https://drafts.csswg.org/css-syntax-3/#ident-token-diagram
-  [interpolation]: /documentation/interpolation
-{% endmarkdown %}
+[identifiers]: https://drafts.csswg.org/css-syntax-3/#ident-token-diagram
+[interpolation]: /documentation/interpolation
 
 <figure>
   <object type="image/svg+xml" data="/assets/img/illustrations/identifier-diagram.svg"></object>
@@ -173,31 +164,28 @@ introduction: >
   strings.
 {% endheadsUp %}
 
-{% markdown %}
-  ### Escapes in Unquoted Strings
+### Escapes in Unquoted Strings
 
-  {% compatibility 'dart: "1.11.0"', 'libsass: false', 'ruby: false', 'feature: "Normalization"' %}
-    LibSass, Ruby Sass, and older versions of Dart Sass don't normalize escapes
-    in identifiers. Instead, the text in the unquoted string is the exact text
-    the user wrote. For example, `\1F46D` and `👭` are not considered
-    equivalent.
-  {% endcompatibility %}
+{% compatibility 'dart: "1.11.0"', 'libsass: false', 'ruby: false', 'feature: "Normalization"' %}
+  LibSass, Ruby Sass, and older versions of Dart Sass don't normalize escapes in
+  identifiers. Instead, the text in the unquoted string is the exact text the
+  user wrote. For example, `\1F46D` and `👭` are not considered equivalent.
+{% endcompatibility %}
 
-  When an unquoted string is parsed, the literal text of escapes are parsed as
-  part of the string. For example, `\a ` is parsed as the characters `\`, `a`,
-  and space. In order to ensure that unquoted strings that have the same
-  meanings in CSS are parsed the same way, though, these escapes are
-  *normalized*. For each code point, whether it's escaped or unescaped:
+When an unquoted string is parsed, the literal text of escapes are parsed as
+part of the string. For example, `\a ` is parsed as the characters `\`, `a`, and
+space. In order to ensure that unquoted strings that have the same meanings in
+CSS are parsed the same way, though, these escapes are *normalized*. For each
+code point, whether it's escaped or unescaped:
 
-  * If it's a valid identifier character, it's included unescaped in the
-    unquoted string. For example, `\1F46D` returns the unquoted string `👭`.
+* If it's a valid identifier character, it's included unescaped in the unquoted
+  string. For example, `\1F46D` returns the unquoted string `👭`.
 
-  * If it's a printable character other than a newline or a tab, it's included
-    after a `\`. For example, `\21 ` returns the unquoted string `\!`.
+* If it's a printable character other than a newline or a tab, it's included
+  after a `\`. For example, `\21 ` returns the unquoted string `\!`.
 
-  * Otherwise, the lowercase Unicode escape is included with a trailing space.
-    For example, `\7Fx` returns the unquoted string `\7f x`.
-{% endmarkdown %}
+* Otherwise, the lowercase Unicode escape is included with a trailing space. For
+  example, `\7Fx` returns the unquoted string `\7f x`.
 
 {% codeExample 'normalization', false %}
   @use "sass:string";
@@ -215,18 +203,16 @@ introduction: >
   @debug string.length(\7Fx)  // 5
 {% endcodeExample %}
 
-{% markdown %}
-  ## String Indexes
+## String Indexes
 
-  Sass has a number of [string functions][] that take or return numbers, called
-  *indexes*, that refer to the characters in a string. The index 1 indicates the
-  first character of the string. Note that this is different than many
-  programming languages where indexes start at 0! Sass also makes it easy to
-  refer to the end of a string. The index -1 refers to the last character in a
-  string, -2 refers to the second-to-last, and so on.
+Sass has a number of [string functions][] that take or return numbers, called
+*indexes*, that refer to the characters in a string. The index 1 indicates the
+first character of the string. Note that this is different than many programming
+languages where indexes start at 0! Sass also makes it easy to refer to the end
+of a string. The index -1 refers to the last character in a string, -2 refers to
+the second-to-last, and so on.
 
-  [string functions]: /documentation/modules/string
-{% endmarkdown %}
+[string functions]: /documentation/modules/string
 
 {% codeExample 'string-indexes', false %}
   @use "sass:string";

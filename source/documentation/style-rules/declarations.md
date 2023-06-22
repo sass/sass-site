@@ -24,15 +24,13 @@ introduction: >
     border-radius: $size * 0.5
 {% endcodeExample %}
 
-{% markdown %}
-  ## Interpolation
+## Interpolation
 
-  A property's name can include [interpolation][], which makes it possible to
-  dynamically generate properties as needed. You can even interpolate the entire
-  property name!
+A property's name can include [interpolation][], which makes it possible to
+dynamically generate properties as needed. You can even interpolate the entire
+property name!
 
-  [interpolation]: /documentation/interpolation
-{% endmarkdown %}
+[interpolation]: /documentation/interpolation
 
 {% codeExample 'interpolation' %}
   @mixin prefix($property, $value, $prefixes) {
@@ -57,15 +55,13 @@ introduction: >
     @include prefix(filter, grayscale(50%), moz webkit)
 {% endcodeExample %}
 
-{% markdown %}
-  ## Nesting
+## Nesting
 
-  Many CSS properties start with the same prefix that acts as a kind of
-  namespace. For example, `font-family`, `font-size`, and `font-weight` all
-  start with `font-`. Sass makes this easier and less redundant by allowing
-  property declarations to be nested. The outer property names are added to the
-  inner, separated by a hyphen.
-{% endmarkdown %}
+Many CSS properties start with the same prefix that acts as a kind of namespace.
+For example, `font-family`, `font-size`, and `font-weight` all start with
+`font-`. Sass makes this easier and less redundant by allowing property
+declarations to be nested. The outer property names are added to the inner,
+separated by a hyphen.
 
 {% codeExample 'nesting' %}
   .enlarge {
@@ -90,11 +86,9 @@ introduction: >
       font-size: 36px
 {% endcodeExample %}
 
-{% markdown %}
-  Some of these CSS properties have shorthand versions that use the namespace as
-  the property name. For these, you can write both the shorthand value *and* the
-  more explicit nested versions.
-{% endmarkdown %}
+Some of these CSS properties have shorthand versions that use the namespace as
+the property name. For these, you can write both the shorthand value *and* the
+more explicit nested versions.
 
 {% codeExample 'nesting-shorthand' %}
   .info-page {
@@ -110,16 +104,14 @@ introduction: >
       top: 2px
 {% endcodeExample %}
 
-{% markdown %}
-  ## Hidden Declarations
+## Hidden Declarations
 
-  Sometimes you only want a property declaration to show up some of the time. If
-  a declaration's value is [`null`][] or an empty [unquoted string][], Sass
-  won't compile that declaration to CSS at all.
+Sometimes you only want a property declaration to show up some of the time. If a
+declaration's value is [`null`][] or an empty [unquoted string][], Sass won't
+compile that declaration to CSS at all.
 
-  [`null`]: /documentation/values/null
-  [unquoted string]: /documentation/values/strings#unquoted
-{% endmarkdown %}
+[`null`]: /documentation/values/null
+[unquoted string]: /documentation/values/strings#unquoted
 
 {% codeExample 'hidden-declarations' %}
   $rounded-corners: false;
@@ -136,37 +128,34 @@ introduction: >
     border-radius: if($rounded-corners, 5px, null)
 {% endcodeExample %}
 
-{% markdown %}
-  ## Custom Properties
+## Custom Properties
 
-  {% compatibility 'dart: true', 'libsass: "3.5.0"', 'ruby: "3.5.0"', 'feature: "SassScript Syntax"' %}
-    Older versions of LibSass and Ruby Sass parsed custom property declarations
-    just like any other property declaration, allowing the full range of
-    SassScript expressions as values. Even when using these versions, it's
-    recommended that you use interpolation to inject SassScript values for
-    forwards-compatibility.
+{% compatibility 'dart: true', 'libsass: "3.5.0"', 'ruby: "3.5.0"', 'feature: "SassScript Syntax"' %}
+  Older versions of LibSass and Ruby Sass parsed custom property declarations
+  just like any other property declaration, allowing the full range of
+  SassScript expressions as values. Even when using these versions, it's
+  recommended that you use interpolation to inject SassScript values for
+  forwards-compatibility.
 
-    See [the breaking change page][] for more details.
+  See [the breaking change page][] for more details.
 
-    [the breaking change page]: /documentation/breaking-changes/css-vars
-  {% endcompatibility %}
+  [the breaking change page]: /documentation/breaking-changes/css-vars
+{% endcompatibility %}
 
-  [CSS custom properties][], also known as CSS variables, have an unusual
-  declaration syntax: they allow almost any text at all in their declaration
-  values. What's more, those values are accessible to JavaScript, so any value
-  might potentially be relevant to the user. This includes values that would
-  normally be parsed as SassScript.
+[CSS custom properties][], also known as CSS variables, have an unusual
+declaration syntax: they allow almost any text at all in their declaration
+values. What's more, those values are accessible to JavaScript, so any value
+might potentially be relevant to the user. This includes values that would
+normally be parsed as SassScript.
 
-  [CSS Custom Properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/--*
+[CSS Custom Properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/--*
 
-  Because of this, Sass parses custom property declarations differently than
-  other property declarations. All tokens, including those that look like
-  SassScript, are passed through to CSS as-is. The only exception is
-  [interpolation][], which is the only way to inject dynamic values into a
-  custom property.
+Because of this, Sass parses custom property declarations differently than other
+property declarations. All tokens, including those that look like SassScript,
+are passed through to CSS as-is. The only exception is [interpolation][], which
+is the only way to inject dynamic values into a custom property.
 
-  [interpolation]: /documentation/interpolation
-{% endmarkdown %}
+[interpolation]: /documentation/interpolation
 
 {% codeExample 'custom-properties' %}
   $primary: #81899b;
@@ -197,16 +186,14 @@ introduction: >
     --consumed-by-js: $primary
 {% endcodeExample %}
 
-{% headsUp false %}
-  {% markdown %}
-    Unfortunately, [interpolation][] removes quotes from strings, which makes it
-    difficult to use quoted strings as values for custom properties when they
-    come from Sass variables. As a workaround, you can use the [`meta.inspect()`
-    function][] to preserve the quotes.
+{% headsUp %}
+  Unfortunately, [interpolation][] removes quotes from strings, which makes it
+  difficult to use quoted strings as values for custom properties when they come
+  from Sass variables. As a workaround, you can use the [`meta.inspect()`
+  function][] to preserve the quotes.
 
-    [interpolation]: /documentation/interpolation
-    [`meta.inspect()` function]: /documentation/modules/meta#inspect
-  {% endmarkdown %}
+  [interpolation]: /documentation/interpolation
+  [`meta.inspect()` function]: /documentation/modules/meta#inspect
 
   {% codeExample 'custom-properties-strings-meta' %}
     @use "sass:meta";

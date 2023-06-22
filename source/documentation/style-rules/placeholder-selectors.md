@@ -10,14 +10,12 @@ introduction: >
 
 {% render 'code_snippets/example-placeholder' %}
 
-{% markdown %}
-  What's the use of a selector that isn't emitted? It can still be [extended][]!
-  Unlike class selectors, placeholders don't clutter up the CSS if they aren't
-  extended and they don't mandate that users of a library use specific class
-  names for their HTML.
+What's the use of a selector that isn't emitted? It can still be [extended][]!
+Unlike class selectors, placeholders don't clutter up the CSS if they aren't
+extended and they don't mandate that users of a library use specific class names
+for their HTML.
 
-  [extended]: /documentation/at-rules/extend
-{% endmarkdown %}
+[extended]: /documentation/at-rules/extend
 
 {% codeExample 'extended-selector' %}
   %toolbelt {
@@ -58,9 +56,7 @@ introduction: >
     color: #cddc39
 {% endcodeExample %}
 
-{% markdown %}
-  Placeholder selectors are useful when writing a Sass library where each style
-  rule may or may not be used. As a rule of thumb, if you're writing a
-  stylesheet just for your own app, it's often better to just extend a class
-  selector if one is available.
-{% endmarkdown %}
+Placeholder selectors are useful when writing a Sass library where each style
+rule may or may not be used. As a rule of thumb, if you're writing a stylesheet
+just for your own app, it's often better to just extend a class selector if one
+is available.

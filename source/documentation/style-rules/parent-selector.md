@@ -9,11 +9,9 @@ introduction: >
   or adding a selector *before* the parent.
 ---
 
-{% markdown %}
-  When a parent selector is used in an inner selector, it's replaced with the
-  corresponding outer selector. This happens instead of the normal nesting
-  behavior.
-{% endmarkdown %}
+When a parent selector is used in an inner selector, it's replaced with the
+corresponding outer selector. This happens instead of the normal nesting
+behavior.
 
 {% codeExample 'parent-selector' %}
   .alert {
@@ -66,17 +64,15 @@ introduction: >
   [this GitHub issue]: https://github.com/sass/sass/issues/1425
 {% endheadsUp %}
 
-{% markdown %}
-  ## Adding Suffixes
+## Adding Suffixes
 
-  You can also use the parent selector to add extra suffixes to the outer
-  selector. This is particularly useful when using a methodology like [BEM][]
-  that uses highly structured class names. As long as the outer selector ends
-  with an alphanumeric name (like class, ID, and element selectors), you can use
-  the parent selector to append additional text.
+You can also use the parent selector to add extra suffixes to the outer
+selector. This is particularly useful when using a methodology like [BEM][] that
+uses highly structured class names. As long as the outer selector ends with an
+alphanumeric name (like class, ID, and element selectors), you can use the
+parent selector to append additional text.
 
-  [BEM]: http://getbem.com/
-{% endmarkdown %}
+[BEM]: http://getbem.com/
 
 {% codeExample 'parent-selector-suffixes' %}
   .accordion {
@@ -119,17 +115,15 @@ introduction: >
         display: block
 {% endcodeExample %}
 
-{% markdown %}
-  ## In SassScript
+## In SassScript
 
-  The parent selector can also be used within SassScript. It's a special
-  expression that returns the current parent selector in the same format used by
-  [selector functions][]: a comma-separated list (the selector list) that
-  contains space-separated lists (the complex selectors) that contain unquoted
-  strings (the compound selectors).
+The parent selector can also be used within SassScript. It's a special
+expression that returns the current parent selector in the same format used by
+[selector functions][]: a comma-separated list (the selector list) that contains
+space-separated lists (the complex selectors) that contain unquoted strings (the
+compound selectors).
 
-  [selector functions]: /documentation/modules/selector#selector-values
-{% endmarkdown %}
+[selector functions]: /documentation/modules/selector#selector-values
 
 {% codeExample 'parent-selector-sassscript' %}
   .main aside:hover,
@@ -146,27 +140,23 @@ introduction: >
     //     (unquote(".sidebar") unquote("p")))
 {% endcodeExample %}
 
-{% markdown %}
-  If the `&` expression is used outside any style rules, it returns `null`.
-  Since `null` is [falsey][], this means you can easily use it to determine
-  whether a mixin is being called in a style rule or not.
+If the `&` expression is used outside any style rules, it returns `null`. Since
+`null` is [falsey][], this means you can easily use it to determine whether a
+mixin is being called in a style rule or not.
 
-  [falsey]: /documentation/at-rules/control/if#truthiness-and-falsiness
-{% endmarkdown %}
+[falsey]: /documentation/at-rules/control/if#truthiness-and-falsiness
 
 {% render 'code_snippets/example-if-parent-selector' %}
 
-{% markdown %}
-  ### Advanced Nesting
+### Advanced Nesting
 
-  You can use `&` as a normal SassScript expression, which means you can pass it
-  to functions or include it in interpolation—even in other selectors! Using it
-  in combination with [selector functions][] and the [`@at-root` rule][] allows
-  you to nest selectors in very powerful ways.
+You can use `&` as a normal SassScript expression, which means you can pass it
+to functions or include it in interpolation—even in other selectors! Using it in
+combination with [selector functions][] and the [`@at-root` rule][] allows you
+to nest selectors in very powerful ways.
 
-  [selector functions]: /documentation/modules/selector#selector-values
-  [`@at-root` rule]: /documentation/at-rules/at-root
-{% endmarkdown %}
+[selector functions]: /documentation/modules/selector#selector-values
+[`@at-root` rule]: /documentation/at-rules/at-root
 
 {% render 'code_snippets/example-advanced-nesting' %}
 

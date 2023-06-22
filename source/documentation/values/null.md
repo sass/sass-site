@@ -22,12 +22,9 @@ introduction: >
   @debug &  // null
 {% endcodeExample %}
 
-{% markdown %}
-  If a [list][] contains a `null`, that `null` is omitted from the generated
-  CSS.
+If a [list][] contains a `null`, that `null` is omitted from the generated CSS.
 
-  [list]: /documentation/values/lists
-{% endmarkdown %}
+[list]: /documentation/values/lists
 
 {% codeExample 'null-lists' %}
   $fonts: ("serif": "Helvetica Neue", "monospace": "Consolas");
@@ -42,9 +39,7 @@ introduction: >
     font: 18px bold map-get($fonts, "sans")
 {% endcodeExample %}
 
-{% markdown %}
-  If a property value is `null`, that property is omitted entirely.
-{% endmarkdown %}
+If a property value is `null`, that property is omitted entirely.
 
 {% codeExample 'null-value-omitted' %}
   $fonts: ("serif": "Helvetica Neue", "monospace": "Consolas");
@@ -66,15 +61,13 @@ introduction: >
       family: map-get($fonts, "sans")
 {% endcodeExample %}
 
-{% markdown %}
-  `null` is also [*falsey*][], which means it counts as `false` for any rules or
-  [operators][] that take booleans. This makes it easy to use values that can be
-  `null` as conditions for [`@if`][] and [`if()`][].
+`null` is also [*falsey*][], which means it counts as `false` for any rules or
+[operators][] that take booleans. This makes it easy to use values that can be
+`null` as conditions for [`@if`][] and [`if()`][].
 
-  [*falsey*]: /documentation/at-rules/control/if#truthiness-and-falsiness
-  [operators]: /documentation/operators/boolean
-  [`@if`]: /documentation/at-rules/control/if
-  [`if()`]: /documentation/modules#if
-{% endmarkdown %}
+[*falsey*]: /documentation/at-rules/control/if#truthiness-and-falsiness
+[operators]: /documentation/operators/boolean
+[`@if`]: /documentation/at-rules/control/if
+[`if()`]: /documentation/modules#if
 
 {% render 'code_snippets/example-if-parent-selector' %}
