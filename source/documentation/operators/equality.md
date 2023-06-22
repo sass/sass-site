@@ -10,46 +10,42 @@ title: Equality Operators
   [transitivity]: https://en.wikipedia.org/wiki/Transitive_relation
 {% endcompatibility %}
 
-{% markdown %}
-  The equality operators return whether or not two values are the same. They're
-  written `<expression> == <expression>`, which returns whether two
-  [expressions][] are equal, and `<expression> != <expression>`, which returns
-  whether two expressions are *not* equal. Two values are considered equal if
-  they're the same type *and* the same value, which means different things for
-  different types:
+The equality operators return whether or not two values are the same. They're
+written `<expression> == <expression>`, which returns whether two
+[expressions][] are equal, and `<expression> != <expression>`, which returns
+whether two expressions are *not* equal. Two values are considered equal if
+they're the same type *and* the same value, which means different things for
+different types:
 
-  [expressions]: /documentation/syntax/structure#expressions
+[expressions]: /documentation/syntax/structure#expressions
 
-  * [Numbers][] are equal if they have the same value *and* the same units, or
-    if their values are equal when their units are converted between one
-    another.
-  * [Strings][] are unusual in that [unquoted][] and [quoted][] strings with the
-    same contents are considered equal.
-  * [Colors][] are equal if they have the same red, green, blue, and alpha
-    values.
-  * [Lists][] are equal if their contents are equal. Comma-separated lists
-    aren't equal to space-separated lists, and bracketed lists aren't equal to
-    unbracketed lists.
-  * [Maps][] are equal if their keys and values are both equal.
-  * [Calculations] are equal if their names and arguments are all equal.
-    Operation arguments are compared textually.
-  * [`true`, `false`][], and [`null`][] are only equal to themselves.
-  * [Functions][] are equal to the same function. Functions are compared *by
-    reference*, so even if two functions have the same name and definition
-    they're considered different if they aren't defined in the same place.
+* [Numbers][] are equal if they have the same value *and* the same units, or if
+  their values are equal when their units are converted between one another.
+* [Strings][] are unusual in that [unquoted][] and [quoted][] strings with the
+  same contents are considered equal.
+* [Colors][] are equal if they have the same red, green, blue, and alpha values.
+* [Lists][] are equal if their contents are equal. Comma-separated lists aren't
+  equal to space-separated lists, and bracketed lists aren't equal to
+  unbracketed lists.
+* [Maps][] are equal if their keys and values are both equal.
+* [Calculations] are equal if their names and arguments are all equal. Operation
+  arguments are compared textually.
+* [`true`, `false`][], and [`null`][] are only equal to themselves.
+* [Functions][] are equal to the same function. Functions are compared *by
+  reference*, so even if two functions have the same name and definition they're
+  considered different if they aren't defined in the same place.
 
-  [Numbers]: /documentation/values/numbers
-  [Strings]: /documentation/values/strings
-  [quoted]: /documentation/values/strings#quoted
-  [unquoted]: /documentation/values/strings#unquoted
-  [Colors]: /documentation/values/colors
-  [Lists]: /documentation/values/lists
-  [`true`, `false`]: /documentation/values/booleans
-  [`null`]: /documentation/values/null
-  [Maps]: /documentation/values/maps
-  [Calculations]: /documentation/values/calculations
-  [Functions]: /documentation/values/functions
-{% endmarkdown %}
+[Numbers]: /documentation/values/numbers
+[Strings]: /documentation/values/strings
+[quoted]: /documentation/values/strings#quoted
+[unquoted]: /documentation/values/strings#unquoted
+[Colors]: /documentation/values/colors
+[Lists]: /documentation/values/lists
+[`true`, `false`]: /documentation/values/booleans
+[`null`]: /documentation/values/null
+[Maps]: /documentation/values/maps
+[Calculations]: /documentation/values/calculations
+[Functions]: /documentation/values/functions
 
 {% codeExample 'equality', false %}
   @debug 1px == 1px; // true

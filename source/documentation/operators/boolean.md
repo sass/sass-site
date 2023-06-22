@@ -5,14 +5,12 @@ introduction: >
   [boolean](/documentation/values/booleans) operators.
 ---
 
-{% markdown %}
-  * `not <expression>` returns the opposite of the expression's value: it turns
-    `true` into `false` and `false` into `true`.
-  * `<expression> and <expression>` returns `true` if *both* expressions' values
-    are `true`, and `false` if either is `false`.
-  * `<expression> or <expression>` returns `true` if *either* expression's value
-    is `true`, and `false` if both are `false`.
-{% endmarkdown %}
+* `not <expression>` returns the opposite of the expression's value: it turns
+  `true` into `false` and `false` into `true`.
+* `<expression> and <expression>` returns `true` if *both* expressions' values
+  are `true`, and `false` if either is `false`.
+* `<expression> or <expression>` returns `true` if *either* expression's value
+  is `true`, and `false` if both are `false`.
 
 {% codeExample 'boolean', false %}
   @debug not true; // false

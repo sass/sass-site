@@ -6,18 +6,16 @@ introduction: >
   another. They automatically convert between compatible units.
 ---
 
-{% markdown %}
-  * `<expression> < <expression>` returns whether the first [expression][]'s
-    value is less than the second's.
-  * `<expression> <= <expression>` returns whether the first [expression][]'s
-    value is less than or equal to the second's.
-  * `<expression> > <expression>` returns whether the first [expression][]'s
-    value is greater than to the second's.
-  * `<expression> >= <expression>`, returns whether the first [expression][]'s
-    value is greater than or equal to the second's.
+* `<expression> < <expression>` returns whether the first [expression][]'s value
+  is less than the second's.
+* `<expression> <= <expression>` returns whether the first [expression][]'s
+  value is less than or equal to the second's.
+* `<expression> > <expression>` returns whether the first [expression][]'s value
+  is greater than to the second's.
+* `<expression> >= <expression>`, returns whether the first [expression][]'s
+  value is greater than or equal to the second's.
 
-  [expression]: /documentation/syntax/structure#expressions
-{% endmarkdown %}
+[expression]: /documentation/syntax/structure#expressions
 
 {% codeExample 'relational', false %}
   @debug 100 > 50; // true
@@ -31,10 +29,8 @@ introduction: >
   @debug 1000ms <= 1s  // true
 {% endcodeExample %}
 
-{% markdown %}
-  Unitless numbers can be compared with any number. They're automatically
-  converted to that number's unit.
-{% endmarkdown %}
+Unitless numbers can be compared with any number. They're automatically
+converted to that number's unit.
 
 {% codeExample 'unitless-numbers', false %}
   @debug 100 > 50px; // true
@@ -44,9 +40,7 @@ introduction: >
   @debug 10px < 17  // true
 {% endcodeExample %}
 
-{% markdown %}
-  Numbers with incompatible units can't be compared.
-{% endmarkdown %}
+Numbers with incompatible units can't be compared.
 
 {% codeExample 'incompatible-units', false %}
   @debug 100px > 10s;
