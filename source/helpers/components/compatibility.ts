@@ -36,7 +36,6 @@ interface CompatibilityOptions {
   node: string | boolean | null;
   ruby: string | boolean | null;
   feature: string | null;
-  useMarkdown: boolean;
 }
 
 const extend = <
@@ -64,7 +63,6 @@ const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
     node: null,
     ruby: null,
     feature: null,
-    useMarkdown: true,
   };
   const keyValueRegex = /(.*?):(.*)/;
   for (const arg of args) {

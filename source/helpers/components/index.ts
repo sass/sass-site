@@ -15,23 +15,18 @@ export {getDocTocData, getToc};
  * Returns HTML for a fun fact that's not directly relevant to the main
  * documentation.
  */
-export const funFact = async (contents: string, useMarkdown = true) => {
-  return liquidEngine.renderFile('fun_fact', {
+export const funFact = async (contents: string) =>
+  liquidEngine.renderFile('fun_fact', {
     contents: stripIndent(contents),
-    useMarkdown,
   });
-};
 
 /**
- * Returns HTML for a heads-up warning related to the main
- * documentation.
+ * Returns HTML for a heads-up warning related to the main documentation.
  */
-export const headsUp = async (contents: string, useMarkdown = true) => {
-  return liquidEngine.renderFile('heads_up', {
+export const headsUp = async (contents: string) =>
+  liquidEngine.renderFile('heads_up', {
     contents: stripIndent(contents),
-    useMarkdown,
   });
-};
 
 /**
  * Returns HTML for a code block with syntax highlighting via [Prism][].
