@@ -254,29 +254,28 @@ title: sass:color
   the HSL lightness of `$color` by that amount.
 
   {% headsUp %}
-  {% # Un-indented because 4-space indentation causes extra <p> tags in Markdown %}
-  The `darken()` function decreases lightness by a fixed amount, which is often
-  not the desired effect. To make a color a certain percentage darker than it
-  was before, use [`color.scale()`](#scale) instead.
+    The `darken()` function decreases lightness by a fixed amount, which is
+    often not the desired effect. To make a color a certain percentage darker
+    than it was before, use [`color.scale()`](#scale) instead.
 
-  Because `darken()` is usually not the best way to make a color darker, it's
-  not included directly in the new module system. However, if you have to
-  preserve the existing behavior, `darken($color, $amount)` can be written
-  [`color.adjust($color, $lightness: -$amount)`](#adjust).
+    Because `darken()` is usually not the best way to make a color darker, it's
+    not included directly in the new module system. However, if you have to
+    preserve the existing behavior, `darken($color, $amount)` can be written
+    [`color.adjust($color, $lightness: -$amount)`](#adjust).
 
-  {% codeExample 'color-darken', false %}
-    // #036 has lightness 20%, so when darken() subtracts 30% it just returns black.
-    @debug darken(#036, 30%); // black
+    {% codeExample 'color-darken', false %}
+      // #036 has lightness 20%, so when darken() subtracts 30% it just returns black.
+      @debug darken(#036, 30%); // black
 
-    // scale() instead makes it 30% darker than it was originally.
-    @debug color.scale(#036, $lightness: -30%); // #002447
-    ===
-    // #036 has lightness 20%, so when darken() subtracts 30% it just returns black.
-    @debug darken(#036, 30%)  // black
+      // scale() instead makes it 30% darker than it was originally.
+      @debug color.scale(#036, $lightness: -30%); // #002447
+      ===
+      // #036 has lightness 20%, so when darken() subtracts 30% it just returns black.
+      @debug darken(#036, 30%)  // black
 
-    // scale() instead makes it 30% darker than it was originally.
-    @debug color.scale(#036, $lightness: -30%)  // #002447
-  {% endcodeExample %}
+      // scale() instead makes it 30% darker than it was originally.
+      @debug color.scale(#036, $lightness: -30%)  // #002447
+    {% endcodeExample %}
   {% endheadsUp %}
 
   {% codeExample 'color-darken-2', false %}
@@ -307,31 +306,30 @@ title: sass:color
   the HSL saturation of `$color` by that amount.
 
   {% headsUp %}
-  {% # Un-indented because 4-space indentation causes extra <p> tags in Markdown %}
-  The `desaturate()` function decreases saturation by a fixed amount, which is
-  often not the desired effect. To make a color a certain percentage less
-  saturated than it was before, use [`color.scale()`](#scale) instead.
+    The `desaturate()` function decreases saturation by a fixed amount, which is
+    often not the desired effect. To make a color a certain percentage less
+    saturated than it was before, use [`color.scale()`](#scale) instead.
 
-  Because `desaturate()` is usually not the best way to make a color less
-  saturated, it's not included directly in the new module system. However, if
-  you have to preserve the existing behavior, `desaturate($color, $amount)` can
-  be written [`color.adjust($color, $saturation: -$amount)`](#adjust).
+    Because `desaturate()` is usually not the best way to make a color less
+    saturated, it's not included directly in the new module system. However, if
+    you have to preserve the existing behavior, `desaturate($color, $amount)`
+    can be written [`color.adjust($color, $saturation: -$amount)`](#adjust).
 
-  {% codeExample 'color-desaturate', false %}
-    // #d2e1dd has saturation 20%, so when desaturate() subtracts 30% it just
-    // returns gray.
-    @debug desaturate(#d2e1dd, 30%); // #dadada
+    {% codeExample 'color-desaturate', false %}
+      // #d2e1dd has saturation 20%, so when desaturate() subtracts 30% it just
+      // returns gray.
+      @debug desaturate(#d2e1dd, 30%); // #dadada
 
-    // scale() instead makes it 30% less saturated than it was originally.
-    @debug color.scale(#6b717f, $saturation: -30%); // #6e727c
-    ===
-    // #6b717f has saturation 20%, so when desaturate() subtracts 30% it just
-    // returns gray.
-    @debug desaturate(#d2e1dd, 30%)  // #dadada
+      // scale() instead makes it 30% less saturated than it was originally.
+      @debug color.scale(#6b717f, $saturation: -30%); // #6e727c
+      ===
+      // #6b717f has saturation 20%, so when desaturate() subtracts 30% it just
+      // returns gray.
+      @debug desaturate(#d2e1dd, 30%)  // #dadada
 
-    // scale() instead makes it 30% less saturated than it was originally.
-    @debug color.scale(#6b717f, $saturation: -30%)  // #6e727c
-  {% endcodeExample %}
+      // scale() instead makes it 30% less saturated than it was originally.
+      @debug color.scale(#6b717f, $saturation: -30%)  // #6e727c
+    {% endcodeExample %}
   {% endheadsUp %}
 
   {% codeExample 'color-desaturate-2', false %}
@@ -502,29 +500,28 @@ title: sass:color
   the HSL lightness of `$color` by that amount.
 
   {% headsUp %}
-  {% # Un-indented because 4-space indentation causes extra <p> tags in Markdown %}
-  The `lighten()` function increases lightness by a fixed amount, which is often
-  not the desired effect. To make a color a certain percentage lighter than it
-  was before, use [`scale()`](#scale) instead.
+    The `lighten()` function increases lightness by a fixed amount, which is
+    often not the desired effect. To make a color a certain percentage lighter
+    than it was before, use [`scale()`](#scale) instead.
 
-  Because `lighten()` is usually not the best way to make a color lighter, it's
-  not included directly in the new module system. However, if you have to
-  preserve the existing behavior, `lighten($color, $amount)` can be written
-  [`adjust($color, $lightness: $amount)`](#adjust).
+    Because `lighten()` is usually not the best way to make a color lighter,
+    it's not included directly in the new module system. However, if you have to
+    preserve the existing behavior, `lighten($color, $amount)` can be written
+    [`adjust($color, $lightness: $amount)`](#adjust).
 
-  {% codeExample 'color-lighten', false %}
-    // #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
-    @debug lighten(#e1d7d2, 30%); // white
+    {% codeExample 'color-lighten', false %}
+      // #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
+      @debug lighten(#e1d7d2, 30%); // white
 
-    // scale() instead makes it 30% lighter than it was originally.
-    @debug color.scale(#e1d7d2, $lightness: 30%); // #eae3e0
-    ===
-    // #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
-    @debug lighten(#e1d7d2, 30%)  // white
+      // scale() instead makes it 30% lighter than it was originally.
+      @debug color.scale(#e1d7d2, $lightness: 30%); // #eae3e0
+      ===
+      // #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
+      @debug lighten(#e1d7d2, 30%)  // white
 
-    // scale() instead makes it 30% lighter than it was originally.
-    @debug color.scale(#e1d7d2, $lightness: 30%)  // #eae3e0
-  {% endcodeExample %}
+      // scale() instead makes it 30% lighter than it was originally.
+      @debug color.scale(#e1d7d2, $lightness: 30%)  // #eae3e0
+    {% endcodeExample %}
   {% endheadsUp %}
 
   {% codeExample 'color-lighten-2', false %}
@@ -602,31 +599,30 @@ title: sass:color
   alpha channel of `$color` by that amount.
 
   {% headsUp %}
-  {% # Un-indented because 4-space indentation causes extra <p> tags in Markdown %}
-  The `opacify()` function increases the alpha channel by a fixed amount, which
-  is often not the desired effect. To make a color a certain percentage more
-  opaque than it was before, use [`scale()`](#scale) instead.
+    The `opacify()` function increases the alpha channel by a fixed amount,
+    which is often not the desired effect. To make a color a certain percentage
+    more opaque than it was before, use [`scale()`](#scale) instead.
 
-  Because `opacify()` is usually not the best way to make a color more opaque,
-  it's not included directly in the new module system. However, if you have to
-  preserve the existing behavior, `opacify($color, $amount)` can be written
-  [`adjust($color, $alpha: -$amount)`](#adjust).
+    Because `opacify()` is usually not the best way to make a color more opaque,
+    it's not included directly in the new module system. However, if you have to
+    preserve the existing behavior, `opacify($color, $amount)` can be written
+    [`adjust($color, $alpha: -$amount)`](#adjust).
 
-  {% codeExample 'color-opacify', false %}
-    // rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully
-    // opaque color.
-    @debug opacify(rgba(#036, 0.7), 0.3); // #036
+    {% codeExample 'color-opacify', false %}
+      // rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully
+      // opaque color.
+      @debug opacify(rgba(#036, 0.7), 0.3); // #036
 
-    // scale() instead makes it 30% more opaque than it was originally.
-    @debug color.scale(rgba(#036, 0.7), $alpha: 30%); // rgba(0, 51, 102, 0.79)
-    ===
-    // rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully
-    // opaque color.
-    @debug opacify(rgba(#036, 0.7), 0.3)  // #036
+      // scale() instead makes it 30% more opaque than it was originally.
+      @debug color.scale(rgba(#036, 0.7), $alpha: 30%); // rgba(0, 51, 102, 0.79)
+      ===
+      // rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully
+      // opaque color.
+      @debug opacify(rgba(#036, 0.7), 0.3)  // #036
 
-    // scale() instead makes it 30% more opaque than it was originally.
-    @debug color.scale(rgba(#036, 0.7), $alpha: 30%)  // rgba(0, 51, 102, 0.79)
-  {% endcodeExample %}
+      // scale() instead makes it 30% more opaque than it was originally.
+      @debug color.scale(rgba(#036, 0.7), $alpha: 30%)  // rgba(0, 51, 102, 0.79)
+    {% endcodeExample %}
   {% endheadsUp %}
 
   {% codeExample 'color-opacify-2', false %}
@@ -672,31 +668,30 @@ title: sass:color
   the HSL saturation of `$color` by that amount.
 
   {% headsUp %}
-  {% # Un-indented because 4-space indentation causes extra <p> tags in Markdown %}
-  The `saturate()` function increases saturation by a fixed amount, which is
-  often not the desired effect. To make a color a certain percentage more
-  saturated than it was before, use [`scale()`](#scale) instead.
+    The `saturate()` function increases saturation by a fixed amount, which is
+    often not the desired effect. To make a color a certain percentage more
+    saturated than it was before, use [`scale()`](#scale) instead.
 
-  Because `saturate()` is usually not the best way to make a color more
-  saturated, it's not included directly in the new module system. However, if
-  you have to preserve the existing behavior, `saturate($color, $amount)` can be
-  written [`adjust($color, $saturation: $amount)`](#adjust).
+    Because `saturate()` is usually not the best way to make a color more
+    saturated, it's not included directly in the new module system. However, if
+    you have to preserve the existing behavior, `saturate($color, $amount)` can
+    be written [`adjust($color, $saturation: $amount)`](#adjust).
 
-  {% codeExample 'color-saturate', false %}
-    // #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes
-    // fully saturated.
-    @debug saturate(#0e4982, 30%); // #004990
+    {% codeExample 'color-saturate', false %}
+      // #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes
+      // fully saturated.
+      @debug saturate(#0e4982, 30%); // #004990
 
-    // scale() instead makes it 30% more saturated than it was originally.
-    @debug color.scale(#0e4982, $saturation: 30%); // #0a4986
-    ===
-    // #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes
-    // fully saturated.
-    @debug saturate(#0e4982, 30%)  // #004990
+      // scale() instead makes it 30% more saturated than it was originally.
+      @debug color.scale(#0e4982, $saturation: 30%); // #0a4986
+      ===
+      // #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes
+      // fully saturated.
+      @debug saturate(#0e4982, 30%)  // #004990
 
-    // scale() instead makes it 30% more saturated than it was originally.
-    @debug color.scale(#0e4982, $saturation: 30%)  // #0a4986
-  {% endcodeExample %}
+      // scale() instead makes it 30% more saturated than it was originally.
+      @debug color.scale(#0e4982, $saturation: 30%)  // #0a4986
+    {% endcodeExample %}
   {% endheadsUp %}
 
   {% codeExample 'color-saturate-2', false %}
@@ -796,31 +791,32 @@ title: sass:color
   alpha channel of `$color` by that amount.
 
   {% headsUp %}
-  {% # Un-indented because 4-space indentation causes extra <p> tags in Markdown %}
-  The `transparentize()` function decreases the alpha channel by a fixed amount,
-  which is often not the desired effect. To make a color a certain percentage
-  more transparent than it was before, use [`color.scale()`](#scale) instead.
+    The `transparentize()` function decreases the alpha channel by a fixed
+    amount, which is often not the desired effect. To make a color a certain
+    percentage more transparent than it was before, use
+    [`color.scale()`](#scale) instead.
 
-  Because `transparentize()` is usually not the best way to make a color more
-  transparent, it's not included directly in the new module system. However, if
-  you have to preserve the existing behavior, `transparentize($color, $amount)`
-  can be written [`color.adjust($color, $alpha: -$amount)`](#adjust).
+    Because `transparentize()` is usually not the best way to make a color more
+    transparent, it's not included directly in the new module system. However,
+    if you have to preserve the existing behavior, `transparentize($color,
+    $amount)` can be written [`color.adjust($color, $alpha:
+    -$amount)`](#adjust).
 
-  {% codeExample 'transparentize', false %}
-    // rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it
-    // returns a fully transparent color.
-    @debug transparentize(rgba(#036, 0.3), 0.3); // rgba(0, 51, 102, 0)
+    {% codeExample 'transparentize', false %}
+      // rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it
+      // returns a fully transparent color.
+      @debug transparentize(rgba(#036, 0.3), 0.3); // rgba(0, 51, 102, 0)
 
-    // scale() instead makes it 30% more transparent than it was originally.
-    @debug color.scale(rgba(#036, 0.3), $alpha: -30%); // rgba(0, 51, 102, 0.21)
-    ===
-    // rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it
-    // returns a fully transparent color.
-    @debug transparentize(rgba(#036, 0.3), 0.3)  // rgba(0, 51, 102, 0)
+      // scale() instead makes it 30% more transparent than it was originally.
+      @debug color.scale(rgba(#036, 0.3), $alpha: -30%); // rgba(0, 51, 102, 0.21)
+      ===
+      // rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it
+      // returns a fully transparent color.
+      @debug transparentize(rgba(#036, 0.3), 0.3)  // rgba(0, 51, 102, 0)
 
-    // scale() instead makes it 30% more transparent than it was originally.
-    @debug color.scale(rgba(#036, 0.3), $alpha: -30%)  // rgba(0, 51, 102, 0.21)
-  {% endcodeExample %}
+      // scale() instead makes it 30% more transparent than it was originally.
+      @debug color.scale(rgba(#036, 0.3), $alpha: -30%)  // rgba(0, 51, 102, 0.21)
+    {% endcodeExample %}
   {% endheadsUp %}
 
   {% codeExample 'transparentize-2', false %}

@@ -17,7 +17,8 @@ export {getDocTocData, getToc};
  */
 export const funFact = async (contents: string, useMarkdown = true) => {
   const html = await liquidEngine.renderFile('fun_fact', {
-    contents: stripIndent(contents),
+    // Un-indent nested markup to prevent unwanted `<p>` tags.
+    contents: stripIndent(contents).replaceAll(/\n +</g, '\n<'),
     useMarkdown,
   });
   return html.trim();
@@ -29,7 +30,8 @@ export const funFact = async (contents: string, useMarkdown = true) => {
  */
 export const headsUp = async (contents: string, useMarkdown = true) => {
   const html = await liquidEngine.renderFile('heads_up', {
-    contents: stripIndent(contents),
+    // Un-indent nested markup to prevent unwanted `<p>` tags.
+    contents: stripIndent(contents).replaceAll(/\n +</g, '\n<'),
     useMarkdown,
   });
   return html.trim();
