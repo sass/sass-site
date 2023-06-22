@@ -1,9 +1,9 @@
-const { babel } = require('@rollup/plugin-babel');
+const {babel} = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const inject = require('@rollup/plugin-inject');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const {nodeResolve} = require('@rollup/plugin-node-resolve');
 const terser = require('@rollup/plugin-terser');
-const { defineConfig } = require('rollup');
+const {defineConfig} = require('rollup');
 
 const prod = process.env.BABEL_ENV === 'production';
 
@@ -13,7 +13,7 @@ const plugins = [
     browser: true,
   }),
   commonjs(),
-  babel({ extensions: ['.js', '.ts'], babelHelpers: 'bundled' }),
+  babel({extensions: ['.js', '.ts'], babelHelpers: 'bundled'}),
   inject({
     $: 'jquery',
     jQuery: 'jquery',

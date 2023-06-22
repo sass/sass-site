@@ -15,15 +15,12 @@ following:
 
 ## Running Locally
 
-### Install Node and Yarn
+### Install Node
 
 We recommend using [nvm](https://github.com/nvm-sh/nvm) for node version
 management. [Install it](https://github.com/nvm-sh/nvm#installation-and-update)
 if necessary, then run `nvm install` (once per active shell) to use the correct
 version of node for development.
-
-The correct [Yarn](https://yarnpkg.com/) version is included in the repo, and
-will be used automatically for any `yarn` command.
 
 To upgrade the node version used by the Sass website, update the version number
 in these places and then run `nvm install` to upgrade:
@@ -33,14 +30,10 @@ in these places and then run `nvm install` to upgrade:
 - `netlify.toml`
 - `Dockerfile`
 
-To upgrade the yarn version, run `yarn set version latest`, then update the
-version number in `netlify.toml` and `package.json` (`engines.yarn` field) if
-necessary.
-
 ### Install dependencies
 
 ```
-yarn
+npm install
 ```
 
 ### Development tasks
@@ -49,7 +42,7 @@ Compile and run [Eleventy](https://www.11ty.dev/) server, with a watcher for
 file changes:
 
 ```
-yarn serve
+npm run serve
 ```
 
 The site will be compiled into `_site/` and available at http://localhost:8080.
@@ -58,10 +51,10 @@ You can also run individual commands:
 
 ```
 # build the static site for development
-yarn build
+npm run build
 
 # format and lint all files
-yarn lint
+npm run lint
 ```
 
 ## Templates
@@ -85,10 +78,10 @@ yarn lint
       while `render` always parses the partial as a LiquidJS template.
 - `.md` files are parsed both as Markdown _and_ as LiquidJS templates.
 - When using Markdown, remember that _indentation and whitespace (e.g newlines)
-  matter_. Use Markdown selectively, especially in files that include other
-  non-Markdown partials.
-    - For example, the `{% codeExample %}` tag renders whitespace that results
-      in unwanted `<p>` tags when parsed as Markdown.
+  matter_. Custom tags attempt to strip leading whitespace from text contents
+  (based on the whitespace of the first line of text) to allow for more readable
+  indentation between tags -- see the `stripIndent` function in
+  `source/helpers/type.ts` for details.
 
 ## Deploying
 

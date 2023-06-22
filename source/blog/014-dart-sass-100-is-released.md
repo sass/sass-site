@@ -7,7 +7,7 @@ date: 2018-03-26 13:15:00 -8
 I've just uploaded Dart Sass 1.0.0, the very first stable release, to
 [GitHub](https://github.com/sass/dart-sass/releases/tag/1.0.0-rc.1),
 [npm](https://www.npmjs.com/package/sass),
-[Chocolatey](https://chocolatey.org/packages/sass),
+[Chocolatey](https://community.chocolatey.org/packages/sass),
 [Homebrew](https://github.com/sass/homebrew-sass), and
 [pub](http://pub.dartlang.org/packages/sass). After working on it for almost two
 years, I'm thrilled to have a stable release out there and officially ready to

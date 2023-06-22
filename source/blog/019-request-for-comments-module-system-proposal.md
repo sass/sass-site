@@ -11,7 +11,7 @@ Sass file in another, which makes it hard to keep track of where mixins,
 functions, and variables were defined and hard to be sure that any new additions
 won't happen to conflict with something elsewhere in the project. To make
 matters worse, it overlaps with CSS's built-in `@import` rule, which forces us
-to have [a bunch of heuristics](/documentation/file.SASS_REFERENCE.html#import)
+to have [a bunch of heuristics](/documentation/at-rules/import/)
 to decide which is which.
 
 Because of these problems and others, we've wanted to do a full overhaul of the

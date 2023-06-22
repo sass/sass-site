@@ -1,6 +1,6 @@
 'use strict';
 
-const { EleventyRenderPlugin } = require('@11ty/eleventy');
+const {EleventyRenderPlugin} = require('@11ty/eleventy');
 const {
   absoluteUrl,
   convertHtmlToAbsoluteUrls,
@@ -13,13 +13,13 @@ const yaml = require('js-yaml');
 const componentsPlugin =
   require('./source/helpers/components/index.ts').default;
 const datesPlugin = require('./source/helpers/dates.ts').default;
-const { liquidEngine, markdownEngine } = require('./source/helpers/engines.ts');
+const {liquidEngine, markdownEngine} = require('./source/helpers/engines.ts');
 const pagesPlugin = require('./source/helpers/pages.ts').default;
 const typePlugin = require('./source/helpers/type.ts').default;
 const functionPlugin = require('./source/helpers/function.ts').default;
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
-module.exports = (eleventyConfig) => {
+module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy('source/assets/dist');
   eleventyConfig.addPassthroughCopy('source/assets/img');
   eleventyConfig.addPassthroughCopy('source/favicon.ico');
@@ -34,10 +34,11 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.setLibrary('liquid', liquidEngine);
   eleventyConfig.setLibrary('md', markdownEngine);
-  eleventyConfig.addDataExtension('yml, yaml', (contents) =>
-    yaml.load(contents),
-  );
-  eleventyConfig.addDataExtension('ts', (_, filepath) => require(filepath));
+  eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
+  eleventyConfig.addDataExtension('ts', {
+    parser: filepath => require(filepath),
+    read: false,
+  });
 
   // register filters and shortcodes
   eleventyConfig.addPlugin(componentsPlugin);
@@ -50,12 +51,12 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addLiquidFilter('absoluteUrl', absoluteUrl);
   eleventyConfig.addLiquidFilter(
     'getNewestCollectionItemDate',
-    getNewestCollectionItemDate,
+    getNewestCollectionItemDate
   );
   eleventyConfig.addLiquidFilter('dateToRfc3339', dateToRfc3339);
   eleventyConfig.addLiquidFilter(
     'htmlToAbsoluteUrls',
-    convertHtmlToAbsoluteUrls,
+    convertHtmlToAbsoluteUrls
   );
 
   // other plugins

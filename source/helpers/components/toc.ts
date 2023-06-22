@@ -9,11 +9,11 @@ type TOCItem = {
  */
 export const getDocTocData = (data: TOCItem) => {
   const text = Object.keys(data).filter(
-    (key) => ![':children', ':expanded'].includes(key),
+    key => ![':children', ':expanded'].includes(key)
   )[0];
   const href = data[text] as string;
   const expanded = Boolean(data[':expanded']);
-  return { text, href, expanded };
+  return {text, href, expanded};
 };
 
 /**
@@ -41,7 +41,7 @@ export const getToc = (html: string, topLevelTotal: number): TOCItem[] => {
     const level = parseInt(h.name[1], 10);
     const title = $(h).html() as string;
     const id = $(h).attr('id') as string;
-    const tocItem: TOCItem = { [title]: `#${id}` };
+    const tocItem: TOCItem = {[title]: `#${id}`};
     byLevel[level].push(tocItem);
     if (level === 2) {
       toc.push(tocItem);

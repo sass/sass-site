@@ -11,15 +11,13 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "^16",
-    "yarn": "^3"
+    "node": "^16"
   },
-  "packageManager": "yarn@3.6.0",
   "scripts": {
     "serve": "run-p 'watch:**'",
     "build": "run-s clean-version-cache build-dev:scripts 'build:**'",
+    "build-prod": "run-s clean-version-cache build-prod:scripts 'build:**'",
     "clean-version-cache": "rm -f source/_data/versionCache.json",
-    "build-prod": "NETLIFY=true run-s clean-version-cache build-prod:scripts 'build:**'",
     "build:sass": "sass --style=compressed ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
     "watch:sass": "sass --watch ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
     "build-dev:scripts": "rollup -c",
@@ -27,19 +25,19 @@
     "watch:scripts": "npm run build-dev:scripts -- -w",
     "build:typedoc": "./tool/typedoc-build.sh",
     "build:11ty": "NODE_OPTIONS='-r ts-node/register' eleventy",
-    "watch:11ty": "yarn build:11ty --serve --incremental",
+    "watch:11ty": "npm run build:11ty -- --serve --incremental",
     "tsc": "tsc",
     "gts": "gts fix",
     "gts:ci": "gts lint",
-    "prettier": "prettier --write .",
-    "prettier:ci": "prettier --check .",
-    "stylelint": "stylelint '**/*.{css,scss}' --fix",
-    "stylelint:ci": "stylelint '**/*.{css,scss}'",
+    "prettier": "prettier --write '**/*.{json,yml,scss}'",
+    "prettier:ci": "prettier --check '**/*.{json,yml,scss}'",
+    "stylelint": "stylelint 'source/assets/sass/*.{css,scss}' --fix",
+    "stylelint:ci": "stylelint 'source/assets/sass/*.{css,scss}'",
     "lint": "run-s prettier gts stylelint tsc",
     "lint:ci": "run-s prettier:ci gts:ci stylelint:ci tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "checklinks:internal": "npx --yes --package=hyperlink --package=tap-spot -- 'hyperlink --canonicalroot https://sass-lang.com/ --root _site/ -r -p -i --skip \".css.map\" --skip \".js.map\" --skip \".svg\" --skip \"feed.atom\" --skip \"/documentation/js-api/\" --skip \"/blog/\" _site/index.html | tap-spot'",
-    "checklinks:external": "npx --yes --package=broken-link-checker -- 'blc -ro --exclude=localhost:8080 --exclude=codepen.io --exclude=linkedin.com --exclude=docs.github.com --exclude=twitter.com https://sass-lang.com'"
+    "checklinks:internal": "npx --yes --package=hyperlink -- 'hyperlink --canonicalroot https://sass-lang.com/ --root _site/ -r -p -i --skip \"fragment-redirect\" --skip \"types.Map\" _site/index.html'",
+    "checklinks:external": "npx --yes --package=broken-link-checker -- 'blc -ro --exclude=twitter.com --exclude=mvnrepository.com --exclude=drupal.org --exclude=web.archive.org https://sass-lang.com'"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
@@ -64,23 +62,18 @@
     "@types/markdown-it-footnote": "^3.0.0",
     "@types/node": "^16",
     "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.60.0",
-    "@typescript-eslint/parser": "^5.60.0",
+    "@types/semver": "^7.5.0",
     "cheerio": "^1.0.0-rc.12",
     "codemirror": "^6.0.1",
     "date-fns": "^2.30.0",
     "deep-equal": "^2.2.1",
-    "eslint": "^8.43.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
     "gts": "^3.1.1",
     "immutable": "^4.3.0",
     "jquery": "^3.7.0",
     "jquery-ui": "^1.13.2",
     "js-yaml": "^4.1.0",
     "kleur": "^4.1.5",
+    "liquidjs": "^10.8.3",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",
     "markdown-it": "^13.0.1",
@@ -95,7 +88,6 @@
     "rollup": "^3.25.1",
     "sass": "^1.63.4",
     "semver": "^7.5.2",
-    "strip-indent": "^3.0.0",
     "stylelint": "^15.8.0",
     "stylelint-config-standard-scss": "^9.0.0",
     "truncate-html": "^1.0.4",
@@ -105,12 +97,5 @@
   },
   "resolutions": {
     "tslib": ">=2"
-  },
-  "yarn-upgrade-all": {
-    "ignore": [
-      "@sindresorhus/slugify",
-      "@types/node",
-      "strip-indent"
-    ]
   }
 }

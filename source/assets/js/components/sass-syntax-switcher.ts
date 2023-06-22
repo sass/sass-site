@@ -1,4 +1,4 @@
-$(function () {
+$(() => {
   $('.code-example').each(function () {
     const figure = $(this);
 
