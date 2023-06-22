@@ -16,5 +16,3 @@ updates:
       # See: https://github.com/11ty/eleventy/issues/836
       - dependency-name: '@sindresorhus/slugify'
         update-types: ['version-update:semver-major']
-      - dependency-name: 'strip-indent'
-        update-types: ['version-update:semver-major']

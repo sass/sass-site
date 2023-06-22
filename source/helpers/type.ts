@@ -1,5 +1,4 @@
 import {LoremIpsum} from 'lorem-ipsum';
-import stripInd from 'strip-indent';
 import truncate from 'truncate-html';
 import {typogrify} from 'typogr';
 
@@ -28,20 +27,20 @@ export const getLorem = (type: string, number = 1) => {
 };
 
 /**
- * Strips leading whitespace from each line of a string.
- * First strips based on the line with the least amount of leading whitespace,
- * then strips based on the whitespace of the first line.
+ * Strips leading whitespace from each line of a string,
+ * based on the whitespace of the first line.
  *
  * @see https://github.com/sindresorhus/strip-indent
+ * @see https://github.com/jamiebuilds/min-indent
  */
 export const stripIndent = (contents: string) => {
   // Strip leading whitespace based on line with least leading whitespace
-  let text = stripInd(contents);
+  let text = contents;
   // Find leading whitespace of first line (ignoring initial newlines)
-  const match = text.replace(/^[\n\r]/, '').match(/^[ \t]*(?=\S)/g);
-  if (match?.[0]?.length) {
+  const match = /^[\n\r]*([ \t]*)(?=\S)/.exec(text);
+  if (match?.[1]?.length) {
     // Strip leading whitespace based on first line
-    text = text.replaceAll(new RegExp(`^[ \\t]{${match[0].length}}`, 'gm'), '');
+    text = text.replaceAll(new RegExp(`^[ \\t]{${match[1].length}}`, 'gm'), '');
   }
   return text;
 };
