@@ -225,6 +225,10 @@
     border-color: var(--sl-color--success);
   }
 
+  .cm-specialChar{
+    color: var(--sl-color--code-bright);
+  }
+
   .sl-code-is-precompiled & {
     cursor: text;
   }
