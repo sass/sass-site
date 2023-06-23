@@ -17,6 +17,7 @@ if [[ "$LANGUAGE_REVISION" ]]; then
 else
   git checkout origin/main
 fi
+git clean -fX
 cd ..
 
 # Build the JS API docs

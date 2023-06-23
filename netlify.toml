@@ -1,6 +1,3 @@
-[build.environment]
-    NODE_VERSION = "16"
-
 [[plugins]]
     package = "netlify-plugin-11ty"
 

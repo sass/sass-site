@@ -75,7 +75,7 @@ selector lists easily.
 
 This means that **`&-suffix` will be supported in Sass 3.3**, without needing
 `#{}` or `@at-root`. I've created [issue
-1055](https://github.com/nex3/sass/issues/1055) to track it. When compiling
+1055](https://github.com/sass/sass/issues/1055) to track it. When compiling
 these selectors, if the parent selector is one that would result in an invalid
 selector (e.g. `*-suffix` or `:nth-child(1)-suffix`), we'll throw an error there
 describing why that selector was generated.
