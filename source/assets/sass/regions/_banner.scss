@@ -1,0 +1,49 @@
+@use '../breakpoints';
+@use '../functions';
+@use '../visual-design/typography';
+
+.sl-r-banner {
+  position: relative;
+
+  // add bottom padding to increase space
+  // above page titles (visible on mobile site)
+  padding-bottom: var(--sl-gutter--triple);
+
+  a {
+    display: inline-block;
+  }
+
+  &__brand a {
+    border: 0;
+  }
+
+  img {
+    display: inline-block;
+    margin: 0;
+    height: functions.sl-px-to-rem(48px);
+
+    @include breakpoints.sl-breakpoint--medium {
+      height: functions.sl-px-to-rem(96px);
+    }
+  }
+
+  &__navigation {
+    font-weight: typography.$sl-font-weight--bold;
+
+    ul {
+      position: relative;
+      margin: 0 var(--sl-gutter--negative) !important;
+
+      @include breakpoints.sl-breakpoint--medium {
+        right: var(--sl-gutter--negative);
+        margin: 0 !important;
+      }
+    }
+
+    a {
+      display: block;
+      padding: var(--sl-gutter--minus) var(--sl-gutter);
+      border: 0;
+    }
+  }
+}

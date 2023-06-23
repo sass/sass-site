@@ -1,0 +1,55 @@
+// Spacing Sizes
+// -------------
+$sl-gutter: 1rem; // ~16px
+$sl-gutter--quarter: calc(var(--sl-gutter) * 0.25); // ~4px
+$sl-gutter--half: calc(var(--sl-gutter) * 0.5); // ~8px
+$sl-gutter--minus: calc(var(--sl-gutter) * 0.75); // ~12px
+$sl-gutter--plus: calc(var(--sl-gutter) * 1.25); // ~20px
+$sl-gutter--sesqui: calc(var(--sl-gutter) * 1.5); // ~24px
+$sl-gutter--double: calc(var(--sl-gutter) * 2); // ~32px
+$sl-gutter--double-sesqui: calc(var(--sl-gutter) * 2.5); // ~40px
+$sl-gutter--triple: calc(var(--sl-gutter) * 3); // ~48px
+
+// Negative Spacing Sizes
+// ----------------------
+$sl-gutter--negative: calc(var(--sl-gutter) * -1);
+$sl-gutter--quarter-negative: calc(var(--sl-gutter--quarter) * -1);
+$sl-gutter--half-negative: calc(var(--sl-gutter--half) * -1);
+$sl-gutter--minus-negative: calc(var(--sl-gutter--minus) * -1);
+$sl-gutter--plus-negative: calc(var(--sl-gutter--plus) * -1);
+$sl-gutter--sesqui-negative: calc(var(--sl-gutter--sesqui) * -1);
+$sl-gutter--double-negative: calc(var(--sl-gutter--double) * -1);
+$sl-gutter--double-sesqui-negative: calc(var(--sl-gutter--double-sesqui) * -1);
+$sl-gutter--triple-negative: calc(var(--sl-gutter--triple) * -1);
+
+// UI Sizes
+// --------
+$sl-border-radius--large: 0.25rem;
+$sl-border-radius--small: 0.125rem;
+$sl-border--small: 1px;
+$sl-column--medium: 30rem;
+$sl-column--small: 15rem;
+$sl-table-cell-padding: var(--sl-gutter--half);
+
+// Layout Sizes
+// ------------
+$sl-breakpoint--small: 30em; // 480px
+$sl-breakpoint--medium: 40em; // 640px
+$sl-breakpoint--large: 60em; // 960px
+$sl-breakpoint--x-large: 80em; // 1280px
+
+// Font Sizes Generic
+// ------------------
+$sl-font-size--smaller: 90%;
+$sl-font-size--x-small: 0.875rem; // 14px
+$sl-font-size--small: 1rem; // 16px
+$sl-font-size--medium: 1.125rem; // 18px
+$sl-font-size--large: 1.25rem; // 20px
+$sl-font-size--x-large: 1.5rem; // 22px
+$sl-font-size--xx-large: 1.75rem; // 28px
+$sl-font-size--xxx-large: 2rem; // 32px
+$sl-font-size--xxxx-large: 5rem; // 80px
+
+// Font Sizes Custom
+// -----------------
+$sl-status-text-size: 0.8em;

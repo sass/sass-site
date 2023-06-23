@@ -1,0 +1,24 @@
+<div class="code-example ui-tabs{% if code.canSplit %} can-split{% endif %}"{% if code.splitLocation %} style="--split-location: {{ code.splitLocation }}%"{% endif %}>
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix">
+    {%- if code.scss.size -%}
+      {%- render 'code_examples/tab', name: 'SCSS', syntax: 'scss', id: exampleName, enabled: true -%}
+    {%- endif -%}
+    {%- if code.sass.size -%}
+      {%- assign enabled = code.scss.size == 0 -%}
+      {%- render 'code_examples/tab', name: 'Sass', syntax: 'sass', id: exampleName, enabled: enabled -%}
+    {%- endif -%}
+    {%- if code.css.size -%}
+      {%- render 'code_examples/tab', name: 'CSS', syntax: 'css', id: exampleName, enabled: false -%}
+    {%- endif -%}
+  </ul>
+  {%- if code.scss.size -%}
+    {%- render 'code_examples/panel', name: 'SCSS Syntax', syntax: 'scss', id: exampleName, examples: code.scss, paddings: code.scssPaddings, enabled: true -%}
+  {%- endif -%}
+  {%- if code.sass.size -%}
+    {%- assign enabled = code.scss.size == 0 -%}
+    {%- render 'code_examples/panel', name: 'Sass Syntax', syntax: 'sass', id: exampleName, examples: code.sass, paddings: code.sassPaddings, enabled: enabled -%}
+  {%- endif -%}
+  {%- if code.css.size -%}
+    {%- render 'code_examples/panel', name: 'CSS Output', syntax: 'css', id: exampleName, examples: code.css, paddings: code.cssPaddings, enabled: false -%}
+  {%- endif -%}
+</div>

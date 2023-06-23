@@ -1,0 +1,6 @@
+[[plugins]]
+    package = "netlify-plugin-11ty"
+
+    [plugins.inputs]
+        cache_img = "./assets/img"
+        cache_assets = false

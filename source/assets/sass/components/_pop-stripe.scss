@@ -1,0 +1,41 @@
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:map';
+@use '../functions';
+@use '../config/color/brand';
+
+$sl-colors: ();
+
+// loop over the variable names in config/color/brand.scss
+@each $color-name in map.keys(meta.module-variables('brand')) {
+  // turn each sass variable name into a css var() function
+  $var: var(--#{$color-name});
+
+  // add each var() function to the space-separated list
+  $sl-colors: list.append($sl-colors, $var, space);
+}
+
+@function stripes($position, $sl-colors) {
+  $sl-colors: if(
+    meta.type-of($sl-colors) != 'list',
+    compact($sl-colors),
+    $sl-colors
+  );
+  $gradient: ();
+  $width: math.div(100%, list.length($sl-colors));
+
+  @for $i from 1 through list.length($sl-colors) {
+    $pop: list.nth($sl-colors, $i);
+    $new: $pop ($width * ($i - 1)), $pop ($width * $i);
+    $gradient: list.join($gradient, $new, comma);
+  }
+
+  @return linear-gradient($position, $gradient);
+}
+
+.sl-c-pop-stripe {
+  height: functions.sl-px-to-rem(4px);
+  background-image: stripes((to right), ($sl-colors));
+  background-size: 100%;
+}

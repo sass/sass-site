@@ -1,0 +1,26 @@
+name: Check Links
+
+on:
+  workflow_dispatch: # Allow running on-demand
+  schedule:
+    # 1st of every month at 8:00 UTC (4:00 Eastern)
+    - cron: '0 8 1 * *'
+
+jobs:
+  check:
+    name: Check Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build site
+        run: npm run build-prod
+      - name: Check for broken internal links
+        run: npm run checklinks:internal
+      - name: Check for broken external links
+        run: npm run checklinks:external

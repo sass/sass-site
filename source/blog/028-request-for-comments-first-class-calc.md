@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: First-Class Calc"
 author: Natalie Weizenbaum
-date: 2021-3-15 1:35 PST
+date: 2021-3-15 1:35:00 -8
 ---
 
 One of the absolutely most-requested features in Sass is the ability to more
@@ -20,7 +20,7 @@ place of values; they have to [interpolate] variables explicitly. And once a
 `calc()` expression has been created, there's no way to manipulate it with Sass
 the way you can manipulate a plain number.
 
-[interpolate]: https://sass-lang.com/documentation/interpolation
+[interpolate]: /documentation/interpolation
 
 We're looking to change that with a new proposal we call "First-Class Calc".
 This proposal changes `calc()` (and other supported mathematical functions) from
@@ -73,5 +73,5 @@ If you're interested in learning more about this proposal, [read it in full] on
 GitHub. It's open for comments and revisions for the next month, so if you'd
 like to see something change please [file an issue] and we can discuss it!
 
-[read it in full]: https://github.com/sass/sass/tree/main/proposal/first-class-calc.md
+[read it in full]: https://github.com/sass/sass/blob/main/accepted/first-class-calc.md
 [file an issue]: https://github.com/sass/sass/issues/new

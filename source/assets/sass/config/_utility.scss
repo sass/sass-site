@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'scale';
+@use 'color/brand';
+@use 'color/content';
+
+/// Returns all the variables defined in a module,
+/// as a map from variable names (without $)
+/// to the values of those variables.
+/// @link https://sass-lang.com/documentation/modules/meta#module-variables
+$scale: meta.module-variables('scale');
+$brand-colors: meta.module-variables('brand');
+$content-colors: meta.module-variables('content');
+
+// Loops through and returns all tokens from above files as CSS variables.
+@mixin tokens($map, $prefix: null) {
+  @each $tokenname, $tokenvalue in $map {
+    --#{$prefix}#{$tokenname}: #{$tokenvalue};
+  }
+}

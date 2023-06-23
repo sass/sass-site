@@ -1,0 +1,36 @@
+{% codeExample 'example-if' %}
+  @use "sass:math";
+
+  @mixin avatar($size, $circle: false) {
+    width: $size;
+    height: $size;
+
+    @if $circle {
+      border-radius: math.div($size, 2);
+    }
+  }
+
+  .square-av {
+    @include avatar(100px, $circle: false);
+  }
+  .circle-av {
+    @include avatar(100px, $circle: true);
+  }
+  ===
+  @use "sass:math"
+
+  @mixin avatar($size, $circle: false)
+    width: $size
+    height: $size
+
+    @if $circle
+      border-radius: math.div($size, 2)
+
+
+
+  .square-av
+    @include avatar(100px, $circle: false)
+
+  .circle-av
+    @include avatar(100px, $circle: true)
+{% endcodeExample %}

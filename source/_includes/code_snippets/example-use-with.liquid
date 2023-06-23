@@ -1,0 +1,34 @@
+{% codeExample 'use-with' %}
+  // _library.scss
+  $black: #000 !default;
+  $border-radius: 0.25rem !default;
+  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
+
+  code {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+  ---
+  // style.scss
+  @use 'library' with (
+    $black: #222,
+    $border-radius: 0.1rem
+  );
+  ===
+  // _library.sass
+  $black: #000 !default
+  $border-radius: 0.25rem !default
+  $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default
+
+  code
+    border-radius: $border-radius
+    box-shadow: $box-shadow
+  ---
+  // style.sass
+  @use 'library' with ($black: #222, $border-radius: 0.1rem)
+  ===
+  code {
+    border-radius: 0.1rem;
+    box-shadow: 0 0.5rem 1rem rgba(34, 34, 34, 0.15);
+  }
+{% endcodeExample %}

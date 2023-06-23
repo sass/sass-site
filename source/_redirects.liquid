@@ -1,0 +1,35 @@
+---
+permalink: '/_redirects'
+eleventyExcludeFromCollections: true
+---
+/feed                 /feed.xml                                     200
+/sitemap              /sitemap.xml                                  200
+/tutorial             /guide
+/download             /install
+/try                  https://www.sassmeister.com
+/about                /
+
+/blog/posts/560719    /blog/dropping-support-for-old-ruby-versions
+/blog/posts/1305238   /blog/dart-sass-is-on-chocolatey
+/blog/posts/1404451   /blog/sass-and-browser-compatibility
+/blog/posts/1909151   /blog/dart-sass-is-in-beta
+/blog/posts/7081811   /blog/ruby-sass-is-deprecated
+
+{% for r in redirects -%}
+{%- for from in r.from %}
+{%- for to in r.to %}
+{{ from }}            {{ to }}
+{%- endfor -%}
+{%- endfor -%}
+{%- endfor %}
+
+{%- assign mods = 'color list map math meta selector string' | split: ' ' -%}
+{%- for mod in mods %}
+/docs/yardoc/functions/{{ mod }}.html     /documentation/modules/{{ mod }}/
+/documentation/functions/{{ mod }}.html   /documentation/modules/{{ mod }}/
+{%- endfor -%}
+
+{%- assign breaking = 'bogus-combinators css-vars duplicate-var-flags extend-compound function-units media-logic moz-document slash-div strict-unary' | split: ' ' -%}
+{%- for b in breaking %}
+/d/{{ b }}.html         /documentation/breaking-changes/{{ b }}/
+{%- endfor -%}

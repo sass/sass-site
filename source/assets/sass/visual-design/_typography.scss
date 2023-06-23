@@ -1,0 +1,229 @@
+@use '../config';
+@use 'sass:math';
+@use '../breakpoints';
+
+$sl-font-weight--light: 300 !default;
+$sl-font-weight--regular: 400 !default;
+$sl-font-weight--bold: 600 !default;
+$sl-font-weights: (
+  light: $sl-font-weight--light,
+  regular: $sl-font-weight--regular,
+  bold: $sl-font-weight--bold,
+);
+
+@each $name, $value in $sl-font-weights {
+  .sl-font-weight--#{$name} {
+    font-weight: $value;
+  }
+}
+
+$sl-font-family--text: 'Source Sans Pro', system-ui, -apple-system, 'Segoe UI',
+  roboto, ubuntu, cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$sl-font-family--display: 'Source Serif Pro', 'Apple Garamond', 'Baskerville',
+  'Times New Roman', 'Droid Serif', times, serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$sl-font-family--code: 'Source Code Pro', 'SF Mono', monaco, inconsolata,
+  'Fira Mono', 'Droid Sans Mono', monospace, monospace !default;
+$sl-font-families: (
+  text: $sl-font-family--text,
+  display: $sl-font-family--display,
+  code: $sl-font-family--code,
+);
+
+@each $name, $value in $sl-font-families {
+  .sl-font-family--#{$name} {
+    font-family: $value;
+  }
+}
+
+body,
+h5,
+h6 {
+  font-size: var(--sl-font-size--medium);
+}
+
+body {
+  line-height: 1.5;
+  font-family: $sl-font-family--text;
+  text-rendering: optimizelegibility;
+}
+
+* {
+  min-width: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+strong,
+b,
+h5,
+h6,
+dt,
+tbody th,
+label {
+  font-weight: $sl-font-weight--bold;
+}
+
+h1,
+h2,
+caption,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+figure,
+details {
+  margin: var(--sl-gutter) 0;
+  padding: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: var(--sl-gutter--double-sesqui);
+
+  aside &,
+  nav & {
+    margin-top: var(--sl-gutter);
+  }
+}
+
+ul,
+ol,
+dd {
+  margin-left: 1.75rem;
+}
+
+h1,
+h2,
+caption,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $sl-font-weight--regular;
+  line-height: 1.25;
+}
+
+h1,
+h2,
+caption {
+  letter-spacing: -0.03125em;
+}
+
+h1,
+h2 {
+  font-weight: $sl-font-weight--light;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: var(--h1-size, var(--sl-font-size--xx-large));
+  line-height: 1;
+  text-align: center;
+
+  @include breakpoints.sl-breakpoint--medium {
+    --h1-size: var(--sl-font-size--xxx-large);
+  }
+
+  @include breakpoints.sl-breakpoint--large {
+    --h1-size: var(--sl-font-size--xxxx-large);
+  }
+}
+
+h2,
+caption,
+legend,
+h3,
+thead th {
+  font-family: $sl-font-family--display;
+}
+
+h2,
+caption {
+  font-size: var(--h2-size, var(--sl-font-size--x-large));
+
+  @include breakpoints.sl-breakpoint--medium {
+    --h2-size: var(--sl-font-size--xx-large);
+  }
+
+  @include breakpoints.sl-breakpoint--large {
+    --h2-size: var(--sl-font-size--xxx-large);
+  }
+}
+
+h3,
+h4 {
+  font-size: var(--sl-font-size--large);
+}
+
+nav,
+footer {
+  font-size: var(--sl-font-size--small);
+}
+
+.caps {
+  font-size: var(--sl-font-size--smaller);
+  letter-spacing: 0.0625em;
+  line-height: 0;
+  text-transform: uppercase;
+}
+
+code,
+pre {
+  font-family: $sl-font-family--code;
+}
+
+code {
+  // Scale the code font size down, because the font itself is much larger.
+  font-size: var(--sl-font-size--smaller);
+  line-height: 1;
+
+  nav & {
+    white-space: nowrap;
+  }
+
+  p & {
+    @include breakpoints.sl-breakpoint--x-large {
+      white-space: nowrap;
+    }
+  }
+}
+
+pre {
+  font-size: var(--sl-font-size--x-small);
+  padding: var(--sl-gutter--minus) var(--sl-gutter);
+  overflow: auto;
+  white-space: pre-wrap;
+
+  code {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+img {
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+hr {
+  margin-bottom: var(--sl-gutter--triple);
+  margin-top: var(--sl-gutter--triple);
+}
+
+dd {
+  margin: 0;
+}

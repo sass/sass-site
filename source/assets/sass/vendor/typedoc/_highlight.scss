@@ -1,0 +1,16 @@
+@use '../syntax-accessible';
+
+// Colors updated to match the standard Sass styling.
+.typedoc pre { @extend [class*="language-"] }
+
+.hl-0 { @extend .token, .keyword; }
+.hl-1 { @extend .token, .punctuation; }
+.hl-2 { @extend .token, .variable; }
+.hl-3 { @extend .token, .function; }
+.hl-4 { @extend .token, .keyword; }
+.hl-5 { @extend .token, .string; }
+.hl-6 { @extend .token, .keyword; }
+.hl-7 { @extend .token, .comment; }
+.hl-8 { @extend .token, .variable; }
+.hl-9 { @extend .token, .comment; }
+.hl-10 { @extend .token, .variable; }

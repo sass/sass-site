@@ -1,0 +1,75 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.signature {
+  a.anchor {
+    display: block;
+    float: left;
+    vertical-align: middle;
+    margin-top: -3px;
+    width: var(--sl-gutter--sesqui);
+    background: none;
+    border: 0;
+
+    &::after {
+      content: '\1F517';
+      font-size: var(--sl-font-size--small);
+      font-weight: normal;
+      visibility: hidden;
+    }
+  }
+
+  &:hover a.anchor::after {
+    visibility: visible;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  a.anchor {
+    margin-left: var(--sl-gutter--sesqui-negative);
+  }
+
+  &:target {
+    animation-name: highlight-header;
+    animation-duration: 5s;
+  }
+}
+
+@keyframes highlight-header {
+  from {
+    background-color: var(--sl-color--dawn-pink);
+  }
+
+  to {
+    background-color: unset;
+  }
+}
+
+.signature {
+  a.anchor {
+    margin-left: var(--sl-gutter--double-sesqui-negative);
+  }
+
+  .sl-c-callout--function:target & {
+    animation-name: highlight-signature;
+    animation-duration: 5s;
+  }
+}
+
+@keyframes highlight-signature {
+  from {
+    background-color: var(--sl-color--dawn-pink);
+  }
+
+  to {
+    background-color: var(--sl-color--code-background);
+  }
+}

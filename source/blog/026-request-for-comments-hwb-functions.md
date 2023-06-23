@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: HWB Functions"
 author: Natalie Weizenbaum
-date: 2020-10-06 16:00 PST
+date: 2020-10-06 16:00:00 -8
 ---
 
 The CSS working group has been up to all sorts of exciting stuff recently in the
@@ -62,5 +62,5 @@ If you’re interested in learning more about this proposal, [read it in full] o
 GitHub. It’s open for comments and revisions for the next month, so if you’d
 like to see something change please [file an issue] and we can discuss it!
 
-[read it in full]: https://github.com/sass/sass/tree/main/proposal/color-4-hwb.md
+[read it in full]: https://github.com/sass/sass/blob/main/accepted/color-4-hwb.md
 [file an issue]: https://github.com/sass/sass/issues/new

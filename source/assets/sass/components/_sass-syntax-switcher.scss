@@ -1,0 +1,247 @@
+@use '../visual-design/theme';
+@use '../visual-design/typography';
+
+.ui-helper-reset {
+  line-height: inherit;
+}
+
+@mixin -active-tab {
+  margin: 0;
+
+  a {
+    color: var(--sl-color--pale-sky);
+    cursor: text;
+  }
+
+  &::after,
+  &::before {
+    --tab-point: 10px;
+
+    bottom: -3px;
+    left: 50%;
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &::after {
+    border-color: transparent;
+    border-bottom-color: #f8f8f8;
+    border-width: var(--tab-point);
+    margin-left: calc(var(--tab-point) * -1);
+  }
+
+  &::before {
+    border-color: transparent;
+    border-bottom-color: #ebebeb;
+    border-width: calc(var(--tab-point) + 1px);
+    margin-left: calc((var(--tab-point) + 1px) * -1);
+  }
+}
+
+.ui-tabs {
+  &,
+  .ui-tabs-nav,
+  .ui-tabs-nav li.ui-tabs-active,
+  .ui-tabs-panel {
+    padding: 0;
+  }
+
+  .ui-tabs-panel-inactive {
+    display: none;
+  }
+
+  .ui-tabs-nav {
+    font-size: var(--sl-font-size--small);
+    margin-top: var(--sl-gutter--negative);
+    margin-left: var(--sl-gutter--negative);
+
+    a {
+      border: 0;
+      background: none;
+    }
+
+    a:focus {
+      outline: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .ui-tabs-active {
+      @include -active-tab;
+    }
+
+    li {
+      float: left;
+      margin: 0;
+
+      &.css-tab {
+        &,
+        &.ui-tabs-active {
+          margin-left: var(--sl-gutter--double);
+        }
+
+        a::before {
+          color: var(--sl-color--regent-grey);
+          content: '\21d2';
+          font-size: var(--sl-font-size--large);
+          font-weight: typography.$sl-font-weight--bold;
+          left: -1.2em;
+          position: absolute;
+          top: var(--sl-gutter--minus);
+        }
+      }
+    }
+
+    .ui-tabs-anchor {
+      padding: var(--sl-gutter--minus) var(--sl-gutter);
+    }
+  }
+
+  pre {
+    margin-top: 0;
+  }
+
+  // Carefully calibrated so that the distance between two code blocks in the
+  // syntax switcher is exactly equal to two lines, so there's no visual jitter
+  // when switching between syntaxes.
+  pre + pre {
+    margin-top: var(--sl-gutter);
+  }
+}
+
+.ui-widget.ui-widget-content,
+.ui-widget-header,
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+  border: 0;
+}
+
+.ui-widget-header {
+  font-weight: inherit;
+}
+
+.ui-widget {
+  font: inherit;
+}
+
+.ui-widget-content,
+.ui-widget-header,
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+  background: none;
+}
+
+.ui-widget-content,
+.ui-widget-header {
+  color: inherit;
+}
+
+.sl-c-callout {
+  .ui-state-default,
+  .ui-widget-content .ui-state-default,
+  .ui-widget-header .ui-state-default,
+  .ui-button,
+  html .ui-button.ui-state-disabled:hover,
+  html .ui-button.ui-state-disabled:active,
+  .ui-state-default a,
+  .ui-state-default a:link,
+  .ui-state-default a:visited,
+  a.ui-button,
+  a:link.ui-button,
+  a:visited.ui-button {
+    color: inherit;
+  }
+
+  .ui-widget a {
+    border: 0;
+  }
+}
+
+.ui-tabs-panel > h3 {
+  position: relative;
+  top: 0.45rem;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--sl-color--hopbush);
+
+  &,
+  * {
+    font-size: var(--sl-font-size--small);
+  }
+}
+
+@mixin -split-css-tabs {
+  .ui-tabs.can-split {
+    .ui-tabs-panel {
+      &.scss,
+      &.sass {
+        width: calc(var(--split-location) - 5px);
+        display: inline-block;
+
+        &.ui-tabs-panel-inactive {
+          display: none;
+        }
+      }
+
+      &.css {
+        width: calc(100% - var(--split-location) - 5px);
+        float: right;
+
+        &.ui-tabs-panel-inactive {
+          display: block;
+        }
+      }
+    }
+
+    &.ui-tabs-panel-css-is-active {
+      .scss,
+      .sass {
+        &.ui-tabs-panel.ui-tabs-panel-previously-active {
+          display: inline-block;
+        }
+      }
+    }
+
+    .css-tab {
+      position: absolute;
+      left: calc(var(--split-location) - 1%);
+
+      @include -active-tab;
+
+      &,
+      &.ui-tabs-active {
+        margin-left: 0;
+      }
+
+      ::before {
+        content: none;
+      }
+    }
+  }
+}
+
+// custom breakpoint to make the split tabs work with a double nav column
+@media screen and (width >= 93.75rem) {
+  body.documentation {
+    @include -split-css-tabs;
+  }
+}
+
+// custom breakpoint to make the split tabs work with a single nav column
+@media screen and (width >= 76rem) {
+  body.guide {
+    @include -split-css-tabs;
+  }
+}

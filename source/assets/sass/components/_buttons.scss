@@ -1,0 +1,45 @@
+@use 'sass:color';
+
+.sl-c-button {
+  align-items: center;
+  border: 0;
+  border-radius: var(--sl-border-radius--large);
+  background: var(--color-button-bg, var(--sl-color--iron));
+  box-shadow: 0 2px 1px var(--sl-color--shadow);
+  color: var(--color-button-text, var(--sl-color--highlight));
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0;
+  padding: var(--sl-gutter--minus) var(--sl-gutter);
+
+  &:hover,
+  &:focus {
+    --color-button-text: var(--sl-color--action);
+    --color-button-bg: var(--sl-color--link-action);
+  }
+
+  &:active {
+    --color-button-text: var(--sl-color--active);
+  }
+
+  &--primary {
+    --color-button-bg: var(--sl-color--highlight);
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      --color-button-text: var(--sl-color--white);
+    }
+
+    &:hover,
+    &:focus {
+      --color-button-bg: var(--sl-color--action);
+    }
+
+    &:active {
+      --color-button-bg: var(--sl-color--active);
+    }
+  }
+}

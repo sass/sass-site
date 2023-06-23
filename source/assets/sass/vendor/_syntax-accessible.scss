@@ -1,0 +1,120 @@
+@use '../functions';
+@use '../visual-design/typography';
+
+/**
+ * Based on the GHColors theme by Avi Aryan (http://aviaryan.in)
+ * Inspired by GitHub syntax coloring
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  background-color: var(--sl-color--code-background);
+  hyphens: none;
+  word-break: normal;
+  word-spacing: normal;
+  tab-size: 4;
+  text-align: left;
+}
+
+.token {
+  color: var(--sl-color--code-text);
+}
+
+.token table td {
+  padding: functions.sl-px-to-rem(5px);
+}
+
+.token table pre {
+  margin: 0;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  --sl-color--code-text: var(--sl-color--code-muted);
+  font-style: italic;
+}
+
+[class*='language-scss'] {
+  --sl-color--code-text: var(--sl-color--code-base);
+}
+
+[class*='language-css'] {
+  & .token.comment {
+    --sl-color--code-text: var(--sl-color--code-base);
+  }
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.string,
+.token.attr-value {
+  --sl-color--code-text: var(--sl-color--code-bright);
+}
+
+.token.punctuation,
+.token.operator {
+  --sl-color--code-text: var(--sl-color--code-muted-dark);
+  /* no highlight */
+  font-weight: typography.$sl-font-weight--bold;
+}
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.constant,
+.token.property,
+.token.regex,
+.token.inserted {
+  --sl-color--code-text: var(--sl-color--code-warm);
+  font-weight: typography.$sl-font-weight--bold;
+}
+
+.token.atrule,
+.token.keyword,
+.token.attr-name,
+.language-autohotkey .token.selector {
+  --sl-color--code-text: var(--sl-color--code-dark);
+  font-weight: typography.$sl-font-weight--bold;
+}
+
+.token.function,
+.token.deleted,
+.language-autohotkey .token.tag {
+  --sl-color--code-text: var(--sl-color--code-bright-dark);
+}
+
+.token.tag,
+.token.selector,
+.language-autohotkey .token.keyword {
+  --sl-color--code-text: var(--sl-color--code-cool);
+  font-weight: typography.$sl-font-weight--bold;
+}
+
+.token.important,
+.token.function,
+.token.bold {
+  font-weight: typography.$sl-font-weight--bold;
+}
+
+[class*="language-shell"] {
+  & .token.function {
+    --sl-color--code-text: unset;
+    font-weight: typography.$sl-font-weight--regular;
+  }
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.variable,
+.token[class*="placeholder"] {
+  --sl-color--code-text: var(--sl-color--code-base);
+  font-weight: typography.$sl-font-weight--regular;
+}

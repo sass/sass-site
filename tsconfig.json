@@ -1,0 +1,15 @@
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "ts-node": {
+    "transpileOnly": true
+  },
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "es2022",
+    "lib": ["es2022", "DOM"],
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": ["source/**/*.ts"],
+  "exclude": ["node_modules"]
+}

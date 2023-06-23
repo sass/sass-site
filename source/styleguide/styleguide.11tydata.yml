@@ -1,0 +1,34 @@
+layout: has_navigation
+navigation: |
+  <nav class="sl-c-list-navigation-wrapper">
+
+  <h3><a href="/styleguide">Style Guide</a></h3>
+
+  - [Brand](/styleguide/brand)
+  - [Color](/styleguide/color)
+  - [Typography](/styleguide/typography)
+  - [Layout](/styleguide/layout)
+  - [Components](/styleguide/components)
+  - [Code](/styleguide/code)
+
+  </nav>
+colors:
+  - hopbush
+  - bouquet
+  - venus
+  - patina
+  - nebula
+  - white
+  - dawn-pink
+  - wafer
+  - iron
+  - regent-grey
+  - pale-sky
+  - midnight-blue
+font_families:
+  - style: text
+    value: sans-serif
+  - style: display
+    value: serif
+  - style: code
+    value: monospace

@@ -3,15 +3,12 @@
 /.bundle
 bundle
 /.cache
-/data/version.yml
+/source/_data/versionCache.json
 .DS_Store
 .DS_Store?
 /Icon
 "Icon\r"
 .ruby-version
-/.dart-sass
-/.libsass
-/.language
 /.sass-cache
 *.scssc
 Thumbs.db
@@ -19,3 +16,21 @@ Thumbs.db
 /.yardoc
 /vendor/bundle/
 /source/documentation/js-api
+/.language/
+
+# Eleventy
+/_site/
+/source/assets/dist/
+
+# NPM/Yarn
+node_modules/
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

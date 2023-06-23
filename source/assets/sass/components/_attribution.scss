@@ -1,0 +1,12 @@
+@use '../visual-design/typography';
+
+.sl-c-attribution {
+  font-weight: typography.$sl-font-weight--light;
+  font-size: var(--sl-font-size--small);
+
+  &:first-child {
+    text-align: center;
+    margin-top: var(--sl-gutter--triple-negative);
+    margin-bottom: var(--sl-gutter--double);
+  }
+}

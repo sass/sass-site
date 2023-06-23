@@ -1,0 +1,14 @@
+.sl-l-section {
+  margin-bottom: var(--section-bottom-margin, var(--sl-gutter--triple));
+  margin-top: var(--section-top-margin, var(--sl-gutter--triple));
+  padding-bottom: var(--sl-gutter--triple);
+  padding-top: var(--sl-gutter--triple);
+
+  &:first-child {
+    --section-top-margin: 0;
+  }
+
+  &:last-child {
+    --section-bottom-margin: 0;
+  }
+}

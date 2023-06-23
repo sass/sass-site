@@ -1,7 +1,7 @@
 ---
 title: LibSass is Deprecated
 author: Natalie Weizenbaum
-date: 2020-10-26 12:00 PST
+date: 2020-10-26 12:00:00 -8
 ---
 
 After much discussion among the Sass core team, we've come to the conclusion
@@ -20,7 +20,7 @@ I'll go into detail about what this means below, but here are the major points:
 
 * We no longer recommend LibSass for new Sass projects. Use [Dart Sass] instead.
 
-  [Dart Sass]: https://sass-lang.com/dart-sass
+  [Dart Sass]: /dart-sass
 
 * We recommend all existing LibSass users make plans to eventually move onto
   Dart Sass, and that all Sass libraries make plans to eventually drop support
@@ -52,7 +52,7 @@ downstream users would be incompatible. By clearly indicating that all Sass
 users should eventually move off of LibSass, we hope to make it more feasible
 for these library authors to use more modern features.
 
-[Sass module system]: https://sass-lang.com/blog/the-module-system-is-launched
+[Sass module system]: /blog/the-module-system-is-launched
 
 LibSass has even inhibited the development of the Sass language itself. We've
 been unable to move forward with the proposal for [treating `/` as a separator]
@@ -108,7 +108,7 @@ If you're using the SassC command-line interface, you can switch to [Dart Sass's
 CLI]. Note that this doesn't have exactly the same interface as SassC, so you
 may need to change a few flags.
 
-[Dart Sass's CLI]: https://sass-lang.com/documentation/cli/dart-sass
+[Dart Sass's CLI]: /documentation/cli/dart-sass
 
 If you're using LibSass through a wrapper library in another language, you can
 either switch to the Dart Sass CLI or ask the maintainer of the LibSass wrapper

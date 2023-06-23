@@ -1,0 +1,39 @@
+For example, suppose you want to write a selector that matches the outer
+selector *and* an element selector. You could write a mixin like this one that
+uses the [`selector.unify()` function][] to combine `&` with a user's selector.
+
+[`selector.unify()` function]: /documentation/modules/selector#unify
+
+{% codeExample 'advanced-nesting' %}
+  @use "sass:selector";
+
+  @mixin unify-parent($child) {
+    @at-root #{selector.unify(&, $child)} {
+      @content;
+    }
+  }
+
+  .wrapper .field {
+    @include unify-parent("input") {
+      /* ... */
+    }
+    @include unify-parent("select") {
+      /* ... */
+    }
+  }
+  ===
+  @use "sass:selector"
+
+  @mixin unify-parent($child)
+    @at-root #{selector.unify(&, $child)}
+      @content
+
+
+
+  .wrapper .field
+    @include unify-parent("input")
+      /* ... */
+
+    @include unify-parent("select")
+      /* ... */
+{% endcodeExample %}

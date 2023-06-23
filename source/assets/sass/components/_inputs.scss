@@ -1,0 +1,14 @@
+@use '../breakpoints';
+
+input {
+  display: block;
+  margin: 0 var(--sl-gutter);
+  border: var(--sl-border--small) solid var(--sl-color--iron);
+  padding: var(--sl-gutter--quarter) var(--sl-gutter);
+  width: 100%;
+
+  @include breakpoints.sl-breakpoint--large {
+    top: var(--sl-gutter--half);
+    margin: 0;
+  }
+}

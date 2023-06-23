@@ -1,0 +1,80 @@
+@use 'config';
+
+$sl-breakpoints: (
+  // for mixins to span across breakpoints and without one
+  none: 0,
+  small: config.$sl-breakpoint--small,
+  medium: config.$sl-breakpoint--medium,
+  large: config.$sl-breakpoint--large,
+  x-large: config.$sl-breakpoint--x-large
+);
+
+@mixin sl-breakpoint($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint-max($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint--small {
+  @include sl-breakpoint(config.$sl-breakpoint--small) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint--small-max {
+  @include sl-breakpoint-max(config.$sl-breakpoint--small) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint--medium {
+  @include sl-breakpoint(config.$sl-breakpoint--medium) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint--medium-max {
+  @include sl-breakpoint-max(config.$sl-breakpoint--medium) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint--large {
+  @include sl-breakpoint(config.$sl-breakpoint--large) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint--large-max {
+  @include sl-breakpoint-max(config.$sl-breakpoint--large) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint--x-large {
+  @include sl-breakpoint(config.$sl-breakpoint--x-large) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint--x-large-max {
+  @include sl-breakpoint-max(config.$sl-breakpoint--x-large) {
+    @content;
+  }
+}
+
+@mixin sl-breakpoint-set($breakpoint, $size) {
+  @if $breakpoint == none {
+    @content;
+  } @else {
+    @include sl-breakpoint($size) {
+      @content;
+    }
+  }
+}

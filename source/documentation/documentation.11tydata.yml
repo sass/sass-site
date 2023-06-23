@@ -1,0 +1,7 @@
+layout: has_both_sidebars
+eleventyComputed:
+  navigation: |
+    <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+    <h2>Contents</h2>
+    {% render 'documentation_toc', url: page.url, toc: documentation.toc %}
+    </div>

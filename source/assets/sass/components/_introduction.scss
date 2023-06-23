@@ -1,0 +1,15 @@
+@use '../breakpoints';
+@use '../visual-design/typography';
+
+.sl-c-introduction {
+  color: var(--sl-color--patina);
+  font-weight: typography.$sl-font-weight--light;
+
+  @include breakpoints.sl-breakpoint--medium {
+    font-size: var(--sl-font-size--xx-large);
+  }
+
+  &--center {
+    text-align: center;
+  }
+}

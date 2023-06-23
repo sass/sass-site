@@ -1,0 +1,39 @@
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility{% if feature %} ({{ feature }}){% endif %}:
+  </div>
+  {%- if dart != null -%}
+    <div>
+      <dt>Dart Sass</dt>
+      <dd>{{ dart | implStatus }}</dd>
+    </div>
+  {%- endif -%}
+  {%- if libsass != null -%}
+    <div>
+      <dt>LibSass</dt>
+      <dd>{{ libsass | implStatus }}</dd>
+    </div>
+  {%- endif -%}
+  {%- if node != null -%}
+    <div>
+      <dt>Node Sass</dt>
+      <dd>{{ node | implStatus }}</dd>
+    </div>
+  {%- endif -%}
+  {%- if ruby != null -%}
+    <div>
+      <dt>Ruby Sass</dt>
+      <dd>{{ ruby | implStatus }}</dd>
+    </div>
+  {%- endif -%}
+  {%- if details | strip -%}
+    {%- # The no-op href here ensures that this toggle is focusable in browsers. -%}
+    <div><a href="javascript:;">▶</a></div>
+  {%- endif -%}
+</dl>
+
+{%- if details | strip -%}
+  <div class="sl-c-callout sl-c-callout--impl-status">
+    {{ details | markdown }}
+  </div>
+{%- endif -%}

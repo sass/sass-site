@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: Nested Map Functions"
 author: Natalie Weizenbaum
-date: 2020-9-16 14:40 PST
+date: 2020-9-16 14:40:00 -8
 ---
 
 As Sass libraries and design systems get more complex and have more users with
@@ -30,8 +30,8 @@ keys as arguments. Each key drills deeper into a nested map, allowing you to
 easily inspect nested values without needing to chain a bunch of function calls
 together.
 
-[`map.get()`]: https://sass-lang.com/documentation/modules/map#get
-[`map.has-key()`]: https://sass-lang.com/documentation/modules/map#has-key
+[`map.get()`]: /documentation/modules/map#get
+[`map.has-key()`]: /documentation/modules/map#has-key
 
 For example, let's take the following simplified configuration map:
 
@@ -57,7 +57,7 @@ The [`map.merge()`] function can now be called as `map.merge($map1, $keys...,
 $map2)`. This will merge `$map2` with a child of `$map1` at the location given
 by the keys, updating the parent maps as it goes.
 
-[`map.merge()`]: https://sass-lang.com/documentation/modules/map#merge
+[`map.merge()`]: /documentation/modules/map#merge
 
 For example, using the configuration map [defined above] `map.merge($config,
 "colors", ("primary": green))` will return
@@ -106,7 +106,7 @@ chose to add a new function just for nested maps, called `map.deep-remove($map,
 $keys...)`. This function removes the value at the final key in the list, and
 updates all the parent maps accordingly.
 
-[`map.remove()`]: https://sass-lang.com/documentation/modules/map#remove
+[`map.remove()`]: /documentation/modules/map#remove
 
 For example, `map.deep-remove($config, "colors", "secondary")` will return
 `("colors": ("primary": red))`.
@@ -136,5 +136,5 @@ If you're interested in learning more about this proposal, [read it in full] on
 GitHub. It's open for comments and revisions for the next month, so if you'd
 like to see something change please [file an issue] and we can discuss it!
 
-[read it in full]: https://github.com/sass/sass/tree/main/accepted/nested-map-functions.md
+[read it in full]: https://github.com/sass/sass/blob/main/accepted/nested-map-functions.md
 [file an issue]: https://github.com/sass/sass/issues/new
