@@ -45,15 +45,14 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     needs: [test, lint]
-    if:
-      github.event_name == 'push' &&
-        github.ref == 'refs/heads/main' &&
-        github.repository == 'sass/sass-site'
+    if: github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      github.repository == 'sass/sass-site'
 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.GH_TOKEN }}
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
 
-    # Pushing to the production branch will trigger Netlify's release process.
-    - run: git push -f origin main:production
+      # Pushing to the production branch will trigger Netlify's release process.
+      - run: git push -f origin main:production
