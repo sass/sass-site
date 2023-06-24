@@ -4,7 +4,6 @@ on:
   push:
     branches: [main, 'feature.*']
   pull_request:
-    types: [reopened]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
