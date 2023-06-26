@@ -1,7 +1,8 @@
-name: Lint & Test
+name: CI
 
 on:
   push:
+    branches: [main, 'feature.*']
   pull_request:
     types: [reopened]
 
@@ -39,3 +40,19 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint:ci
+
+  release:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if:
+      github.event_name == 'push' &&
+        github.ref == 'refs/heads/main' &&
+        github.repository == 'sass/sass-site'
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_TOKEN }}
+
+    # Pushing to the production branch will trigger Netlify's release process.
+    - run: git push -f origin main:production
