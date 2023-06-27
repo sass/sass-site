@@ -63,6 +63,8 @@ interpolation in SassScript always returns an unquoted string.
 [unquoted strings]: /documentation/values/strings#unquoted
 [slash-separated values]: /documentation/operators/numeric#slash-separated-values
 
+<!-- Add explicit CSS here to prevent diffs due to the use of unique-id -->
+
 {% codeExample 'interpolation-sass-script' %}
   @mixin inline-animation($duration) {
     $name: inline-#{unique-id()};
@@ -101,6 +103,20 @@ interpolation in SassScript always returns an unquoted string.
         background-color: yellow
       to
         background-color: red
+  ===
+  .pulse {
+    animation-name: inline-uifpe6h;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes inline-uifpe6h {
+    from {
+      background-color: yellow;
+    }
+    to {
+      background-color: red;
+    }
+  }
 {% endcodeExample %}
 
 {% funFact %}
