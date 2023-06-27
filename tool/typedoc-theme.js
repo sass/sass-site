@@ -1,5 +1,12 @@
-// eslint-disable-next-line node/no-missing-require
-const {DefaultTheme, DefaultThemeRenderContext, JSX} = require('typedoc');
+const {
+  DefaultTheme,
+  DefaultThemeRenderContext,
+  JSX,
+  UrlMapping,
+  // eslint-disable-next-line node/no-missing-require
+} = require('typedoc');
+const child_process = require('child_process');
+const fs = require('fs');
 
 function bind(fn, first) {
   return (...r) => fn(first, ...r);
@@ -129,7 +136,40 @@ class SassSiteTheme extends DefaultTheme {
     return this.contextCache;
   }
 
+  getUrls(project) {
+    const urls = super.getUrls(project);
+
+    // Most pages in the docs have their date set based on their last git
+    // commit, but that doesn't work for the generated TypeDoc. To avoid having
+    // a bunch of churn in the sitemap for these files, we set their date to the
+    // last modified date for the entire directory.
+    if (fs.existsSync('js-api-doc')) {
+      const lastModified = child_process
+        .execSync('git log -1 --date=iso-strict --format=%cd js-api-doc', {
+          encoding: 'utf8',
+        })
+        .trim();
+      urls.push(
+        new UrlMapping(
+          'js-api.11tydata.json',
+          // This isn't actually based on a TypeDoc model, but if we don't
+          // provide a real one TypeDoc will crash. See TypeStrong/typedoc#2318.
+          urls[0].model,
+          () =>
+            JSON.stringify({
+              date: lastModified,
+            })
+        )
+      );
+    }
+
+    return urls;
+  }
+
   render(page, template) {
+    // This is js-api.11tydata.json.
+    if (page.url === 'js-api.11tydata.json') return template();
+
     const context = this.getRenderContext(page);
 
     // The default header includes a search bar that we don't want, so we just
