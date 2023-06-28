@@ -1,4 +1,4 @@
-@use '../breakpoints';
+@use '../config';
 
 input {
   display: block;
@@ -7,7 +7,7 @@ input {
   padding: var(--sl-gutter--quarter) var(--sl-gutter);
   width: 100%;
 
-  @include breakpoints.sl-breakpoint--large {
+  @include config.sl-breakpoint--large {
     top: var(--sl-gutter--half);
     margin: 0;
   }

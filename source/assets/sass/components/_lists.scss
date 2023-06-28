@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use '../breakpoints';
+@use '../config';
 @use '../config/color/brand';
 
 .sl-c-list {
@@ -18,13 +18,13 @@
   }
 
   &-horizontal-wrapper {
-    @include breakpoints.sl-breakpoint--medium {
+    @include config.sl-breakpoint--medium {
       // add margin-bottom space
       // to the twitter follow button
       margin-bottom: var(--sl-gutter);
     }
 
-    @include breakpoints.sl-breakpoint--large {
+    @include config.sl-breakpoint--large {
       ul {
         display: flex;
         margin-left: var(--sl-gutter--half-negative);

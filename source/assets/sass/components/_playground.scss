@@ -1,7 +1,6 @@
 @use 'sass:color';
-@use '../breakpoints';
+@use '../config';
 @use '../config/color/brand';
-@use '../visual-design/typography';
 
 .playground {
   --sl-max-width--container: 100vw;
@@ -14,7 +13,7 @@
   min-height: 100vh;
   overflow: hidden auto;
 
-  @include breakpoints.sl-breakpoint--large {
+  @include config.sl-breakpoint--large {
     height: 100vh;
     overflow: hidden;
   }
@@ -32,7 +31,7 @@
     'logo title copy' auto
     'alert alert alert' minmax(0, auto) / 1fr 1fr 1fr;
 
-  @include breakpoints.sl-breakpoint--large {
+  @include config.sl-breakpoint--large {
     grid-template: 'logo title copy' auto / 1fr 1fr 1fr;
   }
 }
@@ -41,7 +40,7 @@
 .sl-r-banner--playground__brand {
   padding-left: var(--sl-gutter);
 
-  @include breakpoints.sl-breakpoint--small {
+  @include config.sl-breakpoint--small {
     padding-left: var(--sl-gutter--double);
   }
 }
@@ -69,7 +68,7 @@
   gap: var(--sl-gutter);
   display: contents;
 
-  @include breakpoints.sl-breakpoint--large {
+  @include config.sl-breakpoint--large {
     display: grid;
     grid-template: 'alert copy' auto / minmax(0, auto) max-content;
   }
@@ -80,7 +79,7 @@
   padding-right: var(--sl-gutter);
   text-align: right;
 
-  @include breakpoints.sl-breakpoint--small {
+  @include config.sl-breakpoint--small {
     padding-right: var(--sl-gutter--double);
   }
 }
@@ -118,7 +117,7 @@
     'css' auto
     'debug' auto / 100%;
 
-  @include breakpoints.sl-breakpoint--large {
+  @include config.sl-breakpoint--large {
     // magic numbers, the layout is well balanced with these proportions
     grid-template:
       'sass css' minmax(20ex, 1fr)
@@ -178,7 +177,7 @@
 
   .cm-content,
   .cm-tooltip-lint {
-    font-family: typography.$sl-font-family--code;
+    font-family: var(--sl-font-family--code);
   }
 
   .cm-scroller {
@@ -237,7 +236,7 @@
 // Compiled CSS error
 .sl-c-playground__error {
   display: none;
-  font-weight: typography.$sl-font-weight--bold;
+  font-weight: var(--sl-font-weight--bold);
   grid-area: editor-error;
 
   [data-compiler-has-error='true'] & {
@@ -251,7 +250,7 @@
 }
 
 .sl-c-playground__console {
-  font-family: typography.$sl-font-family--code;
+  font-family: var(--sl-font-family--code);
   height: 100%;
   margin: 0;
 

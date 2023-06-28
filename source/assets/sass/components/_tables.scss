@@ -1,4 +1,4 @@
-@use '../breakpoints';
+@use '../config';
 
 .sl-c-table {
   margin: var(--sl-gutter--sesqui) 0;
@@ -18,7 +18,7 @@
     text-align: left;
   }
 
-  @include breakpoints.sl-breakpoint--medium-max {
+  @include config.sl-breakpoint--medium-max {
     &-responsive {
       margin-bottom: var(--sl-gutter--sesqui);
       width: 100%;

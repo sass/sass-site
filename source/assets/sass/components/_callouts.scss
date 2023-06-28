@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use '../breakpoints';
+@use '../config';
 @use '../config/color/brand';
 
 .sl-c-callout {
@@ -61,7 +61,7 @@
   }
 }
 
-@include breakpoints.sl-breakpoint--large {
+@include config.sl-breakpoint--large {
   .sl-c-callout--function {
     padding-left: 2.25rem;
 

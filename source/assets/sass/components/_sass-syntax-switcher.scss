@@ -1,6 +1,3 @@
-@use '../visual-design/theme';
-@use '../visual-design/typography';
-
 .ui-helper-reset {
   line-height: inherit;
 }
@@ -88,7 +85,7 @@
           color: var(--sl-color--regent-grey);
           content: '\21d2';
           font-size: var(--sl-font-size--large);
-          font-weight: typography.$sl-font-weight--bold;
+          font-weight: var(--sl-font-weight--bold);
           left: -1.2em;
           position: absolute;
           top: var(--sl-gutter--minus);

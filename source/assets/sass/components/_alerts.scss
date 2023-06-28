@@ -1,7 +1,5 @@
 @use 'sass:color';
-@use '../functions';
 @use '../config/color/brand';
-@use '../visual-design/typography';
 
 .sl-c-alert {
   background: var(--sl-background--alert, var(--sl-color--highlight));
@@ -37,7 +35,7 @@
         var(--sl-border-opacity--link, 0.5)
       )};
 
-    font-weight: typography.$sl-font-weight--bold;
+    font-weight: var(--sl-font-weight--bold);
 
     &:hover,
     &:focus {

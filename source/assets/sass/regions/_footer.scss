@@ -1,4 +1,4 @@
-@use '../breakpoints';
+@use '../config';
 
 .site-footer {
   --sl-type-margin-block: var(--sl-gutter--quarter);
@@ -6,7 +6,7 @@
   padding-bottom: var(--padding-footer-bottom, var(--sl-gutter));
   padding-top: var(--sl-gutter);
 
-  @include breakpoints.sl-breakpoint--large {
+  @include config.sl-breakpoint--large {
     --padding-footer-bottom: var(--sl-gutter--half);
   }
 }

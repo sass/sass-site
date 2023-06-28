@@ -1,7 +1,7 @@
 // Styles that are included only when JavaScript is disabled. These override the
 // default styles to make them work better without JS.
 
-@import 'functions';
+@import 'config/functions';
 
 // Make the in-page table of contents fully open by default, since we can't
 // dynamically expand it.

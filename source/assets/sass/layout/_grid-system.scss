@@ -1,6 +1,5 @@
 @use 'sass:math';
-@use '../breakpoints';
-@use '../functions';
+@use '../config';
 
 .sl-l-grid {
   &,
@@ -18,10 +17,10 @@
   }
 }
 
-@each $breakpoint, $size in breakpoints.$sl-breakpoints {
+@each $breakpoint, $size in config.$sl-breakpoints {
   $prefix: if(($breakpoint == 'none'), '', '#{$breakpoint}-');
 
-  @include breakpoints.sl-breakpoint-set($breakpoint, $size) {
+  @include config.sl-breakpoint-set($breakpoint, $size) {
     .sl-l-#{$prefix}grid {
       &--top {
         align-items: flex-start;

@@ -8,6 +8,7 @@ html {
     @include config.tokens(config.$scale);
     @include config.tokens(config.$brand-colors);
     @include config.tokens(config.$content-colors);
+    @include config.tokens(config.$typography);
   }
 
   background: #f8f9fa

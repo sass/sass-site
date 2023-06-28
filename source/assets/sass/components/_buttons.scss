@@ -1,6 +1,3 @@
-@use 'sass:color';
-@use '../visual-design/typography';
-
 .sl-c-button {
   align-items: center;
   border: 0;
@@ -51,7 +48,7 @@
     --sl-color--button: var(--sl-color--highlight);
     --sl-color--button-active: var(--sl-color--midnight-blue);
     --sl-color--button-state: var(--sl-color--midnight-blue);
-    --sl-font-weight--button: #{typography.$sl-font-weight--bold};
+    --sl-font-weight--button: #{var(--sl-font-weight--bold)};
     --sl-radius--button: 0;
 
     box-shadow: none;
