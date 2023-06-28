@@ -60,16 +60,16 @@ full [Sass value API]. However, there are two categories of API that aren't
 available in the browser:
 
 [JavaScript API]: /documentation/js-api
-[Custom functions]: /documentation/js-api/interfaces/options/#functions
-[importers]: /documentation/js-api/interfaces/options/#importers
-[Sass value API]: /documentation/js-api/classes/value/
+[Custom functions]: /documentation/js-api/interfaces/Options/#functions
+[importers]: /documentation/js-api/interfaces/Options/#importers
+[Sass value API]: /documentation/js-api/classes/Value/
 
 1. Any API that expects a filesystem to exist. This means that you can't pass in
    a [`FileImporter`], but it also means that the [`compile`] and
    [`compileAsync`] functions aren't available since they take file paths.
    You'll need to use [`compileString`] or [`compileStringAsync`] instead.
 
-   [`FileImporter`]: /documentation/js-api/interfaces/fileimporter/
+   [`FileImporter`]: /documentation/js-api/interfaces/FileImporter/
    [`compile`]: /documentation/js-api/functions/compile
    [`compileAsync`]: /documentation/js-api/functions/compileAsync
    [`compileString`]: /documentation/js-api/functions/compileString
