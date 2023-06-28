@@ -1,0 +1,71 @@
+name: Shadow Repo / Update
+
+on:
+  create:
+  delete:
+  workflow_run:
+    workflows: Shadow Repo
+    types: [completed]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  create:
+    name: Create Branch
+    runs-on: ubuntu-latest
+    if: github.event.ref_type == 'branch' && github.event_name == 'create'
+    steps:
+      - name: Clone shadow repo
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
+          token: ${{ secrets.SASS_SITE_TOKEN }}
+          ref: main
+      - name: Create branch on shadow repo
+        run: git push origin main:${{ github.event.ref }}
+
+  delete:
+    name: Delete Branch
+    runs-on: ubuntu-latest
+    if: github.event.ref_type == 'branch' && github.event_name == 'delete'
+    steps:
+      - name: Clone shadow repo
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
+          token: ${{ secrets.SASS_SITE_TOKEN }}
+          ref: main
+      - name: Delete branch on shadow repo
+        run: git push origin --delete ${{ github.event.ref }}
+
+  push:
+    name: Push
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_run'
+    steps:
+      - name: Clone shadow repo
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
+          token: ${{ secrets.SASS_SITE_TOKEN }}
+          ref: ${{ github.ref_name }}
+          path: shadow-repo
+      - name: Download built site
+        uses: dawidd6/action-download-artifact@v2.27.0
+        with:
+          name: site
+          run_id: ${{ github.event.workflow_run.id }}
+      - name: Update shadow repo files
+        run: |
+          rm -rf shadow_repo/*
+          tar xf site.tar
+          cp -rT _site shadow_repo
+      - uses: EndBug/add-and-commit@v9
+        with:
+          cwd: shadow-repo
+          author_name: Sass Bot
+          author_email: sass.bot.beep.boop@gmail.com
+          message: Update from https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+          commit: --allow-empty

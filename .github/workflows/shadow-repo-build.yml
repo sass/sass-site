@@ -1,0 +1,40 @@
+name: Shadow Repo
+
+on:
+  push:
+  pull_request:
+    types: [opened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build-prod
+      - run: tar cf site.tar _site
+      - uses: actions/upload-artifact@v2
+        with:
+          name: site
+          path: site.tar
+
+  diff-link:
+    name: Comment
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.number }}
+          body: |
+            View diff of compiled files (may take a few minutes): https://github.com/${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}/compare/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.ref }}

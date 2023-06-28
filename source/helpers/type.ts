@@ -1,10 +1,13 @@
 import {LoremIpsum} from 'lorem-ipsum';
+import seedrandom from 'seedrandom';
 import truncate from 'truncate-html';
 import {typogrify} from 'typogr';
 
 import {markdownEngine} from './engines';
 
-const lorem = new LoremIpsum();
+const lorem = new LoremIpsum({
+  random: seedrandom("Feelin' Sassy!"),
+});
 
 /**
  * Returns block of generated `lorem ipsum` text.
