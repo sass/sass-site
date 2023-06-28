@@ -11,6 +11,12 @@
     list-style: none;
   }
 
+  &-wrap {
+    ul {
+      flex-wrap: wrap;
+    }
+  }
+
   &-horizontal-wrapper {
     @include breakpoints.sl-breakpoint--medium {
       // add margin-bottom space
@@ -24,6 +30,7 @@
         margin-left: var(--sl-gutter--half-negative);
         margin-right: var(--sl-gutter--half-negative);
       }
+
 
       li {
         padding-left: var(--sl-gutter--half);
