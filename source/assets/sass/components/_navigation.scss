@@ -1,4 +1,4 @@
-@use '../breakpoints';
+@use '../config';
 
 .sl-l-medium-holy-grail__body.sl-js-nav--is-sticky
   .sl-c-list-navigation-wrapper {
@@ -7,7 +7,7 @@
   bottom: 0;
   overflow-y: auto;
 
-  @include breakpoints.sl-breakpoint--large {
+  @include config.sl-breakpoint--large {
     height: 100vh;
   }
 }

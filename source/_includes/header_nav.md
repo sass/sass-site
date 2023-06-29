@@ -5,6 +5,7 @@
   role="navigation"
   aria-label="Site navigation">
 
+- [Playground](/playground)
 - [Install](/install)
 - [Learn Sass](/guide)
 - [Blog](/blog)

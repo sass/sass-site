@@ -1,45 +1,56 @@
-@use 'sass:color';
-
 .sl-c-button {
   align-items: center;
   border: 0;
-  border-radius: var(--sl-border-radius--large);
-  background: var(--color-button-bg, var(--sl-color--iron));
+  border-radius: var(--sl-radius--button, var(--sl-border-radius--large));
+  background: var(--sl-background--button, var(--sl-color--iron));
   box-shadow: 0 2px 1px var(--sl-color--shadow);
-  color: var(--color-button-text, var(--sl-color--highlight));
+  color: var(--sl-color--button, var(--sl-color--highlight));
   cursor: pointer;
-  display: inline-flex;
+  display: var(--sl-display--button, inline-block);
+  font-weight: var(--sl-font-weight--button);
   justify-content: center;
   margin: 0;
   padding: var(--sl-gutter--minus) var(--sl-gutter);
 
   &:hover,
   &:focus {
-    --color-button-text: var(--sl-color--action);
-    --color-button-bg: var(--sl-color--link-action);
+    background: var(
+      --sl-background--button-state,
+      var(--sl-background--button, var(--sl-color--link-action))
+    );
+
+    --sl-color--button: var(--sl-color--action);
+
+    color: var(--sl-color--button-state, var(--sl-color--button));
   }
 
   &:active {
-    --color-button-text: var(--sl-color--active);
+    background: var(
+      --sl-background--button-active,
+      var(--sl-color--link-action)
+    );
+    color: var(--sl-color--button-active, var(--sl-color--highlight));
   }
 
   &--primary {
-    --color-button-bg: var(--sl-color--highlight);
+    --sl-background--button: var(--sl-color--highlight);
+    --sl-background--button-active: var(--sl-color--active);
+    --sl-background--button-state: var(--sl-color--action);
+    --sl-color--button: var(--sl-color--white);
+    --sl-color--button-active: var(--sl-color--white);
+    --sl-color--button-state: var(--sl-color--white);
+  }
 
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-      --color-button-text: var(--sl-color--white);
-    }
+  &--tab {
+    --sl-background--button: var(--sl-color--code-background-darker);
+    --sl-background--button-active: var(--sl-background--button-state);
+    --sl-background--button-state: transparent;
+    --sl-color--button: var(--sl-color--highlight);
+    --sl-color--button-active: var(--sl-color--midnight-blue);
+    --sl-color--button-state: var(--sl-color--midnight-blue);
+    --sl-font-weight--button: #{var(--sl-font-weight--bold)};
+    --sl-radius--button: 0;
 
-    &:hover,
-    &:focus {
-      --color-button-bg: var(--sl-color--action);
-    }
-
-    &:active {
-      --color-button-bg: var(--sl-color--active);
-    }
+    box-shadow: none;
   }
 }

@@ -2,7 +2,7 @@
 @use 'sass:list';
 @use 'sass:meta';
 @use 'sass:map';
-@use '../functions';
+@use '../config';
 @use '../config/color/brand';
 
 $sl-colors: ();
@@ -35,7 +35,7 @@ $sl-colors: ();
 }
 
 .sl-c-pop-stripe {
-  height: functions.sl-px-to-rem(4px);
+  height: config.sl-px-to-rem(4px);
   background-image: stripes((to right), ($sl-colors));
   background-size: 100%;
 }

@@ -1,14 +1,15 @@
 @use '../config';
-@use 'sass:math';
-@use '../breakpoints';
 
-$sl-font-weight--light: 300 !default;
-$sl-font-weight--regular: 400 !default;
-$sl-font-weight--bold: 600 !default;
 $sl-font-weights: (
-  light: $sl-font-weight--light,
-  regular: $sl-font-weight--regular,
-  bold: $sl-font-weight--bold,
+  'light': var(--sl-font-weight--light),
+  'regular': var(--sl-font-weight--regular),
+  'bold': var(--sl-font-weight--bold),
+);
+
+$sl-font-families: (
+  'text': var(--sl-font-family--text),
+  'display': var(--sl-font-family--display),
+  'code': var(--sl-font-family--code),
 );
 
 @each $name, $value in $sl-font-weights {
@@ -16,20 +17,6 @@ $sl-font-weights: (
     font-weight: $value;
   }
 }
-
-$sl-font-family--text: 'Source Sans Pro', system-ui, -apple-system, 'Segoe UI',
-  roboto, ubuntu, cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$sl-font-family--display: 'Source Serif Pro', 'Apple Garamond', 'Baskerville',
-  'Times New Roman', 'Droid Serif', times, serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$sl-font-family--code: 'Source Code Pro', 'SF Mono', monaco, inconsolata,
-  'Fira Mono', 'Droid Sans Mono', monospace, monospace !default;
-$sl-font-families: (
-  text: $sl-font-family--text,
-  display: $sl-font-family--display,
-  code: $sl-font-family--code,
-);
 
 @each $name, $value in $sl-font-families {
   .sl-font-family--#{$name} {
@@ -45,7 +32,7 @@ h6 {
 
 body {
   line-height: 1.5;
-  font-family: $sl-font-family--text;
+  font-family: var(--sl-font-family--text);
   text-rendering: optimizelegibility;
 }
 
@@ -64,7 +51,7 @@ h6,
 dt,
 tbody th,
 label {
-  font-weight: $sl-font-weight--bold;
+  font-weight: var(--sl-font-weight--bold);
 }
 
 h1,
@@ -80,7 +67,7 @@ ol,
 dl,
 figure,
 details {
-  margin: var(--sl-gutter) 0;
+  margin: var(--sl-type-margin-block, var(--sl-gutter)) 0;
   padding: 0;
 }
 
@@ -110,7 +97,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: $sl-font-weight--regular;
+  font-weight: var(--sl-font-weight--regular);
   line-height: 1.25;
 }
 
@@ -122,7 +109,7 @@ caption {
 
 h1,
 h2 {
-  font-weight: $sl-font-weight--light;
+  font-weight: var(--sl-font-weight--light);
 }
 
 h1 {
@@ -131,12 +118,18 @@ h1 {
   line-height: 1;
   text-align: center;
 
-  @include breakpoints.sl-breakpoint--medium {
-    --h1-size: var(--sl-font-size--xxx-large);
+  @include config.sl-breakpoint--medium {
+    font-size: var(
+      --h1-size-md,
+      var(--h1-size, var(--sl-font-size--xxx-large))
+    );
   }
 
-  @include breakpoints.sl-breakpoint--large {
-    --h1-size: var(--sl-font-size--xxxx-large);
+  @include config.sl-breakpoint--large {
+    font-size: var(
+      --h1-size-lg,
+      var(--h1-size, var(--sl-font-size--xxxx-large))
+    );
   }
 }
 
@@ -145,18 +138,18 @@ caption,
 legend,
 h3,
 thead th {
-  font-family: $sl-font-family--display;
+  font-family: var(--sl-font-family--display);
 }
 
 h2,
 caption {
   font-size: var(--h2-size, var(--sl-font-size--x-large));
 
-  @include breakpoints.sl-breakpoint--medium {
+  @include config.sl-breakpoint--medium {
     --h2-size: var(--sl-font-size--xx-large);
   }
 
-  @include breakpoints.sl-breakpoint--large {
+  @include config.sl-breakpoint--large {
     --h2-size: var(--sl-font-size--xxx-large);
   }
 }
@@ -172,15 +165,15 @@ footer {
 }
 
 .caps {
-  font-size: var(--sl-font-size--smaller);
-  letter-spacing: 0.0625em;
+  font-size: var(--sl-font-size--caps, var(--sl-font-size--smaller));
+  letter-spacing: var(--sl-letter-spacing--caps, 0.0625em);
   line-height: 0;
   text-transform: uppercase;
 }
 
 code,
 pre {
-  font-family: $sl-font-family--code;
+  font-family: var(--sl-font-family--code);
 }
 
 code {
@@ -193,7 +186,7 @@ code {
   }
 
   p & {
-    @include breakpoints.sl-breakpoint--x-large {
+    @include config.sl-breakpoint--x-large {
       white-space: nowrap;
     }
   }
