@@ -141,13 +141,13 @@
   overflow: hidden auto;
 }
 
-// Precompiled and Compiled code container
+// Source and Compiled code container
 .sl-c-playground__code-editor-wrapper {
   background-color: var(--sl-background--editor);
   border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
 }
 
-[data-code='precompiled'] {
+[data-code='source'] {
   --sl-background--editor: var(--sl-color--white);
 
   grid-area: sass;
@@ -198,7 +198,7 @@
   }
 
   &.cm-focused {
-    [data-code='precompiled'] & {
+    [data-code='source'] & {
       outline: 1px solid var(--sl-color--warning-light);
     }
 
@@ -228,7 +228,7 @@
     color: var(--sl-color--code-bright);
   }
 
-  .sl-code-is-precompiled & {
+  .sl-code-is-source & {
     cursor: text;
   }
 }
@@ -287,7 +287,7 @@
     --sl-color--button: var(--sl-color--pale-sky);
   }
 
-  [data-code='precompiled'] & {
+  [data-code='source'] & {
     [data-active='true'] {
       --sl-background--button: var(--sl-color--white);
       --sl-background--button-state: var(--sl-color--white);

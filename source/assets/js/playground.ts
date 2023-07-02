@@ -47,7 +47,7 @@ function setupPlayground() {
     },
   });
 
-  // Setup input sass view
+  // Setup input Sass view
   const editor = new EditorView({
     doc: playgroundState.inputValue,
     extensions: [
@@ -58,7 +58,7 @@ function setupPlayground() {
         }
       }),
     ],
-    parent: document.querySelector('.sl-code-is-precompiled') || undefined,
+    parent: document.querySelector('.sl-code-is-source') || undefined,
   });
 
   // Setup CSS view
