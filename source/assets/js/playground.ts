@@ -9,6 +9,7 @@ import {displayForConsoleLog} from './playground/console-utils.js';
 import {editorSetup, outputSetup} from './playground/editor-setup.js';
 import {
   base64ToState,
+  customLoader,
   logsToDiagnostics,
   ParseResult,
   PlaygroundState,
@@ -225,6 +226,7 @@ function setupPlayground() {
         syntax: playgroundState.inputFormat,
         style: playgroundState.outputFormat,
         logger: logger,
+        importer: customLoader,
       });
       return {css: result.css};
     } catch (error) {

@@ -1,8 +1,11 @@
 /* eslint-disable node/no-extraneous-import */
 import {Diagnostic} from '@codemirror/lint';
-import {Exception, OutputStyle, Syntax} from 'sass';
+import {Exception, Importer, OutputStyle, Syntax} from 'sass';
 
 import {ConsoleLog, ConsoleLogDebug, ConsoleLogWarning} from './console-utils';
+
+const PLAYGROUND_LOAD_ERROR_MESSAGE =
+  'The Sass Playground does not support loading stylesheets.';
 
 export type PlaygroundState = {
   inputFormat: Syntax;
@@ -99,3 +102,10 @@ export function logsToDiagnostics(logs: ConsoleLog[]): Diagnostic[] {
     (diagnostic): diagnostic is Diagnostic => !!diagnostic
   );
 }
+
+export const customLoader: Importer<'sync'> = {
+  canonicalize() {
+    throw new Error(PLAYGROUND_LOAD_ERROR_MESSAGE, {cause: 'Test'});
+  },
+  load: () => null,
+};
