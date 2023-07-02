@@ -180,6 +180,10 @@
     font-family: var(--sl-font-family--code);
   }
 
+  .cm-tooltip-lint {
+    line-height: 1em;
+  }
+
   .cm-scroller {
     overflow: unset;
   }
@@ -253,11 +257,13 @@
   font-family: var(--sl-font-family--code);
   height: 100%;
   margin: 0;
+  line-height: 1em;
 
   .console-line {
     display: grid;
     gap: var(--sl-gutter);
     grid-template: 'location message' auto / 10ch 1fr;
+    margin-bottom: var(--sl-gutter--half);
   }
 
   .console-message {
