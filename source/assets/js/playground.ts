@@ -9,7 +9,6 @@ import {displayForConsoleLog} from './playground/console-utils.js';
 import {editorSetup, outputSetup} from './playground/editor-setup.js';
 import {
   base64ToState,
-  errorToDiagnostic,
   logsToDiagnostics,
   ParseResult,
   PlaygroundState,
@@ -17,7 +16,8 @@ import {
 } from './playground/utils.js';
 
 function setupPlayground() {
-  const hashState = base64ToState(location.hash);
+  const hash = location.hash.slice(1);
+  const hashState = base64ToState(hash);
 
   const initialState: PlaygroundState = {
     inputFormat: hashState.inputFormat || 'scss',

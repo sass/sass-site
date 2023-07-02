@@ -55,7 +55,6 @@ export function displayForConsoleLog(item: ConsoleLog): string {
     if (item.error instanceof Exception) {
       data.lineNumber = item.error.span.start.line;
     }
-    console.log(item);
     data.message = item.error?.toString() || '';
   } else if (['debug', 'warn'].includes(item.type)) {
     data.message = item.message;

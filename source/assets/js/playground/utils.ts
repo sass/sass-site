@@ -27,8 +27,7 @@ export function base64ToState(string: string): Partial<PlaygroundState> {
   const state: Partial<PlaygroundState> = {};
   let decoded;
   try {
-    // Remove hash
-    decoded = decodeURIComponent(atob(string.slice(1)));
+    decoded = decodeURIComponent(atob(string));
   } catch (error) {
     return {};
   }
