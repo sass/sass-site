@@ -2,7 +2,7 @@
 import {Diagnostic} from '@codemirror/lint';
 import {Exception, OutputStyle, Syntax} from 'sass';
 
-import {ConsoleLog} from './console-utils';
+import {ConsoleLog, ConsoleLogDebug, ConsoleLogWarning} from './console-utils';
 
 export type PlaygroundState = {
   inputFormat: Syntax;
@@ -65,4 +65,38 @@ export function errorToDiagnostic(error: Exception | unknown): Diagnostic {
       message: errorString,
     };
   }
+}
+
+export function debugToDiagnostic(logItem: ConsoleLogDebug): Diagnostic {
+  return {
+    from: logItem.options.span.start.offset,
+    to: logItem.options.span.end.offset,
+    severity: 'info',
+    message: logItem.message,
+  };
+}
+
+export function warnToDiagnostic(
+  logItem: ConsoleLogWarning
+): Diagnostic | null {
+  if (!logItem.options.span) return null;
+  return {
+    from: logItem.options.span.start.offset,
+    to: logItem.options.span.end.offset,
+    severity: 'warning',
+    message: logItem.message,
+  };
+}
+
+export function logsToDiagnostics(logs: ConsoleLog[]): Diagnostic[] {
+  const diagnostics = logs.flatMap(log => {
+    if (log.type === 'error') return errorToDiagnostic(log.error);
+    else if (log.type === 'warn') return warnToDiagnostic(log);
+    else if (log.type === 'debug') return debugToDiagnostic(log);
+    else return null;
+  });
+  // Remove empties
+  return diagnostics.filter(
+    (diagnostic): diagnostic is Diagnostic => !!diagnostic
+  );
 }

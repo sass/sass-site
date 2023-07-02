@@ -10,6 +10,7 @@ import {editorSetup, outputSetup} from './playground/editor-setup.js';
 import {
   base64ToState,
   errorToDiagnostic,
+  logsToDiagnostics,
   ParseResult,
   PlaygroundState,
   stateToBase64,
@@ -172,6 +173,12 @@ function setupPlayground() {
       .join('\n');
   }
 
+  function updateDiagnostics() {
+    const diagnostics = logsToDiagnostics(playgroundState.debugOutput);
+    const transaction = setDiagnostics(editor.state, diagnostics);
+    editor.dispatch(transaction);
+  }
+
   function updateCSS() {
     playgroundState.debugOutput = [];
     const result = parse(playgroundState.inputValue);
@@ -184,12 +191,8 @@ function setupPlayground() {
           insert: text,
         },
       });
-      editor.dispatch(setDiagnostics(editor.state, []));
       playgroundState.compilerHasError = false;
     } else {
-      const diagnostic = errorToDiagnostic(result.error);
-      const transaction = setDiagnostics(editor.state, [diagnostic]);
-      editor.dispatch(transaction);
       playgroundState.compilerHasError = true;
       playgroundState.debugOutput = [
         ...playgroundState.debugOutput,
@@ -197,6 +200,7 @@ function setupPlayground() {
       ];
     }
     updateDebugOutput();
+    updateDiagnostics();
   }
   const debouncedUpdateCSS = debounce(updateCSS, 200);
 
