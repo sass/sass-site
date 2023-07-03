@@ -181,7 +181,7 @@
   }
 
   .cm-tooltip-lint {
-    line-height: 1em;
+    line-height: 1;
   }
 
   .cm-scroller {
@@ -256,8 +256,8 @@
 .sl-c-playground__console {
   font-family: var(--sl-font-family--code);
   height: 100%;
+  line-height: 1;
   margin: 0;
-  line-height: 1em;
 
   .console-line {
     display: grid;
