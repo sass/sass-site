@@ -181,7 +181,7 @@
   }
 
   .cm-tooltip-lint {
-    line-height: 0.875;
+    line-height: var(--sl-line-height--console);
   }
 
   .cm-scroller {
@@ -268,7 +268,7 @@
 
   .console-message {
     display: grid;
-    line-height: 0.875;
+    line-height: var(--sl-line-height--console);
   }
 
   $console-type-colors: (
