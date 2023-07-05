@@ -15,7 +15,7 @@ eleventyExcludeFromCollections: true
 /blog/posts/1909151   /blog/dart-sass-is-in-beta
 /blog/posts/7081811   /blog/ruby-sass-is-deprecated
 
-{% for r in redirects -%}
+{% for r in redirects.multiple -%}
 {%- for from in r.from %}
 {%- for to in r.to %}
 {{ from }}            {{ to }}
@@ -29,7 +29,7 @@ eleventyExcludeFromCollections: true
 /documentation/functions/{{ mod }}.html   /documentation/modules/{{ mod }}/
 {%- endfor -%}
 
-{%- assign breaking = 'bogus-combinators css-vars duplicate-var-flags extend-compound function-units media-logic moz-document slash-div strict-unary' | split: ' ' -%}
-{%- for b in breaking %}
+{%- for b in redirects.breaking %}
 /d/{{ b }}.html         /documentation/breaking-changes/{{ b }}/
+/d/{{ b }}              /documentation/breaking-changes/{{ b }}/
 {%- endfor -%}
