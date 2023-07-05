@@ -8,5 +8,4 @@ $sl-font-family--text: 'Source Sans Pro', system-ui, -apple-system, 'Segoe UI',
 $sl-font-family--display: 'Source Serif Pro', 'Apple Garamond', 'Baskerville',
   'Times New Roman', 'Droid Serif', times, serif, 'Apple Color Emoji',
   'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$sl-font-family--code: 'Source Code Pro', 'SF Mono', monaco, inconsolata,
-  'Fira Mono', 'Droid Sans Mono', monospace, monospace !default;
+$sl-font-family--code: ui-monospace, monospace !default;
