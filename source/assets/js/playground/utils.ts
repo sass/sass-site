@@ -105,7 +105,7 @@ export function logsToDiagnostics(logs: ConsoleLog[]): Diagnostic[] {
 
 export const customLoader: Importer<'sync'> = {
   canonicalize() {
-    throw new Error(PLAYGROUND_LOAD_ERROR_MESSAGE, {cause: 'Test'});
+    throw new Error(PLAYGROUND_LOAD_ERROR_MESSAGE);
   },
   load: () => null,
 };
