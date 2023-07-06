@@ -9,14 +9,16 @@ import {displayForConsoleLog} from './playground/console-utils.js';
 import {editorSetup, outputSetup} from './playground/editor-setup.js';
 import {
   base64ToState,
-  errorToDiagnostic,
+  customLoader,
+  logsToDiagnostics,
   ParseResult,
   PlaygroundState,
   stateToBase64,
 } from './playground/utils.js';
 
 function setupPlayground() {
-  const hashState = base64ToState(location.hash);
+  const hash = location.hash.slice(1);
+  const hashState = base64ToState(hash);
 
   const initialState: PlaygroundState = {
     inputFormat: hashState.inputFormat || 'scss',
@@ -46,7 +48,7 @@ function setupPlayground() {
     },
   });
 
-  // Setup input sass view
+  // Setup input Sass view
   const editor = new EditorView({
     doc: playgroundState.inputValue,
     extensions: [
@@ -57,7 +59,7 @@ function setupPlayground() {
         }
       }),
     ],
-    parent: document.querySelector('.sl-code-is-precompiled') || undefined,
+    parent: document.querySelector('.sl-code-is-source') || undefined,
   });
 
   // Setup CSS view
@@ -172,6 +174,12 @@ function setupPlayground() {
       .join('\n');
   }
 
+  function updateDiagnostics() {
+    const diagnostics = logsToDiagnostics(playgroundState.debugOutput);
+    const transaction = setDiagnostics(editor.state, diagnostics);
+    editor.dispatch(transaction);
+  }
+
   function updateCSS() {
     playgroundState.debugOutput = [];
     const result = parse(playgroundState.inputValue);
@@ -184,12 +192,8 @@ function setupPlayground() {
           insert: text,
         },
       });
-      editor.dispatch(setDiagnostics(editor.state, []));
       playgroundState.compilerHasError = false;
     } else {
-      const diagnostic = errorToDiagnostic(result.error);
-      const transaction = setDiagnostics(editor.state, [diagnostic]);
-      editor.dispatch(transaction);
       playgroundState.compilerHasError = true;
       playgroundState.debugOutput = [
         ...playgroundState.debugOutput,
@@ -197,6 +201,7 @@ function setupPlayground() {
       ];
     }
     updateDebugOutput();
+    updateDiagnostics();
   }
   const debouncedUpdateCSS = debounce(updateCSS, 200);
 
@@ -221,6 +226,7 @@ function setupPlayground() {
         syntax: playgroundState.inputFormat,
         style: playgroundState.outputFormat,
         logger: logger,
+        importer: customLoader,
       });
       return {css: result.css};
     } catch (error) {

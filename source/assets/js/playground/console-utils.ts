@@ -1,6 +1,6 @@
 import {Exception, SourceSpan} from 'sass';
 
-type ConsoleLogDebug = {
+export type ConsoleLogDebug = {
   options: {
     span: SourceSpan;
   };
@@ -8,7 +8,7 @@ type ConsoleLogDebug = {
   type: 'debug';
 };
 
-type ConsoleLogWarning = {
+export type ConsoleLogWarning = {
   options: {
     deprecation: boolean;
     span?: SourceSpan | undefined;
@@ -18,7 +18,7 @@ type ConsoleLogWarning = {
   type: 'warn';
 };
 
-type ConsoleLogError = {
+export type ConsoleLogError = {
   type: 'error';
   error: Exception | unknown;
 };
@@ -40,7 +40,7 @@ function encodeHTML(message: string): string {
 }
 
 function lineNumberFormatter(number?: number): string {
-  if (typeof number === 'undefined') return '';
+  if (number === undefined) return '';
   number = number + 1;
   return `${number}`;
 }
