@@ -84,13 +84,32 @@ available in the browser:
    [legacy JavaScript API]: https://sass-lang.com/documentation/js-api/#md:legacy-api
    [`node-sass` package]: https://www.npmjs.com/package/node-sass
 
+## Play Around With It
+
+Because Sass can now run directly in the browser, we've been able to add another
+long-awaited feature to the Sass website: [the Sass Playground]! This is a way
+to test out Sass directly in your browser, and since it's hooked up to the Sass
+website's deploy process it'll always use the latest version with all the latest
+features.
+
+The stylesheet in your playground is always saved to the playground URL, so you
+can easily share example stylesheets or use them to report bugs to the Sass
+team. Give it a try!
+
+[the Sass Playground]: /playground
+
 ## Acknowledgements
 
-I would particularly like to thank the fine folks at [OddBird] for implementing
-browser support, especially [Ed Rivas] and [Jonny Gerig Meyer]. Without their
-contributions, the road to getting this feature in place would have been much
-longer and much more painful.
+I would like to thank the fine folks at [OddBird] for making all this a reality,
+particularly:
+
+* [Ed Rivas] and [Jonny Gerig Meyer] for implementing browser support for Dart
+  Sass and migrating the Sass website to a more modern stack,
+* [James Stuckey Weber] for implementing the Sass Playground,
+* and [Stacy Kvernmo] for the UI and UX designs.
 
 [OddBird]: https://www.oddbird.net/
 [Ed Rivas]: https://github.com/jerivas
 [Jonny Gerig Meyer]: https://github.com/jgerigmeyer
+[James Stuckey Weber]: https://github.com/jamesnw
+[Stacy Kvernmo]: https://github.com/stacyk
