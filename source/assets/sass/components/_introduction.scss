@@ -1,11 +1,10 @@
-@use '../breakpoints';
-@use '../visual-design/typography';
+@use '../config';
 
 .sl-c-introduction {
   color: var(--sl-color--patina);
-  font-weight: typography.$sl-font-weight--light;
+  font-weight: var(--sl-font-weight--light);
 
-  @include breakpoints.sl-breakpoint--medium {
+  @include config.sl-breakpoint--medium {
     font-size: var(--sl-font-size--xx-large);
   }
 

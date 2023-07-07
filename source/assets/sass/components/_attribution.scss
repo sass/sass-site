@@ -1,7 +1,5 @@
-@use '../visual-design/typography';
-
 .sl-c-attribution {
-  font-weight: typography.$sl-font-weight--light;
+  font-weight: var(--sl-font-weight--light);
   font-size: var(--sl-font-size--small);
 
   &:first-child {

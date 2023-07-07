@@ -3,7 +3,7 @@
   itemtype="https://schema.org/WPFooter"
   itemscope="itemscope"
   role="contentinfo">
-  <div class="sl-l-container sl-l-section">
+  <div class="sl-l-container">
     <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
       <div class="sl-l-grid__column">
         {% markdown %}
@@ -13,25 +13,23 @@
 
         {% renderFile 'source/_includes/footer_nav.md' %}
       </div>
-      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right footer-icons">
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right sl-c-footer-link-grid">
         <a
           class="twitter-follow-button"
           href="https://twitter.com/SassCSS"
           data-show-count="false"
           data-size="large">Follow @SassCSS</a>
-        <div class="sl-l-grid sl-l-small-grid--gutters">
-          <div class="sl-l-grid__column">
-            <a href="https://www.netlify.com"><img
-                alt="Deploys by Netlify"
-                src="https://www.netlify.com/v3/img/components/netlify-color-bg.svg"/></a>
-          </div>
-          <div class="sl-l-grid__column">
-            <a href="https://www.macstadium.com/"><img
-                alt="Powered by MacStadium"
-                class="mac-stadium-icon"
-                src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
-          </div>
-        </div>
+        <a
+          class="sl-image-link"
+          href="https://www.netlify.com"><img
+            alt="Deploys by Netlify"
+            src="https://www.netlify.com/v3/img/components/netlify-color-bg.svg"/></a>
+        <a
+          class="sl-image-link mac-stadium-icon"
+          href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
       </div>
     </div>
   </div>

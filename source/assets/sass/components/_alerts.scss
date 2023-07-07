@@ -1,15 +1,13 @@
 @use 'sass:color';
-@use '../functions';
 @use '../config/color/brand';
-@use '../visual-design/typography';
 
 .sl-c-alert {
-  background: var(--alert-bg, var(--sl-color--highlight));
+  background: var(--sl-background--alert, var(--sl-color--highlight));
   color: var(--sl-color--white);
   font-size: var(--sl-font-size--small);
-  padding-bottom: var(--alert-padding-block, var(--sl-gutter--minus));
-  padding-top: var(--alert-padding-block, var(--sl-gutter--minus));
-  text-align: var(--alert-align, center);
+  padding-bottom: var(--sl-padding-block--alert, var(--sl-gutter--minus));
+  padding-top: var(--sl-padding-block--alert, var(--sl-gutter--minus));
+  text-align: var(--sl-align--alert, center);
 
   p,
   ul,
@@ -30,33 +28,34 @@
   }
 
   a {
-    border-bottom-color: rgba(
-      brand.$sl-color--white,
-      var(--opacity-border, 0.5)
-    );
-    color: var(--sl-color--white);
-    font-weight: typography.$sl-font-weight--bold;
+    --sl-color--link: var(--sl-color--white);
+    --sl-background--link-state: rgba(0, 0, 0, 6.25%);
+    --sl-border-color--link: #{rgba(
+        brand.$sl-color--white,
+        var(--sl-border-opacity--link, 0.5)
+      )};
+
+    font-weight: var(--sl-font-weight--bold);
 
     &:hover,
     &:focus {
-      --color-link-bg: rgba(0, 0, 0, 6.25%);
-      --opacity-border: 0.75;
+      --sl-border-opacity--link: 0.75;
     }
 
     &:active {
-      --opacity-border: 1;
+      --sl-border-opacity--link: 1;
     }
   }
 }
 
 .sl-c-alert--info {
-  --alert-bg: var(--sl-color--midnight-blue);
+  --sl-background--alert: var(--sl-color--midnight-blue);
 }
 
 .sl-c-alert--special {
-  --alert-align: left;
-  --alert-bg: black;
-  --alert-padding-block: var(--sl-gutter--triple);
+  --sl-align--alert: left;
+  --sl-background--alert: black;
+  --sl-padding-block--alert: var(--sl-gutter--triple);
 }
 
 .sl-c-alert-title {

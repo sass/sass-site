@@ -1,15 +1,11 @@
-.footer-icons {
-  max-width: 16rem;
-}
-
-.twitter-follow-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  margin-bottom: var(--sl-gutter);
+.sl-c-footer-link-grid {
+  align-items: center;
+  display: grid;
+  gap: var(--sl-gutter);
+  grid-template-columns: minmax(var(--sl-width--twitter-link), auto) auto 1fr;
 }
 
 .mac-stadium-icon {
-  width: 7rem;
+  margin-block: 0;
+  width: var(--sl-width--mac-stadium-icon);
 }

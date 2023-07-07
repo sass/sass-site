@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'scale';
+@use 'typography';
 @use 'color/brand';
 @use 'color/content';
 
@@ -11,6 +12,7 @@
 $scale: meta.module-variables('scale');
 $brand-colors: meta.module-variables('brand');
 $content-colors: meta.module-variables('content');
+$typography: meta.module-variables('typography');
 
 // Loops through and returns all tokens from above files as CSS variables.
 @mixin tokens($map, $prefix: null) {
