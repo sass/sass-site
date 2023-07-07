@@ -69,14 +69,3 @@ jobs:
           author_email: sass.bot.beep.boop@gmail.com
           message: Update from https://github.com/${{ github.repository }}/commit/${{ github.sha }}
           commit: --allow-empty
-
-  diff-link:
-    name: Comment
-    runs-on: ubuntu-latest
-    needs: [push]
-    steps:
-      - uses: peter-evans/create-or-update-comment@v3
-        with:
-          issue-number: ${{ github.event.number }}
-          body: |
-            View diff of compiled files (may take a few minutes): https://github.com/${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}/compare/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.ref }}
