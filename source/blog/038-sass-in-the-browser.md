@@ -1,7 +1,7 @@
 ---
 title: "Sass in the Browser"
 author: Natalie Weizenbaum
-date: 2023-06-28 16:30:00 -8
+date: 2023-07-07 14:30:00 -8
 ---
 
 Over Sass's lifetime, we've seen many of the features we've pioneered adopted in
