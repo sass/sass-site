@@ -58,10 +58,17 @@
     </p>
     <![endif]-->
 
-    {% typogr %}{% render 'header', alerts: alerts %}{% endtypogr %}
+    {% typogr -%}
+      {%- if is_playground -%}
+        {% render 'playground/header', title: title %}
+      {%- else -%}
+        {% render 'header', alerts: alerts %}
+      {%- endif -%}
+    {%- endtypogr %}
 
     <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
-      {% unless page | isTypedoc %}
+      {% assign is_typedoc = page | isTypedoc %}
+      {% unless is_typedoc or is_playground %}
         <h1 class="sl-l-container">
           {%- if h1 -%}
             {{ h1 | typogr }}
@@ -71,21 +78,23 @@
         </h1>
       {% endunless %}
 
-      <div class="sl-l-container sl-color--white-background{% unless is_home %} sl-l-section{% endunless %}">
+      <div class="sl-l-container sl-color--white-background{% unless is_home %} sl-l-section{% endunless %}{% if is_playground %} sl-l-section--playground{% endif %}">
         {{ content | typogr }}
       </div>
 
-      <div class="sl-c-alert">
-        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
-          <ul class="sl-l-grid--justify-center">
-            <li id="release-nav">Current Releases:</li>
-            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="{{ releases['dart-sass'].url }}">{{ releases['dart-sass'].version }}</a></span></li>
-            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="{{ releases['libsass'].url }}">{{ releases['libsass'].version }}</a></span></li>
-            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
-            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
-          </ul>
+      {% unless is_playground %}
+        <div class="sl-c-alert">
+          <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+            <ul class="sl-l-grid--justify-center">
+              <li id="release-nav">Current Releases:</li>
+              <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="{{ releases['dart-sass'].url }}">{{ releases['dart-sass'].version }}</a></span></li>
+              <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="{{ releases['libsass'].url }}">{{ releases['libsass'].version }}</a></span></li>
+              <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+              <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
+      {% endunless %}
 
       {% if section_bottom %}
         <section class="sl-color--white-background sl-l-container">
@@ -103,24 +112,27 @@
 
     {% typogr %}{% render 'footer' %}{% endtypogr %}
 
-    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
-    <script>
-      docsearch({
-        container: '#docsearch',
-        appId: 'Q9MULQONSV',
-        indexName: 'sass-lang',
-        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
-        transformItems: function(hits) {
-          var domain = window.location.origin + "/";
-          hits.forEach(function(hit) {
-            if (! hit.url.startsWith(domain)) {
-              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
-            }
-          });
-          return hits;
-        }
-      });
-    </script>
+    {% unless is_playground %}
+      <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+      <script>
+        docsearch({
+          container: '#docsearch',
+          appId: 'Q9MULQONSV',
+          indexName: 'sass-lang',
+          apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+          transformItems: function(hits) {
+            var domain = window.location.origin + "/";
+            hits.forEach(function(hit) {
+              if (! hit.url.startsWith(domain)) {
+                hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+              }
+            });
+            return hits;
+          }
+        });
+      </script>
+    {% endunless %}
+
     <script>
       !function(d, s, id) {
         var js,

@@ -8,6 +8,7 @@ html {
     @include config.tokens(config.$scale);
     @include config.tokens(config.$brand-colors);
     @include config.tokens(config.$content-colors);
+    @include config.tokens(config.$typography);
   }
 
   background: #f8f9fa
@@ -36,10 +37,13 @@ body {
 }
 
 a {
-  background: var(--color-link-bg, transparent);
-  border-bottom: var(--sl-border--small) solid
-    var(--link--underline-color, rgba(brand.$sl-color--iron, 0.5));
-  color: var(--sl-color--midnight-blue);
+  --sl-color--link: var(--sl-color--midnight-blue);
+  --sl-background--link: transparent;
+
+  background: var(--sl-background--link);
+  border-bottom: var(--sl-border-width--link, var(--sl-border--small)) solid
+    var(--sl-border-color--link, rgba(brand.$sl-color--iron, 0.5));
+  color: var(--sl-color--link);
 
   .c1 & {
     color: inherit;
@@ -47,13 +51,39 @@ a {
 
   &:hover,
   &:focus {
-    --color-link-bg: var(--sl-color--link-action);
-    --link--underline-color: rgba(brand.$sl-color--iron, 0.75);
+    background: var(
+      --sl-background--link-state,
+      var(--sl-color--link-action, var(--sl-background--link))
+    );
+    border-bottom-color: var(
+      --sl-border-color--link-state,
+      var(--sl-border-color--link, rgba(brand.$sl-color--iron, 0.75))
+    );
+    border-bottom-width: var(
+      --sl-border-width--link-state,
+      var(--sl-border-width--link, var(--sl-border--small))
+    );
+    color: var(--sl-color--link-state, var(--sl-color--link));
   }
 
   &:active {
-    --link--underline-color: var(--sl-color--iron);
+    background: var(--sl-background--link-active, var(--sl-background--link));
+    border-bottom-color: var(
+      --sl-border-color--link-active,
+      var(--sl-border-color--link, var(--sl-color--iron))
+    );
+    border-bottom-width: var(
+      --sl-border-width--link-active,
+      var(--sl-border-width--link, var(--sl-border--small))
+    );
+    color: var(--sl-color--link-active, var(--sl-color--link));
   }
+}
+
+.sl-image-link {
+  --sl-background--link-state: transparent;
+  --sl-border-color--link-state: transparent;
+  --sl-border-width--link: 0;
 }
 
 code,
@@ -68,5 +98,5 @@ pre {
 
 pre {
   background: var(--sl-color--code-background);
-  border: var(--sl-border--small) solid #ebebeb;
+  border: var(--sl-border--small) solid var(--sl-color--code-background-darker);
 }

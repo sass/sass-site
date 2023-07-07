@@ -1,14 +1,20 @@
 .sl-l-section {
-  margin-bottom: var(--section-bottom-margin, var(--sl-gutter--triple));
-  margin-top: var(--section-top-margin, var(--sl-gutter--triple));
-  padding-bottom: var(--sl-gutter--triple);
-  padding-top: var(--sl-gutter--triple);
+  margin-bottom: var(--sl-margin-bottom--section, var(--sl-gutter--triple));
+  margin-top: var(--sl-margin-top--section, var(--sl-gutter--triple));
+  padding-bottom: var(--sl-padding-bottom--section, var(--sl-gutter--triple));
+  padding-top: var(--sl-padding-top--section, var(--sl-gutter--triple));
 
-  &:first-child {
-    --section-top-margin: 0;
+  &:first-child,
+  &.sl-l-section--playground {
+    --sl-margin-top--section: 0;
   }
 
   &:last-child {
-    --section-bottom-margin: 0;
+    --sl-margin-bottom--section: 0;
+  }
+
+  .playground & {
+    --sl-padding-bottom--section: 0;
+    --sl-padding-top--section: 0;
   }
 }
