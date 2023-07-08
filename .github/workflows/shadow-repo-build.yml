@@ -23,7 +23,7 @@ jobs:
       - run: npm ci
       - run: npm run build-prod
       - run: tar cf site.tar _site
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: site
           path: site.tar
