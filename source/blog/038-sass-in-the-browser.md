@@ -103,13 +103,15 @@ team. Give it a try!
 I would like to thank the fine folks at [OddBird] for making all this a reality,
 particularly:
 
-* [Ed Rivas] and [Jonny Gerig Meyer] for implementing browser support for Dart
-  Sass and migrating the Sass website to a more modern stack,
+* [Sana Javed], [Ed Rivas], and [Jonny Gerig Meyer] for implementing browser
+  support for Dart Sass and migrating the Sass website to a more modern stack,
 * [James Stuckey Weber] for implementing the Sass Playground,
-* and [Stacy Kvernmo] for the UI and UX designs.
+* and [Sondra Eby] and [Stacy Kvernmo] for the UI and UX designs.
 
 [OddBird]: https://www.oddbird.net/
+[Sana Javed]: https://github.com/sanajaved7
 [Ed Rivas]: https://github.com/jerivas
 [Jonny Gerig Meyer]: https://github.com/jgerigmeyer
 [James Stuckey Weber]: https://github.com/jamesnw
+[Sondra Eby]: https://github.com/SondraE
 [Stacy Kvernmo]: https://github.com/stacyk
