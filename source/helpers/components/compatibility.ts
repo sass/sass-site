@@ -40,7 +40,7 @@ interface CompatibilityOptions {
 
 const extend = <
   K extends keyof CompatibilityOptions,
-  V extends CompatibilityOptions[K]
+  V extends CompatibilityOptions[K],
 >(
   value: V,
   obj: CompatibilityOptions,
