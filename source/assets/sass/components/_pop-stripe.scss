@@ -27,7 +27,9 @@ $sl-colors: ();
 
   @for $i from 1 through list.length($sl-colors) {
     $pop: list.nth($sl-colors, $i);
-    $new: $pop ($width * ($i - 1)), $pop ($width * $i);
+    $new:
+      $pop ($width * ($i - 1)),
+      $pop ($width * $i);
     $gradient: list.join($gradient, $new, comma);
   }
 

@@ -93,7 +93,9 @@
   opacity: 0;
   padding-left: var(--sl-gutter--half);
   padding-right: var(--sl-gutter--half);
-  transition: opacity 0.3s 0.05s, visibility 0.3s;
+  transition:
+    opacity 0.3s 0.05s,
+    visibility 0.3s;
   visibility: hidden;
 
   &.show {
