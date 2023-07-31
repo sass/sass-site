@@ -88,7 +88,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0",
     "prismjs": "^1.29.0",
-    "rollup": "^3.26.3",
+    "rollup": "^3.27.0",
     "sass": "^1.64.1",
     "semver": "^7.5.3",
     "stylelint": "^15.10.1",
