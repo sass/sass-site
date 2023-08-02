@@ -84,7 +84,7 @@ either unitless values between 0 and 1 or `%` values between `0%` and `100%`. In
 most cases Sass follows this behavior, but the functions `color.adjust()` and
 `color.change()` have historically allowed *any* unit, and interpreted it as
 unitless. You could even write `color.change(red, $alpha: 1%)` and Sass would
-return the opaque color `black`.
+return the opaque color `red`.
 
 [Colors Level 4]: https://www.w3.org/TR/css-color-4/#typedef-alpha-value
 
