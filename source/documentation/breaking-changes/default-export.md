@@ -35,4 +35,4 @@ import * as sass from 'sass'; // Do this
 Until Dart Sass 2.0.0, we will continue to support users loading Sass's default
 export. The first time any properties on the default export are accessed, it
 will emit a deprecation warning to `console.error()`. To avoid this error, use
-`import * as sass form 'sass'` instead.
+`import * as sass from 'sass'` instead.
