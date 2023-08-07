@@ -17,5 +17,5 @@ function. Therefore if the value of `10%` represented `-50px`, `abs(10%)` would
 return `-10%` which in the browser would be `50px`.
 
 For this reason, we are deprecating the global abs() function with a percentage.
-To preserve the current behavior, use `math.abs()` or `abs(#{})` instead.
+To preserve the current behavior, use `math.abs()` instead.
 
