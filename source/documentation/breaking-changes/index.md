@@ -22,6 +22,10 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Passing `null` as an alpha channel to `new SassColor()` is changing
+  behavior](/documentation/breaking-changes/null-alpha) beginning in Dart
+  Sass 1.64.3.
+
 * [Loading Sass as a default export in JS is no longer
   allowed](/documentation/breaking-changes/default-export) beginning in Dart
   Sass 1.63.0.
