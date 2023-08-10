@@ -18,30 +18,30 @@ Functions are called using the normal CSS function syntax.
 [`@return` at-rule]: #return
 
 {% codeExample 'functions' %}
-  @function pow($base, $exponent) {
-    $result: 1;
-    @for $_ from 1 through $exponent {
-      $result: $result * $base;
+  @function fibonacci($n) {
+    $sequence: 0 1;
+    @for $_ from 1 through $n {
+      $new: nth($sequence, length($sequence)) + nth($sequence, length($sequence) - 1);
+      $sequence: append($sequence, $new);
     }
-    @return $result;
+    @return nth($sequence, length($sequence));
   }
 
   .sidebar {
     float: left;
-    margin-left: pow(4, 3) * 1px;
+    margin-left: fibonacci(4) * 1px;
   }
   ===
-  @function pow($base, $exponent)
-    $result: 1
-    @for $_ from 1 through $exponent
-      $result: $result * $base
-
-    @return $result
-
+  @function fibonacci($n)
+    $sequence: 0 1
+    @for $_ from 1 through $n
+      $new: nth($sequence, length($sequence)) + nth($sequence, length($sequence) - 1)
+      $sequence: append($sequence, $new)
+    @return nth($sequence, length($sequence))
 
   .sidebar
     float: left
-    margin-left: pow(4, 3) * 1px
+    margin-left: fibonacci(4) * 1px
 {% endcodeExample %}
 
 {% funFact %}
