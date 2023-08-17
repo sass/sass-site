@@ -72,7 +72,6 @@ toc:
       - Duplicate Variable Flags: /documentation/breaking-changes/duplicate-var-flags/
       - Default Exports: /documentation/breaking-changes/default-export/
       - abs() Percentage: /documentation/breaking-changes/abs-percent/
-      - Calc Functions: /documentation/breaking-changes/calc-functions/
   - Command Line: /documentation/cli/
     :children:
       - Dart Sass: /documentation/cli/dart-sass/
