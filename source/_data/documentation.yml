@@ -71,6 +71,7 @@ toc:
       - CSS Variable Syntax: /documentation/breaking-changes/css-vars/
       - Duplicate Variable Flags: /documentation/breaking-changes/duplicate-var-flags/
       - Default Exports: /documentation/breaking-changes/default-export/
+      - Null Alpha Channel: /documentation/breaking-changes/null-alpha/
       - abs() Percentage: /documentation/breaking-changes/abs-percent/
   - Command Line: /documentation/cli/
     :children:
