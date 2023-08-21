@@ -50,7 +50,7 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-inject": "^5.0.3",
-    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.0",
     "@rollup/plugin-terser": "^0.4.3",
     "@sindresorhus/slugify": "^1.1.2",
     "@types/deep-equal": "^1.0.1",
