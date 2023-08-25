@@ -42,7 +42,7 @@ function setupPlayground() {
         debouncedUpdateCSS();
       }
       if (['inputFormat', 'outputFormat', 'inputValue'].includes(prop)) {
-        debounce(updateURL, 200);
+        debounceUpdateURL();
       }
       return set;
     },
@@ -233,6 +233,8 @@ function setupPlayground() {
       return {error};
     }
   }
+
+  const debounceUpdateURL = debounce(updateURL, 200);
 
   function updateURL() {
     const hash = stateToBase64(playgroundState);
