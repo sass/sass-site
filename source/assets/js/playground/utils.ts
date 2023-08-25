@@ -55,8 +55,8 @@ export function base64ToState(input: string): Partial<PlaygroundState> {
   try {
     decoded = inflateFromBase64(input);
   } catch (error) {
-    // Assume the originally decoded URL was valid if it could not be inflated
-    // for backwards compatibility.
+    // For backwards compatibility, decode the URL using the old decoding
+    // strategy if the URL could not be inflated.
     try {
       decoded = decodeURIComponent(atob(input));
     } catch (error) {
