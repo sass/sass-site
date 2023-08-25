@@ -1,6 +1,7 @@
 /* eslint-disable node/no-extraneous-import */
 import {Diagnostic} from '@codemirror/lint';
 import {Exception, Importer, OutputStyle, Syntax} from 'sass';
+import {deflate, inflate} from 'pako';
 
 import {ConsoleLog, ConsoleLogDebug, ConsoleLogWarning} from './console-utils';
 
@@ -23,16 +24,24 @@ export function stateToBase64(state: PlaygroundState): string {
   const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
   const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
   const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
-  return btoa(encodeURIComponent(persistedState));
+  const compressedState = new TextDecoder().decode(deflate(persistedState));
+  return btoa(encodeURIComponent(compressedState));
 }
 
 export function base64ToState(string: string): Partial<PlaygroundState> {
   const state: Partial<PlaygroundState> = {};
-  let decoded;
+  let decoded: string;
   try {
     decoded = decodeURIComponent(atob(string));
   } catch (error) {
     return {};
+  }
+  try {
+    const compressedState = new TextEncoder().encode(decoded);
+    decoded = inflate(compressedState, {to: 'string'});
+  } catch (error) {
+    // Assume the originally decoded URL was valid if it could not be inflated
+    // for backwards compatibility.
   }
 
   if (!/\d\d.*/.test(decoded)) return {};

@@ -42,7 +42,7 @@ function setupPlayground() {
         debouncedUpdateCSS();
       }
       if (['inputFormat', 'outputFormat', 'inputValue'].includes(prop)) {
-        updateURL();
+        debounce(updateURL, 200);
       }
       return set;
     },
