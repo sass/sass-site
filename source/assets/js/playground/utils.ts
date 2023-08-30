@@ -1,6 +1,7 @@
 /* eslint-disable node/no-extraneous-import */
 import {Diagnostic} from '@codemirror/lint';
 import {Exception, Importer, OutputStyle, Syntax} from 'sass';
+import {deflate, inflate} from 'pako';
 
 import {ConsoleLog, ConsoleLogDebug, ConsoleLogWarning} from './console-utils';
 
@@ -23,16 +24,44 @@ export function stateToBase64(state: PlaygroundState): string {
   const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
   const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
   const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
-  return btoa(encodeURIComponent(persistedState));
+  return deflateToBase64(persistedState);
 }
 
-export function base64ToState(string: string): Partial<PlaygroundState> {
+/** Compresses `input` and returns a base64 string of the compressed bytes. */
+function deflateToBase64(input: string): string {
+  const deflated = deflate(input);
+  // btoa() input can't contain multi-byte characters, so it must be manually
+  // decoded into an ASCII string. TextDecoder can't take multi-byte characters,
+  // and encodeURIComponent doesn't escape all characters.
+  return btoa(String.fromCharCode(...deflated));
+}
+
+/** Decompresses a base64 `input` into the original string. */
+function inflateFromBase64(input: string): string {
+  const base64 = atob(input);
+  const deflated = new Uint8Array(base64.length);
+  // Manually encode the inflated string because it was manually decoded without
+  // TextDecode. TextEncoder would generate a different representation for the
+  // given input.
+  for (let i = 0; i < base64.length; i++) {
+    deflated[i] = base64.charCodeAt(i);
+  }
+  return inflate(deflated, {to: 'string'});
+}
+
+export function base64ToState(input: string): Partial<PlaygroundState> {
   const state: Partial<PlaygroundState> = {};
-  let decoded;
+  let decoded: string;
   try {
-    decoded = decodeURIComponent(atob(string));
+    decoded = inflateFromBase64(input);
   } catch (error) {
-    return {};
+    // For backwards compatibility, decode the URL using the old decoding
+    // strategy if the URL could not be inflated.
+    try {
+      decoded = decodeURIComponent(atob(input));
+    } catch (error) {
+      return {};
+    }
   }
 
   if (!/\d\d.*/.test(decoded)) return {};
