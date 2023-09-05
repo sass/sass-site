@@ -141,5 +141,5 @@ Nothing is interpreted as a SassScript expression, with the exception that
   $logo-element: logo-bg
 
   .logo
-    background: element(##{$logo-element})
+    background: element(#{$logo-element})
 {% endcodeExample %}
