@@ -45,7 +45,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
-    "@babel/preset-typescript": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.15",
     "@codemirror/lang-sass": "^6.0.2",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.4",
