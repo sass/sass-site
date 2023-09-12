@@ -4,6 +4,12 @@ title: sass:math
 
 {% render 'doc_snippets/built-in-module-status' %}
 
+## Import math module
+
+{% codeExample 'import math', false %}
+  @use "sass:math";
+{% endcodeExample %}
+
 ## Variables
 
 {% function 'math.$e' %}
