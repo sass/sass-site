@@ -217,7 +217,7 @@ Sass parses the following functions as [calculations]:
   function, Sass will always call your function instead of creating a
   calculation value.
 
-  [Sass function]: ../at-rules/function
+  [Sass function]: /documentation/at-rules/function
 {% endfunFact %}
 
 ### Legacy Global Functions
