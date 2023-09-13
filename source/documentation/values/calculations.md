@@ -20,6 +20,18 @@ introduction: >
   [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
 {% endcompatibility %}
 
+{% compatibility 'dart: "1.67.0"', 'libsass: false', 'ruby: false',
+    feature: "Adjacent values" %}
+  Versions of Dart Sass between 1.40.0 and 1.67.0 don't allow multiple values in
+  calculations that aren't separated by an operator, even in cases like `calc(1
+  var(--plus-two))` which is valid CSS (since `--plus-two` can be defined to be `+
+  2`).
+
+  As of Dart Sass 1.67.0, multiple values in a calculation can be separated by
+  spaces as long as every other value evaluates to an unquoted string (such as a
+  `var()` expression or the unquoted string `"+ 2"`).
+{% endcompatibility %}
+
 {% codeExample 'calculations', false %}
   @debug calc(400px + 10%); // calc(400px + 10%)
   @debug calc(400px / 2); // 200px
@@ -43,10 +55,10 @@ division operator within a calculation!
   the special calculation syntax!
 {% endfunFact %}
 
-You can also use [interpolation] in a calculation. However, if you do, nothing
-in the parentheses that surround that interpolation will be simplified or
-type-checked, so it's easy to end up with extra verbose or even invalid CSS.
-Rather than writing `calc(10px + #{$var})`, just write `calc(10px + $var)`!
+You can also use [interpolation] in a calculation. However, if you do, no
+operations that involve that interpolation will be simplified or type-checked,
+so it's easy to end up with extra verbose or even invalid CSS. Rather than
+writing `calc(10px + #{$var})`, just write `calc(10px + $var)`!
 
 [interpolation]: /documentation/interpolation
 
@@ -159,10 +171,16 @@ CSS to unitless numbers:
 ## Calculation Functions
 
 {% compatibility 'dart: "1.65.0"', 'libsass: false', 'ruby: false', 'feature: "Additional functions"' %}
-  Versions of Dart Sass subsequent to 1.65.0 handle the execution of these
-  calculation functions: `round()`, `mod()`, `rem()`, `sin()`, `cos()`, `tan()`,
-  `asin()`, `acos()`, `atan()`, `atan2()`, `pow()`, `sqrt()`, `hypot()`,
-  `log()`, `exp()`, `abs()`, and `sign()`.
+  Versions of Dart Sass 1.65.0 and later _except_ 1.66.x handle the execution of
+  these calculation functions: `round()`, `mod()`, `rem()`, `sin()`, `cos()`,
+  `tan()`, `asin()`, `acos()`, `atan()`, `atan2()`, `pow()`, `sqrt()`,
+  `hypot()`, `log()`, `exp()`, `abs()`, and `sign()`.
+
+  In Dart Sass 1.65.x, any function call whose name matched a calculation
+  function was _always_ parsed as a calculation function. This broke some
+  existing user-defined functions, so support for the new calculation functions
+  was removed in 1.66.0 until it could be added back _without_ breaking existing
+  behavior in 1.67.0.
 {% endcompatibility %}
 
 Sass parses the following functions as [calculations]:
@@ -194,6 +212,14 @@ Sass parses the following functions as [calculations]:
 [`mod()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/mod
 [`rem()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/rem
 [`sign()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/sign
+
+{% funFact %}
+  If you've defined a [Sass function] with the same name as a calculation
+  function, Sass will always call your function instead of creating a
+  calculation value.
+
+  [Sass function]: ../at-rules/function
+{% endFunFact %}
 
 ### Legacy Global Functions
 
@@ -317,9 +343,9 @@ combined at build time, so `min(12px % 10, 10%)` will throw an error.
 #### `round()`
 
 {% compatibility 'dart: "1.65.0"', 'libsass: false', 'ruby: false', 'feature: "min and max syntax"' %}
-  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.65.0 *always* parse
-  `round()` as a Sass function. To create a plain CSS calculation for those
-  implementations, you can write something like
+  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.65.0, as well as Dart
+  Sass 1.66.x, *always* parse `round()` as a Sass function. To use a plain CSS
+  function for those implementations, you can write something like
   `round(#{$strategy, $number, $step})` instead.
 {% endcompatibility %}
 
@@ -362,17 +388,18 @@ should be `nearest`, `up`, `down`, or `to-zero`.
 
 #### `abs()`
 
-{% compatibility 'dart: "1.65.0"', 'libsass: false', 'ruby: false', 'feature: "min and max syntax"' %}
-  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.65.0 *always* parse
+{% compatibility 'dart: "1.67.0"', 'libsass: false', 'ruby: false', 'feature: "min and max syntax"' %}
+  LibSass, Ruby Sass, and versions of Dart Sass prior to 1.67.0 *always* parse
   `abs()` as a Sass function. To create a plain CSS calculation for those
   implementations, you can write something like `abs(#{$number})` instead.
 {% endcompatibility %}
 
 {% headsUp %}
-The global `abs()` function compatibiliy with [% unit parameters is deprecated].
-In the future, this will emit a CSS abs() function to be resolved by the browser.
+  The global `abs()` function compatibiliy with [% unit parameters is
+  deprecated]. In the future, this will emit a CSS abs() function to be resolved
+  by the browser.
 
-[% unit parameters is deprecated]: /documentation/breaking-changes/abs-percent/
+  [% unit parameters is deprecated]: /documentation/breaking-changes/abs-percent/
 {% endheadsUp %}
 
 The [`abs(value)`] takes in a single expressiona as a parameter and returns the
@@ -404,5 +431,4 @@ absolute value of `$value`. If `$value` is negative, this returns `-$value`, and
     padding-right: 7.5%;
     padding-top: 2px;
   }
-
 {% endcodeExample %}
