@@ -53,7 +53,7 @@ division operator within a calculation!
 {% funFact %}
   The arguments to a Sass function call use the normal Sass syntax, rather than
   the special calculation syntax!
-{% endfunFact %}
+{% endFunFact %}
 
 You can also use [interpolation] in a calculation. However, if you do, no
 operations that involve that interpolation will be simplified or type-checked,
