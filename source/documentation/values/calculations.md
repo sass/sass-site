@@ -20,8 +20,7 @@ introduction: >
   [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
 {% endcompatibility %}
 
-{% compatibility 'dart: "1.67.0"', 'libsass: false', 'ruby: false',
-    feature: "Adjacent values" %}
+{% compatibility 'dart: "1.67.0"', 'libsass: false', 'ruby: false', 'feature: "Adjacent values"' %}
   Versions of Dart Sass between 1.40.0 and 1.67.0 don't allow multiple values in
   calculations that aren't separated by an operator, even in cases like `calc(1
   var(--plus-two))` which is valid CSS (since `--plus-two` can be defined to be `+
@@ -53,7 +52,7 @@ division operator within a calculation!
 {% funFact %}
   The arguments to a Sass function call use the normal Sass syntax, rather than
   the special calculation syntax!
-{% endFunFact %}
+{% endfunFact %}
 
 You can also use [interpolation] in a calculation. However, if you do, no
 operations that involve that interpolation will be simplified or type-checked,
@@ -219,7 +218,7 @@ Sass parses the following functions as [calculations]:
   calculation value.
 
   [Sass function]: ../at-rules/function
-{% endFunFact %}
+{% endfunFact %}
 
 ### Legacy Global Functions
 
