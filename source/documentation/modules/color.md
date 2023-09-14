@@ -74,8 +74,6 @@ title: sass:color
   {% endheadsUp %}
 
   {% codeExample 'adjust-hue' %}
-    @use 'sass:color';
-
     // Hue 222deg becomes 282deg.
     @debug adjust-hue(#6b717f, 60deg); // #796b7f
 
@@ -85,8 +83,6 @@ title: sass:color
     // Hue 210deg becomes 255deg.
     @debug adjust-hue(#036, 45); // #1a0066
     ===
-    @use 'sass:color'
-
     // Hue 222deg becomes 282deg.
     @debug adjust-hue(#6b717f, 60deg)  // #796b7f
 
@@ -311,8 +307,6 @@ title: sass:color
   {% endheadsUp %}
 
   {% codeExample 'color-darken-2' %}
-    @use 'sass:color';
-
     // Lightness 92% becomes 72%.
     @debug darken(#b37399, 20%); // #7c4465
 
@@ -322,8 +316,6 @@ title: sass:color
     // Lightness 20% becomes 0%.
     @debug darken(#036, 30%); // black
     ===
-    @use 'sass:color'
-
     // Lightness 92% becomes 72%.
     @debug darken(#b37399, 20%)  // #7c4465
 
@@ -373,8 +365,6 @@ title: sass:color
   {% endheadsUp %}
 
   {% codeExample 'color-desaturate-2' %}
-    @use 'sass:color';
-
     // Saturation 100% becomes 80%.
     @debug desaturate(#036, 20%); // #0a335c
 
@@ -384,8 +374,6 @@ title: sass:color
     // Saturation 20% becomes 0%.
     @debug desaturate(#d2e1dd, 30%); // #dadada
     ===
-    @use 'sass:color'
-
     // Saturation 100% becomes 80%.
     @debug desaturate(#036, 20%)  // #0a335c
 
@@ -597,8 +585,6 @@ title: sass:color
   {% endheadsUp %}
 
   {% codeExample 'color-lighten-2' %}
-    @use 'sass:color';
-
     // Lightness 46% becomes 66%.
     @debug lighten(#6b717f, 20%); // #a1a5af
 
@@ -608,8 +594,6 @@ title: sass:color
     // Lightness 85% becomes 100%.
     @debug lighten(#e1d7d2, 30%); // white
     ===
-    @use 'sass:color'
-
     // Lightness 46% becomes 66%.
     @debug lighten(#6b717f, 20%)  // #a1a5af
 
@@ -714,14 +698,10 @@ title: sass:color
   {% endheadsUp %}
 
   {% codeExample 'color-opacify-2' %}
-    @use 'sass:color';
-
     @debug opacify(rgba(#6b717f, 0.5), 0.2); // rgba(107, 113, 127, 0.7)
     @debug fade-in(rgba(#e1d7d2, 0.5), 0.4); // rgba(225, 215, 210, 0.9)
     @debug opacify(rgba(#036, 0.7), 0.3); // #036
     ===
-    @use 'sass:color'
-
     @debug opacify(rgba(#6b717f, 0.5), 0.2)  // rgba(107, 113, 127, 0.7)
     @debug fade-in(rgba(#e1d7d2, 0.5), 0.4)  // rgba(225, 215, 210, 0.9)
     @debug opacify(rgba(#036, 0.7), 0.3)  // #036
@@ -795,8 +775,6 @@ title: sass:color
   {% endheadsUp %}
 
   {% codeExample 'color-saturate-2' %}
-    @use 'sass:color';
-
     // Saturation 50% becomes 70%.
     @debug saturate(#c69, 20%); // #e05299
 
@@ -806,8 +784,6 @@ title: sass:color
     // Saturation 80% becomes 100%.
     @debug saturate(#0e4982, 30%)  // #004990
     ===
-    @use 'sass:color'
-
     // Saturation 50% becomes 70%.
     @debug saturate(#c69, 20%); // #e05299
 
@@ -936,14 +912,10 @@ title: sass:color
   {% endheadsUp %}
 
   {% codeExample 'transparentize-2' %}
-    @use 'sass:color';
-
     @debug transparentize(rgba(#6b717f, 0.5), 0.2);  // rgba(107, 113, 127, 0.3)
     @debug fade-out(rgba(#e1d7d2, 0.5), 0.4);  // rgba(225, 215, 210, 0.1)
     @debug transparentize(rgba(#036, 0.3), 0.3);  // rgba(0, 51, 102, 0)
     ===
-    @use 'sass:color'
-
     @debug transparentize(rgba(#6b717f, 0.5), 0.2)  // rgba(107, 113, 127, 0.3)
     @debug fade-out(rgba(#e1d7d2, 0.5), 0.4)  // rgba(225, 215, 210, 0.1)
     @debug transparentize(rgba(#036, 0.3), 0.3)  // rgba(0, 51, 102, 0)

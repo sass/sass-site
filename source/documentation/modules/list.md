@@ -157,14 +157,14 @@ title: sass:list
     @use 'sass:list';
 
     @debug list.separator(1px 2px 3px); // space
-    @debug list.separator(1px, 2px, 3px); // comma
+    @debug list.separator((1px, 2px, 3px)); // comma
     @debug list.separator('Helvetica'); // space
     @debug list.separator(()); // space
     ===
     @use 'sass:list'
 
     @debug list.separator(1px 2px 3px)  // space
-    @debug list.separator(1px, 2px, 3px)  // comma
+    @debug list.separator((1px, 2px, 3px))  // comma
     @debug list.separator('Helvetica')  // space
     @debug list.separator(())  // space
   {% endcodeExample %}
