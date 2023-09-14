@@ -29,13 +29,17 @@ title: sass:list
   within the returned list rather than having all its elements added to the
   returned list.
 
-  {% codeExample 'list-append', false %}
+  {% codeExample 'list-append' %}
+    @use 'sass:list';
+
     @debug list.append(10px 20px, 30px); // 10px 20px 30px
     @debug list.append((blue, red), green); // blue, red, green
     @debug list.append(10px 20px, 30px 40px); // 10px 20px (30px 40px)
     @debug list.append(10px, 20px, $separator: comma); // 10px, 20px
     @debug list.append((blue, red), green, $separator: space); // blue red green
     ===
+    @use 'sass:list'
+
     @debug list.append(10px 20px, 30px)  // 10px 20px 30px
     @debug list.append((blue, red), green)  // blue, red, green
     @debug list.append(10px 20px, 30px 40px)  // 10px 20px (30px 40px)
@@ -61,10 +65,14 @@ title: sass:list
 {% function 'list.is-bracketed($list)', 'is-bracketed($list)', 'returns:boolean' %}
   Returns whether `$list` has square brackets.
 
-  {% codeExample 'list-is-bracketed', false %}
+  {% codeExample 'list-is-bracketed' %}
+    @use 'sass:list';
+
     @debug list.is-bracketed(1px 2px 3px); // false
     @debug list.is-bracketed([1px, 2px, 3px]); // true
     ===
+    @use 'sass:list'
+
     @debug list.is-bracketed(1px 2px 3px)  // false
     @debug list.is-bracketed([1px, 2px, 3px])  // true
   {% endcodeExample %}
@@ -96,7 +104,9 @@ title: sass:list
 
   [truthy]: /documentation/values/booleans#truthiness-and-falsiness
 
-  {% codeExample 'list-join', false %}
+  {% codeExample 'list-join' %}
+    @use 'sass:list';
+
     @debug list.join(10px 20px, 30px 40px); // 10px 20px 30px 40px
     @debug list.join((blue, red), (#abc, #def)); // blue, red, #abc, #def
     @debug list.join(10px, 20px); // 10px 20px
@@ -105,6 +115,8 @@ title: sass:list
     @debug list.join([10px], 20px); // [10px 20px]
     @debug list.join(10px, 20px, $bracketed: true); // [10px 20px]
     ===
+    @use 'sass:list'
+
     @debug list.join(10px 20px, 30px 40px)  // 10px 20px 30px 40px
     @debug list.join((blue, red), (#abc, #def))  // blue, red, #abc, #def
     @debug list.join(10px, 20px)  // 10px 20px
@@ -120,11 +132,15 @@ title: sass:list
 
   This can also return the number of pairs in a map.
 
-  {% codeExample 'list-length', false %}
+  {% codeExample 'list-length' %}
+    @use 'sass:list';
+
     @debug list.length(10px); // 1
     @debug list.length(10px 20px 30px); // 3
     @debug list.length((width: 10px, height: 20px)); // 2
     ===
+    @use 'sass:list'
+
     @debug list.length(10px)  // 1
     @debug list.length(10px 20px 30px)  // 3
     @debug list.length((width: 10px, height: 20px))  // 2
@@ -137,12 +153,16 @@ title: sass:list
 
   If `$list` doesn't have a separator, returns `space`.
 
-  {% codeExample 'list-separator', false %}
+  {% codeExample 'list-separator' %}
+    @use 'sass:list';
+
     @debug list.separator(1px 2px 3px); // space
     @debug list.separator(1px, 2px, 3px); // comma
     @debug list.separator('Helvetica'); // space
     @debug list.separator(()); // space
     ===
+    @use 'sass:list'
+
     @debug list.separator(1px 2px 3px)  // space
     @debug list.separator(1px, 2px, 3px)  // comma
     @debug list.separator('Helvetica')  // space
@@ -170,11 +190,15 @@ title: sass:list
   If `$n` is negative, it counts from the end of `$list`. Throws an error if
   there is no existing element at index `$n`.
 
-  {% codeExample 'list-set-nth', false %}
+  {% codeExample 'list-set-nth' %}
+    @use 'sass:list';
+
     @debug list.set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
     @debug list.set-nth(10px 20px 30px, -1, 8em); // 10px, 20px, 8em
     @debug list.set-nth((Helvetica, Arial, sans-serif), 3, Roboto); // Helvetica, Arial, Roboto
     ===
+    @use 'sass:list'
+
     @debug list.set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
     @debug list.set-nth(10px 20px 30px, -1, 8em); // 10px, 20px, 8em
     @debug list.set-nth((Helvetica, Arial, sans-serif), 3, Roboto); // Helvetica, Arial, Roboto
@@ -193,9 +217,13 @@ title: sass:list
     [slashes are used for division]: /documentation/breaking-changes/slash-div
   {% endheadsUp %}
 
-  {% codeExample 'list-slash', false %}
+  {% codeExample 'list-slash' %}
+    @use 'sass:list';
+
     @debug list.slash(1px, 50px, 100px); // 1px / 50px / 100px
     ===
+    @use 'sass:list'
+
     @debug list.slash(1px, 50px, 100px)  // 1px / 50px / 100px
   {% endcodeExample %}
 {% endfunction %}
@@ -209,10 +237,14 @@ title: sass:list
   The returned list is always comma-separated and the sub-lists are always
   space-separated.
 
-  {% codeExample 'list-zip', false %}
+  {% codeExample 'list-zip' %}
+    @use 'sass:list';
+
     @debug list.zip(10px 50px 100px, short mid long); // 10px short, 50px mid, 100px long
     @debug list.zip(10px 50px 100px, short mid); // 10px short, 50px mid
     ===
+    @use 'sass:list'
+
     @debug list.zip(10px 50px 100px, short mid long)  // 10px short, 50px mid, 100px long
     @debug list.zip(10px 50px 100px, short mid)  // 10px short, 50px mid
   {% endcodeExample %}

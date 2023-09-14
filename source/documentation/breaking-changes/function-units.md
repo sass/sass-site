@@ -133,9 +133,13 @@ return a random integer with the same units.
 [The `math.random()` function]: /documentation/modules/math#random
 
 {% codeExample 'function-units', false %}
+  @use "sass:math";
+
   // Future Sass, doesn't work yet!
   @debug math.random(100px); // 42px
   ===
+  @use "sass:math"
+
   // Future Sass, doesn't work yet!
   @debug math.random(100px)  // 42px
 {% endcodeExample %}

@@ -107,10 +107,14 @@ title: sass:meta
   If an argument is a number or a nested calculation, it's returned as that
   type. Otherwise, it's returned as an unquoted string.
 
-  {% codeExample 'calc-args', false %}
+  {% codeExample 'calc-args' %}
+    @use 'sass:meta';
+
     @debug meta.calc-args(calc(100px + 10%)); // unquote("100px + 10%")
     @debug meta.calc-args(clamp(50px, var(--width), 1000px)); // 50px, unquote("var(--width)"), 1000px
     ===
+    @use 'sass:meta'
+
     @debug meta.calc-args(calc(100px + 10%))  // unquote("100px + 10%")
     @debug meta.calc-args(clamp(50px, var(--width), 1000px))  // 50px, unquote("var(--width)"), 1000px
   {% endcodeExample %}
@@ -123,10 +127,14 @@ title: sass:meta
 
   [calculation]: /documentation/values/calculations
 
-  {% codeExample 'calc-name', false %}
+  {% codeExample 'calc-name' %}
+    @use 'sass:meta';
+
     @debug meta.calc-name(calc(100px + 10%)); // "calc"
     @debug meta.calc-name(clamp(50px, var(--width), 1000px)); // "clamp"
     ===
+    @use 'sass:meta'
+
     @debug meta.calc-name(calc(100px + 10%))  // "calc"
     @debug meta.calc-name(clamp(50px, var(--width), 1000px))  // "clamp"
   {% endcodeExample %}
@@ -153,7 +161,9 @@ title: sass:meta
 
   Throws an error if called outside of a mixin.
 
-  {% codeExample 'content-exists', false %}
+  {% codeExample 'content-exists' %}
+    @use 'sass:meta';
+
     @mixin debug-content-exists {
       @debug meta.content-exists();
       @content;
@@ -164,6 +174,8 @@ title: sass:meta
       // Content!
     }
     ===
+    @use 'sass:meta'
+
     @mixin debug-content-exists
       @debug meta.content-exists()
       @content
@@ -201,10 +213,14 @@ title: sass:meta
 
   Returns `false` for any unrecognized `$feature`.
 
-  {% codeExample 'feature-exists', false %}
+  {% codeExample 'feature-exists' %}
+    @use "sass:meta";
+
     @debug meta.feature-exists("at-error"); // true
     @debug meta.feature-exists("unrecognized"); // false
     ===
+    @use "sass:meta"
+
     @debug meta.feature-exists("at-error")  // true
     @debug meta.feature-exists("unrecognized")  // false
   {% endcodeExample %}
@@ -220,7 +236,8 @@ title: sass:meta
 
   [`@use` rule]: /documentation/at-rules/use
 
-  {% codeExample 'function-exists', false %}
+  {% codeExample 'function-exists' %}
+    @use "sass:meta";
     @use "sass:math";
 
     @debug meta.function-exists("div", "math"); // true
@@ -232,6 +249,7 @@ title: sass:meta
     }
     @debug meta.function-exists("add"); // true
     ===
+    @use "sass:meta"
     @use "sass:math"
 
     @debug meta.function-exists("div", "math")  // true
@@ -283,7 +301,9 @@ title: sass:meta
 
   See also [`meta.variable-exists()`](#variable-exists).
 
-  {% codeExample 'global-variable-exists', false %}
+  {% codeExample 'global-variable-exists' %}
+    @use "sass:meta";
+
     @debug meta.global-variable-exists("var1"); // false
 
     $var1: value;
@@ -295,6 +315,8 @@ title: sass:meta
       @debug meta.global-variable-exists("var2"); // false
     }
     ===
+    @use "sass:meta"
+
     @debug meta.global-variable-exists("var1")  // false
 
     $var1: value
@@ -319,12 +341,16 @@ title: sass:meta
     to be consistent across Sass versions or implementations.
   {% endheadsUp %}
 
-  {% codeExample 'inspect', false %}
+  {% codeExample 'inspect' %}
+    @use "sass:meta";
+
     @debug meta.inspect(10px 20px 30px); // unquote("10px 20px 30px")
     @debug meta.inspect(("width": 200px)); // unquote('("width": 200px)')
     @debug meta.inspect(null); // unquote("null")
     @debug meta.inspect("Helvetica"); // unquote('"Helvetica"')
     ===
+    @use "sass:meta"
+
     @debug meta.inspect(10px 20px 30px)  // unquote("10px 20px 30px")
     @debug meta.inspect(("width": 200px))  // unquote('("width": 200px)')
     @debug meta.inspect(null)  // unquote("null")
@@ -357,7 +383,9 @@ title: sass:meta
 
   [`@use` rule]: /documentation/at-rules/use
 
-  {% codeExample 'mixin-exists', false %}
+  {% codeExample 'mixin-exists' %}
+    @use "sass:meta";
+
     @debug meta.mixin-exists("shadow-none"); // false
 
     @mixin shadow-none {
@@ -366,6 +394,8 @@ title: sass:meta
 
     @debug meta.mixin-exists("shadow-none"); // true
     ===
+    @use "sass:meta"
+
     @debug meta.mixin-exists("shadow-none")  // false
 
     @mixin shadow-none
@@ -495,11 +525,15 @@ title: sass:meta
 
   [map function]: /documentation/modules/map
 
-  {% codeExample 'type-of', false %}
+  {% codeExample 'type-of' %}
+    @use 'sass:meta';
+
     @debug meta.type-of(10px); // number
     @debug meta.type-of(10px 20px 30px); // list
     @debug meta.type-of(()); // list
     ===
+    @use 'sass:meta'
+
     @debug meta.type-of(10px)  // number
     @debug meta.type-of(10px 20px 30px)  // list
     @debug meta.type-of(())  // list
@@ -514,7 +548,9 @@ title: sass:meta
 
   See also [`meta.global-variable-exists()`](#global-variable-exists).
 
-  {% codeExample 'variable-exists', false %}
+  {% codeExample 'variable-exists' %}
+    @use "sass:meta";
+
     @debug meta.variable-exists("var1"); // false
 
     $var1: value;
@@ -526,6 +562,8 @@ title: sass:meta
       @debug meta.variable-exists("var2"); // true
     }
     ===
+    @use "sass:meta"
+
     @debug meta.variable-exists("var1")  // false
 
     $var1: value

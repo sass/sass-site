@@ -13,10 +13,14 @@ title: sass:map
   For example, if you pass multiple keys to `map.get()`, it will follow those
   keys to find the desired nested map:
 
-  {% codeExample 'map', false %}
+  {% codeExample 'map' %}
+    @use "sass:map";
+
     $config: (a: (b: (c: d)));
     @debug map.get($config, a, b, c); // d
     ===
+    @use "sass:map"
+
     $config: (a: (b: (c: d)))
     @debug map.get($config, a, b, c) // d
   {% endcodeExample %}
@@ -28,7 +32,9 @@ title: sass:map
   Identical to [`map.merge()`](#merge), except that nested map values are *also*
   recursively merged.
 
-  {% codeExample 'map-deep-merge', false %}
+  {% codeExample 'map-deep-merge' %}
+    @use "sass:map";
+
     $helvetica-light: (
       "weights": (
         "lightest": 100,
@@ -59,6 +65,8 @@ title: sass:map
     //   )
     // )
     ===
+    @use "sass:map"
+
     $helvetica-light: ("weights": ("lightest": 100, "light": 300))
     $helvetica-heavy: ("weights": ("medium": 500, "bold": 700))
 
@@ -87,12 +95,16 @@ title: sass:map
   If `$keys` is empty, returns a copy of `$map` without a value associated with
   `$key`.
 
-  {% codeExample 'map-deep-remove', false %}
+  {% codeExample 'map-deep-remove' %}
+    @use "sass:map";
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
     @debug map.deep-remove($font-weights, "regular");
     // ("medium": 500, "bold": 700)
     ===
+    @use "sass:map"
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
     @debug map.deep-remove($font-weights, "regular")
@@ -108,7 +120,9 @@ title: sass:map
   Returns a copy of `$map` where the targeted map does not have a value
   associated with the last key in `$keys`.
 
-  {% codeExample 'map-deep-remove-2', false %}
+  {% codeExample 'map-deep-remove-2' %}
+    @use "sass:map";
+
     $fonts: (
       "Helvetica": (
         "weights": (
@@ -129,6 +143,8 @@ title: sass:map
     //   )
     // )
     ===
+    @use "sass:map"
+
     $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 
     @debug map.deep-remove($fonts, "Helvetica", "weights", "regular")
@@ -170,7 +186,9 @@ title: sass:map
 
   [`null`]: /documentation/values/null
 
-  {% codeExample 'map-deep-remove-2', false %}
+  {% codeExample 'map-deep-remove-2' %}
+    @use "sass:map";
+
     $fonts: (
       "Helvetica": (
         "weights": (
@@ -184,6 +202,8 @@ title: sass:map
     @debug map.get($fonts, "Helvetica", "weights", "regular"); // 400
     @debug map.get($fonts, "Helvetica", "colors"); // null
     ===
+    @use "sass:map"
+
     $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 
     @debug map.get($fonts, "Helvetica", "weights", "regular") // 400
@@ -195,12 +215,16 @@ title: sass:map
   If `$keys` is empty, returns whether `$map` contains a value associated with
   `$key`.
 
-  {% codeExample 'map-has-key', false %}
+  {% codeExample 'map-has-key' %}
+    @use "sass:map";
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
     @debug map.has-key($font-weights, "regular"); // true
     @debug map.has-key($font-weights, "bolder"); // false
     ===
+    @use "sass:map"
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
     @debug map.has-key($font-weights, "regular") // true
@@ -224,7 +248,9 @@ title: sass:map
   Returns false if it does not, or if any key in `$keys` is missing from a map
   or references a value that is not a map.
 
-  {% codeExample 'map-has-key-2', false %}
+  {% codeExample 'map-has-key-2' %}
+    @use "sass:map";
+
     $fonts: (
       "Helvetica": (
         "weights": (
@@ -238,6 +264,8 @@ title: sass:map
     @debug map.has-key($fonts, "Helvetica", "weights", "regular"); // true
     @debug map.has-key($fonts, "Helvetica", "colors"); // false
     ===
+    @use "sass:map"
+
     $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 
     @debug map.has-key($fonts, "Helvetica", "weights", "regular") // true
@@ -248,11 +276,15 @@ title: sass:map
 {% function 'map.keys($map)', 'map-keys($map)', 'returns:list' %}
   Returns a comma-separated list of all the keys in `$map`.
 
-  {% codeExample 'map-keys', false %}
+  {% codeExample 'map-keys' %}
+    @use "sass:map";
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
     @debug map.keys($font-weights); // "regular", "medium", "bold"
     ===
+    @use "sass:map"
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
     @debug map.keys($font-weights)  // "regular", "medium", "bold"
@@ -275,13 +307,17 @@ title: sass:map
   All keys in the returned map that also appear in `$map1` have the same order
   as in `$map1`. New keys from `$map2` appear at the end of the map.
 
-  {% codeExample 'map-merge', false %}
+  {% codeExample 'map-merge' %}
+    @use "sass:map";
+
     $light-weights: ("lightest": 100, "light": 300);
     $heavy-weights: ("medium": 500, "bold": 700);
 
     @debug map.merge($light-weights, $heavy-weights);
     // ("lightest": 100, "light": 300, "medium": 500, "bold": 700)
     ===
+    @use "sass:map"
+
     $light-weights: ("lightest": 100, "light": 300)
     $heavy-weights: ("medium": 500, "bold": 700)
 
@@ -302,7 +338,9 @@ title: sass:map
   Returns a copy of `$map1` where the targeted map is replaced by a new map that
   contains all the keys and values from both the targeted map and `$map2`.
 
-  {% codeExample 'map-merge-2', false %}
+  {% codeExample 'map-merge-2' %}
+    @use "sass:map";
+
     $fonts: (
       "Helvetica": (
         "weights": (
@@ -325,6 +363,8 @@ title: sass:map
     //   )
     // )
     ===
+    @use "sass:map"
+
     $fonts: ("Helvetica": ("weights": ("lightest": 100, "light": 300)))
     $heavy-weights: ("medium": 500, "bold": 700)
 
@@ -347,7 +387,9 @@ title: sass:map
 
   If a key in `$keys` doesn't have an associated value in `$map`, it's ignored.
 
-  {% codeExample 'map-remove', false %}
+  {% codeExample 'map-remove' %}
+    @use "sass:map";
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
     @debug map.remove($font-weights, "regular"); // ("medium": 500, "bold": 700)
@@ -355,6 +397,8 @@ title: sass:map
     @debug map.remove($font-weights, "bolder");
     // ("regular": 400, "medium": 500, "bold": 700)
     ===
+    @use "sass:map"
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
     @debug map.remove($font-weights, "regular")  // ("medium": 500, "bold": 700)
@@ -374,12 +418,16 @@ title: sass:map
   If `$keys` are not passed, returns a copy of `$map` with the value at `$key`
   set to `$value`.
 
-  {% codeExample 'map-set', false %}
+  {% codeExample 'map-set' %}
+    @use "sass:map";
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
     @debug map.set($font-weights, "regular", 300);
     // ("regular": 300, "medium": 500, "bold": 700)
     ===
+    @use "sass:map"
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
     @debug map.set($font-weights, "regular", 300)
@@ -399,7 +447,9 @@ title: sass:map
   Returns a copy of `$map` with the targeted map's value at `$key` set to
   `$value`.
 
-  {% codeExample 'map-set-2', false %}
+  {% codeExample 'map-set-2' %}
+    @use "sass:map";
+
     $fonts: (
       "Helvetica": (
         "weights": (
@@ -421,6 +471,8 @@ title: sass:map
     //   )
     // )
     ===
+    @use "sass:map"
+
     $fonts: ("Helvetica": ("weights": ("regular": 400, "medium": 500, "bold": 700)))
 
     @debug map.set($fonts, "Helvetica", "weights", "regular", 300)
@@ -439,11 +491,15 @@ title: sass:map
 {% function 'map.values($map)', 'map-values($map)', 'returns:list' %}
   Returns a comma-separated list of all the values in `$map`.
 
-  {% codeExample 'map-values', false %}
+  {% codeExample 'map-values' %}
+    @use "sass:map";
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
     @debug map.values($font-weights); // 400, 500, 700
     ===
+    @use "sass:map"
+
     $font-weights: ("regular": 400, "medium": 500, "bold": 700)
 
     @debug map.values($font-weights)  // 400, 500, 700

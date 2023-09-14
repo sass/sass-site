@@ -7,10 +7,14 @@ title: sass:string
 {% function 'string.quote($string)', 'quote($string)', 'returns:string' %}
   Returns `$string` as a quoted string.
 
-  {% codeExample 'quote', false %}
+  {% codeExample 'quote' %}
+    @use "sass:string";
+
     @debug string.quote(Helvetica); // "Helvetica"
     @debug string.quote("Helvetica"); // "Helvetica"
     ===
+    @use "sass:string"
+
     @debug string.quote(Helvetica)  // "Helvetica"
     @debug string.quote("Helvetica")  // "Helvetica"
   {% endcodeExample %}
@@ -22,10 +26,14 @@ title: sass:string
 
   [index]: /documentation/values/strings#string-indexes
 
-  {% codeExample 'index', false %}
+  {% codeExample 'index' %}
+    @use "sass:string";
+
     @debug string.index("Helvetica Neue", "Helvetica"); // 1
     @debug string.index("Helvetica Neue", "Neue"); // 11
     ===
+    @use "sass:string"
+
     @debug string.index("Helvetica Neue", "Helvetica")  // 1
     @debug string.index("Helvetica Neue", "Neue")  // 11
   {% endcodeExample %}
@@ -36,10 +44,14 @@ title: sass:string
 
   [`$index`]: /documentation/values/strings#string-indexes
 
-  {% codeExample 'insert', false %}
+  {% codeExample 'insert' %}
+    @use "sass:string";
+
     @debug string.insert("Roboto Bold", " Mono", 7); // "Roboto Mono Bold"
     @debug string.insert("Roboto Bold", " Mono", -6); // "Roboto Mono Bold"
     ===
+    @use "sass:string"
+
     @debug string.insert("Roboto Bold", " Mono", 7)  // "Roboto Mono Bold"
     @debug string.insert("Roboto Bold", " Mono", -6)  // "Roboto Mono Bold"
   {% endcodeExample %}
@@ -48,10 +60,14 @@ title: sass:string
   end. If `$index` is smaller than the negative length of the string, `$insert`
   is added to the beginning.
 
-  {% codeExample 'insert-2', false %}
+  {% codeExample 'insert-2' %}
+    @use "sass:string";
+
     @debug string.insert("Roboto", " Bold", 100); // "Roboto Bold"
     @debug string.insert("Bold", "Roboto ", -100); // "Roboto Bold"
     ===
+    @use "sass:string"
+
     @debug string.insert("Roboto", " Bold", 100)  // "Roboto Bold"
     @debug string.insert("Bold", "Roboto ", -100)  // "Roboto Bold"
   {% endcodeExample %}
@@ -60,11 +76,15 @@ title: sass:string
 {% function 'string.length($string)', 'str-length($string)', 'returns:number' %}
   Returns the number of characters in `$string`.
 
-  {% codeExample 'length', false %}
+  {% codeExample 'length' %}
+    @use "sass:string";
+
     @debug string.length("Helvetica Neue"); // 14
     @debug string.length(bold); // 4
     @debug string.length(""); // 0
     ===
+    @use "sass:string"
+
     @debug string.length("Helvetica Neue")  // 14
     @debug string.length(bold)  // 4
     @debug string.length("")  // 0
@@ -77,11 +97,15 @@ title: sass:string
 
   [index]: /documentation/values/strings#string-indexes
 
-  {% codeExample 'slice', false %}
+  {% codeExample 'slice' %}
+    @use "sass:string";
+
     @debug string.slice("Helvetica Neue", 11); // "Neue"
     @debug string.slice("Helvetica Neue", 1, 3); // "Hel"
     @debug string.slice("Helvetica Neue", 1, -6); // "Helvetica"
     ===
+    @use "sass:string"
+
     @debug string.slice("Helvetica Neue", 11)  // "Neue"
     @debug string.slice("Helvetica Neue", 1, 3)  // "Hel"
     @debug string.slice("Helvetica Neue", 1, -6)  // "Helvetica"
@@ -100,10 +124,14 @@ title: sass:string
   substring contains the rest of the string, including any remaining
   `$separator`s.
 
-  {% codeExample 'split', false %}
+  {% codeExample 'split' %}
+    @use "sass:string";
+
     @debug string.split("Segoe UI Emoji", " "); // ["Segoe", "UI", "Emoji"]
     @debug string.split("Segoe UI Emoji", " ", $limit: 1); // ["Segoe", "UI Emoji"]
     ===
+    @use "sass:string"
+
     @debug string.split("Segoe UI Emoji", " ")  // ["Segoe", "UI", "Emoji"]
     @debug string.split("Segoe UI Emoji", " ", $limit: 1)  // ["Segoe", "UI Emoji"]
   {% endcodeExample %}
@@ -115,10 +143,14 @@ title: sass:string
 
   [ASCII]: https://en.wikipedia.org/wiki/ASCII
 
-  {% codeExample 'to-upper-case', false %}
+  {% codeExample 'to-upper-case' %}
+    @use "sass:string";
+
     @debug string.to-upper-case("Bold"); // "BOLD"
     @debug string.to-upper-case(sans-serif); // SANS-SERIF
     ===
+    @use "sass:string"
+
     @debug string.to-upper-case("Bold")  // "BOLD"
     @debug string.to-upper-case(sans-serif)  // SANS-SERIF
   {% endcodeExample %}
@@ -130,10 +162,14 @@ title: sass:string
 
   [ASCII]: https://en.wikipedia.org/wiki/ASCII
 
-  {% codeExample 'to-lower-case', false %}
+  {% codeExample 'to-lower-case' %}
+    @use "sass:string";
+
     @debug string.to-lower-case("Bold"); // "bold"
     @debug string.to-lower-case(SANS-SERIF); // sans-serif
     ===
+    @use "sass:string"
+
     @debug string.to-lower-case("Bold")  // "bold"
     @debug string.to-lower-case(SANS-SERIF)  // sans-serif
   {% endcodeExample %}
@@ -143,10 +179,14 @@ title: sass:string
   Returns a randomly-generated unquoted string that's guaranteed to be a valid
   CSS identifier and to be unique within the current Sass compilation.
 
-  {% codeExample 'unique-id', false %}
+  {% codeExample 'unique-id' %}
+    @use "sass:string";
+
     @debug string.unique-id(); // uabtrnzug
     @debug string.unique-id(); // u6w1b1def
     ===
+    @use "sass:string"
+
     @debug string.unique-id(); // uabtrnzug
     @debug string.unique-id(); // u6w1b1def
   {% endcodeExample %}
@@ -156,10 +196,14 @@ title: sass:string
   Returns `$string` as an unquoted string. This can produce strings that aren't
   valid CSS, so use with caution.
 
-  {% codeExample 'unquote', false %}
+  {% codeExample 'unquote' %}
+    @use "sass:string";
+
     @debug string.unquote("Helvetica"); // Helvetica
     @debug string.unquote(".widget:hover"); // .widget:hover
     ===
+    @use "sass:string"
+
     @debug string.unquote("Helvetica")  // Helvetica
     @debug string.unquote(".widget:hover")  // .widget:hover
   {% endcodeExample %}
