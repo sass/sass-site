@@ -19,7 +19,7 @@ import {renderPermalink} from './components/anchors';
  */
 export const markdownEngine = markdown({
   html: true,
-  typographer: true,
+  typographer: false,
 })
   .use(markdownDefList)
   .use(markdownItAttrs)
