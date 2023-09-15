@@ -37,13 +37,17 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
   [placeholder selectors]: /documentation/style-rules/placeholder-selectors
   [parent selectors]: /documentation/style-rules/parent-selector
 
-  {% codeExample 'is-superselector', false %}
+  {% codeExample 'is-superselector' %}
+    @use "sass:selector";
+
     @debug selector.is-superselector("a", "a.disabled"); // true
     @debug selector.is-superselector("a.disabled", "a"); // false
     @debug selector.is-superselector("a", "sidebar a"); // true
     @debug selector.is-superselector("sidebar a", "a"); // false
     @debug selector.is-superselector("a", "a"); // true
     ===
+    @use "sass:selector"
+
     @debug selector.is-superselector("a", "a.disabled")  // true
     @debug selector.is-superselector("a.disabled", "a")  // false
     @debug selector.is-superselector("a", "sidebar a")  // true
@@ -69,12 +73,16 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
 
   See also [`selector.nest()`](#nest).
 
-  {% codeExample 'append', false %}
+  {% codeExample 'append' %}
+    @use "sass:selector";
+
     @debug selector.append("a", ".disabled"); // a.disabled
     @debug selector.append(".accordion", "__copy"); // .accordion__copy
     @debug selector.append(".accordion", "__copy, __image");
     // .accordion__copy, .accordion__image
     ===
+    @use "sass:selector"
+
     @debug selector.append("a", ".disabled")  // a.disabled
     @debug selector.append(".accordion", "__copy")  // .accordion__copy
     @debug selector.append(".accordion", "__copy, __image")
@@ -107,12 +115,16 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
 
   See also [`selector.replace()`](#replace).
 
-  {% codeExample 'extend', false %}
+  {% codeExample 'extend' %}
+    @use "sass:selector";
+
     @debug selector.extend("a.disabled", "a", ".link"); // a.disabled, .link.disabled
     @debug selector.extend("a.disabled", "h1", "h2"); // a.disabled
     @debug selector.extend(".guide .info", ".info", ".content nav.sidebar");
     // .guide .info, .guide .content nav.sidebar, .content .guide nav.sidebar
     ===
+    @use "sass:selector"
+
     @debug selector.extend("a.disabled", "a", ".link")  // a.disabled, .link.disabled
     @debug selector.extend("a.disabled", "h1", "h2")  // a.disabled
     @debug selector.extend(".guide .info", ".info", ".content nav.sidebar")
@@ -132,12 +144,16 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
 
   See also [`selector.append()`](#append).
 
-  {% codeExample 'nest', false %}
+  {% codeExample 'nest' %}
+    @use "sass:selector";
+
     @debug selector.nest("ul", "li"); // ul li
     @debug selector.nest(".alert, .warning", "p"); // .alert p, .warning p
     @debug selector.nest(".alert", "&:hover"); // .alert:hover
     @debug selector.nest(".accordion", "&__copy"); // .accordion__copy
     ===
+    @use "sass:selector"
+
     @debug selector.nest("ul", "li")  // ul li
     @debug selector.nest(".alert, .warning", "p")  // .alert p, .warning p
     @debug selector.nest(".alert", "&:hover")  // .alert:hover
@@ -148,11 +164,15 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
 {% function 'selector.parse($selector)', 'selector-parse($selector)', 'returns:selector' %}
   Returns `$selector` in the [selector value](#selector-values) format.
 
-  {% codeExample 'parse', false %}
+  {% codeExample 'parse' %}
+    @use "sass:selector";
+
     @debug selector.parse(".main aside:hover, .sidebar p");
     // ((unquote(".main") unquote("aside:hover")),
     //  (unquote(".sidebar") unquote("p")))
     ===
+    @use "sass:selector"
+
     @debug selector.parse(".main aside:hover, .sidebar p")
     // ((unquote(".main") unquote("aside:hover")),
     //  (unquote(".sidebar") unquote("p")))
@@ -178,12 +198,16 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
 
   See also [`selector.extend()`](#extend).
 
-  {% codeExample 'replace', false %}
+  {% codeExample 'replace' %}
+    @use "sass:selector";
+
     @debug selector.replace("a.disabled", "a", ".link"); // .link.disabled
     @debug selector.replace("a.disabled", "h1", "h2"); // a.disabled
     @debug selector.replace(".guide .info", ".info", ".content nav.sidebar");
     // .guide .content nav.sidebar, .content .guide nav.sidebar
     ===
+    @use "sass:selector"
+
     @debug selector.replace("a.disabled", "a", ".link")  // .link.disabled
     @debug selector.replace("a.disabled", "h1", "h2")  // a.disabled
     @debug selector.replace(".guide .info", ".info", ".content nav.sidebar")
@@ -204,12 +228,16 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
 
   [`@extend` rule]: /documentation/at-rules/extend#html-heuristics
 
-  {% codeExample 'unify', false %}
+  {% codeExample 'unify' %}
+    @use "sass:selector";
+
     @debug selector.unify("a", ".disabled"); // a.disabled
     @debug selector.unify("a.disabled", "a.outgoing"); // a.disabled.outgoing
     @debug selector.unify("a", "h1"); // null
     @debug selector.unify(".warning a", "main a"); // .warning main a, main .warning a
     ===
+    @use "sass:selector"
+
     @debug selector.unify("a", ".disabled")  // a.disabled
     @debug selector.unify("a.disabled", "a.outgoing")  // a.disabled.outgoing
     @debug selector.unify("a", "h1")  // null
@@ -226,10 +254,14 @@ also just be normal strings (quoted or unquoted), or a combination. For example,
   The returned list is comma-separated, and the simple selectors are unquoted
   strings.
 
-  {% codeExample 'simple-selectors', false %}
+  {% codeExample 'simple-selectors' %}
+    @use "sass:selector";
+
     @debug selector.simple-selectors("a.disabled"); // a, .disabled
     @debug selector.simple-selectors("main.blog:after"); // main, .blog, :after
     ===
+    @use "sass:selector"
+
     @debug selector.simple-selectors("a.disabled")  // a, .disabled
     @debug selector.simple-selectors("main.blog:after")  // main, .blog, :after
   {% endcodeExample %}

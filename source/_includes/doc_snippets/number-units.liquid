@@ -8,7 +8,9 @@ A number can have any number of units in the numerator and/or denominator.
 
 [real-world unit calculations]: https://en.wikipedia.org/wiki/Unit_of_measurement#Calculations_with_units_of_measurement
 
-{% codeExample 'number-units', false %}
+{% codeExample 'number-units' %}
+  @use 'sass:math';
+
   @debug 4px * 6px; // 24px*px (read "square pixels")
   @debug math.div(5px, 2s); // 2.5px/s (read "pixels per second")
 
@@ -19,6 +21,8 @@ A number can have any number of units in the numerator and/or denominator.
   @debug $degrees-per-second; // 20deg/s
   @debug math.div(1, $degrees-per-second); // 0.05s/deg
   ===
+  @use 'sass:math'
+
   @debug 4px * 6px  // 24px*px (read "square pixels")
   @debug math.div(5px, 2s)  // 2.5px/s (read "pixels per second")
 

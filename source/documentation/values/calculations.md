@@ -38,7 +38,7 @@ introduction: >
   ===
   @debug calc(400px + 10%)  // calc(400px + 10%)
   @debug calc(400px / 2)  // 200px
-  @debug min(100px, calc(1rem + 10%) ; // min(100px, 1rem + 10%)
+  @debug min(100px, calc(1rem + 10%)) ; // min(100px, 1rem + 10%)
 {% endcodeExample %}
 
 Calculations use a special syntax that's different from normal SassScript. It's

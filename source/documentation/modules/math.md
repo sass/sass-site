@@ -14,9 +14,13 @@ title: sass:math
 
   [mathematical constant *e*]: https://en.wikipedia.org/wiki/E_(mathematical_constant)
 
-  {% codeExample 'math-e', false %}
+  {% codeExample 'math-e' %}
+    @use 'sass:math';
+
     @debug math.$e; // 2.7182818285
     ===
+    @use 'sass:math'
+
     @debug math.$e  // 2.7182818285
   {% endcodeExample %}
 {% endfunction %}
@@ -36,9 +40,13 @@ title: sass:math
   The maximum finite number that can be represented as a 64-bit floating point
   number.
 
-  {% codeExample 'math-max-number', false %}
+  {% codeExample 'math-max-number' %}
+    @use 'sass:math';
+
     @debug math.$max-number; // 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     ===
+    @use 'sass:math'
+
     @debug math.$max-number  // 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   {% endcodeExample %}
 {% endfunction %}
@@ -49,9 +57,13 @@ title: sass:math
   The maximum integer `n` such that both `n` and `n + 1` can be precisely
   represented as a 64-bit floating-point number.
 
-  {% codeExample 'math-max-safe-integer', false %}
+  {% codeExample 'math-max-safe-integer' %}
+    @use 'sass:math';
+
     @debug math.$max-safe-integer; // 9007199254740991
     ===
+    @use 'sass:math'
+
     @debug math.$max-safe-integer  // 9007199254740991
   {% endcodeExample %}
 {% endfunction %}
@@ -71,9 +83,13 @@ title: sass:math
   The minimum integer `n` such that both `n` and `n - 1` can be precisely
   represented as a 64-bit floating-point number.
 
-  {% codeExample 'math-min-safe-integer', false %}
+  {% codeExample 'math-min-safe-integer' %}
+    @use 'sass:math';
+
     @debug math.$min-safe-integer; // -9007199254740991
     ===
+    @use 'sass:math'
+
     @debug math.$min-safe-integer  // -9007199254740991
   {% endcodeExample %}
 {% endfunction %}
@@ -86,9 +102,13 @@ title: sass:math
 
   [mathematical constant *π*]: https://en.wikipedia.org/wiki/Pi
 
-  {% codeExample 'math-pi', false %}
+  {% codeExample 'math-pi' %}
+    @use 'sass:math';
+
     @debug math.$pi; // 3.1415926536
     ===
+    @use 'sass:math'
+
     @debug math.$pi  // 3.1415926536
   {% endcodeExample %}
 {% endfunction %}
@@ -98,11 +118,15 @@ title: sass:math
 {% function 'math.ceil($number)', 'ceil($number)', 'returns:number' %}
   Rounds `$number` up to the next highest whole number.
 
-  {% codeExample 'math-ceil', false %}
+  {% codeExample 'math-ceil' %}
+    @use 'sass:math';
+
     @debug math.ceil(4); // 4
     @debug math.ceil(4.2); // 5
     @debug math.ceil(4.9); // 5
     ===
+    @use 'sass:math'
+
     @debug math.ceil(4)  // 4
     @debug math.ceil(4.2)  // 5
     @debug math.ceil(4.9)  // 5
@@ -118,11 +142,15 @@ title: sass:math
 
   `$min`, `$number`, and `$max` must have compatible units, or all be unitless.
 
-  {% codeExample 'math-clamp', false %}
+  {% codeExample 'math-clamp' %}
+    @use 'sass:math';
+
     @debug math.clamp(-1, 0, 1); // 0
     @debug math.clamp(1px, -1px, 10px); // 1px
     @debug math.clamp(-1in, 1cm, 10mm); // 10mm
     ===
+    @use 'sass:math'
+
     @debug math.clamp(-1, 0, 1) // 0
     @debug math.clamp(1px, -1px, 10px) // 1px
     @debug math.clamp(-1in, 1cm, 10mm) // 10mm
@@ -132,11 +160,15 @@ title: sass:math
 {% function 'math.floor($number)', 'floor($number)', 'returns:number' %}
   Rounds `$number` down to the next lowest whole number.
 
-  {% codeExample 'math-floor', false %}
+  {% codeExample 'math-floor' %}
+    @use 'sass:math';
+
     @debug math.floor(4); // 4
     @debug math.floor(4.2); // 4
     @debug math.floor(4.9); // 4
     ===
+    @use 'sass:math'
+
     @debug math.floor(4)  // 4
     @debug math.floor(4.2)  // 4
     @debug math.floor(4.9)  // 4
@@ -146,12 +178,16 @@ title: sass:math
 {% function 'math.max($number...)', 'max($number...)', 'returns:number' %}
   Returns the highest of one or more numbers.
 
-  {% codeExample 'math-max', false %}
+  {% codeExample 'math-max' %}
+    @use 'sass:math';
+
     @debug math.max(1px, 4px); // 4px
 
     $widths: 50px, 30px, 100px;
     @debug math.max($widths...); // 100px
     ===
+    @use 'sass:math'
+
     @debug math.max(1px, 4px)  // 4px
 
     $widths: 50px, 30px, 100px
@@ -162,12 +198,16 @@ title: sass:math
 {% function 'math.min($number...)', 'min($number...)', 'returns:number' %}
   Returns the lowest of one or more numbers.
 
-  {% codeExample 'math-min', false %}
+  {% codeExample 'math-min' %}
+    @use 'sass:math';
+
     @debug math.min(1px, 4px); // 1px
 
     $widths: 50px, 30px, 100px;
     @debug math.min($widths...); // 30px
     ===
+    @use 'sass:math'
+
     @debug math.min(1px, 4px)  // 1px
 
     $widths: 50px, 30px, 100px
@@ -178,11 +218,15 @@ title: sass:math
 {% function 'math.round($number)', 'round($number)', 'returns:number' %}
   Rounds `$number` to the nearest whole number.
 
-  {% codeExample 'math-round', false %}
+  {% codeExample 'math-round' %}
+    @use 'sass:math';
+
     @debug math.round(4); // 4
     @debug math.round(4.2); // 4
     @debug math.round(4.9); // 5
     ===
+    @use 'sass:math'
+
     @debug math.round(4)  // 4
     @debug math.round(4.2)  // 4
     @debug math.round(4.9)  // 5
@@ -197,10 +241,14 @@ title: sass:math
 
   [absolute value]: https://en.wikipedia.org/wiki/Absolute_value
 
-  {% codeExample 'math-abs', false %}
+  {% codeExample 'math-abs' %}
+    @use 'sass:math';
+
     @debug math.abs(10px); // 10px
     @debug math.abs(-10px); // 10px
     ===
+    @use 'sass:math'
+
     @debug math.abs(10px) // 10px
     @debug math.abs(-10px) // 10px
   {% endcodeExample %}
@@ -219,12 +267,16 @@ title: sass:math
 
   [vector]: https://en.wikipedia.org/wiki/Euclidean_vector
 
-  {% codeExample 'math-hypot', false %}
+  {% codeExample 'math-hypot' %}
+    @use 'sass:math';
+
     @debug math.hypot(3, 4); // 5
 
     $lengths: 1in, 10cm, 50px;
     @debug math.hypot($lengths...); // 4.0952775683in
     ===
+    @use 'sass:math'
+
     @debug math.hypot(3, 4) // 5
 
     $lengths: 1in, 10cm, 50px
@@ -245,10 +297,14 @@ title: sass:math
   [logarithm]: https://en.wikipedia.org/wiki/Logarithm
   [natural log]: https://en.wikipedia.org/wiki/Natural_logarithm
 
-  {% codeExample 'math-log', false %}
+  {% codeExample 'math-log' %}
+    @use 'sass:math';
+
     @debug math.log(10); // 2.302585093
     @debug math.log(10, 10); // 1
     ===
+    @use 'sass:math'
+
     @debug math.log(10) // 2.302585093
     @debug math.log(10, 10) // 1
   {% endcodeExample %}
@@ -263,11 +319,15 @@ title: sass:math
 
   [to the power of]: https://en.wikipedia.org/wiki/Exponentiation
 
-  {% codeExample 'math-pow', false %}
+  {% codeExample 'math-pow' %}
+    @use 'sass:math';
+
     @debug math.pow(10, 2); // 100
     @debug math.pow(100, math.div(1, 3)); // 4.6415888336
     @debug math.pow(5, -2); // 0.04
     ===
+    @use 'sass:math'
+
     @debug math.pow(10, 2) // 100
     @debug math.pow(100, math.div(1, 3)) // 4.6415888336
     @debug math.pow(5, -2) // 0.04
@@ -283,11 +343,15 @@ title: sass:math
 
   [square root]: https://en.wikipedia.org/wiki/Square_root
 
-  {% codeExample 'math-sqrt', false %}
+  {% codeExample 'math-sqrt' %}
+    @use 'sass:math';
+
     @debug math.sqrt(100); // 10
     @debug math.sqrt(math.div(1, 3)); // 0.5773502692
     @debug math.sqrt(-1); // NaN
     ===
+    @use 'sass:math'
+
     @debug math.sqrt(100) // 10
     @debug math.sqrt(math.div(1, 3)) // 0.5773502692
     @debug math.sqrt(-1) // NaN
@@ -306,11 +370,15 @@ title: sass:math
 
   [cosine]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
-  {% codeExample 'math-cos', false %}
+  {% codeExample 'math-cos' %}
+    @use 'sass:math';
+
     @debug math.cos(100deg); // -0.1736481777
     @debug math.cos(1rad); // 0.5403023059
     @debug math.cos(1); // 0.5403023059
     ===
+    @use 'sass:math'
+
     @debug math.cos(100deg) // -0.1736481777
     @debug math.cos(1rad) // 0.5403023059
     @debug math.cos(1) // 0.5403023059
@@ -327,11 +395,15 @@ title: sass:math
 
   [sine]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
-  {% codeExample 'math-sin', false %}
+  {% codeExample 'math-sin' %}
+    @use 'sass:math';
+
     @debug math.sin(100deg); // 0.984807753
     @debug math.sin(1rad); // 0.8414709848
     @debug math.sin(1); // 0.8414709848
     ===
+    @use 'sass:math'
+
     @debug math.sin(100deg) // 0.984807753
     @debug math.sin(1rad) // 0.8414709848
     @debug math.sin(1) // 0.8414709848
@@ -348,11 +420,15 @@ title: sass:math
 
   [tangent]: https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions
 
-  {% codeExample 'math-tan', false %}
+  {% codeExample 'math-tan' %}
+    @use 'sass:math';
+
     @debug math.tan(100deg); // -5.6712818196
     @debug math.tan(1rad); // 1.5574077247
     @debug math.tan(1); // 1.5574077247
     ===
+    @use 'sass:math'
+
     @debug math.tan(100deg) // -5.6712818196
     @debug math.tan(1rad) // 1.5574077247
     @debug math.tan(1) // 1.5574077247
@@ -368,10 +444,14 @@ title: sass:math
 
   [arccosine]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
 
-  {% codeExample 'math-acos', false %}
+  {% codeExample 'math-acos' %}
+    @use 'sass:math';
+
     @debug math.acos(0.5); // 60deg
     @debug math.acos(2); // NaNdeg
     ===
+    @use 'sass:math'
+
     @debug math.acos(0.5) // 60deg
     @debug math.acos(2) // NaNdeg
   {% endcodeExample %}
@@ -386,10 +466,14 @@ title: sass:math
 
   [arcsine]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
 
-  {% codeExample 'math-asin', false %}
+  {% codeExample 'math-asin' %}
+    @use 'sass:math';
+
     @debug math.asin(0.5); // 30deg
     @debug math.asin(2); // NaNdeg
     ===
+    @use 'sass:math'
+
     @debug math.asin(0.5) // 30deg
     @debug math.asin(2) // NaNdeg
   {% endcodeExample %}
@@ -404,9 +488,13 @@ title: sass:math
 
   [arctangent]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties
 
-  {% codeExample 'math-atan', false %}
+  {% codeExample 'math-atan' %}
+    @use 'sass:math';
+
     @debug math.atan(10); // 84.2894068625deg
     ===
+    @use 'sass:math'
+
     @debug math.atan(10) // 84.2894068625deg
   {% endcodeExample %}
 {% endfunction %}
@@ -428,9 +516,13 @@ title: sass:math
     to `atan(-1)`, so both return `-45deg`.
   {% endfunFact %}
 
-  {% codeExample 'math-atan2', false %}
+  {% codeExample 'math-atan2' %}
+    @use 'sass:math';
+
     @debug math.atan2(-1, 1); // 135deg
     ===
+    @use 'sass:math'
+
     @debug math.atan2(-1, 1) // 135deg
   {% endcodeExample %}
 {% endfunction %}
@@ -455,11 +547,15 @@ title: sass:math
     function does.
   {% endheadsUp %}
 
-  {% codeExample 'math-compatible', false %}
+  {% codeExample 'math-compatible' %}
+    @use 'sass:math';
+
     @debug math.compatible(2px, 1px); // true
     @debug math.compatible(100px, 3em); // false
     @debug math.compatible(10cm, 3mm); // true
     ===
+    @use 'sass:math'
+
     @debug math.compatible(2px, 1px)  // true
     @debug math.compatible(100px, 3em)  // false
     @debug math.compatible(10cm, 3mm)  // true
@@ -469,10 +565,14 @@ title: sass:math
 {% function 'math.is-unitless($number)', 'unitless($number)', 'returns:boolean' %}
   Returns whether `$number` has no units.
 
-  {% codeExample 'math-is-unitless', false %}
+  {% codeExample 'math-is-unitless' %}
+    @use 'sass:math';
+
     @debug math.is-unitless(100); // true
     @debug math.is-unitless(100px); // false
     ===
+    @use 'sass:math'
+
     @debug math.is-unitless(100)  // true
     @debug math.is-unitless(100px)  // false
   {% endcodeExample %}
@@ -486,12 +586,16 @@ title: sass:math
     to be consistent across Sass versions or implementations.
   {% endheadsUp %}
 
-  {% codeExample 'math-unitless', false %}
+  {% codeExample 'math-unitless' %}
+    @use 'sass:math';
+
     @debug math.unit(100); // ""
     @debug math.unit(100px); // "px"
     @debug math.unit(5px * 10px); // "px*px"
     @debug math.unit(math.div(5px, 1s)); // "px/s"
     ===
+    @use 'sass:math'
+
     @debug math.unit(100)  // ""
     @debug math.unit(100px)  // "px"
     @debug math.unit(5px * 10px)  // "px*px"
@@ -519,12 +623,16 @@ title: sass:math
     [the deprecated `/` operator]: /documentation/breaking-changes/slash-div
   {% endheadsUp %}
 
-  {% codeExample 'math-div', false %}
+  {% codeExample 'math-div' %}
+    @use 'sass:math';
+
     @debug math.div(1, 2); // 0.5
     @debug math.div(100px, 5px); // 20
     @debug math.div(100px, 5); // 20px
     @debug math.div(100px, 5s); // 20px/s
     ===
+    @use 'sass:math'
+
     @debug math.div(1, 2)  // 0.5
     @debug math.div(100px, 5px)  // 20
     @debug math.div(100px, 5)  // 20px
@@ -540,10 +648,14 @@ title: sass:math
     This function is identical to `$number * 100%`.
   {% endfunFact %}
 
-  {% codeExample 'math-percentage', false %}
+  {% codeExample 'math-percentage' %}
+    @use 'sass:math';
+
     @debug math.percentage(0.2); // 20%
     @debug math.percentage(math.div(100px, 50px)); // 200%
     ===
+    @use 'sass:math'
+
     @debug math.percentage(0.2)  // 20%
     @debug math.percentage(math.div(100px, 50px))  // 200%
   {% endcodeExample %}
@@ -552,10 +664,14 @@ title: sass:math
 {% function 'math.random($limit: null)', 'random($limit: null)', 'returns:number' %}
   If `$limit` is `null`, returns a random decimal number between 0 and 1.
 
-  {% codeExample 'math-random', false %}
+  {% codeExample 'math-random' %}
+    @use 'sass:math';
+
     @debug math.random(); // 0.2821251858
     @debug math.random(); // 0.6221325814
     ===
+    @use 'sass:math'
+
     @debug math.random()  // 0.2821251858
     @debug math.random()  // 0.6221325814
   {% endcodeExample %}
@@ -572,17 +688,25 @@ title: sass:math
 
     [This behavior is deprecated]: /documentation/breaking-changes/function-units
 
-    {% codeExample 'math-random-warning', false %}
+    {% codeExample 'math-random-warning' %}
+      @use 'sass:math';
+
       @debug math.random(100px); // 42
       ===
+      @use 'sass:math'
+
       @debug math.random(100px)  // 42
     {% endcodeExample %}
   {% endheadsUp %}
 
-  {% codeExample 'math-random-limit', false %}
+  {% codeExample 'math-random-limit' %}
+    @use 'sass:math';
+
     @debug math.random(10); // 4
     @debug math.random(10000); // 5373
     ===
+    @use 'sass:math'
+
     @debug math.random(10)  // 4
     @debug math.random(10000)  // 5373
   {% endcodeExample %}
