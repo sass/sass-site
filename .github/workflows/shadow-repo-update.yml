@@ -46,7 +46,7 @@ jobs:
     if: github.event_name == 'workflow_run'
     steps:
       - name: Download built site
-        uses: dawidd6/action-download-artifact@v2.27.0
+        uses: dawidd6/action-download-artifact@v2.28.0
         with:
           name: site
           run_id: ${{ github.event.workflow_run.id }}
@@ -81,7 +81,7 @@ jobs:
     steps:
       - name: Download comment text
         id: download_comment
-        uses: dawidd6/action-download-artifact@v2.27.0
+        uses: dawidd6/action-download-artifact@v2.28.0
         with:
           name: comment
           run_id: ${{ github.event.workflow_run.id }}
