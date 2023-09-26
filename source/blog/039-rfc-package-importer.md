@@ -50,8 +50,11 @@ would allow a package consumer to write:
 @use "pkg:library/utils";
 ```
 
-The Node Package Importer also supports several other ways of defining entry
-points, which it resolves in the following order:
+We wanted to allow Sass package consumers to start using `pkg:` URLs without
+requiring changes from the package authors. Because many Sass packages already
+define their entrypoints in a variety of ways, the Node Package Importer also
+supports several other ways of defining entrypoints, which cover the majority of
+implementations we observed. These resolve in the following order:
 
 1. `sass`, `style`, or `default` condition in package.json `exports` that
    resolves to a Sass or CSS file.
@@ -107,6 +110,14 @@ Loader for Webpack] all currently resolve Sass paths using the `sass` and
 Users will need to opt-in to the new Package Importer by importing the
 `nodePackageImporter` from `sass` and including it in the list of `importers`.
 This won't be available for Sass in the browser.
+
+```js
+const sass = require('sass');
+
+sass.compile('style.scss', {
+    importers: [sass.nodePackageImporter]
+})
+```
 
 ## Next steps
 
