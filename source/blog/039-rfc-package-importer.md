@@ -22,8 +22,8 @@ standards and conventions for a specific environment.
 
 To address the largest use case, we are proposing a built-in Package Importer
 for the Node ecosystem. Our recommendation is for package authors to define a
-`sass` [conditional export] for entry points to their package in their distributed
-`package.json`. For example, a `package.json` containing:
+`sass` [conditional export] for entry points to their package in their
+distributed `package.json`. For example, a `package.json` containing:
 
 [conditional export]: https://nodejs.org/api/packages.html#conditional-exports
 
@@ -82,17 +82,21 @@ distributed alongside compiled code, and are often not the primary export in a
 package.
 
 Based on our [analysis] of over 400 packages for design libraries and
-frameworks, we saw that packages were almost always distributing Sass alongside
-JavaScript code. Some packages do specify a Sass file as a `sass` key or a CSS
-file as a `style` key at the `package.json` root, which will be supported by the
-Node Package Importer. We observed little usage of `main` or `module` keys for
-CSS or Sass. 
+frameworks, we anticipate package consumers will be able to use `pkg:` URLs for
+many packages without package authors needing to make changes. Package authors
+will be able to better specify and document how to consume the packages.
 
-While we observed low usage of [conditional exports] fields for specifying Sass
-and CSS files, we expect this to grow as package authors adopt conditional
-exports. In addition, build tools like [Vite], [Parcel] and [Sass Loader for
-Webpack] all currently resolve Sass paths using the `"sass"` and the `"style"`
-custom conditions.
+Our analysis also showed that packages distributing Sass almost always did so
+alongside JavaScript code. Some packages do specify a Sass file as a `sass` key
+or a CSS file as a `style` key at the `package.json` root, both of which will be
+supported by the Node Package Importer. We observed little usage of `main` or
+`module` keys for CSS or Sass, which will not be supported.
+
+While we observed low usage currently of [conditional exports] fields for
+specifying Sass and CSS files, we expect this to grow as package authors adopt
+conditional exports. In addition, build tools like [Vite], [Parcel] and [Sass
+Loader for Webpack] all currently resolve Sass paths using the `"sass"` and the
+`"style"` custom conditions.
 
 [analysis]: https://github.com/oddbird/sass-pkg-test/tree/main/analysis
 [conditional exports]: https://nodejs.org/api/packages.html#conditional-exports
