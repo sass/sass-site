@@ -8,7 +8,7 @@ Sass users often need to use styles from a dependency to customize an existing
 theme or access styling utilities. Historically, Sass has not specified a
 standard method for using packages from dependencies. This has led to a variety
 of domain-specific solutions, including the `~` prefix in Webpack, and adding
-`node_modules` to `loadPaths`. 
+`node_modules` to `loadPaths`.
 
 This has been a common pain point, and can make it difficult to rely on
 dependencies. It can also make it more difficult to move your project to a new
@@ -18,7 +18,7 @@ build process.
 
 We are proposing a new type of importer that allows users to use the `pkg:` URL
 scheme to direct Sass to resolve the dependency URL using the resolution
-standards and conventions for a specific environment. 
+standards and conventions for a specific environment.
 
 To address the largest use case, we are proposing a built-in Package Importer
 for the Node ecosystem. Our recommendation is for package authors to define a
@@ -95,8 +95,8 @@ supported by the Node Package Importer. We observed little usage of `main` or
 While we observed low usage currently of [conditional exports] fields for
 specifying Sass and CSS files, we expect this to grow as package authors adopt
 conditional exports. In addition, build tools like [Vite], [Parcel] and [Sass
-Loader for Webpack] all currently resolve Sass paths using the `"sass"` and the
-`"style"` custom conditions.
+Loader for Webpack] all currently resolve Sass paths using the `sass` and
+`style` custom conditions.
 
 [analysis]: https://github.com/oddbird/sass-pkg-test/tree/main/analysis
 [conditional exports]: https://nodejs.org/api/packages.html#conditional-exports
@@ -110,7 +110,7 @@ This won't be available for Sass in the browser.
 
 ## Next steps
 
-This is still is the proposal phase, so we are open to feedback. Review the
+This is still in the proposal phase, so we are open to feedback. Review the
 proposal [on Github], and [open an issue] with any thoughts or concerns you may
 have.
 
