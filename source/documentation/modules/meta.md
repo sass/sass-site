@@ -12,7 +12,7 @@ title: sass:meta
   Includes `$mixin` with `$args`. If this is passed a [`@content` block], it's
   forwarded to `$mixin`.
 
-  [`@content`]: /documentation/at-rules/mixin#content-blocks
+  [`@content` block]: /documentation/at-rules/mixin#content-blocks
 
   The `$mixin` must be a [mixin value], such as one returned by
   [`meta.get-mixin()`].
@@ -308,7 +308,6 @@ title: sass:meta
   By default, this throws an error if `$name` doesn't refer to Sass function.
   However, if `$css` is `true`, it instead returns a [plain CSS function][].
 
-  [user-defined]: /documentation/at-rules/function
   [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
 
   The returned mixin can be included using [`meta.apply()`](#apply).
@@ -333,7 +332,6 @@ title: sass:meta
   By default, this throws an error if `$name` doesn't refer to a mixin. However,
   if `$css` is `true`, it instead returns a [plain CSS function].
 
-  [user-defined]: /documentation/at-rules/function
   [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
 
   The returned function can be called using [`meta.call()`](#call).

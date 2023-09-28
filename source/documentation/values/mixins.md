@@ -1,5 +1,5 @@
 ---
-title: Mixins
+title: Mixin Values
 ---
 
 {% compatibility 'dart: "1.69.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
