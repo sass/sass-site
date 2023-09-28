@@ -4,7 +4,10 @@
   itemscope="itemscope"
   role="banner">
   {% for alert in alerts | default: [] %}
-    <div class="sl-c-alert">
+    {% if alert.color %}
+      {% assign style = "--sl-background--alert: " | append: alert.color %}
+    {% endif %}
+    <div class="sl-c-alert" style="{{ style }}">
       <div class="sl-l-container">
         {% if alert.heading %}
           <h2 class="sl-c-alert-title">{{ alert.heading }}</h2>

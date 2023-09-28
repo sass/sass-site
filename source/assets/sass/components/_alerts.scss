@@ -2,7 +2,7 @@
 @use '../config/color/brand';
 
 .sl-c-alert {
-  background: var(--sl-background--alert, black);
+  background: var(--sl-background--alert, var(--sl-color--highlight));
   color: var(--sl-color--white);
   font-size: var(--sl-font-size--small);
   padding-bottom: var(--sl-padding-block--alert, var(--sl-gutter--minus));
