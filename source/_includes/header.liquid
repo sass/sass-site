@@ -4,9 +4,11 @@
   itemscope="itemscope"
   role="banner">
   {% for alert in alerts | default: [] %}
-    <div class="sl-c-alert sl-c-alert--special">
+    <div class="sl-c-alert">
       <div class="sl-l-container">
-        <h2 class="sl-c-alert-title">{{ alert.heading }}</h2>
+        {% if alert.heading %}
+          <h2 class="sl-c-alert-title">{{ alert.heading }}</h2>
+        {% endif %}
         {{ alert.body | markdown }}
       </div>
     </div>

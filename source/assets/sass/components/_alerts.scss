@@ -2,7 +2,7 @@
 @use '../config/color/brand';
 
 .sl-c-alert {
-  background: var(--sl-background--alert, var(--sl-color--highlight));
+  background: var(--sl-background--alert, black);
   color: var(--sl-color--white);
   font-size: var(--sl-font-size--small);
   padding-bottom: var(--sl-padding-block--alert, var(--sl-gutter--minus));
@@ -50,12 +50,6 @@
 
 .sl-c-alert--info {
   --sl-background--alert: var(--sl-color--midnight-blue);
-}
-
-.sl-c-alert--special {
-  --sl-align--alert: left;
-  --sl-background--alert: black;
-  --sl-padding-block--alert: var(--sl-gutter--triple);
 }
 
 .sl-c-alert-title {
