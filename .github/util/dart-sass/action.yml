@@ -19,7 +19,7 @@ runs:
       if: steps.clone.outputs.cloned == 'true'
 
     - name: Build Dart Sass
-      run: dart run grinder pkg-npm-dev
+      run: dart run grinder protobuf pkg-npm-dev
       working-directory: dart-sass
       shell: bash
       if: steps.clone.outputs.cloned == 'true'
