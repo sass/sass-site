@@ -4,31 +4,28 @@ runs:
   using: composite
   steps:
     - name: Check out Dart Sass
+      id: clone
       uses: sass/clone-linked-repo@v1
       with:
         repo: sass/dart-sass
         default: null
 
-    - name: Install Dart Sass dependencies
-      run: |
-        if [[ -e dart-sass ]]; then
-          cd dart-sass
-          dart pub get
-        fi
+    - uses: dart-lang/setup-dart@v1
+      if: steps.clone.outputs.skip == 'false'
+
+    - run: dart pub get
+      working-directory: dart-sass
       shell: bash
+      if: steps.clone.outputs.skip == 'false'
 
     - name: Build Dart Sass
-      run: |
-        if [[ -e dart-sass ]]; then
-          cd dart-sass
-          dart run grinder pkg-npm-dev
-        fi
+      run: dart run grinder pkg-npm-dev
+      working-directory: dart-sass
       shell: bash
+      if: steps.clone.outputs.skip == 'false'
 
     - name: Install Dart Sass
-      run: |
-        if [[ -e dart-sass ]]; then
-          npm install dart-sass/build/npm
-        fi
+      run: npm install dart-sass/build/npm
+      if: steps.clone.outputs.skip == 'false'
       shell: bash
       
