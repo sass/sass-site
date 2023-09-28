@@ -5,7 +5,7 @@ runs:
   steps:
     - name: Check out Dart Sass
       id: clone
-      uses: sass/clone-linked-repo@skip
+      uses: sass/clone-linked-repo@v1
       with:
         repo: sass/dart-sass
         default-ref: null
