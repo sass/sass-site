@@ -103,6 +103,7 @@ const generateCodeExample = (
     }
     const css = sass.compileString(sections[0], {
       syntax: syntax === 'sass' ? 'indented' : 'scss',
+      logger: sass.Logger.silent,
     }).css;
     if (css.trim()) {
       cssContents = css;
