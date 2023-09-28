@@ -14,7 +14,7 @@ runs:
       if: steps.clone.outputs.cloned == 'true'
 
     - uses: bufbuild/buf-setup-action@v1.13.1
-      with: {github_token: "${{ inputs.github-token }}"}
+      with: {github_token: '${{ inputs.github-token }}'}
       if: steps.clone.outputs.cloned == 'true'
 
     - run: dart pub get
@@ -38,4 +38,3 @@ runs:
       if: steps.clone.outputs.cloned == 'true'
       env: {UPDATE_SASS_PROTOCOL: false}
       shell: bash
-      

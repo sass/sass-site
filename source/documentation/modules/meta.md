@@ -526,7 +526,7 @@ title: sass:meta
 
   {% codeExample 'module-mixins' %}
     // _mixins.scss
-    @mixin header-stretch() {
+    @mixin stretch() {
       align-items: stretch;
       display: flex;
       flex-direction: row;
@@ -537,13 +537,14 @@ title: sass:meta
 
     @use "mixins";
 
-    @debug meta.module-mixins("mixins");
-    // => ("header-stretch": get-mixin("header-stretch"))
+    @debug meta.module-mixins("mixins"); // => ("stretch": get-mixin("stretch"))
 
-    @include meta.apply(map.get(meta.module-mixins("mixins"), "header-stretch"));
+    .header {
+      @include meta.apply(map.get(meta.module-mixins("mixins"), "stretch"));
+    }
     ===
     // _mixins.scss
-    @mixin header-stretch()
+    @mixin stretch()
       align-items: stretch
       display: flex
       flex-direction: row
@@ -553,10 +554,16 @@ title: sass:meta
 
     @use "mixins"
 
-    @debug meta.module-mixins("mixins")
-    // => ("header-stretch": get-mixin("header-stretch"))
+    @debug meta.module-mixins("mixins") // => ("stretch": get-mixin("stretch"))
 
-    @include meta.apply(map.get(meta.module-mixins("mixins"), "header-stretch"))
+    .header
+      @include meta.apply(map.get(meta.module-mixins("mixins"), "stretch"))
+    ===
+    .header {
+      align-items: stretch;
+      display: flex;
+      flex-direction: row;
+    }
   {% endcodeExample %}
 {% endfunction %}
 
