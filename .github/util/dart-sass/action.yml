@@ -1,0 +1,34 @@
+name: sass-spec
+description: Check out Dart Sass, build it, and link it into package.json.
+runs:
+  using: composite
+  steps:
+    - name: Check out Dart Sass
+      uses: sass/clone-linked-repo@v1
+      with:
+        repo: sass/dart-sass
+        default: null
+
+    - name: Install Dart Sass dependencies
+      run: |
+        if [[ -e dart-sass ]]; then
+          cd dart-sass
+          dart pub get
+        fi
+      shell: bash
+
+    - name: Build Dart Sass
+      run: |
+        if [[ -e dart-sass ]]; then
+          cd dart-sass
+          dart run grinder pkg-npm-dev
+        fi
+      shell: bash
+
+    - name: Install Dart Sass
+      run: |
+        if [[ -e dart-sass ]]; then
+          npm install dart-sass/build/npm
+        fi
+      shell: bash
+      
