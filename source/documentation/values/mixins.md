@@ -12,6 +12,6 @@ powerful ways.
 
 [Mixins]: /documentation/at-rules/mixin
 [`meta.get-mixin()` function]: /documentation/modules/meta#get-mixin
-[`meta.apply()` function]: /documentation/modules/meta#apply
+[`meta.apply()` mixin]: /documentation/modules/meta#apply
 
 {% render 'code_snippets/example-first-class-mixin' %}
