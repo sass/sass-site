@@ -11,7 +11,7 @@ mixin] to call it. This is for libraries to be extensible in complex and
 powerful ways.
 
 [Mixins]: /documentation/at-rules/mixin
-[`meta.get-function()` function]: /documentation/modules/meta#get-function
-[`meta.call()` function]: /documentation/modules/meta#call
+[`meta.get-mixin()` function]: /documentation/modules/meta#get-mixin
+[`meta.apply()` function]: /documentation/modules/meta#apply
 
 {% render 'code_snippets/example-first-class-mixin' %}

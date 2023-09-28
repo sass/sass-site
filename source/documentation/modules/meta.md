@@ -6,7 +6,7 @@ title: sass:meta
 
 ## Mixins
 
-{% function 'meta.apply($mixin, $args... %}
+{% function 'meta.apply($mixin, $args...)' %}
   {% compatibility 'dart: "1.69.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
   Includes `$mixin` with `$args`. If this is passed a [`@content` block], it's
@@ -20,7 +20,7 @@ title: sass:meta
   [mixin value]: /documentation/values/mixins
   [`meta.get-mixin()`]: #get-mixin
 
-  {% render 'code_snippets/example-first-class-mixin %}
+  {% render 'code_snippets/example-first-class-mixin' %}
 {% endfunction %}
 
 {% function 'meta.load-css($url, $with: null)' %}
