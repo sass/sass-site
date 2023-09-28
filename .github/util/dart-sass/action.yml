@@ -8,24 +8,24 @@ runs:
       uses: sass/clone-linked-repo@skip
       with:
         repo: sass/dart-sass
-        default: null
+        default-ref: null
 
     - uses: dart-lang/setup-dart@v1
-      if: steps.clone.outputs.skip == 'false'
+      if: steps.clone.outputs.cloned == 'true'
 
     - run: dart pub get
       working-directory: dart-sass
       shell: bash
-      if: steps.clone.outputs.skip == 'false'
+      if: steps.clone.outputs.cloned == 'true'
 
     - name: Build Dart Sass
       run: dart run grinder pkg-npm-dev
       working-directory: dart-sass
       shell: bash
-      if: steps.clone.outputs.skip == 'false'
+      if: steps.clone.outputs.cloned == 'true'
 
     - name: Install Dart Sass
       run: npm install dart-sass/build/npm
-      if: steps.clone.outputs.skip == 'false'
+      if: steps.clone.outputs.cloned == 'true'
       shell: bash
       
