@@ -46,6 +46,7 @@ jobs:
     if: github.event_name == 'workflow_run'
     steps:
       - name: Download built site
+        id: download_site
         uses: dawidd6/action-download-artifact@v2.28.0
         with:
           name: site
@@ -53,20 +54,20 @@ jobs:
           if_no_artifact_found: ignore
       - name: Clone shadow repo
         uses: actions/checkout@v4
-        if: steps.download_comment.outputs.found_artifact == 'true'
+        if: steps.download_site.outputs.found_artifact == 'true'
         with:
           repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
           token: ${{ secrets.SASS_SITE_TOKEN }}
           ref: ${{ github.ref_name }}
           path: shadow-repo
       - name: Update shadow repo files
-        if: steps.download_comment.outputs.found_artifact == 'true'
+        if: steps.download_site.outputs.found_artifact == 'true'
         run: |
           rm -rf shadow_repo/*
           tar xf site.tar
           cp -rT _site shadow_repo
       - uses: EndBug/add-and-commit@v9
-        if: steps.download_comment.outputs.found_artifact == 'true'
+        if: steps.download_site.outputs.found_artifact == 'true'
         with:
           cwd: shadow-repo
           author_name: Sass Bot
