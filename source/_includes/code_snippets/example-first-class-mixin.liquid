@@ -1,0 +1,41 @@
+{% codeExample 'first-class-mixin' %}
+  @use "sass:meta";
+  @use "sass:string";
+
+  /// Passes each element of $list to a separate invocation of $mixin.
+  @mixin apply-to-all($mixin, $list) {
+    @each $element in $list {
+      @include meta.apply($mixin, $element);
+    }
+  }
+
+  @mixin font-class($size) {
+    .font-#{$size} {
+      font-size: $size;
+    }
+  }
+
+  $sizes: 8px, 12px 2rem;
+
+  @include apply-to-all(meta.get-mixin("font-class"), $sizes);
+  ===
+  @use "sass:meta"
+  @use "sass:string"
+
+  /// Passes each element of $list to a separate invocation of $mixin.
+  @mixin apply-to-all($mixin, $list)
+    @each $element in $list
+      @include meta.apply($mixin, $element)
+
+
+
+  @mixin font-class($size)
+    .font-#{$size}
+      font-size: $size
+
+
+
+  $sizes: 8px, 12px 2rem
+
+  @include apply-to-all(meta.get-mixin("font-class"), $sizes)
+{% endcodeExample %}

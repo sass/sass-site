@@ -6,6 +6,23 @@ title: sass:meta
 
 ## Mixins
 
+{% function 'meta.apply($mixin, $args... %}
+  {% compatibility 'dart: "1.69.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+  Includes `$mixin` with `$args`. If this is passed a [`@content` block], it's
+  forwarded to `$mixin`.
+
+  [`@content`]: /documentation/at-rules/mixin#content-blocks
+
+  The `$mixin` must be a [mixin value], such as one returned by
+  [`meta.get-mixin()`].
+
+  [mixin value]: /documentation/values/mixins
+  [`meta.get-mixin()`]: #get-mixin
+
+  {% render 'code_snippets/example-first-class-mixin %}
+{% endfunction %}
+
 {% function 'meta.load-css($url, $with: null)' %}
   {% compatibility 'dart: "1.23.0"', 'libsass: false', 'ruby: false' %}
     Only Dart Sass currently supports this mixin.
@@ -97,6 +114,18 @@ title: sass:meta
 
 ## Functions
 
+{% function 'meta.accepts-content($mixin)', 'returns:boolean' %}
+  {% compatibility 'dart: "1.69.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+  Returns whether the given [mixin value] can accept a [`@content` block].
+
+  [mixin value]: /documentation/values/mixins
+  [`@content` block]: /documentation/at-rules/mixin#content-blocks
+
+  This returns true if it's _possible_ for the mixin to accept a `@content`
+  block, even if it doesn't always do so.
+{% endfunction %}
+
 {% function 'meta.calc-args($calc)', 'returns:list' %}
   {% compatibility 'dart: "1.40.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
@@ -145,10 +174,10 @@ title: sass:meta
 
   Invokes `$function` with `$args` and returns the result.
 
-  The `$function` should be a [function][] returned by
-  [`meta.get-function()`][].
+  The `$function` must be a [function value], such as one returned by
+  [`meta.get-function()`].
 
-  [function]: /documentation/values/functions
+  [function value]: /documentation/values/functions
   [`meta.get-function()`]: #get-function
 
   {% render 'code_snippets/example-first-class-function' %}
@@ -264,9 +293,9 @@ title: sass:meta
 {% endfunction %}
 
 {% function 'meta.get-function($name, $css: false, $module: null)', 'get-function($name, $css: false, $module: null)', 'returns:function' %}
-  Returns the [function][] named `$name`.
+  Returns the [function value] named `$name`.
 
-  [function]: /documentation/values/functions
+  [function value]: /documentation/values/functions
 
   If `$module` is `null`, this returns the function named `$name` without a
   namespace (including [global built-in functions][]). Otherwise, `$module` must
@@ -278,6 +307,31 @@ title: sass:meta
 
   By default, this throws an error if `$name` doesn't refer to Sass function.
   However, if `$css` is `true`, it instead returns a [plain CSS function][].
+
+  [user-defined]: /documentation/at-rules/function
+  [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
+
+  The returned mixin can be included using [`meta.apply()`](#apply).
+
+  {% render 'code_snippets/example-first-class-mixin' %}
+{% endfunction %}
+
+{% function 'meta.get-mixin($name, $module: null)', 'returns:function' %}
+  {% compatibility 'dart: "1.69.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+  Returns the [mixin value] named `$name`.
+
+  [mixin value]: /documentation/values/mixins
+
+  If `$module` is `null`, this returns the mixin named `$name` defined in the
+  current module. Otherwise, `$module` must be a string matching the namespace
+  of a [`@use` rule] in the current file, in which case this returns the
+  mixin in that module named `$name`.
+
+  [`@use` rule]: /documentation/at-rules/use
+
+  By default, this throws an error if `$name` doesn't refer to a mixin. However,
+  if `$css` is `true`, it instead returns a [plain CSS function].
 
   [user-defined]: /documentation/at-rules/function
   [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
@@ -454,6 +508,55 @@ title: sass:meta
     @debug meta.module-functions("functions") // ("pow": get-function("pow"))
 
     @debug meta.call(map.get(meta.module-functions("functions"), "pow"), 3, 4) // 81
+  {% endcodeExample %}
+{% endfunction %}
+
+{% function 'meta.module-mixins($module)', 'returns:map' %}
+  {% compatibility 'dart: "1.69.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+  Returns all the mixins defined in a module, as a map from mixin names to
+  [mixin values].
+
+  [mixin values]: /documentation/values/mixins
+
+  The `$module` parameter must be a string matching the namespace of a [`@use`
+  rule] in the current file.
+
+  [`@use` rule]: /documentation/at-rules/use
+
+  {% codeExample 'module-mixins' %}
+    // _mixins.scss
+    @mixin header-stretch() {
+      align-items: stretch;
+      display: flex;
+      flex-direction: row;
+    }
+    ---
+    @use "sass:map";
+    @use "sass:meta";
+
+    @use "mixins";
+
+    @debug meta.module-mixins("mixins");
+    // => ("header-stretch": get-mixin("header-stretch"))
+
+    @include meta.apply(map.get(meta.module-mixins("mixins"), "header-stretch"));
+    ===
+    // _mixins.scss
+    @mixin header-stretch()
+      align-items: stretch
+      display: flex
+      flex-direction: row
+    ---
+    @use "sass:map"
+    @use "sass:meta"
+
+    @use "mixins"
+
+    @debug meta.module-mixins("mixins")
+    // => ("header-stretch": get-mixin("header-stretch"))
+
+    @include meta.apply(map.get(meta.module-mixins("mixins"), "header-stretch"))
   {% endcodeExample %}
 {% endfunction %}
 
