@@ -1,4 +1,2 @@
-- heading: Black Lives Matter
-  body: >
-    Sass stands with the protesters against police violence. We encourage our
-    users to **get in the streets and join them if you can**.
+- body: '**Black Lives Matter**'
+  color: black
