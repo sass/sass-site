@@ -1,5 +1,5 @@
 ---
-title: Functions
+title: Function Values
 ---
 
 {% render 'doc_snippets/call-impl-status' %}

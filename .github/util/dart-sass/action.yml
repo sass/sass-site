@@ -1,0 +1,40 @@
+name: sass-spec
+description: Check out Dart Sass, build it, and link it into package.json.
+runs:
+  using: composite
+  steps:
+    - name: Check out Dart Sass
+      id: clone
+      uses: sass/clone-linked-repo@v1
+      with:
+        repo: sass/dart-sass
+        default-ref: null
+
+    - uses: dart-lang/setup-dart@v1
+      if: steps.clone.outputs.cloned == 'true'
+
+    - uses: bufbuild/buf-setup-action@v1.13.1
+      with: {github_token: '${{ inputs.github-token }}'}
+      if: steps.clone.outputs.cloned == 'true'
+
+    - run: dart pub get
+      working-directory: dart-sass
+      shell: bash
+      if: steps.clone.outputs.cloned == 'true'
+
+    - name: Check out the language repo
+      uses: sass/clone-linked-repo@v1
+      with: {repo: sass/sass, path: dart-sass/build/language}
+      if: steps.clone.outputs.cloned == 'true'
+
+    - name: Build Dart Sass
+      run: dart run grinder protobuf pkg-npm-dev
+      working-directory: dart-sass
+      shell: bash
+      if: steps.clone.outputs.cloned == 'true'
+
+    - name: Install Dart Sass
+      run: npm install dart-sass/build/npm
+      if: steps.clone.outputs.cloned == 'true'
+      env: {UPDATE_SASS_PROTOCOL: false}
+      shell: bash
