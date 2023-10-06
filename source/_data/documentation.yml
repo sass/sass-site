@@ -42,6 +42,7 @@ toc:
       - <code>null</code>: /documentation/values/null/
       - Calculations: /documentation/values/calculations/
       - Functions: /documentation/values/functions/
+      - Mixins: /documentation/values/mixins/
   - Operators: /documentation/operators/
     :children:
       - Equality: /documentation/operators/equality/

@@ -19,6 +19,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: ./.github/util/dart-sass
       - name: Install & build
         run: |
           npm ci
