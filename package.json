@@ -11,7 +11,7 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "^16"
+    "node": "^20"
   },
   "scripts": {
     "serve": "run-p 'watch:**'",
