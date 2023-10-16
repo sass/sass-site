@@ -58,7 +58,7 @@
     "@types/jqueryui": "^1.12.17",
     "@types/lodash": "^4.14.198",
     "@types/markdown-it": "^13.0.1",
-    "@types/markdown-it-attrs": "^4.1.0",
+    "@types/markdown-it-attrs": "^4.1.1",
     "@types/markdown-it-footnote": "^3.0.0",
     "@types/node": "^16",
     "@types/pako": "^2.0.1",
