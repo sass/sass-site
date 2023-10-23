@@ -71,7 +71,7 @@
     "date-fns": "^2.30.0",
     "deep-equal": "^2.2.2",
     "eslint-plugin-prettier": "^5.0.0",
-    "gts": "^5.0.1",
+    "gts": "^5.2.0",
     "immutable": "^4.3.4",
     "jquery": "^3.7.1",
     "jquery-ui": "^1.13.2",
