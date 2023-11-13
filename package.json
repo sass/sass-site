@@ -69,7 +69,7 @@
     "cheerio": "^1.0.0-rc.12",
     "codemirror": "^6.0.1",
     "date-fns": "^2.30.0",
-    "deep-equal": "^2.2.2",
+    "deep-equal": "^2.2.3",
     "eslint-plugin-prettier": "^5.0.0",
     "gts": "^5.2.0",
     "immutable": "^4.3.4",
