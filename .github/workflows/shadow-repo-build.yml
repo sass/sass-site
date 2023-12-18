@@ -24,7 +24,7 @@ jobs:
       - run: npm ci
       - run: npm run build-prod
       - run: tar cf site.tar _site
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: site
           path: site.tar
@@ -40,7 +40,7 @@ jobs:
             View diff of compiled files (may take a few minutes): https://github.com/${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}/compare/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.ref }}
         run: |
           echo $COMMENT > ./comment.txt
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: comment
           path: comment.txt
