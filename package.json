@@ -80,7 +80,7 @@
     "liquidjs": "^10.9.4",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",
-    "markdown-it": "^13.0.2",
+    "markdown-it": "^14.0.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
     "markdown-it-deflist": "^3.0.0",
