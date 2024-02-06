@@ -437,7 +437,10 @@ load; `@use "variables"` will automatically load `variables.scss`,
 All Sass implementations allow users to provide *load paths*: paths on the
 filesystem that Sass will look in when locating modules. For example, if you
 pass `node_modules/susy/sass` as a load path, you can use `@use "susy"` to load
-`node_modules/susy/sass/susy.scss`.
+`node_modules/susy/sass/susy.scss` (although [`pkg:` URLs] are a better way to
+handle that).
+
+[`pkg:` URLs]: #pkg-urls
 
 Modules will always be loaded relative to the current file first, though. Load
 paths will only be used if no relative file exists that matches the module's
@@ -521,6 +524,138 @@ be loaded automatically when you load the URL for the folder itself.
     padding-left: 0;
   }
 {% endcodeExample %}
+
+## `pkg:` URLs
+
+Sass uses the `pkg:` URL scheme to load stylesheets distributed by various
+package managers. Since Sass is used in the context of many different
+programming languages with different package management conventions, `pkg:` URLs
+have almost no set meaning. Instead, users are encouraged to implement custom
+importers (using the [JS API] or the [Embedded Sass protocol]) that resolve
+these URLs using the native package manager's logic.
+
+This allows `pkg:` URLs and the stylesheets that use them to be portable across
+different language ecosystems. Whether you're installing a Sass library via npm
+(for which Sass provides [a built-in `pkg:` importer]) or the most obscure
+package manager you can find, if you write `@use 'pkg:library'` it'll do the
+right thing.
+
+[JS API]: /documentation/js-api/interfaces/importer/
+[Embedded Sass protocol]: https://github.com/sass/sass/blob/main/spec/embedded-protocol.md
+[a built-in `pkg:` importer]: #node-js-package-importer
+
+{% funFact %}
+  `pkg:` URLs aren't just for `@use`. You can use them anywhere you can load a
+  Sass file, including [`@forward`], [`meta.load-css()`], and even the old
+  [`@import`] rule.
+
+  [`@forward`]: ./forward.md
+  [`meta.load-css()`]: /documentation/modules/meta/#load-css
+  [`@import`]: ./import.md
+{% endfunFact %}
+
+### Rules for a `pkg:` Importer
+
+There are a few common rules that Sass expects all `pkg:` importers to follow.
+These rules help ensure that `pkg:` URLs are handled consistently across all
+package managers, so that stylesheets are as portable as possible.
+
+In addition to the standard rules for custom importers, a `pkg:` importer must
+only handle non-canonical URLs that:
+
+* have the scheme `pkg`, and
+* whose path begins with a package name, and
+* are optionally followed by a path, with path segments separated with a forward
+  slash.
+
+The package name may contain forward slashes, depending on whether the
+particular package manager supports that. For example, npm allows package names
+like `@namespace/name`. Note that package names that contain non-alphanumeric
+characters may be less portable across different package managers.
+
+`pkg:` importers must reject the following patterns:
+
+* A URL whose path begins with `/`.
+* A URL with non-empty/null username, password, host, port, query, or fragment.
+
+If `pkg:` importer encounters a URL that violates its own package manager's
+conventions but _not_ the above rules, it should just decline to load that URL
+rather than throwing an error. This allows users to use multiple `pkg:`
+importers at once if necessary.
+
+### Node.js Package Importer
+
+{% compatibility 'dart: "1.71.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+Because Sass is most widely-used alongside the Node.js ecosystem, it comes with
+a `pkg:` importer that uses the same algorithm as Node.js to load Sass
+stylesheets. This isn't available by default, but it's easy to turn on:
+
+* If you're using the JavaScript API, just add [`new NodePackageImporter()`] to
+  the `importers` option.
+
+* If you're using the Dart API, add [`NodePackageImporter()`] to the `importers`
+  option.
+
+* If you're using the command line, pass [`--pkg-importer=nodejs`].
+
+[`new NodePackageImporter()`]: /documentation/js-api/interfaces/nodepackageimporter/
+[`NodePackageImporter()`]: https://pub.dev/documentation/sass/latest/sass/NodePackageImporter-class.html
+[`--pkg-importer=nodejs`]: /documentation/cli/dart-sass/#pkg-importer-nodejs
+
+If you load a `pkg:` URL, the Node.js `pkg:` importer will look at its
+`package.json` file to determine which Sass file to load. It will check in
+order:
+
+* The [`"exports"` field], with the conditions `"sass"`, `"style"`, and
+  `"default"`. This is the recommended way for packages to expose Sass
+  entrypoints going forward.
+
+* The `"sass"` field or the `"style"` field, which should be a path to a Sass
+  file. This only works if the `pkg:` URL doesn't have a subpath—`pkg:library`
+  will load the file listed in the `"sass"` field, but `pkg:library/button` will
+  load `button.scss` from the root of the package.
+
+* The [index file] at the root of the package This also only works if the `pkg:`
+  URL doesn't have a subpath.
+
+[`"exports"` field]: https://nodejs.org/api/packages.html#conditional-exports
+[index file]: /documentation/at-rules/use/#index-files
+
+The Node.js `pkg:` importer supports the full range of `"exports"` features, so
+you can also specify different locations for different subpaths (note that the
+key must include the file extension):
+
+```json
+{
+  "exports": {
+    ".": {
+      "sass": "styles/index.scss",
+    },
+    "./button.scss": {
+      "sass": "styles/button.scss",
+    },
+    "./accordion.scss": {
+      "sass": "styles/accordion.scss",
+    }
+  }
+}
+```
+
+...or even patterns:
+
+```json
+{
+  "exports": {
+    ".": {
+      "sass": "styles/index.scss",
+    },
+    "./*.scss": {
+      "sass": "styles/*.scss",
+    },
+  }
+}
+```
 
 ## Loading CSS
 
