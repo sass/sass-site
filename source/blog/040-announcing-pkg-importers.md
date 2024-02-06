@@ -1,7 +1,7 @@
 ---
 title: "Announcing `pkg:` Importers"
 author: Natalie Weizenbaum
-date: 2024-02-02 13:00:00 -8
+date: 2024-02-06 15:30:00 -8
 ---
 
 Several months ago, we [asked for feedback] on a proposal for a new standard for
