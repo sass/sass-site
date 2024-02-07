@@ -7,8 +7,8 @@ eleventyComputed:
 introduction: >
   The `@use` rule loads [mixins](/documentation/at-rules/mixin),
   [functions](/documentation/at-rules/function), and
-  [variables](/documentation/variables) from other Sass stylesheets, and
-  combines CSS from multiple stylesheets together. Stylesheets loaded by `@use`
+  [variables](/documentation/variables) (also referred to as members) from other Sass stylesheets, and
+  always includes selectors from the referenced stylesheets (SCSS or CSS). Stylesheets loaded by `@use`
   are called "modules". Sass also provides [built-in
   modules](/documentation/modules) full of useful functions.
 ---
@@ -87,6 +87,11 @@ You can access variables, functions, and mixins from another module by writing
 `<namespace>.<variable>`, `<namespace>.<function>()`, or `@include
 <namespace>.<mixin>()`. By default, the namespace is just the last component of
 the module's URL.
+
+{% headsUp %}
+  Top-level selectors are included automatically and cannot be explicitly accessed
+  like members.
+{% endheadsUp %}
 
 Members (variables, functions, and mixins) loaded with `@use` are only visible
 in the stylesheet that loads them. Other stylesheets will need to write their
