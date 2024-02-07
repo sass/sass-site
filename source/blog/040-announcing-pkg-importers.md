@@ -10,7 +10,7 @@ the shared `pkg:` scheme, as well as a built-in `pkg:` importer that supports
 Node.js's module resolution algorithm. Today, I'm excited to announce that this
 feature has shipped in Dart Sass 1.71.0!
 
-[asked for feedback]: ./039-rfc-package-importer
+[asked for feedback]: /blog/rfc-package-importer
 
 No longer will you have to manually add `node_modules` to your `loadPaths`
 option and worry about whether nested packages will work at all. No longer will
@@ -26,7 +26,7 @@ the Node.js module algorithm, but you could implement one that loads Sass files
 from [RubyGems] or [PyPI] or [Composer]. This way, a Sass file doesn't have to
 change the URLs it loads no matter where it's loading them from.
 
-[custom importer]: /documentation/js-api/interfaces/importer/
+[custom importer]: /documentation/js-api/interfaces/Importer/
 [a few rules]: /documentation/at-rules/use#rules-for-a-pkg-importer
 [RubyGems]: https://rubygems.org/
 [PyPI]: https://pypi.org/
