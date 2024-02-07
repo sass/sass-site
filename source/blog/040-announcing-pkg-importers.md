@@ -26,7 +26,7 @@ the Node.js module algorithm, but you could implement one that loads Sass files
 from [RubyGems] or [PyPI] or [Composer]. This way, a Sass file doesn't have to
 change the URLs it loads no matter where it's loading them from.
 
-[custom importer]: /documentation/js-api/interfaces/Importer/
+[custom importer]: /documentation/js-api/interfaces/Options/#importers
 [a few rules]: /documentation/at-rules/use#rules-for-a-pkg-importer
 [RubyGems]: https://rubygems.org/
 [PyPI]: https://pypi.org/

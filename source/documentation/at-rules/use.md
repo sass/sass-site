@@ -549,9 +549,9 @@ right thing.
   Sass file, including [`@forward`], [`meta.load-css()`], and even the old
   [`@import`] rule.
 
-  [`@forward`]: ./forward.md
+  [`@forward`]: /documentation/at-rules/forward
   [`meta.load-css()`]: /documentation/modules/meta/#load-css
-  [`@import`]: ./import.md
+  [`@import`]: /documentation/at-rules/import
 {% endfunFact %}
 
 ### Rules for a `pkg:` Importer
@@ -599,7 +599,7 @@ stylesheets. This isn't available by default, but it's easy to turn on:
 
 * If you're using the command line, pass [`--pkg-importer=nodejs`].
 
-[`new NodePackageImporter()`]: /documentation/js-api/interfaces/nodepackageimporter/
+[`new NodePackageImporter()`]: /documentation/js-api/classes/NodePackageImporter/
 [`NodePackageImporter()`]: https://pub.dev/documentation/sass/latest/sass/NodePackageImporter-class.html
 [`--pkg-importer=nodejs`]: /documentation/cli/dart-sass/#pkg-importer-nodejs
 
