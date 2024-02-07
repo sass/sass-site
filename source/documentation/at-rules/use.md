@@ -440,7 +440,7 @@ pass `node_modules/susy/sass` as a load path, you can use `@use "susy"` to load
 `node_modules/susy/sass/susy.scss` (although [`pkg:` URLs] are a better way to
 handle that).
 
-[`pkg:` URLs]: #pkg-urls
+[`pkg:` URLs]: #pkg-ur-ls
 
 Modules will always be loaded relative to the current file first, though. Load
 paths will only be used if no relative file exists that matches the module's
@@ -540,7 +540,7 @@ different language ecosystems. Whether you're installing a Sass library via npm
 package manager you can find, if you write `@use 'pkg:library'` it'll do the
 right thing.
 
-[JS API]: /documentation/js-api/interfaces/importer/
+[JS API]: /documentation/js-api/interfaces/Options/#importers
 [Embedded Sass protocol]: https://github.com/sass/sass/blob/main/spec/embedded-protocol.md
 [a built-in `pkg:` importer]: #node-js-package-importer
 
