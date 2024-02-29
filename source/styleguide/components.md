@@ -13,7 +13,7 @@ title: Components
     <dt>Ruby Sass</dt>
     <dd>since 3.5.0</dd>
   </div>
-  <div><a href="#">▶︎</a></div>
+  <div><a href="#">➤︎</a></div>
 </dl>
 
 ## Open

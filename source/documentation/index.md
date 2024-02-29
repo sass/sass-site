@@ -53,6 +53,6 @@ Implementations can also be marked as "partial":
 {% endcompatibility %}
 
 This indicates that the implementation only supports some aspects of the
-feature. These compatibility indicators (and many others) have a "▶" button,
+feature. These compatibility indicators (and many others) have a "➤" button,
 which can be clicked to show more details about exactly how the implementations
 differ and which versions support which aspects of the feature in question.
