@@ -119,11 +119,11 @@ Earlier load paths will take precedence over later ones.
 $ sass --load-path=node_modules/bootstrap/dist/css style.scss style.css
 ```
 
-#### `--pkg-importer=nodejs`
+#### `--pkg-importer=node`
 
 {% compatibility 'dart: "1.71.0"' %}{% endcompatibility %}
 
-This option (abbreviated `-p nodejs`) adds the [Node.js `pkg:` importer] to the
+This option (abbreviated `-p node`) adds the [Node.js `pkg:` importer] to the
 end of the load path, so that stylesheets can load dependencies using the
 Node.js module resolution algorithm.
 
@@ -132,7 +132,7 @@ Node.js module resolution algorithm.
 Support for additional built-in `pkg:` importers may be added in the future.
 
 ```shellsession
-$ sass --pkg-importer=nodejs style.scss style.css
+$ sass --pkg-importer=node style.scss style.css
 ```
 
 #### `--style`

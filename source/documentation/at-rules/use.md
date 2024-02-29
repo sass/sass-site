@@ -597,11 +597,11 @@ stylesheets. This isn't available by default, but it's easy to turn on:
 * If you're using the Dart API, add [`NodePackageImporter()`] to the `importers`
   option.
 
-* If you're using the command line, pass [`--pkg-importer=nodejs`].
+* If you're using the command line, pass [`--pkg-importer=node`].
 
 [`new NodePackageImporter()`]: /documentation/js-api/classes/NodePackageImporter/
 [`NodePackageImporter()`]: https://pub.dev/documentation/sass/latest/sass/NodePackageImporter-class.html
-[`--pkg-importer=nodejs`]: /documentation/cli/dart-sass/#pkg-importer-nodejs
+[`--pkg-importer=node`]: /documentation/cli/dart-sass/#pkg-importer-node
 
 If you load a `pkg:` URL, the Node.js `pkg:` importer will look at its
 `package.json` file to determine which Sass file to load. It will check in
