@@ -430,6 +430,12 @@ load; `@use "variables"` will automatically load `variables.scss`,
   To ensure that stylesheets work on every operating system, Sass loads files by
   *URL*, not by *file path*. This means you need to use forward slashes, not
   backslashes, even on Windows.
+
+  This also means that URLs are case-sensitive, so Sass will consider
+  `Styles.scss` and `styles.scss` to be different modules even if you're using a
+  case-insensitive filesystem. Make sure your URLs match the actual case of the
+  files on disk, or your stylesheets may load twice and definitely won't work on
+  other operating systems.
 {% endheadsUp %}
 
 ### Load Paths
