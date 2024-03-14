@@ -5,7 +5,7 @@
 @use '../config';
 @use '../config/color/brand';
 
-$sl-colors: [#EE2A35, black, white, #009736];
+$sl-colors: [#009736, white, #EE2A35];
 
 // // loop over the variable names in config/color/brand.scss
 // @each $color-name in map.keys(meta.module-variables('brand')) {
