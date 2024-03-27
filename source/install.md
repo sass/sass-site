@@ -33,7 +33,7 @@ Dart VM, so it's faster but only supports Windows, Mac OS, and Linux.
 
 There are also community-maintained wrappers for the following languages:
 
-- [Ruby](https://github.com/ntkme/sass-embedded-host-ruby#readme)
+- [Ruby](https://github.com/sass-contrib/sass-embedded-host-ruby#readme)
 - [Swift](https://github.com/johnfairh/swift-sass#readme)
 - [Java](https://mvnrepository.com/artifact/de.larsgrefer.sass), including:
   - A [Gradle
