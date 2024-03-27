@@ -36,17 +36,17 @@ introduction: >
 
   [install]: /install
 
-  If you use the `sass` gem as a library, the [`sassc`][] gem is the most
-  seamless way to move away from Ruby Sass. It uses [LibSass][] to provide the
-  same API for compiling Sass and defining custom functions as Ruby Sass, except
-  that it uses the `SassC` module instead of `Sass`. However, it [doesn't
-  yet][sassc#72] support the same `Importer` API. You can also use the
-  [`sassc-rails`][] gem to plug smoothly into Ruby on Rails.
+  If you use the `sass` gem as a library, the [`sass-embedded`][] gem is the
+  recommended way to move away from Ruby Sass. It bundles the Dart Sass
+  command-line executable, and uses the [Embedded Sass Protocol][] to provide a Ruby
+  API for compiling Sass and defining custom importers and functions. You can also
+  use the [`dartsass-rails`][] or [`dartsass-sprockets`][] gem to plug smoothly into
+  Ruby on Rails.
 
-  [`sassc`]: https://rubygems.org/gems/sassc
-  [LibSass]: /libsass
-  [sassc#72]: https://github.com/sass/sassc-ruby/issues/72
-  [`sassc-rails`]: https://rubygems.org/gems/sassc-rails
+  [`sass-embedded`]: https://rubygems.org/gems/sass-embedded
+  [Embedded Sass Protocol]: https://github.com/sass/sass/blob/HEAD/spec/embedded-protocol.md
+  [`dartsass-rails`]: https://rubygems.org/gems/dartsass-rails
+  [`dartsass-sprockets`]: https://rubygems.org/gems/dartsass-sprockets
 
   Alternately, if you're using a JS build system, you can integrate that with
   [Dart Sass][] as a JavaScript library.
