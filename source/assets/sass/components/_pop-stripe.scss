@@ -5,6 +5,8 @@
 @use '../config';
 @use '../config/color/brand';
 
+$sl-colors: ();
+
 // loop over the variable names in config/color/brand.scss
 @each $color-name in map.keys(meta.module-variables('brand')) {
   // turn each sass variable name into a css var() function
