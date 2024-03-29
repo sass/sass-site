@@ -5,16 +5,14 @@
 @use '../config';
 @use '../config/color/brand';
 
-$sl-colors: [#EE2A35, black, white, #009736];
+// loop over the variable names in config/color/brand.scss
+@each $color-name in map.keys(meta.module-variables('brand')) {
+  // turn each sass variable name into a css var() function
+  $var: var(--#{$color-name});
 
-// // loop over the variable names in config/color/brand.scss
-// @each $color-name in map.keys(meta.module-variables('brand')) {
-//   // turn each sass variable name into a css var() function
-//   $var: var(--#{$color-name});
-//
-//   // add each var() function to the space-separated list
-//   $sl-colors: list.append($sl-colors, $var, space);
-// }
+  // add each var() function to the space-separated list
+  $sl-colors: list.append($sl-colors, $var, space);
+}
 
 @function stripes($position, $sl-colors) {
   $sl-colors: if(
