@@ -96,7 +96,7 @@
     "stylelint-config-standard-scss": "^11.1.0",
     "truncate-html": "^1.1.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2",
+    "typescript": "^5.4.4",
     "typogr": "^0.6.8"
   },
   "dependencies": {
