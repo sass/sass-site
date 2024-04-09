@@ -22,6 +22,10 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Passing `importer` without `url` to the JS and Dart `compileString*()` APIs
+  is deprecated](/documentation/breaking-changes/importer-without-url) beginning
+  in Dart Sass 1.75.0.
+
 * [Passing a percentage unit to the global `abs()` is
   deprecated](/documentation/breaking-changes/abs-percent/) beginning in Dart
   Sass 1.65.0.
