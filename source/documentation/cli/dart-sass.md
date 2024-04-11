@@ -539,6 +539,16 @@ The following deprecation IDs can be passed to this option:
     <td>1.62.0</td>
     <td>Using multiple copies of <code>!global</code> or <code>!default</code> in a single variable declaration.</td>
   </tr>
+  <tr>
+    <td><a href="/documentation/breaking-changes/abs-percent"><code>abs-percent</code></a></td>
+    <td>1.65.0</td>
+    <td>Passing percentages to the Sass <code>abs()</code> function.</td>
+  </tr>
+  <tr>
+    <td><code>fs-importer-cwd</code></td>
+    <td>1.73.0</td>
+    <td>Using the current working directory as an implicit load path.</td>
+  </tr>
 </tbody>
 </table>
 
@@ -547,6 +557,42 @@ were present in that version as errors. For example,
 `--fatal-deprecation=1.33.0` would treat all deprecations in the
 table above up to and including `slash-div` as errors, but leave any newer
 deprecations as warnings.
+
+#### `--future-deprecation`
+
+{% compatibility 'dart: "1.59.0"' %}{% endcompatibility %}
+
+This option tells Sass to opt-in to a future type of deprecation warning
+early, emitting warnings even though the deprecation is not yet active. This
+option can be combined with `--fatal-deprecation` to emit errors instead of
+warnings for a future deprecation.
+
+The only currently available future deprecation type is `import`, as seen
+here:
+
+```shellsession
+$ sass --future-deprecation=import style.scss style.css
+Deprecation Warning on line 1, column 9 of style.scss:
+Sass @import rules will be deprecated in the future.
+Remove the --future-deprecation=import flag to silence this warning for now.
+  ╷
+1 │ @import 'dependency';
+  │         ^^^^^^^^^^^^
+  ╵
+```
+
+#### `--silence-deprecation`
+
+{% compatibility 'dart: "1.74.0"' %}{% endcompatibility %}
+
+This option tells Sass to silence a particular type of deprecation warning if
+you wish to temporarily ignore the deprecation. Any of the deprecations listed
+in the `--fatal-deprecation` section above can be passed here, though passing
+in a version is not supported.
+
+```shellsession
+$ sass --silence-deprecation=slash-div style.scss style.css
+```
 
 #### `--trace`
 
