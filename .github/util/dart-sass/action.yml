@@ -29,6 +29,7 @@ runs:
 
     - name: Build Dart Sass
       run: dart run grinder protobuf pkg-npm-dev
+      env: {UPDATE_SASS_SASS_REPO: false}
       working-directory: dart-sass
       shell: bash
       if: steps.clone.outputs.cloned == 'true'
@@ -36,5 +37,4 @@ runs:
     - name: Install Dart Sass
       run: npm install dart-sass/build/npm
       if: steps.clone.outputs.cloned == 'true'
-      env: {UPDATE_SASS_PROTOCOL: false}
       shell: bash
