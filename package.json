@@ -55,7 +55,7 @@
     "@sindresorhus/slugify": "^1.1.2",
     "@types/deep-equal": "^1.0.4",
     "@types/jquery": "^3.5.29",
-    "@types/jqueryui": "^1.12.21",
+    "@types/jqueryui": "^1.12.22",
     "@types/lodash": "^4.17.0",
     "@types/markdown-it": "^13.0.7",
     "@types/markdown-it-attrs": "^4.1.3",
