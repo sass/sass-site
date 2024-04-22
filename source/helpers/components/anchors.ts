@@ -1,4 +1,4 @@
-import Token from 'markdown-it/lib/token';
+import Token from 'markdown-it/lib/token.mjs';
 import type anchor from 'markdown-it-anchor';
 
 /**
