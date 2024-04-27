@@ -9,10 +9,10 @@ introduction: >
 ---
 
 Functions are defined using the `@function` at-rule, which is written `@function
-<name>(<arguments...>) { ... }`. A function's name can be any Sass identifier.
-It can only contain [universal statements][], as well as the [`@return`
-at-rule][] which indicates the value to use as the result of the function call.
-Functions are called using the normal CSS function syntax.
+<name>(<arguments...>) { ... }`. A function's name can be any Sass identifier
+that doesn't begin with `--`. It can only contain [universal statements], as
+well as the [`@return` at-rule] which indicates the value to use as the result
+of the function call. Functions are called using the normal CSS function syntax.
 
 [universal statements]: /documentation/syntax/structure#universal-statements
 [`@return` at-rule]: #return
