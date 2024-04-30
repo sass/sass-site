@@ -9,11 +9,11 @@ introduction: >
 
 Mixins are defined using the `@mixin` at-rule, which is written `@mixin <name> {
 ... }` or `@mixin name(<arguments...>) { ... }`. A mixin's name can be any Sass
-identifier, and it can contain any [statement][] other than [top-level
-statements][]. They can be used to encapsulate styles that can be dropped into a
-single [style rule][]; they can contain style rules of their own that can be
-nested in other rules or included at the top level of the stylesheet; or they
-can just serve to modify variables.
+identifier that doesn't begin with `--`, and it can contain any [statement]
+other than [top-level statements]. They can be used to encapsulate styles that
+can be dropped into a single [style rule]; they can contain style rules of their
+own that can be nested in other rules or included at the top level of the
+stylesheet; or they can just serve to modify variables.
 
 [statement]: /documentation/syntax/structure#statements
 [top-level statements]: /documentation/syntax/structure#top-level-statements
