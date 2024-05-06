@@ -91,4 +91,4 @@ jobs:
         if: steps.download_comment.outputs.found_artifact == 'true'
         with:
           issue-number: ${{ github.event.number }}
-          body_path: comment.txt
+          body-path: comment.txt
