@@ -265,9 +265,9 @@ how `@import`s locate stylesheets:
 Imports are usually written at the top level of a stylesheet, but they don't
 have to be. They can nested within [style rules][] or [plain CSS at-rules][] as
 well. The imported CSS is nested in that context, which makes nested imports
-useful for scoping a chunk of CSS to a particular element or media query. Note
-that top-level [mixins][], [functions][], and [variables][] defined in the
-nested import are still defined globally, though.
+useful for scoping a chunk of CSS to a particular element or media query.
+Top-level [mixins][], [functions][], and [variables][] defined in the nested
+import are only available in the nested context.
 
 [style rules]: /documentation/style-rules
 [plain CSS at-rules]: /documentation/at-rules/css
