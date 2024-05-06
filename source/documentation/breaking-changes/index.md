@@ -22,6 +22,10 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Functions and Mixins Beginning with `--` are
+  deprecated](/documentation/breaking-changes/abs-percent/) beginning in Dart
+  Sass 1.76.0.
+
 * [Passing a percentage unit to the global `abs()` is
   deprecated](/documentation/breaking-changes/abs-percent/) beginning in Dart
   Sass 1.65.0.
