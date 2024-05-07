@@ -242,6 +242,10 @@ title: sass:meta
 
   Returns `false` for any unrecognized `$feature`.
 
+  {% headsUp %}
+  This function is [deprecated](/documentation/breaking-changes/feature-exists/).
+  {% endheadsUp %}
+
   {% codeExample 'feature-exists' %}
     @use "sass:meta";
 
