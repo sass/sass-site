@@ -312,7 +312,7 @@ title: sass:meta
 
   The returned mixin can be included using [`meta.apply()`](#apply).
 
-  {% render 'code_snippets/example-first-class-mixin' %}
+  {% render 'code_snippets/example-first-class-function' %}
 {% endfunction %}
 
 {% function 'meta.get-mixin($name, $module: null)', 'returns:function' %}
@@ -336,7 +336,7 @@ title: sass:meta
 
   The returned function can be called using [`meta.call()`](#call).
 
-  {% render 'code_snippets/example-first-class-function' %}
+  {% render 'code_snippets/example-first-class-mixin' %}
 {% endfunction %}
 
 {% function 'meta.global-variable-exists($name, $module: null)', 'global-variable-exists($name, $module: null)', 'returns:boolean' %}
