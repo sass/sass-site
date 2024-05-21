@@ -1,0 +1,33 @@
+{%- if deprecations.size == 0 -%}
+<p>There are no {{status}} deprecations in the latest version of Dart Sass.</p>
+{%- else -%}
+<p>The following deprecation IDs can be passed to this option:</p>
+
+<table style="width:100%">
+<thead>
+  <tr style="text-align: left">
+    <th>ID</th>
+    {%- if status == "active" -%}<th>Version</th>{%- endif -%}
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+{%- for deprecation in deprecations -%}
+  <tr>
+    <td>
+    {%- if deprecation.hasWebpage -%}
+      <a href="/documentation/breaking-changes/{{deprecation.id}}">
+    {%- endif -%}
+    <code>{{deprecation.id}}</code>
+    {%-if deprecation.hasWebpage -%}</a>{%- endif -%}
+    </td>
+    {%- if status == "active" -%}
+      <td>{{deprecation.deprecatedIn}}</td>
+    {%- endif -%}
+    <td>{{deprecation.description}}</td>
+  </tr>
+{%- endfor -%}
+</tbody>
+</table>
+{%- endif -%}
+
