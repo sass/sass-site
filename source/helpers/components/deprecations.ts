@@ -8,7 +8,7 @@ import {liquidEngine} from '../engines';
  */
 export default async function deprecations(
   _: string,
-  status: 'active' | 'future'
+  status: 'active' | 'future' | 'obsolete'
 ) {
   const deprecations = [];
   for (const [id, deprecation] of Object.entries(sass.deprecations)) {
@@ -16,6 +16,7 @@ export default async function deprecations(
       deprecations.push({
         id: id,
         deprecatedIn: deprecation.deprecatedIn,
+        obsoleteIn: deprecation.obsoleteIn,
         description: deprecation.description,
         hasWebpage: fs.existsSync(
           `source/documentation/breaking-changes/${id}.md`

@@ -486,6 +486,8 @@ were present in that version as errors. For example,
 table above up to and including `slash-div` as errors, but leave any newer
 deprecations as warnings.
 
+{% deprecations 'obsolete' %}{% enddeprecations %}
+
 #### `--future-deprecation`
 
 {% compatibility 'dart: "1.59.0"' %}{% endcompatibility %}

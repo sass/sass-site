@@ -1,13 +1,16 @@
-{%- if deprecations.size == 0 -%}
-<p>There are no {{status}} deprecations in the latest version of Dart Sass.</p>
+{%- if deprecations.size > 0 -%}
+{%- if status == "obsolete" -%}
+<p>The following deprecation IDs are obsolete and no longer have any effect:</p>
 {%- else -%}
 <p>The following deprecation IDs can be passed to this option:</p>
+{%- endif -%}
 
 <table style="width:100%">
 <thead>
   <tr style="text-align: left">
     <th>ID</th>
-    {%- if status == "active" -%}<th>Version</th>{%- endif -%}
+    {%- if status != "future" -%}<th>Deprecated In</th>{%- endif -%}
+    {%- if status == "obsolete" -%}<th>Obsolete In</th>{%- endif -%}
     <th>Description</th>
   </tr>
 </thead>
@@ -21,13 +24,19 @@
     <code>{{deprecation.id}}</code>
     {%-if deprecation.hasWebpage -%}</a>{%- endif -%}
     </td>
-    {%- if status == "active" -%}
+    {%- if status != "future" -%}
       <td>{{deprecation.deprecatedIn}}</td>
+    {%- endif -%}
+    {%- if status == "obsolete" -%}
+      <td>{{deprecation.obsoleteIn}}</td>
     {%- endif -%}
     <td>{{deprecation.description}}</td>
   </tr>
 {%- endfor -%}
 </tbody>
 </table>
+{%- elsif status != "obsolete" -%}
+<p>There are no {{status}} deprecations in the latest version of Dart Sass.</p>
 {%- endif -%}
+
 
