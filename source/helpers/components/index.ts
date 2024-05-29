@@ -5,10 +5,12 @@ import {liquidEngine} from '../engines';
 import {stripIndent} from '../type';
 import {default as codeExample} from './codeExample';
 import {compatibility, implStatus} from './compatibility';
+import {default as deprecations} from './deprecations';
 import {getDocTocData, getToc} from './toc';
 
 export {codeExample};
 export {compatibility, implStatus};
+export {deprecations};
 export {getDocTocData, getToc};
 
 /**
@@ -69,6 +71,7 @@ export default function componentsPlugin(eleventyConfig: any) {
   // In the meantime, check the order in the function definition of
   // `compatibility` in `source/helpers/components/compatibility.ts`.
   eleventyConfig.addPairedLiquidShortcode('compatibility', compatibility);
+  eleventyConfig.addPairedLiquidShortcode('deprecations', deprecations);
   eleventyConfig.addPairedLiquidShortcode('funFact', funFact);
   eleventyConfig.addPairedLiquidShortcode('headsUp', headsUp);
 }

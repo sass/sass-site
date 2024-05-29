@@ -478,85 +478,15 @@ Remove this setting if you need to keep using this feature.
   style.scss 1:9  root stylesheet
 ```
 
-The following deprecation IDs can be passed to this option:
-
-<table style="width:100%">
-<thead>
-  <tr style="text-align: left">
-    <th>ID</th>
-    <th>Version</th>
-    <th>Description</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><code>call-string</code></td>
-    <td>0.0.0</td>
-    <td>Passing a string directly to <code>meta.call()</code>.</td>
-  </tr>
-  <tr>
-    <td><code>elseif</code></td>
-    <td>1.3.2</td>
-    <td>Using <code>@elseif</code> instead of <code>@else if</code>.</td>
-  </tr>
-  <tr>
-    <td><a href="/documentation/breaking-changes/moz-document"><code>moz-document</code></a></td>
-    <td>1.7.2</td>
-    <td>Using <code>@-moz-document</code> (except for the empty url prefix hack).</td>
-  </tr>
-  <tr>
-    <td><code>new-global</code></td>
-    <td>1.17.2</td>
-    <td>Declaring new variables with <code>!global</code>.</td>
-  </tr>
-  <tr>
-    <td><code>color-module-compat</code></td>
-    <td>1.23.0</td>
-    <td>Using color module functions in place of plain CSS functions.</td>
-  </tr>
-  <tr>
-    <td><a href="/documentation/breaking-changes/slash-div"><code>slash-div</code></a></td>
-    <td>1.33.0</td>
-    <td>Using the <code>/</code> operator for division.</td>
-  </tr>
-  <tr>
-    <td><a href="/documentation/breaking-changes/bogus-combinators"><code>bogus-combinators</code></a></td>
-    <td>1.54.0</td>
-    <td>Leading, trailing, and repeated combinators.</td>
-  </tr>
-  <tr>
-    <td><a href="/documentation/breaking-changes/strict-unary"><code>strict-unary</code></a></td>
-    <td>1.55.0</td>
-    <td>Ambiguous <code>+</code> and <code>-</code> operators.</td>
-  </tr>
-  <tr>
-    <td><a href="/documentation/breaking-changes/function-units"><code>function-units</code></a></td>
-    <td>1.56.0</td>
-    <td>Passing invalid units to built-in functions.</td>
-  </tr>
-  <tr>
-    <td><a href="/documentation/breaking-changes/duplicate-var-flags"><code>duplicate-var-flags</code></a></td>
-    <td>1.62.0</td>
-    <td>Using multiple copies of <code>!global</code> or <code>!default</code> in a single variable declaration.</td>
-  </tr>
-  <tr>
-    <td><a href="/documentation/breaking-changes/abs-percent"><code>abs-percent</code></a></td>
-    <td>1.65.0</td>
-    <td>Passing percentages to the Sass <code>abs()</code> function.</td>
-  </tr>
-  <tr>
-    <td><code>fs-importer-cwd</code></td>
-    <td>1.73.0</td>
-    <td>Using the current working directory as an implicit load path.</td>
-  </tr>
-</tbody>
-</table>
+{% deprecations 'active' %}{% enddeprecations %}
 
 Alternatively, you can pass a Dart Sass version to treat all deprecations that
 were present in that version as errors. For example,
 `--fatal-deprecation=1.33.0` would treat all deprecations in the
 table above up to and including `slash-div` as errors, but leave any newer
 deprecations as warnings.
+
+{% deprecations 'obsolete' %}{% enddeprecations %}
 
 #### `--future-deprecation`
 
@@ -566,9 +496,6 @@ This option tells Sass to opt-in to a future type of deprecation warning
 early, emitting warnings even though the deprecation is not yet active. This
 option can be combined with `--fatal-deprecation` to emit errors instead of
 warnings for a future deprecation.
-
-The only currently available future deprecation type is `import`, as seen
-here:
 
 ```shellsession
 $ sass --future-deprecation=import style.scss style.css
@@ -580,6 +507,8 @@ Remove the --future-deprecation=import flag to silence this warning for now.
   │         ^^^^^^^^^^^^
   ╵
 ```
+
+{% deprecations 'future' %}{% enddeprecations %}
 
 #### `--silence-deprecation`
 
