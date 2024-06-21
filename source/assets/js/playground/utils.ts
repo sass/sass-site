@@ -16,11 +16,18 @@ export type PlaygroundState = {
   debugOutput: ConsoleLog[];
 };
 
-// State is persisted to the URL's hash format in the following format:
-// [inputFormat, outputFormat, ...inputValue] = hash;
-// inputFormat: 0=indented 1=scss
-// outputFormat: 0=compressed 1=expanded
-export function stateToBase64(state: PlaygroundState): string {
+export function serializeState(state: PlaygroundState): string {
+  return serializeStateContents(state);
+}
+
+/**
+ * Serializes contents of the playground (input, input format & output format)
+ * to a base 64 string of the format `[inputFormat, outputFormat, ...inputValue]`
+ * where,
+ * - `inputFormat`: 0=indented 1=scss
+ * - `outputFormat`: 0=compressed 1=expanded
+ */
+function serializeStateContents(state: PlaygroundState): string {
   const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
   const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
   const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
@@ -49,8 +56,16 @@ function inflateFromBase64(input: string): string {
   return inflate(deflated, {to: 'string'});
 }
 
-export function base64ToState(input: string): Partial<PlaygroundState> {
+export function deserializeState(input: string): Partial<PlaygroundState> {
   const state: Partial<PlaygroundState> = {};
+  deserializeStateContents(state, input);
+  return state;
+}
+
+function deserializeStateContents(
+  state: Partial<PlaygroundState>,
+  input: string
+): void {
   let decoded: string;
   try {
     decoded = inflateFromBase64(input);
@@ -60,16 +75,14 @@ export function base64ToState(input: string): Partial<PlaygroundState> {
     try {
       decoded = decodeURIComponent(atob(input));
     } catch (error) {
-      return {};
+      return;
     }
   }
 
-  if (!/\d\d.*/.test(decoded)) return {};
+  if (!/\d\d.*/.test(decoded)) return;
   state.inputFormat = decoded.charAt(0) === '1' ? 'scss' : 'indented';
   state.outputFormat = decoded.charAt(1) === '1' ? 'expanded' : 'compressed';
   state.inputValue = decoded.slice(2);
-
-  return state;
 }
 
 type ParseResultSuccess = {css: string};

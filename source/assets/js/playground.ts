@@ -8,17 +8,17 @@ import {compileString, info, Logger, OutputStyle, Syntax} from 'sass';
 import {displayForConsoleLog} from './playground/console-utils.js';
 import {editorSetup, outputSetup} from './playground/editor-setup.js';
 import {
-  base64ToState,
+  deserializeState,
   customLoader,
   logsToDiagnostics,
   ParseResult,
   PlaygroundState,
-  stateToBase64,
+  serializeState,
 } from './playground/utils.js';
 
 function setupPlayground() {
   const hash = location.hash.slice(1);
-  const hashState = base64ToState(hash);
+  const hashState = deserializeState(hash);
 
   const initialState: PlaygroundState = {
     inputFormat: hashState.inputFormat || 'scss',
@@ -237,7 +237,7 @@ function setupPlayground() {
   const debounceUpdateURL = debounce(updateURL, 200);
 
   function updateURL() {
-    const hash = stateToBase64(playgroundState);
+    const hash = serializeState(playgroundState);
     history.replaceState('playground', '', `#${hash}`);
   }
 
