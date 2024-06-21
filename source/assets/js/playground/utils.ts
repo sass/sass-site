@@ -17,7 +17,9 @@ export type PlaygroundState = {
 };
 
 export function serializeState(state: PlaygroundState): string {
-  return serializeStateContents(state);
+  const contents = serializeStateContents(state);
+  const params = serializeStateParams(state);
+  return `${contents}${params ? `?${params}` : ''}`;
 }
 
 /**
@@ -32,6 +34,12 @@ function serializeStateContents(state: PlaygroundState): string {
   const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
   const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
   return deflateToBase64(persistedState);
+}
+
+function serializeStateParams(state: PlaygroundState): string | null {
+  const params = new URLSearchParams();
+  // TODO: serialize params
+  return params.size === 0 ? null : params.toString();
 }
 
 /** Compresses `input` and returns a base64 string of the compressed bytes. */
@@ -58,7 +66,9 @@ function inflateFromBase64(input: string): string {
 
 export function deserializeState(input: string): Partial<PlaygroundState> {
   const state: Partial<PlaygroundState> = {};
-  deserializeStateContents(state, input);
+  const [contents, query] = input.split('?');
+  if (contents) deserializeStateContents(state, contents);
+  if (query) deserializeStateParams(state, query);
   return state;
 }
 
@@ -83,6 +93,14 @@ function deserializeStateContents(
   state.inputFormat = decoded.charAt(0) === '1' ? 'scss' : 'indented';
   state.outputFormat = decoded.charAt(1) === '1' ? 'expanded' : 'compressed';
   state.inputValue = decoded.slice(2);
+}
+
+function deserializeStateParams(
+  state: Partial<PlaygroundState>,
+  input: string
+): void {
+  const params = new URLSearchParams(input);
+  // TODO: deserialize params
 }
 
 type ParseResultSuccess = {css: string};
