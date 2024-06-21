@@ -26,6 +26,7 @@ function setupPlayground() {
     compilerHasError: false,
     inputValue: hashState.inputValue || '',
     debugOutput: [],
+    selection: hashState.selection || null,
   };
 
   // Proxy intercepts setters and triggers side effects
@@ -41,7 +42,11 @@ function setupPlayground() {
       } else if (prop === 'inputValue') {
         debouncedUpdateCSS();
       }
-      if (['inputFormat', 'outputFormat', 'inputValue'].includes(prop)) {
+      if (
+        ['inputFormat', 'outputFormat', 'inputValue', 'selection'].includes(
+          prop
+        )
+      ) {
         debounceUpdateURL();
       }
       return set;
@@ -57,6 +62,10 @@ function setupPlayground() {
         if (v.docChanged) {
           playgroundState.inputValue = editor.state.doc.toString();
         }
+
+        if (v.selectionSet) {
+          playgroundState.selection = editorSelectionToStateSelection();
+        }
       }),
     ],
     parent: document.querySelector('.sl-code-is-source') || undefined,
@@ -68,11 +77,64 @@ function setupPlayground() {
     parent: document.querySelector('.sl-code-is-compiled') || undefined,
   });
 
+  /**
+   * Returns a playground state selection for the current single non-empty
+   * selection, or `null` otherwise.
+   */
+  function editorSelectionToStateSelection():
+    | PlaygroundState['selection']
+    | null {
+    const sel = editor.state.selection;
+    if (sel.ranges.length !== 1) {
+      return null;
+    }
+
+    const range = sel.ranges[0];
+    if (range.empty) {
+      return null;
+    }
+
+    const fromLine = editor.state.doc.lineAt(range.from);
+    const toLine = editor.state.doc.lineAt(range.to);
+
+    return [
+      fromLine.number,
+      range.from - fromLine.from + 1,
+      toLine.number,
+      range.to - toLine.from + 1,
+    ];
+  }
+
+  function restoreSelection() {
+    if (playgroundState.selection === null) {
+      return;
+    }
+
+    try {
+      const [fromL, fromC, toL, toC] = playgroundState.selection;
+      const fromLine = editor.state.doc.line(fromL);
+      const toLine = editor.state.doc.line(toL);
+
+      editor.dispatch({
+        selection: {
+          anchor: fromLine.from + fromC - 1,
+          head: toLine.from + toC - 1,
+        },
+        scrollIntoView: true,
+      });
+
+      editor.focus();
+    } catch (err) {
+      // (ignored)
+    }
+  }
+
   // Apply initial state to dom
   function applyInitialState() {
     updateButtonState();
     debouncedUpdateCSS();
     updateErrorState();
+    restoreSelection();
   }
 
   type TabbarItemDataset =

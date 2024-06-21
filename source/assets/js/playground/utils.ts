@@ -14,6 +14,9 @@ export type PlaygroundState = {
   inputValue: string;
   compilerHasError: boolean;
   debugOutput: ConsoleLog[];
+
+  /** `[fromLine, fromColumn, toLine, toColumn]`; all 1-indexed.  */
+  selection: [number, number, number, number] | null;
 };
 
 export function serializeState(state: PlaygroundState): string {
@@ -38,7 +41,12 @@ function serializeStateContents(state: PlaygroundState): string {
 
 function serializeStateParams(state: PlaygroundState): string | null {
   const params = new URLSearchParams();
-  // TODO: serialize params
+
+  if (state.selection) {
+    const [fromL, fromC, toL, toC] = state.selection;
+    params.set('s', `L${fromL}C${fromC}-L${toL}C${toC}`);
+  }
+
   return params.size === 0 ? null : params.toString();
 }
 
@@ -100,7 +108,15 @@ function deserializeStateParams(
   input: string
 ): void {
   const params = new URLSearchParams(input);
-  // TODO: deserialize params
+
+  const s = params.has('s')
+    ? /^L(?<fromL>\d+)C(?<fromC>\d+)-L(?<toL>\d+)C(?<toC>\d+)$/i.exec(
+        params.get('s') as string
+      )?.groups
+    : null;
+  if (s) {
+    state.selection = [+s['fromL'], +s['fromC'], +s['toL'], +s['toC']];
+  }
 }
 
 type ParseResultSuccess = {css: string};
