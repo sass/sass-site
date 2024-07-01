@@ -15,7 +15,10 @@ export type PlaygroundState = {
   compilerHasError: boolean;
   debugOutput: ConsoleLog[];
 
-  /** `[fromLine, fromColumn, toLine, toColumn]`; all 1-indexed.  */
+  /**
+   * `[fromLine, fromColumn, toLine, toColumn]`; all 1-indexed. If this is null,
+   * the editor has no selection.
+   */
   selection: [number, number, number, number] | null;
 };
 
@@ -39,6 +42,10 @@ function serializeStateContents(state: PlaygroundState): string {
   return deflateToBase64(persistedState);
 }
 
+/**
+ * Serializes `state`'s non-boolean, non-textual parameters to a set of URL
+ * parameters that can be added to the URL hash.
+ */
 function serializeStateParams(state: PlaygroundState): string | null {
   const params = new URLSearchParams();
 
@@ -80,6 +87,10 @@ export function deserializeState(input: string): Partial<PlaygroundState> {
   return state;
 }
 
+/**
+ * Updates `state` with the result of deserializing `input`, which should be in
+ * the format produced by `serializeStateContents`.
+ */
 function deserializeStateContents(
   state: Partial<PlaygroundState>,
   input: string
@@ -103,6 +114,10 @@ function deserializeStateContents(
   state.inputValue = decoded.slice(2);
 }
 
+/**
+ * Updates `state` with the result of deserializing `input`, which should be in
+ * the format produced by `serializeStateParams`.
+ */
 function deserializeStateParams(
   state: Partial<PlaygroundState>,
   input: string

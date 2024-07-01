@@ -85,18 +85,13 @@ function setupPlayground() {
     | PlaygroundState['selection']
     | null {
     const sel = editor.state.selection;
-    if (sel.ranges.length !== 1) {
-      return null;
-    }
+    if (sel.ranges.length !== 1) return null;
 
     const range = sel.ranges[0];
-    if (range.empty) {
-      return null;
-    }
+    if (range.empty) return null;
 
     const fromLine = editor.state.doc.lineAt(range.from);
     const toLine = editor.state.doc.lineAt(range.to);
-
     return [
       fromLine.number,
       range.from - fromLine.from + 1,
@@ -105,10 +100,9 @@ function setupPlayground() {
     ];
   }
 
-  function restoreSelection() {
-    if (playgroundState.selection === null) {
-      return;
-    }
+  /** Updates the editor's selection based on `playgroundState.selection`. */
+  function restoreSelection(): void {
+    if (playgroundState.selection === null) return;
 
     try {
       const [fromL, fromC, toL, toC] = playgroundState.selection;
