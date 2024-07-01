@@ -11,6 +11,11 @@ if [[ ! -d ".language" ]]; then
   git clone https://github.com/sass/sass .language
 fi
 cd .language
+
+# Netlify caches this directory, which means that if it gets into a weird state
+# it can break all future deploys. Avoid that by resetting it every time.
+git reset --hard HEAD
+
 git fetch
 if [[ "$LANGUAGE_REVISION" ]]; then
   git checkout "$LANGUAGE_REVISION"
