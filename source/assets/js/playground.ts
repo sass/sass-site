@@ -101,27 +101,36 @@ function setupPlayground() {
   }
 
   /** Updates the editor's selection based on `playgroundState.selection`. */
-  function restoreSelection(): void {
-    if (playgroundState.selection === null) return;
+  function updateSelection(): void {
+    if (playgroundState.selection === null) {
+      const sel = editor.state.selection;
+      const isEmpty = sel.ranges.length === 1 && sel.ranges[0].empty;
+      if (!isEmpty) {
+        editor.dispatch({
+          selection: {anchor: 0, head: 0},
+          scrollIntoView: true,
+        });
+      }
+    } else {
+      try {
+        const [fromL, fromC, toL, toC] = playgroundState.selection;
+        const fromLine = editor.state.doc.line(fromL);
+        const toLine = editor.state.doc.line(toL);
 
-    try {
-      const [fromL, fromC, toL, toC] = playgroundState.selection;
-      const fromLine = editor.state.doc.line(fromL);
-      const toLine = editor.state.doc.line(toL);
+        editor.dispatch({
+          selection: {
+            anchor: fromLine.from + fromC - 1,
+            head: toLine.from + toC - 1,
+          },
+          effects: EditorView.scrollIntoView(fromLine.from, {
+            y: 'center',
+          }),
+        });
 
-      editor.dispatch({
-        selection: {
-          anchor: fromLine.from + fromC - 1,
-          head: toLine.from + toC - 1,
-        },
-        effects: EditorView.scrollIntoView(fromLine.from, {
-          y: 'center',
-        }),
-      });
-
-      editor.focus();
-    } catch (err) {
-      // (ignored)
+        editor.focus();
+      } catch (err) {
+        // (ignored)
+      }
     }
   }
 
@@ -130,7 +139,7 @@ function setupPlayground() {
     updateButtonState();
     debouncedUpdateCSS();
     updateErrorState();
-    restoreSelection();
+    updateSelection();
   }
 
   type TabbarItemDataset =
