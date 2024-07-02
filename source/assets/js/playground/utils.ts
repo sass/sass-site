@@ -14,17 +14,47 @@ export type PlaygroundState = {
   inputValue: string;
   compilerHasError: boolean;
   debugOutput: ConsoleLog[];
+
+  /**
+   * `[fromLine, fromColumn, toLine, toColumn]`; all 1-indexed. If this is null,
+   * the editor has no selection.
+   */
+  selection: [number, number, number, number] | null;
 };
 
-// State is persisted to the URL's hash format in the following format:
-// [inputFormat, outputFormat, ...inputValue] = hash;
-// inputFormat: 0=indented 1=scss
-// outputFormat: 0=compressed 1=expanded
-export function stateToBase64(state: PlaygroundState): string {
+export function serializeState(state: PlaygroundState): string {
+  const contents = serializeStateContents(state);
+  const params = serializeStateParams(state);
+  return `${contents}${params ? `?${params}` : ''}`;
+}
+
+/**
+ * Serializes contents of the playground (input, input format & output format)
+ * to a base 64 string of the format `[inputFormat, outputFormat, ...inputValue]`
+ * where,
+ * - `inputFormat`: 0=indented 1=scss
+ * - `outputFormat`: 0=compressed 1=expanded
+ */
+function serializeStateContents(state: PlaygroundState): string {
   const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
   const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
   const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
   return deflateToBase64(persistedState);
+}
+
+/**
+ * Serializes `state`'s non-boolean, non-textual parameters to a set of URL
+ * parameters that can be added to the URL hash.
+ */
+function serializeStateParams(state: PlaygroundState): string | null {
+  const params = new URLSearchParams();
+
+  if (state.selection) {
+    const [fromL, fromC, toL, toC] = state.selection;
+    params.set('s', `L${fromL}C${fromC}-L${toL}C${toC}`);
+  }
+
+  return params.size === 0 ? null : params.toString();
 }
 
 /** Compresses `input` and returns a base64 string of the compressed bytes. */
@@ -49,8 +79,22 @@ function inflateFromBase64(input: string): string {
   return inflate(deflated, {to: 'string'});
 }
 
-export function base64ToState(input: string): Partial<PlaygroundState> {
+export function deserializeState(input: string): Partial<PlaygroundState> {
   const state: Partial<PlaygroundState> = {};
+  const [contents, query] = input.split('?');
+  if (contents) deserializeStateContents(state, contents);
+  if (query) deserializeStateParams(state, query);
+  return state;
+}
+
+/**
+ * Updates `state` with the result of deserializing `input`, which should be in
+ * the format produced by `serializeStateContents`.
+ */
+function deserializeStateContents(
+  state: Partial<PlaygroundState>,
+  input: string
+): void {
   let decoded: string;
   try {
     decoded = inflateFromBase64(input);
@@ -60,16 +104,34 @@ export function base64ToState(input: string): Partial<PlaygroundState> {
     try {
       decoded = decodeURIComponent(atob(input));
     } catch (error) {
-      return {};
+      return;
     }
   }
 
-  if (!/\d\d.*/.test(decoded)) return {};
+  if (!/\d\d.*/.test(decoded)) return;
   state.inputFormat = decoded.charAt(0) === '1' ? 'scss' : 'indented';
   state.outputFormat = decoded.charAt(1) === '1' ? 'expanded' : 'compressed';
   state.inputValue = decoded.slice(2);
+}
 
-  return state;
+/**
+ * Updates `state` with the result of deserializing `input`, which should be in
+ * the format produced by `serializeStateParams`.
+ */
+function deserializeStateParams(
+  state: Partial<PlaygroundState>,
+  input: string
+): void {
+  const params = new URLSearchParams(input);
+
+  const s = params.has('s')
+    ? /^L(?<fromL>\d+)C(?<fromC>\d+)-L(?<toL>\d+)C(?<toC>\d+)$/i.exec(
+        params.get('s') as string
+      )?.groups
+    : null;
+  if (s) {
+    state.selection = [+s['fromL'], +s['fromC'], +s['toL'], +s['toC']];
+  }
 }
 
 type ParseResultSuccess = {css: string};
