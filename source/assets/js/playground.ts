@@ -114,7 +114,9 @@ function setupPlayground() {
           anchor: fromLine.from + fromC - 1,
           head: toLine.from + toC - 1,
         },
-        scrollIntoView: true,
+        effects: EditorView.scrollIntoView(fromLine.from, {
+          y: 'center',
+        }),
       });
 
       editor.focus();
