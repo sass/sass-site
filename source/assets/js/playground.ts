@@ -126,8 +126,6 @@ function setupPlayground() {
             y: 'center',
           }),
         });
-
-        editor.focus();
       } catch (err) {
         // (ignored)
       }

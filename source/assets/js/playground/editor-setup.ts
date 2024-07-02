@@ -30,6 +30,7 @@ import {
   highlightSpecialChars,
   keymap,
   lineNumbers,
+  drawSelection,
 } from '@codemirror/view';
 
 import {playgroundHighlightStyle} from './theme.js';
@@ -49,6 +50,7 @@ const editorSetup = (() => [
     closeBrackets(),
     autocompletion(),
     highlightActiveLine(),
+    drawSelection(),
     keymap.of([
       ...closeBracketsKeymap,
       ...defaultKeymap,
