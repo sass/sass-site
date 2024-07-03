@@ -8,17 +8,17 @@ import {compileString, info, Logger, OutputStyle, Syntax} from 'sass';
 import {displayForConsoleLog} from './playground/console-utils.js';
 import {editorSetup, outputSetup} from './playground/editor-setup.js';
 import {
-  base64ToState,
+  deserializeState,
   customLoader,
   logsToDiagnostics,
   ParseResult,
   PlaygroundState,
-  stateToBase64,
+  serializeState,
 } from './playground/utils.js';
 
 function setupPlayground() {
   const hash = location.hash.slice(1);
-  const hashState = base64ToState(hash);
+  const hashState = deserializeState(hash);
 
   const initialState: PlaygroundState = {
     inputFormat: hashState.inputFormat || 'scss',
@@ -26,6 +26,7 @@ function setupPlayground() {
     compilerHasError: false,
     inputValue: hashState.inputValue || '',
     debugOutput: [],
+    selection: hashState.selection || null,
   };
 
   // Proxy intercepts setters and triggers side effects
@@ -41,7 +42,11 @@ function setupPlayground() {
       } else if (prop === 'inputValue') {
         debouncedUpdateCSS();
       }
-      if (['inputFormat', 'outputFormat', 'inputValue'].includes(prop)) {
+      if (
+        ['inputFormat', 'outputFormat', 'inputValue', 'selection'].includes(
+          prop
+        )
+      ) {
         debounceUpdateURL();
       }
       return set;
@@ -57,6 +62,10 @@ function setupPlayground() {
         if (v.docChanged) {
           playgroundState.inputValue = editor.state.doc.toString();
         }
+
+        if (v.selectionSet) {
+          playgroundState.selection = editorSelectionToStateSelection();
+        }
       }),
     ],
     parent: document.querySelector('.sl-code-is-source') || undefined,
@@ -68,11 +77,67 @@ function setupPlayground() {
     parent: document.querySelector('.sl-code-is-compiled') || undefined,
   });
 
+  /**
+   * Returns a playground state selection for the current single non-empty
+   * selection, or `null` otherwise.
+   */
+  function editorSelectionToStateSelection():
+    | PlaygroundState['selection']
+    | null {
+    const sel = editor.state.selection;
+    if (sel.ranges.length !== 1) return null;
+
+    const range = sel.ranges[0];
+    if (range.empty) return null;
+
+    const fromLine = editor.state.doc.lineAt(range.from);
+    const toLine = editor.state.doc.lineAt(range.to);
+    return [
+      fromLine.number,
+      range.from - fromLine.from + 1,
+      toLine.number,
+      range.to - toLine.from + 1,
+    ];
+  }
+
+  /** Updates the editor's selection based on `playgroundState.selection`. */
+  function updateSelection(): void {
+    if (playgroundState.selection === null) {
+      const sel = editor.state.selection;
+      const isEmpty = sel.ranges.length === 1 && sel.ranges[0].empty;
+      if (!isEmpty) {
+        editor.dispatch({
+          selection: {anchor: 0, head: 0},
+          scrollIntoView: true,
+        });
+      }
+    } else {
+      try {
+        const [fromL, fromC, toL, toC] = playgroundState.selection;
+        const fromLine = editor.state.doc.line(fromL);
+        const toLine = editor.state.doc.line(toL);
+
+        editor.dispatch({
+          selection: {
+            anchor: fromLine.from + fromC - 1,
+            head: toLine.from + toC - 1,
+          },
+          effects: EditorView.scrollIntoView(fromLine.from, {
+            y: 'center',
+          }),
+        });
+      } catch (err) {
+        // (ignored)
+      }
+    }
+  }
+
   // Apply initial state to dom
   function applyInitialState() {
     updateButtonState();
     debouncedUpdateCSS();
     updateErrorState();
+    updateSelection();
   }
 
   type TabbarItemDataset =
@@ -237,7 +302,7 @@ function setupPlayground() {
   const debounceUpdateURL = debounce(updateURL, 200);
 
   function updateURL() {
-    const hash = stateToBase64(playgroundState);
+    const hash = serializeState(playgroundState);
     history.replaceState('playground', '', `#${hash}`);
   }
 
