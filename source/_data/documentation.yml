@@ -74,6 +74,7 @@ toc:
       - Null Alpha Channel: /documentation/breaking-changes/null-alpha/
       - abs() Percentage: /documentation/breaking-changes/abs-percent/
       - Functions and Mixins Beginning with <code>--</code>: /documentation/breaking-changes/css-function-mixin/
+      - Mixed Declarations: /documentation/breaking-changes/mixed-decls/
   - Command Line: /documentation/cli/
     :children:
       - Dart Sass: /documentation/cli/dart-sass/
