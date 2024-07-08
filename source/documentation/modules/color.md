@@ -253,7 +253,9 @@ title: sass:color
   If `$color` isn't already in the `rgb` color space, it's converted to `rgb`
   and gamut-mapped if necessary. The specific gamut-mapping algorithm may change
   in future Sass versions as the state of the art improves; currently,
-  `local-minde` is used.
+  [`local-minde`] is used.
+
+  [`local-minde`]: #to-gamut
 
   {% codeExample 'color-ie-hex-str', false %}
     @use 'sass:color';
@@ -304,7 +306,9 @@ title: sass:color
 {% endfunction %}
 
 {% function 'color.is-legacy($color)', 'returns:boolean' %}
-  Returns whether `$color` is in a [legacy color space].
+  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+
+Returns whether `$color` is in a [legacy color space].
 
   [legacy color space]: /documentation/values/colors#legacy-color-spaces
 
@@ -324,7 +328,9 @@ title: sass:color
 {% endfunction %}
 
 {% function 'color.is-missing($color, $channel)', 'returns:boolean' %}
-  Returns whether `$channel` is [missing] in `$color`. The `$channel` must be a
+  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+
+Returns whether `$channel` is [missing] in `$color`. The `$channel` must be a
   quoted string.
 
   [missing channel]: /documentation/values/colors#missing-channels
@@ -345,7 +351,9 @@ title: sass:color
 {% endfunction %}
 
 {% function 'color.is-powerless($color, $channel, $space: null)', 'returns:boolean' %}
-  Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
+  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+
+Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
   defaults to `$color`'s space. The `$channel` must be a quoted string and the
   `$space` must be an unquoted string.
 
