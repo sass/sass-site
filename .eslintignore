@@ -6,12 +6,14 @@
 .yarnrc.yml
 /.language/
 /_site/
+/tool/typedoc-theme.js
 /source/_data/versionCache.json
 /source/assets/dist/
 /source/assets/js/vendor/**
 /source/assets/sass/vendor/
 /source/blog/*.md
 /source/documentation/js-api
+/source/assets/js
 coverage/
 node_modules/
 package-lock.json

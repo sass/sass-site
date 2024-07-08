@@ -3,7 +3,6 @@ const {
   DefaultThemeRenderContext,
   JSX,
   UrlMapping,
-  // eslint-disable-next-line node/no-missing-require, node/no-extraneous-require
 } = require('typedoc');
 const child_process = require('child_process');
 const fs = require('fs');
