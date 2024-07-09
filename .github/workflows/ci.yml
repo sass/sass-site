@@ -52,7 +52,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.SASS_SITE_TOKEN }}
 
       # Pushing to the production branch will trigger Netlify's release process.
       - run: git push -f origin main:production
