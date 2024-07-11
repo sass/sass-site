@@ -21,3 +21,5 @@ each `!global` or `!default` flag, this will be a syntax error. This means that
 
 Until Dart Sass 2.0.0 is released, multiple copies of a flag just produce
 deprecation warnings.
+
+{% render 'silencing_deprecations' %}

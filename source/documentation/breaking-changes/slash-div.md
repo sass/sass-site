@@ -131,3 +131,5 @@ use `math.div()` and `list.slash()`.
 $ npm install -g sass-migrator
 $ sass-migrator division **/*.scss
 ```
+
+{% render 'silencing_deprecations' %}

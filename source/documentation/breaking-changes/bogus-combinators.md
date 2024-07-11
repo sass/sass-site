@@ -61,3 +61,5 @@ invalid CSS from the compiled CSS, with one exception: we _won't_ omit selectors
 that begin with a leading combinator, since they may be used from a nested
 `@import` rule or `meta.load-css()` mixin. However, we don't encourage this
 pattern and will drop support for it in Dart Sass 2.0.0.
+
+{% render 'silencing_deprecations' %}

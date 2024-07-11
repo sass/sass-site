@@ -62,3 +62,5 @@ existing behavior of these stylesheets.
 $ npm install -g sass-migrator
 $ sass-migrator strict-unary **/*.scss
 ```
+
+{% render 'silencing_deprecations' %}

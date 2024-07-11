@@ -116,3 +116,5 @@ declarations in `& {}`:
     &
       font-weight: normal
 {% endcodeExample %}
+
+{% render 'silencing_deprecations' %}

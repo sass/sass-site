@@ -28,3 +28,5 @@ Fortunately, these came up very infrequently in practice.
 First, we emitted deprecation warnings for the previous ambiguous cases. These
 will have suggestions for how to preserve the existing behavior or how to use
 the new CSS syntax.
+
+{% render 'silencing_deprecations' %}

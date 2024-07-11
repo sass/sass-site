@@ -429,6 +429,16 @@ Error: Incompatible units em and px.
   test.scss 1:9  root stylesheet
 ```
 
+#### `--verbose`
+
+This flag tells Sass to emit _all_ deprecation warnings when compiling. By
+default, Sass only emits five warnings for a given deprecation type when
+deprecated features are used, and silences any warnings beyond that.
+
+```shellsession
+$ sass --verbose style.scss style.css
+```
+
 #### `--quiet`
 
 This flag (abbreviated `-q`) tells Sass not to emit any warnings when compiling.

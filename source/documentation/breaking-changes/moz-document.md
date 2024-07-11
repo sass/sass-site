@@ -35,3 +35,5 @@ First, we'll emit deprecation warnings for all usages of `@-moz-document` except
 for the empty url-prefix hack.
 
 In Dart Sass 2.0, `@-moz-document` will be treated as an unknown at-rule.
+
+{% render 'silencing_deprecations' %}
