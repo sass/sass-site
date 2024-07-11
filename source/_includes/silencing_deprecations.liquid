@@ -49,24 +49,14 @@ importers.
 
 If you know that one particular deprecation isn't a problem for you, you can
 silence warnings for that specific deprecation using the
-[`--silence-deprecation` flag] on the command line, or the [`silenceDeprecation`
+[`--silence-deprecations` flag] on the command line, or the [`silenceDeprecations`
 option] in the JavaScript API.
 
-[`--silence-deprecation flag`]: /documentation/cli/dart-sass/#silence-deprecation
-[`silenceDeprecation` option]: /documentation/js-api/interfaces/Options/#silenceDeprecation
+[`--silence-deprecations flag`]: /documentation/cli/dart-sass/#silence-deprecations
+[`silenceDeprecations` option]: /documentation/js-api/interfaces/Options/#silenceDeprecations
 
 {% headsUp %}
   This option is only available in the [modern JS API].
 
   [modern JS API]: /documentation/js-api/#md:usage
 {% endheadsUp %}
-
-### Silencing Everything
-
-If you really need to, you can use the [`--quiet` flag] on the command line, or
-the [`quiet` option] in the JavaScript API, to disable *all* messages. This is
-not recommended, though, as it will also disable any messages from `@warn` or
-`@debug` rules.
-
-[`--quiet flag`]: /documentation/cli/dart-sass/#quiet
-[`quiet` option]: /documentation/js-api/interfaces/Options/#quiet
