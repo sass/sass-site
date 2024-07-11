@@ -16,7 +16,7 @@ done when fixing deprecations. You can enable verbose mode using the [`--verbose
 flag`] on the command line, or the [`verbose` option] in the JavaScript API.
 
 [`--verbose flag`]: /documentation/cli/dart-sass/#verbose
-[`verbose` option]: /documentation/js-api/interfaces/options/#verbose
+[`verbose` option]: /documentation/js-api/interfaces/Options/#verbose
 
 {% headsUp %}
   When running from the [JS API], Sass doesn't share any information across
@@ -27,7 +27,7 @@ flag`] on the command line, or the [`verbose` option] in the JavaScript API.
   compilations.
 
   [JS API]: /documentation/js-api/
-  [custom `Logger`]: https://sass-lang.com/documentation/js-api/interfaces/logger-1/
+  [custom `Logger`]: https://sass-lang.com/documentation/js-api/interfaces/Logger-1/
 {% endheadsUp %}
 
 ### Silencing Deprecations in Dependencies
@@ -38,7 +38,7 @@ still printing them for your app using the [`--quiet-deps` flag] on the command
 line, or the [`quietDeps` option] in the JavaScript API.
 
 [`--quiet-deps flag`]: /documentation/cli/dart-sass/#quiet-deps
-[`quietDeps` option]: /documentation/js-api/interfaces/options/#quietDeps
+[`quietDeps` option]: /documentation/js-api/interfaces/Options/#quietDeps
 
 For the purposes of this flag, a "dependency" is any stylesheet that's not just
 a series of relative loads from the entrypoint stylesheet. This means anything
@@ -53,7 +53,7 @@ silence warnings for that specific deprecation using the
 option] in the JavaScript API.
 
 [`--silence-deprecation flag`]: /documentation/cli/dart-sass/#silence-deprecation
-[`silenceDeprecation` option]: /documentation/js-api/interfaces/options/#silenceDeprecation
+[`silenceDeprecation` option]: /documentation/js-api/interfaces/Options/#silenceDeprecation
 
 {% headsUp %}
   This option is only available in the [modern JS API].
@@ -69,4 +69,4 @@ not recommended, though, as it will also disable any messages from `@warn` or
 `@debug` rules.
 
 [`--quiet flag`]: /documentation/cli/dart-sass/#quiet
-[`quiet` option]: /documentation/js-api/interfaces/options/#quiet
+[`quiet` option]: /documentation/js-api/interfaces/Options/#quiet
