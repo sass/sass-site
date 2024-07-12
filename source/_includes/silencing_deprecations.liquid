@@ -1,0 +1,63 @@
+## Can I Silence the Warnings?
+
+Sass provides a powerful suite of options for managing which deprecation
+warnings you see and when.
+
+### Terse and Verbose Mode
+
+By default, Sass runs in terse mode, where it will only print each type of
+deprecation warning five times before it silences additional warnings. This
+helps ensure that users know when they need to be aware of an upcoming breaking
+change without creating an overwhelming amount of console noise.
+
+If you run Sass in verbose mode instead, it will print *every* deprecation
+warning it encounters. This can be useful for tracking the remaining work to be
+done when fixing deprecations. You can enable verbose mode using the
+[`--verbose` flag] on the command line, or the [`verbose` option] in the
+JavaScript API.
+
+[`--verbose` flag]: /documentation/cli/dart-sass/#verbose
+[`verbose` option]: /documentation/js-api/interfaces/Options/#verbose
+
+{% headsUp %}
+  When running from the [JS API], Sass doesn't share any information across
+  compilations, so by default it'll print five warnings for *each stylesheet*
+  that's compiled. However, you can fix this by writing (or asking the author of
+  your favorite framework's Sass plugin to write) a [custom `Logger`] that only
+  prints five errors per deprecation and can be shared across multiple
+  compilations.
+
+  [JS API]: /documentation/js-api/
+  [custom `Logger`]: https://sass-lang.com/documentation/js-api/interfaces/Logger-1/
+{% endheadsUp %}
+
+### Silencing Deprecations in Dependencies
+
+Sometimes, your dependencies have deprecation warnings that you can't do
+anything about. You can silence deprecation warnings from dependencies while
+still printing them for your app using the [`--quiet-deps` flag] on the command
+line, or the [`quietDeps` option] in the JavaScript API.
+
+[`--quiet-deps` flag]: /documentation/cli/dart-sass/#quiet-deps
+[`quietDeps` option]: /documentation/js-api/interfaces/Options/#quietDeps
+
+For the purposes of this flag, a "dependency" is any stylesheet that's not just
+a series of relative loads from the entrypoint stylesheet. This means anything
+that comes from a load path, and most stylesheets loaded through custom
+importers.
+
+### Silencing Specific Deprecations
+
+If you know that one particular deprecation isn't a problem for you, you can
+silence warnings for that specific deprecation using the
+[`--silence-deprecation` flag] on the command line, or the [`silenceDeprecations`
+option] in the JavaScript API.
+
+[`--silence-deprecation` flag]: /documentation/cli/dart-sass/#silence-deprecation
+[`silenceDeprecations` option]: /documentation/js-api/interfaces/Options/#silenceDeprecations
+
+{% headsUp %}
+  This option is only available in the [modern JS API].
+
+  [modern JS API]: /documentation/js-api/#md:usage
+{% endheadsUp %}

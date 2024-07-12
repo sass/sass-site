@@ -19,3 +19,4 @@ return `-10%` which in the browser would be `50px`.
 For this reason, we are deprecating the global abs() function with a percentage.
 To preserve the current behavior, use `math.abs()` instead.
 
+{% render 'silencing_deprecations' %}

@@ -38,3 +38,5 @@ deprecation warning named `css-function-mixin`.
 Between Dart Sass 2.0.0 and the release of Dart Sass's support for plain CSS
 functions and mixins, functions and mixins will not be allowed to have names
 that begin with `--`.
+
+{% render 'silencing_deprecations' %}

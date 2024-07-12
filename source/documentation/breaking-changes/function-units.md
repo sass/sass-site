@@ -211,3 +211,5 @@ units or with units other than `%` to `color.mix()` or `color.invert()`.
 
 In Dart Sass 2.0.0, `list.nth()` and `list.set-nth()` will throw errors if
 they're passed an index `$n` with a unit.
+
+{% render 'silencing_deprecations' %}
