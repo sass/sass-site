@@ -27,6 +27,7 @@ function setupPlayground() {
     inputValue: hashState.inputValue || '',
     debugOutput: [],
     selection: hashState.selection || null,
+    outputValue: ''
   };
 
   // Proxy intercepts setters and triggers side effects
@@ -180,6 +181,16 @@ function setupPlayground() {
         copiedAlert?.classList.remove('show');
       }, 3000);
     });
+
+    // Copy content handlers
+    const copyInputButton = document.getElementById('playground-copy-input');
+    copyInputButton?.addEventListener('click', () => {
+      void navigator.clipboard.writeText(playgroundState.inputValue);
+    });
+    const copyOutputButton = document.getElementById('playground-copy-output');
+    copyOutputButton?.addEventListener('click', () => {
+      void navigator.clipboard.writeText(playgroundState.outputValue);
+    });
   }
   /**
    * updateButtonState
@@ -258,6 +269,7 @@ function setupPlayground() {
         },
       });
       playgroundState.compilerHasError = false;
+      playgroundState.outputValue = result.css;
     } else {
       playgroundState.compilerHasError = true;
       playgroundState.debugOutput = [

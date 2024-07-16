@@ -309,6 +309,11 @@
       --sl-background--button-state: var(--sl-color--code-background);
     }
   }
+  .sl-c-button--copy {
+    img {
+      width: 1em;
+    }
+  }
 }
 
 // Make sure all tab bar buttons and text get the same padding

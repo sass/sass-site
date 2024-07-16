@@ -14,6 +14,7 @@ export type PlaygroundState = {
   inputValue: string;
   compilerHasError: boolean;
   debugOutput: ConsoleLog[];
+  outputValue: string;
 
   /**
    * `[fromLine, fromColumn, toLine, toColumn]`; all 1-indexed. If this is null,
