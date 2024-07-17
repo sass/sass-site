@@ -36,6 +36,7 @@ $(() => {
       if (!noRecursion) {
         noRecursion = true;
         jqASass.not(this).trigger('click');
+        $('body').attr('data-selected-syntax', 'sass');
         noRecursion = false;
       }
     }),
@@ -43,7 +44,10 @@ $(() => {
       if (!noRecursion) {
         noRecursion = true;
         jqASCSS.not(this).trigger('click');
+        $('body').attr('data-selected-syntax', 'scss');
         noRecursion = false;
       }
     });
+    // Set initial value
+    $('body').attr('data-selected-syntax', 'scss');
 });

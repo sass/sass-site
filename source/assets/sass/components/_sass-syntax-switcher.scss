@@ -249,7 +249,7 @@ $syntaxes: ('scss', 'sass');
   display: none;
 }
 @each $syntax in $syntaxes {
-  .ui-tabs-nav:has(.ui-tabs-active[data-syntax='#{$syntax}'])
+  body[data-selected-syntax='#{$syntax}']
     .playground-link[data-syntax='#{$syntax}'] {
     display: block;
   }
