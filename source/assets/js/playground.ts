@@ -173,23 +173,31 @@ function setupPlayground() {
 
     let timer: undefined | number;
 
-    copyURLButton?.addEventListener('click', () => {
-      void navigator.clipboard.writeText(location.href);
-      copiedAlert?.classList.add('show');
+    function showCopiedAlert(msg: string){
+      if(!copiedAlert) return;
+      copiedAlert.innerText = msg;
+      copiedAlert.classList.add('show');
       if (timer) clearTimeout(timer);
       timer = window.setTimeout(() => {
-        copiedAlert?.classList.remove('show');
+        copiedAlert.classList.remove('show');
       }, 3000);
+    }
+
+    copyURLButton?.addEventListener('click', () => {
+      void navigator.clipboard.writeText(location.href);
+      showCopiedAlert('Copied URL to clipboard');
     });
 
     // Copy content handlers
     const copyInputButton = document.getElementById('playground-copy-input');
     copyInputButton?.addEventListener('click', () => {
       void navigator.clipboard.writeText(playgroundState.inputValue);
+      showCopiedAlert('Copied input to clipboard');
     });
     const copyOutputButton = document.getElementById('playground-copy-output');
     copyOutputButton?.addEventListener('click', () => {
       void navigator.clipboard.writeText(playgroundState.outputValue);
+      showCopiedAlert('Copied output to clipboard');
     });
   }
   /**
