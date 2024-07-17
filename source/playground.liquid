@@ -26,7 +26,14 @@ is_playground: true
           type="button"
           id="playground-copy-input"
           class="sl-c-button sl-c-button--copy">
-          <img src="/assets/img/icons/copy.svg"/>
+          <div class="sl-c-playground-button--copy--copy">
+            {%- render 'icons/copy' -%}
+            <span class="visuallyhidden">Click to Copy</span>
+          </div>
+          <div class="sl-c-playground-button--copy--copied">
+            {%- render 'icons/circle-check' -%}
+            <span class="visuallyhidden">Copied</span>
+          </div>
         </button>
     </div>
     <div class="sl-c-playground__panel-content sl-code-is-source"></div>
@@ -55,7 +62,14 @@ is_playground: true
           type="button"
           id="playground-copy-output"
           class="sl-c-button sl-c-button--copy">
-          <img src="/assets/img/icons/copy.svg"/>
+          <div class="sl-c-playground-button--copy--copy">
+            {%- render 'icons/copy' -%}
+            <span class="visuallyhidden">Click to Copy</span>
+          </div>
+          <div class="sl-c-playground-button--copy--copied">
+            {%- render 'icons/circle-check' -%}
+            <span class="visuallyhidden">Copied</span>
+          </div>
         </button>
     </div>
     <div class="sl-c-callout sl-c-callout--warning sl-c-playground__error">Please resolve error to view compiled CSS.</div>

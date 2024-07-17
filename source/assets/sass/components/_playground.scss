@@ -310,8 +310,19 @@
     }
   }
   .sl-c-button--copy {
-    img {
+    svg {
       width: 1em;
+    }
+    .sl-c-playground-button--copy--copied {
+      display: none;
+    }
+    &.copied {
+      .sl-c-playground-button--copy--copied {
+        display: initial;
+      }
+      .sl-c-playground-button--copy--copy {
+        display: none;
+      }
     }
   }
 }

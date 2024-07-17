@@ -171,16 +171,32 @@ function setupPlayground() {
     const copyURLButton = document.getElementById('playground-copy-url');
     const copiedAlert = document.getElementById('playground-copied-alert');
 
-    let timer: undefined | number;
+    type Timer = undefined | number;
+
+    let alertTimer: Timer;
+    let buttonTimers: {input: Timer, output: Timer} = {
+      input: undefined,
+      output: undefined,
+    }
 
     function showCopiedAlert(msg: string){
       if(!copiedAlert) return;
       copiedAlert.innerText = msg;
       copiedAlert.classList.add('show');
-      if (timer) clearTimeout(timer);
-      timer = window.setTimeout(() => {
+      if (alertTimer) clearTimeout(alertTimer);
+      alertTimer = window.setTimeout(() => {
         copiedAlert.classList.remove('show');
       }, 3000);
+    }
+
+    function showCopiedIcon(button: 'input' | 'output'){
+      let buttonEl = $(`#playground-copy-${button}`);
+      if (!buttonEl) return;
+      buttonEl.addClass('copied');
+      if (buttonTimers[button]) clearTimeout(buttonTimers[button]);
+      buttonTimers[button] = window.setTimeout(() => {
+        buttonEl.removeClass('copied');
+      }, 3000)
     }
 
     copyURLButton?.addEventListener('click', () => {
@@ -193,11 +209,13 @@ function setupPlayground() {
     copyInputButton?.addEventListener('click', () => {
       void navigator.clipboard.writeText(playgroundState.inputValue);
       showCopiedAlert('Copied input to clipboard');
+      showCopiedIcon('input');
     });
     const copyOutputButton = document.getElementById('playground-copy-output');
     copyOutputButton?.addEventListener('click', () => {
       void navigator.clipboard.writeText(playgroundState.outputValue);
       showCopiedAlert('Copied output to clipboard');
+      showCopiedIcon('output');
     });
   }
   /**
