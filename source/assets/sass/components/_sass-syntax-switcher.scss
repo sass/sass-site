@@ -242,3 +242,15 @@ html .ui-button.ui-state-disabled:active {
     @include -split-css-tabs;
   }
 }
+
+$syntaxes: ('scss', 'sass');
+
+.playground-link {
+  display: none;
+}
+@each $syntax in $syntaxes {
+  .ui-tabs-nav:has(.ui-tabs-active[data-syntax='#{$syntax}'])
+    .playground-link[data-syntax='#{$syntax}'] {
+    display: block;
+  }
+}
