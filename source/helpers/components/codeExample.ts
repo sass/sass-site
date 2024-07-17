@@ -297,16 +297,22 @@ const getCanSplit = (
 const generatePlaygroundLinks = (
   {scss, sass} = {scss: <Array<string>>[], sass: <Array<string>>[]}
 ) => {
-  const sassLink = serializeStateContents({
-    inputFormat: 'indented',
-    outputFormat: 'expanded',
-    inputValue: sass.join('\n\n'),
-  });
-  const scssLink = serializeStateContents({
-    inputFormat: 'scss',
-    outputFormat: 'expanded',
-    inputValue: scss.join('\n\n'),
-  });
+  const sassLink =
+    sass.length === 1
+      ? serializeStateContents({
+          inputFormat: 'indented',
+          outputFormat: 'expanded',
+          inputValue: sass[0],
+        })
+      : '';
+  const scssLink =
+    scss.length === 1
+      ? serializeStateContents({
+          inputFormat: 'scss',
+          outputFormat: 'expanded',
+          inputValue: scss[0],
+        })
+      : '';
   return {
     sass: sassLink,
     scss: scssLink,

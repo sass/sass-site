@@ -10,10 +10,10 @@
     {%- if code.css.size -%}
       {%- render 'code_examples/tab', name: 'CSS', syntax: 'css', id: exampleName, enabled: false -%}
     {%- endif -%}
-    {%- if code.scss.size -%}
+    {%- if code.scss.size == 1 -%}
       <a href="/playground#{{ playgroundLinks.scss }}" target="_blank">Edit on Playground</a>
     {%- endif -%}
-    {%- if code.sass.size -%}
+    {%- if code.sass.size == 1 -%}
       <a href="/playground#{{ playgroundLinks.sass }}" target="_blank">Edit on Playground</a>
     {%- endif -%}
   </ul>
