@@ -10,6 +10,12 @@
     {%- if code.css.size -%}
       {%- render 'code_examples/tab', name: 'CSS', syntax: 'css', id: exampleName, enabled: false -%}
     {%- endif -%}
+    {%- if code.scss.size -%}
+      <a href="/playground#{{ playgroundLinks.scss }}" target="_blank">Edit on Playground</a>
+    {%- endif -%}
+    {%- if code.sass.size -%}
+      <a href="/playground#{{ playgroundLinks.sass }}" target="_blank">Edit on Playground</a>
+    {%- endif -%}
   </ul>
   {%- if code.scss.size -%}
     {%- render 'code_examples/panel', name: 'SCSS Syntax', syntax: 'scss', id: exampleName, examples: code.scss, paddings: code.scssPaddings, enabled: true -%}
