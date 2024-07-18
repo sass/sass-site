@@ -32,10 +32,6 @@ body {
   color: var(--text, var(--sl-color--pale-sky));
 }
 
-.fade {
-  opacity: 0.7;
-}
-
 ::selection {
   background: var(--sl-color--iron);
 }
