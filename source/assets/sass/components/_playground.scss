@@ -309,20 +309,24 @@
       --sl-background--button-state: var(--sl-color--code-background);
     }
   }
-  .sl-c-button--copy {
-    svg {
-      width: 1em;
-    }
+}
+
+.sl-c-button--copy {
+  svg {
+    width: 1em;
+  }
+  .sl-c-playground-button--copy--copy {
+    display: inline-block;
+  }
+  .sl-c-playground-button--copy--copied {
+    display: none;
+  }
+  &.copied {
     .sl-c-playground-button--copy--copied {
-      display: none;
+      display: initial;
     }
-    &.copied {
-      .sl-c-playground-button--copy--copied {
-        display: initial;
-      }
-      .sl-c-playground-button--copy--copy {
-        display: none;
-      }
+    .sl-c-playground-button--copy--copy {
+      display: none;
     }
   }
 }

@@ -27,7 +27,7 @@ function setupPlayground() {
     inputValue: hashState.inputValue || '',
     debugOutput: [],
     selection: hashState.selection || null,
-    outputValue: ''
+    outputValue: '',
   };
 
   // Proxy intercepts setters and triggers side effects
@@ -174,13 +174,14 @@ function setupPlayground() {
     type Timer = undefined | number;
 
     let alertTimer: Timer;
-    let buttonTimers: {input: Timer, output: Timer} = {
+    const buttonTimers: {input: Timer; output: Timer; url: Timer} = {
       input: undefined,
       output: undefined,
-    }
+      url: undefined,
+    };
 
-    function showCopiedAlert(msg: string){
-      if(!copiedAlert) return;
+    function showCopiedAlert(msg: string) {
+      if (!copiedAlert) return;
       copiedAlert.innerText = msg;
       copiedAlert.classList.add('show');
       if (alertTimer) clearTimeout(alertTimer);
@@ -189,19 +190,20 @@ function setupPlayground() {
       }, 3000);
     }
 
-    function showCopiedIcon(button: 'input' | 'output'){
-      let buttonEl = $(`#playground-copy-${button}`);
+    function showCopiedIcon(button: 'input' | 'output' | 'url') {
+      const buttonEl = $(`#playground-copy-${button}`);
       if (!buttonEl) return;
       buttonEl.addClass('copied');
       if (buttonTimers[button]) clearTimeout(buttonTimers[button]);
       buttonTimers[button] = window.setTimeout(() => {
         buttonEl.removeClass('copied');
-      }, 3000)
+      }, 3000);
     }
 
     copyURLButton?.addEventListener('click', () => {
       void navigator.clipboard.writeText(location.href);
       showCopiedAlert('Copied URL to clipboard');
+      showCopiedIcon('url');
     });
 
     // Copy content handlers
