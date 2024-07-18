@@ -83,46 +83,6 @@ Sass provides the following built-in modules:
 
 ## Global Functions
 
-{% funFact %}
-  You can pass [special functions] like `calc()` or `var()` in place of any
-  argument to a global color constructor. You can even use `var()` in place of
-  multiple arguments, since it might be replaced by multiple values! When a
-  color function is called this way, it returns an unquoted string using the
-  same signature it was called with.
-
-  [special functions]: /documentation/syntax/special-functions
-
-  {% codeExample 'color-special', false %}
-    @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
-    @debug color(display-p3 var(--peach)); // color(display-p3 var(--peach))
-    ===
-    @debug rgb(0 51 102 / var(--opacity))  // rgb(0 51 102 / var(--opacity))
-    @debug color(display-p3 var(--peach))  // color(display-p3 var(--peach))
-  {% endcodeExample %}
-{% endfunFact %}
-
-{% function 'color($space $channel1 $channel2 $channel3)', 'color($space $channel1 $channel2 $channel3 / $alpha)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-  Returns a color in the given color space with the given channel values.
-
-  This supports the color spaces `srgb`, `srgb-linear`, `display-p3`, `a98-rgb`,
-  `prophoto-rgb`, `rec2020`, `xyz`, and `xyz-d50`, as well as `xyz-d65` which is
-  an alias for `xyz`. For all spaces, the channels are numbers between 0 and 1
-  (inclusive) or percentages between `0%` and `100%` (inclusive).
-  
-  If any color channel is outside the range 0 to 1, this represents a color
-  outside the standard gamut for its color space.
-
-  {% codeExample 'hsl', false %}
-    @debug color(srgb 0.1 0.6 1); // color(srgb 0.1 0.6 1)
-    @debug color(xyz 30% 0% 90% / 50%); // color(xyz 0.3 0 0.9 / 50%)
-    ===
-    @debug color(srgb 0.1 0.6 1)  // color(srgb 0.1 0.6 1)
-    @debug color(xyz 30% 0% 90% / 50%)  // color(xyz 0.3 0 0.9 / 50%)
-  {% endcodeExample %}
-{% endfunction %}
-
 {% function 'hsl($hue $saturation $lightness)', 'hsl($hue $saturation $lightness / $alpha)', 'hsl($hue, $saturation, $lightness, $alpha: 1)', 'hsla($hue $saturation $lightness)', 'hsla($hue $saturation $lightness / $alpha)', 'hsla($hue, $saturation, $lightness, $alpha: 1)', 'returns:color' %}
   {% compatibility 'dart: "1.15.0"', 'libsass: false', 'ruby: false', 'feature: "Level 4 Syntax"' %}
     LibSass and Ruby Sass only support the following signatures:
@@ -146,15 +106,28 @@ Sass provides the following built-in modules:
   [hue, saturation, and lightness]: https://en.wikipedia.org/wiki/HSL_and_HSV
 
   The hue is a number between `0deg` and `360deg` (inclusive) and may be
-  unitless. The saturation and lightness are typically numbers between `0%` and
-  `100%` (inclusive) and may *not* be unitless. The alpha channel can be
-  specified as either a unitless number between 0 and 1 (inclusive), or a
-  percentage between `0%` and `100%` (inclusive).
+  unitless. The saturation and lightness are numbers between `0%` and `100%`
+  (inclusive) and may *not* be unitless. The alpha channel can be specified as
+  either a unitless number between 0 and 1 (inclusive), or a percentage between
+  `0%` and `100%` (inclusive).
 
-  A hue outside `0deg` and `360deg` is equivalent to `$hue % 360deg`. A
-  saturation less than `0%` is clamped to `0%`. A saturation above `100%` or a
-  lightness outside `0%` and `100%` are both allowed, and represent colors
-  outside the standard RGB gamut.
+  {% funFact %}
+    You can pass [special functions][] like `calc()` or `var()` in place of any
+    argument to `hsl()`. You can even use `var()` in place of multiple
+    arguments, since it might be replaced by multiple values! When a color
+    function is called this way, it returns an unquoted string using the same
+    signature it was called with.
+
+    [special functions]: /documentation/syntax/special-functions
+
+    {% codeExample 'hsl-special', false %}
+      @debug hsl(210deg 100% 20% / var(--opacity)); // hsl(210deg 100% 20% / var(--opacity))
+      @debug hsla(var(--peach), 20%); // hsla(var(--peach), 20%)
+      ===
+      @debug hsl(210deg 100% 20% / var(--opacity))  // hsl(210deg 100% 20% / var(--opacity))
+      @debug hsla(var(--peach), 20%)  // hsla(var(--peach), 20%)
+    {% endcodeExample %}
+  {% endfunFact %}
 
   {% headsUp %}
     Sass's [special parsing rules][] for slash-separated values make it
@@ -167,12 +140,14 @@ Sass provides the following built-in modules:
 
   {% codeExample 'hsl', false %}
     @debug hsl(210deg 100% 20%); // #036
+    @debug hsl(34, 35%, 92%); // #f2ece4
     @debug hsl(210deg 100% 20% / 50%); // rgba(0, 51, 102, 0.5)
-    @debug hsla(34, 35%, 92%, 0.2); // rgba(241.74, 235.552, 227.46, 0.2)
+    @debug hsla(34, 35%, 92%, 0.2); // rgba(242, 236, 228, 0.2)
     ===
     @debug hsl(210deg 100% 20%) // #036
+    @debug hsl(34, 35%, 92%) // #f2ece4
     @debug hsl(210deg 100% 20% / 50%)  // rgba(0, 51, 102, 0.5)
-    @debug hsla(34, 35%, 92%, 0.2)  // rgba(241.74, 235.552, 227.46, 0.2)
+    @debug hsla(34, 35%, 92%, 0.2)  // rgba(242, 236, 228, 0.2)
   {% endcodeExample %}
 {% endfunction %}
 
@@ -193,182 +168,6 @@ Sass provides the following built-in modules:
     @debug if(true, 10px, 15px)  // 10px
     @debug if(false, 10px, 15px)  // 15px
     @debug if(variable-defined($var), $var, null)  // null
-  {% endcodeExample %}
-{% endfunction %}
-
-{% function 'hwb($hue $whiteness $blackness)', 'hwb($hue $whiteness $blackness / $alpha)', 'color.hwb($hue $whiteness $blackness)', 'color.hwb($hue $whiteness $blackness / $alpha)', 'color.hwb($hue, $whiteness, $blackness, $alpha: 1)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-  Returns a color with the given [hue, whiteness, and blackness] and the
-  given alpha channel.
-
-  [hue, whiteness, and blackness]: https://en.wikipedia.org/wiki/HWB_color_model
-
-  The hue is a number between `0deg` and `360deg` (inclusive) and may be
-  unitless. The whiteness and blackness are numbers typically between `0%` and
-  `100%` (inclusive) and may *not* be unitless. The alpha channel can be
-  specified as either a unitless number between 0 and 1 (inclusive), or a
-  percentage between `0%` and `100%` (inclusive).
-
-  A hue outside `0deg` and `360deg` is equivalent to `$hue % 360deg`. If
-  `$whiteness + $blackness > 100%`, the two values are scaled so that they add
-  up to `100%`. If `$whiteness`, `$blackness`, or both are less than `0%`, this
-  represents a color outside the standard RGB gamut.
-  
-  {% headsUp %}
-    The `color.hwb()` variants are deprecated. New Sass code should use the
-    global `hwb()` function instead.
-  {% endheadsUp %}
-
-  {% codeExample 'hwb', false %}
-    @debug hwb(210deg 0% 60%); // #036
-    @debug hwb(210 0% 60% / 0.5); // rgba(0, 51, 102, 0.5)
-    ===
-    @debug hwb(210deg 0% 60%)  // #036
-    @debug hwb(210 0% 60% / 0.5)  // rgba(0, 51, 102, 0.5)
-  {% endcodeExample %}
-{% endfunction %}
-
-{% function 'if($condition, $if-true, $if-false)' %}
-  Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
-
-  This function is special in that it doesn't even evaluate the argument that
-  isn't returned, so it's safe to call even if the unused argument would throw
-  an error.
-
-  [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
-
-  {% codeExample 'debug', false %}
-    @debug if(true, 10px, 15px); // 10px
-    @debug if(false, 10px, 15px); // 15px
-    @debug if(variable-defined($var), $var, null); // null
-    ===
-    @debug if(true, 10px, 15px)  // 10px
-    @debug if(false, 10px, 15px)  // 15px
-    @debug if(variable-defined($var), $var, null)  // null
-  {% endcodeExample %}
-{% endfunction %}
-
-{% function 'lab($lightness $a $b)', 'lab($lightness $a $b / $alpha)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-  Returns a color with the given [lightness, a, b], and alpha channels.
-
-  [hue, whiteness, and blackness]: https://en.wikipedia.org/wiki/CIELAB_color_space
-
-  The lightness is a number between `0%` and `100%` (inclusive) and may be
-  unitless. The a and b channels can be specified as either [unitless] numbers
-  between -125 and 125 (inclusive), or percentages between `-100%` and `100%`
-  (inclusive). The alpha channel can be specified as either a unitless number
-  between 0 and 1 (inclusive), or a percentage between `0%` and `100%`
-  (inclusive).
-
-  [unitless]: /documentation/values/numbers#units
-
-  A lightness outside the range `0%` and `100%` is clamped to be within that
-  range. If the a or b channels are outside the range `-125` to `125`, this
-  represents a color outside the standard CIELAB gamut.
-
-  {% codeExample 'lab', false %}
-    @debug lab(50% -20 30); // lab(50% -20 30)
-    @debug lab(80% 0% 20% / 0.5); // lab(80% 0 25 / 0.5);
-    ===
-    @debug lab(50% -20 30)  // lab(50% -20 30)
-    @debug lab(80% 0% 20% / 0.5)  // lab(80% 0 25 / 0.5);
-  {% endcodeExample %}
-{% endfunction %}
-
-{% function 'lch($lightness $chroma $hue)', 'lch($lightness $chroma $hue / $alpha)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-  Returns a color with the given [lightness, chroma, and hue], and the given
-  alpha channel.
-
-  [hue, whiteness, and blackness]: https://en.wikipedia.org/wiki/CIELAB_color_space#Cylindrical_model
-
-  The lightness is a number between `0%` and `100%` (inclusive) and may be
-  unitless. The chroma channel can be specified as either a [unitless] number
-  between 0 and 150 (inclusive), or a percentage between `0%` and `100%`
-  (inclusive). The hue is a number between `0deg` and `360deg` (inclusive) and
-  may be unitless. The alpha channel can be specified as either a unitless
-  number between 0 and 1 (inclusive), or a percentage between `0%` and `100%`
-  (inclusive).
-
-  [unitless]: /documentation/values/numbers#units
-
-  A lightness outside the range `0%` and `100%` is clamped to be within that
-  range. A chroma below 0 is clamped to 0, and a chroma above 150 represents a
-  color outside the standard CIELAB gamut. A hue outside `0deg` and `360deg` is
-  equivalent to `$hue % 360deg`.
-
-  {% codeExample 'lch', false %}
-    @debug lch(50% 10 270deg); // lch(50% 10 270deg)
-    @debug lch(80% 50% 0.2turn / 0.5); // lch(80% 75 72deg / 0.5);
-    ===
-    @debug lch(50% 10 270deg)  // lch(50% 10 270deg)
-    @debug lch(80% 50% 0.2turn / 0.5)  // lch(80% 75 72deg / 0.5);
-  {% endcodeExample %}
-{% endfunction %}
-
-{% function 'oklab($lightness $a $b)', 'oklab($lightness $a $b / $alpha)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-  Returns a color with the given [perceptually-uniform lightness, a, b], and
-  alpha channels.
-
-  [perceptually-uniform lightness, a, b]: https://bottosson.github.io/posts/oklab/
-
-  The lightness is a number between `0%` and `100%` (inclusive) and may be
-  unitless. The a and b channels can be specified as either [unitless] numbers
-  between -0.4 and 0.4 (inclusive), or percentages between `-100%` and `100%`
-  (inclusive). The alpha channel can be specified as either a unitless number
-  between 0 and 1 (inclusive), or a percentage between `0%` and `100%`
-  (inclusive).
-
-  [unitless]: /documentation/values/numbers#units
-
-  A lightness outside the range `0%` and `100%` is clamped to be within that
-  range. If the a or b channels are outside the range `-0.4` to `0.4`, this
-  represents a color outside the standard Oklab gamut.
-
-  {% codeExample 'oklab', false %}
-    @debug oklab(50% -0.1 0.15); // oklab(50% -0.1 0.15)
-    @debug oklab(80% 0% 20% / 0.5); // oklab(80% 0 0.08 / 0.5)
-    ===
-    @debug oklab(50% -0.1 0.15)  // oklab(50% -0.1 0.15)
-    @debug oklab(80% 0% 20% / 0.5)  // oklab(80% 0 0.08 / 0.5)
-  {% endcodeExample %}
-{% endfunction %}
-
-{% function 'oklch($lightness $chroma $hue)', 'oklch($lightness $chroma $hue / $alpha)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-  Returns a color with the given [perceptually-uniform lightness, chroma, and
-  hue], and the given alpha channel.
-
-  [hue, whiteness, and blackness]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
-
-  The lightness is a number between `0%` and `100%` (inclusive) and may be
-  unitless. The chroma channel can be specified as either a [unitless] number
-  between 0 and 0.4 (inclusive), or a percentage between `0%` and `100%`
-  (inclusive). The hue is a number between `0deg` and `360deg` (inclusive) and
-  may be unitless. The alpha channel can be specified as either a unitless
-  number between 0 and 1 (inclusive), or a percentage between `0%` and `100%`
-  (inclusive).
-
-  [unitless]: /documentation/values/numbers#units
-
-  A lightness outside the range `0%` and `100%` is clamped to be within that
-  range. A chroma below 0 is clamped to 0, and a chroma above 0.4 represents a
-  color outside the standard Oklab gamut. A hue outside `0deg` and `360deg` is
-  equivalent to `$hue % 360deg`.
-
-  {% codeExample 'oklch', false %}
-    @debug oklch(50% 0.3 270deg); // oklch(50% 0.3 270deg)
-    @debug oklch(80% 50% 0.2turn / 0.5); // oklch(80% 0.2 72deg / 0.5);
-    ===
-    @debug oklch(50% 0.3 270deg)  // oklch(50% 0.3 270deg)
-    @debug oklch(80% 50% 0.2turn / 0.5)  // oklch(80% 0.2 72deg / 0.5);
   {% endcodeExample %}
 {% endfunction %}
 
@@ -393,15 +192,30 @@ Sass provides the following built-in modules:
   If `$red`, `$green`, `$blue`, and optionally `$alpha` are passed, returns a
   color with the given red, green, blue, and alpha channels.
 
-  Each channel can be specified as either a [unitless] number between 0 and
+  Each channel can be specified as either a [unitless][] number between 0 and
   255 (inclusive), or a percentage between `0%` and `100%` (inclusive). The
   alpha channel can be specified as either a unitless number between 0 and 1
   (inclusive), or a percentage between `0%` and `100%` (inclusive).
 
   [unitless]: /documentation/values/numbers#units
 
-  If any color channel is outside the range 0 to 255, this represents a color
-  outside the standard RGB gamut.
+  {% funFact %}
+    You can pass [special functions][] like `calc()` or `var()` in place of any
+    argument to `rgb()`. You can even use `var()` in place of multiple
+    arguments, since it might be replaced by multiple values! When a color
+    function is called this way, it returns an unquoted string using the same
+    signature it was called with.
+
+    [special functions]: /documentation/syntax/special-functions
+
+    {% codeExample 'rgb-special', false %}
+      @debug rgb(0 51 102 / var(--opacity)); // rgb(0 51 102 / var(--opacity))
+      @debug rgba(var(--peach), 0.2); // rgba(var(--peach), 0.2)
+      ===
+      @debug rgb(0 51 102 / var(--opacity))  // rgb(0 51 102 / var(--opacity))
+      @debug rgba(var(--peach), 0.2)  // rgba(var(--peach), 0.2)
+    {% endcodeExample %}
+  {% endfunFact %}
 
   {% headsUp %}
     Sass's [special parsing rules][] for slash-separated values make it
