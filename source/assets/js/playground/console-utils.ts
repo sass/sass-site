@@ -15,6 +15,9 @@ export type ConsoleLogWarning = {
     deprecation: boolean;
     span?: SourceSpan | undefined;
     stack?: string | undefined;
+    deprecationType?: {
+      id: string;
+    };
   };
   message: string;
   type: 'warn';
@@ -35,10 +38,17 @@ export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
  * @param  {string} message The user-submitted string
  * @return {string} The sanitized string
  */
-function encodeHTML(message: string): string {
+function encodeHTML(message: string, safeLink?: string): string {
   const el = document.createElement('div');
   el.innerText = message;
-  return el.innerHTML;
+  let html = el.innerHTML;
+  if (safeLink) {
+    html = html.replace(
+      safeLink,
+      `<a href="${safeLink}" target="_blank">${safeLink}</a>`
+    );
+  }
+  return html;
 }
 
 function lineNumberFormatter(number?: number): string {
@@ -63,11 +73,13 @@ export function displayForConsoleLog(
     type: string;
     lineNumber?: number;
     message: string;
+    safeLink?: string;
     range?: PlaygroundState['selection'];
   } = {
     type: item.type,
     lineNumber: undefined,
     message: '',
+    safeLink: undefined,
     range: null,
   };
   if (item.type === 'error') {
@@ -115,6 +127,10 @@ export function displayForConsoleLog(
       }
     }
     data.lineNumber = lineNumber;
+
+    if (item.type === 'warn' && item.options.deprecationType?.id) {
+      data.safeLink = `https://sass-lang.com/d/${item.options.deprecationType.id}`;
+    }
   }
   const link = selectionLink(playgroundState, data.range);
 
@@ -128,5 +144,5 @@ export function displayForConsoleLog(
     data.type
   }">@${data.type}</span>:${lineNumberFormatter(
     data.lineNumber
-  )}${locationEnd}<div class="console-message">${encodeHTML(data.message)}</div></div>`;
+  )}${locationEnd}<div class="console-message">${encodeHTML(data.message, data.safeLink)}</div></div>`;
 }
