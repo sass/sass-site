@@ -46,9 +46,7 @@ function serializeStateContents(state: PlaygroundState): string {
  * Serializes `state`'s non-boolean, non-textual parameters to a set of URL
  * parameters that can be added to the URL hash.
  */
-export function serializeStateParams(
-  state: Partial<PlaygroundState> & Pick<PlaygroundState, 'selection'>
-): string | null {
+function serializeStateParams(state: PlaygroundState): string | null {
   const params = new URLSearchParams();
 
   if (state.selection) {
