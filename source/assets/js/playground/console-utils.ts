@@ -1,5 +1,7 @@
 import {Exception, SourceSpan} from 'sass';
 
+import {PlaygroundState, serializeState} from './utils';
+
 export type ConsoleLogDebug = {
   options: {
     span: SourceSpan;
@@ -45,36 +47,86 @@ function lineNumberFormatter(number?: number): string {
   return `${number}`;
 }
 
-export function displayForConsoleLog(item: ConsoleLog): string {
-  const data: {type: string; lineNumber?: number; message: string} = {
+function selectionLink(
+  playgroundState: PlaygroundState,
+  range?: PlaygroundState['selection']
+) {
+  if (!range) return '';
+  return serializeState({...playgroundState, selection: range});
+}
+
+export function displayForConsoleLog(
+  item: ConsoleLog,
+  playgroundState: PlaygroundState
+): string {
+  const data: {
+    type: string;
+    lineNumber?: number;
+    message: string;
+    range?: PlaygroundState['selection'];
+  } = {
     type: item.type,
     lineNumber: undefined,
     message: '',
+    range: null,
   };
   if (item.type === 'error') {
     if (item.error instanceof Exception) {
-      data.lineNumber = item.error.span.start.line;
+      const span = item.error.span;
+      data.lineNumber = span.start.line;
+      data.range = [
+        span.start.line + 1,
+        span.start.column + 1,
+        span.end.line + 1,
+        span.end.column + 1,
+      ];
     }
     data.message = item.error?.toString() || '';
   } else if (['debug', 'warn'].includes(item.type)) {
     data.message = item.message;
     let lineNumber = item.options.span?.start?.line;
+    if (item.options.span) {
+      const span = item.options.span;
+      data.lineNumber = span.start.line;
+      data.range = [
+        span.start.line + 1,
+        span.start.column + 1,
+        span.end.line + 1,
+        span.end.column + 1,
+      ];
+    }
+
     if (typeof lineNumber === 'undefined') {
       const stack = 'stack' in item.options ? item.options.stack : '';
-      const needleFromStackRegex = /^- (\d+):/;
+      const needleFromStackRegex = /^- (\d+):(\d+) /;
       const match = stack?.match(needleFromStackRegex);
       if (match?.[1]) {
         // Stack trace starts at 1, all others come from span, which starts at
         // 0, so adjust before formatting.
         lineNumber = parseInt(match[1]) - 1;
       }
+      if (match?.[2]) {
+        data.range = [
+          parseInt(match[1]),
+          parseInt(match[2]),
+          parseInt(match[1]),
+          parseInt(match[2]),
+        ];
+      }
     }
     data.lineNumber = lineNumber;
   }
+  const link = selectionLink(playgroundState, data.range);
 
-  return `<div class="console-line"><div class="console-location"><span class="console-type console-type-${
+  const locationStart = link
+    ? `<a href="#${link}" class="console-location" data-range=${data.range}>`
+    : '<div class="console-location">';
+
+  const locationEnd = link ? '</a>' : '</div>';
+
+  return `<div class="console-line">${locationStart}<span class="console-type console-type-${
     data.type
   }">@${data.type}</span>:${lineNumberFormatter(
     data.lineNumber
-  )}</div><div class="console-message">${encodeHTML(data.message)}</div></div>`;
+  )}${locationEnd}<div class="console-message">${encodeHTML(data.message)}</div></div>`;
 }

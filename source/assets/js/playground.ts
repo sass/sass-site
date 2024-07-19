@@ -132,6 +132,12 @@ function setupPlayground() {
     }
   }
 
+  function goToSelection(selection: PlaygroundState['selection']): void {
+    playgroundState.selection = selection;
+    updateSelection();
+    editor.focus();
+  }
+
   // Apply initial state to dom
   function applyInitialState() {
     updateButtonState();
@@ -235,8 +241,21 @@ function setupPlayground() {
       '.sl-c-playground__console'
     ) as HTMLDivElement;
     console.innerHTML = playgroundState.debugOutput
-      .map(displayForConsoleLog)
+      .map(item => displayForConsoleLog(item, playgroundState))
       .join('\n');
+    console.querySelectorAll('a.console-location').forEach(link => {
+      (link as HTMLAnchorElement).addEventListener('click', event => {
+        if (!(event.metaKey || event.altKey || event.shiftKey))
+          event.preventDefault();
+        const range = (event.currentTarget as HTMLAnchorElement).dataset.range
+          ?.split(',')
+          .map(n => parseInt(n));
+        if (range && range.length === 4) {
+          const [fromL, fromC, toL, toC] = range;
+          goToSelection([fromL, fromC, toL, toC]);
+        }
+      });
+    });
   }
 
   function updateDiagnostics() {
