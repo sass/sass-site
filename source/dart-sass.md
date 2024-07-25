@@ -109,12 +109,12 @@ as fast as the asynchronous API, due to the overhead of asynchronous callbacks.
 
 ## Embedded Dart Sass
 
-Dart Sass also supports the [Embeddded Sass protocol], which allows any
+Dart Sass also supports the [Embedded Sass protocol], which allows any
 programming language to communicate directly with the Dart VM to run Sass
 compilation, including custom function and importer support. This has two major
 benefits:
 
-[Sass embedded protocol]: https://github.com/sass/sass/blob/main/spec/embedded-protocol.md#the-embedded-sass-protocol
+[Embedded Sass protocol]: https://github.com/sass/sass/blob/main/spec/embedded-protocol.md#the-embedded-sass-protocol
 
 1. It makes it easy to create a wrapper library for Dart Sass for any
    programming language that can run a subprocess.
