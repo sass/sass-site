@@ -77,12 +77,15 @@ dart compile-sass.dart styles.scss styles.css
 
 ## JavaScript Library
 
-Dart Sass is also distributed as the pure JavaScript [`sass`
-package](https://www.npmjs.com/package/sass) on npm. The pure JS version is
-slower than the stand-alone executable, but it's easy to integrate into existing
-workflows and it allows you to define custom functions and importers in
-JavaScript. You can add it to your project using `npm install --save-dev sass`
-and `require()` it as a library:
+Dart Sass is also distributed as the pure JavaScript [`sass` package] and
+[`sass-embedded` package] on npm. The pure JS version is slower than the
+stand-alone executable, but it's easy to integrate into existing workflows and
+it allows you to define custom functions and importers in JavaScript. You can
+add it to your project using `npm install --save-dev sass` and `require()` it as
+a library:
+
+[`sass` package]: https://www.npmjs.com/package/sass
+[`sass-embedded` package]: https://www.npmjs.com/package/sass-embedded
 
 ```js
 const sass = require('sass');
@@ -103,6 +106,50 @@ as fast as the asynchronous API, due to the overhead of asynchronous callbacks.
 
 [brand new JavaScript API]: /documentation/js-api/
 [legacy API]: /documentation/js-api/#md:legacy-api
+
+## Embedded Dart Sass
+
+Dart Sass also supports the [Embedded Sass protocol], which allows any
+programming language to communicate directly with the Dart VM to run Sass
+compilation, including custom function and importer support. This has two major
+benefits:
+
+[Embedded Sass protocol]: https://github.com/sass/sass/blob/main/spec/embedded-protocol.md#the-embedded-sass-protocol
+
+1. It makes it easy to create a wrapper library for Dart Sass for any
+   programming language that can run a subprocess.
+
+2. The Dart VM is very fast, so this provides a substantial performance boost
+   even for JavaScript where the native `sass` package is available.
+
+The following Embedded Sass wrapper packages are available. If you have another
+one to add, please [send a pull request]!
+
+[send a pull request]: https://github.com/sass/sass-site/edit/main/source/dart-sass.md
+
+* **Node.js**: The [`sass-embedded` package] is maintained by the Sass team, and
+  supports the same [official Sass JavaScript API] as the native-JS `sass` package.
+
+  [official Sass JavaScript API]: /documentation/js-api/
+
+* **Go**: The [`github.com/bep/godartsass` package] runs Embedded Sass and
+  supports the [Hugo] static site generator.
+
+  [`github.com/bep/godartsass` package]: https://github.com/bep/godartsass
+  [Hugo]: https://gohugo.io/
+
+* **Java**: The [`de.larsgrefer.sass` package] runs Embedded Sass in Java.
+
+  https://mvnrepository.com/artifact/de.larsgrefer.sass
+
+* **Ruby**: The [`sass-embedded` gem] is maintained by frequent Sass contributor
+  なつき.
+
+  [`sass-embedded` gem]: https://rubygems.org/gems/sass-embedded
+
+* **Rust**: The [`sass-embedded` crate] runs Embedded Sass in Rust.
+
+  [`sass-embedded` crate]: https://crates.io/crates/sass-embedded
 
   </div>
 </div>
