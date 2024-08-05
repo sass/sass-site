@@ -34,6 +34,7 @@ import {
 } from '@codemirror/view';
 
 import {playgroundHighlightStyle} from './theme.js';
+import playgroundCompletions from './autocomplete.js';
 
 const editorSetup = (() => [
   [
@@ -48,7 +49,7 @@ const editorSetup = (() => [
     syntaxHighlighting(defaultHighlightStyle, {fallback: true}),
     bracketMatching(),
     closeBrackets(),
-    autocompletion(),
+    autocompletion({override: playgroundCompletions}),
     highlightActiveLine(),
     drawSelection(),
     keymap.of([
