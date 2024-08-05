@@ -140,7 +140,7 @@ one to add, please [send a pull request]!
 
 * **Java**: The [`de.larsgrefer.sass` package] runs Embedded Sass in Java.
 
-  https://mvnrepository.com/artifact/de.larsgrefer.sass
+  [`de.larsgrefer.sass` package]: https://mvnrepository.com/artifact/de.larsgrefer.sass
 
 * **Ruby**: The [`sass-embedded` gem] is maintained by frequent Sass contributor
   なつき.
