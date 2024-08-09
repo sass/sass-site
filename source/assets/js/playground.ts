@@ -6,7 +6,11 @@ import debounce from 'lodash/debounce';
 import {compileString, info, Logger, OutputStyle, Syntax} from 'sass';
 
 import {displayForConsoleLog} from './playground/console-utils.js';
-import {editorSetup, outputSetup} from './playground/editor-setup.js';
+import {
+  changeSyntax,
+  editorSetup,
+  outputSetup,
+} from './playground/editor-setup.js';
 import {
   deserializeState,
   customLoader,
@@ -34,6 +38,9 @@ function setupPlayground() {
     set(state: PlaygroundState, prop: keyof PlaygroundState, ...rest) {
       // Set state first so called functions have access
       const set = Reflect.set(state, prop, ...rest);
+      if (prop === 'inputFormat') {
+        changeSyntax(editor, state.inputFormat === 'indented');
+      }
       if (['inputFormat', 'outputFormat'].includes(prop)) {
         updateButtonState();
         debouncedUpdateCSS();
@@ -70,6 +77,10 @@ function setupPlayground() {
     ],
     parent: document.querySelector('.sl-code-is-source') || undefined,
   });
+
+  if (playgroundState.inputFormat === 'indented') {
+    changeSyntax(editor, true);
+  }
 
   // Setup CSS view
   const viewer = new EditorView({

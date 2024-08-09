@@ -22,7 +22,7 @@ import {
   syntaxHighlighting,
 } from '@codemirror/language';
 import {lintKeymap} from '@codemirror/lint';
-import {EditorState} from '@codemirror/state';
+import {EditorState, Compartment} from '@codemirror/state';
 import {
   dropCursor,
   highlightActiveLine,
@@ -34,6 +34,15 @@ import {
 } from '@codemirror/view';
 
 import {playgroundHighlightStyle} from './theme.js';
+import {EditorView} from 'codemirror';
+
+const syntax = new Compartment();
+
+const changeSyntax = (view: EditorView, indented = false) => {
+  view.dispatch({
+    effects: syntax.reconfigure(langSass({indented})),
+  });
+};
 
 const editorSetup = (() => [
   [
@@ -61,7 +70,7 @@ const editorSetup = (() => [
       indentWithTab,
     ]),
   ],
-  langSass(),
+  syntax.of(langSass()),
 ])();
 
 const outputSetup = (() => [
@@ -77,4 +86,4 @@ const outputSetup = (() => [
   langCss(),
 ])();
 
-export {editorSetup, outputSetup};
+export {changeSyntax, editorSetup, outputSetup};
