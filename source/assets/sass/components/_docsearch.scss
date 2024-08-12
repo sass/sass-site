@@ -1,3 +1,5 @@
+@use '../config/color/brand';
+
 #docsearch {
   display: flex;
   flex-direction: column;
@@ -6,5 +8,5 @@
 }
 
 .DocSearch-Button-Placeholder {
-  color: darkslategrey;
+  color: brand.$sl-color--midnight-blue;
 }
