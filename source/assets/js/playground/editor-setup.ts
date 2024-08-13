@@ -38,10 +38,19 @@ import {EditorView} from 'codemirror';
 
 const syntax = new Compartment();
 
-const changeSyntax = (view: EditorView, indented = false) => {
+const changeSyntax = (
+  view: EditorView,
+  indented = false,
+  newValue: string | undefined
+) => {
   view.dispatch({
     effects: syntax.reconfigure(langSass({indented})),
   });
+  if (newValue) {
+    view.dispatch({
+      changes: [{from: 0, to: view.state.doc.length, insert: newValue}],
+    });
+  }
 };
 
 const editorSetup = (() => [
@@ -86,4 +95,40 @@ const outputSetup = (() => [
   langCss(),
 ])();
 
-export {changeSyntax, editorSetup, outputSetup};
+const defaultContents = {
+  indented: `@use "sass:list"
+@use "sass:color"
+
+$font-stack: Helvetica, sans-serif
+$primary-color: #333
+
+body 
+  font: $font-stack
+
+a
+  color: $primary-color
+  &:hover
+    color: color.adjust($primary-color, $lightness: 20%)
+
+@debug list.append($font-stack, Arial)`,
+  scss: `@use "sass:list";
+@use "sass:color";
+
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: $font-stack
+}
+
+a {
+  color: $primary-color;
+  &:hover{
+    color: color.adjust($primary-color, $lightness: 20%);
+  }
+}
+
+@debug list.append($font-stack, Arial);`,
+};
+
+export {changeSyntax, editorSetup, outputSetup, defaultContents};
