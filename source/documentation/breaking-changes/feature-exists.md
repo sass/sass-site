@@ -19,10 +19,10 @@ Dart Sass is now the only officially supported Sass implementation, and all
 versions of Dart Sass support all the features supported by
 `meta.feature-exists()`, all existing uses of it can safely be removed.
 
-Many new features can be detected using [`meta.function-exists()`] or
-[`meta.mixin-exists()`]. Others can be detected using expression-level syntax,
-such as using `calc(1) == 1` to determine if the current version of Sass
-supports first-class calculations.
+Many new features can be detected using [`meta.function-exists()`],
+[`meta.mixin-exists()`], or [`meta.global-variable-exists()`]. Others can be
+detected using expression-level syntax, such as using `calc(1) == 1` to
+determine if the current version of Sass supports first-class calculations.
 
 [`meta.function-exists()`]: /documentation/modules/meta#function-exists
 [`meta.mixin-exists()`]: /documentation/modules/meta#mixin-exists
