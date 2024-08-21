@@ -22,6 +22,14 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [The `meta.feature-exists()` function is
+  deprecated](/documentation/breaking-changes/feature-exists/) beginning in Dart
+  Sass 1.78.0.
+
+* [Mixing declarations with nested rules is changing
+  behavior](/documentation/breaking-changes/mixed-decls/) beginning in Dart Sass
+  1.77.7.
+
 * [Functions and Mixins Beginning with `--` are
   deprecated](/documentation/breaking-changes/css-function-mixin/) beginning in Dart
   Sass 1.76.0.

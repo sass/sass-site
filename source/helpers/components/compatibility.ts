@@ -82,7 +82,7 @@ const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
     try {
       // handles true, false, null, numbers, strings...
       value = JSON.parse(value) as string | boolean | null;
-    } catch (e) {
+    } catch {
       throw new Error(
         `Unable to parse argument ${key} with value ${
           value as string

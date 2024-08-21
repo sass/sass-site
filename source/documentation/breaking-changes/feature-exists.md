@@ -13,7 +13,6 @@ However, as time has gone on it's turned out that the vast majority of new Sass
 features are either possible to detect in a more straightforward way, or else
 aren't very useful to detect at all.
 
-
 This function is now deprecated and will be removed in Dart Sass 2.0.0. Since
 Dart Sass is now the only officially supported Sass implementation, and all
 versions of Dart Sass support all the features supported by
@@ -28,18 +27,14 @@ determine if the current version of Sass supports first-class calculations.
 [`meta.mixin-exists()`]: /documentation/modules/meta#mixin-exists
 [`meta.variable-exists()`]: /documentation/modules/meta#variable-exists
 
-## Deprecation Process
-
-### Phase 1
+## Transition Period
 
 {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-Currently, Sass emits a deprecation warning if you call `meta.feature-exists()`.
+First, we'll emit deprecation warnings for all usages of `feature-exists`.
 
-### Phase 2
-
-{% compatibility 'dart: false', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-In Dart Sass 2.0.0, `meta.feature-exists()` will no longer exist.
+In Dart Sass 2.0.0, `meta.feature-exists()` will no longer exist. Attempts to
+call it will throw an error, and attempts to call the global `feature-exists()`
+function will be treated as a plain CSS function call.
 
 {% render 'silencing_deprecations' %}
