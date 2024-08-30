@@ -100,6 +100,8 @@
     "typogr": "^0.6.8"
   },
   "dependencies": {
+    "@spectrum-web-components/shared": "^0.47.1",
+    "@spectrum-web-components/split-view": "^0.47.1",
     "pako": "^2.1.0",
     "seedrandom": "^3.0.5"
   }

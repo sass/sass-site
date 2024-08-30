@@ -112,12 +112,12 @@
   --sl-block-margin--callout: 0;
   --sl-block-padding--callout: var(--sl-gutter--quarter);
 
-  display: grid;
-  gap: var(--sl-gutter);
-  grid-template:
-    'sass' 1fr
-    'css' auto
-    'debug' auto / 100%;
+  // display: grid;
+  // gap: var(--sl-gutter);
+  // grid-template:
+  //   'sass' 1fr
+  //   'css' auto
+  //   'debug' auto / 100%;
 
   @include config.sl-breakpoint--large {
     // magic numbers, the layout is well balanced with these proportions

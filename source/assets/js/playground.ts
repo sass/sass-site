@@ -4,6 +4,7 @@ import {Text} from '@codemirror/state';
 import {EditorView} from 'codemirror';
 import debounce from 'lodash/debounce';
 import {compileString, info, Logger, OutputStyle, Syntax} from 'sass';
+import setupSplitView from './playground/split-view.js';
 
 import {displayForConsoleLog} from './playground/console-utils.js';
 import {editorSetup, outputSetup} from './playground/editor-setup.js';
@@ -17,6 +18,7 @@ import {
 } from './playground/utils.js';
 
 function setupPlayground() {
+  setupSplitView();
   const hash = location.hash.slice(1);
   const hashState = deserializeState(hash);
 
