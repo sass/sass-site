@@ -40,7 +40,7 @@ SCSS looks like this:
 
 ## The Indented Syntax
 
-The indented syntax was Sass's original syntax, and so it uses the file
+The indented syntax was Sass's original syntax, so it uses the file
 extension `.sass`. Because of this extension, it's sometimes just called "Sass".
 The indented syntax supports all the same features as SCSS, but it uses
 indentation instead of curly braces and semicolons to describe the format of the
