@@ -29,7 +29,7 @@ function setupPlayground() {
   const inputFormat = hashState.inputFormat || 'scss';
 
   const initialState: PlaygroundState = {
-    inputFormat: inputFormat,
+    inputFormat,
     outputFormat: hashState.outputFormat || 'expanded',
     compilerHasError: false,
     inputValue: hashState.inputValue || defaultContents[inputFormat],

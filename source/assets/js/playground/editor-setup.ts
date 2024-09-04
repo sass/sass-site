@@ -99,36 +99,40 @@ const defaultContents = {
   indented: `@use "sass:list"
 @use "sass:color"
 
-$font-stack: Helvetica, sans-serif
+$font-stack: Helvetica, Arial
 $primary-color: #333
 
 body 
+  $font-stack: list.append($font-stack, sans-serif)
   font: $font-stack
 
 a
   color: $primary-color
-  &:hover
-    color: color.adjust($primary-color, $lightness: 20%)
 
-@debug list.append($font-stack, Arial)`,
+  &:hover
+    color: color.scale($primary-color, $lightness: 20%)
+
+@debug $font-stack`,
   scss: `@use "sass:list";
 @use "sass:color";
 
-$font-stack: Helvetica, sans-serif;
+$font-stack: Helvetica, Arial;
 $primary-color: #333;
 
 body {
-  font: $font-stack
+  $font-stack: list.append($font-stack, sans-serif);
+  font: $font-stack;
 }
 
 a {
   color: $primary-color;
+
   &:hover{
-    color: color.adjust($primary-color, $lightness: 20%);
+    color: color.scale($primary-color, $lightness: 20%);
   }
 }
 
-@debug list.append($font-stack, Arial);`,
+@debug $font-stack;`,
 };
 
 export {changeSyntax, editorSetup, outputSetup, defaultContents};
