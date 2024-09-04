@@ -192,9 +192,8 @@ const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?(\\w)*`);
 
 const moduleCompletions = Object.freeze(
   builtinModules.map(mod => ({
-    label: `"sass:${mod.name}"`,
-    // don't add extra quote on the end, as it likely is already there
-    apply: `"sass:${mod.name}`,
+    label: `sass:${mod.name}`,
+    apply: `sass:${mod.name}`,
     info: mod.description,
     type: 'class',
   }))
@@ -204,15 +203,16 @@ function builtinModulesCompletion(
   context: CompletionContext
 ): CompletionResult | null {
   const nodeBefore = syntaxTree(context.state).resolveInner(context.pos, -1);
+  if (nodeBefore.type.name !== 'StringLiteral') return null;
   if (nodeBefore.parent?.type.name !== 'UseStatement') return null;
 
-  const atRule = context.matchBefore(/"(sass:)?\w*/);
+  const moduleMatch = context.matchBefore(/["'](sass:)?\w*/);
 
-  if (!atRule) return null;
-  if (atRule.from === atRule.to && !context.explicit) return null;
+  if (!moduleMatch) return null;
+  if (moduleMatch.from === moduleMatch.to && !context.explicit) return null;
   return {
-    from: atRule.from,
-    to: atRule.to,
+    from: moduleMatch.from + 1,
+    to: moduleMatch.to,
     options: moduleCompletions,
   };
 }
@@ -265,10 +265,11 @@ function builtinModuleItemCompletion(
     )
   )
     return null;
-  const atRule = context.matchBefore(moduleNameRegExp);
+  const moduleNameMatch = context.matchBefore(moduleNameRegExp);
 
-  if (!atRule) return null;
-  if (atRule.from === atRule.to && !context.explicit) return null;
+  if (!moduleNameMatch) return null;
+  if (moduleNameMatch.from === moduleNameMatch.to && !context.explicit)
+    return null;
 
   const includedModules = includedBuiltinModules(context.state);
 
@@ -280,8 +281,8 @@ function builtinModuleItemCompletion(
   );
 
   return {
-    from: atRule.from,
-    to: atRule.to,
+    from: moduleNameMatch.from,
+    to: moduleNameMatch.to,
     options: [...includedModVariables, ...includedModFunctions],
   };
 }
