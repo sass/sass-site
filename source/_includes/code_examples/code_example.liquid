@@ -1,3 +1,11 @@
+<div class="sl-c-to-playground">
+{%- if code.scss.size == 1 -%}
+  <a href="/playground#{{ playgroundLinks.scss }}" class="sl-c-to-playground__link" target="_blank" data-syntax="scss"><span class="sl-c-to-playground__highlight">Edit on</span> Playground</a>
+{%- endif -%}
+{%- if code.sass.size == 1 -%}
+  <a href="/playground#{{ playgroundLinks.sass }}" class="sl-c-to-playground__link" target="_blank" data-syntax="sass"><span class="sl-c-to-playground__highlight">Edit on</span> Playground</a>
+{%- endif -%}
+</div>
 <div class="code-example ui-tabs{% if code.canSplit %} can-split{% endif %}"{% if code.splitLocation %} style="--split-location: {{ code.splitLocation }}%"{% endif %}>
   <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix">
     {%- if code.scss.size -%}
@@ -9,12 +17,6 @@
     {%- endif -%}
     {%- if code.css.size -%}
       {%- render 'code_examples/tab', name: 'CSS', syntax: 'css', id: exampleName, enabled: false -%}
-    {%- endif -%}
-    {%- if code.scss.size == 1 -%}
-      <a href="/playground#{{ playgroundLinks.scss }}" class="playground-link" target="_blank" data-syntax="scss">Edit on Playground</a>
-    {%- endif -%}
-    {%- if code.sass.size == 1 -%}
-      <a href="/playground#{{ playgroundLinks.sass }}" class="playground-link" target="_blank" data-syntax="sass">Edit on Playground</a>
     {%- endif -%}
   </ul>
   {%- if code.scss.size -%}
