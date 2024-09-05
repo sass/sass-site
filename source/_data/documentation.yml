@@ -75,6 +75,7 @@ toc:
       - abs() Percentage: /documentation/breaking-changes/abs-percent/
       - Functions and Mixins Beginning with <code>--</code>: /documentation/breaking-changes/css-function-mixin/
       - Mixed Declarations: /documentation/breaking-changes/mixed-decls/
+      - <code>meta.feature-exists</code>: /documentation/breaking-changes/feature-exists/
   - Command Line: /documentation/cli/
     :children:
       - Dart Sass: /documentation/cli/dart-sass/
