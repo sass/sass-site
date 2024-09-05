@@ -7,6 +7,7 @@ import {sassCompletionSource} from '@codemirror/lang-sass';
 import {syntaxTree} from '@codemirror/language';
 import {EditorState} from '@codemirror/state';
 
+// Sass-specific at rules only. CSS at rules should be added to `@codemirror/lang-css`.
 const atRuleKeywords = [
   'use',
   'forward',
@@ -59,6 +60,7 @@ const builtinModules: ModuleDefinition[] = [
     name: 'color',
     description:
       'generates new colors based on existing ones, making it easy to build color themes',
+    // todo: Add functions after Color 4 updates, or see if list can be generated from Sass package.
   },
   {
     name: 'list',
