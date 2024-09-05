@@ -1,9 +1,18 @@
-import {spawn as nodeSpawn, SpawnOptionsWithoutStdio} from 'node:child_process';
+import {SpawnOptionsWithoutStdio, spawn as nodeSpawn} from 'node:child_process';
 import fs from 'node:fs/promises';
 
 import deepEqual from 'deep-equal';
 import kleur from 'kleur';
 import {compare, parse} from 'semver';
+
+/** A release of a version of Sass. */
+export interface Release {
+  /** The version of this Sass release. */
+  version: string;
+
+  /** The URL for this version. */
+  url: string;
+}
 
 type VersionCache = Record<string, string>;
 
@@ -13,11 +22,11 @@ const VERSION_CACHE_PATH = './source/_data/versionCache.json';
  * Promise version of `spawn` to avoid blocking the main thread while waiting
  * for the child processes.
  */
-const spawn = (
+function spawn(
   cmd: string,
   args: string[],
   options: SpawnOptionsWithoutStdio
-) => {
+): Promise<string> {
   return new Promise((resolve, reject) => {
     const child = nodeSpawn(cmd, args, options);
     const stderr: string[] = [];
@@ -36,12 +45,12 @@ const spawn = (
       }
     });
   });
-};
+}
 
 /**
  * Retrieves cached version object from cache file.
  */
-const getCacheFile = async () => {
+async function getCacheFile(): Promise<VersionCache> {
   let versionCache;
   try {
     const versionFile = await fs.readFile(VERSION_CACHE_PATH);
@@ -54,20 +63,20 @@ const getCacheFile = async () => {
     }
   }
   return versionCache;
-};
+}
 
 /**
  * Writes version object to cache file.
  */
-const writeCacheFile = async (cache: VersionCache) => {
+async function writeCacheFile(cache: VersionCache): Promise<void> {
   console.info(kleur.green('[11ty] Writing version cache file...'));
   await fs.writeFile(VERSION_CACHE_PATH, JSON.stringify(cache));
-};
+}
 
 /**
  * Retrieves the highest stable version of `repo`, based on its git tags.
  */
-const getLatestVersion = async (repo: string) => {
+async function getLatestVersion(repo: string): Promise<string> {
   console.info(kleur.cyan(`[11ty] Fetching version information for ${repo}`));
   let stdout;
   try {
@@ -80,10 +89,10 @@ const getLatestVersion = async (repo: string) => {
     console.error(kleur.red(`[11ty] Failed to fetch git tags for ${repo}`));
     throw err;
   }
-  const isNotPreRelease = (version: string) => {
+  function isNotPreRelease(version: string): boolean | null {
     const parsed = parse(version);
     return parsed && parsed.prerelease.length === 0;
-  };
+  }
   const version = stdout
     .split('\n')
     .map(line => line.split('refs/tags/').at(-1) ?? '')
@@ -92,12 +101,12 @@ const getLatestVersion = async (repo: string) => {
     .at(-1);
 
   return version ?? '';
-};
+}
 
 /**
  * Returns the version and URL for the latest release of all implementations.
  */
-module.exports = async () => {
+export default async function (): Promise<Record<string, Release>> {
   const repos = ['sass/libsass', 'sass/dart-sass', 'sass/migrator'];
   const cache = await getCacheFile();
 
@@ -120,4 +129,4 @@ module.exports = async () => {
   }
 
   return data;
-};
+}
