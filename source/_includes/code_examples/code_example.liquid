@@ -1,8 +1,8 @@
 <div>
-  {%- if code.scss.size == 1 -%}
+  {%- if playgroundLinks.scss-%}
     <a href="/playground#{{ playgroundLinks.scss }}" class="sl-c-to-playground" target="_blank" data-syntax="scss"><span class="sl-c-to-playground__highlight">Edit on</span> Playground</a>
   {%- endif -%}
-  {%- if code.sass.size == 1 -%}
+  {%- if playgroundLinks.sass -%}
     <a href="/playground#{{ playgroundLinks.sass }}" class="sl-c-to-playground" target="_blank" data-syntax="sass"><span class="sl-c-to-playground__highlight">Edit on</span> Playground</a>
   {%- endif -%}
   <div class="code-example ui-tabs{% if code.canSplit %} can-split{% endif %}"{% if code.splitLocation %} style="--split-location: {{ code.splitLocation }}%"{% endif %}>
