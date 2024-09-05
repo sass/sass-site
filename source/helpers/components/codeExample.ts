@@ -298,7 +298,7 @@ const getCanSplit = (
 // multiple sections/files, which are not supported by the playground.
 function generatePlaygroundLinks(
   {scss, sass} = {scss: <Array<string>>[], sass: <Array<string>>[]}
-){
+) {
   const sassLink =
     sass.length === 1
       ? serializeStateContents({
@@ -319,4 +319,4 @@ function generatePlaygroundLinks(
     sass: sassLink,
     scss: scssLink,
   };
-};
+}
