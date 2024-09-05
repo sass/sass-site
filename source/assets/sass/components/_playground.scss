@@ -359,3 +359,7 @@ $syntaxes: ('scss', 'sass');
   font-weight: var(--sl-font-weight--bold);
   text-transform: uppercase;
 }
+
+.sl-c-code-example:has(.sl-c-to-playground) {
+  margin-block-start: var(--sl-gutter--double);
+}
