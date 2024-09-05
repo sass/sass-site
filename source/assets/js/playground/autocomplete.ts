@@ -96,7 +96,7 @@ const builtinModules: ModuleDefinition[] = [
     name: 'math',
     description: 'provides functions that operate on numbers',
     variables: [
-      {name: '$e', description: undefined},
+      {name: '$e'},
       {name: '$pi'},
       {name: '$epsilon'},
       {name: '$max-safe-integer'},
@@ -105,7 +105,7 @@ const builtinModules: ModuleDefinition[] = [
       {name: '$min-number'},
     ],
     functions: [
-      {name: 'ceil', description: undefined},
+      {name: 'ceil'},
       {name: 'clamp'},
       {name: 'floor'},
       {name: 'max'},
@@ -139,6 +139,7 @@ const builtinModules: ModuleDefinition[] = [
       {name: 'load-css'},
       {name: 'accepts-content'},
       {name: 'calc-args'},
+      {name: 'calc-name'},
       {name: 'call'},
       {name: 'context-exists'},
       {name: 'feature-exists'},
@@ -153,14 +154,15 @@ const builtinModules: ModuleDefinition[] = [
       {name: 'module-mixins'},
       {name: 'module-variables'},
       {name: 'type-of'},
+      {name: 'inspect'},
     ],
   },
   {
     name: 'selector',
     description: 'provides access to Sass’s powerful selector engine',
     functions: [
-      {name: 'isSuperselector'},
-      {name: 'simpleSelectors'},
+      {name: 'is-superselector'},
+      {name: 'simple-selectors'},
       {name: 'parse'},
       {name: 'nest'},
       {name: 'append'},
@@ -188,7 +190,7 @@ const builtinModules: ModuleDefinition[] = [
 ];
 
 const moduleNames = builtinModules.map(mod => mod.name);
-const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?(\\w)*`);
+const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?\\w*`);
 
 const moduleCompletions = Object.freeze(
   builtinModules.map(mod => ({
@@ -203,8 +205,18 @@ function builtinModulesCompletion(
   context: CompletionContext
 ): CompletionResult | null {
   const nodeBefore = syntaxTree(context.state).resolveInner(context.pos, -1);
-  if (nodeBefore.type.name !== 'StringLiteral') return null;
-  if (nodeBefore.parent?.type.name !== 'UseStatement') return null;
+  const potentialTypes = [
+    'StringLiteral', // When wrapped in quotes- `"sass:"`
+    'ValueName', // No end quote, before semicolon- `"sa`
+    ':', // No end quote, on semicolon- `"sass:`
+    'PseudoClassName', // No end quote, after semicolon- `"sass:m`
+  ]
+  if (!potentialTypes.includes(nodeBefore.type.name)) return null;
+  const potentialParentTypes = [
+    'UseStatement', // When wrapped in quotes
+    'PseudoClassSelector', // No end quote, after the colon
+  ]
+  if (!potentialParentTypes.includes(nodeBefore.parent?.type.name || '')) return null;
 
   const moduleMatch = context.matchBefore(/["'](sass:)?\w*/);
 

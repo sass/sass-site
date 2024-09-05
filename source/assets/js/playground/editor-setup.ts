@@ -11,7 +11,7 @@ import {
   historyKeymap,
   indentWithTab,
 } from '@codemirror/commands';
-import {css as langCss} from '@codemirror/lang-css';
+import {css as langCss, cssCompletionSource} from '@codemirror/lang-css';
 import {sass as langSass} from '@codemirror/lang-sass';
 import {
   bracketMatching,
