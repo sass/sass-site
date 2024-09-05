@@ -348,7 +348,7 @@
 $syntaxes: ('scss', 'sass');
 
 @each $syntax in $syntaxes {
-  body[data-selected-syntax='#{$syntax}']
+  [data-selected-syntax='#{$syntax}']
     .sl-c-to-playground[data-syntax='#{$syntax}'] {
     --to-playground-display: grid;
   }
