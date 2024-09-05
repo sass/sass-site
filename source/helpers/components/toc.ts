@@ -7,7 +7,7 @@ type TOCItem = {
 
 /**
  * Information about a particular entry in the table of contents for a
- * documentaiton page.
+ * documentation page.
  */
 export interface TOCLink {
   /** The text of the link. */
