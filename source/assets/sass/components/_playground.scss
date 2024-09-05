@@ -334,26 +334,23 @@
 
 // Edit on Playground Link
 .sl-c-to-playground {
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  z-index: 1;
-}
-
-.sl-c-to-playground__link {
   border: 0;
-  display: none;
+  display: var(--to-playground-display, none);
+  float: inline-end;
   line-height: 1.2;
+  margin-block-start: var(--sl-gutter--quarter-negative);
   padding: var(--sl-gutter--quarter);
   text-align: end;
+  position: relative;
+  z-index: 1;
 }
 
 $syntaxes: ('scss', 'sass');
 
 @each $syntax in $syntaxes {
   body[data-selected-syntax='#{$syntax}']
-    .sl-c-to-playground__link[data-syntax='#{$syntax}'] {
-    display: grid;
+    .sl-c-to-playground[data-syntax='#{$syntax}'] {
+    --to-playground-display: grid;
   }
 }
 
