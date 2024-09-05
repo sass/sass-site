@@ -22,7 +22,7 @@ import {
   syntaxHighlighting,
 } from '@codemirror/language';
 import {lintKeymap} from '@codemirror/lint';
-import {EditorState} from '@codemirror/state';
+import {EditorState, Compartment} from '@codemirror/state';
 import {
   dropCursor,
   highlightActiveLine,
@@ -34,6 +34,26 @@ import {
 } from '@codemirror/view';
 
 import {playgroundHighlightStyle} from './theme.js';
+import {EditorView} from 'codemirror';
+
+const syntax = new Compartment();
+
+// Sets the `view` uses `indented` syntax, and optionally update the contents
+// with `newValue`.
+function changeSyntax(
+  view: EditorView,
+  indented = false,
+  newValue: string | undefined
+) {
+  view.dispatch({
+    effects: syntax.reconfigure(langSass({indented})),
+  });
+  if (newValue) {
+    view.dispatch({
+      changes: [{from: 0, to: view.state.doc.length, insert: newValue}],
+    });
+  }
+}
 
 const editorSetup = (() => [
   [
@@ -61,7 +81,7 @@ const editorSetup = (() => [
       indentWithTab,
     ]),
   ],
-  langSass(),
+  syntax.of(langSass()),
 ])();
 
 const outputSetup = (() => [
@@ -77,4 +97,44 @@ const outputSetup = (() => [
   langCss(),
 ])();
 
-export {editorSetup, outputSetup};
+const defaultContents = {
+  indented: `@use "sass:list"
+@use "sass:color"
+
+$font-stack: Helvetica, Arial
+$primary-color: #333
+
+body 
+  $font-stack: list.append($font-stack, sans-serif)
+  font: $font-stack
+
+a
+  color: $primary-color
+
+  &:hover
+    color: color.scale($primary-color, $lightness: 20%)
+
+@debug $font-stack`,
+  scss: `@use "sass:list";
+@use "sass:color";
+
+$font-stack: Helvetica, Arial;
+$primary-color: #333;
+
+body {
+  $font-stack: list.append($font-stack, sans-serif);
+  font: $font-stack;
+}
+
+a {
+  color: $primary-color;
+
+  &:hover{
+    color: color.scale($primary-color, $lightness: 20%);
+  }
+}
+
+@debug $font-stack;`,
+};
+
+export {changeSyntax, editorSetup, outputSetup, defaultContents};
