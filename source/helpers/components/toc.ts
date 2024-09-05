@@ -1,25 +1,44 @@
 import * as cheerio from 'cheerio';
 
+/** Metadata about a single item in the table of contents. */
 type TOCItem = {
   [key: string]: string | boolean | TOCItem[];
 };
 
 /**
+ * Information about a particular entry in the table of contents for a
+ * documentation page.
+ */
+export interface TOCLink {
+  /** The text of the link. */
+  text: string;
+
+  /** The target of the link (an anchor on this page). */
+  href: string;
+
+  /**
+   * If this entry contains child entries, whether it's expanded to show them by
+   * default.
+   */
+  expanded: boolean;
+}
+
+/**
  * Returns `text` and `href` for a documentation table-of-contents section.
  */
-export const getDocTocData = (data: TOCItem) => {
+export function getDocTocData(data: TOCItem): TOCLink {
   const text = Object.keys(data).filter(
     key => ![':children', ':expanded'].includes(key)
   )[0];
   const href = data[text] as string;
   const expanded = Boolean(data[':expanded']);
   return {text, href, expanded};
-};
+}
 
 /**
  * Generates table of contents data for a documentation page.
  */
-export const getToc = (html: string, topLevelTotal: number): TOCItem[] => {
+export function getToc(html: string, topLevelTotal: number): TOCItem[] {
   const $ = cheerio.load(html);
   $('a.anchor').remove();
   const headings = $('h2, h3, h4, h5, h6').filter('[id]');
@@ -82,4 +101,4 @@ export const getToc = (html: string, topLevelTotal: number): TOCItem[] => {
   }
 
   return toc;
-};
+}

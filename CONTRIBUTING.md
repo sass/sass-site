@@ -62,7 +62,7 @@ You can also run individual commands:
 npm run build
 
 # format and lint all files
-npm run lint
+npm run fix
 ```
 
 ## Templates
