@@ -45,6 +45,8 @@ function setupPlayground() {
       const set = Reflect.set(state, prop, ...rest);
       if (prop === 'inputFormat') {
         let newValue: string | undefined = undefined;
+        // Show the default content in the new syntax if the editor still has
+        // the default content in the old syntax.
         if (
           playgroundState.inputValue === defaultContents[previousInputFormat]
         ) {

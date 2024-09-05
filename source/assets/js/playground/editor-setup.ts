@@ -38,11 +38,13 @@ import {EditorView} from 'codemirror';
 
 const syntax = new Compartment();
 
-const changeSyntax = (
+// Sets the `view` uses `indented` syntax, and optionally update the contents
+// with `newValue`.
+function changeSyntax(
   view: EditorView,
   indented = false,
   newValue: string | undefined
-) => {
+) {
   view.dispatch({
     effects: syntax.reconfigure(langSass({indented})),
   });
@@ -51,7 +53,7 @@ const changeSyntax = (
       changes: [{from: 0, to: view.state.doc.length, insert: newValue}],
     });
   }
-};
+}
 
 const editorSetup = (() => [
   [
