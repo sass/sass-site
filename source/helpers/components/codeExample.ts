@@ -294,9 +294,11 @@ const getCanSplit = (
   };
 };
 
-const generatePlaygroundLinks = (
+// Create links to editable example in the playground. Returns false for
+// multiple sections/files, which are not supported by the playground.
+function generatePlaygroundLinks(
   {scss, sass} = {scss: <Array<string>>[], sass: <Array<string>>[]}
-) => {
+){
   const sassLink =
     sass.length === 1
       ? serializeStateContents({
@@ -304,7 +306,7 @@ const generatePlaygroundLinks = (
           outputFormat: 'expanded',
           inputValue: sass[0],
         })
-      : '';
+      : false;
   const scssLink =
     scss.length === 1
       ? serializeStateContents({
@@ -312,7 +314,7 @@ const generatePlaygroundLinks = (
           outputFormat: 'expanded',
           inputValue: scss[0],
         })
-      : '';
+      : false;
   return {
     sass: sassLink,
     scss: scssLink,
