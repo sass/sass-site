@@ -31,7 +31,7 @@
     "check": "run-s check:gts check:tsc check:stylelint",
     "check:gts": "gts check",
     "check:stylelint": "stylelint 'source/assets/sass/*.{css,scss}'",
-    "check:tsc": "tsc --noEmit",
+    "check:tsc": "npm run build-module-members && npx tsc --noEmit",
     "fix": "run-s fix:gts fix:stylelint",
     "fix:gts": "gts fix",
     "fix:stylelint": "stylelint 'source/assets/sass/*.{css,scss}' --fix",
