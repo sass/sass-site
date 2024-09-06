@@ -2,11 +2,13 @@
   {%- if playgroundLink -%}
     <a href="/playground#{{ playgroundLink }}" class="sl-c-to-playground" target="_blank" data-syntax="{{ syntax }}">
       <img
-      class="sl-c-to-playground__logo"
-      height="24"
-      alt="Sass"
-      src="/assets/img/logos/logo.svg">
-    Playground</a>
+        class="sl-c-to-playground__logo"
+        height="24"
+        alt="Sass"
+        src="/assets/img/logos/logo.svg"
+      >
+      Playground
+    </a>
   {%- endif -%}
   <h3 class="visuallyhidden">{{ name }}</h3>
   {%- for example in examples -%}
