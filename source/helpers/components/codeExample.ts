@@ -52,7 +52,7 @@ export default async function codeExample(
   exampleName: string,
   autogenCSS = true,
   syntax: 'sass' | 'scss' | null = null
-) {
+): Promise<string> {
   if (!exampleName) {
     throw new Error('`{% codeExample %}` tags require a unique name.');
   }
@@ -63,11 +63,51 @@ export default async function codeExample(
   });
 }
 
-const generateCodeExample = (
+/** An example of Sass code, with inputs and output. */
+interface CodeExample {
+  /** Source files in the SCSS syntax. */
+  scss: string[];
+
+  /** Source files in the indented syntax. */
+  sass: string[];
+
+  /** Output files. */
+  css: string[];
+
+  /**
+   * The number of lines to add after each source file in `scss` to align with
+   * other syntaxes.
+   */
+  scssPaddings: number[];
+
+  /**
+   * The number of lines to add after each source file in `sass` to align with
+   * other syntaxes.
+   */
+  sassPaddings: number[];
+
+  /**
+   * The number of lines to add after each source file in `css` to align with
+   * other syntaxes.
+   */
+  cssPaddings: number[];
+
+  /** Whether the example is narrow enough to be split down the center. */
+  canSplit: boolean;
+
+  /**
+   * The percentage point at which the example should be split vertically
+   * between input and output, if `canSplit` is true.
+   */
+  splitLocation: number | null;
+}
+
+/** Parses `text` into a `CodeExample` object. */
+function generateCodeExample(
   text: string,
   autogenCSS: boolean,
   syntax: 'sass' | 'scss' | null
-) => {
+): CodeExample {
   const contents = stripIndent(text);
   const splitContents = contents.split('\n===\n');
 
@@ -144,17 +184,17 @@ const generateCodeExample = (
     canSplit,
     splitLocation,
   };
-};
+}
 
 /**
  * Calculate the lines of padding to add to the bottom of each section so
  * that it lines up with the same section in the other syntax.
  */
-const getPaddings = (
+function getPaddings(
   scssExamples: string[],
   sassExamples: string[],
   cssExamples: string[]
-) => {
+): Pick<CodeExample, 'scssPaddings' | 'sassPaddings' | 'cssPaddings'> {
   const scssPaddings: number[] = [];
   const sassPaddings: number[] = [];
   const cssPaddings: number[] = [];
@@ -213,13 +253,13 @@ const getPaddings = (
   });
 
   return {scssPaddings, sassPaddings, cssPaddings};
-};
+}
 
 /**
  * Make sure the last section has as much padding as all the rest of
  * the other syntaxes' sections.
  */
-const getPadding = ({
+function getPadding({
   isLastSection,
   comparisonA,
   comparisonB,
@@ -231,7 +271,7 @@ const getPadding = ({
   comparisonB: string[];
   lines: number;
   maxLines: number;
-}) => {
+}): number {
   let padding = 0;
   if (isLastSection) {
     padding = getTotalPadding(comparisonA, comparisonB) - lines - 2;
@@ -239,13 +279,13 @@ const getPadding = ({
     padding = maxLines - lines;
   }
   return Math.max(padding, 0);
-};
+}
 
 /**
  * Returns the number of lines of padding that's needed to match the height of
  * the `<pre>`s generated for `sections1` and `sections2`.
  */
-const getTotalPadding = (sections1: string[], sections2: string[]) => {
+function getTotalPadding(sections1: string[], sections2: string[]): number {
   sections1 ||= [];
   sections2 ||= [];
   return Array.from({
@@ -262,13 +302,13 @@ const getTotalPadding = (sections1: string[], sections2: string[]) => {
       2
     );
   }, 0);
-};
+}
 
-const getCanSplit = (
+function getCanSplit(
   scssExamples: string[],
   sassExamples: string[],
   cssExamples: string[]
-) => {
+): {canSplit: boolean; maxSourceWidth: number; maxCSSWidth: number} {
   const exampleSourceLengths = [...scssExamples, ...sassExamples].flatMap(
     source => source.split('\n').map(line => line.length)
   );
@@ -286,4 +326,4 @@ const getCanSplit = (
     maxSourceWidth,
     maxCSSWidth,
   };
-};
+}

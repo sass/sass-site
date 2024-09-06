@@ -1,5 +1,6 @@
 import Token from 'markdown-it/lib/token.mjs';
 import type anchor from 'markdown-it-anchor';
+import type {StateCore} from 'markdown-it';
 
 /**
  * Custom permalink function, inspired by `linkInsideHeader`,
@@ -7,12 +8,12 @@ import type anchor from 'markdown-it-anchor';
  * @see https://github.com/valeriangalliat/markdown-it-anchor#custom-permalink
  * @see https://github.com/valeriangalliat/markdown-it-anchor/blob/649582d58185b00cfb2ceee9b6b4cd6aafc645b7/permalink.js#L76
  */
-export const renderPermalink: anchor.PermalinkGenerator = (
-  slug,
+export function renderPermalink(
+  slug: string,
   opts: anchor.LinkInsideHeaderPermalinkOptions,
-  state,
-  idx
-) => {
+  state: StateCore,
+  idx: number
+): void {
   // https://github.com/valeriangalliat/markdown-it-anchor/blob/649582d58185b00cfb2ceee9b6b4cd6aafc645b7/permalink.js#L148-L151
   const title = state.tokens[idx + 1]?.children
     ?.filter(
@@ -43,4 +44,4 @@ export const renderPermalink: anchor.PermalinkGenerator = (
   ];
 
   state.tokens[idx + 1]?.children?.push(...linkTokens);
-};
+}
