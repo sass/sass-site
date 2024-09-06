@@ -6,15 +6,7 @@ import {
 import {sassCompletionSource} from '@codemirror/lang-sass';
 import {syntaxTree} from '@codemirror/language';
 import {EditorState} from '@codemirror/state';
-import type {ModuleDefinition} from './generate-module-members';
-
-let moduleMembers: ModuleDefinition[] = [];
-try {
-  moduleMembers = require('./module-members');
-} catch (error) {
-  console.error('module-members.ts is missing');
-  throw error;
-}
+import moduleMembers from './module-members';
 
 // Sass-specific at rules only. CSS at rules should be added to `@codemirror/lang-css`.
 const atRuleKeywords = [

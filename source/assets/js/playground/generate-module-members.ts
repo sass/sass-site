@@ -16,7 +16,7 @@ const modules = [
   'string',
 ] as const;
 
-export type ModuleDefinition = {
+type ModuleDefinition = {
   name: (typeof modules)[number];
   functions?: string[];
   variables?: string[];
