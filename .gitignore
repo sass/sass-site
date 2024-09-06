@@ -23,7 +23,7 @@ Thumbs.db
 /source/assets/dist/
 
 # Generated file
-source/assets/js/playground/module-members.ts
+/source/assets/js/playground/module-members.ts
 
 # NPM/Yarn
 node_modules/

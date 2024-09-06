@@ -6,7 +6,15 @@ import {
 import {sassCompletionSource} from '@codemirror/lang-sass';
 import {syntaxTree} from '@codemirror/language';
 import {EditorState} from '@codemirror/state';
-import moduleMembers from './module-members';
+import type {ModuleDefinition} from './generate-module-members';
+
+let moduleMembers: ModuleDefinition[] = [];
+try {
+  moduleMembers = require('./module-members');
+} catch (error) {
+  console.error('module-members.json is missing');
+  throw error;
+}
 
 // Sass-specific at rules only. CSS at rules should be added to `@codemirror/lang-css`.
 const atRuleKeywords = [
@@ -52,7 +60,7 @@ type CompletionInfo = {
   description?: string;
 };
 
-type ModuleDefinition = CompletionInfo & {
+type CompletionModule = CompletionInfo & {
   functions?: CompletionInfo[];
   variables?: CompletionInfo[];
 };
@@ -70,12 +78,12 @@ const moduleDescriptions = {
   string: 'makes it easy to combine, search, or split apart strings',
 };
 
-const builtinModules: ModuleDefinition[] = moduleMembers.map(modMember => {
+const builtinModules: CompletionModule[] = moduleMembers.map(modMember => {
   return {
     name: modMember.name,
     description: moduleDescriptions[modMember.name],
-    functions: modMember.functions.map(name => ({name})),
-    variables: modMember.variables.map(name => ({name})),
+    functions: (modMember.functions ?? []).map(name => ({name})),
+    variables: (modMember.variables ?? []).map(name => ({name})),
   };
 });
 
