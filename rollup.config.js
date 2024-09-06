@@ -8,7 +8,7 @@ const {defineConfig} = require('rollup');
 
 const prod = process.env.BABEL_ENV === 'production';
 
-// Warn if module-members.json has not been generated
+// Warn if module-members.ts has not been generated
 if (!existsSync('./source/assets/js/playground/module-members.ts')) {
   throw new Error('module-members.ts is missing');
 }

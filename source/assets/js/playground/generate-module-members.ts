@@ -69,9 +69,9 @@ function writeFile() {
       `export default ${JSON.stringify(moduleMembers, null, 2)} as const;`,
       'utf8'
     );
-    console.log('module-members.json built successfully');
+    console.log('module-members.ts built successfully');
   } catch (error) {
-    console.error('module-members.json not built');
+    console.error('module-members.ts not built');
     throw error;
   }
 }

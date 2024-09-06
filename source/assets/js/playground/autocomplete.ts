@@ -12,7 +12,7 @@ let moduleMembers: ModuleDefinition[] = [];
 try {
   moduleMembers = require('./module-members');
 } catch (error) {
-  console.error('module-members.json is missing');
+  console.error('module-members.ts is missing');
   throw error;
 }
 
