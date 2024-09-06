@@ -1,4 +1,3 @@
-/* eslint-disable node/no-extraneous-import */
 import {HighlightStyle} from '@codemirror/language';
 import {tags} from '@lezer/highlight';
 
