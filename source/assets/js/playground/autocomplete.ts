@@ -8,6 +8,9 @@ import {syntaxTree} from '@codemirror/language';
 import {EditorState} from '@codemirror/state';
 import moduleMembers from './module-members';
 
+// validFor identifier, from @codemirror/lang-css
+const identifier = /^(\w[\w-]*|-\w[\w-]*|)$/;
+
 // Sass-specific at rules only. CSS at rules should be added to `@codemirror/lang-css`.
 const atRuleKeywords = [
   'use',
@@ -32,6 +35,7 @@ const atRuleOptions = Object.freeze(
   atRuleKeywords.map(keyword => ({
     label: `@${keyword} `,
     type: 'keyword',
+    validFor: identifier,
   }))
 );
 
@@ -44,6 +48,7 @@ function atRuleCompletion(context: CompletionContext): CompletionResult | null {
     from: atRule.from,
     to: atRule.to,
     options: atRuleOptions,
+    validFor: identifier,
   };
 }
 
@@ -87,6 +92,7 @@ const moduleCompletions = Object.freeze(
     apply: `sass:${mod.name}`,
     info: mod.description,
     type: 'class',
+    validFor: identifier,
   }))
 );
 
@@ -117,6 +123,7 @@ function builtinModulesCompletion(
     from: moduleMatch.from + 1,
     to: moduleMatch.to,
     options: moduleCompletions,
+    validFor: identifier,
   };
 }
 
@@ -145,6 +152,7 @@ const moduleFunctionsCompletions = Object.freeze(
           info: variable?.description,
           type: 'method',
           boost: 10,
+          validFor: identifier,
         })) || [];
       return acc;
     },
@@ -175,8 +183,9 @@ function builtinModuleNameCompletion(
     options: includedModules.map(mod => ({
       label: mod,
       info: moduleDescriptions[mod],
-      type: 'class',
+      type: 'namespace',
       boost: 20,
+      validFor: identifier,
     })),
   };
 }
@@ -211,6 +220,7 @@ function builtinModuleItemCompletion(
     from: moduleNameMatch.from,
     to: moduleNameMatch.to,
     options: [...includedModVariables, ...includedModFunctions],
+    validFor: identifier,
   };
 }
 
