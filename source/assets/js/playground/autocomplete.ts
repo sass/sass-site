@@ -35,6 +35,7 @@ const atRuleOptions = Object.freeze(
   }))
 );
 
+// Completions for Sass at rules
 function atRuleCompletion(context: CompletionContext): CompletionResult | null {
   const atRule = context.matchBefore(/@\w*/);
   if (!atRule) return null;
@@ -56,25 +57,29 @@ type ModuleDefinition = CompletionInfo & {
   variables?: CompletionInfo[];
 };
 
+const moduleNames = moduleMembers.map(mod => mod.name);
+
 const moduleDescriptions = {
-  color: 'generates new colors based on existing ones, making it easy to build color themes',
-  list:'lets you access and modify values in lists',
+  color:
+    'generates new colors based on existing ones, making it easy to build color themes',
+  list: 'lets you access and modify values in lists',
   map: 'makes it possible to look up the value associated with a key in a map, and much more',
   math: 'provides functions that operate on numbers',
   meta: 'exposes the details of Sass’s inner workings',
   selector: 'provides access to Sass’s powerful selector engine',
   string: 'makes it easy to combine, search, or split apart strings',
-}
-const builtinModules: ModuleDefinition[] = moduleMembers.map(modMember=>{
+};
+
+const builtinModules: ModuleDefinition[] = moduleMembers.map(modMember => {
   return {
     name: modMember.name,
     description: moduleDescriptions[modMember.name],
     functions: modMember.functions.map(name => ({name})),
     variables: modMember.variables.map(name => ({name})),
-  }
+  };
 });
 
-const moduleNames = builtinModules.map(mod => mod.name);
+
 const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?\\w*`);
 
 const moduleCompletions = Object.freeze(
@@ -86,6 +91,7 @@ const moduleCompletions = Object.freeze(
   }))
 );
 
+// Completions for the import of built in modules, for instance "sass:color".
 function builtinModulesCompletion(
   context: CompletionContext
 ): CompletionResult | null {
@@ -95,13 +101,14 @@ function builtinModulesCompletion(
     'ValueName', // No end quote, before semicolon- `"sa`
     ':', // No end quote, on semicolon- `"sass:`
     'PseudoClassName', // No end quote, after semicolon- `"sass:m`
-  ]
+  ];
   if (!potentialTypes.includes(nodeBefore.type.name)) return null;
   const potentialParentTypes = [
     'UseStatement', // When wrapped in quotes
     'PseudoClassSelector', // No end quote, after the colon
-  ]
-  if (!potentialParentTypes.includes(nodeBefore.parent?.type.name || '')) return null;
+  ];
+  if (!potentialParentTypes.includes(nodeBefore.parent?.type.name || ''))
+    return null;
 
   const moduleMatch = context.matchBefore(/["'](sass:)?\w*/);
 
@@ -146,12 +153,36 @@ const moduleFunctionsCompletions = Object.freeze(
   )
 );
 
+// Returns the list of built in modules that are included in the text.
 function includedBuiltinModules(state: EditorState) {
   const text = state.doc.toString();
-  const modNames = builtinModules.map(mod => mod.name);
-  return modNames.filter(name => text.includes(`sass:${name}`));
+  return moduleNames.filter(name => text.includes(`sass:${name}`));
 }
 
+// Completions for the namespaces of included built in modules.
+function builtinModuleNameCompletion(
+  context: CompletionContext
+): CompletionResult | null {
+  const nodeBefore = syntaxTree(context.state).resolveInner(context.pos, -1);
+  if (nodeBefore.type.name !== 'ValueName') return null;
+  const includedModules = includedBuiltinModules(context.state);
+
+  const match = context.matchBefore(/\w+/);
+  if (!match) return null;
+
+  return {
+    from: match.from,
+    to: match.to,
+    options: includedModules.map(mod => ({
+      label: mod,
+      info: moduleDescriptions[mod],
+      type: 'class',
+      boost: 20,
+    })),
+  };
+}
+
+// Completions for variables and functions for included built in modules.
 function builtinModuleItemCompletion(
   context: CompletionContext
 ): CompletionResult | null {
@@ -187,6 +218,7 @@ function builtinModuleItemCompletion(
 const playgroundCompletions: CompletionSource[] = [
   atRuleCompletion,
   builtinModulesCompletion,
+  builtinModuleNameCompletion,
   sassCompletionSource,
   builtinModuleItemCompletion,
 ];
