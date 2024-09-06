@@ -57,6 +57,8 @@
   }
 
   > *:last-child {
+    --sl-c-to-playground-inset-block-end: 0;
+
     margin-bottom: 0;
   }
 }
