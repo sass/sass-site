@@ -6,6 +6,7 @@ import {
 import {sassCompletionSource} from '@codemirror/lang-sass';
 import {syntaxTree} from '@codemirror/language';
 import {EditorState} from '@codemirror/state';
+import moduleMembers from './module-members';
 
 // Sass-specific at rules only. CSS at rules should be added to `@codemirror/lang-css`.
 const atRuleKeywords = [
@@ -55,141 +56,23 @@ type ModuleDefinition = CompletionInfo & {
   variables?: CompletionInfo[];
 };
 
-const builtinModules: ModuleDefinition[] = [
-  {
-    name: 'color',
-    description:
-      'generates new colors based on existing ones, making it easy to build color themes',
-    // todo: Add functions after Color 4 updates, or see if list can be generated from Sass package.
-  },
-  {
-    name: 'list',
-    description: 'lets you access and modify values in lists',
-    functions: [
-      {name: 'length'},
-      {name: 'nth'},
-      {name: 'set-nth'},
-      {name: 'join'},
-      {name: 'append'},
-      {name: 'zip'},
-      {name: 'index'},
-      {name: 'is-bracketed'},
-      {name: 'separator'},
-      {name: 'slash'},
-    ],
-  },
-  {
-    name: 'map',
-    description:
-      'makes it possible to look up the value associated with a key in a map, and much more',
-    functions: [
-      {name: 'get'},
-      {name: 'set'},
-      {name: 'merge'},
-      {name: 'remove'},
-      {name: 'keys'},
-      {name: 'values'},
-      {name: 'has-key'},
-      {name: 'deep-merge'},
-      {name: 'deep-remove'},
-    ],
-  },
-  {
-    name: 'math',
-    description: 'provides functions that operate on numbers',
-    variables: [
-      {name: '$e'},
-      {name: '$pi'},
-      {name: '$epsilon'},
-      {name: '$max-safe-integer'},
-      {name: '$min-safe-integer'},
-      {name: '$max-number'},
-      {name: '$min-number'},
-    ],
-    functions: [
-      {name: 'ceil'},
-      {name: 'clamp'},
-      {name: 'floor'},
-      {name: 'max'},
-      {name: 'min'},
-      {name: 'round'},
-      {name: 'abs'},
-      {name: 'hypot'},
-      {name: 'log'},
-      {name: 'pow'},
-      {name: 'sqrt'},
-      {name: 'acos'},
-      {name: 'asin'},
-      {name: 'atan'},
-      {name: 'atan2'},
-      {name: 'cos'},
-      {name: 'sin'},
-      {name: 'tan'},
-      {name: 'compatible'},
-      {name: 'is-unitless'},
-      {name: 'unit'},
-      {name: 'div'},
-      {name: 'percentage'},
-      {name: 'random'},
-    ],
-  },
-  {
-    name: 'meta',
-    description: 'exposes the details of Sass’s inner workings',
-    functions: [
-      {name: 'apply'},
-      {name: 'load-css'},
-      {name: 'accepts-content'},
-      {name: 'calc-args'},
-      {name: 'calc-name'},
-      {name: 'call'},
-      {name: 'context-exists'},
-      {name: 'feature-exists'},
-      {name: 'function-exists'},
-      {name: 'mixin-exists'},
-      {name: 'variable-exists'},
-      {name: 'get-function'},
-      {name: 'get-mixin'},
-      {name: 'global-variable-exists'},
-      {name: 'keywords'},
-      {name: 'module-functions'},
-      {name: 'module-mixins'},
-      {name: 'module-variables'},
-      {name: 'type-of'},
-      {name: 'inspect'},
-    ],
-  },
-  {
-    name: 'selector',
-    description: 'provides access to Sass’s powerful selector engine',
-    functions: [
-      {name: 'is-superselector'},
-      {name: 'simple-selectors'},
-      {name: 'parse'},
-      {name: 'nest'},
-      {name: 'append'},
-      {name: 'extend'},
-      {name: 'replace'},
-      {name: 'unify'},
-    ],
-  },
-  {
-    name: 'string',
-    description: 'makes it easy to combine, search, or split apart strings',
-    functions: [
-      {name: 'unquote'},
-      {name: 'quote'},
-      {name: 'to-upper-case'},
-      {name: 'to-lower-case'},
-      {name: 'length'},
-      {name: 'insert'},
-      {name: 'index'},
-      {name: 'slice'},
-      {name: 'unique-id'},
-      {name: 'split'},
-    ],
-  },
-];
+const moduleDescriptions = {
+  color: 'generates new colors based on existing ones, making it easy to build color themes',
+  list:'lets you access and modify values in lists',
+  map: 'makes it possible to look up the value associated with a key in a map, and much more',
+  math: 'provides functions that operate on numbers',
+  meta: 'exposes the details of Sass’s inner workings',
+  selector: 'provides access to Sass’s powerful selector engine',
+  string: 'makes it easy to combine, search, or split apart strings',
+}
+const builtinModules: ModuleDefinition[] = moduleMembers.map(modMember=>{
+  return {
+    name: modMember.name,
+    description: moduleDescriptions[modMember.name],
+    functions: modMember.functions.map(name => ({name})),
+    variables: modMember.variables.map(name => ({name})),
+  }
+});
 
 const moduleNames = builtinModules.map(mod => mod.name);
 const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?\\w*`);

@@ -8,7 +8,8 @@
     "target": "es2022",
     "lib": ["es2022", "DOM"],
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "resolveJsonModule": true
   },
   "include": ["source/**/*.ts"],
   "exclude": ["node_modules"]
