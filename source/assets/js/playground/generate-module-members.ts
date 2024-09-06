@@ -3,7 +3,7 @@
 // Outputs `./module-members.ts` file, which is omitted from source code and
 // must be built before the `playground` bundle is built with rollup.
 import {compileString} from 'sass';
-import { writeFileSync } from 'fs';
+import {writeFileSync} from 'fs';
 import path from 'path';
 
 const modules = [
@@ -42,14 +42,13 @@ selector{
 `;
 
   const {css} = compileString(moduleSass);
-  
-  
+
   function parsePropertyValue(key: string) {
     const match = css.match(new RegExp(`${key}: (.*);`));
-    const list =  match?.[1] || '';
-    return list.split(', ').filter(item=>item !== '');
+    const list = match?.[1] || '';
+    return list.split(', ').filter(item => item !== '');
   }
-  
+
   const modMap: ModuleDefinition[] = [];
   modules.forEach(mod => {
     modMap.push({
@@ -61,14 +60,18 @@ selector{
   return modMap;
 }
 
-function writeFile(){
+function writeFile() {
   const moduleMembers = generateModuleMembers();
   const filePath = path.resolve(__dirname, 'module-members.ts');
   try {
-    writeFileSync(filePath, `export default ${JSON.stringify(moduleMembers, null, 2)} as const;`, 'utf8');
+    writeFileSync(
+      filePath,
+      `export default ${JSON.stringify(moduleMembers, null, 2)} as const;`,
+      'utf8'
+    );
     console.log('module-members.json built successfully');
   } catch (error) {
-    console.error('module-members.json not built')
+    console.error('module-members.json not built');
     throw error;
   }
 }

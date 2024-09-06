@@ -79,7 +79,6 @@ const builtinModules: ModuleDefinition[] = moduleMembers.map(modMember => {
   };
 });
 
-
 const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?\\w*`);
 
 const moduleCompletions = Object.freeze(
