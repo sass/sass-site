@@ -17,18 +17,20 @@ export {getDocTocData, getToc};
  * Returns HTML for a fun fact that's not directly relevant to the main
  * documentation.
  */
-export const funFact = async (contents: string) =>
-  liquidEngine.renderFile('fun_fact', {
+export async function funFact(contents: string): Promise<string> {
+  return liquidEngine.renderFile('fun_fact', {
     contents: stripIndent(contents),
   });
+}
 
 /**
  * Returns HTML for a heads-up warning related to the main documentation.
  */
-export const headsUp = async (contents: string) =>
-  liquidEngine.renderFile('heads_up', {
+export async function headsUp(contents: string): Promise<string> {
+  return liquidEngine.renderFile('heads_up', {
     contents: stripIndent(contents),
   });
+}
 
 /**
  * Returns HTML for a code block with syntax highlighting via [Prism][].
@@ -42,7 +44,11 @@ export const headsUp = async (contents: string) =>
  *
  * @see https://prismjs.com/
  */
-export const codeBlock = (contents: string, language: string, padding = 0) => {
+export function codeBlock(
+  contents: string,
+  language: string,
+  padding = 0
+): string {
   if (!languages[language]) {
     PrismLoader(language);
   }
@@ -53,10 +59,10 @@ export const codeBlock = (contents: string, language: string, padding = 0) => {
     '\n',
     '&#10;'
   )}</code></pre>`;
-};
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function componentsPlugin(eleventyConfig: any) {
+export default function componentsPlugin(eleventyConfig: any): void {
   // filters...
   eleventyConfig.addLiquidFilter('implStatus', implStatus);
   eleventyConfig.addLiquidFilter('getDocTocData', getDocTocData);

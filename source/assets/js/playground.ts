@@ -6,7 +6,13 @@ import debounce from 'lodash/debounce';
 import {compileString, info, Logger, OutputStyle, Syntax} from 'sass';
 
 import {displayForConsoleLog} from './playground/console-utils.js';
-import {editorSetup, outputSetup} from './playground/editor-setup.js';
+
+import {
+  changeSyntax,
+  editorSetup,
+  outputSetup,
+  defaultContents,
+} from './playground/editor-setup.js';
 import {
   deserializeState,
   customLoader,
@@ -20,11 +26,13 @@ function setupPlayground() {
   const hash = location.hash.slice(1);
   const hashState = deserializeState(hash);
 
+  const inputFormat = hashState.inputFormat || 'scss';
+
   const initialState: PlaygroundState = {
-    inputFormat: hashState.inputFormat || 'scss',
+    inputFormat,
     outputFormat: hashState.outputFormat || 'expanded',
     compilerHasError: false,
-    inputValue: hashState.inputValue || '',
+    inputValue: hashState.inputValue || defaultContents[inputFormat],
     debugOutput: [],
     selection: hashState.selection || null,
   };
@@ -32,8 +40,20 @@ function setupPlayground() {
   // Proxy intercepts setters and triggers side effects
   const playgroundState = new Proxy(initialState, {
     set(state: PlaygroundState, prop: keyof PlaygroundState, ...rest) {
+      const previousInputFormat = state.inputFormat;
       // Set state first so called functions have access
       const set = Reflect.set(state, prop, ...rest);
+      if (prop === 'inputFormat') {
+        let newValue: string | undefined = undefined;
+        // Show the default content in the new syntax if the editor still has
+        // the default content in the old syntax.
+        if (
+          playgroundState.inputValue === defaultContents[previousInputFormat]
+        ) {
+          newValue = defaultContents[state.inputFormat];
+        }
+        changeSyntax(editor, state.inputFormat === 'indented', newValue);
+      }
       if (['inputFormat', 'outputFormat'].includes(prop)) {
         updateButtonState();
         debouncedUpdateCSS();
@@ -70,6 +90,10 @@ function setupPlayground() {
     ],
     parent: document.querySelector('.sl-code-is-source') || undefined,
   });
+
+  if (playgroundState.inputFormat === 'indented') {
+    changeSyntax(editor, true, undefined);
+  }
 
   // Setup CSS view
   const viewer = new EditorView({
@@ -142,7 +166,7 @@ function setupPlayground() {
 
   type TabbarItemDataset =
     | {
-        value: Syntax;
+        value: Exclude<Syntax, 'css'>;
         setting: 'inputFormat';
       }
     | {

@@ -9,7 +9,7 @@ const PLAYGROUND_LOAD_ERROR_MESSAGE =
   'The Sass Playground does not support loading stylesheets.';
 
 export type PlaygroundState = {
-  inputFormat: Syntax;
+  inputFormat: Exclude<Syntax, 'css'>;
   outputFormat: OutputStyle;
   inputValue: string;
   compilerHasError: boolean;
