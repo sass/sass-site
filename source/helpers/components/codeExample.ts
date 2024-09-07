@@ -334,7 +334,7 @@ function getCanSplit(
   };
 }
 
-// Create links to editable example in the playground. Returns false for
+// Create links to editable example in the playground. Returns null for
 // multiple sections/files, which are not supported by the playground.
 function generatePlaygroundLinks({
   scss,
@@ -350,7 +350,7 @@ function generatePlaygroundLinks({
           outputFormat: 'expanded',
           inputValue: sass[0],
         })
-      : false;
+      : null;
   const scssLink =
     scss.length === 1
       ? serializeStateContents({
@@ -358,7 +358,7 @@ function generatePlaygroundLinks({
           outputFormat: 'expanded',
           inputValue: scss[0],
         })
-      : false;
+      : null;
   return {
     sass: sassLink,
     scss: scssLink,
