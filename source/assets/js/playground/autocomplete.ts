@@ -176,6 +176,8 @@ function builtinModuleNameCompletion(
 ): CompletionResult | null {
   const nodeBefore = syntaxTree(context.state).resolveInner(context.pos, -1);
   if (nodeBefore.type.name !== 'ValueName') return null;
+  // Prevent module name from showing up after `.`
+  if (nodeBefore.parent?.type.name === 'NamespacedValue') return null;
   const includedModules = includedBuiltinModules(context.state);
 
   const match = context.matchBefore(/\w+/);
