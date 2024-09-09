@@ -76,11 +76,15 @@ const moduleDescriptions = {
 };
 
 const builtinModules: CompletionModule[] = moduleMembers.map(modMember => {
+  let variables;
+  if ('variables' in modMember) {
+    variables = modMember.variables;
+  }
   return {
     name: modMember.name,
     description: moduleDescriptions[modMember.name],
     functions: (modMember.functions ?? []).map(name => ({name})),
-    variables: (modMember.variables ?? []).map(name => ({name})),
+    variables: (variables ?? []).map(name => ({name: `$${name}`})),
   };
 });
 

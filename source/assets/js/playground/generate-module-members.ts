@@ -2,7 +2,7 @@
 //
 // Outputs `./module-members.ts` file, which is omitted from source code and
 // must be built before the `playground` bundle is built with rollup.
-import {compileString} from 'sass';
+import {sassTrue, compileString} from 'sass';
 import {writeFileSync} from 'fs';
 import path from 'path';
 
@@ -16,47 +16,60 @@ const modules = [
   'string',
 ] as const;
 
+type ModuleName = (typeof modules)[number];
+
 type ModuleDefinition = {
-  name: (typeof modules)[number];
+  name: ModuleName;
   functions?: string[];
   variables?: string[];
 };
 
+// Generate Scss with a custom function that extracts each module's functions
+// and variables.
 function generateModuleMembers() {
   // Generate Sass
   const moduleSass = `
 ${modules.map(mod => `@use "sass:${mod}";`).join('\n')}
 $modules: ${modules.join(',')};
-@mixin moduleContents {
+
+selector{
   @each $module in $modules{
-    --#{$module}-functions: #{map.keys(meta.module-functions($module))};
+    f: extract(map.keys(meta.module-functions($module)), $module, functions);
     $variables: map.keys(meta.module-variables($module));
     @if (list.length($variables) > 0){
-      --#{$module}-variables: #{$variables};
+      v: extract(map.keys(meta.module-variables($module)), $module, variables);
     }
   }
 }
-selector{
-  @include moduleContents;
-}
 `;
 
-  const {css} = compileString(moduleSass);
+  const modMap: ModuleDefinition[] = [];
 
-  function parsePropertyValue(key: string) {
-    const match = css.match(new RegExp(`${key}: (.*);`));
-    const list = match?.[1] || '';
-    return list.split(', ').filter(item => item !== '');
+  function addToResults(keys: string[], name: ModuleName, type: string) {
+    if (type === 'functions') {
+      modMap.push({name, functions: keys});
+    } else {
+      // functions extracted first in `moduleSass`, so they will already exist
+      const existing = modMap.find(item => item.name === name);
+      if (existing) existing.variables = keys;
+      else modMap.push({name, variables: keys});
+    }
   }
 
-  const modMap: ModuleDefinition[] = [];
-  modules.forEach(mod => {
-    modMap.push({
-      name: mod,
-      functions: parsePropertyValue(`--${mod}-functions`),
-      variables: parsePropertyValue(`--${mod}-variables`),
-    });
+  compileString(moduleSass, {
+    functions: {
+      'extract($keys, $name, $type)': function (args) {
+        const [_keys, _mod, _type] = args;
+        const keys = _keys.asList.toArray().map(key => key.assertString().text);
+        const name = _mod.assertString('name').toString() as ModuleName;
+        const type = _type.assertString('type').toString();
+
+        addToResults(keys, name, type);
+        return sassTrue;
+      },
+    },
   });
+
   return modMap;
 }
 
