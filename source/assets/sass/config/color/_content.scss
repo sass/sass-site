@@ -31,3 +31,7 @@ $sl-color--info-lighter: color.adjust(brand.$sl-color--patina, $lightness: 47%);
 $sl-color--error: #cf0254;
 $sl-color--warn: #c14e00;
 $sl-color--success: #168073;
+
+// Darker Shades of existing colors for use on a light gray background
+$sl-color--text-medium-dark: #5e6470; // darker version of pale-sky
+$sl-color--action-dark: #a12d69; // darker version of action
