@@ -23,14 +23,14 @@ The previously available formats in CSS -- named colors (e.g. `red`), `hex` colo
 
 <figure>
 <div style="display: grid; gap: var(--sl-gutter--quarter); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-<img src="/assets/img/blog/042-srgb.png" alt="The sRGB color gamut in sRGB space forms a rainbow colored cube" width=600 height=600 />
-<img src="/assets/img/blog/042-srgb-hsl.png" alt="The sRGB color gamut in hsl space forms a rainbow cylinder with black at the bottom and white at the top" width=600 height=600 />
-<img src="/assets/img/blog/042-srgb-hwb.png" alt="The sRGB color gamut in hwb space forms a rainbow-core cylinder with a black-to-white gradient going up the outside surface" width=600 height=600 />
+<img src="/assets/img/blog/042-srgb.png" alt="sRGB gamut rendered in sRGB space forms a rainbow colored cube" width=600 height=600 />
+<img src="/assets/img/blog/042-srgb-hsl.png" alt="sRGB gamut rendered in hsl space forms a rainbow-edged cylinder with black at the bottom and white at the top" width=600 height=600 />
+<img src="/assets/img/blog/042-srgb-hwb.png" alt="sRGB gamut rendered in hwb space forms a rainbow-core top surface with a black-to-gray bottom and gray-to-white outside edge" width=600 height=600 />
 </div>
 <figcaption>
-The `sRGB` color gamut in various `sRGB`-based color spaces,
-always generating a geometric shape.
-Images generated using [ColorAide](https://facelessuser.github.io/coloraide/demos) by Isaac Muse.
+Images generated using
+<a href="https://facelessuser.github.io/coloraide/demos">ColorAide</a>
+by Isaac Muse.
 </figcaption>
 <figure>
 
@@ -40,15 +40,18 @@ Look at those nice, geometric shapes! RGB gives us a rainbow cube, while HSL and
 
 But that simplicity comes with limitations. The most obvious is that monitors keep getting better. These days, many monitors can display colors beyond `sRGB`, especially extending the range of bright greens available. If we simply extend our shapes with the new colors available, we're no longer dealing with clean geometry!
 
-(images of display-p3 colors in srgb spaces)
+<div style="display: grid; gap: var(--sl-gutter--quarter); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+<img src="/assets/img/blog/042-p3-srgb.png" alt="display-p3 gamut rendered in sRGB space adds unequal red and green horns to the sRGB cube" width=600 height=600 />
+<img src="/assets/img/blog/042-p3-hsl.png" alt="display-p3 gamut rendered in hsl space creates a boot-like bulge of green near the base of the hsl cylinder" width=600 height=600 />
+</div>
 
-The crisp edges and clean math of `sRGB` formats were only possible because we knew exactly what colors could be displayed, and we arranged those colors to fit perfectly into a box. But human color perception is not so clear-cut, and it doesn't align perfectly with the gamut of any monitors on the market. When we attempt to space all the same colors *evenly* based on human perception rather than simple math, we get an entirely different shape with swooping edges:
+The crisp edges and clean math of `sRGB` formats were only possible because we knew exactly what colors could be displayed, and we arranged those colors to fit perfectly into a box. But human color perception is not so clear-cut, and it doesn't align perfectly with the gamut of any monitors on the market. When we attempt to space all the same colors *evenly* based on human perception rather than simple math, we get an entirely different shape with swooping edges. This is the `display-p3` gamut in `oklch` space:
 
-(images of display-p3 colors in lab/oklab spaces)
+<img src="/assets/img/blog/042-p3-oklch.png" alt="display-p3 gamut rendered in oklch space forms a skewed cube with a conic black base" width=600 height=600 />
 
-The difference is particularly noticeable when we compare colors of the same 'lightness' in `hsl()`. Humans perceive yellow hues as lighter than blues, but they have to stretch/compress both to fit them side by side in a uniform box:
+The practical difference is particularly noticeable when we compare colors of the same 'lightness' in `hsl` vs `oklch`. Humans perceive yellow hues as lighter than blues. By scaling them to fit in the same range, `hsl` gives us a yellow that is much brighter than the blue:
 
-(image or yellows and blues)
+<img src="/assets/img/blog/042-blue-yellow.jpg" alt="on the left a blue and much brighter yellow, on the right our yellow is much darker to match the blue tone" width=753 height=209 />
 
 ## New CSS formats give us the choice
 
