@@ -349,8 +349,9 @@
   border: 0;
   display: flex;
   font-size: var(--sl-font-size--small);
+  gap: var(--sl-gutter--quarter);
   inset-inline-end: 0;
-  inset-block-end: var(--sl-c-to-playground-inset-block-end, 1em);
+  inset-block-end: 0;
   opacity: var(--sl-c-to-playground-opacity, 0);
   padding: var(--sl-gutter--half);
   position: absolute;
