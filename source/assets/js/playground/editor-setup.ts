@@ -1,4 +1,3 @@
-/* eslint-disable node/no-extraneous-import */
 import {
   autocompletion,
   closeBrackets,

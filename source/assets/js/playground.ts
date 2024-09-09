@@ -1,4 +1,3 @@
-/* eslint-disable node/no-extraneous-import */
 import {setDiagnostics} from '@codemirror/lint';
 import {Text} from '@codemirror/state';
 import {EditorView} from 'codemirror';
@@ -150,7 +149,7 @@ function setupPlayground() {
             y: 'center',
           }),
         });
-      } catch (err) {
+      } catch {
         // (ignored)
       }
     }
