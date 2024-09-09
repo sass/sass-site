@@ -45,8 +45,8 @@
     --sl-background--button: var(--sl-color--code-background-darker);
     --sl-background--button-active: var(--sl-background--button-state);
     --sl-background--button-state: transparent;
-    --sl-color--button: var(--sl-color--highlight);
-    --sl-color--button-active: var(--sl-color--midnight-blue);
+    --sl-color--button: var(--sl-color--button--tab, var(--sl-color--highlight));
+    --sl-color--button-active: var(--sl-color--button--tab-active, var(--sl-color--midnight-blue));
     --sl-color--button-state: var(--sl-color--midnight-blue);
     --sl-font-weight--button: #{var(--sl-font-weight--bold)};
     --sl-radius--button: 0;
@@ -54,3 +54,10 @@
     box-shadow: none;
   }
 }
+
+.sl-c-button--icon-text {
+  display: flex;
+  gap: var(--sl-gutter--half);
+}
+
+
