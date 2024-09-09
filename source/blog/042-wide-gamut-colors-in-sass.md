@@ -21,7 +21,18 @@ CSS has historically been limited to `sRGB` color formats, which share two main 
 
 The previously available formats in CSS -- named colors (e.g. `red`), `hex` colors (e.g. `#f00`), and color functions (e.g. `rgb()`/`rgba()`, `hsl()`/`hsla()`, and more recent `hwb()`) -- are all ways of describing `sRGB` colors. Named colors are special, but the other formats use a 'coordinate' system, as though the colors of the gamut were projected into 3d space:
 
-(images of sRGB color spaces)
+<figure>
+<div style="display: grid; gap: var(--sl-gutter--quarter); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+<img src="/assets/img/blog/042-srgb.png" alt="The sRGB color gamut in sRGB space forms a rainbow colored cube" width=600 height=600 />
+<img src="/assets/img/blog/042-srgb-hsl.png" alt="The sRGB color gamut in hsl space forms a rainbow cylinder with black at the bottom and white at the top" width=600 height=600 />
+<img src="/assets/img/blog/042-srgb-hwb.png" alt="The sRGB color gamut in hwb space forms a rainbow-core cylinder with a black-to-white gradient going up the outside surface" width=600 height=600 />
+</div>
+<figcaption>
+The `sRGB` color gamut in various `sRGB`-based color spaces,
+always generating a geometric shape.
+Images generated using [ColorAide](https://facelessuser.github.io/coloraide/demos) by Isaac Muse.
+</figcaption>
+<figure>
 
 Look at those nice, geometric shapes! RGB gives us a rainbow cube, while HSL and HWB (with their 'polar' `hue` channels) arrange those same colors into cylinders. The clean boundaries make it easy for us to know (mathematically) what colors are *in gamut* or *out of gamut*. In `rgb()` we use values of `0-255`. Anything inside that range will be inside the cube, but if a channel goes below `0` or above `255`, we're no longer inside the `sRGB` gamut. In `hsl()` and `hwb()` the `hue` coordinates can keep going around the circle without ever reaching escape velocity, but the `saturation`, `lightness`, `whiteness`, and `blackness` channels go cleanly from `0-1` or `0%-100%`. Again, anything outside that range is outside the color space.
 
