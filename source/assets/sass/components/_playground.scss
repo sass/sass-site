@@ -321,20 +321,20 @@
   &.sl-c-button--icon {
     --sl-background--button: transparent;
     --sl-background--button-state: transparent;
-    --sl-color--button: var(--sl-color--midnight-blue);
+    --sl-color--button: var(--sl-color--text-medium-dark);
     --sl-color--button-state: var(--sl-color--action-dark);
 
     padding-block: var(--sl-gutter--half);
 
     &.copied {
-      --sl-color--button-state: var(--sl-color--midnight-blue);
+      --sl-color--button-state: var(--sl-color--text-medium-dark);
     }
   }
 }
 
 [class^='sl-c-playground-button--copy'] {
   display: var(--playground-copy-button-display);
-  width: 1em;
+  width: 0.9em;
 }
 
 .sl-c-playground-button--copy--copy {
