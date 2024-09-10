@@ -325,6 +325,10 @@
     --sl-color--button-state: var(--sl-color--action-dark);
 
     padding-block: var(--sl-gutter--half);
+
+    &.copied {
+      --sl-color--button-state: var(--sl-color--midnight-blue);
+    }
   }
 }
 
