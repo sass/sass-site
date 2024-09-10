@@ -10,7 +10,14 @@
   font-weight: var(--sl-font-weight--button);
   justify-content: center;
   margin: 0;
-  padding: var(--sl-gutter--minus) var(--sl-gutter);
+  padding: var(
+      --sl-padding--button,
+      var(--sl-block-padding--button, var(--sl-gutter--minus))
+    )
+    var(
+      --sl-padding--button,
+      var(--sl-inline-padding--button, var(--sl-gutter))
+    );
 
   &:hover,
   &:focus {

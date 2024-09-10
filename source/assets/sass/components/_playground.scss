@@ -323,8 +323,9 @@
     --sl-background--button-state: transparent;
     --sl-color--button: var(--sl-color--text-medium-dark);
     --sl-color--button-state: var(--sl-color--action-dark);
+    --sl-block-padding--button: 0;
 
-    padding-block: var(--sl-gutter--half);
+    box-shadow: none;
 
     &.copied {
       --sl-color--button-state: var(--sl-color--text-medium-dark);
