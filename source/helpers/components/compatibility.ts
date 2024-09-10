@@ -22,32 +22,44 @@ import {stripIndent} from '../type';
  * This takes an optional Markdown block (`details`) that should provide more
  * information about the implementation differences or the old behavior.
  */
-export const compatibility = async (details: string, ...opts: string[]) => {
+export async function compatibility(
+  details: string,
+  ...opts: string[]
+): Promise<string> {
   const options = parseCompatibilityOpts(...opts);
   return liquidEngine.renderFile('compatibility', {
     details: stripIndent(details),
     ...options,
   });
-};
+}
 
+/**
+ * Information about the compatibility of a feature with different Sass versions.
+ */
 interface CompatibilityOptions {
+  /** Compatibility with Dart Sass. */
   dart: string | boolean | null;
+
+  /** Compatibility with LibSass. */
   libsass: string | boolean | null;
+
+  /** Compatibility with Node.js. */
   node: string | boolean | null;
+
+  /** Compatibility with Ruby Sass. */
   ruby: string | boolean | null;
+
+  /** The name of the particular feature in question. */
   feature: string | null;
 }
 
-const extend = <
+/** Adds `value` to `obj` at `key`. */
+function extend<
   K extends keyof CompatibilityOptions,
   V extends CompatibilityOptions[K],
->(
-  value: V,
-  obj: CompatibilityOptions,
-  key: K
-) => {
+>(value: V, obj: CompatibilityOptions, key: K): void {
   obj[key] = value;
-};
+}
 
 /**
  * Take a list of string `args` and converts it into an object of all arguments
@@ -56,7 +68,7 @@ const extend = <
  * This can be removed once 11ty adds support for named Liquid arguments.
  * @see https://github.com/11ty/eleventy/issues/2679
  */
-const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
+function parseCompatibilityOpts(...args: string[]): CompatibilityOptions {
   const opts = {
     dart: null,
     libsass: null,
@@ -98,12 +110,12 @@ const parseCompatibilityOpts = (...args: string[]): CompatibilityOptions => {
     }
   }
   return opts;
-};
+}
 
 /**
  * Renders a single row for `compatibility`.
  */
-export const implStatus = (status: string | boolean | null) => {
+export function implStatus(status: string | boolean | null): string | null {
   switch (status) {
     case true:
       return '✓';
@@ -115,4 +127,4 @@ export const implStatus = (status: string | boolean | null) => {
     default:
       return `since ${status}`;
   }
-};
+}

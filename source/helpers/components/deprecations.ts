@@ -9,7 +9,7 @@ import {liquidEngine} from '../engines';
 export default async function deprecations(
   _: string,
   status: 'active' | 'future' | 'obsolete'
-) {
+): Promise<string> {
   const deprecations = [];
   for (const [id, deprecation] of Object.entries(sass.deprecations)) {
     if (deprecation.status === status) {

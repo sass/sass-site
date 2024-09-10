@@ -1,4 +1,3 @@
-/* eslint-disable node/no-extraneous-import */
 import {Diagnostic} from '@codemirror/lint';
 import {Exception, Importer, OutputStyle, Syntax} from 'sass';
 import {deflate, inflate} from 'pako';
@@ -9,7 +8,7 @@ const PLAYGROUND_LOAD_ERROR_MESSAGE =
   'The Sass Playground does not support loading stylesheets.';
 
 export type PlaygroundState = {
-  inputFormat: Syntax;
+  inputFormat: Exclude<Syntax, 'css'>;
   outputFormat: OutputStyle;
   inputValue: string;
   compilerHasError: boolean;
@@ -99,12 +98,12 @@ function deserializeStateContents(
   let decoded: string;
   try {
     decoded = inflateFromBase64(input);
-  } catch (error) {
+  } catch {
     // For backwards compatibility, decode the URL using the old decoding
     // strategy if the URL could not be inflated.
     try {
       decoded = decodeURIComponent(atob(input));
-    } catch (error) {
+    } catch {
       return;
     }
   }
