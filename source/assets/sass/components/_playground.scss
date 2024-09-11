@@ -169,7 +169,7 @@
   overflow-y: inherit;
 
   .cm-gutters {
-    background-color: var(--sl-background--editor);
+    background-color: transparent;
     border-right: none;
   }
 
@@ -192,6 +192,23 @@
 
   .cm-line {
     padding-left: var(--sl-gutter);
+
+    &::before {
+      content: '\2022';
+      color: var(--sl-color--bullet-line, transparent);
+      font-size: var(--sl-font-size--x-large);
+      left: 0;
+      position: absolute;
+      transform: translateY(-25%);
+    }
+
+    &:has(.cm-lintPoint-info, .cm-lintRange-info) {
+      --sl-color--bullet-line: var(--sl-color--success);
+    }
+
+    &:has(.cm-lintPoint-error, .cm-lintRange-error) {
+      --sl-color--bullet-line: var(--sl-color--error);
+    }
   }
 
   .cm-activeLineGutter,
@@ -213,12 +230,21 @@
     }
   }
 
+  .cm-tooltip {
+    border: none;
+  }
+
   .cm-diagnostic {
+    background: var(--sl-color--background-tooltip);
+    border: 1px solid var(--sl-color--border-tooltip);
     color: var(--sl-color--code-text);
-    background: var(--sl-color--code-background-darker);
+    padding: var(--sl-gutter--half);
   }
 
   .cm-diagnostic-error {
+    --sl-color--background-tooltip: var(--sl-color--warning-lighter);
+    --sl-color--border-tooltip: var(--sl-color--error);
+
     border-color: var(--sl-color--error);
   }
 
@@ -227,6 +253,9 @@
   }
 
   .cm-diagnostic-info {
+    --sl-color--background-tooltip: var(--sl-color--info-lighter);
+    --sl-color--border-tooltip: var(--sl-color--success);
+
     border-color: var(--sl-color--success);
   }
 
@@ -257,15 +286,24 @@
 
 .sl-c-playground__console {
   font-family: var(--sl-font-family--code);
+  display: grid;
+  gap: var(--sl-gutter);
+  grid-auto-rows: max-content;
+  grid-template-columns: [location] auto [message] 1fr;
   height: 100%;
   line-height: 1;
   margin: 0;
 
   .console-line {
+    --sl-background--link: transparent;
+    --sl-border-color--link: transparent;
+    --sl-border-color--link-state: var(--sl-color--iron);
+
     display: grid;
-    gap: var(--sl-gutter);
-    grid-template: 'location message' auto / 10ch 1fr;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     margin-bottom: var(--sl-gutter--half);
+    place-items: start;
   }
 
   .console-message {
