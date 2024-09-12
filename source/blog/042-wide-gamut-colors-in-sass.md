@@ -120,74 +120,125 @@ Sass provides a variety of tools for inspecting and working with these color spa
 
 All of these functions are provided by the built-in [Sass Color Module](https://sass-lang.com/documentation/modules/color/):
 
-```scss
-@use 'sass:color';
-$brand: MediumVioletRed;
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
+  $brand: MediumVioletRed;
 
-// results: rgb, true
-$initial: color.space($brand);
-$is-legacy: color.is-legacy($brand);
+  // results: rgb, true
+  @debug color.space($brand);
+  @debug color.is-legacy($brand);
 
-// result: oklch(55.34% 0.2217 349.7)
-$converted: color.to-space($brand, 'oklch');
+  // result: oklch(55.34% 0.2217 349.7)
+  @debug color.to-space($brand, 'oklch');
 
-// results: oklch, false
-$new-space: color.space($brand);
-$is-legacy: color.is-legacy($brand);
-```
+  // results: oklch, false
+  @debug color.space($brand);
+  @debug color.is-legacy($brand);
+  ===
+  @use 'sass:color'
+  $brand: MediumVioletRed
+
+  // results: rgb, true
+  @debug color.space($brand)
+  @debug color.is-legacy($brand)
+
+  // result: oklch(55.34% 0.2217 349.7)
+  @debug color.to-space($brand, 'oklch')
+
+  // results: oklch, false
+  @debug color.space($brand)
+  @debug color.is-legacy($brand)
+{% endcodeExample %}
 
 Once we convert a color between spaces, we no longer consider those colors to be *equal*. But we can ask if they would render as 'the same' color, using the `color.same()` function:
 
-```scss
-@use 'sass:color';
-$orange-rgb: #ff5f00;
-$orange-oklch: oklch(68.72% 20.966858279% 41.4189852913deg);
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
+  $orange-rgb: #ff5f00;
+  $orange-oklch: oklch(68.72% 20.966858279% 41.4189852913deg);
 
-// result: false
-$equal: $orange-rgb == $orange-oklch;
+  // result: false
+  @debug $orange-rgb == $orange-oklch;
 
-// result: true
-$same: color.same($orange-rgb, $orange-oklch);
-```
+  // result: true
+  @debug color.same($orange-rgb, $orange-oklch);
+  ===
+  @use 'sass:color'
+  $orange-rgb: #ff5f00
+  $orange-oklch: oklch(68.72% 20.966858279% 41.4189852913deg)
+
+  // result: false
+  @debug $orange-rgb == $orange-oklch
+
+  // result: true
+  @debug color.same($orange-rgb, $orange-oklch)
+{% endcodeExample %}
 
 We can inspect the individual channels of a color using `color.channel()`. By default, it only supports channels that are available in the color's own space, but we can pass the `$space` parameter to return the value of the channel value after converting to the given space:
 
-```scss
-@use 'sass:color';
-$brand: hsl(0 100% 25.1%);
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
+  $brand: hsl(0 100% 25.1%);
 
-// result: 25.1%
-$hsl-lightness: color.channel($brand, "lightness");
+  // result: 25.1%
+  @debug color.channel($brand, "lightness");
 
-// result: 37.67%
-$oklch-lightness: color.channel($brand, "lightness", $space: oklch);
-```
+  // result: 37.67%
+  @debug color.channel($brand, "lightness", $space: oklch);
+  ===
+  @use 'sass:color';
+  $brand: hsl(0 100% 25.1%)
+
+  // result: 25.1%
+  @debug color.channel($brand, "lightness")
+
+  // result: 37.67%
+  @debug color.channel($brand, "lightness", $space: oklch)
+{% endcodeExample %}
 
 CSS has also introduced the concept of 'powerless' and 'missing' color channels. For example, an `hsl` color with `0%` lightness will *always be black*. In that case, we can consider both the `hue` and `saturation` channels to be powerless. Changing their value won't have any impact on the resulting color. Sass allows us to ask if a channel is powerless using the `color.is-powerless()` function:
 
-```scss
-@use 'sass:color';
-$grey: hsl(0 0% 60%);
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
+  $grey: hsl(0 0% 60%);
 
-// result: true, because saturation is 0
-$hue-powerless: color.is-powerless($grey, "hue");
+  // result: true, because saturation is 0
+  @debug color.is-powerless($grey, "hue");
 
-// result: false
-$hue-powerless: color.is-powerless($grey, "lightness");
-```
+  // result: false
+  @debug color.is-powerless($grey, "lightness");
+  ===
+  @use 'sass:color';
+  $grey: hsl(0 0% 60%);
+
+  // result: true, because saturation is 0
+  @debug color.is-powerless($grey, "hue")
+
+  // result: false
+  @debug color.is-powerless($grey, "lightness")
+{% endcodeExample %}
 
 Taking that a step farther, CSS also allows us to explicitly mark a channel as 'missing' or unknown. That can happen automatically if we convert a color like `gray` into a color space like `oklch` -- we don't have any information about the `hue`. We can also create colors with missing channels explicitly by using the `none` keyword, and inspect if a color channel is missing with the `color.is-missing()` function:
 
-```scss
-@use 'sass:color';
-$brand: hsl(none 100% 25.1%);
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
+  $brand: hsl(none 100% 25.1%);
 
-// result: false
-$missing-lightness: color.is-missing($brand, "lightness");
+  // result: false
+  @debug color.is-missing($brand, "lightness");
 
-// result: true
-$missing-hue: color.is-missing($brand, "hue");
-```
+  // result: true
+  @debug color.is-missing($brand, "hue");
+  ===
+  @use 'sass:color'
+  $brand: hsl(none 100% 25.1%)
+
+  // result: false
+  @debug color.is-missing($brand, "lightness")
+
+  // result: true
+  @debug color.is-missing($brand, "hue")
+{% endcodeExample %}
 
 Like CSS, Sass maintains missing channels where they can be meaningful, but treats them as a value of `0` when a channel value is required.
 
@@ -195,16 +246,25 @@ Like CSS, Sass maintains missing channels where they can be meaningful, but trea
 
 The existing `color.scale()`, `color.adjust()`, and `color.change()` functions will continue to work as expected. By default, all color manipulations are performed *in the space provided by the color*. But we can now also specify an explicit color space for transformations:
 
-```scss
-@use 'sass:color';
-$brand: hsl(0 100% 25.1%);
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
+  $brand: hsl(0 100% 25.1%);
 
-// result: hsl(0 100% 43.8%)
-$hsl-lightness: color.scale($brand, $lightness: 25%);
+  // result: hsl(0 100% 43.8%)
+  @debug color.scale($brand, $lightness: 25%);
 
-// result: hsl(5.76 56% 45.4%)
-$oklch-lightness: color.scale($brand, $lightness: 25%, $space: oklch);
-```
+  // result: hsl(5.76 56% 45.4%)
+  @debug color.scale($brand, $lightness: 25%, $space: oklch);
+  ===
+  @use 'sass:color'
+  $brand: hsl(0 100% 25.1%)
+
+  // result: hsl(0 100% 43.8%)
+  @debug color.scale($brand, $lightness: 25%)
+
+  // result: hsl(5.76 56% 45.4%)
+  @debug color.scale($brand, $lightness: 25%, $space: oklch)
+{% endcodeExample %}
 
 Note that the returned color is still returned in the original color space, even when the adjustment is performed in a different space. That way we can start to use more advanced color spaces like `oklch` where they are useful, without necessarily relying on browsers to support those formats.
 
@@ -212,18 +272,30 @@ The existing `color.mix()` function will also maintain existing behavior *when b
 
 For legacy colors, the method is optional. But for non-legacy colors, a method is required. In most cases, the method can simply be a color space name. But when we're using a color space with "polar hue" channel (such as `hsl`, `hwb`, `lch`, or `oklch`) we can also specify the *direction* we want to move around the color wheel: `shorter hue`, `longer hue`, `increasing hue`, or `decreasing hue`:
 
-```scss
-@use 'sass:color';
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
 
-// result: #660099
-$legacy: color.mix(red, blue, 40%);
+  // result: #660099
+  @debug color.mix(red, blue, 40%);
 
-// result: rgb(176.2950613593, -28.8924497904, 159.1757183525)
-$lab: color.mix(red, blue, 40%, $method: lab);
+  // result: rgb(176.2950613593, -28.8924497904, 159.1757183525)
+  @debug color.mix(red, blue, 40%, $method: lab);
 
-// result: rgb(-129.55249236, 149.0291922672, 77.9649510422)
-$oklch-longer: color.mix(red, blue, 40%, oklch longer hue);
-```
+  // result: rgb(-129.55249236, 149.0291922672, 77.9649510422)
+  @debug color.mix(red, blue, 40%, $method: oklch longer hue);
+  ===
+  @use 'sass:color'
+
+  // result: #660099
+  @debug color.mix(red, blue, 40%)
+
+  // result: rgb(176.2950613593, -28.8924497904, 159.1757183525)
+  @debug color.mix(red, blue, 40%, $method: lab)
+
+  // result: rgb(-129.55249236, 149.0291922672, 77.9649510422)
+  @debug color.mix(red, blue, 40%, $method: oklch longer hue)
+{% endcodeExample %}
+
 
 In this case, the first color in the mix is considered the "origin" color. Like the other functions above, we can use different spaces for mixing, but the result will always be returned in that origin color space.
 
@@ -239,29 +311,47 @@ Since browser behavior is still unreliable, and some color spaces (*cough* `oklc
 
 We can use `color.is-in-gamut()` to test if a particular color is in a given gamut. Like our other color functions, this will default to the space the color is defined in, but we can provide a `$space` parameter to test it against a different gamut:
 
-```scss
-@use 'sass:color';
-$extra-pink: color(display-p3 0.951 0.457 0.7569);
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
+  $extra-pink: color(display-p3 0.951 0.457 0.7569);
 
-// result: true, for display-p3 gamut
-$in-p3: color.is-in-gamut($extra-pink);
+  // result: true, for display-p3 gamut
+  @debug color.is-in-gamut($extra-pink);
 
-// result: false, for srgb gamut
-$in-srgb: color.is-in-gamut($extra-pink, $space: srgb);
-```
+  // result: false, for srgb gamut
+  @debug color.is-in-gamut($extra-pink, $space: srgb);
+  ===
+  @use 'sass:color'
+  $extra-pink: color(display-p3 0.951 0.457 0.7569)
+
+  // result: true, for display-p3 gamut
+  @debug color.is-in-gamut($extra-pink)
+
+  // result: false, for srgb gamut
+  @debug color.is-in-gamut($extra-pink, $space: srgb)
+{% endcodeExample %}
 
 We can also use the `color.to-gamut()` function to explicitly move a color so that it is in a particular gamut. Since there are several options on the table, and no clear sense what default CSS will use long-term, this function currently requires an explicit `$method` parameter. The current options are `clip` (as is currently applied by browsers) or `local-minde` (as is currently specified):
 
-```scss
-@use 'sass:color';
-$extra-pink: color(display-p3 0.951 0.457 0.7569);
+{% codeExample 'color-fns', false %}
+  @use 'sass:color';
+  $extra-pink: oklch(90% 90% 0deg);
 
-// result: ???
-$clip-to-srgb: color.to-gamut($extra-pink, srgb, clip);
+  // result: oklch(68.3601568298% 0.290089749 338.3604392249deg)
+  @debug color.to-gamut($extra-pink, srgb, clip);
 
-// result: ???
-$map-to-srgb: color.to-gamut($extra-pink, srgb, local-minde);
-```
+  // result: oklch(88.7173946522% 0.0667320674 355.3282956627deg)
+  @debug color.to-gamut($extra-pink, srgb, local-minde);
+  ===
+  @use 'sass:color'
+  $extra-pink: oklch(90% 90% 0deg)
+
+  // result: oklch(68.3601568298% 0.290089749 338.3604392249deg)
+  @debug color.to-gamut($extra-pink, srgb, clip)
+
+  // result: oklch(88.7173946522% 0.0667320674 355.3282956627deg)
+  @debug color.to-gamut($extra-pink, srgb, local-minde)
+{% endcodeExample %}
 
 All legacy and RGB-style spaces represent bounded gamuts of color. Since mapping colors into gamut is a lossy process, it should generally be left to browsers or done with caution. For that reason, out-of-gamut channel values are maintained by Sass, even when converting into gamut-bounded color spaces.
 
