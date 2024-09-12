@@ -311,6 +311,8 @@ $playground-base-colors: (
     }
   }
 
+  // Debug panel uses Sass terms "warn" and "debug"
+  // Code Mirror uses "warning" and "info"
   $console-type-colors: (
     'error': var(--sl-color--code-error),
     'warn': var(--sl-color--code-warning),
