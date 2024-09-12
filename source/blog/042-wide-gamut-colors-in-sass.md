@@ -6,7 +6,7 @@ date: 2024-09-11 13:00:00 -8
 
 Wide gamut colors are coming to Sass!
 
-I should clarify. Wide gamut CSS color formats like `oklch(…)` and `color(display-p3 …)` have been available in all major browsers since May, 2023. But even before that, these new color formats were *allowed* in Sass. This is one of my favorite features of Sass: most new CSS *just works*, without any need for 'official' support or updates. When Sass encounters unknown CSS, it passes that code along to the browser. Not everything needs to be pre-processed.
+I should clarify. Wide gamut CSS color formats like `oklch(…)` and `color(display-p3 …)` have been available in all major browsers since May, 2023. But even before that, these new color formats were *allowed* in Sass. This is one of my favorite features of Sass: most new CSS *just works*, without any need for "official" support or updates. When Sass encounters unknown CSS, it passes that code along to the browser. Not everything needs to be pre-processed.
 
 Often, that's all we need. When Cascade Layers and Container Queries rolled out in browsers, there was nothing more for Sass to do. But the new CSS color formats are a bit different. Since colors are a first-class data type in Sass, we don't always want to pass them along *as-is*. We often want to manipulate and manage colors before they go to the browser.
 
@@ -15,11 +15,11 @@ Often, that's all we need. When Cascade Layers and Container Queries rolled out 
 CSS has historically been limited to `sRGB` color formats, which share two main features:
 
 - They use an underlying [RGB color model](https://en.wikipedia.org/wiki/RGB_color_model) for representing & manipulating colors mathematically by controlling the relative amounts of `red`, `green`, and `blue` light.
-- They can only represent colors in the [`sRGB` color gamut](https://en.wikipedia.org/wiki/SRGB) -- the default range of color that can be displayed on color monitors since the mid 1990's.
+- They can only represent colors in the [`sRGB` color gamut](https://en.wikipedia.org/wiki/SRGB) -- the default range of color that can be displayed on color monitors since the mid 1990s.
 
 ### Clear gamut boundaries
 
-The previously available formats in CSS -- named colors (e.g. `red`), `hex` colors (e.g. `#f00`), and color functions (e.g. `rgb()`/`rgba()`, `hsl()`/`hsla()`, and more recent `hwb()`) -- are all ways of describing `sRGB` colors. Named colors are special, but the other formats use a 'coordinate' system, as though the colors of the gamut were projected into 3d space:
+The previously available formats in CSS -- named colors (e.g. `red`), `hex` colors (e.g. `#f00`), and color functions (e.g. `rgb()`/`rgba()`, `hsl()`/`hsla()`, and more recently `hwb()`) -- are all ways of describing `sRGB` colors. Named colors are special, but the other formats use a 'coordinate' system, as though the colors of the gamut were projected into 3d space:
 
 <figure>
 <div style="display: grid; gap: var(--sl-gutter--quarter); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
@@ -34,7 +34,7 @@ by Isaac Muse.
 </figcaption>
 <figure>
 
-Look at those nice, geometric shapes! RGB gives us a rainbow cube, while HSL and HWB (with their 'polar' `hue` channels) arrange those same colors into cylinders. The clean boundaries make it easy for us to know (mathematically) what colors are *in gamut* or *out of gamut*. In `rgb()` we use values of `0-255`. Anything inside that range will be inside the cube, but if a channel goes below `0` or above `255`, we're no longer inside the `sRGB` gamut. In `hsl()` and `hwb()` the `hue` coordinates can keep going around the circle without ever reaching escape velocity, but the `saturation`, `lightness`, `whiteness`, and `blackness` channels go cleanly from `0-1` or `0%-100%`. Again, anything outside that range is outside the color space.
+Look at those nice, geometric shapes! RGB gives us a rainbow cube, while HSL and HWB (with their "polar" `hue` channels) arrange those same colors into cylinders. The clean boundaries make it easy for us to know (mathematically) what colors are *in gamut* or *out of gamut*. In `rgb()` we use values of `0-255`. Anything inside that range will be inside the cube, but if a channel goes below `0` or above `255`, we're no longer inside the `sRGB` gamut. In `hsl()` and `hwb()` the `hue` coordinates can keep going around the circle without ever reaching escape velocity, but the `saturation`, `lightness`, `whiteness`, and `blackness` channels go cleanly from `0-1` or `0%-100%`. Again, anything outside that range is outside the color space.
 
 ### Matching human perception
 
@@ -68,7 +68,7 @@ The rest of the gamut-bounded spaces are available using the `color(<space> <3-c
 
 In the same `color()` function, we can also access the 'device independent' (and gamut-less) `xyz` color spaces -- often used as an international baseline for converting between different color models. I won't get into [white points](https://www.w3.org/TR/css-color-4/#white-point) here, but we can specify `xyz-d65` (the default) explicitly, or use `xyz-d50` instead.
 
-Working out from `xyz`, we get a number of new *theoretically unbounded* color formats -- prioritizing *perceptually uniform* distribution over clean geometry. These are available in functions of their own, including `lab()` (`lightness`, `a`, and `b`) and `lch()` (`lightness`, `chroma`, and `hue`) along with the newer 'ok' versions of each -- `oklab()` and `oklch()`. If you want the full history of these formats, [Eric Portis has written a great explainer](https://ericportis.com/posts/2024/okay-color-spaces/).
+Working outwards from `xyz`, we get a number of new *theoretically unbounded* color formats -- prioritizing *perceptually uniform* distribution over clean geometry. These are available in functions of their own, including `lab()` (`lightness`, `a`, and `b`) and `lch()` (`lightness`, `chroma`, and `hue`) along with the newer 'ok' versions of each -- `oklab()` and `oklch()`. If you want the full history of these formats, [Eric Portis has written a great explainer](https://ericportis.com/posts/2024/okay-color-spaces/).
 
 ## TL;DR top priority new formats
 
@@ -88,13 +88,19 @@ Sass now accepts all the new CSS formats, and treats them as first-class *colors
 
 The Sass color functions use the same syntax as the CSS functions, which means that a given color can be represented in a variety of different spaces. For example, these are all the same color:
 
-```scss
-$named: MediumVioletRed;
-$hex: #C71585;
-$hsl: hsl(322.2 80.91% 43.14%);
-$oklch: oklch(55.34% 0.2217 349.7);
-$display-p3: color(display-p3 0.716 0.1763 0.5105);
-```
+{% codeExample 'color-fns', false %}
+  @debug MediumVioletRed;
+  @debug #C71585;
+  @debug hsl(322.2 80.91% 43.14%);
+  @debug oklch(55.34% 0.2217 349.7);
+  @debug color(display-p3 0.716 0.1763 0.5105);
+  ===
+  @debug MediumVioletRed
+  @debug #C71585
+  @debug hsl(322.2 80.91% 43.14%)
+  @debug oklch(55.34% 0.2217 349.7)
+  @debug color(display-p3 0.716 0.1763 0.5105)
+{% endcodeExample %}
 
 ## Sass colors hold their space
 
@@ -102,7 +108,7 @@ Historically, both CSS and Sass would treat the different color-spaces as *inter
 
 In general, any color defined in a given space will remain in that space, and be emitted in that space. The space is defined by the function used, either one of the named spaced passed to `color()`, or the function name (e.g. `lab` for colors defined using the `lab()` function).
 
-However, the `rgb`, `hsl`, and `hwb` spaces will be considered "legacy spaces", and will often get special handling for the sake of backwards compatibility. Legacy colors will continue to be emitted in the most backwards-compatible format available. This matches CSS’s own backwards-compatibility behavior. Colors defined using hex notation or CSS color names are also considered part of the legacy `rgb` color space.
+However, the `rgb`, `hsl`, and `hwb` spaces are considered "legacy spaces", and often get special handling for the sake of backwards compatibility. Legacy colors are still emitted in the most backwards-compatible format available. This matches CSS’s own backwards-compatibility behavior. Colors defined using hex notation or CSS color names are also considered part of the legacy `rgb` color space.
 
 Sass provides a variety of tools for inspecting and working with these color spaces:
 
@@ -128,7 +134,7 @@ $new-space: color.space($brand);
 $is-legacy: color.is-legacy($brand);
 ```
 
-Once we can convert a color between spaces, we no longer consider those colors to be *equal*. But we can ask if they would render as 'the same' color, using the `color.same()` function:
+Once we convert a color between spaces, we no longer consider those colors to be *equal*. But we can ask if they would render as 'the same' color, using the `color.same()` function:
 
 ```scss
 @use 'sass:color';
@@ -201,7 +207,7 @@ Note that the returned color is still returned in the original color space, even
 
 The existing `color.mix()` function will also maintain existing behavior *when both colors are in legacy color spaces*. Legacy mixing is always done in `rgb` space. We can opt into other mixing techniques using the new `$method` parameter, which is designed to match the CSS specification for describing [interpolation methods](https://www.w3.org/TR/css-color-4/#interpolation-space) – used in CSS gradients, filters, animations, and transitions as well as the new CSS `color-mix()` function.
 
-For legacy colors, the method is optional. But for non-legacy colors, a method is required. In most cases, the method can simply be a color space name. But when we're using a color space with 'polar hue' channel (such as `hsl`, `hwb`, `lch`, or `oklch`) we can also specify the *direction* we want to move around the color wheel: `shorter hue`, `longer hue`, `increasing hue`, or `decreasing hue`:
+For legacy colors, the method is optional. But for non-legacy colors, a method is required. In most cases, the method can simply be a color space name. But when we're using a color space with "polar hue" channel (such as `hsl`, `hwb`, `lch`, or `oklch`) we can also specify the *direction* we want to move around the color wheel: `shorter hue`, `longer hue`, `increasing hue`, or `decreasing hue`:
 
 ```scss
 @use 'sass:color';
@@ -210,13 +216,13 @@ For legacy colors, the method is optional. But for non-legacy colors, a method i
 $legacy: color.mix(red, blue, 40%);
 
 // result: ???
-$lab: color.mix(red, blue, 40%, lab);
+$lab: color.mix(red, blue, 40%, $method: lab);
 
 // result: ???
 $oklch-longer: color.mix(red, blue, 40%, oklch longer hue);
 ```
 
-In this case, the first color in the mix is considered the 'origin' color. Like the other functions above, we can use different spaces for mixing, but the result will always be returned in that origin color space.
+In this case, the first color in the mix is considered the "origin" color. Like the other functions above, we can use different spaces for mixing, but the result will always be returned in that origin color space.
 
 ## Working with gamut boundaries
 
@@ -238,7 +244,7 @@ $extra-pink: color(display-p3 0.951 0.457 0.7569);
 $in-p3: color.is-in-gamut($extra-pink);
 
 // result: false, for srgb gamut
-$in-srgb: color.is-in-gamut($extra-pink, srgb);
+$in-srgb: color.is-in-gamut($extra-pink, $space: srgb);
 ```
 
 We can also use the `color.to-gamut()` function to explicitly move a color so that it is in a particular gamut. Since there are several options on the table, and no clear sense what default CSS will use long-term, this function currently requires an explicit `$method` parameter. The current options are `clip` (as is currently applied by browsers) or `local-minde` (as is currently specified):
