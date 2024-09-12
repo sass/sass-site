@@ -2,6 +2,12 @@
 @use '../config';
 @use '../config/color/brand';
 
+$playground-base-colors: (
+  'info': var(--sl-color--code-info),
+  'warning': var(--sl-color--code-warning),
+  'error': var(--sl-color--code-error),
+);
+
 .playground {
   --sl-max-width--container: 100vw;
 
@@ -203,18 +209,16 @@
       transform: translateY(-25%);
     }
 
-    &:has(.cm-lintPoint-info, .cm-lintRange-info) {
-      --sl-color--bullet-line: var(--sl-color--success);
-    }
-
-    &:has(.cm-lintPoint-error, .cm-lintRange-error) {
-      --sl-color--bullet-line: var(--sl-color--error);
+    @each $name, $color in $playground-base-colors {
+      &:has(.cm-lintPoint-#{$name}, .cm-lintRange-#{$name}) {
+        --sl-color--bullet-line: #{$color};
+      }
     }
   }
 
   .cm-activeLineGutter,
   .cm-activeLine {
-    background-color: var(--sl-color--warning-highlight);
+    background-color: var(--sl-color--code-highlight-light);
 
     [data-code='compiled'] & {
       background-color: var(--sl-color--code-background);
@@ -242,22 +246,13 @@
     padding: var(--sl-gutter--half);
   }
 
-  .cm-diagnostic-error {
-    --sl-color--background-tooltip: var(--sl-color--warning-lighter);
-    --sl-color--border-tooltip: var(--sl-color--error);
+  @each $name, $color in $playground-base-colors {
+    .cm-diagnostic-#{$name} {
+      --sl-color--border-tooltip: #{$color};
+      --sl-color--background-tooltip: var(--sl-color--code-#{$name}-light);
 
-    border-color: var(--sl-color--error);
-  }
-
-  .cm-diagnostic-warning {
-    border-color: var(--sl-color--warn);
-  }
-
-  .cm-diagnostic-info {
-    --sl-color--background-tooltip: var(--sl-color--info-lighter);
-    --sl-color--border-tooltip: var(--sl-color--success);
-
-    border-color: var(--sl-color--success);
+      border-color: $color;
+    }
   }
 
   .cm-specialChar {
@@ -313,9 +308,9 @@
   }
 
   $console-type-colors: (
-    'error': var(--sl-color--error),
-    'warn': var(--sl-color--warn),
-    'debug': var(--sl-color--success),
+    'error': var(--sl-color--code-error),
+    'warn': var(--sl-color--code-warning),
+    'debug': var(--sl-color--code-info),
   );
 
   @each $name, $color in $console-type-colors {
