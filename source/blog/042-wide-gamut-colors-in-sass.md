@@ -10,6 +10,8 @@ I should clarify. Wide gamut CSS color formats like `oklch(…)` and `color(disp
 
 Often, that's all we need. When Cascade Layers and Container Queries rolled out in browsers, there was nothing more for Sass to do. But the new CSS color formats are a bit different. Since colors are a first-class data type in Sass, we don't always want to pass them along *as-is*. We often want to manipulate and manage colors before they go to the browser.
 
+Already know all about color spaces? [Skip ahead to the new Sass features](#css-color-functions-in-sass)!
+
 ## The color format trade-off
 
 CSS has historically been limited to `sRGB` color formats, which share two main features:
