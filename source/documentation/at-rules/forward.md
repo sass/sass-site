@@ -4,7 +4,7 @@ introduction: >
   The `@forward` rule loads a Sass stylesheet and makes its
   [mixins](/documentation/at-rules/mixin),
   [functions](/documentation/at-rules/function), and
-  [variables](/documentation/variables)) available when your stylesheet is
+  [variables](/documentation/variables) available when your stylesheet is
   loaded with the [`@use` rule](/documentation/at-rules/use). It makes it
   possible to organize Sass libraries across many files, while allowing their
   users to load a single entrypoint file.

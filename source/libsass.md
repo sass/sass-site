@@ -48,6 +48,12 @@ Below are the LibSass wrappers that we're currently aware of. Sometimes there
 are multiple wrappers per language -- in those cases, we put the most
 recently-updated wrapper first.
 
+{% headsUp %}
+  Because LibSass is deprecated, most of these wrappers are end-of-life. In
+  order to use them with the latest maintenance releases of LibSass, you may
+  need to build them by hand.
+{% endheadsUp %}
+
 - <h3 id="sassc">Sass C</h3>
 
   [SassC](https://github.com/sass/sassc) (get it?) is a wrapper written in C.
