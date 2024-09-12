@@ -186,7 +186,7 @@ We can inspect the individual channels of a color using `color.channel()`. By de
   // result: 37.67%
   @debug color.channel($brand, "lightness", $space: oklch);
   ===
-  @use 'sass:color';
+  @use 'sass:color'
   $brand: hsl(0 100% 25.1%)
 
   // result: 25.1%
@@ -208,8 +208,8 @@ CSS has also introduced the concept of 'powerless' and 'missing' color channels.
   // result: false
   @debug color.is-powerless($grey, "lightness");
   ===
-  @use 'sass:color';
-  $grey: hsl(0 0% 60%);
+  @use 'sass:color'
+  $grey: hsl(0 0% 60%)
 
   // result: true, because saturation is 0
   @debug color.is-powerless($grey, "hue")
