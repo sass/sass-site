@@ -36,6 +36,8 @@ export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
  * Write with `innerText` and then retrieve using `innerHTML` to encode message
  * for safe display.
  * @param  {string} message The user-submitted string
+ * @param  {string} [safeLink] A known safe URL. If `safeLink` is present in
+ * `message`, it will be wrapped in an anchor element.
  * @return {string} The sanitized string
  */
 function encodeHTML(message: string, safeLink?: string): string {
