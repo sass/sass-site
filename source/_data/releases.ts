@@ -106,7 +106,7 @@ async function getLatestVersion(repo: string): Promise<string> {
 /**
  * Returns the version and URL for the latest release of all implementations.
  */
-export default async function (): Promise<Record<string, Release>> {
+module.exports = async function (): Promise<Record<string, Release>> {
   const repos = ['sass/libsass', 'sass/dart-sass', 'sass/migrator'];
   const cache = await getCacheFile();
 
@@ -129,4 +129,4 @@ export default async function (): Promise<Record<string, Release>> {
   }
 
   return data;
-}
+};
