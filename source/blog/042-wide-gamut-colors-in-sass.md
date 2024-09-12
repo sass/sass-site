@@ -196,7 +196,7 @@ We can inspect the individual channels of a color using `color.channel()`. By de
   @debug color.channel($brand, "lightness", $space: oklch)
 {% endcodeExample %}
 
-CSS has also introduced the concept of 'powerless' and 'missing' color channels. For example, an `hsl` color with `0%` saturation will *always be grayscale*. In that case, we can consider both the `hue` and `saturation` channels to be powerless. Changing their value won't have any impact on the resulting color. Sass allows us to ask if a channel is powerless using the `color.is-powerless()` function:
+CSS has also introduced the concept of 'powerless' and 'missing' color channels. For example, an `hsl` color with `0%` saturation will *always be grayscale*. In that case, we can consider the `hue` channel to be powerless. Changing its value won't have any impact on the resulting color. Sass allows us to ask if a channel is powerless using the `color.is-powerless()` function:
 
 {% codeExample 'color-fns', false %}
   @use 'sass:color';
