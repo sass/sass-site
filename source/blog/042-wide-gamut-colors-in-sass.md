@@ -196,26 +196,26 @@ We can inspect the individual channels of a color using `color.channel()`. By de
   @debug color.channel($brand, "lightness", $space: oklch)
 {% endcodeExample %}
 
-CSS has also introduced the concept of 'powerless' and 'missing' color channels. For example, an `hsl` color with `0%` lightness will *always be black*. In that case, we can consider both the `hue` and `saturation` channels to be powerless. Changing their value won't have any impact on the resulting color. Sass allows us to ask if a channel is powerless using the `color.is-powerless()` function:
+CSS has also introduced the concept of 'powerless' and 'missing' color channels. For example, an `hsl` color with `0%` saturation will *always be grayscale*. In that case, we can consider both the `hue` and `saturation` channels to be powerless. Changing their value won't have any impact on the resulting color. Sass allows us to ask if a channel is powerless using the `color.is-powerless()` function:
 
 {% codeExample 'color-fns', false %}
   @use 'sass:color';
-  $grey: hsl(0 0% 60%);
+  $gray: hsl(0 0% 60%);
 
   // result: true, because saturation is 0
-  @debug color.is-powerless($grey, "hue");
+  @debug color.is-powerless($gray, "hue");
 
   // result: false
-  @debug color.is-powerless($grey, "lightness");
+  @debug color.is-powerless($gray, "lightness");
   ===
   @use 'sass:color'
-  $grey: hsl(0 0% 60%)
+  $gray: hsl(0 0% 60%)
 
   // result: true, because saturation is 0
-  @debug color.is-powerless($grey, "hue")
+  @debug color.is-powerless($gray, "hue")
 
   // result: false
-  @debug color.is-powerless($grey, "lightness")
+  @debug color.is-powerless($gray, "lightness")
 {% endcodeExample %}
 
 Taking that a step farther, CSS also allows us to explicitly mark a channel as 'missing' or unknown. That can happen automatically if we convert a color like `gray` into a color space like `oklch` -- we don't have any information about the `hue`. We can also create colors with missing channels explicitly by using the `none` keyword, and inspect if a color channel is missing with the `color.is-missing()` function:
