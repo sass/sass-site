@@ -62,7 +62,7 @@ Moving forward, there are two directions we could go with wide gamut colors:
 
 On the one hand, clean boundaries allow us to easily stay inside the range of available colors. Without those boundaries, it would be easy to *accidentally* request colors that aren't even physically possible. On the other hand, we expect these colors to be *perceived* by *other humans* -- and we need to make things *look* consistent, with enough contrast to be readable.
 
-The [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/) defines a number of new CSS color formats. Some of them maintain geometric access to specific color spaces. The `hwb()` function has been around for several years now, and defines `sRGB` colors using `hue`, `whiteness`, and `blackness` channels.  It's an interesting format, and [I've written about it before](https://www.miriamsuzanne.com/2022/06/29/hwb-clamping/).
+The [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/) defines a number of new CSS color formats. Some of them maintain geometric access to specific color spaces. Like the more familiar `rgb()` and `hsl()` functions, the newer `hwb()` function still describes colors in the `sRGB` gamut, using `hue`, `whiteness`, and `blackness` channels.  It's an interesting format, and [I've written about it before](https://www.miriamsuzanne.com/2022/06/29/hwb-clamping/).
 
 The rest of the gamut-bounded spaces are available using the `color(<space> <3-channels> / <alpha>)` function. Using that syntax we can define colors in `sRGB`, `srbg-linear`, `display-p3` (common for modern monitors), `a98-rgb`, `prophoto-rgb`, and `rec2020`. Each of these maps the specified gamut onto a range of (cubic) coordinates from `0-1` or `0%-100%`. Nice and clean.
 
@@ -75,7 +75,7 @@ Working outwards from `xyz`, we get a number of new *theoretically unbounded* co
 For the color experts, it's great to have all this flexibility. For the rest of us, there are a few stand-out formats:
 
 - `color(display-p3 …)` provides access to a wider gamut of colors, which are available on many modern displays, while maintaining a clear set of gamut boundaries.
-- `oklch(…)` is the most intuitive and perceptually uniform space to work in, a newer alternative to `hsl(…)` -- `chroma` is very similar to `saturation`. But there are no guard rails here, and it's easy to end up outside the gamuts that any screen can display, or even outside the realm of physical reality.
+- `oklch(…)` is the most intuitive and perceptually uniform space to work in, a newer alternative to `hsl(…)` -- `chroma` is very similar to `saturation`. But there are few guard rails here, and it's easy to end up outside the gamuts that any screen can possibly display. The coordinate system is still describing a cylinder, but the edges of human perception and display technology don't map neatly into that space.
 - For transitions and gradients, if we want to go directly between hues (instead of going around the color wheel), `oklab(…)` is a good linear option. Usually, a transition or gradient between two in-gamut colors will stay in gamut -- but we can't always rely on that when we're dealing with extremes of saturation or lightness.
 
 ## CSS color functions in Sass
@@ -161,7 +161,7 @@ $hsl-lightness: color.channel($brand, "lightness");
 $oklch-lightness: color.channel($brand, "lightness", $space: oklch);
 ```
 
-CSS has also introduced the concept of 'powerless' and 'missing' color channels. For example, an `hsl` color with `100%` lightness will *always be white*. In that case, we can consider both the `hue` and `saturation` channels to be powerless. Changing their value won't have any impact on the resulting color. Sass allows us to ask if a channel is powerless using the `color.is-powerless()` function:
+CSS has also introduced the concept of 'powerless' and 'missing' color channels. For example, an `hsl` color with `0%` lightness will *always be black*. In that case, we can consider both the `hue` and `saturation` channels to be powerless. Changing their value won't have any impact on the resulting color. Sass allows us to ask if a channel is powerless using the `color.is-powerless()` function:
 
 ```scss
 @use 'sass:color';
@@ -187,6 +187,7 @@ $missing-lightness: color.is-missing($brand, "lightness");
 $missing-hue: color.is-missing($brand, "hue");
 ```
 
+Like CSS, Sass maintains missing channels where they can be meaningful, but treats them as a value of `0` when a channel value is required.
 
 ## Manipulating Sass colors
 
@@ -215,10 +216,10 @@ For legacy colors, the method is optional. But for non-legacy colors, a method i
 // result: #660099
 $legacy: color.mix(red, blue, 40%);
 
-// result: ???
+// result: rgb(176.2950613593, -28.8924497904, 159.1757183525)
 $lab: color.mix(red, blue, 40%, $method: lab);
 
-// result: ???
+// result: rgb(-129.55249236, 149.0291922672, 77.9649510422)
 $oklch-longer: color.mix(red, blue, 40%, oklch longer hue);
 ```
 
@@ -257,10 +258,10 @@ $extra-pink: color(display-p3 0.951 0.457 0.7569);
 $clip-to-srgb: color.to-gamut($extra-pink, srgb, clip);
 
 // result: ???
-$clip-to-srgb: color.to-gamut($extra-pink, srgb, local-minde);
+$map-to-srgb: color.to-gamut($extra-pink, srgb, local-minde);
 ```
 
-All legacy and RGB-style spaces represent bounded gamuts of color. Since mapping colors into gamut is a lossy process, it should generally be left to browsers or done with caution. For that reason, out-of-gamut channel values are maintained by Sass whenever possible, even when converting into gamut-bounded color spaces. The only exception is that `hsl` and `hwb` color spaces are not able to express out-of-gamut color, so converting colors into those spaces will gamut-map the colors as well.
+All legacy and RGB-style spaces represent bounded gamuts of color. Since mapping colors into gamut is a lossy process, it should generally be left to browsers or done with caution. For that reason, out-of-gamut channel values are maintained by Sass, even when converting into gamut-bounded color spaces.
 
 Legacy browsers require colors in the `srgb` gamut. However, most modern displays support the wider `display-p3` gamut.
 
