@@ -305,6 +305,10 @@ $playground-base-colors: (
   .console-message {
     display: grid;
     line-height: var(--sl-line-height--console);
+
+    a {
+      justify-self: start;
+    }
   }
 
   $console-type-colors: (
