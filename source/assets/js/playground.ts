@@ -203,7 +203,7 @@ function setupPlayground(): void {
       url: undefined,
     };
 
-    function showCopiedAlert(msg: string) {
+    function showCopiedAlert(msg: string): void {
       if (!copiedAlert) return;
       copiedAlert.innerText = msg;
       copiedAlert.classList.add('show');
@@ -213,7 +213,7 @@ function setupPlayground(): void {
       }, 3000);
     }
 
-    function showCopiedIcon(button: 'input' | 'output' | 'url') {
+    function showCopiedIcon(button: 'input' | 'output' | 'url'): void {
       const buttonEl = $(`#playground-copy-${button}`);
       if (!buttonEl) return;
       buttonEl.addClass('copied');
