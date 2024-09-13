@@ -57,32 +57,9 @@ function atRuleCompletion(context: CompletionContext): CompletionResult | null {
   };
 }
 
-interface CompletionInfo {
-  name: string;
-  description?: string;
-}
-
-interface CompletionModule extends CompletionInfo {
-  functions: CompletionInfo[];
-  variables?: CompletionInfo[];
-}
-
 // A list of all the Sass built in modules.
 const moduleNames = moduleMetadata.map(mod => mod.name);
 type ModuleName = (typeof moduleNames)[number];
-
-const builtinModules: CompletionModule[] = moduleMetadata.map(modMember => {
-  let variables;
-  if ('variables' in modMember) {
-    variables = modMember.variables;
-  }
-  return {
-    name: modMember.name,
-    description: modMember.description,
-    functions: (modMember.functions ?? []).map(name => ({name})),
-    variables: (variables ?? []).map(name => ({name: `$${name}`})),
-  };
-});
 
 // Matches any of the built in Sass modules.
 const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?\\w*`);
@@ -92,7 +69,7 @@ const moduleUseRegex = new RegExp(/['"]sass:(?<modName>.*)['"]/);
 
 // Completion results for built in Sass modules following the `sass:` namespace.
 const moduleCompletions = Object.freeze(
-  builtinModules.map(mod => ({
+  moduleMetadata.map(mod => ({
     label: `sass:${mod.name}`,
     apply: `sass:${mod.name}`,
     info: mod.description,
@@ -103,7 +80,7 @@ const moduleCompletions = Object.freeze(
 );
 
 // Completions for the import of built in modules, for instance "sass:color".
-function builtinModulesCompletion(
+function moduleMetadataCompletion(
   context: CompletionContext
 ): CompletionResult | null {
   const nodeBefore = syntaxTree(context.state).resolveInner(context.pos, -1);
@@ -127,7 +104,7 @@ function builtinModulesCompletion(
   if (!moduleMatch) return null;
   if (moduleMatch.from === moduleMatch.to && !context.explicit) return null;
 
-  const included = includedBuiltinModules(context.state);
+  const included = includedmoduleMetadata(context.state);
   const notIncludedModuleCompletions = moduleCompletions.filter(
     moduleCompletion => !included.includes(moduleCompletion._moduleName)
   );
@@ -141,11 +118,11 @@ function builtinModulesCompletion(
 
 // Completion results for module variables.
 const moduleVariableCompletions = Object.freeze(
-  builtinModules.reduce(
+  moduleMetadata.reduce(
     (acc: {[k: string]: CompletionResult['options'] | []}, mod) => {
       acc[mod.name] =
         mod.variables?.map(variable => ({
-          label: `${mod.name}.${variable.name}`,
+          label: `${mod.name}.${variable}`,
           type: 'variable',
         })) || [];
       return acc;
@@ -156,12 +133,12 @@ const moduleVariableCompletions = Object.freeze(
 
 // Completion results for module functions.
 const moduleFunctionsCompletions = Object.freeze(
-  builtinModules.reduce(
+  moduleMetadata.reduce(
     (acc: {[k: string]: CompletionResult['options'] | []}, mod) => {
       acc[mod.name] =
-        mod.functions.map(variable => ({
-          label: `${mod.name}.${variable.name}`,
-          apply: `${mod.name}.${variable.name}(`,
+        mod.functions.map(func => ({
+          label: `${mod.name}.${func}`,
+          apply: `${mod.name}.${func}(`,
           type: 'method',
           boost: 10,
           validFor: identifier,
@@ -178,7 +155,7 @@ function isModuleName(string?: string | null): string is ModuleName {
 }
 
 // Returns the list of built in modules that are included in the text.
-function includedBuiltinModules(state: EditorState): ModuleName[] {
+function includedmoduleMetadata(state: EditorState): ModuleName[] {
   const tree = syntaxTree(state);
   const useNodes = tree.topNode.getChildren('UseStatement');
   const usedModules = useNodes.map(useNode => {
@@ -203,7 +180,7 @@ function builtinModuleNameCompletion(
   if (nodeBefore.type.name !== 'ValueName') return null;
   // Prevent module name from showing up after `.`
   if (nodeBefore.parent?.type.name === 'NamespacedValue') return null;
-  const includedModules = includedBuiltinModules(context.state);
+  const includedModules = includedmoduleMetadata(context.state);
 
   const match = context.matchBefore(/\w+/);
   if (!match) return null;
@@ -213,7 +190,7 @@ function builtinModuleNameCompletion(
     to: match.to,
     options: includedModules.map(mod => ({
       label: mod,
-      info: builtinModules.find(builtin => builtin.name === mod)?.description,
+      info: moduleMetadata.find(builtin => builtin.name === mod)?.description,
       type: 'namespace',
       boost: 20,
       validFor: identifier,
@@ -239,7 +216,7 @@ function builtinModuleItemCompletion(
   if (moduleNameMatch.from === moduleNameMatch.to && !context.explicit)
     return null;
 
-  const includedModules = includedBuiltinModules(context.state);
+  const includedModules = includedmoduleMetadata(context.state);
 
   const includedModFunctions = includedModules.flatMap(
     mod => moduleFunctionsCompletions[mod]
@@ -259,7 +236,7 @@ function builtinModuleItemCompletion(
 // Aggregates all custom completions with the CodeMirror sassCompletionSource.
 const playgroundCompletions: CompletionSource[] = [
   atRuleCompletion,
-  builtinModulesCompletion,
+  moduleMetadataCompletion,
   builtinModuleNameCompletion,
   sassCompletionSource,
   builtinModuleItemCompletion,
