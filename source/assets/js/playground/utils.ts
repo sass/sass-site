@@ -34,7 +34,9 @@ export function serializeState(state: PlaygroundState): string {
  * - `inputFormat`: 0=indented 1=scss
  * - `outputFormat`: 0=compressed 1=expanded
  */
-function serializeStateContents(state: PlaygroundState): string {
+export function serializeStateContents(
+  state: Pick<PlaygroundState, 'inputFormat' | 'outputFormat' | 'inputValue'>
+): string {
   const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
   const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
   const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
