@@ -294,7 +294,7 @@ function getPadding({
 function getTotalPadding(sections1: string[], sections2: string[]): number {
   sections1 ||= [];
   sections2 ||= [];
-  return Array.from({
+  return Array.from<undefined>({
     length: Math.max(sections1.length, sections2.length),
   }).reduce((sum: number, _, i) => {
     // Add 2 lines to each additional section: 1 for the extra padding, and 1
@@ -342,7 +342,10 @@ function generatePlaygroundLinks({
 }: {
   scss: string[];
   sass: string[];
-}) {
+}): {
+  sass: string | null;
+  scss: string | null;
+} {
   const sassLink =
     sass.length === 1
       ? serializeStateContents({
