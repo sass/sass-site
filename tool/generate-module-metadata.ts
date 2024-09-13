@@ -96,6 +96,7 @@ function generateModuleMetadata(): ModuleDefinition[] {
   return modMap;
 }
 
+// Generates metadata, and outputs it as source.
 function writeFile(): void {
   const moduleMembers = generateModuleMetadata();
   const filePath = path.resolve(

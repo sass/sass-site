@@ -67,6 +67,7 @@ interface CompletionModule extends CompletionInfo {
   variables?: CompletionInfo[];
 }
 
+// A list of all the Sass built in modules.
 const moduleNames = moduleMetadata.map(mod => mod.name);
 type ModuleName = (typeof moduleNames)[number];
 
@@ -83,8 +84,13 @@ const builtinModules: CompletionModule[] = moduleMetadata.map(modMember => {
   };
 });
 
+// Matches any of the built in Sass modules.
 const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?\\w*`);
 
+// Matches the StringLiteral `"sass:modName"`, capturing `modName`.
+const moduleUseRegex = new RegExp(/['"]sass:(?<modName>.*)['"]/);
+
+// Completion results for built in Sass modules following the `sass:` namespace.
 const moduleCompletions = Object.freeze(
   builtinModules.map(mod => ({
     label: `sass:${mod.name}`,
@@ -133,6 +139,7 @@ function builtinModulesCompletion(
   };
 }
 
+// Completion results for module variables.
 const moduleVariableCompletions = Object.freeze(
   builtinModules.reduce(
     (acc: {[k: string]: CompletionResult['options'] | []}, mod) => {
@@ -147,6 +154,7 @@ const moduleVariableCompletions = Object.freeze(
   )
 );
 
+// Completion results for module functions.
 const moduleFunctionsCompletions = Object.freeze(
   builtinModules.reduce(
     (acc: {[k: string]: CompletionResult['options'] | []}, mod) => {
@@ -163,9 +171,6 @@ const moduleFunctionsCompletions = Object.freeze(
     {}
   )
 );
-
-// Matches the StringLiteral `"sass:modName"`, capturing `modName`.
-const moduleUseRegex = new RegExp(/['"]sass:(?<modName>.*)['"]/);
 
 // Type predicate for modules names.
 function isModuleName(string?: string | null): string is ModuleName {
@@ -251,6 +256,7 @@ function builtinModuleItemCompletion(
   };
 }
 
+// Aggregates all custom completions with the CodeMirror sassCompletionSource.
 const playgroundCompletions: CompletionSource[] = [
   atRuleCompletion,
   builtinModulesCompletion,
