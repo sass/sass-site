@@ -1,6 +1,6 @@
 // Gets list of all functions and variables for the built-in modules
 //
-// Outputs `./module-members.ts` file, which is omitted from source code and
+// Outputs `sass-site/source/assets/js/playground/module-metadata.ts` file, which is omitted from source code and
 // must be built before the `playground` bundle is built with rollup.
 import {compileString, sassTrue} from 'sass';
 import {writeFileSync} from 'fs';
@@ -26,7 +26,7 @@ interface ModuleDefinition {
 
 // Generate Scss with a custom function that extracts each module's functions
 // and variables.
-function generateModuleMembers(): ModuleDefinition[] {
+function generateModuleMetadata(): ModuleDefinition[] {
   // Generate Sass
   const moduleSass = `
 ${modules.map(mod => `@use "sass:${mod}";`).join('\n')}
@@ -72,18 +72,21 @@ selector{
   return modMap;
 }
 
-function writeFile() {
-  const moduleMembers = generateModuleMembers();
-  const filePath = path.resolve(__dirname, 'module-members.ts');
+function writeFile(): void {
+  const moduleMembers = generateModuleMetadata();
+  const filePath = path.resolve(
+    __dirname,
+    '../source/assets/js/playground/module-metadata.ts'
+  );
   try {
     writeFileSync(
       filePath,
       `export default ${JSON.stringify(moduleMembers, null, 2)} as const;`,
       'utf8'
     );
-    console.log('module-members.ts built successfully');
+    console.log('module-metadata.ts built successfully');
   } catch (error) {
-    console.error('module-members.ts not built');
+    console.error('module-metadata.ts not built');
     throw error;
   }
 }

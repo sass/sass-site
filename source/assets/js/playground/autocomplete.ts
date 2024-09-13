@@ -6,7 +6,7 @@ import {
 import {sassCompletionSource} from '@codemirror/lang-sass';
 import {syntaxTree} from '@codemirror/language';
 import {EditorState} from '@codemirror/state';
-import moduleMembers from './module-members';
+import moduleMetadata from './module-metadata';
 
 // The validFor identifier, from @codemirror/lang-css. After an initial set of
 // possible completions are returned from a completion soruce, the matched set
@@ -67,7 +67,7 @@ interface CompletionModule extends CompletionInfo {
   variables?: CompletionInfo[];
 }
 
-const moduleNames = moduleMembers.map(mod => mod.name);
+const moduleNames = moduleMetadata.map(mod => mod.name);
 type ModuleName = (typeof moduleNames)[number];
 
 const moduleDescriptions = {
@@ -81,7 +81,7 @@ const moduleDescriptions = {
   string: 'makes it easy to combine, search, or split apart strings',
 };
 
-const builtinModules: CompletionModule[] = moduleMembers.map(modMember => {
+const builtinModules: CompletionModule[] = moduleMetadata.map(modMember => {
   let variables;
   if ('variables' in modMember) {
     variables = modMember.variables;
