@@ -1,14 +1,14 @@
 import {Exception, SourceSpan} from 'sass';
 
-export type ConsoleLogDebug = {
+export interface ConsoleLogDebug {
   options: {
     span: SourceSpan;
   };
   message: string;
   type: 'debug';
-};
+}
 
-export type ConsoleLogWarning = {
+export interface ConsoleLogWarning {
   options: {
     deprecation: boolean;
     span?: SourceSpan | undefined;
@@ -16,12 +16,12 @@ export type ConsoleLogWarning = {
   };
   message: string;
   type: 'warn';
-};
+}
 
-export type ConsoleLogError = {
+export interface ConsoleLogError {
   type: 'error';
   error: Exception | unknown;
-};
+}
 
 export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
 

@@ -21,15 +21,15 @@ import {
   syntaxHighlighting,
 } from '@codemirror/language';
 import {lintKeymap} from '@codemirror/lint';
-import {EditorState, Compartment} from '@codemirror/state';
+import {Compartment, EditorState} from '@codemirror/state';
 import {
+  drawSelection,
   dropCursor,
   highlightActiveLine,
   highlightActiveLineGutter,
   highlightSpecialChars,
   keymap,
   lineNumbers,
-  drawSelection,
 } from '@codemirror/view';
 
 import {playgroundHighlightStyle} from './theme.js';
@@ -43,7 +43,7 @@ function changeSyntax(
   view: EditorView,
   indented = false,
   newValue: string | undefined
-) {
+): void {
   view.dispatch({
     effects: syntax.reconfigure(langSass({indented})),
   });
