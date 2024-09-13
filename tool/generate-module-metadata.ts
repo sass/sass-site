@@ -29,41 +29,52 @@ interface ModuleDefinition {
 function generateModuleMetadata(): ModuleDefinition[] {
   // Generate Sass
   const moduleSass = `
-${modules.map(mod => `@use "sass:${mod}";`).join('\n')}
-$modules: ${modules.join(',')};
+    ${modules.map(mod => `@use "sass:${mod}";`).join('\n')}
+    $modules: ${modules.join(',')};
 
-selector{
-  @each $module in $modules {
-    f: extract(map.keys(meta.module-functions($module)), $module, functions);
-    $variables: map.keys(meta.module-variables($module));
-    @if (list.length($variables) > 0) {
-      v: extract(map.keys(meta.module-variables($module)), $module, variables);
+    @each $module in $modules {
+    $_: extract($module, (
+          functions: map.keys(meta.module-functions($module)),
+          variables: map.keys(meta.module-variables($module))
+        ));
     }
-  }
-}
-`;
+  `;
 
   const modMap: ModuleDefinition[] = [];
 
   compileString(moduleSass, {
     functions: {
-      'extract($keys, $name, $type)': function (args) {
-        const [_keys, _mod, _type] = args;
-        const keys = _keys.asList.toArray().map(key => key.assertString().text);
-        const name = _mod.assertString('name').toString() as ModuleName;
-        const type = _type.assertString('type').toString();
+      'extract($name, $members)': function (args) {
+        const [_name, _members] = args;
+        // const keys = _keys.asList.toArray().map(key => key.assertString().text);
+        const {functions, variables} = _members
+          .assertMap('members')
+          .contents.toObject();
+        const name = _name.assertString('name').toString() as ModuleName;
 
-        if (type === 'functions') {
-          modMap.push({name, functions: keys});
-        } else {
-          // functions extracted first in `moduleSass`, so they will already exist
-          const existing = modMap.find(item => item.name === name);
-          if (existing) {
-            existing.variables = keys;
-          } else {
-            modMap.push({name, variables: keys});
-          }
+        const functionStrings = functions.asList
+          .toArray()
+          .map(key => key.assertString().text);
+        const variableStrings = variables.asList
+          .toArray()
+          .map(key => key.assertString().text);
+
+        const moduleDefinition: ModuleDefinition = {
+          name,
+          functions: [],
+          variables: [],
+        };
+
+        if (functionStrings.length > 0) {
+          moduleDefinition.functions = functionStrings;
         }
+
+        if (variableStrings.length > 0) {
+          moduleDefinition.variables = variableStrings;
+        }
+
+        modMap.push(moduleDefinition);
+
         return sassTrue;
       },
     },
