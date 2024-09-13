@@ -106,7 +106,7 @@ async function getLatestVersion(repo: string): Promise<string> {
 /**
  * Returns the version and URL for the latest release of all implementations.
  */
-// LiquidJS's `_data` directory loading mechanism specifically relies on the
+// Eleventy's `_data` directory loading mechanism specifically relies on the
 // CommonJS `module.exports` pattern to expose global variables. Using `export
 // default` is not recognized by this loader.
 module.exports = async function (): Promise<Record<string, Release>> {
