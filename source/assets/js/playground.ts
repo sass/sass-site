@@ -2,26 +2,26 @@ import {setDiagnostics} from '@codemirror/lint';
 import {Text} from '@codemirror/state';
 import {EditorView} from 'codemirror';
 import debounce from 'lodash/debounce';
-import {compileString, info, Logger, OutputStyle, Syntax} from 'sass';
+import {Logger, OutputStyle, Syntax, compileString, info} from 'sass';
 
 import {displayForConsoleLog} from './playground/console-utils.js';
 
 import {
   changeSyntax,
+  defaultContents,
   editorSetup,
   outputSetup,
-  defaultContents,
 } from './playground/editor-setup.js';
 import {
-  deserializeState,
-  customLoader,
-  logsToDiagnostics,
   ParseResult,
   PlaygroundState,
+  customLoader,
+  deserializeState,
+  logsToDiagnostics,
   serializeState,
 } from './playground/utils.js';
 
-function setupPlayground() {
+function setupPlayground(): void {
   const hash = location.hash.slice(1);
   const hashState = deserializeState(hash);
 
@@ -157,7 +157,7 @@ function setupPlayground() {
   }
 
   // Apply initial state to dom
-  function applyInitialState() {
+  function applyInitialState(): void {
     updateButtonState();
     debouncedUpdateCSS();
     updateErrorState();
@@ -173,9 +173,9 @@ function setupPlayground() {
         value: OutputStyle;
         setting: 'outputFormat';
       };
-  function attachListeners() {
+  function attachListeners(): void {
     // Settings buttons handlers
-    function clickHandler(event: Event) {
+    function clickHandler(event: Event): void {
       if (event.currentTarget instanceof HTMLElement) {
         const settings = event.currentTarget.dataset as TabbarItemDataset;
         if (settings.setting === 'inputFormat') {
@@ -248,7 +248,7 @@ function setupPlayground() {
    * Applies playgroundState to the buttons
    * Called by state's proxy setter
    */
-  function updateButtonState() {
+  function updateButtonState(): void {
     const inputFormatTab = document.querySelector(
       '[data-setting="inputFormat"]'
     ) as HTMLDivElement;
@@ -277,7 +277,7 @@ function setupPlayground() {
    * Applies error state
    * Called by state's proxy setter
    */
-  function updateErrorState() {
+  function updateErrorState(): void {
     const editorWrapper = document.querySelector(
       '[data-compiler-has-error]'
     ) as HTMLDivElement;
@@ -292,7 +292,7 @@ function setupPlayground() {
    * debugOutput may be updated multiple times during the sass compilation,
    * so the output is collected through the compilation and the display updated just once.
    */
-  function updateDebugOutput() {
+  function updateDebugOutput(): void {
     const console = document.querySelector(
       '.sl-c-playground__console'
     ) as HTMLDivElement;
@@ -301,13 +301,13 @@ function setupPlayground() {
       .join('\n');
   }
 
-  function updateDiagnostics() {
+  function updateDiagnostics(): void {
     const diagnostics = logsToDiagnostics(playgroundState.debugOutput);
     const transaction = setDiagnostics(editor.state, diagnostics);
     editor.dispatch(transaction);
   }
 
-  function updateCSS() {
+  function updateCSS(): void {
     playgroundState.debugOutput = [];
     const result = parse(playgroundState.inputValue);
     if ('css' in result) {
@@ -364,12 +364,12 @@ function setupPlayground() {
 
   const debounceUpdateURL = debounce(updateURL, 200);
 
-  function updateURL() {
+  function updateURL(): void {
     const hash = serializeState(playgroundState);
     history.replaceState('playground', '', `#${hash}`);
   }
 
-  function updateSassVersion() {
+  function updateSassVersion(): void {
     const version = info.split('\t')[1];
     const versionSpan = document.querySelector(
       '.sl-c-playground__tabbar-version'
