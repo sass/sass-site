@@ -6,6 +6,17 @@ import {compileString, sassTrue} from 'sass';
 import {writeFileSync} from 'fs';
 import path from 'path';
 
+const moduleDescriptions = {
+  color:
+    'generates new colors based on existing ones, making it easy to build color themes',
+  list: 'lets you access and modify values in lists',
+  map: 'makes it possible to look up the value associated with a key in a map, and much more',
+  math: 'provides functions that operate on numbers',
+  meta: 'exposes the details of Sass’s inner workings',
+  selector: 'provides access to Sass’s powerful selector engine',
+  string: 'makes it easy to combine, search, or split apart strings',
+};
+
 const modules = [
   'color',
   'list',
@@ -20,6 +31,7 @@ type ModuleName = (typeof modules)[number];
 
 interface ModuleDefinition {
   name: ModuleName;
+  description: string;
   functions?: string[];
   variables?: string[];
 }
@@ -61,6 +73,7 @@ function generateModuleMetadata(): ModuleDefinition[] {
 
         const moduleDefinition: ModuleDefinition = {
           name,
+          description: moduleDescriptions[name],
           functions: [],
           variables: [],
         };

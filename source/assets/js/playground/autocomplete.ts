@@ -70,17 +70,6 @@ interface CompletionModule extends CompletionInfo {
 const moduleNames = moduleMetadata.map(mod => mod.name);
 type ModuleName = (typeof moduleNames)[number];
 
-const moduleDescriptions = {
-  color:
-    'generates new colors based on existing ones, making it easy to build color themes',
-  list: 'lets you access and modify values in lists',
-  map: 'makes it possible to look up the value associated with a key in a map, and much more',
-  math: 'provides functions that operate on numbers',
-  meta: 'exposes the details of Sass’s inner workings',
-  selector: 'provides access to Sass’s powerful selector engine',
-  string: 'makes it easy to combine, search, or split apart strings',
-};
-
 const builtinModules: CompletionModule[] = moduleMetadata.map(modMember => {
   let variables;
   if ('variables' in modMember) {
@@ -88,7 +77,7 @@ const builtinModules: CompletionModule[] = moduleMetadata.map(modMember => {
   }
   return {
     name: modMember.name,
-    description: moduleDescriptions[modMember.name],
+    description: modMember.description,
     functions: (modMember.functions ?? []).map(name => ({name})),
     variables: (variables ?? []).map(name => ({name: `$${name}`})),
   };
@@ -144,7 +133,6 @@ const moduleVariableCompletions = Object.freeze(
       acc[mod.name] =
         mod.variables?.map(variable => ({
           label: `${mod.name}.${variable.name}`,
-          info: variable?.description,
           type: 'variable',
         })) || [];
       return acc;
@@ -160,7 +148,6 @@ const moduleFunctionsCompletions = Object.freeze(
         mod.functions.map(variable => ({
           label: `${mod.name}.${variable.name}`,
           apply: `${mod.name}.${variable.name}(`,
-          info: variable?.description,
           type: 'method',
           boost: 10,
           validFor: identifier,
@@ -195,7 +182,7 @@ function builtinModuleNameCompletion(
     to: match.to,
     options: includedModules.map(mod => ({
       label: mod,
-      info: moduleDescriptions[mod],
+      info: builtinModules.find(builtin => builtin.name === mod)?.description,
       type: 'namespace',
       boost: 20,
       validFor: identifier,
