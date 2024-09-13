@@ -62,7 +62,7 @@ function lineNumberFormatter(number?: number): string {
 function selectionLink(
   playgroundState: PlaygroundState,
   range?: PlaygroundState['selection']
-) {
+): string {
   if (!range) return '';
   return serializeState({...playgroundState, selection: range});
 }
