@@ -92,6 +92,7 @@ const moduleCompletions = Object.freeze(
     info: mod.description,
     type: 'class',
     validFor: identifier,
+    _moduleName: mod.name as ModuleName,
   }))
 );
 
@@ -119,10 +120,15 @@ function builtinModulesCompletion(
 
   if (!moduleMatch) return null;
   if (moduleMatch.from === moduleMatch.to && !context.explicit) return null;
+
+  const included = includedBuiltinModules(context.state);
+  const notIncludedModuleCompletions = moduleCompletions.filter(
+    moduleCompletion => !included.includes(moduleCompletion._moduleName)
+  );
   return {
     from: moduleMatch.from + 1,
     to: moduleMatch.to,
-    options: moduleCompletions,
+    options: notIncludedModuleCompletions,
     validFor: identifier,
   };
 }
@@ -158,10 +164,30 @@ const moduleFunctionsCompletions = Object.freeze(
   )
 );
 
+// Matches the StringLiteral `"sass:modName"`, capturing `modName`.
+const moduleUseRegex = new RegExp(/['"]sass:(?<modName>.*)['"]/);
+
+// Type predicate for modules names.
+function isModuleName(string?: string | null): string is ModuleName {
+  return moduleNames.includes(string as ModuleName);
+}
+
 // Returns the list of built in modules that are included in the text.
 function includedBuiltinModules(state: EditorState): ModuleName[] {
-  const text = state.doc.toString();
-  return moduleNames.filter(name => text.includes(`sass:${name}`));
+  const tree = syntaxTree(state);
+  const useNodes = tree.topNode.getChildren('UseStatement');
+  const usedModules = useNodes.map(useNode => {
+    const cursor = useNode.cursor();
+    while (cursor.next()) {
+      if (cursor.node.name === 'StringLiteral') {
+        const string = state.doc.sliceString(cursor.from, cursor.to);
+        return string.match(moduleUseRegex)?.groups?.modName;
+      }
+    }
+    return null;
+  });
+
+  return usedModules.filter<ModuleName>(mod => isModuleName(mod));
 }
 
 // Completions for the namespaces of included built in modules.
