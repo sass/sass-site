@@ -8,7 +8,11 @@ import {syntaxTree} from '@codemirror/language';
 import {EditorState} from '@codemirror/state';
 import moduleMembers from './module-members';
 
-// validFor identifier, from @codemirror/lang-css
+// The validFor identifier, from @codemirror/lang-css. After an initial set of
+// possible completions are returned from a completion soruce, the matched set
+// narrows as the user types as long as it matches this identifier. Once it no
+// longer matches, the completion sources are checked again.
+// https://codemirror.net/docs/ref/#autocomplete.CompletionResult.validFor
 const identifier = /^(\w[\w-]*|-\w[\w-]*|)$/;
 
 // Sass-specific at rules only. CSS at rules should be added to `@codemirror/lang-css`.
@@ -31,6 +35,7 @@ const atRuleKeywords = [
   'while',
 ];
 
+// CompletionResult options for Sass at rules, for example `@use`.
 const atRuleOptions = Object.freeze(
   atRuleKeywords.map(keyword => ({
     label: `@${keyword} `,
@@ -52,17 +57,18 @@ function atRuleCompletion(context: CompletionContext): CompletionResult | null {
   };
 }
 
-type CompletionInfo = {
+interface CompletionInfo {
   name: string;
   description?: string;
-};
+}
 
-type CompletionModule = CompletionInfo & {
-  functions?: CompletionInfo[];
+interface CompletionModule extends CompletionInfo {
+  functions: CompletionInfo[];
   variables?: CompletionInfo[];
-};
+}
 
 const moduleNames = moduleMembers.map(mod => mod.name);
+type ModuleName = (typeof moduleNames)[number];
 
 const moduleDescriptions = {
   color:
@@ -116,8 +122,9 @@ function builtinModulesCompletion(
     'UseStatement', // When wrapped in quotes
     'PseudoClassSelector', // No end quote, after the colon
   ];
-  if (!potentialParentTypes.includes(nodeBefore.parent?.type.name || ''))
+  if (!potentialParentTypes.includes(nodeBefore.parent?.type.name || '')) {
     return null;
+  }
 
   const moduleMatch = context.matchBefore(/["'](sass:)?\w*/);
 
@@ -150,7 +157,7 @@ const moduleFunctionsCompletions = Object.freeze(
   builtinModules.reduce(
     (acc: {[k: string]: CompletionResult['options'] | []}, mod) => {
       acc[mod.name] =
-        mod.functions?.map(variable => ({
+        mod.functions.map(variable => ({
           label: `${mod.name}.${variable.name}`,
           apply: `${mod.name}.${variable.name}(`,
           info: variable?.description,
@@ -165,7 +172,7 @@ const moduleFunctionsCompletions = Object.freeze(
 );
 
 // Returns the list of built in modules that are included in the text.
-function includedBuiltinModules(state: EditorState) {
+function includedBuiltinModules(state: EditorState): ModuleName[] {
   const text = state.doc.toString();
   return moduleNames.filter(name => text.includes(`sass:${name}`));
 }
@@ -205,8 +212,9 @@ function builtinModuleItemCompletion(
     ![nodeBefore.type.name, nodeBefore.parent?.type.name].includes(
       'NamespacedValue'
     )
-  )
+  ) {
     return null;
+  }
   const moduleNameMatch = context.matchBefore(moduleNameRegExp);
 
   if (!moduleNameMatch) return null;

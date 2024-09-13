@@ -2,7 +2,7 @@
 //
 // Outputs `./module-members.ts` file, which is omitted from source code and
 // must be built before the `playground` bundle is built with rollup.
-import {sassTrue, compileString} from 'sass';
+import {compileString, sassTrue} from 'sass';
 import {writeFileSync} from 'fs';
 import path from 'path';
 
@@ -18,25 +18,25 @@ const modules = [
 
 type ModuleName = (typeof modules)[number];
 
-type ModuleDefinition = {
+interface ModuleDefinition {
   name: ModuleName;
   functions?: string[];
   variables?: string[];
-};
+}
 
 // Generate Scss with a custom function that extracts each module's functions
 // and variables.
-function generateModuleMembers() {
+function generateModuleMembers(): ModuleDefinition[] {
   // Generate Sass
   const moduleSass = `
 ${modules.map(mod => `@use "sass:${mod}";`).join('\n')}
 $modules: ${modules.join(',')};
 
 selector{
-  @each $module in $modules{
+  @each $module in $modules {
     f: extract(map.keys(meta.module-functions($module)), $module, functions);
     $variables: map.keys(meta.module-variables($module));
-    @if (list.length($variables) > 0){
+    @if (list.length($variables) > 0) {
       v: extract(map.keys(meta.module-variables($module)), $module, variables);
     }
   }
@@ -44,17 +44,6 @@ selector{
 `;
 
   const modMap: ModuleDefinition[] = [];
-
-  function addToResults(keys: string[], name: ModuleName, type: string) {
-    if (type === 'functions') {
-      modMap.push({name, functions: keys});
-    } else {
-      // functions extracted first in `moduleSass`, so they will already exist
-      const existing = modMap.find(item => item.name === name);
-      if (existing) existing.variables = keys;
-      else modMap.push({name, variables: keys});
-    }
-  }
 
   compileString(moduleSass, {
     functions: {
@@ -64,7 +53,17 @@ selector{
         const name = _mod.assertString('name').toString() as ModuleName;
         const type = _type.assertString('type').toString();
 
-        addToResults(keys, name, type);
+        if (type === 'functions') {
+          modMap.push({name, functions: keys});
+        } else {
+          // functions extracted first in `moduleSass`, so they will already exist
+          const existing = modMap.find(item => item.name === name);
+          if (existing) {
+            existing.variables = keys;
+          } else {
+            modMap.push({name, variables: keys});
+          }
+        }
         return sassTrue;
       },
     },

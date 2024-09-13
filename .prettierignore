@@ -6,6 +6,7 @@
 /_site/
 /source/_data/versionCache.json
 /source/assets/dist/
+/source/assets/js/playground/module-members.ts
 /source/assets/js/vendor/**
 /source/assets/sass/vendor/
 /source/documentation/js-api
