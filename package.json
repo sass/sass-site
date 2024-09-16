@@ -89,7 +89,7 @@
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",
     "markdown-it": "^14.1.0",
-    "markdown-it-anchor": "^9.1.0",
+    "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.2.0",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
