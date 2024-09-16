@@ -74,7 +74,7 @@
     "@typescript-eslint/eslint-plugin": "^8.6.0",
     "cheerio": "^1.0.0-rc.12",
     "codemirror": "^6.0.1",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.0.0",
     "deep-equal": "^2.2.3",
     "eslint-plugin-etc": "^2.0.3",
     "eslint-plugin-import": "^2.30.0",
