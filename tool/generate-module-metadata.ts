@@ -32,11 +32,11 @@ type ModuleName = (typeof modules)[number];
 interface ModuleDefinition {
   name: ModuleName;
   description: string;
-  functions?: string[];
-  variables?: string[];
+  functions: string[];
+  variables: string[];
 }
 
-// Generate Scss with a custom function that extracts each module's functions
+// Generate SCSS with a custom function that extracts each module's functions
 // and variables.
 function generateModuleMetadata(): ModuleDefinition[] {
   // Generate Sass
@@ -45,10 +45,10 @@ function generateModuleMetadata(): ModuleDefinition[] {
     $modules: ${modules.join(',')};
 
     @each $module in $modules {
-    $_: extract($module, (
-          functions: map.keys(meta.module-functions($module)),
-          variables: map.keys(meta.module-variables($module))
-        ));
+      $_: extract($module, (
+        functions: map.keys(meta.module-functions($module)),
+        variables: map.keys(meta.module-variables($module))
+      ));
     }
   `;
 
@@ -64,27 +64,16 @@ function generateModuleMetadata(): ModuleDefinition[] {
           .contents.toObject();
         const name = _name.assertString('name').toString() as ModuleName;
 
-        const functionStrings = functions.asList
-          .toArray()
-          .map(key => key.assertString().text);
-        const variableStrings = variables.asList
-          .toArray()
-          .map(key => key.assertString().text);
-
         const moduleDefinition: ModuleDefinition = {
           name,
           description: moduleDescriptions[name],
-          functions: [],
-          variables: [],
+          functions: functions.asList
+            .toArray()
+            .map(key => key.assertString().text),
+          variables: variables.asList
+            .toArray()
+            .map(key => key.assertString().text),
         };
-
-        if (functionStrings.length > 0) {
-          moduleDefinition.functions = functionStrings;
-        }
-
-        if (variableStrings.length > 0) {
-          moduleDefinition.variables = variableStrings;
-        }
 
         modMap.push(moduleDefinition);
 

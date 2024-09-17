@@ -61,7 +61,7 @@ function atRuleCompletion(context: CompletionContext): CompletionResult | null {
 const moduleNames = moduleMetadata.map(mod => mod.name);
 type ModuleName = (typeof moduleNames)[number];
 
-// Matches any of the built in Sass modules.
+// Matches an identifier namespaced within any of the built in Sass modules.
 const moduleNameRegExp = new RegExp(`(${moduleNames.join('|')}).\\$?\\w*`);
 
 // Matches the StringLiteral `"sass:modName"`, capturing `modName`.
@@ -104,7 +104,7 @@ function moduleMetadataCompletion(
   if (!moduleMatch) return null;
   if (moduleMatch.from === moduleMatch.to && !context.explicit) return null;
 
-  const included = includedmoduleMetadata(context.state);
+  const included = includedModuleMetadata(context.state);
   const notIncludedModuleCompletions = moduleCompletions.filter(
     moduleCompletion => !included.includes(moduleCompletion._moduleName)
   );
@@ -121,7 +121,7 @@ const moduleVariableCompletions = Object.freeze(
   moduleMetadata.reduce(
     (acc: {[k: string]: CompletionResult['options'] | []}, mod) => {
       acc[mod.name] =
-        mod.variables?.map(variable => ({
+        mod.variables.map(variable => ({
           label: `${mod.name}.${variable}`,
           type: 'variable',
         })) || [];
@@ -155,7 +155,7 @@ function isModuleName(string?: string | null): string is ModuleName {
 }
 
 // Returns the list of built in modules that are included in the text.
-function includedmoduleMetadata(state: EditorState): ModuleName[] {
+function includedModuleMetadata(state: EditorState): ModuleName[] {
   const tree = syntaxTree(state);
   const useNodes = tree.topNode.getChildren('UseStatement');
   const usedModules = useNodes.map(useNode => {
@@ -180,7 +180,7 @@ function builtinModuleNameCompletion(
   if (nodeBefore.type.name !== 'ValueName') return null;
   // Prevent module name from showing up after `.`
   if (nodeBefore.parent?.type.name === 'NamespacedValue') return null;
-  const includedModules = includedmoduleMetadata(context.state);
+  const includedModules = includedModuleMetadata(context.state);
 
   const match = context.matchBefore(/\w+/);
   if (!match) return null;
@@ -213,10 +213,11 @@ function builtinModuleItemCompletion(
   const moduleNameMatch = context.matchBefore(moduleNameRegExp);
 
   if (!moduleNameMatch) return null;
-  if (moduleNameMatch.from === moduleNameMatch.to && !context.explicit)
+  if (moduleNameMatch.from === moduleNameMatch.to && !context.explicit) {
     return null;
+  }
 
-  const includedModules = includedmoduleMetadata(context.state);
+  const includedModules = includedModuleMetadata(context.state);
 
   const includedModFunctions = includedModules.flatMap(
     mod => moduleFunctionsCompletions[mod]
