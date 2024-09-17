@@ -2,6 +2,7 @@ import sass from 'sass';
 
 import {liquidEngine} from '../engines';
 import {stripIndent} from '../type';
+import {serializeStateContents} from '../../assets/js/playground/utils';
 
 /**
  * Renders a code example.
@@ -57,9 +58,14 @@ export default async function codeExample(
     throw new Error('`{% codeExample %}` tags require a unique name.');
   }
   const code = generateCodeExample(contents, autogenCSS, syntax);
+  const playgroundLinks = generatePlaygroundLinks({
+    scss: code.scss,
+    sass: code.sass,
+  });
   return liquidEngine.renderFile('code_examples/code_example', {
     code,
     exampleName,
+    playgroundLinks,
   });
 }
 
@@ -325,5 +331,39 @@ function getCanSplit(
     canSplit,
     maxSourceWidth,
     maxCSSWidth,
+  };
+}
+
+// Create links to editable example in the playground. Returns null for
+// multiple sections/files, which are not supported by the playground.
+function generatePlaygroundLinks({
+  scss,
+  sass,
+}: {
+  scss: string[];
+  sass: string[];
+}): {
+  sass: string | null;
+  scss: string | null;
+} {
+  const sassLink =
+    sass.length === 1
+      ? serializeStateContents({
+          inputFormat: 'indented',
+          outputFormat: 'expanded',
+          inputValue: sass[0],
+        })
+      : null;
+  const scssLink =
+    scss.length === 1
+      ? serializeStateContents({
+          inputFormat: 'scss',
+          outputFormat: 'expanded',
+          inputValue: scss[0],
+        })
+      : null;
+  return {
+    sass: sassLink,
+    scss: scssLink,
   };
 }
