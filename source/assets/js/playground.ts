@@ -21,6 +21,12 @@ import {
   serializeState,
 } from './playground/utils.js';
 
+// The timer id result from the last call to `setTimeout`, if one has been made.
+type Timer = undefined | number;
+
+// The time before a microinteraction like a toast or icon change resets.
+const MICROINTERACTION_RESET_TIME = 3000;
+
 function setupPlayground(): void {
   const hash = location.hash.slice(1);
   const hashState = deserializeState(hash);
@@ -194,8 +200,6 @@ function setupPlayground(): void {
     const copyURLButton = document.getElementById('playground-copy-url');
     const copiedAlert = document.getElementById('playground-copied-alert');
 
-    type Timer = undefined | number;
-
     let alertTimer: Timer;
     const buttonTimers: {input: Timer; output: Timer; url: Timer} = {
       input: undefined,
@@ -210,7 +214,7 @@ function setupPlayground(): void {
       if (alertTimer) clearTimeout(alertTimer);
       alertTimer = window.setTimeout(() => {
         copiedAlert.classList.remove('show');
-      }, 3000);
+      }, MICROINTERACTION_RESET_TIME);
     }
 
     function showCopiedIcon(button: 'input' | 'output' | 'url'): void {
@@ -220,7 +224,7 @@ function setupPlayground(): void {
       if (buttonTimers[button]) clearTimeout(buttonTimers[button]);
       buttonTimers[button] = window.setTimeout(() => {
         buttonEl.removeClass('copied');
-      }, 3000);
+      }, MICROINTERACTION_RESET_TIME);
     }
 
     copyURLButton?.addEventListener('click', () => {
