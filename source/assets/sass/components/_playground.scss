@@ -371,3 +371,39 @@ $playground-base-colors: (
     text-align: right;
   }
 }
+
+// Code panel container with links to Playground
+.sl-c-code-panel {
+  position: relative;
+
+  &:hover {
+    --sl-c-to-playground-opacity: 1;
+  }
+}
+
+// Playground Link
+.sl-c-to-playground {
+  --sl-background--link: var(--sl-color--link-action);
+  --sl-background--link-state: var(--sl-color--code-background-darker);
+
+  border: 0;
+  display: flex;
+  font-size: var(--sl-font-size--small);
+  gap: var(--sl-gutter--quarter);
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  opacity: var(--sl-c-to-playground-opacity, 0);
+  padding: var(--sl-gutter--half);
+  position: absolute;
+  transition:
+    opacity 0.2s,
+    background 0.1s;
+
+  &:focus {
+    --sl-c-to-playground-opacity: 1;
+  }
+
+  img {
+    height: 1.5rem;
+  }
+}

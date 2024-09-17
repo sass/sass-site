@@ -22,6 +22,7 @@
     width: 0;
     position: absolute;
     pointer-events: none;
+    z-index: 1;
   }
 
   &::after {
@@ -40,7 +41,8 @@
 }
 
 .ui-tabs {
-  &,
+  padding: 0 0 var(--sl-gutter--minus);
+
   .ui-tabs-nav,
   .ui-tabs-nav li.ui-tabs-active,
   .ui-tabs-panel {
@@ -100,6 +102,12 @@
 
   pre {
     margin-top: 0;
+
+    // required for playground link to always be flush to bottom
+    &[class*=language-scss],
+    &[class*=language-sass] {
+      margin-block-end: 0;
+    }
   }
 
   // Carefully calibrated so that the distance between two code blocks in the
