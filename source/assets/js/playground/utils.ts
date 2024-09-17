@@ -7,7 +7,7 @@ import {ConsoleLog, ConsoleLogDebug, ConsoleLogWarning} from './console-utils';
 const PLAYGROUND_LOAD_ERROR_MESSAGE =
   'The Sass Playground does not support loading stylesheets.';
 
-export type PlaygroundState = {
+export interface PlaygroundState {
   inputFormat: Exclude<Syntax, 'css'>;
   outputFormat: OutputStyle;
   inputValue: string;
@@ -19,7 +19,7 @@ export type PlaygroundState = {
    * the editor has no selection.
    */
   selection: [number, number, number, number] | null;
-};
+}
 
 export function serializeState(state: PlaygroundState): string {
   const contents = serializeStateContents(state);
@@ -34,7 +34,9 @@ export function serializeState(state: PlaygroundState): string {
  * - `inputFormat`: 0=indented 1=scss
  * - `outputFormat`: 0=compressed 1=expanded
  */
-function serializeStateContents(state: PlaygroundState): string {
+export function serializeStateContents(
+  state: Pick<PlaygroundState, 'inputFormat' | 'outputFormat' | 'inputValue'>
+): string {
   const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
   const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
   const persistedState = `${inputFormatChar}${outputFormatChar}${state.inputValue}`;
@@ -133,8 +135,12 @@ function deserializeStateParams(
   }
 }
 
-type ParseResultSuccess = {css: string};
-type ParseResultError = {error: Exception | unknown};
+interface ParseResultSuccess {
+  css: string;
+}
+interface ParseResultError {
+  error: Exception | unknown;
+}
 export type ParseResult = ParseResultSuccess | ParseResultError;
 
 export function errorToDiagnostic(error: Exception | unknown): Diagnostic {

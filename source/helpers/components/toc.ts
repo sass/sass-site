@@ -1,9 +1,9 @@
 import * as cheerio from 'cheerio';
 
 /** Metadata about a single item in the table of contents. */
-type TOCItem = {
+interface TOCItem {
   [key: string]: string | boolean | TOCItem[];
-};
+}
 
 /**
  * Information about a particular entry in the table of contents for a
