@@ -115,37 +115,41 @@ function moduleMetadataCompletion(
     validFor: identifier,
   };
 }
+/**
+ * Maps modules into a record with the name as the key and the result of `map`
+ * as the value.
+ */
+function mapModulesByName<V>(
+  map: (module: (typeof moduleMetadata)[number]) => V
+): Record<ModuleName, V> {
+  return moduleMetadata.reduce<Record<string, V>>((acc, mod) => {
+    acc[mod.name] = map(mod);
+    return acc;
+  }, {});
+}
 
 // Completion results for module variables.
 const moduleVariableCompletions = Object.freeze(
-  moduleMetadata.reduce(
-    (acc: {[k: string]: CompletionResult['options'] | []}, mod) => {
-      acc[mod.name] =
-        mod.variables.map(variable => ({
-          label: `${mod.name}.${variable}`,
-          type: 'variable',
-        })) || [];
-      return acc;
-    },
-    {}
+  mapModulesByName(
+    mod =>
+      mod.variables.map(variable => ({
+        label: `${mod.name}.${variable}`,
+        type: 'variable',
+      })) || []
   )
 );
 
 // Completion results for module functions.
 const moduleFunctionsCompletions = Object.freeze(
-  moduleMetadata.reduce(
-    (acc: {[k: string]: CompletionResult['options'] | []}, mod) => {
-      acc[mod.name] =
-        mod.functions.map(func => ({
-          label: `${mod.name}.${func}`,
-          apply: `${mod.name}.${func}(`,
-          type: 'method',
-          boost: 10,
-          validFor: identifier,
-        })) || [];
-      return acc;
-    },
-    {}
+  mapModulesByName(
+    mod =>
+      mod.functions.map(func => ({
+        label: `${mod.name}.${func}`,
+        apply: `${mod.name}.${func}(`,
+        type: 'method',
+        boost: 10,
+        validFor: identifier,
+      })) || []
   )
 );
 

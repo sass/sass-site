@@ -6,6 +6,7 @@ import {compileString, sassTrue} from 'sass';
 import {writeFileSync} from 'fs';
 import path from 'path';
 
+// Descriptions for built in Sass module.
 const moduleDescriptions = {
   color:
     'generates new colors based on existing ones, making it easy to build color themes',
@@ -17,6 +18,7 @@ const moduleDescriptions = {
   string: 'makes it easy to combine, search, or split apart strings',
 };
 
+// List of built in Sass module names.
 const modules = [
   'color',
   'list',
@@ -27,8 +29,10 @@ const modules = [
   'string',
 ] as const;
 
+// Enum of built in Sass module names.
 type ModuleName = (typeof modules)[number];
 
+// Data structure for modules and their members.
 interface ModuleDefinition {
   name: ModuleName;
   description: string;
