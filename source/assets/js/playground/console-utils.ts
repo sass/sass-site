@@ -34,23 +34,14 @@ export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
  * `message` is untrusted.
  *
  * Write with `innerText` and then retrieve using `innerHTML` to encode message
- * for safe display. Optionally wrap `safeLink` in an anchor element.
+ * for safe display.
  * @param  {string} message The user-submitted string
- * @param  {string} [safeLink] A known safe URL. If `safeLink` is present in
- * `message`, it will be wrapped in an anchor element.
  * @return {string} The sanitized string
  */
-function encodeHTML(message: string, safeLink?: string): string {
+function encodeHTML(message: string): string {
   const el = document.createElement('div');
   el.innerText = message;
-  let html = el.innerHTML;
-  if (safeLink) {
-    html = html.replace(
-      safeLink,
-      `<a href="${safeLink}" target="_blank">${safeLink}</a>`
-    );
-  }
-  return html;
+  return el.innerHTML;
 }
 
 // Converts 0-indexed number to 1-indexed string, or empty string if undefined.
@@ -138,9 +129,19 @@ export function displayForConsoleLog(
 
   const locationEnd = link ? '</a>' : '</div>';
 
+  let html = encodeHTML(message);
+
+  if (safeLink) {
+    // Wrap text link in anchor link
+    html = html.replace(
+      safeLink,
+      `<a href="${safeLink}" target="_blank">${safeLink}</a>`
+    );
+  }
+
   return `<div class="console-line">${locationStart}<span class="console-type console-type-${
     type
   }">@${type}</span>:${lineNumberFormatter(
     lineNumber
-  )}${locationEnd}<div class="console-message">${encodeHTML(message, safeLink)}</div></div>`;
+  )}${locationEnd}<div class="console-message">${html}</div></div>`;
 }
