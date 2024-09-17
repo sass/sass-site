@@ -14,6 +14,7 @@ import {
 } from './playground/editor-setup.js';
 import {
   ParseResult,
+  PlaygroundSelection,
   PlaygroundState,
   customLoader,
   deserializeState,
@@ -104,9 +105,7 @@ function setupPlayground(): void {
    * Returns a playground state selection for the current single non-empty
    * selection, or `null` otherwise.
    */
-  function editorSelectionToStateSelection():
-    | PlaygroundState['selection']
-    | null {
+  function editorSelectionToStateSelection(): PlaygroundSelection {
     const sel = editor.state.selection;
     if (sel.ranges.length !== 1) return null;
 
@@ -155,7 +154,8 @@ function setupPlayground(): void {
     }
   }
 
-  function goToSelection(selection: PlaygroundState['selection']): void {
+  /** Updates state, applies selection in editor, and focus editor. */
+  function goToSelection(selection: PlaygroundSelection): void {
     playgroundState.selection = selection;
     updateSelection();
     editor.focus();
@@ -268,8 +268,9 @@ function setupPlayground(): void {
       .join('\n');
     console.querySelectorAll('a.console-location').forEach(link => {
       (link as HTMLAnchorElement).addEventListener('click', event => {
-        if (!(event.metaKey || event.altKey || event.shiftKey))
+        if (!(event.metaKey || event.altKey || event.shiftKey)) {
           event.preventDefault();
+        }
         const range = (event.currentTarget as HTMLAnchorElement).dataset.range
           ?.split(',')
           .map(n => parseInt(n));

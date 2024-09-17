@@ -7,18 +7,19 @@ import {ConsoleLog, ConsoleLogDebug, ConsoleLogWarning} from './console-utils';
 const PLAYGROUND_LOAD_ERROR_MESSAGE =
   'The Sass Playground does not support loading stylesheets.';
 
+/**
+ * `[fromLine, fromColumn, toLine, toColumn]`; all 1-indexed. If this is null,
+ * the editor has no selection.
+ */
+export type PlaygroundSelection = [number, number, number, number] | null;
+
 export interface PlaygroundState {
   inputFormat: Exclude<Syntax, 'css'>;
   outputFormat: OutputStyle;
   inputValue: string;
   compilerHasError: boolean;
   debugOutput: ConsoleLog[];
-
-  /**
-   * `[fromLine, fromColumn, toLine, toColumn]`; all 1-indexed. If this is null,
-   * the editor has no selection.
-   */
-  selection: [number, number, number, number] | null;
+  selection: PlaygroundSelection;
 }
 
 export function serializeState(state: PlaygroundState): string {

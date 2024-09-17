@@ -1,6 +1,6 @@
 import {Exception, SourceSpan} from 'sass';
 
-import {PlaygroundState, serializeState} from './utils';
+import {PlaygroundSelection, PlaygroundState, serializeState} from './utils';
 
 export interface ConsoleLogDebug {
   options: {
@@ -34,7 +34,7 @@ export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
  * `message` is untrusted.
  *
  * Write with `innerText` and then retrieve using `innerHTML` to encode message
- * for safe display.
+ * for safe display. Optionally wrap `safeLink` in an anchor element.
  * @param  {string} message The user-submitted string
  * @param  {string} [safeLink] A known safe URL. If `safeLink` is present in
  * `message`, it will be wrapped in an anchor element.
@@ -53,56 +53,52 @@ function encodeHTML(message: string, safeLink?: string): string {
   return html;
 }
 
+// Converts 0-indexed number to 1-indexed string, or empty string if undefined.
 function lineNumberFormatter(number?: number): string {
   if (number === undefined) return '';
   number = number + 1;
   return `${number}`;
 }
 
+// Returns undefined if no range, or a link to the state, including range.
 function selectionLink(
   playgroundState: PlaygroundState,
-  range?: PlaygroundState['selection']
-): string {
-  if (!range) return '';
+  range: PlaygroundSelection
+): string | undefined {
+  if (!range) return undefined;
   return serializeState({...playgroundState, selection: range});
 }
 
+// Returns a safe HTML string for a console item.
 export function displayForConsoleLog(
   item: ConsoleLog,
   playgroundState: PlaygroundState
 ): string {
-  const data: {
-    type: string;
-    lineNumber?: number;
-    message: string;
-    safeLink?: string;
-    range?: PlaygroundState['selection'];
-  } = {
-    type: item.type,
-    lineNumber: undefined,
-    message: '',
-    safeLink: undefined,
-    range: null,
-  };
+  const type = item.type;
+  let lineNumber = undefined;
+  let message = '';
+  let safeLink = undefined;
+  let range: PlaygroundSelection = null;
+
   if (item.type === 'error') {
     if (item.error instanceof Exception) {
       const span = item.error.span;
-      data.lineNumber = span.start.line;
-      data.range = [
+      lineNumber = span.start.line;
+      range = [
         span.start.line + 1,
         span.start.column + 1,
         span.end.line + 1,
         span.end.column + 1,
       ];
     }
-    data.message = item.error?.toString() || '';
+    message = item.error?.toString() || '';
   } else if (['debug', 'warn'].includes(item.type)) {
-    data.message = item.message;
-    let lineNumber = item.options.span?.start?.line;
+    message = item.message;
+    let _lineNumber = item.options.span?.start?.line;
     if (item.options.span) {
       const span = item.options.span;
-      data.lineNumber = span.start.line;
-      data.range = [
+      lineNumber = span.start.line;
+      range = [
         span.start.line + 1,
         span.start.column + 1,
         span.end.line + 1,
@@ -110,17 +106,17 @@ export function displayForConsoleLog(
       ];
     }
 
-    if (typeof lineNumber === 'undefined') {
+    if (typeof _lineNumber === 'undefined') {
       const stack = 'stack' in item.options ? item.options.stack : '';
       const needleFromStackRegex = /^- (\d+):(\d+) /;
       const match = stack?.match(needleFromStackRegex);
       if (match?.[1]) {
         // Stack trace starts at 1, all others come from span, which starts at
         // 0, so adjust before formatting.
-        lineNumber = parseInt(match[1]) - 1;
+        _lineNumber = parseInt(match[1]) - 1;
       }
       if (match?.[2]) {
-        data.range = [
+        range = [
           parseInt(match[1]),
           parseInt(match[2]),
           parseInt(match[1]),
@@ -128,23 +124,23 @@ export function displayForConsoleLog(
         ];
       }
     }
-    data.lineNumber = lineNumber;
+    lineNumber = _lineNumber;
 
     if (item.type === 'warn' && item.options.deprecationType?.id) {
-      data.safeLink = `https://sass-lang.com/d/${item.options.deprecationType.id}`;
+      safeLink = `https://sass-lang.com/d/${item.options.deprecationType.id}`;
     }
   }
-  const link = selectionLink(playgroundState, data.range);
+  const link = selectionLink(playgroundState, range);
 
   const locationStart = link
-    ? `<a href="#${link}" class="console-location" data-range=${data.range}>`
+    ? `<a href="#${link}" class="console-location" data-range=${range}>`
     : '<div class="console-location">';
 
   const locationEnd = link ? '</a>' : '</div>';
 
   return `<div class="console-line">${locationStart}<span class="console-type console-type-${
-    data.type
-  }">@${data.type}</span>:${lineNumberFormatter(
-    data.lineNumber
-  )}${locationEnd}<div class="console-message">${encodeHTML(data.message, data.safeLink)}</div></div>`;
+    type
+  }">@${type}</span>:${lineNumberFormatter(
+    lineNumber
+  )}${locationEnd}<div class="console-message">${encodeHTML(message, safeLink)}</div></div>`;
 }
