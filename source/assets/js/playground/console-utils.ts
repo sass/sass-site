@@ -44,14 +44,6 @@ function encodeHTML(message: string): string {
   return el.innerHTML;
 }
 
-// Converts 0-indexed number to 1-indexed string prepended with a semicolon, or
-// empty string if undefined.
-function lineNumberFormatter(number?: number): string {
-  if (number === undefined) return '';
-  number = number + 1;
-  return `:${number}`;
-}
-
 // Returns undefined if no range, or a link to the state, including range.
 function selectionLink(
   playgroundState: PlaygroundState,
@@ -66,7 +58,6 @@ export function displayForConsoleLog(
   item: ConsoleLog,
   playgroundState: PlaygroundState
 ): string {
-  const type = item.type;
   let lineNumber: number;
   let message: string;
   let range: PlaygroundSelection = null;
@@ -126,8 +117,8 @@ export function displayForConsoleLog(
   const locationEnd = link ? '</a>' : '</div>';
 
   return `<div class="console-line">${locationStart}<span class="console-type console-type-${
-    type
-  }">@${type}</span>${lineNumberFormatter(
-    lineNumber
-  )}${locationEnd}<div class="console-message">${message}</div></div>`;
+    item.type
+  }">@${item.type}</span>${
+    lineNumber !== undefined ? `:${lineNumber + 1}` : ''
+  }${locationEnd}<div class="console-message">${message}</div></div>`;
 }
