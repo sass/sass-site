@@ -115,6 +115,7 @@ function moduleMetadataCompletion(
     validFor: identifier,
   };
 }
+
 /**
  * Maps modules into a record with the name as the key and the result of `map`
  * as the value.
@@ -130,26 +131,24 @@ function mapModulesByName<V>(
 
 // Completion results for module variables.
 const moduleVariableCompletions = Object.freeze(
-  mapModulesByName(
-    mod =>
-      mod.variables.map(variable => ({
-        label: `${mod.name}.${variable}`,
-        type: 'variable',
-      })) || []
+  mapModulesByName(mod =>
+    mod.variables.map(variable => ({
+      label: `${mod.name}.${variable}`,
+      type: 'variable',
+    }))
   )
 );
 
 // Completion results for module functions.
 const moduleFunctionsCompletions = Object.freeze(
-  mapModulesByName(
-    mod =>
-      mod.functions.map(func => ({
-        label: `${mod.name}.${func}`,
-        apply: `${mod.name}.${func}(`,
-        type: 'method',
-        boost: 10,
-        validFor: identifier,
-      })) || []
+  mapModulesByName(mod =>
+    mod.functions.map(func => ({
+      label: `${mod.name}.${func}`,
+      apply: `${mod.name}.${func}(`,
+      type: 'method',
+      boost: 10,
+      validFor: identifier,
+    }))
   )
 );
 
