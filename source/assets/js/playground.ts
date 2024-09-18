@@ -122,7 +122,7 @@ function setupPlayground(): void {
     ];
   }
 
-  /** Updates the editor's selection based on `playgroundState.selection`. */
+  /** Updates the editor's based on `playgroundState.selection`. */
   function updateSelection(): void {
     if (playgroundState.selection === null) {
       const sel = editor.state.selection;

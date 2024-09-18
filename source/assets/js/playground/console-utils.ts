@@ -44,11 +44,12 @@ function encodeHTML(message: string): string {
   return el.innerHTML;
 }
 
-// Converts 0-indexed number to 1-indexed string, or empty string if undefined.
+// Converts 0-indexed number to 1-indexed string prepended with a semicolon, or
+// empty string if undefined.
 function lineNumberFormatter(number?: number): string {
   if (number === undefined) return '';
   number = number + 1;
-  return `${number}`;
+  return `:${number}`;
 }
 
 // Returns undefined if no range, or a link to the state, including range.
@@ -66,9 +67,8 @@ export function displayForConsoleLog(
   playgroundState: PlaygroundState
 ): string {
   const type = item.type;
-  let lineNumber = undefined;
-  let message = '';
-  let safeLink = undefined;
+  let lineNumber: number;
+  let message: string;
   let range: PlaygroundSelection = null;
 
   if (item.type === 'error') {
@@ -82,10 +82,9 @@ export function displayForConsoleLog(
         span.end.column + 1,
       ];
     }
-    message = item.error?.toString() || '';
+    message = encodeHTML(item.error?.toString()) ?? '';
   } else if (['debug', 'warn'].includes(item.type)) {
-    message = item.message;
-    let _lineNumber = item.options.span?.start?.line;
+    message = encodeHTML(item.message);
     if (item.options.span) {
       const span = item.options.span;
       lineNumber = span.start.line;
@@ -95,18 +94,12 @@ export function displayForConsoleLog(
         span.end.line + 1,
         span.end.column + 1,
       ];
-    }
-
-    if (typeof _lineNumber === 'undefined') {
-      const stack = 'stack' in item.options ? item.options.stack : '';
-      const needleFromStackRegex = /^- (\d+):(\d+) /;
-      const match = stack?.match(needleFromStackRegex);
-      if (match?.[1]) {
+    } else if ('stack' in item.options) {
+      const match = item.options.stack?.match(/^- (\d+):(\d+) /);
+      if (match) {
         // Stack trace starts at 1, all others come from span, which starts at
         // 0, so adjust before formatting.
-        _lineNumber = parseInt(match[1]) - 1;
-      }
-      if (match?.[2]) {
+        lineNumber = parseInt(match[1]) - 1;
         range = [
           parseInt(match[1]),
           parseInt(match[2]),
@@ -115,10 +108,13 @@ export function displayForConsoleLog(
         ];
       }
     }
-    lineNumber = _lineNumber;
 
     if (item.type === 'warn' && item.options.deprecationType?.id) {
-      safeLink = `https://sass-lang.com/d/${item.options.deprecationType.id}`;
+      const safeLink = `https://sass-lang.com/d/${item.options.deprecationType.id}`;
+      message = message.replace(
+        safeLink,
+        `<a href="${safeLink}" target="_blank">${safeLink}</a>`
+      );
     }
   }
   const link = selectionLink(playgroundState, range);
@@ -129,19 +125,9 @@ export function displayForConsoleLog(
 
   const locationEnd = link ? '</a>' : '</div>';
 
-  let html = encodeHTML(message);
-
-  if (safeLink) {
-    // Wrap text link in anchor link
-    html = html.replace(
-      safeLink,
-      `<a href="${safeLink}" target="_blank">${safeLink}</a>`
-    );
-  }
-
   return `<div class="console-line">${locationStart}<span class="console-type console-type-${
     type
-  }">@${type}</span>:${lineNumberFormatter(
+  }">@${type}</span>${lineNumberFormatter(
     lineNumber
-  )}${locationEnd}<div class="console-message">${html}</div></div>`;
+  )}${locationEnd}<div class="console-message">${message}</div></div>`;
 }
