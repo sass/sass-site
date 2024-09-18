@@ -376,3 +376,10 @@ A number of existing functions only make sense for legacy colors, and so are bei
 - `transparentize()`/`fade-out()`
 - `opacify()`/`fade-in()`
 - `lighten()`/`darken()`
+
+We've added [a migrator](/documentation/cli/migrator#color) to automatically
+convert these legacy functions to the color-space-friendly ones.
+
+```shellsession
+$ sass-migrator color --migrate-deps <path/to/style.scss>
+```
