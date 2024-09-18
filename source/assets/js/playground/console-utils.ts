@@ -58,7 +58,7 @@ export function displayForConsoleLog(
   item: ConsoleLog,
   playgroundState: PlaygroundState
 ): string {
-  let lineNumber: number;
+  let lineNumber: number | undefined;
   let message: string;
   let range: PlaygroundSelection = null;
 
@@ -73,8 +73,8 @@ export function displayForConsoleLog(
         span.end.column + 1,
       ];
     }
-    message = encodeHTML(item.error?.toString()) ?? '';
-  } else if (['debug', 'warn'].includes(item.type)) {
+    message = encodeHTML(item.error?.toString() ?? '');
+  } else {
     message = encodeHTML(item.message);
     if (item.options.span) {
       const span = item.options.span;
