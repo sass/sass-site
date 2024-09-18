@@ -23,7 +23,9 @@ different types:
   their values are equal when their units are converted between one another.
 * [Strings][] are unusual in that [unquoted][] and [quoted][] strings with the
   same contents are considered equal.
-* [Colors][] are equal if they have the same red, green, blue, and alpha values.
+* [Colors] are equal if they're in the same [color space] and have the same
+  channel values, *or* if they're both in [legacy color spaces] and have the
+  same RGBA channel values.
 * [Lists][] are equal if their contents are equal. Comma-separated lists aren't
   equal to space-separated lists, and bracketed lists aren't equal to
   unbracketed lists.
@@ -40,6 +42,8 @@ different types:
 [quoted]: /documentation/values/strings#quoted
 [unquoted]: /documentation/values/strings#unquoted
 [Colors]: /documentation/values/colors
+[color space]: /documentation/values/colors#color-spaces
+[legacy color spaces]: /documentation/values/colors#legacy-color-spaces
 [Lists]: /documentation/values/lists
 [`true`, `false`]: /documentation/values/booleans
 [`null`]: /documentation/values/null
