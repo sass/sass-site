@@ -122,7 +122,7 @@ function setupPlayground(): void {
     ];
   }
 
-  /** Updates the editor's selection based on `playgroundState.selection`. */
+  /** Updates the {@link editor}'s selection based on `{@link playgroundState.selection}`. */
   function updateSelection(): void {
     if (playgroundState.selection === null) {
       const sel = editor.state.selection;
@@ -154,7 +154,7 @@ function setupPlayground(): void {
     }
   }
 
-  /** Highlights selection and focuses on the code editor. */
+  /** Highlights {@link selection} and focuses on the {@link editor}. */
   function goToSelection(selection: PlaygroundSelection): void {
     playgroundState.selection = selection;
     updateSelection();
