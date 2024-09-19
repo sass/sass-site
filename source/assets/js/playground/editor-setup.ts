@@ -33,6 +33,7 @@ import {
 } from '@codemirror/view';
 
 import {playgroundHighlightStyle} from './theme.js';
+import playgroundCompletions from './autocomplete.js';
 import {EditorView} from 'codemirror';
 
 const syntax = new Compartment();
@@ -67,7 +68,7 @@ const editorSetup = (() => [
     syntaxHighlighting(defaultHighlightStyle, {fallback: true}),
     bracketMatching(),
     closeBrackets(),
-    autocompletion(),
+    autocompletion({override: playgroundCompletions}),
     highlightActiveLine(),
     drawSelection(),
     keymap.of([
