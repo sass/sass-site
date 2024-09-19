@@ -76,6 +76,7 @@ toc:
       - Functions and Mixins Beginning with <code>--</code>: /documentation/breaking-changes/css-function-mixin/
       - Mixed Declarations: /documentation/breaking-changes/mixed-decls/
       - <code>meta.feature-exists</code>: /documentation/breaking-changes/feature-exists/
+      - Color Functions: /documentation/breaking-changes/color-functions/
       - Legacy JS API: /documentation/breaking-changes/legacy-js-api/
   - Command Line: /documentation/cli/
     :children:
