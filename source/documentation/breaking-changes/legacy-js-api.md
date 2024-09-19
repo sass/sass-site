@@ -33,16 +33,17 @@ a `file` path on disk or the `contents` of the stylesheet to be loaded.
 Modern API [`Importer`]s instead contain two methods: `canonicalize`, which takes
 in a rule URL and returns the canonical form of that URL; and `load`, which
 takes in a canonical URL and returns an object with the contents
-of the loaded stylesheet. Asynchronous importers have both of these methods
-return promises.
+of the loaded stylesheet. This split ensures that the same module is only
+loaded once and that relative URLs work consistently. Asynchronous importers
+have both of these methods return promises.
 
 There's also a special [`FileImporter`] that redirects all loads to existing
 files on disk, which should be used when migrating from legacy importers that
 returned a `file` instead of `contents`.
 
-[`Importer`]: /documentation/js-api/interfaces/importer/
-[`ImporterResult`]: /documentation/js-api/interfaces/importerresult/
-[`FileImporter`]: /documentation/js-api/interfaces/fileimporter/
+[`Importer`]: /documentation/js-api/interfaces/Importer/
+[`ImporterResult`]: /documentation/js-api/interfaces/ImporterResult/
+[`FileImporter`]: /documentation/js-api/interfaces/FileImporter/
 
 ### Custom Functions
 
@@ -52,10 +53,10 @@ functions. In the modern API, custom functions instead take a single JS argument
 that contains a list of all Sass arguments, with asynchronous custom functions
 returning a promise.
 
-The modern API also uses a much more robust [`Value`] class that supports
-type assertions and easy map and list lookups.
+The modern API also uses a much more robust [`Value`] class that supports all
+Sass value stypes, type assertions, and easy map and list lookups.
 
-[`Value`]: /documentation/js-api/classes/value/
+[`Value`]: /documentation/js-api/classes/Value/
 
 ### Bundlers
 
@@ -70,6 +71,9 @@ See [Webpack's documentation] for more details.
 Vite still defaults to the legacy API, but you can similarly switch it by
 setting `api` to `"modern"` or `"modern-compiler"`. See [Vite's documentation]
 for more details.
+
+For other tools, check their documentation or issue tracker for information
+about supporting the modern Sass API.
 
 [Webpack's documentation]: https://webpack.js.org/loaders/sass-loader/#api
 [Vite's documentation]: https://vitejs.dev/config/shared-options.html#css-preprocessoroptions
