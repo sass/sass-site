@@ -141,6 +141,40 @@ title: sass:color
   {% endcodeExample %}
 {% endfunction %}
 
+{% function 'color.channel($color, $channel, $space: null)', 'returns:number' %}
+  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+
+  Returns the value of `$channel` in `$space`, which defaults to `$color`'s
+  space. The `$channel` must be a quoted string, and the `$space` must be an
+  unquoted string.
+
+  This returns a number with unit `deg` for the `hue` channel of the `hsl`,
+  `hwb`, `lch`, and `oklch` spaces. It returns a number with unit `%` for the
+  `saturation`, `lightness`, `whiteness`, and `blackness` channels of the `hsl`,
+  `hwb`, `lab`, `lch`, `oklab`, and `oklch` spaces. For all other channels, it
+  returns a unitless number.
+
+  This will return `0` (possibly with an appropriate unit) if the `$channel` is
+  missing in `$color`. You can use [`color.is-missing()`] to check explicitly
+  for missing channels.
+
+  [`color.is-missing()`]: #is-missing
+
+  {% codeExample 'color-channel', false %}
+    @use 'sass:color';
+
+    @debug color.channel(hsl(80deg 30% 50%), "hue"); // 80deg
+    @debug color.channel(hsl(80deg 30% 50%), "hue", $space: oklch); // 124.279238779deg
+    @debug color.channel(hsl(80deg 30% 50%), "red", $space: rgb); // 140.25
+    ===
+    @use 'sass:color'
+
+    @debug color.channel(hsl(80deg 30% 50%), "hue")  // 80deg
+    @debug color.channel(hsl(80deg 30% 50%), "hue", $space: oklch)  // 124.279238779deg
+    @debug color.channel(hsl(80deg 30% 50%), "red", $space: rgb)  // 140.25
+  {% endcodeExample %}
+{% endfunction %}
+
 {% function 'color.complement($color, $space: null)', 'complement($color, $space: null)', 'returns:color' %}
   {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
@@ -184,40 +218,6 @@ title: sass:color
 
     // Hue 70deg becomes 250deg.
     @debug color.complement(oklch(50% 0.12 70deg), oklch)  // oklch(50% 0.12 250deg)
-  {% endcodeExample %}
-{% endfunction %}
-
-{% function 'color.channel($color, $channel, $space: null)', 'returns:number' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
-
-  Returns the value of `$channel` in `$space`, which defaults to `$color`'s
-  space. The `$channel` must be a quoted string, and the `$space` must be an
-  unquoted string.
-
-  This returns a number with unit `deg` for the `hue` channel of the `hsl`,
-  `hwb`, `lch`, and `oklch` spaces. It returns a number with unit `%` for the
-  `saturation`, `lightness`, `whiteness`, and `blackness` channels of the `hsl`,
-  `hwb`, `lab`, `lch`, `oklab`, and `oklch` spaces. For all other channels, it
-  returns a unitless number.
-
-  This will return `0` (possibly with an appropriate unit) if the `$channel` is
-  missing in `$color`. You can use [`color.is-missing()`] to check explicitly
-  for missing channels.
-
-  [`color.is-missing()`]: #is-missing
-
-  {% codeExample 'color-channel', false %}
-    @use 'sass:color';
-
-    @debug color.channel(hsl(80deg 30% 50%), "hue"); // 80deg
-    @debug color.channel(hsl(80deg 30% 50%), "hue", $space: oklch); // 124.279238779deg
-    @debug color.channel(hsl(80deg 30% 50%), "red", $space: rgb); // 140.25
-    ===
-    @use 'sass:color'
-
-    @debug color.channel(hsl(80deg 30% 50%), "hue")  // 80deg
-    @debug color.channel(hsl(80deg 30% 50%), "hue", $space: oklch)  // 124.279238779deg
-    @debug color.channel(hsl(80deg 30% 50%), "red", $space: rgb)  // 140.25
   {% endcodeExample %}
 {% endfunction %}
 
