@@ -115,4 +115,9 @@ entirely. Attempts to call the module-scoped versions will throw an error, while
 the global functions will be treated as plain CSS functions and emitted as plain
 strings.
 
+You can use [the Sass migrator] to automatically migrate from the deprecated
+APIs to their new replacements.
+
+[the Sass migrator]: https://sass-lang.com/documentation/cli/migrator/#color
+
 {% render 'silencing_deprecations' %}
