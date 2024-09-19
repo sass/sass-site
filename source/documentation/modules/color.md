@@ -1132,7 +1132,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
   {% endcodeExample %}
 {% endfunction %}
 
-{% function 'color.saturate($color, $amount)', 'saturate($color, $amount)', 'returns:color' %}
+{% function 'saturate($color, $amount)', 'returns:color' %}
   Makes `$color` more saturated.
 
   The `$color` must be in a [legacy color space].
