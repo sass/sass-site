@@ -1,22 +1,13 @@
 @use 'sass:color';
 @use 'brand';
 
-$sl-color--highlight: color.adjust(brand.$sl-color--hopbush, $lightness: -10%);
 $sl-color--action: color.adjust(brand.$sl-color--bouquet, $lightness: -10%);
-$sl-color--shadow: rgba(brand.$sl-color--midnight-blue, 0.125);
 $sl-color--active: color.adjust(brand.$sl-color--venus, $lightness: -10%);
-$sl-color--code-background: #f8f8f8;
-$sl-color--code-background-darker: #ebebeb;
-$sl-color--code-text: color.adjust(brand.$sl-color--pale-sky, $lightness: -25%);
+$sl-color--highlight: color.adjust(brand.$sl-color--hopbush, $lightness: -10%);
 $sl-color--link-action: rgba(218, 219, 223, 25%);
-$sl-color--code-warm: #cf1666;
-$sl-color--code-bright-dark: #900;
-$sl-color--code-bright: #df1144;
-$sl-color--code-muted-dark: #393a34;
-$sl-color--code-muted: #656556;
-$sl-color--code-base: #066;
-$sl-color--code-cool: #458;
-$sl-color--code-dark: black;
+$sl-color--shadow: rgba(brand.$sl-color--midnight-blue, 0.125);
+
+// Callouts/Info Panels
 $sl-color--warning-light: color.adjust(
   brand.$sl-color--hopbush,
   $lightness: 27%
@@ -25,9 +16,33 @@ $sl-color--warning-lighter: color.adjust(
   brand.$sl-color--hopbush,
   $lightness: 38%
 );
-$sl-color--warning-highlight: rgba($sl-color--warning-light, 0.2);
 $sl-color--info-light: color.adjust(brand.$sl-color--patina, $lightness: 32%);
 $sl-color--info-lighter: color.adjust(brand.$sl-color--patina, $lightness: 47%);
-$sl-color--error: #cf0254;
-$sl-color--warn: #c14e00;
-$sl-color--success: #168073;
+
+// Code Colors
+$sl-color--code-background: #f8f8f8;
+$sl-color--code-background-darker: #ebebeb;
+$sl-color--code-text: color.adjust(brand.$sl-color--pale-sky, $lightness: -25%);
+$sl-color--code-warm: #cf1666;
+$sl-color--code-bright-dark: #900;
+$sl-color--code-bright: #df1144;
+$sl-color--code-muted-dark: #393a34;
+$sl-color--code-muted: #656556;
+$sl-color--code-base: #066;
+$sl-color--code-cool: #458;
+$sl-color--code-dark: black;
+$sl-color--code-highlight-light: rgba($sl-color--warning-light, 0.2);
+
+// Playground Status
+$sl-color--code-error: #cf0254;
+$sl-color--code-error-light: color.adjust(
+  $sl-color--code-error,
+  $lightness: 55%
+);
+$sl-color--code-warning: #c14e00;
+$sl-color--code-warning-light: color.adjust(
+  $sl-color--code-warning,
+  $lightness: 55%
+);
+$sl-color--code-info: #168073;
+$sl-color--code-info-light: color.adjust($sl-color--code-info, $lightness: 65%);
