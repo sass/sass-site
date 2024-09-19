@@ -665,7 +665,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
   color.
 
   {% headsUp %}
-    Because `adjust-hue()` is redundant with [`adjust-color()`](#adjust), it's not
+    Because `adjust-hue()` is redundant with [`color.adjust()`](#adjust), it's not
     included directly in the new module system. Instead of `adjust-hue($color,
     $amount)`, you can write [`color.adjust($color, $hue: $amount, $space:
     hsl)`](#adjust).
@@ -982,7 +982,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
     Because `lighten()` is usually not the best way to make a color lighter,
     it's not included directly in the new module system. However, if you have to
     preserve the existing behavior, `lighten($color, $amount)` can be written
-    [`adjust-color($color, $lightness: $amount, $space: hsl)`](#adjust).
+    [`color.adjust($color, $lightness: $amount, $space: hsl)`](#adjust).
 
     {% codeExample 'color-lighten' %}
       @use 'sass:color';
@@ -1070,7 +1070,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
     Because `opacify()` is usually not the best way to make a color more opaque,
     it's not included directly in the new module system. However, if you have to
     preserve the existing behavior, `opacify($color, $amount)` can be written
-    [`adjust-color($color, $alpha: -$amount)`](#adjust).
+    [`color.adjust($color, $alpha: -$amount)`](#adjust).
 
     {% codeExample 'color-opacify' %}
       @use 'sass:color';
@@ -1150,7 +1150,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
     Because `saturate()` is usually not the best way to make a color more
     saturated, it's not included directly in the new module system. However, if
     you have to preserve the existing behavior, `saturate($color, $amount)` can
-    be written [`adjust-color($color, $saturation: $amount, $space: hsl)`](#adjust).
+    be written [`color.adjust($color, $saturation: $amount, $space: hsl)`](#adjust).
 
     {% codeExample 'color-saturate' %}
       @use 'sass:color';
