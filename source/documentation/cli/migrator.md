@@ -198,6 +198,11 @@ Migrating style.scss
 
 ## Migrations
 
+### Color
+
+This migration converts legacy color functions to the new color-space-compatible
+functions.
+
 ### Division
 
 This migration converts stylesheets that use [`/` as division] to use the
