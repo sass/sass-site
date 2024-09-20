@@ -2,6 +2,12 @@
 @use '../config';
 @use '../config/color/brand';
 
+$playground-base-colors: (
+  'info': var(--sl-color--code-info),
+  'warning': var(--sl-color--code-warning),
+  'error': var(--sl-color--code-error),
+);
+
 .playground {
   --sl-max-width--container: 100vw;
 
@@ -172,12 +178,13 @@
   overflow-y: inherit;
 
   .cm-gutters {
-    background-color: var(--sl-background--editor);
+    background-color: transparent;
     border-right: none;
   }
 
   .cm-lineNumbers .cm-gutterElement {
     min-width: var(--sl-gutter--double);
+    padding: 0 0.5ch 0 1.5ch;
   }
 
   .cm-content,
@@ -195,11 +202,26 @@
 
   .cm-line {
     padding-left: var(--sl-gutter);
+
+    &::before {
+      content: '\2022';
+      color: var(--sl-color--bullet-line, transparent);
+      font-size: var(--sl-font-size--x-large);
+      left: 0;
+      position: absolute;
+      transform: translateY(-25%);
+    }
+
+    @each $name, $color in $playground-base-colors {
+      &:has(.cm-lintPoint-#{$name}, .cm-lintRange-#{$name}) {
+        --sl-color--bullet-line: #{$color};
+      }
+    }
   }
 
   .cm-activeLineGutter,
   .cm-activeLine {
-    background-color: var(--sl-color--warning-highlight);
+    background-color: var(--sl-color--code-highlight-light);
 
     [data-code='compiled'] & {
       background-color: var(--sl-color--code-background);
@@ -216,21 +238,24 @@
     }
   }
 
+  .cm-tooltip {
+    border: none;
+  }
+
   .cm-diagnostic {
+    background: var(--sl-color--background-tooltip);
+    border: 1px solid var(--sl-color--border-tooltip);
     color: var(--sl-color--code-text);
-    background: var(--sl-color--code-background-darker);
+    padding: var(--sl-gutter--half);
   }
 
-  .cm-diagnostic-error {
-    border-color: var(--sl-color--error);
-  }
+  @each $name, $color in $playground-base-colors {
+    .cm-diagnostic-#{$name} {
+      --sl-color--border-tooltip: #{$color};
+      --sl-color--background-tooltip: var(--sl-color--code-#{$name}-light);
 
-  .cm-diagnostic-warning {
-    border-color: var(--sl-color--warn);
-  }
-
-  .cm-diagnostic-info {
-    border-color: var(--sl-color--success);
+      border-color: $color;
+    }
   }
 
   .cm-specialChar {
@@ -260,26 +285,41 @@
 
 .sl-c-playground__console {
   font-family: var(--sl-font-family--code);
+  display: grid;
+  gap: var(--sl-gutter);
+  grid-auto-rows: max-content;
+  grid-template-columns: [location] auto [message] 1fr;
   height: 100%;
   line-height: 1;
   margin: 0;
 
   .console-line {
+    --sl-background--link: transparent;
+    --sl-border-color--link: transparent;
+    --sl-border-color--link-state: var(--sl-color--iron);
+
     display: grid;
-    gap: var(--sl-gutter);
-    grid-template: 'location message' auto / 10ch 1fr;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     margin-bottom: var(--sl-gutter--half);
+    place-items: start;
   }
 
   .console-message {
     display: grid;
     line-height: var(--sl-line-height--console);
+
+    a {
+      justify-self: start;
+    }
   }
 
+  // Debug panel uses Sass terms "warn" and "debug"
+  // Code Mirror uses "warning" and "info"
   $console-type-colors: (
-    'error': var(--sl-color--error),
-    'warn': var(--sl-color--warn),
-    'debug': var(--sl-color--success),
+    'error': var(--sl-color--code-error),
+    'warn': var(--sl-color--code-warning),
+    'debug': var(--sl-color--code-info),
   );
 
   @each $name, $color in $console-type-colors {

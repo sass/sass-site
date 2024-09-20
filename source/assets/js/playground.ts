@@ -14,6 +14,7 @@ import {
 } from './playground/editor-setup.js';
 import {
   ParseResult,
+  PlaygroundSelection,
   PlaygroundState,
   customLoader,
   deserializeState,
@@ -111,9 +112,7 @@ function setupPlayground(): void {
    * Returns a playground state selection for the current single non-empty
    * selection, or `null` otherwise.
    */
-  function editorSelectionToStateSelection():
-    | PlaygroundState['selection']
-    | null {
+  function editorSelectionToStateSelection(): PlaygroundSelection {
     const sel = editor.state.selection;
     if (sel.ranges.length !== 1) return null;
 
@@ -130,7 +129,7 @@ function setupPlayground(): void {
     ];
   }
 
-  /** Updates the editor's selection based on `playgroundState.selection`. */
+  /** Updates the {@link editor}'s selection based on `{@link playgroundState.selection}`. */
   function updateSelection(): void {
     if (playgroundState.selection === null) {
       const sel = editor.state.selection;
@@ -160,6 +159,13 @@ function setupPlayground(): void {
         // (ignored)
       }
     }
+  }
+
+  /** Highlights {@link selection} and focuses on the {@link editor}. */
+  function goToSelection(selection: PlaygroundSelection): void {
+    playgroundState.selection = selection;
+    updateSelection();
+    editor.focus();
   }
 
   // Apply initial state to dom
@@ -301,8 +307,22 @@ function setupPlayground(): void {
       '.sl-c-playground__console'
     ) as HTMLDivElement;
     console.innerHTML = playgroundState.debugOutput
-      .map(displayForConsoleLog)
+      .map(item => displayForConsoleLog(item, playgroundState))
       .join('\n');
+    console.querySelectorAll('a.console-location').forEach(link => {
+      (link as HTMLAnchorElement).addEventListener('click', event => {
+        if (!(event.metaKey || event.altKey || event.shiftKey)) {
+          event.preventDefault();
+        }
+        const range = (event.currentTarget as HTMLAnchorElement).dataset.range
+          ?.split(',')
+          .map(n => parseInt(n));
+        if (range && range.length === 4) {
+          const [fromL, fromC, toL, toC] = range;
+          goToSelection([fromL, fromC, toL, toC]);
+        }
+      });
+    });
   }
 
   function updateDiagnostics(): void {
