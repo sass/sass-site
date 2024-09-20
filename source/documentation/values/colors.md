@@ -3,7 +3,7 @@ title: Colors
 table_of_contents: true
 ---
 
-{% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "Color Spaces"' %}
+{% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "Color Spaces"' %}
   LibSass, Ruby Sass, and older versions of Dart Sass don't support color spaces
   other than `rgb` and `hsl`.
 
