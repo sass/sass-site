@@ -22,6 +22,12 @@ import {
   serializeState,
 } from './playground/utils.js';
 
+// The timer id result from the last call to `setTimeout`, if one has been made.
+type Timer = undefined | number;
+
+// The time before a microinteraction like a toast or icon change resets.
+const MICROINTERACTION_RESET_TIME = 3000;
+
 function setupPlayground(): void {
   const hash = location.hash.slice(1);
   const hashState = deserializeState(hash);
@@ -35,6 +41,7 @@ function setupPlayground(): void {
     inputValue: hashState.inputValue || defaultContents[inputFormat],
     debugOutput: [],
     selection: hashState.selection || null,
+    outputValue: '',
   };
 
   // Proxy intercepts setters and triggers side effects
@@ -199,15 +206,51 @@ function setupPlayground(): void {
     const copyURLButton = document.getElementById('playground-copy-url');
     const copiedAlert = document.getElementById('playground-copied-alert');
 
-    let timer: undefined | number;
+    let alertTimer: Timer;
+    const buttonTimers: {input: Timer; output: Timer; url: Timer} = {
+      input: undefined,
+      output: undefined,
+      url: undefined,
+    };
+
+    function showCopiedAlert(msg: string): void {
+      if (!copiedAlert) return;
+      copiedAlert.innerText = msg;
+      copiedAlert.classList.add('show');
+      if (alertTimer) clearTimeout(alertTimer);
+      alertTimer = window.setTimeout(() => {
+        copiedAlert.classList.remove('show');
+      }, MICROINTERACTION_RESET_TIME);
+    }
+
+    function showCopiedIcon(button: 'input' | 'output' | 'url'): void {
+      const buttonEl = $(`#playground-copy-${button}`);
+      if (!buttonEl) return;
+      buttonEl.addClass('copied');
+      if (buttonTimers[button]) clearTimeout(buttonTimers[button]);
+      buttonTimers[button] = window.setTimeout(() => {
+        buttonEl.removeClass('copied');
+      }, MICROINTERACTION_RESET_TIME);
+    }
 
     copyURLButton?.addEventListener('click', () => {
       void navigator.clipboard.writeText(location.href);
-      copiedAlert?.classList.add('show');
-      if (timer) clearTimeout(timer);
-      timer = window.setTimeout(() => {
-        copiedAlert?.classList.remove('show');
-      }, 3000);
+      showCopiedAlert('Copied URL to clipboard');
+      showCopiedIcon('url');
+    });
+
+    // Copy content handlers
+    const copyInputButton = document.getElementById('playground-copy-input');
+    copyInputButton?.addEventListener('click', () => {
+      void navigator.clipboard.writeText(playgroundState.inputValue);
+      showCopiedAlert('Copied input to clipboard');
+      showCopiedIcon('input');
+    });
+    const copyOutputButton = document.getElementById('playground-copy-output');
+    copyOutputButton?.addEventListener('click', () => {
+      void navigator.clipboard.writeText(playgroundState.outputValue);
+      showCopiedAlert('Copied output to clipboard');
+      showCopiedIcon('output');
     });
   }
   /**
@@ -301,6 +344,7 @@ function setupPlayground(): void {
         },
       });
       playgroundState.compilerHasError = false;
+      playgroundState.outputValue = result.css;
     } else {
       playgroundState.compilerHasError = true;
       playgroundState.debugOutput = [

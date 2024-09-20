@@ -7,6 +7,16 @@ $sl-color--highlight: color.adjust(brand.$sl-color--hopbush, $lightness: -10%);
 $sl-color--link-action: rgba(218, 219, 223, 25%);
 $sl-color--shadow: rgba(brand.$sl-color--midnight-blue, 0.125);
 
+// Darker Shades of existing colors for use on a light gray background
+$sl-color--text-medium-dark: color.adjust(
+  brand.$sl-color--pale-sky,
+  $lightness: -5%
+);
+$sl-color--action-dark: color.adjust(
+  brand.$sl-color--bouquet,
+  $lightness: -11.647%
+);
+
 // Callouts/Info Panels
 $sl-color--warning-light: color.adjust(
   brand.$sl-color--hopbush,

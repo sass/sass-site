@@ -81,7 +81,9 @@ $playground-base-colors: (
 }
 
 .sl-r-banner__playground-button {
+  --sl-color--button: var(--sl-color--action-dark);
   grid-area: copy;
+  justify-self: flex-end;
   padding-right: var(--sl-gutter);
   text-align: right;
 
@@ -94,19 +96,19 @@ $playground-base-colors: (
 .sl-r-banner__playground-alert {
   --sl-padding-block--alert: 0;
 
+  align-items: center;
+  display: flex;
   grid-area: alert;
   height: 0;
+  justify-content: center;
   opacity: 0;
-  padding-left: var(--sl-gutter--half);
-  padding-right: var(--sl-gutter--half);
+  padding-inline: var(--sl-gutter--half);
   transition:
     opacity 0.3s 0.05s,
     visibility 0.3s;
   visibility: hidden;
 
   &.show {
-    --sl-padding-block--alert: var(--sl-gutter--minus);
-
     height: 100%;
     opacity: 1;
     visibility: visible;
@@ -117,6 +119,7 @@ $playground-base-colors: (
 .sl-c-playground {
   --sl-block-margin--callout: 0;
   --sl-block-padding--callout: var(--sl-gutter--quarter);
+  --sl-color--button--tab: var(--sl-color--action-dark);
 
   display: grid;
   gap: var(--sl-gutter);
@@ -329,6 +332,7 @@ $playground-base-colors: (
 // Playground Tab Bar & Buttons
 .sl-c-playground__editor-tabbar {
   background-color: var(--sl-color--code-background-darker);
+  color: var(--sl-color--text-medium-dark);
   display: flex;
   grid-area: editor-tabbar;
 
@@ -348,6 +352,45 @@ $playground-base-colors: (
       --sl-background--button: var(--sl-color--code-background);
       --sl-background--button-state: var(--sl-color--code-background);
     }
+  }
+}
+
+.sl-c-button--copy {
+  --sl-display--button: flex;
+
+  &.sl-c-button--icon {
+    --sl-background--button: transparent;
+    --sl-background--button-state: transparent;
+    --sl-block-padding--button: 0;
+    --sl-color--button: var(--sl-color--text-medium-dark);
+    --sl-color--button-state: var(--sl-color--action-dark);
+
+    box-shadow: none;
+
+    &.copied {
+      --sl-color--button-state: var(--sl-color--text-medium-dark);
+    }
+  }
+}
+
+[class^='sl-c-playground-button--copy'] {
+  display: var(--sl-display--playground-button--copy);
+  width: 0.9em;
+}
+
+.sl-c-playground-button--copy--copy {
+  --sl-display--playground-button--copy: flex;
+
+  .copied & {
+    --sl-display--playground-button--copy: none;
+  }
+}
+
+.sl-c-playground-button--copy--copied {
+  --sl-display--playground-button--copy: none;
+
+  .copied & {
+    --sl-display--playground-button--copy: flex;
   }
 }
 

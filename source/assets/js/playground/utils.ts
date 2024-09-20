@@ -19,6 +19,7 @@ export interface PlaygroundState {
   inputValue: string;
   compilerHasError: boolean;
   debugOutput: ConsoleLog[];
+  outputValue: string;
   selection: PlaygroundSelection;
 }
 

@@ -22,6 +22,19 @@ is_playground: true
         class="sl-c-button sl-c-button--tab"
         data-setting="inputFormat">Sass</button>
       <span data-tabbar="item" class="sl-c-playground__tabbar-title tabbar-title sl-c-playground__tabbar-version"></span>
+      <button
+        type="button"
+        id="playground-copy-input"
+        class="sl-c-button sl-c-button--copy sl-c-button--icon">
+        <div class="sl-c-playground-button--copy--copy">
+          {%- render 'icons/copy' -%}
+          <span class="visuallyhidden">Select to Copy</span>
+        </div>
+        <div class="sl-c-playground-button--copy--copied">
+          {%- render 'icons/circle-check' -%}
+          <span class="visuallyhidden">Code is Copied</span>
+        </div>
+      </button>
     </div>
     <div class="sl-c-playground__panel-content sl-code-is-source"></div>
   </div>
@@ -45,6 +58,19 @@ is_playground: true
         <strong>CSS</strong>
         (Compiled)
       </span>
+      <button
+        type="button"
+        id="playground-copy-output"
+        class="sl-c-button sl-c-button--copy sl-c-button--icon">
+        <div class="sl-c-playground-button--copy--copy">
+          {%- render 'icons/copy' -%}
+          <span class="visuallyhidden">Select to Copy</span>
+        </div>
+        <div class="sl-c-playground-button--copy--copied">
+          {%- render 'icons/circle-check' -%}
+          <span class="visuallyhidden">Code is Copied</span>
+        </div>
+      </button>
     </div>
     <div class="sl-c-callout sl-c-callout--warning sl-c-playground__error">Please resolve error to view compiled CSS.</div>
     <div class="sl-c-playground__panel-content sl-code-is-compiled"></div>
