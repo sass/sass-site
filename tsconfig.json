@@ -10,6 +10,6 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["source/**/*.ts"],
+  "include": ["source/**/*.ts", "tool/generate-module-metadata.ts"],
   "exclude": ["node_modules"]
 }

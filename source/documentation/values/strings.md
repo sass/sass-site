@@ -126,8 +126,10 @@ diagram below. They may include [interpolation][] anywhere.
 
 <figure>
   <object type="image/svg+xml" data="/assets/img/illustrations/identifier-diagram.svg"></object>
-  <figcaption class="copyright">Railroad diagram copyright © 2018 W3C<sup>®</sup> (MIT, ERCIM, Keio, Beihang). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.
-</figcaption>
+  <figcaption class="copyright">
+    Railroad diagram copyright © 2018 W3C<sup>®</sup> (MIT, ERCIM, Keio, Beihang). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.
+  </figcaption>
+</figure>
 
 {% codeExample 'unquoted', false %}
   @debug bold; // bold
