@@ -25,6 +25,10 @@ These breaking changes are coming soon or have recently been released:
 * [The legacy JS API](/documentation/breaking-changes/legacy-js-api/) beginning
   in Dart Sass 1.79.0.
 
+* [Certain uses of the JS color API are
+  deprecated](/documentation/breaking-changes/color-4-api/) beginning in Dart
+  Sass 1.79.0.
+
 * [A number of color functions are
   deprecated](/documentation/breaking-changes/color-functions/) beginning in
   Dart Sass 1.79.0, in favor of new CSS Color 4-compatible functions.
