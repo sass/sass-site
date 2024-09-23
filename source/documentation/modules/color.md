@@ -16,7 +16,7 @@ title: sass:color
 {% endcapture %}
 
 {% function color_adjust, 'adjust-color(...)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$x, $y, $z, $chroma, and $space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$x, $y, $z, $chroma, and $space"' %}{% endcompatibility %}
   {% compatibility 'dart: "1.28.0"', 'libsass: false', 'ruby: false', 'feature: "$whiteness and $blackness"' %}{% endcompatibility %}
 
   Increases or decreases one or more channels of `$color` by fixed amounts.
@@ -86,7 +86,7 @@ title: sass:color
 {% endcapture %}
 
 {% function color_change, 'change-color(...)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$x, $y, $z, $chroma, and $space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$x, $y, $z, $chroma, and $space"' %}{% endcompatibility %}
   {% compatibility 'dart: "1.28.0"', 'libsass: false', 'ruby: false', 'feature: "$whiteness and $blackness"' %}{% endcompatibility %}
 
   Sets one or more channels of a color to new values.
@@ -142,7 +142,7 @@ title: sass:color
 {% endfunction %}
 
 {% function 'color.channel($color, $channel, $space: null)', 'returns:number' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
   Returns the value of `$channel` in `$space`, which defaults to `$color`'s
   space. The `$channel` must be a quoted string, and the `$space` must be an
@@ -176,7 +176,7 @@ title: sass:color
 {% endfunction %}
 
 {% function 'color.complement($color, $space: null)', 'complement($color, $space: null)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
   Returns the [complement] of `$color` in `$space`.
 
@@ -273,7 +273,7 @@ title: sass:color
 {% endfunction %}
 
 {% function 'color.invert($color, $weight: 100%, $space: null)', 'invert($color, $weight: 100%, $space: null)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
   Returns the inverse or [negative] of `$color` in `$space`.
 
@@ -306,7 +306,7 @@ title: sass:color
 {% endfunction %}
 
 {% function 'color.is-legacy($color)', 'returns:boolean' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
 Returns whether `$color` is in a [legacy color space].
 
@@ -328,7 +328,7 @@ Returns whether `$color` is in a [legacy color space].
 {% endfunction %}
 
 {% function 'color.is-missing($color, $channel)', 'returns:boolean' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
 Returns whether `$channel` is [missing] in `$color`. The `$channel` must be a
   quoted string.
@@ -351,7 +351,7 @@ Returns whether `$channel` is [missing] in `$color`. The `$channel` must be a
 {% endfunction %}
 
 {% function 'color.is-powerless($color, $channel, $space: null)', 'returns:boolean' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
 Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
   defaults to `$color`'s space. The `$channel` must be a quoted string and the
@@ -383,7 +383,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
 {% endfunction %}
 
 {% function 'color.mix($color1, $color2, $weight: 50%, $method: null)', 'mix($color1, $color2, $weight: 50%, $method: null)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$method"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$method"' %}{% endcompatibility %}
 
   Returns a color that's a mixture of `$color1` and `$color2` using `$method`,
   which is the name of a color space, optionally followed by a [hue
@@ -446,7 +446,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
 {% endfunction %}
 
 {% function 'color.same($color1, $color2)', 'returns:boolean' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
   Returns whether `$color1` and `$color2` visually render as the same color.
   Unlike `==`, this considers colors to be equivalent even if they're in
@@ -484,7 +484,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
 {% endcapture %}
 
 {% function color_scale, 'scale-color(...)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false', 'feature: "$x, $y, $z, $chroma, and $space"' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$x, $y, $z, $chroma, and $space"' %}{% endcompatibility %}
   {% compatibility 'dart: "1.28.0"', 'libsass: false', 'ruby: false', 'feature: "$whiteness and $blackness"' %}{% endcompatibility %}
 
   Fluidly scales one or more properties of `$color`.
@@ -540,7 +540,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
 {% endfunction %}
 
 {% function 'color.space($color)', 'returns:unquoted string' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
   Returns the name of `$color`'s space as an unquoted string.
 
@@ -560,7 +560,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
 {% endfunction %}
 
 {% function 'color.to-gamut($color, $space: null, $method: null)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
   Returns a visually similar color to `$color` in the gamut of `$space`, which
   defaults to `$color`'s space. If `$color` is already in-gamut for `$space`,
@@ -605,7 +605,7 @@ Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
 {% endfunction %}
 
 {% function 'color.to-space($color, $space)', 'returns:color' %}
-  {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+  {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
   Converts `$color` into the given `$space`, which must be an unquoted string.
 
