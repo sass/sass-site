@@ -449,4 +449,18 @@ $playground-base-colors: (
   img {
     height: 1.5rem;
   }
+
+}
+// ColorSwatch
+.cm-color-swatch {
+  width: 1lh;
+  height: 1lh;
+  outline: 1pt solid red;
+  border: 1pt solid white;
+  display: inline-block;
+  background-color: var(--color);
+  margin-inline: .2em;
+  &[in-gamut]{
+    outline-color: green;
+  }
 }
