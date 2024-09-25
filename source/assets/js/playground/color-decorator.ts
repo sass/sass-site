@@ -63,7 +63,7 @@ function getColorDecorations(view: EditorView): DecorationSet {
   return Decoration.set(widgets, true);
 }
 
-// A {Widget} showing a color and gamut info.
+/** A {@link WidgetType} showing a color and gamut info. */
 class ColorWidget extends WidgetType {
   inP3: boolean | undefined;
   constructor(readonly color: Color) {
@@ -76,16 +76,31 @@ class ColorWidget extends WidgetType {
   }
 
   toDOM(): HTMLDivElement {
-    const wrap = document.createElement('div');
-    wrap.setAttribute('aria-hidden', 'true');
-    wrap.className = 'cm-color-swatch';
-    wrap.style.setProperty('--color', this.color.toString());
-    if (this.inP3) wrap.setAttribute('in-gamut', 'in-gamut');
-    else wrap.setAttribute('title', 'Outside of P3 gamut');
-    const box = wrap.appendChild(document.createElement('div'));
-    box.innerText = ' ';
-    return wrap;
+    return colorSwatchView(this.color.toString(), Boolean(this.inP3));
   }
+}
+
+/* Generates div with color swatch and out of gamut warning. */
+export function colorSwatchView(
+  color: string,
+  inP3Gamut: boolean
+): HTMLDivElement {
+  const wrap = document.createElement('div');
+  wrap.setAttribute('aria-hidden', 'true');
+  wrap.className = 'cm-color-swatch';
+  wrap.style.setProperty('--color', color);
+  const box = wrap.appendChild(document.createElement('div'));
+  box.innerText = ' ';
+
+  if (inP3Gamut) wrap.setAttribute('in-gamut', 'in-gamut');
+  else {
+    wrap.setAttribute('title', 'Outside of P3 gamut');
+    const warning = document.createElement('span');
+    warning.innerText = '⚠️';
+    wrap.appendChild(warning);
+  }
+
+  return wrap;
 }
 
 /** A {@link ViewPlugin} that shows colors inline with their declarations. */

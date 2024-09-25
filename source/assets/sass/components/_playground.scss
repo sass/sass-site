@@ -453,14 +453,24 @@ $playground-base-colors: (
 }
 // ColorSwatch
 .cm-color-swatch {
-  width: 1lh;
-  height: 1lh;
-  outline: 1pt solid red;
-  border: 1pt solid white;
-  display: inline-block;
-  background-color: var(--color);
-  margin-inline: .2em;
-  &[in-gamut]{
+  display: inline;
+  div {
+    width: 1lh;
+    height: 1lh;
+    outline: 1pt solid red;
+    border: 1pt solid white;
+    display: inline-block;
+    background-color: var(--color);
+    margin-inline: .2em;
+  }
+  &[in-gamut] div{
     outline-color: green;
+  }
+  span{
+    // Emoji, pulled in from Typography
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    // Make larger without impacting overall line height
+    font-size: 1.3em;
+    line-height: 1em;
   }
 }
