@@ -117,11 +117,16 @@ $playground-base-colors: (
 
 // Playground Editor area
 .sl-c-playground {
-  --mod-splitview-gripper-width: 0;
+  --mod-splitview-gripper-width: var(--sl-gutter--quarter);
   --mod-splitview-gripper-height: var(--sl-gutter);
-  --mod-splitview-gripper-border-width-horizontal: var(--sl-gutter--half);
-  --mod-splitview-gripper-border-width-vertical: var(--sl-gutter--half);
-  --mod-splitview-handle-width: var(--sl-gutter);
+  --mod-splitview-gripper-border-width-horizontal: var(--sl-gutter--quarter);
+  --mod-splitview-gripper-border-width-vertical: var(--sl-gutter--quarter);
+  --mod-splitview-gripper-border-radius: var(--sl-border-radius--small);
+  --mod-splitview-handle-width: var(--sl-gutter--quarter);
+  --mod-splitview-handle-background-color: var(--sl-color--code-divider);
+  --mod-splitview-handle-background-color-down: var(--sl-color--code-divider-active);
+  --mod-splitview-handle-background-color-focus: var(--sl-color--code-divider-active);
+  --mod-splitview-handle-background-color-hover: var(--sl-color--code-divider-active);
   --sl-block-margin--callout: 0;
   --sl-block-padding--callout: var(--sl-gutter--quarter);
   --sl-color--button--tab: var(--sl-color--action-dark);
