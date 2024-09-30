@@ -55,7 +55,7 @@
     "@codemirror/language": "^6.10.2",
     "@codemirror/lint": "^6.8.1",
     "@codemirror/state": "^6.4.1",
-    "@codemirror/view": "^6.33.0",
+    "@codemirror/view": "^6.34.1",
     "@lezer/highlight": "^1.2.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^26.0.1",
