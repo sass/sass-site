@@ -307,7 +307,17 @@ $playground-base-colors: (
 
   .console-message {
     display: grid;
+    grid-template-columns: [console-text] 1fr [swatch] max-content;
     line-height: var(--sl-line-height--console);
+
+    > * {
+      grid-column: console-text;
+    }
+
+    .cm-color-swatch {
+      display: inline-flex;
+      grid-column: swatch;
+    }
 
     a {
       justify-self: start;
@@ -449,28 +459,29 @@ $playground-base-colors: (
   img {
     height: 1.5rem;
   }
-
 }
+
 // ColorSwatch
 .cm-color-swatch {
-  display: inline;
+  display: inline-flex;
+
   div {
-    width: 1lh;
-    height: 1lh;
-    outline: 1pt solid red;
-    border: 1pt solid white;
-    display: inline-block;
     background-color: var(--color);
-    margin-inline: .2em;
+    outline: 1px solid var(--sl-color--text-medium-dark);
+    outline-offset: -1px;
+    height: var(--sl-swatch--size);
+    margin-inline-start: var(--sl-gutter--quarter);
+    width: var(--sl-swatch--size);
   }
-  &[in-gamut] div{
-    outline-color: green;
-  }
-  span{
+
+
+  span {
     // Emoji, pulled in from Typography
     font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    // Make larger without impacting overall line height
-    font-size: 1.3em;
-    line-height: 1em;
+    // Make slightly larger
+    font-size: var(--sl-font-size--small);
+    margin-inline-start: var(--sl-gutter--quarter);
+    // Adjusted to accommodate larger font-size
+    line-height: 1.2;
   }
 }
