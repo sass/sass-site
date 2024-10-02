@@ -64,7 +64,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@sindresorhus/slugify": "^1.1.2",
     "@types/deep-equal": "^1.0.4",
-    "@types/jquery": "^3.5.30",
+    "@types/jquery": "^3.5.31",
     "@types/jqueryui": "^1.12.23",
     "@types/lodash": "^4.17.9",
     "@types/markdown-it": "^14.1.2",
