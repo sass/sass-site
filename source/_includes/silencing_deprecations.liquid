@@ -12,9 +12,11 @@ change without creating an overwhelming amount of console noise.
 
 If you run Sass in verbose mode instead, it will print *every* deprecation
 warning it encounters. This can be useful for tracking the remaining work to be
-done when fixing deprecations. You can enable verbose mode using the
-[`--verbose` flag] on the command line, or the [`verbose` option] in the
-JavaScript API.
+done when fixing deprecations. You can enable verbose mode using
+{%- unless jsonly %}
+the [`--verbose` flag] on the command line, or
+{%- endunless %}
+the [`verbose` option] in the JavaScript API.
 
 [`--verbose` flag]: /documentation/cli/dart-sass/#verbose
 [`verbose` option]: /documentation/js-api/interfaces/Options/#verbose
@@ -35,8 +37,11 @@ JavaScript API.
 
 Sometimes, your dependencies have deprecation warnings that you can't do
 anything about. You can silence deprecation warnings from dependencies while
-still printing them for your app using the [`--quiet-deps` flag] on the command
-line, or the [`quietDeps` option] in the JavaScript API.
+still printing them for your app using
+{%- unless jsonly %}
+the [`--quiet-deps` flag] on the command line, or
+{%- endunless %}
+the [`quietDeps` option] in the JavaScript API.
 
 [`--quiet-deps` flag]: /documentation/cli/dart-sass/#quiet-deps
 [`quietDeps` option]: /documentation/js-api/interfaces/Options/#quietDeps
@@ -49,9 +54,11 @@ importers.
 ### Silencing Specific Deprecations
 
 If you know that one particular deprecation isn't a problem for you, you can
-silence warnings for that specific deprecation using the
-[`--silence-deprecation` flag] on the command line, or the [`silenceDeprecations`
-option] in the JavaScript API.
+silence warnings for that specific deprecation using
+{%- unless jsonly %}
+the [`--silence-deprecation` flag] on the command line, or
+{%- endunless %}
+the [`silenceDeprecations` option] in the JavaScript API.
 
 [`--silence-deprecation` flag]: /documentation/cli/dart-sass/#silence-deprecation
 [`silenceDeprecations` option]: /documentation/js-api/interfaces/Options/#silenceDeprecations
