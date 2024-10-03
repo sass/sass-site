@@ -92,8 +92,7 @@ export function colorSwatchView(
   const box = wrap.appendChild(document.createElement('div'));
   box.innerText = ' ';
 
-  if (inP3Gamut) wrap.setAttribute('in-gamut', 'in-gamut');
-  else {
+  if (!inP3Gamut) {
     wrap.setAttribute('title', 'Outside of P3 gamut');
     const warning = document.createElement('span');
     warning.innerText = '⚠️';
