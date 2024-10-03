@@ -474,8 +474,7 @@ $playground-base-colors: (
   }
 
   span {
-    // Emoji, pulled in from Typography
-    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: var(--sl-font-family--emoji);
     // Make slightly larger
     font-size: var(--sl-font-size--small);
     // Adjusted to accommodate larger font-size
