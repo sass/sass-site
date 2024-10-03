@@ -131,8 +131,8 @@ $playground-base-colors: (
   @include config.sl-breakpoint--large {
     // magic numbers, the layout is well balanced with these proportions
     grid-template:
-      'sass css' minmax(20ex, 1fr)
-      'sass debug' minmax(0, 40%) / 1fr 1fr;
+      'sass css' auto
+      'sass debug' 1fr / auto 1fr;
     height: 100%;
     overflow: inherit;
   }
@@ -160,12 +160,23 @@ $playground-base-colors: (
 
 [data-code='source'] {
   --sl-background--editor: var(--sl-color--white);
-
   grid-area: sass;
+  min-inline-size: 100%;
+
+  @include config.sl-breakpoint--large {
+    min-inline-size: var(--sl-min-inline-size--playground-panel);
+    max-inline-size: calc(100vw - var(--sl-min-inline-size--playground-panel));
+    resize: inline;
+  }
 }
 
 [data-code='compiled'] {
   --sl-background--editor: var(--sl-color--code-background);
+
+  @include config.sl-breakpoint--large {
+    resize: block;
+    min-block-size: 2.5lh;
+  }
 }
 
 // Codemirror overrides
@@ -396,7 +407,11 @@ $playground-base-colors: (
 
 // Make sure all tab bar buttons and text get the same padding
 [data-tabbar~='item'] {
-  padding: var(--sl-gutter--half) var(--sl-gutter);
+  padding: var(--sl-gutter--half) var(--sl-padding-inline--tabbar-item, var(--sl-gutter));
+}
+
+.tabbar-title {
+  --sl-padding-inline--tabbar-item: var(--sl-gutter--half);
 }
 
 .sl-c-playground__tabbar-title {
