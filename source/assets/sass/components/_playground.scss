@@ -164,8 +164,8 @@ $playground-base-colors: (
   min-inline-size: 100%;
 
   @include config.sl-breakpoint--large {
-    min-inline-size: var(--sl-min-inline-size--playground-panel);
     max-inline-size: calc(100vw - var(--sl-min-inline-size--playground-panel));
+    min-inline-size: var(--sl-min-inline-size--playground-panel);
     resize: inline;
   }
 }
@@ -174,8 +174,8 @@ $playground-base-colors: (
   --sl-background--editor: var(--sl-color--code-background);
 
   @include config.sl-breakpoint--large {
-    resize: block;
     min-block-size: 2.5lh;
+    resize: block;
   }
 }
 
