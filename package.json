@@ -81,7 +81,7 @@
     "date-fns": "^4.1.0",
     "deep-equal": "^2.2.3",
     "eslint-plugin-etc": "^2.0.3",
-    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
     "gts": "^5.3.1",
     "immutable": "^4.3.7",
