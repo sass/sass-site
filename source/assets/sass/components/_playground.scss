@@ -463,22 +463,21 @@ $playground-base-colors: (
 // ColorSwatch
 .cm-color-swatch {
   display: inline-flex;
+  position: relative;
 
   div {
     background-color: var(--color);
-    height: var(--sl-size--swatch);
+    block-size: var(--sl-size--swatch);
+    inline-size: var(--sl-size--swatch);
     margin-inline-start: var(--sl-gutter--quarter);
     outline: var(--sl-border--small) solid var(--sl-color--text-medium-dark);
     outline-offset: calc(var(--sl-border--small) * -1);
-    width: var(--sl-size--swatch);
   }
 
   span {
     font-family: var(--sl-font-family--emoji);
-    // Make slightly larger
-    font-size: var(--sl-font-size--small);
-    // Adjusted to accommodate larger font-size
-    line-height: 1.2;
-    margin-inline-start: var(--sl-gutter--quarter);
+    inset: -60% 0 0 60%;
+    position: absolute;
+    text-shadow: -1px 1px 1px var(--sl-color--text-medium-dark);
   }
 }
