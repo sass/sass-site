@@ -477,6 +477,7 @@ $playground-base-colors: (
   span {
     font-family: var(--sl-font-family--emoji);
     inset: -60% 0 0 60%;
+    line-height: 1.4;
     position: absolute;
     text-shadow: -1px 1px 1px var(--sl-color--text-medium-dark);
   }
