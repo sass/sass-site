@@ -117,34 +117,39 @@ $playground-base-colors: (
 
 // Playground Editor area
 .sl-c-playground {
+  --mod-splitview-gripper-width: 100%;
+  --mod-splitview-gripper-height: 100%;
+  --mod-splitview-gripper-border-width-horizontal: 0;
+  --mod-splitview-gripper-border-width-vertical: 0;
+  --mod-splitview-handle-width: var(--sl-gutter);
+  --mod-splitview-handle-background-color: var(--sl-color--code-divider);
+  --mod-splitview-handle-background-color-down: var(--sl-color--code-divider);
+  --mod-splitview-handle-background-color-focus: var(--sl-color--code-divider-active);
+  --mod-splitview-handle-background-color-hover: var(--sl-color--code-divider);
   --sl-block-margin--callout: 0;
   --sl-block-padding--callout: var(--sl-gutter--quarter);
   --sl-color--button--tab: var(--sl-color--action-dark);
 
-  display: grid;
-  gap: var(--sl-gutter);
-  grid-template:
-    'sass' 1fr
-    'css' auto
-    'debug' auto / 100%;
-
   @include config.sl-breakpoint--large {
-    // magic numbers, the layout is well balanced with these proportions
-    grid-template:
-      'sass css' minmax(20ex, 1fr)
-      'sass debug' minmax(0, 40%) / 1fr 1fr;
     height: 100%;
     overflow: inherit;
   }
 }
 
 .sl-c-playground__panel {
+  container: playground-panel / inline-size;
   display: grid;
   overflow: inherit;
   grid-template:
     'editor-tabbar' min-content
     'editor-error' min-content
     'editor-code' 1fr / 1fr;
+}
+
+@container playground-panel (inline-size < 50ch) {
+  .sl-c-playground__editor-tabbar {
+    flex-wrap: wrap;
+  }
 }
 
 .sl-c-playground__panel-content {
@@ -361,7 +366,7 @@ $playground-base-colors: (
   &.sl-c-button--icon {
     --sl-background--button: transparent;
     --sl-background--button-state: transparent;
-    --sl-block-padding--button: 0;
+    --sl-block-padding--button: var(--sl-gutter--half);
     --sl-color--button: var(--sl-color--text-medium-dark);
     --sl-color--button-state: var(--sl-color--action-dark);
 

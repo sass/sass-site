@@ -5,6 +5,7 @@ import debounce from 'lodash/debounce';
 import {Logger, OutputStyle, Syntax, compileString, info} from 'sass';
 
 import {displayForConsoleLog} from './playground/console-utils.js';
+import setUpSplitView from './playground/split-view.js';
 
 import {
   changeSyntax,
@@ -29,6 +30,7 @@ type Timer = undefined | number;
 const MICROINTERACTION_RESET_TIME = 3000;
 
 function setupPlayground(): void {
+  setUpSplitView();
   const hash = location.hash.slice(1);
   const hashState = deserializeState(hash);
 
