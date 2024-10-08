@@ -18,6 +18,7 @@ const COLOR_FUNCTIONS = [
   'color',
   'hsl',
   'hsla',
+  'hwb',
   'lab',
   'lch',
   'oklab',

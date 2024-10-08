@@ -103,6 +103,8 @@ export function displayForConsoleLog(
       }
     }
     if (item.type === 'debug') {
+      // TODO: Support nested data structures after
+      // https://github.com/sass/sass/issues/3957 is implemented.
       try {
         const color = new Color(item.message);
         const colorSwatch = colorSwatchView(
@@ -110,8 +112,7 @@ export function displayForConsoleLog(
           color.inGamut('p3')
         );
         message = message + colorSwatch.outerHTML;
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (error) {
+      } catch {
         // Ignore
       }
     }
