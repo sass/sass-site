@@ -483,9 +483,10 @@ $playground-base-colors: (
 
   span {
     font-family: var(--sl-font-family--emoji);
-    inset: -70% 0 0 60%;
+    font-size: var(--sl-font-size--small);
+    inset: -80% 0 0 60%;
     position: absolute;
-    scale: 0.675;
+    scale: 0.6;
     text-shadow: -1px 1px 1px var(--sl-color--text-medium-dark);
   }
 }
