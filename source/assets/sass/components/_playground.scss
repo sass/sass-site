@@ -303,14 +303,15 @@ $playground-base-colors: (
     --sl-border-color--link: transparent;
     --sl-border-color--link-state: var(--sl-color--iron);
 
+    place-items: baseline start;
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: subgrid;
     margin-bottom: var(--sl-gutter--half);
-    place-items: start;
   }
 
   .console-message {
+    align-items: baseline;
     display: grid;
     grid-template-columns: [console-text] 1fr [swatch] max-content;
     line-height: var(--sl-line-height--console);
@@ -468,6 +469,7 @@ $playground-base-colors: (
 // ColorSwatch
 .cm-color-swatch {
   display: inline-flex;
+  line-height: var(--sl-line-height--swatch);
   position: relative;
 
   div {
@@ -481,9 +483,9 @@ $playground-base-colors: (
 
   span {
     font-family: var(--sl-font-family--emoji);
-    inset: -60% 0 0 60%;
-    line-height: 1.4;
+    inset: -70% 0 0 60%;
     position: absolute;
+    scale: 0.675;
     text-shadow: -1px 1px 1px var(--sl-color--text-medium-dark);
   }
 }
