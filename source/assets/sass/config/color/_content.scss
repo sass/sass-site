@@ -42,6 +42,8 @@ $sl-color--code-base: #066;
 $sl-color--code-cool: #458;
 $sl-color--code-dark: black;
 $sl-color--code-highlight-light: rgba($sl-color--warning-light, 0.2);
+$sl-color--code-divider: var(--sl-color--white);
+$sl-color--code-divider-active: var(--sl-color--link-action);
 
 // Playground Status
 $sl-color--code-error: #cf0254;
