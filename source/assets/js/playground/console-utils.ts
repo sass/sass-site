@@ -2,6 +2,9 @@ import {Exception, SourceSpan} from 'sass';
 
 import {PlaygroundSelection, PlaygroundState, serializeState} from './utils';
 
+import Color from 'colorjs.io';
+import {colorSwatchView} from './color-decorator';
+
 export interface ConsoleLogDebug {
   options: {
     span: SourceSpan;
@@ -97,6 +100,20 @@ export function displayForConsoleLog(
           parseInt(match[1]),
           parseInt(match[2]),
         ];
+      }
+    }
+    if (item.type === 'debug') {
+      // TODO: Support nested data structures after
+      // https://github.com/sass/sass/issues/3957 is implemented.
+      try {
+        const color = new Color(item.message);
+        const colorSwatch = colorSwatchView(
+          color.toString(),
+          color.inGamut('p3')
+        );
+        message = message + colorSwatch.outerHTML;
+      } catch {
+        // Ignore
       }
     }
 
