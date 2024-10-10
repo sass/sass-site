@@ -49,7 +49,7 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-typescript": "^7.24.7",
     "@codemirror/autocomplete": "^6.18.1",
-    "@codemirror/commands": "^6.6.1",
+    "@codemirror/commands": "^6.7.0",
     "@codemirror/lang-css": "^6.3.0",
     "@codemirror/lang-sass": "^6.0.2",
     "@codemirror/language": "^6.10.3",
