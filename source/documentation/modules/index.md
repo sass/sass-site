@@ -176,26 +176,6 @@ Sass provides the following built-in modules:
   {% endcodeExample %}
 {% endfunction %}
 
-{% function 'if($condition, $if-true, $if-false)' %}
-  Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
-
-  This function is special in that it doesn't even evaluate the argument that
-  isn't returned, so it's safe to call even if the unused argument would throw
-  an error.
-
-  [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
-
-  {% codeExample 'debug', false %}
-    @debug if(true, 10px, 15px); // 10px
-    @debug if(false, 10px, 15px); // 15px
-    @debug if(variable-defined($var), $var, null); // null
-    ===
-    @debug if(true, 10px, 15px)  // 10px
-    @debug if(false, 10px, 15px)  // 15px
-    @debug if(variable-defined($var), $var, null)  // null
-  {% endcodeExample %}
-{% endfunction %}
-
 {% function 'hwb($hue $whiteness $blackness)', 'hwb($hue $whiteness $blackness / $alpha)', 'color.hwb($hue $whiteness $blackness)', 'color.hwb($hue $whiteness $blackness / $alpha)', 'color.hwb($hue, $whiteness, $blackness, $alpha: 1)', 'returns:color' %}
   {% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
