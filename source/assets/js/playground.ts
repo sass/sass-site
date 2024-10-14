@@ -1,39 +1,68 @@
-/* eslint-disable node/no-extraneous-import */
 import {setDiagnostics} from '@codemirror/lint';
 import {Text} from '@codemirror/state';
 import {EditorView} from 'codemirror';
 import debounce from 'lodash/debounce';
-import {compileString, info, Logger, OutputStyle, Syntax} from 'sass';
+import {Logger, OutputStyle, Syntax, compileString, info} from 'sass';
 
 import {displayForConsoleLog} from './playground/console-utils.js';
-import {editorSetup, outputSetup} from './playground/editor-setup.js';
+import setUpSplitView from './playground/split-view.js';
+
 import {
-  deserializeState,
-  customLoader,
-  logsToDiagnostics,
+  changeSyntax,
+  defaultContents,
+  editorSetup,
+  outputSetup,
+} from './playground/editor-setup.js';
+import {
   ParseResult,
+  PlaygroundSelection,
   PlaygroundState,
+  customLoader,
+  deserializeState,
+  logsToDiagnostics,
   serializeState,
 } from './playground/utils.js';
 
-function setupPlayground() {
+// The timer id result from the last call to `setTimeout`, if one has been made.
+type Timer = undefined | number;
+
+// The time before a microinteraction like a toast or icon change resets.
+const MICROINTERACTION_RESET_TIME = 3000;
+
+function setupPlayground(): void {
+  setUpSplitView();
   const hash = location.hash.slice(1);
   const hashState = deserializeState(hash);
 
+  const inputFormat = hashState.inputFormat || 'scss';
+
   const initialState: PlaygroundState = {
-    inputFormat: hashState.inputFormat || 'scss',
+    inputFormat,
     outputFormat: hashState.outputFormat || 'expanded',
     compilerHasError: false,
-    inputValue: hashState.inputValue || '',
+    inputValue: hashState.inputValue || defaultContents[inputFormat],
     debugOutput: [],
     selection: hashState.selection || null,
+    outputValue: '',
   };
 
   // Proxy intercepts setters and triggers side effects
   const playgroundState = new Proxy(initialState, {
     set(state: PlaygroundState, prop: keyof PlaygroundState, ...rest) {
+      const previousInputFormat = state.inputFormat;
       // Set state first so called functions have access
       const set = Reflect.set(state, prop, ...rest);
+      if (prop === 'inputFormat') {
+        let newValue: string | undefined = undefined;
+        // Show the default content in the new syntax if the editor still has
+        // the default content in the old syntax.
+        if (
+          playgroundState.inputValue === defaultContents[previousInputFormat]
+        ) {
+          newValue = defaultContents[state.inputFormat];
+        }
+        changeSyntax(editor, state.inputFormat === 'indented', newValue);
+      }
       if (['inputFormat', 'outputFormat'].includes(prop)) {
         updateButtonState();
         debouncedUpdateCSS();
@@ -71,6 +100,10 @@ function setupPlayground() {
     parent: document.querySelector('.sl-code-is-source') || undefined,
   });
 
+  if (playgroundState.inputFormat === 'indented') {
+    changeSyntax(editor, true, undefined);
+  }
+
   // Setup CSS view
   const viewer = new EditorView({
     extensions: [...outputSetup],
@@ -81,9 +114,7 @@ function setupPlayground() {
    * Returns a playground state selection for the current single non-empty
    * selection, or `null` otherwise.
    */
-  function editorSelectionToStateSelection():
-    | PlaygroundState['selection']
-    | null {
+  function editorSelectionToStateSelection(): PlaygroundSelection {
     const sel = editor.state.selection;
     if (sel.ranges.length !== 1) return null;
 
@@ -100,7 +131,7 @@ function setupPlayground() {
     ];
   }
 
-  /** Updates the editor's selection based on `playgroundState.selection`. */
+  /** Updates the {@link editor}'s selection based on `{@link playgroundState.selection}`. */
   function updateSelection(): void {
     if (playgroundState.selection === null) {
       const sel = editor.state.selection;
@@ -126,14 +157,21 @@ function setupPlayground() {
             y: 'center',
           }),
         });
-      } catch (err) {
+      } catch {
         // (ignored)
       }
     }
   }
 
+  /** Highlights {@link selection} and focuses on the {@link editor}. */
+  function goToSelection(selection: PlaygroundSelection): void {
+    playgroundState.selection = selection;
+    updateSelection();
+    editor.focus();
+  }
+
   // Apply initial state to dom
-  function applyInitialState() {
+  function applyInitialState(): void {
     updateButtonState();
     debouncedUpdateCSS();
     updateErrorState();
@@ -142,16 +180,16 @@ function setupPlayground() {
 
   type TabbarItemDataset =
     | {
-        value: Syntax;
+        value: Exclude<Syntax, 'css'>;
         setting: 'inputFormat';
       }
     | {
         value: OutputStyle;
         setting: 'outputFormat';
       };
-  function attachListeners() {
+  function attachListeners(): void {
     // Settings buttons handlers
-    function clickHandler(event: Event) {
+    function clickHandler(event: Event): void {
       if (event.currentTarget instanceof HTMLElement) {
         const settings = event.currentTarget.dataset as TabbarItemDataset;
         if (settings.setting === 'inputFormat') {
@@ -170,15 +208,51 @@ function setupPlayground() {
     const copyURLButton = document.getElementById('playground-copy-url');
     const copiedAlert = document.getElementById('playground-copied-alert');
 
-    let timer: undefined | number;
+    let alertTimer: Timer;
+    const buttonTimers: {input: Timer; output: Timer; url: Timer} = {
+      input: undefined,
+      output: undefined,
+      url: undefined,
+    };
+
+    function showCopiedAlert(msg: string): void {
+      if (!copiedAlert) return;
+      copiedAlert.innerText = msg;
+      copiedAlert.classList.add('show');
+      if (alertTimer) clearTimeout(alertTimer);
+      alertTimer = window.setTimeout(() => {
+        copiedAlert.classList.remove('show');
+      }, MICROINTERACTION_RESET_TIME);
+    }
+
+    function showCopiedIcon(button: 'input' | 'output' | 'url'): void {
+      const buttonEl = $(`#playground-copy-${button}`);
+      if (!buttonEl) return;
+      buttonEl.addClass('copied');
+      if (buttonTimers[button]) clearTimeout(buttonTimers[button]);
+      buttonTimers[button] = window.setTimeout(() => {
+        buttonEl.removeClass('copied');
+      }, MICROINTERACTION_RESET_TIME);
+    }
 
     copyURLButton?.addEventListener('click', () => {
       void navigator.clipboard.writeText(location.href);
-      copiedAlert?.classList.add('show');
-      if (timer) clearTimeout(timer);
-      timer = window.setTimeout(() => {
-        copiedAlert?.classList.remove('show');
-      }, 3000);
+      showCopiedAlert('Copied URL to clipboard');
+      showCopiedIcon('url');
+    });
+
+    // Copy content handlers
+    const copyInputButton = document.getElementById('playground-copy-input');
+    copyInputButton?.addEventListener('click', () => {
+      void navigator.clipboard.writeText(playgroundState.inputValue);
+      showCopiedAlert('Copied input to clipboard');
+      showCopiedIcon('input');
+    });
+    const copyOutputButton = document.getElementById('playground-copy-output');
+    copyOutputButton?.addEventListener('click', () => {
+      void navigator.clipboard.writeText(playgroundState.outputValue);
+      showCopiedAlert('Copied output to clipboard');
+      showCopiedIcon('output');
     });
   }
   /**
@@ -186,7 +260,7 @@ function setupPlayground() {
    * Applies playgroundState to the buttons
    * Called by state's proxy setter
    */
-  function updateButtonState() {
+  function updateButtonState(): void {
     const inputFormatTab = document.querySelector(
       '[data-setting="inputFormat"]'
     ) as HTMLDivElement;
@@ -215,7 +289,7 @@ function setupPlayground() {
    * Applies error state
    * Called by state's proxy setter
    */
-  function updateErrorState() {
+  function updateErrorState(): void {
     const editorWrapper = document.querySelector(
       '[data-compiler-has-error]'
     ) as HTMLDivElement;
@@ -230,22 +304,36 @@ function setupPlayground() {
    * debugOutput may be updated multiple times during the sass compilation,
    * so the output is collected through the compilation and the display updated just once.
    */
-  function updateDebugOutput() {
+  function updateDebugOutput(): void {
     const console = document.querySelector(
       '.sl-c-playground__console'
     ) as HTMLDivElement;
     console.innerHTML = playgroundState.debugOutput
-      .map(displayForConsoleLog)
+      .map(item => displayForConsoleLog(item, playgroundState))
       .join('\n');
+    console.querySelectorAll('a.console-location').forEach(link => {
+      (link as HTMLAnchorElement).addEventListener('click', event => {
+        if (!(event.metaKey || event.altKey || event.shiftKey)) {
+          event.preventDefault();
+        }
+        const range = (event.currentTarget as HTMLAnchorElement).dataset.range
+          ?.split(',')
+          .map(n => parseInt(n));
+        if (range && range.length === 4) {
+          const [fromL, fromC, toL, toC] = range;
+          goToSelection([fromL, fromC, toL, toC]);
+        }
+      });
+    });
   }
 
-  function updateDiagnostics() {
+  function updateDiagnostics(): void {
     const diagnostics = logsToDiagnostics(playgroundState.debugOutput);
     const transaction = setDiagnostics(editor.state, diagnostics);
     editor.dispatch(transaction);
   }
 
-  function updateCSS() {
+  function updateCSS(): void {
     playgroundState.debugOutput = [];
     const result = parse(playgroundState.inputValue);
     if ('css' in result) {
@@ -258,6 +346,7 @@ function setupPlayground() {
         },
       });
       playgroundState.compilerHasError = false;
+      playgroundState.outputValue = result.css;
     } else {
       playgroundState.compilerHasError = true;
       playgroundState.debugOutput = [
@@ -301,12 +390,12 @@ function setupPlayground() {
 
   const debounceUpdateURL = debounce(updateURL, 200);
 
-  function updateURL() {
+  function updateURL(): void {
     const hash = serializeState(playgroundState);
     history.replaceState('playground', '', `#${hash}`);
   }
 
-  function updateSassVersion() {
+  function updateSassVersion(): void {
     const version = info.split('\t')[1];
     const versionSpan = document.querySelector(
       '.sl-c-playground__tabbar-version'

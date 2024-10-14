@@ -241,6 +241,13 @@ title: sass:meta
   [interpolation]: /documentation/interpolation
 
   Returns `false` for any unrecognized `$feature`.
+  
+  {% headsUp %}
+    This function is deprecated and should be avoided. See [the breaking change
+    page] for details.
+
+    [the breaking change page]: /documentation/breaking-changes/feature-exists
+  {% endheadsUp %}
 
   {% codeExample 'feature-exists' %}
     @use "sass:meta";

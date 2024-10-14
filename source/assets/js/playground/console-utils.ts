@@ -1,27 +1,35 @@
 import {Exception, SourceSpan} from 'sass';
 
-export type ConsoleLogDebug = {
+import {PlaygroundSelection, PlaygroundState, serializeState} from './utils';
+
+import Color from 'colorjs.io';
+import {colorSwatchView} from './color-decorator';
+
+export interface ConsoleLogDebug {
   options: {
     span: SourceSpan;
   };
   message: string;
   type: 'debug';
-};
+}
 
-export type ConsoleLogWarning = {
+export interface ConsoleLogWarning {
   options: {
     deprecation: boolean;
     span?: SourceSpan | undefined;
     stack?: string | undefined;
+    deprecationType?: {
+      id: string;
+    };
   };
   message: string;
   type: 'warn';
-};
+}
 
-export type ConsoleLogError = {
+export interface ConsoleLogError {
   type: 'error';
   error: Exception | unknown;
-};
+}
 
 export type ConsoleLog = ConsoleLogDebug | ConsoleLogWarning | ConsoleLogError;
 
@@ -39,42 +47,95 @@ function encodeHTML(message: string): string {
   return el.innerHTML;
 }
 
-function lineNumberFormatter(number?: number): string {
-  if (number === undefined) return '';
-  number = number + 1;
-  return `${number}`;
+// Returns undefined if no range, or a link to the state, including range.
+function selectionLink(
+  playgroundState: PlaygroundState,
+  range: PlaygroundSelection
+): string | undefined {
+  if (!range) return undefined;
+  return serializeState({...playgroundState, selection: range});
 }
 
-export function displayForConsoleLog(item: ConsoleLog): string {
-  const data: {type: string; lineNumber?: number; message: string} = {
-    type: item.type,
-    lineNumber: undefined,
-    message: '',
-  };
+// Returns a safe HTML string for a console item.
+export function displayForConsoleLog(
+  item: ConsoleLog,
+  playgroundState: PlaygroundState
+): string {
+  let lineNumber: number | undefined;
+  let message: string;
+  let range: PlaygroundSelection = null;
+
   if (item.type === 'error') {
     if (item.error instanceof Exception) {
-      data.lineNumber = item.error.span.start.line;
+      const span = item.error.span;
+      lineNumber = span.start.line;
+      range = [
+        span.start.line + 1,
+        span.start.column + 1,
+        span.end.line + 1,
+        span.end.column + 1,
+      ];
     }
-    data.message = item.error?.toString() || '';
-  } else if (['debug', 'warn'].includes(item.type)) {
-    data.message = item.message;
-    let lineNumber = item.options.span?.start?.line;
-    if (typeof lineNumber === 'undefined') {
-      const stack = 'stack' in item.options ? item.options.stack : '';
-      const needleFromStackRegex = /^- (\d+):/;
-      const match = stack?.match(needleFromStackRegex);
-      if (match?.[1]) {
+    message = encodeHTML(item.error?.toString() ?? '');
+  } else {
+    message = encodeHTML(item.message);
+    if (item.options.span) {
+      const span = item.options.span;
+      lineNumber = span.start.line;
+      range = [
+        span.start.line + 1,
+        span.start.column + 1,
+        span.end.line + 1,
+        span.end.column + 1,
+      ];
+    } else if ('stack' in item.options) {
+      const match = item.options.stack?.match(/^- (\d+):(\d+) /);
+      if (match) {
         // Stack trace starts at 1, all others come from span, which starts at
         // 0, so adjust before formatting.
         lineNumber = parseInt(match[1]) - 1;
+        range = [
+          parseInt(match[1]),
+          parseInt(match[2]),
+          parseInt(match[1]),
+          parseInt(match[2]),
+        ];
       }
     }
-    data.lineNumber = lineNumber;
-  }
+    if (item.type === 'debug') {
+      // TODO: Support nested data structures after
+      // https://github.com/sass/sass/issues/3957 is implemented.
+      try {
+        const color = new Color(item.message);
+        const colorSwatch = colorSwatchView(
+          color.toString(),
+          color.inGamut('p3')
+        );
+        message = message + colorSwatch.outerHTML;
+      } catch {
+        // Ignore
+      }
+    }
 
-  return `<div class="console-line"><div class="console-location"><span class="console-type console-type-${
-    data.type
-  }">@${data.type}</span>:${lineNumberFormatter(
-    data.lineNumber
-  )}</div><div class="console-message">${encodeHTML(data.message)}</div></div>`;
+    if (item.type === 'warn' && item.options.deprecationType?.id) {
+      const safeLink = `https://sass-lang.com/d/${item.options.deprecationType.id}`;
+      message = message.replace(
+        safeLink,
+        `<a href="${safeLink}" target="_blank">${safeLink}</a>`
+      );
+    }
+  }
+  const link = selectionLink(playgroundState, range);
+
+  const locationStart = link
+    ? `<a href="#${link}" class="console-location" data-range=${range}>`
+    : '<div class="console-location">';
+
+  const locationEnd = link ? '</a>' : '</div>';
+
+  return `<div class="console-line">${locationStart}<span class="console-type console-type-${
+    item.type
+  }">@${item.type}</span>${
+    lineNumber !== undefined ? `:${lineNumber + 1}` : ''
+  }${locationEnd}<div class="console-message">${message}</div></div>`;
 }

@@ -4,7 +4,7 @@ title: Playground
 is_playground: true
 ---
 
-<div class="sl-c-playground" data-compiler-has-error="false">
+<sp-split-view class="sl-c-playground" data-compiler-has-error="false" resizable primary-min="400" secondary-min="400">
   <div class="sl-c-playground__code-editor-wrapper sl-c-playground__panel" data-code="source">
     <div class="sl-c-playground__editor-tabbar" data-setting="inputFormat">
       <button
@@ -22,42 +22,70 @@ is_playground: true
         class="sl-c-button sl-c-button--tab"
         data-setting="inputFormat">Sass</button>
       <span data-tabbar="item" class="sl-c-playground__tabbar-title tabbar-title sl-c-playground__tabbar-version"></span>
+      <button
+        type="button"
+        id="playground-copy-input"
+        class="sl-c-button sl-c-button--copy sl-c-button--icon">
+        <div class="sl-c-playground-button--copy--copy">
+          {%- render 'icons/copy' -%}
+          <span class="visuallyhidden">Select to Copy</span>
+        </div>
+        <div class="sl-c-playground-button--copy--copied">
+          {%- render 'icons/circle-check' -%}
+          <span class="visuallyhidden">Code is Copied</span>
+        </div>
+      </button>
     </div>
     <div class="sl-c-playground__panel-content sl-code-is-source"></div>
   </div>
-  <div class="sl-c-playground__code-editor-wrapper sl-c-playground__panel" data-code="compiled">
-    <div class="sl-c-playground__editor-tabbar" data-setting="outputFormat">
-      <button
-        type="button"
-        data-value="expanded"
-        data-active="true"
-        data-tabbar="item"
-        class="sl-c-button sl-c-button--tab"
-        data-setting="outputFormat">Expanded</button>
-      <button
-        type="button"
-        data-value="compressed"
-        data-active="false"
-        data-tabbar="item"
-        class="sl-c-button sl-c-button--tab"
-        data-setting="outputFormat">Compressed</button>
-      <span data-tabbar="item" class="sl-c-playground__tabbar-title tabbar-title">
-        <strong>CSS</strong>
-        (Compiled)
-      </span>
+  <sp-split-view vertical resizable primary-min="100" secondary-min="100">
+    <div class="sl-c-playground__code-editor-wrapper sl-c-playground__panel" data-code="compiled">
+      <div class="sl-c-playground__editor-tabbar" data-setting="outputFormat">
+        <button
+          type="button"
+          data-value="expanded"
+          data-active="true"
+          data-tabbar="item"
+          class="sl-c-button sl-c-button--tab"
+          data-setting="outputFormat">Expanded</button>
+        <button
+          type="button"
+          data-value="compressed"
+          data-active="false"
+          data-tabbar="item"
+          class="sl-c-button sl-c-button--tab"
+          data-setting="outputFormat">Compressed</button>
+        <span data-tabbar="item" class="sl-c-playground__tabbar-title tabbar-title">
+          <strong>CSS</strong>
+          (Compiled)
+        </span>
+        <button
+          type="button"
+          id="playground-copy-output"
+          class="sl-c-button sl-c-button--copy sl-c-button--icon">
+          <div class="sl-c-playground-button--copy--copy">
+            {%- render 'icons/copy' -%}
+            <span class="visuallyhidden">Select to Copy</span>
+          </div>
+          <div class="sl-c-playground-button--copy--copied">
+            {%- render 'icons/circle-check' -%}
+            <span class="visuallyhidden">Code is Copied</span>
+          </div>
+        </button>
+      </div>
+      <div class="sl-c-callout sl-c-callout--warning sl-c-playground__error">Please resolve error to view compiled CSS.</div>
+      <div class="sl-c-playground__panel-content sl-code-is-compiled"></div>
     </div>
-    <div class="sl-c-callout sl-c-callout--warning sl-c-playground__error">Please resolve error to view compiled CSS.</div>
-    <div class="sl-c-playground__panel-content sl-code-is-compiled"></div>
-  </div>
-  <div class="sl-c-playground__console-wrapper sl-c-playground__panel">
-    <div class="sl-c-playground__editor-tabbar">
-      <span data-tabbar="item" class="sl-c-playground__tabbar-title">
-        Console
-      </span>
+    <div class="sl-c-playground__console-wrapper sl-c-playground__panel">
+      <div class="sl-c-playground__editor-tabbar">
+        <span data-tabbar="item" class="sl-c-playground__tabbar-title">
+          Console
+        </span>
+      </div>
+      <pre class="sl-c-playground__console sl-c-playground__panel-content"></pre>
     </div>
-    <pre class="sl-c-playground__console sl-c-playground__panel-content"></pre>
-  </div>
-</div>
+  </sp-split-view>
+</sp-split-view>
 
 <script
   type="module"

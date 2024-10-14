@@ -1,4 +1,3 @@
-/* eslint-disable node/no-extraneous-import */
 import {
   autocompletion,
   closeBrackets,
@@ -22,18 +21,40 @@ import {
   syntaxHighlighting,
 } from '@codemirror/language';
 import {lintKeymap} from '@codemirror/lint';
-import {EditorState} from '@codemirror/state';
+import {Compartment, EditorState} from '@codemirror/state';
 import {
+  drawSelection,
   dropCursor,
   highlightActiveLine,
   highlightActiveLineGutter,
   highlightSpecialChars,
   keymap,
   lineNumbers,
-  drawSelection,
 } from '@codemirror/view';
 
 import {playgroundHighlightStyle} from './theme.js';
+import playgroundCompletions from './autocomplete.js';
+import {EditorView} from 'codemirror';
+import {colorDecorator} from './color-decorator.js';
+
+const syntax = new Compartment();
+
+// Sets the `view` uses `indented` syntax, and optionally update the contents
+// with `newValue`.
+function changeSyntax(
+  view: EditorView,
+  indented = false,
+  newValue: string | undefined
+): void {
+  view.dispatch({
+    effects: syntax.reconfigure(langSass({indented})),
+  });
+  if (newValue) {
+    view.dispatch({
+      changes: [{from: 0, to: view.state.doc.length, insert: newValue}],
+    });
+  }
+}
 
 const editorSetup = (() => [
   [
@@ -48,9 +69,10 @@ const editorSetup = (() => [
     syntaxHighlighting(defaultHighlightStyle, {fallback: true}),
     bracketMatching(),
     closeBrackets(),
-    autocompletion(),
+    autocompletion({override: playgroundCompletions}),
     highlightActiveLine(),
     drawSelection(),
+    colorDecorator,
     keymap.of([
       ...closeBracketsKeymap,
       ...defaultKeymap,
@@ -61,7 +83,7 @@ const editorSetup = (() => [
       indentWithTab,
     ]),
   ],
-  langSass(),
+  syntax.of(langSass()),
 ])();
 
 const outputSetup = (() => [
@@ -72,9 +94,50 @@ const outputSetup = (() => [
     syntaxHighlighting(playgroundHighlightStyle),
     syntaxHighlighting(defaultHighlightStyle, {fallback: true}),
     highlightActiveLine(),
+    colorDecorator,
     EditorState.readOnly.of(true),
   ],
   langCss(),
 ])();
 
-export {editorSetup, outputSetup};
+const defaultContents = {
+  indented: `@use "sass:list"
+@use "sass:color"
+
+$font-stack: Helvetica, Arial
+$primary-color: #333
+
+body 
+  $font-stack: list.append($font-stack, sans-serif)
+  font: $font-stack
+
+a
+  color: $primary-color
+
+  &:hover
+    color: color.scale($primary-color, $lightness: 20%)
+
+@debug $font-stack`,
+  scss: `@use "sass:list";
+@use "sass:color";
+
+$font-stack: Helvetica, Arial;
+$primary-color: #333;
+
+body {
+  $font-stack: list.append($font-stack, sans-serif);
+  font: $font-stack;
+}
+
+a {
+  color: $primary-color;
+
+  &:hover{
+    color: color.scale($primary-color, $lightness: 20%);
+  }
+}
+
+@debug $font-stack;`,
+};
+
+export {changeSyntax, editorSetup, outputSetup, defaultContents};

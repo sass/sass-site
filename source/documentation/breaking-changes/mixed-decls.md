@@ -42,10 +42,11 @@ duplicating the outer selector more than necessary. For example:
 {% endcodeExample %}
 
 When [plain CSS Nesting] was first introduced, it behaved the same way. However,
-after some consideration, the CSS working group decided it made more sense to
+after some consideration, [the CSS working group decided] it made more sense to
 make the declarations apply in the order they appeared in the document, like so:
 
 [plain CSS Nesting]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting
+[the CSS working group decided]: https://github.com/w3c/csswg-drafts/issues/8738
 
 {% codeExample 'mixed-declarations-new' %}
   .example {

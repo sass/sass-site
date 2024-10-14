@@ -4,6 +4,7 @@ import {codeBlock} from './components';
 import {liquidEngine} from './engines';
 import {stripIndent} from './type';
 
+/** A map from type names to the URLs for the documentation of those types. */
 const links: Record<string, string> = {
   number: '/documentation/values/numbers',
   string: '/documentation/values/strings',
@@ -18,8 +19,9 @@ const links: Record<string, string> = {
   selector: '/documentation/modules/selector#selector-values',
 };
 
-const returnTypeLink = (returnType: string) =>
-  returnType
+/** Converts a function's return type to the HTML for a link. */
+export function returnTypeLink(returnType: string): string {
+  return returnType
     .split('|')
     .map(type => {
       type = type.trim();
@@ -30,6 +32,7 @@ const returnTypeLink = (returnType: string) =>
       return `<a href="${link}">${type}</a>`;
     })
     .join(' | ');
+}
 
 /** Renders API docs for a Sass function (or mixin).
  *
@@ -40,7 +43,10 @@ const returnTypeLink = (returnType: string) =>
  * Multiple signatures may be passed, in which case they're all included in
  * sequence.
  */
-export async function _function(content: string, ...signatures: string[]) {
+export async function _function(
+  content: string,
+  ...signatures: string[]
+): Promise<string> {
   // Parse the last argument as the return type, if it's present
   const returns = signatures.at(-1)?.match(/returns?:\s*(.*)/)?.[1];
   if (returns) {
@@ -86,6 +92,6 @@ export async function _function(content: string, ...signatures: string[]) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function typePlugin(eleventyConfig: any) {
+export default function typePlugin(eleventyConfig: any): void {
   eleventyConfig.addPairedLiquidShortcode('function', _function);
 }

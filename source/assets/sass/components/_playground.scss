@@ -2,6 +2,12 @@
 @use '../config';
 @use '../config/color/brand';
 
+$playground-base-colors: (
+  'info': var(--sl-color--code-info),
+  'warning': var(--sl-color--code-warning),
+  'error': var(--sl-color--code-error),
+);
+
 .playground {
   --sl-max-width--container: 100vw;
 
@@ -75,7 +81,9 @@
 }
 
 .sl-r-banner__playground-button {
+  --sl-color--button: var(--sl-color--action-dark);
   grid-area: copy;
+  justify-self: flex-end;
   padding-right: var(--sl-gutter);
   text-align: right;
 
@@ -88,19 +96,19 @@
 .sl-r-banner__playground-alert {
   --sl-padding-block--alert: 0;
 
+  align-items: center;
+  display: flex;
   grid-area: alert;
   height: 0;
+  justify-content: center;
   opacity: 0;
-  padding-left: var(--sl-gutter--half);
-  padding-right: var(--sl-gutter--half);
+  padding-inline: var(--sl-gutter--half);
   transition:
     opacity 0.3s 0.05s,
     visibility 0.3s;
   visibility: hidden;
 
   &.show {
-    --sl-padding-block--alert: var(--sl-gutter--minus);
-
     height: 100%;
     opacity: 1;
     visibility: visible;
@@ -109,33 +117,39 @@
 
 // Playground Editor area
 .sl-c-playground {
+  --mod-splitview-gripper-width: 100%;
+  --mod-splitview-gripper-height: 100%;
+  --mod-splitview-gripper-border-width-horizontal: 0;
+  --mod-splitview-gripper-border-width-vertical: 0;
+  --mod-splitview-handle-width: var(--sl-gutter);
+  --mod-splitview-handle-background-color: var(--sl-color--code-divider);
+  --mod-splitview-handle-background-color-down: var(--sl-color--code-divider);
+  --mod-splitview-handle-background-color-focus: var(--sl-color--code-divider-active);
+  --mod-splitview-handle-background-color-hover: var(--sl-color--code-divider);
   --sl-block-margin--callout: 0;
   --sl-block-padding--callout: var(--sl-gutter--quarter);
-
-  display: grid;
-  gap: var(--sl-gutter);
-  grid-template:
-    'sass' 1fr
-    'css' auto
-    'debug' auto / 100%;
+  --sl-color--button--tab: var(--sl-color--action-dark);
 
   @include config.sl-breakpoint--large {
-    // magic numbers, the layout is well balanced with these proportions
-    grid-template:
-      'sass css' minmax(20ex, 1fr)
-      'sass debug' minmax(0, 40%) / 1fr 1fr;
     height: 100%;
     overflow: inherit;
   }
 }
 
 .sl-c-playground__panel {
+  container: playground-panel / inline-size;
   display: grid;
   overflow: inherit;
   grid-template:
     'editor-tabbar' min-content
     'editor-error' min-content
     'editor-code' 1fr / 1fr;
+}
+
+@container playground-panel (inline-size < 50ch) {
+  .sl-c-playground__editor-tabbar {
+    flex-wrap: wrap;
+  }
 }
 
 .sl-c-playground__panel-content {
@@ -169,12 +183,13 @@
   overflow-y: inherit;
 
   .cm-gutters {
-    background-color: var(--sl-background--editor);
+    background-color: transparent;
     border-right: none;
   }
 
   .cm-lineNumbers .cm-gutterElement {
     min-width: var(--sl-gutter--double);
+    padding: 0 0.5ch 0 1.5ch;
   }
 
   .cm-content,
@@ -192,11 +207,26 @@
 
   .cm-line {
     padding-left: var(--sl-gutter);
+
+    &::before {
+      content: '\2022';
+      color: var(--sl-color--bullet-line, transparent);
+      font-size: var(--sl-font-size--x-large);
+      left: 0;
+      position: absolute;
+      transform: translateY(-25%);
+    }
+
+    @each $name, $color in $playground-base-colors {
+      &:has(.cm-lintPoint-#{$name}, .cm-lintRange-#{$name}) {
+        --sl-color--bullet-line: #{$color};
+      }
+    }
   }
 
   .cm-activeLineGutter,
   .cm-activeLine {
-    background-color: var(--sl-color--warning-highlight);
+    background-color: var(--sl-color--code-highlight-light);
 
     [data-code='compiled'] & {
       background-color: var(--sl-color--code-background);
@@ -213,21 +243,24 @@
     }
   }
 
+  .cm-tooltip {
+    border: none;
+  }
+
   .cm-diagnostic {
+    background: var(--sl-color--background-tooltip);
+    border: 1px solid var(--sl-color--border-tooltip);
     color: var(--sl-color--code-text);
-    background: var(--sl-color--code-background-darker);
+    padding: var(--sl-gutter--half);
   }
 
-  .cm-diagnostic-error {
-    border-color: var(--sl-color--error);
-  }
+  @each $name, $color in $playground-base-colors {
+    .cm-diagnostic-#{$name} {
+      --sl-color--border-tooltip: #{$color};
+      --sl-color--background-tooltip: var(--sl-color--code-#{$name}-light);
 
-  .cm-diagnostic-warning {
-    border-color: var(--sl-color--warn);
-  }
-
-  .cm-diagnostic-info {
-    border-color: var(--sl-color--success);
+      border-color: $color;
+    }
   }
 
   .cm-specialChar {
@@ -257,26 +290,51 @@
 
 .sl-c-playground__console {
   font-family: var(--sl-font-family--code);
+  display: grid;
+  gap: var(--sl-gutter);
+  grid-auto-rows: max-content;
+  grid-template-columns: [location] auto [message] 1fr;
   height: 100%;
   line-height: 1;
   margin: 0;
 
   .console-line {
+    --sl-background--link: transparent;
+    --sl-border-color--link: transparent;
+    --sl-border-color--link-state: var(--sl-color--iron);
+
+    place-items: baseline start;
     display: grid;
-    gap: var(--sl-gutter);
-    grid-template: 'location message' auto / 10ch 1fr;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     margin-bottom: var(--sl-gutter--half);
   }
 
   .console-message {
+    align-items: baseline;
     display: grid;
+    grid-template-columns: [console-text] 1fr [swatch] max-content;
     line-height: var(--sl-line-height--console);
+
+    > * {
+      grid-column: console-text;
+    }
+
+    .cm-color-swatch {
+      grid-column: swatch;
+    }
+
+    a {
+      justify-self: start;
+    }
   }
 
+  // Debug panel uses Sass terms "warn" and "debug"
+  // Code Mirror uses "warning" and "info"
   $console-type-colors: (
-    'error': var(--sl-color--error),
-    'warn': var(--sl-color--warn),
-    'debug': var(--sl-color--success),
+    'error': var(--sl-color--code-error),
+    'warn': var(--sl-color--code-warning),
+    'debug': var(--sl-color--code-info),
   );
 
   @each $name, $color in $console-type-colors {
@@ -289,6 +347,7 @@
 // Playground Tab Bar & Buttons
 .sl-c-playground__editor-tabbar {
   background-color: var(--sl-color--code-background-darker);
+  color: var(--sl-color--text-medium-dark);
   display: flex;
   grid-area: editor-tabbar;
 
@@ -311,6 +370,45 @@
   }
 }
 
+.sl-c-button--copy {
+  --sl-display--button: flex;
+
+  &.sl-c-button--icon {
+    --sl-background--button: transparent;
+    --sl-background--button-state: transparent;
+    --sl-block-padding--button: var(--sl-gutter--half);
+    --sl-color--button: var(--sl-color--text-medium-dark);
+    --sl-color--button-state: var(--sl-color--action-dark);
+
+    box-shadow: none;
+
+    &.copied {
+      --sl-color--button-state: var(--sl-color--text-medium-dark);
+    }
+  }
+}
+
+[class^='sl-c-playground-button--copy'] {
+  display: var(--sl-display--playground-button--copy);
+  width: 0.9em;
+}
+
+.sl-c-playground-button--copy--copy {
+  --sl-display--playground-button--copy: flex;
+
+  .copied & {
+    --sl-display--playground-button--copy: none;
+  }
+}
+
+.sl-c-playground-button--copy--copied {
+  --sl-display--playground-button--copy: none;
+
+  .copied & {
+    --sl-display--playground-button--copy: flex;
+  }
+}
+
 // Make sure all tab bar buttons and text get the same padding
 [data-tabbar~='item'] {
   padding: var(--sl-gutter--half) var(--sl-gutter);
@@ -329,5 +427,66 @@
   .sl-c-playground__code-editor-wrapper & {
     margin-left: auto;
     text-align: right;
+  }
+}
+
+// Code panel container with links to Playground
+.sl-c-code-panel {
+  position: relative;
+
+  &:hover {
+    --sl-c-to-playground-opacity: 1;
+  }
+}
+
+// Playground Link
+.sl-c-to-playground {
+  --sl-background--link: var(--sl-color--link-action);
+  --sl-background--link-state: var(--sl-color--code-background-darker);
+
+  border: 0;
+  display: flex;
+  font-size: var(--sl-font-size--small);
+  gap: var(--sl-gutter--quarter);
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  opacity: var(--sl-c-to-playground-opacity, 0);
+  padding: var(--sl-gutter--half);
+  position: absolute;
+  transition:
+    opacity 0.2s,
+    background 0.1s;
+
+  &:focus {
+    --sl-c-to-playground-opacity: 1;
+  }
+
+  img {
+    height: 1.5rem;
+  }
+}
+
+// ColorSwatch
+.cm-color-swatch {
+  display: inline-flex;
+  line-height: var(--sl-line-height--swatch);
+  position: relative;
+
+  div {
+    background-color: var(--color);
+    block-size: var(--sl-size--swatch);
+    inline-size: var(--sl-size--swatch);
+    margin-inline-start: var(--sl-gutter--quarter);
+    outline: var(--sl-border--small) solid var(--sl-color--text-medium-dark);
+    outline-offset: calc(var(--sl-border--small) * -1);
+  }
+
+  span {
+    font-family: var(--sl-font-family--emoji);
+    font-size: var(--sl-font-size--small);
+    inset: -80% 0 0 60%;
+    position: absolute;
+    scale: 0.6;
+    text-shadow: -1px 1px 1px var(--sl-color--text-medium-dark);
   }
 }
