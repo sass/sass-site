@@ -8,11 +8,10 @@ introduction: >
   several years.
 ---
 
-Sass historically loaded dependencies in a single global namespace using
-`@import` rules. This causes numerous problems, requiring Sass members to be
-manually namespaced to avoid conflicts, slowing down compilation when the same
-file is imported more than once, and making it very difficult for both humans
-and tools to tell where a given variable, mixin, or function comes from.
+`@import` causes numerous problems, requiring Sass members to be manually
+namespaced to avoid conflicts, slowing down compilation when the same file is
+imported more than once, and making it very difficult for both humans and tools
+to tell where a given variable, mixin, or function comes from.
 
 The module system fixes these problems and brings Sass's modularity up to par
 with the best practices of other modern languages, but we can't get the full
@@ -30,7 +29,7 @@ Sass `@import` rules and global built-in function calls now emit deprecation
 warnings. While Dart Sass 2.0.0 will be released soon with various smaller
 breaking changes, we don't expect to remove Sass `@import` rules or global
 built-in functions until Dart Sass 3.0.0, which will be released no sooner than
-a year after Dart Sass 1.80.0.
+two years after Dart Sass 1.80.0.
 
 Eventually, all `@import` rules will be treated as [plain CSS `@import`s],
 likely after an intermediate period where anything that used to be a Sass

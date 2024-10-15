@@ -7,7 +7,7 @@ date: 2024-10-15 13:00:00 -8
 Back in 2019, we [released the Sass module system], adding new `@use` and
 `@forward` rules to the language that were designed to replace `@import` and
 make stylesheets more maintainable and less error-prone. We can now announce
-that `@import` is officially deprecated as of Dart Sass 1.78.0.
+that `@import` is officially deprecated as of Dart Sass 1.80.0.
 
 [released the Sass module system]: /blog/the-module-system-is-launched
 
@@ -40,7 +40,7 @@ treat any Sass `@import` rules as errors.
 ## Timeline
 
 As previously announced, given the size of this change, we expect to wait at
-least a year after this deprecation before we remove `@import` from the
+least a two years after this deprecation before we remove `@import` from the
 language. While we plan to release Dart Sass 2.0.0 soon with other, smaller
 breaking changes, that release will not include any changes to `@import`.
 Instead, we expect `@import` to be removed in Dart Sass 3.0.0.
