@@ -21,7 +21,7 @@ required to have quotes.
 [indented syntax]: /documentation/syntax#the-indented-syntax
 
 {% headsUp %}
-  As of Dart Sass 1.78.0, the `@import` rule is [deprecated] and will be removed
+  As of Dart Sass 1.80.0, the `@import` rule is [deprecated] and will be removed
   from the language in Dart Sass 3.0.0. Prefer the [`@use` rule] instead.
 
   [deprecated]: /documentation/breaking-changes/import
