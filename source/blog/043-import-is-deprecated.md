@@ -1,7 +1,7 @@
 ---
 title: "`@import` is Deprecated"
 author: Jennifer Thakar
-date: 2024-10-15 13:00:00 -8
+date: 2024-10-16 17:00:00 -8
 ---
 
 Back in 2019, we [released the Sass module system], adding new `@use` and
