@@ -45,7 +45,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-rss": "^2.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@babel/core": "^7.25.2",
+    "@babel/core": "^7.25.8",
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-typescript": "^7.24.7",
     "@codemirror/autocomplete": "^6.18.1",
