@@ -21,13 +21,10 @@ required to have quotes.
 [indented syntax]: /documentation/syntax#the-indented-syntax
 
 {% headsUp %}
-  The Sass team discourages the continued use of the `@import` rule. Sass will
-  [gradually phase it out][] over the next few years, and eventually remove it
-  from the language entirely. Prefer the [`@use` rule][] instead. (Note that
-  only Dart Sass currently supports `@use`. Users of other implementations must
-  use the `@import` rule instead.)
+  As of Dart Sass 1.80.0, the `@import` rule is [deprecated] and will be removed
+  from the language in Dart Sass 3.0.0. Prefer the [`@use` rule] instead.
 
-  [gradually phase it out]: https://github.com/sass/sass/blob/main/accepted/module-system.md#timeline
+  [deprecated]: /documentation/breaking-changes/import
   [`@use` rule]: /documentation/at-rules/use
 
   <h4>{{ "What's Wrong With `@import`?" | markdown }}</h4>
