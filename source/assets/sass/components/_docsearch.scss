@@ -1,6 +1,12 @@
+@use '../config/color/brand';
+
 #docsearch {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
+}
+
+.DocSearch-Button-Placeholder {
+  color: brand.$sl-color--midnight-blue;
 }
