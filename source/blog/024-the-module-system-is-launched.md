@@ -356,5 +356,9 @@ support for `@import` on the following timeline:
 adding support for the new module system, the timeline for deprecating and
 removing `@import` has been pushed back. We now intend to wait until 80% of
 users are using Dart Sass (measured by npm downloads) before deprecating
-`@import`, and wait at least a year after that and likely more before removing
-it entirely.
+`@import`, and wait at least ~~a year~~ after that and likely more before
+removing it entirely.
+
+**October 2024**: We've decided to extend the timeline for removing `@import`
+after the deprecation to at least _two_ years, so it will still be available
+until October 2026 at the earliest.
