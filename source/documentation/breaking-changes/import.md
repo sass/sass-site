@@ -50,7 +50,7 @@ $ sass-migrator module --migrate-deps your-entrypoint.scss
 ```
 
 If you want to migrate away from global built-in functions, but aren't yet
-ready to fully migrate your `@import` rules, you can pass the `--builtin-only`
+ready to fully migrate your `@import` rules, you can pass the `--built-in-only`
 flag to migrate the functions while leaving `@import` rules as-is.
 
 {% render 'silencing_deprecations' %}
