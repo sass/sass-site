@@ -85,6 +85,7 @@ function setupPlayground(): void {
   // Setup input Sass view
   const editor = new EditorView({
     doc: playgroundState.inputValue,
+    root: document,
     extensions: [
       ...editorSetup,
       EditorView.updateListener.of(v => {
@@ -106,6 +107,7 @@ function setupPlayground(): void {
 
   // Setup CSS view
   const viewer = new EditorView({
+    root: document,
     extensions: [...outputSetup],
     parent: document.querySelector('.sl-code-is-compiled') || undefined,
   });
