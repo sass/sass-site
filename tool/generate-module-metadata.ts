@@ -3,8 +3,7 @@
 // Outputs `sass-site/source/assets/js/playground/module-metadata.ts` file, which is omitted from source code and
 // must be built before the `playground` bundle is built with rollup.
 import {compileString, sassTrue} from 'sass';
-import {writeFileSync} from 'fs';
-import path from 'path';
+import {writeFileSync} from 'node:fs';
 
 // Descriptions for built in Sass module.
 const moduleDescriptions = {
@@ -92,10 +91,7 @@ function generateModuleMetadata(): ModuleDefinition[] {
 // Generates metadata, and outputs it as source.
 function writeFile(): void {
   const moduleMembers = generateModuleMetadata();
-  const filePath = path.resolve(
-    __dirname,
-    '../source/assets/js/playground/module-metadata.ts'
-  );
+  const filePath = 'source/assets/js/playground/module-metadata.ts';
   try {
     writeFileSync(
       filePath,

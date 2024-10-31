@@ -1,4 +1,4 @@
-import {highlight, languages} from 'prismjs';
+import prism from 'prismjs';
 import PrismLoader from 'prismjs/components/index';
 
 import {liquidEngine} from '../engines';
@@ -49,11 +49,11 @@ export function codeBlock(
   language: string,
   padding = 0
 ): string {
-  if (!languages[language]) {
+  if (!prism.languages[language]) {
     PrismLoader(language);
   }
   const code = `${contents}${'\n'.repeat(padding + 1)}`;
-  const html = highlight(code, languages[language], language);
+  const html = prism.highlight(code, prism.languages[language], language);
   const attr = `language-${language}`;
   return `<pre class="${attr}"><code class="${attr}">${html.replaceAll(
     '\n',

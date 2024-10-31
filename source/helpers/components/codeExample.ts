@@ -1,4 +1,4 @@
-import sass from 'sass';
+import * as sass from 'sass';
 
 import {liquidEngine} from '../engines';
 import {stripIndent} from '../type';

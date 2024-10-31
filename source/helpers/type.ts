@@ -1,7 +1,7 @@
 import {LoremIpsum} from 'lorem-ipsum';
 import seedrandom from 'seedrandom';
 import truncate from 'truncate-html';
-import {typogrify} from 'typogr';
+import typogr from 'typogr';
 
 import {markdownEngine} from './engines';
 
@@ -79,8 +79,8 @@ export function markdownInline(content: string): string {
  *
  * @see https://github.com/ekalinin/typogr.js
  */
-export function typogr(content: string): string {
-  return typogrify(content);
+export function typogrify(content: string): string {
+  return typogr.typogrify(content);
 }
 
 /**
@@ -103,7 +103,7 @@ export default function typePlugin(eleventyConfig: any): void {
   eleventyConfig.addLiquidFilter('truncateHTML', truncateHTML);
   eleventyConfig.addLiquidFilter('markdown', markdown);
   eleventyConfig.addLiquidFilter('markdownInline', markdownInline);
-  eleventyConfig.addLiquidFilter('typogr', typogr);
+  eleventyConfig.addLiquidFilter('typogr', typogrify);
   eleventyConfig.addLiquidFilter('replaceInternalLinks', replaceInternalLinks);
   eleventyConfig.addLiquidFilter('startsWith', startsWith);
 
