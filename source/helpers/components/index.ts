@@ -1,12 +1,12 @@
-import {highlight, languages} from 'prismjs';
-import PrismLoader from 'prismjs/components/index';
+import prism from 'prismjs';
+import PrismLoader from 'prismjs/components/index.js';
 
-import {liquidEngine} from '../engines';
-import {stripIndent} from '../type';
-import {default as codeExample} from './codeExample';
-import {compatibility, implStatus} from './compatibility';
-import {default as deprecations} from './deprecations';
-import {getDocTocData, getToc} from './toc';
+import {liquidEngine} from '../engines.js';
+import {stripIndent} from '../type.js';
+import {default as codeExample} from './codeExample.js';
+import {compatibility, implStatus} from './compatibility.js';
+import {default as deprecations} from './deprecations.js';
+import {getDocTocData, getToc} from './toc.js';
 
 export {codeExample};
 export {compatibility, implStatus};
@@ -49,11 +49,11 @@ export function codeBlock(
   language: string,
   padding = 0
 ): string {
-  if (!languages[language]) {
+  if (!prism.languages[language]) {
     PrismLoader(language);
   }
   const code = `${contents}${'\n'.repeat(padding + 1)}`;
-  const html = highlight(code, languages[language], language);
+  const html = prism.highlight(code, prism.languages[language], language);
   const attr = `language-${language}`;
   return `<pre class="${attr}"><code class="${attr}">${html.replaceAll(
     '\n',

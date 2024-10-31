@@ -1,5 +1,5 @@
 import {SpawnOptionsWithoutStdio, spawn as nodeSpawn} from 'node:child_process';
-import fs from 'node:fs/promises';
+import * as fs from 'node:fs/promises';
 
 import deepEqual from 'deep-equal';
 import kleur from 'kleur';
@@ -109,7 +109,7 @@ async function getLatestVersion(repo: string): Promise<string> {
 // Eleventy's `_data` directory loading mechanism specifically relies on the
 // CommonJS `module.exports` pattern to expose global variables. Using `export
 // default` is not recognized by this loader.
-module.exports = async function (): Promise<Record<string, Release>> {
+export default async function (): Promise<Record<string, Release>> {
   const repos = ['sass/libsass', 'sass/dart-sass', 'sass/migrator'];
   const cache = await getCacheFile();
 
@@ -132,4 +132,4 @@ module.exports = async function (): Promise<Record<string, Release>> {
   }
 
   return data;
-};
+}

@@ -1,14 +1,9 @@
 {
-  "extends": "./node_modules/gts/tsconfig-google.json",
-  "ts-node": {
-    "transpileOnly": true
-  },
   "compilerOptions": {
-    "esModuleInterop": true,
     "target": "es2022",
-    "lib": ["es2022", "DOM"],
-    "isolatedModules": true,
-    "noEmit": true
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "lib": ["es2022"],
   },
   "include": ["source/**/*.ts", "tool/generate-module-metadata.ts"],
   "exclude": ["node_modules"]

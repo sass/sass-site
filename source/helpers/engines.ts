@@ -5,9 +5,10 @@ import markdownAnchor from 'markdown-it-anchor';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownDefList from 'markdown-it-deflist';
 import markdownItFootnote from 'markdown-it-footnote';
-import path from 'path';
+import * as p from 'node:path';
+import {fileURLToPath} from 'node:url';
 
-import {renderPermalink} from './components/anchors';
+import {renderPermalink} from './components/anchors.js';
 
 /**
  * Returns Markdown engine with custom configuration and plugins.
@@ -30,6 +31,9 @@ export const markdownEngine = markdown({
     slugify: s => slugify(s),
   });
 
+/** The directory that contains this file. */
+const dirname = p.dirname(fileURLToPath(import.meta.url));
+
 /**
  * Returns LiquidJS engine with custom configuration.
  *
@@ -37,8 +41,8 @@ export const markdownEngine = markdown({
  */
 export const liquidEngine = new Liquid({
   root: [
-    path.resolve(__dirname, '../_includes/'),
-    path.resolve(__dirname, '../'),
+    p.resolve(dirname, '../_includes/'),
+    p.resolve(dirname, '../'),
   ],
   extname: '.liquid',
   strictFilters: true,

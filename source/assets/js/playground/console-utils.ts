@@ -1,9 +1,9 @@
 import {Exception, SourceSpan} from 'sass';
 
-import {PlaygroundSelection, PlaygroundState, serializeState} from './utils';
+import {PlaygroundSelection, PlaygroundState, serializeState} from './utils.js';
 
 import Color from 'colorjs.io';
-import {colorSwatchView} from './color-decorator';
+import {colorSwatchView} from './color-decorator.js';
 
 export interface ConsoleLogDebug {
   options: {

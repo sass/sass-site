@@ -1,5 +1,5 @@
-import {liquidEngine} from '../engines';
-import {stripIndent} from '../type';
+import {liquidEngine} from '../engines.js';
+import {stripIndent} from '../type.js';
 
 /**
  * Renders a status dashboard for each implementation's support for a feature.

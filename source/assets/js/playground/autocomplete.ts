@@ -6,7 +6,7 @@ import {
 import {sassCompletionSource} from '@codemirror/lang-sass';
 import {syntaxTree} from '@codemirror/language';
 import {EditorState} from '@codemirror/state';
-import moduleMetadata from './module-metadata';
+import moduleMetadata from './module-metadata.js';
 
 // The validFor identifier, from @codemirror/lang-css. After an initial set of
 // possible completions are returned from a completion soruce, the matched set

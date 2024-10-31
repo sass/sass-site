@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import type {Element} from 'domhandler';
 
 /** Metadata about a single item in the table of contents. */
 interface TOCItem {
@@ -55,8 +56,7 @@ export function getToc(html: string, topLevelTotal: number): TOCItem[] {
     6: [],
   };
 
-  headings.each((index, element) => {
-    const h = element as cheerio.Element;
+  headings.each((index, h) => {
     const level = parseInt(h.name[1], 10);
     const title = $(h).html() as string;
     const id = $(h).attr('id') as string;

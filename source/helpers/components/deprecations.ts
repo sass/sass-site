@@ -1,7 +1,7 @@
-import fs from 'node:fs';
-import sass from 'sass';
+import * as fs from 'node:fs';
+import * as sass from 'sass';
 
-import {liquidEngine} from '../engines';
+import {liquidEngine} from '../engines.js';
 
 /**
  * Renders a table of deprecations with the given status.

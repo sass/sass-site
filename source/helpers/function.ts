@@ -1,8 +1,8 @@
 import * as cheerio from 'cheerio';
 
-import {codeBlock} from './components';
-import {liquidEngine} from './engines';
-import {stripIndent} from './type';
+import {codeBlock} from './components.js';
+import {liquidEngine} from './engines.js';
+import {stripIndent} from './type.js';
 
 /** A map from type names to the URLs for the documentation of those types. */
 const links: Record<string, string> = {

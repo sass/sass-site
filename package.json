@@ -13,6 +13,7 @@
   "engines": {
     "node": "^20"
   },
+  "type": "module",
   "scripts": {
     "serve": "run-p 'watch:**'",
     "build": "run-s clean-version-cache build-dev:scripts 'build:**'",
@@ -20,14 +21,14 @@
     "clean-version-cache": "rm -f source/_data/versionCache.json",
     "build:sass": "sass --style=compressed ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
     "watch:sass": "sass --watch ./source/assets/sass/sass.scss:./source/assets/dist/css/sass.css ./source/assets/sass/noscript.scss:./source/assets/dist/css/noscript.css",
-    "build-module-metadata": "ts-node tool/generate-module-metadata.ts",
+    "build-module-metadata": "tsx tool/generate-module-metadata.ts",
     "build-rollup": "rollup -c",
     "watch-rollup": "rollup -c -w",
     "build-dev:scripts": "run-s build-module-metadata build-rollup",
     "build-prod:scripts": "NODE_ENV=production BABEL_ENV=production npm run build-dev:scripts",
     "watch:scripts": "run-s build-module-metadata watch-rollup",
     "build:typedoc": "./tool/typedoc-build.sh",
-    "build:11ty": "NODE_OPTIONS='-r ts-node/register' eleventy",
+    "build:11ty": "NODE_OPTIONS='--import tsx' eleventy",
     "watch:11ty": "npm run build:11ty -- --serve --incremental",
     "check": "run-s check:gts check:tsc check:stylelint",
     "check:gts": "gts check",
@@ -42,7 +43,7 @@
     "checklinks:external": "npx --yes --package=broken-link-checker -- 'blc -ro --exclude=twitter.com --exclude=mvnrepository.com --exclude=drupal.org --exclude=web.archive.org https://sass-lang.com'"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-plugin-rss": "^2.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@babel/core": "^7.26.0",
@@ -110,7 +111,7 @@
     "stylelint": "^15.11.0",
     "stylelint-config-standard-scss": "^11.1.0",
     "truncate-html": "^1.1.2",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "typogr": "^0.6.8"
   },

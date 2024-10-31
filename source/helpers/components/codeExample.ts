@@ -1,8 +1,8 @@
-import sass from 'sass';
+import * as sass from 'sass';
 
-import {liquidEngine} from '../engines';
-import {stripIndent} from '../type';
-import {serializeStateContents} from '../../assets/js/playground/utils';
+import {liquidEngine} from '../engines.js';
+import {stripIndent} from '../type.js';
+import {serializeStateContents} from '../../assets/js/playground/utils.js';
 
 /**
  * Renders a code example.

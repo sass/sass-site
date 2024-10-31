@@ -2,7 +2,7 @@ import {Diagnostic} from '@codemirror/lint';
 import {Exception, Importer, OutputStyle, Syntax} from 'sass';
 import {deflate, inflate} from 'pako';
 
-import {ConsoleLog, ConsoleLogDebug, ConsoleLogWarning} from './console-utils';
+import {ConsoleLog, ConsoleLogDebug, ConsoleLogWarning} from './console-utils.js';
 
 const PLAYGROUND_LOAD_ERROR_MESSAGE =
   'The Sass Playground does not support loading stylesheets.';
