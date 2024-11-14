@@ -317,7 +317,7 @@ title: sass:meta
 
   [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
 
-  The returned mixin can be included using [`meta.apply()`](#apply).
+  The returned function can be called using [`meta.call()`](#call).
 
   {% render 'code_snippets/example-first-class-function' %}
 {% endfunction %}
@@ -336,12 +336,9 @@ title: sass:meta
 
   [`@use` rule]: /documentation/at-rules/use
 
-  By default, this throws an error if `$name` doesn't refer to a mixin. However,
-  if `$css` is `true`, it instead returns a [plain CSS function].
+  By default, this throws an error if `$name` doesn't refer to a mixin.
 
-  [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
-
-  The returned function can be called using [`meta.call()`](#call).
+  The returned mixin can be included using [`meta.apply()`](#apply).
 
   {% render 'code_snippets/example-first-class-mixin' %}
 {% endfunction %}
