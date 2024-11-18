@@ -74,7 +74,7 @@
     "@types/markdown-it-footnote": "^3.0.4",
     "@types/node": "^16",
     "@types/pako": "^2.0.3",
-    "@types/prismjs": "^1.26.4",
+    "@types/prismjs": "^1.26.5",
     "@types/seedrandom": "^3.0.8",
     "@types/semver": "^7.5.8",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
