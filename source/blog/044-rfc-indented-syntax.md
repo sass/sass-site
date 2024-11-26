@@ -49,7 +49,7 @@ linebreak is treated as whitespace. This means that if the parser can't tell
 whether or not a linebreak is intended to end a statement, it will end the
 statement.
 
-This examples demonstrates several places where line breaks will be possible.
+This example demonstrates several places where line breaks will be possible.
 
 ```sass
 @each $item in ¹
