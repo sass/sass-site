@@ -108,7 +108,7 @@ These changes are opt-in, so authors who don't want to use the new syntax do not
 have to make any changes or learn new syntax. No changes need to be made to
 existing stylesheets written in the Indented Syntax.
 
-# Next steps
+## Next steps
 
 This is still in the proposal phase, and we are open to feedback. Review the
 proposal [on
