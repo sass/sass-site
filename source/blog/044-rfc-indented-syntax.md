@@ -53,7 +53,7 @@ This example demonstrates several places where line breaks will be possible.
 
 ```sass
 @each $item in /* A statement can't end after the word "in" in an `@each` statement. */
-    1 2 3
+    1, 2, 3
   .item-#{ 
     $item /* A statement can't end inside the curly braces in an interpolation. */
   }
@@ -61,6 +61,19 @@ This example demonstrates several places where line breaks will be possible.
         10
 ```
 
+
+As a counter example, here are some places in the same stylesheet where
+linebreaks could end statements, so linebreaks will cause compilation errors.
+
+> **Important! This code snippet demonstrates what will NOT work.**
+
+```sass
+@each $item in 1, /* A statement can end after a value, even in the middle of a list. */
+     2, 3
+  .item-#{ $item }
+    content: $item /* A statement can end after a value, and does not look ahead for operators. */
+      * 10
+```
 
 ## SCSS-in-Sass
 
