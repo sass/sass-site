@@ -68,9 +68,9 @@ Webpack should already use the modern API by default, but if you're getting
 warnings, set `api` to `"modern"` or `"modern-compiler"`.
 See [Webpack's documentation] for more details.
 
-Vite still defaults to the legacy API, but you can similarly switch it by
-setting `api` to `"modern"` or `"modern-compiler"`. See [Vite's documentation]
-for more details.
+Vite 6 uses the modern API by default. Previous versions of Vite still use the
+legacy API, however from Vite 5.4 you can switch it by setting `api` to
+`"modern"` or `"modern-compiler"`. See [Vite's documentation] for more details.
 
 For other tools, check their documentation or issue tracker for information
 about supporting the modern Sass API.
