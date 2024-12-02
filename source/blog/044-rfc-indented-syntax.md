@@ -1,7 +1,7 @@
 ---
 title: "Request for Comments: Indented Syntax Improvements"
 author: James Stuckey Weber
-date: 2024-11-27 15:30:00 -8
+date: 2024-12-02 15:30:00 -8
 ---
 
 For users of the indented syntax (`.sass`), there has been a long standing
