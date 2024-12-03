@@ -14,12 +14,10 @@ address this pain point. We are proposing several new syntax options in the
 indented syntax that add considerable flexibility and look to address this as
 part of the language.
 
-## The new syntax
+## Multiline statements
 
-Instead of adding syntax that is completely new to Sass, we propose to borrow
-syntax from the SCSS format and make it available in the indented syntax. This
-reduces the learning curve, code complexity, and likelihood of future conflicts
-with new CSS features.
+We propose allowing statements in the indented syntax to span multiple lines, as
+long as line breaks occur in places where the statement can't end. 
 
 A common way of using this syntax will be wrapping lists with line breaks in
 parentheses. This allows for a grid-template declaration on multiple lines.
@@ -34,7 +32,7 @@ parentheses. This allows for a grid-template declaration on multiple lines.
 }
 ```
 
-These parentheses will not be included in the output.
+As usual, these parentheses will not be included in the output.
 
 ```css
 .grid {
@@ -44,12 +42,12 @@ These parentheses will not be included in the output.
 ```
 
 Powering this change is the underlying rule that linebreaks only end statements
-in places where statements can end. Anywhere where a statement can't end, a
-linebreak is treated as whitespace. This means that if the parser can't tell
-whether or not a linebreak is intended to end a statement, it will end the
-statement.
+where it's valid for a statement to end. Anywhere where a statement can't end, a
+linebreak is ignored. This means that if the parser can't tell whether or not a
+linebreak is intended to end a statement, it will end the statement.
 
-This example demonstrates several places where line breaks will be possible.
+This example demonstrates several places where line breaks will not end
+statements.
 
 ```sass
 @each $item in /* A statement can't end after the word "in" in an `@each` statement. */
@@ -63,7 +61,8 @@ This example demonstrates several places where line breaks will be possible.
 
 
 As a counter example, here are some places in the same stylesheet where
-linebreaks could end statements, so linebreaks will cause compilation errors.
+linebreaks could end statements. These linebreaks will cause compilation errors
+because the _next_ line is not able to be parsed.
 
 > **Important! This code snippet demonstrates what will NOT work.**
 
@@ -113,17 +112,18 @@ semicolon (unless you're in a [SCSS-in-Sass](#scss-in-sass) block).
 
 ## No breaking changes
 
-These changes are opt-in, so authors who don't want to use the new syntax do not
-have to make any changes or learn new syntax. No changes need to be made to
-existing stylesheets written in the Indented Syntax.
+These changes are opt-in, and authors who don't want to use the new syntax do
+not have to. No changes need to be made to existing stylesheets written in the
+indented syntax.
 
 ## Next steps
 
 This is still in the proposal phase, and we are open to feedback. Review the
-proposal [on
-Github](https://github.com/sass/sass/blob/main/proposal/indented-syntax-improvements.md),
-and [open an issue](https://github.com/sass/sass/issues/new) with any thoughts
-or concerns you may have.
+proposal [on Github], and [open an issue] with any thoughts or concerns you
+may have.
+
+[on Github]: https://github.com/sass/sass/blob/main/proposal/indented-syntax-improvements.md
+[open an issue]: https://github.com/sass/sass/issues/new
 
 In addition to feedback from authors using the indented syntax, we are also
 interested in hearing from maintainers of tooling that supports the indented
