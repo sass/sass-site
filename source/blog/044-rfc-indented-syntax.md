@@ -29,7 +29,6 @@ parentheses. This allows for a grid-template declaration on multiple lines.
     "header" min-content
     "main" 1fr
   )
-}
 ```
 
 As usual, these parentheses will not be included in the output.
