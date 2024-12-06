@@ -13,4 +13,12 @@
     "sort-imports": ["error", {"ignoreDeclarationSort": true}],
     "etc/prefer-interface": ["error"],
   },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+      },
+    },
+  ],
 }

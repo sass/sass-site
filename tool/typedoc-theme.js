@@ -1,11 +1,11 @@
-const {
+import {
   DefaultTheme,
   DefaultThemeRenderContext,
   JSX,
   UrlMapping,
-} = require('typedoc');
-const child_process = require('child_process');
-const fs = require('fs');
+} from 'typedoc';
+import * as child_process from 'node:child_process';
+import * as fs from 'node:fs';
 
 function bind(fn, first) {
   return (...r) => fn(first, ...r);
@@ -222,7 +222,7 @@ title: ${JSON.stringify(`${page.model.name} | JS API`)}
   }
 }
 
-exports.load = app => {
+export function load(app) {
   app.converter.addUnknownSymbolResolver((ref, refl, part, symbolId) => {
     if (!symbolId) return;
     let name = symbolId.qualifiedName;
@@ -256,4 +256,4 @@ exports.load = app => {
   });
 
   app.renderer.defineTheme('sass-site', SassSiteTheme);
-};
+}

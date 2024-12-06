@@ -1,9 +1,9 @@
-const {babel} = require('@rollup/plugin-babel');
-const commonjs = require('@rollup/plugin-commonjs');
-const inject = require('@rollup/plugin-inject');
-const {nodeResolve} = require('@rollup/plugin-node-resolve');
-const terser = require('@rollup/plugin-terser');
-const {defineConfig} = require('rollup');
+import {babel} from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import inject from '@rollup/plugin-inject';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
+import {defineConfig} from 'rollup';
 
 const prod = process.env.BABEL_ENV === 'production';
 
@@ -24,7 +24,7 @@ if (prod) {
   plugins.push(terser());
 }
 
-module.exports = defineConfig([
+export default defineConfig([
   {
     input: 'source/assets/js/sass.ts',
     output: {

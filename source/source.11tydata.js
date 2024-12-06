@@ -1,3 +1,3 @@
-if (process.env.NODE_ENV === 'production') {
-  module.exports = {date: 'git Last Modified'};
-}
+export default process.env.NODE_ENV === 'production'
+  ? {date: 'git Last Modified'}
+  : {};
