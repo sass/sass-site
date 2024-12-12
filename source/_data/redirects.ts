@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as p from 'path';
+import * as fs from 'node:fs';
+import * as p from 'node:path';
 
 /** Returns `path` without any file extensions. */
 function withoutExtensions(path: string): string {
@@ -8,7 +8,7 @@ function withoutExtensions(path: string): string {
 
 /** A list of breaking change URLs. */
 export const breaking: string[] = fs
-  .readdirSync(p.join(__dirname, '../documentation/breaking-changes'))
+  .readdirSync(p.join(import.meta.dirname, '../documentation/breaking-changes'))
   .filter(path => path.endsWith('.md'))
   .map(path => withoutExtensions(p.basename(path)));
 
