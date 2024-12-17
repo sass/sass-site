@@ -73,47 +73,26 @@ because the _next_ line is not able to be parsed.
       * 10
 ```
 
-## SCSS-in-Sass
-
-We are also proposing a new block-level opt-in to the SCSS format. One 
-workaround for not having multiline statements has been to author some styles in
-separate SCSS files, and this provides an inline alternative.
-
-To opt in to the SCSS format for a block, you simply need
-to wrap the block inside of curly braces. 
-
-```sass
-a
-  color: blue
-
-// Opt in to SCSS format for this rule
-p {
-  padding: 
-    var(--top-padding, 1em)
-    var(--right-padding, 2em)
-    var(--bottom-padding, 1em)
-    var(--left-padding, 1.5em);
-  color: red;
-}
-
-// Back to indented syntax
-strong
-  font:
-    weight: bold
-```
-
 ## Semicolons are also allowed
 
 Another proposed change would allow semicolons to optionally be added at the end
 of statements in the indented syntax. Indentation rules still apply, so you
 won't be able to separate multiple statements on the same line, even with a
-semicolon (unless you're in a [SCSS-in-Sass](#scss-in-sass) block).
+semicolon.
 
 ## No breaking changes
 
 These changes are opt-in, and authors who don't want to use the new syntax do
 not have to. No changes need to be made to existing stylesheets written in the
 indented syntax.
+
+## An update to the proposal
+
+An earlier version of this post proposed a "SCSS-in-Sass" format. After feedback
+from tool maintainers, this has been removed from the proposal, but we welcome
+feedback on the [Github issue].
+
+[Github issue]: https://github.com/sass/sass/issues/4003
 
 ## Next steps
 
