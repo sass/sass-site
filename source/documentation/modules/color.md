@@ -127,7 +127,7 @@ title: sass:color
 
     @debug color.change(#6b717f, $red: 100); // #64717f
     @debug color.change(color(srgb 0 0.2 0.4), $red: 0.8, $blue: 0.1);
-    // color(srgb 0.8 0.1 0.4)
+    // color(srgb 0.8 0.2 0.1)
     @debug color.change(#998099, $lightness: 30%, $space: oklch);
     // rgb(58.0719961509, 37.2631531594, 58.4201613409)
     ===
@@ -135,7 +135,7 @@ title: sass:color
 
     @debug color.change(#6b717f, $red: 100)  // #64717f
     @debug color.change(color(srgb 0 0.2 0.4), $red: 0.8, $blue: 0.1)
-    // color(srgb 0.8 0.1 0.4)
+    // color(srgb 0.8 0.2 0.1)
     @debug color.change(#998099, $lightness: 30%, $space: oklch)
     // rgb(58.0719961509, 37.2631531594, 58.4201613409)
   {% endcodeExample %}
