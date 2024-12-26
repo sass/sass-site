@@ -54,7 +54,7 @@ that contains a list of all Sass arguments, with asynchronous custom functions
 returning a promise.
 
 The modern API also uses a much more robust [`Value`] class that supports all
-Sass value stypes, type assertions, and easy map and list lookups.
+Sass values types, type assertions, and easy map and list lookups.
 
 [`Value`]: /documentation/js-api/classes/Value/
 
