@@ -202,8 +202,8 @@ will forbid any units.
 
 {% compatibility 'dart: "1.56.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-Currently, Sass emits a deprecation warning if you pass a `$weight` with no
-units or with units other than `%` to `color.mix()` or `color.invert()`.
+Currently, Sass emits a deprecation warning if you pass an index `$n` with units to
+`list.nth()` or `list.set-nth()`.
 
 ### Phase 2
 

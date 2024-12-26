@@ -308,7 +308,7 @@ title: sass:color
 {% function 'color.is-legacy($color)', 'returns:boolean' %}
   {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
-Returns whether `$color` is in a [legacy color space].
+  Returns whether `$color` is in a [legacy color space].
 
   [legacy color space]: /documentation/values/colors#legacy-color-spaces
 
@@ -330,10 +330,10 @@ Returns whether `$color` is in a [legacy color space].
 {% function 'color.is-missing($color, $channel)', 'returns:boolean' %}
   {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
-Returns whether `$channel` is [missing] in `$color`. The `$channel` must be a
+  Returns whether `$channel` is [missing] in `$color`. The `$channel` must be a
   quoted string.
 
-  [missing channel]: /documentation/values/colors#missing-channels
+  [missing]: /documentation/values/colors#missing-channels
 
   {% codeExample 'color-is-missing', false %}
     @use 'sass:color';
@@ -353,7 +353,7 @@ Returns whether `$channel` is [missing] in `$color`. The `$channel` must be a
 {% function 'color.is-powerless($color, $channel, $space: null)', 'returns:boolean' %}
   {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false', 'feature: "$space"' %}{% endcompatibility %}
 
-Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
+  Returns whether `$color`'s `$channel` is [powerless] in `$space`, which
   defaults to `$color`'s space. The `$channel` must be a quoted string and the
   `$space` must be an unquoted string.
 
