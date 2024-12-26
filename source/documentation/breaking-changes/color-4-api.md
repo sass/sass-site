@@ -68,6 +68,8 @@ warning when constructing a new [legacy color] or calling `color.change()` for a
 legacy color. In either case, if you pass a `space` parameter explicitly, you'll
 opt into the new behavior and `null` will be treated as a missing channel.
 
+[legacy color]: /documentation/values/colors#legacy-color-spaces
+
 ## Transition Period
 
 {% compatibility 'dart: "1.79.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
