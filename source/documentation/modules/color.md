@@ -333,7 +333,7 @@ Returns whether `$color` is in a [legacy color space].
 Returns whether `$channel` is [missing] in `$color`. The `$channel` must be a
   quoted string.
 
-  [missing channel]: /documentation/values/colors#missing-channels
+  [missing]: /documentation/values/colors#missing-channels
 
   {% codeExample 'color-is-missing', false %}
     @use 'sass:color';
