@@ -183,7 +183,7 @@ $playground-base-colors: (
   overflow-y: inherit;
 
   .cm-gutters {
-    background-color: transparent;
+    background-color: var(--sl-background--editor);
     border-right: none;
   }
 
