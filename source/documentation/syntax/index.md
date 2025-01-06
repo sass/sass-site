@@ -79,9 +79,9 @@ The indented syntax looks like this:
 
 {% compatibility 'dart: "1.84.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-In the indented syntax, statements can span multiple lines, as long as line
+In the indented syntax, statements can span multiple lines as long as line
 breaks occur in places where the statement can’t end. This includes inside
-parentheses or other brackets, or between keywords in a Sass-specific At Rule.
+parentheses or other brackets, or between keywords in a Sass-specific @-rule.
 
 ```sass
 .grid
