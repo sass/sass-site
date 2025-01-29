@@ -319,7 +319,7 @@ $ cat style.scss
 }
 $ sass-migrator --migrate-deps module --remove-prefix=app- style.scss
 $ cat style.scss
-@import "theme";
+@use "theme";
 
 @mixin inverted {
   color: theme.$bg-color;
