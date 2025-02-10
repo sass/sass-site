@@ -107,7 +107,7 @@
     "rollup": "^4.34.1",
     "sass": "^1.84.0",
     "semver": "^7.6.3",
-    "stylelint": "^15.11.0",
+    "stylelint": "^16.14.1",
     "stylelint-config-standard-scss": "^11.1.0",
     "truncate-html": "^1.1.2",
     "ts-node": "^10.9.2",
