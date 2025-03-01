@@ -15,7 +15,7 @@ duplicating the outer selector more than necessary. For example:
   .example {
     color: red;
 
-    a {
+    &--serious {
       font-weight: bold;
     }
 
@@ -25,7 +25,7 @@ duplicating the outer selector more than necessary. For example:
   .example
     color: red
 
-    a
+    &--serious
       font-weight: bold
 
 
@@ -36,7 +36,7 @@ duplicating the outer selector more than necessary. For example:
     font-weight: normal;
   }
 
-  .example a {
+  .example--serious {
     font-weight: bold;
   }
 {% endcodeExample %}
@@ -52,7 +52,7 @@ make the declarations apply in the order they appeared in the document, like so:
   .example {
     color: red;
 
-    a {
+    &--serious {
       font-weight: bold;
     }
 
@@ -62,7 +62,7 @@ make the declarations apply in the order they appeared in the document, like so:
   .example
     color: red
 
-    a
+    &--serious
       font-weight: bold
 
 
@@ -72,7 +72,7 @@ make the declarations apply in the order they appeared in the document, like so:
     color: red;
   }
 
-  .example a {
+  .example--serious {
     font-weight: bold;
   }
 
@@ -98,7 +98,7 @@ declarations in `& {}`:
   .example {
     color: red;
 
-    a {
+    &--serious {
       font-weight: bold;
     }
 
@@ -110,7 +110,7 @@ declarations in `& {}`:
   .example
     color: red
 
-    a
+    &--serious
       font-weight: bold
 
 
