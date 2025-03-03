@@ -106,7 +106,7 @@
     "prismjs": "^1.29.0",
     "rollup": "^4.34.9",
     "sass": "^1.85.1",
-    "semver": "^7.6.3",
+    "semver": "^7.7.1",
     "stylelint": "^16.14.1",
     "stylelint-config-standard-scss": "^14.0.0",
     "truncate-html": "^1.1.2",
