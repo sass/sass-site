@@ -64,7 +64,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@sindresorhus/slugify": "^1.1.2",
     "@spectrum-web-components/shared": "^1.1.2",
-    "@spectrum-web-components/split-view": "^1.0.3",
+    "@spectrum-web-components/split-view": "^1.2.0",
     "@types/deep-equal": "^1.0.4",
     "@types/jquery": "^3.5.32",
     "@types/jqueryui": "^1.12.23",
