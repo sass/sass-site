@@ -205,6 +205,42 @@ code point, whether it's escaped or unescaped:
   @debug string.length(\7Fx)  // 5
 {% endcodeExample %}
 
+### Other Unquoted Strings
+
+In addition to identifiers, there are a few unusual corners of CSS syntax that
+are parsed as unquoted strings. These include:
+
+* [Special functions] like `url()` and `element()` whose arguments have
+  syntax that's different from normal CSS expression syntax.
+
+* [Unicode range] tokens like `U+0-7F` or `U+4??`.
+
+* [Hash tokens] whose values are identifiers but which aren't valid hex colors.
+
+* The value `%`. (This is only available when it's not directly between two other
+  values, because otherwise it would be ambiguous with [the modulo operator].)
+
+* The special value `!important`.
+
+[Special functions]: /documentation/syntax/special-functions/
+[Unicode range]: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range
+[Hash tokens]: https://www.w3.org/TR/css-syntax-3/#ref-for-typedef-hash-token%E2%91%A0
+[the modulo operator]: /documentation/operators/numeric/
+
+{% codeExample 'other-unquoted-strings', false %}
+  @debug url(https://example.org); // url(https://example.org)
+  @debug U+4??; // U+4??
+  @debug #my-background; // #my-background
+  @debug %; // %
+  @debug !important; // !important
+  ===
+  @debug url(https://example.org)  // url(https://example.org)
+  @debug U+4??  // U+4??
+  @debug #my-background  // #my-background
+  @debug %  // %
+  @debug !important  // !important
+{% endcodeExample %}
+
 ## String Indexes
 
 Sass has a number of [string functions][] that take or return numbers, called
