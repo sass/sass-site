@@ -1,5 +1,5 @@
 ---
-title: 'Breaking Change: `@import` and global built-in functions'
+title: 'Breaking Change: @import and global built-in functions'
 introduction: >
   Originally, Sass used `@import` rules to load other files with a single
   global namespace, with all built-in functions also available globally. We're
@@ -52,6 +52,95 @@ $ sass-migrator module --migrate-deps your-entrypoint.scss
 If you want to migrate away from global built-in functions, but aren't yet
 ready to fully migrate your `@import` rules, you can pass the `--built-in-only`
 flag to migrate the functions while leaving `@import` rules as-is.
+
+## Migration Recipes
+
+### Nested Imports
+
+While `@import` can be used within CSS rules, `@use` has to be written at the
+top level of a file (this is because each `@use`d module's CSS is only included
+in the output once, so it wouldn't make sense to allow it both in a nested
+context and the top level). There are two ways to migrate nested `@import`s to
+the module system:
+
+1. The recommended way, which requires a little more up-front effort, is to wrap
+   all the CSS emitted by your nested modules in [mixins] and `@include` those
+   mixins in the nested context. This matches the way most other programming
+   languages work, where each file defines a function or class that gets called
+   by the files that use it, and it makes it very clear exactly how you expect
+   that file to be used. It also makes it easier to add configuration, since you
+   can just pass parameters or even [`@content` blocks] to the mixin.
+
+2. A more direct translation is to use the [`meta.load-css()` mixin] to directly
+   load the module's CSS where you want to use it. This is appropriate when you
+   don't have control over the file you're loading to create a mixin wrapper.
+   Note that `meta.load-css()` fully compiles the CSS before it does any
+   nesting, so any [parent selectors] won't "see" the rules outside the
+   `meta.load-css()` call.
+
+[mixins]: /documentation/at-rules/mixin/
+[`@content` blocks]: /documentation/at-rules/mixin/#content-blocks
+[`meta.load-css()` mixin]: /documentation/modules/meta/#load-css
+[parent selectors]: /documentation/style-rules/parent-selector/
+
+### Configured Themes
+
+A pattern that people sometimes use with `@import` is to have a component
+library full of partials that all use the same variables without explicitly
+loading them, and then having several different "theme" entrypoints that define
+different values for those variables to provide different visual themes. They
+may either define the variables directly, or override defaults of a base theme
+partial. As a simplified example:
+
+{% codeExample 'import-theme' %}
+  // components/_button.scss
+  button {
+    color: $text-color;
+    background-color: $background-color;
+  }
+  ---
+  // _theme.scss
+  $text-color: black !default;
+  $background-color: white !default;
+  ---
+  // dark.scss
+  $text-color: white;
+  $background-color: white;
+  @import "theme";
+
+  @import "components/button";
+  // More components are usually imported here.
+  ===
+  // components/_button.scss
+  button
+    color: $text-color
+    background-color: $background-color
+  ---
+  // _theme.scss
+  $text-color: black
+  $background-color: white
+  ---
+  // dark.scss
+  $text-color: white
+  $background-color: white
+  @import "theme"
+
+  @import "components/button"
+  // More components are usually imported here.
+  ===
+  button {
+    color: white;
+    background-color: black;
+  }
+{% endcodeExample %}
+
+In the module system, the component partials need to explicitly reference the
+variables they refer to. But this doesn't mean this kind of theming doesn't
+work! Because `@use`-ing the same module multiple times always uses the same
+configuration, if you configure it once in the entrypoint and all other uses
+will see that configuration:
+
+{% render 'code_snippets/example-use-theme' %}
 
 {% render 'silencing_deprecations' %}
 
