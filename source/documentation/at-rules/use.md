@@ -288,6 +288,14 @@ the variables' default values.
 
 {% render 'code_snippets/example-use-with' %}
 
+A module will keep the same configuration (or lack of configuration) even if
+it's loaded multiple times. Because of this, `@use ... with` can only be used
+once per module, the first time that module is loaded. This also makes it
+possible to use configuration to create "themes" that apply throughout a
+compilation:
+
+{% render 'code_snippets/example-use-theme' %}
+
 ### With Mixins
 
 Configuring modules with `@use ... with` can be very handy, especially when
@@ -716,11 +724,12 @@ between the two:
   accidentally duplicating your dependencies' CSS many times over.
 
 * `@use` must appear at the beginning your file, and cannot be nested in style
-  rules.
+  rules. Nested imports can be migrated to [mixin calls or `meta.load-css()`].
 
 * Each `@use` rule can only have one URL.
 
 * `@use` requires quotes around its URL, even when using the [indented syntax].
 
 [`@import` rule]: /documentation/at-rules/import
+[mixin calls or `meta.load-css()`]: /documentation/breaking-changes/import/#nested-imports
 [indented syntax]: /documentation/syntax#the-indented-syntax
