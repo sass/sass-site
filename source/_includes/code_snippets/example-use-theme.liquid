@@ -1,0 +1,47 @@
+{% codeExample 'use-theme' %}
+  // components/_button.scss
+  @use "../theme";
+
+  button {
+    color: theme.$text-color;
+    background-color: theme.$background-color;
+  }
+  ---
+  // _theme.scss
+  $text-color: black !default;
+  $background-color: white !default;
+  ---
+  // dark.scss
+  @use "theme" with (
+    $text-color: white,
+    $background-color: white,
+  );
+
+  @use "components/button";
+  // More components are usually imported here.
+  ===
+  // components/_button.scss
+  @use "../theme"
+
+  button
+    color: theme.$text-color
+    background-color: theme.$background-color
+  ---
+  // _theme.scss
+  $text-color: black !default
+  $background-color: white !default
+  ---
+  // dark.scss
+  @use "theme" with (
+    $text-color: white,
+    $background-color: white,
+  )
+
+  @use "components/button"
+  // More components are usually imported here.
+  ===
+  button {
+    color: white;
+    background-color: black;
+  }
+{% endcodeExample %}
