@@ -629,6 +629,7 @@ title: sass:meta
   * [`bool`](/documentation/values/booleans)
   * [`null`](/documentation/values/null)
   * [`function`](/documentation/values/functions)
+  * [`mixins`](/documentation/values/mixins)
   * [`arglist`](/documentation/values/lists#argument-lists)
 
   New possible values may be added in the future. It may return either `list` or
