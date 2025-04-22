@@ -87,7 +87,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.3",
     "gts": "^5.3.1",
-    "immutable": "^5.0.3",
+    "immutable": "^5.1.1",
     "jquery": "^3.7.1",
     "jquery-ui": "^1.14.1",
     "js-yaml": "^4.1.0",
