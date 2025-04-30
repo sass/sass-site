@@ -16,7 +16,8 @@ The `@at-root` rule is necessary here because Sass doesn't know what
 interpolation was used to generate a selector when it's performing selector
 nesting. This means it will automatically add the outer selector to the inner
 selector *even if* you used `&` as a SassScript expression. The `@at-root`
-explicitly tells Sass not to include the outer selector.
+explicitly tells Sass not to include the outer selector (although it will
+_always_ be included in `&` as an expression).
 
 {% funFact %}
   The `@at-root` rule can also be written `@at-root { ... }` to put multiple
