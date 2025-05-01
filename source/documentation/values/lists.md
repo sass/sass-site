@@ -20,6 +20,13 @@ write lists with square brackets (`[line1 line2]`), which is useful when using
 [expressions]: /documentation/syntax/structure#expressions
 [`grid-template-columns`]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
 
+When writing lists without brackets, you can use parentheses to nest lists
+within one another or disambiguate between list separators and other uses of
+spaces or commas. For example, `(1, 2), (3, 4)` is a list that contains two
+lists, each of which contains two numbers; and `adjust-font-stack((Helvetica,
+Arial, sans-serif))` passes a single argument containing three font names to the
+`adjust-font-stack` function.
+
 Sass lists can contain one or even zero elements. A single-element list can be
 written either `(<expression>,)` or `[<expression>]`, and a zero-element list
 can be written either `()` or `[]`. Also, all [list functions][] will treat
