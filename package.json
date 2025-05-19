@@ -42,7 +42,7 @@
     "checklinks:external": "npx --yes --package=broken-link-checker -- 'blc -ro --exclude=twitter.com --exclude=mvnrepository.com --exclude=drupal.org --exclude=web.archive.org https://sass-lang.com'"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.1.0",
     "@11ty/eleventy-plugin-rss": "^2.0.3",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
     "@babel/core": "^7.27.1",
