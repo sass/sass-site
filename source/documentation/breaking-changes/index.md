@@ -22,6 +22,12 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [`type()` function](/documentation/breaking-changes/type-function/) beginning in Dart
+  Sass 1.86.0
+
+* [`@import`](/documentation/breaking-changes/import/) beginning in Dart
+  Sass 1.80.0
+
 * [The legacy JS API](/documentation/breaking-changes/legacy-js-api/) beginning
   in Dart Sass 1.79.0.
 
@@ -60,6 +66,12 @@ These breaking changes are coming soon or have recently been released:
 * [A variable may only have a single `!global` or `!default`
   flag](/documentation/breaking-changes/duplicate-var-flags) beginning in Dart
   Sass 1.62.0.
+
+* [Strict unary operators](/documentation/breaking-changes/strict-unary/)
+  beginning in Dart Sass 1.55.0.
+
+* [Media Queries Level 4](/documentation/breaking-changes/media-logic/) beginning in Dart
+  Sass 1.54.0, and ending the deprecation period in Dart Sass 1.56.0.
 
 * [Selectors with invalid combinators are
   invalid](/documentation/breaking-changes/bogus-combinators) beginning in Dart
