@@ -47,7 +47,7 @@ jobs:
     steps:
       - name: Download built site
         id: download_site
-        uses: dawidd6/action-download-artifact@v10
+        uses: dawidd6/action-download-artifact@v11
         with:
           name: site
           run_id: ${{ github.event.workflow_run.id }}
@@ -82,7 +82,7 @@ jobs:
     steps:
       - name: Download comment text
         id: download_comment
-        uses: dawidd6/action-download-artifact@v10
+        uses: dawidd6/action-download-artifact@v11
         with:
           name: comment
           run_id: ${{ github.event.workflow_run.id }}
