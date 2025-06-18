@@ -105,7 +105,7 @@ partial. As a simplified example:
   ---
   // dark.scss
   $text-color: white;
-  $background-color: white;
+  $background-color: black;
   @import "theme";
 
   @import "components/button";
@@ -122,7 +122,7 @@ partial. As a simplified example:
   ---
   // dark.scss
   $text-color: white
-  $background-color: white
+  $background-color: black
   @import "theme"
 
   @import "components/button"
