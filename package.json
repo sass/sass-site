@@ -111,7 +111,7 @@
     "semver": "^7.7.1",
     "stylelint": "^16.20.0",
     "stylelint-config-standard-scss": "^15.0.1",
-    "truncate-html": "^1.2.1",
+    "truncate-html": "^1.2.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "typogr": "^0.6.8"
