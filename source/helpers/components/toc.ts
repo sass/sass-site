@@ -56,7 +56,7 @@ export function getToc(html: string, topLevelTotal: number): TOCItem[] {
   };
 
   headings.each((index, element) => {
-    const h = element as cheerio.Element;
+    const h = element;
     const level = parseInt(h.name[1], 10);
     const title = $(h).html() as string;
     const id = $(h).attr('id') as string;
