@@ -42,6 +42,10 @@ existing project:
 
 ```yaml
 name: my_project
+
+environment:
+  sdk: ^3.6.0
+
 dev_dependencies:
   sass: ^{{ releases['dart-sass'].version }}
 ```
