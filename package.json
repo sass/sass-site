@@ -85,7 +85,7 @@
     "date-fns": "^4.1.0",
     "deep-equal": "^2.2.3",
     "eslint-plugin-etc": "^2.0.3",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
     "fast-glob": "^3.3.3",
     "gts": "^5.3.1",
