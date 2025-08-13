@@ -80,7 +80,7 @@
     "@types/semver": "^7.7.0",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "cheerio": "^1.0.0-rc.12",
-    "codemirror": "^6.0.1",
+    "codemirror": "^6.0.2",
     "colorjs.io": "^0.5.2",
     "date-fns": "^4.1.0",
     "deep-equal": "^2.2.3",
