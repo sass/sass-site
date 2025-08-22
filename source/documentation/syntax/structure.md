@@ -17,7 +17,8 @@ declarations.
 
 In SCSS, statements are separated by semicolons (which are optional if the
 statement uses a block). In the indented syntax, they're just separated by
-newlines.
+newlines. While you can use a semicolon at the end of a statement in the
+indented syntax, a newline is still required.
 
 ### Universal Statements
 

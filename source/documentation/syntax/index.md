@@ -47,16 +47,10 @@ indentation instead of curly braces and semicolons to describe the format of the
 document.
 
 In general, any time you'd write curly braces in CSS or SCSS, you can just
-indent one level deeper in the indented syntax. And any time a line ends, that
-counts as a semicolon. There are also a few additional differences in the
-indented syntax that are noted throughout the reference.
-
-{% headsUp %}
-  The indented syntax currently doesn't support expressions that wrap across
-  multiple lines. See [issue #216].
-
-  [issue #216]: https://github.com/sass/sass/issues/216
-{% endheadsUp %}
+indent one level deeper in the indented syntax. And any time a line ends in a
+place where a statement can end, that counts as a semicolon. There are also a
+few additional differences in the indented syntax that are noted throughout the
+reference.
 
 The indented syntax looks like this:
 
@@ -79,4 +73,27 @@ The indented syntax looks like this:
     color: $mdc-button-disabled-ink-color
     cursor: default
     pointer-events: none
+```
+
+### Multiline statements
+
+{% compatibility 'dart: "1.84.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+In the indented syntax, statements can span multiple lines as long as line
+breaks occur in places where the statement can’t end. This includes inside
+parentheses or other brackets, or between keywords in a Sass-specific @-rule.
+
+```sass
+.grid
+  display: grid
+  grid-template: (
+    "header" min-content
+    "main" 1fr
+  )
+
+@for 
+  $i from 
+  1 through 3
+    ul:nth-child(3n + #{$i})
+      margin-left: $i * 10
 ```
