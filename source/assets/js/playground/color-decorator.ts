@@ -88,8 +88,10 @@ class ColorWidget extends WidgetType {
     } catch (error) {
       // Make sure errors like #1444 don't completely break interactivity.
       console.error(error);
+      const errorMessage =
+        typeof error === 'object' && 'message' in error ? error.message : error;
       return colorSwatchView('transparent', {
-        warning: `Unexpected error: ${error.message}`,
+        warning: `Unexpected error: ${errorMessage}`,
       });
     }
 
