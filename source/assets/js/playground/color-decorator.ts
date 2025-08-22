@@ -45,7 +45,12 @@ function getColorDecorations(view: EditorView): DecorationSet {
             return;
           }
           try {
-            const color = new Color(colorString);
+            // TODO - sass/sass-site#1444: Remove this once we're using Colorjs
+            // >=0.6. This works around a bug where `rgb(r, g, b, a)` syntax was
+            // interpreted incorrectly, which is fixed in 0.6.0-alpha.
+            const color = new Color(
+              colorString.replace(/^(rgb|hsl)\(/, '$1a(')
+            );
             const deco = Decoration.widget({
               widget: new ColorWidget(color),
               side: 1,
@@ -77,14 +82,27 @@ class ColorWidget extends WidgetType {
   }
 
   toDOM(): HTMLDivElement {
-    return colorSwatchView(this.color.toString(), Boolean(this.inP3));
+    let colorString: string;
+    try {
+      colorString = this.color.toString();
+    } catch (error) {
+      // Make sure errors like #1444 don't completely break interactivity.
+      console.error(error);
+      return colorSwatchView('transparent', {
+        warning: `Unexpected error: ${error.message}`,
+      });
+    }
+
+    return colorSwatchView(colorString, {
+      warning: this.inP3 ? undefined : 'Outside of P3 gamut',
+    });
   }
 }
 
 /* Generates div with color swatch and out of gamut warning. */
 export function colorSwatchView(
   color: string,
-  inP3Gamut: boolean
+  {warning}: {warning?: string}
 ): HTMLDivElement {
   const wrap = document.createElement('div');
   wrap.setAttribute('aria-hidden', 'true');
@@ -93,11 +111,11 @@ export function colorSwatchView(
   const box = wrap.appendChild(document.createElement('div'));
   box.innerText = ' ';
 
-  if (!inP3Gamut) {
-    wrap.setAttribute('title', 'Outside of P3 gamut');
-    const warning = document.createElement('span');
-    warning.innerText = '⚠️';
-    wrap.appendChild(warning);
+  if (warning !== undefined) {
+    wrap.setAttribute('title', warning);
+    const warningSpan = document.createElement('span');
+    warningSpan.innerText = '⚠️';
+    wrap.appendChild(warningSpan);
   }
 
   return wrap;
