@@ -107,10 +107,9 @@ export function displayForConsoleLog(
       // https://github.com/sass/sass/issues/3957 is implemented.
       try {
         const color = new Color(item.message);
-        const colorSwatch = colorSwatchView(
-          color.toString(),
-          color.inGamut('p3')
-        );
+        const colorSwatch = colorSwatchView(color.toString(), {
+          warning: color.inGamut('p3') ? undefined : 'Outside of P3 gamut',
+        });
         message = message + colorSwatch.outerHTML;
       } catch {
         // Ignore
