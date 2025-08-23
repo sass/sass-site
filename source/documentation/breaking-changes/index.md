@@ -22,6 +22,9 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Misplaced rest arguments](/documentation/breaking-changes/misplaced-rest/)
+  beginning in Dart Sass 1.91.0
+
 * [`type()` function](/documentation/breaking-changes/type-function/) beginning in Dart
   Sass 1.86.0
 
