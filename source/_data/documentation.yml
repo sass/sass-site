@@ -61,6 +61,7 @@ toc:
       - <code>sass:string</code>: /documentation/modules/string/
   - Breaking Changes: /documentation/breaking-changes/
     :children:
+      - Misplaced Rest Arguments: /documentation/breaking-changes/misplaced-rest/
       - <code>type()</code> function: /documentation/breaking-changes/type-function/
       - <code>@import</code>: /documentation/breaking-changes/import/
       - Strict Unary Operators: /documentation/breaking-changes/strict-unary/
