@@ -121,7 +121,7 @@ declarations in `& {}`:
 
 ## The New Way
 
-{% compatibility 'dart: "1.92.7"', 'libsass: false', 'ruby: false' %}
+{% compatibility 'dart: "1.92.0"', 'libsass: false', 'ruby: false' %}
 {% endcompatibility %}
 
 Modern versions of Sass behave the same way as plain CSS: declarations are
