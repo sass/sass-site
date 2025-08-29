@@ -1,8 +1,8 @@
 ---
 title: 'Breaking Change: Mixed Declarations'
 introduction: >
-  CSS is changing the way it handles declarations mixed with nested rules, and
-  we want to make sure Sass matches its behavior.
+  CSS changed the way it handles declarations mixed with nested rules, and
+  we made sure Sass matched its behavior.
 ---
 
 ## The Story So Far
@@ -86,12 +86,11 @@ make the declarations apply in the order they appeared in the document, like so:
 {% compatibility 'dart: "1.77.7"', 'libsass: false', 'ruby: false' %}
 {% endcompatibility %}
 
-The use of declarations _after_ nested rules is currently deprecated in Sass, in
-order to notify users of the upcoming change and give them time to make their
-stylesheets compatible with it. In a future release, Dart Sass will change to
-match the ordering produced by plain CSS nesting.
+The use of declarations _after_ nested rules was first deprecated in order to
+notify users of the upcoming change and give them time to make their stylesheets
+compatible with it.
 
-If you want to opt into the new CSS semantics early, you can wrap your nested
+Users who wanted to opt into the new CSS semantics early could wrap their nested
 declarations in `& {}`:
 
 {% codeExample 'mixed-declarations-opt-in' %}
@@ -119,3 +118,13 @@ declarations in `& {}`:
 {% endcodeExample %}
 
 {% render 'silencing_deprecations' %}
+
+## The New Way
+
+{% compatibility 'dart: "1.92.0"', 'libsass: false', 'ruby: false' %}
+{% endcompatibility %}
+
+Modern versions of Sass behave the same way as plain CSS: declarations are
+emitted in the same order they're written, even if that involves duplicating the
+rule that contains them to account for interleaved rules. The same is true for
+loud (`/* */`-style) comments and at-rules without children.
