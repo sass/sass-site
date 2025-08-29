@@ -22,6 +22,9 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Private variables in `with`](/documentation/breaking-changes/with-private/)
+  beginning in Dart Sass 1.92.0
+
 * [Misplaced rest arguments](/documentation/breaking-changes/misplaced-rest/)
   beginning in Dart Sass 1.91.0
 
