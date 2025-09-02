@@ -67,7 +67,7 @@
     "@spectrum-web-components/shared": "^1.7.0",
     "@spectrum-web-components/split-view": "^1.7.0",
     "@types/deep-equal": "^1.0.4",
-    "@types/jquery": "^3.5.32",
+    "@types/jquery": "^3.5.33",
     "@types/jqueryui": "^1.12.24",
     "@types/lodash": "^4.17.20",
     "@types/markdown-it": "^14.1.2",
