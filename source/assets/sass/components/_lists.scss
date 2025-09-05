@@ -156,7 +156,10 @@
 
   &.impl-status {
     font-size: var(--sl-status-text-size);
-    margin-top: var(--sl-gutter--negative);
+
+    :is(h1, h2, h3, h4, h5, h6, .sl-c-introduction) + & {
+      margin-top: var(--sl-gutter--negative);
+    }
 
     dt {
       word-break: normal;
