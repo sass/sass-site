@@ -72,45 +72,61 @@ Sass we've set up some resources to help you learn pretty darn quick.
 
 [Learn More About Sass](/guide){.sl-c-button .sl-c-button--primary}
 
-Install Anywhere (Standalone)
+### Install Anywhere (Standalone) {#install-standalone}
 
-: You can install Sass on Windows, Mac, or Linux by downloading the package for
-your operating system [from
-GitHub](https://github.com/sass/dart-sass/releases/latest) and [adding it to
-your `PATH`](https://katiek2.github.io/path-doc/). That's all—there are no
-external dependencies and nothing else you need to install.
+You can install Sass on Windows, Mac, or Linux by downloading the appropriate
+package for your operating system and CPU architecture from the [GitHub releases
+page]. We provide a ZIP file for Windows, and a `.tar.gz` file (a tarball) for
+Mac and Linux.
 
-Install Anywhere (npm)
+Once you've downloaded the archive, extract it. The extracted files contain a
+directory named `dart-sass`, which contains the `sass` executable script (or
+`sass.bat` on Windows). There are no external dependencies and nothing else you
+need to install.
 
-: If you use Node.js, you can also install Sass using
-[npm](https://www.npmjs.com/) by running
+To run Sass from anywhere on your machine, you'll need to add the extracted
+`dart-sass` directory to your system's `PATH`. For more information on how to do
+that, see [this guide].
 
-    ```shellsession
-    npm install -g sass
-    ```
+[GitHub releases page]: https://github.com/sass/dart-sass/releases/latest
+[this guide]: https://katiek2.github.io/path-doc/
 
-    **However, please note** that this will install the pure JavaScript
-    implementation of Sass, which runs somewhat slower than the other options
-    listed here. But it has the same interface, so it'll be easy to swap in
-    another implementation later if you need a bit more speed!
+### Install Anywhere (npm) {#install-npm}
 
-Install on Windows (Chocolatey)
+If you use Node.js, you can also install Sass using [npm] by running
 
-: If you use the [Chocolatey package manager](https://chocolatey.org/) for
-Windows, you can install Dart Sass by running
+```shellsession
+npm install -g sass
+```
 
-    ```shellsession
-    choco install sass
-    ```
+[npm]: https://www.npmjs.com/
 
-Install on Mac OS X or Linux (Homebrew)
+**However, please note** that this will install the pure JavaScript
+implementation of Sass, which runs somewhat slower than the other options listed
+here. But it has the same interface, so it'll be easy to swap in another
+implementation later if you need a bit more speed!
 
-: If you use [the Homebrew package manager](https://brew.sh/) for Mac OS X or
-Linux, you can install Dart Sass by running
+### Install on Windows (Chocolatey) {#install-choco}
 
-    ```shellsession
-    brew install sass/sass/sass
-    ```
+If you use the [Chocolatey package manager] for Windows, you can install Dart
+Sass by running
+
+```shellsession
+choco install sass
+```
+
+[Chocolatey package manager]: https://chocolatey.org/
+
+### Install on Mac OS X or Linux (Homebrew) {#install-brew}
+
+If you use [the Homebrew package manager] for Mac OS X or Linux, you can install
+Dart Sass by running
+
+```shellsession
+brew install sass/sass/sass
+```
+
+[the Homebrew package manager]: https://brew.sh/
 
   </div>
 </div>
