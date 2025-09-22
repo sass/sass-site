@@ -78,7 +78,7 @@
     "@types/prismjs": "^1.26.5",
     "@types/seedrandom": "^3.0.8",
     "@types/semver": "^7.7.1",
-    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/eslint-plugin": "^8.44.1",
     "cheerio": "^1.1.2",
     "codemirror": "^6.0.2",
     "colorjs.io": "^0.5.2",
