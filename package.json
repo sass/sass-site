@@ -107,7 +107,7 @@
     "prettier": "^3.6.2",
     "prismjs": "^1.30.0",
     "rollup": "^4.50.2",
-    "sass": "^1.93.1",
+    "sass": "^1.93.2",
     "semver": "^7.7.1",
     "stylelint": "^16.23.1",
     "stylelint-config-standard-scss": "^15.0.1",
