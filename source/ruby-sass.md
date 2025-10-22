@@ -3,8 +3,8 @@ layout: has_no_sidebars
 title: Ruby Sass
 introduction: >
   Ruby Sass was the original implementation of Sass, but it reached its end of
-  life as of 26 March 2019. It's no longer supported, and Ruby Sass users should
-  migrate to another implementation.
+  life as of 26 March 2019. It's no longer supported, and any legacy projects
+  still using Ruby Sass should migrate to [Dart Sass](/dart-sass).
 ---
 
 - <h2>But Why?</h2>
