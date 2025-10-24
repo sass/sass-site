@@ -28,7 +28,7 @@ The following are the biggest known differences:
   [`@import`]: /documentation/at-rules/import
   [`@use`]: /documentation/at-rules/use
   [Sass migrator]: /documentation/cli/migrator
-  [/d/import]: /d/import
+  [/d/import]: /documentation/breaking-changes/import
 
 * LibSass uses `/` for division. Dart Sass 1.x does as well, but Dart Sass 2.x
   will use it as a list separator, so using it for division is deprecated. The
@@ -36,13 +36,13 @@ The following are the biggest known differences:
   [`math.div()`] function. See [/d/slash-div] for details.
 
   [`math.div()`]: /documentation/modules/math#div
-  [/d/slash-div]: /d/slash-div
+  [/d/slash-div]: /documentation/breaking-changes/slash-div
 
 * LibSass parses custom properties like any other CSS property. Dart Sass parses
   them the same way it parses at-rules, as plain CSS except where SassScript is
   injected using interpolation. See [/d/css-vars] for details.
 
-  [/d/css-vars]: /d/css-vars
+  [/d/css-vars]: /documentation/breaking-changes/css-vars
 
 * LibSass supports [`@extend`] rules with complex selector targets, like
   `@extend .foo.bar`, using semantics that don't match the way `@extend` is
@@ -50,7 +50,7 @@ The following are the biggest known differences:
   [/d/extend-compound] for details.
 
   [`@extend`]: /documentation/at-rules/extend
-  [/d/extend-compound]: /d/extend-compound
+  [/d/extend-compound]: /documentation/breaking-changes/extend-compound
 
 ## Wrappers
 
