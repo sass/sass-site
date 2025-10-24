@@ -1,57 +1,68 @@
 ---
-layout: has_both_sidebars
+layout: has_no_sidebars
 title: LibSass
 introduction: >
-  LibSass is an implementation of Sass in C/C++, designed to be easy to
+  LibSass was an implementation of Sass in C/C++, designed to be easy to
   integrate into many different languages. However, as time wore on it ended up
-  lagging behind [Dart Sass](/dart-sass) in features and CSS compatibility.
-  **LibSass is now deprecated**—new projects should use Dart Sass instead.
-navigation: |
-  <h2>Wrappers</h2>
-
-  <nav class="sl-c-list-navigation-wrapper">
-
-  - [SassC](#sassc)
-  - [Crystal](#crystal)
-  - [Go](#go)
-  - [Java](#java)
-  - [JavaScript](#javascript)
-  - [Lua](#lua)
-  - [.NET](#net)
-  - [Node](#node)
-  - [Perl](#perl)
-  - [PHP](#php)
-  - [Python](#python)
-  - [Ruby](#ruby)
-  - [R](#r)
-  - [Rust](#rust)
-  - [Scala](#scala)
-
-  </nav>
-complementary_content: |
-  <h2>Resources</h2>
-
-  - [Lightning fast Sass compiling with libsass, Node-sass and
-    Grunt-sass](https://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/)
-    --- by Ben Frain, August 2013
+  lagging behind [Dart Sass](/dart-sass) in features and CSS compatibility. It
+  reached its end of life in October 2025. any legacy projects still using
+  LibSass or its wrapper libraries like Node Sass should migrate to
+  [Dart Sass](/dart-sass).
 ---
+
+## Migrating Away
+
+LibSass stopped receiving feature updates before Dart Sass even launched, and it
+had a number of known incompatibilities with the Sass specification. Since then,
+Sass has grown and evolved to support the latest CSS features, so projects still
+using LibSass will unfortunately have some serious catching up to do.
+
+The following are the biggest known differences:
+
+* LibSass only supports [`@import`] for loading files. Although Dart Sass
+  versions through the 2.x will continue to support `@import`, it's deprecated
+  in recent versions, and we recommend all code move to [`@use`] instead. The
+  [Sass migrator] can automatically migrate projects from `@import` to `@use`.
+  See [/d/import] for details.
+
+  [`@import`]: /documentation/at-rules/import
+  [`@use`]: /documentation/at-rules/use
+  [Sass migrator]: /documentation/cli/migrator
+  [/d/import]: /documentation/breaking-changes/import
+
+* LibSass uses `/` for division. Dart Sass 1.x does as well, but Dart Sass 2.x
+  will use it as a list separator, so using it for division is deprecated. The
+  [Sass migrator] can automatically migrate projects from `/` to the new
+  [`math.div()`] function. See [/d/slash-div] for details.
+
+  [`math.div()`]: /documentation/modules/math#div
+  [/d/slash-div]: /documentation/breaking-changes/slash-div
+
+* LibSass parses custom properties like any other CSS property. Dart Sass parses
+  them the same way it parses at-rules, as plain CSS except where SassScript is
+  injected using interpolation. See [/d/css-vars] for details.
+
+  [/d/css-vars]: /documentation/breaking-changes/css-vars
+
+* LibSass supports [`@extend`] rules with complex selector targets, like
+  `@extend .foo.bar`, using semantics that don't match the way `@extend` is
+  defined to work. These are not supported in Dart Sass. See
+  [/d/extend-compound] for details.
+
+  [`@extend`]: /documentation/at-rules/extend
+  [/d/extend-compound]: /documentation/breaking-changes/extend-compound
 
 ## Wrappers
 
-LibSass is just a library. To run the code locally (i.e. to compile your
-stylesheets), you need an implementer, or "wrapper". There are a number of other
-wrappers for LibSass. We encourage you to write your own wrapper --- the whole
-point of LibSass is that we want to bring Sass to many other languages, not just
-Ruby!
-
-Below are the LibSass wrappers that we're currently aware of. Sometimes there
-are multiple wrappers per language -- in those cases, we put the most
-recently-updated wrapper first.
+LibSass was just a library. To run the code locally (i.e. to compile your
+stylesheets), you also needed a wrapper. Below are the LibSass wrappers that
+we're aware of having excited. Sometimes there are multiple wrappers per
+language—in those cases, we put the most recently-updated wrapper first.
 
 {% headsUp %}
-  Because LibSass is deprecated, most of these wrappers are end-of-life. In
-  order to use them with the latest maintenance releases of LibSass, you may
-  need to build them by hand.
+  Like LibSass, these wrappers are end-of-life. They may not have compiled
+  versions that are up-to-date with the most recent LibSass release from its
+  sundown window.
 {% endheadsUp %}
 
 - <h3 id="sassc">Sass C</h3>
@@ -169,10 +180,14 @@ recently-updated wrapper first.
 
 ## About LibSass
 
-This project is the brainchild of [Hampton
+This project was the brainchild of [Hampton
 Lintorn-Catlin](https://twitter.com/HamptonMakes), the original creator of Sass.
-[Aaron Leung](https://github.com/akhleung) is the primary developer.
+[Aaron Leung](https://github.com/akhleung) was the initial primary developer,
+and [Michael Mifsud](https://github.com/xzyfer) and [Marcel
+Greter](https://github.com/mgreter) were the primary developers for its latter
+years.
 
 <figure>
   <img alt="LibSass logo" width="640" height="320" src="/assets/img/logos/libsass.png">
 </figure>
+
