@@ -216,3 +216,28 @@ is the only way to inject dynamic values into a custom property.
       --font-family-monospace: #{meta.inspect($font-family-monospace)}
   {% endcodeExample %}
 {% endheadsUp %}
+
+### `@function` Results
+
+{% compatibility 'dart: "1.94.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+The `result` property of the [plain-CSS `@function` rule] works like a custom
+property: it can also be included anywhere in a property value, it can be
+accessed from JavaScript, and so it can take on almost any possible value. Sass
+parses it the same way it does a custom property value, which means you must use
+interpolation to include SassScript values in it.
+
+[plain-CSS `@function` rule]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@function
+
+{% codeExample 'plain-css-function' %}
+  $highlight: #ddf;
+
+  @function --highlight() {
+    result: var(--highlight, #{$highlight});
+  }
+  ===
+  $highlight: #ddf
+
+  @function --highlight()
+    result: var(--highlight, #{$highlight})
+{% endcodeExample %}

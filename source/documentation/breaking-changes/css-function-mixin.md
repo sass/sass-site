@@ -29,14 +29,24 @@ functions and mixins from using that prefix.
 
 ## Transition Period
 
+### Phase 1: Deprecation
+
 {% compatibility 'dart: "1.76.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-Between Dart Sass 1.76.0 and Dart Sass 2.0.0, Dart Sass will continue to allow
-functions and mixins whose names begin with `--`. However, it will emit a
+Between Dart Sass 1.76.0 and Dart Sass 1.94.0, Dart Sass continued to allow
+functions and mixins whose names begin with `--`. However, it emitted a
 deprecation warning named `css-function-mixin`.
 
-Between Dart Sass 2.0.0 and the release of Dart Sass's support for plain CSS
-functions and mixins, functions and mixins will not be allowed to have names
-that begin with `--`.
+### Phase 2: Plain-CSS Functions
+
+{% compatibility 'dart: "1.94.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+Dart 1.94.0 added support for plain-CSS functions, since they landed in Chrome
+shortly beforehand. Any function whose name begins with `--` is now parsed as a
+plain-CSS at-rule, and its `result` property is parsed the same as a custom
+property value.
+
+In phase 2, mixins whose names begin with `--` were upgraded from deprecations
+to errors.
 
 {% render 'silencing_deprecations' %}
