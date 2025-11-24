@@ -18,7 +18,7 @@ jobs:
     if: github.event.ref_type == 'branch' && github.event_name == 'create'
     steps:
       - name: Clone shadow repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
           token: ${{ secrets.SASS_SITE_TOKEN }}
@@ -32,7 +32,7 @@ jobs:
     if: github.event.ref_type == 'branch' && github.event_name == 'delete'
     steps:
       - name: Clone shadow repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
           token: ${{ secrets.SASS_SITE_TOKEN }}
@@ -53,7 +53,7 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           if_no_artifact_found: ignore
       - name: Clone shadow repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         if: steps.download_site.outputs.found_artifact == 'true'
         with:
           repository: ${{ vars.SHADOW_OWNER }}/${{ vars.SHADOW_REPO }}
