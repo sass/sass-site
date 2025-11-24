@@ -296,6 +296,11 @@ compilation:
 
 {% render 'code_snippets/example-use-theme' %}
 
+{% headsUp %}
+  If you want to configure a module *and* give it a custom namespace, the `as`
+  clause must come before the `with` clause, as in `@use ... as ... with ...`.
+{% endheadsUp %}
+
 ### With Mixins
 
 Configuring modules with `@use ... with` can be very handy, especially when
