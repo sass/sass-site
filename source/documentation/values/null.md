@@ -63,11 +63,11 @@ If a property value is `null`, that property is omitted entirely.
 
 `null` is also [*falsey*][], which means it counts as `false` for any rules or
 [operators][] that take booleans. This makes it easy to use values that can be
-`null` as conditions for [`@if`][] and [`if()`][].
+`null` as conditions for [`@if`][] and [`if()`].
 
 [*falsey*]: /documentation/at-rules/control/if#truthiness-and-falsiness
 [operators]: /documentation/operators/boolean
 [`@if`]: /documentation/at-rules/control/if
-[`if()`]: /documentation/modules#if
+[`if()`]: /documentation/syntax/special-functions#if
 
 {% render 'code_snippets/example-if-parent-selector' %}
