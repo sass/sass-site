@@ -198,6 +198,13 @@ Migrating style.scss
 
 ## Migrations
 
+### `if()`
+
+This migration converts the legacy `if()` function to the new CSS `if()` syntax.
+See [/d/if-function] for details.
+
+[/d/if-function]: /documentation/breaking-changes/if-function
+
 ### Color
 
 This migration converts legacy color functions to the new color-space-compatible

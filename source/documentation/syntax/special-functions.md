@@ -11,6 +11,101 @@ introduction: >
   calls return [unquoted strings](/documentation/values/strings#unquoted).
 ---
 
+## `if()`
+
+{% compatibility 'dart: "1.95.0"', 'libsass: false', 'ruby: false', 'feature: "calc()"' %}
+  LibSass, Ruby Sass, and versions of Dart Sass parse `if()` as a Sass function
+  with the signature `if($condition, $if-true, $if-false)`. If `$condition` is
+  [truthy], this function returns `$if-true`; otherwise, it returns `$if-false`.
+  This function has special syntax that avoids evaluating the branch that
+  doesn't match `$condition`.
+
+  [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
+
+  Dart Sass versions 1.95.0 and later parse `if()` as described below. Dart Sass
+  versions before 3.0.0 still support the old `if()` syntax, but it's
+  considered deprecated. See [/d/if-function].
+
+  [/d/if-function]: /documentation/breaking-changes/if-function
+{% endcompatibility %}
+
+Sass supports the [CSS `if()` function] with one important addition: the
+`sass(...)` condition, which takes a SassScript expression and matches if that
+expression evaluates to a [truthy] value. An `if()` function that contains only
+`sass(...)` conditions (and optionally `else`) will be evaluated entirely by
+Sass, and return the corresponding value.
+
+[CSS `if()` function]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/if
+[truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
+
+SassScript in an `if()` function's conditions is *only* allowed within the
+`sass(...)` condition or in [interpolation]. The values, on the other hand, are
+normal SassScript expressions and don't need any special wrapping. Only the
+value whose condition matches will be evaluted, so the other values may refer to
+variables that don't exist or call functions that would error.
+
+If no conditions in an pure-Sass `if()` match, it returns `null`.
+
+[interpolation]: /documentation/interpolation
+
+{% codeExample 'css-if-sass' %}
+  @use 'sass:meta';
+
+  $hungry: true;
+  @debug if(sass($hungry): breakfast burrito; else: cereal); // breakfast burrito
+
+  // You can use CSS boolean expressions with sass(...) conditions.
+  @debug if(not sass($hungry): skip lunch); // null
+
+  // Only the matching branch is evaluated.
+  @debug if(sass(meta.variable-exists("thirsty")): thirsty; else: hungry); // hungry
+  ===
+  @use 'sass:meta'
+
+  $hungry: true
+  @debug if(sass($hungry): breakfast burrito; else: cereal)  // breakfast burrito
+
+  // You can use CSS boolean expressions with sass(...) conditions.
+  @debug if(not sass($hungry): skip lunch)  // null
+
+  // Only the matching branch is evaluated.
+  @debug if(sass(meta.variable-exists("thirsty")): thirsty; else: hungry)  // hungry
+{% endcodeExample %}
+
+`sass(...)` conditions can also be combined with normal CSS conditions. The Sass
+conditions will be evaluated by Sass, but if any CSS conditions are left Sass
+will return the whole result as a string.
+
+{% codeExample 'css-if-mixed' %}
+  $support-widescreen: true;
+  @debug if(
+    sass($support-widescreen) and media(width >= 3000px): big;
+    else: small
+  ); // if(media(width >= 3000px): big; else: small)
+
+  // If Sass conditions mean a branch will never match (or always match), Sass
+  // eagerly removes that branch and returns the final value if possible.
+  $support-widescreen: false;
+  @debug if(
+    sass($support-widescreen) and media(width >= 3000px): big;
+    else: small
+  ); // small
+  ===
+  $support-widescreen: true
+  @debug if(
+    sass($support-widescreen) and media(width >= 3000px): big;
+    else: small
+  )  // if(media(width >= 3000px): big; else: small)
+
+  // If Sass conditions mean a branch will never match (or always match), Sass
+  // eagerly removes that branch and returns the final value if possible.
+  $support-widescreen: false
+  @debug if(
+    sass($support-widescreen) and media(width >= 3000px): big;
+    else: small
+  )  // small
+{% endcodeExample %}
+
 ## `url()`
 
 The [`url()` function][] is commonly used in CSS, but its syntax is different
@@ -87,7 +182,7 @@ calls][]—it's parsed as a normal [plain CSS function call][].
 
 ## `element()`, `progid:...()`, and `expression()`
 
-{% compatibility 'dart: "<1.40.0"', 'libsass: false', 'ruby: false', 'feature: "calc()"' %}
+{% compatibility 'dart: "1.40.0"', 'libsass: false', 'ruby: false', 'feature: "calc()"' %}
   LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse `calc()`
   as special syntactic function like `element()`.
 

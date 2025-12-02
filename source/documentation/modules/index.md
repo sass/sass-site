@@ -21,12 +21,9 @@ introduction: >
   system yet).
 
   [A few functions][] are *only* available globally even in the new module
-  system, either because they have special evaluation behavior ([`if()`][]) or
-  because they add extra behavior on top of built-in CSS functions ([`rgb()`][]
-  and [`hsl()`][]). These will not be deprecated and can be used freely.
+  system because they add extra behavior on top of built-in CSS functions.
 
   [a few functions]: #global-functions
-  [`if()`]: #if
   [`rgb()`]: #rgb
   [`hsl()`]: #hsl
 {% endheadsUp %}
@@ -206,26 +203,6 @@ Sass provides the following built-in modules:
     ===
     @debug hwb(210deg 0% 60%)  // #036
     @debug hwb(210 0% 60% / 0.5)  // rgba(0, 51, 102, 0.5)
-  {% endcodeExample %}
-{% endfunction %}
-
-{% function 'if($condition, $if-true, $if-false)' %}
-  Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
-
-  This function is special in that it doesn't even evaluate the argument that
-  isn't returned, so it's safe to call even if the unused argument would throw
-  an error.
-
-  [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
-
-  {% codeExample 'debug', false %}
-    @debug if(true, 10px, 15px); // 10px
-    @debug if(false, 10px, 15px); // 15px
-    @debug if(variable-defined($var), $var, null); // null
-    ===
-    @debug if(true, 10px, 15px)  // 10px
-    @debug if(false, 10px, 15px)  // 15px
-    @debug if(variable-defined($var), $var, null)  // null
   {% endcodeExample %}
 {% endfunction %}
 
@@ -415,5 +392,37 @@ Sass provides the following built-in modules:
     ===
     @debug rgb(#f2ece4, 50%)  // rgba(242, 236, 228, 0.5)
     @debug rgba(rgba(0, 51, 102, 0.5), 1)  // #003366
+  {% endcodeExample %}
+{% endfunction %}
+
+## Deprecated Functions
+
+{% function 'if($condition, $if-true, $if-false)' %}
+  Returns `$if-true` if `$condition` is [truthy][], and `$if-false` otherwise.
+
+  This function is special in that it doesn't even evaluate the argument that
+  isn't returned, so it's safe to call even if the unused argument would throw
+  an error.
+
+  [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
+
+  {% headsUp %}
+    Now that CSS supports its own [`if()` function syntax], Sass is moving to
+    use that syntax instead. The old `if()` function is deprecated, although it
+    will continue to be supported in Dart Sass until version 3.0.0. See
+    [/d/if-function] for more information.
+
+    [`if()` function syntax]: /documentation/syntax/special-functions#if
+    [/d/if-function]: /documentation/breaking-changes/if-function
+  {% endheadsUp %}
+
+  {% codeExample 'debug', false %}
+    @debug if(true, 10px, 15px); // 10px
+    @debug if(false, 10px, 15px); // 15px
+    @debug if(variable-defined($var), $var, null); // null
+    ===
+    @debug if(true, 10px, 15px)  // 10px
+    @debug if(false, 10px, 15px)  // 15px
+    @debug if(variable-defined($var), $var, null)  // null
   {% endcodeExample %}
 {% endfunction %}

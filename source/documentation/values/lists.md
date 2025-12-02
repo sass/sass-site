@@ -124,12 +124,12 @@ value to locate in that list, and returns the index of that value.
 
 If the value isn't in the list at all, `list.index()` returns [`null`][].
 Because `null` is [falsey][], you can use `list.index()` with [`@if`][] or
-[`if()`][] to check whether a list does or doesn't contain a given value.
+[`if()`] to check whether a list does or doesn't contain a given value.
 
 [`null`]: /documentation/values/null
 [falsey]: /documentation/at-rules/control/if#truthiness-and-falsiness
 [`@if`]: /documentation/at-rules/control/if
-[`if()`]: /documentation/modules#if
+[`if()`]: /documentation/syntax/special-functions#if
 
 {% codeExample 'list-index', false %}
   @use "sass:list";

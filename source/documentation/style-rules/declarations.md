@@ -118,14 +118,14 @@ compile that declaration to CSS at all.
 
   .button {
     border: 1px solid black;
-    border-radius: if($rounded-corners, 5px, null);
+    border-radius: if(sass($rounded-corners): 5px);
   }
   ===
   $rounded-corners: false
 
   .button
     border: 1px solid black
-    border-radius: if($rounded-corners, 5px, null)
+    border-radius: if(sass($rounded-corners): 5px)
 {% endcodeExample %}
 
 ## Custom Properties
