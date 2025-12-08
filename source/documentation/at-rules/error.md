@@ -22,8 +22,8 @@ whatever system is running it that an error occurred.
       @error "Property #{$property} must be either left or right.";
     }
 
-    $left-value: if($property == right, initial, $value);
-    $right-value: if($property == right, $value, initial);
+    $left-value: if(sass($property == right): initial; else: $value);
+    $right-value: if(sass($property == right): $value; else: initial);
 
     left: $left-value;
     right: $right-value;
@@ -44,8 +44,8 @@ whatever system is running it that an error occurred.
       @error "Property #{$property} must be either left or right."
 
 
-    $left-value: if($property == right, initial, $value)
-    $right-value: if($property == right, $value, initial)
+    $left-value: if(sass($property == right): initial; else: $value)
+    $right-value: if(sass($property == right): $value; else: initial)
 
     left: $left-value
     right: $right-value

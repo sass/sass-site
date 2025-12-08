@@ -1,7 +1,7 @@
 @use '../config';
 
 @each $breakpoint, $size in config.$sl-breakpoints {
-  $prefix: if(($breakpoint == 'none'), '', '#{$breakpoint}-');
+  $prefix: if(sass($breakpoint == 'none'): ''; else: '#{$breakpoint}-');
 
   @include config.sl-breakpoint-set($breakpoint, $size) {
     .sl-l-#{$prefix}holy-grail {
