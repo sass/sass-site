@@ -18,7 +18,7 @@ $sl-colors: [#EE2A35, black, white, #009736];
 
 @function stripes($position, $sl-colors) {
   $sl-colors: if(
-    meta.type-of($sl-colors) != 'list': compact($sl-colors);
+    sass(meta.type-of($sl-colors) != 'list'): compact($sl-colors);
     else: $sl-colors
   );
   $gradient: ();
