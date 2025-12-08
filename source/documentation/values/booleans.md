@@ -67,11 +67,11 @@ if its argument is `false`:
 [`if()` function]: /documentation/syntax/special-functions#if
 
 {% codeExample 'if-function', false %}
-  @debug if(true: 10px; 30px); // 10px
-  @debug if(false: 10px; 30px); // 30px
+  @debug if(true: 10px; else: 30px); // 10px
+  @debug if(false: 10px; else: 30px); // 30px
   ===
-  @debug if(true: 10px; 30px)  // 10px
-  @debug if(false: 10px; 30px)  // 30px
+  @debug if(true: 10px; else: 30px)  // 10px
+  @debug if(false: 10px; else: 30px)  // 30px
 {% endcodeExample %}
 
 {% render 'doc_snippets/truthiness-and-falsiness' %}

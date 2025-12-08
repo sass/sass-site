@@ -1,6 +1,6 @@
 {% codeExample 'if-parent-selector' %}
   @mixin app-background($color) {
-    #{if(sass(&): '&.app-background'; '.app-background')} {
+    #{if(sass(&): '&.app-background'; else: '.app-background')} {
       background-color: $color;
       color: rgba(#fff, 0.75);
     }
@@ -13,7 +13,7 @@
   }
   ===
   @mixin app-background($color)
-    #{if(sass(&): '&.app-background'; '.app-background')}
+    #{if(sass(&): '&.app-background'; else: '.app-background')}
       background-color: $color
       color: rgba(#fff, 0.75)
 

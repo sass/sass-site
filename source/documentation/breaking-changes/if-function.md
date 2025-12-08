@@ -41,7 +41,7 @@ function to the CSS `if()` syntax.
   @use 'sass:meta';
 
   // Instead of if(true, 10px, 15px)
-  @debug if(sass(true): 10px; 15px);
+  @debug if(sass(true): 10px; else: 15px);
 
   // Instead of if(meta.variable-defined($var), $var, null)
   @debug if(sass(meta.variable-defined($var)): $var);
@@ -49,7 +49,7 @@ function to the CSS `if()` syntax.
   @use 'sass:meta'
 
   // Instead of if(true, 10px, 15px)
-  @debug if(sass(true): 10px; 15px)
+  @debug if(sass(true): 10px; else: 15px)
 
   // Instead of if(meta.variable-defined($var), $var, null)
   @debug if(sass(meta.variable-defined($var)): $var)
