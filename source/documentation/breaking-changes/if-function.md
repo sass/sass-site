@@ -15,7 +15,7 @@ having to write out an entire [`@if` rule]. This function had the signature
 was [truthy] and `$if-false` otherwise.
 
 [boolean value type]: /documentation/values/booleans
-[`@if` rule]: /documentation/at-rules/control/if.md
+[`@if` rule]: /documentation/at-rules/control/if
 [truthy]: /documentation/at-rules/control/if#truthiness-and-falsiness
 
 At the time, browsers didn't even support `@media` queries and we never imagined
