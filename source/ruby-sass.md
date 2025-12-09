@@ -20,13 +20,11 @@ introduction: >
   Since then, Node.js has become ubiquitous for frontend tooling while Ruby has
   faded into the background. At the same time, Sass projects have grown far
   larger than we initially envisioned them, and their performance needs have
-  outpaced the speed Ruby can provide. Both [Dart Sass][] and [LibSass][] are
-  blazing fast, easy to install, and are readily available on npm. Ruby Sass
-  couldn't keep up, and it didn't make sense to spend the core team's resources
-  on it any longer.
+  outpaced the speed Ruby can provide. [Dart Sass] is blazing fast, easy to
+  install, and is readily available on npm. Ruby Sass couldn't keep up, and it
+  didn't make sense to spend the core team's resources on it any longer.
 
   [Dart Sass]: /dart-sass
-  [LibSass]: /libsass
 
 - <h2>Migrating Away</h2>
 
