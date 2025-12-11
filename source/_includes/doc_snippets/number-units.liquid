@@ -11,40 +11,53 @@ A number can have any number of units in the numerator and/or denominator.
 {% codeExample 'number-units' %}
   @use 'sass:math';
 
-  @debug 4px * 6px; // 24px*px (read "square pixels")
-  @debug math.div(5px, 2s); // 2.5px/s (read "pixels per second")
+  @debug 4px * 6px; // calc(24px * 1px) (read "square pixels")
+  @debug math.div(5px, 2s); // calc(2.5px / 1s) (read "pixels per second")
 
-  // 3.125px*deg/s*em (read "pixel-degrees per second-em")
+  // calc(3.125px * 1deg / 1s / 1em) (read "pixel-degrees per second-em")
   @debug 5px * math.div(math.div(30deg, 2s), 24em);
 
   $degrees-per-second: math.div(20deg, 1s);
-  @debug $degrees-per-second; // 20deg/s
-  @debug math.div(1, $degrees-per-second); // 0.05s/deg
+  @debug $degrees-per-second; // calc(20deg / 1s)
+  @debug math.div(1, $degrees-per-second); // calc(0.05s / 1deg)
   ===
   @use 'sass:math'
 
-  @debug 4px * 6px  // 24px*px (read "square pixels")
-  @debug math.div(5px, 2s)  // 2.5px/s (read "pixels per second")
+  @debug 4px * 6px  // calc(24px * 1px) (read "square pixels")
+  @debug math.div(5px, 2s)  // calc(2.5px / 1s) (read "pixels per second")
 
-  // 3.125px*deg/s*em (read "pixel-degrees per second-em")
+  // calc(3.125px * 1deg / 1s / 1em) (read "pixel-degrees per second-em")
   @debug 5px * math.div(math.div(30deg, 2s), 24em)
 
   $degrees-per-second: math.div(20deg, 1s)
-  @debug $degrees-per-second  // 20deg/s
-  @debug math.div(1, $degrees-per-second)  // 0.05s/deg
+  @debug $degrees-per-second  // calc(20deg / 1s)
+  @debug math.div(1, $degrees-per-second)  // calc(0.05s / 1deg)
 {% endcodeExample %}
 
 {% headsUp %}
-  Because CSS doesn't support complex units like square pixels, using a number
-  with complex units as a [property value][] will produce an error. This is a
-  feature in disguise, though; if you aren't ending up with the right unit, it
-  usually means that something's wrong with your calculations! And remember, you
-  can always use the [`@debug` rule][] to check out the units of any variable or
-  [expression][].
 
-  [property value]: /documentation/style-rules/declarations
-  [`@debug` rule]: /documentation/at-rules/debug
-  [expression]: /documentation/syntax/structure#expressions
+  In CSS, numbers with complex units can only be represented in `calc()` and
+  other mathematical expressions, so Sass emits these numbers as `calc()`
+  expressions. Normal CSS properties don't accept complex units, but they can be
+  useful in [custom properties] or [functions].
+
+  [custom properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
+  [functions]: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Custom_functions_and_mixins/Using_custom_functions
+
+  {% compatibility 'dart: "1.96.0"', 'libsass: false', 'ruby: false', 'feature: "Complex Units in CSS"' %}
+    CSS only specified support for complex units like square pixels in [Values
+    and Units Level 4], and browsers only began implementing it in 2025. Earlier
+    versions of Sass produced errors when trying to use a value with complex
+    units in CSS, although they could still be used in Sass variables and
+    functions.
+
+    [Values and Units Level 4]: https://www.w3.org/TR/css-values-4/
+
+    From Dart Sass 1.69.6 forward, [`meta.inspect()`] returns valid `calc()`
+    expressions for numbers with complex units.
+
+    [`meta.inspect()`]: /documentation/modules/meta#inspect
+  {% endcompatibility %}
 {% endheadsUp %}
 
 Sass will automatically convert between compatible units, although which unit it
