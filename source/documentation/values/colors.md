@@ -82,6 +82,9 @@ narrow-gamut space without losing information.
 Following is a full list of all the color spaces Sass supports. You can read
 learn about these spaces [on MDN].
 
+{% compatibility 'dart: "1.97.0"', 'libsass: false', 'ruby: false', 'feature: "display-p3-linear"' %}
+{% endcompatibility %}
+
 [on MDN]: https://developer.mozilla.org/en-US/docs/Glossary/Color_space
 
 <table class="sl-c-table">
@@ -133,6 +136,15 @@ learn about these spaces [on MDN].
   <tr>
     <th scope="row"><code>srgb-linear</code></th>
     <td><code>color(srgb-linear 0.133 0.033 0.319)</code></td>
+    <td>
+      red <span class="fade">[0, 1]</span>;
+      green <span class="fade">[0, 1]</span>;
+      blue <span class="fade">[0, 1]</span>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><code>display-p3</code></th>
+    <td><code>color(display-p3 0.1154 0.0363 0.2946)</code></td>
     <td>
       red <span class="fade">[0, 1]</span>;
       green <span class="fade">[0, 1]</span>;
