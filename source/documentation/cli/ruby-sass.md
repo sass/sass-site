@@ -5,11 +5,10 @@ table_of_contents: true
 
 {% headsUp %}
   [Ruby Sass has reached end of life][] and is now totally unmaintained. Please
-  switch to [Dart Sass][] or [LibSass][] at your earliest convenience.
+  switch to [Dart Sass] at your earliest convenience.
 
   [Ruby Sass has reached end of life]: /blog/ruby-sass-is-unsupported
   [Dart Sass]: /dart-sass
-  [LibSass]: /libsass
 {% endheadsUp %}
 
 ## Usage
