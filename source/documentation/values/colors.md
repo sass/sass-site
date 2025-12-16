@@ -152,8 +152,8 @@ learn about these spaces [on MDN].
     </td>
   </tr>
   <tr>
-    <th scope="row"><code>display-p3</code></th>
-    <td><code>color(display-p3 0.374 0.21 0.579)</code></td>
+    <th scope="row"><code>display-p3-linear</code></th>
+    <td><code>color(display-p3-linear 0.374 0.21 0.579)</code></td>
     <td>
       red <span class="fade">[0, 1]</span>;
       green <span class="fade">[0, 1]</span>;
