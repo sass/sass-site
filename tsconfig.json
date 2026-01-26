@@ -8,7 +8,17 @@
     "target": "es2022",
     "lib": ["es2022", "DOM"],
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      // @spectrum-web-components uses ESM, so manual resolution is required.
+      "@spectrum-web-components/core/shared/base/Base.js": [
+        "./node_modules/@spectrum-web-components/core/dist/shared/base/Base.d.ts"
+      ],
+      // @spectrum-web-components uses ESM, so manual resolution is required.
+      "@spectrum-web-components/core/shared/base/sizedMixin.js": [
+        "./node_modules/@spectrum-web-components/core/dist/shared/base/sizedMixin.d.ts"
+      ]
+    }
   },
   "include": ["source/**/*.ts", "tool/*.ts"],
   "exclude": ["node_modules"]
