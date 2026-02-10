@@ -30,7 +30,7 @@ needs to happen before the language knows which user-defined functions exist.
 
 This change will also remove special parsing for the `expression()` function or
 `progid:...()` functions with vendor prefixes. No browser ever actually shipped
-a vendor-prefixed versions of these function, so having special parsing for them
+a vendor-prefixed versions of these functions, so having special parsing for them
 is unnecessary. Vendor-prefixed `expression()` functions like
 `-foo-expression()` will be parsed as normal Sass functions, and vendor-prefixed
 `progid:...()` functions like `-foo-progid:bar()` will be syntax errors because
