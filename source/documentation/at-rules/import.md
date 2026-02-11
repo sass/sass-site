@@ -594,3 +594,7 @@ stylesheet.
 This makes it easy to convert start using `@use` in a stylesheet even before all
 the libraries you depend on have converted to the new module system. Be aware,
 though, that if they do convert their APIs may well change!
+
+## Differences From `@use`
+
+{% render 'doc_snippets/use-import-differences' %}
