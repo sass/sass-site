@@ -54,7 +54,7 @@
     "@codemirror/lang-css": "^6.3.1",
     "@codemirror/lang-sass": "^6.0.2",
     "@codemirror/language": "^6.11.3",
-    "@codemirror/lint": "^6.8.5",
+    "@codemirror/lint": "^6.9.4",
     "@codemirror/state": "^6.5.4",
     "@codemirror/view": "^6.38.6",
     "@lezer/highlight": "^1.2.3",
