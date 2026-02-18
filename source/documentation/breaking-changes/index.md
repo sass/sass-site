@@ -22,6 +22,10 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Additional plain CSS function
+  names](/documentation/breaking-changes/function-name/) beginning in Dart Sass
+  1.98.0
+
 * [The legacy `if()` function](/documentation/breaking-changes/if-function/)
   beginning in Dart Sass 1.95.0
 
