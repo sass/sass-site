@@ -61,6 +61,7 @@ toc:
       - <code>sass:string</code>: /documentation/modules/string/
   - Breaking Changes: /documentation/breaking-changes/
     :children:
+      - Special Function Names: /documentation/breaking-changes/function-name/
       - Legacy if() Function: /documentation/breaking-changes/if-function/
       - Private Configuration: /documentation/breaking-changes/with-private/
       - Misplaced Rest Arguments: /documentation/breaking-changes/misplaced-rest/
