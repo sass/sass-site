@@ -62,7 +62,7 @@
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-inject": "^5.0.5",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-terser": "^1.0.0",
     "@sindresorhus/slugify": "^1.1.2",
     "@spectrum-web-components/shared": "^1.11.2",
     "@spectrum-web-components/split-view": "^1.7.0",
