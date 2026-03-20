@@ -10,6 +10,8 @@ $playground-base-colors: (
 
 .playground {
   --sl-max-width--container: 100vw;
+  --ansi-blue: #{brand.$sl-color--midnight-blue};
+  --ansi-red: var(--sl-color--code-error);
 
   display: grid;
   grid-template:

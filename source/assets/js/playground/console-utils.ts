@@ -1,9 +1,12 @@
 import {Exception, SourceSpan} from 'sass';
+import {FancyAnsi} from 'fancy-ansi';
 
 import {PlaygroundSelection, PlaygroundState, serializeState} from './utils';
 
 import Color from 'colorjs.io';
 import {colorSwatchView} from './color-decorator';
+
+const fancyAnsi = new FancyAnsi();
 
 export interface ConsoleLogDebug {
   options: {
@@ -75,8 +78,10 @@ export function displayForConsoleLog(
         span.end.line + 1,
         span.end.column + 1,
       ];
+      message = `<span>${fancyAnsi.toHtml(item.error.message)}</span>`;
+    } else {
+      message = encodeHTML(item.error?.toString() ?? '');
     }
-    message = encodeHTML(item.error?.toString() ?? '');
   } else {
     message = encodeHTML(item.message);
     if (item.options.span) {

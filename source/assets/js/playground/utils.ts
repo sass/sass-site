@@ -151,7 +151,7 @@ export function errorToDiagnostic(error: Exception | unknown): Diagnostic {
       from: error.span.start.offset,
       to: error.span.end.offset,
       severity: 'error',
-      message: error.toString(),
+      message: error.sassMessage + '\n' + error.sassStack,
     };
   } else {
     let errorString = 'Unknown compilation error';
