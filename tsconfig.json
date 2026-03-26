@@ -4,8 +4,6 @@
     "transpileOnly": true
   },
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "target": "es2022",
     "lib": ["es2022", "DOM"],
