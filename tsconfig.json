@@ -4,6 +4,7 @@
     "transpileOnly": true
   },
   "compilerOptions": {
+    "module": "Node16",
     "moduleResolution": "node16",
     "esModuleInterop": true,
     "target": "es2022",
