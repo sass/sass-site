@@ -115,6 +115,31 @@ parent selector to append additional text.
         display: block
 {% endcodeExample %}
 
+## Without Nesting
+
+{% compatibility 'dart: "1.100.0"', 'libsass: false', 'ruby: false' %}
+{% endcompatibility %}
+
+Just like in plain CSS, you can also use the parent selector outside of a nested
+rule. In this case, it's emitted as plain CSS to be handled by the browser,
+which will interpret it as the [scoping root].
+
+[scoping root]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Nesting_selector#using_outside_nested_rule
+
+{% headsUp %}
+  You can't add a suffix to parent selectors that aren't nested, because there's
+  nothing to apply the suffix to.
+{% endheadsUp %}
+
+{% codeExample 'parent-selector-root' %}
+  & {
+    background-color: blue;
+  }
+  ===
+  &
+    background-color: blue
+{% endcodeExample %}
+
 ## In SassScript
 
 The parent selector can also be used within SassScript. It's a special
