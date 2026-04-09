@@ -117,13 +117,13 @@ choco install sass
 
 [Chocolatey package manager]: https://chocolatey.org/
 
-### Install on Mac OS X or Linux (Homebrew) {#install-brew}
+### Install on macOS or Linux (Homebrew) {#install-brew}
 
 If you use [the Homebrew package manager] for Mac OS X or Linux, you can install
 Dart Sass by running
 
 ```shellsession
-brew install sass/sass/sass
+brew install dart-sass
 ```
 
 [the Homebrew package manager]: https://brew.sh/
