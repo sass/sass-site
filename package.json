@@ -96,7 +96,7 @@
     "js-yaml": "^4.1.1",
     "kleur": "^4.1.5",
     "liquidjs": "^10.25.5",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "lorem-ipsum": "^2.0.8",
     "markdown-it": "^14.1.1",
     "markdown-it-anchor": "^9.2.0",
