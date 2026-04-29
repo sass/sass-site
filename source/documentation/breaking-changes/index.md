@@ -22,6 +22,10 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Adjacent compound
+  selectors](/documentation/breaking-changes/adjacent-compounds) beginning in
+  Dart Sass 1.100.0.
+
 * [Additional plain CSS function
   names](/documentation/breaking-changes/function-name/) beginning in Dart Sass
   1.98.0
