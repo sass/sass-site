@@ -4,11 +4,13 @@
     "transpileOnly": true
   },
   "compilerOptions": {
+    "rootDir": ".",
     "esModuleInterop": true,
     "target": "es2022",
     "lib": ["es2022", "DOM"],
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "types": ["jquery", "node", "jqueryui"]
   },
   "include": ["source/**/*.ts", "tool/*.ts"],
   "exclude": ["node_modules"]
