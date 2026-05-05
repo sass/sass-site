@@ -12,12 +12,12 @@ export function renderPermalink(
   slug: string,
   opts: anchor.LinkInsideHeaderPermalinkOptions,
   state: StateCore,
-  idx: number
+  idx: number,
 ): void {
   // https://github.com/valeriangalliat/markdown-it-anchor/blob/649582d58185b00cfb2ceee9b6b4cd6aafc645b7/permalink.js#L148-L151
   const title = state.tokens[idx + 1]?.children
     ?.filter(
-      (token: Token) => token.type === 'text' || token.type === 'code_inline'
+      (token: Token) => token.type === 'text' || token.type === 'code_inline',
     )
     .reduce((acc, t) => acc + t.content, '');
 

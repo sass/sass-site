@@ -44,7 +44,7 @@ const syntax = new Compartment();
 function changeSyntax(
   view: EditorView,
   indented = false,
-  newValue: string | undefined
+  newValue: string | undefined,
 ): void {
   view.dispatch({
     effects: syntax.reconfigure(langSass({indented})),

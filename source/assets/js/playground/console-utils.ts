@@ -53,7 +53,7 @@ function encodeHTML(message: string): string {
 // Returns undefined if no range, or a link to the state, including range.
 function selectionLink(
   playgroundState: PlaygroundState,
-  range: PlaygroundSelection
+  range: PlaygroundSelection,
 ): string | undefined {
   if (!range) return undefined;
   return serializeState({...playgroundState, selection: range});
@@ -62,7 +62,7 @@ function selectionLink(
 // Returns a safe HTML string for a console item.
 export function displayForConsoleLog(
   item: ConsoleLog,
-  playgroundState: PlaygroundState
+  playgroundState: PlaygroundState,
 ): string {
   let lineNumber: number | undefined;
   let message: string;
@@ -125,7 +125,7 @@ export function displayForConsoleLog(
       const safeLink = `https://sass-lang.com/d/${item.options.deprecationType.id}`;
       message = message.replace(
         safeLink,
-        `<a href="${safeLink}" target="_blank">${safeLink}</a>`
+        `<a href="${safeLink}" target="_blank">${safeLink}</a>`,
       );
     }
   }

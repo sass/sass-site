@@ -8,7 +8,7 @@ import './components';
 declare global {
   // There doesn't seem to be any other way to declare this that TypeScript will
   // accept.
-  // eslint-disable-next-line no-var
+
   var sass: typeof sassModule;
 }
 
@@ -56,6 +56,6 @@ window.addEventListener('DOMContentLoaded', () => {
     code,
     text,
     code,
-    text
+    text,
   );
 });

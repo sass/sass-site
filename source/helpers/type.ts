@@ -44,7 +44,7 @@ export function stripIndent(contents: string): string {
     // Strip leading whitespace based on first line
     return contents.replaceAll(
       new RegExp(`^[ \\t]{${match[1].length}}`, 'gm'),
-      ''
+      '',
     );
   }
   return contents;

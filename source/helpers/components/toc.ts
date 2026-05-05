@@ -28,7 +28,7 @@ export interface TOCLink {
  */
 export function getDocTocData(data: TOCItem): TOCLink {
   const text = Object.keys(data).filter(
-    key => ![':children', ':expanded'].includes(key)
+    key => ![':children', ':expanded'].includes(key),
   )[0];
   const href = data[text] as string;
   const expanded = Boolean(data[':expanded']);

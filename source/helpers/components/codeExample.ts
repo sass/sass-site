@@ -52,7 +52,7 @@ export default async function codeExample(
   contents: string,
   exampleName: string,
   autogenCSS = true,
-  syntax: 'sass' | 'scss' | null = null
+  syntax: 'sass' | 'scss' | null = null,
 ): Promise<string> {
   if (!exampleName) {
     throw new Error('`{% codeExample %}` tags require a unique name.');
@@ -112,7 +112,7 @@ interface CodeExample {
 function generateCodeExample(
   text: string,
   autogenCSS: boolean,
-  syntax: 'sass' | 'scss' | null
+  syntax: 'sass' | 'scss' | null,
 ): CodeExample {
   const contents = stripIndent(text);
   const splitContents = contents.split('\n===\n');
@@ -162,13 +162,13 @@ function generateCodeExample(
   const {scssPaddings, sassPaddings, cssPaddings} = getPaddings(
     scssExamples,
     sassExamples,
-    cssExamples
+    cssExamples,
   );
 
   const {canSplit, maxSourceWidth, maxCSSWidth} = getCanSplit(
     scssExamples,
     sassExamples,
-    cssExamples
+    cssExamples,
   );
   let splitLocation: number | null = null;
   if (canSplit) {
@@ -199,7 +199,7 @@ function generateCodeExample(
 function getPaddings(
   scssExamples: string[],
   sassExamples: string[],
-  cssExamples: string[]
+  cssExamples: string[],
 ): Pick<CodeExample, 'scssPaddings' | 'sassPaddings' | 'cssPaddings'> {
   const scssPaddings: number[] = [];
   const sassPaddings: number[] = [];
@@ -207,7 +207,7 @@ function getPaddings(
   const maxSections = Math.max(
     scssExamples.length,
     sassExamples.length,
-    cssExamples.length
+    cssExamples.length,
   );
   Array.from({length: maxSections}).forEach((_, i) => {
     const scssLines = (scssExamples[i] || '').split('\n').length;
@@ -224,7 +224,7 @@ function getPaddings(
     const maxLines = Math.max(
       isLastScssSection ? 0 : scssLines,
       isLastSassSection ? 0 : sassLines,
-      isLastCssSection ? 0 : cssLines
+      isLastCssSection ? 0 : cssLines,
     );
 
     scssPaddings.push(
@@ -234,7 +234,7 @@ function getPaddings(
         comparisonB: cssExamples.slice(i),
         lines: scssLines,
         maxLines,
-      })
+      }),
     );
 
     sassPaddings.push(
@@ -244,7 +244,7 @@ function getPaddings(
         comparisonB: cssExamples.slice(i),
         lines: sassLines,
         maxLines,
-      })
+      }),
     );
 
     cssPaddings.push(
@@ -254,7 +254,7 @@ function getPaddings(
         comparisonB: sassExamples.slice(i),
         lines: cssLines,
         maxLines,
-      })
+      }),
     );
   });
 
@@ -303,7 +303,7 @@ function getTotalPadding(sections1: string[], sections2: string[]): number {
       sum +
       Math.max(
         (sections1[i] || '').split('\n').length,
-        (sections2[i] || '').split('\n').length
+        (sections2[i] || '').split('\n').length,
       ) +
       2
     );
@@ -313,10 +313,10 @@ function getTotalPadding(sections1: string[], sections2: string[]): number {
 function getCanSplit(
   scssExamples: string[],
   sassExamples: string[],
-  cssExamples: string[]
+  cssExamples: string[],
 ): {canSplit: boolean; maxSourceWidth: number; maxCSSWidth: number} {
   const exampleSourceLengths = [...scssExamples, ...sassExamples].flatMap(
-    source => source.split('\n').map(line => line.length)
+    source => source.split('\n').map(line => line.length),
   );
   const cssSourceLengths = cssExamples.length
     ? cssExamples.flatMap(source => source.split('\n').map(line => line.length))

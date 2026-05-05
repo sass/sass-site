@@ -41,7 +41,7 @@ const atRuleOptions = Object.freeze(
     label: `@${keyword} `,
     type: 'keyword',
     validFor: identifier,
-  }))
+  })),
 );
 
 // Completions for Sass at rules
@@ -76,12 +76,12 @@ const moduleCompletions = Object.freeze(
     type: 'class',
     validFor: identifier,
     _moduleName: mod.name as ModuleName,
-  }))
+  })),
 );
 
 // Completions for the import of built in modules, for instance "sass:color".
 function moduleMetadataCompletion(
-  context: CompletionContext
+  context: CompletionContext,
 ): CompletionResult | null {
   const nodeBefore = syntaxTree(context.state).resolveInner(context.pos, -1);
   const potentialTypes = [
@@ -106,7 +106,7 @@ function moduleMetadataCompletion(
 
   const included = includedModuleMetadata(context.state);
   const notIncludedModuleCompletions = moduleCompletions.filter(
-    moduleCompletion => !included.includes(moduleCompletion._moduleName)
+    moduleCompletion => !included.includes(moduleCompletion._moduleName),
   );
   return {
     from: moduleMatch.from + 1,
@@ -121,7 +121,7 @@ function moduleMetadataCompletion(
  * as the value.
  */
 function mapModulesByName<V>(
-  map: (module: (typeof moduleMetadata)[number]) => V
+  map: (module: (typeof moduleMetadata)[number]) => V,
 ): Record<ModuleName, V> {
   return moduleMetadata.reduce<Record<string, V>>((acc, mod) => {
     acc[mod.name] = map(mod);
@@ -135,8 +135,8 @@ const moduleVariableCompletions = Object.freeze(
     mod.variables.map(variable => ({
       label: `${mod.name}.${variable}`,
       type: 'variable',
-    }))
-  )
+    })),
+  ),
 );
 
 // Completion results for module functions.
@@ -148,8 +148,8 @@ const moduleFunctionsCompletions = Object.freeze(
       type: 'method',
       boost: 10,
       validFor: identifier,
-    }))
-  )
+    })),
+  ),
 );
 
 // Type predicate for modules names.
@@ -177,7 +177,7 @@ function includedModuleMetadata(state: EditorState): ModuleName[] {
 
 // Completions for the namespaces of included built in modules.
 function builtinModuleNameCompletion(
-  context: CompletionContext
+  context: CompletionContext,
 ): CompletionResult | null {
   const nodeBefore = syntaxTree(context.state).resolveInner(context.pos, -1);
   if (nodeBefore.type.name !== 'ValueName') return null;
@@ -203,12 +203,12 @@ function builtinModuleNameCompletion(
 
 // Completions for variables and functions for included built in modules.
 function builtinModuleItemCompletion(
-  context: CompletionContext
+  context: CompletionContext,
 ): CompletionResult | null {
   const nodeBefore = syntaxTree(context.state).resolveInner(context.pos, -1);
   if (
     ![nodeBefore.type.name, nodeBefore.parent?.type.name].includes(
-      'NamespacedValue'
+      'NamespacedValue',
     )
   ) {
     return null;
@@ -223,10 +223,10 @@ function builtinModuleItemCompletion(
   const includedModules = includedModuleMetadata(context.state);
 
   const includedModFunctions = includedModules.flatMap(
-    mod => moduleFunctionsCompletions[mod]
+    mod => moduleFunctionsCompletions[mod],
   );
   const includedModVariables = includedModules.flatMap(
-    mod => moduleVariableCompletions[mod]
+    mod => moduleVariableCompletions[mod],
   );
 
   return {

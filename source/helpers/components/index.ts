@@ -47,7 +47,7 @@ export async function headsUp(contents: string): Promise<string> {
 export function codeBlock(
   contents: string,
   language: string,
-  padding = 0
+  padding = 0,
 ): string {
   if (!languages[language]) {
     PrismLoader(language);
@@ -57,7 +57,7 @@ export function codeBlock(
   const attr = `language-${language}`;
   return `<pre class="${attr}"><code class="${attr}">${html.replaceAll(
     '\n',
-    '&#10;'
+    '&#10;',
   )}</code></pre>`;
 }
 

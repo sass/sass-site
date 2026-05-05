@@ -51,12 +51,12 @@ module.exports = eleventyConfig => {
   eleventyConfig.addLiquidFilter('absoluteUrl', absoluteUrl);
   eleventyConfig.addLiquidFilter(
     'getNewestCollectionItemDate',
-    getNewestCollectionItemDate
+    getNewestCollectionItemDate,
   );
   eleventyConfig.addLiquidFilter('dateToRfc3339', dateToRfc3339);
   eleventyConfig.addLiquidFilter(
     'htmlToAbsoluteUrls',
-    convertHtmlToAbsoluteUrls
+    convertHtmlToAbsoluteUrls,
   );
 
   // other plugins

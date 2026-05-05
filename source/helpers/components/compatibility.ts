@@ -80,13 +80,13 @@ function parseCompatibilityOpts(...args: string[]): CompatibilityOptions {
   for (const arg of args) {
     if (typeof arg !== 'string') {
       throw new Error(
-        `Received non-string argument to {% compatibility %} tag: ${arg}`
+        `Received non-string argument to {% compatibility %} tag: ${arg}`,
       );
     }
     const match = arg.match(keyValueRegex);
     if (!match) {
       throw new Error(
-        `Arguments should be in the format 'key:value'; received ${arg}.`
+        `Arguments should be in the format 'key:value'; received ${arg}.`,
       );
     }
     const key: string = match[1].trim();
@@ -98,14 +98,14 @@ function parseCompatibilityOpts(...args: string[]): CompatibilityOptions {
       throw new Error(
         `Unable to parse argument ${key} with value ${
           value as string
-        }. Try wrapping it in double quotes: ${key}:"${value as string}"`
+        }. Try wrapping it in double quotes: ${key}:"${value as string}"`,
       );
     }
     if (key && Object.hasOwn(opts, key)) {
       extend(value, opts, key as keyof CompatibilityOptions);
     } else {
       throw new Error(
-        `Received unexpected argument to {% compatibility %} tag: ${arg}`
+        `Received unexpected argument to {% compatibility %} tag: ${arg}`,
       );
     }
   }

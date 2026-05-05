@@ -25,7 +25,7 @@ const VERSION_CACHE_PATH = './source/_data/versionCache.json';
 function spawn(
   cmd: string,
   args: string[],
-  options: SpawnOptionsWithoutStdio
+  options: SpawnOptionsWithoutStdio,
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const child = nodeSpawn(cmd, args, options);
@@ -83,7 +83,7 @@ async function getLatestVersion(repo: string): Promise<string> {
     stdout = (await spawn(
       'git',
       ['ls-remote', '--tags', '--refs', `https://github.com/${repo}`],
-      {env: {...process.env, GIT_TERMINAL_PROMPT: '0'}}
+      {env: {...process.env, GIT_TERMINAL_PROMPT: '0'}},
     )) as string;
   } catch (err) {
     console.error(kleur.red(`[11ty] Failed to fetch git tags for ${repo}`));
@@ -117,13 +117,13 @@ module.exports = async function (): Promise<Record<string, Release>> {
     repos.map(async repo => [
       repo,
       cache[repo] ?? (await getLatestVersion(repo)),
-    ])
+    ]),
   );
   const data = Object.fromEntries(
     versions.map(([repo, version]) => [
       repo.replace('sass/', ''),
       {version, url: `https://github.com/${repo}/releases/tag/${version}`},
-    ])
+    ]),
   );
 
   const nextCache = Object.fromEntries(versions) as VersionCache;

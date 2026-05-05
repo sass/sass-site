@@ -37,7 +37,7 @@ export function serializeState(state: PlaygroundState): string {
  * - `outputFormat`: 0=compressed 1=expanded
  */
 export function serializeStateContents(
-  state: Pick<PlaygroundState, 'inputFormat' | 'outputFormat' | 'inputValue'>
+  state: Pick<PlaygroundState, 'inputFormat' | 'outputFormat' | 'inputValue'>,
 ): string {
   const inputFormatChar = state.inputFormat === 'scss' ? 1 : 0;
   const outputFormatChar = state.outputFormat === 'expanded' ? 1 : 0;
@@ -96,7 +96,7 @@ export function deserializeState(input: string): Partial<PlaygroundState> {
  */
 function deserializeStateContents(
   state: Partial<PlaygroundState>,
-  input: string
+  input: string,
 ): void {
   let decoded: string;
   try {
@@ -123,13 +123,13 @@ function deserializeStateContents(
  */
 function deserializeStateParams(
   state: Partial<PlaygroundState>,
-  input: string
+  input: string,
 ): void {
   const params = new URLSearchParams(input);
 
   const s = params.has('s')
     ? /^L(?<fromL>\d+)C(?<fromC>\d+)-L(?<toL>\d+)C(?<toC>\d+)$/i.exec(
-        params.get('s') as string
+        params.get('s') as string,
       )?.groups
     : null;
   if (s) {
@@ -177,7 +177,7 @@ export function debugToDiagnostic(logItem: ConsoleLogDebug): Diagnostic {
 }
 
 export function warnToDiagnostic(
-  logItem: ConsoleLogWarning
+  logItem: ConsoleLogWarning,
 ): Diagnostic | null {
   if (!logItem.options.span) return null;
   return {
@@ -197,7 +197,7 @@ export function logsToDiagnostics(logs: ConsoleLog[]): Diagnostic[] {
   });
   // Remove empties
   return diagnostics.filter(
-    (diagnostic): diagnostic is Diagnostic => !!diagnostic
+    (diagnostic): diagnostic is Diagnostic => !!diagnostic,
   );
 }
 

@@ -49,7 +49,7 @@ function getColorDecorations(view: EditorView): DecorationSet {
             // >=0.6. This works around a bug where `rgb(r, g, b, a)` syntax was
             // interpreted incorrectly, which is fixed in 0.6.0-alpha.
             const color = new Color(
-              colorString.replace(/^(rgb|hsl)\(/, '$1a(')
+              colorString.replace(/^(rgb|hsl)\(/, '$1a('),
             );
             const deco = Decoration.widget({
               widget: new ColorWidget(color),
@@ -106,7 +106,7 @@ class ColorWidget extends WidgetType {
 /* Generates div with color swatch and out of gamut warning. */
 export function colorSwatchView(
   color: string,
-  {warning}: {warning?: string}
+  {warning}: {warning?: string},
 ): HTMLDivElement {
   const wrap = document.createElement('div');
   wrap.setAttribute('aria-hidden', 'true');
@@ -148,5 +148,5 @@ export const colorDecorator = ViewPlugin.fromClass(
       EditorView.atomicRanges.of(view => {
         return view.plugin(plugin)?.colors || Decoration.none;
       }),
-  }
+  },
 );

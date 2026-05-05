@@ -73,7 +73,7 @@ function setupPlayground(): void {
       }
       if (
         ['inputFormat', 'outputFormat', 'inputValue', 'selection'].includes(
-          prop
+          prop,
         )
       ) {
         debounceUpdateURL();
@@ -264,24 +264,24 @@ function setupPlayground(): void {
    */
   function updateButtonState(): void {
     const inputFormatTab = document.querySelector(
-      '[data-setting="inputFormat"]'
+      '[data-setting="inputFormat"]',
     ) as HTMLDivElement;
     const inputButtons = inputFormatTab.querySelectorAll('[data-value]');
     inputButtons.forEach(button => {
       if (!(button instanceof HTMLButtonElement)) return;
       button.dataset.active = String(
-        button.dataset.value === playgroundState.inputFormat
+        button.dataset.value === playgroundState.inputFormat,
       );
     });
 
     const outputFormatTab = document.querySelector(
-      '[data-setting="outputFormat"]'
+      '[data-setting="outputFormat"]',
     ) as HTMLDivElement;
     const outputButtons = outputFormatTab.querySelectorAll('[data-value]');
     outputButtons.forEach(button => {
       if (!(button instanceof HTMLButtonElement)) return;
       button.dataset.active = String(
-        button.dataset.value === playgroundState.outputFormat
+        button.dataset.value === playgroundState.outputFormat,
       );
     });
   }
@@ -293,7 +293,7 @@ function setupPlayground(): void {
    */
   function updateErrorState(): void {
     const editorWrapper = document.querySelector(
-      '[data-compiler-has-error]'
+      '[data-compiler-has-error]',
     ) as HTMLDivElement;
     editorWrapper.dataset.compilerHasError =
       playgroundState.compilerHasError.toString();
@@ -308,7 +308,7 @@ function setupPlayground(): void {
    */
   function updateDebugOutput(): void {
     const console = document.querySelector(
-      '.sl-c-playground__console'
+      '.sl-c-playground__console',
     ) as HTMLDivElement;
     console.innerHTML = playgroundState.debugOutput
       .map(item => displayForConsoleLog(item, playgroundState))
@@ -400,7 +400,7 @@ function setupPlayground(): void {
   function updateSassVersion(): void {
     const version = info.split('\t')[1];
     const versionSpan = document.querySelector(
-      '.sl-c-playground__tabbar-version'
+      '.sl-c-playground__tabbar-version',
     ) as HTMLSpanElement;
     versionSpan.innerText = `v${version}`;
   }

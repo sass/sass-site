@@ -94,13 +94,13 @@ function writeFile(): void {
   const moduleMembers = generateModuleMetadata();
   const filePath = path.resolve(
     __dirname,
-    '../source/assets/js/playground/module-metadata.ts'
+    '../source/assets/js/playground/module-metadata.ts',
   );
   try {
     writeFileSync(
       filePath,
       `export default ${JSON.stringify(moduleMembers, null, 2)} as const;`,
-      'utf8'
+      'utf8',
     );
     console.log('module-metadata.ts built successfully');
   } catch (error) {

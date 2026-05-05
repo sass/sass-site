@@ -3,10 +3,10 @@ import {readFileSync} from 'fs';
 import path from 'path';
 
 const toc = readFileSync(
-  path.resolve(__dirname, '../source/_data/documentation.yml')
+  path.resolve(__dirname, '../source/_data/documentation.yml'),
 );
 const indexPage = readFileSync(
-  path.resolve(__dirname, '../source/documentation/breaking-changes/index.md')
+  path.resolve(__dirname, '../source/documentation/breaking-changes/index.md'),
 );
 
 const missingNavEntries = [];
@@ -30,7 +30,7 @@ for (const page of globSync('*.md', {
 if (missingIndexEntries.length > 0) {
   console.log(
     'The source/documentation/breaking-changes/index.md file is missing the following breaking changes:\n' +
-      missingIndexEntries.join('\n')
+      missingIndexEntries.join('\n'),
   );
   process.exitCode = 1;
 }
@@ -38,7 +38,7 @@ if (missingIndexEntries.length > 0) {
 if (missingNavEntries.length > 0) {
   console.log(
     'The source/_data/documentation.yml file is missing the following breaking changes:\n' +
-      missingNavEntries.join('\n')
+      missingNavEntries.join('\n'),
   );
   process.exitCode = 1;
 }
