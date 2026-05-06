@@ -1,7 +1,6 @@
 import {defineConfig, globalIgnores} from 'eslint/config';
 import tseslint from 'typescript-eslint';
 import gts from 'gts';
-import etc from 'eslint-plugin-etc';
 
 export default defineConfig([
   globalIgnores([
@@ -25,9 +24,6 @@ export default defineConfig([
   ]),
   {
     extends: [tseslint.configs.recommended, gts],
-    plugins: {
-      etc,
-    },
     rules: {
       '@typescript-eslint/explicit-function-return-type': [
         'error',
@@ -37,7 +33,7 @@ export default defineConfig([
       'func-style': ['error', 'declaration'],
       'prefer-const': ['error', {destructuring: 'all'}],
       'sort-imports': ['error', {ignoreDeclarationSort: true}],
-      'etc/prefer-interface': ['error'],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     },
   },
 ]);
