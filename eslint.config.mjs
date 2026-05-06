@@ -5,21 +5,23 @@ import etc from 'eslint-plugin-etc';
 
 export default defineConfig([
   globalIgnores([
-    '.vscode/**',
     '.language/**',
-    '_site/**',
-    'tool/typedoc-theme.js',
+    '.vscode/**',
+    'coverage/**',
+    'node_modules/**',
+    'package-lock.json',
     'source/_data/versionCache.json',
-    'source/assets/dist/**',
+    'source/assets/js/playground/module-metadata.ts',
     'source/assets/js/vendor/**',
     'source/assets/sass/vendor/**',
     'source/blog/*.md',
     'source/documentation/js-api/**',
-    'coverage/**',
-    'node_modules/**',
-    'package-lock.json',
-    'source/assets/js/playground/module-metadata.ts',
+    'tool/typedoc-theme.js',
     '!source/assets/js/vendor/index.js',
+
+    // Eleventy
+    'source/assets/dist/**',
+    '_site/**',
   ]),
   {
     extends: [tseslint.configs.recommended, gts],
