@@ -59,8 +59,9 @@ async function waitForElementWithText(
 
   // The callback in the `$$eval` method has a different context and needs to
   // receive the `text` as an argument to the "page function".
-  const foundText = await page.$$eval(selector, (elements, text) =>
-    elements.some(el => el.textContent?.includes(text)),
+  const foundText = await page.$$eval(
+    selector,
+    (elements, text) => elements.some(el => el.textContent?.includes(text)),
     text,
   );
   if (!foundText)
