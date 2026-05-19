@@ -26,6 +26,9 @@ jobs:
           npm run build-prod
       - name: Check links
         run: npm run checklinks:internal
+      - name: Run browser tests
+        run: npm run test:browser
+
 
   lint:
     name: Lint
