@@ -25,7 +25,7 @@ determine if the current version of Sass supports first-class calculations.
 
 [`meta.function-exists()`]: /documentation/modules/meta#function-exists
 [`meta.mixin-exists()`]: /documentation/modules/meta#mixin-exists
-[`meta.variable-exists()`]: /documentation/modules/meta#variable-exists
+[`meta.global-variable-exists()`]: /documentation/modules/meta#global-variable-exists
 
 ## Transition Period
 
