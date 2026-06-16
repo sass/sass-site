@@ -3,7 +3,7 @@ title: 'Breaking Change: Private Configuration'
 introduction: >
   When Sass introduced the new module system, it also introduced the concept of
   private variables that were meant only to be visible or modifiable within the
-  module. But there was an accidental loophole: this variables could still be
+  module. But there was an accidental loophole: these variables could still be
   configured.
 ---
 
