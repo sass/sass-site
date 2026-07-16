@@ -155,5 +155,9 @@ one to add, please [send a pull request]!
 
   [`sass-embedded` crate]: https://crates.io/crates/sass-embedded
 
+* **.NET**: The [`SassEmbedded.Net` package] runs Embedded Sass in .NET.
+
+  [`SassEmbedded.Net` package]: https://www.nuget.org/packages/EmbeddedSass.Net
+
   </div>
 </div>
