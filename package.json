@@ -96,7 +96,7 @@
     "jquery-ui": "^1.14.2",
     "js-yaml": "^4.2.0",
     "kleur": "^4.1.5",
-    "liquidjs": "^10.27.0",
+    "liquidjs": "^10.27.2",
     "lodash": "^4.18.1",
     "lorem-ipsum": "^3.0.0",
     "markdown-it": "^14.2.0",
