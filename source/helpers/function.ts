@@ -16,6 +16,8 @@ const links: Record<string, string> = {
   boolean: '/documentation/values/booleans',
   null: '/documentation/values/null',
   function: '/documentation/values/functions',
+  mixin: '/documentation/values/mixins',
+  module: '/documentation/values/modules',
   selector: '/documentation/modules/selector#selector-values',
 };
 

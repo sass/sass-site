@@ -23,93 +23,60 @@ title: sass:meta
   {% render 'code_snippets/example-first-class-mixin' %}
 {% endfunction %}
 
-{% function 'meta.load-css($url, $with: null)' %}
-  {% compatibility 'dart: "1.23.0"', 'libsass: false', 'ruby: false' %}
-    Only Dart Sass currently supports this mixin.
-  {% endcompatibility %}
+{% function 'meta.css($module)' %}
+  {% compatibility 'dart: "1.105.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  Loads the [module][] at `$url` and includes its CSS as though it were written
-  as the contents of this mixin. The `$with` parameter provides
-  [configuration][] for the modules; if it's passed, it must be a map from
-  variable names (without `$`) to the values of those variables to use in the
-  loaded module.
+  Includes `$module`'s CSS as though it were written as the contents of this
+  mixin. This will include the module's CSS even if it was already included
+  through another call to this function or a `@use` rule.
 
-  [module]: /documentation/at-rules/use
-  [configuration]: /documentation/at-rules/use#configuration
+  {% render 'module_param' %}
 
-  If `$url` is relative, it's interpreted as relative to the file in which
-  `meta.load-css()` is included.
-
-  **Like the [`@use` rule][]**:
-
-  [`@use` rule]: /documentation/at-rules/use
-
-  * This will only evaluate the given module once, even if it's loaded multiple
-    times in different ways.
-
-  * This cannot provide configuration to a module that's already been loaded,
-    whether or not it was already loaded with configuration.
-
-  **Unlike the [`@use` rule][]**:
-
-  * This doesn't make any members from the loaded module available in the
-    current module.
-
-  * This can be used anywhere in a stylesheet. It can even be nested within
-    style rules to create nested styles!
-
-  * The module URL being loaded can come from a variable and include
-    [interpolation][].
-
-    [interpolation]: /documentation/interpolation
-
-  {% headsUp %}
-    The `$url` parameter should be a string containing a URL like you'd pass to
-    the `@use` rule. It shouldn't be a CSS `url()`!
-  {% endheadsUp %}
-
-  {% codeExample 'load-css', false %}
+  {% codeExample 'css', false %}
     // dark-theme/_code.scss
-    $border-contrast: false !default;
-
     code {
       background-color: #6b717f;
       color: #d2e1dd;
-      @if $border-contrast {
-        border-color: #dadbdf;
-      }
     }
     ---
     // style.scss
     @use "sass:meta";
 
     body.dark {
-      @include meta.load-css("dark-theme/code",
-          $with: ("border-contrast": true));
+      @include meta.css(meta.load("dark-theme/code");
     }
     ===
     // dark-theme/_code.sass
-    $border-contrast: false !default
-
     code
       background-color: #6b717f
       color: #d2e1dd
-      @if $border-contrast
-        border-color: #dadbdf
     ---
     // style.sass
     @use "sass:meta"
 
     body.dark
-      $configuration: ("border-contrast": true)
-      @include meta.load-css("dark-theme/code", $with: $configuration)
+      @include meta.load-css("dark-theme/code")
     ===
     body.dark code {
       background-color: #6b717f;
       color: #d2e1dd;
-      border-color: #dadbdf;
     }
   {% endcodeExample %}
+
+  {% headsUp %}
+    Because `$module`'s stylesheet is only evaluated once, when that module is
+    loaded, any [parent selectors] it contains will ignore anything outside that
+    module, even if `meta.css()` is included within a nested selector.
+
+    [parent selectors]: /documentation/style-rules/parent-selector
+  {% endheadsUp %}
+{% endfunction %}
+
+{% function 'meta.load-css($url, $with: null)' %}
+  {% compatibility 'dart: "1.23.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+  This mixin is a shorthand for <code><a href="#css">meta.css</a>(<a
+  href="#load">meta.load</a>($url, $with))</code>.
 {% endfunction %}
 
 ## Functions
@@ -266,17 +233,14 @@ title: sass:meta
   Returns whether a function named `$name` is defined, either as a built-in
   function or a user-defined function.
 
-  If `$module` is passed, this also checks the module named `$module` for the
-  function definition. `$module` must be a string matching the namespace of a
-  [`@use` rule][] in the current file.
+  If `$module` is passed, this instead checks whether that module contains the
+  given function. {% render 'module_param' %}
 
-  [`@use` rule]: /documentation/at-rules/use
-
-  {% codeExample 'function-exists' %}
+  {% codeExample 'function-exists', false %}
     @use "sass:meta";
     @use "sass:math";
 
-    @debug meta.function-exists("div", "math"); // true
+    @debug meta.function-exists("div", $module: "math"); // true
     @debug meta.function-exists("scale-color"); // true
     @debug meta.function-exists("add"); // false
 
@@ -288,7 +252,7 @@ title: sass:meta
     @use "sass:meta"
     @use "sass:math"
 
-    @debug meta.function-exists("div", "math")  // true
+    @debug meta.function-exists("div", $module: "math")  // true
     @debug meta.function-exists("scale-color")  // true
     @debug meta.function-exists("add")  // false
 
@@ -305,15 +269,14 @@ title: sass:meta
   [function value]: /documentation/values/functions
 
   If `$module` is `null`, this returns the function named `$name` without a
-  namespace (including [global built-in functions][]). Otherwise, `$module` must
-  be a string matching the namespace of a [`@use` rule][] in the current file,
-  in which case this returns the function in that module named `$name`.
+  namespace (including [global built-in functions]). Otherwise, it returns the
+  function named `$name` defined in `$module`. {% render 'module_param' %}.
 
   [global built-in functions]: /documentation/modules#global-functions
-  [`@use` rule]: /documentation/at-rules/use
 
   By default, this throws an error if `$name` doesn't refer to Sass function.
-  However, if `$css` is `true`, it instead returns a [plain CSS function][].
+  However, if `$css` is `true`, it instead returns a [plain CSS function]. It's
+  an error to set `$css: true` and also to pass a `$module`.
 
   [plain CSS function]: /documentation/at-rules/function/#plain-css-functions
 
@@ -322,38 +285,40 @@ title: sass:meta
   {% render 'code_snippets/example-first-class-function' %}
 {% endfunction %}
 
-{% function 'meta.get-mixin($name, $module: null)', 'returns:function' %}
+{% function 'meta.get-mixin($name, $module: null)', 'returns:mixin' %}
   {% compatibility 'dart: "1.69.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
   Returns the [mixin value] named `$name`.
 
   [mixin value]: /documentation/values/mixins
 
-  If `$module` is `null`, this returns the mixin named `$name` defined in the
-  current module. Otherwise, `$module` must be a string matching the namespace
-  of a [`@use` rule] in the current file, in which case this returns the
-  mixin in that module named `$name`.
+  If `$module` is `null`, this returns the mixin named `$name` without a
+  namespace (including [global built-in functions]). Otherwise, it returns the
+  mixin named `$name` defined in `$module`. {% render 'module_param' %}
 
-  [`@use` rule]: /documentation/at-rules/use
-
-  By default, this throws an error if `$name` doesn't refer to a mixin.
+  This throws an error if `$name` doesn't refer to a mixin.
 
   The returned mixin can be included using [`meta.apply()`](#apply).
 
   {% render 'code_snippets/example-first-class-mixin' %}
 {% endfunction %}
 
+{% function 'meta.get-module($module)', 'returns:module' %}
+  {% compatibility 'dart: "1.105.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+  Returns the [module value] for `$module`. {% render 'module_param' %}
+
+  [module value]: /documentation/values/mixins
+{% endfunction %}
+
 {% function 'meta.global-variable-exists($name, $module: null)', 'global-variable-exists($name, $module: null)', 'returns:boolean' %}
-  Returns whether a [global variable][] named `$name` (without the `$`) exists.
+  Returns whether a [global variable] named `$name` (without the `$`) exists.
 
   [global variable]: /documentation/variables#scope
 
   If `$module` is `null`, this returns whether a variable named `$name` without
-  a namespace exists. Otherwise, `$module` must be a string matching the
-  namespace of a [`@use` rule][] in the current file, in which case this returns
-  whether that module has a variable named `$name`.
-
-  [`@use` rule]: /documentation/at-rules/use
+  a namespace exists. Otherwise, it returns whether `$module` defines a variable
+  named `$name`. {% render 'module_param' %}
 
   See also [`meta.variable-exists()`](#variable-exists).
 
@@ -427,15 +392,116 @@ title: sass:meta
   {% render 'code_snippets/example-mixin-arbitrary-keyword-arguments' %}
 {% endfunction %}
 
+{% function 'meta.load($url, $with: null)', 'returns:module' %}
+  {% compatibility 'dart: "1.105.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+  Loads the [module] at `$url` as a [module value]. The `$with` parameter
+  provides [configuration] for the module; if it's passed, it must be a map from
+  variable names (without `$`) to the values of those variables to use in the
+  loaded module.
+
+  [module]: /documentation/at-rules/use
+  [module value]: /documentation/values/module
+  [configuration]: /documentation/at-rules/use#configuration
+
+  If `$url` is relative, it's interpreted as relative to the file in which
+  `meta.load()` is called.
+
+  If the module at `$url` hasn't been loaded before this is called, it
+  immediately evaluates that module. However, unlike other ways of loading
+  modules, this does *not* emit any CSS. Instead, you can include the
+  [`meta.css()`] mixin to explicitly include the module's CSS. The CSS will be
+  included where the mixin is invoked, rather than where the module is loaded.
+
+  [`meta.css()`]: #css
+
+  **Like the [`@use` rule]**:
+
+  [`@use` rule]: /documentation/at-rules/use
+
+  * This will only evaluate the given module once, even if it's loaded multiple
+    times in different ways.
+
+  * This cannot provide configuration to a module that's already been loaded,
+    whether or not it was already loaded with configuration.
+
+  **Unlike the [`@use` rule]**:
+
+  * This doesn't make any members from the loaded module available in the
+    current module.
+
+  * This doesn't automatically emit CSS from the loaded module.
+
+  * This can be used anywhere in a stylesheet.
+
+  * The module URL being loaded can come from a variable and include
+    [interpolation].
+ 
+    [interpolation]: /documentation/interpolation
+ 
+  {% headsUp %}
+    The `$url` parameter should be a string containing a URL like you'd pass to
+    the `@use` rule. It shouldn't be a CSS `url()`!
+  {% endheadsUp %}
+
+  {% codeExample 'load', false %}
+    // dark-theme/_code.scss
+    $border-contrast: false !default;
+
+    code {
+      background-color: #6b717f;
+      color: #d2e1dd;
+      @if $border-contrast {
+        border-color: #dadbdf;
+      }
+    }
+    ---
+    // style.scss
+    @use "sass:meta";
+
+    body.dark {
+      $module: meta.load(
+        "dark-theme/code",
+        $with: ("border-contrast": true)
+      );
+      @include meta.css($module);
+    }
+    ===
+    // dark-theme/_code.sass
+    $border-contrast: false !default
+
+    code
+      background-color: #6b717f
+      color: #d2e1dd
+      @if $border-contrast
+        border-color: #dadbdf
+    ---
+    // style.sass
+    @use "sass:meta"
+
+    body.dark
+      $module: meta.load(
+        "dark-theme/code",
+        $with: ("border-contrast": true)
+      )
+      @include meta.css($module)
+    ===
+    body.dark code {
+      background-color: #6b717f;
+      color: #d2e1dd;
+      border-color: #dadbdf;
+    }
+  {% endcodeExample %}
+{% endfunction %}
+
 {% function 'meta.mixin-exists($name, $module: null)', 'mixin-exists($name, $module: null)', 'returns:boolean' %}
-  Returns whether a [mixin][] named `$name` exists.
+  Returns whether a [mixin] named `$name` is defined.
 
   [mixin]: /documentation/at-rules/mixin
 
   If `$module` is `null`, this returns whether a mixin named `$name` without a
-  namespace exists. Otherwise, `$module` must be a string matching the namespace
-  of a [`@use` rule][] in the current file, in which case this returns whether
-  that module has a mixin named `$name`.
+  namespace exists. Otherwise, it returns whether `$module` defines a mixin
+  named `$name`. {% render 'module_param' %}
 
   [`@use` rule]: /documentation/at-rules/use
 
@@ -465,16 +531,13 @@ title: sass:meta
 {% function 'meta.module-functions($module)', 'returns:map' %}
   {% render 'doc_snippets/module-system-function-status' %}
 
-  Returns all the functions defined in a module, as a map from function names to
-  [function values][].
+  Returns all the functions defined in `$module`, as a map from function names to
+  [function values].
 
   [function values]: /documentation/values/functions
 
-  The `$module` parameter must be a string matching the namespace of a [`@use`
-  rule][] in the current file.
-
-  [`@use` rule]: /documentation/at-rules/use
-
+  {% render 'module_param' %}
+ 
   {% codeExample 'module-functions', false %}
     // _functions.scss
     @function pow($base, $exponent) {
@@ -516,16 +579,13 @@ title: sass:meta
 {% function 'meta.module-mixins($module)', 'returns:map' %}
   {% compatibility 'dart: "1.69.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-  Returns all the mixins defined in a module, as a map from mixin names to
+  Returns all the mixins defined in `$module`, as a map from mixin names to
   [mixin values].
 
   [mixin values]: /documentation/values/mixins
 
-  The `$module` parameter must be a string matching the namespace of a [`@use`
-  rule] in the current file.
-
-  [`@use` rule]: /documentation/at-rules/use
-
+  {% render 'module_param' %}
+ 
   {% codeExample 'module-mixins' %}
     // _mixins.scss
     @mixin stretch() {
@@ -572,13 +632,10 @@ title: sass:meta
 {% function 'meta.module-variables($module)', 'returns:map' %}
   {% render 'doc_snippets/module-system-function-status' %}
 
-  Returns all the variables defined in a module, as a map from variable names
+  Returns all the variables defined in `$module`, as a map from variable names
   (without `$`) to the values of those variables.
 
-  The `$module` parameter must be a string matching the namespace of a [`@use`
-  rule][] in the current file.
-
-  [`@use` rule]: /documentation/at-rules/use
+  {% render 'module_param' %}
 
   {% codeExample 'module-variables', false %}
     // _variables.scss
@@ -630,6 +687,7 @@ title: sass:meta
   * [`null`](/documentation/values/null)
   * [`function`](/documentation/values/functions)
   * [`mixin`](/documentation/values/mixins)
+  * [`module`](/documentation/values/modules)
   * [`arglist`](/documentation/values/lists#argument-lists)
 
   New possible values may be added in the future. It may return either `list` or

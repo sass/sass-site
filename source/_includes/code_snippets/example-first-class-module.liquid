@@ -1,0 +1,42 @@
+{% codeExample 'first-class-module', false %}
+  // _themes.scss
+  @use 'sass:map';
+  @use 'sass:meta';
+
+  @function load-theme($theme-name) {
+    $module: meta.load('themes/#{$theme-name}');
+
+    @each $token in ['foreground', 'background', 'highlight'] {
+      @if not meta.variable-exists($token, $module: $module) {
+        @error "#{$theme} is missing $#{$token}";
+      }
+    }
+
+    @return meta.module-variables($module);
+  }
+  ---
+  // themes/_desert.scss
+  $foreground: #783314;
+  $background: #ec883c;
+  $highlight: #a9c6e6;
+  ===
+  // _themes.scss
+  @use 'sass:map'
+  @use 'sass:meta'
+
+  @function load-theme($theme-name)
+    $module: meta.load('themes/#{$theme-name}')
+
+    @each $token in ['foreground', 'background', 'highlight']
+      @if not meta.variable-exists($token, $module: $module)
+        @error "#{$theme} is missing $#{$token}"
+
+
+
+    @return meta.module-variables($module)
+  ---
+  // themes/_desert.scss
+  $foreground: #783314
+  $background: #ec883c
+  $highlight: #a9c6e6
+{% endcodeExample %}
