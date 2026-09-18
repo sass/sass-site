@@ -714,6 +714,28 @@ even be [extended][]!
 
 [extended]: /documentation/at-rules/extend
 
+## Dynamically Loading Modules
+
+The `@use` rule can only be used to load modules "statically"—that is, modules
+whose URLs you know as you're writing a stylesheet. You can't, for example,
+write `@use "themes/#{$theme-name}"`. This helps ensure that Sass, as well as
+anyone reading your stylesheet, can tell where all your modules (and therefore
+all their variables, mixins, and functions) actually come from just from reading
+your stylesheet.
+
+However, there is a way around this restriction. The [`meta.load()`] function
+can load a module "dynamically", meaning that you can pass in any [string value]
+as the URL to load. The catch is that you can't directly refer to the contents
+of the module you load like this the way you can with `@use`. Instead,
+`meta.load()` returns a [module value] which you can pass to various other
+functions and mixins in `sass:meta` to access the contents of the module.
+
+[`meta.load()`]: /documentation/modules/meta#load
+[string value]: /documentation/values/strings
+[module value]: /documentation/values/modules
+
+{% render 'code_snippets/example-first-class-module' %}
+
 ## Differences From `@import`
 
 {% render 'doc_snippets/use-import-differences' %}

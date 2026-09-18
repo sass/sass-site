@@ -43,6 +43,7 @@ toc:
       - Calculations: /documentation/values/calculations/
       - Functions: /documentation/values/functions/
       - Mixins: /documentation/values/mixins/
+      - Modules: /documentation/values/modules/
   - Operators: /documentation/operators/
     :children:
       - Equality: /documentation/operators/equality/
