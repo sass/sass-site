@@ -55,7 +55,7 @@ title: sass:meta
     @use "sass:meta"
 
     body.dark
-      @include meta.load-css("dark-theme/code")
+      @include meta.css(meta.load("dark-theme/code"))
     ===
     body.dark code {
       background-color: #6b717f;
