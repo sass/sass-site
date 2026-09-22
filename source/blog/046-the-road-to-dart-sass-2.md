@@ -23,18 +23,18 @@ and first-class [mixins] and [modules]; and we've made it easier to use Sass in
 a wide variety of contexts with [a fully reworked JS API], [embedded Dart Sass],
 [`pkg:` importers], and support for running [directly in the browser][^1].
 
-[last year]: https://sass-lang.com/blog/libsass-is-end-of-life/
-[color spaces]: https://sass-lang.com/blog/wide-gamut-colors-in-sass/
-[math functions]: https://sass-lang.com/blog/request-for-comments-first-class-calc/
-[the new `if()` syntax]: https://sass-lang.com/documentation/syntax/special-functions/#if
-[the module system]: https://sass-lang.com/blog/the-module-system-is-launched/
-[nested map functions]: https://sass-lang.com/blog/request-for-comments-nested-map-functions/
-[mixins]: https://sass-lang.com/documentation/values/mixins/
-[modules]: https://sass-lang.com/documentation/values/modules/
-[a fully reworked JS API]: https://sass-lang.com/blog/request-for-comments-new-js-api/
-[embedded Dart Sass]: https://sass-lang.com/dart-sass/#embedded-dart-sass
-[`pkg:` importers]: https://sass-lang.com/blog/announcing-pkg-importers/
-[directly in the browser]: https://sass-lang.com/blog/sass-in-the-browser/
+[last year]: /blog/libsass-is-end-of-life
+[color spaces]: /blog/wide-gamut-colors-in-sass
+[math functions]: /blog/request-for-comments-first-class-calc
+[the new `if()` syntax]: /documentation/syntax/special-functions/#if
+[the module system]: /blog/the-module-system-is-launched
+[nested map functions]: /blog/request-for-comments-nested-map-functions
+[mixins]: /documentation/values/mixins
+[modules]: /documentation/values/modules
+[a fully reworked JS API]: /blog/request-for-comments-new-js-api
+[embedded Dart Sass]: /dart-sass/#embedded-dart-sass
+[`pkg:` importers]: /blog/announcing-pkg-importers
+[directly in the browser]: /blog/sass-in-the-browser
 
 [^1]: Try it yourself by opening your browser console anywhere on the Sass site!
 
@@ -47,9 +47,9 @@ error-prone than we expected, like [the subtraction operator]. Sometimes it's
 just a straight-up bug that we didn't notice, like [being able to configure
 private variables].
 
-[using `/` for division]: https://sass-lang.com/documentation/breaking-changes/slash-div/
-[the subtraction operator]: https://sass-lang.com/documentation/breaking-changes/strict-unary/
-[being able to configure private variables]: https://sass-lang.com/documentation/breaking-changes/with-private/
+[using `/` for division]: /documentation/breaking-changes/slash-div
+[the subtraction operator]: /documentation/breaking-changes/strict-unary
+[being able to configure private variables]: /documentation/breaking-changes/with-private
 
 We try very hard to avoid releasing breaking changes to Sass. While we do
 occasionally make exceptions under [strict conditions] in order to ensure
@@ -88,9 +88,9 @@ instead be errors in 2.0.0. There are a couple exceptions, though:
   Specifically, **no deprecations introduced after Dart Sass 1.105.0 will become
   errors in Dart Sass 2**[^2].
 
-[when we deprecated `@import`]: https://sass-lang.com/blog/import-is-deprecated/
-[legacy Sass `if()` function]: https://sass-lang.com/documentation/breaking-changes/if-function/
-[an automated migrator]: https://sass-lang.com/documentation/cli/migrator/
+[when we deprecated `@import`]: /blog/import-is-deprecated
+[legacy Sass `if()` function]: /documentation/breaking-changes/if-function
+[an automated migrator]: /documentation/cli/migrator
 
 [^2]: As ever, we do reserve the right to make breaking changes necessary for
     CSS compatibility after a three month deprecation period. We can't always
@@ -106,8 +106,8 @@ slash-separated list, the same kind currently created by the [`list.slash()`]
 function. If you need to do division, you can either use [`math.div()`] or
 continue using `/` within a `calc()` expression.
 
-[`list.slash()`]: https://sass-lang.com/documentation/modules/list/#slash
-[`math.div()`]: https://sass-lang.com/documentation/modules/math/#div
+[`list.slash()`]: /documentation/modules/list/#slash
+[`math.div()`]: /documentation/modules/math/#div
 
 ### Preparing for Dart Sass 2
 
@@ -122,7 +122,7 @@ in Dart Sass 2, pass:
 
 When using the JS API, add this to your [Sass options]:
 
-[Sass options]: https://sass-lang.com/documentation/js-api/interfaces/options/
+[Sass options]: /documentation/js-api/interfaces/Options
 
 ```js
 {
@@ -142,7 +142,7 @@ version, you're ready to go—Dart Sass 2 won't break you. If you still have som
 deprecations you need to migrate, check out [the Sass migrator]. It can
 automatically migrate many of the most common deprecations.
 
-[the Sass migrator]: https://sass-lang.com/documentation/cli/migrator/
+[the Sass migrator]: /documentation/cli/migrator
 
 We're excited to get Dart Sass 2 into our users' hands, and to finally wave
 farewell to having to support all those old deprecations. We hope the upgrade
