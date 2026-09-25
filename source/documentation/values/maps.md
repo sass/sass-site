@@ -128,7 +128,7 @@ that gets returned.
   @debug map.merge($weights, ("medium": 700));
   // ("light": 300, "medium": 700)
   ===
-  @use "sass:map";
+  @use "sass:map"
 
   $weights: ("light": 300, "medium": 500)
 

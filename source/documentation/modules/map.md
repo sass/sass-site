@@ -79,7 +79,7 @@ title: sass:map
     //     "bold": 700
     //   )
     // )
-    @debug map.merge($helvetica-light, $helvetica-heavy);
+    @debug map.merge($helvetica-light, $helvetica-heavy)
     // (
     //   "weights": (
     //     "medium: 500,
