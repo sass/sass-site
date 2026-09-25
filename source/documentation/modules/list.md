@@ -199,9 +199,9 @@ title: sass:list
     ===
     @use 'sass:list'
 
-    @debug list.set-nth(10px 20px 30px, 1, 2em); // 2em 20px 30px
-    @debug list.set-nth(10px 20px 30px, -1, 8em); // 10px, 20px, 8em
-    @debug list.set-nth((Helvetica, Arial, sans-serif), 3, Roboto); // Helvetica, Arial, Roboto
+    @debug list.set-nth(10px 20px 30px, 1, 2em)  // 2em 20px 30px
+    @debug list.set-nth(10px 20px 30px, -1, 8em)  // 10px, 20px, 8em
+    @debug list.set-nth((Helvetica, Arial, sans-serif), 3, Roboto)  // Helvetica, Arial, Roboto
   {% endcodeExample %}
 {% endfunction %}
 

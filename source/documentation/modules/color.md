@@ -298,7 +298,7 @@ title: sass:color
     @debug color.invert(#b37399, $space: rgb); // #4c8c66
     @debug color.invert(#550e0c, 20%, $space: display-p3); // rgb(103.4937692017, 61.3720912206, 59.430641338)
     ===
-    @use 'sass:color';
+    @use 'sass:color'
 
     @debug color.invert(#b37399, $space: rgb)  // #4c8c66
     @debug color.invert(#550e0c, 20%, $space: display-p3)  // rgb(103.4937692017, 61.3720912206, 59.430641338)
@@ -431,7 +431,7 @@ title: sass:color
       $method: oklch longer hue
     ); // oklch(65% 0.06 240deg)
     ===
-    @use 'sass:color';
+    @use 'sass:color'
 
     @debug color.mix(#036, #d2e1dd, $method: rgb)  // #698aa2
     @debug color.mix(#036, #d2e1dd, $method: oklch)  // rgb(87.864037264, 140.601918773, 154.2876826946)
@@ -1181,13 +1181,13 @@ title: sass:color
     @debug desaturate(#f2ece4, 50%); // #ebebeb
 
     // Saturation 80% becomes 100%.
-    @debug saturate(#0e4982, 30%)  // #004990
+    @debug saturate(#0e4982, 30%); // #004990
     ===
     // Saturation 50% becomes 70%.
-    @debug saturate(#c69, 20%); // #e05299
+    @debug saturate(#c69, 20%)  // #e05299
 
     // Saturation 35% becomes 85%.
-    @debug desaturate(#f2ece4, 50%); // #ebebeb
+    @debug desaturate(#f2ece4, 50%)  // #ebebeb
 
     // Saturation 80% becomes 100%.
     @debug saturate(#0e4982, 30%)  // #004990
