@@ -27,6 +27,7 @@ eleventyExcludeFromCollections: true
 {%- for mod in mods %}
 /docs/yardoc/functions/{{ mod }}.html     /documentation/modules/{{ mod }}/
 /documentation/functions/{{ mod }}.html   /documentation/modules/{{ mod }}/
+/documentation/functions/{{ mod }}        /documentation/modules/{{ mod }}/
 {%- endfor -%}
 
 {%- for b in redirects.breaking %}
