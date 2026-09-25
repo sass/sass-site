@@ -2,9 +2,15 @@
 title: "Breaking Change: Legacy JS API"
 introduction: |
   Dart Sass originally used an API based on the one used by Node Sass, but
-  replaced it with a new, modern API in Dart Sass 1.45.0. The legacy JS API is
-  now deprecated and will be removed in Dart Sass 2.0.0.
+  replaced it with a new, modern API.
 ---
+
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+The legacy API was removed in Dart Sass 2.0.0 after being deprecated in 1.45.0.
+Archived documentation for it can be found [in the Node Sass repository].
+
+[in the Node Sass repository]: https://github.com/sass/node-sass/blob/master/README.md#usage
 
 ## Migrating Usage
 

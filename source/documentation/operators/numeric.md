@@ -117,71 +117,16 @@ You can also write `+` and `-` as unary operators, which take only one value:
 {% compatibility 'dart: "1.33.0"', 'libsass: false', 'ruby: false', 'feature: "math.div()"' %}{% endcompatibility %}
 
 Unlike other mathematical operations, division in Sass is done with the
-[`math.div()`] function. Although many programming languages use `/` as a
+[`math.div()` function]. Although many programming languages use `/` as a
 division operator, in CSS `/` is used as a separator (as in `font: 15px/32px` or
-`hsl(120 100% 50% / 0.8)`). While Sass does support the use of `/` as a division
-operator, this is deprecated and [will be removed] in a future version.
+`hsl(120 100% 50% / 0.8)`). While Sass used to support `/` as a division
+operator, this was deprecated and eventually removed in Dart Sass 2.0.0.
 
-[`math.div()`]: /documentation/modules/math#div
+[`math.div()` function]: /documentation/modules/math#div
 [will be removed]: /documentation/breaking-changes/slash-div
 
-### Slash-Separated Values
+You can still use `/` as a divion operator within a [`calc()` expression].
 
-For the time being while Sass still supports `/` as a division operator, it has
-to have a way to disambiguate between `/` as a separator and `/` as division. In
-order to make this work, if two numbers are separated by `/`, Sass will print
-the result as slash-separated instead of divided unless one of these conditions
-is met:
-
-* Either expression is anything other than a literal number.
-* The result is stored in a variable or returned by a function.
-* The operation is surrounded by parentheses, unless those parentheses are
-  outside a list that contains the operation.
-* The result is used as part of another operation (other than `/`).
-* The result is returned by a [calculation].
-
-[calculation]: /documentation/values/calculations
-
-You can use [`list.slash()`] to force `/` to be used as a separator.
-
-[`list.slash()`]: /documentation/modules/list#slash
-
-{% codeExample 'slash-separated-values', false %}
-  @use "sass:list";
-
-  @debug 15px / 30px; // 15px/30px
-  @debug (10px + 5px) / 30px; // 0.5
-  @debug list.slash(10px + 5px, 30px); // 15px/30px
-
-  $result: 15px / 30px;
-  @debug $result; // 0.5
-
-  @function fifteen-divided-by-thirty() {
-    @return 15px / 30px;
-  }
-  @debug fifteen-divided-by-thirty(); // 0.5
-
-  @debug (15px/30px); // 0.5
-  @debug (bold 15px/30px sans-serif); // bold 15px/30px sans-serif
-  @debug 15px/30px + 1; // 1.5
-  ===
-  @use "sass:list";
-
-  @debug 15px / 30px  // 15px/30px
-  @debug (10px + 5px) / 30px  // 0.5
-  @debug list.slash(10px + 5px, 30px)  // 15px/30px
-
-  $result: 15px / 30px
-  @debug $result  // 0.5
-
-  @function fifteen-divided-by-thirty()
-    @return 15px / 30px
-
-  @debug fifteen-divided-by-thirty()  // 0.5
-
-  @debug (15px/30px)  // 0.5
-  @debug (bold 15px/30px sans-serif)  // bold 15px/30px sans-serif
-  @debug 15px/30px + 1  // 1.5
-{% endcodeExample %}
+[`calc()` expression]: /documentation/values/calculations
 
 {% render 'doc_snippets/number-units' %}

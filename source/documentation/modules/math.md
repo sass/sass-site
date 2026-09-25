@@ -679,35 +679,18 @@ title: sass:math
   * * *
 
   If `$limit` is a number greater than or equal to 1, returns a random whole
-  number between 1 and `$limit`.
-
-  {% headsUp %}
-    `random()` ignores units in `$limit`. [This behavior is deprecated] and
-    `random($limit)` will return a random integer with the same units as the
-    `$limit` argument.
-
-    [This behavior is deprecated]: /documentation/breaking-changes/function-units
-
-    {% codeExample 'math-random-warning' %}
-      @use 'sass:math';
-
-      @debug math.random(100px); // 42
-      ===
-      @use 'sass:math'
-
-      @debug math.random(100px)  // 42
-    {% endcodeExample %}
-  {% endheadsUp %}
+  number between 1 and `$limit`. If `$limit` has a unit, the returned value will
+  have the same unit.
 
   {% codeExample 'math-random-limit' %}
     @use 'sass:math';
 
     @debug math.random(10); // 4
-    @debug math.random(10000); // 5373
+    @debug math.random(10000px); // 5373px
     ===
     @use 'sass:math'
 
     @debug math.random(10)  // 4
-    @debug math.random(10000)  // 5373
+    @debug math.random(10000px)  // 5373px
   {% endcodeExample %}
 {% endfunction %}

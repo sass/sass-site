@@ -1,46 +1,50 @@
 ---
 title: 'Breaking Change: Private Configuration'
 introduction: >
-  When Sass introduced the new module system, it also introduced the concept of
-  private variables that were meant only to be visible or modifiable within the
-  module. But there was an accidental loophole: these variables could still be
-  configured.
+  It's no longer possible to configure private variables through
+  `@use ... with`.
 ---
 
-It's possible to write `@use "module" with ($-private: value)` and affect the
-value of a module's private variable. This goes against the intended behavior of
-the language, and likely against the module author's intentions as well. To
-close this loophole, we're moving towards making it an error to ever configure a
-private variable.
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-We still plan to allow private variables to be declared with `!default`, because
-this remains a useful way to assign a value only if the variable is currently
-`null` (similar to [`??=` assignment] in JavaScript).
+The following is now an error:
+
+{% codeExample 'with-private', false %}
+  @use "module" (
+    $-private: value,
+  );
+  ===
+  @use "module" (
+    $-private: value,
+  )
+{% endcodeExample %}
+
+You may still declare proviate variables with `!default`, because this is still
+a useful way to assign a value only if the variable is currently `null` (similar
+to [`??=` assignment] in JavaScript).
 
 [`??=` assignment]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment
 
 {% headsUp %}
   Any variable whose name starts with `-` or `_` is considered private,
   including variables whose names start with `--`. For this reason, we
-  discourage the use of CSS custom property-style names for Sass variables.
+  discourage the use of CSS custom-property-style names for Sass variables.
 {% endheadsUp %}
 
-### Phase 1
+## Historical Behavior
+
+Private variables were never supposed to be visible outside of the module that
+declared them in any way. but when the module system was first released, there
+was an accidental loophole: these variables could still be configured. This went
+against the intended behavior of the language, and likely against the module
+author's intentions as well.
 
 {% compatibility 'dart: "1.92.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-Currently, Dart Sass emits a deprecation warning if you use a private variable
-name in a configuration, but it will still allow that variable to be configured
-if the module declares it with `!default`.
+Starting in 1.92.0, Dart Sass emitted a `with-private` deprecation warning when
+configurations set a value for a private variable.
 
 To fix any violations, change all variables that are intended to be configured
 to no longer be private by removing all leading `-` or `_` characters.
 
 {% render 'silencing_deprecations' %}
-
-### Phase 2
-
-{% compatibility 'dart: false', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-In Dart Sass 2.0.0, including a private variable in a configuration will be an
-error.

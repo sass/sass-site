@@ -1,129 +1,125 @@
 ---
 title: 'Breaking Change: Slash as Division'
 introduction: >
-  Sass currently treats `/` as a division operation in some contexts and a
-  separator in others. This makes it difficult for Sass users to tell what any
-  given `/` will mean, and makes it hard to work with new CSS features that use
-  `/` as a separator.
+  Sass now treats `/` as a separator rather than a division operator everywhere
+  except for `calc()` expressions.
 ---
 
-{% compatibility 'dart: "partial"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-Today, Sass uses [complex heuristics][] to figure out whether a `/` should be
-treated as division or a separator. Even then, as a separator it just produces
-an unquoted string that's difficult to inspect from within Sass. As more and
-more CSS features like [CSS Grid][] and the [new `rgb()` and `hsl()` syntax][]
-use `/` as a separator, this is becoming more and more painful to Sass users.
+In plain CSS, `/` has always been a separator. It was used since CSS 1 part of
+the [`font` shorthand syntax] to separate `font-size` from `line-height`, and
+more recently as an important part of the [`grid` shorthand syntax] and the [new
+color syntax]. Treating it as a separator in Sass as well is necessary to meet
+our core design goal of CSS compatibility.
 
-[complex heuristics]: /documentation/operators/numeric#slash-separated-values
-[CSS Grid]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
-[new `rgb()` and `hsl()` syntax]: https://drafts.csswg.org/css-color/#rgb-functions
+[`font` shorthand syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font#shorthand_property_order
+[`grid` shorthand syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/grid
+[new color syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#syntax
 
-Because Sass is a CSS superset, we're matching CSS's syntax by redefining `/` to
-be *only* a separator. `/` will be treated as a new type of list separator,
-similar to how `,` works today. Division will instead be written using the new
-`math.div()` function. This function will behave exactly the same as `/` does
-today.
-
-This deprecation does not affect uses of `/` inside `calc()` expressions.
+Lists now support `/` as a separator just like commas and spaces.
 
 {% codeExample 'slash-div' %}
-  @use "sass:math";
-
-  // Future Sass, doesn't work yet!
-  .item3 {
-    $row: span math.div(6, 2) / 7; // A two-element slash-separated list.
-    grid-row: $row;
-  }
-  ===
-  @use "sass:math"
-
-  // Future Sass, doesn't work yet!
-  .item3
-    $row: span math.div(6, 2) / 7 // A two-element slash-separated list.
-    grid-row: $row
-  ===
-  .item3 {
-    grid-row: span 3 / 7;
-  }
-{% endcodeExample %}
-
-## Transition Period
-
-{% compatibility 'dart: "1.33.0"', 'libsass: false', 'ruby: false', 'feature: "math.div() and list.slash()"' %}{% endcompatibility %}
-
-To ease the transition, we've begun by adding the `math.div()` function. The `/`
-operator still does division for now, but it also prints a deprecation warning
-when it does so. Users should switch all division to use `math.div()` instead.
-
-{% render 'doc_snippets/silence-deprecations' %}
-
-{% codeExample 'math-div', false %}
-  @use "sass:math";
-
-  // WRONG, will not work in future Sass versions.
-  @debug (12px/4px); // 3
-
-  // RIGHT, will work in future Sass versions.
-  @debug math.div(12px, 4px); // 3
-  ===
-  @use "sass:math"
-
-  // WRONG, will not work in future Sass versions.
-  @debug (12px/4px) // 3
-
-  // RIGHT, will work in future Sass versions.
-  @debug math.div(12px, 4px) // 3
-{% endcodeExample %}
-
-Slash-separated lists will also be available in the transition period. Because
-they can't be created with `/` yet, the `list.slash()` function will be added to
-create them. You will also be able to pass `"slash"` as the `$separator` to the
-[`list.join()` function][] and the [`list.append()` function][].
-
-[`list.join()` function]: /documentation/modules/list#join
-[`list.append()` function]: /documentation/modules/list#append
-
-{% codeExample 'slash-div-list' %}
   @use "sass:list";
-  @use "sass:math";
 
-  .item3 {
-    $row: list.slash(span math.div(6, 2), 7);
-    grid-row: $row;
-  }
+  $list: "do" / "re" / "mi";
+  @debug list.nth($list, 2); // "re"
+  @debug list.separator($list); // slash
   ===
   @use "sass:list"
-  @use "sass:math"
 
-  .item3
-    $row: list.slash(span math.div(6, 2), 7)
-    grid-row: $row
+  $list: "do" / "re" / "mi"
+  @debug list.nth($list, 2)  // "re"
+  @debug list.separator($list)  // slash
 {% endcodeExample %}
 
-{% compatibility 'dart: "1.40.0"', 'libsass: false', 'ruby: false', 'feature: "First-class calc"' %}{% endcompatibility %}
+The slash separatorx binds more loosely than spaces but more tightly than
+commas, so for example `1 2 / 3 4, 5` is equivalent to `((1 2) / (3 4)), 5`.
 
-Alternatively, users can wrap division operations inside a `calc()` expression,
-which Sass will simplify to a single number.
+## Historical Behavior
 
-{% codeExample 'slash-div-calc', false %}
-  // WRONG, will not work in future Sass versions.
-  @debug (12px/4px); // 3
+Historically, Sass used complex heuristics to figure out whether to treat a `/`
+as division or a separator. When two numbers were separated by `/`, Sass would
+print the result as slash-separated instead of divided unless one of these
+conditions was met:
 
-  // RIGHT, will work in future Sass versions.
-  @debug calc(12px / 4px); // 3
+* Either expression was anything other than a literal number (such as a variable
+  or function call).
+* The result was stored in a variable or returned by a function.
+* The operation was surrounded by parentheses, unless those parentheses were
+  outside a list that contained the operation.
+* The result was used as part of another operation (other than `/`).
+* The result was returned by a [calculation].
+
+[calculation]: /documentation/values/calculations
+
+{% codeExample 'slash-separated-numbers' %}
+  @debug 15px / 30px; // 15px/30px
+  @debug (10px + 5px) / 30px; // 0.5
+
+  $result: 15px / 30px;
+  @debug $result; // 0.5
+
+  @function fifteen-divided-by-thirty() {
+    @return 15px / 30px;
+  }
+  @debug fifteen-divided-by-thirty(); // 0.5
+
+  @debug (15px/30px); // 0.5
+  @debug (bold 15px/30px sans-serif); // bold 15px/30px sans-serif
+  @debug 15px/30px + 1; // 1.5
   ===
-  // WRONG, will not work in future Sass versions.
-  @debug (12px/4px) // 3
+  @debug 15px / 30px  // 15px/30px
+  @debug (10px + 5px) / 30px  // 0.5
 
-  // RIGHT, will work in future Sass versions.
-  @debug calc(12px / 4px) // 3
+  $result: 15px / 30px
+  @debug $result  // 0.5
+
+  @function fifteen-divided-by-thirty()
+    @return 15px / 30px
+
+  @debug fifteen-divided-by-thirty()  // 0.5
+
+  @debug (15px/30px)  // 0.5
+  @debug (bold 15px/30px sans-serif)  // bold 15px/30px sans-serif
+  @debug 15px/30px + 1  // 1.5
 {% endcodeExample %}
 
-## Automatic Migration
+For values other than numbers, a slash was never interpreted as division, but
+instead returned an unquoted string.
 
-You can use [the Sass migrator][] to automatically update your stylesheets to
-use `math.div()` and `list.slash()`.
+{% codeExample 'slash-separated-strings' %}
+  @use "sass:meta";
+
+  $value: auto-flow / 1fr 1fr 1fr;
+  @debug $value; // auto-flow/1fr 1fr 1fr
+  @debug meta.type-of($value); // string
+  ===
+  @use "sass:meta"
+
+  $value: auto-flow / 1fr 1fr 1fr
+  @debug $value  // auto-flow/1fr 1fr 1fr
+  @debug meta.type-of($value)  // string
+{% endcodeExample %}
+
+{% compatibility 'dart: "1.33.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+Starting in 1.33.0, Dart Sass emitted the `slash-div` deprecation for all uses
+of `/` that were treated as division operations rather than separators. This
+release also added the [`math.div()` function] as the new recommended way to
+write division in Sass, as well as support for `slash` as a list separator along
+with the [`list.slash()` function] as a way to create them before literal syntax
+existed. To write code that's compatible with both Dart Sass 1.x and Dart Sass
+2.x, use `math.div()` for division and `list.slash()` to create slash-separated
+lists.
+
+[`math.div()` function]: /documentation/modules/math#div
+[`list.slash()` function]: /documentation/modules/list#slash
+
+### Automatic Migration
+
+You can use [the Sass migrator] to automatically update your stylesheets to use
+`math.div()` and `list.slash()`.
 
 [the Sass migrator]: https://github.com/sass/migrator#readme
 
@@ -131,5 +127,14 @@ use `math.div()` and `list.slash()`.
 $ npm install -g sass-migrator
 $ sass-migrator division **/*.scss
 ```
+
+## `list.slash()`
+
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
+Starting in 2.0.0, Dart Sass now emits the `slash-div` deprecation for the
+[`list.slash()` function]. This function is no longer necessary, since it's now
+possible to create literal slash-separated lists. It will eventually be removed
+in Dart Sass 3.0.0.
 
 {% render 'silencing_deprecations' %}

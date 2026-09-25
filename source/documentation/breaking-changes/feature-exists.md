@@ -1,21 +1,21 @@
 ---
 title: 'Breaking Change: meta.feature-exists()'
 introduction: >
-  The `meta.feature-exists()` function hasn't had any new features added in a
-  long time, and is now deprecated. Users should use other methods to determine
-  if a new feature is available.
+  The `meta.feature-exists()` function has been removed. Users should use other
+  methods to determine whether a new feature is available.
 ---
+
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
 Historically, Sass used the `meta.feature-exists()` function (also available as
 the global `feature-exists()` function) to allow authors to detect whether
 various new language features were available when compiling stylesheets.
 However, as time has gone on it's turned out that the vast majority of new Sass
-features are either possible to detect in a more straightforward way, or else
-aren't very useful to detect at all.
+features are either possible to detect in a more straightforward way or else
+aren't very useful to detect at all. As such, the function has been removed.
 
-This function is now deprecated and will be removed in Dart Sass 2.0.0. Since
-Dart Sass is now the only officially supported Sass implementation, and all
-versions of Dart Sass support all the features supported by
+Since Dart Sass is now the only officially supported Sass implementation, and
+all versions of Dart Sass support all the features that were detected by
 `meta.feature-exists()`, all existing uses of it can safely be removed.
 
 Many new features can be detected using [`meta.function-exists()`],
@@ -27,14 +27,12 @@ determine if the current version of Sass supports first-class calculations.
 [`meta.mixin-exists()`]: /documentation/modules/meta#mixin-exists
 [`meta.global-variable-exists()`]: /documentation/modules/meta#global-variable-exists
 
-## Transition Period
+## Historical Behavior
 
-{% compatibility 'dart: "1.78.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-First, we'll emit deprecation warnings for all usages of `feature-exists`.
-
-In Dart Sass 2.0.0, `meta.feature-exists()` will no longer exist. Attempts to
-call it will throw an error, and attempts to call the global `feature-exists()`
-function will be treated as a plain CSS function call.
+In Dart Sass, the `meta.feature-exists($feature)` function returned `true` when
+passed the strings `global-variable-shadowing`, `extend-selector-pseudoclass`,
+`units-level3`, `at-error`, and `custom-property`. It returned `false` for all
+other strings. In other Sass implementations, it may have returned `false` for
+one or more of those strings. It was deprecated in Dart Sass 1.78.0.
 
 {% render 'silencing_deprecations' %}
