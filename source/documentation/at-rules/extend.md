@@ -298,25 +298,22 @@ thing as extending `.info` on its own. The subtle differences aren't worth the
 confusion of looking like it's doing something substantially different, so this
 isn't allowed either.
 
-{% codeExample 'disallowed-selectors', false %}
+{% codeExample 'disallowed-selector-compound' %}
   .alert {
     @extend .message.info;
-    //      ^^^^^^^^^^^^^
-    // Error: Write @extend .message, .info instead.
-
-    @extend .main .info;
-    //      ^^^^^^^^^^^
-    // Error: write @extend .info instead.
   }
   ===
   .alert
     @extend .message.info
-    //      ^^^^^^^^^^^^^
-    // Error: Write @extend .message, .info instead.
+{% endcodeExample %}
 
+{% codeExample 'disallowed-selector-complex' %}
+  .alert {
+    @extend .main .info;
+  }
+  ===
+  .alert
     @extend .main .info
-    //      ^^^^^^^^^^^
-    // Error: write @extend .info instead.
 {% endcodeExample %}
 
 ### HTML Heuristics
@@ -386,12 +383,10 @@ duplicating the entire style rule.
 
 [`@media` and other CSS at-rules]: /documentation/at-rules/css
 
-{% codeExample 'extend-media', false %}
+{% codeExample 'extend-media' %}
   @media screen and (max-width: 600px) {
     .error--serious {
       @extend .error;
-      //      ^^^^^^
-      // Error: ".error" was extended in @media, but used outside it.
     }
   }
 
@@ -403,8 +398,6 @@ duplicating the entire style rule.
   @media screen and (max-width: 600px)
     .error--serious
       @extend .error
-      //      ^^^^^^
-      // Error: ".error" was extended in @media, but used outside it.
 
 
 
