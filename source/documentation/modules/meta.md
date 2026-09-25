@@ -183,52 +183,6 @@ title: sass:meta
   {% endcodeExample %}
 {% endfunction %}
 
-{% function 'meta.feature-exists($feature)', 'feature-exists($feature)', 'returns:boolean' %}
-  Returns whether the current Sass implementation supports `$feature`.
-
-  The `$feature` must be a string. The currently recognized features are:
-
-  * `global-variable-shadowing`, which means that a local variable will
-    [shadow][] a global variable unless it has the `!global` flag.
-  * `extend-selector-pseudoclass`, which means that the [`@extend` rule][] will
-    affect selectors nested in pseudo-classes like `:not()`.
-  * `units-level3`, which means that [unit arithmetic][] supports units defined
-    in [CSS Values and Units Level 3][].
-  * `at-error`, which means that the [`@error` rule][] is supported.
-  * `custom-property`, which means that [custom property declaration][] values
-    don't support any [expressions][] other than [interpolation][].
-
-  [shadow]: /documentation/variables#shadowing
-  [`@extend` rule]: /documentation/at-rules/extend
-  [unit arithmetic]: /documentation/values/numbers#units
-  [CSS Values and Units Level 3]: http://www.w3.org/TR/css3-values
-  [`@error` rule]: /documentation/at-rules/error
-  [custom property declaration]: /documentation/style-rules/declarations#custom-properties
-  [expressions]: /documentation/syntax/structure#expressions
-  [interpolation]: /documentation/interpolation
-
-  Returns `false` for any unrecognized `$feature`.
-  
-  {% headsUp %}
-    This function is deprecated and should be avoided. See [the breaking change
-    page] for details.
-
-    [the breaking change page]: /documentation/breaking-changes/feature-exists
-  {% endheadsUp %}
-
-  {% codeExample 'feature-exists' %}
-    @use "sass:meta";
-
-    @debug meta.feature-exists("at-error"); // true
-    @debug meta.feature-exists("unrecognized"); // false
-    ===
-    @use "sass:meta"
-
-    @debug meta.feature-exists("at-error")  // true
-    @debug meta.feature-exists("unrecognized")  // false
-  {% endcodeExample %}
-{% endfunction %}
-
 {% function 'meta.function-exists($name, $module: null)', 'function-exists($name)', 'returns:boolean' %}
   Returns whether a function named `$name` is defined, either as a built-in
   function or a user-defined function.
