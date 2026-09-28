@@ -159,7 +159,8 @@ one to add, please [send a pull request]!
 
   [`SassEmbedded.Net` package]: https://www.nuget.org/packages/EmbeddedSass.Net
 
-* **PHP**: The [`bugo/sass-embedded-php` package] adds a PHP wrapper for compiling SCSS/Sass to CSS.
+* **PHP**: The [`bugo/sass-embedded-php` package] adds a PHP wrapper for
+  compiling SCSS/Sass to CSS.
 
   [`bugo/sass-embedded-php` package]: https://github.com/dragomano/sass-embedded-php
 
