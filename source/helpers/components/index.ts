@@ -56,8 +56,11 @@ export function codeBlock(
     PrismLoader(language);
   }
   const code = `${contents}${'\n'.repeat(padding + 1)}`;
-  const html = language == 'error' ? fancyAnsi.toHtml(code) : highlight(code, languages[language], language);
-  const attr = language == 'error' ? '' : ` class="language-${language}"`;
+  const html =
+    language === 'error'
+      ? fancyAnsi.toHtml(code)
+      : highlight(code, languages[language], language);
+  const attr = language === 'error' ? '' : ` class="language-${language}"`;
   return `<pre${attr}><code${attr}>${html.replaceAll(
     '\n',
     '&#10;',
