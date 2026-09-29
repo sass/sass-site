@@ -77,7 +77,7 @@ interface CodeExample {
   /** Source files in the indented syntax. */
   sass: string[];
 
-  /** Output files. */
+  /** Output files (or error messages if `isError` is true). */
   css: string[];
 
   /**
@@ -106,6 +106,9 @@ interface CodeExample {
    * between input and output, if `canSplit` is true.
    */
   splitLocation: number | null;
+
+  /** Whether the example output is an error. */
+  isError: boolean;
 }
 
 /** Parses `text` into a `CodeExample` object. */
@@ -142,15 +145,27 @@ function generateCodeExample(
   const sassExamples =
     sassContents?.split('\n---\n').map(str => str.trim()) ?? [];
 
+  let isError = false;
   if (!cssContents && autogenCSS) {
     const sections = scssContents ? scssExamples : sassExamples;
     if (sections.length !== 1) {
       throw new Error("Can't auto-generate CSS from more than one SCSS block.");
     }
-    const css = sass.compileString(sections[0], {
-      syntax: syntax === 'sass' ? 'indented' : 'scss',
-      logger: sass.Logger.silent,
-    }).css;
+    let css: string;
+    try {
+      css = sass.compileString(sections[0], {
+        syntax: syntax === 'sass' ? 'indented' : 'scss',
+        logger: sass.Logger.silent,
+        alertColor: true,
+      }).css;
+    } catch (error: unknown) {
+      if (error instanceof sass.Exception) {
+        isError = true;
+        css = error.message;
+      } else {
+        throw error;
+      }
+    }
     if (css.trim()) {
       cssContents = css;
     }
@@ -189,6 +204,7 @@ function generateCodeExample(
     cssPaddings,
     canSplit,
     splitLocation,
+    isError,
   };
 }
 

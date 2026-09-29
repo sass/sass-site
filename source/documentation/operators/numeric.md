@@ -45,14 +45,10 @@ Unitless numbers can be used with numbers of any unit.
 Numbers with incompatible units can't be used with addition, subtraction, or
 modulo.
 
-{% codeExample 'incompatible-units', false %}
+{% codeExample 'incompatible-units' %}
   @debug 100px + 10s;
-  //     ^^^^^^^^^^^
-  // Error: Incompatible units px and s.
   ===
   @debug 100px + 10s
-  //     ^^^^^^^^^^^
-  // Error: Incompatible units px and s.
 {% endcodeExample %}
 
 ## Unary Operators

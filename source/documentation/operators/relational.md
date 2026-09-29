@@ -42,12 +42,8 @@ converted to that number's unit.
 
 Numbers with incompatible units can't be compared.
 
-{% codeExample 'incompatible-units', false %}
+{% codeExample 'incompatible-units' %}
   @debug 100px > 10s;
-  //     ^^^^^^^^^^^
-  // Error: Incompatible units px and s.
   ===
   @debug 100px > 10s
-  //     ^^^^^^^^^^^
-  // Error: Incompatible units px and s.
 {% endcodeExample %}

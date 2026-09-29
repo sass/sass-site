@@ -16,7 +16,7 @@ whatever system is running it that an error occurred.
 
 [expression]: /documentation/syntax/structure#expressions
 
-{% codeExample 'error', false %}
+{% codeExample 'error' %}
   @mixin reflexive-position($property, $value) {
     @if $property != left and $property != right {
       @error "Property #{$property} must be either left or right.";
@@ -35,8 +35,6 @@ whatever system is running it that an error occurred.
 
   .sidebar {
     @include reflexive-position(top, 12px);
-    //       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // Error: Property top must be either left or right.
   }
   ===
   @mixin reflexive-position($property, $value)
@@ -57,20 +55,4 @@ whatever system is running it that an error occurred.
 
   .sidebar
     @include reflexive-position(top, 12px)
-    //       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // Error: Property top must be either left or right.
 {% endcodeExample %}
-
-The exact format of the error and stack trace varies from implementation to
-implementation, and can also depend on your build system. This is what it looks
-like in Dart Sass when run from the command line:
-
-```
-Error: "Property top must be either left or right."
-  ╷
-3 │     @error "Property #{$property} must be either left or right.";
-  │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  ╵
-  example.scss 3:5   reflexive-position()
-  example.scss 19:3  root stylesheet
-```
