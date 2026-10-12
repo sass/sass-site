@@ -5,7 +5,7 @@ introduction: >
   forms, booleans are returned by [equality](/documentation/operators/equality)
   and [relational](/documentation/operators/relational) operators, as well as
   many built-in functions like
-  [`math.comparable()`](/documentation/modules/math#comparable) and
+  [`math.compatible()`](/documentation/modules/math#compatible) and
   [`map.has-key()`](/documentation/modules/map#has-key).
 ---
 
@@ -15,14 +15,14 @@ introduction: >
   @debug 1px == 2px; // false
   @debug 1px == 1px; // true
   @debug 10px < 3px; // false
-  @debug math.comparable(100px, 3in); // true
+  @debug math.compatible(100px, 3in); // true
   ===
   @use "sass:math"
 
   @debug 1px == 2px  // false
   @debug 1px == 1px  // true
   @debug 10px < 3px  // false
-  @debug math.comparable(100px, 3in)  // true
+  @debug math.compatible(100px, 3in)  // true
 {% endcodeExample %}
 
 You can work with booleans using [boolean operators][]. The `and` operator
