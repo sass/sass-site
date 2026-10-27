@@ -2,9 +2,9 @@
 title: 'Breaking Change: Deprecation Version'
 introduction: >
   In the future, it will be an error to pass a
-  [`Version`](/documentation/js-api/classes/version/) beyond the current
+  [`Version`](/documentation/js-api/classes/Version/) beyond the current
   implementation version to
-  [`Options.fatalDeprecations`](/documentation/js-api/interfaces/options/#fatalDeprecations).
+  [`Options.fatalDeprecations`](/documentation/js-api/interfaces/Options/#fatalDeprecations).
 ---
 
 Currently, if you pass a `Version` that's greater than the version of the Sass
