@@ -22,6 +22,10 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Passing future versions to
+  `Options.fatalDeprecations`](/documentation/breaking-changes/deprecation-version)
+  in the JS API, beginning in Dart Sass 1.107.0.
+
 * [Adjacent compound
   selectors](/documentation/breaking-changes/adjacent-compounds) beginning in
   Dart Sass 1.100.0.
