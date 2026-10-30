@@ -5,15 +5,15 @@ runs:
   steps:
     - name: Check out Dart Sass
       id: clone
-      uses: sass/clone-linked-repo@v1
+      uses: sass/clone-linked-repo@ec2dcd11c5eaec56b64855712372056a14e9614d # v1.1.0
       with:
         repo: sass/dart-sass
         default-ref: null
 
-    - uses: dart-lang/setup-dart@v1
+    - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d # v1.8.1
       if: steps.clone.outputs.cloned == 'true'
 
-    - uses: bufbuild/buf-action@v1
+    - uses: bufbuild/buf-action@85aebf73123b5c15fd5528aaecbf9129cddf7fa7 # v1.6.0
       with:
         setup_only: true
       if: steps.clone.outputs.cloned == 'true'
@@ -24,7 +24,7 @@ runs:
       if: steps.clone.outputs.cloned == 'true'
 
     - name: Check out the language repo
-      uses: sass/clone-linked-repo@v1
+      uses: sass/clone-linked-repo@ec2dcd11c5eaec56b64855712372056a14e9614d # v1.1.0
       with: {repo: sass/sass, path: dart-sass/build/language}
       if: steps.clone.outputs.cloned == 'true'
 
@@ -36,6 +36,6 @@ runs:
       if: steps.clone.outputs.cloned == 'true'
 
     - name: Install Dart Sass
-      run: npm install dart-sass/build/npm
+      run: npm install dart-sass/build/npm # zizmor: ignore[adhoc-packages]
       if: steps.clone.outputs.cloned == 'true'
       shell: bash
