@@ -1,39 +1,42 @@
 ---
 title: 'Breaking Change: -moz-document'
 introduction: >
-  Firefox used to have a @-moz-document rule requiring special parsing. As
-  support is removed from Firefox, Sass is in the process of removing support
-  for parsing them.
+  Firefox used to have a `@-moz-document` rule that required special parsing.
+  Since [Firefox dropped support for this rule], Sass removed special parsing as
+  well.
+
+  [Firefox dropped support for this rule]: https://web.archive.org/web/20200528221656/https://www.fxsitecompat.dev/en-CA/docs/2018/moz-document-support-has-been-dropped-except-for-empty-url-prefix/
 ---
 
-Sass has historically supported a special parsing for the `@-moz-document` rule.
-As [Firefox dropped support for them], Sass will also drop support for the
-special parsing and will treat it as an unknown at-rule.
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-[Firefox dropped support for them]: https://web.archive.org/web/20200528221656/https://www.fxsitecompat.dev/en-CA/docs/2018/moz-document-support-has-been-dropped-except-for-empty-url-prefix/
+`@-moz-document` is now parsed just like any other [generic at-rule].
 
-**There is one exception**: an empty url prefix function is still allowed, as
-that's used in a hack targetting Firefox.
+[generic at-rule]: /documentation/at-rules/css/
 
-{% codeExample 'moz-document' %}
-  @-moz-document url-prefix() {
+## Historical Behavior
+
+Historically, `@-moz-document` had its own parsing logic. In most cases, this
+just meant that it disallowed syntax that was valid for generic at-rules, but it
+also parsed the `domain()` function with the same special syntax as `url()`.
+
+{% codeExample 'moz-document-before' %}
+  @-moz-document domain(http://mozilla.org) {
     .error {
       color: red;
     }
   }
   ===
-  @-moz-document url-prefix()
+  @-moz-document domain(http://mozilla.org)
     .error
       color: red
 {% endcodeExample %}
 
-## Transition Period
-
 {% compatibility 'dart: "1.7.2"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-First, we'll emit deprecation warnings for all usages of `@-moz-document` except
-for the empty url-prefix hack.
-
-In Dart Sass 2.0, `@-moz-document` will be treated as an unknown at-rule.
+Starting in 1.7.2, Dart Sass emitted the `moz-document` deprecation warning for
+any `@-moz-document` rule other than those that contained only an empty
+`url-prefix()` function, since that's still used as a CSS hack to target
+Firefox.
 
 {% render 'silencing_deprecations' %}

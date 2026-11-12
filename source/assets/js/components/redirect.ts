@@ -202,9 +202,38 @@ const redirects: Record<string, Record<string, string>> = {
     '#rgba': '/documentation/modules#rgba',
     '#hsl': '/documentation/modules#hsl',
     '#hsla': '/documentation/modules#hsla',
+    '#red': '/documentation/breaking-changes/color-functions',
+    '#green': '/documentation/breaking-changes/color-functions',
+    '#blue': '/documentation/breaking-changes/color-functions',
+    '#hue': '/documentation/breaking-changes/color-functions',
+    '#saturation': '/documentation/breaking-changes/color-functions',
+    '#lightness': '/documentation/breaking-changes/color-functions',
+    '#whiteness': '/documentation/breaking-changes/color-functions',
+    '#blackness': '/documentation/breaking-changes/color-functions',
+    '#alpha': '/documentation/breaking-changes/color-functions',
+    '#opacity': '/documentation/breaking-changes/color-functions',
+    '#adjust-hue': '/documentation/breaking-changes/color-functions',
+    '#saturate': '/documentation/breaking-changes/color-functions',
+    '#desaturate': '/documentation/breaking-changes/color-functions',
+    '#lighten': '/documentation/breaking-changes/color-functions',
+    '#darken': '/documentation/breaking-changes/color-functions',
+    '#opacify': '/documentation/breaking-changes/color-functions',
+    '#fade-in': '/documentation/breaking-changes/color-functions',
+    '#transparentize': '/documentation/breaking-changes/color-functions',
+    '#fade-out': '/documentation/breaking-changes/color-functions',
   },
   '/documentation/modules/map/': {
     '#keywords': '/documentation/modules/meta#keywords',
+  },
+  '/documentation/modules/meta/': {
+    '#feature-exists': '/documentation/breaking-changes/feature-exists',
+  },
+  '/documentation/operators/numeric/': {
+    '#slash-separated-values': '/documentation/breaking-changes/slash-div',
+    '#example-slash-separated-values-scss':
+      '/documentation/breaking-changes/slash-div',
+    '#example-slash-separated-values-sass':
+      '/documentation/breaking-changes/slash-div',
   },
   '/documentation/at-rules/use/': {
     '#configuring-modules': '/documentation/at-rules/use#configuration',
@@ -213,6 +242,9 @@ const redirects: Record<string, Record<string, string>> = {
     '#calc-clamp-element-progid-and-expression':
       '/documentation/syntax/special-functions#element-progid-and-expression',
     '#min-and-max': '/documentation/values/calculations#min-and-max',
+  },
+  '/documentation/values/lists/': {
+    '#slash-separated-lists': '/documentation/breaking-changes/slash-div',
   },
   '/documentation/js-api/': {
     '#rendersync': '/documentation/js-api/functions/rendersync/',

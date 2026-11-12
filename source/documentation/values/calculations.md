@@ -259,10 +259,10 @@ combined at build time, so `min(12px % 10, 10%)` will throw an error.
   `sqrt(5 + 10px)` will throw an error, as `sqrt(5 + 10px)` was never a global
   Sass function, and these are incompatible units.
 
-[single-argument `round()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/round
-[`abs()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/abs
-[`min()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/min
-[`max()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/max
+  [single-argument `round()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/round
+  [`abs()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/abs
+  [`min()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/min
+  [`max()`]: https://developer.mozilla.org/en-US/docs/Web/CSS/max
 {% endheadsUp %}
 
 #### `min()` and `max()`
@@ -341,18 +341,18 @@ combined at build time, so `min(12px % 10, 10%)` will throw an error.
 
 #### `round()`
 
-{% compatibility 'dart: "1.65.0"', 'libsass: false', 'ruby: false', 'feature: "min and max syntax"' %}
+{% compatibility 'dart: "1.65.0"', 'libsass: false', 'ruby: false', 'feature: "round syntax"' %}
   LibSass, Ruby Sass, and versions of Dart Sass prior to 1.65.0, as well as Dart
   Sass 1.66.x, *always* parse `round()` as a Sass function. To use a plain CSS
   function for those implementations, you can write something like
   `round(#{$strategy, $number, $step})` instead.
 {% endcompatibility %}
 
-The [`round(<strategy>, number, step)`] function accepts an optional rounding
+The [`round(<strategy>, number, step)` function] accepts an optional rounding
 strategy, a value to be rounded and a rounding interval `step`. `strategy`
 should be `nearest`, `up`, `down`, or `to-zero`.
 
-[`round(<strategy>, number, step)`]: https://developer.mozilla.org/en-US/docs/Web/CSS/round#parameter
+[`round(<strategy>, number, step)` function]: https://developer.mozilla.org/en-US/docs/Web/CSS/round#parameter
 
 {% codeExample 'round' %}
   $number: 12.5px;
@@ -387,47 +387,67 @@ should be `nearest`, `up`, `down`, or `to-zero`.
 
 #### `abs()`
 
-{% compatibility 'dart: "1.67.0"', 'libsass: false', 'ruby: false', 'feature: "min and max syntax"' %}
+{% compatibility 'dart: "1.67.0"', 'libsass: false', 'ruby: false', 'feature: "abs syntax"' %}
   LibSass, Ruby Sass, and versions of Dart Sass prior to 1.67.0 *always* parse
   `abs()` as a Sass function. To create a plain CSS calculation for those
   implementations, you can write something like `abs(#{$number})` instead.
 {% endcompatibility %}
 
-{% headsUp %}
-  The global `abs()` function compatibiliy with [% unit parameters is
-  deprecated]. In the future, this will emit a CSS abs() function to be resolved
-  by the browser.
+The [`abs(value)` function] takes in a single expression as a parameter and returns the
+absolute value of `$value`. If `$value` is negative, this returns `-$value`, and
+if `$value` is positive, it returns `$value` as-is.
 
-  [% unit parameters is deprecated]: /documentation/breaking-changes/abs-percent/
-{% endheadsUp %}
-
-The [`abs(value)`] takes in a single expressiona as a parameter and returns the
-absolute value of `$value`. If `$value` is negative, this returns `-$value`, and if
-`$value` is positive, it returns `$value` as-is.
-
-[`abs(value)`]: https://developer.mozilla.org/en-US/docs/Web/CSS/abs
+[`abs(value)` function]: https://developer.mozilla.org/en-US/docs/Web/CSS/abs
 
 {% codeExample 'abs' %}
   .post-image {
     // Since these abs() calls are valid calculation expressions, they're
     // parsed as calculations.
     padding-left: abs(10px);
-    padding-right: math.abs(-7.5%);
     padding-top: abs(1 + 1px);
   }
-
   ===
   .post-image
     // Since these abs() calls are valid calculation expressions, they're
     // parsed as calculations.
     padding-left: abs(-10px)
-    padding-right: math.abs(-7.5%)
     padding-top: abs(1 + 1px)
+{% endcodeExample %}
 
-  ===
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false', 'feature: "passing through %"' %}
+  Between 1.67.0 and 2.0.0, Dart Sass returned the absolute value of the
+  percentage rather than passing it through unchanged. For example, `abs(-7.5%)`
+  would return `7.5%` instead of the calculation `abs(-7.5%)`.
+
+  See [the breaking change page] for details.
+
+  [the breaking change page]: /documentation/breaking-changes/abs-percent
+{% endcompatibility %}
+
+Percentages in CSS are resolved at render-time based on some contextual value.
+Because this contextual value could be negative, Sass can't know the absolute
+value at compile time. Because of this, a percentage value passed to `abs()`
+will return it as a calculation value rather than simplifying to a number. If
+you want to take the absolute value of a percentage directly, use [`math.abs()`]
+instead.
+
+[`math.abs()`]: /documentation/modules/math#abs
+
+{% codeExample 'abs-percent' %}
+  @use "sass:math";
+
   .post-image {
-    padding-left: 10px;
-    padding-right: 7.5%;
-    padding-top: 2px;
+    // The abs() calculation preserves percentages.
+    margin-left: abs(-10%);
+    // The math.abs() function resolves percentages eagerly.
+    margin-right: math.abs(-10%);
   }
+  ===
+  @use "sass:math"
+
+  .post-image
+    // The abs() calculation preserves percentages.
+    margin-left: abs(-10%)
+    // The math.abs() function resolves percentages eagerly.
+    margin-right: math.abs(-10%)
 {% endcodeExample %}
