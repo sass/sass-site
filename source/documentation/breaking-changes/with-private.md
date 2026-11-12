@@ -19,8 +19,8 @@ The following is now an error:
   )
 {% endcodeExample %}
 
-You may still declare private variables with `!default`, because this is still
-a useful way to assign a value only if the variable is currently `null` (similar
+You may still declare private variables with `!default`, because this is still a
+useful way to assign a value only if the variable is currently `null` (similar
 to [`??=` assignment] in JavaScript).
 
 [`??=` assignment]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment

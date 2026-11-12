@@ -97,8 +97,8 @@ These behaviors were changed in or after Dart Sass 2.0.0:
   invalid](/documentation/breaking-changes/bogus-combinators) starting in Dart
   Sass 2.0.0.
 
-* [`/` is a list separator](/documentation/breaking-changes/slash-div) rather than
-  a division operator starting in Dart Sass 2.0.0.
+* [`/` is a list separator](/documentation/breaking-changes/slash-div) rather
+  than a division operator starting in Dart Sass 2.0.0.
 
 * [Functions are stricter about which units they
   allow](/documentation/breaking-changes/function-units) starting in Dart Sass
