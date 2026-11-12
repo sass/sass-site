@@ -71,8 +71,4 @@ deprecated in Dart Sass 1.54.0.
   }
 {% endcodeExample %}
 
-To make sure existing stylesheets who (likely accidentally) contain invalid
-combinators, we'll support a transition period until the next major release of
-Dart Sass.
-
 {% render 'silencing_deprecations' %}

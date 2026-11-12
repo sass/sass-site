@@ -228,7 +228,7 @@ const redirects: Record<string, Record<string, string>> = {
   '/documentation/modules/meta/': {
     '#feature-exists': '/documentation/breaking-changes/feature-exists',
   },
-  '/documentation/operators/numberic/': {
+  '/documentation/operators/numeric/': {
     '#slash-separated-values': '/documentation/breaking-changes/slash-div',
     '#example-slash-separated-values-scss':
       '/documentation/breaking-changes/slash-div',
@@ -242,6 +242,9 @@ const redirects: Record<string, Record<string, string>> = {
     '#calc-clamp-element-progid-and-expression':
       '/documentation/syntax/special-functions#element-progid-and-expression',
     '#min-and-max': '/documentation/values/calculations#min-and-max',
+  },
+  '/documentation/values/lists/': {
+    '#slash-separated-lists': '/documentation/breaking-changes/slash-div',
   },
   '/documentation/js-api/': {
     '#rendersync': '/documentation/js-api/functions/rendersync/',
