@@ -4,7 +4,7 @@ import sass from 'sass';
 import {liquidEngine} from '../engines';
 
 /**
- * The set of Dart Sass 1.x deprecations prior to 1.106.0 that aren't erors in
+ * The set of Dart Sass 1.x deprecations prior to 1.106.0 that aren't errors in
  *  Dart Sass 2.
  */
 const nonDartSass2 = new Set([

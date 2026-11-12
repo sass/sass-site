@@ -38,8 +38,8 @@ Starting in 1.64.3, Dart Sass emitted the `null-alpha` deprecation warning
 whenever `alpha: null` was passed in either the JS or Dart APIs. It was still
 interpreted as an opaque color.
 
-To preserve the historical, all you need to do is explicitly pass 1 if `alpha`
-is unset. In JS:
+To preserve the historical behavior, all you need to do is explicitly pass 1 if
+`alpha` is unset. In JS:
 
 ```js
 new sass.SassColor({

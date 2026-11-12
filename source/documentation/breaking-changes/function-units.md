@@ -11,7 +11,7 @@ table_of_contents: true
 
 {% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
 
-When specifying a color's hue, CSS allow only [angle units] (`deg`, `grad`,
+When specifying a color's hue, CSS allows only [angle units] (`deg`, `grad`,
 `rad`, or `turn`) and unitless numbers, which it interprets as `deg`. Sass now
 matches this behavior by converting angle units into `deg` and throwing an error
 if a number with a non-angle unit is used.

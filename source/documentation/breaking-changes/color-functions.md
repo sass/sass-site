@@ -6,7 +6,7 @@ introduction: >
   color spaces of CSS Color 4.
 ---
 
-Historically, all Sass color values interchangeable: whether the colors were
+Historically, all Sass color values were interchangeable: whether the colors were
 defined as RGB, HSL, or HWB, they only covered [the `sRGB` gamut] and could only
 represent the colors that monitors could display since the mid-1990s. When Sass
 added its original set of color functions, these functions assumed that all

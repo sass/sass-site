@@ -125,7 +125,7 @@ operator, this was deprecated and eventually removed in Dart Sass 2.0.0.
 [`math.div()` function]: /documentation/modules/math#div
 [will be removed]: /documentation/breaking-changes/slash-div
 
-You can still use `/` as a divion operator within a [`calc()` expression].
+You can still use `/` as a division operator within a [`calc()` expression].
 
 [`calc()` expression]: /documentation/values/calculations
 

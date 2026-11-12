@@ -19,7 +19,7 @@ The following is now an error:
   )
 {% endcodeExample %}
 
-You may still declare proviate variables with `!default`, because this is still
+You may still declare private variables with `!default`, because this is still
 a useful way to assign a value only if the variable is currently `null` (similar
 to [`??=` assignment] in JavaScript).
 
