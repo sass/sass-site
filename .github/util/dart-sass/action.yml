@@ -13,7 +13,7 @@ runs:
     - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d # v1.8.1
       if: steps.clone.outputs.cloned == 'true'
 
-    - uses: bufbuild/buf-action@85aebf73123b5c15fd5528aaecbf9129cddf7fa7 # v1.6.0
+    - uses: bufbuild/buf-action@37ac33d8960807670a6e9719080e885197b09cc6 # v1.7.0
       with:
         setup_only: true
       if: steps.clone.outputs.cloned == 'true'
