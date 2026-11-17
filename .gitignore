@@ -17,6 +17,7 @@ Thumbs.db
 /vendor/bundle/
 /source/documentation/js-api
 /.language/
+/tool/node_modules
 
 # Eleventy
 /_site/

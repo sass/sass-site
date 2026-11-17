@@ -492,9 +492,24 @@ Remove this setting if you need to keep using this feature.
 
 Alternatively, you can pass a Dart Sass version to treat all deprecations that
 were present in that version as errors. For example,
-`--fatal-deprecation=1.33.0` would treat all deprecations in the
-table above up to and including `slash-div` as errors, but leave any newer
-deprecations as warnings.
+`--fatal-deprecation=1.33.0` would treat all deprecations in the table above up
+to and including `slash-div` as errors, but leave any newer deprecations as
+warnings.
+
+{% compatibility 'dart: "1.107.0"', 'feature: "Excluded Deprecations"' %}{% endcompatibility %}
+
+If you want to include *almost* all deprecations in a given version, you can use
+`-` followed by a deprecation name to exclude that deprecation. For example,
+`--fatal-deprecation=1.33.0,-elseif` would treat all deprecations up to and
+including `slash-div` as errors *except for* the `elseif` deprecation.
+
+{% compatibility 'dart: "1.107.0"', 'feature: "dart-sass-2"' %}{% endcompatibility %}
+
+You can also pass the special value `--deprecations=dart-sass-2` to treat all
+deprecations that will become errors in Dart Sass 2.0.0 as errors even in
+earlier Sass versions. This can also be combined with the exclusion syntax, so
+for example `--deprecations=dart-sass-2,-slash-div` will treat all Dart Sass 2
+changes except for those related to `slash-div` as errors.
 
 {% deprecations 'obsolete' %}{% enddeprecations %}
 

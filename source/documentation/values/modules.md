@@ -34,5 +34,6 @@ module value contains.
 [`meta.get-mixin()`]: /documentation/modules/meta#get-mixin
 [`meta.module-mixins()`]: /documentation/modules/meta#module-mixins
 [`meta.mixin-exists()`]: /documentation/modules/meta#mixin-exists
+[`meta.css()`]: /documentation/modules/meta#css
 
 {% render 'code_snippets/example-first-class-module' %}

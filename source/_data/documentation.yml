@@ -62,6 +62,7 @@ toc:
       - <code>sass:string</code>: /documentation/modules/string/
   - Breaking Changes: /documentation/breaking-changes/
     :children:
+      - Future Deprecation Versions: /documentation/breaking-changes/deprecation-version/
       - Adjacent Compound Selectors: /documentation/breaking-changes/adjacent-compounds/
       - Special Function Names: /documentation/breaking-changes/function-name/
       - Legacy if() Function: /documentation/breaking-changes/if-function/

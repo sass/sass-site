@@ -22,7 +22,8 @@
       <a href="/documentation/breaking-changes/{{deprecation.id}}">
     {%- endif -%}
     <code>{{deprecation.id}}</code>
-    {%-if deprecation.hasWebpage -%}</a>{%- endif -%}
+    {%- if deprecation.hasWebpage -%}</a>{%- endif -%}
+    {%- if deprecation.removedInDartSass2 -%}*{%- endif -%}
     </td>
     {%- if status != "future" -%}
       <td>{{deprecation.deprecatedIn}}</td>
@@ -35,8 +36,11 @@
 {%- endfor -%}
 </tbody>
 </table>
+
+{%- if hasDartSass2Footnote -%}
+  <p class="sl-c-footnote">*: Will become an error in Dart Sass 2.0.0.</p>
+{%- endif -%}
+
 {%- elsif status != "obsolete" -%}
 <p>There are no {{status}} deprecations in the latest version of Dart Sass.</p>
 {%- endif -%}
-
-

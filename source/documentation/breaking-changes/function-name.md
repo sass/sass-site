@@ -3,76 +3,130 @@ title: 'Breaking Change: Function Names'
 introduction: >
   This small breaking change forbids user-defined functions whose names overlap
   with plain CSS function names that have special syntax, even if they're not
-  lowercase. It also removes special parsing for function calls that has special
+  lowercase. It also removes special parsing for function calls that had special
   syntax unnecessarily.
 ---
 
+{% compatibility 'dart: "2.0.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+
 ### User-Defined Function Names
 
-This change will forbid users from defining functions named `URL`, `EXPRESSION`,
-or `ELEMENT`, or the same names with any combination of uppercase and lowercase
-letters.
-
-The fully-lowercase version of these names was already forbidden. Function names
-in CSS are case-sensitive, though, so in order to be fully CSS-compatible Sass
-needs to apply special parsing rules even to the uppercase versions. This means
-that user-defined functions can't use those names, because the special parsing
-needs to happen before the language knows which user-defined functions exist.
+Users may no longer define functions case-insensitively named `url`,
+`expression`, or `element`. These function names have special parsing in CSS
+which makes it very difficult to call them as Sass functions.
 
 {% funFact %}
   As part of this change, some other restrictions on which function names were
-  allowed have been relaxed. Functions with vendor-style prefixes whose names
+  allowed were relaxed. Functions with vendor-style prefixes whose names
   end with `-url`, `-expression`, `-and`, `-or`, and `-not` will no longer
   produce errors.
 {% endfunFact %}
 
+{% codeExample 'function-name' %}
+  @function URL($path) {
+    @return url(https://example.org/#{$path});
+  }
+  ===
+  @function URL($path)
+    @return url(https://example.org/#{$path})
+{% endcodeExample %}
+
 ### Function Calls
 
-This change will also remove special parsing for the `expression()` function or
-`progid:...()` functions with vendor prefixes. No browser ever actually shipped
-a vendor-prefixed versions of these functions, so having special parsing for them
+Vendor-prefixed versions of the `expression()` function or `progid:...()`
+functions no longer have special parsing. No browser ever actually shipped a
+vendor-prefixed versions of these functions, so having special parsing for them
 is unnecessary. Vendor-prefixed `expression()` functions like
-`-foo-expression()` will be parsed as normal Sass functions, and vendor-prefixed
-`progid:...()` functions like `-foo-progid:bar()` will be syntax errors because
-that's not generally valid CSS syntax.
+`-foo-expression()` are now parsed as normal Sass functions:
 
-### Phase 1
+{% codeExample 'prefixed-expression' %}
+  div {
+    width: -foo-expression(1px + 1px);
+  }
+  ===
+  div
+    width: -foo-expression(1px + 1px)
+{% endcodeExample %}
 
-{% compatibility 'dart: "1.98.0"', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
+...and vendor-prefixed `progid:...()` functions like `-foo-progid:bar()` are
+syntax errors because that's not generally valid CSS syntax.
 
-Currently, Dart Sass emits a deprecation warning if you define a function `URL`,
-`EXPRESSION`, or `ELEMENT`, or the same names with any combination of uppercase
-and lowercase letters. (Fully lowercase names were forbidden prior to this and
-remain forbidden.)
+{% codeExample 'prefixed-progid' %}
+  div {
+    filter: -foo-progid:DXImageTransform.Microsoft.gradient(
+      startColorstr='#000000',
+      endColorstr='#FFFFFF'
+    );
+  }
+  ===
+  div
+    filter: -foo-progid:DXImageTransform.Microsoft.gradient(
+      startColorstr='#000000',
+      endColorstr='#FFFFFF'
+    )
+{% endcodeExample %}
 
-Function calls with these names are still parsed as normal Sass function calls,
-calling a user-defined function if one exists or falling back to a plain-CSS
-function with normal SassScript argument parsing otherwise.
+## Historical Behavior
 
-Dart Sass also emits a deprecation warning for calls to vendor-prefixed
-`expression()` functions, but only if those functions will behave differently
-when parsed as normal Sass functions. This includes calls whose arguments aren't
-syntactically-valid SassScript expressions or whose arguments would be
-meaningful in SassScript in a way they aren't in plain CSS, but not calls whose
-arguments would be handled the same way in either case. It's always safe to use
-interpolation in either case.
+### User-Defined Function Names
 
-Dart Sass emits a deprecation warning for all vendor-prefixed `progid:...()` calls.
+Functions with the fully-lowercase names `url`, `expression`, or `element` have
+always been forbidden, but if any letters were capitalized they were allowed.
+Function names in CSS are case-insensitive, though, so Sass parsed *calls* to
+uppercase versions of these functions as special syntax rather than Sass
+function calls. This meant that functions defined with these names could
+(almost) never be called. Defining functions with uppercase versions of these
+names was deprecated in Dart Sass 1.98.0.
+
+{% codeExample 'function-name' %}
+  @function URL($path) {
+    @return url(https://example.org/#{$path});
+  }
+
+  body {
+    // Note that this does NOT call the function.
+    background-image: URL(fuzzycat.png);
+  }
+  ===
+  @function URL($path)
+    @return url(https://example.org/#{$path})
+
+
+  body
+    // Note that this does NOT call the function.
+    background-image: URL(fuzzycat.png)
+  ===
+  body {
+    background-image: URL(fuzzycat.png);
+  }
+{% endcodeExample %}
+
+### Function Calls
+
+Vendor-prefixed `expression()` and `progid:...` functions were previously
+treated as special-syntax functions whose contents weren't interpreted by Sass
+at all.
+
+{% codeExample 'prefixed-old' %}
+  div {
+    width: -foo-expression(1px + 1px);
+    filter: -foo-progid:DXImageTransform.Microsoft.gradient(
+      startColorstr='#000000',
+      endColorstr='#FFFFFF'
+    );
+  }
+  ===
+  div
+    width: -foo-expression(1px + 1px)
+    filter: -foo-progid:DXImageTransform.Microsoft.gradient(
+      startColorstr='#000000',
+      endColorstr='#FFFFFF'
+    )
+  ===
+  div {
+    width: -foo-expression(1px + 1px);
+    filter: -foo-progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#FFFFFF');
+  }
+{% endcodeExample %}
 
 {% render 'silencing_deprecations' %}
-
-### Phase 2
-
-{% compatibility 'dart: false', 'libsass: false', 'ruby: false' %}{% endcompatibility %}
-
-In a future release, Dart Sass will emit an error for custom functions named
-`URL`, `EXPRESSION`, or `ELEMENT`, or the same names with any combination of
-uppercase and lowercase letters. Calls to these function names will be parsed as
-[special functions] rather than normal SassScript.
-
-Calls to vendor-prefixed `expression()` functions will be parsed as normal
-SassScript, and calls to vendor-prefixed `progid:...()` functions will produce
-errors.
-
-[special functions]: /documentation/syntax/special-functions
-

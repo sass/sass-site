@@ -1,13 +1,19 @@
 version: 2
 updates:
   - package-ecosystem: 'github-actions'
-    directory: '/'
+    directories:
+      - "/"
+      - "/.github/util/*/"
     schedule:
       interval: 'weekly'
+    cooldown:
+      default-days: 7
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'weekly'
+    cooldown:
+      default-days: 7
     ignore:
       - dependency-name: '@types/node'
         update-types: ['version-update:semver-major']
