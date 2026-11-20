@@ -41,7 +41,7 @@ Sass, and return the corresponding value.
 SassScript in an `if()` function's conditions is *only* allowed within the
 `sass(...)` condition or in [interpolation]. The values, on the other hand, are
 normal SassScript expressions and don't need any special wrapping. Only the
-value whose condition matches will be evaluted, so the other values may refer to
+value whose condition matches will be evaluated, so the other values may refer to
 variables that don't exist or call functions that would error.
 
 If no conditions in an pure-Sass `if()` match, it returns `null`.
