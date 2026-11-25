@@ -22,6 +22,10 @@ time-sensitive, so they may be released with new minor version numbers instead.
 
 These breaking changes are coming soon or have recently been released:
 
+* [Escaped strings with
+  `sass:meta`](/documentation/breaking-changes/meta-escape/) beginning in Dart
+  Sass 1.109.0.
+
 * [Passing future versions to
   `Options.fatalDeprecations`](/documentation/breaking-changes/deprecation-version)
   in the JS API, beginning in Dart Sass 1.107.0.
