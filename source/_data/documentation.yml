@@ -62,6 +62,7 @@ toc:
       - <code>sass:string</code>: /documentation/modules/string/
   - Breaking Changes: /documentation/breaking-changes/
     :children:
+      - "Escaped Strings with sass:meta": /documentation/breaking-changes/meta-escape/
       - Future Deprecation Versions: /documentation/breaking-changes/deprecation-version/
       - Adjacent Compound Selectors: /documentation/breaking-changes/adjacent-compounds/
       - Special Function Names: /documentation/breaking-changes/function-name/
